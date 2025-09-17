@@ -2681,33 +2681,7 @@ class ProjectsServicesResourcePoliciesResource {
 /// part of the validation process. Please register it via the Firebase Console
 /// or programmatically via the
 /// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v11/projects.iosApps/patch).
-class GoogleFirebaseAppcheckV1AppAttestConfig {
-  /// The relative resource name of the App Attest configuration object, in the
-  /// format: ``` projects/{project_number}/apps/{app_id}/appAttestConfig ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Specifies the duration for which App Check tokens exchanged from App
-  /// Attest artifacts will be valid.
-  ///
-  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
-  /// and 7 days, inclusive.
-  core.String? tokenTtl;
-
-  GoogleFirebaseAppcheckV1AppAttestConfig({this.name, this.tokenTtl});
-
-  GoogleFirebaseAppcheckV1AppAttestConfig.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        tokenTtl: json_['tokenTtl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1AppAttestConfig = $AppAttestConfig;
 
 /// Encapsulates an *App Check token*, which are used to access backend services
 /// protected by App Check.
@@ -3042,56 +3016,7 @@ class GoogleFirebaseAppcheckV1BatchUpdateServicesResponse {
 /// It essentially allows the development or integration testing to bypass app
 /// attestation while still allowing App Check to enforce protection on
 /// supported production Firebase services.
-class GoogleFirebaseAppcheckV1DebugToken {
-  /// A human readable display name used to identify this debug token.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The relative resource name of the debug token, in the format: ```
-  /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Input only.
-  ///
-  /// Immutable. The secret token itself. Must be provided during creation, and
-  /// must be a UUID4, case insensitive. This field is immutable once set, and
-  /// cannot be provided during an UpdateDebugToken request. You can, however,
-  /// delete this debug token using DeleteDebugToken to revoke it. For security
-  /// reasons, this field will never be populated in any response.
-  ///
-  /// Required.
-  core.String? token;
-
-  /// Timestamp when this debug token was most recently updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GoogleFirebaseAppcheckV1DebugToken({
-    this.displayName,
-    this.name,
-    this.token,
-    this.updateTime,
-  });
-
-  GoogleFirebaseAppcheckV1DebugToken.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-        token: json_['token'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (token != null) 'token': token!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1DebugToken = $DebugToken;
 
 /// An app's DeviceCheck configuration object.
 ///
@@ -3101,218 +3026,15 @@ class GoogleFirebaseAppcheckV1DebugToken {
 /// registered with your app is used as part of the validation process. Please
 /// register it via the Firebase Console or programmatically via the
 /// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v11/projects.iosApps/patch).
-class GoogleFirebaseAppcheckV1DeviceCheckConfig {
-  /// The key identifier of a private key enabled with DeviceCheck, created in
-  /// your Apple Developer account.
-  ///
-  /// Required.
-  core.String? keyId;
-
-  /// The relative resource name of the DeviceCheck configuration object, in the
-  /// format: ``` projects/{project_number}/apps/{app_id}/deviceCheckConfig ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Input only.
-  ///
-  /// The contents of the private key (`.p8`) file associated with the key
-  /// specified by `key_id`. For security reasons, this field will never be
-  /// populated in any response.
-  ///
-  /// Required.
-  core.String? privateKey;
-
-  /// Whether the `private_key` field was previously set.
-  ///
-  /// Since we will never return the `private_key` field, this field is the only
-  /// way to find out whether it was previously set.
-  ///
-  /// Output only.
-  core.bool? privateKeySet;
-
-  /// Specifies the duration for which App Check tokens exchanged from
-  /// DeviceCheck tokens will be valid.
-  ///
-  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
-  /// and 7 days, inclusive.
-  core.String? tokenTtl;
-
-  GoogleFirebaseAppcheckV1DeviceCheckConfig({
-    this.keyId,
-    this.name,
-    this.privateKey,
-    this.privateKeySet,
-    this.tokenTtl,
-  });
-
-  GoogleFirebaseAppcheckV1DeviceCheckConfig.fromJson(core.Map json_)
-    : this(
-        keyId: json_['keyId'] as core.String?,
-        name: json_['name'] as core.String?,
-        privateKey: json_['privateKey'] as core.String?,
-        privateKeySet: json_['privateKeySet'] as core.bool?,
-        tokenTtl: json_['tokenTtl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyId != null) 'keyId': keyId!,
-    if (name != null) 'name': name!,
-    if (privateKey != null) 'privateKey': privateKey!,
-    if (privateKeySet != null) 'privateKeySet': privateKeySet!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1DeviceCheckConfig = $DeviceCheckConfig;
 
 /// Request message for the ExchangeAppAttestAssertion method.
-class GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest {
-  /// The artifact returned by a previous call to ExchangeAppAttestAttestation.
-  ///
-  /// Required.
-  core.String? artifact;
-  core.List<core.int> get artifactAsBytes => convert.base64.decode(artifact!);
-
-  set artifactAsBytes(core.List<core.int> bytes_) {
-    artifact = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The CBOR-encoded assertion returned by the client-side App Attest API.
-  ///
-  /// Required.
-  core.String? assertion;
-  core.List<core.int> get assertionAsBytes => convert.base64.decode(assertion!);
-
-  set assertionAsBytes(core.List<core.int> bytes_) {
-    assertion = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// A one-time challenge returned by an immediately prior call to
-  /// GenerateAppAttestChallenge.
-  ///
-  /// Required.
-  core.String? challenge;
-  core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
-
-  set challengeAsBytes(core.List<core.int> bytes_) {
-    challenge = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest({
-    this.artifact,
-    this.assertion,
-    this.challenge,
-    this.limitedUse,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        artifact: json_['artifact'] as core.String?,
-        assertion: json_['assertion'] as core.String?,
-        challenge: json_['challenge'] as core.String?,
-        limitedUse: json_['limitedUse'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (artifact != null) 'artifact': artifact!,
-    if (assertion != null) 'assertion': assertion!,
-    if (challenge != null) 'challenge': challenge!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeAppAttestAssertionRequest =
+    $ExchangeAppAttestAssertionRequest;
 
 /// Request message for the ExchangeAppAttestAttestation method.
-class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest {
-  /// The App Attest statement returned by the client-side App Attest API.
-  ///
-  /// This is a base64url encoded CBOR object in the JSON response.
-  ///
-  /// Required.
-  core.String? attestationStatement;
-  core.List<core.int> get attestationStatementAsBytes =>
-      convert.base64.decode(attestationStatement!);
-
-  set attestationStatementAsBytes(core.List<core.int> bytes_) {
-    attestationStatement = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// A one-time challenge returned by an immediately prior call to
-  /// GenerateAppAttestChallenge.
-  ///
-  /// Required.
-  core.String? challenge;
-  core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
-
-  set challengeAsBytes(core.List<core.int> bytes_) {
-    challenge = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The key ID generated by App Attest for the client app.
-  ///
-  /// Required.
-  core.String? keyId;
-  core.List<core.int> get keyIdAsBytes => convert.base64.decode(keyId!);
-
-  set keyIdAsBytes(core.List<core.int> bytes_) {
-    keyId = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest({
-    this.attestationStatement,
-    this.challenge,
-    this.keyId,
-    this.limitedUse,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        attestationStatement: json_['attestationStatement'] as core.String?,
-        challenge: json_['challenge'] as core.String?,
-        keyId: json_['keyId'] as core.String?,
-        limitedUse: json_['limitedUse'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attestationStatement != null)
-      'attestationStatement': attestationStatement!,
-    if (challenge != null) 'challenge': challenge!,
-    if (keyId != null) 'keyId': keyId!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationRequest =
+    $ExchangeAppAttestAttestationRequest;
 
 /// Response message for the ExchangeAppAttestAttestation method.
 class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse {
@@ -3355,302 +3077,46 @@ class GoogleFirebaseAppcheckV1ExchangeAppAttestAttestationResponse {
 }
 
 /// Request message for the ExchangeCustomToken method.
-class GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest {
-  /// A custom token signed using your project's Admin SDK service account
-  /// credentials.
-  ///
-  /// Required.
-  core.String? customToken;
-
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest({
-    this.customToken,
-    this.limitedUse,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest.fromJson(core.Map json_)
-    : this(
-        customToken: json_['customToken'] as core.String?,
-        limitedUse: json_['limitedUse'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customToken != null) 'customToken': customToken!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeCustomTokenRequest =
+    $ExchangeCustomTokenRequest;
 
 /// Request message for the ExchangeDebugToken method.
-class GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest {
-  /// A debug token secret.
-  ///
-  /// This string must match a debug token secret previously created using
-  /// CreateDebugToken.
-  ///
-  /// Required.
-  core.String? debugToken;
-
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest({
-    this.debugToken,
-    this.limitedUse,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest.fromJson(core.Map json_)
-    : this(
-        debugToken: json_['debugToken'] as core.String?,
-        limitedUse: json_['limitedUse'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (debugToken != null) 'debugToken': debugToken!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeDebugTokenRequest =
+    $ExchangeDebugTokenRequest;
 
 /// Request message for the ExchangeDeviceCheckToken method.
-class GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest {
-  /// The `device_token` as returned by Apple's client-side
-  /// [DeviceCheck API](https://developer.apple.com/documentation/devicecheck/dcdevice).
-  ///
-  /// This is the base64 encoded `Data` (Swift) or `NSData` (ObjC) object.
-  ///
-  /// Required.
-  core.String? deviceToken;
-
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest({
-    this.deviceToken,
-    this.limitedUse,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        deviceToken: json_['deviceToken'] as core.String?,
-        limitedUse: json_['limitedUse'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceToken != null) 'deviceToken': deviceToken!,
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeDeviceCheckTokenRequest =
+    $ExchangeDeviceCheckTokenRequest;
 
 /// Request message for the ExchangePlayIntegrityToken method.
-class GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest {
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  /// The
-  /// [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify)
-  /// issued to your app.
-  ///
-  /// Required.
-  core.String? playIntegrityToken;
-
-  GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest({
-    this.limitedUse,
-    this.playIntegrityToken,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        limitedUse: json_['limitedUse'] as core.bool?,
-        playIntegrityToken: json_['playIntegrityToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-    if (playIntegrityToken != null) 'playIntegrityToken': playIntegrityToken!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangePlayIntegrityTokenRequest =
+    $ExchangePlayIntegrityTokenRequest;
 
 /// Request message for the ExchangeRecaptchaEnterpriseToken method.
-class GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest {
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  /// The reCAPTCHA token as returned by the
-  /// [reCAPTCHA Enterprise JavaScript API](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages).
-  ///
-  /// Required.
-  core.String? recaptchaEnterpriseToken;
-
-  GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest({
-    this.limitedUse,
-    this.recaptchaEnterpriseToken,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        limitedUse: json_['limitedUse'] as core.bool?,
-        recaptchaEnterpriseToken:
-            json_['recaptchaEnterpriseToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-    if (recaptchaEnterpriseToken != null)
-      'recaptchaEnterpriseToken': recaptchaEnterpriseToken!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeRecaptchaEnterpriseTokenRequest =
+    $ExchangeRecaptchaEnterpriseTokenRequest;
 
 /// Request message for the ExchangeRecaptchaV3Token method.
-class GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest {
-  /// Specifies whether this attestation is for use in a *limited use* (`true`)
-  /// or *session based* (`false`) context.
-  ///
-  /// To enable this attestation to be used with the *replay protection*
-  /// feature, set this to `true`. The default value is `false`.
-  core.bool? limitedUse;
-
-  /// The reCAPTCHA token as returned by the
-  /// [reCAPTCHA v3 JavaScript API](https://developers.google.com/recaptcha/docs/v3).
-  ///
-  /// Required.
-  core.String? recaptchaV3Token;
-
-  GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest({
-    this.limitedUse,
-    this.recaptchaV3Token,
-  });
-
-  GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        limitedUse: json_['limitedUse'] as core.bool?,
-        recaptchaV3Token: json_['recaptchaV3Token'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (limitedUse != null) 'limitedUse': limitedUse!,
-    if (recaptchaV3Token != null) 'recaptchaV3Token': recaptchaV3Token!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeRecaptchaV3TokenRequest =
+    $ExchangeRecaptchaV3TokenRequest;
 
 /// Request message for the ExchangeSafetyNetToken method.
-class GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest {
-  /// The
-  /// [SafetyNet attestation response](https://developer.android.com/training/safetynet/attestation#request-attestation-step)
-  /// issued to your app.
-  ///
-  /// Required.
-  core.String? safetyNetToken;
-
-  GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest({this.safetyNetToken});
-
-  GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest.fromJson(core.Map json_)
-    : this(safetyNetToken: json_['safetyNetToken'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (safetyNetToken != null) 'safetyNetToken': safetyNetToken!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1ExchangeSafetyNetTokenRequest =
+    $ExchangeSafetyNetTokenRequest;
 
 /// Request message for the GenerateAppAttestChallenge method.
 typedef GoogleFirebaseAppcheckV1GenerateAppAttestChallengeRequest = $Empty;
 
 /// Response message for the GenerateAppAttestChallenge method.
-class GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse {
-  /// A one-time use challenge for the client to pass to the App Attest API.
-  core.String? challenge;
-  core.List<core.int> get challengeAsBytes => convert.base64.decode(challenge!);
-
-  set challengeAsBytes(core.List<core.int> bytes_) {
-    challenge = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The duration from the time this challenge is minted until its expiration.
-  ///
-  /// This field is intended to ease client-side token management, since the
-  /// client may have clock skew, but is still able to accurately measure a
-  /// duration.
-  core.String? ttl;
-
-  GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse({
-    this.challenge,
-    this.ttl,
-  });
-
-  GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse.fromJson(
-    core.Map json_,
-  ) : this(
-        challenge: json_['challenge'] as core.String?,
-        ttl: json_['ttl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challenge != null) 'challenge': challenge!,
-    if (ttl != null) 'ttl': ttl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1GenerateAppAttestChallengeResponse =
+    $GenerateAppAttestChallengeResponse;
 
 /// Request message for the GeneratePlayIntegrityChallenge method.
 typedef GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeRequest = $Empty;
 
 /// Response message for the GeneratePlayIntegrityChallenge method.
-class GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse {
-  /// A one-time use
-  /// [challenge](https://developer.android.com/google/play/integrity/verdict#protect-against-replay-attacks)
-  /// for the client to pass to the Play Integrity API.
-  core.String? challenge;
-
-  /// The duration from the time this challenge is minted until its expiration.
-  ///
-  /// This field is intended to ease client-side token management, since the
-  /// client may have clock skew, but is still able to accurately measure a
-  /// duration.
-  core.String? ttl;
-
-  GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse({
-    this.challenge,
-    this.ttl,
-  });
-
-  GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse.fromJson(
-    core.Map json_,
-  ) : this(
-        challenge: json_['challenge'] as core.String?,
-        ttl: json_['ttl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (challenge != null) 'challenge': challenge!,
-    if (ttl != null) 'ttl': ttl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1GeneratePlayIntegrityChallengeResponse =
+    $GeneratePlayIntegrityChallengeResponse;
 
 /// Response message for the ListDebugTokens method.
 class GoogleFirebaseAppcheckV1ListDebugTokensResponse {
@@ -3774,91 +3240,12 @@ class GoogleFirebaseAppcheckV1ListServicesResponse {
 /// issued by the Play Integrity API; please register them via the Firebase
 /// Console or programmatically via the
 /// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.androidApps.sha/create).
-class GoogleFirebaseAppcheckV1PlayIntegrityConfig {
-  /// The relative resource name of the Play Integrity configuration object, in
-  /// the format: ```
-  /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Specifies the duration for which App Check tokens exchanged from Play
-  /// Integrity tokens will be valid.
-  ///
-  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
-  /// and 7 days, inclusive.
-  core.String? tokenTtl;
-
-  GoogleFirebaseAppcheckV1PlayIntegrityConfig({this.name, this.tokenTtl});
-
-  GoogleFirebaseAppcheckV1PlayIntegrityConfig.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        tokenTtl: json_['tokenTtl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1PlayIntegrityConfig = $PlayIntegrityConfig;
 
 /// A JWK as specified by
 /// [section 4 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4) and
 /// [section 6.3.1 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1).
-class GoogleFirebaseAppcheckV1PublicJwk {
-  /// See
-  /// [section 4.4 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.4).
-  core.String? alg;
-
-  /// See
-  /// [section 6.3.1.2 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1.2).
-  core.String? e;
-
-  /// See
-  /// [section 4.5 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.5).
-  core.String? kid;
-
-  /// See
-  /// [section 4.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.1).
-  core.String? kty;
-
-  /// See
-  /// [section 6.3.1.1 of RFC 7518](https://tools.ietf.org/html/rfc7518#section-6.3.1.1).
-  core.String? n;
-
-  /// See
-  /// [section 4.2 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.2).
-  core.String? use;
-
-  GoogleFirebaseAppcheckV1PublicJwk({
-    this.alg,
-    this.e,
-    this.kid,
-    this.kty,
-    this.n,
-    this.use,
-  });
-
-  GoogleFirebaseAppcheckV1PublicJwk.fromJson(core.Map json_)
-    : this(
-        alg: json_['alg'] as core.String?,
-        e: json_['e'] as core.String?,
-        kid: json_['kid'] as core.String?,
-        kty: json_['kty'] as core.String?,
-        n: json_['n'] as core.String?,
-        use: json_['use'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alg != null) 'alg': alg!,
-    if (e != null) 'e': e!,
-    if (kid != null) 'kid': kid!,
-    if (kty != null) 'kty': kty!,
-    if (n != null) 'n': n!,
-    if (use != null) 'use': use!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1PublicJwk = $PublicJwk;
 
 /// The currently active set of public keys that can be used to verify App Check
 /// tokens.
@@ -3897,110 +3284,15 @@ class GoogleFirebaseAppcheckV1PublicJwkSet {
 /// This configuration is used by ExchangeRecaptchaEnterpriseToken to validate
 /// reCAPTCHA tokens issued to apps by reCAPTCHA Enterprise. It also controls
 /// certain properties of the returned `AppCheckToken`, such as its ttl.
-class GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig {
-  /// The relative resource name of the reCAPTCHA Enterprise configuration
-  /// object, in the format: ```
-  /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The score-based site key
-  /// [created in reCAPTCHA Enterprise](https://cloud.google.com/recaptcha-enterprise/docs/create-key#creating_a_site_key)
-  /// used to
-  /// [invoke reCAPTCHA and generate the reCAPTCHA tokens](https://cloud.google.com/recaptcha-enterprise/docs/instrument-web-pages)
-  /// for your application.
-  ///
-  /// Important: This is *not* the `site_secret` (as it is in reCAPTCHA v3), but
-  /// rather your score-based reCAPTCHA Enterprise site key.
-  core.String? siteKey;
-
-  /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA
-  /// Enterprise tokens will be valid.
-  ///
-  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
-  /// and 7 days, inclusive.
-  core.String? tokenTtl;
-
-  GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig({
-    this.name,
-    this.siteKey,
-    this.tokenTtl,
-  });
-
-  GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        siteKey: json_['siteKey'] as core.String?,
-        tokenTtl: json_['tokenTtl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (siteKey != null) 'siteKey': siteKey!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig =
+    $RecaptchaEnterpriseConfig;
 
 /// An app's reCAPTCHA v3 configuration object.
 ///
 /// This configuration is used by ExchangeRecaptchaV3Token to validate reCAPTCHA
 /// tokens issued to apps by reCAPTCHA v3. It also controls certain properties
 /// of the returned `AppCheckToken`, such as its ttl.
-class GoogleFirebaseAppcheckV1RecaptchaV3Config {
-  /// The relative resource name of the reCAPTCHA v3 configuration object, in
-  /// the format: ``` projects/{project_number}/apps/{app_id}/recaptchaV3Config
-  /// ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Input only.
-  ///
-  /// The site secret used to identify your service for reCAPTCHA v3
-  /// verification. For security reasons, this field will never be populated in
-  /// any response.
-  ///
-  /// Required.
-  core.String? siteSecret;
-
-  /// Whether the `site_secret` field was previously set.
-  ///
-  /// Since we will never return the `site_secret` field, this field is the only
-  /// way to find out whether it was previously set.
-  ///
-  /// Output only.
-  core.bool? siteSecretSet;
-
-  /// Specifies the duration for which App Check tokens exchanged from reCAPTCHA
-  /// tokens will be valid.
-  ///
-  /// If unset, a default value of 1 day is assumed. Must be between 30 minutes
-  /// and 7 days, inclusive.
-  core.String? tokenTtl;
-
-  GoogleFirebaseAppcheckV1RecaptchaV3Config({
-    this.name,
-    this.siteSecret,
-    this.siteSecretSet,
-    this.tokenTtl,
-  });
-
-  GoogleFirebaseAppcheckV1RecaptchaV3Config.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        siteSecret: json_['siteSecret'] as core.String?,
-        siteSecretSet: json_['siteSecretSet'] as core.bool?,
-        tokenTtl: json_['tokenTtl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (siteSecret != null) 'siteSecret': siteSecret!,
-    if (siteSecretSet != null) 'siteSecretSet': siteSecretSet!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1RecaptchaV3Config = $RecaptchaV3Config;
 
 /// App Check enforcement policy for a specific resource of a Google service
 /// supported by App Check.
@@ -4119,33 +3411,7 @@ class GoogleFirebaseAppcheckV1ResourcePolicy {
 /// issued by SafetyNet; please register them via the Firebase Console or
 /// programmatically via the
 /// [Firebase Management Service](https://firebase.google.com/docs/projects/api/reference/rest/v11/projects.androidApps.sha/create).
-class GoogleFirebaseAppcheckV1SafetyNetConfig {
-  /// The relative resource name of the SafetyNet configuration object, in the
-  /// format: ``` projects/{project_number}/apps/{app_id}/safetyNetConfig ```
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Specifies the duration for which App Check tokens exchanged from SafetyNet
-  /// tokens will be valid.
-  ///
-  /// If unset, a default value of 1 hour is assumed. Must be between 30 minutes
-  /// and 7 days, inclusive.
-  core.String? tokenTtl;
-
-  GoogleFirebaseAppcheckV1SafetyNetConfig({this.name, this.tokenTtl});
-
-  GoogleFirebaseAppcheckV1SafetyNetConfig.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        tokenTtl: json_['tokenTtl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (tokenTtl != null) 'tokenTtl': tokenTtl!,
-  };
-}
+typedef GoogleFirebaseAppcheckV1SafetyNetConfig = $SafetyNetConfig;
 
 /// The enforcement configuration for a Firebase service supported by App Check.
 class GoogleFirebaseAppcheckV1Service {

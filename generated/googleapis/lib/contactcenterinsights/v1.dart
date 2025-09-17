@@ -11337,7 +11337,7 @@ class GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to save the issue model to.
 typedef GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination =
-    $Shared10;
+    $Shared16;
 
 /// Agent Assist frequently-asked-question answer data.
 class GoogleCloudContactcenterinsightsV1FaqAnswerData {
@@ -11553,7 +11553,7 @@ class GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
 
 /// Google Cloud Storage Object URI to get the issue model file from.
 typedef GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource =
-    $Shared10;
+    $Shared16;
 
 /// The request to ingest conversations.
 class GoogleCloudContactcenterinsightsV1IngestConversationsRequest {

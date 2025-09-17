@@ -2607,81 +2607,11 @@ class ProjectsLocationsServicesMigrationExecutionsResource {
 }
 
 /// Request message for DataprocMetastore.AlterMetadataResourceLocation.
-class AlterMetadataResourceLocationRequest {
-  /// The new location URI for the metadata resource.
-  ///
-  /// Required.
-  core.String? locationUri;
-
-  /// The relative metadata resource name in the following
-  /// format.databases/{database_id} or
-  /// databases/{database_id}/tables/{table_id} or
-  /// databases/{database_id}/tables/{table_id}/partitions/{partition_id}
-  ///
-  /// Required.
-  core.String? resourceName;
-
-  AlterMetadataResourceLocationRequest({this.locationUri, this.resourceName});
-
-  AlterMetadataResourceLocationRequest.fromJson(core.Map json_)
-    : this(
-        locationUri: json_['locationUri'] as core.String?,
-        resourceName: json_['resourceName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locationUri != null) 'locationUri': locationUri!,
-    if (resourceName != null) 'resourceName': resourceName!,
-  };
-}
+typedef AlterMetadataResourceLocationRequest =
+    $AlterMetadataResourceLocationRequest;
 
 /// Request message for DataprocMetastore.AlterTableProperties.
-class AlterTablePropertiesRequest {
-  /// A map that describes the desired values to mutate.
-  ///
-  /// If update_mask is empty, the properties will not update. Otherwise, the
-  /// properties only alters the value whose associated paths exist in the
-  /// update mask
-  core.Map<core.String, core.String>? properties;
-
-  /// The name of the table containing the properties you're altering in the
-  /// following format.databases/{database_id}/tables/{table_id}
-  ///
-  /// Required.
-  core.String? tableName;
-
-  /// A field mask that specifies the metadata table properties that are
-  /// overwritten by the update.
-  ///
-  /// Fields specified in the update_mask are relative to the resource (not to
-  /// the full request). A field is overwritten if it is in the mask.For
-  /// example, given the target properties: properties { a: 1 b: 2 } And an
-  /// update properties: properties { a: 2 b: 3 c: 4 } then if the field mask
-  /// is:paths: "properties.b", "properties.c"then the result will be:
-  /// properties { a: 1 b: 3 c: 4 }
-  core.String? updateMask;
-
-  AlterTablePropertiesRequest({
-    this.properties,
-    this.tableName,
-    this.updateMask,
-  });
-
-  AlterTablePropertiesRequest.fromJson(core.Map json_)
-    : this(
-        properties: (json_['properties']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        tableName: json_['tableName'] as core.String?,
-        updateMask: json_['updateMask'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (properties != null) 'properties': properties!,
-    if (tableName != null) 'tableName': tableName!,
-    if (updateMask != null) 'updateMask': updateMask!,
-  };
-}
+typedef AlterTablePropertiesRequest = $AlterTablePropertiesRequest;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -2737,7 +2667,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Represents the autoscaling configuration of a metastore service.
 class AutoscalingConfig {
@@ -3064,195 +2994,11 @@ typedef CancelOperationRequest = $Empty;
 
 /// Configuration information to start the Change Data Capture (CDC) streams
 /// from customer database to backend database of Dataproc Metastore.
-class CdcConfig {
-  /// The bucket to write the intermediate stream event data in.
-  ///
-  /// The bucket name must be without any prefix like "gs://". See the bucket
-  /// naming requirements
-  /// (https://cloud.google.com/storage/docs/buckets#naming). This field is
-  /// optional. If not set, the Artifacts Cloud Storage bucket will be used.
-  ///
-  /// Optional.
-  core.String? bucket;
-
-  /// Input only.
-  ///
-  /// The password for the user that Datastream service should use for the MySQL
-  /// connection. This field is not returned on request.
-  ///
-  /// Required.
-  core.String? password;
-
-  /// The URL of the subnetwork resource to create the VM instance hosting the
-  /// reverse proxy in.
-  ///
-  /// More context in
-  /// https://cloud.google.com/datastream/docs/private-connectivity#reverse-csql-proxy
-  /// The subnetwork should reside in the network provided in the request that
-  /// Datastream will peer to and should be in the same region as Datastream, in
-  /// the following format.
-  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ///
-  /// Required.
-  core.String? reverseProxySubnet;
-
-  /// The root path inside the Cloud Storage bucket.
-  ///
-  /// The stream event data will be written to this path. The default value is
-  /// /migration.
-  ///
-  /// Optional.
-  core.String? rootPath;
-
-  /// A /29 CIDR IP range for peering with datastream.
-  ///
-  /// Required.
-  core.String? subnetIpRange;
-
-  /// The username that the Datastream service should use for the MySQL
-  /// connection.
-  ///
-  /// Required.
-  core.String? username;
-
-  /// Fully qualified name of the Cloud SQL instance's VPC network or the shared
-  /// VPC network that Datastream will peer to, in the following format:
-  /// projects/{project_id}/locations/global/networks/{network_id}.
-  ///
-  /// More context in
-  /// https://cloud.google.com/datastream/docs/network-connectivity-options#privateconnectivity
-  ///
-  /// Required.
-  core.String? vpcNetwork;
-
-  CdcConfig({
-    this.bucket,
-    this.password,
-    this.reverseProxySubnet,
-    this.rootPath,
-    this.subnetIpRange,
-    this.username,
-    this.vpcNetwork,
-  });
-
-  CdcConfig.fromJson(core.Map json_)
-    : this(
-        bucket: json_['bucket'] as core.String?,
-        password: json_['password'] as core.String?,
-        reverseProxySubnet: json_['reverseProxySubnet'] as core.String?,
-        rootPath: json_['rootPath'] as core.String?,
-        subnetIpRange: json_['subnetIpRange'] as core.String?,
-        username: json_['username'] as core.String?,
-        vpcNetwork: json_['vpcNetwork'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (password != null) 'password': password!,
-    if (reverseProxySubnet != null) 'reverseProxySubnet': reverseProxySubnet!,
-    if (rootPath != null) 'rootPath': rootPath!,
-    if (subnetIpRange != null) 'subnetIpRange': subnetIpRange!,
-    if (username != null) 'username': username!,
-    if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
-  };
-}
+typedef CdcConfig = $CdcConfig;
 
 /// Configuration information to establish customer database connection before
 /// the cutover phase of migration
-class CloudSQLConnectionConfig {
-  /// The hive database name.
-  ///
-  /// Required.
-  core.String? hiveDatabaseName;
-
-  /// Cloud SQL database connection name (project_id:region:instance_name)
-  ///
-  /// Required.
-  core.String? instanceConnectionName;
-
-  /// The private IP address of the Cloud SQL instance.
-  ///
-  /// Required.
-  core.String? ipAddress;
-
-  /// The relative resource name of the subnetwork to be used for Private
-  /// Service Connect.
-  ///
-  /// Note that this cannot be a regular subnet and is used only for NAT.
-  /// (https://cloud.google.com/vpc/docs/about-vpc-hosted-services#psc-subnets)
-  /// This subnet is used to publish the SOCKS5 proxy service. The subnet size
-  /// must be at least /29 and it should reside in a network through which the
-  /// Cloud SQL instance is accessible. The resource name should be in the
-  /// format,
-  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ///
-  /// Required.
-  core.String? natSubnet;
-
-  /// Input only.
-  ///
-  /// The password for the user that Dataproc Metastore service will be using to
-  /// connect to the database. This field is not returned on request.
-  ///
-  /// Required.
-  core.String? password;
-
-  /// The network port of the database.
-  ///
-  /// Required.
-  core.int? port;
-
-  /// The relative resource name of the subnetwork to deploy the SOCKS5 proxy
-  /// service in.
-  ///
-  /// The subnetwork should reside in a network through which the Cloud SQL
-  /// instance is accessible. The resource name should be in the format,
-  /// projects/{project_id}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ///
-  /// Required.
-  core.String? proxySubnet;
-
-  /// The username that Dataproc Metastore service will use to connect to the
-  /// database.
-  ///
-  /// Required.
-  core.String? username;
-
-  CloudSQLConnectionConfig({
-    this.hiveDatabaseName,
-    this.instanceConnectionName,
-    this.ipAddress,
-    this.natSubnet,
-    this.password,
-    this.port,
-    this.proxySubnet,
-    this.username,
-  });
-
-  CloudSQLConnectionConfig.fromJson(core.Map json_)
-    : this(
-        hiveDatabaseName: json_['hiveDatabaseName'] as core.String?,
-        instanceConnectionName: json_['instanceConnectionName'] as core.String?,
-        ipAddress: json_['ipAddress'] as core.String?,
-        natSubnet: json_['natSubnet'] as core.String?,
-        password: json_['password'] as core.String?,
-        port: json_['port'] as core.int?,
-        proxySubnet: json_['proxySubnet'] as core.String?,
-        username: json_['username'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hiveDatabaseName != null) 'hiveDatabaseName': hiveDatabaseName!,
-    if (instanceConnectionName != null)
-      'instanceConnectionName': instanceConnectionName!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (natSubnet != null) 'natSubnet': natSubnet!,
-    if (password != null) 'password': password!,
-    if (port != null) 'port': port!,
-    if (proxySubnet != null) 'proxySubnet': proxySubnet!,
-    if (username != null) 'username': username!,
-  };
-}
+typedef CloudSQLConnectionConfig = $CloudSQLConnectionConfig;
 
 /// Configuration information for migrating from self-managed hive metastore on
 /// Google Cloud using Cloud SQL as the backend database to Dataproc Metastore.
@@ -3302,130 +3048,15 @@ class CloudSQLMigrationConfig {
 typedef CompleteMigrationRequest = $Empty;
 
 /// Contains information of the customer's network configurations.
-class Consumer {
-  /// The location of the endpoint URI.
-  ///
-  /// Format: projects/{project}/locations/{location}.
-  ///
-  /// Output only.
-  core.String? endpointLocation;
-
-  /// The URI of the endpoint used to access the metastore service.
-  ///
-  /// Output only.
-  core.String? endpointUri;
-
-  /// The subnetwork of the customer project from which an IP address is
-  /// reserved and used as the Dataproc Metastore service's endpoint.
-  ///
-  /// It is accessible to hosts in the subnet and to all hosts in a subnet in
-  /// the same region and same network. There must be at least one IP address
-  /// available in the subnet's primary range. The subnet is specified in the
-  /// following
-  /// form:projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
-  ///
-  /// Immutable.
-  core.String? subnetwork;
-
-  Consumer({this.endpointLocation, this.endpointUri, this.subnetwork});
-
-  Consumer.fromJson(core.Map json_)
-    : this(
-        endpointLocation: json_['endpointLocation'] as core.String?,
-        endpointUri: json_['endpointUri'] as core.String?,
-        subnetwork: json_['subnetwork'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endpointLocation != null) 'endpointLocation': endpointLocation!,
-    if (endpointUri != null) 'endpointUri': endpointUri!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-  };
-}
+typedef Consumer = $Consumer;
 
 /// Specifies how metastore metadata should be integrated with the Data Catalog
 /// service.
-class DataCatalogConfig {
-  /// Defines whether the metastore metadata should be synced to Data Catalog.
-  ///
-  /// The default value is to disable syncing metastore metadata to Data
-  /// Catalog.
-  ///
-  /// Optional.
-  core.bool? enabled;
-
-  DataCatalogConfig({this.enabled});
-
-  DataCatalogConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef DataCatalogConfig = $DataCatalogConfig;
 
 /// A specification of the location of and metadata about a database dump from a
 /// relational database management system.
-class DatabaseDump {
-  /// The type of the database.
-  /// Possible string values are:
-  /// - "DATABASE_TYPE_UNSPECIFIED" : The type of the source database is
-  /// unknown.
-  /// - "MYSQL" : The type of the source database is MySQL.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? databaseType;
-
-  /// A Cloud Storage object or folder URI that specifies the source from which
-  /// to import metadata.
-  ///
-  /// It must begin with gs://.
-  ///
-  /// Optional.
-  core.String? gcsUri;
-
-  /// The name of the source database.
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? sourceDatabase;
-
-  /// The type of the database dump.
-  ///
-  /// If unspecified, defaults to MYSQL.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : The type of the database dump is unknown.
-  /// - "MYSQL" : Database dump is a MySQL dump file.
-  /// - "AVRO" : Database dump contains Avro files.
-  core.String? type;
-
-  DatabaseDump({
-    this.databaseType,
-    this.gcsUri,
-    this.sourceDatabase,
-    this.type,
-  });
-
-  DatabaseDump.fromJson(core.Map json_)
-    : this(
-        databaseType: json_['databaseType'] as core.String?,
-        gcsUri: json_['gcsUri'] as core.String?,
-        sourceDatabase: json_['sourceDatabase'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseType != null) 'databaseType': databaseType!,
-    if (gcsUri != null) 'gcsUri': gcsUri!,
-    if (sourceDatabase != null) 'sourceDatabase': sourceDatabase!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef DatabaseDump = $DatabaseDump;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -3455,57 +3086,7 @@ class EncryptionConfig {
 }
 
 /// Request message for DataprocMetastore.ExportMetadata.
-class ExportMetadataRequest {
-  /// The type of the database dump.
-  ///
-  /// If unspecified, defaults to MYSQL.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : The type of the database dump is unknown.
-  /// - "MYSQL" : Database dump is a MySQL dump file.
-  /// - "AVRO" : Database dump contains Avro files.
-  core.String? databaseDumpType;
-
-  /// A Cloud Storage URI of a folder, in the format gs:///.
-  ///
-  /// A sub-folder containing exported files will be created below it.
-  core.String? destinationGcsFolder;
-
-  /// A request ID.
-  ///
-  /// Specify a unique request ID to allow the server to ignore the request if
-  /// it has completed. The server will ignore subsequent requests that provide
-  /// a duplicate request ID for at least 60 minutes after the first request.For
-  /// example, if an initial request times out, followed by another request with
-  /// the same request ID, the server ignores the second request to prevent the
-  /// creation of duplicate commitments.The request ID must be a valid UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A
-  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  ExportMetadataRequest({
-    this.databaseDumpType,
-    this.destinationGcsFolder,
-    this.requestId,
-  });
-
-  ExportMetadataRequest.fromJson(core.Map json_)
-    : this(
-        databaseDumpType: json_['databaseDumpType'] as core.String?,
-        destinationGcsFolder: json_['destinationGcsFolder'] as core.String?,
-        requestId: json_['requestId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
-    if (destinationGcsFolder != null)
-      'destinationGcsFolder': destinationGcsFolder!,
-    if (requestId != null) 'requestId': requestId!,
-  };
-}
+typedef ExportMetadataRequest = $ExportMetadataRequest;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3809,77 +3390,10 @@ class KerberosConfig {
 }
 
 /// The details of the latest scheduled backup.
-class LatestBackup {
-  /// The ID of an in-progress scheduled backup.
-  ///
-  /// Empty if no backup is in progress.
-  ///
-  /// Output only.
-  core.String? backupId;
-
-  /// The duration of the backup completion.
-  ///
-  /// Output only.
-  core.String? duration;
-
-  /// The time when the backup was started.
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  /// The current state of the backup.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The state of the backup is unknown.
-  /// - "IN_PROGRESS" : The backup is in progress.
-  /// - "SUCCEEDED" : The backup completed.
-  /// - "FAILED" : The backup failed.
-  core.String? state;
-
-  LatestBackup({this.backupId, this.duration, this.startTime, this.state});
-
-  LatestBackup.fromJson(core.Map json_)
-    : this(
-        backupId: json_['backupId'] as core.String?,
-        duration: json_['duration'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupId != null) 'backupId': backupId!,
-    if (duration != null) 'duration': duration!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef LatestBackup = $LatestBackup;
 
 /// Represents the autoscaling limit configuration of a metastore service.
-class LimitConfig {
-  /// The highest scaling factor that the service should be autoscaled to.
-  ///
-  /// Optional.
-  core.double? maxScalingFactor;
-
-  /// The lowest scaling factor that the service should be autoscaled to.
-  ///
-  /// Optional.
-  core.double? minScalingFactor;
-
-  LimitConfig({this.maxScalingFactor, this.minScalingFactor});
-
-  LimitConfig.fromJson(core.Map json_)
-    : this(
-        maxScalingFactor: (json_['maxScalingFactor'] as core.num?)?.toDouble(),
-        minScalingFactor: (json_['minScalingFactor'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxScalingFactor != null) 'maxScalingFactor': maxScalingFactor!,
-    if (minScalingFactor != null) 'minScalingFactor': minScalingFactor!,
-  };
-}
+typedef LimitConfig = $LimitConfig;
 
 /// Response message for DataprocMetastore.ListBackups.
 class ListBackupsResponse {
@@ -4154,103 +3668,10 @@ typedef Location = $Location01;
 ///
 /// This specifies when Dataproc Metastore may perform system maintenance
 /// operation to the service.
-class MaintenanceWindow {
-  /// The day of week, when the window starts.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
-  /// - "MONDAY" : Monday
-  /// - "TUESDAY" : Tuesday
-  /// - "WEDNESDAY" : Wednesday
-  /// - "THURSDAY" : Thursday
-  /// - "FRIDAY" : Friday
-  /// - "SATURDAY" : Saturday
-  /// - "SUNDAY" : Sunday
-  core.String? dayOfWeek;
-
-  /// The hour of day (0-23) when the window starts.
-  ///
-  /// Optional.
-  core.int? hourOfDay;
-
-  MaintenanceWindow({this.dayOfWeek, this.hourOfDay});
-
-  MaintenanceWindow.fromJson(core.Map json_)
-    : this(
-        dayOfWeek: json_['dayOfWeek'] as core.String?,
-        hourOfDay: json_['hourOfDay'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-    if (hourOfDay != null) 'hourOfDay': hourOfDay!,
-  };
-}
+typedef MaintenanceWindow = $MaintenanceWindow00;
 
 /// The details of a metadata export operation.
-class MetadataExport {
-  /// The type of the database dump.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : The type of the database dump is unknown.
-  /// - "MYSQL" : Database dump is a MySQL dump file.
-  /// - "AVRO" : Database dump contains Avro files.
-  core.String? databaseDumpType;
-
-  /// A Cloud Storage URI of a folder that metadata are exported to, in the form
-  /// of gs:////, where is automatically generated.
-  ///
-  /// Output only.
-  core.String? destinationGcsUri;
-
-  /// The time when the export ended.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// The time when the export started.
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  /// The current state of the export.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The state of the metadata export is unknown.
-  /// - "RUNNING" : The metadata export is running.
-  /// - "SUCCEEDED" : The metadata export completed successfully.
-  /// - "FAILED" : The metadata export failed.
-  /// - "CANCELLED" : The metadata export is cancelled.
-  core.String? state;
-
-  MetadataExport({
-    this.databaseDumpType,
-    this.destinationGcsUri,
-    this.endTime,
-    this.startTime,
-    this.state,
-  });
-
-  MetadataExport.fromJson(core.Map json_)
-    : this(
-        databaseDumpType: json_['databaseDumpType'] as core.String?,
-        destinationGcsUri: json_['destinationGcsUri'] as core.String?,
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseDumpType != null) 'databaseDumpType': databaseDumpType!,
-    if (destinationGcsUri != null) 'destinationGcsUri': destinationGcsUri!,
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef MetadataExport = $MetadataExport;
 
 /// A metastore resource that imports metadata.
 class MetadataImport {
@@ -4504,41 +3925,7 @@ class MigrationExecution {
 }
 
 /// Request message for DataprocMetastore.MoveTableToDatabase.
-class MoveTableToDatabaseRequest {
-  /// The name of the database where the table resides.
-  ///
-  /// Required.
-  core.String? dbName;
-
-  /// The name of the database where the table should be moved.
-  ///
-  /// Required.
-  core.String? destinationDbName;
-
-  /// The name of the table to be moved.
-  ///
-  /// Required.
-  core.String? tableName;
-
-  MoveTableToDatabaseRequest({
-    this.dbName,
-    this.destinationDbName,
-    this.tableName,
-  });
-
-  MoveTableToDatabaseRequest.fromJson(core.Map json_)
-    : this(
-        dbName: json_['dbName'] as core.String?,
-        destinationDbName: json_['destinationDbName'] as core.String?,
-        tableName: json_['tableName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dbName != null) 'dbName': dbName!,
-    if (destinationDbName != null) 'destinationDbName': destinationDbName!,
-    if (tableName != null) 'tableName': tableName!,
-  };
-}
+typedef MoveTableToDatabaseRequest = $MoveTableToDatabaseRequest;
 
 /// Network configuration for the Dataproc Metastore service.
 class NetworkConfig {
@@ -4760,175 +4147,13 @@ class Policy {
 }
 
 /// Request message for DataprocMetastore.QueryMetadata.
-class QueryMetadataRequest {
-  /// A read-only SQL query to execute against the metadata database.
-  ///
-  /// The query cannot change or mutate the data.
-  ///
-  /// Required.
-  core.String? query;
-
-  QueryMetadataRequest({this.query});
-
-  QueryMetadataRequest.fromJson(core.Map json_)
-    : this(query: json_['query'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (query != null) 'query': query!,
-  };
-}
+typedef QueryMetadataRequest = $QueryMetadataRequest;
 
 /// The details of a metadata restore operation.
-class Restore {
-  /// The relative resource name of the metastore service backup to restore
-  /// from, in the following
-  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
-  ///
-  /// Output only.
-  core.String? backup;
-
-  /// A Cloud Storage URI specifying where the backup artifacts are stored, in
-  /// the format gs:///.
-  ///
-  /// Optional.
-  core.String? backupLocation;
-
-  /// The restore details containing the revision of the service to be restored
-  /// to, in format of JSON.
-  ///
-  /// Output only.
-  core.String? details;
-
-  /// The time when the restore ended.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// The time when the restore started.
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  /// The current state of the restore.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The state of the metadata restore is unknown.
-  /// - "RUNNING" : The metadata restore is running.
-  /// - "SUCCEEDED" : The metadata restore completed successfully.
-  /// - "FAILED" : The metadata restore failed.
-  /// - "CANCELLED" : The metadata restore is cancelled.
-  core.String? state;
-
-  /// The type of restore.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "RESTORE_TYPE_UNSPECIFIED" : The restore type is unknown.
-  /// - "FULL" : The service's metadata and configuration are restored.
-  /// - "METADATA_ONLY" : Only the service's metadata is restored.
-  core.String? type;
-
-  Restore({
-    this.backup,
-    this.backupLocation,
-    this.details,
-    this.endTime,
-    this.startTime,
-    this.state,
-    this.type,
-  });
-
-  Restore.fromJson(core.Map json_)
-    : this(
-        backup: json_['backup'] as core.String?,
-        backupLocation: json_['backupLocation'] as core.String?,
-        details: json_['details'] as core.String?,
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        state: json_['state'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backup != null) 'backup': backup!,
-    if (backupLocation != null) 'backupLocation': backupLocation!,
-    if (details != null) 'details': details!,
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef Restore = $Restore;
 
 /// Request message for DataprocMetastore.RestoreService.
-class RestoreServiceRequest {
-  /// The relative resource name of the metastore service backup to restore
-  /// from, in the following
-  /// form:projects/{project_id}/locations/{location_id}/services/{service_id}/backups/{backup_id}.
-  ///
-  /// Mutually exclusive with backup_location, and exactly one of the two must
-  /// be set.
-  ///
-  /// Optional.
-  core.String? backup;
-
-  /// A Cloud Storage URI specifying the location of the backup artifacts,
-  /// namely - backup avro files under "avro/", backup_metastore.json and
-  /// service.json, in the following form:gs://.
-  ///
-  /// Mutually exclusive with backup, and exactly one of the two must be set.
-  ///
-  /// Optional.
-  core.String? backupLocation;
-
-  /// A request ID.
-  ///
-  /// Specify a unique request ID to allow the server to ignore the request if
-  /// it has completed. The server will ignore subsequent requests that provide
-  /// a duplicate request ID for at least 60 minutes after the first request.For
-  /// example, if an initial request times out, followed by another request with
-  /// the same request ID, the server ignores the second request to prevent the
-  /// creation of duplicate commitments.The request ID must be a valid UUID
-  /// (https://en.wikipedia.org/wiki/Universally_unique_identifier#Format). A
-  /// zero UUID (00000000-0000-0000-0000-000000000000) is not supported.
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// The type of restore.
-  ///
-  /// If unspecified, defaults to METADATA_ONLY.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "RESTORE_TYPE_UNSPECIFIED" : The restore type is unknown.
-  /// - "FULL" : The service's metadata and configuration are restored.
-  /// - "METADATA_ONLY" : Only the service's metadata is restored.
-  core.String? restoreType;
-
-  RestoreServiceRequest({
-    this.backup,
-    this.backupLocation,
-    this.requestId,
-    this.restoreType,
-  });
-
-  RestoreServiceRequest.fromJson(core.Map json_)
-    : this(
-        backup: json_['backup'] as core.String?,
-        backupLocation: json_['backupLocation'] as core.String?,
-        requestId: json_['requestId'] as core.String?,
-        restoreType: json_['restoreType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backup != null) 'backup': backup!,
-    if (backupLocation != null) 'backupLocation': backupLocation!,
-    if (requestId != null) 'requestId': requestId!,
-    if (restoreType != null) 'restoreType': restoreType!,
-  };
-}
+typedef RestoreServiceRequest = $RestoreServiceRequest;
 
 /// Represents the scaling configuration of a metastore service.
 class ScalingConfig {
@@ -5060,23 +4285,7 @@ class ScheduledBackup {
 }
 
 /// A securely stored value.
-class Secret {
-  /// The relative resource name of a Secret Manager secret version, in the
-  /// following
-  /// form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
-  ///
-  /// Optional.
-  core.String? cloudSecret;
-
-  Secret({this.cloudSecret});
-
-  Secret.fromJson(core.Map json_)
-    : this(cloudSecret: json_['cloudSecret'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudSecret != null) 'cloudSecret': cloudSecret!,
-  };
-}
+typedef Secret = $Secret00;
 
 /// A managed metastore service that serves metadata queries.
 class Service {
@@ -5497,25 +4706,7 @@ class StartMigrationRequest {
 typedef Status = $Status00;
 
 /// Telemetry Configuration for the Dataproc Metastore service.
-class TelemetryConfig {
-  /// The output format of the Dataproc Metastore service's logs.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "LOG_FORMAT_UNSPECIFIED" : The LOG_FORMAT is not set.
-  /// - "LEGACY" : Logging output uses the legacy textPayload format.
-  /// - "JSON" : Logging output uses the jsonPayload format.
-  core.String? logFormat;
-
-  TelemetryConfig({this.logFormat});
-
-  TelemetryConfig.fromJson(core.Map json_)
-    : this(logFormat: json_['logFormat'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (logFormat != null) 'logFormat': logFormat!,
-  };
-}
+typedef TelemetryConfig = $TelemetryConfig;
 
 /// Request message for TestIamPermissions method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest01;

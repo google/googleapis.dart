@@ -3807,7 +3807,7 @@ class GoogleCloudMlV1HyperparameterSpec {
 /// the model's fully differentiable structure.
 ///
 /// Refer to this paper for more details: https://arxiv.org/abs/1703.01365
-typedef GoogleCloudMlV1IntegratedGradientsAttribution = $Attribution;
+typedef GoogleCloudMlV1IntegratedGradientsAttribution = $Attribution01;
 
 /// Represents a training or prediction job.
 class GoogleCloudMlV1Job {
@@ -6356,7 +6356,7 @@ class GoogleCloudMlV1Version {
 ///
 /// Refer to this paper for more details: https://arxiv.org/abs/1906.02825
 /// Currently only implemented for models with natural image inputs.
-typedef GoogleCloudMlV1XraiAttribution = $Attribution;
+typedef GoogleCloudMlV1XraiAttribution = $Attribution01;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -6412,7 +6412,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {

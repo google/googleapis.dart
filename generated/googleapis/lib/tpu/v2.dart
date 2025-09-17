@@ -1237,21 +1237,7 @@ class AcceleratorType {
 typedef AcceptedData = $Empty;
 
 /// An access config attached to the TPU worker.
-class AccessConfig {
-  /// An external IP address associated with the TPU worker.
-  ///
-  /// Output only.
-  core.String? externalIp;
-
-  AccessConfig({this.externalIp});
-
-  AccessConfig.fromJson(core.Map json_)
-    : this(externalIp: json_['externalIp'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalIp != null) 'externalIp': externalIp!,
-  };
-}
+typedef AccessConfig = $AccessConfig01;
 
 /// Further data for the active state.
 typedef ActiveData = $Empty;
@@ -1355,31 +1341,7 @@ class GenerateServiceIdentityResponse {
 }
 
 /// Request for GetGuestAttributes.
-class GetGuestAttributesRequest {
-  /// The guest attributes path to be queried.
-  core.String? queryPath;
-
-  /// The 0-based worker ID.
-  ///
-  /// If it is empty, all workers' GuestAttributes will be returned.
-  core.List<core.String>? workerIds;
-
-  GetGuestAttributesRequest({this.queryPath, this.workerIds});
-
-  GetGuestAttributesRequest.fromJson(core.Map json_)
-    : this(
-        queryPath: json_['queryPath'] as core.String?,
-        workerIds:
-            (json_['workerIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryPath != null) 'queryPath': queryPath!,
-    if (workerIds != null) 'workerIds': workerIds!,
-  };
-}
+typedef GetGuestAttributesRequest = $GetGuestAttributesRequest;
 
 /// Response for GetGuestAttributes.
 class GetGuestAttributesResponse {
@@ -1488,7 +1450,7 @@ class GuestAttributesValue {
 /// The start must be less than or equal to the end. When the start equals the
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
-typedef Interval = $Interval;
+typedef Interval = $Interval00;
 
 /// Response for ListAcceleratorTypes.
 class ListAcceleratorTypesResponse {
@@ -1749,62 +1711,7 @@ class MultisliceParams {
 }
 
 /// Network related configurations.
-class NetworkConfig {
-  /// Allows the TPU node to send and receive packets with non-matching
-  /// destination or source IPs.
-  ///
-  /// This is required if you plan to use the TPU workers to forward routes.
-  core.bool? canIpForward;
-
-  /// Indicates that external IP addresses would be associated with the TPU
-  /// workers.
-  ///
-  /// If set to false, the specified subnetwork or network should have Private
-  /// Google Access enabled.
-  core.bool? enableExternalIps;
-
-  /// The name of the network for the TPU node.
-  ///
-  /// It must be a preexisting Google Compute Engine network. If none is
-  /// provided, "default" will be used.
-  core.String? network;
-
-  /// Specifies networking queue count for TPU VM instance's network interface.
-  ///
-  /// Optional.
-  core.int? queueCount;
-
-  /// The name of the subnetwork for the TPU node.
-  ///
-  /// It must be a preexisting Google Compute Engine subnetwork. If none is
-  /// provided, "default" will be used.
-  core.String? subnetwork;
-
-  NetworkConfig({
-    this.canIpForward,
-    this.enableExternalIps,
-    this.network,
-    this.queueCount,
-    this.subnetwork,
-  });
-
-  NetworkConfig.fromJson(core.Map json_)
-    : this(
-        canIpForward: json_['canIpForward'] as core.bool?,
-        enableExternalIps: json_['enableExternalIps'] as core.bool?,
-        network: json_['network'] as core.String?,
-        queueCount: json_['queueCount'] as core.int?,
-        subnetwork: json_['subnetwork'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canIpForward != null) 'canIpForward': canIpForward!,
-    if (enableExternalIps != null) 'enableExternalIps': enableExternalIps!,
-    if (network != null) 'network': network!,
-    if (queueCount != null) 'queueCount': queueCount!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-  };
-}
+typedef NetworkConfig = $NetworkConfig01;
 
 /// A network endpoint over which a TPU worker can be reached.
 class NetworkEndpoint {
@@ -2649,26 +2556,7 @@ class QueueingPolicy {
 typedef ResetQueuedResourceRequest = $Empty;
 
 /// A runtime version that a Node can be configured with.
-class RuntimeVersion {
-  /// The resource name.
-  core.String? name;
-
-  /// The runtime version.
-  core.String? version;
-
-  RuntimeVersion({this.name, this.version});
-
-  RuntimeVersion.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef RuntimeVersion = $RuntimeVersion;
 
 /// Sets the scheduling options for this node.
 class SchedulingConfig {
@@ -2700,63 +2588,13 @@ class SchedulingConfig {
 }
 
 /// A service account.
-class ServiceAccount {
-  /// Email address of the service account.
-  ///
-  /// If empty, default Compute service account will be used.
-  core.String? email;
-
-  /// The list of scopes to be made available for this service account.
-  ///
-  /// If empty, access to all Cloud APIs will be allowed.
-  core.List<core.String>? scope;
-
-  ServiceAccount({this.email, this.scope});
-
-  ServiceAccount.fromJson(core.Map json_)
-    : this(
-        email: json_['email'] as core.String?,
-        scope:
-            (json_['scope'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (scope != null) 'scope': scope!,
-  };
-}
+typedef ServiceAccount = $ServiceAccount01;
 
 /// The per-product per-project service identity for Cloud TPU service.
-class ServiceIdentity {
-  /// The email address of the service identity.
-  core.String? email;
-
-  ServiceIdentity({this.email});
-
-  ServiceIdentity.fromJson(core.Map json_)
-    : this(email: json_['email'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-  };
-}
+typedef ServiceIdentity = $ServiceIdentity;
 
 /// A set of Shielded Instance options.
-class ShieldedInstanceConfig {
-  /// Defines whether the instance has Secure Boot enabled.
-  core.bool? enableSecureBoot;
-
-  ShieldedInstanceConfig({this.enableSecureBoot});
-
-  ShieldedInstanceConfig.fromJson(core.Map json_)
-    : this(enableSecureBoot: json_['enableSecureBoot'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-  };
-}
+typedef ShieldedInstanceConfig = $ShieldedInstanceConfig03;
 
 /// Spot tier definition.
 typedef Spot = $Empty;
@@ -2812,67 +2650,4 @@ class Tpu {
 }
 
 /// Upcoming Maintenance notification information.
-class UpcomingMaintenance {
-  /// Indicates if the maintenance can be customer triggered.
-  core.bool? canReschedule;
-
-  /// The latest time for the planned maintenance window to start.
-  ///
-  /// This timestamp value is in RFC3339 text format.
-  core.String? latestWindowStartTime;
-
-  /// The status of the maintenance.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown maintenance status. Do not use this value.
-  /// - "PENDING" : There is pending maintenance.
-  /// - "ONGOING" : There is ongoing maintenance on this VM.
-  core.String? maintenanceStatus;
-
-  /// Defines the type of maintenance.
-  /// Possible string values are:
-  /// - "UNKNOWN_TYPE" : No type specified. Do not use this value.
-  /// - "SCHEDULED" : Scheduled maintenance (e.g. maintenance after uptime
-  /// guarantee is complete).
-  /// - "UNSCHEDULED" : Unscheduled maintenance (e.g. emergency maintenance
-  /// during uptime guarantee).
-  core.String? type;
-
-  /// The time by which the maintenance disruption will be completed.
-  ///
-  /// This timestamp value is in RFC3339 text format.
-  core.String? windowEndTime;
-
-  /// The current start time of the maintenance window.
-  ///
-  /// This timestamp value is in RFC3339 text format.
-  core.String? windowStartTime;
-
-  UpcomingMaintenance({
-    this.canReschedule,
-    this.latestWindowStartTime,
-    this.maintenanceStatus,
-    this.type,
-    this.windowEndTime,
-    this.windowStartTime,
-  });
-
-  UpcomingMaintenance.fromJson(core.Map json_)
-    : this(
-        canReschedule: json_['canReschedule'] as core.bool?,
-        latestWindowStartTime: json_['latestWindowStartTime'] as core.String?,
-        maintenanceStatus: json_['maintenanceStatus'] as core.String?,
-        type: json_['type'] as core.String?,
-        windowEndTime: json_['windowEndTime'] as core.String?,
-        windowStartTime: json_['windowStartTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canReschedule != null) 'canReschedule': canReschedule!,
-    if (latestWindowStartTime != null)
-      'latestWindowStartTime': latestWindowStartTime!,
-    if (maintenanceStatus != null) 'maintenanceStatus': maintenanceStatus!,
-    if (type != null) 'type': type!,
-    if (windowEndTime != null) 'windowEndTime': windowEndTime!,
-    if (windowStartTime != null) 'windowStartTime': windowStartTime!,
-  };
-}
+typedef UpcomingMaintenance = $UpcomingMaintenance01;

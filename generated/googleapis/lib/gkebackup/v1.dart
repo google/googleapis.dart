@@ -3446,7 +3446,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Represents a request to perform a single point-in-time capture of some
 /// portion of the state of a GKE cluster, the record of the backup operation

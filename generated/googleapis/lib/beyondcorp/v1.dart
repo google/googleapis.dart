@@ -2977,30 +2977,7 @@ class ProjectsLocationsSecurityGatewaysApplicationsResource {
 }
 
 /// Allocated connection of the AppGateway.
-class AllocatedConnection {
-  /// The ingress port of an allocated connection
-  ///
-  /// Required.
-  core.int? ingressPort;
-
-  /// The PSC uri of an allocated connection
-  ///
-  /// Required.
-  core.String? pscUri;
-
-  AllocatedConnection({this.ingressPort, this.pscUri});
-
-  AllocatedConnection.fromJson(core.Map json_)
-    : this(
-        ingressPort: json_['ingressPort'] as core.int?,
-        pscUri: json_['pscUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingressPort != null) 'ingressPort': ingressPort!,
-    if (pscUri != null) 'pscUri': pscUri!,
-  };
-}
+typedef AllocatedConnection = $AllocatedConnection;
 
 /// A BeyondCorp AppGateway resource represents a BeyondCorp protected
 /// AppGateway to a remote application.
@@ -3321,95 +3298,13 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
 }
 
 /// ApplicationEndpoint represents a remote application endpoint.
-class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
-  /// Hostname or IP address of the remote application endpoint.
-  ///
-  /// Required.
-  core.String? host;
-
-  /// Port of the remote application endpoint.
-  ///
-  /// Required.
-  core.int? port;
-
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint({
-    this.host,
-    this.port,
-  });
-
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint.fromJson(
-    core.Map json_,
-  ) : this(
-        host: json_['host'] as core.String?,
-        port: json_['port'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (host != null) 'host': host!,
-    if (port != null) 'port': port!,
-  };
-}
+typedef GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint =
+    $ApplicationEndpoint;
 
 /// Gateway represents a user facing component that serves as an entrance to
 /// enable connectivity.
-class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
-  /// AppGateway name in following format:
-  /// `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
-  ///
-  /// Required.
-  core.String? appGateway;
-
-  /// Ingress port reserved on the gateways for this AppConnection, if not
-  /// specified or zero, the default port is 19443.
-  ///
-  /// Output only.
-  core.int? ingressPort;
-
-  /// L7 private service connection for this resource.
-  ///
-  /// Output only.
-  core.String? l7psc;
-
-  /// The type of hosting used by the gateway.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "GCP_REGIONAL_MIG" : Gateway hosted in a GCP regional managed instance
-  /// group.
-  core.String? type;
-
-  /// Server-defined URI for this resource.
-  ///
-  /// Output only.
-  core.String? uri;
-
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway({
-    this.appGateway,
-    this.ingressPort,
-    this.l7psc,
-    this.type,
-    this.uri,
-  });
-
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway.fromJson(
-    core.Map json_,
-  ) : this(
-        appGateway: json_['appGateway'] as core.String?,
-        ingressPort: json_['ingressPort'] as core.int?,
-        l7psc: json_['l7psc'] as core.String?,
-        type: json_['type'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appGateway != null) 'appGateway': appGateway!,
-    if (ingressPort != null) 'ingressPort': ingressPort!,
-    if (l7psc != null) 'l7psc': l7psc!,
-    if (type != null) 'type': type!,
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway =
+    $AppConnectionGateway;
 
 /// Response message for BeyondCorp.ListAppConnections.
 class GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
@@ -3744,53 +3639,11 @@ class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
 }
 
 /// ServiceAccount represents a GCP service account.
-class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount {
-  /// Email address of the service account.
-  core.String? email;
-
-  GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount({
-    this.email,
-  });
-
-  GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount.fromJson(
-    core.Map json_,
-  ) : this(email: json_['email'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-  };
-}
+typedef GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount =
+    $Shared06;
 
 /// ImageConfig defines the control plane images to run.
-class GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
-  /// The stable image that the remote agent will fallback to if the target
-  /// image fails.
-  ///
-  /// Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1
-  core.String? stableImage;
-
-  /// The initial image the remote agent will attempt to run for the control
-  /// plane.
-  ///
-  /// Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1
-  core.String? targetImage;
-
-  GoogleCloudBeyondcorpAppconnectorsV1ImageConfig({
-    this.stableImage,
-    this.targetImage,
-  });
-
-  GoogleCloudBeyondcorpAppconnectorsV1ImageConfig.fromJson(core.Map json_)
-    : this(
-        stableImage: json_['stableImage'] as core.String?,
-        targetImage: json_['targetImage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (stableImage != null) 'stableImage': stableImage!,
-    if (targetImage != null) 'targetImage': targetImage!,
-  };
-}
+typedef GoogleCloudBeyondcorpAppconnectorsV1ImageConfig = $ImageConfig;
 
 /// Response message for BeyondCorp.ListAppConnectors.
 class GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
@@ -3864,22 +3717,8 @@ class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
 }
 
 /// The configuration for Pub/Sub messaging for the AppConnector.
-class GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig {
-  /// The Pub/Sub subscription the AppConnector uses to receive notifications.
-  core.String? pubsubSubscription;
-
-  GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig({
-    this.pubsubSubscription,
-  });
-
-  GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig.fromJson(
-    core.Map json_,
-  ) : this(pubsubSubscription: json_['pubsubSubscription'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubSubscription != null) 'pubsubSubscription': pubsubSubscription!,
-  };
-}
+typedef GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig =
+    $NotificationConfigCloudPubSubNotificationConfig;
 
 /// Request report the connector status.
 class GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
@@ -4166,81 +4005,16 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
 }
 
 /// Network to forward traffic to.
-class GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
-  /// Network name is of the format:
-  /// \`projects/{project}/global/networks/{network}
-  ///
-  /// Required.
-  core.String? name;
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork({
-    this.name,
-  });
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork.fromJson(
-    core.Map json_,
-  ) : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
-}
+typedef GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork =
+    $ApplicationUpstreamNetwork;
 
 /// Routing policy information.
-class GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
-  /// List of the regions where the application sends traffic.
-  ///
-  /// Required.
-  core.List<core.String>? regions;
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy({this.regions});
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy.fromJson(core.Map json_)
-    : this(
-        regions:
-            (json_['regions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (regions != null) 'regions': regions!,
-  };
-}
+typedef GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy = $EgressPolicy;
 
 /// EndpointMatcher contains the information of the endpoint that will match the
 /// application.
-class GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
-  /// Hostname of the application.
-  ///
-  /// Required.
-  core.String? hostname;
-
-  /// Ports of the application.
-  ///
-  /// Optional.
-  core.List<core.int>? ports;
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher({
-    this.hostname,
-    this.ports,
-  });
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher.fromJson(
-    core.Map json_,
-  ) : this(
-        hostname: json_['hostname'] as core.String?,
-        ports:
-            (json_['ports'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostname != null) 'hostname': hostname!,
-    if (ports != null) 'ports': ports!,
-  };
-}
+typedef GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher =
+    $EndpointMatcher;
 
 /// The Hub message contains information pertaining to the regional data path
 /// deployments.
@@ -4269,27 +4043,8 @@ class GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
 }
 
 /// Represents the Internet Gateway configuration.
-class GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
-  /// List of IP addresses assigned to the Cloud NAT.
-  ///
-  /// Output only.
-  core.List<core.String>? assignedIps;
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway({this.assignedIps});
-
-  GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway.fromJson(
-    core.Map json_,
-  ) : this(
-        assignedIps:
-            (json_['assignedIps'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignedIps != null) 'assignedIps': assignedIps!,
-  };
-}
+typedef GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway =
+    $InternetGateway;
 
 /// Message for response to listing Applications.
 class GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse {
@@ -4573,7 +4328,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {

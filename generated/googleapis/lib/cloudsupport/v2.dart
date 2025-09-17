@@ -925,57 +925,7 @@ class MediaResource {
 /// For example, an actor could be a user who posted a comment on a support
 /// case, a user who uploaded an attachment, or a service account that created a
 /// support case.
-class Actor {
-  /// The name to display for the actor.
-  ///
-  /// If not provided, it is inferred from credentials supplied during case
-  /// creation. When an email is provided, a display name must also be provided.
-  /// This will be obfuscated if the user is a Google Support agent.
-  core.String? displayName;
-
-  /// The email address of the actor.
-  ///
-  /// If not provided, it is inferred from the credentials supplied during case
-  /// creation. When a name is provided, an email must also be provided. If the
-  /// user is a Google Support agent, this is obfuscated. This field is
-  /// deprecated. Use `username` instead.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? email;
-
-  /// Whether the actor is a Google support actor.
-  ///
-  /// Output only.
-  core.bool? googleSupport;
-
-  /// The username of the actor.
-  ///
-  /// It may look like an email or other format provided by the identity
-  /// provider. If not provided, it is inferred from the credentials supplied.
-  /// When a name is provided, a username must also be provided. If the user is
-  /// a Google Support agent, this will not be set.
-  ///
-  /// Output only.
-  core.String? username;
-
-  Actor({this.displayName, this.email, this.googleSupport, this.username});
-
-  Actor.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        email: json_['email'] as core.String?,
-        googleSupport: json_['googleSupport'] as core.bool?,
-        username: json_['username'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (googleSupport != null) 'googleSupport': googleSupport!,
-    if (username != null) 'username': username!,
-  };
-}
+typedef Actor = $Actor;
 
 /// An Attachment contains metadata about a file that was uploaded to a case -
 /// it is NOT a file itself.
@@ -1053,67 +1003,7 @@ class Attachment {
 }
 
 /// # gdata.* are outside protos with mising documentation
-class Blobstore2Info {
-  /// # gdata.* are outside protos with mising documentation
-  core.String? blobGeneration;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? blobId;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? downloadReadHandle;
-  core.List<core.int> get downloadReadHandleAsBytes =>
-      convert.base64.decode(downloadReadHandle!);
-
-  set downloadReadHandleAsBytes(core.List<core.int> bytes_) {
-    downloadReadHandle = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? readToken;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? uploadMetadataContainer;
-  core.List<core.int> get uploadMetadataContainerAsBytes =>
-      convert.base64.decode(uploadMetadataContainer!);
-
-  set uploadMetadataContainerAsBytes(core.List<core.int> bytes_) {
-    uploadMetadataContainer = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  Blobstore2Info({
-    this.blobGeneration,
-    this.blobId,
-    this.downloadReadHandle,
-    this.readToken,
-    this.uploadMetadataContainer,
-  });
-
-  Blobstore2Info.fromJson(core.Map json_)
-    : this(
-        blobGeneration: json_['blobGeneration'] as core.String?,
-        blobId: json_['blobId'] as core.String?,
-        downloadReadHandle: json_['downloadReadHandle'] as core.String?,
-        readToken: json_['readToken'] as core.String?,
-        uploadMetadataContainer:
-            json_['uploadMetadataContainer'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blobGeneration != null) 'blobGeneration': blobGeneration!,
-    if (blobId != null) 'blobId': blobId!,
-    if (downloadReadHandle != null) 'downloadReadHandle': downloadReadHandle!,
-    if (readToken != null) 'readToken': readToken!,
-    if (uploadMetadataContainer != null)
-      'uploadMetadataContainer': uploadMetadataContainer!,
-  };
-}
+typedef Blobstore2Info = $Blobstore2Info01;
 
 /// A Case is an object that contains the details of a support case.
 ///
@@ -1544,47 +1434,7 @@ class CompositeMedia {
 }
 
 /// # gdata.* are outside protos with mising documentation
-class ContentTypeInfo {
-  /// # gdata.* are outside protos with mising documentation
-  core.String? bestGuess;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? fromBytes;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? fromFileName;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? fromHeader;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? fromUrlPath;
-
-  ContentTypeInfo({
-    this.bestGuess,
-    this.fromBytes,
-    this.fromFileName,
-    this.fromHeader,
-    this.fromUrlPath,
-  });
-
-  ContentTypeInfo.fromJson(core.Map json_)
-    : this(
-        bestGuess: json_['bestGuess'] as core.String?,
-        fromBytes: json_['fromBytes'] as core.String?,
-        fromFileName: json_['fromFileName'] as core.String?,
-        fromHeader: json_['fromHeader'] as core.String?,
-        fromUrlPath: json_['fromUrlPath'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bestGuess != null) 'bestGuess': bestGuess!,
-    if (fromBytes != null) 'fromBytes': fromBytes!,
-    if (fromFileName != null) 'fromFileName': fromFileName!,
-    if (fromHeader != null) 'fromHeader': fromHeader!,
-    if (fromUrlPath != null) 'fromUrlPath': fromUrlPath!,
-  };
-}
+typedef ContentTypeInfo = $ContentTypeInfo01;
 
 /// The request message for the CreateAttachment endpoint.
 class CreateAttachmentRequest {
@@ -1754,49 +1604,10 @@ class DiffUploadResponse {
 }
 
 /// # gdata.* are outside protos with mising documentation
-class DiffVersionResponse {
-  /// # gdata.* are outside protos with mising documentation
-  core.String? objectSizeBytes;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? objectVersion;
-
-  DiffVersionResponse({this.objectSizeBytes, this.objectVersion});
-
-  DiffVersionResponse.fromJson(core.Map json_)
-    : this(
-        objectSizeBytes: json_['objectSizeBytes'] as core.String?,
-        objectVersion: json_['objectVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
-    if (objectVersion != null) 'objectVersion': objectVersion!,
-  };
-}
+typedef DiffVersionResponse = $DiffVersionResponse01;
 
 /// # gdata.* are outside protos with mising documentation
-class DownloadParameters {
-  /// # gdata.* are outside protos with mising documentation
-  core.bool? allowGzipCompression;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.bool? ignoreRange;
-
-  DownloadParameters({this.allowGzipCompression, this.ignoreRange});
-
-  DownloadParameters.fromJson(core.Map json_)
-    : this(
-        allowGzipCompression: json_['allowGzipCompression'] as core.bool?,
-        ignoreRange: json_['ignoreRange'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowGzipCompression != null)
-      'allowGzipCompression': allowGzipCompression!,
-    if (ignoreRange != null) 'ignoreRange': ignoreRange!,
-  };
-}
+typedef DownloadParameters = $DownloadParameters01;
 
 /// The request message for the EscalateCase endpoint.
 class EscalateCaseRequest {
@@ -1821,39 +1632,7 @@ class EscalateCaseRequest {
 }
 
 /// An escalation of a support case.
-class Escalation {
-  /// A free text description to accompany the `reason` field above.
-  ///
-  /// Provides additional context on why the case is being escalated.
-  ///
-  /// Required.
-  core.String? justification;
-
-  /// The reason why the Case is being escalated.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "REASON_UNSPECIFIED" : The escalation reason is in an unknown state or
-  /// has not been specified.
-  /// - "RESOLUTION_TIME" : The case is taking too long to resolve.
-  /// - "TECHNICAL_EXPERTISE" : The support agent does not have the expertise
-  /// required to successfully resolve the issue.
-  /// - "BUSINESS_IMPACT" : The issue is having a significant business impact.
-  core.String? reason;
-
-  Escalation({this.justification, this.reason});
-
-  Escalation.fromJson(core.Map json_)
-    : this(
-        justification: json_['justification'] as core.String?,
-        reason: json_['reason'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (justification != null) 'justification': justification!,
-    if (reason != null) 'reason': reason!,
-  };
-}
+typedef Escalation = $Escalation;
 
 /// The response message for the ListAttachments endpoint.
 class ListAttachmentsResponse {
@@ -2311,31 +2090,7 @@ class Media {
 }
 
 /// # gdata.* are outside protos with mising documentation
-class ObjectId {
-  /// # gdata.* are outside protos with mising documentation
-  core.String? bucketName;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? generation;
-
-  /// # gdata.* are outside protos with mising documentation
-  core.String? objectName;
-
-  ObjectId({this.bucketName, this.generation, this.objectName});
-
-  ObjectId.fromJson(core.Map json_)
-    : this(
-        bucketName: json_['bucketName'] as core.String?,
-        generation: json_['generation'] as core.String?,
-        objectName: json_['objectName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucketName != null) 'bucketName': bucketName!,
-    if (generation != null) 'generation': generation!,
-    if (objectName != null) 'objectName': objectName!,
-  };
-}
+typedef ObjectId = $ObjectId01;
 
 /// The response message for SearchCaseClassifications endpoint.
 class SearchCaseClassificationsResponse {

@@ -10663,7 +10663,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// An AWS account that is a member of an organization.
 class AwsAccount {
@@ -15297,32 +15297,7 @@ class GroupMembership {
 }
 
 /// Result containing the properties and count of a groupBy request.
-class GroupResult {
-  /// Total count of resources for the given properties.
-  core.String? count;
-
-  /// Properties matching the groupBy fields in the request.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? properties;
-
-  GroupResult({this.count, this.properties});
-
-  GroupResult.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.String?,
-        properties:
-            json_.containsKey('properties')
-                ? json_['properties'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (properties != null) 'properties': properties!,
-  };
-}
+typedef GroupResult = $GroupResult;
 
 /// Represents a particular IAM binding, which captures a member's role
 /// addition, removal, or state.

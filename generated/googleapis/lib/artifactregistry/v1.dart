@@ -4251,38 +4251,7 @@ class GoogleDevtoolsArtifactregistryV1Rule {
 }
 
 /// A hash of file content.
-class Hash {
-  /// The algorithm used to compute the hash value.
-  /// Possible string values are:
-  /// - "HASH_TYPE_UNSPECIFIED" : Unspecified.
-  /// - "SHA256" : SHA256 hash.
-  /// - "MD5" : MD5 hash.
-  core.String? type;
-
-  /// The hash value.
-  core.String? value;
-  core.List<core.int> get valueAsBytes => convert.base64.decode(value!);
-
-  set valueAsBytes(core.List<core.int> bytes_) {
-    value = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  Hash({this.type, this.value});
-
-  Hash.fromJson(core.Map json_)
-    : this(
-        type: json_['type'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Hash = $Hash00;
 
 /// Google Cloud Storage location where the artifacts currently reside.
 typedef ImportAptArtifactsGcsSource = $ArtifactsGcsSource;
@@ -4854,34 +4823,7 @@ class MavenRepository {
 ///
 /// Provides additional configuration details for repositories of the maven
 /// format type.
-class MavenRepositoryConfig {
-  /// The repository with this flag will allow publishing the same snapshot
-  /// versions.
-  core.bool? allowSnapshotOverwrites;
-
-  /// Version policy defines the versions that the registry will accept.
-  /// Possible string values are:
-  /// - "VERSION_POLICY_UNSPECIFIED" : VERSION_POLICY_UNSPECIFIED - the version
-  /// policy is not defined. When the version policy is not defined, no
-  /// validation is performed for the versions.
-  /// - "RELEASE" : RELEASE - repository will accept only Release versions.
-  /// - "SNAPSHOT" : SNAPSHOT - repository will accept only Snapshot versions.
-  core.String? versionPolicy;
-
-  MavenRepositoryConfig({this.allowSnapshotOverwrites, this.versionPolicy});
-
-  MavenRepositoryConfig.fromJson(core.Map json_)
-    : this(
-        allowSnapshotOverwrites: json_['allowSnapshotOverwrites'] as core.bool?,
-        versionPolicy: json_['versionPolicy'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowSnapshotOverwrites != null)
-      'allowSnapshotOverwrites': allowSnapshotOverwrites!,
-    if (versionPolicy != null) 'versionPolicy': versionPolicy!,
-  };
-}
+typedef MavenRepositoryConfig = $MavenRepositoryConfig;
 
 /// NpmPackage represents an npm artifact.
 class NpmPackage {
@@ -5054,56 +4996,7 @@ class Operation {
 }
 
 /// Packages are named collections of versions.
-class Package {
-  /// Client specified annotations.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? annotations;
-
-  /// The time when the package was created.
-  core.String? createTime;
-
-  /// The display name of the package.
-  core.String? displayName;
-
-  /// The name of the package, for example:
-  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
-  ///
-  /// If the package ID part contains slashes, the slashes are escaped.
-  core.String? name;
-
-  /// The time when the package was last updated.
-  ///
-  /// This includes publishing a new version of the package.
-  core.String? updateTime;
-
-  Package({
-    this.annotations,
-    this.createTime,
-    this.displayName,
-    this.name,
-    this.updateTime,
-  });
-
-  Package.fromJson(core.Map json_)
-    : this(
-        annotations: (json_['annotations']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        createTime: json_['createTime'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (annotations != null) 'annotations': annotations!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef Package = $Package;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -5214,46 +5107,7 @@ class Policy {
 }
 
 /// The Artifact Registry settings that apply to a Project.
-class ProjectSettings {
-  /// The redirection state of the legacy repositories in this project.
-  /// Possible string values are:
-  /// - "REDIRECTION_STATE_UNSPECIFIED" : No redirection status has been set.
-  /// - "REDIRECTION_FROM_GCR_IO_DISABLED" : Redirection is disabled.
-  /// - "REDIRECTION_FROM_GCR_IO_ENABLED" : Redirection is enabled.
-  /// - "REDIRECTION_FROM_GCR_IO_FINALIZED" : Redirection is enabled, and has
-  /// been finalized so cannot be reverted.
-  /// - "REDIRECTION_FROM_GCR_IO_ENABLED_AND_COPYING" : Redirection is enabled
-  /// and missing images are copied from GCR
-  /// - "REDIRECTION_FROM_GCR_IO_PARTIAL_AND_COPYING" : Redirection is partially
-  /// enabled and missing images are copied from GCR
-  core.String? legacyRedirectionState;
-
-  /// The name of the project's settings.
-  ///
-  /// Always of the form: projects/{project-id}/projectSettings In update
-  /// request: never set In response: always set
-  core.String? name;
-
-  /// The percentage of pull traffic to redirect from GCR to AR when using
-  /// partial redirection.
-  core.int? pullPercent;
-
-  ProjectSettings({this.legacyRedirectionState, this.name, this.pullPercent});
-
-  ProjectSettings.fromJson(core.Map json_)
-    : this(
-        legacyRedirectionState: json_['legacyRedirectionState'] as core.String?,
-        name: json_['name'] as core.String?,
-        pullPercent: json_['pullPercent'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (legacyRedirectionState != null)
-      'legacyRedirectionState': legacyRedirectionState!,
-    if (name != null) 'name': name!,
-    if (pullPercent != null) 'pullPercent': pullPercent!,
-  };
-}
+typedef ProjectSettings = $ProjectSettings;
 
 /// PythonPackage represents a python artifact.
 class PythonPackage {
@@ -5769,34 +5623,7 @@ typedef Status = $Status00;
 
 /// Tags point to a version and represent an alternative name that can be used
 /// to access the version.
-class Tag {
-  /// The name of the tag, for example:
-  /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
-  ///
-  /// If the package part contains slashes, the slashes are escaped. The tag
-  /// part can only have characters in \[a-zA-Z0-9\-._~:@\], anything else must
-  /// be URL encoded.
-  core.String? name;
-
-  /// The name of the version the tag refers to, for example:
-  /// `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811`
-  /// If the package or version ID parts contain slashes, the slashes are
-  /// escaped.
-  core.String? version;
-
-  Tag({this.name, this.version});
-
-  Tag.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef Tag = $Tag00;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

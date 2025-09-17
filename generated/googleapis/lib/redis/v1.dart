@@ -1569,29 +1569,7 @@ class ProjectsLocationsOperationsResource {
 }
 
 /// Configuration of the AOF based persistence.
-class AOFConfig {
-  /// fsync configuration.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "APPEND_FSYNC_UNSPECIFIED" : Not set. Default: EVERYSEC
-  /// - "NO" : Never fsync. Normally Linux will flush data every 30 seconds with
-  /// this configuration, but it's up to the kernel's exact tuning.
-  /// - "EVERYSEC" : fsync every second. Fast enough, and you may lose 1 second
-  /// of data if there is a disaster
-  /// - "ALWAYS" : fsync every time new write commands are appended to the AOF.
-  /// It has the best data loss protection at the cost of performance
-  core.String? appendFsync;
-
-  AOFConfig({this.appendFsync});
-
-  AOFConfig.fromJson(core.Map json_)
-    : this(appendFsync: json_['appendFsync'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appendFsync != null) 'appendFsync': appendFsync!,
-  };
-}
+typedef AOFConfig = $AOFConfig;
 
 /// The automated backup config for a cluster.
 class AutomatedBackupConfig {
@@ -1814,133 +1792,13 @@ class Backup {
 }
 
 /// Request for \[BackupCluster\].
-class BackupClusterRequest {
-  /// The id of the backup to be created.
-  ///
-  /// If not specified, the default value (\[YYYYMMDDHHMMSS\]_\[Shortened
-  /// Cluster UID\] is used.
-  ///
-  /// Optional.
-  core.String? backupId;
-
-  /// TTL for the backup to expire.
-  ///
-  /// Value range is 1 day to 100 years. If not specified, the default value is
-  /// 100 years.
-  ///
-  /// Optional.
-  core.String? ttl;
-
-  BackupClusterRequest({this.backupId, this.ttl});
-
-  BackupClusterRequest.fromJson(core.Map json_)
-    : this(
-        backupId: json_['backupId'] as core.String?,
-        ttl: json_['ttl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupId != null) 'backupId': backupId!,
-    if (ttl != null) 'ttl': ttl!,
-  };
-}
+typedef BackupClusterRequest = $BackupClusterRequest;
 
 /// BackupCollection of a cluster.
-class BackupCollection {
-  /// The full resource path of the cluster the backup collection belongs to.
-  ///
-  /// Example: projects/{project}/locations/{location}/clusters/{cluster}
-  ///
-  /// Output only.
-  core.String? cluster;
-
-  /// The cluster uid of the backup collection.
-  ///
-  /// Output only.
-  core.String? clusterUid;
-
-  /// The time when the backup collection was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The KMS key used to encrypt the backups under this backup collection.
-  ///
-  /// Output only.
-  core.String? kmsKey;
-
-  /// Identifier.
-  ///
-  /// Full resource path of the backup collection.
-  core.String? name;
-
-  /// System assigned unique identifier of the backup collection.
-  ///
-  /// Output only.
-  core.String? uid;
-
-  BackupCollection({
-    this.cluster,
-    this.clusterUid,
-    this.createTime,
-    this.kmsKey,
-    this.name,
-    this.uid,
-  });
-
-  BackupCollection.fromJson(core.Map json_)
-    : this(
-        cluster: json_['cluster'] as core.String?,
-        clusterUid: json_['clusterUid'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        kmsKey: json_['kmsKey'] as core.String?,
-        name: json_['name'] as core.String?,
-        uid: json_['uid'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cluster != null) 'cluster': cluster!,
-    if (clusterUid != null) 'clusterUid': clusterUid!,
-    if (createTime != null) 'createTime': createTime!,
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (name != null) 'name': name!,
-    if (uid != null) 'uid': uid!,
-  };
-}
+typedef BackupCollection = $BackupCollection;
 
 /// Backup is consisted of multiple backup files.
-class BackupFile {
-  /// The time when the backup file was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// e.g: .rdb
-  ///
-  /// Output only.
-  core.String? fileName;
-
-  /// Size of the backup file in bytes.
-  ///
-  /// Output only.
-  core.String? sizeBytes;
-
-  BackupFile({this.createTime, this.fileName, this.sizeBytes});
-
-  BackupFile.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        fileName: json_['fileName'] as core.String?,
-        sizeBytes: json_['sizeBytes'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (fileName != null) 'fileName': fileName!,
-    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-  };
-}
-
+typedef BackupFile = $BackupFile;
 typedef CertChain = $CertChain;
 
 /// Redis cluster certificate authority
@@ -2537,30 +2395,7 @@ class ClusterMaintenancePolicy {
 }
 
 /// Upcoming maintenance schedule.
-class ClusterMaintenanceSchedule {
-  /// The end time of any upcoming scheduled maintenance for this instance.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// The start time of any upcoming scheduled maintenance for this instance.
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  ClusterMaintenanceSchedule({this.endTime, this.startTime});
-
-  ClusterMaintenanceSchedule.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef ClusterMaintenanceSchedule = $ClusterMaintenanceSchedule;
 
 /// Configuration of the persistence functionality.
 class ClusterPersistenceConfig {
@@ -2834,87 +2669,10 @@ typedef Empty = $Empty;
 
 /// EncryptionInfo describes the encryption information of a cluster or a
 /// backup.
-class EncryptionInfo {
-  /// Type of encryption.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Encryption type not specified. Defaults to
-  /// GOOGLE_DEFAULT_ENCRYPTION.
-  /// - "GOOGLE_DEFAULT_ENCRYPTION" : The data is encrypted at rest with a key
-  /// that is fully managed by Google. No key version will be populated. This is
-  /// the default state.
-  /// - "CUSTOMER_MANAGED_ENCRYPTION" : The data is encrypted at rest with a key
-  /// that is managed by the customer. KMS key versions will be populated.
-  core.String? encryptionType;
-
-  /// The state of the primary version of the KMS key perceived by the system.
-  ///
-  /// This field is not populated in backups.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "KMS_KEY_STATE_UNSPECIFIED" : The default value. This value is unused.
-  /// - "ENABLED" : The KMS key is enabled and correctly configured.
-  /// - "PERMISSION_DENIED" : Permission denied on the KMS key.
-  /// - "DISABLED" : The KMS key is disabled.
-  /// - "DESTROYED" : The KMS key is destroyed.
-  /// - "DESTROY_SCHEDULED" : The KMS key is scheduled to be destroyed.
-  /// - "EKM_KEY_UNREACHABLE_DETECTED" : The EKM key is unreachable.
-  /// - "BILLING_DISABLED" : Billing is disabled for the project.
-  /// - "UNKNOWN_FAILURE" : All other unknown failures.
-  core.String? kmsKeyPrimaryState;
-
-  /// KMS key versions that are being used to protect the data at-rest.
-  ///
-  /// Output only.
-  core.List<core.String>? kmsKeyVersions;
-
-  /// The most recent time when the encryption info was updated.
-  ///
-  /// Output only.
-  core.String? lastUpdateTime;
-
-  EncryptionInfo({
-    this.encryptionType,
-    this.kmsKeyPrimaryState,
-    this.kmsKeyVersions,
-    this.lastUpdateTime,
-  });
-
-  EncryptionInfo.fromJson(core.Map json_)
-    : this(
-        encryptionType: json_['encryptionType'] as core.String?,
-        kmsKeyPrimaryState: json_['kmsKeyPrimaryState'] as core.String?,
-        kmsKeyVersions:
-            (json_['kmsKeyVersions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        lastUpdateTime: json_['lastUpdateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptionType != null) 'encryptionType': encryptionType!,
-    if (kmsKeyPrimaryState != null) 'kmsKeyPrimaryState': kmsKeyPrimaryState!,
-    if (kmsKeyVersions != null) 'kmsKeyVersions': kmsKeyVersions!,
-    if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
-  };
-}
+typedef EncryptionInfo = $EncryptionInfo01;
 
 /// Request for \[ExportBackup\].
-class ExportBackupRequest {
-  /// Google Cloud Storage bucket, like "my-bucket".
-  core.String? gcsBucket;
-
-  ExportBackupRequest({this.gcsBucket});
-
-  ExportBackupRequest.fromJson(core.Map json_)
-    : this(gcsBucket: json_['gcsBucket'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsBucket != null) 'gcsBucket': gcsBucket!,
-  };
-}
+typedef ExportBackupRequest = $ExportBackupRequest;
 
 /// Request for Export.
 class ExportInstanceRequest {
@@ -2941,33 +2699,7 @@ class ExportInstanceRequest {
 }
 
 /// Request for Failover.
-class FailoverInstanceRequest {
-  /// Available data protection modes that the user can choose.
-  ///
-  /// If it's unspecified, data protection mode will be LIMITED_DATA_LOSS by
-  /// default.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DATA_PROTECTION_MODE_UNSPECIFIED" : Defaults to LIMITED_DATA_LOSS if a
-  /// data protection mode is not specified.
-  /// - "LIMITED_DATA_LOSS" : Instance failover will be protected with data loss
-  /// control. More specifically, the failover will only be performed if the
-  /// current replication offset diff between primary and replica is under a
-  /// certain threshold.
-  /// - "FORCE_DATA_LOSS" : Instance failover will be performed without data
-  /// loss control.
-  core.String? dataProtectionMode;
-
-  FailoverInstanceRequest({this.dataProtectionMode});
-
-  FailoverInstanceRequest.fromJson(core.Map json_)
-    : this(dataProtectionMode: json_['dataProtectionMode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataProtectionMode != null) 'dataProtectionMode': dataProtectionMode!,
-  };
-}
+typedef FailoverInstanceRequest = $FailoverInstanceRequest;
 
 /// This schedule allows the backup to be triggered at a fixed frequency
 /// (currently only daily is supported).
@@ -2999,65 +2731,13 @@ class FixedFrequencySchedule {
 /// Backups stored in Cloud Storage buckets.
 ///
 /// The Cloud Storage buckets need to be the same region as the clusters.
-class GcsBackupSource {
-  /// URIs of the Cloud Storage objects to import.
-  ///
-  /// Example: gs://bucket1/object1, gs://bucket2/folder2/object2
-  ///
-  /// Optional.
-  core.List<core.String>? uris;
-
-  GcsBackupSource({this.uris});
-
-  GcsBackupSource.fromJson(core.Map json_)
-    : this(
-        uris:
-            (json_['uris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uris != null) 'uris': uris!,
-  };
-}
+typedef GcsBackupSource = $GcsBackupSource;
 
 /// The Cloud Storage location for the output content
-class GcsDestination {
-  /// Data destination URI (e.g. 'gs://my_bucket/my_object').
-  ///
-  /// Existing files will be overwritten.
-  ///
-  /// Required.
-  core.String? uri;
-
-  GcsDestination({this.uri});
-
-  GcsDestination.fromJson(core.Map json_)
-    : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GcsDestination = $GcsDestination04;
 
 /// The Cloud Storage location for the input content
-class GcsSource {
-  /// Source data URI.
-  ///
-  /// (e.g. 'gs://my_bucket/my_object').
-  ///
-  /// Required.
-  core.String? uri;
-
-  GcsSource({this.uri});
-
-  GcsSource.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GcsSource = $GcsSource05;
 
 /// Request for Import.
 class ImportInstanceRequest {
@@ -3592,19 +3272,7 @@ class Instance {
 }
 
 /// Instance AUTH string details.
-class InstanceAuthString {
-  /// AUTH string set on the instance.
-  core.String? authString;
-
-  InstanceAuthString({this.authString});
-
-  InstanceAuthString.fromJson(core.Map json_)
-    : this(authString: json_['authString'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authString != null) 'authString': authString!,
-  };
-}
+typedef InstanceAuthString = $InstanceAuthString;
 
 /// Response for \[ListBackupCollections\].
 class ListBackupCollectionsResponse {
@@ -3850,69 +3518,7 @@ class ListOperationsResponse {
 }
 
 /// A resource that represents a Google Cloud location.
-class Location {
-  /// The friendly name for this location, typically a nearby city name.
-  ///
-  /// For example, "Tokyo".
-  core.String? displayName;
-
-  /// Cross-service attributes for the location.
-  ///
-  /// For example {"cloud.googleapis.com/region": "us-east1"}
-  core.Map<core.String, core.String>? labels;
-
-  /// Resource ID for the region.
-  ///
-  /// For example: "us-east1".
-  core.String? locationId;
-
-  /// The set of available zones in the location.
-  ///
-  /// The map is keyed by the lowercase ID of each zone, as defined by Compute
-  /// Engine. These keys can be specified in `location_id` or
-  /// `alternative_location_id` fields when creating a Redis instance.
-  ///
-  /// Output only.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Full resource name for the region.
-  ///
-  /// For example: "projects/example-project/locations/us-east1".
-  core.String? name;
-
-  Location({
-    this.displayName,
-    this.labels,
-    this.locationId,
-    this.metadata,
-    this.name,
-  });
-
-  Location.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        locationId: json_['locationId'] as core.String?,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (locationId != null) 'locationId': locationId!,
-    if (metadata != null) 'metadata': metadata!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef Location = $Location03;
 
 /// Maintenance policy for an instance.
 class MaintenancePolicy {
@@ -3976,74 +3582,10 @@ class MaintenancePolicy {
 /// Upcoming maintenance schedule.
 ///
 /// If no maintenance is scheduled, fields are not populated.
-class MaintenanceSchedule {
-  /// If the scheduled maintenance can be rescheduled, default is true.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? canReschedule;
-
-  /// The end time of any upcoming scheduled maintenance for this instance.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// The deadline that the maintenance schedule start time can not go beyond,
-  /// including reschedule.
-  ///
-  /// Output only.
-  core.String? scheduleDeadlineTime;
-
-  /// The start time of any upcoming scheduled maintenance for this instance.
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  MaintenanceSchedule({
-    this.canReschedule,
-    this.endTime,
-    this.scheduleDeadlineTime,
-    this.startTime,
-  });
-
-  MaintenanceSchedule.fromJson(core.Map json_)
-    : this(
-        canReschedule: json_['canReschedule'] as core.bool?,
-        endTime: json_['endTime'] as core.String?,
-        scheduleDeadlineTime: json_['scheduleDeadlineTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canReschedule != null) 'canReschedule': canReschedule!,
-    if (endTime != null) 'endTime': endTime!,
-    if (scheduleDeadlineTime != null)
-      'scheduleDeadlineTime': scheduleDeadlineTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef MaintenanceSchedule = $MaintenanceSchedule02;
 
 /// Backups that generated and managed by memorystore.
-class ManagedBackupSource {
-  /// Example:
-  /// //redis.googleapis.com/projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup}
-  /// A shorter version (without the prefix) of the backup name is also
-  /// supported, like
-  /// projects/{project}/locations/{location}/backupCollections/{collection}/backups/{backup_id}
-  /// In this case, it assumes the backup is under redis.googleapis.com.
-  ///
-  /// Optional.
-  core.String? backup;
-
-  ManagedBackupSource({this.backup});
-
-  ManagedBackupSource.fromJson(core.Map json_)
-    : this(backup: json_['backup'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backup != null) 'backup': backup!,
-  };
-}
+typedef ManagedBackupSource = $ManagedBackupSource;
 
 class ManagedCertificateAuthority {
   /// The PEM encoded CA certificate chains for redis managed server
@@ -4111,32 +3653,7 @@ class Membership {
 }
 
 /// Node specific properties.
-class NodeInfo {
-  /// Node identifying string.
-  ///
-  /// e.g. 'node-0', 'node-1'
-  ///
-  /// Output only.
-  core.String? id;
-
-  /// Location of the node.
-  ///
-  /// Output only.
-  core.String? zone;
-
-  NodeInfo({this.id, this.zone});
-
-  NodeInfo.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef NodeInfo = $NodeInfo;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -4240,475 +3757,33 @@ class OutputConfig {
 }
 
 /// Configuration of the persistence functionality.
-class PersistenceConfig {
-  /// Controls whether Persistence features are enabled.
-  ///
-  /// If not provided, the existing value will be used.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "PERSISTENCE_MODE_UNSPECIFIED" : Not set.
-  /// - "DISABLED" : Persistence is disabled for the instance, and any existing
-  /// snapshots are deleted.
-  /// - "RDB" : RDB based Persistence is enabled.
-  core.String? persistenceMode;
-
-  /// The next time that a snapshot attempt is scheduled to occur.
-  ///
-  /// Output only.
-  core.String? rdbNextSnapshotTime;
-
-  /// Period between RDB snapshots.
-  ///
-  /// Snapshots will be attempted every period starting from the provided
-  /// snapshot start time. For example, a start time of 01/01/2033 06:45 and
-  /// SIX_HOURS snapshot period will do nothing until 01/01/2033, and then
-  /// trigger snapshots every day at 06:45, 12:45, 18:45, and 00:45 the next
-  /// day, and so on. If not provided, TWENTY_FOUR_HOURS will be used as
-  /// default.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SNAPSHOT_PERIOD_UNSPECIFIED" : Not set.
-  /// - "ONE_HOUR" : Snapshot every 1 hour.
-  /// - "SIX_HOURS" : Snapshot every 6 hours.
-  /// - "TWELVE_HOURS" : Snapshot every 12 hours.
-  /// - "TWENTY_FOUR_HOURS" : Snapshot every 24 hours.
-  core.String? rdbSnapshotPeriod;
-
-  /// Date and time that the first snapshot was/will be attempted, and to which
-  /// future snapshots will be aligned.
-  ///
-  /// If not provided, the current time will be used.
-  ///
-  /// Optional.
-  core.String? rdbSnapshotStartTime;
-
-  PersistenceConfig({
-    this.persistenceMode,
-    this.rdbNextSnapshotTime,
-    this.rdbSnapshotPeriod,
-    this.rdbSnapshotStartTime,
-  });
-
-  PersistenceConfig.fromJson(core.Map json_)
-    : this(
-        persistenceMode: json_['persistenceMode'] as core.String?,
-        rdbNextSnapshotTime: json_['rdbNextSnapshotTime'] as core.String?,
-        rdbSnapshotPeriod: json_['rdbSnapshotPeriod'] as core.String?,
-        rdbSnapshotStartTime: json_['rdbSnapshotStartTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (persistenceMode != null) 'persistenceMode': persistenceMode!,
-    if (rdbNextSnapshotTime != null)
-      'rdbNextSnapshotTime': rdbNextSnapshotTime!,
-    if (rdbSnapshotPeriod != null) 'rdbSnapshotPeriod': rdbSnapshotPeriod!,
-    if (rdbSnapshotStartTime != null)
-      'rdbSnapshotStartTime': rdbSnapshotStartTime!,
-  };
-}
+typedef PersistenceConfig = $PersistenceConfig;
 
 /// Details of consumer resources in a PSC connection that is created through
 /// Service Connectivity Automation.
-class PscAutoConnection {
-  /// The IP allocated on the consumer network for the PSC forwarding rule.
-  ///
-  /// Output only.
-  core.String? address;
-
-  /// Type of the PSC connection.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONNECTION_TYPE_UNSPECIFIED" : Cluster endpoint Type is not set
-  /// - "CONNECTION_TYPE_DISCOVERY" : Cluster endpoint that will be used as for
-  /// cluster topology discovery.
-  /// - "CONNECTION_TYPE_PRIMARY" : Cluster endpoint that will be used as
-  /// primary endpoint to access primary.
-  /// - "CONNECTION_TYPE_READER" : Cluster endpoint that will be used as reader
-  /// endpoint to access replicas.
-  core.String? connectionType;
-
-  /// The URI of the consumer side forwarding rule.
-  ///
-  /// Example:
-  /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
-  ///
-  /// Output only.
-  core.String? forwardingRule;
-
-  /// The consumer network where the IP address resides, in the form of
-  /// projects/{project_id}/global/networks/{network_id}.
-  ///
-  /// Required.
-  core.String? network;
-
-  /// The consumer project_id where the forwarding rule is created from.
-  ///
-  /// Required.
-  core.String? projectId;
-
-  /// The PSC connection id of the forwarding rule connected to the service
-  /// attachment.
-  ///
-  /// Output only.
-  core.String? pscConnectionId;
-
-  /// The status of the PSC connection.
-  ///
-  /// Please note that this value is updated periodically. Please use Private
-  /// Service Connect APIs for the latest status.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "PSC_CONNECTION_STATUS_UNSPECIFIED" : PSC connection status is not
-  /// specified.
-  /// - "PSC_CONNECTION_STATUS_ACTIVE" : The connection is active
-  /// - "PSC_CONNECTION_STATUS_NOT_FOUND" : Connection not found
-  core.String? pscConnectionStatus;
-
-  /// The service attachment which is the target of the PSC connection, in the
-  /// form of
-  /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  ///
-  /// Output only.
-  core.String? serviceAttachment;
-
-  PscAutoConnection({
-    this.address,
-    this.connectionType,
-    this.forwardingRule,
-    this.network,
-    this.projectId,
-    this.pscConnectionId,
-    this.pscConnectionStatus,
-    this.serviceAttachment,
-  });
-
-  PscAutoConnection.fromJson(core.Map json_)
-    : this(
-        address: json_['address'] as core.String?,
-        connectionType: json_['connectionType'] as core.String?,
-        forwardingRule: json_['forwardingRule'] as core.String?,
-        network: json_['network'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        pscConnectionId: json_['pscConnectionId'] as core.String?,
-        pscConnectionStatus: json_['pscConnectionStatus'] as core.String?,
-        serviceAttachment: json_['serviceAttachment'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (connectionType != null) 'connectionType': connectionType!,
-    if (forwardingRule != null) 'forwardingRule': forwardingRule!,
-    if (network != null) 'network': network!,
-    if (projectId != null) 'projectId': projectId!,
-    if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
-    if (pscConnectionStatus != null)
-      'pscConnectionStatus': pscConnectionStatus!,
-    if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
-  };
-}
-
-class PscConfig {
-  /// The network where the IP address of the discovery endpoint will be
-  /// reserved, in the form of
-  /// projects/{network_project}/global/networks/{network_id}.
-  ///
-  /// Required.
-  core.String? network;
-
-  PscConfig({this.network});
-
-  PscConfig.fromJson(core.Map json_)
-    : this(network: json_['network'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (network != null) 'network': network!,
-  };
-}
+typedef PscAutoConnection = $PscAutoConnection;
+typedef PscConfig = $PscConfig01;
 
 /// Details of consumer resources in a PSC connection.
-class PscConnection {
-  /// The IP allocated on the consumer network for the PSC forwarding rule.
-  ///
-  /// Required.
-  core.String? address;
-
-  /// Type of the PSC connection.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONNECTION_TYPE_UNSPECIFIED" : Cluster endpoint Type is not set
-  /// - "CONNECTION_TYPE_DISCOVERY" : Cluster endpoint that will be used as for
-  /// cluster topology discovery.
-  /// - "CONNECTION_TYPE_PRIMARY" : Cluster endpoint that will be used as
-  /// primary endpoint to access primary.
-  /// - "CONNECTION_TYPE_READER" : Cluster endpoint that will be used as reader
-  /// endpoint to access replicas.
-  core.String? connectionType;
-
-  /// The URI of the consumer side forwarding rule.
-  ///
-  /// Example:
-  /// projects/{projectNumOrId}/regions/us-east1/forwardingRules/{resourceId}.
-  ///
-  /// Required.
-  core.String? forwardingRule;
-
-  /// The consumer network where the IP address resides, in the form of
-  /// projects/{project_id}/global/networks/{network_id}.
-  ///
-  /// Required.
-  core.String? network;
-
-  /// port will only be set for Primary/Reader or Discovery endpoint.
-  ///
-  /// Output only.
-  core.int? port;
-
-  /// Project ID of the consumer project where the forwarding rule is created
-  /// in.
-  ///
-  /// Optional.
-  core.String? projectId;
-
-  /// The PSC connection id of the forwarding rule connected to the service
-  /// attachment.
-  ///
-  /// Required.
-  core.String? pscConnectionId;
-
-  /// The status of the PSC connection.
-  ///
-  /// Please note that this value is updated periodically. To get the latest
-  /// status of a PSC connection, follow
-  /// https://cloud.google.com/vpc/docs/configure-private-service-connect-services#endpoint-details.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "PSC_CONNECTION_STATUS_UNSPECIFIED" : PSC connection status is not
-  /// specified.
-  /// - "PSC_CONNECTION_STATUS_ACTIVE" : The connection is active
-  /// - "PSC_CONNECTION_STATUS_NOT_FOUND" : Connection not found
-  core.String? pscConnectionStatus;
-
-  /// The service attachment which is the target of the PSC connection, in the
-  /// form of
-  /// projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  ///
-  /// Required.
-  core.String? serviceAttachment;
-
-  PscConnection({
-    this.address,
-    this.connectionType,
-    this.forwardingRule,
-    this.network,
-    this.port,
-    this.projectId,
-    this.pscConnectionId,
-    this.pscConnectionStatus,
-    this.serviceAttachment,
-  });
-
-  PscConnection.fromJson(core.Map json_)
-    : this(
-        address: json_['address'] as core.String?,
-        connectionType: json_['connectionType'] as core.String?,
-        forwardingRule: json_['forwardingRule'] as core.String?,
-        network: json_['network'] as core.String?,
-        port: json_['port'] as core.int?,
-        projectId: json_['projectId'] as core.String?,
-        pscConnectionId: json_['pscConnectionId'] as core.String?,
-        pscConnectionStatus: json_['pscConnectionStatus'] as core.String?,
-        serviceAttachment: json_['serviceAttachment'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address != null) 'address': address!,
-    if (connectionType != null) 'connectionType': connectionType!,
-    if (forwardingRule != null) 'forwardingRule': forwardingRule!,
-    if (network != null) 'network': network!,
-    if (port != null) 'port': port!,
-    if (projectId != null) 'projectId': projectId!,
-    if (pscConnectionId != null) 'pscConnectionId': pscConnectionId!,
-    if (pscConnectionStatus != null)
-      'pscConnectionStatus': pscConnectionStatus!,
-    if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
-  };
-}
+typedef PscConnection = $PscConnection;
 
 /// Configuration of a service attachment of the cluster, for creating PSC
 /// connections.
-class PscServiceAttachment {
-  /// Type of a PSC connection targeting this service attachment.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONNECTION_TYPE_UNSPECIFIED" : Cluster endpoint Type is not set
-  /// - "CONNECTION_TYPE_DISCOVERY" : Cluster endpoint that will be used as for
-  /// cluster topology discovery.
-  /// - "CONNECTION_TYPE_PRIMARY" : Cluster endpoint that will be used as
-  /// primary endpoint to access primary.
-  /// - "CONNECTION_TYPE_READER" : Cluster endpoint that will be used as reader
-  /// endpoint to access replicas.
-  core.String? connectionType;
-
-  /// Service attachment URI which your self-created PscConnection should use as
-  /// target
-  ///
-  /// Output only.
-  core.String? serviceAttachment;
-
-  PscServiceAttachment({this.connectionType, this.serviceAttachment});
-
-  PscServiceAttachment.fromJson(core.Map json_)
-    : this(
-        connectionType: json_['connectionType'] as core.String?,
-        serviceAttachment: json_['serviceAttachment'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connectionType != null) 'connectionType': connectionType!,
-    if (serviceAttachment != null) 'serviceAttachment': serviceAttachment!,
-  };
-}
+typedef PscServiceAttachment = $PscServiceAttachment;
 
 /// Configuration of the RDB based persistence.
-class RDBConfig {
-  /// Period between RDB snapshots.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SNAPSHOT_PERIOD_UNSPECIFIED" : Not set.
-  /// - "ONE_HOUR" : One hour.
-  /// - "SIX_HOURS" : Six hours.
-  /// - "TWELVE_HOURS" : Twelve hours.
-  /// - "TWENTY_FOUR_HOURS" : Twenty four hours.
-  core.String? rdbSnapshotPeriod;
-
-  /// The time that the first snapshot was/will be attempted, and to which
-  /// future snapshots will be aligned.
-  ///
-  /// If not provided, the current time will be used.
-  ///
-  /// Optional.
-  core.String? rdbSnapshotStartTime;
-
-  RDBConfig({this.rdbSnapshotPeriod, this.rdbSnapshotStartTime});
-
-  RDBConfig.fromJson(core.Map json_)
-    : this(
-        rdbSnapshotPeriod: json_['rdbSnapshotPeriod'] as core.String?,
-        rdbSnapshotStartTime: json_['rdbSnapshotStartTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rdbSnapshotPeriod != null) 'rdbSnapshotPeriod': rdbSnapshotPeriod!,
-    if (rdbSnapshotStartTime != null)
-      'rdbSnapshotStartTime': rdbSnapshotStartTime!,
-  };
-}
+typedef RDBConfig = $RDBConfig;
 
 /// Details of the remote cluster associated with this cluster in a cross
 /// cluster replication setup.
-class RemoteCluster {
-  /// The full resource path of the remote cluster in the format:
-  /// projects//locations//clusters/
-  ///
-  /// Output only.
-  core.String? cluster;
-
-  /// The unique identifier of the remote cluster.
-  ///
-  /// Output only.
-  core.String? uid;
-
-  RemoteCluster({this.cluster, this.uid});
-
-  RemoteCluster.fromJson(core.Map json_)
-    : this(
-        cluster: json_['cluster'] as core.String?,
-        uid: json_['uid'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cluster != null) 'cluster': cluster!,
-    if (uid != null) 'uid': uid!,
-  };
-}
+typedef RemoteCluster = $RemoteCluster;
 
 /// Request for rescheduling a cluster maintenance.
-class RescheduleClusterMaintenanceRequest {
-  /// If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "RESCHEDULE_TYPE_UNSPECIFIED" : Not set.
-  /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
-  /// now.
-  /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
-  /// specific time.
-  core.String? rescheduleType;
-
-  /// Timestamp when the maintenance shall be rescheduled to if
-  /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
-  /// `2012-11-15T16:19:00.094Z`.
-  ///
-  /// Optional.
-  core.String? scheduleTime;
-
-  RescheduleClusterMaintenanceRequest({this.rescheduleType, this.scheduleTime});
-
-  RescheduleClusterMaintenanceRequest.fromJson(core.Map json_)
-    : this(
-        rescheduleType: json_['rescheduleType'] as core.String?,
-        scheduleTime: json_['scheduleTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rescheduleType != null) 'rescheduleType': rescheduleType!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-  };
-}
+typedef RescheduleClusterMaintenanceRequest =
+    $RescheduleClusterMaintenanceRequest;
 
 /// Request for RescheduleMaintenance.
-class RescheduleMaintenanceRequest {
-  /// If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "RESCHEDULE_TYPE_UNSPECIFIED" : Not set.
-  /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
-  /// now.
-  /// - "NEXT_AVAILABLE_WINDOW" : If the user wants to use the existing
-  /// maintenance policy to find the next available window.
-  /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
-  /// specific time.
-  core.String? rescheduleType;
-
-  /// Timestamp when the maintenance shall be rescheduled to if
-  /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
-  /// `2012-11-15T16:19:00.094Z`.
-  ///
-  /// Optional.
-  core.String? scheduleTime;
-
-  RescheduleMaintenanceRequest({this.rescheduleType, this.scheduleTime});
-
-  RescheduleMaintenanceRequest.fromJson(core.Map json_)
-    : this(
-        rescheduleType: json_['rescheduleType'] as core.String?,
-        scheduleTime: json_['scheduleTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rescheduleType != null) 'rescheduleType': rescheduleType!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-  };
-}
+typedef RescheduleMaintenanceRequest = $RescheduleMaintenanceRequest01;
 
 /// Represents additional information about the state of the cluster.
 class StateInfo {
@@ -4749,109 +3824,13 @@ typedef Status = $Status00;
 typedef TimeOfDay = $TimeOfDay;
 
 /// TlsCertificate Resource
-class TlsCertificate {
-  /// PEM representation.
-  core.String? cert;
-
-  /// The time when the certificate was created in
-  /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// `2020-05-18T00:00:00.094Z`.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The time when the certificate expires in
-  /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
-  /// `2020-05-18T00:00:00.094Z`.
-  ///
-  /// Output only.
-  core.String? expireTime;
-
-  /// Serial number, as extracted from the certificate.
-  core.String? serialNumber;
-
-  /// Sha1 Fingerprint of the certificate.
-  core.String? sha1Fingerprint;
-
-  TlsCertificate({
-    this.cert,
-    this.createTime,
-    this.expireTime,
-    this.serialNumber,
-    this.sha1Fingerprint,
-  });
-
-  TlsCertificate.fromJson(core.Map json_)
-    : this(
-        cert: json_['cert'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        expireTime: json_['expireTime'] as core.String?,
-        serialNumber: json_['serialNumber'] as core.String?,
-        sha1Fingerprint: json_['sha1Fingerprint'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cert != null) 'cert': cert!,
-    if (createTime != null) 'createTime': createTime!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (serialNumber != null) 'serialNumber': serialNumber!,
-    if (sha1Fingerprint != null) 'sha1Fingerprint': sha1Fingerprint!,
-  };
-}
+typedef TlsCertificate = $TlsCertificate;
 
 /// Represents information about an updating cluster.
-class UpdateInfo {
-  /// Target node type for redis cluster.
-  /// Possible string values are:
-  /// - "NODE_TYPE_UNSPECIFIED" : Node type unspecified
-  /// - "REDIS_SHARED_CORE_NANO" : Redis shared core nano node_type.
-  /// - "REDIS_HIGHMEM_MEDIUM" : Redis highmem medium node_type.
-  /// - "REDIS_HIGHMEM_XLARGE" : Redis highmem xlarge node_type.
-  /// - "REDIS_STANDARD_SMALL" : Redis standard small node_type.
-  core.String? targetNodeType;
-
-  /// Target number of replica nodes per shard.
-  core.int? targetReplicaCount;
-
-  /// Target number of shards for redis cluster
-  core.int? targetShardCount;
-
-  UpdateInfo({
-    this.targetNodeType,
-    this.targetReplicaCount,
-    this.targetShardCount,
-  });
-
-  UpdateInfo.fromJson(core.Map json_)
-    : this(
-        targetNodeType: json_['targetNodeType'] as core.String?,
-        targetReplicaCount: json_['targetReplicaCount'] as core.int?,
-        targetShardCount: json_['targetShardCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetNodeType != null) 'targetNodeType': targetNodeType!,
-    if (targetReplicaCount != null) 'targetReplicaCount': targetReplicaCount!,
-    if (targetShardCount != null) 'targetShardCount': targetShardCount!,
-  };
-}
+typedef UpdateInfo = $UpdateInfo;
 
 /// Request for UpgradeInstance.
-class UpgradeInstanceRequest {
-  /// Specifies the target version of Redis software to upgrade to.
-  ///
-  /// Required.
-  core.String? redisVersion;
-
-  UpgradeInstanceRequest({this.redisVersion});
-
-  UpgradeInstanceRequest.fromJson(core.Map json_)
-    : this(redisVersion: json_['redisVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (redisVersion != null) 'redisVersion': redisVersion!,
-  };
-}
+typedef UpgradeInstanceRequest = $UpgradeInstanceRequest01;
 
 /// Time window in which disruptive maintenance updates occur.
 ///
@@ -4905,39 +3884,4 @@ class WeeklyMaintenanceWindow {
 }
 
 /// Zone distribution config for allocation of cluster resources.
-class ZoneDistributionConfig {
-  /// The mode of zone distribution.
-  ///
-  /// Defaults to MULTI_ZONE, when not specified.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "ZONE_DISTRIBUTION_MODE_UNSPECIFIED" : Not Set. Default: MULTI_ZONE
-  /// - "MULTI_ZONE" : Distribute all resources across 3 zones picked at random,
-  /// within the region.
-  /// - "SINGLE_ZONE" : Distribute all resources in a single zone. The zone
-  /// field must be specified, when this mode is selected.
-  core.String? mode;
-
-  /// When SINGLE ZONE distribution is selected, zone field would be used to
-  /// allocate all resources in that zone.
-  ///
-  /// This is not applicable to MULTI_ZONE, and would be ignored for MULTI_ZONE
-  /// clusters.
-  ///
-  /// Optional.
-  core.String? zone;
-
-  ZoneDistributionConfig({this.mode, this.zone});
-
-  ZoneDistributionConfig.fromJson(core.Map json_)
-    : this(
-        mode: json_['mode'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef ZoneDistributionConfig = $ZoneDistributionConfig;

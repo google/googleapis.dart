@@ -1925,7 +1925,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -2291,7 +2291,7 @@ typedef Lien = $Lien;
 
 /// The request sent to the `ListAvailableOrgPolicyConstraints` method on the
 /// project, folder, or organization.
-typedef ListAvailableOrgPolicyConstraintsRequest = $Request07;
+typedef ListAvailableOrgPolicyConstraintsRequest = $Request12;
 
 /// The response returned from the `ListAvailableOrgPolicyConstraints` method.
 ///
@@ -2392,7 +2392,7 @@ class ListLiensResponse {
 }
 
 /// The request sent to the ListOrgPolicies method.
-typedef ListOrgPoliciesRequest = $Request07;
+typedef ListOrgPoliciesRequest = $Request12;
 
 /// The response returned from the `ListOrgPolicies` method.
 ///
@@ -2746,20 +2746,7 @@ class Organization {
 /// The lifetime of the Organization and all of its descendants are bound to the
 /// `OrganizationOwner`. If the `OrganizationOwner` is deleted, the Organization
 /// and all its descendants will be deleted.
-class OrganizationOwner {
-  /// The G Suite customer id used in the Directory API.
-  core.String? directoryCustomerId;
-
-  OrganizationOwner({this.directoryCustomerId});
-
-  OrganizationOwner.fromJson(core.Map json_)
-    : this(directoryCustomerId: json_['directoryCustomerId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (directoryCustomerId != null)
-      'directoryCustomerId': directoryCustomerId!,
-  };
-}
+typedef OrganizationOwner = $OrganizationOwner;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.

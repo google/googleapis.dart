@@ -475,7 +475,7 @@ class AnalyzePackagesRequestV1 {
 }
 
 /// Artifact describes a build product.
-typedef Artifact = $Artifact;
+typedef Artifact = $Artifact00;
 
 /// Occurrence that represents a single "attestation".
 ///
@@ -862,14 +862,14 @@ class BuildProvenance {
   };
 }
 
-typedef BuilderConfig = $Shared01;
+typedef BuilderConfig = $Shared02;
 
 /// Common Vulnerability Scoring System.
 ///
 /// For details, see https://www.first.org/cvss/specification-document This is a
 /// message we will try to use for storing various versions of CVSS rather than
 /// making a separate proto for storing a specific version.
-typedef CVSS = $CVSS;
+typedef CVSS = $CVSS00;
 
 /// The category to which the update belongs.
 typedef Category = $Category;
@@ -1000,7 +1000,7 @@ class DSSEAttestationOccurrence {
 }
 
 /// The period during which some deployable was active in a runtime.
-typedef DeploymentOccurrence = $DeploymentOccurrence;
+typedef DeploymentOccurrence = $Shared07;
 
 /// Provides information about the analysis status of a discovered resource.
 class DiscoveryOccurrence {
@@ -1176,7 +1176,7 @@ class Envelope {
 }
 
 typedef EnvelopeSignature = $EnvelopeSignature;
-typedef File = $File;
+typedef File = $File00;
 
 /// Container message for hashes of byte content of files, used in source
 /// messages to verify integrity of source input to the build.
@@ -1372,7 +1372,7 @@ class GrafeasV1LayerDetails {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared01;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -1476,7 +1476,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
 }
 
 /// Container message for hash values.
-typedef Hash = $Hash;
+typedef Hash = $Hash01;
 
 /// The unique identifier of the update.
 typedef Identity = $Identity;
@@ -1721,23 +1721,7 @@ typedef Jwt = $Jwt;
 
 /// Indicates a language package available between this package and the
 /// customer's resource artifact.
-class LanguagePackageDependency {
-  core.String? package;
-  core.String? version;
-
-  LanguagePackageDependency({this.package, this.version});
-
-  LanguagePackageDependency.fromJson(core.Map json_)
-    : this(
-        package: json_['package'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (package != null) 'package': package!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef LanguagePackageDependency = $LanguagePackageDependency;
 
 /// Layer holds metadata specific to a layer of a Docker image.
 typedef Layer = $Layer;
@@ -1899,30 +1883,7 @@ class Location {
   };
 }
 
-class Maintainer {
-  core.String? email;
-  core.String? kind;
-  core.String? name;
-  core.String? url;
-
-  Maintainer({this.email, this.kind, this.name, this.url});
-
-  Maintainer.fromJson(core.Map json_)
-    : this(
-        email: json_['email'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        name: json_['name'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-    if (url != null) 'url': url!,
-  };
-}
-
+typedef Maintainer = $Maintainer;
 typedef Material = $Material;
 
 /// Other properties of the build.
@@ -2706,35 +2667,7 @@ class PackageOccurrence {
   };
 }
 
-class PackageVersion {
-  /// The licenses associated with this package.
-  ///
-  /// Note that this has to go on the PackageVersion level, because we can have
-  /// cases with images with the same source having different licences. E.g. in
-  /// Alpine, musl and musl-utils both have the same origin musl, but have
-  /// different sets of licenses.
-  core.List<core.String>? licenses;
-  core.String? name;
-  core.String? version;
-
-  PackageVersion({this.licenses, this.name, this.version});
-
-  PackageVersion.fromJson(core.Map json_)
-    : this(
-        licenses:
-            (json_['licenses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        name: json_['name'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (licenses != null) 'licenses': licenses!,
-    if (name != null) 'name': name!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef PackageVersion = $PackageVersion;
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
@@ -3093,7 +3026,7 @@ typedef SecretStatus = $SecretStatus;
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared01;
+typedef SlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -3525,7 +3458,7 @@ class UpgradeOccurrence {
 }
 
 /// Version contains structured information about the version of a package.
-typedef Version = $Version;
+typedef Version = $Version00;
 
 /// VexAssessment provides all publisher provided Vex information that is
 /// related to this vulnerability.

@@ -1609,74 +1609,15 @@ typedef Empty = $Empty;
 
 /// Message encapsulating a value that can be either absolute ("fixed") or
 /// relative ("percent") to a value.
-typedef FixedOrPercent = $FixedOrPercent;
+typedef FixedOrPercent = $FixedOrPercent00;
 
 /// Selector containing locations in scope.
-class GoogleCloudOsconfigV2OrchestrationScopeLocationSelector {
-  /// Names of the locations in scope.
-  ///
-  /// Format: `us-central1-a`
-  ///
-  /// Optional.
-  core.List<core.String>? includedLocations;
-
-  GoogleCloudOsconfigV2OrchestrationScopeLocationSelector({
-    this.includedLocations,
-  });
-
-  GoogleCloudOsconfigV2OrchestrationScopeLocationSelector.fromJson(
-    core.Map json_,
-  ) : this(
-        includedLocations:
-            (json_['includedLocations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includedLocations != null) 'includedLocations': includedLocations!,
-  };
-}
+typedef GoogleCloudOsconfigV2OrchestrationScopeLocationSelector =
+    $OrchestrationScope_LocationSelector;
 
 /// Selector containing Cloud Resource Manager resource hierarchy nodes.
-class GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector {
-  /// Names of the folders in scope.
-  ///
-  /// Format: `folders/{folder_id}`
-  ///
-  /// Optional.
-  core.List<core.String>? includedFolders;
-
-  /// Names of the projects in scope.
-  ///
-  /// Format: `projects/{project_number}`
-  ///
-  /// Optional.
-  core.List<core.String>? includedProjects;
-
-  GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector({
-    this.includedFolders,
-    this.includedProjects,
-  });
-
-  GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector.fromJson(
-    core.Map json_,
-  ) : this(
-        includedFolders:
-            (json_['includedFolders'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        includedProjects:
-            (json_['includedProjects'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includedFolders != null) 'includedFolders': includedFolders!,
-    if (includedProjects != null) 'includedProjects': includedProjects!,
-  };
-}
+typedef GoogleCloudOsconfigV2OrchestrationScopeResourceHierarchySelector =
+    $OrchestrationScope_ResourceHierarchySelector;
 
 /// Selector for the resources in scope of orchestration.
 class GoogleCloudOsconfigV2OrchestrationScopeSelector {
@@ -3227,8 +3168,7 @@ typedef OSPolicyResourceRepositoryResourceAptRepository =
 ///
 /// These are added to a repo file that is managed at
 /// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
-typedef OSPolicyResourceRepositoryResourceGooRepository =
-    $OSPolicyResourceRepositoryResourceGooRepository;
+typedef OSPolicyResourceRepositoryResourceGooRepository = $GooRepository;
 
 /// Represents a single yum package repository.
 ///

@@ -5782,7 +5782,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 }
 
 /// String/text values.
-typedef GoogleCloudContentwarehouseV1TextArray = $Shared05;
+typedef GoogleCloudContentwarehouseV1TextArray = $Shared12;
 
 /// Configurations for a text property.
 typedef GoogleCloudContentwarehouseV1TextTypeOptions = $Empty;
@@ -6236,7 +6236,7 @@ class GoogleCloudContentwarehouseV1WeightedSchemaProperty {
 }
 
 /// Encodes the detailed information of a barcode.
-typedef GoogleCloudDocumentaiV1Barcode = $GoogleCloudDocumentaiV1Barcode;
+typedef GoogleCloudDocumentaiV1Barcode = $Barcode;
 
 /// A bounding polygon for the detected image annotation.
 class GoogleCloudDocumentaiV1BoundingPoly {
@@ -6642,7 +6642,7 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
 
 /// Represents where the chunk starts and ends in the document.
 typedef GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan =
-    $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
+    $DocumentChunkedDocumentChunkChunkPageSpan;
 
 /// Represents the parsed layout of a document as a collection of blocks that
 /// the document is divided into.
@@ -6813,7 +6813,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
 
 /// Represents where the block starts and ends in the document.
 typedef GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan =
-    $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan;
+    $DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan;
 
 /// Represents a table type block.
 class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock {
@@ -7240,8 +7240,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 }
 
 /// Relationship between Entities.
-typedef GoogleCloudDocumentaiV1DocumentEntityRelation =
-    $GoogleCloudDocumentaiV1DocumentEntityRelation;
+typedef GoogleCloudDocumentaiV1DocumentEntityRelation = $DocumentEntityRelation;
 
 /// A page in a Document.
 class GoogleCloudDocumentaiV1DocumentPage {
@@ -7684,11 +7683,10 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
 
 /// Detected language for a structural component.
 typedef GoogleCloudDocumentaiV1DocumentPageDetectedLanguage =
-    $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage;
+    $DocumentPageDetectedLanguage;
 
 /// Dimension for the page.
-typedef GoogleCloudDocumentaiV1DocumentPageDimension =
-    $GoogleCloudDocumentaiV1DocumentPageDimension;
+typedef GoogleCloudDocumentaiV1DocumentPageDimension = $DocumentPageDimension;
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1DocumentPageFormField {
@@ -7798,8 +7796,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 }
 
 /// Rendered image contents for this page.
-typedef GoogleCloudDocumentaiV1DocumentPageImage =
-    $GoogleCloudDocumentaiV1DocumentPageImage;
+typedef GoogleCloudDocumentaiV1DocumentPageImage = $DocumentPageImage;
 
 /// Image quality scores for the page image.
 class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
@@ -7841,7 +7838,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 
 /// Image Quality Defects
 typedef GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect =
-    $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect;
+    $DocumentPageImageQualityScoresDetectedDefect;
 
 /// Visual element describing a layout unit on a page.
 class GoogleCloudDocumentaiV1DocumentPageLayout {
@@ -7960,8 +7957,7 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
 
 /// Representation for transformation matrix, intended to be compatible and used
 /// with OpenCV format for image manipulation.
-typedef GoogleCloudDocumentaiV1DocumentPageMatrix =
-    $GoogleCloudDocumentaiV1DocumentPageMatrix;
+typedef GoogleCloudDocumentaiV1DocumentPageMatrix = $DocumentPageMatrix;
 
 /// A collection of lines that a human would perceive as a paragraph.
 class GoogleCloudDocumentaiV1DocumentPageParagraph {
@@ -8289,7 +8285,7 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
 
 /// Detected break at the end of a Token.
 typedef GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak =
-    $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak;
+    $DocumentPageTokenDetectedBreak;
 
 /// Font and other text style attributes.
 class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
@@ -8538,7 +8534,7 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
 ///
 /// Used for referencing/aligning, removal and replacement operations.
 typedef GoogleCloudDocumentaiV1DocumentProvenanceParent =
-    $GoogleCloudDocumentaiV1DocumentProvenanceParent;
+    $DocumentProvenanceParent;
 
 /// Contains past or forward revisions of this document.
 class GoogleCloudDocumentaiV1DocumentRevision {
@@ -8621,14 +8617,13 @@ class GoogleCloudDocumentaiV1DocumentRevision {
 
 /// Human Review information of the document.
 typedef GoogleCloudDocumentaiV1DocumentRevisionHumanReview =
-    $GoogleCloudDocumentaiV1DocumentRevisionHumanReview;
+    $DocumentRevisionHumanReview;
 
 /// For a large document, sharding may be performed to produce several document
 /// shards.
 ///
 /// Each document shard contains this field to detail which shard it is.
-typedef GoogleCloudDocumentaiV1DocumentShardInfo =
-    $GoogleCloudDocumentaiV1DocumentShardInfo;
+typedef GoogleCloudDocumentaiV1DocumentShardInfo = $DocumentShardInfo;
 
 /// Annotation for common text style attributes.
 ///
@@ -8723,8 +8718,7 @@ class GoogleCloudDocumentaiV1DocumentStyle {
 }
 
 /// Font size with unit.
-typedef GoogleCloudDocumentaiV1DocumentStyleFontSize =
-    $GoogleCloudDocumentaiV1DocumentStyleFontSize;
+typedef GoogleCloudDocumentaiV1DocumentStyleFontSize = $DocumentStyleFontSize;
 
 /// Text reference indexing into the Document.text.
 class GoogleCloudDocumentaiV1DocumentTextAnchor {
@@ -8765,7 +8759,7 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
 /// another document shard for large sharded documents. See
 /// ShardInfo.text_offset
 typedef GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment =
-    $GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment;
+    $DocumentTextAnchorTextSegment;
 
 /// This message is used for text changes aka.
 ///
@@ -8823,13 +8817,12 @@ class GoogleCloudDocumentaiV1DocumentTextChange {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudDocumentaiV1NormalizedVertex =
-    $GoogleCloudDocumentaiV1NormalizedVertex;
+typedef GoogleCloudDocumentaiV1NormalizedVertex = $NormalizedVertex01;
 
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudDocumentaiV1Vertex = $GoogleCloudDocumentaiV1Vertex;
+typedef GoogleCloudDocumentaiV1Vertex = $Vertex01;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -8885,7 +8878,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {
@@ -9423,7 +9416,7 @@ typedef GoogleTypeExpr = $Expr;
 /// The start must be less than or equal to the end. When the start equals the
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
-typedef GoogleTypeInterval = $Interval;
+typedef GoogleTypeInterval = $Interval00;
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;

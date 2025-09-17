@@ -2238,7 +2238,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -3133,24 +3133,7 @@ class Policy {
 }
 
 /// Scope of an application.
-class Scope {
-  /// Scope Type.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified type.
-  /// - "REGIONAL" : Regional type.
-  /// - "GLOBAL" : Global type.
-  core.String? type;
-
-  Scope({this.type});
-
-  Scope.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-  };
-}
+typedef Scope = $Scope;
 
 /// Service is an App Hub data model that contains a discovered service, which
 /// represents a network or API interface that exposes some functionality to
@@ -3296,105 +3279,10 @@ class Service {
 /// expose these resources to the host project through a
 /// ServiceProjectAttachment. With the attachments, the host project can provide
 /// an aggregated view of resources across all service projects.
-class ServiceProjectAttachment {
-  /// Create time.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Identifier.
-  ///
-  /// The resource name of a ServiceProjectAttachment. Format:
-  /// `"projects/{host-project-id}/locations/global/serviceProjectAttachments/{service-project-id}."`
-  core.String? name;
-
-  /// Service project name in the format: `"projects/abc"` or `"projects/123"`.
-  ///
-  /// As input, project name with either project id or number are accepted. As
-  /// output, this field will contain project number.
-  ///
-  /// Required. Immutable.
-  core.String? serviceProject;
-
-  /// ServiceProjectAttachment state.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "CREATING" : The ServiceProjectAttachment is being created.
-  /// - "ACTIVE" : The ServiceProjectAttachment is ready. This means Services
-  /// and Workloads under the corresponding ServiceProjectAttachment is ready
-  /// for registration.
-  /// - "DELETING" : The ServiceProjectAttachment is being deleted.
-  core.String? state;
-
-  /// A globally unique identifier (in UUID4 format) for the
-  /// `ServiceProjectAttachment`.
-  ///
-  /// Output only.
-  core.String? uid;
-
-  ServiceProjectAttachment({
-    this.createTime,
-    this.name,
-    this.serviceProject,
-    this.state,
-    this.uid,
-  });
-
-  ServiceProjectAttachment.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        name: json_['name'] as core.String?,
-        serviceProject: json_['serviceProject'] as core.String?,
-        state: json_['state'] as core.String?,
-        uid: json_['uid'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-    if (serviceProject != null) 'serviceProject': serviceProject!,
-    if (state != null) 'state': state!,
-    if (uid != null) 'uid': uid!,
-  };
-}
+typedef ServiceProjectAttachment = $ServiceProjectAttachment;
 
 /// Properties of an underlying cloud resource that can comprise a Service.
-class ServiceProperties {
-  /// The service project identifier that the underlying cloud resource resides
-  /// in.
-  ///
-  /// Output only.
-  core.String? gcpProject;
-
-  /// The location that the underlying resource resides in, for example,
-  /// us-west1.
-  ///
-  /// Output only.
-  core.String? location;
-
-  /// The location that the underlying resource resides in if it is zonal, for
-  /// example, us-west1-a).
-  ///
-  /// Output only.
-  core.String? zone;
-
-  ServiceProperties({this.gcpProject, this.location, this.zone});
-
-  ServiceProperties.fromJson(core.Map json_)
-    : this(
-        gcpProject: json_['gcpProject'] as core.String?,
-        location: json_['location'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcpProject != null) 'gcpProject': gcpProject!,
-    if (location != null) 'location': location!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef ServiceProperties = $ServiceProperties;
 
 /// Reference to an underlying networking resource that can comprise a Service.
 class ServiceReference {
@@ -3602,56 +3490,7 @@ class Workload {
 }
 
 /// Properties of an underlying compute resource represented by the Workload.
-class WorkloadProperties {
-  /// The service project identifier that the underlying cloud resource resides
-  /// in.
-  ///
-  /// Empty for non-cloud resources.
-  ///
-  /// Output only.
-  core.String? gcpProject;
-
-  /// The location that the underlying compute resource resides in (for example,
-  /// us-west1).
-  ///
-  /// Output only.
-  core.String? location;
-
-  /// The location that the underlying compute resource resides in if it is
-  /// zonal (for example, us-west1-a).
-  ///
-  /// Output only.
-  core.String? zone;
-
-  WorkloadProperties({this.gcpProject, this.location, this.zone});
-
-  WorkloadProperties.fromJson(core.Map json_)
-    : this(
-        gcpProject: json_['gcpProject'] as core.String?,
-        location: json_['location'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcpProject != null) 'gcpProject': gcpProject!,
-    if (location != null) 'location': location!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef WorkloadProperties = $WorkloadProperties;
 
 /// Reference of an underlying compute resource represented by the Workload.
-class WorkloadReference {
-  /// The underlying compute resource uri.
-  ///
-  /// Output only.
-  core.String? uri;
-
-  WorkloadReference({this.uri});
-
-  WorkloadReference.fromJson(core.Map json_)
-    : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef WorkloadReference = $WorkloadReference;

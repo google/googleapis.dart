@@ -9104,7 +9104,7 @@ class ClusterToRepair {
 
 /// Confidential Instance Config for clusters using Confidential VMs
 /// (https://cloud.google.com/compute/confidential-vm/docs)
-typedef ConfidentialInstanceConfig = $ConfidentialInstanceConfig;
+typedef ConfidentialInstanceConfig = $ConfidentialInstanceConfig00;
 
 /// Consolidated summary about executors used by the application.
 class ConsolidatedExecutorSummary {
@@ -11727,32 +11727,7 @@ class InstantiateWorkflowTemplateRequest {
 ///
 /// When the start equals the end, the interval is empty (matches no time). When
 /// both start and end are unspecified, the interval matches any time.
-class Interval {
-  /// Exclusive end of the interval.If specified, a Timestamp matching this
-  /// interval will have to be before the end.
-  ///
-  /// Optional.
-  core.String? endTime;
-
-  /// Inclusive start of the interval.If specified, a Timestamp matching this
-  /// interval will have to be the same or after the start.
-  ///
-  /// Optional.
-  core.String? startTime;
-
-  Interval({this.endTime, this.startTime});
-
-  Interval.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef Interval = $Interval02;
 
 /// A Dataproc job resource.
 class Job {

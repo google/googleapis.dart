@@ -1723,34 +1723,8 @@ class GoogleAppsDriveLabelsV2DateLimits {
 ///
 /// Permissions affect the Label resource as a whole, are not revisioned, and do
 /// not require publishing.
-class GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest {
-  /// Label Permission resource name.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Set to `true` in order to use the user's admin credentials.
-  ///
-  /// The server will verify the user is an admin for the Label before allowing
-  /// access.
-  core.bool? useAdminAccess;
-
-  GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest({
-    this.name,
-    this.useAdminAccess,
-  });
-
-  GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        useAdminAccess: json_['useAdminAccess'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2DeleteLabelPermissionRequest =
+    $DeleteLabelPermissionRequest;
 
 /// The set of requests for updating aspects of a Label.
 ///
@@ -1884,50 +1858,12 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestCreateSelectionChoiceRequest
 }
 
 /// Request to delete the Field.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest {
-  /// ID of the Field to delete.
-  ///
-  /// Required.
-  core.String? id;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest({this.id});
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest.fromJson(
-    core.Map json_,
-  ) : this(id: json_['id'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteFieldRequest =
+    $DeltaUpdateLabelRequestDeleteFieldRequest;
 
 /// Request to delete a Choice.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest {
-  /// The Selection Field from which a Choice will be deleted.
-  ///
-  /// Required.
-  core.String? fieldId;
-
-  /// Choice to delete.
-  ///
-  /// Required.
-  core.String? id;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest({
-    this.fieldId,
-    this.id,
-  });
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        fieldId: json_['fieldId'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldId != null) 'fieldId': fieldId!,
-    if (id != null) 'id': id!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDeleteSelectionChoiceRequest =
+    $DeltaUpdateLabelRequestDeleteSelectionChoiceRequest;
 
 /// Request to disable the Field.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableFieldRequest {
@@ -2030,50 +1966,12 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestDisableSelectionChoiceReques
 }
 
 /// Request to enable the Field.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest {
-  /// ID of the Field to enable.
-  ///
-  /// Required.
-  core.String? id;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest({this.id});
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest.fromJson(
-    core.Map json_,
-  ) : this(id: json_['id'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {if (id != null) 'id': id!};
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableFieldRequest =
+    $DeltaUpdateLabelRequestEnableFieldRequest;
 
 /// Request to enable a Choice.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest {
-  /// The Selection Field in which a Choice will be enabled.
-  ///
-  /// Required.
-  core.String? fieldId;
-
-  /// Choice to enable.
-  ///
-  /// Required.
-  core.String? id;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest({
-    this.fieldId,
-    this.id,
-  });
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        fieldId: json_['fieldId'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldId != null) 'fieldId': fieldId!,
-    if (id != null) 'id': id!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestEnableSelectionChoiceRequest =
+    $DeltaUpdateLabelRequestEnableSelectionChoiceRequest;
 
 /// A single kind of update to apply to a Label.
 class GoogleAppsDriveLabelsV2DeltaUpdateLabelRequestRequest {
@@ -2510,62 +2408,12 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponse {
 }
 
 /// Response following Field create.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse {
-  /// The field of the created field.
-  ///
-  /// When left blank in a create request, a key will be autogenerated and can
-  /// be identified here.
-  core.String? id;
-
-  /// The priority of the created field.
-  ///
-  /// The priority may change from what was specified to assure contiguous
-  /// priorities between fields (1-n).
-  core.int? priority;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse({
-    this.id,
-    this.priority,
-  });
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse.fromJson(
-    core.Map json_,
-  ) : this(
-        id: json_['id'] as core.String?,
-        priority: json_['priority'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (priority != null) 'priority': priority!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateFieldResponse =
+    $DeltaUpdateLabelResponseCreateFieldResponse;
 
 /// Response following Selection Choice create.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse {
-  /// The server-generated id of the field.
-  core.String? fieldId;
-
-  /// The server-generated ID of the created choice within the Field
-  core.String? id;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse({
-    this.fieldId,
-    this.id,
-  });
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse.fromJson(
-    core.Map json_,
-  ) : this(
-        fieldId: json_['fieldId'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldId != null) 'fieldId': fieldId!,
-    if (id != null) 'id': id!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseCreateSelectionChoiceResponse =
+    $DeltaUpdateLabelResponseCreateSelectionChoiceResponse;
 
 /// Response following Field delete.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseDeleteFieldResponse =
@@ -2761,25 +2609,8 @@ class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseResponse {
 }
 
 /// Response following update to Field properties.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse {
-  /// The priority of the updated field.
-  ///
-  /// The priority may change from what was specified to assure contiguous
-  /// priorities between fields (1-n).
-  core.int? priority;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse({
-    this.priority,
-  });
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse.fromJson(
-    core.Map json_,
-  ) : this(priority: json_['priority'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (priority != null) 'priority': priority!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldPropertiesResponse =
+    $DeltaUpdateLabelResponseUpdateFieldPropertiesResponse;
 
 /// Response following update to Field type.
 typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateFieldTypeResponse =
@@ -2790,25 +2621,8 @@ typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateLabelPropertiesResp
     $Empty;
 
 /// Response following update to Selection Choice properties.
-class GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse {
-  /// The priority of the updated choice.
-  ///
-  /// The priority may change from what was specified to assure contiguous
-  /// priorities between choices (1-n).
-  core.int? priority;
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse({
-    this.priority,
-  });
-
-  GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse.fromJson(
-    core.Map json_,
-  ) : this(priority: json_['priority'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (priority != null) 'priority': priority!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse =
+    $DeltaUpdateLabelResponseUpdateSelectionChoicePropertiesResponse;
 
 /// Request to deprecate a published Label.
 class GoogleAppsDriveLabelsV2DisableLabelRequest {
@@ -3177,35 +2991,8 @@ class GoogleAppsDriveLabelsV2Field {
 }
 
 /// The capabilities related to this field on applied metadata.
-class GoogleAppsDriveLabelsV2FieldAppliedCapabilities {
-  /// Whether the user can read related applied metadata on items.
-  core.bool? canRead;
-
-  /// Whether the user can search for Drive items referencing this field.
-  core.bool? canSearch;
-
-  /// Whether the user can set this field on Drive items.
-  core.bool? canWrite;
-
-  GoogleAppsDriveLabelsV2FieldAppliedCapabilities({
-    this.canRead,
-    this.canSearch,
-    this.canWrite,
-  });
-
-  GoogleAppsDriveLabelsV2FieldAppliedCapabilities.fromJson(core.Map json_)
-    : this(
-        canRead: json_['canRead'] as core.bool?,
-        canSearch: json_['canSearch'] as core.bool?,
-        canWrite: json_['canWrite'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canRead != null) 'canRead': canRead!,
-    if (canSearch != null) 'canSearch': canSearch!,
-    if (canWrite != null) 'canWrite': canWrite!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldAppliedCapabilities =
+    $FieldAppliedCapabilities;
 
 /// Options for the date field type.
 class GoogleAppsDriveLabelsV2FieldDateOptions {
@@ -3269,69 +3056,10 @@ class GoogleAppsDriveLabelsV2FieldDateOptions {
 }
 
 /// UI display hints for rendering a field.
-class GoogleAppsDriveLabelsV2FieldDisplayHints {
-  /// Whether the field should be shown in the UI as disabled.
-  core.bool? disabled;
-
-  /// This field should be hidden in the search menu when searching for Drive
-  /// items.
-  core.bool? hiddenInSearch;
-
-  /// Whether the field should be shown as required in the UI.
-  core.bool? required;
-
-  /// This field should be shown in the apply menu when applying values to a
-  /// Drive item.
-  core.bool? shownInApply;
-
-  GoogleAppsDriveLabelsV2FieldDisplayHints({
-    this.disabled,
-    this.hiddenInSearch,
-    this.required,
-    this.shownInApply,
-  });
-
-  GoogleAppsDriveLabelsV2FieldDisplayHints.fromJson(core.Map json_)
-    : this(
-        disabled: json_['disabled'] as core.bool?,
-        hiddenInSearch: json_['hiddenInSearch'] as core.bool?,
-        required: json_['required'] as core.bool?,
-        shownInApply: json_['shownInApply'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-    if (hiddenInSearch != null) 'hiddenInSearch': hiddenInSearch!,
-    if (required != null) 'required': required!,
-    if (shownInApply != null) 'shownInApply': shownInApply!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldDisplayHints = $FieldDisplayHints;
 
 /// Options for the Integer field type.
-class GoogleAppsDriveLabelsV2FieldIntegerOptions {
-  /// The maximum valid value for the integer field.
-  ///
-  /// Output only.
-  core.String? maxValue;
-
-  /// The minimum valid value for the integer field.
-  ///
-  /// Output only.
-  core.String? minValue;
-
-  GoogleAppsDriveLabelsV2FieldIntegerOptions({this.maxValue, this.minValue});
-
-  GoogleAppsDriveLabelsV2FieldIntegerOptions.fromJson(core.Map json_)
-    : this(
-        maxValue: json_['maxValue'] as core.String?,
-        minValue: json_['minValue'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxValue != null) 'maxValue': maxValue!,
-    if (minValue != null) 'minValue': minValue!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldIntegerOptions = $FieldIntegerOptions;
 
 /// Field constants governing the structure of a Field; such as, the maximum
 /// title length, minimum and maximum field values or length, etc.
@@ -3438,98 +3166,14 @@ class GoogleAppsDriveLabelsV2FieldLimits {
 }
 
 /// Options for a multi-valued variant of an associated field type.
-class GoogleAppsDriveLabelsV2FieldListOptions {
-  /// Maximum number of entries permitted.
-  core.int? maxEntries;
-
-  GoogleAppsDriveLabelsV2FieldListOptions({this.maxEntries});
-
-  GoogleAppsDriveLabelsV2FieldListOptions.fromJson(core.Map json_)
-    : this(maxEntries: json_['maxEntries'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxEntries != null) 'maxEntries': maxEntries!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldListOptions = $FieldListOptions;
 
 /// The basic properties of the field.
-class GoogleAppsDriveLabelsV2FieldProperties {
-  /// The display text to show in the UI identifying this field.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// Input only.
-  ///
-  /// Insert or move this field before the indicated field. If empty, the field
-  /// is placed at the end of the list.
-  core.String? insertBeforeField;
-
-  /// Whether the field should be marked as required.
-  core.bool? required;
-
-  GoogleAppsDriveLabelsV2FieldProperties({
-    this.displayName,
-    this.insertBeforeField,
-    this.required,
-  });
-
-  GoogleAppsDriveLabelsV2FieldProperties.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        insertBeforeField: json_['insertBeforeField'] as core.String?,
-        required: json_['required'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (insertBeforeField != null) 'insertBeforeField': insertBeforeField!,
-    if (required != null) 'required': required!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldProperties = $FieldProperties;
 
 /// The capabilities related to this field when editing the field.
-class GoogleAppsDriveLabelsV2FieldSchemaCapabilities {
-  /// Whether the user can delete this field.
-  ///
-  /// The user must have permission and the field must be deprecated.
-  core.bool? canDelete;
-
-  /// Whether the user can disable this field.
-  ///
-  /// The user must have permission and this field must not already be disabled.
-  core.bool? canDisable;
-
-  /// Whether the user can enable this field.
-  ///
-  /// The user must have permission and this field must be disabled.
-  core.bool? canEnable;
-
-  /// Whether the user can change this field.
-  core.bool? canUpdate;
-
-  GoogleAppsDriveLabelsV2FieldSchemaCapabilities({
-    this.canDelete,
-    this.canDisable,
-    this.canEnable,
-    this.canUpdate,
-  });
-
-  GoogleAppsDriveLabelsV2FieldSchemaCapabilities.fromJson(core.Map json_)
-    : this(
-        canDelete: json_['canDelete'] as core.bool?,
-        canDisable: json_['canDisable'] as core.bool?,
-        canEnable: json_['canEnable'] as core.bool?,
-        canUpdate: json_['canUpdate'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canDelete != null) 'canDelete': canDelete!,
-    if (canDisable != null) 'canDisable': canDisable!,
-    if (canEnable != null) 'canEnable': canEnable!,
-    if (canUpdate != null) 'canUpdate': canUpdate!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldSchemaCapabilities =
+    $FieldSchemaCapabilities;
 
 /// Options for the selection field type.
 class GoogleAppsDriveLabelsV2FieldSelectionOptions {
@@ -3768,36 +3412,8 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoice {
 }
 
 /// The capabilities related to this choice on applied metadata.
-class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities {
-  /// Whether the user can read related applied metadata on items.
-  core.bool? canRead;
-
-  /// Whether the user can use this choice in search queries.
-  core.bool? canSearch;
-
-  /// Whether the user can select this choice on an item.
-  core.bool? canSelect;
-
-  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities({
-    this.canRead,
-    this.canSearch,
-    this.canSelect,
-  });
-
-  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities.fromJson(
-    core.Map json_,
-  ) : this(
-        canRead: json_['canRead'] as core.bool?,
-        canSearch: json_['canSearch'] as core.bool?,
-        canSelect: json_['canSelect'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canRead != null) 'canRead': canRead!,
-    if (canSearch != null) 'canSearch': canSearch!,
-    if (canSelect != null) 'canSelect': canSelect!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities =
+    $FieldSelectionOptionsChoiceAppliedCapabilities;
 
 /// UI display hints for rendering an option.
 class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceDisplayHints {
@@ -3925,68 +3541,11 @@ class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties {
 }
 
 /// The capabilities related to this choice when editing the choice.
-class GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities {
-  /// Whether the user can delete this choice.
-  core.bool? canDelete;
-
-  /// Whether the user can disable this choice.
-  core.bool? canDisable;
-
-  /// Whether the user can enable this choice.
-  core.bool? canEnable;
-
-  /// Whether the user can update this choice.
-  core.bool? canUpdate;
-
-  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities({
-    this.canDelete,
-    this.canDisable,
-    this.canEnable,
-    this.canUpdate,
-  });
-
-  GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities.fromJson(
-    core.Map json_,
-  ) : this(
-        canDelete: json_['canDelete'] as core.bool?,
-        canDisable: json_['canDisable'] as core.bool?,
-        canEnable: json_['canEnable'] as core.bool?,
-        canUpdate: json_['canUpdate'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canDelete != null) 'canDelete': canDelete!,
-    if (canDisable != null) 'canDisable': canDisable!,
-    if (canEnable != null) 'canEnable': canEnable!,
-    if (canUpdate != null) 'canUpdate': canUpdate!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities =
+    $FieldSelectionOptionsChoiceSchemaCapabilities;
 
 /// Options for the Text field type.
-class GoogleAppsDriveLabelsV2FieldTextOptions {
-  /// The maximum valid length of values for the text field.
-  ///
-  /// Output only.
-  core.int? maxLength;
-
-  /// The minimum valid length of values for the text field.
-  ///
-  /// Output only.
-  core.int? minLength;
-
-  GoogleAppsDriveLabelsV2FieldTextOptions({this.maxLength, this.minLength});
-
-  GoogleAppsDriveLabelsV2FieldTextOptions.fromJson(core.Map json_)
-    : this(
-        maxLength: json_['maxLength'] as core.int?,
-        minLength: json_['minLength'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxLength != null) 'maxLength': maxLength!,
-    if (minLength != null) 'minLength': minLength!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2FieldTextOptions = $FieldTextOptions;
 
 /// Options for the user field type.
 class GoogleAppsDriveLabelsV2FieldUserOptions {
@@ -4013,26 +3572,7 @@ class GoogleAppsDriveLabelsV2FieldUserOptions {
 }
 
 /// Limits for integer Field type.
-class GoogleAppsDriveLabelsV2IntegerLimits {
-  /// Maximum value for an integer Field type.
-  core.String? maxValue;
-
-  /// Minimum value for an integer Field type.
-  core.String? minValue;
-
-  GoogleAppsDriveLabelsV2IntegerLimits({this.maxValue, this.minValue});
-
-  GoogleAppsDriveLabelsV2IntegerLimits.fromJson(core.Map json_)
-    : this(
-        maxValue: json_['maxValue'] as core.String?,
-        minValue: json_['minValue'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxValue != null) 'maxValue': maxValue!,
-    if (minValue != null) 'minValue': minValue!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2IntegerLimits = $IntegerLimits;
 
 /// A label defines a taxonomy that can be applied to Drive items in order to
 /// organize and search across items.
@@ -4336,99 +3876,15 @@ class GoogleAppsDriveLabelsV2Label {
 }
 
 /// The capabilities a user has on this label's applied metadata.
-class GoogleAppsDriveLabelsV2LabelAppliedCapabilities {
-  /// Whether the user can apply this label to items.
-  core.bool? canApply;
-
-  /// Whether the user can read applied metadata related to this label.
-  core.bool? canRead;
-
-  /// Whether the user can remove this label from items.
-  core.bool? canRemove;
-
-  GoogleAppsDriveLabelsV2LabelAppliedCapabilities({
-    this.canApply,
-    this.canRead,
-    this.canRemove,
-  });
-
-  GoogleAppsDriveLabelsV2LabelAppliedCapabilities.fromJson(core.Map json_)
-    : this(
-        canApply: json_['canApply'] as core.bool?,
-        canRead: json_['canRead'] as core.bool?,
-        canRemove: json_['canRemove'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canApply != null) 'canApply': canApply!,
-    if (canRead != null) 'canRead': canRead!,
-    if (canRemove != null) 'canRemove': canRemove!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelAppliedCapabilities =
+    $LabelAppliedCapabilities;
 
 /// Behavior of this label when it's applied to Drive items.
-class GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy {
-  /// Indicates how the applied label and field values should be copied when a
-  /// Drive item is copied.
-  /// Possible string values are:
-  /// - "COPY_MODE_UNSPECIFIED" : Copy mode unspecified.
-  /// - "DO_NOT_COPY" : The applied label and field values are not copied by
-  /// default when the Drive item it's applied to is copied.
-  /// - "ALWAYS_COPY" : The applied label and field values are always copied
-  /// when the Drive item it's applied to is copied. Only admins can use this
-  /// mode.
-  /// - "COPY_APPLIABLE" : The applied label and field values are copied if the
-  /// label is appliable by the user making the copy.
-  core.String? copyMode;
-
-  GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy({this.copyMode});
-
-  GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy.fromJson(core.Map json_)
-    : this(copyMode: json_['copyMode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (copyMode != null) 'copyMode': copyMode!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy =
+    $LabelAppliedLabelPolicy;
 
 /// UI display hints for rendering the label.
-class GoogleAppsDriveLabelsV2LabelDisplayHints {
-  /// Whether the label should be shown in the UI as disabled.
-  core.bool? disabled;
-
-  /// This label should be hidden in the search menu when searching for Drive
-  /// items.
-  core.bool? hiddenInSearch;
-
-  /// Order to display label in a list.
-  core.String? priority;
-
-  /// This label should be shown in the apply menu when applying values to a
-  /// Drive item.
-  core.bool? shownInApply;
-
-  GoogleAppsDriveLabelsV2LabelDisplayHints({
-    this.disabled,
-    this.hiddenInSearch,
-    this.priority,
-    this.shownInApply,
-  });
-
-  GoogleAppsDriveLabelsV2LabelDisplayHints.fromJson(core.Map json_)
-    : this(
-        disabled: json_['disabled'] as core.bool?,
-        hiddenInSearch: json_['hiddenInSearch'] as core.bool?,
-        priority: json_['priority'] as core.String?,
-        shownInApply: json_['shownInApply'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-    if (hiddenInSearch != null) 'hiddenInSearch': hiddenInSearch!,
-    if (priority != null) 'priority': priority!,
-    if (shownInApply != null) 'shownInApply': shownInApply!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelDisplayHints = $LabelDisplayHints;
 
 /// Describes the Workspace apps in which the Label can be used.
 class GoogleAppsDriveLabelsV2LabelEnabledAppSettings {
@@ -4459,26 +3915,8 @@ class GoogleAppsDriveLabelsV2LabelEnabledAppSettings {
 }
 
 /// An App where the Label can be used.
-class GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp {
-  /// The name of the App.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "APP_UNSPECIFIED" : Unspecified
-  /// - "DRIVE" : Drive.
-  /// - "GMAIL" : Gmail
-  core.String? app;
-
-  GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp({this.app});
-
-  GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp.fromJson(
-    core.Map json_,
-  ) : this(app: json_['app'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (app != null) 'app': app!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelEnabledAppSettingsEnabledApp =
+    $LabelEnabledAppSettingsEnabledApp;
 
 /// Label constraints governing the structure of a Label; such as, the maximum
 /// number of Fields allowed and maximum length of the label title.
@@ -4641,154 +4079,18 @@ class GoogleAppsDriveLabelsV2LabelLock {
 }
 
 /// A description of a user's capabilities on a LabelLock.
-class GoogleAppsDriveLabelsV2LabelLockCapabilities {
-  /// True if the user is authorized to view the policy.
-  core.bool? canViewPolicy;
-
-  GoogleAppsDriveLabelsV2LabelLockCapabilities({this.canViewPolicy});
-
-  GoogleAppsDriveLabelsV2LabelLockCapabilities.fromJson(core.Map json_)
-    : this(canViewPolicy: json_['canViewPolicy'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canViewPolicy != null) 'canViewPolicy': canViewPolicy!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelLockCapabilities = $LabelLockCapabilities;
 
 /// The permission that applies to a principal (user, group, audience) on a
 /// label.
-class GoogleAppsDriveLabelsV2LabelPermission {
-  /// Audience to grant a role to.
-  ///
-  /// The magic value of `audiences/default` may be used to apply the role to
-  /// the default audience in the context of the organization that owns the
-  /// Label.
-  core.String? audience;
-
-  /// Specifies the email address for a user or group pricinpal.
-  ///
-  /// Not populated for audience principals. User and Group permissions may only
-  /// be inserted using email address. On update requests, if email address is
-  /// specified, no principal should be specified.
-  core.String? email;
-
-  /// Group resource name.
-  core.String? group;
-
-  /// Resource name of this permission.
-  core.String? name;
-
-  /// Person resource name.
-  core.String? person;
-
-  /// The role the principal should have.
-  /// Possible string values are:
-  /// - "LABEL_ROLE_UNSPECIFIED" : Unknown role.
-  /// - "READER" : A reader can read the label and associated metadata applied
-  /// to Drive items.
-  /// - "APPLIER" : An applier can write associated metadata on Drive items in
-  /// which they also have write access to. Implies `READER`.
-  /// - "ORGANIZER" : An organizer can pin this label in shared drives they
-  /// manage and add new appliers to the label.
-  /// - "EDITOR" : Editors can make any update including deleting the label
-  /// which also deletes the associated Drive item metadata. Implies `APPLIER`.
-  core.String? role;
-
-  GoogleAppsDriveLabelsV2LabelPermission({
-    this.audience,
-    this.email,
-    this.group,
-    this.name,
-    this.person,
-    this.role,
-  });
-
-  GoogleAppsDriveLabelsV2LabelPermission.fromJson(core.Map json_)
-    : this(
-        audience: json_['audience'] as core.String?,
-        email: json_['email'] as core.String?,
-        group: json_['group'] as core.String?,
-        name: json_['name'] as core.String?,
-        person: json_['person'] as core.String?,
-        role: json_['role'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (email != null) 'email': email!,
-    if (group != null) 'group': group!,
-    if (name != null) 'name': name!,
-    if (person != null) 'person': person!,
-    if (role != null) 'role': role!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelPermission = $LabelPermission;
 
 /// Basic properties of the label.
-class GoogleAppsDriveLabelsV2LabelProperties {
-  /// The description of the label.
-  core.String? description;
-
-  /// Title of the label.
-  ///
-  /// Required.
-  core.String? title;
-
-  GoogleAppsDriveLabelsV2LabelProperties({this.description, this.title});
-
-  GoogleAppsDriveLabelsV2LabelProperties.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        title: json_['title'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (title != null) 'title': title!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelProperties = $LabelProperties;
 
 /// The capabilities related to this label when editing the label.
-class GoogleAppsDriveLabelsV2LabelSchemaCapabilities {
-  /// Whether the user can delete this label.
-  ///
-  /// The user must have permission and the label must be disabled.
-  core.bool? canDelete;
-
-  /// Whether the user can disable this label.
-  ///
-  /// The user must have permission and this label must not already be disabled.
-  core.bool? canDisable;
-
-  /// Whether the user can enable this label.
-  ///
-  /// The user must have permission and this label must be disabled.
-  core.bool? canEnable;
-
-  /// Whether the user can change this label.
-  core.bool? canUpdate;
-
-  GoogleAppsDriveLabelsV2LabelSchemaCapabilities({
-    this.canDelete,
-    this.canDisable,
-    this.canEnable,
-    this.canUpdate,
-  });
-
-  GoogleAppsDriveLabelsV2LabelSchemaCapabilities.fromJson(core.Map json_)
-    : this(
-        canDelete: json_['canDelete'] as core.bool?,
-        canDisable: json_['canDisable'] as core.bool?,
-        canEnable: json_['canEnable'] as core.bool?,
-        canUpdate: json_['canUpdate'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canDelete != null) 'canDelete': canDelete!,
-    if (canDisable != null) 'canDisable': canDisable!,
-    if (canEnable != null) 'canEnable': canEnable!,
-    if (canUpdate != null) 'canUpdate': canUpdate!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LabelSchemaCapabilities =
+    $LabelSchemaCapabilities;
 
 /// The lifecycle state of an object, such as label, field, or choice.
 ///
@@ -4857,37 +4159,8 @@ class GoogleAppsDriveLabelsV2Lifecycle {
 
 /// The policy that governs how to treat a disabled label, field, or selection
 /// choice in different contexts.
-class GoogleAppsDriveLabelsV2LifecycleDisabledPolicy {
-  /// Whether to hide this disabled object in the search menu for Drive items.
-  ///
-  /// * When `false`, the object is generally shown in the UI as disabled but it
-  /// appears in the search results when searching for Drive items. * When
-  /// `true`, the object is generally hidden in the UI when searching for Drive
-  /// items.
-  core.bool? hideInSearch;
-
-  /// Whether to show this disabled object in the apply menu on Drive items.
-  ///
-  /// * When `true`, the object is generally shown in the UI as disabled and is
-  /// unselectable. * When `false`, the object is generally hidden in the UI.
-  core.bool? showInApply;
-
-  GoogleAppsDriveLabelsV2LifecycleDisabledPolicy({
-    this.hideInSearch,
-    this.showInApply,
-  });
-
-  GoogleAppsDriveLabelsV2LifecycleDisabledPolicy.fromJson(core.Map json_)
-    : this(
-        hideInSearch: json_['hideInSearch'] as core.bool?,
-        showInApply: json_['showInApply'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hideInSearch != null) 'hideInSearch': hideInSearch!,
-    if (showInApply != null) 'showInApply': showInApply!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LifecycleDisabledPolicy =
+    $LifecycleDisabledPolicy;
 
 /// The response to a ListLabelLocksRequest.
 class GoogleAppsDriveLabelsV2ListLabelLocksResponse {
@@ -4983,63 +4256,14 @@ class GoogleAppsDriveLabelsV2ListLabelsResponse {
 }
 
 /// Limits for list-variant of a Field type.
-class GoogleAppsDriveLabelsV2ListLimits {
-  /// Maximum number of values allowed for the Field type.
-  core.int? maxEntries;
-
-  GoogleAppsDriveLabelsV2ListLimits({this.maxEntries});
-
-  GoogleAppsDriveLabelsV2ListLimits.fromJson(core.Map json_)
-    : this(maxEntries: json_['maxEntries'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxEntries != null) 'maxEntries': maxEntries!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2ListLimits = $ListLimits;
 
 /// Contains information about whether a label component should be considered
 /// locked.
-class GoogleAppsDriveLabelsV2LockStatus {
-  /// Indicates whether this label component is the (direct) target of a
-  /// LabelLock.
-  ///
-  /// A label component can be implicitly locked even if it's not the direct
-  /// target of a LabelLock, in which case this field is set to false.
-  ///
-  /// Output only.
-  core.bool? locked;
-
-  GoogleAppsDriveLabelsV2LockStatus({this.locked});
-
-  GoogleAppsDriveLabelsV2LockStatus.fromJson(core.Map json_)
-    : this(locked: json_['locked'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locked != null) 'locked': locked!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LockStatus = $LockStatus;
 
 /// Limits for long text Field type.
-class GoogleAppsDriveLabelsV2LongTextLimits {
-  /// Maximum length allowed for a long text Field type.
-  core.int? maxLength;
-
-  /// Minimum length allowed for a long text Field type.
-  core.int? minLength;
-
-  GoogleAppsDriveLabelsV2LongTextLimits({this.maxLength, this.minLength});
-
-  GoogleAppsDriveLabelsV2LongTextLimits.fromJson(core.Map json_)
-    : this(
-        maxLength: json_['maxLength'] as core.int?,
-        minLength: json_['minLength'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxLength != null) 'maxLength': maxLength!,
-    if (minLength != null) 'minLength': minLength!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2LongTextLimits = $LongTextLimits;
 
 /// Request to publish a label.
 class GoogleAppsDriveLabelsV2PublishLabelRequest {
@@ -5135,89 +4359,14 @@ class GoogleAppsDriveLabelsV2SelectionLimits {
 }
 
 /// Limits for text Field type.
-class GoogleAppsDriveLabelsV2TextLimits {
-  /// Maximum length allowed for a text Field type.
-  core.int? maxLength;
-
-  /// Minimum length allowed for a text Field type.
-  core.int? minLength;
-
-  GoogleAppsDriveLabelsV2TextLimits({this.maxLength, this.minLength});
-
-  GoogleAppsDriveLabelsV2TextLimits.fromJson(core.Map json_)
-    : this(
-        maxLength: json_['maxLength'] as core.int?,
-        minLength: json_['minLength'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxLength != null) 'maxLength': maxLength!,
-    if (minLength != null) 'minLength': minLength!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2TextLimits = $TextLimits;
 
 /// Request to update the `CopyMode` of the given Label.
 ///
 /// Changes to this policy are not revisioned, do not require publishing, and
 /// take effect immediately. \
-class GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest {
-  /// Indicates how the applied Label, and Field values should be copied when a
-  /// Drive item is copied.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "COPY_MODE_UNSPECIFIED" : Copy mode unspecified.
-  /// - "DO_NOT_COPY" : The applied label and field values are not copied by
-  /// default when the Drive item it's applied to is copied.
-  /// - "ALWAYS_COPY" : The applied label and field values are always copied
-  /// when the Drive item it's applied to is copied. Only admins can use this
-  /// mode.
-  /// - "COPY_APPLIABLE" : The applied label and field values are copied if the
-  /// label is appliable by the user making the copy.
-  core.String? copyMode;
-
-  /// The BCP-47 language code to use for evaluating localized field labels.
-  ///
-  /// When not specified, values in the default configured language will be
-  /// used.
-  core.String? languageCode;
-
-  /// Set to `true` in order to use the user's admin credentials.
-  ///
-  /// The server will verify the user is an admin for the Label before allowing
-  /// access.
-  core.bool? useAdminAccess;
-
-  /// When specified, only certain fields belonging to the indicated view will
-  /// be returned.
-  /// Possible string values are:
-  /// - "LABEL_VIEW_BASIC" : Implies the field mask:
-  /// `name,id,revision_id,label_type,properties.*`
-  /// - "LABEL_VIEW_FULL" : All possible fields.
-  core.String? view;
-
-  GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest({
-    this.copyMode,
-    this.languageCode,
-    this.useAdminAccess,
-    this.view,
-  });
-
-  GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest.fromJson(core.Map json_)
-    : this(
-        copyMode: json_['copyMode'] as core.String?,
-        languageCode: json_['languageCode'] as core.String?,
-        useAdminAccess: json_['useAdminAccess'] as core.bool?,
-        view: json_['view'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (copyMode != null) 'copyMode': copyMode!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (useAdminAccess != null) 'useAdminAccess': useAdminAccess!,
-    if (view != null) 'view': view!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2UpdateLabelCopyModeRequest =
+    $UpdateLabelCopyModeRequest;
 
 /// Request to update the `EnabledAppSettings` of the given Label.
 ///
@@ -5333,79 +4482,10 @@ class GoogleAppsDriveLabelsV2UpdateLabelPermissionRequest {
 }
 
 /// The capabilities of a user.
-class GoogleAppsDriveLabelsV2UserCapabilities {
-  /// Whether the user is allowed access to the label manager.
-  ///
-  /// Output only.
-  core.bool? canAccessLabelManager;
-
-  /// Whether the user is an administrator for the shared labels feature.
-  ///
-  /// Output only.
-  core.bool? canAdministrateLabels;
-
-  /// Whether the user is allowed to create new admin labels.
-  ///
-  /// Output only.
-  core.bool? canCreateAdminLabels;
-
-  /// Whether the user is allowed to create new shared labels.
-  ///
-  /// Output only.
-  core.bool? canCreateSharedLabels;
-
-  /// Resource name for the user capabilities.
-  ///
-  /// Output only.
-  core.String? name;
-
-  GoogleAppsDriveLabelsV2UserCapabilities({
-    this.canAccessLabelManager,
-    this.canAdministrateLabels,
-    this.canCreateAdminLabels,
-    this.canCreateSharedLabels,
-    this.name,
-  });
-
-  GoogleAppsDriveLabelsV2UserCapabilities.fromJson(core.Map json_)
-    : this(
-        canAccessLabelManager: json_['canAccessLabelManager'] as core.bool?,
-        canAdministrateLabels: json_['canAdministrateLabels'] as core.bool?,
-        canCreateAdminLabels: json_['canCreateAdminLabels'] as core.bool?,
-        canCreateSharedLabels: json_['canCreateSharedLabels'] as core.bool?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canAccessLabelManager != null)
-      'canAccessLabelManager': canAccessLabelManager!,
-    if (canAdministrateLabels != null)
-      'canAdministrateLabels': canAdministrateLabels!,
-    if (canCreateAdminLabels != null)
-      'canCreateAdminLabels': canCreateAdminLabels!,
-    if (canCreateSharedLabels != null)
-      'canCreateSharedLabels': canCreateSharedLabels!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2UserCapabilities = $UserCapabilities;
 
 /// Information about a user.
-class GoogleAppsDriveLabelsV2UserInfo {
-  /// The identifier for this user that can be used with the People API to get
-  /// more information.
-  ///
-  /// For example, people/12345678.
-  core.String? person;
-
-  GoogleAppsDriveLabelsV2UserInfo({this.person});
-
-  GoogleAppsDriveLabelsV2UserInfo.fromJson(core.Map json_)
-    : this(person: json_['person'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (person != null) 'person': person!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2UserInfo = $UserInfo02;
 
 /// Limits for Field.Type.USER.
 class GoogleAppsDriveLabelsV2UserLimits {
@@ -5432,22 +4512,7 @@ class GoogleAppsDriveLabelsV2UserLimits {
 /// Provides control over how write requests are executed.
 ///
 /// When not specified, the last write wins.
-class GoogleAppsDriveLabelsV2WriteControl {
-  /// The revision_id of the label that the write request will be applied to.
-  ///
-  /// If this is not the latest revision of the label, the request will not be
-  /// processed and will return a 400 Bad Request error.
-  core.String? requiredRevisionId;
-
-  GoogleAppsDriveLabelsV2WriteControl({this.requiredRevisionId});
-
-  GoogleAppsDriveLabelsV2WriteControl.fromJson(core.Map json_)
-    : this(requiredRevisionId: json_['requiredRevisionId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requiredRevisionId != null) 'requiredRevisionId': requiredRevisionId!,
-  };
-}
+typedef GoogleAppsDriveLabelsV2WriteControl = $WriteControl;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

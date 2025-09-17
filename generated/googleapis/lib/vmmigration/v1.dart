@@ -3270,122 +3270,19 @@ class ProjectsLocationsTargetProjectsResource {
 }
 
 /// Message describing AWS Credentials using access key id and secret.
-class AccessKeyCredentials {
-  /// AWS access key ID.
-  core.String? accessKeyId;
-
-  /// Input only.
-  ///
-  /// AWS secret access key.
-  core.String? secretAccessKey;
-
-  /// Input only.
-  ///
-  /// AWS session token. Used only when AWS security token service (STS) is
-  /// responsible for creating the temporary credentials.
-  core.String? sessionToken;
-
-  AccessKeyCredentials({
-    this.accessKeyId,
-    this.secretAccessKey,
-    this.sessionToken,
-  });
-
-  AccessKeyCredentials.fromJson(core.Map json_)
-    : this(
-        accessKeyId: json_['accessKeyId'] as core.String?,
-        secretAccessKey: json_['secretAccessKey'] as core.String?,
-        sessionToken: json_['sessionToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessKeyId != null) 'accessKeyId': accessKeyId!,
-    if (secretAccessKey != null) 'secretAccessKey': secretAccessKey!,
-    if (sessionToken != null) 'sessionToken': sessionToken!,
-  };
-}
+typedef AccessKeyCredentials = $AccessKeyCredentials;
 
 /// AdaptingOSStep contains specific step details.
 typedef AdaptingOSStep = $Empty;
 
 /// Request message for 'AddGroupMigration' request.
-class AddGroupMigrationRequest {
-  /// The full path name of the MigratingVm to add.
-  core.String? migratingVm;
-
-  AddGroupMigrationRequest({this.migratingVm});
-
-  AddGroupMigrationRequest.fromJson(core.Map json_)
-    : this(migratingVm: json_['migratingVm'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (migratingVm != null) 'migratingVm': migratingVm!,
-  };
-}
+typedef AddGroupMigrationRequest = $AddGroupMigrationRequest;
 
 /// Describes an appliance version.
-class ApplianceVersion {
-  /// Determine whether it's critical to upgrade the appliance to this version.
-  core.bool? critical;
-
-  /// Link to a page that contains the version release notes.
-  core.String? releaseNotesUri;
-
-  /// A link for downloading the version.
-  core.String? uri;
-
-  /// The appliance version.
-  core.String? version;
-
-  ApplianceVersion({
-    this.critical,
-    this.releaseNotesUri,
-    this.uri,
-    this.version,
-  });
-
-  ApplianceVersion.fromJson(core.Map json_)
-    : this(
-        critical: json_['critical'] as core.bool?,
-        releaseNotesUri: json_['releaseNotesUri'] as core.String?,
-        uri: json_['uri'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (critical != null) 'critical': critical!,
-    if (releaseNotesUri != null) 'releaseNotesUri': releaseNotesUri!,
-    if (uri != null) 'uri': uri!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef ApplianceVersion = $ApplianceVersion;
 
 /// AppliedLicense holds the license data returned by adaptation module report.
-class AppliedLicense {
-  /// The OS license returned from the adaptation module's report.
-  core.String? osLicense;
-
-  /// The license type that was used in OS adaptation.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified license for the OS.
-  /// - "NONE" : No license available for the OS.
-  /// - "PAYG" : The license type is Pay As You Go license type.
-  /// - "BYOL" : The license type is Bring Your Own License type.
-  core.String? type;
-
-  AppliedLicense({this.osLicense, this.type});
-
-  AppliedLicense.fromJson(core.Map json_)
-    : this(
-        osLicense: json_['osLicense'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (osLicense != null) 'osLicense': osLicense!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef AppliedLicense = $AppliedLicense;
 
 /// Holds information about the available versions for upgrade.
 class AvailableUpdates {
@@ -3428,59 +3325,10 @@ class AvailableUpdates {
 }
 
 /// The details of an AWS instance disk.
-class AwsDiskDetails {
-  /// The ordinal number of the disk.
-  ///
-  /// Output only.
-  core.int? diskNumber;
-
-  /// Size in GB.
-  ///
-  /// Output only.
-  core.String? sizeGb;
-
-  /// AWS volume ID.
-  ///
-  /// Output only.
-  core.String? volumeId;
-
-  AwsDiskDetails({this.diskNumber, this.sizeGb, this.volumeId});
-
-  AwsDiskDetails.fromJson(core.Map json_)
-    : this(
-        diskNumber: json_['diskNumber'] as core.int?,
-        sizeGb: json_['sizeGb'] as core.String?,
-        volumeId: json_['volumeId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskNumber != null) 'diskNumber': diskNumber!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (volumeId != null) 'volumeId': volumeId!,
-  };
-}
+typedef AwsDiskDetails = $AwsDiskDetails;
 
 /// AwsSecurityGroup describes a security group of an AWS VM.
-class AwsSecurityGroup {
-  /// The AWS security group id.
-  core.String? id;
-
-  /// The AWS security group name.
-  core.String? name;
-
-  AwsSecurityGroup({this.id, this.name});
-
-  AwsSecurityGroup.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef AwsSecurityGroup = $AwsSecurityGroup;
 
 /// AwsSourceDetails message describes a specific source details for the AWS
 /// source type.
@@ -3856,37 +3704,7 @@ class AwsVmsDetails {
 }
 
 /// The details of an Azure VM disk.
-class AzureDiskDetails {
-  /// Azure disk ID.
-  ///
-  /// Output only.
-  core.String? diskId;
-
-  /// The ordinal number of the disk.
-  ///
-  /// Output only.
-  core.int? diskNumber;
-
-  /// Size in GB.
-  ///
-  /// Output only.
-  core.String? sizeGb;
-
-  AzureDiskDetails({this.diskId, this.diskNumber, this.sizeGb});
-
-  AzureDiskDetails.fromJson(core.Map json_)
-    : this(
-        diskId: json_['diskId'] as core.String?,
-        diskNumber: json_['diskNumber'] as core.int?,
-        sizeGb: json_['sizeGb'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskId != null) 'diskId': diskId!,
-    if (diskNumber != null) 'diskNumber': diskNumber!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-  };
-}
+typedef AzureDiskDetails = $AzureDiskDetails;
 
 /// AzureSourceDetails message describes a specific source details for the Azure
 /// source type.
@@ -4306,33 +4124,7 @@ typedef CancelImageImportJobRequest = $Empty;
 typedef CancelOperationRequest = $Empty;
 
 /// Message describing Azure Credentials using tenant ID, client ID and secret.
-class ClientSecretCredentials {
-  /// Azure client ID.
-  core.String? clientId;
-
-  /// Input only.
-  ///
-  /// Azure client secret.
-  core.String? clientSecret;
-
-  /// Azure tenant ID.
-  core.String? tenantId;
-
-  ClientSecretCredentials({this.clientId, this.clientSecret, this.tenantId});
-
-  ClientSecretCredentials.fromJson(core.Map json_)
-    : this(
-        clientId: json_['clientId'] as core.String?,
-        clientSecret: json_['clientSecret'] as core.String?,
-        tenantId: json_['tenantId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientId != null) 'clientId': clientId!,
-    if (clientSecret != null) 'clientSecret': clientSecret!,
-    if (tenantId != null) 'tenantId': tenantId!,
-  };
-}
+typedef ClientSecretCredentials = $ClientSecretCredentials;
 
 /// CloneJob describes the process of creating a clone of a MigratingVM to the
 /// requested target based on the latest successful uploaded snapshots.
@@ -5203,25 +4995,7 @@ class ComputeScheduling {
 typedef CreatingImageStep = $Empty;
 
 /// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
-class CutoverForecast {
-  /// Estimation of the CutoverJob duration.
-  ///
-  /// Output only.
-  core.String? estimatedCutoverJobDuration;
-
-  CutoverForecast({this.estimatedCutoverJobDuration});
-
-  CutoverForecast.fromJson(core.Map json_)
-    : this(
-        estimatedCutoverJobDuration:
-            json_['estimatedCutoverJobDuration'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (estimatedCutoverJobDuration != null)
-      'estimatedCutoverJobDuration': estimatedCutoverJobDuration!,
-  };
-}
+typedef CutoverForecast = $CutoverForecast;
 
 /// CutoverJob message describes a cutover of a migrating VM.
 ///
@@ -5688,48 +5462,10 @@ class DatacenterConnector {
 }
 
 /// A message describing a data disk.
-class Disk {
-  /// The disk's Logical Unit Number (LUN).
-  core.int? lun;
-
-  /// The disk name.
-  core.String? name;
-
-  /// The disk size in GB.
-  core.int? sizeGb;
-
-  Disk({this.lun, this.name, this.sizeGb});
-
-  Disk.fromJson(core.Map json_)
-    : this(
-        lun: json_['lun'] as core.int?,
-        name: json_['name'] as core.String?,
-        sizeGb: json_['sizeGb'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lun != null) 'lun': lun!,
-    if (name != null) 'name': name!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-  };
-}
+typedef Disk = $Disk;
 
 /// Contains details about the image source used to create the disk.
-class DiskImageDefaults {
-  /// The Image resource used when creating the disk.
-  ///
-  /// Required.
-  core.String? sourceImage;
-
-  DiskImageDefaults({this.sourceImage});
-
-  DiskImageDefaults.fromJson(core.Map json_)
-    : this(sourceImage: json_['sourceImage'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sourceImage != null) 'sourceImage': sourceImage!,
-  };
-}
+typedef DiskImageDefaults = $DiskImageDefaults;
 
 /// The target details of the image resource that will be created by the import
 /// job.
@@ -6046,21 +5782,7 @@ class DisksMigrationVmTargetDefaults {
 }
 
 /// Details for the VM created VM as part of disks migration.
-class DisksMigrationVmTargetDetails {
-  /// The URI of the Compute Engine VM.
-  ///
-  /// Output only.
-  core.String? vmUri;
-
-  DisksMigrationVmTargetDetails({this.vmUri});
-
-  DisksMigrationVmTargetDetails.fromJson(core.Map json_)
-    : this(vmUri: json_['vmUri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vmUri != null) 'vmUri': vmUri!,
-  };
-}
+typedef DisksMigrationVmTargetDetails = $DisksMigrationVmTargetDetails;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -6071,54 +5793,10 @@ class DisksMigrationVmTargetDetails {
 typedef Empty = $Empty;
 
 /// Encryption message describes the details of the applied encryption.
-class Encryption {
-  /// The name of the encryption key that is stored in Google Cloud KMS.
-  ///
-  /// Required.
-  core.String? kmsKey;
-
-  Encryption({this.kmsKey});
-
-  Encryption.fromJson(core.Map json_)
-    : this(kmsKey: json_['kmsKey'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-  };
-}
+typedef Encryption = $Encryption;
 
 /// Expiration holds information about the expiration of a MigratingVm.
-class Expiration {
-  /// Timestamp of when this resource is considered expired.
-  ///
-  /// Output only.
-  core.String? expireTime;
-
-  /// Describes whether the expiration can be extended.
-  ///
-  /// Output only.
-  core.bool? extendable;
-
-  /// The number of times expiration was extended.
-  ///
-  /// Output only.
-  core.int? extensionCount;
-
-  Expiration({this.expireTime, this.extendable, this.extensionCount});
-
-  Expiration.fromJson(core.Map json_)
-    : this(
-        expireTime: json_['expireTime'] as core.String?,
-        extendable: json_['extendable'] as core.bool?,
-        extensionCount: json_['extensionCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (extendable != null) 'extendable': extendable!,
-    if (extensionCount != null) 'extensionCount': extensionCount!,
-  };
-}
+typedef Expiration = $Expiration;
 
 /// Request message for 'ExtendMigrationRequest' request.
 typedef ExtendMigrationRequest = $Empty;
@@ -6194,69 +5872,7 @@ typedef FinalizeMigrationRequest = $Empty;
 /// Describes message for 'Group' resource.
 ///
 /// The Group is a collections of several MigratingVms.
-class Group {
-  /// The create time timestamp.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// User-provided description of the group.
-  core.String? description;
-
-  /// Display name is a user defined name for this group which can be updated.
-  core.String? displayName;
-
-  /// The target type of this group.
-  ///
-  /// Immutable.
-  /// Possible string values are:
-  /// - "MIGRATION_TARGET_TYPE_UNSPECIFIED" : Group type is not specified. This
-  /// defaults to Compute Engine targets.
-  /// - "MIGRATION_TARGET_TYPE_GCE" : All MigratingVMs in the group must have
-  /// Compute Engine targets.
-  /// - "MIGRATION_TARGET_TYPE_DISKS" : All MigratingVMs in the group must have
-  /// Compute Engine Disks targets.
-  core.String? migrationTargetType;
-
-  /// The Group name.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The update time timestamp.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  Group({
-    this.createTime,
-    this.description,
-    this.displayName,
-    this.migrationTargetType,
-    this.name,
-    this.updateTime,
-  });
-
-  Group.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        migrationTargetType: json_['migrationTargetType'] as core.String?,
-        name: json_['name'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (migrationTargetType != null)
-      'migrationTargetType': migrationTargetType!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef Group = $Group01;
 
 /// ImageImport describes the configuration of the image import to run.
 class ImageImport {
@@ -6510,61 +6126,7 @@ class ImageImportJob {
 }
 
 /// Parameters affecting the OS adaptation process.
-class ImageImportOsAdaptationParameters {
-  /// By default the image will keep its existing boot option.
-  ///
-  /// Setting this property will trigger an internal process which will convert
-  /// the image from using the existing boot option to another. The size of the
-  /// boot disk might be increased to allow the conversion
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "BOOT_CONVERSION_UNSPECIFIED" : Unspecified conversion type.
-  /// - "NONE" : No conversion.
-  /// - "BIOS_TO_EFI" : Convert from BIOS to EFI.
-  core.String? bootConversion;
-
-  /// Set to true in order to generalize the imported image.
-  ///
-  /// The generalization process enables co-existence of multiple VMs created
-  /// from the same image. For Windows, generalizing the image removes
-  /// computer-specific information such as installed drivers and the computer
-  /// security identifier (SID).
-  ///
-  /// Optional.
-  core.bool? generalize;
-
-  /// Choose which type of license to apply to the imported image.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "COMPUTE_ENGINE_LICENSE_TYPE_DEFAULT" : The license type is the default
-  /// for the OS.
-  /// - "COMPUTE_ENGINE_LICENSE_TYPE_PAYG" : The license type is Pay As You Go
-  /// license type.
-  /// - "COMPUTE_ENGINE_LICENSE_TYPE_BYOL" : The license type is Bring Your Own
-  /// License type.
-  core.String? licenseType;
-
-  ImageImportOsAdaptationParameters({
-    this.bootConversion,
-    this.generalize,
-    this.licenseType,
-  });
-
-  ImageImportOsAdaptationParameters.fromJson(core.Map json_)
-    : this(
-        bootConversion: json_['bootConversion'] as core.String?,
-        generalize: json_['generalize'] as core.bool?,
-        licenseType: json_['licenseType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bootConversion != null) 'bootConversion': bootConversion!,
-    if (generalize != null) 'generalize': generalize!,
-    if (licenseType != null) 'licenseType': licenseType!,
-  };
-}
+typedef ImageImportOsAdaptationParameters = $ImageImportOsAdaptationParameters;
 
 /// ImageImportStep holds information about the image import step progress.
 class ImageImportStep {
@@ -7250,26 +6812,7 @@ typedef Location = $Location00;
 
 /// Parameters overriding decisions based on the source machine image
 /// configurations.
-class MachineImageParametersOverrides {
-  /// The machine type to create the MachineImage with.
-  ///
-  /// If empty, the service will choose a relevant machine type based on the
-  /// information from the source image. For more information about machine
-  /// types, please refer to
-  /// https://cloud.google.com/compute/docs/machine-resource.
-  ///
-  /// Optional.
-  core.String? machineType;
-
-  MachineImageParametersOverrides({this.machineType});
-
-  MachineImageParametersOverrides.fromJson(core.Map json_)
-    : this(machineType: json_['machineType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-  };
-}
+typedef MachineImageParametersOverrides = $MachineImageParametersOverrides;
 
 /// The target details of the machine image resource that will be created by the
 /// image import job.
@@ -7877,130 +7420,15 @@ class MigrationWarning {
 }
 
 /// NetworkInterface represents a NIC of a VM.
-class NetworkInterface {
-  /// The external IP to define in the NIC.
-  ///
-  /// Optional.
-  core.String? externalIp;
-
-  /// The internal IP to define in the NIC.
-  ///
-  /// The formats accepted are: `ephemeral` \ ipv4 address \ a named address
-  /// resource full path.
-  ///
-  /// Optional.
-  core.String? internalIp;
-
-  /// The network to connect the NIC to.
-  ///
-  /// Optional.
-  core.String? network;
-
-  /// The networking tier used for optimizing connectivity between instances and
-  /// systems on the internet.
-  ///
-  /// Applies only for external ephemeral IP addresses. If left empty, will
-  /// default to PREMIUM.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "COMPUTE_ENGINE_NETWORK_TIER_UNSPECIFIED" : An unspecified network tier.
-  /// Will be used as PREMIUM.
-  /// - "NETWORK_TIER_STANDARD" : A standard network tier.
-  /// - "NETWORK_TIER_PREMIUM" : A premium network tier.
-  core.String? networkTier;
-
-  /// The subnetwork to connect the NIC to.
-  ///
-  /// Optional.
-  core.String? subnetwork;
-
-  NetworkInterface({
-    this.externalIp,
-    this.internalIp,
-    this.network,
-    this.networkTier,
-    this.subnetwork,
-  });
-
-  NetworkInterface.fromJson(core.Map json_)
-    : this(
-        externalIp: json_['externalIp'] as core.String?,
-        internalIp: json_['internalIp'] as core.String?,
-        network: json_['network'] as core.String?,
-        networkTier: json_['networkTier'] as core.String?,
-        subnetwork: json_['subnetwork'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (externalIp != null) 'externalIp': externalIp!,
-    if (internalIp != null) 'internalIp': internalIp!,
-    if (network != null) 'network': network!,
-    if (networkTier != null) 'networkTier': networkTier!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-  };
-}
+typedef NetworkInterface = $NetworkInterface;
 
 /// A message describing the VM's OS.
 ///
 /// Including OS, Publisher, Offer and Plan if applicable.
-class OSDescription {
-  /// OS offer.
-  core.String? offer;
-
-  /// OS plan.
-  core.String? plan;
-
-  /// OS publisher.
-  core.String? publisher;
-
-  /// OS type.
-  core.String? type;
-
-  OSDescription({this.offer, this.plan, this.publisher, this.type});
-
-  OSDescription.fromJson(core.Map json_)
-    : this(
-        offer: json_['offer'] as core.String?,
-        plan: json_['plan'] as core.String?,
-        publisher: json_['publisher'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (offer != null) 'offer': offer!,
-    if (plan != null) 'plan': plan!,
-    if (publisher != null) 'publisher': publisher!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef OSDescription = $OSDescription;
 
 /// A message describing the OS disk.
-class OSDisk {
-  /// The disk's full name.
-  core.String? name;
-
-  /// The disk's size in GB.
-  core.int? sizeGb;
-
-  /// The disk's type.
-  core.String? type;
-
-  OSDisk({this.name, this.sizeGb, this.type});
-
-  OSDisk.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        sizeGb: json_['sizeGb'] as core.int?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef OSDisk = $OSDisk;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -8080,26 +7508,7 @@ class Operation {
 typedef PauseMigrationRequest = $Empty;
 
 /// Details of a created Persistent Disk.
-class PersistentDisk {
-  /// The URI of the Persistent Disk.
-  core.String? diskUri;
-
-  /// The ordinal number of the source VM disk.
-  core.int? sourceDiskNumber;
-
-  PersistentDisk({this.diskUri, this.sourceDiskNumber});
-
-  PersistentDisk.fromJson(core.Map json_)
-    : this(
-        diskUri: json_['diskUri'] as core.String?,
-        sourceDiskNumber: json_['sourceDiskNumber'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskUri != null) 'diskUri': diskUri!,
-    if (sourceDiskNumber != null) 'sourceDiskNumber': sourceDiskNumber!,
-  };
-}
+typedef PersistentDisk = $PersistentDisk;
 
 /// Details for creation of a Persistent Disk.
 class PersistentDiskDefaults {
@@ -8190,64 +7599,10 @@ typedef PostProcessingStep = $Empty;
 typedef PreparingVMDisksStep = $Empty;
 
 /// Request message for 'RemoveMigration' request.
-class RemoveGroupMigrationRequest {
-  /// The MigratingVm to remove.
-  core.String? migratingVm;
-
-  RemoveGroupMigrationRequest({this.migratingVm});
-
-  RemoveGroupMigrationRequest.fromJson(core.Map json_)
-    : this(migratingVm: json_['migratingVm'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (migratingVm != null) 'migratingVm': migratingVm!,
-  };
-}
+typedef RemoveGroupMigrationRequest = $RemoveGroupMigrationRequest;
 
 /// ReplicatingStep contains specific step details.
-class ReplicatingStep {
-  /// The source disks replication rate for the last 30 minutes in bytes per
-  /// second.
-  core.String? lastThirtyMinutesAverageBytesPerSecond;
-
-  /// The source disks replication rate for the last 2 minutes in bytes per
-  /// second.
-  core.String? lastTwoMinutesAverageBytesPerSecond;
-
-  /// Replicated bytes in the step.
-  core.String? replicatedBytes;
-
-  /// Total bytes to be handled in the step.
-  core.String? totalBytes;
-
-  ReplicatingStep({
-    this.lastThirtyMinutesAverageBytesPerSecond,
-    this.lastTwoMinutesAverageBytesPerSecond,
-    this.replicatedBytes,
-    this.totalBytes,
-  });
-
-  ReplicatingStep.fromJson(core.Map json_)
-    : this(
-        lastThirtyMinutesAverageBytesPerSecond:
-            json_['lastThirtyMinutesAverageBytesPerSecond'] as core.String?,
-        lastTwoMinutesAverageBytesPerSecond:
-            json_['lastTwoMinutesAverageBytesPerSecond'] as core.String?,
-        replicatedBytes: json_['replicatedBytes'] as core.String?,
-        totalBytes: json_['totalBytes'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lastThirtyMinutesAverageBytesPerSecond != null)
-      'lastThirtyMinutesAverageBytesPerSecond':
-          lastThirtyMinutesAverageBytesPerSecond!,
-    if (lastTwoMinutesAverageBytesPerSecond != null)
-      'lastTwoMinutesAverageBytesPerSecond':
-          lastTwoMinutesAverageBytesPerSecond!,
-    if (replicatedBytes != null) 'replicatedBytes': replicatedBytes!,
-    if (totalBytes != null) 'totalBytes': totalBytes!,
-  };
-}
+typedef ReplicatingStep = $ReplicatingStep;
 
 /// ReplicationCycle contains information about the current replication cycle
 /// status.
@@ -8361,174 +7716,26 @@ class ReplicationCycle {
 
 /// ReplicationSync contain information about the last replica sync to the
 /// cloud.
-class ReplicationSync {
-  /// The most updated snapshot created time in the source that finished
-  /// replication.
-  core.String? lastSyncTime;
-
-  ReplicationSync({this.lastSyncTime});
-
-  ReplicationSync.fromJson(core.Map json_)
-    : this(lastSyncTime: json_['lastSyncTime'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lastSyncTime != null) 'lastSyncTime': lastSyncTime!,
-  };
-}
+typedef ReplicationSync = $ReplicationSync;
 
 /// Request message for 'ResumeMigration' request.
 typedef ResumeMigrationRequest = $Empty;
 
 /// A policy for scheduling replications.
-class SchedulePolicy {
-  /// The idle duration between replication stages.
-  core.String? idleDuration;
-
-  /// A flag to indicate whether to skip OS adaptation during the replication
-  /// sync.
-  ///
-  /// OS adaptation is a process where the VM's operating system undergoes
-  /// changes and adaptations to fully function on Compute Engine.
-  core.bool? skipOsAdaptation;
-
-  SchedulePolicy({this.idleDuration, this.skipOsAdaptation});
-
-  SchedulePolicy.fromJson(core.Map json_)
-    : this(
-        idleDuration: json_['idleDuration'] as core.String?,
-        skipOsAdaptation: json_['skipOsAdaptation'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (idleDuration != null) 'idleDuration': idleDuration!,
-    if (skipOsAdaptation != null) 'skipOsAdaptation': skipOsAdaptation!,
-  };
-}
+typedef SchedulePolicy = $SchedulePolicy;
 
 /// Node Affinity: the configuration of desired nodes onto which this Instance
 /// could be scheduled.
 ///
 /// Based on
 /// https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
-class SchedulingNodeAffinity {
-  /// The label key of Node resource to reference.
-  core.String? key;
-
-  /// The operator to use for the node resources specified in the `values`
-  /// parameter.
-  /// Possible string values are:
-  /// - "OPERATOR_UNSPECIFIED" : An unknown, unexpected behavior.
-  /// - "IN" : The node resource group should be in these resources affinity.
-  /// - "NOT_IN" : The node resource group should not be in these resources
-  /// affinity.
-  core.String? operator;
-
-  /// Corresponds to the label values of Node resource.
-  core.List<core.String>? values;
-
-  SchedulingNodeAffinity({this.key, this.operator, this.values});
-
-  SchedulingNodeAffinity.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        operator: json_['operator'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (operator != null) 'operator': operator!,
-    if (values != null) 'values': values!,
-  };
-}
+typedef SchedulingNodeAffinity = $SchedulingNodeAffinity01;
 
 /// Service account to assign to the instance created by the machine image.
-class ServiceAccount {
-  /// The email address of the service account.
-  ///
-  /// Required.
-  core.String? email;
-
-  /// The list of scopes to be made available for this service account.
-  ///
-  /// Optional.
-  core.List<core.String>? scopes;
-
-  ServiceAccount({this.email, this.scopes});
-
-  ServiceAccount.fromJson(core.Map json_)
-    : this(
-        email: json_['email'] as core.String?,
-        scopes:
-            (json_['scopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (scopes != null) 'scopes': scopes!,
-  };
-}
+typedef ServiceAccount = $ServiceAccount02;
 
 /// Shielded instance configuration.
-class ShieldedInstanceConfig {
-  /// Defines whether the instance created by the machine image has integrity
-  /// monitoring enabled.
-  ///
-  /// This can be set to true only if the image boot option is EFI, and vTPM is
-  /// enabled.
-  ///
-  /// Optional.
-  core.bool? enableIntegrityMonitoring;
-
-  /// Defines whether the instance created by the machine image has vTPM
-  /// enabled.
-  ///
-  /// This can be set to true only if the image boot option is EFI.
-  ///
-  /// Optional.
-  core.bool? enableVtpm;
-
-  /// Defines whether the instance created by the machine image has Secure Boot
-  /// enabled.
-  ///
-  /// This can be set to true only if the image boot option is EFI.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SECURE_BOOT_UNSPECIFIED" : No explicit value is selected. Will use the
-  /// configuration of the source (if exists, otherwise the default will be
-  /// false).
-  /// - "TRUE" : Use secure boot. This can be set to true only if the image boot
-  /// option is EFI.
-  /// - "FALSE" : Do not use secure boot.
-  core.String? secureBoot;
-
-  ShieldedInstanceConfig({
-    this.enableIntegrityMonitoring,
-    this.enableVtpm,
-    this.secureBoot,
-  });
-
-  ShieldedInstanceConfig.fromJson(core.Map json_)
-    : this(
-        enableIntegrityMonitoring:
-            json_['enableIntegrityMonitoring'] as core.bool?,
-        enableVtpm: json_['enableVtpm'] as core.bool?,
-        secureBoot: json_['secureBoot'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableIntegrityMonitoring != null)
-      'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-    if (enableVtpm != null) 'enableVtpm': enableVtpm!,
-    if (secureBoot != null) 'secureBoot': secureBoot!,
-  };
-}
+typedef ShieldedInstanceConfig = $ShieldedInstanceConfig04;
 
 /// ShuttingDownSourceVMStep contains specific step details.
 typedef ShuttingDownSourceVMStep = $Empty;
@@ -8648,109 +7855,14 @@ typedef StartMigrationRequest = $Empty;
 typedef Status = $Status00;
 
 /// Tag is an AWS tag representation.
-class Tag {
-  /// Key of tag.
-  ///
-  /// Required.
-  core.String? key;
-
-  /// Value of tag.
-  ///
-  /// Required.
-  core.String? value;
-
-  Tag({this.key, this.value});
-
-  Tag.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Tag = $Tag01;
 
 /// TargetProject message represents a target Compute Engine project for a
 /// migration or a clone.
-class TargetProject {
-  /// The time this target project resource was created (not related to when the
-  /// Compute Engine project it points to was created).
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The target project's description.
-  core.String? description;
-
-  /// The name of the target project.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The target project ID (number) or project name.
-  ///
-  /// Required.
-  core.String? project;
-
-  /// The last time the target project resource was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  TargetProject({
-    this.createTime,
-    this.description,
-    this.name,
-    this.project,
-    this.updateTime,
-  });
-
-  TargetProject.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        name: json_['name'] as core.String?,
-        project: json_['project'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-    if (project != null) 'project': project!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef TargetProject = $TargetProject;
 
 /// Request message for 'UpgradeAppliance' request.
-class UpgradeApplianceRequest {
-  /// A request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  core.String? requestId;
-
-  UpgradeApplianceRequest({this.requestId});
-
-  UpgradeApplianceRequest.fromJson(core.Map json_)
-    : this(requestId: json_['requestId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestId != null) 'requestId': requestId!,
-  };
-}
+typedef UpgradeApplianceRequest = $UpgradeApplianceRequest;
 
 /// UpgradeStatus contains information about upgradeAppliance operation.
 class UpgradeStatus {
@@ -8930,62 +8042,11 @@ class UtilizationReport {
 }
 
 /// Details for attachment of the disk to a VM.
-class VmAttachmentDetails {
-  /// Specifies a unique device name of your choice that is reflected into the
-  /// /dev/disk/by-id/google-* tree of a Linux operating system running within
-  /// the instance.
-  ///
-  /// If not specified, the server chooses a default device name to apply to
-  /// this disk, in the form persistent-disk-x, where x is a number assigned by
-  /// Google Compute Engine. This field is only applicable for persistent disks.
-  ///
-  /// Optional.
-  core.String? deviceName;
-
-  VmAttachmentDetails({this.deviceName});
-
-  VmAttachmentDetails.fromJson(core.Map json_)
-    : this(deviceName: json_['deviceName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceName != null) 'deviceName': deviceName!,
-  };
-}
+typedef VmAttachmentDetails = $VmAttachmentDetails;
 
 /// Migrating VM source information about the VM capabilities needed for some
 /// Compute Engine features.
-class VmCapabilities {
-  /// The last time OS capabilities list was updated.
-  ///
-  /// Output only.
-  core.String? lastOsCapabilitiesUpdateTime;
-
-  /// Unordered list.
-  ///
-  /// List of certain VM OS capabilities needed for some Compute Engine
-  /// features.
-  ///
-  /// Output only.
-  core.List<core.String>? osCapabilities;
-
-  VmCapabilities({this.lastOsCapabilitiesUpdateTime, this.osCapabilities});
-
-  VmCapabilities.fromJson(core.Map json_)
-    : this(
-        lastOsCapabilitiesUpdateTime:
-            json_['lastOsCapabilitiesUpdateTime'] as core.String?,
-        osCapabilities:
-            (json_['osCapabilities'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lastOsCapabilitiesUpdateTime != null)
-      'lastOsCapabilitiesUpdateTime': lastOsCapabilitiesUpdateTime!,
-    if (osCapabilities != null) 'osCapabilities': osCapabilities!,
-  };
-}
+typedef VmCapabilities = $VmCapabilities;
 
 /// Utilization information of a single VM.
 class VmUtilizationInfo {
@@ -9095,85 +8156,11 @@ class VmUtilizationMetrics {
 }
 
 /// The details of a Vmware VM disk.
-class VmwareDiskDetails {
-  /// The ordinal number of the disk.
-  ///
-  /// Output only.
-  core.int? diskNumber;
-
-  /// The disk label.
-  ///
-  /// Output only.
-  core.String? label;
-
-  /// Size in GB.
-  ///
-  /// Output only.
-  core.String? sizeGb;
-
-  VmwareDiskDetails({this.diskNumber, this.label, this.sizeGb});
-
-  VmwareDiskDetails.fromJson(core.Map json_)
-    : this(
-        diskNumber: json_['diskNumber'] as core.int?,
-        label: json_['label'] as core.String?,
-        sizeGb: json_['sizeGb'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskNumber != null) 'diskNumber': diskNumber!,
-    if (label != null) 'label': label!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-  };
-}
+typedef VmwareDiskDetails = $VmwareDiskDetails;
 
 /// VmwareSourceDetails message describes a specific source details for the
 /// vmware source type.
-class VmwareSourceDetails {
-  /// Input only.
-  ///
-  /// The credentials password. This is write only and can not be read in a GET
-  /// operation.
-  core.String? password;
-
-  /// The hostname of the vcenter.
-  core.String? resolvedVcenterHost;
-
-  /// The thumbprint representing the certificate for the vcenter.
-  core.String? thumbprint;
-
-  /// The credentials username.
-  core.String? username;
-
-  /// The ip address of the vcenter this Source represents.
-  core.String? vcenterIp;
-
-  VmwareSourceDetails({
-    this.password,
-    this.resolvedVcenterHost,
-    this.thumbprint,
-    this.username,
-    this.vcenterIp,
-  });
-
-  VmwareSourceDetails.fromJson(core.Map json_)
-    : this(
-        password: json_['password'] as core.String?,
-        resolvedVcenterHost: json_['resolvedVcenterHost'] as core.String?,
-        thumbprint: json_['thumbprint'] as core.String?,
-        username: json_['username'] as core.String?,
-        vcenterIp: json_['vcenterIp'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (password != null) 'password': password!,
-    if (resolvedVcenterHost != null)
-      'resolvedVcenterHost': resolvedVcenterHost!,
-    if (thumbprint != null) 'thumbprint': thumbprint!,
-    if (username != null) 'username': username!,
-    if (vcenterIp != null) 'vcenterIp': vcenterIp!,
-  };
-}
+typedef VmwareSourceDetails = $VmwareSourceDetails;
 
 /// Represent the source Vmware VM details.
 class VmwareSourceVmDetails {

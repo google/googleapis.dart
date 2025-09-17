@@ -3507,31 +3507,7 @@ class HttpCookieEvidence {
 ///
 /// You may provide a larger image than was requested, so long as the aspect
 /// ratio is preserved.
-class Image {
-  /// Image height in pixels.
-  core.int? height;
-
-  /// The URL of the image.
-  core.String? url;
-
-  /// Image width in pixels.
-  core.int? width;
-
-  Image({this.height, this.url, this.width});
-
-  Image.fromJson(core.Map json_)
-    : this(
-        height: json_['height'] as core.int?,
-        url: json_['url'] as core.String?,
-        width: json_['width'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (height != null) 'height': height!,
-    if (url != null) 'url': url!,
-    if (width != null) 'width': width!,
-  };
-}
+typedef Image = $Image01;
 
 /// A response containing bidders.
 class ListBiddersResponse {

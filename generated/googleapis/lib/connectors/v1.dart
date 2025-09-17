@@ -3905,7 +3905,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// AuthConfig defines details of a authentication type.
 class AuthConfig {
@@ -10088,7 +10088,7 @@ class NetworkConfig {
 }
 
 /// Node configuration for the connection.
-typedef NodeConfig = $NodeConfig;
+typedef NodeConfig = $NodeConfig00;
 
 /// pass only at create and not update using updateMask Auth Code Data
 class OAuthTokenData {
@@ -11617,7 +11617,7 @@ class SearchConnectionsResponse {
 }
 
 /// Secret provides a reference to entries in Secret Manager.
-typedef Secret = $Secret;
+typedef Secret = $Secret01;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

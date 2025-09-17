@@ -624,34 +624,7 @@ typedef CancelPortabilityArchiveResponse = $Empty;
 typedef CheckAccessTypeRequest = $Empty;
 
 /// Response to checking the token's access type.
-class CheckAccessTypeResponse {
-  /// Jobs initiated with this token will be one-time if any requested resources
-  /// have one-time access.
-  core.List<core.String>? oneTimeResources;
-
-  /// Jobs initiated with this token will be time-based if all requested
-  /// resources have time-based access.
-  core.List<core.String>? timeBasedResources;
-
-  CheckAccessTypeResponse({this.oneTimeResources, this.timeBasedResources});
-
-  CheckAccessTypeResponse.fromJson(core.Map json_)
-    : this(
-        oneTimeResources:
-            (json_['oneTimeResources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        timeBasedResources:
-            (json_['timeBasedResources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (oneTimeResources != null) 'oneTimeResources': oneTimeResources!,
-    if (timeBasedResources != null) 'timeBasedResources': timeBasedResources!,
-  };
-}
+typedef CheckAccessTypeResponse = $CheckAccessTypeResponse;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -662,147 +635,14 @@ class CheckAccessTypeResponse {
 typedef Empty = $Empty;
 
 /// Request to kick off an Archive job.
-class InitiatePortabilityArchiveRequest {
-  /// The timestamp that represents the end point for the data you are
-  /// exporting.
-  ///
-  /// If the end_time is not specified in the InitiatePortabilityArchiveRequest,
-  /// this field is set to the latest available data.
-  ///
-  /// Optional.
-  core.String? endTime;
-
-  /// The resources from which you're exporting data.
-  ///
-  /// These values have a 1:1 correspondence with the OAuth scopes.
-  core.List<core.String>? resources;
-
-  /// The timestamp that represents the starting point for the data you are
-  /// exporting.
-  ///
-  /// If the start_time is not specified in the
-  /// InitiatePortabilityArchiveRequest, the field is set to the earliest
-  /// available data.
-  ///
-  /// Optional.
-  core.String? startTime;
-
-  InitiatePortabilityArchiveRequest({
-    this.endTime,
-    this.resources,
-    this.startTime,
-  });
-
-  InitiatePortabilityArchiveRequest.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (resources != null) 'resources': resources!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef InitiatePortabilityArchiveRequest = $InitiatePortabilityArchiveRequest;
 
 /// Response from initiating an Archive job.
-class InitiatePortabilityArchiveResponse {
-  /// The access type of the Archive job initiated by the API.
-  /// Possible string values are:
-  /// - "ACCESS_TYPE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "ACCESS_TYPE_ONE_TIME" : One-time access to the requested scopes.
-  /// - "ACCESS_TYPE_TIME_BASED" : Multiple exports allowed over 30 days. Enum
-  /// value subject to change before launch.
-  core.String? accessType;
-
-  /// The archive job ID that is initiated in the API.
-  ///
-  /// This can be used to get the state of the job.
-  core.String? archiveJobId;
-
-  InitiatePortabilityArchiveResponse({this.accessType, this.archiveJobId});
-
-  InitiatePortabilityArchiveResponse.fromJson(core.Map json_)
-    : this(
-        accessType: json_['accessType'] as core.String?,
-        archiveJobId: json_['archiveJobId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessType != null) 'accessType': accessType!,
-    if (archiveJobId != null) 'archiveJobId': archiveJobId!,
-  };
-}
+typedef InitiatePortabilityArchiveResponse =
+    $InitiatePortabilityArchiveResponse;
 
 /// Resource that contains the state of an Archive job.
-class PortabilityArchiveState {
-  /// The timestamp that represents the end point for the data you are
-  /// exporting.
-  ///
-  /// If the end_time value is set in the InitiatePortabilityArchiveRequest,
-  /// this field is set to that value. If end_time is not set, this value is set
-  /// to the time the export was requested.
-  core.String? exportTime;
-
-  /// The resource name of ArchiveJob's PortabilityArchiveState singleton.
-  ///
-  /// The format is: archiveJobs/{archive_job}/portabilityArchiveState.
-  /// archive_job is the job ID provided in the request.
-  core.String? name;
-
-  /// The timestamp that represents the starting point for the data you are
-  /// exporting.
-  ///
-  /// This field is set only if the start_time field is specified in the
-  /// InitiatePortabilityArchiveRequest.
-  core.String? startTime;
-
-  /// Resource that represents the state of the Archive job.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "IN_PROGRESS" : The job is in progress.
-  /// - "COMPLETE" : The job is complete.
-  /// - "FAILED" : The job failed.
-  /// - "CANCELLED" : The job is cancelled.
-  core.String? state;
-
-  /// If the state is complete, this method returns the signed URLs of the
-  /// objects in the Cloud Storage bucket.
-  core.List<core.String>? urls;
-
-  PortabilityArchiveState({
-    this.exportTime,
-    this.name,
-    this.startTime,
-    this.state,
-    this.urls,
-  });
-
-  PortabilityArchiveState.fromJson(core.Map json_)
-    : this(
-        exportTime: json_['exportTime'] as core.String?,
-        name: json_['name'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        state: json_['state'] as core.String?,
-        urls:
-            (json_['urls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportTime != null) 'exportTime': exportTime!,
-    if (name != null) 'name': name!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-    if (urls != null) 'urls': urls!,
-  };
-}
+typedef PortabilityArchiveState = $PortabilityArchiveState;
 
 /// Request to reset exhausted OAuth scopes.
 typedef ResetAuthorizationRequest = $Empty;
@@ -811,18 +651,4 @@ typedef ResetAuthorizationRequest = $Empty;
 typedef RetryPortabilityArchiveRequest = $Empty;
 
 /// Response from retrying a Portability Archive.
-class RetryPortabilityArchiveResponse {
-  /// The archive job ID that is initiated by the retry endpoint.
-  ///
-  /// This can be used to get the state of the new job.
-  core.String? archiveJobId;
-
-  RetryPortabilityArchiveResponse({this.archiveJobId});
-
-  RetryPortabilityArchiveResponse.fromJson(core.Map json_)
-    : this(archiveJobId: json_['archiveJobId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (archiveJobId != null) 'archiveJobId': archiveJobId!,
-  };
-}
+typedef RetryPortabilityArchiveResponse = $RetryPortabilityArchiveResponse;

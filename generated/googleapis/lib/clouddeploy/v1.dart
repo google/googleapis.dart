@@ -3834,7 +3834,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// An `Automation` resource in the Cloud Deploy API.
 ///
@@ -4689,7 +4689,7 @@ typedef CancelAutomationRunResponse = $Empty;
 typedef CancelOperationRequest = $Empty;
 
 /// The request object used by `CancelRollout`.
-typedef CancelRolloutRequest = $Request06;
+typedef CancelRolloutRequest = $Request11;
 
 /// The response object from `CancelRollout`.
 typedef CancelRolloutResponse = $Empty;
@@ -10536,7 +10536,7 @@ class TargetsTypeCondition {
 }
 
 /// The request object used by `TerminateJobRun`.
-typedef TerminateJobRunRequest = $Request06;
+typedef TerminateJobRunRequest = $Request11;
 
 /// The response object from `TerminateJobRun`.
 typedef TerminateJobRunResponse = $Empty;

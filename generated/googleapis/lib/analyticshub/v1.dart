@@ -1478,7 +1478,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Configuration for writing message data in Avro format.
 ///
@@ -2024,32 +2024,7 @@ class DataExchange {
 }
 
 /// Contains details of the data provider.
-class DataProvider {
-  /// Name of the data provider.
-  ///
-  /// Optional.
-  core.String? name;
-
-  /// Email or URL of the data provider.
-  ///
-  /// Max Length: 1000 bytes.
-  ///
-  /// Optional.
-  core.String? primaryContact;
-
-  DataProvider({this.name, this.primaryContact});
-
-  DataProvider.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        primaryContact: json_['primaryContact'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (primaryContact != null) 'primaryContact': primaryContact!,
-  };
-}
+typedef DataProvider = $DataProvider;
 
 /// Data Clean Room (DCR), used for privacy-safe and secured data sharing.
 class DcrExchangeConfig {
@@ -2215,33 +2190,7 @@ class DestinationDataset {
   };
 }
 
-class DestinationDatasetReference {
-  /// A unique ID for this dataset, without the project name.
-  ///
-  /// The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
-  /// (_). The maximum length is 1,024 characters.
-  ///
-  /// Required.
-  core.String? datasetId;
-
-  /// The ID of the project containing this dataset.
-  ///
-  /// Required.
-  core.String? projectId;
-
-  DestinationDatasetReference({this.datasetId, this.projectId});
-
-  DestinationDatasetReference.fromJson(core.Map json_)
-    : this(
-        datasetId: json_['datasetId'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datasetId != null) 'datasetId': datasetId!,
-    if (projectId != null) 'projectId': projectId!,
-  };
-}
+typedef DestinationDatasetReference = $DestinationDatasetReference;
 
 /// Defines the destination Pub/Sub subscription.
 class DestinationPubSubSubscription {
@@ -3256,7 +3205,7 @@ typedef NoWrapper = $NoWrapper;
 
 /// Contains information needed for generating an
 /// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-typedef OidcToken = $OidcToken;
+typedef OidcToken = $OidcToken01;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3489,32 +3438,7 @@ class PubSubTopicSource {
 }
 
 /// Contains details of the listing publisher.
-class Publisher {
-  /// Name of the listing publisher.
-  ///
-  /// Optional.
-  core.String? name;
-
-  /// Email or URL of the listing publisher.
-  ///
-  /// Max Length: 1000 bytes.
-  ///
-  /// Optional.
-  core.String? primaryContact;
-
-  Publisher({this.name, this.primaryContact});
-
-  Publisher.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        primaryContact: json_['primaryContact'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (primaryContact != null) 'primaryContact': primaryContact!,
-  };
-}
+typedef Publisher = $Publisher01;
 
 /// The payload to the push endpoint is in the form of the JSON representation
 /// of a PubsubMessage
@@ -3616,46 +3540,7 @@ typedef RefreshSubscriptionRequest = $Empty;
 
 /// Restricted export config, used to configure restricted export on linked
 /// dataset.
-class RestrictedExportConfig {
-  /// If true, enable restricted export.
-  ///
-  /// Optional.
-  core.bool? enabled;
-
-  /// If true, restrict direct table access(read api/tabledata.list) on linked
-  /// table.
-  ///
-  /// Output only.
-  core.bool? restrictDirectTableAccess;
-
-  /// If true, restrict export of query result derived from restricted linked
-  /// dataset table.
-  ///
-  /// Optional.
-  core.bool? restrictQueryResult;
-
-  RestrictedExportConfig({
-    this.enabled,
-    this.restrictDirectTableAccess,
-    this.restrictQueryResult,
-  });
-
-  RestrictedExportConfig.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        restrictDirectTableAccess:
-            json_['restrictDirectTableAccess'] as core.bool?,
-        restrictQueryResult: json_['restrictQueryResult'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (restrictDirectTableAccess != null)
-      'restrictDirectTableAccess': restrictDirectTableAccess!,
-    if (restrictQueryResult != null)
-      'restrictQueryResult': restrictQueryResult!,
-  };
-}
+typedef RestrictedExportConfig = $RestrictedExportConfig;
 
 /// Restricted export policy used to configure restricted export on linked
 /// dataset.

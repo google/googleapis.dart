@@ -3182,24 +3182,7 @@ class AppDevExperienceFeatureState {
 
 /// ApplianceCluster contains information specific to GDC Edge Appliance
 /// Clusters.
-class ApplianceCluster {
-  /// Self-link of the Google Cloud resource for the Appliance Cluster.
-  ///
-  /// For example:
-  /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
-  ///
-  /// Immutable.
-  core.String? resourceLink;
-
-  ApplianceCluster({this.resourceLink});
-
-  ApplianceCluster.fromJson(core.Map json_)
-    : this(resourceLink: json_['resourceLink'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceLink != null) 'resourceLink': resourceLink!,
-  };
-}
+typedef ApplianceCluster = $ApplianceCluster;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -3255,105 +3238,13 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Authority encodes how Google will recognize identities from this Membership.
 ///
 /// See the workload identity documentation for more details:
 /// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
-class Authority {
-  /// An identity provider that reflects the `issuer` in the workload identity
-  /// pool.
-  ///
-  /// Output only.
-  core.String? identityProvider;
-
-  /// A JSON Web Token (JWT) issuer URI.
-  ///
-  /// `issuer` must start with `https://` and be a valid URL with length \<2000
-  /// characters, it must use `location` rather than `zone` for GKE clusters. If
-  /// set, then Google will allow valid OIDC tokens from this issuer to
-  /// authenticate within the workload_identity_pool. OIDC discovery will be
-  /// performed on this URI to validate tokens from the issuer. Clearing
-  /// `issuer` disables Workload Identity. `issuer` cannot be directly modified;
-  /// it must be cleared (and Workload Identity disabled) before using a new
-  /// issuer (and re-enabling Workload Identity).
-  ///
-  /// Optional.
-  core.String? issuer;
-
-  /// OIDC verification keys for this Membership in JWKS format (RFC 7517).
-  ///
-  /// When this field is set, OIDC discovery will NOT be performed on `issuer`,
-  /// and instead OIDC tokens will be validated using this field.
-  ///
-  /// Optional.
-  core.String? oidcJwks;
-  core.List<core.int> get oidcJwksAsBytes => convert.base64.decode(oidcJwks!);
-
-  set oidcJwksAsBytes(core.List<core.int> bytes_) {
-    oidcJwks = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The identity provider for the scope-tenancy workload identity pool.
-  ///
-  /// Optional. Output only.
-  core.String? scopeTenancyIdentityProvider;
-
-  /// The name of the scope-tenancy workload identity pool.
-  ///
-  /// This pool is set in the fleet-level feature.
-  ///
-  /// Optional. Output only.
-  core.String? scopeTenancyWorkloadIdentityPool;
-
-  /// The name of the workload identity pool in which `issuer` will be
-  /// recognized.
-  ///
-  /// There is a single Workload Identity Pool per Hub that is shared between
-  /// all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID},
-  /// the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is
-  /// subject to change in newer versions of this API.
-  ///
-  /// Output only.
-  core.String? workloadIdentityPool;
-
-  Authority({
-    this.identityProvider,
-    this.issuer,
-    this.oidcJwks,
-    this.scopeTenancyIdentityProvider,
-    this.scopeTenancyWorkloadIdentityPool,
-    this.workloadIdentityPool,
-  });
-
-  Authority.fromJson(core.Map json_)
-    : this(
-        identityProvider: json_['identityProvider'] as core.String?,
-        issuer: json_['issuer'] as core.String?,
-        oidcJwks: json_['oidcJwks'] as core.String?,
-        scopeTenancyIdentityProvider:
-            json_['scopeTenancyIdentityProvider'] as core.String?,
-        scopeTenancyWorkloadIdentityPool:
-            json_['scopeTenancyWorkloadIdentityPool'] as core.String?,
-        workloadIdentityPool: json_['workloadIdentityPool'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (identityProvider != null) 'identityProvider': identityProvider!,
-    if (issuer != null) 'issuer': issuer!,
-    if (oidcJwks != null) 'oidcJwks': oidcJwks!,
-    if (scopeTenancyIdentityProvider != null)
-      'scopeTenancyIdentityProvider': scopeTenancyIdentityProvider!,
-    if (scopeTenancyWorkloadIdentityPool != null)
-      'scopeTenancyWorkloadIdentityPool': scopeTenancyWorkloadIdentityPool!,
-    if (workloadIdentityPool != null)
-      'workloadIdentityPool': workloadIdentityPool!,
-  };
-}
+typedef Authority = $Authority;
 
 /// BinaryAuthorizationConfig defines the fleet level configuration of binary
 /// authorization feature.
@@ -3614,68 +3505,12 @@ class ClusterUpgradeFleetState {
 }
 
 /// GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.
-class ClusterUpgradeGKEUpgrade {
-  /// Name of the upgrade, e.g., "k8s_control_plane".
-  ///
-  /// It should be a valid upgrade name. It must not exceet 99 characters.
-  core.String? name;
-
-  /// Version of the upgrade, e.g., "1.22.1-gke.100".
-  ///
-  /// It should be a valid version. It must not exceet 99 characters.
-  core.String? version;
-
-  ClusterUpgradeGKEUpgrade({this.name, this.version});
-
-  ClusterUpgradeGKEUpgrade.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef ClusterUpgradeGKEUpgrade = $ClusterUpgradeGKEUpgrade00;
 
 /// GKEUpgradeFeatureCondition describes the condition of the feature for GKE
 /// clusters at a certain point of time.
-class ClusterUpgradeGKEUpgradeFeatureCondition {
-  /// Reason why the feature is in this status.
-  core.String? reason;
-
-  /// Status of the condition, one of True, False, Unknown.
-  core.String? status;
-
-  /// Type of the condition, for example, "ready".
-  core.String? type;
-
-  /// Last timestamp the condition was updated.
-  core.String? updateTime;
-
-  ClusterUpgradeGKEUpgradeFeatureCondition({
-    this.reason,
-    this.status,
-    this.type,
-    this.updateTime,
-  });
-
-  ClusterUpgradeGKEUpgradeFeatureCondition.fromJson(core.Map json_)
-    : this(
-        reason: json_['reason'] as core.String?,
-        status: json_['status'] as core.String?,
-        type: json_['type'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reason != null) 'reason': reason!,
-    if (status != null) 'status': status!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef ClusterUpgradeGKEUpgradeFeatureCondition =
+    $ClusterUpgradeGKEUpgradeFeatureCondition;
 
 /// GKEUpgradeFeatureState contains feature states for GKE clusters in the
 /// scope.
@@ -3875,24 +3710,7 @@ class ClusterUpgradeMembershipState {
 
 /// Post conditional checks after an upgrade has been applied on all eligible
 /// clusters.
-class ClusterUpgradePostConditions {
-  /// Amount of time to "soak" after a rollout has been finished before marking
-  /// it COMPLETE.
-  ///
-  /// Cannot exceed 30 days. Required.
-  ///
-  /// Required.
-  core.String? soaking;
-
-  ClusterUpgradePostConditions({this.soaking});
-
-  ClusterUpgradePostConditions.fromJson(core.Map json_)
-    : this(soaking: json_['soaking'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (soaking != null) 'soaking': soaking!,
-  };
-}
+typedef ClusterUpgradePostConditions = $ClusterUpgradePostConditions;
 
 /// UpgradeStatus provides status information for each upgrade.
 typedef ClusterUpgradeUpgradeStatus = $ClusterUpgradeUpgradeStatus;
@@ -4279,130 +4097,11 @@ class ConfigManagementConfigSync {
 }
 
 /// The state of ConfigSync's deployment on a cluster
-class ConfigManagementConfigSyncDeploymentState {
-  /// Deployment state of admission-webhook
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? admissionWebhook;
-
-  /// Deployment state of the git-sync pod
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? gitSync;
-
-  /// Deployment state of the importer pod
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? importer;
-
-  /// Deployment state of the monitor pod
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? monitor;
-
-  /// Deployment state of otel-collector
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? otelCollector;
-
-  /// Deployment state of reconciler-manager pod
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? reconcilerManager;
-
-  /// Deployment state of resource-group-controller-manager
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? resourceGroupControllerManager;
-
-  /// Deployment state of root-reconciler
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? rootReconciler;
-
-  /// Deployment state of the syncer pod
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? syncer;
-
-  ConfigManagementConfigSyncDeploymentState({
-    this.admissionWebhook,
-    this.gitSync,
-    this.importer,
-    this.monitor,
-    this.otelCollector,
-    this.reconcilerManager,
-    this.resourceGroupControllerManager,
-    this.rootReconciler,
-    this.syncer,
-  });
-
-  ConfigManagementConfigSyncDeploymentState.fromJson(core.Map json_)
-    : this(
-        admissionWebhook: json_['admissionWebhook'] as core.String?,
-        gitSync: json_['gitSync'] as core.String?,
-        importer: json_['importer'] as core.String?,
-        monitor: json_['monitor'] as core.String?,
-        otelCollector: json_['otelCollector'] as core.String?,
-        reconcilerManager: json_['reconcilerManager'] as core.String?,
-        resourceGroupControllerManager:
-            json_['resourceGroupControllerManager'] as core.String?,
-        rootReconciler: json_['rootReconciler'] as core.String?,
-        syncer: json_['syncer'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
-    if (gitSync != null) 'gitSync': gitSync!,
-    if (importer != null) 'importer': importer!,
-    if (monitor != null) 'monitor': monitor!,
-    if (otelCollector != null) 'otelCollector': otelCollector!,
-    if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
-    if (resourceGroupControllerManager != null)
-      'resourceGroupControllerManager': resourceGroupControllerManager!,
-    if (rootReconciler != null) 'rootReconciler': rootReconciler!,
-    if (syncer != null) 'syncer': syncer!,
-  };
-}
+typedef ConfigManagementConfigSyncDeploymentState =
+    $ConfigManagementConfigSyncDeploymentState00;
 
 /// Errors pertaining to the installation of Config Sync
-typedef ConfigManagementConfigSyncError = $Error;
+typedef ConfigManagementConfigSyncError = $Error00;
 
 /// State information for ConfigSync
 class ConfigManagementConfigSyncState {
@@ -4545,73 +4244,8 @@ class ConfigManagementConfigSyncState {
 }
 
 /// Specific versioning information pertaining to ConfigSync's Pods
-class ConfigManagementConfigSyncVersion {
-  /// Version of the deployed admission-webhook pod
-  core.String? admissionWebhook;
-
-  /// Version of the deployed git-sync pod
-  core.String? gitSync;
-
-  /// Version of the deployed importer pod
-  core.String? importer;
-
-  /// Version of the deployed monitor pod
-  core.String? monitor;
-
-  /// Version of the deployed otel-collector pod
-  core.String? otelCollector;
-
-  /// Version of the deployed reconciler-manager pod
-  core.String? reconcilerManager;
-
-  /// Version of the deployed resource-group-controller-manager pod
-  core.String? resourceGroupControllerManager;
-
-  /// Version of the deployed reconciler container in root-reconciler pod
-  core.String? rootReconciler;
-
-  /// Version of the deployed syncer pod
-  core.String? syncer;
-
-  ConfigManagementConfigSyncVersion({
-    this.admissionWebhook,
-    this.gitSync,
-    this.importer,
-    this.monitor,
-    this.otelCollector,
-    this.reconcilerManager,
-    this.resourceGroupControllerManager,
-    this.rootReconciler,
-    this.syncer,
-  });
-
-  ConfigManagementConfigSyncVersion.fromJson(core.Map json_)
-    : this(
-        admissionWebhook: json_['admissionWebhook'] as core.String?,
-        gitSync: json_['gitSync'] as core.String?,
-        importer: json_['importer'] as core.String?,
-        monitor: json_['monitor'] as core.String?,
-        otelCollector: json_['otelCollector'] as core.String?,
-        reconcilerManager: json_['reconcilerManager'] as core.String?,
-        resourceGroupControllerManager:
-            json_['resourceGroupControllerManager'] as core.String?,
-        rootReconciler: json_['rootReconciler'] as core.String?,
-        syncer: json_['syncer'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (admissionWebhook != null) 'admissionWebhook': admissionWebhook!,
-    if (gitSync != null) 'gitSync': gitSync!,
-    if (importer != null) 'importer': importer!,
-    if (monitor != null) 'monitor': monitor!,
-    if (otelCollector != null) 'otelCollector': otelCollector!,
-    if (reconcilerManager != null) 'reconcilerManager': reconcilerManager!,
-    if (resourceGroupControllerManager != null)
-      'resourceGroupControllerManager': resourceGroupControllerManager!,
-    if (rootReconciler != null) 'rootReconciler': rootReconciler!,
-    if (syncer != null) 'syncer': syncer!,
-  };
-}
+typedef ConfigManagementConfigSyncVersion =
+    $ConfigManagementConfigSyncVersion00;
 
 /// Configuration for a container override.
 typedef ConfigManagementContainerOverride = $ConfigManagementContainerOverride;
@@ -4704,55 +4338,8 @@ class ConfigManagementErrorResource {
 }
 
 /// State of Policy Controller installation.
-class ConfigManagementGatekeeperDeploymentState {
-  /// Status of gatekeeper-audit deployment.
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? gatekeeperAudit;
-
-  /// Status of gatekeeper-controller-manager pod.
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? gatekeeperControllerManagerState;
-
-  /// Status of the pod serving the mutation webhook.
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? gatekeeperMutation;
-
-  ConfigManagementGatekeeperDeploymentState({
-    this.gatekeeperAudit,
-    this.gatekeeperControllerManagerState,
-    this.gatekeeperMutation,
-  });
-
-  ConfigManagementGatekeeperDeploymentState.fromJson(core.Map json_)
-    : this(
-        gatekeeperAudit: json_['gatekeeperAudit'] as core.String?,
-        gatekeeperControllerManagerState:
-            json_['gatekeeperControllerManagerState'] as core.String?,
-        gatekeeperMutation: json_['gatekeeperMutation'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gatekeeperAudit != null) 'gatekeeperAudit': gatekeeperAudit!,
-    if (gatekeeperControllerManagerState != null)
-      'gatekeeperControllerManagerState': gatekeeperControllerManagerState!,
-    if (gatekeeperMutation != null) 'gatekeeperMutation': gatekeeperMutation!,
-  };
-}
+typedef ConfigManagementGatekeeperDeploymentState =
+    $ConfigManagementGatekeeperDeploymentState00;
 
 /// Git repo configuration for a single cluster.
 typedef ConfigManagementGitConfig = $ConfigManagementGitConfig;
@@ -4765,41 +4352,8 @@ typedef ConfigManagementHierarchyControllerConfig =
     $ConfigManagementHierarchyControllerConfig;
 
 /// Deployment state for Hierarchy Controller
-class ConfigManagementHierarchyControllerDeploymentState {
-  /// The deployment state for Hierarchy Controller extension (e.g. v0.7.0-hc.1)
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? extension;
-
-  /// The deployment state for open source HNC (e.g. v0.7.0-hc.0)
-  /// Possible string values are:
-  /// - "DEPLOYMENT_STATE_UNSPECIFIED" : Deployment's state cannot be determined
-  /// - "NOT_INSTALLED" : Deployment is not installed
-  /// - "INSTALLED" : Deployment is installed
-  /// - "ERROR" : Deployment was attempted to be installed, but has errors
-  /// - "PENDING" : Deployment is installing or terminating
-  core.String? hnc;
-
-  ConfigManagementHierarchyControllerDeploymentState({
-    this.extension,
-    this.hnc,
-  });
-
-  ConfigManagementHierarchyControllerDeploymentState.fromJson(core.Map json_)
-    : this(
-        extension: json_['extension'] as core.String?,
-        hnc: json_['hnc'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (extension != null) 'extension': extension!,
-    if (hnc != null) 'hnc': hnc!,
-  };
-}
+typedef ConfigManagementHierarchyControllerDeploymentState =
+    $ConfigManagementHierarchyControllerDeploymentState00;
 
 /// State for Hierarchy Controller
 class ConfigManagementHierarchyControllerState {
@@ -4834,29 +4388,11 @@ class ConfigManagementHierarchyControllerState {
 }
 
 /// Version for Hierarchy Controller
-class ConfigManagementHierarchyControllerVersion {
-  /// Version for Hierarchy Controller extension
-  core.String? extension;
-
-  /// Version for open source HNC
-  core.String? hnc;
-
-  ConfigManagementHierarchyControllerVersion({this.extension, this.hnc});
-
-  ConfigManagementHierarchyControllerVersion.fromJson(core.Map json_)
-    : this(
-        extension: json_['extension'] as core.String?,
-        hnc: json_['hnc'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (extension != null) 'extension': extension!,
-    if (hnc != null) 'hnc': hnc!,
-  };
-}
+typedef ConfigManagementHierarchyControllerVersion =
+    $ConfigManagementHierarchyControllerVersion00;
 
 /// Errors pertaining to the installation of ACM
-typedef ConfigManagementInstallError = $Error;
+typedef ConfigManagementInstallError = $Error00;
 
 /// **Anthos Config Management**: Configuration for a single cluster.
 ///
@@ -5211,7 +4747,7 @@ typedef ConfigManagementPolicyControllerMigration =
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef ConfigManagementPolicyControllerMonitoring = $Shared03;
+typedef ConfigManagementPolicyControllerMonitoring = $Shared01;
 
 /// State for PolicyControllerState.
 class ConfigManagementPolicyControllerState {
@@ -5412,19 +4948,7 @@ class ConnectAgentResource {
 }
 
 /// **Dataplane V2**: Spec
-class DataplaneV2FeatureSpec {
-  /// Enable dataplane-v2 based encryption for multiple clusters.
-  core.bool? enableEncryption;
-
-  DataplaneV2FeatureSpec({this.enableEncryption});
-
-  DataplaneV2FeatureSpec.fromJson(core.Map json_)
-    : this(enableEncryption: json_['enableEncryption'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableEncryption != null) 'enableEncryption': enableEncryption!,
-  };
-}
+typedef DataplaneV2FeatureSpec = $DataplaneV2FeatureSpec;
 
 /// DefaultClusterConfig describes the default cluster configurations to be
 /// applied to all clusters born-in-fleet.
@@ -5487,24 +5011,7 @@ class DefaultClusterConfig {
 }
 
 /// EdgeCluster contains information specific to Google Edge Clusters.
-class EdgeCluster {
-  /// Self-link of the Google Cloud resource for the Edge Cluster.
-  ///
-  /// For example:
-  /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  ///
-  /// Immutable.
-  core.String? resourceLink;
-
-  EdgeCluster({this.resourceLink});
-
-  EdgeCluster.fromJson(core.Map json_)
-    : this(resourceLink: json_['resourceLink'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceLink != null) 'resourceLink': resourceLink!,
-  };
-}
+typedef EdgeCluster = $EdgeCluster;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -5761,73 +5268,13 @@ class Feature {
 ///
 /// See `FeatureState` for the "running state" of the Feature in the Fleet and
 /// across Memberships.
-class FeatureResourceState {
-  /// The current state of the Feature resource in the Hub API.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State is unknown or not set.
-  /// - "ENABLING" : The Feature is being enabled, and the Feature resource is
-  /// being created. Once complete, the corresponding Feature will be enabled in
-  /// this Fleet.
-  /// - "ACTIVE" : The Feature is enabled in this Fleet, and the Feature
-  /// resource is fully available.
-  /// - "DISABLING" : The Feature is being disabled in this Fleet, and the
-  /// Feature resource is being deleted.
-  /// - "UPDATING" : The Feature resource is being updated.
-  /// - "SERVICE_UPDATING" : The Feature resource is being updated by the Hub
-  /// Service.
-  core.String? state;
-
-  FeatureResourceState({this.state});
-
-  FeatureResourceState.fromJson(core.Map json_)
-    : this(state: json_['state'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-  };
-}
+typedef FeatureResourceState = $FeatureResourceState;
 
 /// FeatureState describes the high-level state of a Feature.
 ///
 /// It may be used to describe a Feature's state at the environ-level, or
 /// per-membershop, depending on the context.
-class FeatureState {
-  /// The high-level, machine-readable status of this Feature.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Unknown or not set.
-  /// - "OK" : The Feature is operating normally.
-  /// - "WARNING" : The Feature has encountered an issue, and is operating in a
-  /// degraded state. The Feature may need intervention to return to normal
-  /// operation. See the description and any associated Feature-specific details
-  /// for more information.
-  /// - "ERROR" : The Feature is not operating or is in a severely degraded
-  /// state. The Feature may need intervention to return to normal operation.
-  /// See the description and any associated Feature-specific details for more
-  /// information.
-  core.String? code;
-
-  /// A human-readable description of the current status.
-  core.String? description;
-
-  /// The time this status and any related Feature-specific details were
-  /// updated.
-  core.String? updateTime;
-
-  FeatureState({this.code, this.description, this.updateTime});
-
-  FeatureState.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        description: json_['description'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (description != null) 'description': description!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef FeatureState = $FeatureState;
 
 /// Fleet contains the Fleet-wide metadata and configuration.
 class Fleet {
@@ -5941,49 +5388,10 @@ class Fleet {
 }
 
 /// FleetLifecycleState describes the state of a Fleet resource.
-class FleetLifecycleState {
-  /// The current state of the Fleet resource.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : The code is not set.
-  /// - "CREATING" : The fleet is being created.
-  /// - "READY" : The fleet active.
-  /// - "DELETING" : The fleet is being deleted.
-  /// - "UPDATING" : The fleet is being updated.
-  core.String? code;
-
-  FleetLifecycleState({this.code});
-
-  FleetLifecycleState.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef FleetLifecycleState = $FleetLifecycleState;
 
 /// All error details of the fleet observability feature.
-class FleetObservabilityFeatureError {
-  /// The code of the error.
-  core.String? code;
-
-  /// A human-readable description of the current status.
-  core.String? description;
-
-  FleetObservabilityFeatureError({this.code, this.description});
-
-  FleetObservabilityFeatureError.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        description: json_['description'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (description != null) 'description': description!,
-  };
-}
+typedef FleetObservabilityFeatureError = $FleetObservabilityFeatureError;
 
 /// **Fleet Observability**: The Hub-wide input for the FleetObservability
 /// feature.
@@ -6188,23 +5596,7 @@ typedef FleetObservabilityMembershipSpec = $Empty;
 typedef FleetObservabilityMembershipState = $Empty;
 
 /// RoutingConfig configures the behaviour of fleet logging feature.
-class FleetObservabilityRoutingConfig {
-  /// mode configures the logs routing mode.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : If UNSPECIFIED, fleet logging feature is disabled.
-  /// - "COPY" : logs will be copied to the destination project.
-  /// - "MOVE" : logs will be moved to the destination project.
-  core.String? mode;
-
-  FleetObservabilityRoutingConfig({this.mode});
-
-  FleetObservabilityRoutingConfig.fromJson(core.Map json_)
-    : this(mode: json_['mode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-  };
-}
+typedef FleetObservabilityRoutingConfig = $FleetObservabilityRoutingConfig;
 
 /// GenerateConnectManifestResponse contains manifest information for
 /// installing/upgrading a Connect agent.
@@ -6233,50 +5625,11 @@ class GenerateConnectManifestResponse {
 }
 
 /// Response for GenerateRBACRoleBindingYAML.
-class GenerateMembershipRBACRoleBindingYAMLResponse {
-  /// a yaml text blob including the RBAC policies.
-  core.String? roleBindingsYaml;
-
-  GenerateMembershipRBACRoleBindingYAMLResponse({this.roleBindingsYaml});
-
-  GenerateMembershipRBACRoleBindingYAMLResponse.fromJson(core.Map json_)
-    : this(roleBindingsYaml: json_['roleBindingsYaml'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (roleBindingsYaml != null) 'roleBindingsYaml': roleBindingsYaml!,
-  };
-}
+typedef GenerateMembershipRBACRoleBindingYAMLResponse =
+    $GenerateMembershipRBACRoleBindingYAMLResponse;
 
 /// GkeCluster contains information specific to GKE clusters.
-class GkeCluster {
-  /// If cluster_missing is set then it denotes that the GKE cluster no longer
-  /// exists in the GKE Control Plane.
-  ///
-  /// Output only.
-  core.bool? clusterMissing;
-
-  /// Self-link of the Google Cloud resource for the GKE cluster.
-  ///
-  /// For example:
-  /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  /// Zonal clusters are also supported.
-  ///
-  /// Immutable.
-  core.String? resourceLink;
-
-  GkeCluster({this.clusterMissing, this.resourceLink});
-
-  GkeCluster.fromJson(core.Map json_)
-    : this(
-        clusterMissing: json_['clusterMissing'] as core.bool?,
-        resourceLink: json_['resourceLink'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterMissing != null) 'clusterMissing': clusterMissing!,
-    if (resourceLink != null) 'resourceLink': resourceLink!,
-  };
-}
+typedef GkeCluster = $GkeCluster;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -6623,75 +5976,7 @@ typedef IdentityServiceUserConfig = $IdentityServiceUserConfig;
 
 /// KubernetesMetadata provides informational metadata for Memberships
 /// representing Kubernetes clusters.
-class KubernetesMetadata {
-  /// Kubernetes API server version string as reported by `/version`.
-  ///
-  /// Output only.
-  core.String? kubernetesApiServerVersion;
-
-  /// The total memory capacity as reported by the sum of all Kubernetes nodes
-  /// resources, defined in MB.
-  ///
-  /// Output only.
-  core.int? memoryMb;
-
-  /// Node count as reported by Kubernetes nodes resources.
-  ///
-  /// Output only.
-  core.int? nodeCount;
-
-  /// Node providerID as reported by the first node in the list of nodes on the
-  /// Kubernetes endpoint.
-  ///
-  /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP),
-  /// the node_count will be zero and the node_provider_id will be empty.
-  ///
-  /// Output only.
-  core.String? nodeProviderId;
-
-  /// The time at which these details were last updated.
-  ///
-  /// This update_time is different from the Membership-level update_time since
-  /// EndpointDetails are updated internally for API consumers.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  /// vCPU count as reported by Kubernetes nodes resources.
-  ///
-  /// Output only.
-  core.int? vcpuCount;
-
-  KubernetesMetadata({
-    this.kubernetesApiServerVersion,
-    this.memoryMb,
-    this.nodeCount,
-    this.nodeProviderId,
-    this.updateTime,
-    this.vcpuCount,
-  });
-
-  KubernetesMetadata.fromJson(core.Map json_)
-    : this(
-        kubernetesApiServerVersion:
-            json_['kubernetesApiServerVersion'] as core.String?,
-        memoryMb: json_['memoryMb'] as core.int?,
-        nodeCount: json_['nodeCount'] as core.int?,
-        nodeProviderId: json_['nodeProviderId'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-        vcpuCount: json_['vcpuCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kubernetesApiServerVersion != null)
-      'kubernetesApiServerVersion': kubernetesApiServerVersion!,
-    if (memoryMb != null) 'memoryMb': memoryMb!,
-    if (nodeCount != null) 'nodeCount': nodeCount!,
-    if (nodeProviderId != null) 'nodeProviderId': nodeProviderId!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (vcpuCount != null) 'vcpuCount': vcpuCount!,
-  };
-}
+typedef KubernetesMetadata = $KubernetesMetadata;
 
 /// KubernetesResource contains the YAML manifests and configuration for
 /// Membership Kubernetes resources in the cluster.
@@ -7506,27 +6791,7 @@ class MembershipBinding {
 }
 
 /// MembershipBindingLifecycleState describes the state of a Binding resource.
-class MembershipBindingLifecycleState {
-  /// The current state of the MembershipBinding resource.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : The code is not set.
-  /// - "CREATING" : The membershipbinding is being created.
-  /// - "READY" : The membershipbinding active.
-  /// - "DELETING" : The membershipbinding is being deleted.
-  /// - "UPDATING" : The membershipbinding is being updated.
-  core.String? code;
-
-  MembershipBindingLifecycleState({this.code});
-
-  MembershipBindingLifecycleState.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef MembershipBindingLifecycleState = $MembershipBindingLifecycleState;
 
 /// MembershipEndpoint contains information needed to contact a Kubernetes API,
 /// endpoint and any additional Kubernetes metadata.
@@ -7851,129 +7116,17 @@ class MembershipFeatureState {
 }
 
 /// MembershipState describes the state of a Membership resource.
-class MembershipState {
-  /// The current state of the Membership resource.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : The code is not set.
-  /// - "CREATING" : The cluster is being registered.
-  /// - "READY" : The cluster is registered.
-  /// - "DELETING" : The cluster is being unregistered.
-  /// - "UPDATING" : The Membership is being updated.
-  /// - "SERVICE_UPDATING" : The Membership is being updated by the Hub Service.
-  core.String? code;
-
-  MembershipState({this.code});
-
-  MembershipState.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef MembershipState = $MembershipState;
 
 /// MonitoringConfig informs Fleet-based applications/services/UIs how the
 /// metrics for the underlying cluster is reported to cloud monitoring services.
 ///
 /// It can be set from empty to non-empty, but can't be mutated directly to
 /// prevent accidentally breaking the constinousty of metrics.
-class MonitoringConfig {
-  /// Cluster name used to report metrics.
-  ///
-  /// For Anthos on VMWare/Baremetal/MultiCloud clusters, it would be in format
-  /// {cluster_type}/{cluster_name}, e.g., "awsClusters/cluster_1".
-  ///
-  /// Optional.
-  core.String? cluster;
-
-  /// For GKE and Multicloud clusters, this is the UUID of the cluster resource.
-  ///
-  /// For VMWare and Baremetal clusters, this is the kube-system UID.
-  ///
-  /// Optional.
-  core.String? clusterHash;
-
-  /// Kubernetes system metrics, if available, are written to this prefix.
-  ///
-  /// This defaults to kubernetes.io for GKE, and kubernetes.io/anthos for
-  /// Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix
-  /// today but will migration to be under kubernetes.io/anthos.
-  ///
-  /// Optional.
-  core.String? kubernetesMetricsPrefix;
-
-  /// Location used to report Metrics
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Project used to report Metrics
-  ///
-  /// Optional.
-  core.String? projectId;
-
-  MonitoringConfig({
-    this.cluster,
-    this.clusterHash,
-    this.kubernetesMetricsPrefix,
-    this.location,
-    this.projectId,
-  });
-
-  MonitoringConfig.fromJson(core.Map json_)
-    : this(
-        cluster: json_['cluster'] as core.String?,
-        clusterHash: json_['clusterHash'] as core.String?,
-        kubernetesMetricsPrefix:
-            json_['kubernetesMetricsPrefix'] as core.String?,
-        location: json_['location'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cluster != null) 'cluster': cluster!,
-    if (clusterHash != null) 'clusterHash': clusterHash!,
-    if (kubernetesMetricsPrefix != null)
-      'kubernetesMetricsPrefix': kubernetesMetricsPrefix!,
-    if (location != null) 'location': location!,
-    if (projectId != null) 'projectId': projectId!,
-  };
-}
+typedef MonitoringConfig = $MonitoringConfig;
 
 /// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
-class MultiCloudCluster {
-  /// If cluster_missing is set then it denotes that
-  /// API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud
-  /// cluster no longer exists.
-  ///
-  /// Output only.
-  core.bool? clusterMissing;
-
-  /// Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster.
-  ///
-  /// For example:
-  /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
-  /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
-  /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
-  ///
-  /// Immutable.
-  core.String? resourceLink;
-
-  MultiCloudCluster({this.clusterMissing, this.resourceLink});
-
-  MultiCloudCluster.fromJson(core.Map json_)
-    : this(
-        clusterMissing: json_['clusterMissing'] as core.bool?,
-        resourceLink: json_['resourceLink'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterMissing != null) 'clusterMissing': clusterMissing!,
-    if (resourceLink != null) 'resourceLink': resourceLink!,
-  };
-}
+typedef MultiCloudCluster = $MultiCloudCluster;
 
 /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress
 /// feature.
@@ -8096,84 +7249,10 @@ class Namespace {
 }
 
 /// NamespaceLifecycleState describes the state of a Namespace resource.
-class NamespaceLifecycleState {
-  /// The current state of the Namespace resource.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : The code is not set.
-  /// - "CREATING" : The namespace is being created.
-  /// - "READY" : The namespace active.
-  /// - "DELETING" : The namespace is being deleted.
-  /// - "UPDATING" : The namespace is being updated.
-  core.String? code;
-
-  NamespaceLifecycleState({this.code});
-
-  NamespaceLifecycleState.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef NamespaceLifecycleState = $NamespaceLifecycleState;
 
 /// OnPremCluster contains information specific to GKE On-Prem clusters.
-class OnPremCluster {
-  /// Whether the cluster is an admin cluster.
-  ///
-  /// Immutable.
-  core.bool? adminCluster;
-
-  /// If cluster_missing is set then it denotes that
-  /// API(gkeonprem.googleapis.com) resource for this GKE On-Prem cluster no
-  /// longer exists.
-  ///
-  /// Output only.
-  core.bool? clusterMissing;
-
-  /// The on prem cluster's type.
-  ///
-  /// Immutable.
-  /// Possible string values are:
-  /// - "CLUSTERTYPE_UNSPECIFIED" : The ClusterType is not set.
-  /// - "BOOTSTRAP" : The ClusterType is bootstrap cluster.
-  /// - "HYBRID" : The ClusterType is baremetal hybrid cluster.
-  /// - "STANDALONE" : The ClusterType is baremetal standalone cluster.
-  /// - "USER" : The ClusterType is user cluster.
-  core.String? clusterType;
-
-  /// Self-link of the Google Cloud resource for the GKE On-Prem cluster.
-  ///
-  /// For example:
-  /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
-  /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
-  ///
-  /// Immutable.
-  core.String? resourceLink;
-
-  OnPremCluster({
-    this.adminCluster,
-    this.clusterMissing,
-    this.clusterType,
-    this.resourceLink,
-  });
-
-  OnPremCluster.fromJson(core.Map json_)
-    : this(
-        adminCluster: json_['adminCluster'] as core.bool?,
-        clusterMissing: json_['clusterMissing'] as core.bool?,
-        clusterType: json_['clusterType'] as core.String?,
-        resourceLink: json_['resourceLink'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminCluster != null) 'adminCluster': adminCluster!,
-    if (clusterMissing != null) 'clusterMissing': clusterMissing!,
-    if (clusterType != null) 'clusterType': clusterType!,
-    if (resourceLink != null) 'resourceLink': resourceLink!,
-  };
-}
+typedef OnPremCluster = $OnPremCluster;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -8250,25 +7329,7 @@ class Operation {
 }
 
 /// Origin defines where this MembershipFeatureSpec originated from.
-class Origin {
-  /// Type specifies which type of origin is set.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Type is unknown or not set.
-  /// - "FLEET" : Per-Membership spec was inherited from the fleet-level
-  /// default.
-  /// - "FLEET_OUT_OF_SYNC" : Per-Membership spec was inherited from the
-  /// fleet-level default but is now out of sync with the current default.
-  /// - "USER" : Per-Membership spec was inherited from a user specification.
-  core.String? type;
-
-  Origin({this.type});
-
-  Origin.fromJson(core.Map json_) : this(type: json_['type'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-  };
-}
+typedef Origin = $Origin00;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -8391,43 +7452,12 @@ class Policy {
 }
 
 /// Binauthz policy that applies to this cluster.
-class PolicyBinding {
-  /// The relative resource name of the binauthz platform policy to audit.
-  ///
-  /// GKE platform policies have the following format:
-  /// `projects/{project_number}/platforms/gke/policies/{policy_id}`.
-  core.String? name;
-
-  PolicyBinding({this.name});
-
-  PolicyBinding.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
-}
+typedef PolicyBinding = $PolicyBinding;
 
 /// BundleInstallSpec is the specification configuration for a single managed
 /// bundle.
-class PolicyControllerBundleInstallSpec {
-  /// The set of namespaces to be exempted from the bundle.
-  core.List<core.String>? exemptedNamespaces;
-
-  PolicyControllerBundleInstallSpec({this.exemptedNamespaces});
-
-  PolicyControllerBundleInstallSpec.fromJson(core.Map json_)
-    : this(
-        exemptedNamespaces:
-            (json_['exemptedNamespaces'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exemptedNamespaces != null) 'exemptedNamespaces': exemptedNamespaces!,
-  };
-}
+typedef PolicyControllerBundleInstallSpec =
+    $PolicyControllerBundleInstallSpec00;
 
 /// Configuration for Policy Controller
 class PolicyControllerHubConfig {
@@ -8679,68 +7709,10 @@ class PolicyControllerMembershipState {
 ///
 /// For example, to specify metrics should be exported to Cloud Monitoring and
 /// Prometheus, specify backends: \["cloudmonitoring", "prometheus"\]
-typedef PolicyControllerMonitoringConfig = $Shared03;
+typedef PolicyControllerMonitoringConfig = $Shared01;
 
 /// OnClusterState represents the state of a sub-component of Policy Controller.
-class PolicyControllerOnClusterState {
-  /// Surface potential errors or information logs.
-  core.String? details;
-
-  /// The lifecycle state of this component.
-  /// Possible string values are:
-  /// - "LIFECYCLE_STATE_UNSPECIFIED" : The lifecycle state is unspecified.
-  /// - "NOT_INSTALLED" : The PC does not exist on the given cluster, and no k8s
-  /// resources of any type that are associated with the PC should exist there.
-  /// The cluster does not possess a membership with the PCH.
-  /// - "INSTALLING" : The PCH possesses a Membership, however the PC is not
-  /// fully installed on the cluster. In this state the hub can be expected to
-  /// be taking actions to install the PC on the cluster.
-  /// - "ACTIVE" : The PC is fully installed on the cluster and in an
-  /// operational mode. In this state PCH will be reconciling state with the PC,
-  /// and the PC will be performing it's operational tasks per that software.
-  /// Entering a READY state requires that the hub has confirmed the PC is
-  /// installed and its pods are operational with the version of the PC the PCH
-  /// expects.
-  /// - "UPDATING" : The PC is fully installed, but in the process of changing
-  /// the configuration (including changing the version of PC either up and
-  /// down, or modifying the manifests of PC) of the resources running on the
-  /// cluster. The PCH has a Membership, is aware of the version the cluster
-  /// should be running in, but has not confirmed for itself that the PC is
-  /// running with that version.
-  /// - "DECOMMISSIONING" : The PC may have resources on the cluster, but the
-  /// PCH wishes to remove the Membership. The Membership still exists.
-  /// - "CLUSTER_ERROR" : The PC is not operational, and the PCH is unable to
-  /// act to make it operational. Entering a CLUSTER_ERROR state happens
-  /// automatically when the PCH determines that a PC installed on the cluster
-  /// is non-operative or that the cluster does not meet requirements set for
-  /// the PCH to administer the cluster but has nevertheless been given an
-  /// instruction to do so (such as 'install').
-  /// - "HUB_ERROR" : In this state, the PC may still be operational, and only
-  /// the PCH is unable to act. The hub should not issue instructions to change
-  /// the PC state, or otherwise interfere with the on-cluster resources.
-  /// Entering a HUB_ERROR state happens automatically when the PCH determines
-  /// the hub is in an unhealthy state and it wishes to 'take hands off' to
-  /// avoid corrupting the PC or other data.
-  /// - "SUSPENDED" : Policy Controller (PC) is installed but suspended. This
-  /// means that the policies are not enforced, but violations are still
-  /// recorded (through audit).
-  /// - "DETACHED" : PoCo Hub is not taking any action to reconcile cluster
-  /// objects. Changes to those objects will not be overwritten by PoCo Hub.
-  core.String? state;
-
-  PolicyControllerOnClusterState({this.details, this.state});
-
-  PolicyControllerOnClusterState.fromJson(core.Map json_)
-    : this(
-        details: json_['details'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (details != null) 'details': details!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef PolicyControllerOnClusterState = $PolicyControllerOnClusterState00;
 
 /// PolicyContentSpec defines the user's desired content configuration on the
 /// cluster.
@@ -9060,28 +8032,8 @@ class RBACRoleBinding {
 
 /// **RBAC RoleBinding Actuation**: The Hub-wide input for the
 /// RBACRoleBindingActuation feature.
-class RBACRoleBindingActuationFeatureSpec {
-  /// The list of allowed custom roles (ClusterRoles).
-  ///
-  /// If a ClusterRole is not part of this list, it cannot be used in a Scope
-  /// RBACRoleBinding. If a ClusterRole in this list is in use, it cannot be
-  /// removed from the list.
-  core.List<core.String>? allowedCustomRoles;
-
-  RBACRoleBindingActuationFeatureSpec({this.allowedCustomRoles});
-
-  RBACRoleBindingActuationFeatureSpec.fromJson(core.Map json_)
-    : this(
-        allowedCustomRoles:
-            (json_['allowedCustomRoles'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedCustomRoles != null) 'allowedCustomRoles': allowedCustomRoles!,
-  };
-}
+typedef RBACRoleBindingActuationFeatureSpec =
+    $RBACRoleBindingActuationFeatureSpec;
 
 /// **RBAC RoleBinding Actuation**: An empty state left as an example Hub-wide
 /// Feature state.
@@ -9089,132 +8041,17 @@ typedef RBACRoleBindingActuationFeatureState = $Empty;
 
 /// RBACRoleBindingLifecycleState describes the state of a RbacRoleBinding
 /// resource.
-class RBACRoleBindingLifecycleState {
-  /// The current state of the rbacrolebinding resource.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : The code is not set.
-  /// - "CREATING" : The rbacrolebinding is being created.
-  /// - "READY" : The rbacrolebinding active.
-  /// - "DELETING" : The rbacrolebinding is being deleted.
-  /// - "UPDATING" : The rbacrolebinding is being updated.
-  core.String? code;
-
-  RBACRoleBindingLifecycleState({this.code});
-
-  RBACRoleBindingLifecycleState.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef RBACRoleBindingLifecycleState = $RBACRoleBindingLifecycleState;
 
 /// ResourceManifest represents a single Kubernetes resource to be applied to
 /// the cluster.
-class ResourceManifest {
-  /// Whether the resource provided in the manifest is `cluster_scoped`.
-  ///
-  /// If unset, the manifest is assumed to be namespace scoped. This field is
-  /// used for REST mapping when applying the resource in a cluster.
-  ///
-  /// Output only.
-  core.bool? clusterScoped;
-
-  /// YAML manifest of the resource.
-  ///
-  /// Output only.
-  core.String? manifest;
-
-  ResourceManifest({this.clusterScoped, this.manifest});
-
-  ResourceManifest.fromJson(core.Map json_)
-    : this(
-        clusterScoped: json_['clusterScoped'] as core.bool?,
-        manifest: json_['manifest'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterScoped != null) 'clusterScoped': clusterScoped!,
-    if (manifest != null) 'manifest': manifest!,
-  };
-}
+typedef ResourceManifest = $ResourceManifest;
 
 /// ResourceOptions represent options for Kubernetes resource generation.
-class ResourceOptions {
-  /// The Connect agent version to use for connect_resources.
-  ///
-  /// Defaults to the latest GKE Connect version. The version must be a
-  /// currently supported version, obsolete versions will be rejected.
-  ///
-  /// Optional.
-  core.String? connectVersion;
-
-  /// Major version of the Kubernetes cluster.
-  ///
-  /// This is only used to determine which version to use for the
-  /// CustomResourceDefinition resources, `apiextensions/v1beta1`
-  /// or`apiextensions/v1`.
-  ///
-  /// Optional.
-  core.String? k8sVersion;
-
-  /// Use `apiextensions/v1beta1` instead of `apiextensions/v1` for
-  /// CustomResourceDefinition resources.
-  ///
-  /// This option should be set for clusters with Kubernetes apiserver versions
-  /// \<1.16.
-  ///
-  /// Optional.
-  core.bool? v1beta1Crd;
-
-  ResourceOptions({this.connectVersion, this.k8sVersion, this.v1beta1Crd});
-
-  ResourceOptions.fromJson(core.Map json_)
-    : this(
-        connectVersion: json_['connectVersion'] as core.String?,
-        k8sVersion: json_['k8sVersion'] as core.String?,
-        v1beta1Crd: json_['v1beta1Crd'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connectVersion != null) 'connectVersion': connectVersion!,
-    if (k8sVersion != null) 'k8sVersion': k8sVersion!,
-    if (v1beta1Crd != null) 'v1beta1Crd': v1beta1Crd!,
-  };
-}
+typedef ResourceOptions = $ResourceOptions;
 
 /// Role is the type for Kubernetes roles
-class Role {
-  /// custom_role is the name of a custom KubernetesClusterRole to use.
-  ///
-  /// Optional.
-  core.String? customRole;
-
-  /// predefined_role is the Kubernetes default role to use
-  /// Possible string values are:
-  /// - "UNKNOWN" : UNKNOWN
-  /// - "ADMIN" : ADMIN has EDIT and RBAC permissions
-  /// - "EDIT" : EDIT can edit all resources except RBAC
-  /// - "VIEW" : VIEW can only read resources
-  /// - "ANTHOS_SUPPORT" : ANTHOS_SUPPORT gives Google Support read-only access
-  /// to a number of cluster resources.
-  core.String? predefinedRole;
-
-  Role({this.customRole, this.predefinedRole});
-
-  Role.fromJson(core.Map json_)
-    : this(
-        customRole: json_['customRole'] as core.String?,
-        predefinedRole: json_['predefinedRole'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (customRole != null) 'customRole': customRole!,
-    if (predefinedRole != null) 'predefinedRole': predefinedRole!,
-  };
-}
+typedef Role = $Role;
 
 /// Scope represents a Scope in a Fleet.
 class Scope {
@@ -9339,27 +8176,7 @@ class ScopeFeatureState {
 }
 
 /// ScopeLifecycleState describes the state of a Scope resource.
-class ScopeLifecycleState {
-  /// The current state of the scope resource.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : The code is not set.
-  /// - "CREATING" : The scope is being created.
-  /// - "READY" : The scope active.
-  /// - "DELETING" : The scope is being deleted.
-  /// - "UPDATING" : The scope is being updated.
-  core.String? code;
-
-  ScopeLifecycleState({this.code});
-
-  ScopeLifecycleState.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef ScopeLifecycleState = $ScopeLifecycleState;
 
 /// SecurityPostureConfig defines the flags needed to enable/disable features
 /// for the Security Posture API.
@@ -9477,63 +8294,7 @@ class ServiceMeshDataPlaneManagement {
 }
 
 /// **Service Mesh**: Spec for a single Membership for the servicemesh feature
-class ServiceMeshMembershipSpec {
-  /// Specifies the API that will be used for configuring the mesh workloads.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "CONFIG_API_UNSPECIFIED" : Unspecified
-  /// - "CONFIG_API_ISTIO" : Use the Istio API for configuration.
-  /// - "CONFIG_API_GATEWAY" : Use the K8s Gateway API for configuration.
-  core.String? configApi;
-
-  /// Deprecated: use `management` instead Enables automatic control plane
-  /// management.
-  /// Possible string values are:
-  /// - "CONTROL_PLANE_MANAGEMENT_UNSPECIFIED" : Unspecified
-  /// - "AUTOMATIC" : Google should provision a control plane revision and make
-  /// it available in the cluster. Google will enroll this revision in a release
-  /// channel and keep it up to date. The control plane revision may be a
-  /// managed service, or a managed install.
-  /// - "MANUAL" : User will manually configure the control plane (e.g. via CLI,
-  /// or via the ControlPlaneRevision KRM API)
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? controlPlane;
-
-  /// Enables automatic Service Mesh management.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "MANAGEMENT_UNSPECIFIED" : Unspecified
-  /// - "MANAGEMENT_AUTOMATIC" : Google should manage my Service Mesh for the
-  /// cluster.
-  /// - "MANAGEMENT_MANUAL" : User will manually configure their service mesh
-  /// components.
-  /// - "MANAGEMENT_NOT_INSTALLED" : Google should remove any managed Service
-  /// Mesh components from this cluster and deprovision any resources.
-  core.String? management;
-
-  ServiceMeshMembershipSpec({
-    this.configApi,
-    this.controlPlane,
-    this.management,
-  });
-
-  ServiceMeshMembershipSpec.fromJson(core.Map json_)
-    : this(
-        configApi: json_['configApi'] as core.String?,
-        controlPlane: json_['controlPlane'] as core.String?,
-        management: json_['management'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configApi != null) 'configApi': configApi!,
-    if (controlPlane != null) 'controlPlane': controlPlane!,
-    if (management != null) 'management': management!,
-  };
-}
+typedef ServiceMeshMembershipSpec = $ServiceMeshMembershipSpec;
 
 /// **Service Mesh**: State for a single Membership, as analyzed by the Service
 /// Mesh Hub Controller.
@@ -9642,23 +8403,4 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// TypeMeta is the type information needed for content unmarshalling of
 /// Kubernetes resources in the manifest.
-class TypeMeta {
-  /// APIVersion of the resource (e.g. v1).
-  core.String? apiVersion;
-
-  /// Kind of the resource (e.g. Deployment).
-  core.String? kind;
-
-  TypeMeta({this.apiVersion, this.kind});
-
-  TypeMeta.fromJson(core.Map json_)
-    : this(
-        apiVersion: json_['apiVersion'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiVersion != null) 'apiVersion': apiVersion!,
-    if (kind != null) 'kind': kind!,
-  };
-}
+typedef TypeMeta = $TypeMeta;

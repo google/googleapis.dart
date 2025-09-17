@@ -2200,7 +2200,7 @@ typedef AliasContext = $AliasContext;
 typedef AnalysisCompleted = $AnalysisCompleted;
 
 /// Artifact describes a build product.
-typedef Artifact = $Artifact;
+typedef Artifact = $Artifact00;
 
 /// Assessment provides all information that is related to a single
 /// vulnerability for this product.
@@ -2914,133 +2914,19 @@ class BuildProvenance {
   };
 }
 
-typedef BuilderConfig = $Shared01;
+typedef BuilderConfig = $Shared02;
 
 /// Common Vulnerability Scoring System.
 ///
 /// For details, see https://www.first.org/cvss/specification-document This is a
 /// message we will try to use for storing various versions of CVSS rather than
 /// making a separate proto for storing a specific version.
-typedef CVSS = $CVSS;
+typedef CVSS = $CVSS00;
 
 /// Common Vulnerability Scoring System version 3.
 ///
 /// For details, see https://www.first.org/cvss/specification-document
-class CVSSv3 {
-  ///
-  /// Possible string values are:
-  /// - "ATTACK_COMPLEXITY_UNSPECIFIED"
-  /// - "ATTACK_COMPLEXITY_LOW"
-  /// - "ATTACK_COMPLEXITY_HIGH"
-  core.String? attackComplexity;
-
-  /// Base Metrics Represents the intrinsic characteristics of a vulnerability
-  /// that are constant over time and across user environments.
-  /// Possible string values are:
-  /// - "ATTACK_VECTOR_UNSPECIFIED"
-  /// - "ATTACK_VECTOR_NETWORK"
-  /// - "ATTACK_VECTOR_ADJACENT"
-  /// - "ATTACK_VECTOR_LOCAL"
-  /// - "ATTACK_VECTOR_PHYSICAL"
-  core.String? attackVector;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? availabilityImpact;
-
-  /// The base score is a function of the base metric scores.
-  core.double? baseScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? confidentialityImpact;
-  core.double? exploitabilityScore;
-  core.double? impactScore;
-
-  ///
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED"
-  /// - "IMPACT_HIGH"
-  /// - "IMPACT_LOW"
-  /// - "IMPACT_NONE"
-  core.String? integrityImpact;
-
-  ///
-  /// Possible string values are:
-  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED"
-  /// - "PRIVILEGES_REQUIRED_NONE"
-  /// - "PRIVILEGES_REQUIRED_LOW"
-  /// - "PRIVILEGES_REQUIRED_HIGH"
-  core.String? privilegesRequired;
-
-  ///
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED"
-  /// - "SCOPE_UNCHANGED"
-  /// - "SCOPE_CHANGED"
-  core.String? scope;
-
-  ///
-  /// Possible string values are:
-  /// - "USER_INTERACTION_UNSPECIFIED"
-  /// - "USER_INTERACTION_NONE"
-  /// - "USER_INTERACTION_REQUIRED"
-  core.String? userInteraction;
-
-  CVSSv3({
-    this.attackComplexity,
-    this.attackVector,
-    this.availabilityImpact,
-    this.baseScore,
-    this.confidentialityImpact,
-    this.exploitabilityScore,
-    this.impactScore,
-    this.integrityImpact,
-    this.privilegesRequired,
-    this.scope,
-    this.userInteraction,
-  });
-
-  CVSSv3.fromJson(core.Map json_)
-    : this(
-        attackComplexity: json_['attackComplexity'] as core.String?,
-        attackVector: json_['attackVector'] as core.String?,
-        availabilityImpact: json_['availabilityImpact'] as core.String?,
-        baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
-        confidentialityImpact: json_['confidentialityImpact'] as core.String?,
-        exploitabilityScore:
-            (json_['exploitabilityScore'] as core.num?)?.toDouble(),
-        impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
-        integrityImpact: json_['integrityImpact'] as core.String?,
-        privilegesRequired: json_['privilegesRequired'] as core.String?,
-        scope: json_['scope'] as core.String?,
-        userInteraction: json_['userInteraction'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attackComplexity != null) 'attackComplexity': attackComplexity!,
-    if (attackVector != null) 'attackVector': attackVector!,
-    if (availabilityImpact != null) 'availabilityImpact': availabilityImpact!,
-    if (baseScore != null) 'baseScore': baseScore!,
-    if (confidentialityImpact != null)
-      'confidentialityImpact': confidentialityImpact!,
-    if (exploitabilityScore != null)
-      'exploitabilityScore': exploitabilityScore!,
-    if (impactScore != null) 'impactScore': impactScore!,
-    if (integrityImpact != null) 'integrityImpact': integrityImpact!,
-    if (privilegesRequired != null) 'privilegesRequired': privilegesRequired!,
-    if (scope != null) 'scope': scope!,
-    if (userInteraction != null) 'userInteraction': userInteraction!,
-  };
-}
+typedef CVSSv3 = $CVSSv300;
 
 /// The category to which the update belongs.
 typedef Category = $Category;
@@ -3309,47 +3195,13 @@ class DSSEAttestationOccurrence {
 /// security purposes) from "readable" names more suitable for debug output.
 /// Note that these hints should not be used to look up authorities in security
 /// sensitive contexts, such as when looking up attestations to verify.
-class DSSEHint {
-  /// The human readable name of this attestation authority, for example
-  /// "cloudbuild-prod".
-  ///
-  /// Required.
-  core.String? humanReadableName;
-
-  DSSEHint({this.humanReadableName});
-
-  DSSEHint.fromJson(core.Map json_)
-    : this(humanReadableName: json_['humanReadableName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (humanReadableName != null) 'humanReadableName': humanReadableName!,
-  };
-}
+typedef DSSEHint = $DSSEHint;
 
 /// An artifact that can be deployed in some runtime.
-class DeploymentNote {
-  /// Resource URI for the artifact being deployed.
-  ///
-  /// Required.
-  core.List<core.String>? resourceUri;
-
-  DeploymentNote({this.resourceUri});
-
-  DeploymentNote.fromJson(core.Map json_)
-    : this(
-        resourceUri:
-            (json_['resourceUri'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceUri != null) 'resourceUri': resourceUri!,
-  };
-}
+typedef DeploymentNote = $Shared17;
 
 /// The period during which some deployable was active in a runtime.
-typedef DeploymentOccurrence = $DeploymentOccurrence;
+typedef DeploymentOccurrence = $Shared07;
 
 /// A detail for a distro and package affected by this vulnerability and its
 /// associated fix (if one is available).
@@ -3505,35 +3357,7 @@ class Detail {
 }
 
 /// Digest information.
-class Digest {
-  /// `SHA1`, `SHA512` etc.
-  core.String? algo;
-
-  /// Value of the digest.
-  core.String? digestBytes;
-  core.List<core.int> get digestBytesAsBytes =>
-      convert.base64.decode(digestBytes!);
-
-  set digestBytesAsBytes(core.List<core.int> bytes_) {
-    digestBytes = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  Digest({this.algo, this.digestBytes});
-
-  Digest.fromJson(core.Map json_)
-    : this(
-        algo: json_['algo'] as core.String?,
-        digestBytes: json_['digestBytes'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algo != null) 'algo': algo!,
-    if (digestBytes != null) 'digestBytes': digestBytes!,
-  };
-}
+typedef Digest = $Digest;
 
 /// A note that indicates a type of analysis a provider would perform.
 ///
@@ -3878,7 +3702,7 @@ class ExportSBOMResponse {
 /// service that evaluates it. See the service documentation for additional
 /// information.
 typedef Expr = $Expr;
-typedef File = $File;
+typedef File = $File00;
 
 /// Container message for hashes of byte content of files, used in source
 /// messages to verify integrity of source input to the build.
@@ -4062,7 +3886,7 @@ class GrafeasV1FileLocation {
 
 /// Identifies the entity that executed the recipe, which is trusted to have
 /// correctly performed the operation and populated this provenance.
-typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared01;
+typedef GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -4166,7 +3990,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadata {
 }
 
 /// Container message for hash values.
-typedef Hash = $Hash;
+typedef Hash = $Hash01;
 
 /// This submessage provides human-readable hints about the purpose of the
 /// authority.
@@ -4176,21 +4000,7 @@ typedef Hash = $Hash;
 /// security purposes) from "readable" names more suitable for debug output.
 /// Note that these hints should not be used to look up authorities in security
 /// sensitive contexts, such as when looking up attestations to verify.
-class Hint {
-  /// The human readable name of this attestation authority, for example "qa".
-  ///
-  /// Required.
-  core.String? humanReadableName;
-
-  Hint({this.humanReadableName});
-
-  Hint.fromJson(core.Map json_)
-    : this(humanReadableName: json_['humanReadableName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (humanReadableName != null) 'humanReadableName': humanReadableName!,
-  };
-}
+typedef Hint = $Hint;
 
 /// The unique identifier of the update.
 typedef Identity = $Identity;
@@ -5713,37 +5523,7 @@ class Policy {
 
 /// Product contains information about a product and how to uniquely identify
 /// it.
-class Product {
-  /// Contains a URI which is vendor-specific.
-  ///
-  /// Example: The artifact repository URL of an image.
-  core.String? genericUri;
-
-  /// Token that identifies a product so that it can be referred to from other
-  /// parts in the document.
-  ///
-  /// There is no predefined format as long as it uniquely identifies a group in
-  /// the context of the current document.
-  core.String? id;
-
-  /// Name of the product.
-  core.String? name;
-
-  Product({this.genericUri, this.id, this.name});
-
-  Product.fromJson(core.Map json_)
-    : this(
-        genericUri: json_['genericUri'] as core.String?,
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (genericUri != null) 'genericUri': genericUri!,
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef Product = $Product;
 
 /// Selects a repo using a Google Cloud Platform project ID (e.g.,
 /// winged-cargo-31) and a repo name within that project.
@@ -5780,39 +5560,7 @@ class ProvenanceBuilder {
 }
 
 /// Publisher contains information about the publisher of this Note.
-class Publisher {
-  /// Provides information about the authority of the issuing party to release
-  /// the document, in particular, the party's constituency and responsibilities
-  /// or other obligations.
-  core.String? issuingAuthority;
-
-  /// Name of the publisher.
-  ///
-  /// Examples: 'Google', 'Google Cloud Platform'.
-  core.String? name;
-
-  /// The context or namespace.
-  ///
-  /// Contains a URL which is under control of the issuing party and can be used
-  /// as a globally unique identifier for that issuing party. Example:
-  /// https://csaf.io
-  core.String? publisherNamespace;
-
-  Publisher({this.issuingAuthority, this.name, this.publisherNamespace});
-
-  Publisher.fromJson(core.Map json_)
-    : this(
-        issuingAuthority: json_['issuingAuthority'] as core.String?,
-        name: json_['name'] as core.String?,
-        publisherNamespace: json_['publisherNamespace'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issuingAuthority != null) 'issuingAuthority': issuingAuthority!,
-    if (name != null) 'name': name!,
-    if (publisherNamespace != null) 'publisherNamespace': publisherNamespace!,
-  };
-}
+typedef Publisher = $Publisher00;
 
 /// Steps taken to build the artifact.
 ///
@@ -5931,30 +5679,7 @@ class RunDetails {
 }
 
 /// The note representing an SBOM reference.
-class SBOMReferenceNote {
-  /// The format that SBOM takes.
-  ///
-  /// E.g. may be spdx, cyclonedx, etc...
-  core.String? format;
-
-  /// The version of the format that the SBOM takes.
-  ///
-  /// E.g. if the format is spdx, the version may be 2.3.
-  core.String? version;
-
-  SBOMReferenceNote({this.format, this.version});
-
-  SBOMReferenceNote.fromJson(core.Map json_)
-    : this(
-        format: json_['format'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (format != null) 'format': format!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef SBOMReferenceNote = $SBOMReferenceNote;
 
 /// The occurrence representing an SBOM reference as applied to a specific
 /// resource.
@@ -6192,7 +5917,7 @@ class SetIamPolicyRequest {
 /// that holds this Signature, or the canonical serialization of the proto
 /// message that holds this signature).
 typedef Signature = $Signature;
-typedef SlsaBuilder = $Shared01;
+typedef SlsaBuilder = $Shared02;
 
 /// Indicates that the builder claims certain fields in this message to be
 /// complete.
@@ -6695,7 +6420,7 @@ class UpgradeOccurrence {
 }
 
 /// Version contains structured information about the version of a package.
-typedef Version = $Version;
+typedef Version = $Version00;
 
 /// VexAssessment provides all publisher provided Vex information that is
 /// related to this vulnerability.

@@ -974,57 +974,8 @@ class OrganizationsLocationsWorkloadsViolationsResource {
 }
 
 /// Request for acknowledging the violation
-class GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest {
-  /// Acknowledge type of specified violation.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "ACKNOWLEDGE_TYPE_UNSPECIFIED" : Acknowledge type unspecified.
-  /// - "SINGLE_VIOLATION" : Acknowledge only the specific violation.
-  /// - "EXISTING_CHILD_RESOURCE_VIOLATIONS" : Acknowledge specified orgPolicy
-  /// violation and also associated resource violations.
-  core.String? acknowledgeType;
-
-  /// Business justification explaining the need for violation acknowledgement
-  ///
-  /// Required.
-  core.String? comment;
-
-  /// This field is deprecated and will be removed in future version of the API.
-  ///
-  /// Name of the OrgPolicy which was modified with non-compliant change and
-  /// resulted in this violation. Format:
-  /// projects/{project_number}/policies/{constraint_name}
-  /// folders/{folder_id}/policies/{constraint_name}
-  /// organizations/{organization_id}/policies/{constraint_name}
-  ///
-  /// Optional.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? nonCompliantOrgPolicy;
-
-  GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest({
-    this.acknowledgeType,
-    this.comment,
-    this.nonCompliantOrgPolicy,
-  });
-
-  GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        acknowledgeType: json_['acknowledgeType'] as core.String?,
-        comment: json_['comment'] as core.String?,
-        nonCompliantOrgPolicy: json_['nonCompliantOrgPolicy'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acknowledgeType != null) 'acknowledgeType': acknowledgeType!,
-    if (comment != null) 'comment': comment!,
-    if (nonCompliantOrgPolicy != null)
-      'nonCompliantOrgPolicy': nonCompliantOrgPolicy!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1AcknowledgeViolationRequest =
+    $AcknowledgeViolationRequest;
 
 /// Response for violation acknowledgement
 typedef GoogleCloudAssuredworkloadsV1AcknowledgeViolationResponse = $Empty;
@@ -1066,23 +1017,8 @@ class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse {
 }
 
 /// Request to apply update to a workload.
-class GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest {
-  /// The action to be performed on the update.
-  /// Possible string values are:
-  /// - "WORKLOAD_UPDATE_ACTION_UNSPECIFIED" : Unspecified value.
-  /// - "APPLY" : The update is applied.
-  core.String? action;
-
-  GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest({this.action});
-
-  GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest.fromJson(
-    core.Map json_,
-  ) : this(action: json_['action'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1ApplyWorkloadUpdateRequest =
+    $ApplyWorkloadUpdateRequest;
 
 /// Represents move analysis results for an asset.
 class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis {
@@ -1328,19 +1264,7 @@ class GoogleCloudAssuredworkloadsV1MoveAnalysisResult {
 }
 
 /// Represents the impact of moving the asset to the target.
-class GoogleCloudAssuredworkloadsV1MoveImpact {
-  /// Explanation of the impact.
-  core.String? detail;
-
-  GoogleCloudAssuredworkloadsV1MoveImpact({this.detail});
-
-  GoogleCloudAssuredworkloadsV1MoveImpact.fromJson(core.Map json_)
-    : this(detail: json_['detail'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detail != null) 'detail': detail!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1MoveImpact = $MoveImpact;
 
 /// Request for updating permission settings for a partner workload.
 class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest {
@@ -1539,38 +1463,8 @@ class GoogleCloudAssuredworkloadsV1OrgPolicyUpdate {
 }
 
 /// Request for restricting list of available resources in Workload environment.
-class GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest {
-  /// The type of restriction for using gcp products in the Workload
-  /// environment.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "RESTRICTION_TYPE_UNSPECIFIED" : Unknown restriction type.
-  /// - "ALLOW_ALL_GCP_RESOURCES" : Allow the use all of all gcp products,
-  /// irrespective of the compliance posture. This effectively removes
-  /// gcp.restrictServiceUsage OrgPolicy on the AssuredWorkloads Folder.
-  /// - "ALLOW_COMPLIANT_RESOURCES" : Based on Workload's compliance regime,
-  /// allowed list changes. See -
-  /// https://cloud.google.com/assured-workloads/docs/supported-products for the
-  /// list of supported resources.
-  /// - "APPEND_COMPLIANT_RESOURCES" : Similar to ALLOW_COMPLIANT_RESOURCES but
-  /// adds the list of compliant resources to the existing list of compliant
-  /// resources. Effective org-policy of the Folder is considered to ensure
-  /// there is no disruption to the existing customer workflows.
-  core.String? restrictionType;
-
-  GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest({
-    this.restrictionType,
-  });
-
-  GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest.fromJson(
-    core.Map json_,
-  ) : this(restrictionType: json_['restrictionType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (restrictionType != null) 'restrictionType': restrictionType!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesRequest =
+    $RestrictAllowedResourcesRequest;
 
 /// Response for restricting the list of allowed resources.
 typedef GoogleCloudAssuredworkloadsV1RestrictAllowedResourcesResponse = $Empty;
@@ -1837,38 +1731,8 @@ class GoogleCloudAssuredworkloadsV1Violation {
 }
 
 /// Violation exception detail.
-class GoogleCloudAssuredworkloadsV1ViolationExceptionContext {
-  /// Timestamp when the violation was acknowledged.
-  core.String? acknowledgementTime;
-
-  /// Business justification provided towards the acknowledgement of the
-  /// violation.
-  core.String? comment;
-
-  /// Name of the user (or service account) who acknowledged the violation.
-  core.String? userName;
-
-  GoogleCloudAssuredworkloadsV1ViolationExceptionContext({
-    this.acknowledgementTime,
-    this.comment,
-    this.userName,
-  });
-
-  GoogleCloudAssuredworkloadsV1ViolationExceptionContext.fromJson(
-    core.Map json_,
-  ) : this(
-        acknowledgementTime: json_['acknowledgementTime'] as core.String?,
-        comment: json_['comment'] as core.String?,
-        userName: json_['userName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acknowledgementTime != null)
-      'acknowledgementTime': acknowledgementTime!,
-    if (comment != null) 'comment': comment!,
-    if (userName != null) 'userName': userName!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1ViolationExceptionContext =
+    $ViolationExceptionContext;
 
 /// Represents remediation guidance to resolve compliance violation for
 /// AssuredWorkload
@@ -2383,320 +2247,31 @@ class GoogleCloudAssuredworkloadsV1Workload {
 }
 
 /// Represents the Compliance Status of this workload
-class GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus {
-  /// Number of current resource violations which are not acknowledged.
-  core.int? acknowledgedResourceViolationCount;
-
-  /// Number of current orgPolicy violations which are acknowledged.
-  core.int? acknowledgedViolationCount;
-
-  /// Number of current resource violations which are acknowledged.
-  core.int? activeResourceViolationCount;
-
-  /// Number of current orgPolicy violations which are not acknowledged.
-  core.int? activeViolationCount;
-
-  GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus({
-    this.acknowledgedResourceViolationCount,
-    this.acknowledgedViolationCount,
-    this.activeResourceViolationCount,
-    this.activeViolationCount,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus.fromJson(core.Map json_)
-    : this(
-        acknowledgedResourceViolationCount:
-            json_['acknowledgedResourceViolationCount'] as core.int?,
-        acknowledgedViolationCount:
-            json_['acknowledgedViolationCount'] as core.int?,
-        activeResourceViolationCount:
-            json_['activeResourceViolationCount'] as core.int?,
-        activeViolationCount: json_['activeViolationCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acknowledgedResourceViolationCount != null)
-      'acknowledgedResourceViolationCount': acknowledgedResourceViolationCount!,
-    if (acknowledgedViolationCount != null)
-      'acknowledgedViolationCount': acknowledgedViolationCount!,
-    if (activeResourceViolationCount != null)
-      'activeResourceViolationCount': activeResourceViolationCount!,
-    if (activeViolationCount != null)
-      'activeViolationCount': activeViolationCount!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadComplianceStatus =
+    $WorkloadComplianceStatus;
 
 /// External key management systems(EKM) Provisioning response
-class GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse {
-  /// Indicates Ekm provisioning error if any.
-  /// Possible string values are:
-  /// - "EKM_PROVISIONING_ERROR_DOMAIN_UNSPECIFIED" : No error domain
-  /// - "UNSPECIFIED_ERROR" : Error but domain is unspecified.
-  /// - "GOOGLE_SERVER_ERROR" : Internal logic breaks within provisioning code.
-  /// - "EXTERNAL_USER_ERROR" : Error occurred with the customer not granting
-  /// permission/creating resource.
-  /// - "EXTERNAL_PARTNER_ERROR" : Error occurred within the partner's
-  /// provisioning cluster.
-  /// - "TIMEOUT_ERROR" : Resource wasn't provisioned in the required 7 day time
-  /// period
-  core.String? ekmProvisioningErrorDomain;
-
-  /// Detailed error message if Ekm provisioning fails
-  /// Possible string values are:
-  /// - "EKM_PROVISIONING_ERROR_MAPPING_UNSPECIFIED" : Error is unspecified.
-  /// - "INVALID_SERVICE_ACCOUNT" : Service account is used is invalid.
-  /// - "MISSING_METRICS_SCOPE_ADMIN_PERMISSION" : Iam permission
-  /// monitoring.MetricsScopeAdmin wasn't applied.
-  /// - "MISSING_EKM_CONNECTION_ADMIN_PERMISSION" : Iam permission
-  /// cloudkms.ekmConnectionsAdmin wasn't applied.
-  core.String? ekmProvisioningErrorMapping;
-
-  /// Indicates Ekm enrollment Provisioning of a given workload.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "EKM_PROVISIONING_STATE_UNSPECIFIED" : Default State for Ekm
-  /// Provisioning
-  /// - "EKM_PROVISIONING_STATE_PENDING" : Pending State for Ekm Provisioning
-  /// - "EKM_PROVISIONING_STATE_FAILED" : Failed State for Ekm Provisioning
-  /// - "EKM_PROVISIONING_STATE_COMPLETED" : Completed State for Ekm
-  /// Provisioning
-  core.String? ekmProvisioningState;
-
-  GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse({
-    this.ekmProvisioningErrorDomain,
-    this.ekmProvisioningErrorMapping,
-    this.ekmProvisioningState,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse.fromJson(
-    core.Map json_,
-  ) : this(
-        ekmProvisioningErrorDomain:
-            json_['ekmProvisioningErrorDomain'] as core.String?,
-        ekmProvisioningErrorMapping:
-            json_['ekmProvisioningErrorMapping'] as core.String?,
-        ekmProvisioningState: json_['ekmProvisioningState'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ekmProvisioningErrorDomain != null)
-      'ekmProvisioningErrorDomain': ekmProvisioningErrorDomain!,
-    if (ekmProvisioningErrorMapping != null)
-      'ekmProvisioningErrorMapping': ekmProvisioningErrorMapping!,
-    if (ekmProvisioningState != null)
-      'ekmProvisioningState': ekmProvisioningState!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadEkmProvisioningResponse =
+    $WorkloadEkmProvisioningResponse;
 
 /// Settings specific to the Key Management Service.
-class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
-  /// Input only.
-  ///
-  /// Immutable. The time at which the Key Management Service will automatically
-  /// create a new version of the crypto key and mark it as the primary.
-  ///
-  /// Required.
-  core.String? nextRotationTime;
-
-  /// Input only.
-  ///
-  /// Immutable. \[next_rotation_time\] will be advanced by this period when the
-  /// Key Management Service automatically rotates a key. Must be at least 24
-  /// hours and at most 876,000 hours.
-  ///
-  /// Required.
-  core.String? rotationPeriod;
-
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings({
-    this.nextRotationTime,
-    this.rotationPeriod,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(core.Map json_)
-    : this(
-        nextRotationTime: json_['nextRotationTime'] as core.String?,
-        rotationPeriod: json_['rotationPeriod'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-    if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadKMSSettings = $WorkloadKMSSettings;
 
 /// Permissions granted to the AW Partner SA account for the customer workload
-class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions {
-  /// Allow partner to view support case details for an AXT log
-  ///
-  /// Optional.
-  core.bool? accessTransparencyLogsSupportCaseViewer;
-
-  /// Allow partner to view violation alerts.
-  ///
-  /// Optional.
-  core.bool? assuredWorkloadsMonitoring;
-
-  /// Allow the partner to view inspectability logs and monitoring violations.
-  ///
-  /// Optional.
-  core.bool? dataLogsViewer;
-
-  /// Allow partner to view access approval logs.
-  ///
-  /// Optional.
-  core.bool? serviceAccessApprover;
-
-  GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions({
-    this.accessTransparencyLogsSupportCaseViewer,
-    this.assuredWorkloadsMonitoring,
-    this.dataLogsViewer,
-    this.serviceAccessApprover,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions.fromJson(
-    core.Map json_,
-  ) : this(
-        accessTransparencyLogsSupportCaseViewer:
-            json_['accessTransparencyLogsSupportCaseViewer'] as core.bool?,
-        assuredWorkloadsMonitoring:
-            json_['assuredWorkloadsMonitoring'] as core.bool?,
-        dataLogsViewer: json_['dataLogsViewer'] as core.bool?,
-        serviceAccessApprover: json_['serviceAccessApprover'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessTransparencyLogsSupportCaseViewer != null)
-      'accessTransparencyLogsSupportCaseViewer':
-          accessTransparencyLogsSupportCaseViewer!,
-    if (assuredWorkloadsMonitoring != null)
-      'assuredWorkloadsMonitoring': assuredWorkloadsMonitoring!,
-    if (dataLogsViewer != null) 'dataLogsViewer': dataLogsViewer!,
-    if (serviceAccessApprover != null)
-      'serviceAccessApprover': serviceAccessApprover!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions =
+    $WorkloadPartnerPermissions;
 
 /// Represent the resources that are children of this Workload.
-class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
-  /// Resource identifier.
-  ///
-  /// For a project this represents project_number.
-  ///
-  /// Output only.
-  core.String? resourceId;
-
-  /// Indicates the type of resource.
-  /// Possible string values are:
-  /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
-  /// support this, but new CreateWorkloadRequests should not specify this as an
-  /// input value.
-  /// - "CONSUMER_FOLDER" : Consumer Folder.
-  /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
-  /// - "KEYRING" : Keyring resource that hosts encryption keys.
-  core.String? resourceType;
-
-  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo({
-    this.resourceId,
-    this.resourceType,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(core.Map json_)
-    : this(
-        resourceId: json_['resourceId'] as core.String?,
-        resourceType: json_['resourceType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourceId != null) 'resourceId': resourceId!,
-    if (resourceType != null) 'resourceType': resourceType!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadResourceInfo =
+    $WorkloadResourceInfo;
 
 /// Represent the custom settings for the resources to be created.
-class GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
-  /// User-assigned resource display name.
-  ///
-  /// If not empty it will be used to create a resource with the specified name.
-  core.String? displayName;
-
-  /// Resource identifier.
-  ///
-  /// For a project this represents project_id. If the project is already taken,
-  /// the workload creation will fail. For KeyRing, this represents the
-  /// keyring_id. For a folder, don't set this value as folder_id is assigned by
-  /// Google.
-  core.String? resourceId;
-
-  /// Indicates the type of resource.
-  ///
-  /// This field should be specified to correspond the id to the right project
-  /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
-  /// Possible string values are:
-  /// - "RESOURCE_TYPE_UNSPECIFIED" : Unknown resource type.
-  /// - "CONSUMER_PROJECT" : Deprecated. Existing workloads will continue to
-  /// support this, but new CreateWorkloadRequests should not specify this as an
-  /// input value.
-  /// - "CONSUMER_FOLDER" : Consumer Folder.
-  /// - "ENCRYPTION_KEYS_PROJECT" : Consumer project containing encryption keys.
-  /// - "KEYRING" : Keyring resource that hosts encryption keys.
-  core.String? resourceType;
-
-  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings({
-    this.displayName,
-    this.resourceId,
-    this.resourceType,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadResourceSettings.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        resourceId: json_['resourceId'] as core.String?,
-        resourceType: json_['resourceType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (resourceId != null) 'resourceId': resourceId!,
-    if (resourceType != null) 'resourceType': resourceType!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadResourceSettings =
+    $WorkloadResourceSettings;
 
 /// Signed Access Approvals (SAA) enrollment response.
-class GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse {
-  /// Indicates SAA enrollment setup error if any.
-  core.List<core.String>? setupErrors;
-
-  /// Indicates SAA enrollment status of a given workload.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SETUP_STATE_UNSPECIFIED" : Unspecified.
-  /// - "STATUS_PENDING" : SAA enrollment pending.
-  /// - "STATUS_COMPLETE" : SAA enrollment comopleted.
-  core.String? setupStatus;
-
-  GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse({
-    this.setupErrors,
-    this.setupStatus,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse.fromJson(
-    core.Map json_,
-  ) : this(
-        setupErrors:
-            (json_['setupErrors'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        setupStatus: json_['setupStatus'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (setupErrors != null) 'setupErrors': setupErrors!,
-    if (setupStatus != null) 'setupStatus': setupStatus!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadSaaEnrollmentResponse =
+    $WorkloadSaaEnrollmentResponse;
 
 /// A workload update is a change to the workload's compliance configuration.
 class GoogleCloudAssuredworkloadsV1WorkloadUpdate {
@@ -2759,27 +2334,8 @@ class GoogleCloudAssuredworkloadsV1WorkloadUpdate {
 }
 
 /// Options to be set for the given created workload.
-class GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions {
-  /// Specifies type of KAJ Enrollment if provided.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "KAJ_ENROLLMENT_TYPE_UNSPECIFIED" : KAJ Enrollment type is unspecified
-  /// - "KEY_ACCESS_TRANSPARENCY_OFF" : KAT sets External, Hardware, and
-  /// Software key feature logging only to TRUE.
-  core.String? kajEnrollmentType;
-
-  GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions({
-    this.kajEnrollmentType,
-  });
-
-  GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions.fromJson(core.Map json_)
-    : this(kajEnrollmentType: json_['kajEnrollmentType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kajEnrollmentType != null) 'kajEnrollmentType': kajEnrollmentType!,
-  };
-}
+typedef GoogleCloudAssuredworkloadsV1WorkloadWorkloadOptions =
+    $WorkloadWorkloadOptions;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

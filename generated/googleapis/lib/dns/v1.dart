@@ -2548,80 +2548,13 @@ class DnsKey {
   };
 }
 
-class DnsKeyDigest {
-  /// The base-16 encoded bytes of this digest.
-  ///
-  /// Suitable for use in a DS resource record.
-  core.String? digest;
-
-  /// Specifies the algorithm used to calculate this digest.
-  /// Possible string values are:
-  /// - "sha1"
-  /// - "sha256"
-  /// - "sha384"
-  core.String? type;
-
-  DnsKeyDigest({this.digest, this.type});
-
-  DnsKeyDigest.fromJson(core.Map json_)
-    : this(
-        digest: json_['digest'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (digest != null) 'digest': digest!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef DnsKeyDigest = $DnsKeyDigest;
 
 /// Parameters for DnsKey key generation.
 ///
 /// Used for generating initial keys for a new ManagedZone and as default when
 /// adding a new DnsKey.
-class DnsKeySpec {
-  /// String mnemonic specifying the DNSSEC algorithm of this key.
-  /// Possible string values are:
-  /// - "rsasha1"
-  /// - "rsasha256"
-  /// - "rsasha512"
-  /// - "ecdsap256sha256"
-  /// - "ecdsap384sha384"
-  core.String? algorithm;
-
-  /// Length of the keys in bits.
-  core.int? keyLength;
-
-  /// Specifies whether this is a key signing key (KSK) or a zone signing key
-  /// (ZSK).
-  ///
-  /// Key signing keys have the Secure Entry Point flag set and, when active,
-  /// are only used to sign resource record sets of type DNSKEY. Zone signing
-  /// keys do not have the Secure Entry Point flag set and are used to sign all
-  /// other types of resource record sets.
-  /// Possible string values are:
-  /// - "keySigning"
-  /// - "zoneSigning"
-  core.String? keyType;
-  core.String? kind;
-
-  DnsKeySpec({this.algorithm, this.keyLength, this.keyType, this.kind});
-
-  DnsKeySpec.fromJson(core.Map json_)
-    : this(
-        algorithm: json_['algorithm'] as core.String?,
-        keyLength: json_['keyLength'] as core.int?,
-        keyType: json_['keyType'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (keyLength != null) 'keyLength': keyLength!,
-    if (keyType != null) 'keyType': keyType!,
-    if (kind != null) 'kind': kind!,
-  };
-}
+typedef DnsKeySpec = $DnsKeySpec;
 
 /// The response to a request to enumerate DnsKeys in a ManagedZone.
 class DnsKeysListResponse {
@@ -2740,7 +2673,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {
@@ -3236,26 +3169,7 @@ class ManagedZone {
 }
 
 /// Cloud Logging configurations for publicly visible zones.
-class ManagedZoneCloudLoggingConfig {
-  /// If set, enable query logging for this ManagedZone.
-  ///
-  /// False by default, making logging opt-in.
-  core.bool? enableLogging;
-  core.String? kind;
-
-  ManagedZoneCloudLoggingConfig({this.enableLogging, this.kind});
-
-  ManagedZoneCloudLoggingConfig.fromJson(core.Map json_)
-    : this(
-        enableLogging: json_['enableLogging'] as core.bool?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableLogging != null) 'enableLogging': enableLogging!,
-    if (kind != null) 'kind': kind!,
-  };
-}
+typedef ManagedZoneCloudLoggingConfig = $ManagedZoneCloudLoggingConfig;
 
 class ManagedZoneDnsSecConfig {
   /// Specifies parameters for generating initial DnsKeys for this ManagedZone.
@@ -3344,58 +3258,8 @@ class ManagedZoneForwardingConfig {
   };
 }
 
-class ManagedZoneForwardingConfigNameServerTarget {
-  /// Fully qualified domain name for the forwarding target.
-  core.String? domainName;
-
-  /// Forwarding path for this NameServerTarget.
-  ///
-  /// If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on
-  /// IP address ranges; that is, RFC1918 addresses go to the VPC network,
-  /// non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS
-  /// always sends queries through the VPC network for this target.
-  /// Possible string values are:
-  /// - "default" : Cloud DNS makes forwarding decisions based on address
-  /// ranges; that is, RFC1918 addresses forward to the target through the VPC
-  /// and non-RFC1918 addresses forward to the target through the internet
-  /// - "private" : Cloud DNS always forwards to this target through the VPC.
-  core.String? forwardingPath;
-
-  /// IPv4 address of a target name server.
-  core.String? ipv4Address;
-
-  /// IPv6 address of a target name server.
-  ///
-  /// Does not accept both fields (ipv4 & ipv6) being populated. Public preview
-  /// as of November 2022.
-  core.String? ipv6Address;
-  core.String? kind;
-
-  ManagedZoneForwardingConfigNameServerTarget({
-    this.domainName,
-    this.forwardingPath,
-    this.ipv4Address,
-    this.ipv6Address,
-    this.kind,
-  });
-
-  ManagedZoneForwardingConfigNameServerTarget.fromJson(core.Map json_)
-    : this(
-        domainName: json_['domainName'] as core.String?,
-        forwardingPath: json_['forwardingPath'] as core.String?,
-        ipv4Address: json_['ipv4Address'] as core.String?,
-        ipv6Address: json_['ipv6Address'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainName != null) 'domainName': domainName!,
-    if (forwardingPath != null) 'forwardingPath': forwardingPath!,
-    if (ipv4Address != null) 'ipv4Address': ipv4Address!,
-    if (ipv6Address != null) 'ipv6Address': ipv6Address!,
-    if (kind != null) 'kind': kind!,
-  };
-}
+typedef ManagedZoneForwardingConfigNameServerTarget =
+    $ManagedZoneForwardingConfigNameServerTarget;
 
 class ManagedZoneOperationsListResponse {
   /// Type of resource.
@@ -3468,41 +3332,8 @@ class ManagedZonePeeringConfig {
   };
 }
 
-class ManagedZonePeeringConfigTargetNetwork {
-  /// The time at which the zone was deactivated, in RFC 3339 date-time format.
-  ///
-  /// An empty string indicates that the peering connection is active. The
-  /// producer network can deactivate a zone. The zone is automatically
-  /// deactivated if the producer network that the zone targeted is deleted.
-  /// Output only.
-  core.String? deactivateTime;
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to forward queries to.
-  ///
-  /// This should be formatted like
-  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-  core.String? networkUrl;
-
-  ManagedZonePeeringConfigTargetNetwork({
-    this.deactivateTime,
-    this.kind,
-    this.networkUrl,
-  });
-
-  ManagedZonePeeringConfigTargetNetwork.fromJson(core.Map json_)
-    : this(
-        deactivateTime: json_['deactivateTime'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        networkUrl: json_['networkUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deactivateTime != null) 'deactivateTime': deactivateTime!,
-    if (kind != null) 'kind': kind!,
-    if (networkUrl != null) 'networkUrl': networkUrl!,
-  };
-}
+typedef ManagedZonePeeringConfigTargetNetwork =
+    $ManagedZonePeeringConfigTargetNetwork;
 
 class ManagedZonePrivateVisibilityConfig {
   /// The list of Google Kubernetes Engine clusters that can see this zone.
@@ -3547,68 +3378,11 @@ class ManagedZonePrivateVisibilityConfig {
   };
 }
 
-class ManagedZonePrivateVisibilityConfigGKECluster {
-  /// The resource name of the cluster to bind this ManagedZone to.
-  ///
-  /// This should be specified in the format like: projects / * /locations / *
-  /// /clusters / * . This is referenced from GKE
-  /// projects.locations.clusters.get API:
-  /// https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
-  core.String? gkeClusterName;
-  core.String? kind;
-
-  ManagedZonePrivateVisibilityConfigGKECluster({
-    this.gkeClusterName,
-    this.kind,
-  });
-
-  ManagedZonePrivateVisibilityConfigGKECluster.fromJson(core.Map json_)
-    : this(
-        gkeClusterName: json_['gkeClusterName'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gkeClusterName != null) 'gkeClusterName': gkeClusterName!,
-    if (kind != null) 'kind': kind!,
-  };
-}
-
-class ManagedZonePrivateVisibilityConfigNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// Format this URL like
-  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-  core.String? networkUrl;
-
-  ManagedZonePrivateVisibilityConfigNetwork({this.kind, this.networkUrl});
-
-  ManagedZonePrivateVisibilityConfigNetwork.fromJson(core.Map json_)
-    : this(
-        kind: json_['kind'] as core.String?,
-        networkUrl: json_['networkUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (networkUrl != null) 'networkUrl': networkUrl!,
-  };
-}
-
-class ManagedZoneReverseLookupConfig {
-  core.String? kind;
-
-  ManagedZoneReverseLookupConfig({this.kind});
-
-  ManagedZoneReverseLookupConfig.fromJson(core.Map json_)
-    : this(kind: json_['kind'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-  };
-}
+typedef ManagedZonePrivateVisibilityConfigGKECluster =
+    $ManagedZonePrivateVisibilityConfigGKECluster;
+typedef ManagedZonePrivateVisibilityConfigNetwork =
+    $ManagedZonePrivateVisibilityConfigNetwork;
+typedef ManagedZoneReverseLookupConfig = $ManagedZoneReverseLookupConfig;
 
 /// Contains information about Service Directory-backed zones.
 class ManagedZoneServiceDirectoryConfig {
@@ -3636,39 +3410,8 @@ class ManagedZoneServiceDirectoryConfig {
   };
 }
 
-class ManagedZoneServiceDirectoryConfigNamespace {
-  /// The time that the namespace backing this zone was deleted; an empty string
-  /// if it still exists.
-  ///
-  /// This is in RFC3339 text format. Output only.
-  core.String? deletionTime;
-  core.String? kind;
-
-  /// The fully qualified URL of the namespace associated with the zone.
-  ///
-  /// Format must be
-  /// `https://servicedirectory.googleapis.com/v1/projects/{project}/locations/{location}/namespaces/{namespace}`
-  core.String? namespaceUrl;
-
-  ManagedZoneServiceDirectoryConfigNamespace({
-    this.deletionTime,
-    this.kind,
-    this.namespaceUrl,
-  });
-
-  ManagedZoneServiceDirectoryConfigNamespace.fromJson(core.Map json_)
-    : this(
-        deletionTime: json_['deletionTime'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        namespaceUrl: json_['namespaceUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deletionTime != null) 'deletionTime': deletionTime!,
-    if (kind != null) 'kind': kind!,
-    if (namespaceUrl != null) 'namespaceUrl': namespaceUrl!,
-  };
-}
+typedef ManagedZoneServiceDirectoryConfigNamespace =
+    $ManagedZoneServiceDirectoryConfigNamespace;
 
 class ManagedZonesListResponse {
   /// Type of resource.
@@ -4081,52 +3824,8 @@ class PolicyAlternativeNameServerConfig {
   };
 }
 
-class PolicyAlternativeNameServerConfigTargetNameServer {
-  /// Forwarding path for this TargetNameServer.
-  ///
-  /// If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on
-  /// address ranges; that is, RFC1918 addresses go to the VPC network,
-  /// non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS
-  /// always sends queries through the VPC network for this target.
-  /// Possible string values are:
-  /// - "default" : Cloud DNS makes forwarding decision based on IP address
-  /// ranges; that is, RFC1918 addresses forward to the target through the VPC
-  /// and non-RFC1918 addresses forward to the target through the internet
-  /// - "private" : Cloud DNS always forwards to this target through the VPC.
-  core.String? forwardingPath;
-
-  /// IPv4 address to forward queries to.
-  core.String? ipv4Address;
-
-  /// IPv6 address to forward to.
-  ///
-  /// Does not accept both fields (ipv4 & ipv6) being populated. Public preview
-  /// as of November 2022.
-  core.String? ipv6Address;
-  core.String? kind;
-
-  PolicyAlternativeNameServerConfigTargetNameServer({
-    this.forwardingPath,
-    this.ipv4Address,
-    this.ipv6Address,
-    this.kind,
-  });
-
-  PolicyAlternativeNameServerConfigTargetNameServer.fromJson(core.Map json_)
-    : this(
-        forwardingPath: json_['forwardingPath'] as core.String?,
-        ipv4Address: json_['ipv4Address'] as core.String?,
-        ipv6Address: json_['ipv6Address'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (forwardingPath != null) 'forwardingPath': forwardingPath!,
-    if (ipv4Address != null) 'ipv4Address': ipv4Address!,
-    if (ipv6Address != null) 'ipv6Address': ipv6Address!,
-    if (kind != null) 'kind': kind!,
-  };
-}
+typedef PolicyAlternativeNameServerConfigTargetNameServer =
+    $PolicyAlternativeNameServerConfigTargetNameServer;
 
 /// DNS64 policies
 class PolicyDns64Config {
@@ -4154,47 +3853,8 @@ class PolicyDns64Config {
   };
 }
 
-class PolicyDns64ConfigScope {
-  /// Controls whether DNS64 is enabled globally at the network level.
-  core.bool? allQueries;
-  core.String? kind;
-
-  PolicyDns64ConfigScope({this.allQueries, this.kind});
-
-  PolicyDns64ConfigScope.fromJson(core.Map json_)
-    : this(
-        allQueries: json_['allQueries'] as core.bool?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allQueries != null) 'allQueries': allQueries!,
-    if (kind != null) 'kind': kind!,
-  };
-}
-
-class PolicyNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// This should be formatted like
-  /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  core.String? networkUrl;
-
-  PolicyNetwork({this.kind, this.networkUrl});
-
-  PolicyNetwork.fromJson(core.Map json_)
-    : this(
-        kind: json_['kind'] as core.String?,
-        networkUrl: json_['networkUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (networkUrl != null) 'networkUrl': networkUrl!,
-  };
-}
+typedef PolicyDns64ConfigScope = $PolicyDns64ConfigScope;
+typedef PolicyNetwork = $PolicyNetwork;
 
 /// A project resource.
 ///
@@ -4654,86 +4314,8 @@ class RRSetRoutingPolicyHealthCheckTargets {
 }
 
 /// The configuration for an individual load balancer to health check.
-class RRSetRoutingPolicyLoadBalancerTarget {
-  /// The frontend IP address of the load balancer to health check.
-  core.String? ipAddress;
-
-  /// The protocol of the load balancer to health check.
-  /// Possible string values are:
-  /// - "undefined"
-  /// - "tcp" : Indicates the load balancer is accessible via TCP.
-  /// - "udp" : Indicates the load balancer is accessible via UDP.
-  core.String? ipProtocol;
-  core.String? kind;
-
-  /// The type of load balancer specified by this target.
-  ///
-  /// This value must match the configuration of the load balancer located at
-  /// the LoadBalancerTarget's IP address, port, and region. Use the following:
-  /// - *regionalL4ilb*: for a regional internal passthrough Network Load
-  /// Balancer. - *regionalL7ilb*: for a regional internal Application Load
-  /// Balancer. - *globalL7ilb*: for a global internal Application Load
-  /// Balancer.
-  /// Possible string values are:
-  /// - "none"
-  /// - "globalL7ilb" : Indicates the load balancer is a Cross-Region
-  /// Application Load Balancer.
-  /// - "regionalL4ilb" : Indicates the load balancer is a Regional Network
-  /// Passthrough Load Balancer.
-  /// - "regionalL7ilb" : Indicates the load balancer is a Regional Application
-  /// Load Balancer.
-  core.String? loadBalancerType;
-
-  /// The fully qualified URL of the network that the load balancer is attached
-  /// to.
-  ///
-  /// This should be formatted like
-  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
-  core.String? networkUrl;
-
-  /// The configured port of the load balancer.
-  core.String? port;
-
-  /// The project ID in which the load balancer is located.
-  core.String? project;
-
-  /// The region in which the load balancer is located.
-  core.String? region;
-
-  RRSetRoutingPolicyLoadBalancerTarget({
-    this.ipAddress,
-    this.ipProtocol,
-    this.kind,
-    this.loadBalancerType,
-    this.networkUrl,
-    this.port,
-    this.project,
-    this.region,
-  });
-
-  RRSetRoutingPolicyLoadBalancerTarget.fromJson(core.Map json_)
-    : this(
-        ipAddress: json_['ipAddress'] as core.String?,
-        ipProtocol: json_['ipProtocol'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        loadBalancerType: json_['loadBalancerType'] as core.String?,
-        networkUrl: json_['networkUrl'] as core.String?,
-        port: json_['port'] as core.String?,
-        project: json_['project'] as core.String?,
-        region: json_['region'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (ipProtocol != null) 'ipProtocol': ipProtocol!,
-    if (kind != null) 'kind': kind!,
-    if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
-    if (networkUrl != null) 'networkUrl': networkUrl!,
-    if (port != null) 'port': port!,
-    if (project != null) 'project': project!,
-    if (region != null) 'region': region!,
-  };
-}
+typedef RRSetRoutingPolicyLoadBalancerTarget =
+    $RRSetRoutingPolicyLoadBalancerTarget;
 
 /// Configures a RRSetRoutingPolicy such that all queries are responded with the
 /// primary_targets if they are healthy.
@@ -5153,52 +4735,8 @@ class ResponsePolicy {
   };
 }
 
-class ResponsePolicyGKECluster {
-  /// The resource name of the cluster to bind this response policy to.
-  ///
-  /// This should be specified in the format like: projects / * /locations / *
-  /// /clusters / * . This is referenced from GKE
-  /// projects.locations.clusters.get API:
-  /// https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
-  core.String? gkeClusterName;
-  core.String? kind;
-
-  ResponsePolicyGKECluster({this.gkeClusterName, this.kind});
-
-  ResponsePolicyGKECluster.fromJson(core.Map json_)
-    : this(
-        gkeClusterName: json_['gkeClusterName'] as core.String?,
-        kind: json_['kind'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gkeClusterName != null) 'gkeClusterName': gkeClusterName!,
-    if (kind != null) 'kind': kind!,
-  };
-}
-
-class ResponsePolicyNetwork {
-  core.String? kind;
-
-  /// The fully qualified URL of the VPC network to bind to.
-  ///
-  /// This should be formatted like
-  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`
-  core.String? networkUrl;
-
-  ResponsePolicyNetwork({this.kind, this.networkUrl});
-
-  ResponsePolicyNetwork.fromJson(core.Map json_)
-    : this(
-        kind: json_['kind'] as core.String?,
-        networkUrl: json_['networkUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kind != null) 'kind': kind!,
-    if (networkUrl != null) 'networkUrl': networkUrl!,
-  };
-}
+typedef ResponsePolicyGKECluster = $ResponsePolicyGKECluster;
+typedef ResponsePolicyNetwork = $ResponsePolicyNetwork;
 
 /// A Response Policy Rule is a selector that applies its behavior to queries
 /// that match the selector.

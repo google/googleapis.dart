@@ -840,26 +840,7 @@ class ProjectsLocationsTensorflowVersionsResource {
 }
 
 /// A accelerator type that a Node can be configured with.
-class AcceleratorType {
-  /// The resource name.
-  core.String? name;
-
-  /// the accelerator type.
-  core.String? type;
-
-  AcceleratorType({this.name, this.type});
-
-  AcceleratorType.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef AcceleratorType = $AcceleratorType;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1050,26 +1031,7 @@ class ListTensorFlowVersionsResponse {
 typedef Location = $Location00;
 
 /// A network endpoint over which a TPU worker can be reached.
-class NetworkEndpoint {
-  /// The IP address of this network endpoint.
-  core.String? ipAddress;
-
-  /// The port of this network endpoint.
-  core.int? port;
-
-  NetworkEndpoint({this.ipAddress, this.port});
-
-  NetworkEndpoint.fromJson(core.Map json_)
-    : this(
-        ipAddress: json_['ipAddress'] as core.String?,
-        port: json_['port'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (port != null) 'port': port!,
-  };
-}
+typedef NetworkEndpoint = $NetworkEndpoint01;
 
 /// A TPU instance.
 class Node {
@@ -1393,41 +1355,10 @@ class Operation {
 }
 
 /// Request for ReimageNode.
-class ReimageNodeRequest {
-  /// The version for reimage to create.
-  core.String? tensorflowVersion;
-
-  ReimageNodeRequest({this.tensorflowVersion});
-
-  ReimageNodeRequest.fromJson(core.Map json_)
-    : this(tensorflowVersion: json_['tensorflowVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tensorflowVersion != null) 'tensorflowVersion': tensorflowVersion!,
-  };
-}
+typedef ReimageNodeRequest = $ReimageNodeRequest;
 
 /// Sets the scheduling options for this node.
-class SchedulingConfig {
-  /// Defines whether the node is preemptible.
-  core.bool? preemptible;
-
-  /// Whether the node is created under a reservation.
-  core.bool? reserved;
-
-  SchedulingConfig({this.preemptible, this.reserved});
-
-  SchedulingConfig.fromJson(core.Map json_)
-    : this(
-        preemptible: json_['preemptible'] as core.bool?,
-        reserved: json_['reserved'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (preemptible != null) 'preemptible': preemptible!,
-    if (reserved != null) 'reserved': reserved!,
-  };
-}
+typedef SchedulingConfig = $SchedulingConfig;
 
 /// Request for StartNode.
 typedef StartNodeRequest = $Empty;
@@ -1448,23 +1379,4 @@ typedef StopNodeRequest = $Empty;
 typedef Symptom = $Symptom;
 
 /// A tensorflow version that a Node can be configured with.
-class TensorFlowVersion {
-  /// The resource name.
-  core.String? name;
-
-  /// the tensorflow version.
-  core.String? version;
-
-  TensorFlowVersion({this.name, this.version});
-
-  TensorFlowVersion.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef TensorFlowVersion = $TensorFlowVersion;

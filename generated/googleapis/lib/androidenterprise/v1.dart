@@ -6336,7 +6336,7 @@ class NotificationSet {
 ///
 /// List operations that supports paging return only one "page" of results. This
 /// protocol buffer message describes the page that has been returned.
-typedef PageInfo = $PageInfo;
+typedef PageInfo = $PageInfo01;
 
 /// A Permissions resource represents some extra capability, to be granted to an
 /// Android app, which requires explicit consent.

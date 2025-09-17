@@ -328,13 +328,9 @@ class AccountsMediationReportResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return (response_ as core.List)
-        .map(
-          (value) => GenerateMediationReportResponseElement.fromJson(
-            value as core.Map<core.String, core.dynamic>,
-          ),
-        )
-        .toList();
+    return GenerateMediationReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -387,13 +383,9 @@ class AccountsNetworkReportResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return (response_ as core.List)
-        .map(
-          (value) => GenerateNetworkReportResponseElement.fromJson(
-            value as core.Map<core.String, core.dynamic>,
-          ),
-        )
-        .toList();
+    return GenerateNetworkReportResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -600,22 +592,7 @@ class AppLinkedAppInfo {
 
 /// Information provided for manual apps which are not linked to an application
 /// store (Example: Google Play, App Store).
-class AppManualAppInfo {
-  /// The display name of the app as shown in the AdMob UI, which is provided by
-  /// the user.
-  ///
-  /// The maximum length allowed is 80 characters.
-  core.String? displayName;
-
-  AppManualAppInfo({this.displayName});
-
-  AppManualAppInfo.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-  };
-}
+typedef AppManualAppInfo = $AppManualAppInfo;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -689,7 +666,19 @@ class GenerateMediationReportRequest {
   };
 }
 
-class GenerateMediationReportResponseElement {
+/// The streaming response for the AdMob Mediation report where the first
+/// response contains the report header, then a stream of row responses, and
+/// finally a footer as the last response message.
+///
+/// For example: \[{ "header": { "date_range": { "start_date": {"year": 2018,
+/// "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9, "day": 1} },
+/// "localization_settings": { "currency_code": "USD", "language_code": "en-US"
+/// } } }, { "row": { "dimension_values": { "DATE": {"value": "20180918"},
+/// "APP": { "value": "ca-app-pub-8123415297019784~1001342552", "display_label":
+/// "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
+/// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1}
+/// }\]
+class GenerateMediationReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
   ReportFooter? footer;
@@ -701,9 +690,9 @@ class GenerateMediationReportResponseElement {
   /// Actual report data.
   ReportRow? row;
 
-  GenerateMediationReportResponseElement({this.footer, this.header, this.row});
+  GenerateMediationReportResponse({this.footer, this.header, this.row});
 
-  GenerateMediationReportResponseElement.fromJson(core.Map json_)
+  GenerateMediationReportResponse.fromJson(core.Map json_)
     : this(
         footer:
             json_.containsKey('footer')
@@ -731,21 +720,6 @@ class GenerateMediationReportResponseElement {
     if (row != null) 'row': row!,
   };
 }
-
-/// The streaming response for the AdMob Mediation report where the first
-/// response contains the report header, then a stream of row responses, and
-/// finally a footer as the last response message.
-///
-/// For example: \[{ "header": { "date_range": { "start_date": {"year": 2018,
-/// "month": 9, "day": 1}, "end_date": {"year": 2018, "month": 9, "day": 1} },
-/// "localization_settings": { "currency_code": "USD", "language_code": "en-US"
-/// } } }, { "row": { "dimension_values": { "DATE": {"value": "20180918"},
-/// "APP": { "value": "ca-app-pub-8123415297019784~1001342552", "display_label":
-/// "My app name!" } }, "metric_values": { "ESTIMATED_EARNINGS":
-/// {"decimal_value": "1324746"} } } }, { "footer": {"matching_row_count": 1}
-/// }\]
-typedef GenerateMediationReportResponse =
-    core.List<GenerateMediationReportResponseElement>;
 
 /// Request to generate an AdMob Network report.
 class GenerateNetworkReportRequest {
@@ -769,7 +743,18 @@ class GenerateNetworkReportRequest {
   };
 }
 
-class GenerateNetworkReportResponseElement {
+/// The streaming response for the AdMob Network report where the first response
+/// contains the report header, then a stream of row responses, and finally a
+/// footer as the last response message.
+///
+/// For example: \[{ "header": { "dateRange": { "startDate": {"year": 2018,
+/// "month": 9, "day": 1}, "endDate": {"year": 2018, "month": 9, "day": 1} },
+/// "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } }
+/// }, { "row": { "dimensionValues": { "DATE": {"value": "20180918"}, "APP": {
+/// "value": "ca-app-pub-8123415297019784~1001342552", displayLabel: "My app
+/// name!" } }, "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000}
+/// } } }, { "footer": {"matchingRowCount": 1} }\]
+class GenerateNetworkReportResponse {
   /// Additional information about the generated report, such as warnings about
   /// the data.
   ReportFooter? footer;
@@ -781,9 +766,9 @@ class GenerateNetworkReportResponseElement {
   /// Actual report data.
   ReportRow? row;
 
-  GenerateNetworkReportResponseElement({this.footer, this.header, this.row});
+  GenerateNetworkReportResponse({this.footer, this.header, this.row});
 
-  GenerateNetworkReportResponseElement.fromJson(core.Map json_)
+  GenerateNetworkReportResponse.fromJson(core.Map json_)
     : this(
         footer:
             json_.containsKey('footer')
@@ -811,20 +796,6 @@ class GenerateNetworkReportResponseElement {
     if (row != null) 'row': row!,
   };
 }
-
-/// The streaming response for the AdMob Network report where the first response
-/// contains the report header, then a stream of row responses, and finally a
-/// footer as the last response message.
-///
-/// For example: \[{ "header": { "dateRange": { "startDate": {"year": 2018,
-/// "month": 9, "day": 1}, "endDate": {"year": 2018, "month": 9, "day": 1} },
-/// "localizationSettings": { "currencyCode": "USD", "languageCode": "en-US" } }
-/// }, { "row": { "dimensionValues": { "DATE": {"value": "20180918"}, "APP": {
-/// "value": "ca-app-pub-8123415297019784~1001342552", displayLabel: "My app
-/// name!" } }, "metricValues": { "ESTIMATED_EARNINGS": {"microsValue": 6500000}
-/// } } }, { "footer": {"matchingRowCount": 1} }\]
-typedef GenerateNetworkReportResponse =
-    core.List<GenerateNetworkReportResponseElement>;
 
 /// Response for the ad units list request.
 class ListAdUnitsResponse {
@@ -919,34 +890,7 @@ class ListPublisherAccountsResponse {
 /// Localization settings for reports, such as currency and language.
 ///
 /// It affects how metrics are calculated.
-class LocalizationSettings {
-  /// Currency code of the earning related metrics, which is the 3-letter code
-  /// defined in ISO 4217.
-  ///
-  /// The daily average rate is used for the currency conversion. Defaults to
-  /// the account currency code if unspecified.
-  core.String? currencyCode;
-
-  /// Language used for any localized text, such as some dimension value display
-  /// labels.
-  ///
-  /// The language tag defined in the IETF BCP47. Defaults to 'en-US' if
-  /// unspecified.
-  core.String? languageCode;
-
-  LocalizationSettings({this.currencyCode, this.languageCode});
-
-  LocalizationSettings.fromJson(core.Map json_)
-    : this(
-        currencyCode: json_['currencyCode'] as core.String?,
-        languageCode: json_['languageCode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
-}
+typedef LocalizationSettings = $LocalizationSettings;
 
 /// The specification for generating an AdMob Mediation report.
 ///
@@ -1137,96 +1081,7 @@ class MediationReportSpecDimensionFilter {
 }
 
 /// Sorting direction to be applied on a dimension or a metric.
-class MediationReportSpecSortCondition {
-  /// Sort by the specified dimension.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : Default value for an unset field. Do not use.
-  /// - "DATE" : A date in the YYYYMMDD format (for example, "20210701").
-  /// Requests can specify at most one time dimension.
-  /// - "MONTH" : A month in the YYYYMM format (for example, "202107"). Requests
-  /// can specify at most one time dimension.
-  /// - "WEEK" : The date of the first day of a week in the YYYYMMDD format (for
-  /// example, "20210701"). Requests can specify at most one time dimension.
-  /// - "AD_SOURCE" : The \[unique ID of the ad
-  /// source\](/admob/api/v1/ad_sources) (for example, "5450213213286189855" and
-  /// "AdMob Network" as label value).
-  /// - "AD_SOURCE_INSTANCE" : The unique ID of the ad source instance (for
-  /// example, "ca-app-pub-1234:asi:5678" and "AdMob (default)" as label value).
-  /// - "AD_UNIT" : The unique ID of the ad unit (for example,
-  /// "ca-app-pub-1234/8790"). If AD_UNIT dimension is specified, then APP is
-  /// included automatically.
-  /// - "APP" : The unique ID of the mobile application (for example,
-  /// "ca-app-pub-1234~1234").
-  /// - "MEDIATION_GROUP" : The unique ID of the mediation group (for example,
-  /// "ca-app-pub-1234:mg:1234" and "AdMob (default)" as label value).
-  /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
-  /// occur (for example, "US" or "FR"). This is a geography dimension.
-  /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
-  /// ad delivery dimension.
-  /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
-  /// "iOS").
-  /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
-  /// 13.5.1".
-  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0".
-  /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
-  /// versionName in PackageInfo. For iOS, the app version name can be found in
-  /// CFBundleShortVersionString.
-  /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
-  /// "Non-personalized ads").
-  core.String? dimension;
-
-  /// Sort by the specified metric.
-  /// Possible string values are:
-  /// - "METRIC_UNSPECIFIED" : Default value for an unset field. Do not use.
-  /// - "AD_REQUESTS" : The number of requests. The value is an integer.
-  /// - "CLICKS" : The number of times a user clicks an ad. The value is an
-  /// integer.
-  /// - "ESTIMATED_EARNINGS" : The estimated earnings of the AdMob publisher.
-  /// The currency unit (USD, EUR, or other) of the earning metrics are
-  /// determined by the localization setting for currency. The amount is in
-  /// micros. For example, $6.50 would be represented as 6500000. Estimated
-  /// earnings per mediation group and per ad source instance level is supported
-  /// dating back to October 20, 2019. Third-party estimated earnings will show
-  /// 0 for dates prior to October 20, 2019.
-  /// - "IMPRESSIONS" : The total number of ads shown to users. The value is an
-  /// integer.
-  /// - "IMPRESSION_CTR" : The ratio of clicks over impressions. The value is a
-  /// double precision (approximate) decimal value.
-  /// - "MATCHED_REQUESTS" : The number of times ads are returned in response to
-  /// a request. The value is an integer.
-  /// - "MATCH_RATE" : The ratio of matched ad requests over the total ad
-  /// requests. The value is a double precision (approximate) decimal value.
-  /// - "OBSERVED_ECPM" : The third-party ad network's estimated average eCPM.
-  /// The currency unit (USD, EUR, or other) of the earning metrics are
-  /// determined by the localization setting for currency. The amount is in
-  /// micros. For example, $2.30 would be represented as 2300000. The estimated
-  /// average eCPM per mediation group and per ad source instance level is
-  /// supported dating back to October 20, 2019. Third-party estimated average
-  /// eCPM will show 0 for dates prior to October 20, 2019.
-  core.String? metric;
-
-  /// Sorting order of the dimension or metric.
-  /// Possible string values are:
-  /// - "SORT_ORDER_UNSPECIFIED" : Default value for an unset field. Do not use.
-  /// - "ASCENDING" : Sort dimension value or metric value in ascending order.
-  /// - "DESCENDING" : Sort dimension value or metric value in descending order.
-  core.String? order;
-
-  MediationReportSpecSortCondition({this.dimension, this.metric, this.order});
-
-  MediationReportSpecSortCondition.fromJson(core.Map json_)
-    : this(
-        dimension: json_['dimension'] as core.String?,
-        metric: json_['metric'] as core.String?,
-        order: json_['order'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimension != null) 'dimension': dimension!,
-    if (metric != null) 'metric': metric!,
-    if (order != null) 'order': order!,
-  };
-}
+typedef MediationReportSpecSortCondition = $MediationReportSpecSortCondition;
 
 /// The specification for generating an AdMob Network report.
 ///
@@ -1416,142 +1271,11 @@ class NetworkReportSpecDimensionFilter {
 }
 
 /// Sorting direction to be applied on a dimension or a metric.
-class NetworkReportSpecSortCondition {
-  /// Sort by the specified dimension.
-  /// Possible string values are:
-  /// - "DIMENSION_UNSPECIFIED" : Default value for an unset field. Do not use.
-  /// - "DATE" : A date in the YYYYMMDD format (for example, "20210701").
-  /// Requests can specify at most one time dimension.
-  /// - "MONTH" : A month in the YYYYMM format (for example, "202107"). Requests
-  /// can specify at most one time dimension.
-  /// - "WEEK" : The date of the first day of a week in the YYYYMMDD format (for
-  /// example, "20210701"). Requests can specify at most one time dimension.
-  /// - "AD_UNIT" : The unique ID of the ad unit (for example,
-  /// "ca-app-pub-1234/1234"). If AD_UNIT dimension is specified, then APP is
-  /// included automatically.
-  /// - "APP" : The unique ID of the mobile application (for example,
-  /// "ca-app-pub-1234~1234").
-  /// - "AD_TYPE" : Type of the ad (for example, "text" or "image"), an ad
-  /// delivery dimension. **Warning:** The dimension is incompatible with
-  /// \[AD_REQUESTS\](#Metric.ENUM_VALUES.AD_REQUESTS),
-  /// \[MATCH_RATE\](#Metric.ENUM_VALUES.MATCH_RATE) and
-  /// \[IMPRESSION_RPM\](#Metric.ENUM_VALUES.IMPRESSION_RPM) metrics.
-  /// - "COUNTRY" : CLDR country code of the place where the ad views/clicks
-  /// occur (for example, "US" or "FR"). This is a geography dimension.
-  /// - "FORMAT" : Format of the ad unit (for example, "banner", "native"), an
-  /// ad delivery dimension.
-  /// - "PLATFORM" : Mobile OS platform of the app (for example, "Android" or
-  /// "iOS").
-  /// - "MOBILE_OS_VERSION" : Mobile operating system version, e.g. "iOS
-  /// 13.5.1".
-  /// - "GMA_SDK_VERSION" : GMA SDK version, e.g. "iOS 7.62.0".
-  /// - "APP_VERSION_NAME" : For Android, the app version name can be found in
-  /// versionName in PackageInfo. For iOS, the app version name can be found in
-  /// CFBundleShortVersionString.
-  /// - "SERVING_RESTRICTION" : Restriction mode for ads serving (e.g.
-  /// "Non-personalized ads").
-  core.String? dimension;
-
-  /// Sort by the specified metric.
-  /// Possible string values are:
-  /// - "METRIC_UNSPECIFIED" : Default value for an unset field. Do not use.
-  /// - "AD_REQUESTS" : The number of ad requests. The value is an integer.
-  /// **Warning:** The metric is incompatible with
-  /// \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
-  /// - "CLICKS" : The number of times a user clicks an ad. The value is an
-  /// integer.
-  /// - "ESTIMATED_EARNINGS" : The estimated earnings of the AdMob publisher.
-  /// The currency unit (USD, EUR, or other) of the earning metrics are
-  /// determined by the localization setting for currency. The amount is in
-  /// micros. For example, $6.50 would be represented as 6500000.
-  /// - "IMPRESSIONS" : The total number of ads shown to users. The value is an
-  /// integer.
-  /// - "IMPRESSION_CTR" : The ratio of clicks over impressions. The value is a
-  /// double precision (approximate) decimal value.
-  /// - "IMPRESSION_RPM" : The estimated earnings per thousand ad impressions.
-  /// The value is in micros. For example, $1.03 would be represented as
-  /// 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is
-  /// incompatible with \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
-  /// - "MATCHED_REQUESTS" : The number of times ads are returned in response to
-  /// a request. The value is an integer.
-  /// - "MATCH_RATE" : The ratio of matched ad requests over the total ad
-  /// requests. The value is a double precision (approximate) decimal value.
-  /// **Warning:** The metric is incompatible with
-  /// \[AD_TYPE\](#Dimension.ENUM_VALUES.AD_TYPE) dimension.
-  /// - "SHOW_RATE" : The ratio of ads that are displayed over ads that are
-  /// returned, defined as impressions / matched requests. The value is a double
-  /// precision (approximate) decimal value.
-  core.String? metric;
-
-  /// Sorting order of the dimension or metric.
-  /// Possible string values are:
-  /// - "SORT_ORDER_UNSPECIFIED" : Default value for an unset field. Do not use.
-  /// - "ASCENDING" : Sort dimension value or metric value in ascending order.
-  /// - "DESCENDING" : Sort dimension value or metric value in descending order.
-  core.String? order;
-
-  NetworkReportSpecSortCondition({this.dimension, this.metric, this.order});
-
-  NetworkReportSpecSortCondition.fromJson(core.Map json_)
-    : this(
-        dimension: json_['dimension'] as core.String?,
-        metric: json_['metric'] as core.String?,
-        order: json_['order'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dimension != null) 'dimension': dimension!,
-    if (metric != null) 'metric': metric!,
-    if (order != null) 'order': order!,
-  };
-}
+typedef NetworkReportSpecSortCondition = $NetworkReportSpecSortCondition;
 
 /// A publisher account contains information relevant to the use of this API,
 /// such as the time zone used for the reports.
-class PublisherAccount {
-  /// Currency code of the earning-related metrics, which is the 3-letter code
-  /// defined in ISO 4217.
-  ///
-  /// The daily average rate is used for the currency conversion.
-  core.String? currencyCode;
-
-  /// Resource name of this account.
-  ///
-  /// Format is accounts/{publisher_id}.
-  core.String? name;
-
-  /// The unique ID by which this publisher account can be identified in the API
-  /// requests (for example, pub-1234567890).
-  core.String? publisherId;
-
-  /// The time zone that is used in reports that are generated for this account.
-  ///
-  /// The value is a time-zone ID as specified by the CLDR project, for example,
-  /// "America/Los_Angeles".
-  core.String? reportingTimeZone;
-
-  PublisherAccount({
-    this.currencyCode,
-    this.name,
-    this.publisherId,
-    this.reportingTimeZone,
-  });
-
-  PublisherAccount.fromJson(core.Map json_)
-    : this(
-        currencyCode: json_['currencyCode'] as core.String?,
-        name: json_['name'] as core.String?,
-        publisherId: json_['publisherId'] as core.String?,
-        reportingTimeZone: json_['reportingTimeZone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (name != null) 'name': name!,
-    if (publisherId != null) 'publisherId': publisherId!,
-    if (reportingTimeZone != null) 'reportingTimeZone': reportingTimeZone!,
-  };
-}
+typedef PublisherAccount = $PublisherAccount;
 
 /// Groups data available after report generation, for example, warnings and row
 /// counts.
@@ -1685,118 +1409,13 @@ class ReportRow {
 }
 
 /// Representation of a dimension value.
-class ReportRowDimensionValue {
-  /// The localized string representation of the value.
-  ///
-  /// If unspecified, the display label should be derived from the value.
-  core.String? displayLabel;
-
-  /// Dimension value in the format specified in the report's spec Dimension
-  /// enum.
-  core.String? value;
-
-  ReportRowDimensionValue({this.displayLabel, this.value});
-
-  ReportRowDimensionValue.fromJson(core.Map json_)
-    : this(
-        displayLabel: json_['displayLabel'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayLabel != null) 'displayLabel': displayLabel!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef ReportRowDimensionValue = $ReportRowDimensionValue;
 
 /// Representation of a metric value.
-class ReportRowMetricValue {
-  /// Double precision (approximate) decimal values.
-  ///
-  /// Rates are from 0 to 1.
-  core.double? doubleValue;
-
-  /// Metric integer value.
-  core.String? integerValue;
-
-  /// Amount in micros.
-  ///
-  /// One million is equivalent to one unit. Currency value is in the unit (USD,
-  /// EUR or other) specified by the request. For example, $6.50 whould be
-  /// represented as 6500000 micros.
-  core.String? microsValue;
-
-  ReportRowMetricValue({this.doubleValue, this.integerValue, this.microsValue});
-
-  ReportRowMetricValue.fromJson(core.Map json_)
-    : this(
-        doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
-        integerValue: json_['integerValue'] as core.String?,
-        microsValue: json_['microsValue'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (doubleValue != null) 'doubleValue': doubleValue!,
-    if (integerValue != null) 'integerValue': integerValue!,
-    if (microsValue != null) 'microsValue': microsValue!,
-  };
-}
+typedef ReportRowMetricValue = $ReportRowMetricValue;
 
 /// Warnings associated with generation of the report.
-class ReportWarning {
-  /// Describes the details of the warning message, in English.
-  core.String? description;
-
-  /// Type of the warning.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value for an unset field. Do not use.
-  /// - "DATA_BEFORE_ACCOUNT_TIMEZONE_CHANGE" : Some data in this report is
-  /// aggregated based on a time zone different from the requested time zone.
-  /// This could happen if a local time-zone report has the start time before
-  /// the last time this time zone changed. The description field will contain
-  /// the date of the last time zone change.
-  /// - "DATA_DELAYED" : There is an unusual delay in processing the source data
-  /// for the requested date range. The report results might be less up to date
-  /// than usual. AdMob is aware of the issue and is actively working to resolve
-  /// it.
-  /// - "OTHER" : Warnings that are exposed without a specific type. Useful when
-  /// new warning types are added but the API is not changed yet.
-  /// - "REPORT_CURRENCY_NOT_ACCOUNT_CURRENCY" : The currency being requested is
-  /// not the account currency. The earning metrics will be based on the
-  /// requested currency, and thus not a good estimation of the final payment
-  /// anymore, due to the currency rate fluctuation.
-  core.String? type;
-
-  ReportWarning({this.description, this.type});
-
-  ReportWarning.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef ReportWarning = $ReportWarning;
 
 /// List of string values.
-class StringList {
-  /// The string values.
-  core.List<core.String>? values;
-
-  StringList({this.values});
-
-  StringList.fromJson(core.Map json_)
-    : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
-}
+typedef StringList = $StringList01;

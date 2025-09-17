@@ -3895,7 +3895,7 @@ class DoublePropertyOptions {
 }
 
 /// List of double values.
-typedef DoubleValues = $Shared07;
+typedef DoubleValues = $Shared14;
 
 /// A person's email address.
 class EmailAddress {
@@ -5070,7 +5070,7 @@ class IntegerPropertyOptions {
 }
 
 /// List of integer values.
-typedef IntegerValues = $Shared08;
+typedef IntegerValues = $Shared15;
 
 /// Represents an interaction between a user and an item.
 class Interaction {
@@ -7617,7 +7617,7 @@ class ResetSearchApplicationRequest {
 }
 
 /// Debugging information about the response.
-typedef ResponseDebugInfo = $DebugInfo;
+typedef ResponseDebugInfo = $DebugInfo01;
 
 /// Result count information
 class ResultCounts {
@@ -7644,7 +7644,7 @@ class ResultCounts {
 }
 
 /// Debugging information about the result.
-typedef ResultDebugInfo = $DebugInfo;
+typedef ResultDebugInfo = $DebugInfo01;
 
 /// Display Fields for Search Results
 class ResultDisplayField {
@@ -7761,28 +7761,7 @@ class RetrievalImportance {
 /// A system which receives a SafeHtmlProto implicitly trusts the producer of
 /// the SafeHtmlProto. So, it's generally safe to return this message in RPC
 /// responses, but generally unsafe to accept it in RPC requests.
-class SafeHtmlProto {
-  /// IMPORTANT: Never set or read this field, even from tests, it is private.
-  ///
-  /// See documentation at the top of .proto file for programming language
-  /// packages with which to create or read this message.
-  core.String? privateDoNotAccessOrElseSafeHtmlWrappedValue;
-
-  SafeHtmlProto({this.privateDoNotAccessOrElseSafeHtmlWrappedValue});
-
-  SafeHtmlProto.fromJson(core.Map json_)
-    : this(
-        privateDoNotAccessOrElseSafeHtmlWrappedValue:
-            json_['privateDoNotAccessOrElseSafeHtmlWrappedValue']
-                as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (privateDoNotAccessOrElseSafeHtmlWrappedValue != null)
-      'privateDoNotAccessOrElseSafeHtmlWrappedValue':
-          privateDoNotAccessOrElseSafeHtmlWrappedValue!,
-  };
-}
+typedef SafeHtmlProto = $SafeHtmlProto;
 
 /// The schema definition for a data source.
 class Schema {

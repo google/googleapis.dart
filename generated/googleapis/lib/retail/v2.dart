@@ -3821,92 +3821,11 @@ class GoogleCloudRetailV2AddCatalogAttributeRequest {
 }
 
 /// Request for AddControl method.
-class GoogleCloudRetailV2AddControlRequest {
-  /// The id of the control to apply.
-  ///
-  /// Assumed to be in the same catalog as the serving config - if id is not
-  /// found a NOT_FOUND error is returned.
-  ///
-  /// Required.
-  core.String? controlId;
-
-  GoogleCloudRetailV2AddControlRequest({this.controlId});
-
-  GoogleCloudRetailV2AddControlRequest.fromJson(core.Map json_)
-    : this(controlId: json_['controlId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlId != null) 'controlId': controlId!,
-  };
-}
+typedef GoogleCloudRetailV2AddControlRequest = $AddControlRequest;
 
 /// Request message for ProductService.AddFulfillmentPlaces method.
-class GoogleCloudRetailV2AddFulfillmentPlacesRequest {
-  /// The time when the fulfillment updates are issued, used to prevent
-  /// out-of-order updates on fulfillment information.
-  ///
-  /// If not provided, the internal system time will be used.
-  core.String? addTime;
-
-  /// If set to true, and the Product is not found, the fulfillment information
-  /// will still be processed and retained for at most 1 day and processed once
-  /// the Product is created.
-  ///
-  /// If set to false, a NOT_FOUND error is returned if the Product is not
-  /// found.
-  core.bool? allowMissing;
-
-  /// The IDs for this type, such as the store IDs for "pickup-in-store" or the
-  /// region IDs for "same-day-delivery" to be added for this type.
-  ///
-  /// Duplicate IDs will be automatically ignored. At least 1 value is required,
-  /// and a maximum of 2000 values are allowed. Each value must be a string with
-  /// a length limit of 10 characters, matching the pattern `[a-zA-Z0-9_-]+`,
-  /// such as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is
-  /// returned. If the total number of place IDs exceeds 2000 for this type
-  /// after adding, then the update will be rejected.
-  ///
-  /// Required.
-  core.List<core.String>? placeIds;
-
-  /// The fulfillment type, including commonly used types (such as pickup in
-  /// store and same day delivery), and custom types.
-  ///
-  /// Supported values: * "pickup-in-store" * "ship-to-store" *
-  /// "same-day-delivery" * "next-day-delivery" * "custom-type-1" *
-  /// "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If
-  /// this field is set to an invalid value other than these, an
-  /// INVALID_ARGUMENT error is returned. This field directly corresponds to
-  /// Product.fulfillment_info.type.
-  ///
-  /// Required.
-  core.String? type;
-
-  GoogleCloudRetailV2AddFulfillmentPlacesRequest({
-    this.addTime,
-    this.allowMissing,
-    this.placeIds,
-    this.type,
-  });
-
-  GoogleCloudRetailV2AddFulfillmentPlacesRequest.fromJson(core.Map json_)
-    : this(
-        addTime: json_['addTime'] as core.String?,
-        allowMissing: json_['allowMissing'] as core.bool?,
-        placeIds:
-            (json_['placeIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (addTime != null) 'addTime': addTime!,
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (placeIds != null) 'placeIds': placeIds!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef GoogleCloudRetailV2AddFulfillmentPlacesRequest =
+    $AddFulfillmentPlacesRequest;
 
 /// Request message for ProductService.AddLocalInventories method.
 class GoogleCloudRetailV2AddLocalInventoriesRequest {
@@ -4034,51 +3953,7 @@ class GoogleCloudRetailV2AttributesConfig {
 }
 
 /// An intended audience of the Product for whom it's sold.
-class GoogleCloudRetailV2Audience {
-  /// The age groups of the audience.
-  ///
-  /// Strongly encouraged to use the standard values: "newborn" (up to 3 months
-  /// old), "infant" (3–12 months old), "toddler" (1–5 years old), "kids" (5–13
-  /// years old), "adult" (typically teens or older). At most 5 values are
-  /// allowed. Each value must be a UTF-8 encoded string with a length limit of
-  /// 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
-  /// [age_group](https://support.google.com/merchants/answer/6324463).
-  /// Schema.org property
-  /// [Product.audience.suggestedMinAge](https://schema.org/suggestedMinAge) and
-  /// [Product.audience.suggestedMaxAge](https://schema.org/suggestedMaxAge).
-  core.List<core.String>? ageGroups;
-
-  /// The genders of the audience.
-  ///
-  /// Strongly encouraged to use the standard values: "male", "female",
-  /// "unisex". At most 5 values are allowed. Each value must be a UTF-8 encoded
-  /// string with a length limit of 128 characters. Otherwise, an
-  /// INVALID_ARGUMENT error is returned. Google Merchant Center property
-  /// [gender](https://support.google.com/merchants/answer/6324479). Schema.org
-  /// property
-  /// [Product.audience.suggestedGender](https://schema.org/suggestedGender).
-  core.List<core.String>? genders;
-
-  GoogleCloudRetailV2Audience({this.ageGroups, this.genders});
-
-  GoogleCloudRetailV2Audience.fromJson(core.Map json_)
-    : this(
-        ageGroups:
-            (json_['ageGroups'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        genders:
-            (json_['genders'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ageGroups != null) 'ageGroups': ageGroups!,
-    if (genders != null) 'genders': genders!,
-  };
-}
+typedef GoogleCloudRetailV2Audience = $Audience;
 
 /// Request for BatchUpdateGenerativeQuestionConfig method.
 class GoogleCloudRetailV2BatchUpdateGenerativeQuestionConfigsRequest {
@@ -4533,50 +4408,8 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfig {
 
 /// Facet values to ignore on facets during the specified time range for the
 /// given SearchResponse.Facet.key attribute.
-class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues {
-  /// If start time is empty and end time is not empty, then ignore these facet
-  /// values before end time.
-  core.String? endTime;
-
-  /// Time range for the current list of facet values to ignore.
-  ///
-  /// If multiple time ranges are specified for an facet value for the current
-  /// attribute, consider all of them. If both are empty, ignore always. If
-  /// start time and end time are set, then start time must be before end time.
-  /// If start time is not empty and end time is empty, then will ignore these
-  /// facet values after the start time.
-  core.String? startTime;
-
-  /// List of facet values to ignore for the following time range.
-  ///
-  /// The facet values are the same as the attribute values. There is a limit of
-  /// 10 values per instance of IgnoredFacetValues. Each value can have at most
-  /// 128 characters.
-  core.List<core.String>? values;
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues({
-    this.endTime,
-    this.startTime,
-    this.values,
-  });
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues.fromJson(
-    core.Map json_,
-  ) : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (values != null) 'values': values!,
-  };
-}
+typedef GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues =
+    $CatalogAttributeFacetConfigIgnoredFacetValues;
 
 /// The current facet key (i.e. attribute config) maps into the
 /// merged_facet_key.
@@ -4584,67 +4417,16 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues {
 /// A facet key can have at most one child. The current facet key and the merged
 /// facet key need both to be textual custom attributes or both numerical custom
 /// attributes (same type).
-class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet {
-  /// The merged facet key should be a valid facet key that is different than
-  /// the facet key of the current catalog attribute.
-  ///
-  /// We refer this is merged facet key as the child of the current catalog
-  /// attribute. This merged facet key can't be a parent of another facet key
-  /// (i.e. no directed path of length 2). This merged facet key needs to be
-  /// either a textual custom attribute or a numerical custom attribute.
-  core.String? mergedFacetKey;
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet({
-    this.mergedFacetKey,
-  });
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet.fromJson(
-    core.Map json_,
-  ) : this(mergedFacetKey: json_['mergedFacetKey'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mergedFacetKey != null) 'mergedFacetKey': mergedFacetKey!,
-  };
-}
+typedef GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacet =
+    $CatalogAttributeFacetConfigMergedFacet;
 
 /// Replaces a set of textual facet values by the same (possibly different)
 /// merged facet value.
 ///
 /// Each facet value should appear at most once as a value per CatalogAttribute.
 /// This feature is available only for textual custom attributes.
-class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue {
-  /// All the previous values are replaced by this merged facet value.
-  ///
-  /// This merged_value must be non-empty and can have up to 128 characters.
-  core.String? mergedValue;
-
-  /// All the facet values that are replaces by the same merged_value that
-  /// follows.
-  ///
-  /// The maximum number of values per MergedFacetValue is 25. Each value can
-  /// have up to 128 characters.
-  core.List<core.String>? values;
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue({
-    this.mergedValue,
-    this.values,
-  });
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue.fromJson(
-    core.Map json_,
-  ) : this(
-        mergedValue: json_['mergedValue'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mergedValue != null) 'mergedValue': mergedValue!,
-    if (values != null) 'values': values!,
-  };
-}
+typedef GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue =
+    $CatalogAttributeFacetConfigMergedFacetValue;
 
 /// Options to rerank based on facet values engaged by the user for the current
 /// key.
@@ -4656,144 +4438,14 @@ class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue {
 /// won't be effective. Moreover, to obtain better results, the facet values
 /// that you want to rerank on should be close to English (ideally made of
 /// words, underscores, and spaces).
-class GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig {
-  /// If empty, rerank on all facet values for the current key.
-  ///
-  /// Otherwise, will rerank on the facet values from this list only.
-  core.List<core.String>? facetValues;
-
-  /// If set to true, then we also rerank the dynamic facets based on the facet
-  /// values engaged by the user for the current attribute key during serving.
-  core.bool? rerankFacet;
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig({
-    this.facetValues,
-    this.rerankFacet,
-  });
-
-  GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        facetValues:
-            (json_['facetValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        rerankFacet: json_['rerankFacet'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (facetValues != null) 'facetValues': facetValues!,
-    if (rerankFacet != null) 'rerankFacet': rerankFacet!,
-  };
-}
+typedef GoogleCloudRetailV2CatalogAttributeFacetConfigRerankConfig =
+    $CatalogAttributeFacetConfigRerankConfig;
 
 /// Request message for CollectUserEvent method.
-class GoogleCloudRetailV2CollectUserEventRequest {
-  /// The event timestamp in milliseconds.
-  ///
-  /// This prevents browser caching of otherwise identical get requests. The
-  /// name is abbreviated to reduce the payload bytes.
-  core.String? ets;
-
-  /// The prebuilt rule name that can convert a specific type of raw_json.
-  ///
-  /// For example: "ga4_bq" rule for the GA4 user event schema.
-  core.String? prebuiltRule;
-
-  /// An arbitrary serialized JSON string that contains necessary information
-  /// that can comprise a user event.
-  ///
-  /// When this field is specified, the user_event field will be ignored. Note:
-  /// line-delimited JSON is not supported, a single JSON only.
-  core.String? rawJson;
-
-  /// The URL including cgi-parameters but excluding the hash fragment with a
-  /// length limit of 5,000 characters.
-  ///
-  /// This is often more useful than the referer URL, because many browsers only
-  /// send the domain for 3rd party requests.
-  core.String? uri;
-
-  /// URL encoded UserEvent proto with a length limit of 2,000,000 characters.
-  ///
-  /// Required.
-  core.String? userEvent;
-
-  GoogleCloudRetailV2CollectUserEventRequest({
-    this.ets,
-    this.prebuiltRule,
-    this.rawJson,
-    this.uri,
-    this.userEvent,
-  });
-
-  GoogleCloudRetailV2CollectUserEventRequest.fromJson(core.Map json_)
-    : this(
-        ets: json_['ets'] as core.String?,
-        prebuiltRule: json_['prebuiltRule'] as core.String?,
-        rawJson: json_['rawJson'] as core.String?,
-        uri: json_['uri'] as core.String?,
-        userEvent: json_['userEvent'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ets != null) 'ets': ets!,
-    if (prebuiltRule != null) 'prebuiltRule': prebuiltRule!,
-    if (rawJson != null) 'rawJson': rawJson!,
-    if (uri != null) 'uri': uri!,
-    if (userEvent != null) 'userEvent': userEvent!,
-  };
-}
+typedef GoogleCloudRetailV2CollectUserEventRequest = $CollectUserEventRequest;
 
 /// The color information of a Product.
-class GoogleCloudRetailV2ColorInfo {
-  /// The standard color families.
-  ///
-  /// Strongly recommended to use the following standard color groups: "Red",
-  /// "Pink", "Orange", "Yellow", "Purple", "Green", "Cyan", "Blue", "Brown",
-  /// "White", "Gray", "Black" and "Mixed". Normally it is expected to have only
-  /// 1 color family. May consider using single "Mixed" instead of multiple
-  /// values. A maximum of 5 values are allowed. Each value must be a UTF-8
-  /// encoded string with a length limit of 128 characters. Otherwise, an
-  /// INVALID_ARGUMENT error is returned. Google Merchant Center property
-  /// [color](https://support.google.com/merchants/answer/6324487). Schema.org
-  /// property [Product.color](https://schema.org/color). The colorFamilies
-  /// field as a system attribute is not a required field but strongly
-  /// recommended to be specified. Google Search models treat this field as more
-  /// important than a custom product attribute when specified.
-  core.List<core.String>? colorFamilies;
-
-  /// The color display names, which may be different from standard color family
-  /// names, such as the color aliases used in the website frontend.
-  ///
-  /// Normally it is expected to have only 1 color. May consider using single
-  /// "Mixed" instead of multiple values. A maximum of 75 colors are allowed.
-  /// Each value must be a UTF-8 encoded string with a length limit of 128
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
-  /// [color](https://support.google.com/merchants/answer/6324487). Schema.org
-  /// property [Product.color](https://schema.org/color).
-  core.List<core.String>? colors;
-
-  GoogleCloudRetailV2ColorInfo({this.colorFamilies, this.colors});
-
-  GoogleCloudRetailV2ColorInfo.fromJson(core.Map json_)
-    : this(
-        colorFamilies:
-            (json_['colorFamilies'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        colors:
-            (json_['colors'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (colorFamilies != null) 'colorFamilies': colorFamilies!,
-    if (colors != null) 'colors': colors!,
-  };
-}
+typedef GoogleCloudRetailV2ColorInfo = $ColorInfo;
 
 /// Response of the autocomplete query.
 class GoogleCloudRetailV2CompleteQueryResponse {
@@ -4888,25 +4540,8 @@ class GoogleCloudRetailV2CompleteQueryResponse {
 }
 
 /// Resource that represents attribute results.
-class GoogleCloudRetailV2CompleteQueryResponseAttributeResult {
-  /// The list of suggestions for the attribute.
-  core.List<core.String>? suggestions;
-
-  GoogleCloudRetailV2CompleteQueryResponseAttributeResult({this.suggestions});
-
-  GoogleCloudRetailV2CompleteQueryResponseAttributeResult.fromJson(
-    core.Map json_,
-  ) : this(
-        suggestions:
-            (json_['suggestions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (suggestions != null) 'suggestions': suggestions!,
-  };
-}
+typedef GoogleCloudRetailV2CompleteQueryResponseAttributeResult =
+    $CompleteQueryResponseAttributeResult;
 
 /// Resource that represents completion results.
 class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
@@ -4948,22 +4583,8 @@ class GoogleCloudRetailV2CompleteQueryResponseCompletionResult {
 }
 
 /// Deprecated: Recent search of this user.
-class GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult {
-  /// The recent search query.
-  core.String? recentSearch;
-
-  GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult({
-    this.recentSearch,
-  });
-
-  GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult.fromJson(
-    core.Map json_,
-  ) : this(recentSearch: json_['recentSearch'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recentSearch != null) 'recentSearch': recentSearch!,
-  };
-}
+typedef GoogleCloudRetailV2CompleteQueryResponseRecentSearchResult =
+    $CompleteQueryResponseRecentSearchResult;
 
 /// Catalog level autocomplete config for customers to customize autocomplete
 /// feature's settings.
@@ -5147,38 +4768,7 @@ class GoogleCloudRetailV2CompletionDataInputConfig {
 
 /// Detailed completion information including completion attribution token and
 /// clicked completion info.
-class GoogleCloudRetailV2CompletionDetail {
-  /// Completion attribution token in CompleteQueryResponse.attribution_token.
-  core.String? completionAttributionToken;
-
-  /// End user selected CompleteQueryResponse.CompletionResult.suggestion
-  /// position, starting from 0.
-  core.int? selectedPosition;
-
-  /// End user selected CompleteQueryResponse.CompletionResult.suggestion.
-  core.String? selectedSuggestion;
-
-  GoogleCloudRetailV2CompletionDetail({
-    this.completionAttributionToken,
-    this.selectedPosition,
-    this.selectedSuggestion,
-  });
-
-  GoogleCloudRetailV2CompletionDetail.fromJson(core.Map json_)
-    : this(
-        completionAttributionToken:
-            json_['completionAttributionToken'] as core.String?,
-        selectedPosition: json_['selectedPosition'] as core.int?,
-        selectedSuggestion: json_['selectedSuggestion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionAttributionToken != null)
-      'completionAttributionToken': completionAttributionToken!,
-    if (selectedPosition != null) 'selectedPosition': selectedPosition!,
-    if (selectedSuggestion != null) 'selectedSuggestion': selectedSuggestion!,
-  };
-}
+typedef GoogleCloudRetailV2CompletionDetail = $CompletionDetail;
 
 /// Metadata that is used to define a condition that triggers an action.
 ///
@@ -5244,59 +4834,12 @@ class GoogleCloudRetailV2Condition {
 }
 
 /// Query terms that we want to match on.
-class GoogleCloudRetailV2ConditionQueryTerm {
-  /// Whether this is supposed to be a full or partial match.
-  core.bool? fullMatch;
-
-  /// The value of the term to match on.
-  ///
-  /// Value cannot be empty. Value can have at most 3 terms if specified as a
-  /// partial match. Each space separated string is considered as one term. For
-  /// example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not
-  /// allowed for a partial match.
-  core.String? value;
-
-  GoogleCloudRetailV2ConditionQueryTerm({this.fullMatch, this.value});
-
-  GoogleCloudRetailV2ConditionQueryTerm.fromJson(core.Map json_)
-    : this(
-        fullMatch: json_['fullMatch'] as core.bool?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fullMatch != null) 'fullMatch': fullMatch!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef GoogleCloudRetailV2ConditionQueryTerm = $ConditionQueryTerm01;
 
 /// Used for time-dependent conditions.
 ///
 /// Example: Want to have rule applied for week long sale.
-class GoogleCloudRetailV2ConditionTimeRange {
-  /// End of time range.
-  ///
-  /// Range is inclusive.
-  core.String? endTime;
-
-  /// Start of time range.
-  ///
-  /// Range is inclusive.
-  core.String? startTime;
-
-  GoogleCloudRetailV2ConditionTimeRange({this.endTime, this.startTime});
-
-  GoogleCloudRetailV2ConditionTimeRange.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef GoogleCloudRetailV2ConditionTimeRange = $ConditionTimeRange01;
 
 /// Configures dynamic metadata that can be linked to a ServingConfig and affect
 /// search or recommendation results at serving time.
@@ -5446,99 +4989,10 @@ class GoogleCloudRetailV2ConversationalSearchCustomizationConfig {
 }
 
 /// A custom attribute that is not explicitly modeled in Product.
-class GoogleCloudRetailV2CustomAttribute {
-  /// This field is normally ignored unless
-  /// AttributesConfig.attribute_config_level of the Catalog is set to the
-  /// deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode.
-  ///
-  /// For information about product-level attribute configuration, see
-  /// [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes).
-  /// If true, custom attribute values are indexed, so that they can be
-  /// filtered, faceted or boosted in SearchService.Search. This field is
-  /// ignored in a UserEvent. See SearchRequest.filter,
-  /// SearchRequest.facet_specs and SearchRequest.boost_spec for more details.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? indexable;
-
-  /// The numerical values of this custom attribute.
-  ///
-  /// For example, `[2.3, 15.4]` when the key is "lengths_cm". Exactly one of
-  /// text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is
-  /// returned.
-  core.List<core.double>? numbers;
-
-  /// This field is normally ignored unless
-  /// AttributesConfig.attribute_config_level of the Catalog is set to the
-  /// deprecated 'PRODUCT_LEVEL_ATTRIBUTE_CONFIG' mode.
-  ///
-  /// For information about product-level attribute configuration, see
-  /// [Configuration modes](https://cloud.google.com/retail/docs/attribute-config#config-modes).
-  /// If true, custom attribute values are searchable by text queries in
-  /// SearchService.Search. This field is ignored in a UserEvent. Only set if
-  /// type text is set. Otherwise, a INVALID_ARGUMENT error is returned.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? searchable;
-
-  /// The textual values of this custom attribute.
-  ///
-  /// For example, `["yellow", "green"]` when the key is "color". Empty string
-  /// is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly
-  /// one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error
-  /// is returned.
-  core.List<core.String>? text;
-
-  GoogleCloudRetailV2CustomAttribute({
-    this.indexable,
-    this.numbers,
-    this.searchable,
-    this.text,
-  });
-
-  GoogleCloudRetailV2CustomAttribute.fromJson(core.Map json_)
-    : this(
-        indexable: json_['indexable'] as core.bool?,
-        numbers:
-            (json_['numbers'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
-        searchable: json_['searchable'] as core.bool?,
-        text:
-            (json_['text'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (indexable != null) 'indexable': indexable!,
-    if (numbers != null) 'numbers': numbers!,
-    if (searchable != null) 'searchable': searchable!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudRetailV2CustomAttribute = $CustomAttribute01;
 
 /// A message with a list of double values.
-class GoogleCloudRetailV2DoubleList {
-  /// The list of double values.
-  core.List<core.double>? values;
-
-  GoogleCloudRetailV2DoubleList({this.values});
-
-  GoogleCloudRetailV2DoubleList.fromJson(core.Map json_)
-    : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
-}
+typedef GoogleCloudRetailV2DoubleList = $DoubleList01;
 
 /// Metadata for active A/B testing experiment.
 class GoogleCloudRetailV2ExperimentInfo {
@@ -5578,42 +5032,8 @@ class GoogleCloudRetailV2ExperimentInfo {
 }
 
 /// Metadata for active serving config A/B tests.
-class GoogleCloudRetailV2ExperimentInfoServingConfigExperiment {
-  /// The fully qualified resource name of the serving config
-  /// `Experiment.VariantArm.serving_config_id` responsible for generating the
-  /// search response.
-  ///
-  /// For example: `projects / * /locations / * /catalogs / * /servingConfigs /
-  /// * `.
-  core.String? experimentServingConfig;
-
-  /// The fully qualified resource name of the original SearchRequest.placement
-  /// in the search request prior to reassignment by experiment API.
-  ///
-  /// For example: `projects / * /locations / * /catalogs / * /servingConfigs /
-  /// * `.
-  core.String? originalServingConfig;
-
-  GoogleCloudRetailV2ExperimentInfoServingConfigExperiment({
-    this.experimentServingConfig,
-    this.originalServingConfig,
-  });
-
-  GoogleCloudRetailV2ExperimentInfoServingConfigExperiment.fromJson(
-    core.Map json_,
-  ) : this(
-        experimentServingConfig:
-            json_['experimentServingConfig'] as core.String?,
-        originalServingConfig: json_['originalServingConfig'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (experimentServingConfig != null)
-      'experimentServingConfig': experimentServingConfig!,
-    if (originalServingConfig != null)
-      'originalServingConfig': originalServingConfig!,
-  };
-}
+typedef GoogleCloudRetailV2ExperimentInfoServingConfigExperiment =
+    $ExperimentInfoServingConfigExperiment;
 
 /// Request message for the `ExportAnalyticsMetrics` method.
 class GoogleCloudRetailV2ExportAnalyticsMetricsRequest {
@@ -5659,243 +5079,20 @@ class GoogleCloudRetailV2ExportAnalyticsMetricsRequest {
 
 /// Fulfillment information, such as the store IDs for in-store pickup or region
 /// IDs for different shipping methods.
-class GoogleCloudRetailV2FulfillmentInfo {
-  /// The IDs for this type, such as the store IDs for
-  /// FulfillmentInfo.type.pickup-in-store or the region IDs for
-  /// FulfillmentInfo.type.same-day-delivery.
-  ///
-  /// A maximum of 3000 values are allowed. Each value must be a string with a
-  /// length limit of 30 characters, matching the pattern `[a-zA-Z0-9_-]+`, such
-  /// as "store1" or "REGION-2". Otherwise, an INVALID_ARGUMENT error is
-  /// returned.
-  core.List<core.String>? placeIds;
-
-  /// The fulfillment type, including commonly used types (such as pickup in
-  /// store and same day delivery), and custom types.
-  ///
-  /// Customers have to map custom types to their display names before rendering
-  /// UI. Supported values: * "pickup-in-store" * "ship-to-store" *
-  /// "same-day-delivery" * "next-day-delivery" * "custom-type-1" *
-  /// "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If
-  /// this field is set to an invalid value other than these, an
-  /// INVALID_ARGUMENT error is returned.
-  core.String? type;
-
-  GoogleCloudRetailV2FulfillmentInfo({this.placeIds, this.type});
-
-  GoogleCloudRetailV2FulfillmentInfo.fromJson(core.Map json_)
-    : this(
-        placeIds:
-            (json_['placeIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (placeIds != null) 'placeIds': placeIds!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef GoogleCloudRetailV2FulfillmentInfo = $FulfillmentInfo;
 
 /// Google Cloud Storage location for input content.
-class GoogleCloudRetailV2GcsSource {
-  /// The schema to use when parsing the data from the source.
-  ///
-  /// Supported values for product imports: * `product` (default): One JSON
-  /// Product per line. Each product must have a valid Product.id. *
-  /// `product_merchant_center`: See
-  /// [Importing catalog data from Merchant Center](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog#mc).
-  /// Supported values for user events imports: * `user_event` (default): One
-  /// JSON UserEvent per line. * `user_event_ga360`: Using
-  /// https://support.google.com/analytics/answer/3437719. Supported values for
-  /// control imports: * `control` (default): One JSON Control per line.
-  /// Supported values for catalog attribute imports: * `catalog_attribute`
-  /// (default): One CSV CatalogAttribute per line.
-  core.String? dataSchema;
-
-  /// Google Cloud Storage URIs to input files.
-  ///
-  /// URI can be up to 2000 characters long. URIs can match the full object path
-  /// (for example, `gs://bucket/directory/object.json`) or a pattern matching
-  /// one or more files, such as `gs://bucket/directory / * .json`. A request
-  /// can contain at most 100 files, and each file can be up to 2 GB. See
-  /// [Importing product information](https://cloud.google.com/retail/recommendations-ai/docs/upload-catalog)
-  /// for the expected file format and setup instructions.
-  ///
-  /// Required.
-  core.List<core.String>? inputUris;
-
-  GoogleCloudRetailV2GcsSource({this.dataSchema, this.inputUris});
-
-  GoogleCloudRetailV2GcsSource.fromJson(core.Map json_)
-    : this(
-        dataSchema: json_['dataSchema'] as core.String?,
-        inputUris:
-            (json_['inputUris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataSchema != null) 'dataSchema': dataSchema!,
-    if (inputUris != null) 'inputUris': inputUris!,
-  };
-}
+typedef GoogleCloudRetailV2GcsSource = $GcsSource02;
 
 /// Configuration for a single generated question.
-class GoogleCloudRetailV2GenerativeQuestionConfig {
-  /// Whether the question is asked at serving time.
-  ///
-  /// Optional.
-  core.bool? allowedInConversation;
-
-  /// Resource name of the catalog.
-  ///
-  /// Format: projects/{project}/locations/{location}/catalogs/{catalog}
-  ///
-  /// Required.
-  core.String? catalog;
-
-  /// Values that can be used to answer the question.
-  ///
-  /// Output only.
-  core.List<core.String>? exampleValues;
-
-  /// The facet to which the question is associated.
-  ///
-  /// Required.
-  core.String? facet;
-
-  /// The question that will be used at serving time.
-  ///
-  /// Question can have a max length of 300 bytes. When not populated,
-  /// generated_question should be used.
-  ///
-  /// Optional.
-  core.String? finalQuestion;
-
-  /// The ratio of how often a question was asked.
-  ///
-  /// Output only.
-  core.double? frequency;
-
-  /// The LLM generated question.
-  ///
-  /// Output only.
-  core.String? generatedQuestion;
-
-  GoogleCloudRetailV2GenerativeQuestionConfig({
-    this.allowedInConversation,
-    this.catalog,
-    this.exampleValues,
-    this.facet,
-    this.finalQuestion,
-    this.frequency,
-    this.generatedQuestion,
-  });
-
-  GoogleCloudRetailV2GenerativeQuestionConfig.fromJson(core.Map json_)
-    : this(
-        allowedInConversation: json_['allowedInConversation'] as core.bool?,
-        catalog: json_['catalog'] as core.String?,
-        exampleValues:
-            (json_['exampleValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        facet: json_['facet'] as core.String?,
-        finalQuestion: json_['finalQuestion'] as core.String?,
-        frequency: (json_['frequency'] as core.num?)?.toDouble(),
-        generatedQuestion: json_['generatedQuestion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedInConversation != null)
-      'allowedInConversation': allowedInConversation!,
-    if (catalog != null) 'catalog': catalog!,
-    if (exampleValues != null) 'exampleValues': exampleValues!,
-    if (facet != null) 'facet': facet!,
-    if (finalQuestion != null) 'finalQuestion': finalQuestion!,
-    if (frequency != null) 'frequency': frequency!,
-    if (generatedQuestion != null) 'generatedQuestion': generatedQuestion!,
-  };
-}
+typedef GoogleCloudRetailV2GenerativeQuestionConfig = $GenerativeQuestionConfig;
 
 /// Configuration for overall generative question feature state.
-class GoogleCloudRetailV2GenerativeQuestionsFeatureConfig {
-  /// Resource name of the affected catalog.
-  ///
-  /// Format: projects/{project}/locations/{location}/catalogs/{catalog}
-  ///
-  /// Required.
-  core.String? catalog;
-
-  /// Determines whether questions will be used at serving time.
-  ///
-  /// Note: This feature cannot be enabled until initial data requirements are
-  /// satisfied.
-  ///
-  /// Optional.
-  core.bool? featureEnabled;
-
-  /// Minimum number of products in the response to trigger follow-up questions.
-  ///
-  /// Value must be 0 or positive.
-  ///
-  /// Optional.
-  core.int? minimumProducts;
-
-  GoogleCloudRetailV2GenerativeQuestionsFeatureConfig({
-    this.catalog,
-    this.featureEnabled,
-    this.minimumProducts,
-  });
-
-  GoogleCloudRetailV2GenerativeQuestionsFeatureConfig.fromJson(core.Map json_)
-    : this(
-        catalog: json_['catalog'] as core.String?,
-        featureEnabled: json_['featureEnabled'] as core.bool?,
-        minimumProducts: json_['minimumProducts'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (catalog != null) 'catalog': catalog!,
-    if (featureEnabled != null) 'featureEnabled': featureEnabled!,
-    if (minimumProducts != null) 'minimumProducts': minimumProducts!,
-  };
-}
+typedef GoogleCloudRetailV2GenerativeQuestionsFeatureConfig =
+    $GenerativeQuestionsFeatureConfig;
 
 /// Response message of CatalogService.GetDefaultBranch.
-class GoogleCloudRetailV2GetDefaultBranchResponse {
-  /// Full resource name of the branch id currently set as default branch.
-  core.String? branch;
-
-  /// This corresponds to SetDefaultBranchRequest.note field, when this branch
-  /// was set as default.
-  core.String? note;
-
-  /// The time when this branch is set to default.
-  core.String? setTime;
-
-  GoogleCloudRetailV2GetDefaultBranchResponse({
-    this.branch,
-    this.note,
-    this.setTime,
-  });
-
-  GoogleCloudRetailV2GetDefaultBranchResponse.fromJson(core.Map json_)
-    : this(
-        branch: json_['branch'] as core.String?,
-        note: json_['note'] as core.String?,
-        setTime: json_['setTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (branch != null) 'branch': branch!,
-    if (note != null) 'note': note!,
-    if (setTime != null) 'setTime': setTime!,
-  };
-}
+typedef GoogleCloudRetailV2GetDefaultBranchResponse = $GetDefaultBranchResponse;
 
 /// Product image.
 ///
@@ -5903,45 +5100,7 @@ class GoogleCloudRetailV2GetDefaultBranchResponse {
 /// prediction and search results. Product images can be returned in results,
 /// and are shown in prediction or search previews in the console. Please try to
 /// provide correct product images and avoid using images with size too small.
-class GoogleCloudRetailV2Image {
-  /// Height of the image in number of pixels.
-  ///
-  /// This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is
-  /// returned.
-  core.int? height;
-
-  /// URI of the image.
-  ///
-  /// This field must be a valid UTF-8 encoded URI with a length limit of 5,000
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. Google
-  /// Merchant Center property
-  /// [image_link](https://support.google.com/merchants/answer/6324350).
-  /// Schema.org property [Product.image](https://schema.org/image).
-  ///
-  /// Required.
-  core.String? uri;
-
-  /// Width of the image in number of pixels.
-  ///
-  /// This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is
-  /// returned.
-  core.int? width;
-
-  GoogleCloudRetailV2Image({this.height, this.uri, this.width});
-
-  GoogleCloudRetailV2Image.fromJson(core.Map json_)
-    : this(
-        height: json_['height'] as core.int?,
-        uri: json_['uri'] as core.String?,
-        width: json_['width'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (height != null) 'height': height!,
-    if (uri != null) 'uri': uri!,
-    if (width != null) 'width': width!,
-  };
-}
+typedef GoogleCloudRetailV2Image = $Image00;
 
 /// Request message for ImportCompletionData methods.
 class GoogleCloudRetailV2ImportCompletionDataRequest {
@@ -5983,23 +5142,7 @@ class GoogleCloudRetailV2ImportCompletionDataRequest {
 }
 
 /// Configuration of destination for Import related errors.
-class GoogleCloudRetailV2ImportErrorsConfig {
-  /// Google Cloud Storage prefix for import errors.
-  ///
-  /// This must be an empty, existing Cloud Storage directory. Import errors are
-  /// written to sharded files in this directory, one per line, as a
-  /// JSON-encoded `google.rpc.Status` message.
-  core.String? gcsPrefix;
-
-  GoogleCloudRetailV2ImportErrorsConfig({this.gcsPrefix});
-
-  GoogleCloudRetailV2ImportErrorsConfig.fromJson(core.Map json_)
-    : this(gcsPrefix: json_['gcsPrefix'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
-  };
-}
+typedef GoogleCloudRetailV2ImportErrorsConfig = $ImportErrorsConfig;
 
 /// Request message for Import methods.
 class GoogleCloudRetailV2ImportProductsRequest {
@@ -6216,95 +5359,12 @@ class GoogleCloudRetailV2IntentClassificationConfig {
 }
 
 /// An example for intent classification.
-class GoogleCloudRetailV2IntentClassificationConfigExample {
-  /// Whether the example is classified positively.
-  ///
-  /// Required.
-  core.bool? classifiedPositive;
-
-  /// The intent_type must match one of the predefined intent types defined at
-  /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
-  ///
-  /// Optional.
-  core.String? intentType;
-
-  /// Example query.
-  ///
-  /// Required.
-  core.String? query;
-
-  /// The reason for the intent classification.
-  ///
-  /// This is used to explain the intent classification decision.
-  ///
-  /// Optional.
-  core.String? reason;
-
-  GoogleCloudRetailV2IntentClassificationConfigExample({
-    this.classifiedPositive,
-    this.intentType,
-    this.query,
-    this.reason,
-  });
-
-  GoogleCloudRetailV2IntentClassificationConfigExample.fromJson(core.Map json_)
-    : this(
-        classifiedPositive: json_['classifiedPositive'] as core.bool?,
-        intentType: json_['intentType'] as core.String?,
-        query: json_['query'] as core.String?,
-        reason: json_['reason'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (classifiedPositive != null) 'classifiedPositive': classifiedPositive!,
-    if (intentType != null) 'intentType': intentType!,
-    if (query != null) 'query': query!,
-    if (reason != null) 'reason': reason!,
-  };
-}
+typedef GoogleCloudRetailV2IntentClassificationConfigExample =
+    $IntentClassificationConfigExample;
 
 /// An inline force intent classification configuration.
-class GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent {
-  /// The intent_type must match one of the predefined intent types defined at
-  /// https://cloud.google.com/retail/docs/reference/rpc/google.cloud.retail.v2alpha#querytype
-  ///
-  /// Optional.
-  core.String? intentType;
-
-  /// The operation to perform for the query.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "OPERATION_UNSPECIFIED" : Unspecified match operation.
-  /// - "EXACT_MATCH" : Exact match.
-  /// - "CONTAINS" : Contains match.
-  core.String? operation;
-
-  /// A example query.
-  ///
-  /// Optional.
-  core.String? query;
-
-  GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent({
-    this.intentType,
-    this.operation,
-    this.query,
-  });
-
-  GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent.fromJson(
-    core.Map json_,
-  ) : this(
-        intentType: json_['intentType'] as core.String?,
-        operation: json_['operation'] as core.String?,
-        query: json_['query'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intentType != null) 'intentType': intentType!,
-    if (operation != null) 'operation': operation!,
-    if (query != null) 'query': query!,
-  };
-}
+typedef GoogleCloudRetailV2IntentClassificationConfigInlineForceIntent =
+    $IntentClassificationConfigInlineForceIntent;
 
 /// Inline source for intent classifications.
 class GoogleCloudRetailV2IntentClassificationConfigInlineSource {
@@ -6338,41 +5398,7 @@ class GoogleCloudRetailV2IntentClassificationConfigInlineSource {
 }
 
 /// A floating point interval.
-class GoogleCloudRetailV2Interval {
-  /// Exclusive upper bound.
-  core.double? exclusiveMaximum;
-
-  /// Exclusive lower bound.
-  core.double? exclusiveMinimum;
-
-  /// Inclusive upper bound.
-  core.double? maximum;
-
-  /// Inclusive lower bound.
-  core.double? minimum;
-
-  GoogleCloudRetailV2Interval({
-    this.exclusiveMaximum,
-    this.exclusiveMinimum,
-    this.maximum,
-    this.minimum,
-  });
-
-  GoogleCloudRetailV2Interval.fromJson(core.Map json_)
-    : this(
-        exclusiveMaximum: (json_['exclusiveMaximum'] as core.num?)?.toDouble(),
-        exclusiveMinimum: (json_['exclusiveMinimum'] as core.num?)?.toDouble(),
-        maximum: (json_['maximum'] as core.num?)?.toDouble(),
-        minimum: (json_['minimum'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exclusiveMaximum != null) 'exclusiveMaximum': exclusiveMaximum!,
-    if (exclusiveMinimum != null) 'exclusiveMinimum': exclusiveMinimum!,
-    if (maximum != null) 'maximum': maximum!,
-    if (minimum != null) 'minimum': minimum!,
-  };
-}
+typedef GoogleCloudRetailV2Interval = $Interval01;
 
 /// Response for CatalogService.ListCatalogs method.
 class GoogleCloudRetailV2ListCatalogsResponse {
@@ -6889,36 +5915,8 @@ class GoogleCloudRetailV2Model {
 }
 
 /// Additional configs for the frequently-bought-together model type.
-class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig {
-  /// Specifies the context of the model when it is used in predict requests.
-  ///
-  /// Can only be set for the `frequently-bought-together` type. If it isn't
-  /// specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "CONTEXT_PRODUCTS_TYPE_UNSPECIFIED" : Unspecified default value, should
-  /// never be explicitly set. Defaults to MULTIPLE_CONTEXT_PRODUCTS.
-  /// - "SINGLE_CONTEXT_PRODUCT" : Use only a single product as context for the
-  /// recommendation. Typically used on pages like add-to-cart or product
-  /// details.
-  /// - "MULTIPLE_CONTEXT_PRODUCTS" : Use one or multiple products as context
-  /// for the recommendation. Typically used on shopping cart pages.
-  core.String? contextProductsType;
-
-  GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig({
-    this.contextProductsType,
-  });
-
-  GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig.fromJson(
-    core.Map json_,
-  ) : this(contextProductsType: json_['contextProductsType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contextProductsType != null)
-      'contextProductsType': contextProductsType!,
-  };
-}
+typedef GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig =
+    $ModelFrequentlyBoughtTogetherFeaturesConfig;
 
 /// Additional model features config.
 class GoogleCloudRetailV2ModelModelFeaturesConfig {
@@ -6949,26 +5947,7 @@ class GoogleCloudRetailV2ModelModelFeaturesConfig {
 
 /// Represents an ordered combination of valid serving configs, which can be
 /// used for `PAGE_OPTIMIZATION` recommendations.
-class GoogleCloudRetailV2ModelServingConfigList {
-  /// A set of valid serving configs that may be used for `PAGE_OPTIMIZATION`.
-  ///
-  /// Optional.
-  core.List<core.String>? servingConfigIds;
-
-  GoogleCloudRetailV2ModelServingConfigList({this.servingConfigIds});
-
-  GoogleCloudRetailV2ModelServingConfigList.fromJson(core.Map json_)
-    : this(
-        servingConfigIds:
-            (json_['servingConfigIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (servingConfigIds != null) 'servingConfigIds': servingConfigIds!,
-  };
-}
+typedef GoogleCloudRetailV2ModelServingConfigList = $ModelServingConfigList;
 
 /// The output configuration setting.
 class GoogleCloudRetailV2OutputConfig {
@@ -7009,67 +5988,12 @@ class GoogleCloudRetailV2OutputConfig {
 }
 
 /// The BigQuery output destination configuration.
-class GoogleCloudRetailV2OutputConfigBigQueryDestination {
-  /// The ID of a BigQuery Dataset.
-  ///
-  /// Required.
-  core.String? datasetId;
-
-  /// The prefix of exported BigQuery tables.
-  ///
-  /// Required.
-  core.String? tableIdPrefix;
-
-  /// Describes the table type.
-  ///
-  /// The following values are supported: * `table`: A BigQuery native table. *
-  /// `view`: A virtual table defined by a SQL query.
-  ///
-  /// Required.
-  core.String? tableType;
-
-  GoogleCloudRetailV2OutputConfigBigQueryDestination({
-    this.datasetId,
-    this.tableIdPrefix,
-    this.tableType,
-  });
-
-  GoogleCloudRetailV2OutputConfigBigQueryDestination.fromJson(core.Map json_)
-    : this(
-        datasetId: json_['datasetId'] as core.String?,
-        tableIdPrefix: json_['tableIdPrefix'] as core.String?,
-        tableType: json_['tableType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datasetId != null) 'datasetId': datasetId!,
-    if (tableIdPrefix != null) 'tableIdPrefix': tableIdPrefix!,
-    if (tableType != null) 'tableType': tableType!,
-  };
-}
+typedef GoogleCloudRetailV2OutputConfigBigQueryDestination =
+    $OutputConfigBigQueryDestination;
 
 /// The Google Cloud Storage output destination configuration.
-class GoogleCloudRetailV2OutputConfigGcsDestination {
-  /// The output uri prefix for saving output data to json files.
-  ///
-  /// Some mapping examples are as follows: output_uri_prefix sample
-  /// output(assuming the object is foo.json) ========================
-  /// ============================================= gs://bucket/
-  /// gs://bucket/foo.json gs://bucket/folder/ gs://bucket/folder/foo.json
-  /// gs://bucket/folder/item_ gs://bucket/folder/item_foo.json
-  ///
-  /// Required.
-  core.String? outputUriPrefix;
-
-  GoogleCloudRetailV2OutputConfigGcsDestination({this.outputUriPrefix});
-
-  GoogleCloudRetailV2OutputConfigGcsDestination.fromJson(core.Map json_)
-    : this(outputUriPrefix: json_['outputUriPrefix'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (outputUriPrefix != null) 'outputUriPrefix': outputUriPrefix!,
-  };
-}
+typedef GoogleCloudRetailV2OutputConfigGcsDestination =
+    $OutputConfigGcsDestination;
 
 /// Detailed panel information associated with a user event.
 class GoogleCloudRetailV2PanelInfo {
@@ -7194,24 +6118,8 @@ class GoogleCloudRetailV2PinControlMetadata {
 }
 
 /// List of product ids which have associated pins.
-class GoogleCloudRetailV2PinControlMetadataProductPins {
-  /// List of product ids which have associated pins.
-  core.List<core.String>? productId;
-
-  GoogleCloudRetailV2PinControlMetadataProductPins({this.productId});
-
-  GoogleCloudRetailV2PinControlMetadataProductPins.fromJson(core.Map json_)
-    : this(
-        productId:
-            (json_['productId'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (productId != null) 'productId': productId!,
-  };
-}
+typedef GoogleCloudRetailV2PinControlMetadataProductPins =
+    $PinControlMetadataProductPins;
 
 /// Request message for Predict method.
 class GoogleCloudRetailV2PredictRequest {
@@ -7416,37 +6324,8 @@ class GoogleCloudRetailV2PredictResponse {
 }
 
 /// PredictionResult represents the recommendation prediction results.
-class GoogleCloudRetailV2PredictResponsePredictionResult {
-  /// ID of the recommended product
-  core.String? id;
-
-  /// Additional product metadata / annotations.
-  ///
-  /// Possible values: * `product`: JSON representation of the product. Is set
-  /// if `returnProduct` is set to true in `PredictRequest.params`. * `score`:
-  /// Prediction score in double value. Is set if `returnScore` is set to true
-  /// in `PredictRequest.params`.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  GoogleCloudRetailV2PredictResponsePredictionResult({this.id, this.metadata});
-
-  GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (metadata != null) 'metadata': metadata!,
-  };
-}
+typedef GoogleCloudRetailV2PredictResponsePredictionResult =
+    $PredictResponsePredictionResult;
 
 /// The price information of a Product.
 class GoogleCloudRetailV2PriceInfo {
@@ -8193,26 +7072,7 @@ class GoogleCloudRetailV2ProductAttributeInterval {
 /// This structure is used in conversational search filters and answers. For
 /// example, if we have `name=color` and `value=red`, this means that the color
 /// is `red`.
-class GoogleCloudRetailV2ProductAttributeValue {
-  /// The attribute name.
-  core.String? name;
-
-  /// The attribute value.
-  core.String? value;
-
-  GoogleCloudRetailV2ProductAttributeValue({this.name, this.value});
-
-  GoogleCloudRetailV2ProductAttributeValue.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef GoogleCloudRetailV2ProductAttributeValue = $ProductAttributeValue;
 
 /// Detailed product information associated with a user event.
 class GoogleCloudRetailV2ProductDetail {
@@ -8333,437 +7193,40 @@ class GoogleCloudRetailV2ProductInputConfig {
 
 /// Configures what level the product should be uploaded with regards to how
 /// users will be send events and how predictions will be made.
-class GoogleCloudRetailV2ProductLevelConfig {
-  /// The type of Products allowed to be ingested into the catalog.
-  ///
-  /// Acceptable values are: * `primary` (default): You can ingest Products of
-  /// all types. When ingesting a Product, its type will default to
-  /// Product.Type.PRIMARY if unset. * `variant` (incompatible with Retail
-  /// Search): You can only ingest Product.Type.VARIANT Products. This means
-  /// Product.primary_product_id cannot be empty. If this field is set to an
-  /// invalid value other than these, an INVALID_ARGUMENT error is returned. If
-  /// this field is `variant` and merchant_center_product_id_field is
-  /// `itemGroupId`, an INVALID_ARGUMENT error is returned. See
-  /// [Product levels](https://cloud.google.com/retail/docs/catalog#product-levels)
-  /// for more details.
-  core.String? ingestionProductType;
-
-  /// Which field of \[Merchant Center
-  /// Product\](/bigquery-transfer/docs/merchant-center-products-schema) should
-  /// be imported as Product.id.
-  ///
-  /// Acceptable values are: * `offerId` (default): Import `offerId` as the
-  /// product ID. * `itemGroupId`: Import `itemGroupId` as the product ID.
-  /// Notice that Retail API will choose one item from the ones with the same
-  /// `itemGroupId`, and use it to represent the item group. If this field is
-  /// set to an invalid value other than these, an INVALID_ARGUMENT error is
-  /// returned. If this field is `itemGroupId` and ingestion_product_type is
-  /// `variant`, an INVALID_ARGUMENT error is returned. See
-  /// [Product levels](https://cloud.google.com/retail/docs/catalog#product-levels)
-  /// for more details.
-  core.String? merchantCenterProductIdField;
-
-  GoogleCloudRetailV2ProductLevelConfig({
-    this.ingestionProductType,
-    this.merchantCenterProductIdField,
-  });
-
-  GoogleCloudRetailV2ProductLevelConfig.fromJson(core.Map json_)
-    : this(
-        ingestionProductType: json_['ingestionProductType'] as core.String?,
-        merchantCenterProductIdField:
-            json_['merchantCenterProductIdField'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingestionProductType != null)
-      'ingestionProductType': ingestionProductType!,
-    if (merchantCenterProductIdField != null)
-      'merchantCenterProductIdField': merchantCenterProductIdField!,
-  };
-}
+typedef GoogleCloudRetailV2ProductLevelConfig = $ProductLevelConfig;
 
 /// Promotion specification.
-class GoogleCloudRetailV2Promotion {
-  /// Promotion identifier, which is the final component of name.
-  ///
-  /// For example, this field is "free_gift", if name is `projects / *
-  /// /locations/global/catalogs/default_catalog/promotions/free_gift`. The
-  /// value must be a UTF-8 encoded string with a length limit of 128
-  /// characters, and match the pattern: `a-zA-Z*`. For example, id0LikeThis or
-  /// ID_1_LIKE_THIS. Otherwise, an INVALID_ARGUMENT error is returned.
-  /// Corresponds to Google Merchant Center property
-  /// [promotion_id](https://support.google.com/merchants/answer/7050148).
-  core.String? promotionId;
-
-  GoogleCloudRetailV2Promotion({this.promotionId});
-
-  GoogleCloudRetailV2Promotion.fromJson(core.Map json_)
-    : this(promotionId: json_['promotionId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (promotionId != null) 'promotionId': promotionId!,
-  };
-}
+typedef GoogleCloudRetailV2Promotion = $Promotion;
 
 /// A transaction represents the entire purchase transaction.
-class GoogleCloudRetailV2PurchaseTransaction {
-  /// All the costs associated with the products.
-  ///
-  /// These can be manufacturing costs, shipping expenses not borne by the end
-  /// user, or any other costs, such that: * Profit = revenue - tax - cost
-  core.double? cost;
-
-  /// Currency code.
-  ///
-  /// Use three-character ISO-4217 code.
-  ///
-  /// Required.
-  core.String? currencyCode;
-
-  /// The transaction ID with a length limit of 128 characters.
-  core.String? id;
-
-  /// Total non-zero revenue or grand total associated with the transaction.
-  ///
-  /// This value include shipping, tax, or other adjustments to total revenue
-  /// that you want to include as part of your revenue calculations.
-  ///
-  /// Required.
-  core.double? revenue;
-
-  /// All the taxes associated with the transaction.
-  core.double? tax;
-
-  GoogleCloudRetailV2PurchaseTransaction({
-    this.cost,
-    this.currencyCode,
-    this.id,
-    this.revenue,
-    this.tax,
-  });
-
-  GoogleCloudRetailV2PurchaseTransaction.fromJson(core.Map json_)
-    : this(
-        cost: (json_['cost'] as core.num?)?.toDouble(),
-        currencyCode: json_['currencyCode'] as core.String?,
-        id: json_['id'] as core.String?,
-        revenue: (json_['revenue'] as core.num?)?.toDouble(),
-        tax: (json_['tax'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cost != null) 'cost': cost!,
-    if (currencyCode != null) 'currencyCode': currencyCode!,
-    if (id != null) 'id': id!,
-    if (revenue != null) 'revenue': revenue!,
-    if (tax != null) 'tax': tax!,
-  };
-}
+typedef GoogleCloudRetailV2PurchaseTransaction = $PurchaseTransaction;
 
 /// Request message for PurgeProducts method.
-class GoogleCloudRetailV2PurgeProductsRequest {
-  /// The filter string to specify the products to be deleted with a length
-  /// limit of 5,000 characters.
-  ///
-  /// Empty string filter is not allowed. "*" implies delete all items in a
-  /// branch. The eligible fields for filtering are: * `availability`: Double
-  /// quoted Product.availability string. * `create_time` : in ISO 8601 "zulu"
-  /// format. Supported syntax: * Comparators ("\>", "\<", "\>=", "\<=", "=").
-  /// Examples: * create_time \<= "2015-02-13T17:05:46Z" * availability =
-  /// "IN_STOCK" * Conjunctions ("AND") Examples: * create_time \<=
-  /// "2015-02-13T17:05:46Z" AND availability = "PREORDER" * Disjunctions ("OR")
-  /// Examples: * create_time \<= "2015-02-13T17:05:46Z" OR availability =
-  /// "IN_STOCK" * Can support nested queries. Examples: * (create_time \<=
-  /// "2015-02-13T17:05:46Z" AND availability = "PREORDER") OR (create_time \>=
-  /// "2015-02-14T13:03:32Z" AND availability = "IN_STOCK") * Filter Limits: *
-  /// Filter should not contain more than 6 conditions. * Max nesting depth
-  /// should not exceed 2 levels. Examples queries: * Delete back order products
-  /// created before a timestamp. create_time \<= "2015-02-13T17:05:46Z" OR
-  /// availability = "BACKORDER"
-  ///
-  /// Required.
-  core.String? filter;
-
-  /// Actually perform the purge.
-  ///
-  /// If `force` is set to false, the method will return the expected purge
-  /// count without deleting any products.
-  core.bool? force;
-
-  GoogleCloudRetailV2PurgeProductsRequest({this.filter, this.force});
-
-  GoogleCloudRetailV2PurgeProductsRequest.fromJson(core.Map json_)
-    : this(
-        filter: json_['filter'] as core.String?,
-        force: json_['force'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filter != null) 'filter': filter!,
-    if (force != null) 'force': force!,
-  };
-}
+typedef GoogleCloudRetailV2PurgeProductsRequest = $PurgeProductsRequest;
 
 /// Request message for PurgeUserEvents method.
-class GoogleCloudRetailV2PurgeUserEventsRequest {
-  /// The filter string to specify the events to be deleted with a length limit
-  /// of 5,000 characters.
-  ///
-  /// Empty string filter is not allowed. The eligible fields for filtering are:
-  /// * `eventType`: Double quoted UserEvent.event_type string. * `eventTime`:
-  /// in ISO 8601 "zulu" format. * `visitorId`: Double quoted string. Specifying
-  /// this will delete all events associated with a visitor. * `userId`: Double
-  /// quoted string. Specifying this will delete all events associated with a
-  /// user. Examples: * Deleting all events in a time range: `eventTime >
-  /// "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z"` *
-  /// Deleting specific eventType in time range: `eventTime >
-  /// "2012-04-23T18:25:43.511Z" eventType = "detail-page-view"` * Deleting all
-  /// events for a specific visitor: `visitorId = "visitor1024"` The filtering
-  /// fields are assumed to have an implicit AND.
-  ///
-  /// Required.
-  core.String? filter;
-
-  /// Actually perform the purge.
-  ///
-  /// If `force` is set to false, the method will return the expected purge
-  /// count without deleting any user events.
-  core.bool? force;
-
-  GoogleCloudRetailV2PurgeUserEventsRequest({this.filter, this.force});
-
-  GoogleCloudRetailV2PurgeUserEventsRequest.fromJson(core.Map json_)
-    : this(
-        filter: json_['filter'] as core.String?,
-        force: json_['force'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filter != null) 'filter': filter!,
-    if (force != null) 'force': force!,
-  };
-}
+typedef GoogleCloudRetailV2PurgeUserEventsRequest = $PurgeUserEventsRequest01;
 
 /// The rating of a Product.
-class GoogleCloudRetailV2Rating {
-  /// The average rating of the Product.
-  ///
-  /// The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is
-  /// returned.
-  core.double? averageRating;
-
-  /// The total number of ratings.
-  ///
-  /// This value is independent of the value of rating_histogram. This value
-  /// must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
-  core.int? ratingCount;
-
-  /// List of rating counts per rating value (index = rating - 1).
-  ///
-  /// The list is empty if there is no rating. If the list is non-empty, its
-  /// size is always 5. Otherwise, an INVALID_ARGUMENT error is returned. For
-  /// example, \[41, 14, 13, 47, 303\]. It means that the Product got 41 ratings
-  /// with 1 star, 14 ratings with 2 star, and so on.
-  core.List<core.int>? ratingHistogram;
-
-  GoogleCloudRetailV2Rating({
-    this.averageRating,
-    this.ratingCount,
-    this.ratingHistogram,
-  });
-
-  GoogleCloudRetailV2Rating.fromJson(core.Map json_)
-    : this(
-        averageRating: (json_['averageRating'] as core.num?)?.toDouble(),
-        ratingCount: json_['ratingCount'] as core.int?,
-        ratingHistogram:
-            (json_['ratingHistogram'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averageRating != null) 'averageRating': averageRating!,
-    if (ratingCount != null) 'ratingCount': ratingCount!,
-    if (ratingHistogram != null) 'ratingHistogram': ratingHistogram!,
-  };
-}
+typedef GoogleCloudRetailV2Rating = $Rating;
 
 /// Request message for RejoinUserEvents method.
-class GoogleCloudRetailV2RejoinUserEventsRequest {
-  /// The type of the user event rejoin to define the scope and range of the
-  /// user events to be rejoined with the latest product catalog.
-  ///
-  /// Defaults to `USER_EVENT_REJOIN_SCOPE_UNSPECIFIED` if this field is not
-  /// set, or set to an invalid integer value.
-  /// Possible string values are:
-  /// - "USER_EVENT_REJOIN_SCOPE_UNSPECIFIED" : Rejoin all events with the
-  /// latest product catalog, including both joined events and unjoined events.
-  /// - "JOINED_EVENTS" : Only rejoin joined events with the latest product
-  /// catalog.
-  /// - "UNJOINED_EVENTS" : Only rejoin unjoined events with the latest product
-  /// catalog.
-  core.String? userEventRejoinScope;
-
-  GoogleCloudRetailV2RejoinUserEventsRequest({this.userEventRejoinScope});
-
-  GoogleCloudRetailV2RejoinUserEventsRequest.fromJson(core.Map json_)
-    : this(userEventRejoinScope: json_['userEventRejoinScope'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (userEventRejoinScope != null)
-      'userEventRejoinScope': userEventRejoinScope!,
-  };
-}
+typedef GoogleCloudRetailV2RejoinUserEventsRequest = $RejoinUserEventsRequest;
 
 /// Request for CatalogService.RemoveCatalogAttribute method.
-class GoogleCloudRetailV2RemoveCatalogAttributeRequest {
-  /// The attribute name key of the CatalogAttribute to remove.
-  ///
-  /// Required.
-  core.String? key;
-
-  GoogleCloudRetailV2RemoveCatalogAttributeRequest({this.key});
-
-  GoogleCloudRetailV2RemoveCatalogAttributeRequest.fromJson(core.Map json_)
-    : this(key: json_['key'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-  };
-}
+typedef GoogleCloudRetailV2RemoveCatalogAttributeRequest =
+    $RemoveCatalogAttributeRequest;
 
 /// Request for RemoveControl method.
-class GoogleCloudRetailV2RemoveControlRequest {
-  /// The id of the control to apply.
-  ///
-  /// Assumed to be in the same catalog as the serving config.
-  ///
-  /// Required.
-  core.String? controlId;
-
-  GoogleCloudRetailV2RemoveControlRequest({this.controlId});
-
-  GoogleCloudRetailV2RemoveControlRequest.fromJson(core.Map json_)
-    : this(controlId: json_['controlId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (controlId != null) 'controlId': controlId!,
-  };
-}
+typedef GoogleCloudRetailV2RemoveControlRequest = $RemoveControlRequest;
 
 /// Request message for ProductService.RemoveFulfillmentPlaces method.
-class GoogleCloudRetailV2RemoveFulfillmentPlacesRequest {
-  /// If set to true, and the Product is not found, the fulfillment information
-  /// will still be processed and retained for at most 1 day and processed once
-  /// the Product is created.
-  ///
-  /// If set to false, a NOT_FOUND error is returned if the Product is not
-  /// found.
-  core.bool? allowMissing;
-
-  /// The IDs for this type, such as the store IDs for "pickup-in-store" or the
-  /// region IDs for "same-day-delivery", to be removed for this type.
-  ///
-  /// At least 1 value is required, and a maximum of 2000 values are allowed.
-  /// Each value must be a string with a length limit of 10 characters, matching
-  /// the pattern `[a-zA-Z0-9_-]+`, such as "store1" or "REGION-2". Otherwise,
-  /// an INVALID_ARGUMENT error is returned.
-  ///
-  /// Required.
-  core.List<core.String>? placeIds;
-
-  /// The time when the fulfillment updates are issued, used to prevent
-  /// out-of-order updates on fulfillment information.
-  ///
-  /// If not provided, the internal system time will be used.
-  core.String? removeTime;
-
-  /// The fulfillment type, including commonly used types (such as pickup in
-  /// store and same day delivery), and custom types.
-  ///
-  /// Supported values: * "pickup-in-store" * "ship-to-store" *
-  /// "same-day-delivery" * "next-day-delivery" * "custom-type-1" *
-  /// "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If
-  /// this field is set to an invalid value other than these, an
-  /// INVALID_ARGUMENT error is returned. This field directly corresponds to
-  /// Product.fulfillment_info.type.
-  ///
-  /// Required.
-  core.String? type;
-
-  GoogleCloudRetailV2RemoveFulfillmentPlacesRequest({
-    this.allowMissing,
-    this.placeIds,
-    this.removeTime,
-    this.type,
-  });
-
-  GoogleCloudRetailV2RemoveFulfillmentPlacesRequest.fromJson(core.Map json_)
-    : this(
-        allowMissing: json_['allowMissing'] as core.bool?,
-        placeIds:
-            (json_['placeIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        removeTime: json_['removeTime'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (placeIds != null) 'placeIds': placeIds!,
-    if (removeTime != null) 'removeTime': removeTime!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef GoogleCloudRetailV2RemoveFulfillmentPlacesRequest =
+    $RemoveFulfillmentPlacesRequest;
 
 /// Request message for ProductService.RemoveLocalInventories method.
-class GoogleCloudRetailV2RemoveLocalInventoriesRequest {
-  /// If set to true, and the Product is not found, the local inventory removal
-  /// request will still be processed and retained for at most 1 day and
-  /// processed once the Product is created.
-  ///
-  /// If set to false, a NOT_FOUND error is returned if the Product is not
-  /// found.
-  core.bool? allowMissing;
-
-  /// A list of place IDs to have their inventory deleted.
-  ///
-  /// At most 3000 place IDs are allowed per request.
-  ///
-  /// Required.
-  core.List<core.String>? placeIds;
-
-  /// The time when the inventory deletions are issued.
-  ///
-  /// Used to prevent out-of-order updates and deletions on local inventory
-  /// fields. If not provided, the internal system time will be used.
-  core.String? removeTime;
-
-  GoogleCloudRetailV2RemoveLocalInventoriesRequest({
-    this.allowMissing,
-    this.placeIds,
-    this.removeTime,
-  });
-
-  GoogleCloudRetailV2RemoveLocalInventoriesRequest.fromJson(core.Map json_)
-    : this(
-        allowMissing: json_['allowMissing'] as core.bool?,
-        placeIds:
-            (json_['placeIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        removeTime: json_['removeTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowMissing != null) 'allowMissing': allowMissing!,
-    if (placeIds != null) 'placeIds': placeIds!,
-    if (removeTime != null) 'removeTime': removeTime!,
-  };
-}
+typedef GoogleCloudRetailV2RemoveLocalInventoriesRequest =
+    $RemoveLocalInventoriesRequest;
 
 /// Request for CatalogService.ReplaceCatalogAttribute method.
 class GoogleCloudRetailV2ReplaceCatalogAttributeRequest {
@@ -8971,94 +7434,13 @@ class GoogleCloudRetailV2Rule {
 }
 
 /// A boost action to apply to results matching condition specified above.
-class GoogleCloudRetailV2RuleBoostAction {
-  /// Strength of the condition boost, which must be in \[-1, 1\].
-  ///
-  /// Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
-  /// item a big promotion. However, it does not necessarily mean that the
-  /// boosted item will be the top result at all times, nor that other items
-  /// will be excluded. Results could still be shown even when none of them
-  /// matches the condition. And results that are significantly more relevant to
-  /// the search query can still trump your heavily favored but irrelevant
-  /// items. Setting to -1.0 gives the item a big demotion. However, results
-  /// that are deeply relevant might still be shown. The item will have an
-  /// upstream battle to get a fairly high ranking, but it is not blocked out
-  /// completely. Setting to 0.0 means no boost applied. The boosting condition
-  /// is ignored.
-  core.double? boost;
-
-  /// The filter can have a max size of 5000 characters.
-  ///
-  /// An expression which specifies which products to apply an action to. The
-  /// syntax and supported fields are the same as a filter expression. See
-  /// SearchRequest.filter for detail syntax and limitations. Examples: * To
-  /// boost products with product ID "product_1" or "product_2", and color "Red"
-  /// or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies:
-  /// ANY("Red", "Blue")) *
-  core.String? productsFilter;
-
-  GoogleCloudRetailV2RuleBoostAction({this.boost, this.productsFilter});
-
-  GoogleCloudRetailV2RuleBoostAction.fromJson(core.Map json_)
-    : this(
-        boost: (json_['boost'] as core.num?)?.toDouble(),
-        productsFilter: json_['productsFilter'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boost != null) 'boost': boost!,
-    if (productsFilter != null) 'productsFilter': productsFilter!,
-  };
-}
+typedef GoogleCloudRetailV2RuleBoostAction = $RuleBoostAction;
 
 /// Prevents `query_term` from being associated with specified terms during
 /// search.
 ///
 /// Example: Don't associate "gShoe" and "cheap".
-class GoogleCloudRetailV2RuleDoNotAssociateAction {
-  /// Cannot contain duplicates or the query term.
-  ///
-  /// Can specify up to 100 terms.
-  core.List<core.String>? doNotAssociateTerms;
-
-  /// Terms from the search query.
-  ///
-  /// Will not consider do_not_associate_terms for search if in search query.
-  /// Can specify up to 100 terms.
-  core.List<core.String>? queryTerms;
-
-  /// Will be \[deprecated = true\] post migration;
-  core.List<core.String>? terms;
-
-  GoogleCloudRetailV2RuleDoNotAssociateAction({
-    this.doNotAssociateTerms,
-    this.queryTerms,
-    this.terms,
-  });
-
-  GoogleCloudRetailV2RuleDoNotAssociateAction.fromJson(core.Map json_)
-    : this(
-        doNotAssociateTerms:
-            (json_['doNotAssociateTerms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        queryTerms:
-            (json_['queryTerms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        terms:
-            (json_['terms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (doNotAssociateTerms != null)
-      'doNotAssociateTerms': doNotAssociateTerms!,
-    if (queryTerms != null) 'queryTerms': queryTerms!,
-    if (terms != null) 'terms': terms!,
-  };
-}
+typedef GoogleCloudRetailV2RuleDoNotAssociateAction = $RuleDoNotAssociateAction;
 
 /// * Rule Condition: - No Condition.query_terms provided is a global match.
 ///
@@ -9069,26 +7451,7 @@ class GoogleCloudRetailV2RuleDoNotAssociateAction {
 /// filters with the filter rule(s). NOTE: May result in 0 results when filters
 /// conflict. * Action Result: Filters the returned objects to be ONLY those
 /// that passed the filter.
-class GoogleCloudRetailV2RuleFilterAction {
-  /// A filter to apply on the matching condition results.
-  ///
-  /// Supported features: * filter must be set. * Filter syntax is identical to
-  /// SearchRequest.filter. For more information, see
-  /// \[Filter\](/retail/docs/filter-and-order#filter). * To filter products
-  /// with product ID "product_1" or "product_2", and color "Red" or "Blue":
-  /// *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red",
-  /// "Blue")) *
-  core.String? filter;
-
-  GoogleCloudRetailV2RuleFilterAction({this.filter});
-
-  GoogleCloudRetailV2RuleFilterAction.fromJson(core.Map json_)
-    : this(filter: json_['filter'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filter != null) 'filter': filter!,
-  };
-}
+typedef GoogleCloudRetailV2RuleFilterAction = $RuleFilterAction;
 
 /// Force returns an attribute/facet in the request around a certain position or
 /// above.
@@ -9140,57 +7503,13 @@ class GoogleCloudRetailV2RuleForceReturnFacetAction {
 
 /// Each facet position adjustment consists of a single attribute name (i.e.
 /// facet key) along with a specified position.
-class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment {
-  /// The attribute name to force return as a facet.
-  ///
-  /// Each attribute name should be a valid attribute name, be non-empty and
-  /// contain at most 80 characters long.
-  core.String? attributeName;
-
-  /// This is the position in the request as explained above.
-  ///
-  /// It should be strictly positive be at most 100.
-  core.int? position;
-
-  GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment({
-    this.attributeName,
-    this.position,
-  });
-
-  GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment.fromJson(
-    core.Map json_,
-  ) : this(
-        attributeName: json_['attributeName'] as core.String?,
-        position: json_['position'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributeName != null) 'attributeName': attributeName!,
-    if (position != null) 'position': position!,
-  };
-}
+typedef GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment =
+    $RuleForceReturnFacetActionFacetPositionAdjustment;
 
 /// Prevents a term in the query from being used in search.
 ///
 /// Example: Don't search for "shoddy".
-class GoogleCloudRetailV2RuleIgnoreAction {
-  /// Terms to ignore in the search query.
-  core.List<core.String>? ignoreTerms;
-
-  GoogleCloudRetailV2RuleIgnoreAction({this.ignoreTerms});
-
-  GoogleCloudRetailV2RuleIgnoreAction.fromJson(core.Map json_)
-    : this(
-        ignoreTerms:
-            (json_['ignoreTerms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ignoreTerms != null) 'ignoreTerms': ignoreTerms!,
-  };
-}
+typedef GoogleCloudRetailV2RuleIgnoreAction = $RuleIgnoreAction;
 
 /// Maps a set of terms to a set of synonyms.
 ///
@@ -9198,49 +7517,7 @@ class GoogleCloudRetailV2RuleIgnoreAction {
 /// `query_terms` will not be treated as synonyms of each other. Example:
 /// "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of
 /// "sneakers".
-class GoogleCloudRetailV2RuleOnewaySynonymsAction {
-  /// Will be \[deprecated = true\] post migration;
-  core.List<core.String>? onewayTerms;
-
-  /// Terms from the search query.
-  ///
-  /// Will treat synonyms as their synonyms. Not themselves synonyms of the
-  /// synonyms. Can specify up to 100 terms.
-  core.List<core.String>? queryTerms;
-
-  /// Defines a set of synonyms.
-  ///
-  /// Cannot contain duplicates. Can specify up to 100 synonyms.
-  core.List<core.String>? synonyms;
-
-  GoogleCloudRetailV2RuleOnewaySynonymsAction({
-    this.onewayTerms,
-    this.queryTerms,
-    this.synonyms,
-  });
-
-  GoogleCloudRetailV2RuleOnewaySynonymsAction.fromJson(core.Map json_)
-    : this(
-        onewayTerms:
-            (json_['onewayTerms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        queryTerms:
-            (json_['queryTerms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        synonyms:
-            (json_['synonyms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (onewayTerms != null) 'onewayTerms': onewayTerms!,
-    if (queryTerms != null) 'queryTerms': queryTerms!,
-    if (synonyms != null) 'synonyms': synonyms!,
-  };
-}
+typedef GoogleCloudRetailV2RuleOnewaySynonymsAction = $RuleOnewaySynonymsAction;
 
 /// Pins one or more specified products to a specific position in the results.
 ///
@@ -9255,52 +7532,13 @@ class GoogleCloudRetailV2RuleOnewaySynonymsAction {
 /// single request the actions will be processed from most to least recently
 /// updated. Pins to positions larger than the max allowed page size of 120 are
 /// not allowed.
-class GoogleCloudRetailV2RulePinAction {
-  /// A map of positions to product_ids.
-  ///
-  /// Partial matches per action are allowed, if a certain position in the map
-  /// is already filled that `[position, product_id]` pair will be ignored but
-  /// the rest may still be applied. This case will only occur if multiple pin
-  /// actions are matched to a single request, as the map guarantees that pin
-  /// positions are unique within the same action. Duplicate product_ids are not
-  /// permitted within a single pin map. The max size of this map is 120,
-  /// equivalent to the max
-  /// [request page size](https://cloud.google.com/retail/docs/reference/rest/v2/projects.locations.catalogs.placements/search#request-body).
-  ///
-  /// Required.
-  core.Map<core.String, core.String>? pinMap;
-
-  GoogleCloudRetailV2RulePinAction({this.pinMap});
-
-  GoogleCloudRetailV2RulePinAction.fromJson(core.Map json_)
-    : this(
-        pinMap: (json_['pinMap'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pinMap != null) 'pinMap': pinMap!,
-  };
-}
+typedef GoogleCloudRetailV2RulePinAction = $RulePinAction;
 
 /// Redirects a shopper to a specific page.
 ///
 /// * Rule Condition: Must specify Condition.query_terms. * Action Input:
 /// Request Query * Action Result: Redirects shopper to provided uri.
-class GoogleCloudRetailV2RuleRedirectAction {
-  /// URL must have length equal or less than 2000 characters.
-  core.String? redirectUri;
-
-  GoogleCloudRetailV2RuleRedirectAction({this.redirectUri});
-
-  GoogleCloudRetailV2RuleRedirectAction.fromJson(core.Map json_)
-    : this(redirectUri: json_['redirectUri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (redirectUri != null) 'redirectUri': redirectUri!,
-  };
-}
+typedef GoogleCloudRetailV2RuleRedirectAction = $RuleRedirectAction;
 
 /// Removes an attribute/facet in the request if is present.
 ///
@@ -9311,93 +7549,20 @@ class GoogleCloudRetailV2RuleRedirectAction {
 /// the query is "shoes", the Condition.query_terms is "shoes" and the attribute
 /// name "size", then facet key "size" will be removed from the request (if it
 /// is present).
-class GoogleCloudRetailV2RuleRemoveFacetAction {
-  /// The attribute names (i.e. facet keys) to remove from the dynamic facets
-  /// (if present in the request).
-  ///
-  /// There can't be more 3 attribute names. Each attribute name should be a
-  /// valid attribute name, be non-empty and contain at most 80 characters.
-  core.List<core.String>? attributeNames;
-
-  GoogleCloudRetailV2RuleRemoveFacetAction({this.attributeNames});
-
-  GoogleCloudRetailV2RuleRemoveFacetAction.fromJson(core.Map json_)
-    : this(
-        attributeNames:
-            (json_['attributeNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributeNames != null) 'attributeNames': attributeNames!,
-  };
-}
+typedef GoogleCloudRetailV2RuleRemoveFacetAction = $RuleRemoveFacetAction;
 
 /// Replaces a term in the query.
 ///
 /// Multiple replacement candidates can be specified. All `query_terms` will be
 /// replaced with the replacement term. Example: Replace "gShoe" with "google
 /// shoe".
-class GoogleCloudRetailV2RuleReplacementAction {
-  /// Terms from the search query.
-  ///
-  /// Will be replaced by replacement term. Can specify up to 100 terms.
-  core.List<core.String>? queryTerms;
-
-  /// Term that will be used for replacement.
-  core.String? replacementTerm;
-
-  /// Will be \[deprecated = true\] post migration;
-  core.String? term;
-
-  GoogleCloudRetailV2RuleReplacementAction({
-    this.queryTerms,
-    this.replacementTerm,
-    this.term,
-  });
-
-  GoogleCloudRetailV2RuleReplacementAction.fromJson(core.Map json_)
-    : this(
-        queryTerms:
-            (json_['queryTerms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        replacementTerm: json_['replacementTerm'] as core.String?,
-        term: json_['term'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryTerms != null) 'queryTerms': queryTerms!,
-    if (replacementTerm != null) 'replacementTerm': replacementTerm!,
-    if (term != null) 'term': term!,
-  };
-}
+typedef GoogleCloudRetailV2RuleReplacementAction = $RuleReplacementAction;
 
 /// Creates a set of terms that will be treated as synonyms of each other.
 ///
 /// Example: synonyms of "sneakers" and "shoes": * "sneakers" will use a synonym
 /// of "shoes". * "shoes" will use a synonym of "sneakers".
-class GoogleCloudRetailV2RuleTwowaySynonymsAction {
-  /// Defines a set of synonyms.
-  ///
-  /// Can specify up to 100 synonyms. Must specify at least 2 synonyms.
-  core.List<core.String>? synonyms;
-
-  GoogleCloudRetailV2RuleTwowaySynonymsAction({this.synonyms});
-
-  GoogleCloudRetailV2RuleTwowaySynonymsAction.fromJson(core.Map json_)
-    : this(
-        synonyms:
-            (json_['synonyms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (synonyms != null) 'synonyms': synonyms!,
-  };
-}
+typedef GoogleCloudRetailV2RuleTwowaySynonymsAction = $RuleTwowaySynonymsAction;
 
 /// Request message for SearchService.Search method.
 class GoogleCloudRetailV2SearchRequest {
@@ -9877,48 +8042,8 @@ class GoogleCloudRetailV2SearchRequestBoostSpec {
 }
 
 /// Boost applies to products which match a condition.
-class GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec {
-  /// Strength of the condition boost, which should be in \[-1, 1\].
-  ///
-  /// Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
-  /// item a big promotion. However, it does not necessarily mean that the
-  /// boosted item will be the top result at all times, nor that other items
-  /// will be excluded. Results could still be shown even when none of them
-  /// matches the condition. And results that are significantly more relevant to
-  /// the search query can still trump your heavily favored but irrelevant
-  /// items. Setting to -1.0 gives the item a big demotion. However, results
-  /// that are deeply relevant might still be shown. The item will have an
-  /// upstream battle to get a fairly high ranking, but it is not blocked out
-  /// completely. Setting to 0.0 means no boost applied. The boosting condition
-  /// is ignored.
-  core.double? boost;
-
-  /// An expression which specifies a boost condition.
-  ///
-  /// The syntax and supported fields are the same as a filter expression. See
-  /// SearchRequest.filter for detail syntax and limitations. Examples: * To
-  /// boost products with product ID "product_1" or "product_2", and color "Red"
-  /// or "Blue": * (id: ANY("product_1", "product_2")) AND (colorFamilies:
-  /// ANY("Red","Blue"))
-  core.String? condition;
-
-  GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec({
-    this.boost,
-    this.condition,
-  });
-
-  GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec.fromJson(
-    core.Map json_,
-  ) : this(
-        boost: (json_['boost'] as core.num?)?.toDouble(),
-        condition: json_['condition'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boost != null) 'boost': boost!,
-    if (condition != null) 'condition': condition!,
-  };
-}
+typedef GoogleCloudRetailV2SearchRequestBoostSpecConditionBoostSpec =
+    $SearchRequestBoostSpecConditionBoostSpec;
 
 /// This field specifies all conversational related parameters addition to
 /// traditional retail search.
@@ -10061,25 +8186,8 @@ class GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelected
 }
 
 /// The specifications of dynamically generated facets.
-class GoogleCloudRetailV2SearchRequestDynamicFacetSpec {
-  /// Mode of the DynamicFacet feature.
-  ///
-  /// Defaults to Mode.DISABLED if it's unset.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value.
-  /// - "DISABLED" : Disable Dynamic Facet.
-  /// - "ENABLED" : Automatic mode built by Google Retail Search.
-  core.String? mode;
-
-  GoogleCloudRetailV2SearchRequestDynamicFacetSpec({this.mode});
-
-  GoogleCloudRetailV2SearchRequestDynamicFacetSpec.fromJson(core.Map json_)
-    : this(mode: json_['mode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-  };
-}
+typedef GoogleCloudRetailV2SearchRequestDynamicFacetSpec =
+    $SearchRequestDynamicFacetSpec;
 
 /// A facet specification to perform faceted search.
 class GoogleCloudRetailV2SearchRequestFacetSpec {
@@ -10321,90 +8429,17 @@ class GoogleCloudRetailV2SearchRequestFacetSpecFacetKey {
 }
 
 /// The specification for personalization.
-class GoogleCloudRetailV2SearchRequestPersonalizationSpec {
-  /// Defaults to Mode.AUTO.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value. In this case, server behavior
-  /// defaults to Mode.AUTO.
-  /// - "AUTO" : Let CRS decide whether to use personalization based on quality
-  /// of user event data.
-  /// - "DISABLED" : Disable personalization.
-  core.String? mode;
-
-  GoogleCloudRetailV2SearchRequestPersonalizationSpec({this.mode});
-
-  GoogleCloudRetailV2SearchRequestPersonalizationSpec.fromJson(core.Map json_)
-    : this(mode: json_['mode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-  };
-}
+typedef GoogleCloudRetailV2SearchRequestPersonalizationSpec =
+    $SearchRequestPersonalizationSpec00;
 
 /// Specification to determine under which conditions query expansion should
 /// occur.
-class GoogleCloudRetailV2SearchRequestQueryExpansionSpec {
-  /// The condition under which query expansion should occur.
-  ///
-  /// Default to Condition.DISABLED.
-  /// Possible string values are:
-  /// - "CONDITION_UNSPECIFIED" : Unspecified query expansion condition. In this
-  /// case, server behavior defaults to Condition.DISABLED.
-  /// - "DISABLED" : Disabled query expansion. Only the exact search query is
-  /// used, even if SearchResponse.total_size is zero.
-  /// - "AUTO" : Automatic query expansion built by Google Retail Search.
-  core.String? condition;
-
-  /// Whether to pin unexpanded results.
-  ///
-  /// The default value is false. If this field is set to true, unexpanded
-  /// products are always at the top of the search results, followed by the
-  /// expanded results.
-  core.bool? pinUnexpandedResults;
-
-  GoogleCloudRetailV2SearchRequestQueryExpansionSpec({
-    this.condition,
-    this.pinUnexpandedResults,
-  });
-
-  GoogleCloudRetailV2SearchRequestQueryExpansionSpec.fromJson(core.Map json_)
-    : this(
-        condition: json_['condition'] as core.String?,
-        pinUnexpandedResults: json_['pinUnexpandedResults'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (condition != null) 'condition': condition!,
-    if (pinUnexpandedResults != null)
-      'pinUnexpandedResults': pinUnexpandedResults!,
-  };
-}
+typedef GoogleCloudRetailV2SearchRequestQueryExpansionSpec =
+    $SearchRequestQueryExpansionSpec01;
 
 /// The specification for query spell correction.
-class GoogleCloudRetailV2SearchRequestSpellCorrectionSpec {
-  /// The mode under which spell correction should take effect to replace the
-  /// original search query.
-  ///
-  /// Default to Mode.AUTO.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Unspecified spell correction mode. In this case,
-  /// server behavior defaults to Mode.AUTO.
-  /// - "SUGGESTION_ONLY" : Google Retail Search will try to find a spell
-  /// suggestion if there is any and put in the SearchResponse.corrected_query.
-  /// The spell suggestion will not be used as the search query.
-  /// - "AUTO" : Automatic spell correction built by Google Retail Search.
-  /// Search will be based on the corrected query if found.
-  core.String? mode;
-
-  GoogleCloudRetailV2SearchRequestSpellCorrectionSpec({this.mode});
-
-  GoogleCloudRetailV2SearchRequestSpellCorrectionSpec.fromJson(core.Map json_)
-    : this(mode: json_['mode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-  };
-}
+typedef GoogleCloudRetailV2SearchRequestSpellCorrectionSpec =
+    $SearchRequestSpellCorrectionSpec01;
 
 /// This field specifies tile navigation related parameters.
 class GoogleCloudRetailV2SearchRequestTileNavigationSpec {
@@ -10896,32 +8931,8 @@ class GoogleCloudRetailV2SearchResponseFacetFacetValue {
 
 /// Information describing query expansion including whether expansion has
 /// occurred.
-class GoogleCloudRetailV2SearchResponseQueryExpansionInfo {
-  /// Bool describing whether query expansion has occurred.
-  core.bool? expandedQuery;
-
-  /// Number of pinned results.
-  ///
-  /// This field will only be set when expansion happens and
-  /// SearchRequest.QueryExpansionSpec.pin_unexpanded_results is set to true.
-  core.String? pinnedResultCount;
-
-  GoogleCloudRetailV2SearchResponseQueryExpansionInfo({
-    this.expandedQuery,
-    this.pinnedResultCount,
-  });
-
-  GoogleCloudRetailV2SearchResponseQueryExpansionInfo.fromJson(core.Map json_)
-    : this(
-        expandedQuery: json_['expandedQuery'] as core.bool?,
-        pinnedResultCount: json_['pinnedResultCount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expandedQuery != null) 'expandedQuery': expandedQuery!,
-    if (pinnedResultCount != null) 'pinnedResultCount': pinnedResultCount!,
-  };
-}
+typedef GoogleCloudRetailV2SearchResponseQueryExpansionInfo =
+    $SearchResponseQueryExpansionInfo;
 
 /// Represents the search results.
 class GoogleCloudRetailV2SearchResponseSearchResult {
@@ -11356,46 +9367,7 @@ class GoogleCloudRetailV2ServingConfig {
 }
 
 /// Request message to set a specified branch as new default_branch.
-class GoogleCloudRetailV2SetDefaultBranchRequest {
-  /// The final component of the resource name of a branch.
-  ///
-  /// This field must be one of "0", "1" or "2". Otherwise, an INVALID_ARGUMENT
-  /// error is returned. If there are no sufficient active products in the
-  /// targeted branch and force is not set, a FAILED_PRECONDITION error is
-  /// returned.
-  core.String? branchId;
-
-  /// If set to true, it permits switching to a branch with branch_id even if it
-  /// has no sufficient active products.
-  core.bool? force;
-
-  /// Some note on this request, this can be retrieved by
-  /// CatalogService.GetDefaultBranch before next valid default branch set
-  /// occurs.
-  ///
-  /// This field must be a UTF-8 encoded string with a length limit of 1,000
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
-  core.String? note;
-
-  GoogleCloudRetailV2SetDefaultBranchRequest({
-    this.branchId,
-    this.force,
-    this.note,
-  });
-
-  GoogleCloudRetailV2SetDefaultBranchRequest.fromJson(core.Map json_)
-    : this(
-        branchId: json_['branchId'] as core.String?,
-        force: json_['force'] as core.bool?,
-        note: json_['note'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (branchId != null) 'branchId': branchId!,
-    if (force != null) 'force': force!,
-    if (note != null) 'note': note!,
-  };
-}
+typedef GoogleCloudRetailV2SetDefaultBranchRequest = $SetDefaultBranchRequest;
 
 /// Request message for ProductService.SetInventory method.
 class GoogleCloudRetailV2SetInventoryRequest {
@@ -11483,24 +9455,7 @@ class GoogleCloudRetailV2SetInventoryRequest {
 }
 
 /// A list of string values.
-class GoogleCloudRetailV2StringList {
-  /// String values.
-  core.List<core.String>? values;
-
-  GoogleCloudRetailV2StringList({this.values});
-
-  GoogleCloudRetailV2StringList.fromJson(core.Map json_)
-    : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
-}
+typedef GoogleCloudRetailV2StringList = $StringList00;
 
 /// This field specifies the tile information including an attribute key,
 /// attribute value.
@@ -12013,67 +9968,7 @@ class GoogleCloudRetailV2UserEventInputConfig {
 }
 
 /// Information of an end user.
-class GoogleCloudRetailV2UserInfo {
-  /// True if the request is made directly from the end user, in which case the
-  /// ip_address and user_agent can be populated from the HTTP request.
-  ///
-  /// This flag should be set only if the API request is made directly from the
-  /// end user such as a mobile app (and not if a gateway or a server is
-  /// processing and pushing the user events). This should not be set when using
-  /// the JavaScript tag in UserEventService.CollectUserEvent.
-  core.bool? directUserRequest;
-
-  /// The end user's IP address.
-  ///
-  /// This field is used to extract location information for personalization.
-  /// This field must be either an IPv4 address (e.g. "104.133.9.80") or an IPv6
-  /// address (e.g. "2001:0db8:85a3:0000:0000:8a2e:0370:7334"). Otherwise, an
-  /// INVALID_ARGUMENT error is returned. This should not be set when: * setting
-  /// SearchRequest.user_info. * using the JavaScript tag in
-  /// UserEventService.CollectUserEvent or if direct_user_request is set.
-  core.String? ipAddress;
-
-  /// User agent as included in the HTTP header.
-  ///
-  /// The field must be a UTF-8 encoded string with a length limit of 1,000
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned. This should
-  /// not be set when using the client side event reporting with GTM or
-  /// JavaScript tag in UserEventService.CollectUserEvent or if
-  /// direct_user_request is set.
-  core.String? userAgent;
-
-  /// Highly recommended for logged-in users.
-  ///
-  /// Unique identifier for logged-in user, such as a user name. Don't set for
-  /// anonymous users. Always use a hashed value for this ID. Don't set the
-  /// field to the same fixed ID for different users. This mixes the event
-  /// history of those users together, which results in degraded model quality.
-  /// The field must be a UTF-8 encoded string with a length limit of 128
-  /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
-  core.String? userId;
-
-  GoogleCloudRetailV2UserInfo({
-    this.directUserRequest,
-    this.ipAddress,
-    this.userAgent,
-    this.userId,
-  });
-
-  GoogleCloudRetailV2UserInfo.fromJson(core.Map json_)
-    : this(
-        directUserRequest: json_['directUserRequest'] as core.bool?,
-        ipAddress: json_['ipAddress'] as core.String?,
-        userAgent: json_['userAgent'] as core.String?,
-        userId: json_['userId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (directUserRequest != null) 'directUserRequest': directUserRequest!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (userAgent != null) 'userAgent': userAgent!,
-    if (userId != null) 'userId': userId!,
-  };
-}
+typedef GoogleCloudRetailV2UserInfo = $UserInfo01;
 
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {

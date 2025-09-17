@@ -1,0 +1,2476 @@
+// This is a generated file (see the discoveryapis_generator project).
+
+// ignore_for_file: camel_case_types
+// ignore_for_file: comment_references
+// ignore_for_file: deprecated_member_use_from_same_package
+// ignore_for_file: doc_directive_unknown
+// ignore_for_file: lines_longer_than_80_chars
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: prefer_interpolation_to_compose_strings
+// ignore_for_file: unintended_html_in_doc_comment
+// ignore_for_file: unnecessary_brace_in_string_interps
+// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_string_interpolations
+
+/// Firebase Data Connect API - v1beta
+///
+/// Firebase Data Connect is a relational database service for mobile and web
+/// apps that lets you build and scale using a fully-managed PostgreSQL database
+/// powered by Cloud SQL. The REST API lets developers manage the connections to
+/// their database, change the schema of their database, and query the database.
+///
+/// For more information, see <https://firebase.google.com/docs/data-connect>
+///
+/// Create an instance of [FirebaseDataConnectApi] to access these resources:
+///
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsServicesResource]
+///       - [ProjectsLocationsServicesConnectorsResource]
+///       - [ProjectsLocationsServicesSchemasResource]
+library;
+
+import 'dart:async' as async;
+import 'dart:convert' as convert;
+import 'dart:core' as core;
+
+import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
+import 'package:http/http.dart' as http;
+
+import '../shared.dart';
+import '../src/user_agent.dart';
+
+export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
+    show ApiRequestError, DetailedApiRequestError;
+
+/// Firebase Data Connect is a relational database service for mobile and web
+/// apps that lets you build and scale using a fully-managed PostgreSQL database
+/// powered by Cloud SQL.
+///
+/// The REST API lets developers manage the connections to their database,
+/// change the schema of their database, and query the database.
+class FirebaseDataConnectApi {
+  /// See, edit, configure, and delete your Google Cloud data and see the email
+  /// address for your Google Account.
+  static const cloudPlatformScope =
+      'https://www.googleapis.com/auth/cloud-platform';
+
+  final commons.ApiRequester _requester;
+
+  ProjectsResource get projects => ProjectsResource(_requester);
+
+  FirebaseDataConnectApi(
+    http.Client client, {
+    core.String rootUrl = 'https://firebasedataconnect.googleapis.com/',
+    core.String servicePath = '',
+  }) : _requester = commons.ApiRequester(
+         client,
+         rootUrl,
+         servicePath,
+         requestHeaders,
+       );
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsServicesResource get services =>
+      ProjectsLocationsServicesResource(_requester);
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets information about a location.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Resource name for the location.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Location].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Location> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists information about the supported locations for this service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource that owns the locations collection, if applicable.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [extraLocationTypes] - Optional. A list of extra location types that
+  /// should be used as conditions for controlling the visibility of the
+  /// locations.
+  ///
+  /// [filter] - A filter to narrow down results to a preferred subset. The
+  /// filtering language accepts strings like `"displayName=tokyo"`, and is
+  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  ///
+  /// [pageSize] - The maximum number of results to return. If not set, the
+  /// service selects a default.
+  ///
+  /// [pageToken] - A page token received from the `next_page_token` field in
+  /// the response. Send that page token to receive the subsequent page.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListLocationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListLocationsResponse> list(
+    core.String name, {
+    core.List<core.String>? extraLocationTypes,
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + '/locations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsServicesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesConnectorsResource get connectors =>
+      ProjectsLocationsServicesConnectorsResource(_requester);
+  ProjectsLocationsServicesSchemasResource get schemas =>
+      ProjectsLocationsServicesSchemasResource(_requester);
+
+  ProjectsLocationsServicesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new Service in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value of parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [serviceId] - Required. The ID to use for the service, which will become
+  /// the final component of the service's resource name.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Service, but do not actually create it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Service request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? serviceId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (serviceId != null) 'serviceId': [serviceId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/services';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the service to delete, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service} ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If true and the Service is not found, the
+  /// request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. The etag of the Service. If this is provided, it must
+  /// match the server's etag.
+  ///
+  /// [force] - Optional. If set to true, any child resources (i.e. Schema,
+  /// SchemaRevisions, Connectors, and ConnectorRevisions) will also be deleted.
+  /// Otherwise, the request will only work if the Service has no child
+  /// resources.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Service, but do not actually delete it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? force,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (force != null) 'force': ['${force}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Execute any GraphQL query and mutation against the Firebase Data Connect's
+  /// generated GraphQL schema.
+  ///
+  /// Grants full read and write access to the connected data sources. Note: Use
+  /// introspection query to explore the generated GraphQL schema.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of Firebase Data Connect
+  /// service, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service} ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GraphqlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GraphqlResponse> executeGraphql(
+    GraphqlRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':executeGraphql';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GraphqlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Execute any GraphQL query against the Firebase Data Connect's generated
+  /// GraphQL schema.
+  ///
+  /// Grants full read to the connected data sources. `ExecuteGraphqlRead` is
+  /// identical to `ExecuteGraphql` except it only accepts read-only query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of Firebase Data Connect
+  /// service, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service} ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GraphqlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GraphqlResponse> executeGraphqlRead(
+    GraphqlRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1beta/' + core.Uri.encodeFull('$name') + ':executeGraphqlRead';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GraphqlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single Service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the service to retrieve, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service} ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Service].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Service> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Services in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value of parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListServices` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListServices` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListServicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListServicesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/services';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListServicesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single Service.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The relative resource name of the Firebase Data
+  /// Connect service, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service} ``` Note that
+  /// the service ID is specific to Firebase Data Connect and does not
+  /// correspond to any of the instance IDs of the underlying data source
+  /// connections.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If true and the Service is not found, a new
+  /// Service will be created. In this case, `update_mask` is ignored.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Service resource by the update. The fields specified in
+  /// the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Service, but do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Service request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServicesConnectorsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesConnectorsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new Connector in a given project and location.
+  ///
+  /// The operations are validated against and must be compatible with the
+  /// active schema. If the operations and schema are not compatible or if the
+  /// schema is not present, this will result in an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [connectorId] - Required. The ID to use for the connector, which will
+  /// become the final component of the connector's resource name.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Connector, but do not actually create it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Connector request,
+    core.String parent, {
+    core.String? connectorId,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (connectorId != null) 'connectorId': [connectorId],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/connectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Connector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the connector to delete, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If true and the Connector is not found, the
+  /// request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. The etag of the Connector. If this is provided, it must
+  /// match the server's etag.
+  ///
+  /// [force] - Optional. If set to true, any child resources (i.e.
+  /// ConnectorRevisions) will also be deleted. Otherwise, the request will only
+  /// work if the Connector has no child resources.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Connector, but do not actually delete it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? force,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (force != null) 'force': ['${force}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Execute a predefined mutation in a Connector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the connector to find the
+  /// predefined mutation, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteMutationResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteMutationResponse> executeMutation(
+    ExecuteMutationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':executeMutation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteMutationResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Execute a predefined query in a Connector.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the connector to find the
+  /// predefined query, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteQueryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteQueryResponse> executeQuery(
+    ExecuteQueryRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name') + ':executeQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteQueryResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single Connector.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the connector to retrieve, in the format:
+  /// ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Connector].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Connector> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Connector.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Connectors in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value of parent.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListConnectors` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListConnectors` must match
+  /// the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListConnectorsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListConnectorsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/connectors';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListConnectorsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single Connector, and creates a new
+  /// ConnectorRevision with the updated Connector.
+  ///
+  /// The operations are validated against and must be compatible with the live
+  /// schema. If the operations and schema are not compatible or if the schema
+  /// is not present, this will result in an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The relative resource name of the connector, in the
+  /// format: ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If true and the Connector is not found, a new
+  /// Connector will be created. In this case, `update_mask` is ignored.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Connector resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Connector, but do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Connector request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsServicesSchemasResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsServicesSchemasResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new Schema in a given project and location.
+  ///
+  /// Only creation of `schemas/main` is supported and calling create with any
+  /// other schema ID will result in an error.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [schemaId] - Required. The ID to use for the schema, which will become the
+  /// final component of the schema's resource name. Currently, only `main` is
+  /// supported and any other schema ID will result in an error.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Schema, but do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Schema request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? schemaId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (schemaId != null) 'schemaId': [schemaId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/schemas';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single Schema.
+  ///
+  /// Because the schema and connectors must be compatible at all times, if this
+  /// is called while any connectors are active, this will result in an error.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schema to delete, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/schemas/{schema}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If true and the Schema is not found, the
+  /// request will succeed but no action will be taken on the server.
+  ///
+  /// [etag] - Optional. The etag of the Schema. If this is provided, it must
+  /// match the server's etag.
+  ///
+  /// [force] - Optional. If set to true, any child resources (i.e.
+  /// SchemaRevisions) will also be deleted.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Schema, but do not actually delete it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? etag,
+    core.bool? force,
+    core.String? requestId,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (etag != null) 'etag': [etag],
+      if (force != null) 'force': ['${force}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single Schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the schema to retrieve, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/schemas/{schema}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Schema].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Schema> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Schema.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Schemas in a given project and location.
+  ///
+  /// Note that only `schemas/main` is supported, so this will always return at
+  /// most one Schema.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value of parent.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSchemas` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListSchemas` must match the
+  /// call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListSchemasResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListSchemasResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$parent') + '/schemas';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListSchemasResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single Schema, and creates a new
+  /// SchemaRevision with the updated Schema.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The relative resource name of the schema, in the
+  /// format: ```
+  /// projects/{project}/locations/{location}/services/{service}/schemas/{schema}
+  /// ``` Right now, the only supported schema is "main".
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/schemas/\[^/\]+$`.
+  ///
+  /// [allowMissing] - Optional. If true and the Schema is not found, a new
+  /// Schema will be created. In this case, `update_mask` is ignored.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Schema resource by the update. The fields specified in
+  /// the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [validateOnly] - Optional. If set, validate the request and preview the
+  /// Schema, but do not actually update it.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Schema request,
+    core.String name, {
+    core.bool? allowMissing,
+    core.String? requestId,
+    core.String? updateMask,
+    core.bool? validateOnly,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (allowMissing != null) 'allowMissing': ['${allowMissing}'],
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if (validateOnly != null) 'validateOnly': ['${validateOnly}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+/// The request message for Operations.CancelOperation.
+typedef CancelOperationRequest = $Empty;
+
+/// Settings for CloudSQL instance configuration.
+typedef CloudSqlInstance = $CloudSqlInstance;
+
+/// Connector consists of a set of operations, i.e. queries and mutations.
+class Connector {
+  /// Stores small amounts of arbitrary data.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Create time stamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Mutable human-readable name.
+  ///
+  /// 63 character limit.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// \[AIP-154\](https://google.aip.dev/154)
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Labels as key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The relative resource name of the connector, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  core.String? name;
+
+  /// A field that if true, indicates that the system is working to compile and
+  /// deploy the connector.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The source files that comprise the connector.
+  ///
+  /// Required.
+  Source? source;
+
+  /// System-assigned, unique identifier.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Update time stamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Connector({
+    this.annotations,
+    this.createTime,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.reconciling,
+    this.source,
+    this.uid,
+    this.updateTime,
+  });
+
+  Connector.fromJson(core.Map json_)
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        source:
+            json_.containsKey('source')
+                ? Source.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (source != null) 'source': source!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// A data source that backs Firebase Data Connect services.
+class Datasource {
+  /// PostgreSQL configurations.
+  PostgreSql? postgresql;
+
+  Datasource({this.postgresql});
+
+  Datasource.fromJson(core.Map json_)
+    : this(
+        postgresql:
+            json_.containsKey('postgresql')
+                ? PostgreSql.fromJson(
+                  json_['postgresql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (postgresql != null) 'postgresql': postgresql!,
+  };
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
+/// The ExecuteMutation request to Firebase Data Connect.
+typedef ExecuteMutationRequest = $Request08;
+
+/// The ExecuteMutation response from Firebase Data Connect.
+class ExecuteMutationResponse {
+  /// The result of executing the requested operation.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  /// Errors of this response.
+  core.List<GraphqlError>? errors;
+
+  ExecuteMutationResponse({this.data, this.errors});
+
+  ExecuteMutationResponse.fromJson(core.Map json_)
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => GraphqlError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (data != null) 'data': data!,
+    if (errors != null) 'errors': errors!,
+  };
+}
+
+/// The ExecuteQuery request to Firebase Data Connect.
+typedef ExecuteQueryRequest = $Request08;
+
+/// The ExecuteQuery response from Firebase Data Connect.
+class ExecuteQueryResponse {
+  /// The result of executing the requested operation.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  /// Errors of this response.
+  core.List<GraphqlError>? errors;
+
+  ExecuteQueryResponse({this.data, this.errors});
+
+  ExecuteQueryResponse.fromJson(core.Map json_)
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => GraphqlError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (data != null) 'data': data!,
+    if (errors != null) 'errors': errors!,
+  };
+}
+
+/// Individual files.
+typedef File = $File01;
+
+/// GraphqlError conforms to the GraphQL error spec.
+///
+/// https://spec.graphql.org/draft/#sec-Errors Firebase Data Connect API
+/// surfaces `GraphqlError` in various APIs: - Upon compile error,
+/// `UpdateSchema` and `UpdateConnector` return Code.Invalid_Argument with a
+/// list of `GraphqlError` in error details. - Upon query compile error,
+/// `ExecuteGraphql` and `ExecuteGraphqlRead` return Code.OK with a list of
+/// `GraphqlError` in response body. - Upon query execution error,
+/// `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation` and `ExecuteQuery`
+/// all return Code.OK with a list of `GraphqlError` in response body.
+class GraphqlError {
+  /// Additional error information.
+  GraphqlErrorExtensions? extensions;
+
+  /// The source locations where the error occurred.
+  ///
+  /// Locations should help developers and toolings identify the source of error
+  /// quickly. Included in admin endpoints (`ExecuteGraphql`,
+  /// `ExecuteGraphqlRead`, `UpdateSchema` and `UpdateConnector`) to reference
+  /// the provided GraphQL GQL document. Omitted in `ExecuteMutation` and
+  /// `ExecuteQuery` since the caller shouldn't have access access the
+  /// underlying GQL source.
+  core.List<SourceLocation>? locations;
+
+  /// The detailed error message.
+  ///
+  /// The message should help developer understand the underlying problem
+  /// without leaking internal data.
+  core.String? message;
+
+  /// The result field which could not be populated due to error.
+  ///
+  /// Clients can use path to identify whether a null result is intentional or
+  /// caused by a runtime error. It should be a list of string or index from the
+  /// root of GraphQL query document.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? path;
+
+  GraphqlError({this.extensions, this.locations, this.message, this.path});
+
+  GraphqlError.fromJson(core.Map json_)
+    : this(
+        extensions:
+            json_.containsKey('extensions')
+                ? GraphqlErrorExtensions.fromJson(
+                  json_['extensions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => SourceLocation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        message: json_['message'] as core.String?,
+        path: json_.containsKey('path') ? json_['path'] as core.List : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (extensions != null) 'extensions': extensions!,
+    if (locations != null) 'locations': locations!,
+    if (message != null) 'message': message!,
+    if (path != null) 'path': path!,
+  };
+}
+
+/// GraphqlErrorExtensions contains additional information of `GraphqlError`.
+typedef GraphqlErrorExtensions = $GraphqlErrorExtensions;
+
+/// The GraphQL request to Firebase Data Connect.
+///
+/// It strives to match the GraphQL over HTTP spec.
+/// https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#post
+class GraphqlRequest {
+  /// Additional GraphQL request information.
+  ///
+  /// Optional.
+  GraphqlRequestExtensions? extensions;
+
+  /// The name of the GraphQL operation name.
+  ///
+  /// Required only if `query` contains multiple operations. See
+  /// https://graphql.org/learn/queries/#operation-name.
+  ///
+  /// Optional.
+  core.String? operationName;
+
+  /// The GraphQL query document source.
+  ///
+  /// Required.
+  core.String? query;
+
+  /// Values for GraphQL variables provided in this request.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? variables;
+
+  GraphqlRequest({
+    this.extensions,
+    this.operationName,
+    this.query,
+    this.variables,
+  });
+
+  GraphqlRequest.fromJson(core.Map json_)
+    : this(
+        extensions:
+            json_.containsKey('extensions')
+                ? GraphqlRequestExtensions.fromJson(
+                  json_['extensions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operationName: json_['operationName'] as core.String?,
+        query: json_['query'] as core.String?,
+        variables:
+            json_.containsKey('variables')
+                ? json_['variables'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (extensions != null) 'extensions': extensions!,
+    if (operationName != null) 'operationName': operationName!,
+    if (query != null) 'query': query!,
+    if (variables != null) 'variables': variables!,
+  };
+}
+
+/// GraphqlRequestExtensions contains additional information of
+/// `GraphqlRequest`.
+class GraphqlRequestExtensions {
+  /// If set, impersonate a request with given Firebase Auth context and
+  /// evaluate the auth policies on the operation.
+  ///
+  /// If omitted, bypass any defined auth policies.
+  ///
+  /// Optional.
+  Impersonation? impersonate;
+
+  GraphqlRequestExtensions({this.impersonate});
+
+  GraphqlRequestExtensions.fromJson(core.Map json_)
+    : this(
+        impersonate:
+            json_.containsKey('impersonate')
+                ? Impersonation.fromJson(
+                  json_['impersonate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (impersonate != null) 'impersonate': impersonate!,
+  };
+}
+
+/// The GraphQL response from Firebase Data Connect.
+///
+/// It strives to match the GraphQL over HTTP spec. Note: Firebase Data Connect
+/// always responds with `Content-Type: application/json`.
+/// https://github.com/graphql/graphql-over-http/blob/main/spec/GraphQLOverHTTP.md#body
+class GraphqlResponse {
+  /// The result of the execution of the requested operation.
+  ///
+  /// If an error was raised before execution begins, the data entry should not
+  /// be present in the result. (a request error:
+  /// https://spec.graphql.org/draft/#sec-Errors.Request-Errors) If an error was
+  /// raised during the execution that prevented a valid response, the data
+  /// entry in the response should be null. (a field error:
+  /// https://spec.graphql.org/draft/#sec-Errors.Error-Result-Format)
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  /// Errors of this response.
+  ///
+  /// If the data entry in the response is not present, the errors entry must be
+  /// present. It conforms to https://spec.graphql.org/draft/#sec-Errors.
+  core.List<GraphqlError>? errors;
+
+  GraphqlResponse({this.data, this.errors});
+
+  GraphqlResponse.fromJson(core.Map json_)
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => GraphqlError.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (data != null) 'data': data!,
+    if (errors != null) 'errors': errors!,
+  };
+}
+
+/// Impersonation configures the Firebase Auth context to impersonate.
+typedef Impersonation = $Impersonation;
+
+/// Message for response to listing Connectors.
+///
+/// By default, `connectors.source` will not be included in the response. To
+/// specify the fields included in the response, the response field mask can be
+/// provided by using the query parameter `$fields` or the header
+/// `X-Goog-FieldMask`.
+class ListConnectorsResponse {
+  /// The list of Connectors.
+  core.List<Connector>? connectors;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListConnectorsResponse({
+    this.connectors,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListConnectorsResponse.fromJson(core.Map json_)
+    : this(
+        connectors:
+            (json_['connectors'] as core.List?)
+                ?.map(
+                  (value) => Connector.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (connectors != null) 'connectors': connectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// The response message for Locations.ListLocations.
+class ListLocationsResponse {
+  /// A list of locations that matches the specified filter in the request.
+  core.List<Location>? locations;
+
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  ListLocationsResponse({this.locations, this.nextPageToken});
+
+  ListLocationsResponse.fromJson(core.Map json_)
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map(
+                  (value) => Location.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (locations != null) 'locations': locations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation>? operations;
+
+  ListOperationsResponse({this.nextPageToken, this.operations});
+
+  ListOperationsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+  };
+}
+
+/// Message for response to listing Schemas.
+///
+/// By default, `schemas.source` will not be included in the response. To
+/// specify the fields included in the response, the response field mask can be
+/// provided by using the query parameter `$fields` or the header
+/// `X-Goog-FieldMask`.
+class ListSchemasResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of Schemas.
+  core.List<Schema>? schemas;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListSchemasResponse({this.nextPageToken, this.schemas, this.unreachable});
+
+  ListSchemasResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => Schema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (schemas != null) 'schemas': schemas!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// Message for response to listing Services.
+class ListServicesResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// The list of Services.
+  core.List<Service>? services;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListServicesResponse({this.nextPageToken, this.services, this.unreachable});
+
+  ListServicesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        services:
+            (json_['services'] as core.List?)
+                ?.map(
+                  (value) => Service.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (services != null) 'services': services!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// A resource that represents a Google Cloud location.
+typedef Location = $Location00;
+
+/// This resource represents a long-running operation that is the result of a
+/// network API call.
+class Operation {
+  /// If the value is `false`, it means the operation is still in progress.
+  ///
+  /// If `true`, the operation is completed, and either `error` or `response` is
+  /// available.
+  core.bool? done;
+
+  /// The error result of the operation in case of failure or cancellation.
+  Status? error;
+
+  /// Service-specific metadata associated with the operation.
+  ///
+  /// It typically contains progress information and common metadata such as
+  /// create time. Some services might not provide such metadata. Any method
+  /// that returns a long-running operation should document the metadata type,
+  /// if any.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The server-assigned name, which is only unique within the same service
+  /// that originally returns it.
+  ///
+  /// If you use the default HTTP mapping, the `name` should be a resource name
+  /// ending with `operations/{unique_id}`.
+  core.String? name;
+
+  /// The normal, successful response of the operation.
+  ///
+  /// If the original method returns no data on success, such as `Delete`, the
+  /// response is `google.protobuf.Empty`. If the original method is standard
+  /// `Get`/`Create`/`Update`, the response should be the resource. For other
+  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
+  /// the original method name. For example, if the original method name is
+  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? response;
+
+  Operation({this.done, this.error, this.metadata, this.name, this.response});
+
+  Operation.fromJson(core.Map json_)
+    : this(
+        done: json_['done'] as core.bool?,
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        response:
+            json_.containsKey('response')
+                ? json_['response'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (done != null) 'done': done!,
+    if (error != null) 'error': error!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (response != null) 'response': response!,
+  };
+}
+
+/// Settings for PostgreSQL data source.
+class PostgreSql {
+  /// Cloud SQL configurations.
+  CloudSqlInstance? cloudSql;
+
+  /// Name of the PostgreSQL database.
+  ///
+  /// Required.
+  core.String? database;
+
+  /// Configure how to perform Postgresql schema migration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SQL_SCHEMA_MIGRATION_UNSPECIFIED" : Unspecified SQL schema migration.
+  /// - "MIGRATE_COMPATIBLE" : Connect to the SQL database and identify any
+  /// missing SQL resources used in the given Firebase Data Connect Schema.
+  /// Automatically create necessary SQL resources (SQL table, column, etc)
+  /// before deploying the schema. During migration steps, the SQL Schema must
+  /// comply with the previous before_deploy setting in case the migration is
+  /// interrupted. Therefore, the previous before_deploy setting must not be
+  /// `schema_validation=STRICT`.
+  core.String? schemaMigration;
+
+  /// Configure how much Postgresql schema validation to perform.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SQL_SCHEMA_VALIDATION_UNSPECIFIED" : Unspecified SQL schema validation.
+  /// Default to STRICT.
+  /// - "NONE" : Skip no SQL schema validation. Use it with extreme caution.
+  /// CreateSchema or UpdateSchema will succeed even if SQL database is
+  /// unavailable or SQL schema is incompatible. Generated SQL may fail at
+  /// execution time.
+  /// - "STRICT" : Connect to the SQL database and validate that the SQL DDL
+  /// matches the schema exactly. Surface any discrepancies as
+  /// `FAILED_PRECONDITION` with an `IncompatibleSqlSchemaError` error detail.
+  /// - "COMPATIBLE" : Connect to the SQL database and validate that the SQL DDL
+  /// has all the SQL resources used in the given Firebase Data Connect Schema.
+  /// Surface any missing resources as `FAILED_PRECONDITION` with an
+  /// `IncompatibleSqlSchemaError` error detail. Succeed even if there are
+  /// unknown tables and columns.
+  core.String? schemaValidation;
+
+  /// No Postgres data source is linked.
+  ///
+  /// If set, don't allow `database` and `schema_validation` to be configured.
+  core.bool? unlinked;
+
+  PostgreSql({
+    this.cloudSql,
+    this.database,
+    this.schemaMigration,
+    this.schemaValidation,
+    this.unlinked,
+  });
+
+  PostgreSql.fromJson(core.Map json_)
+    : this(
+        cloudSql:
+            json_.containsKey('cloudSql')
+                ? CloudSqlInstance.fromJson(
+                  json_['cloudSql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        database: json_['database'] as core.String?,
+        schemaMigration: json_['schemaMigration'] as core.String?,
+        schemaValidation: json_['schemaValidation'] as core.String?,
+        unlinked: json_['unlinked'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cloudSql != null) 'cloudSql': cloudSql!,
+    if (database != null) 'database': database!,
+    if (schemaMigration != null) 'schemaMigration': schemaMigration!,
+    if (schemaValidation != null) 'schemaValidation': schemaValidation!,
+    if (unlinked != null) 'unlinked': unlinked!,
+  };
+}
+
+/// The application schema of a Firebase Data Connect service.
+class Schema {
+  /// Stores small amounts of arbitrary data.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? annotations;
+
+  /// Create time stamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The data sources linked in the schema.
+  ///
+  /// Required.
+  core.List<Datasource>? datasources;
+
+  /// Mutable human-readable name.
+  ///
+  /// 63 character limit.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// This checksum is computed by the server based on the value of other
+  /// fields, and may be sent on update and delete requests to ensure the client
+  /// has an up-to-date value before proceeding.
+  ///
+  /// \[AIP-154\](https://google.aip.dev/154)
+  ///
+  /// Output only.
+  core.String? etag;
+
+  /// Labels as key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The relative resource name of the schema, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/schemas/{schema}
+  /// ``` Right now, the only supported schema is "main".
+  core.String? name;
+
+  /// A field that if true, indicates that the system is working to compile and
+  /// deploy the schema.
+  ///
+  /// Output only.
+  core.bool? reconciling;
+
+  /// The source files that comprise the application schema.
+  ///
+  /// Required.
+  Source? source;
+
+  /// System-assigned, unique identifier.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Update time stamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Schema({
+    this.annotations,
+    this.createTime,
+    this.datasources,
+    this.displayName,
+    this.etag,
+    this.labels,
+    this.name,
+    this.reconciling,
+    this.source,
+    this.uid,
+    this.updateTime,
+  });
+
+  Schema.fromJson(core.Map json_)
+    : this(
+        annotations: (json_['annotations']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        createTime: json_['createTime'] as core.String?,
+        datasources:
+            (json_['datasources'] as core.List?)
+                ?.map(
+                  (value) => Datasource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        displayName: json_['displayName'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        reconciling: json_['reconciling'] as core.bool?,
+        source:
+            json_.containsKey('source')
+                ? Source.fromJson(
+                  json_['source'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (annotations != null) 'annotations': annotations!,
+    if (createTime != null) 'createTime': createTime!,
+    if (datasources != null) 'datasources': datasources!,
+    if (displayName != null) 'displayName': displayName!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (reconciling != null) 'reconciling': reconciling!,
+    if (source != null) 'source': source!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// A Firebase Data Connect service.
+typedef Service = $Service;
+
+/// Used to represent a set of source files.
+class Source {
+  /// The files that comprise the source set.
+  ///
+  /// Required.
+  core.List<File>? files;
+
+  Source({this.files});
+
+  Source.fromJson(core.Map json_)
+    : this(
+        files:
+            (json_['files'] as core.List?)
+                ?.map(
+                  (value) => File.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (files != null) 'files': files!,
+  };
+}
+
+/// SourceLocation references a location in a GraphQL source.
+typedef SourceLocation = $SourceLocation;
+
+/// The `Status` type defines a logical error model that is suitable for
+/// different programming environments, including REST APIs and RPC APIs.
+///
+/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
+/// contains three pieces of data: error code, error message, and error details.
+/// You can find out more about this error model and how to work with it in the
+/// [API Design Guide](https://cloud.google.com/apis/design/errors).
+typedef Status = $Status00;

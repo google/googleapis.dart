@@ -779,32 +779,7 @@ class ProjectsLocationsOperationsResource {
 }
 
 /// Request for ApplyParameters.
-class ApplyParametersRequest {
-  /// Whether to apply instance-level parameter group to all nodes.
-  ///
-  /// If set to true, users are restricted from specifying individual nodes, and
-  /// `ApplyParameters` updates all nodes within the instance.
-  core.bool? applyAll;
-
-  /// Nodes to which the instance-level parameter group is applied.
-  core.List<core.String>? nodeIds;
-
-  ApplyParametersRequest({this.applyAll, this.nodeIds});
-
-  ApplyParametersRequest.fromJson(core.Map json_)
-    : this(
-        applyAll: json_['applyAll'] as core.bool?,
-        nodeIds:
-            (json_['nodeIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applyAll != null) 'applyAll': applyAll!,
-    if (nodeIds != null) 'nodeIds': nodeIds!,
-  };
-}
+typedef ApplyParametersRequest = $ApplyParametersRequest;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -875,26 +850,7 @@ class GoogleCloudMemcacheV1MaintenancePolicy {
 }
 
 /// Request for UpgradeInstance.
-class GoogleCloudMemcacheV1UpgradeInstanceRequest {
-  /// Specifies the target version of memcached engine to upgrade to.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "MEMCACHE_VERSION_UNSPECIFIED" : Memcache version is not specified by
-  /// customer
-  /// - "MEMCACHE_1_5" : Memcached 1.5 version.
-  /// - "MEMCACHE_1_6_15" : Memcached 1.6.15 version.
-  core.String? memcacheVersion;
-
-  GoogleCloudMemcacheV1UpgradeInstanceRequest({this.memcacheVersion});
-
-  GoogleCloudMemcacheV1UpgradeInstanceRequest.fromJson(core.Map json_)
-    : this(memcacheVersion: json_['memcacheVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (memcacheVersion != null) 'memcacheVersion': memcacheVersion!,
-  };
-}
+typedef GoogleCloudMemcacheV1UpgradeInstanceRequest = $UpgradeInstanceRequest00;
 
 /// A Memorystore for Memcached instance
 class Instance {
@@ -1162,30 +1118,7 @@ class Instance {
   };
 }
 
-class InstanceMessage {
-  /// A code that correspond to one type of user-facing message.
-  /// Possible string values are:
-  /// - "CODE_UNSPECIFIED" : Message Code not set.
-  /// - "ZONE_DISTRIBUTION_UNBALANCED" : Memcached nodes are distributed
-  /// unevenly.
-  core.String? code;
-
-  /// Message on memcached instance which will be exposed to users.
-  core.String? message;
-
-  InstanceMessage({this.code, this.message});
-
-  InstanceMessage.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        message: json_['message'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (message != null) 'message': message!,
-  };
-}
+typedef InstanceMessage = $InstanceMessage;
 
 /// Response for ListInstances.
 class ListInstancesResponse {
@@ -1291,73 +1224,8 @@ class ListOperationsResponse {
 typedef Location = $Location00;
 
 /// Upcoming maintenance schedule.
-class MaintenanceSchedule {
-  /// The end time of any upcoming scheduled maintenance for this instance.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// The deadline that the maintenance schedule start time can not go beyond,
-  /// including reschedule.
-  ///
-  /// Output only.
-  core.String? scheduleDeadlineTime;
-
-  /// The start time of any upcoming scheduled maintenance for this instance.
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  MaintenanceSchedule({
-    this.endTime,
-    this.scheduleDeadlineTime,
-    this.startTime,
-  });
-
-  MaintenanceSchedule.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        scheduleDeadlineTime: json_['scheduleDeadlineTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (scheduleDeadlineTime != null)
-      'scheduleDeadlineTime': scheduleDeadlineTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
-
-class MemcacheParameters {
-  /// The unique ID associated with this set of parameters.
-  ///
-  /// Users can use this id to determine if the parameters associated with the
-  /// instance differ from the parameters associated with the nodes. A
-  /// discrepancy between parameter ids can inform users that they may need to
-  /// take action to apply parameters on nodes.
-  ///
-  /// Output only.
-  core.String? id;
-
-  /// User defined set of parameters to use in the memcached process.
-  core.Map<core.String, core.String>? params;
-
-  MemcacheParameters({this.id, this.params});
-
-  MemcacheParameters.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        params: (json_['params'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (params != null) 'params': params!,
-  };
-}
+typedef MaintenanceSchedule = $MaintenanceSchedule01;
+typedef MemcacheParameters = $MemcacheParameters;
 
 class Node {
   /// Hostname or IP address of the Memcached node used by the clients to
@@ -1457,30 +1325,7 @@ class Node {
 }
 
 /// Configuration for a Memcached Node.
-class NodeConfig {
-  /// Number of cpus per Memcached node.
-  ///
-  /// Required.
-  core.int? cpuCount;
-
-  /// Memory size in MiB for each Memcached node.
-  ///
-  /// Required.
-  core.int? memorySizeMb;
-
-  NodeConfig({this.cpuCount, this.memorySizeMb});
-
-  NodeConfig.fromJson(core.Map json_)
-    : this(
-        cpuCount: json_['cpuCount'] as core.int?,
-        memorySizeMb: json_['memorySizeMb'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpuCount != null) 'cpuCount': cpuCount!,
-    if (memorySizeMb != null) 'memorySizeMb': memorySizeMb!,
-  };
-}
+typedef NodeConfig = $NodeConfig01;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -1557,38 +1402,7 @@ class Operation {
 }
 
 /// Request for RescheduleMaintenance.
-class RescheduleMaintenanceRequest {
-  /// If reschedule type is SPECIFIC_TIME, must set up schedule_time as well.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "RESCHEDULE_TYPE_UNSPECIFIED" : Not set.
-  /// - "IMMEDIATE" : If the user wants to schedule the maintenance to happen
-  /// now.
-  /// - "NEXT_AVAILABLE_WINDOW" : If the user wants to use the existing
-  /// maintenance policy to find the next available window.
-  /// - "SPECIFIC_TIME" : If the user wants to reschedule the maintenance to a
-  /// specific time.
-  core.String? rescheduleType;
-
-  /// Timestamp when the maintenance shall be rescheduled to if
-  /// reschedule_type=SPECIFIC_TIME, in RFC 3339 format, for example
-  /// `2012-11-15T16:19:00.094Z`.
-  core.String? scheduleTime;
-
-  RescheduleMaintenanceRequest({this.rescheduleType, this.scheduleTime});
-
-  RescheduleMaintenanceRequest.fromJson(core.Map json_)
-    : this(
-        rescheduleType: json_['rescheduleType'] as core.String?,
-        scheduleTime: json_['scheduleTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rescheduleType != null) 'rescheduleType': rescheduleType!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-  };
-}
+typedef RescheduleMaintenanceRequest = $RescheduleMaintenanceRequest00;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

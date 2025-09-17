@@ -880,46 +880,7 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
 /// your JSON data object to include data about the thresholds you set. For more
 /// information, see
 /// [set budget threshold rules and actions](https://cloud.google.com/billing/docs/how-to/budgets#budget-actions).
-class GoogleCloudBillingBudgetsV1ThresholdRule {
-  /// The type of basis used to determine if spend has passed the threshold.
-  ///
-  /// Behavior defaults to CURRENT_SPEND if not set.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "BASIS_UNSPECIFIED" : Unspecified threshold basis.
-  /// - "CURRENT_SPEND" : Use current spend as the basis for comparison against
-  /// the threshold.
-  /// - "FORECASTED_SPEND" : Use forecasted spend for the period as the basis
-  /// for comparison against the threshold. FORECASTED_SPEND can only be set
-  /// when the budget's time period is a Filter.calendar_period. It cannot be
-  /// set in combination with Filter.custom_period.
-  core.String? spendBasis;
-
-  /// Send an alert when this threshold is exceeded.
-  ///
-  /// This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative
-  /// number.
-  ///
-  /// Required.
-  core.double? thresholdPercent;
-
-  GoogleCloudBillingBudgetsV1ThresholdRule({
-    this.spendBasis,
-    this.thresholdPercent,
-  });
-
-  GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(core.Map json_)
-    : this(
-        spendBasis: json_['spendBasis'] as core.String?,
-        thresholdPercent: (json_['thresholdPercent'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (spendBasis != null) 'spendBasis': spendBasis!,
-    if (thresholdPercent != null) 'thresholdPercent': thresholdPercent!,
-  };
-}
+typedef GoogleCloudBillingBudgetsV1ThresholdRule = $ThresholdRule;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.

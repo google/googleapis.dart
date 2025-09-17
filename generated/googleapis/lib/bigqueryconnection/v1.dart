@@ -508,7 +508,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Authentication method for Amazon Web Services (AWS) that uses Google owned
 /// Google service account to assume into customer's AWS IAM Role.
@@ -834,26 +834,7 @@ class CloudSpannerProperties {
 }
 
 /// Credential info for the Cloud SQL.
-class CloudSqlCredential {
-  /// The password for the credential.
-  core.String? password;
-
-  /// The username for the credential.
-  core.String? username;
-
-  CloudSqlCredential({this.password, this.username});
-
-  CloudSqlCredential.fromJson(core.Map json_)
-    : this(
-        password: json_['password'] as core.String?,
-        username: json_['username'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (password != null) 'password': password!,
-    if (username != null) 'username': username!,
-  };
-}
+typedef CloudSqlCredential = $CloudSqlCredential;
 
 /// Connection properties specific to the Cloud SQL.
 class CloudSqlProperties {

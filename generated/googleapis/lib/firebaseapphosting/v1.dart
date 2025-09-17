@@ -1968,36 +1968,7 @@ typedef CancelOperationRequest = $Empty;
 
 /// The connection to an external source repository to watch for event-driven
 /// updates to the backend.
-class Codebase {
-  /// The resource name for the Developer Connect
-  /// \[`gitRepositoryLink`\](https://cloud.google.com/developer-connect/docs/api/reference/rest/v1/projects.locations.connections.gitRepositoryLinks)
-  /// connected to this backend, in the format:
-  /// `projects/{project}/locations/{location}/connections/{connection}/gitRepositoryLinks/{repositoryLink}`
-  /// The connection for the `gitRepositoryLink` must made be using the Firebase
-  /// App Hosting GitHub App via the Firebase Console.
-  ///
-  /// Required.
-  core.String? repository;
-
-  /// If `repository` is provided, the directory relative to the root of the
-  /// repository to use as the root for the deployed web app.
-  ///
-  /// Optional.
-  core.String? rootDirectory;
-
-  Codebase({this.repository, this.rootDirectory});
-
-  Codebase.fromJson(core.Map json_)
-    : this(
-        repository: json_['repository'] as core.String?,
-        rootDirectory: json_['rootDirectory'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (repository != null) 'repository': repository!,
-    if (rootDirectory != null) 'rootDirectory': rootDirectory!,
-  };
-}
+typedef Codebase = $Codebase;
 
 /// A codebase source, representing the state of the codebase that the build
 /// will be created at.
@@ -2125,21 +2096,7 @@ class Config {
 /// The URI of an Artifact Registry
 /// [container image](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations.repositories.dockerImages)
 /// to use as the build source.
-class ContainerSource {
-  /// A URI representing a container for the backend to use.
-  ///
-  /// Required.
-  core.String? image;
-
-  ContainerSource({this.image});
-
-  ContainerSource.fromJson(core.Map json_)
-    : this(image: json_['image'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (image != null) 'image': image!,
-  };
-}
+typedef ContainerSource = $ContainerSource;
 
 /// The status of a custom domain's linkage to a backend.
 class CustomDomainStatus {
@@ -2284,104 +2241,7 @@ class CustomDomainStatus {
 /// records to your domain's DNS records, you're informing other systems (such
 /// as your users' web browsers) to contact those IPv4 addresses to retrieve
 /// resources relevant to your domain (such as your App Hosting files).
-class DnsRecord {
-  /// The domain the record pertains to, e.g. `foo.bar.com.`.
-  ///
-  /// Output only.
-  core.String? domainName;
-
-  /// The data of the record.
-  ///
-  /// The meaning of the value depends on record type: - A and AAAA: IP
-  /// addresses for the domain. - CNAME: Another domain to check for records. -
-  /// TXT: Arbitrary text strings associated with the domain. App Hosting uses
-  /// TXT records to determine which Firebase projects have permission to act on
-  /// the domain's behalf. - CAA: The record's flags, tag, and value, e.g. `0
-  /// issue "pki.goog"`.
-  ///
-  /// Output only.
-  core.String? rdata;
-
-  /// An enum that indicates which state(s) this DNS record applies to.
-  ///
-  /// Populated for all records with an `ADD` or `REMOVE` required action.
-  ///
-  /// Output only.
-  core.List<core.String>? relevantState;
-
-  /// An enum that indicates the a required action for this record.
-  ///
-  /// Populated when the record is part of a required change in a `DnsUpdates`
-  /// `discovered` or `desired` record set.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "NONE" : No action necessary.
-  /// - "ADD" : Add this record to your DNS records.
-  /// - "REMOVE" : Remove this record from your DNS records.
-  core.String? requiredAction;
-
-  /// The record's type, which determines what data the record contains.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : The record's type is unspecified. The message is
-  /// invalid if this is unspecified.
-  /// - "A" : An `A` record, as defined in
-  /// [RFC 1035](https://tools.ietf.org/html/rfc1035). A records determine which
-  /// IPv4 addresses a domain directs traffic towards.
-  /// - "CNAME" : A `CNAME` record, as defined in
-  /// [RFC 1035](https://tools.ietf.org/html/rfc1035). `CNAME` or Canonical Name
-  /// records map a domain to a different, canonical domain. If a `CNAME` record
-  /// is present, it should be the only record on the domain.
-  /// - "TXT" : A `TXT` record, as defined in
-  /// [RFC 1035](https://tools.ietf.org/html/rfc1035). `TXT` records hold
-  /// arbitrary text data on a domain. Hosting uses `TXT` records to establish
-  /// which Firebase Project has permission to act on a domain.
-  /// - "AAAA" : An AAAA record, as defined in
-  /// [RFC 3596](https://tools.ietf.org/html/rfc3596) AAAA records determine
-  /// which IPv6 addresses a domain directs traffic towards.
-  /// - "CAA" : A CAA record, as defined in
-  /// [RFC 6844](https://tools.ietf.org/html/rfc6844). CAA, or Certificate
-  /// Authority Authorization, records determine which Certificate Authorities
-  /// (SSL certificate minting organizations) are authorized to mint a
-  /// certificate for the domain. App Hosting uses `pki.goog` as its primary CA.
-  /// CAA records cascade. A CAA record on `foo.com` also applies to
-  /// `bar.foo.com` unless `bar.foo.com` has its own set of CAA records. CAA
-  /// records are optional. If a domain and its parents have no CAA records, all
-  /// CAs are authorized to mint certificates on its behalf. In general, App
-  /// Hosting only asks you to modify CAA records when doing so is required to
-  /// unblock SSL cert creation.
-  core.String? type;
-
-  DnsRecord({
-    this.domainName,
-    this.rdata,
-    this.relevantState,
-    this.requiredAction,
-    this.type,
-  });
-
-  DnsRecord.fromJson(core.Map json_)
-    : this(
-        domainName: json_['domainName'] as core.String?,
-        rdata: json_['rdata'] as core.String?,
-        relevantState:
-            (json_['relevantState'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        requiredAction: json_['requiredAction'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainName != null) 'domainName': domainName!,
-    if (rdata != null) 'rdata': rdata!,
-    if (relevantState != null) 'relevantState': relevantState!,
-    if (requiredAction != null) 'requiredAction': requiredAction!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef DnsRecord = $DnsRecord;
 
 /// A set of DNS records relevant to the setup and maintenance of a custom
 /// domain in App Hosting.
@@ -2663,62 +2523,7 @@ class Domain {
 typedef Empty = $Empty;
 
 /// Environment variables for this build.
-class EnvironmentVariable {
-  /// Where this variable should be made available.
-  ///
-  /// If left unspecified, will be available in both BUILD and BACKEND.
-  ///
-  /// Optional.
-  core.List<core.String>? availability;
-
-  /// A fully qualified secret version.
-  ///
-  /// The value of the secret will be accessed once while building the
-  /// application and once per cold start of the container at runtime. The
-  /// service account used by Cloud Build and by Cloud Run must each have the
-  /// `secretmanager.versions.access` permission on the secret.
-  core.String? secret;
-
-  /// A plaintext value.
-  ///
-  /// This value is encrypted at rest, but all project readers can view the
-  /// value when reading your backend configuration.
-  core.String? value;
-
-  /// The name of the environment variable.
-  ///
-  /// - Must be a valid environment variable name (e.g. A-Z or underscores). -
-  /// May not start with "FIREBASE" or "GOOGLE". - May not be a reserved
-  /// environment variable for KNative/Cloud Run
-  ///
-  /// Required.
-  core.String? variable;
-
-  EnvironmentVariable({
-    this.availability,
-    this.secret,
-    this.value,
-    this.variable,
-  });
-
-  EnvironmentVariable.fromJson(core.Map json_)
-    : this(
-        availability:
-            (json_['availability'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        secret: json_['secret'] as core.String?,
-        value: json_['value'] as core.String?,
-        variable: json_['variable'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availability != null) 'availability': availability!,
-    if (secret != null) 'secret': secret!,
-    if (value != null) 'value': value!,
-    if (variable != null) 'variable': variable!,
-  };
-}
+typedef EnvironmentVariable = $EnvironmentVariable;
 
 /// The container for the rpc status and source for any errors found during the
 /// build process.
@@ -3082,35 +2887,7 @@ class Operation {
 }
 
 /// Specifies redirect behavior for a domain.
-class Redirect {
-  /// The status code to use in a redirect response.
-  ///
-  /// Must be a valid HTTP 3XX status code. Defaults to 302 if not present.
-  ///
-  /// Optional.
-  core.String? status;
-
-  /// The URI of the redirect's intended destination.
-  ///
-  /// This URI will be prepended to the original request path. URI without a
-  /// scheme are assumed to be HTTPS.
-  ///
-  /// Required.
-  core.String? uri;
-
-  Redirect({this.status, this.uri});
-
-  Redirect.fromJson(core.Map json_)
-    : this(
-        status: json_['status'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (status != null) 'status': status!,
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef Redirect = $Redirect;
 
 /// A single rollout of a build for a backend.
 class Rollout {
@@ -3265,144 +3042,15 @@ class Rollout {
 
 /// The policy for how automatic builds and rollouts are triggered and rolled
 /// out.
-class RolloutPolicy {
-  /// If set, specifies a branch that triggers a new build to be started with
-  /// this policy.
-  ///
-  /// Otherwise, no automatic rollouts will happen.
-  core.String? codebaseBranch;
-
-  /// A flag that, if true, prevents automatic rollouts from being created via
-  /// this RolloutPolicy.
-  ///
-  /// Optional.
-  core.bool? disabled;
-
-  /// If `disabled` is set, the time at which the automatic rollouts were
-  /// disabled.
-  ///
-  /// Output only.
-  core.String? disabledTime;
-
-  RolloutPolicy({this.codebaseBranch, this.disabled, this.disabledTime});
-
-  RolloutPolicy.fromJson(core.Map json_)
-    : this(
-        codebaseBranch: json_['codebaseBranch'] as core.String?,
-        disabled: json_['disabled'] as core.bool?,
-        disabledTime: json_['disabledTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (codebaseBranch != null) 'codebaseBranch': codebaseBranch!,
-    if (disabled != null) 'disabled': disabled!,
-    if (disabledTime != null) 'disabledTime': disabledTime!,
-  };
-}
+typedef RolloutPolicy = $RolloutPolicy01;
 
 /// Additional configuration to apply to the Cloud Run
 /// \[`service`\](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
-class RunConfig {
-  /// Maximum number of requests that each Cloud Run instance can receive.
-  ///
-  /// By default, each instance can receive Cloud Run's default of up to 80
-  /// requests at the same time. Concurrency can be set to any integer value up
-  /// to 1000.
-  ///
-  /// Optional.
-  core.int? concurrency;
-
-  /// Number of CPUs used for each serving instance.
-  ///
-  /// By default, cpu defaults to the Cloud Run's default of 1.0. CPU can be set
-  /// to value 1, 2, 4, 6, or 8 CPUs, and for less than 1 CPU, a value from 0.08
-  /// to less than 1.00, in increments of 0.01. If you set a value of less than
-  /// 1 CPU, you must set concurrency to 1, and CPU will only be allocated
-  /// during request processing. Increasing CPUs limit may require increase in
-  /// memory limits: - 4 CPUs: at least 2 GiB - 6 CPUs: at least 4 GiB - 8 CPUs:
-  /// at least 4 GiB
-  ///
-  /// Optional.
-  core.double? cpu;
-
-  /// Number of Cloud Run instances to maintain at maximum for each revision.
-  ///
-  /// By default, each Cloud Run
-  /// \[`service`\](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service)
-  /// scales out to Cloud Run's default of a maximum of 100 instances. The
-  /// maximum max_instances limit is based on your quota. See
-  /// https://cloud.google.com/run/docs/configuring/max-instances#limits.
-  ///
-  /// Optional.
-  core.int? maxInstances;
-
-  /// Amount of memory allocated for each serving instance in MiB.
-  ///
-  /// By default, memory defaults to the Cloud Run's default where each instance
-  /// is allocated 512 MiB of memory. Memory can be set to any integer value
-  /// between 128 to 32768. Increasing memory limit may require increase in CPUs
-  /// limits: - Over 4 GiB: at least 2 CPUs - Over 8 GiB: at least 4 CPUs - Over
-  /// 16 GiB: at least 6 CPUs - Over 24 GiB: at least 8 CPUs
-  ///
-  /// Optional.
-  core.int? memoryMib;
-
-  /// Number of Cloud Run instances to maintain at minimum for each Cloud Run
-  /// Service.
-  ///
-  /// By default, there are no minimum. Even if the service splits traffic
-  /// across multiple revisions, the total number of instances for a service
-  /// will be capped at this value.
-  ///
-  /// Optional.
-  core.int? minInstances;
-
-  RunConfig({
-    this.concurrency,
-    this.cpu,
-    this.maxInstances,
-    this.memoryMib,
-    this.minInstances,
-  });
-
-  RunConfig.fromJson(core.Map json_)
-    : this(
-        concurrency: json_['concurrency'] as core.int?,
-        cpu: (json_['cpu'] as core.num?)?.toDouble(),
-        maxInstances: json_['maxInstances'] as core.int?,
-        memoryMib: json_['memoryMib'] as core.int?,
-        minInstances: json_['minInstances'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (concurrency != null) 'concurrency': concurrency!,
-    if (cpu != null) 'cpu': cpu!,
-    if (maxInstances != null) 'maxInstances': maxInstances!,
-    if (memoryMib != null) 'memoryMib': memoryMib!,
-    if (minInstances != null) 'minInstances': minInstances!,
-  };
-}
+typedef RunConfig = $RunConfig;
 
 /// A managed Cloud Run
 /// \[`service`\](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service).
-class RunService {
-  /// The name of the Cloud Run
-  /// \[`service`\](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#resource:-service),
-  /// in the format:
-  /// `projects/{project}/locations/{location}/services/{serviceId}`
-  ///
-  /// Optional.
-  core.String? service;
-
-  RunService({this.service});
-
-  RunService.fromJson(core.Map json_)
-    : this(service: json_['service'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (service != null) 'service': service!,
-  };
-}
+typedef RunService = $RunService;
 
 /// Indicates whether App Hosting will serve content on the domain.
 class ServingBehavior {
@@ -3595,67 +3243,9 @@ class TrafficSet {
 }
 
 /// The traffic allocation for the backend.
-class TrafficSplit {
-  /// The build that traffic is being routed to.
-  ///
-  /// Required.
-  core.String? build;
-
-  /// The percentage of traffic to send to the build.
-  ///
-  /// Currently must be 100% or 0%.
-  ///
-  /// Required.
-  core.int? percent;
-
-  TrafficSplit({this.build, this.percent});
-
-  TrafficSplit.fromJson(core.Map json_)
-    : this(
-        build: json_['build'] as core.String?,
-        percent: json_['percent'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (build != null) 'build': build!,
-    if (percent != null) 'percent': percent!,
-  };
-}
+typedef TrafficSplit = $TrafficSplit01;
 
 /// Version control metadata for a user associated with a resolved codebase.
 ///
 /// Currently assumes a Git user.
-class UserMetadata {
-  /// The 'name' field in a Git user's git.config.
-  ///
-  /// Required by Git.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The 'email' field in a Git user's git.config, if available.
-  ///
-  /// Output only.
-  core.String? email;
-
-  /// The URI of an image file associated with the user's account in an external
-  /// source control provider, if available.
-  ///
-  /// Output only.
-  core.String? imageUri;
-
-  UserMetadata({this.displayName, this.email, this.imageUri});
-
-  UserMetadata.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        email: json_['email'] as core.String?,
-        imageUri: json_['imageUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-    if (imageUri != null) 'imageUri': imageUri!,
-  };
-}
+typedef UserMetadata = $UserMetadata;

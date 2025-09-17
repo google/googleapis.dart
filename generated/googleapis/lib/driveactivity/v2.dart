@@ -1284,7 +1284,7 @@ class FieldValueChange {
 }
 
 /// This item is deprecated; please see `DriveFile` instead.
-typedef File = $Shared02;
+typedef File = $Shared03;
 
 /// A comment on a file.
 class FileComment {

@@ -4845,7 +4845,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// The auto-accept setting for a group controls whether proposed spokes are
 /// automatically attached to the hub.
@@ -7134,38 +7134,7 @@ class ListSpokesResponse {
 typedef Location = $Location00;
 
 /// Specification for migration with source and target resource names.
-class Migration {
-  /// Resource path as an URI of the source resource, for example a subnet.
-  ///
-  /// The project for the source resource should match the project for the
-  /// InternalRange. An example:
-  /// /projects/{project}/regions/{region}/subnetworks/{subnet}
-  ///
-  /// Immutable.
-  core.String? source;
-
-  /// Resource path of the target resource.
-  ///
-  /// The target project can be different, as in the cases when migrating to
-  /// peer networks. For example:
-  /// /projects/{project}/regions/{region}/subnetworks/{subnet}
-  ///
-  /// Immutable.
-  core.String? target;
-
-  Migration({this.source, this.target});
-
-  Migration.fromJson(core.Map json_)
-    : this(
-        source: json_['source'] as core.String?,
-        target: json_['target'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (source != null) 'source': source!,
-    if (target != null) 'target': target!,
-  };
-}
+typedef Migration = $Migration;
 
 /// A route next hop that leads to an interconnect attachment resource.
 class NextHopInterconnectAttachment {

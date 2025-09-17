@@ -3595,31 +3595,7 @@ typedef AggregationCount = $Empty;
 typedef AggregationFrequency = $Empty;
 
 /// Histogram of bucketed assets counts by field value.
-class AggregationHistogram {
-  /// Lower bounds of buckets.
-  ///
-  /// The response will contain `n+1` buckets for `n` bounds. The first bucket
-  /// will count all assets for which the field value is smaller than the first
-  /// bound. Subsequent buckets will count assets for which the field value is
-  /// greater or equal to a lower bound and smaller than the next one. The last
-  /// bucket will count assets for which the field value is greater or equal to
-  /// the final lower bound. You can define up to 20 lower bounds.
-  core.List<core.double>? lowerBounds;
-
-  AggregationHistogram({this.lowerBounds});
-
-  AggregationHistogram.fromJson(core.Map json_)
-    : this(
-        lowerBounds:
-            (json_['lowerBounds'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lowerBounds != null) 'lowerBounds': lowerBounds!,
-  };
-}
+typedef AggregationHistogram = $AggregationHistogram;
 
 /// Message describing a result of an aggregation.
 class AggregationResult {
@@ -3676,36 +3652,10 @@ class AggregationResult {
 }
 
 /// The result of a count aggregation.
-class AggregationResultCount {
-  core.String? value;
-
-  AggregationResultCount({this.value});
-
-  AggregationResultCount.fromJson(core.Map json_)
-    : this(value: json_['value'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
-}
+typedef AggregationResultCount = $AggregationResultCount;
 
 /// The result of a frequency distribution aggregation.
-class AggregationResultFrequency {
-  core.Map<core.String, core.String>? values;
-
-  AggregationResultFrequency({this.values});
-
-  AggregationResultFrequency.fromJson(core.Map json_)
-    : this(
-        values: (json_['values'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
-}
+typedef AggregationResultFrequency = $AggregationResultFrequency;
 
 /// The result of a bucketed histogram aggregation.
 class AggregationResultHistogram {
@@ -3741,49 +3691,10 @@ class AggregationResultHistogram {
 ///
 /// The lower bound is inclusive and the upper bound is exclusive. Lower bound
 /// may be -infinity and upper bound may be infinity.
-class AggregationResultHistogramBucket {
-  /// Count of items in the bucket.
-  core.String? count;
-
-  /// Lower bound - inclusive.
-  core.double? lowerBound;
-
-  /// Upper bound - exclusive.
-  core.double? upperBound;
-
-  AggregationResultHistogramBucket({
-    this.count,
-    this.lowerBound,
-    this.upperBound,
-  });
-
-  AggregationResultHistogramBucket.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.String?,
-        lowerBound: (json_['lowerBound'] as core.num?)?.toDouble(),
-        upperBound: (json_['upperBound'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (lowerBound != null) 'lowerBound': lowerBound!,
-    if (upperBound != null) 'upperBound': upperBound!,
-  };
-}
+typedef AggregationResultHistogramBucket = $AggregationResultHistogramBucket;
 
 /// The result of a sum aggregation.
-class AggregationResultSum {
-  core.double? value;
-
-  AggregationResultSum({this.value});
-
-  AggregationResultSum.fromJson(core.Map json_)
-    : this(value: (json_['value'] as core.num?)?.toDouble());
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
-}
+typedef AggregationResultSum = $AggregationResultSum;
 
 /// Sum of field values.
 typedef AggregationSum = $Empty;
@@ -4080,26 +3991,7 @@ class AssetFrame {
 }
 
 /// Lists the asset IDs of all assets.
-class AssetList {
-  /// A list of asset IDs
-  ///
-  /// Required.
-  core.List<core.String>? assetIds;
-
-  AssetList({this.assetIds});
-
-  AssetList.fromJson(core.Map json_)
-    : this(
-        assetIds:
-            (json_['assetIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assetIds != null) 'assetIds': assetIds!,
-  };
-}
+typedef AssetList = $AssetList;
 
 /// Performance data for an asset.
 class AssetPerformanceData {
@@ -4130,91 +4022,13 @@ class AssetPerformanceData {
 }
 
 /// AWS EC2 specific details.
-class AwsEc2PlatformDetails {
-  /// Whether the machine is hyperthreaded.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
-  /// unknown.
-  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
-  /// disabled or unavailable.
-  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
-  /// enabled.
-  core.String? hyperthreading;
-
-  /// The location of the machine in the AWS format.
-  core.String? location;
-
-  /// AWS platform's machine type label.
-  core.String? machineTypeLabel;
-
-  AwsEc2PlatformDetails({
-    this.hyperthreading,
-    this.location,
-    this.machineTypeLabel,
-  });
-
-  AwsEc2PlatformDetails.fromJson(core.Map json_)
-    : this(
-        hyperthreading: json_['hyperthreading'] as core.String?,
-        location: json_['location'] as core.String?,
-        machineTypeLabel: json_['machineTypeLabel'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-    if (machineTypeLabel != null) 'machineTypeLabel': machineTypeLabel!,
-  };
-}
+typedef AwsEc2PlatformDetails = $AwsEc2PlatformDetails;
 
 /// Specific details for an AWS RDS database deployment.
 typedef AwsRds = $Empty;
 
 /// Azure VM specific details.
-class AzureVmPlatformDetails {
-  /// Whether the machine is hyperthreaded.
-  /// Possible string values are:
-  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
-  /// unknown.
-  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
-  /// disabled or unavailable.
-  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
-  /// enabled.
-  core.String? hyperthreading;
-
-  /// The location of the machine in the Azure format.
-  core.String? location;
-
-  /// Azure platform's machine type label.
-  core.String? machineTypeLabel;
-
-  /// Azure platform's provisioning state.
-  core.String? provisioningState;
-
-  AzureVmPlatformDetails({
-    this.hyperthreading,
-    this.location,
-    this.machineTypeLabel,
-    this.provisioningState,
-  });
-
-  AzureVmPlatformDetails.fromJson(core.Map json_)
-    : this(
-        hyperthreading: json_['hyperthreading'] as core.String?,
-        location: json_['location'] as core.String?,
-        machineTypeLabel: json_['machineTypeLabel'] as core.String?,
-        provisioningState: json_['provisioningState'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-    if (machineTypeLabel != null) 'machineTypeLabel': machineTypeLabel!,
-    if (provisioningState != null) 'provisioningState': provisioningState!,
-  };
-}
+typedef AzureVmPlatformDetails = $AzureVmPlatformDetails;
 
 /// A request to delete a list of asset.
 class BatchDeleteAssetsRequest {
@@ -4588,25 +4402,7 @@ class ComputeStorageDescriptor {
 }
 
 /// CPU usage sample.
-class CpuUsageSample {
-  /// Percentage of total CPU capacity utilized.
-  ///
-  /// Must be in the interval \[0, 100\]. On most systems can be calculated
-  /// using 100 - idle percentage.
-  core.double? utilizedPercentage;
-
-  CpuUsageSample({this.utilizedPercentage});
-
-  CpuUsageSample.fromJson(core.Map json_)
-    : this(
-        utilizedPercentage:
-            (json_['utilizedPercentage'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (utilizedPercentage != null) 'utilizedPercentage': utilizedPercentage!,
-  };
-}
+typedef CpuUsageSample = $CpuUsageSample;
 
 /// Usage data aggregation for a single day.
 class DailyResourceUsageAggregation {
@@ -4807,43 +4603,8 @@ class DailyResourceUsageAggregationNetwork {
 }
 
 /// Statistical aggregation of samples for a single resource usage.
-class DailyResourceUsageAggregationStats {
-  /// Average usage value.
-  core.double? average;
-
-  /// Median usage value.
-  core.double? median;
-
-  /// 95th percentile usage value.
-  core.double? ninteyFifthPercentile;
-
-  /// Peak usage value.
-  core.double? peak;
-
-  DailyResourceUsageAggregationStats({
-    this.average,
-    this.median,
-    this.ninteyFifthPercentile,
-    this.peak,
-  });
-
-  DailyResourceUsageAggregationStats.fromJson(core.Map json_)
-    : this(
-        average: (json_['average'] as core.num?)?.toDouble(),
-        median: (json_['median'] as core.num?)?.toDouble(),
-        ninteyFifthPercentile:
-            (json_['ninteyFifthPercentile'] as core.num?)?.toDouble(),
-        peak: (json_['peak'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (average != null) 'average': average!,
-    if (median != null) 'median': median!,
-    if (ninteyFifthPercentile != null)
-      'ninteyFifthPercentile': ninteyFifthPercentile!,
-    if (peak != null) 'peak': peak!,
-  };
-}
+typedef DailyResourceUsageAggregationStats =
+    $DailyResourceUsageAggregationStats;
 
 /// The details of a database deployment asset.
 class DatabaseDeploymentDetails {
@@ -4970,21 +4731,8 @@ class DatabaseDeploymentDetails {
 }
 
 /// Aggregated stats for the database deployment.
-class DatabaseDeploymentDetailsAggregatedStats {
-  /// The number of databases in the deployment.
-  ///
-  /// Output only.
-  core.int? databaseCount;
-
-  DatabaseDeploymentDetailsAggregatedStats({this.databaseCount});
-
-  DatabaseDeploymentDetailsAggregatedStats.fromJson(core.Map json_)
-    : this(databaseCount: json_['databaseCount'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseCount != null) 'databaseCount': databaseCount!,
-  };
-}
+typedef DatabaseDeploymentDetailsAggregatedStats =
+    $DatabaseDeploymentDetailsAggregatedStats;
 
 /// Details of database deployment's topology.
 class DatabaseDeploymentTopology {
@@ -5211,47 +4959,7 @@ class DatabaseInstance {
 }
 
 /// Network details of a database instance.
-class DatabaseInstanceNetwork {
-  /// The instance's host names.
-  ///
-  /// Optional.
-  core.List<core.String>? hostNames;
-
-  /// The instance's IP addresses.
-  ///
-  /// Optional.
-  core.List<core.String>? ipAddresses;
-
-  /// The instance's primary MAC address.
-  ///
-  /// Optional.
-  core.String? primaryMacAddress;
-
-  DatabaseInstanceNetwork({
-    this.hostNames,
-    this.ipAddresses,
-    this.primaryMacAddress,
-  });
-
-  DatabaseInstanceNetwork.fromJson(core.Map json_)
-    : this(
-        hostNames:
-            (json_['hostNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ipAddresses:
-            (json_['ipAddresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        primaryMacAddress: json_['primaryMacAddress'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostNames != null) 'hostNames': hostNames!,
-    if (ipAddresses != null) 'ipAddresses': ipAddresses!,
-    if (primaryMacAddress != null) 'primaryMacAddress': primaryMacAddress!,
-  };
-}
+typedef DatabaseInstanceNetwork = $DatabaseInstanceNetwork;
 
 /// Details of a group of database objects.
 class DatabaseObjects {
@@ -5984,49 +5692,11 @@ class FileValidationReport {
 }
 
 /// Describes the fit level of an asset for migration to a specific target.
-class FitDescriptor {
-  /// Fit level.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "FIT_LEVEL_UNSPECIFIED" : Not enough information.
-  /// - "FIT" : Fit.
-  /// - "NO_FIT" : No Fit.
-  /// - "REQUIRES_EFFORT" : Fit with effort.
-  core.String? fitLevel;
-
-  FitDescriptor({this.fitLevel});
-
-  FitDescriptor.fromJson(core.Map json_)
-    : this(fitLevel: json_['fitLevel'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fitLevel != null) 'fitLevel': fitLevel!,
-  };
-}
+typedef FitDescriptor = $FitDescriptor;
 
 /// A resource that contains a single violation of a reported `AssetFrame`
 /// resource.
-class FrameViolationEntry {
-  /// The field of the original frame where the violation occurred.
-  core.String? field;
-
-  /// A message describing the violation.
-  core.String? violation;
-
-  FrameViolationEntry({this.field, this.violation});
-
-  FrameViolationEntry.fromJson(core.Map json_)
-    : this(
-        field: json_['field'] as core.String?,
-        violation: json_['violation'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (field != null) 'field': field!,
-    if (violation != null) 'violation': violation!,
-  };
-}
+typedef FrameViolationEntry = $FrameViolationEntry;
 
 /// Collection of frame data.
 class Frames {
@@ -6053,54 +5723,7 @@ class Frames {
 }
 
 /// Single fstab entry.
-class FstabEntry {
-  /// The mount point for the filesystem.
-  core.String? file;
-
-  /// Used by dump to determine which filesystems need to be dumped.
-  core.int? freq;
-
-  /// Mount options associated with the filesystem.
-  core.String? mntops;
-
-  /// Used by the fsck(8) program to determine the order in which filesystem
-  /// checks are done at reboot time.
-  core.int? passno;
-
-  /// The block special device or remote filesystem to be mounted.
-  core.String? spec;
-
-  /// The type of the filesystem.
-  core.String? vfstype;
-
-  FstabEntry({
-    this.file,
-    this.freq,
-    this.mntops,
-    this.passno,
-    this.spec,
-    this.vfstype,
-  });
-
-  FstabEntry.fromJson(core.Map json_)
-    : this(
-        file: json_['file'] as core.String?,
-        freq: json_['freq'] as core.int?,
-        mntops: json_['mntops'] as core.String?,
-        passno: json_['passno'] as core.int?,
-        spec: json_['spec'] as core.String?,
-        vfstype: json_['vfstype'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (file != null) 'file': file!,
-    if (freq != null) 'freq': freq!,
-    if (mntops != null) 'mntops': mntops!,
-    if (passno != null) 'passno': passno!,
-    if (spec != null) 'spec': spec!,
-    if (vfstype != null) 'vfstype': vfstype!,
-  };
-}
+typedef FstabEntry = $FstabEntry;
 
 /// Fstab content.
 class FstabEntryList {
@@ -6175,101 +5798,14 @@ class GenericInsight {
 }
 
 /// Generic platform details.
-class GenericPlatformDetails {
-  /// Whether the machine is hyperthreaded.
-  /// Possible string values are:
-  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
-  /// unknown.
-  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
-  /// disabled or unavailable.
-  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
-  /// enabled.
-  core.String? hyperthreading;
-
-  /// Free text representation of the machine location.
-  ///
-  /// The format of this field should not be relied on. Different VMs in the
-  /// same location may have different string values for this field.
-  core.String? location;
-
-  GenericPlatformDetails({this.hyperthreading, this.location});
-
-  GenericPlatformDetails.fromJson(core.Map json_)
-    : this(
-        hyperthreading: json_['hyperthreading'] as core.String?,
-        location: json_['location'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-  };
-}
+typedef GenericPlatformDetails = $GenericPlatformDetails;
 
 /// A resource that represents an asset group.
 ///
 /// The purpose of an asset group is to bundle a set of assets that have
 /// something in common, while allowing users to add annotations to the group.
 /// An asset can belong to multiple groups.
-class Group {
-  /// The timestamp when the group was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The description of the group.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// User-friendly display name.
-  ///
-  /// Optional.
-  core.String? displayName;
-
-  /// Labels as key value pairs.
-  core.Map<core.String, core.String>? labels;
-
-  /// The name of the group.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The timestamp when the group was last updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  Group({
-    this.createTime,
-    this.description,
-    this.displayName,
-    this.labels,
-    this.name,
-    this.updateTime,
-  });
-
-  Group.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef Group = $Group00;
 
 /// Guest OS config information.
 class GuestConfigDetails {
@@ -6555,29 +6091,7 @@ class GuestRuntimeDetails {
 }
 
 /// Single /etc/hosts entry.
-class HostsEntry {
-  /// List of host names / aliases.
-  core.List<core.String>? hostNames;
-
-  /// IP (raw, IPv4/6 agnostic).
-  core.String? ip;
-
-  HostsEntry({this.hostNames, this.ip});
-
-  HostsEntry.fromJson(core.Map json_)
-    : this(
-        hostNames:
-            (json_['hostNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ip: json_['ip'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostNames != null) 'hostNames': hostNames!,
-    if (ip != null) 'ip': ip!,
-  };
-}
+typedef HostsEntry = $HostsEntry;
 
 /// Hosts content.
 class HostsEntryList {
@@ -6687,31 +6201,7 @@ class ImportDataFile {
 
 /// A resource that reports the errors encountered while processing an import
 /// job.
-class ImportError {
-  /// The error information.
-  core.String? errorDetails;
-
-  /// The severity of the error.
-  /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED"
-  /// - "ERROR"
-  /// - "WARNING"
-  /// - "INFO"
-  core.String? severity;
-
-  ImportError({this.errorDetails, this.severity});
-
-  ImportError.fromJson(core.Map json_)
-    : this(
-        errorDetails: json_['errorDetails'] as core.String?,
-        severity: json_['severity'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorDetails != null) 'errorDetails': errorDetails!,
-    if (severity != null) 'severity': severity!,
-  };
-}
+typedef ImportError = $ImportError;
 
 /// A resource that represents the background job that imports asset frames.
 class ImportJob {
@@ -6950,41 +6440,10 @@ class ImportRowErrorArchiveErrorDetails {
 }
 
 /// Error details for a CSV file.
-class ImportRowErrorCsvErrorDetails {
-  /// The row number where the error was detected.
-  core.int? rowNumber;
-
-  ImportRowErrorCsvErrorDetails({this.rowNumber});
-
-  ImportRowErrorCsvErrorDetails.fromJson(core.Map json_)
-    : this(rowNumber: json_['rowNumber'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rowNumber != null) 'rowNumber': rowNumber!,
-  };
-}
+typedef ImportRowErrorCsvErrorDetails = $ImportRowErrorCsvErrorDetails;
 
 /// Error details for an XLSX file.
-class ImportRowErrorXlsxErrorDetails {
-  /// The row number where the error was detected.
-  core.int? rowNumber;
-
-  /// The name of the sheet where the error was detected.
-  core.String? sheet;
-
-  ImportRowErrorXlsxErrorDetails({this.rowNumber, this.sheet});
-
-  ImportRowErrorXlsxErrorDetails.fromJson(core.Map json_)
-    : this(
-        rowNumber: json_['rowNumber'] as core.int?,
-        sheet: json_['sheet'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rowNumber != null) 'rowNumber': rowNumber!,
-    if (sheet != null) 'sheet': sheet!,
-  };
-}
+typedef ImportRowErrorXlsxErrorDetails = $ImportRowErrorXlsxErrorDetails;
 
 /// An insight about an asset.
 class Insight {
@@ -7880,44 +7339,10 @@ class MachinePreferences {
 
 /// A machine series, for a target product (e.g. Compute Engine, Google Cloud
 /// VMware Engine).
-class MachineSeries {
-  /// Code to identify a machine series.
-  ///
-  /// Consult this for more details on the available series for Compute Engine:
-  /// https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison
-  /// Consult this for more details on the available series for Google Cloud
-  /// VMware Engine: https://cloud.google.com/vmware-engine/pricing
-  core.String? code;
-
-  MachineSeries({this.code});
-
-  MachineSeries.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef MachineSeries = $MachineSeries;
 
 /// Memory usage sample.
-class MemoryUsageSample {
-  /// Percentage of system memory utilized.
-  ///
-  /// Must be in the interval \[0, 100\].
-  core.double? utilizedPercentage;
-
-  MemoryUsageSample({this.utilizedPercentage});
-
-  MemoryUsageSample.fromJson(core.Map json_)
-    : this(
-        utilizedPercentage:
-            (json_['utilizedPercentage'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (utilizedPercentage != null) 'utilizedPercentage': utilizedPercentage!,
-  };
-}
+typedef MemoryUsageSample = $MemoryUsageSample;
 
 /// An insight about potential migrations for an asset.
 class MigrationInsight {
@@ -7962,37 +7387,7 @@ class MigrationInsight {
 typedef Money = $Money;
 
 /// MySql plugin.
-class MySqlPlugin {
-  /// The plugin is active.
-  ///
-  /// Required.
-  core.bool? enabled;
-
-  /// The plugin name.
-  ///
-  /// Required.
-  core.String? plugin;
-
-  /// The plugin version.
-  ///
-  /// Required.
-  core.String? version;
-
-  MySqlPlugin({this.enabled, this.plugin, this.version});
-
-  MySqlPlugin.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        plugin: json_['plugin'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (plugin != null) 'plugin': plugin!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef MySqlPlugin = $MySqlPlugin;
 
 /// MySql property.
 typedef MySqlProperty = $SqlProperty;
@@ -8024,88 +7419,10 @@ class MySqlSchemaDetails {
 }
 
 /// Mysql storage engine tables.
-class MySqlStorageEngineDetails {
-  /// The number of encrypted tables.
-  ///
-  /// Optional.
-  core.int? encryptedTableCount;
-
-  /// The storage engine.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "ENGINE_UNSPECIFIED" : Unspecified storage engine.
-  /// - "INNODB" : InnoDB.
-  /// - "MYISAM" : MyISAM.
-  /// - "MEMORY" : Memory.
-  /// - "CSV" : CSV.
-  /// - "ARCHIVE" : Archive.
-  /// - "BLACKHOLE" : Blackhole.
-  /// - "NDB" : NDB.
-  /// - "MERGE" : Merge.
-  /// - "FEDERATED" : Federated.
-  /// - "EXAMPLE" : Example.
-  /// - "OTHER" : Other.
-  core.String? engine;
-
-  /// The number of tables.
-  ///
-  /// Optional.
-  core.int? tableCount;
-
-  MySqlStorageEngineDetails({
-    this.encryptedTableCount,
-    this.engine,
-    this.tableCount,
-  });
-
-  MySqlStorageEngineDetails.fromJson(core.Map json_)
-    : this(
-        encryptedTableCount: json_['encryptedTableCount'] as core.int?,
-        engine: json_['engine'] as core.String?,
-        tableCount: json_['tableCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptedTableCount != null)
-      'encryptedTableCount': encryptedTableCount!,
-    if (engine != null) 'engine': engine!,
-    if (tableCount != null) 'tableCount': tableCount!,
-  };
-}
+typedef MySqlStorageEngineDetails = $MySqlStorageEngineDetails;
 
 /// MySql variable.
-class MySqlVariable {
-  /// The variable category.
-  ///
-  /// Required.
-  core.String? category;
-
-  /// The variable value.
-  ///
-  /// Required.
-  core.String? value;
-
-  /// The variable name.
-  ///
-  /// Required.
-  core.String? variable;
-
-  MySqlVariable({this.category, this.value, this.variable});
-
-  MySqlVariable.fromJson(core.Map json_)
-    : this(
-        category: json_['category'] as core.String?,
-        value: json_['value'] as core.String?,
-        variable: json_['variable'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (value != null) 'value': value!,
-    if (variable != null) 'variable': variable!,
-  };
-}
+typedef MySqlVariable = $MySqlVariable;
 
 /// Specific details for a Mysql database deployment.
 class MysqlDatabaseDeployment {
@@ -8231,51 +7548,7 @@ class NetworkAdapterList {
 }
 
 /// Details of network address.
-class NetworkAddress {
-  /// Whether DHCP is used to assign addresses.
-  /// Possible string values are:
-  /// - "ADDRESS_ASSIGNMENT_UNSPECIFIED" : Unknown (default value).
-  /// - "ADDRESS_ASSIGNMENT_STATIC" : Statically assigned IP.
-  /// - "ADDRESS_ASSIGNMENT_DHCP" : Dynamically assigned IP (DHCP).
-  core.String? assignment;
-
-  /// Broadcast address.
-  core.String? bcast;
-
-  /// Fully qualified domain name.
-  core.String? fqdn;
-
-  /// Assigned or configured IP Address.
-  core.String? ipAddress;
-
-  /// Subnet mask.
-  core.String? subnetMask;
-
-  NetworkAddress({
-    this.assignment,
-    this.bcast,
-    this.fqdn,
-    this.ipAddress,
-    this.subnetMask,
-  });
-
-  NetworkAddress.fromJson(core.Map json_)
-    : this(
-        assignment: json_['assignment'] as core.String?,
-        bcast: json_['bcast'] as core.String?,
-        fqdn: json_['fqdn'] as core.String?,
-        ipAddress: json_['ipAddress'] as core.String?,
-        subnetMask: json_['subnetMask'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assignment != null) 'assignment': assignment!,
-    if (bcast != null) 'bcast': bcast!,
-    if (fqdn != null) 'fqdn': fqdn!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (subnetMask != null) 'subnetMask': subnetMask!,
-  };
-}
+typedef NetworkAddress = $NetworkAddress;
 
 /// List of allocated/assigned network addresses.
 class NetworkAddressList {
@@ -8395,56 +7668,10 @@ class NetworkConnectionList {
 /// Network usage sample.
 ///
 /// Values are across all network interfaces.
-class NetworkUsageSample {
-  /// Average network egress in B/s sampled over a short window.
-  ///
-  /// Must be non-negative.
-  core.double? averageEgressBps;
-
-  /// Average network ingress in B/s sampled over a short window.
-  ///
-  /// Must be non-negative.
-  core.double? averageIngressBps;
-
-  NetworkUsageSample({this.averageEgressBps, this.averageIngressBps});
-
-  NetworkUsageSample.fromJson(core.Map json_)
-    : this(
-        averageEgressBps: (json_['averageEgressBps'] as core.num?)?.toDouble(),
-        averageIngressBps:
-            (json_['averageIngressBps'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (averageEgressBps != null) 'averageEgressBps': averageEgressBps!,
-    if (averageIngressBps != null) 'averageIngressBps': averageIngressBps!,
-  };
-}
+typedef NetworkUsageSample = $NetworkUsageSample;
 
 /// NFS export.
-class NfsExport {
-  /// The directory being exported.
-  core.String? exportDirectory;
-
-  /// The hosts or networks to which the export is being shared.
-  core.List<core.String>? hosts;
-
-  NfsExport({this.exportDirectory, this.hosts});
-
-  NfsExport.fromJson(core.Map json_)
-    : this(
-        exportDirectory: json_['exportDirectory'] as core.String?,
-        hosts:
-            (json_['hosts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exportDirectory != null) 'exportDirectory': exportDirectory!,
-    if (hosts != null) 'hosts': hosts!,
-  };
-}
+typedef NfsExport = $NfsExport;
 
 /// NFS exports.
 class NfsExportList {
@@ -8471,36 +7698,7 @@ class NfsExportList {
 }
 
 /// Open file Information.
-class OpenFileDetails {
-  /// Opened file command.
-  core.String? command;
-
-  /// Opened file file path.
-  core.String? filePath;
-
-  /// Opened file file type.
-  core.String? fileType;
-
-  /// Opened file user.
-  core.String? user;
-
-  OpenFileDetails({this.command, this.filePath, this.fileType, this.user});
-
-  OpenFileDetails.fromJson(core.Map json_)
-    : this(
-        command: json_['command'] as core.String?,
-        filePath: json_['filePath'] as core.String?,
-        fileType: json_['fileType'] as core.String?,
-        user: json_['user'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (command != null) 'command': command!,
-    if (filePath != null) 'filePath': filePath!,
-    if (fileType != null) 'fileType': fileType!,
-    if (user != null) 'user': user!,
-  };
-}
+typedef OpenFileDetails = $OpenFileDetails;
 
 /// Open file list.
 class OpenFileList {
@@ -8666,36 +7864,7 @@ class PerformanceSample {
 }
 
 /// Platform specific details for Physical Machines.
-class PhysicalPlatformDetails {
-  /// Whether the machine is hyperthreaded.
-  /// Possible string values are:
-  /// - "HYPERTHREADING_STATUS_UNSPECIFIED" : Simultaneous Multithreading status
-  /// unknown.
-  /// - "HYPERTHREADING_STATUS_DISABLED" : Simultaneous Multithreading is
-  /// disabled or unavailable.
-  /// - "HYPERTHREADING_STATUS_ENABLED" : Simultaneous Multithreading is
-  /// enabled.
-  core.String? hyperthreading;
-
-  /// Free text representation of the machine location.
-  ///
-  /// The format of this field should not be relied on. Different machines in
-  /// the same location may have different string values for this field.
-  core.String? location;
-
-  PhysicalPlatformDetails({this.hyperthreading, this.location});
-
-  PhysicalPlatformDetails.fromJson(core.Map json_)
-    : this(
-        hyperthreading: json_['hyperthreading'] as core.String?,
-        location: json_['location'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hyperthreading != null) 'hyperthreading': hyperthreading!,
-    if (location != null) 'location': location!,
-  };
-}
+typedef PhysicalPlatformDetails = $PhysicalPlatformDetails;
 
 /// Information about the platform.
 class PlatformDetails {
@@ -8809,30 +7978,7 @@ class PostgreSqlDatabaseDeployment {
 }
 
 /// PostgreSql extension.
-class PostgreSqlExtension {
-  /// The extension name.
-  ///
-  /// Required.
-  core.String? extension;
-
-  /// The extension version.
-  ///
-  /// Required.
-  core.String? version;
-
-  PostgreSqlExtension({this.extension, this.version});
-
-  PostgreSqlExtension.fromJson(core.Map json_)
-    : this(
-        extension: json_['extension'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (extension != null) 'extension': extension!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef PostgreSqlExtension = $PostgreSqlExtension;
 
 /// PostgreSql property.
 typedef PostgreSqlProperty = $SqlProperty;
@@ -8872,75 +8018,7 @@ class PostgreSqlSchemaDetails {
 }
 
 /// PostgreSql setting.
-class PostgreSqlSetting {
-  /// The setting boolean value.
-  ///
-  /// Required.
-  core.bool? boolValue;
-
-  /// The setting int value.
-  ///
-  /// Required.
-  core.String? intValue;
-
-  /// The setting real value.
-  ///
-  /// Required.
-  core.double? realValue;
-
-  /// The setting name.
-  ///
-  /// Required.
-  core.String? setting;
-
-  /// The setting source.
-  ///
-  /// Required.
-  core.String? source;
-
-  /// The setting string value.
-  ///
-  /// Notice that enum values are stored as strings.
-  ///
-  /// Required.
-  core.String? stringValue;
-
-  /// The setting unit.
-  ///
-  /// Optional.
-  core.String? unit;
-
-  PostgreSqlSetting({
-    this.boolValue,
-    this.intValue,
-    this.realValue,
-    this.setting,
-    this.source,
-    this.stringValue,
-    this.unit,
-  });
-
-  PostgreSqlSetting.fromJson(core.Map json_)
-    : this(
-        boolValue: json_['boolValue'] as core.bool?,
-        intValue: json_['intValue'] as core.String?,
-        realValue: (json_['realValue'] as core.num?)?.toDouble(),
-        setting: json_['setting'] as core.String?,
-        source: json_['source'] as core.String?,
-        stringValue: json_['stringValue'] as core.String?,
-        unit: json_['unit'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boolValue != null) 'boolValue': boolValue!,
-    if (intValue != null) 'intValue': intValue!,
-    if (realValue != null) 'realValue': realValue!,
-    if (setting != null) 'setting': setting!,
-    if (source != null) 'source': source!,
-    if (stringValue != null) 'stringValue': stringValue!,
-    if (unit != null) 'unit': unit!,
-  };
-}
+typedef PostgreSqlSetting = $PostgreSqlSetting;
 
 /// The preferences that apply to all assets in a given context.
 class PreferenceSet {
@@ -9009,87 +8087,10 @@ class PreferenceSet {
 }
 
 /// The user preferences relating to target regions.
-class RegionPreferences {
-  /// A list of preferred regions, ordered by the most preferred region first.
-  ///
-  /// Set only valid Google Cloud region names. See
-  /// https://cloud.google.com/compute/docs/regions-zones for available regions.
-  core.List<core.String>? preferredRegions;
-
-  RegionPreferences({this.preferredRegions});
-
-  RegionPreferences.fromJson(core.Map json_)
-    : this(
-        preferredRegions:
-            (json_['preferredRegions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (preferredRegions != null) 'preferredRegions': preferredRegions!,
-  };
-}
+typedef RegionPreferences = $RegionPreferences;
 
 /// Message representing a relation between 2 resource.
-class Relation {
-  /// The timestamp when the relation was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The destination asset name in the relation.
-  ///
-  /// Output only.
-  core.String? dstAsset;
-
-  /// Identifier.
-  ///
-  /// The identifier of the relation.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The source asset name in the relation.
-  ///
-  /// Output only.
-  core.String? srcAsset;
-
-  /// The type of the relation.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value.
-  /// - "LOGICAL_DATABASE" : DBDeployment -\> Database
-  /// - "DATABASE_DEPLOYMENT_HOSTING_SERVER" : A relation between a machine/VM
-  /// and the database deployment it hosts.
-  core.String? type;
-
-  Relation({
-    this.createTime,
-    this.dstAsset,
-    this.name,
-    this.srcAsset,
-    this.type,
-  });
-
-  Relation.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        dstAsset: json_['dstAsset'] as core.String?,
-        name: json_['name'] as core.String?,
-        srcAsset: json_['srcAsset'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (dstAsset != null) 'dstAsset': dstAsset!,
-    if (name != null) 'name': name!,
-    if (srcAsset != null) 'srcAsset': srcAsset!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef Relation = $Relation;
 
 /// A request to remove assets from a group.
 class RemoveAssetsFromGroupRequest {
@@ -9308,30 +8309,8 @@ class ReportConfig {
 }
 
 /// Represents a combination of a group with a preference set.
-class ReportConfigGroupPreferenceSetAssignment {
-  /// Name of the group.
-  ///
-  /// Required.
-  core.String? group;
-
-  /// Name of the Preference Set.
-  ///
-  /// Required.
-  core.String? preferenceSet;
-
-  ReportConfigGroupPreferenceSetAssignment({this.group, this.preferenceSet});
-
-  ReportConfigGroupPreferenceSetAssignment.fromJson(core.Map json_)
-    : this(
-        group: json_['group'] as core.String?,
-        preferenceSet: json_['preferenceSet'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (group != null) 'group': group!,
-    if (preferenceSet != null) 'preferenceSet': preferenceSet!,
-  };
-}
+typedef ReportConfigGroupPreferenceSetAssignment =
+    $ReportConfigGroupPreferenceSetAssignment;
 
 /// Describes the Summary view of a Report, which contains aggregated values for
 /// all the groups and preference sets included in this Report.
@@ -9508,26 +8487,7 @@ class ReportSummaryChartData {
 }
 
 /// Describes a single data point in the Chart.
-class ReportSummaryChartDataDataPoint {
-  /// The X-axis label for this data point.
-  core.String? label;
-
-  /// The Y-axis value for this data point.
-  core.double? value;
-
-  ReportSummaryChartDataDataPoint({this.label, this.value});
-
-  ReportSummaryChartDataDataPoint.fromJson(core.Map json_)
-    : this(
-        label: json_['label'] as core.String?,
-        value: (json_['value'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (label != null) 'label': label!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef ReportSummaryChartDataDataPoint = $ReportSummaryChartDataDataPoint;
 
 /// A set of findings that applies to assets destined for Compute Engine.
 class ReportSummaryComputeEngineFinding {
@@ -9827,35 +8787,8 @@ class ReportSummaryHistogramChartData {
 ///
 /// The lower bound is inclusive and the upper bound is exclusive. Lower bound
 /// may be -infinity and upper bound may be infinity.
-class ReportSummaryHistogramChartDataBucket {
-  /// Count of items in the bucket.
-  core.String? count;
-
-  /// Lower bound - inclusive.
-  core.String? lowerBound;
-
-  /// Upper bound - exclusive.
-  core.String? upperBound;
-
-  ReportSummaryHistogramChartDataBucket({
-    this.count,
-    this.lowerBound,
-    this.upperBound,
-  });
-
-  ReportSummaryHistogramChartDataBucket.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.String?,
-        lowerBound: json_['lowerBound'] as core.String?,
-        upperBound: json_['upperBound'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (lowerBound != null) 'lowerBound': lowerBound!,
-    if (upperBound != null) 'upperBound': upperBound!,
-  };
-}
+typedef ReportSummaryHistogramChartDataBucket =
+    $ReportSummaryHistogramChartDataBucket;
 
 /// Represents a data point tracking the count of assets allocated for a
 /// specific Machine Series.
@@ -9970,26 +8903,7 @@ class ReportSummarySoleTenantNodeAllocation {
 
 /// Utilization Chart is a specific type of visualization which displays a
 /// metric classified into "Used" and "Free" buckets.
-class ReportSummaryUtilizationChartData {
-  /// Aggregate value which falls into the "Free" bucket.
-  core.String? free;
-
-  /// Aggregate value which falls into the "Used" bucket.
-  core.String? used;
-
-  ReportSummaryUtilizationChartData({this.free, this.used});
-
-  ReportSummaryUtilizationChartData.fromJson(core.Map json_)
-    : this(
-        free: json_['free'] as core.String?,
-        used: json_['used'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (free != null) 'free': free!,
-    if (used != null) 'used': used!,
-  };
-}
+typedef ReportSummaryUtilizationChartData = $ReportSummaryUtilizationChartData;
 
 /// A set of findings that applies to assets destined for VMWare Engine.
 class ReportSummaryVmwareEngineFinding {
@@ -10034,22 +8948,7 @@ class ReportSummaryVmwareEngineFinding {
 }
 
 /// A VMWare Engine Node
-class ReportSummaryVmwareNode {
-  /// Code to identify VMware Engine node series, e.g. "ve1-standard-72".
-  ///
-  /// Based on the displayName of
-  /// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
-  core.String? code;
-
-  ReportSummaryVmwareNode({this.code});
-
-  ReportSummaryVmwareNode.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef ReportSummaryVmwareNode = $Node01;
 
 /// Represents assets allocated to a specific VMWare Node type.
 class ReportSummaryVmwareNodeAllocation {
@@ -10092,49 +8991,7 @@ class ReportSummaryVmwareNodeAllocation {
 typedef RunImportJobRequest = $Request00;
 
 /// Guest OS running process details.
-class RunningProcess {
-  /// Process extended attributes.
-  core.Map<core.String, core.String>? attributes;
-
-  /// Process full command line.
-  core.String? cmdline;
-
-  /// Process binary path.
-  core.String? exePath;
-
-  /// Process ID.
-  core.String? pid;
-
-  /// User running the process.
-  core.String? user;
-
-  RunningProcess({
-    this.attributes,
-    this.cmdline,
-    this.exePath,
-    this.pid,
-    this.user,
-  });
-
-  RunningProcess.fromJson(core.Map json_)
-    : this(
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        cmdline: json_['cmdline'] as core.String?,
-        exePath: json_['exePath'] as core.String?,
-        pid: json_['pid'] as core.String?,
-        user: json_['user'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (cmdline != null) 'cmdline': cmdline!,
-    if (exePath != null) 'exePath': exePath!,
-    if (pid != null) 'pid': pid!,
-    if (user != null) 'user': user!,
-  };
-}
+typedef RunningProcess = $RunningProcess;
 
 /// List of running guest OS processes.
 class RunningProcessList {
@@ -10407,21 +9264,7 @@ class SoleTenancyPreferences {
 }
 
 /// A Sole Tenant node type.
-class SoleTenantNodeType {
-  /// Name of the Sole Tenant node.
-  ///
-  /// Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  core.String? nodeName;
-
-  SoleTenantNodeType({this.nodeName});
-
-  SoleTenantNodeType.fromJson(core.Map json_)
-    : this(nodeName: json_['nodeName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodeName != null) 'nodeName': nodeName!,
-  };
-}
+typedef SoleTenantNodeType = $SoleTenantNodeType;
 
 /// Source represents an object from which asset information is streamed to
 /// Migration Center.
@@ -10590,115 +9433,16 @@ class SqlServerDatabaseDeployment {
 }
 
 /// SQL Server feature details.
-class SqlServerFeature {
-  /// Field enabled is set when a feature is used on the source deployment.
-  ///
-  /// Required.
-  core.bool? enabled;
-
-  /// The feature name.
-  ///
-  /// Required.
-  core.String? featureName;
-
-  SqlServerFeature({this.enabled, this.featureName});
-
-  SqlServerFeature.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        featureName: json_['featureName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (featureName != null) 'featureName': featureName!,
-  };
-}
+typedef SqlServerFeature = $SqlServerFeature;
 
 /// Specific details for a SqlServer database.
-class SqlServerSchemaDetails {
-  /// SqlServer number of CLR objects.
-  ///
-  /// Optional.
-  core.int? clrObjectCount;
-
-  SqlServerSchemaDetails({this.clrObjectCount});
-
-  SqlServerSchemaDetails.fromJson(core.Map json_)
-    : this(clrObjectCount: json_['clrObjectCount'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clrObjectCount != null) 'clrObjectCount': clrObjectCount!,
-  };
-}
+typedef SqlServerSchemaDetails = $SqlServerSchemaDetails;
 
 /// SQL Server server flag details.
-class SqlServerServerFlag {
-  /// The server flag name.
-  ///
-  /// Required.
-  core.String? serverFlagName;
-
-  /// The server flag value set by the user.
-  ///
-  /// Required.
-  core.String? value;
-
-  /// The server flag actual value.
-  ///
-  /// If `value_in_use` is different from `value` it means that either the
-  /// configuration change was not applied or it is an expected behavior. See
-  /// SQL Server documentation for more details.
-  ///
-  /// Required.
-  core.String? valueInUse;
-
-  SqlServerServerFlag({this.serverFlagName, this.value, this.valueInUse});
-
-  SqlServerServerFlag.fromJson(core.Map json_)
-    : this(
-        serverFlagName: json_['serverFlagName'] as core.String?,
-        value: json_['value'] as core.String?,
-        valueInUse: json_['valueInUse'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (serverFlagName != null) 'serverFlagName': serverFlagName!,
-    if (value != null) 'value': value!,
-    if (valueInUse != null) 'valueInUse': valueInUse!,
-  };
-}
+typedef SqlServerServerFlag = $SqlServerServerFlag;
 
 /// SQL Server trace flag details.
-class SqlServerTraceFlag {
-  /// The trace flag scope.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED" : Unspecified.
-  /// - "OFF" : Off.
-  /// - "GLOBAL" : Global.
-  /// - "SESSION" : Session.
-  core.String? scope;
-
-  /// The trace flag name.
-  ///
-  /// Required.
-  core.String? traceFlagName;
-
-  SqlServerTraceFlag({this.scope, this.traceFlagName});
-
-  SqlServerTraceFlag.fromJson(core.Map json_)
-    : this(
-        scope: json_['scope'] as core.String?,
-        traceFlagName: json_['traceFlagName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-    if (traceFlagName != null) 'traceFlagName': traceFlagName!,
-  };
-}
+typedef SqlServerTraceFlag = $SqlServerTraceFlag;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

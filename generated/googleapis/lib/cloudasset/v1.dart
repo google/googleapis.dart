@@ -2630,7 +2630,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Batch get assets history response.
 class BatchGetAssetsHistoryResponse {
@@ -6808,31 +6808,7 @@ class OutputConfig {
 }
 
 /// Specifications of BigQuery partitioned table as export destination.
-class PartitionSpec {
-  /// The partition key for BigQuery partitioned table.
-  /// Possible string values are:
-  /// - "PARTITION_KEY_UNSPECIFIED" : Unspecified partition key. If used, it
-  /// means using non-partitioned table.
-  /// - "READ_TIME" : The time when the snapshot is taken. If specified as
-  /// partition key, the result table(s) is partitioned by the additional
-  /// timestamp column, readTime. If \[read_time\] in ExportAssetsRequest is
-  /// specified, the readTime column's value will be the same as it. Otherwise,
-  /// its value will be the current time that is used to take the snapshot.
-  /// - "REQUEST_TIME" : The time when the request is received and started to be
-  /// processed. If specified as partition key, the result table(s) is
-  /// partitioned by the requestTime column, an additional timestamp column
-  /// representing when the request was received.
-  core.String? partitionKey;
-
-  PartitionSpec({this.partitionKey});
-
-  PartitionSpec.fromJson(core.Map json_)
-    : this(partitionKey: json_['partitionKey'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (partitionKey != null) 'partitionKey': partitionKey!,
-  };
-}
+typedef PartitionSpec = $PartitionSpec;
 
 /// IAM permissions
 class Permissions {
@@ -8580,28 +8556,7 @@ class TemporalAsset {
 }
 
 /// A time window specified by its `start_time` and `end_time`.
-class TimeWindow {
-  /// End time of the time window (inclusive).
-  ///
-  /// If not specified, the current timestamp is used instead.
-  core.String? endTime;
-
-  /// Start time of the time window (exclusive).
-  core.String? startTime;
-
-  TimeWindow({this.endTime, this.startTime});
-
-  TimeWindow.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef TimeWindow = $TimeWindow00;
 
 /// Update asset feed request.
 class UpdateFeedRequest {

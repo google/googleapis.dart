@@ -3002,87 +3002,13 @@ class CropHintsAnnotation {
 }
 
 /// Parameters for crop hints annotation request.
-class CropHintsParams {
-  /// Aspect ratios in floats, representing the ratio of the width to the height
-  /// of the image.
-  ///
-  /// For example, if the desired aspect ratio is 4/3, the corresponding float
-  /// value should be 1.33333. If not specified, the best possible crop is
-  /// returned. The number of provided aspect ratios is limited to a maximum of
-  /// 16; any aspect ratios provided after the 16th are ignored.
-  core.List<core.double>? aspectRatios;
-
-  CropHintsParams({this.aspectRatios});
-
-  CropHintsParams.fromJson(core.Map json_)
-    : this(
-        aspectRatios:
-            (json_['aspectRatios'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aspectRatios != null) 'aspectRatios': aspectRatios!,
-  };
-}
+typedef CropHintsParams = $CropHintsParams;
 
 /// Detected start or end of a structural component.
-class DetectedBreak {
-  /// True if break prepends the element.
-  core.bool? isPrefix;
-
-  /// Detected break type.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown break label type.
-  /// - "SPACE" : Regular space.
-  /// - "SURE_SPACE" : Sure space (very wide).
-  /// - "EOL_SURE_SPACE" : Line-wrapping break.
-  /// - "HYPHEN" : End-line hyphen that is not present in text; does not
-  /// co-occur with `SPACE`, `LEADER_SPACE`, or `LINE_BREAK`.
-  /// - "LINE_BREAK" : Line break that ends a paragraph.
-  core.String? type;
-
-  DetectedBreak({this.isPrefix, this.type});
-
-  DetectedBreak.fromJson(core.Map json_)
-    : this(
-        isPrefix: json_['isPrefix'] as core.bool?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isPrefix != null) 'isPrefix': isPrefix!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef DetectedBreak = $DetectedBreak;
 
 /// Detected language for a structural component.
-class DetectedLanguage {
-  /// Confidence of detected language.
-  ///
-  /// Range \[0, 1\].
-  core.double? confidence;
-
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  DetectedLanguage({this.confidence, this.languageCode});
-
-  DetectedLanguage.fromJson(core.Map json_)
-    : this(
-        confidence: (json_['confidence'] as core.num?)?.toDouble(),
-        languageCode: json_['languageCode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidence != null) 'confidence': confidence!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
-}
+typedef DetectedLanguage = $DetectedLanguage;
 
 /// Set of dominant colors and their corresponding scores.
 class DominantColorsAnnotation {
@@ -3435,105 +3361,13 @@ class FaceAnnotation {
 /// number of results to return for that type.
 ///
 /// Multiple `Feature` objects can be specified in the `features` list.
-class Feature {
-  /// Maximum number of results of this type.
-  ///
-  /// Does not apply to `TEXT_DETECTION`, `DOCUMENT_TEXT_DETECTION`, or
-  /// `CROP_HINTS`.
-  core.int? maxResults;
-
-  /// Model to use for the feature.
-  ///
-  /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest". `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` also
-  /// support "builtin/weekly" for the bleeding edge release updated weekly.
-  core.String? model;
-
-  /// The feature type.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified feature type.
-  /// - "FACE_DETECTION" : Run face detection.
-  /// - "LANDMARK_DETECTION" : Run landmark detection.
-  /// - "LOGO_DETECTION" : Run logo detection.
-  /// - "LABEL_DETECTION" : Run label detection.
-  /// - "TEXT_DETECTION" : Run text detection / optical character recognition
-  /// (OCR). Text detection is optimized for areas of text within a larger
-  /// image; if the image is a document, use `DOCUMENT_TEXT_DETECTION` instead.
-  /// - "DOCUMENT_TEXT_DETECTION" : Run dense text document OCR. Takes
-  /// precedence when both `DOCUMENT_TEXT_DETECTION` and `TEXT_DETECTION` are
-  /// present.
-  /// - "SAFE_SEARCH_DETECTION" : Run Safe Search to detect potentially unsafe
-  /// or undesirable content.
-  /// - "IMAGE_PROPERTIES" : Compute a set of image properties, such as the
-  /// image's dominant colors.
-  /// - "CROP_HINTS" : Run crop hints.
-  /// - "WEB_DETECTION" : Run web detection.
-  /// - "PRODUCT_SEARCH" : Run Product Search.
-  /// - "OBJECT_LOCALIZATION" : Run localizer for object detection.
-  core.String? type;
-
-  Feature({this.maxResults, this.model, this.type});
-
-  Feature.fromJson(core.Map json_)
-    : this(
-        maxResults: json_['maxResults'] as core.int?,
-        model: json_['model'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxResults != null) 'maxResults': maxResults!,
-    if (model != null) 'model': model!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef Feature = $Feature00;
 
 /// The Google Cloud Storage location where the output will be written to.
-class GcsDestination {
-  /// Google Cloud Storage URI prefix where the results will be stored.
-  ///
-  /// Results will be in JSON format and preceded by its corresponding input URI
-  /// prefix. This field can either represent a gcs file prefix or gcs
-  /// directory. In either case, the uri should be unique because in order to
-  /// get all of the output files, you will need to do a wildcard gcs search on
-  /// the uri prefix you provide. Examples: * File Prefix:
-  /// gs://bucket-name/here/filenameprefix The output files will be created in
-  /// gs://bucket-name/here/ and the names of the output files will begin with
-  /// "filenameprefix". * Directory Prefix: gs://bucket-name/some/location/ The
-  /// output files will be created in gs://bucket-name/some/location/ and the
-  /// names of the output files could be anything because there was no filename
-  /// prefix specified. If multiple outputs, each response is still
-  /// AnnotateFileResponse, each of which contains some subset of the full list
-  /// of AnnotateImageResponse. Multiple outputs can happen if, for example, the
-  /// output JSON is too large and overflows into multiple sharded files.
-  core.String? uri;
-
-  GcsDestination({this.uri});
-
-  GcsDestination.fromJson(core.Map json_)
-    : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GcsDestination = $GcsDestination01;
 
 /// The Google Cloud Storage location where the input will be read from.
-class GcsSource {
-  /// Google Cloud Storage URI for the input file.
-  ///
-  /// This must only be a Google Cloud Storage object. Wildcards are not
-  /// currently supported.
-  core.String? uri;
-
-  GcsSource({this.uri});
-
-  GcsSource.fromJson(core.Map json_) : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GcsSource = $GcsSource03;
 
 /// Information about the products similar to a single product in a query image.
 class GroupedResult {
@@ -3626,27 +3460,7 @@ class Image {
 
 /// If an image was produced from a file (e.g. a PDF), this message gives
 /// information about the source of that image.
-class ImageAnnotationContext {
-  /// If the file was a PDF or TIFF, this field gives the page number within the
-  /// file used to produce the image.
-  core.int? pageNumber;
-
-  /// The URI of the file used to produce the image.
-  core.String? uri;
-
-  ImageAnnotationContext({this.pageNumber, this.uri});
-
-  ImageAnnotationContext.fromJson(core.Map json_)
-    : this(
-        pageNumber: json_['pageNumber'] as core.int?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageNumber != null) 'pageNumber': pageNumber!,
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef ImageAnnotationContext = $ImageAnnotationContext;
 
 /// Image context and/or feature-specific parameters.
 class ImageContext {
@@ -3764,43 +3578,7 @@ class ImageProperties {
 }
 
 /// External image source (Google Cloud Storage or web URL image location).
-class ImageSource {
-  /// **Use `image_uri` instead.** The Google Cloud Storage URI of the form
-  /// `gs://bucket_name/object_name`.
-  ///
-  /// Object versioning is not supported. See
-  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
-  /// for more info.
-  core.String? gcsImageUri;
-
-  /// The URI of the source image.
-  ///
-  /// Can be either: 1. A Google Cloud Storage URI of the form
-  /// `gs://bucket_name/object_name`. Object versioning is not supported. See
-  /// [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris)
-  /// for more info. 2. A publicly-accessible image HTTP/HTTPS URL. When
-  /// fetching images from HTTP/HTTPS URLs, Google cannot guarantee that the
-  /// request will be completed. Your request may fail if the specified host
-  /// denies the request (e.g. due to request throttling or DOS prevention), or
-  /// if Google throttles requests to the site for abuse prevention. You should
-  /// not depend on externally-hosted images for production applications. When
-  /// both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes
-  /// precedence.
-  core.String? imageUri;
-
-  ImageSource({this.gcsImageUri, this.imageUri});
-
-  ImageSource.fromJson(core.Map json_)
-    : this(
-        gcsImageUri: json_['gcsImageUri'] as core.String?,
-        imageUri: json_['imageUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsImageUri != null) 'gcsImageUri': gcsImageUri!,
-    if (imageUri != null) 'imageUri': imageUri!,
-  };
-}
+typedef ImageSource = $ImageSource;
 
 /// The Google Cloud Storage location for a csv file which preserves a list of
 /// ImportProductSetRequests in each line.
@@ -3947,30 +3725,7 @@ class InputConfig {
 }
 
 /// A product label represented as a key-value pair.
-class KeyValue {
-  /// The key of the label attached to the product.
-  ///
-  /// Cannot be empty and cannot exceed 128 bytes.
-  core.String? key;
-
-  /// The value of the label attached to the product.
-  ///
-  /// Cannot be empty and cannot exceed 128 bytes.
-  core.String? value;
-
-  KeyValue({this.key, this.value});
-
-  KeyValue.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef KeyValue = $KeyValue;
 
 /// A face-specific landmark (for example, a face feature).
 ///
@@ -4321,63 +4076,10 @@ class LocationInfo {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-class NormalizedVertex {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  NormalizedVertex({this.x, this.y});
-
-  NormalizedVertex.fromJson(core.Map json_)
-    : this(
-        x: (json_['x'] as core.num?)?.toDouble(),
-        y: (json_['y'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (x != null) 'x': x!,
-    if (y != null) 'y': y!,
-  };
-}
+typedef NormalizedVertex = $NormalizedVertex00;
 
 /// Prediction for what the object in the bounding box is.
-class ObjectAnnotation {
-  /// The BCP-47 language code, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  /// Object ID that should align with EntityAnnotation mid.
-  core.String? mid;
-
-  /// Object name, expressed in its `language_code` language.
-  core.String? name;
-
-  /// Score of the result.
-  ///
-  /// Range \[0, 1\].
-  core.double? score;
-
-  ObjectAnnotation({this.languageCode, this.mid, this.name, this.score});
-
-  ObjectAnnotation.fromJson(core.Map json_)
-    : this(
-        languageCode: json_['languageCode'] as core.String?,
-        mid: json_['mid'] as core.String?,
-        name: json_['name'] as core.String?,
-        score: (json_['score'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (mid != null) 'mid': mid!,
-    if (name != null) 'name': name!,
-    if (score != null) 'score': score!,
-  };
-}
+typedef ObjectAnnotation = $ObjectAnnotation;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -4609,31 +4311,7 @@ class Paragraph {
 ///
 /// A valid Position must have both x and y coordinates. The position
 /// coordinates are in the same scale as the original image.
-class Position {
-  /// X coordinate.
-  core.double? x;
-
-  /// Y coordinate.
-  core.double? y;
-
-  /// Z coordinate (or depth).
-  core.double? z;
-
-  Position({this.x, this.y, this.z});
-
-  Position.fromJson(core.Map json_)
-    : this(
-        x: (json_['x'] as core.num?)?.toDouble(),
-        y: (json_['y'] as core.num?)?.toDouble(),
-        z: (json_['z'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (x != null) 'x': x!,
-    if (y != null) 'y': y!,
-    if (z != null) 'z': z!,
-  };
-}
+typedef Position = $Position00;
 
 /// A Product contains ReferenceImages.
 class Product {
@@ -4903,31 +4581,7 @@ class ProductSetPurgeConfig {
 }
 
 /// A `Property` consists of a user-supplied name/value pair.
-class Property {
-  /// Name of the property.
-  core.String? name;
-
-  /// Value of numeric properties.
-  core.String? uint64Value;
-
-  /// Value of the property.
-  core.String? value;
-
-  Property({this.name, this.uint64Value, this.value});
-
-  Property.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        uint64Value: json_['uint64Value'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (uint64Value != null) 'uint64Value': uint64Value!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Property = $Property00;
 
 /// Request message for the `PurgeProducts` method.
 class PurgeProductsRequest {
@@ -5077,95 +4731,7 @@ class Result {
 
 /// Set of features pertaining to the image, computed by computer vision methods
 /// over safe-search verticals (for example, adult, spoof, medical, violence).
-class SafeSearchAnnotation {
-  /// Represents the adult content likelihood for the image.
-  ///
-  /// Adult content may contain elements such as nudity, pornographic images or
-  /// cartoons, or sexual activities.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? adult;
-
-  /// Likelihood that this is a medical image.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? medical;
-
-  /// Likelihood that the request image contains racy content.
-  ///
-  /// Racy content may include (but is not limited to) skimpy or sheer clothing,
-  /// strategically covered nudity, lewd or provocative poses, or close-ups of
-  /// sensitive body areas.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? racy;
-
-  /// Spoof likelihood.
-  ///
-  /// The likelihood that an modification was made to the image's canonical
-  /// version to make it appear funny or offensive.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? spoof;
-
-  /// Likelihood that this image contains violent content.
-  ///
-  /// Violent content may include death, serious harm, or injury to individuals
-  /// or groups of individuals.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown likelihood.
-  /// - "VERY_UNLIKELY" : It is very unlikely.
-  /// - "UNLIKELY" : It is unlikely.
-  /// - "POSSIBLE" : It is possible.
-  /// - "LIKELY" : It is likely.
-  /// - "VERY_LIKELY" : It is very likely.
-  core.String? violence;
-
-  SafeSearchAnnotation({
-    this.adult,
-    this.medical,
-    this.racy,
-    this.spoof,
-    this.violence,
-  });
-
-  SafeSearchAnnotation.fromJson(core.Map json_)
-    : this(
-        adult: json_['adult'] as core.String?,
-        medical: json_['medical'] as core.String?,
-        racy: json_['racy'] as core.String?,
-        spoof: json_['spoof'] as core.String?,
-        violence: json_['violence'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adult != null) 'adult': adult!,
-    if (medical != null) 'medical': medical!,
-    if (racy != null) 'racy': racy!,
-    if (spoof != null) 'spoof': spoof!,
-    if (violence != null) 'violence': violence!,
-  };
-}
+typedef SafeSearchAnnotation = $SafeSearchAnnotation;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -5267,43 +4833,7 @@ class TextAnnotation {
 /// Parameters for text detections.
 ///
 /// This is used to control TEXT_DETECTION and DOCUMENT_TEXT_DETECTION features.
-class TextDetectionParams {
-  /// A list of advanced OCR options to further fine-tune OCR behavior.
-  ///
-  /// Current valid values are: - `legacy_layout`: a heuristics layout detection
-  /// algorithm, which serves as an alternative to the current ML-based layout
-  /// detection algorithm. Customers can choose the best suitable layout
-  /// algorithm based on their situation.
-  core.List<core.String>? advancedOcrOptions;
-
-  /// By default, Cloud Vision API only includes confidence score for
-  /// DOCUMENT_TEXT_DETECTION result.
-  ///
-  /// Set the flag to true to include confidence score for TEXT_DETECTION as
-  /// well.
-  core.bool? enableTextDetectionConfidenceScore;
-
-  TextDetectionParams({
-    this.advancedOcrOptions,
-    this.enableTextDetectionConfidenceScore,
-  });
-
-  TextDetectionParams.fromJson(core.Map json_)
-    : this(
-        advancedOcrOptions:
-            (json_['advancedOcrOptions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        enableTextDetectionConfidenceScore:
-            json_['enableTextDetectionConfidenceScore'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (advancedOcrOptions != null) 'advancedOcrOptions': advancedOcrOptions!,
-    if (enableTextDetectionConfidenceScore != null)
-      'enableTextDetectionConfidenceScore': enableTextDetectionConfidenceScore!,
-  };
-}
+typedef TextDetectionParams = $TextDetectionParams;
 
 /// Additional information detected on the structural component.
 class TextProperty {
@@ -5342,23 +4872,7 @@ class TextProperty {
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-class Vertex {
-  /// X coordinate.
-  core.int? x;
-
-  /// Y coordinate.
-  core.int? y;
-
-  Vertex({this.x, this.y});
-
-  Vertex.fromJson(core.Map json_)
-    : this(x: json_['x'] as core.int?, y: json_['y'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (x != null) 'x': x!,
-    if (y != null) 'y': y!,
-  };
-}
+typedef Vertex = $Vertex00;
 
 /// Relevant information for the image from the Internet.
 class WebDetection {
@@ -5462,98 +4976,16 @@ class WebDetection {
 }
 
 /// Parameters for web detection request.
-class WebDetectionParams {
-  /// This field has no effect on results.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.bool? includeGeoResults;
-
-  WebDetectionParams({this.includeGeoResults});
-
-  WebDetectionParams.fromJson(core.Map json_)
-    : this(includeGeoResults: json_['includeGeoResults'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includeGeoResults != null) 'includeGeoResults': includeGeoResults!,
-  };
-}
+typedef WebDetectionParams = $WebDetectionParams;
 
 /// Entity deduced from similar images on the Internet.
-class WebEntity {
-  /// Canonical description of the entity, in English.
-  core.String? description;
-
-  /// Opaque entity ID.
-  core.String? entityId;
-
-  /// Overall relevancy score for the entity.
-  ///
-  /// Not normalized and not comparable across different image queries.
-  core.double? score;
-
-  WebEntity({this.description, this.entityId, this.score});
-
-  WebEntity.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        entityId: json_['entityId'] as core.String?,
-        score: (json_['score'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (entityId != null) 'entityId': entityId!,
-    if (score != null) 'score': score!,
-  };
-}
+typedef WebEntity = $WebEntity;
 
 /// Metadata for online images.
-class WebImage {
-  /// (Deprecated) Overall relevancy score for the image.
-  core.double? score;
-
-  /// The result image URL.
-  core.String? url;
-
-  WebImage({this.score, this.url});
-
-  WebImage.fromJson(core.Map json_)
-    : this(
-        score: (json_['score'] as core.num?)?.toDouble(),
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (score != null) 'score': score!,
-    if (url != null) 'url': url!,
-  };
-}
+typedef WebImage = $WebImage;
 
 /// Label to provide extra metadata for the web detection.
-class WebLabel {
-  /// Label for extra metadata.
-  core.String? label;
-
-  /// The BCP-47 language code for `label`, such as "en-US" or "sr-Latn".
-  ///
-  /// For more information, see
-  /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-  core.String? languageCode;
-
-  WebLabel({this.label, this.languageCode});
-
-  WebLabel.fromJson(core.Map json_)
-    : this(
-        label: json_['label'] as core.String?,
-        languageCode: json_['languageCode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (label != null) 'label': label!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
-}
+typedef WebLabel = $WebLabel;
 
 /// Metadata for web pages.
 class WebPage {

@@ -46,11 +46,18 @@ List<GenerateResult> generateAllLibraries(
           .listSync()
           .whereType<File>()
           .where((fse) => fse.path.endsWith('.json'))
-          .map(
-            (entity) => RestDescription.fromJson(
+          .map((entity) {
+            final desc = RestDescription.fromJson(
               json.decode(entity.readAsStringSync()) as Map,
-            ),
-          )
+            );
+            if (desc.name == null) {
+              print('error: ${entity.path}');
+              print('Skipping ${desc.id} because it has no name');
+              return null;
+            }
+            return desc;
+          })
+          .whereType<RestDescription>()
           .toList();
   return generateApiPackage(
     apiDescriptions,

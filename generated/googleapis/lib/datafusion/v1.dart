@@ -1021,46 +1021,7 @@ class ProjectsLocationsVersionsResource {
 }
 
 /// Identifies Data Fusion accelerators for an instance.
-class Accelerator {
-  /// The type of an accelator for a Cloud Data Fusion instance.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "ACCELERATOR_TYPE_UNSPECIFIED" : Default value, if unspecified.
-  /// - "CDC" : Change Data Capture accelerator for Cloud Data Fusion.
-  /// - "HEALTHCARE" : Reserved for internal use.
-  /// - "CCAI_INSIGHTS" : Contact Center AI Insights This accelerator is used to
-  /// enable import and export pipelines custom built to streamline CCAI
-  /// Insights processing.
-  /// - "CLOUDSEARCH" : Reserved for internal use.
-  core.String? acceleratorType;
-
-  /// The state of the accelerator.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default value, do not use.
-  /// - "ENABLED" : Indicates that the accelerator is enabled and available to
-  /// use.
-  /// - "DISABLED" : Indicates that the accelerator is disabled and not
-  /// available to use.
-  /// - "UNKNOWN" : Indicates that accelerator state is currently unknown.
-  /// Requests for enable, disable could be retried while in this state.
-  core.String? state;
-
-  Accelerator({this.acceleratorType, this.state});
-
-  Accelerator.fromJson(core.Map json_)
-    : this(
-        acceleratorType: json_['acceleratorType'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (acceleratorType != null) 'acceleratorType': acceleratorType!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef Accelerator = $Accelerator00;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -1116,7 +1077,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -1228,81 +1189,13 @@ typedef CancelOperationRequest = $Empty;
 /// The crypto key configuration.
 ///
 /// This field is used by the Customer-managed encryption keys (CMEK) feature.
-class CryptoKeyConfig {
-  /// The name of the key which is used to encrypt/decrypt customer data.
-  ///
-  /// For key in Cloud KMS, the key should be in the format of `projects / *
-  /// /locations / * /keyRings / * /cryptoKeys / * `.
-  ///
-  /// Optional.
-  core.String? keyReference;
-
-  CryptoKeyConfig({this.keyReference});
-
-  CryptoKeyConfig.fromJson(core.Map json_)
-    : this(keyReference: json_['keyReference'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keyReference != null) 'keyReference': keyReference!,
-  };
-}
+typedef CryptoKeyConfig = $CryptoKeyConfig;
 
 /// DNS peering configuration.
 ///
 /// These configurations are used to create DNS peering with the customer Cloud
 /// DNS.
-class DnsPeering {
-  /// Optional description of the dns zone.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// The dns name suffix of the zone.
-  ///
-  /// Required.
-  core.String? domain;
-
-  /// Identifier.
-  ///
-  /// The resource name of the dns peering zone. Format:
-  /// projects/{project}/locations/{location}/instances/{instance}/dnsPeerings/{dns_peering}
-  core.String? name;
-
-  /// Optional target network to which dns peering should happen.
-  ///
-  /// Optional.
-  core.String? targetNetwork;
-
-  /// Optional target project to which dns peering should happen.
-  ///
-  /// Optional.
-  core.String? targetProject;
-
-  DnsPeering({
-    this.description,
-    this.domain,
-    this.name,
-    this.targetNetwork,
-    this.targetProject,
-  });
-
-  DnsPeering.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        domain: json_['domain'] as core.String?,
-        name: json_['name'] as core.String?,
-        targetNetwork: json_['targetNetwork'] as core.String?,
-        targetProject: json_['targetProject'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (domain != null) 'domain': domain!,
-    if (name != null) 'name': name!,
-    if (targetNetwork != null) 'targetNetwork': targetNetwork!,
-    if (targetProject != null) 'targetProject': targetProject!,
-  };
-}
+typedef DnsPeering = $DnsPeering;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1313,32 +1206,7 @@ class DnsPeering {
 typedef Empty = $Empty;
 
 /// Confirguration of PubSubEventWriter.
-class EventPublishConfig {
-  /// Option to enable Event Publishing.
-  ///
-  /// Required.
-  core.bool? enabled;
-
-  /// The resource name of the Pub/Sub topic.
-  ///
-  /// Format: projects/{project_id}/topics/{topic_id}
-  ///
-  /// Required.
-  core.String? topic;
-
-  EventPublishConfig({this.enabled, this.topic});
-
-  EventPublishConfig.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        topic: json_['topic'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (topic != null) 'topic': topic!,
-  };
-}
+typedef EventPublishConfig = $EventPublishConfig;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -1989,73 +1857,10 @@ class ListOperationsResponse {
 typedef Location = $Location00;
 
 /// Logging configuration for a Data Fusion instance.
-class LoggingConfig {
-  /// Option to determine whether instance logs should be written to Cloud
-  /// Logging.
-  ///
-  /// By default, instance logs are written to Cloud Logging.
-  ///
-  /// Optional.
-  core.bool? instanceCloudLoggingDisabled;
-
-  LoggingConfig({this.instanceCloudLoggingDisabled});
-
-  LoggingConfig.fromJson(core.Map json_)
-    : this(
-        instanceCloudLoggingDisabled:
-            json_['instanceCloudLoggingDisabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instanceCloudLoggingDisabled != null)
-      'instanceCloudLoggingDisabled': instanceCloudLoggingDisabled!,
-  };
-}
+typedef LoggingConfig = $LoggingConfig00;
 
 /// Represents a maintenance event.
-class MaintenanceEvent {
-  /// The end time of the maintenance event provided in
-  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
-  ///
-  /// Example: "2024-01-02T12:04:06-06:00" This field will be empty if the
-  /// maintenance event is not yet complete.
-  ///
-  /// Output only.
-  core.String? endTime;
-
-  /// The start time of the maintenance event provided in
-  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
-  ///
-  /// Example: "2024-01-01T12:04:06-04:00"
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  /// The state of the maintenance event.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The state of the maintenance event is unspecified.
-  /// - "SCHEDULED" : The maintenance is scheduled but has not started.
-  /// - "STARTED" : The maintenance has been started.
-  /// - "COMPLETED" : The maintenance has been completed.
-  core.String? state;
-
-  MaintenanceEvent({this.endTime, this.startTime, this.state});
-
-  MaintenanceEvent.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef MaintenanceEvent = $MaintenanceEvent;
 
 /// Maintenance policy of the instance.
 class MaintenancePolicy {
@@ -2404,61 +2209,7 @@ class Policy {
 /// Configuration for using Private Service Connect to establish connectivity
 /// between the Data Fusion consumer project and the corresponding tenant
 /// project.
-class PrivateServiceConnectConfig {
-  /// The CIDR block to which the CDF instance can't route traffic to in the
-  /// consumer project VPC.
-  ///
-  /// The size of this block is /25. The format of this field is governed by RFC
-  /// 4632. Example: 240.0.0.0/25
-  ///
-  /// Output only.
-  core.String? effectiveUnreachableCidrBlock;
-
-  /// The reference to the network attachment used to establish private
-  /// connectivity.
-  ///
-  /// It will be of the form
-  /// projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}.
-  ///
-  /// Required.
-  core.String? networkAttachment;
-
-  /// Input only.
-  ///
-  /// The CIDR block to which the CDF instance can't route traffic to in the
-  /// consumer project VPC. The size of this block should be at least /25. This
-  /// range should not overlap with the primary address range of any subnetwork
-  /// used by the network attachment. This range can be used for other purposes
-  /// in the consumer VPC as long as there is no requirement for CDF to reach
-  /// destinations using these addresses. If this value is not provided, the
-  /// server chooses a non RFC 1918 address range. The format of this field is
-  /// governed by RFC 4632. Example: 192.168.0.0/25
-  ///
-  /// Optional.
-  core.String? unreachableCidrBlock;
-
-  PrivateServiceConnectConfig({
-    this.effectiveUnreachableCidrBlock,
-    this.networkAttachment,
-    this.unreachableCidrBlock,
-  });
-
-  PrivateServiceConnectConfig.fromJson(core.Map json_)
-    : this(
-        effectiveUnreachableCidrBlock:
-            json_['effectiveUnreachableCidrBlock'] as core.String?,
-        networkAttachment: json_['networkAttachment'] as core.String?,
-        unreachableCidrBlock: json_['unreachableCidrBlock'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectiveUnreachableCidrBlock != null)
-      'effectiveUnreachableCidrBlock': effectiveUnreachableCidrBlock!,
-    if (networkAttachment != null) 'networkAttachment': networkAttachment!,
-    if (unreachableCidrBlock != null)
-      'unreachableCidrBlock': unreachableCidrBlock!,
-  };
-}
+typedef PrivateServiceConnectConfig = $PrivateServiceConnectConfig;
 
 /// Represents an arbitrary window of time that recurs.
 class RecurringTimeWindow {
@@ -2556,82 +2307,10 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Represents an arbitrary window of time.
-class TimeWindow {
-  /// The end time of the time window provided in
-  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
-  ///
-  /// The end time should take place after the start time. Example:
-  /// "2024-01-02T12:04:06-06:00"
-  ///
-  /// Required.
-  core.String? endTime;
-
-  /// The start time of the time window provided in
-  /// [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format.
-  ///
-  /// Example: "2024-01-01T12:04:06-04:00"
-  ///
-  /// Required.
-  core.String? startTime;
-
-  TimeWindow({this.endTime, this.startTime});
-
-  TimeWindow.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef TimeWindow = $TimeWindow01;
 
 /// The Data Fusion version.
 ///
 /// This proto message stores information about certain Data Fusion version,
 /// which is used for Data Fusion version upgrade.
-class Version {
-  /// Represents a list of available feature names for a given version.
-  core.List<core.String>? availableFeatures;
-
-  /// Whether this is currently the default version for Cloud Data Fusion
-  core.bool? defaultVersion;
-
-  /// Type represents the release availability of the version
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Version does not have availability yet
-  /// - "TYPE_PREVIEW" : Version is under development and not considered stable
-  /// - "TYPE_GENERAL_AVAILABILITY" : Version is available for public use
-  /// - "TYPE_DEPRECATED" : Version is no longer supported.
-  core.String? type;
-
-  /// The version number of the Data Fusion instance, such as '6.0.1.0'.
-  core.String? versionNumber;
-
-  Version({
-    this.availableFeatures,
-    this.defaultVersion,
-    this.type,
-    this.versionNumber,
-  });
-
-  Version.fromJson(core.Map json_)
-    : this(
-        availableFeatures:
-            (json_['availableFeatures'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        defaultVersion: json_['defaultVersion'] as core.bool?,
-        type: json_['type'] as core.String?,
-        versionNumber: json_['versionNumber'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availableFeatures != null) 'availableFeatures': availableFeatures!,
-    if (defaultVersion != null) 'defaultVersion': defaultVersion!,
-    if (type != null) 'type': type!,
-    if (versionNumber != null) 'versionNumber': versionNumber!,
-  };
-}
+typedef Version = $Version01;

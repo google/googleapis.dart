@@ -834,76 +834,7 @@ class AppEngineHttpTarget {
 /// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed),
 /// and
 /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-class AppEngineRouting {
-  /// The host that the job is sent to.
-  ///
-  /// For more information about how App Engine requests are routed, see
-  /// [here](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-  /// The host is constructed as: * `host = [application_domain_name]` `|
-  /// [service] + '.' + [application_domain_name]` `| [version] + '.' +
-  /// [application_domain_name]` `| [version_dot_service]+ '.' +
-  /// [application_domain_name]` `| [instance] + '.' +
-  /// [application_domain_name]` `| [instance_dot_service] + '.' +
-  /// [application_domain_name]` `| [instance_dot_version] + '.' +
-  /// [application_domain_name]` `| [instance_dot_version_dot_service] + '.' +
-  /// [application_domain_name]` * `application_domain_name` = The domain name
-  /// of the app, for example .appspot.com, which is associated with the job's
-  /// project ID. * `service =` service * `version =` version *
-  /// `version_dot_service =` version `+ '.' +` service * `instance =` instance
-  /// * `instance_dot_service =` instance `+ '.' +` service *
-  /// `instance_dot_version =` instance `+ '.' +` version *
-  /// `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +`
-  /// service If service is empty, then the job will be sent to the service
-  /// which is the default service when the job is attempted. If version is
-  /// empty, then the job will be sent to the version which is the default
-  /// version when the job is attempted. If instance is empty, then the job will
-  /// be sent to an instance which is available when the job is attempted. If
-  /// service, version, or instance is invalid, then the job will be sent to the
-  /// default version of the default service when the job is attempted.
-  ///
-  /// Output only.
-  core.String? host;
-
-  /// App instance.
-  ///
-  /// By default, the job is sent to an instance which is available when the job
-  /// is attempted. Requests can only be sent to a specific instance if
-  /// [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?#scaling_types_and_instance_classes).
-  /// App Engine Flex does not support instances. For more information, see
-  /// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
-  /// and
-  /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-  core.String? instance;
-
-  /// App service.
-  ///
-  /// By default, the job is sent to the service which is the default service
-  /// when the job is attempted.
-  core.String? service;
-
-  /// App version.
-  ///
-  /// By default, the job is sent to the version which is the default version
-  /// when the job is attempted.
-  core.String? version;
-
-  AppEngineRouting({this.host, this.instance, this.service, this.version});
-
-  AppEngineRouting.fromJson(core.Map json_)
-    : this(
-        host: json_['host'] as core.String?,
-        instance: json_['instance'] as core.String?,
-        service: json_['service'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (host != null) 'host': host!,
-    if (instance != null) 'instance': instance!,
-    if (service != null) 'service': service!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef AppEngineRouting = $AppEngineRouting00;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -1355,67 +1286,14 @@ typedef Location = $Location00;
 ///
 /// This type of authorization should generally only be used when calling Google
 /// APIs hosted on *.googleapis.com.
-class OAuthToken {
-  /// OAuth scope to be used for generating OAuth access token.
-  ///
-  /// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be
-  /// used.
-  core.String? scope;
-
-  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-  /// to be used for generating OAuth token.
-  ///
-  /// The service account must be within the same project as the job. The caller
-  /// must have iam.serviceAccounts.actAs permission for the service account.
-  core.String? serviceAccountEmail;
-
-  OAuthToken({this.scope, this.serviceAccountEmail});
-
-  OAuthToken.fromJson(core.Map json_)
-    : this(
-        scope: json_['scope'] as core.String?,
-        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
-}
+typedef OAuthToken = $OAuthToken01;
 
 /// Contains information needed for generating an
 /// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 ///
 /// This type of authorization can be used for many scenarios, including calling
 /// Cloud Run, or endpoints where you intend to validate the token yourself.
-class OidcToken {
-  /// Audience to be used when generating OIDC token.
-  ///
-  /// If not specified, the URI specified in target will be used.
-  core.String? audience;
-
-  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-  /// to be used for generating OIDC token.
-  ///
-  /// The service account must be within the same project as the job. The caller
-  /// must have iam.serviceAccounts.actAs permission for the service account.
-  core.String? serviceAccountEmail;
-
-  OidcToken({this.audience, this.serviceAccountEmail});
-
-  OidcToken.fromJson(core.Map json_)
-    : this(
-        audience: json_['audience'] as core.String?,
-        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
-}
+typedef OidcToken = $OidcToken02;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -1498,55 +1376,7 @@ typedef PauseJobRequest = $Empty;
 ///
 /// The job will be delivered by publishing a message to the given Pub/Sub
 /// topic.
-class PubsubTarget {
-  /// Attributes for PubsubMessage.
-  ///
-  /// Pubsub message must contain either non-empty data, or at least one
-  /// attribute.
-  core.Map<core.String, core.String>? attributes;
-
-  /// The message payload for PubsubMessage.
-  ///
-  /// Pubsub message must contain either non-empty data, or at least one
-  /// attribute.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> bytes_) {
-    data = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The name of the Cloud Pub/Sub topic to which messages will be published
-  /// when a job is delivered.
-  ///
-  /// The topic name must be in the same format as required by Pub/Sub's
-  /// [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest),
-  /// for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in
-  /// the same project as the Cloud Scheduler job.
-  ///
-  /// Required.
-  core.String? topicName;
-
-  PubsubTarget({this.attributes, this.data, this.topicName});
-
-  PubsubTarget.fromJson(core.Map json_)
-    : this(
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        data: json_['data'] as core.String?,
-        topicName: json_['topicName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (data != null) 'data': data!,
-    if (topicName != null) 'topicName': topicName!,
-  };
-}
+typedef PubsubTarget = $PubsubTarget;
 
 /// Request message for ResumeJob.
 typedef ResumeJobRequest = $Empty;
@@ -1558,76 +1388,7 @@ typedef ResumeJobRequest = $Empty;
 /// By default, if a job does not complete successfully (meaning that an
 /// acknowledgement is not received from the handler, then it will be retried
 /// with exponential backoff according to the settings in RetryConfig.
-class RetryConfig {
-  /// The maximum amount of time to wait before retrying a job after it fails.
-  ///
-  /// The default value of this field is 1 hour.
-  core.String? maxBackoffDuration;
-
-  /// The time between retries will double `max_doublings` times.
-  ///
-  /// A job's retry interval starts at min_backoff_duration, then doubles
-  /// `max_doublings` times, then increases linearly, and finally retries at
-  /// intervals of max_backoff_duration up to retry_count times. For examples,
-  /// see
-  /// [Retry jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs#max-doublings).
-  /// The default value of this field is 5.
-  core.int? maxDoublings;
-
-  /// The time limit for retrying a failed job, measured from the time when an
-  /// execution was first attempted.
-  ///
-  /// If specified with retry_count, the job will be retried until both limits
-  /// are reached. The default value for max_retry_duration is zero, which means
-  /// retry duration is unlimited. However, if retry_count is also 0, a job
-  /// attempt won't be retried if it fails.
-  core.String? maxRetryDuration;
-
-  /// The minimum amount of time to wait before retrying a job after it fails.
-  ///
-  /// The default value of this field is 5 seconds.
-  core.String? minBackoffDuration;
-
-  /// The number of attempts that the system will make to run a job using the
-  /// exponential backoff procedure described by max_doublings.
-  ///
-  /// The default value of retry_count is zero. If retry_count is 0 (and if
-  /// max_retry_duration is also 0), a job attempt won't be retried if it fails.
-  /// Instead, Cloud Scheduler system will wait for the next scheduled execution
-  /// time. Setting retry_count to 0 doesn't prevent failed jobs from running
-  /// according to schedule after the failure. If retry_count is set to a
-  /// non-zero number, Cloud Scheduler will retry the failed job, using
-  /// exponential backoff, for retry_count times until the job succeeds or the
-  /// number of retries is exhausted. Note that the next scheduled execution
-  /// time might be skipped if the retries continue through that time. Values
-  /// greater than 5 and negative values are not allowed.
-  core.int? retryCount;
-
-  RetryConfig({
-    this.maxBackoffDuration,
-    this.maxDoublings,
-    this.maxRetryDuration,
-    this.minBackoffDuration,
-    this.retryCount,
-  });
-
-  RetryConfig.fromJson(core.Map json_)
-    : this(
-        maxBackoffDuration: json_['maxBackoffDuration'] as core.String?,
-        maxDoublings: json_['maxDoublings'] as core.int?,
-        maxRetryDuration: json_['maxRetryDuration'] as core.String?,
-        minBackoffDuration: json_['minBackoffDuration'] as core.String?,
-        retryCount: json_['retryCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxBackoffDuration != null) 'maxBackoffDuration': maxBackoffDuration!,
-    if (maxDoublings != null) 'maxDoublings': maxDoublings!,
-    if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration!,
-    if (minBackoffDuration != null) 'minBackoffDuration': minBackoffDuration!,
-    if (retryCount != null) 'retryCount': retryCount!,
-  };
-}
+typedef RetryConfig = $RetryConfig00;
 
 /// Request message for forcing a job to run now using RunJob.
 typedef RunJobRequest = $Empty;

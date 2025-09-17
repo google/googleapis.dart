@@ -2749,76 +2749,10 @@ class EncryptionAndServerValidation {
 typedef EncryptionNotEnforced = $Empty;
 
 /// Represent a user-facing Error.
-class Error {
-  /// Additional information about the error.
-  core.Map<core.String, core.String>? details;
-
-  /// The time when the error occurred.
-  core.String? errorTime;
-
-  /// A unique identifier for this specific error, allowing it to be traced
-  /// throughout the system in logs and API responses.
-  core.String? errorUuid;
-
-  /// A message containing more information about the error that occurred.
-  core.String? message;
-
-  /// A title that explains the reason for the error.
-  core.String? reason;
-
-  Error({
-    this.details,
-    this.errorTime,
-    this.errorUuid,
-    this.message,
-    this.reason,
-  });
-
-  Error.fromJson(core.Map json_)
-    : this(
-        details: (json_['details'] as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        errorTime: json_['errorTime'] as core.String?,
-        errorUuid: json_['errorUuid'] as core.String?,
-        message: json_['message'] as core.String?,
-        reason: json_['reason'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (details != null) 'details': details!,
-    if (errorTime != null) 'errorTime': errorTime!,
-    if (errorUuid != null) 'errorUuid': errorUuid!,
-    if (message != null) 'message': message!,
-    if (reason != null) 'reason': reason!,
-  };
-}
+typedef Error = $Error01;
 
 /// Response message for a 'FetchStaticIps' response.
-class FetchStaticIpsResponse {
-  /// A token that can be sent as `page_token` to retrieve the next page.
-  ///
-  /// If this field is omitted, there are no subsequent pages.
-  core.String? nextPageToken;
-
-  /// list of static ips by account
-  core.List<core.String>? staticIps;
-
-  FetchStaticIpsResponse({this.nextPageToken, this.staticIps});
-
-  FetchStaticIpsResponse.fromJson(core.Map json_)
-    : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
-        staticIps:
-            (json_['staticIps'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (staticIps != null) 'staticIps': staticIps!,
-  };
-}
+typedef FetchStaticIpsResponse = $FetchStaticIpsResponse;
 
 /// Forward SSH Tunnel connectivity.
 typedef ForwardSshTunnelConnectivity = $ForwardSshTunnelConnectivity;
@@ -2937,34 +2871,7 @@ class HostAddress {
 }
 
 /// JSON file format configuration.
-class JsonFileFormat {
-  /// Compression of the loaded JSON file.
-  /// Possible string values are:
-  /// - "JSON_COMPRESSION_UNSPECIFIED" : Unspecified json file compression.
-  /// - "NO_COMPRESSION" : Do not compress JSON file.
-  /// - "GZIP" : Gzip compression.
-  core.String? compression;
-
-  /// The schema file format along JSON data files.
-  /// Possible string values are:
-  /// - "SCHEMA_FILE_FORMAT_UNSPECIFIED" : Unspecified schema file format.
-  /// - "NO_SCHEMA_FILE" : Do not attach schema file.
-  /// - "AVRO_SCHEMA_FILE" : Avro schema format.
-  core.String? schemaFileFormat;
-
-  JsonFileFormat({this.compression, this.schemaFileFormat});
-
-  JsonFileFormat.fromJson(core.Map json_)
-    : this(
-        compression: json_['compression'] as core.String?,
-        schemaFileFormat: json_['schemaFileFormat'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (compression != null) 'compression': compression!,
-    if (schemaFileFormat != null) 'schemaFileFormat': schemaFileFormat!,
-  };
-}
+typedef JsonFileFormat = $JsonFileFormat;
 
 /// Response message for listing connection profiles.
 class ListConnectionProfilesResponse {
@@ -3781,30 +3688,7 @@ class MysqlLogPosition {
 }
 
 /// Mysql data source object identifier.
-class MysqlObjectIdentifier {
-  /// The database name.
-  ///
-  /// Required.
-  core.String? database;
-
-  /// The table name.
-  ///
-  /// Required.
-  core.String? table;
-
-  MysqlObjectIdentifier({this.database, this.table});
-
-  MysqlObjectIdentifier.fromJson(core.Map json_)
-    : this(
-        database: json_['database'] as core.String?,
-        table: json_['table'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (database != null) 'database': database!,
-    if (table != null) 'table': table!,
-  };
-}
+typedef MysqlObjectIdentifier = $MysqlObjectIdentifier;
 
 /// MySQL database profile.
 class MysqlProfile {

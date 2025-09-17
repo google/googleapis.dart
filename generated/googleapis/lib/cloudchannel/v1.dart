@@ -4054,7 +4054,7 @@ class ProductsSkusResource {
 }
 
 /// Request message for CloudChannelService.ActivateEntitlement.
-typedef GoogleCloudChannelV1ActivateEntitlementRequest = $Request02;
+typedef GoogleCloudChannelV1ActivateEntitlementRequest = $Request06;
 
 /// Information needed to create an Admin User for Google Workspace.
 class GoogleCloudChannelV1AdminUser {
@@ -4216,7 +4216,7 @@ class GoogleCloudChannelV1BillingAccountPurchaseInfo {
 }
 
 /// Request message for CloudChannelService.CancelEntitlement.
-typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request02;
+typedef GoogleCloudChannelV1CancelEntitlementRequest = $Request06;
 
 /// Request message for CloudChannelService.ChangeOffer.
 class GoogleCloudChannelV1ChangeOfferRequest {
@@ -7997,7 +7997,7 @@ class GoogleCloudChannelV1RepricingConfig {
 /// json object. Deprecated: This is no longer supported. Use
 /// RepricingConfig.EntitlementGranularity instead.
 typedef GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity =
-    $Shared02;
+    $Shared03;
 
 /// Applies the repricing configuration at the entitlement level.
 class GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
@@ -8231,10 +8231,10 @@ class GoogleCloudChannelV1SkuPurchaseGroup {
 }
 
 /// Request message for CloudChannelService.StartPaidService.
-typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request02;
+typedef GoogleCloudChannelV1StartPaidServiceRequest = $Request06;
 
 /// Request message for CloudChannelService.SuspendEntitlement.
-typedef GoogleCloudChannelV1SuspendEntitlementRequest = $Request02;
+typedef GoogleCloudChannelV1SuspendEntitlementRequest = $Request06;
 
 /// Specifies transfer eligibility of a SKU.
 class GoogleCloudChannelV1TransferEligibility {
@@ -8912,57 +8912,7 @@ class GoogleTypeDateTime {
 /// [BigDecimal](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/math/BigDecimal.html)
 /// or Python's
 /// [decimal.Decimal](https://docs.python.org/3/library/decimal.html).
-class GoogleTypeDecimal {
-  /// The decimal value, as a string.
-  ///
-  /// The string representation consists of an optional sign, `+` (`U+002B`) or
-  /// `-` (`U+002D`), followed by a sequence of zero or more decimal digits
-  /// ("the integer"), optionally followed by a fraction, optionally followed by
-  /// an exponent. An empty string **should** be interpreted as `0`. The
-  /// fraction consists of a decimal point followed by zero or more decimal
-  /// digits. The string must contain at least one digit in either the integer
-  /// or the fraction. The number formed by the sign, the integer and the
-  /// fraction is referred to as the significand. The exponent consists of the
-  /// character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal
-  /// digits. Services **should** normalize decimal values before storing them
-  /// by: - Removing an explicitly-provided `+` sign (`+2.5` -\> `2.5`). -
-  /// Replacing a zero-length integer value with `0` (`.5` -\> `0.5`). -
-  /// Coercing the exponent character to upper-case, with explicit sign (`2.5e8`
-  /// -\> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0`
-  /// -\> `2.5`). Services **may** perform additional normalization based on its
-  /// own needs and the internal decimal implementation selected, such as
-  /// shifting the decimal point and exponent value together (example: `2.5E-1`
-  /// \<-\> `0.25`). Additionally, services **may** preserve trailing zeroes in
-  /// the fraction to indicate increased precision, but are not required to do
-  /// so. Note that only the `.` character is supported to divide the integer
-  /// and the fraction; `,` **should not** be supported regardless of locale.
-  /// Additionally, thousand separators **should not** be supported. If a
-  /// service does support them, values **must** be normalized. The ENBF grammar
-  /// is: DecimalString = '' | \[Sign\] Significand \[Exponent\]; Sign = '+' |
-  /// '-'; Significand = Digits '.' | \[Digits\] '.' Digits; Exponent = ('e' |
-  /// 'E') \[Sign\] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' |
-  /// '7' | '8' | '9' }; Services **should** clearly document the range of
-  /// supported values, the maximum supported precision (total number of
-  /// digits), and, if applicable, the scale (number of digits after the decimal
-  /// point), as well as how it behaves when receiving out-of-bounds values.
-  /// Services **may** choose to accept values passed as input even when the
-  /// value has a higher precision or scale than the service supports, and
-  /// **should** round the value to fit the supported scale. Alternatively, the
-  /// service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC)
-  /// if precision would be lost. Services **should** error with `400 Bad
-  /// Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value
-  /// outside of the supported range.
-  core.String? value;
-
-  GoogleTypeDecimal({this.value});
-
-  GoogleTypeDecimal.fromJson(core.Map json_)
-    : this(value: json_['value'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
-}
+typedef GoogleTypeDecimal = $Decimal;
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;

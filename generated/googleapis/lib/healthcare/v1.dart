@@ -8734,40 +8734,7 @@ class ProjectsLocationsServicesNlpResource {
 /// Cloud audit log for healthcare API must be
 /// [enabled](https://cloud.google.com/logging/docs/audit/configure-data-access#config-console-enable).
 /// The consent-related logs are included as part of `protoPayload.metadata`.
-class AccessDeterminationLogConfig {
-  /// Controls the amount of detail to include as part of the audit logs.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "LOG_LEVEL_UNSPECIFIED" : No log level specified. This value is unused.
-  /// - "DISABLED" : No additional consent-related logging is added to audit
-  /// logs.
-  /// - "MINIMUM" : The following information is included: * One of the
-  /// following
-  /// \[`consentMode`\](https://cloud.google.com/healthcare-api/docs/fhir-consent#audit_logs)
-  /// fields: (`off`|`emptyScope`|`enforced`|`btg`|`bypass`). * The accessor's
-  /// request headers * The `log_level` of the AccessDeterminationLogConfig *
-  /// The final consent evaluation (`PERMIT`, `DENY`, or `NO_CONSENT`) * A
-  /// human-readable summary of the evaluation
-  /// - "VERBOSE" : Includes `MINIMUM` and, for each resource owner, returns: *
-  /// The resource owner's name * Most specific part of the `X-Consent-Scope`
-  /// resulting in consensual determination * Timestamp of the applied
-  /// enforcement leading to the decision * Enforcement version at the time the
-  /// applicable consents were applied * The Consent resource name * The
-  /// timestamp of the Consent resource used for enforcement * Policy type
-  /// (`PATIENT` or `ADMIN`) Note that this mode adds some overhead to CRUD
-  /// operations.
-  core.String? logLevel;
-
-  AccessDeterminationLogConfig({this.logLevel});
-
-  AccessDeterminationLogConfig.fromJson(core.Map json_)
-    : this(logLevel: json_['logLevel'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (logLevel != null) 'logLevel': logLevel!,
-  };
-}
+typedef AccessDeterminationLogConfig = $AccessDeterminationLogConfig;
 
 /// Activates the latest revision of the specified Consent by committing a new
 /// revision with `state` updated to `ACTIVE`.
@@ -8775,38 +8742,7 @@ class AccessDeterminationLogConfig {
 /// If the latest revision of the given Consent is in the `ACTIVE` state, no new
 /// revision is committed. A FAILED_PRECONDITION error occurs if the latest
 /// revision of the given consent is in the `REJECTED` or `REVOKED` state.
-class ActivateConsentRequest {
-  /// The resource name of the Consent artifact that contains documentation of
-  /// the user's consent, of the form
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-  ///
-  /// If the draft Consent had a Consent artifact, this Consent artifact
-  /// overwrites it.
-  ///
-  /// Required.
-  core.String? consentArtifact;
-
-  /// Timestamp in UTC of when this Consent is considered expired.
-  core.String? expireTime;
-
-  /// The time to live for this Consent from when it is marked as active.
-  core.String? ttl;
-
-  ActivateConsentRequest({this.consentArtifact, this.expireTime, this.ttl});
-
-  ActivateConsentRequest.fromJson(core.Map json_)
-    : this(
-        consentArtifact: json_['consentArtifact'] as core.String?,
-        expireTime: json_['expireTime'] as core.String?,
-        ttl: json_['ttl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consentArtifact != null) 'consentArtifact': consentArtifact!,
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (ttl != null) 'ttl': ttl!,
-  };
-}
+typedef ActivateConsentRequest = $ActivateConsentRequest;
 
 /// List of admin Consent resources to be applied.
 class AdminConsents {
@@ -8835,49 +8771,7 @@ class AdminConsents {
 }
 
 /// The request to analyze healthcare entities in a document.
-class AnalyzeEntitiesRequest {
-  /// Alternative output format to be generated based on the results of
-  /// analysis.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "ALTERNATIVE_OUTPUT_FORMAT_UNSPECIFIED" : No alternative output format
-  /// is specified.
-  /// - "FHIR_BUNDLE" : FHIR bundle output.
-  core.String? alternativeOutputFormat;
-
-  /// document_content is a document to be annotated.
-  core.String? documentContent;
-
-  /// A list of licensed vocabularies to use in the request, in addition to the
-  /// default unlicensed vocabularies.
-  core.List<core.String>? licensedVocabularies;
-
-  AnalyzeEntitiesRequest({
-    this.alternativeOutputFormat,
-    this.documentContent,
-    this.licensedVocabularies,
-  });
-
-  AnalyzeEntitiesRequest.fromJson(core.Map json_)
-    : this(
-        alternativeOutputFormat:
-            json_['alternativeOutputFormat'] as core.String?,
-        documentContent: json_['documentContent'] as core.String?,
-        licensedVocabularies:
-            (json_['licensedVocabularies'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alternativeOutputFormat != null)
-      'alternativeOutputFormat': alternativeOutputFormat!,
-    if (documentContent != null) 'documentContent': documentContent!,
-    if (licensedVocabularies != null)
-      'licensedVocabularies': licensedVocabularies!,
-  };
-}
+typedef AnalyzeEntitiesRequest = $AnalyzeEntitiesRequest;
 
 /// Includes recognized entity mentions and relationships between them.
 class AnalyzeEntitiesResponse {
@@ -9100,93 +8994,7 @@ class Attribute {
 }
 
 /// A client-defined consent attribute.
-class AttributeDefinition {
-  /// Possible values for the attribute.
-  ///
-  /// The number of allowed values must not exceed 500. An empty list is
-  /// invalid. The list can only be expanded after creation.
-  ///
-  /// Required.
-  core.List<core.String>? allowedValues;
-
-  /// The category of the attribute.
-  ///
-  /// The value of this field cannot be changed after creation.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CATEGORY_UNSPECIFIED" : No category specified. This option is invalid.
-  /// - "RESOURCE" : Specify this category when this attribute describes the
-  /// properties of resources. For example, data anonymity or data type.
-  /// - "REQUEST" : Specify this category when this attribute describes the
-  /// properties of requests. For example, requester's role or requester's
-  /// organization.
-  core.String? category;
-
-  /// Default values of the attribute in Consents.
-  ///
-  /// If no default values are specified, it defaults to an empty value.
-  ///
-  /// Optional.
-  core.List<core.String>? consentDefaultValues;
-
-  /// Default value of the attribute in User data mappings.
-  ///
-  /// If no default value is specified, it defaults to an empty value. This
-  /// field is only applicable to attributes of the category `RESOURCE`.
-  ///
-  /// Optional.
-  core.String? dataMappingDefaultValue;
-
-  /// A description of the attribute.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Identifier.
-  ///
-  /// Resource name of the Attribute definition, of the form
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`.
-  /// Cannot be changed after creation.
-  core.String? name;
-
-  AttributeDefinition({
-    this.allowedValues,
-    this.category,
-    this.consentDefaultValues,
-    this.dataMappingDefaultValue,
-    this.description,
-    this.name,
-  });
-
-  AttributeDefinition.fromJson(core.Map json_)
-    : this(
-        allowedValues:
-            (json_['allowedValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        category: json_['category'] as core.String?,
-        consentDefaultValues:
-            (json_['consentDefaultValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        dataMappingDefaultValue:
-            json_['dataMappingDefaultValue'] as core.String?,
-        description: json_['description'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedValues != null) 'allowedValues': allowedValues!,
-    if (category != null) 'category': category!,
-    if (consentDefaultValues != null)
-      'consentDefaultValues': consentDefaultValues!,
-    if (dataMappingDefaultValue != null)
-      'dataMappingDefaultValue': dataMappingDefaultValue!,
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef AttributeDefinition = $AttributeDefinition;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -9242,7 +9050,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -9353,99 +9161,13 @@ class Binding {
 ///
 /// Note: Storage class is only valid for DICOM and hence will only be populated
 /// for DICOM resources.
-class BlobStorageInfo {
-  /// Size in bytes of data stored in Blob Storage.
-  core.String? sizeBytes;
-
-  /// The storage class in which the Blob data is stored.
-  /// Possible string values are:
-  /// - "BLOB_STORAGE_CLASS_UNSPECIFIED" : If unspecified in CreateDataset, the
-  /// StorageClass defaults to STANDARD. If unspecified in UpdateDataset and the
-  /// StorageClass is set in the field mask, an InvalidRequest error is thrown.
-  /// - "STANDARD" : This stores the Object in Blob Standard Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#standard
-  /// - "NEARLINE" : This stores the Object in Blob Nearline Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#nearline
-  /// - "COLDLINE" : This stores the Object in Blob Coldline Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#coldline
-  /// - "ARCHIVE" : This stores the Object in Blob Archive Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#archive
-  core.String? storageClass;
-
-  /// The time at which the storage class was updated.
-  ///
-  /// This is used to compute early deletion fees of the resource.
-  core.String? storageClassUpdateTime;
-
-  BlobStorageInfo({
-    this.sizeBytes,
-    this.storageClass,
-    this.storageClassUpdateTime,
-  });
-
-  BlobStorageInfo.fromJson(core.Map json_)
-    : this(
-        sizeBytes: json_['sizeBytes'] as core.String?,
-        storageClass: json_['storageClass'] as core.String?,
-        storageClassUpdateTime: json_['storageClassUpdateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-    if (storageClass != null) 'storageClass': storageClass!,
-    if (storageClassUpdateTime != null)
-      'storageClassUpdateTime': storageClassUpdateTime!,
-  };
-}
+typedef BlobStorageInfo = $BlobStorageInfo;
 
 /// Settings for data stored in Blob storage.
-class BlobStorageSettings {
-  /// The Storage class in which the Blob data is stored.
-  /// Possible string values are:
-  /// - "BLOB_STORAGE_CLASS_UNSPECIFIED" : If unspecified in CreateDataset, the
-  /// StorageClass defaults to STANDARD. If unspecified in UpdateDataset and the
-  /// StorageClass is set in the field mask, an InvalidRequest error is thrown.
-  /// - "STANDARD" : This stores the Object in Blob Standard Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#standard
-  /// - "NEARLINE" : This stores the Object in Blob Nearline Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#nearline
-  /// - "COLDLINE" : This stores the Object in Blob Coldline Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#coldline
-  /// - "ARCHIVE" : This stores the Object in Blob Archive Storage:
-  /// https://cloud.google.com/storage/docs/storage-classes#archive
-  core.String? blobStorageClass;
-
-  BlobStorageSettings({this.blobStorageClass});
-
-  BlobStorageSettings.fromJson(core.Map json_)
-    : this(blobStorageClass: json_['blobStorageClass'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blobStorageClass != null) 'blobStorageClass': blobStorageClass!,
-  };
-}
+typedef BlobStorageSettings = $BlobStorageSettings;
 
 /// The configuration for exporting to Cloud Storage using the bulk export API.
-class BulkExportGcsDestination {
-  /// URI for a Cloud Storage directory where the server writes result files, in
-  /// the format `gs://{bucket-id}/{path/to/destination/dir}`.
-  ///
-  /// If there is no trailing slash, the service appends one when composing the
-  /// object path. The user is responsible for creating the Cloud Storage bucket
-  /// referenced in `uri_prefix`.
-  ///
-  /// Optional.
-  core.String? uriPrefix;
-
-  BulkExportGcsDestination({this.uriPrefix});
-
-  BulkExportGcsDestination.fromJson(core.Map json_)
-    : this(uriPrefix: json_['uriPrefix'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uriPrefix != null) 'uriPrefix': uriPrefix!,
-  };
-}
+typedef BulkExportGcsDestination = $BulkExportGcsDestination;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -9705,40 +9427,7 @@ class Consent {
 
 /// The accessor scope that describes who can access, for what purpose, in which
 /// environment.
-class ConsentAccessorScope {
-  /// An individual, group, or access role that identifies the accessor or a
-  /// characteristic of the accessor.
-  ///
-  /// This can be a resource ID (such as `{resourceType}/{id}`) or an external
-  /// URI. This value must be present.
-  core.String? actor;
-
-  /// An abstract identifier that describes the environment or conditions under
-  /// which the accessor is acting.
-  ///
-  /// If it's not specified, it applies to all environments.
-  core.String? environment;
-
-  /// The intent of data use.
-  ///
-  /// If it's not specified, it applies to all purposes.
-  core.String? purpose;
-
-  ConsentAccessorScope({this.actor, this.environment, this.purpose});
-
-  ConsentAccessorScope.fromJson(core.Map json_)
-    : this(
-        actor: json_['actor'] as core.String?,
-        environment: json_['environment'] as core.String?,
-        purpose: json_['purpose'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actor != null) 'actor': actor!,
-    if (environment != null) 'environment': environment!,
-    if (purpose != null) 'purpose': purpose!,
-  };
-}
+typedef ConsentAccessorScope = $ConsentAccessorScope;
 
 /// Documentation of a user's consent.
 class ConsentArtifact {
@@ -9948,88 +9637,13 @@ class ConsentConfig {
 }
 
 /// The detailed evaluation of a particular Consent.
-class ConsentEvaluation {
-  /// The evaluation result.
-  /// Possible string values are:
-  /// - "EVALUATION_RESULT_UNSPECIFIED" : No evaluation result specified. This
-  /// option is invalid.
-  /// - "NOT_APPLICABLE" : The Consent is not applicable to the requested access
-  /// determination. For example, the Consent does not apply to the user for
-  /// which the access determination is requested, or it has a `state` of
-  /// `REVOKED`, or it has expired.
-  /// - "NO_MATCHING_POLICY" : The Consent does not have a policy that matches
-  /// the `resource_attributes` of the evaluated resource.
-  /// - "NO_SATISFIED_POLICY" : The Consent has at least one policy that matches
-  /// the `resource_attributes` of the evaluated resource, but no
-  /// `authorization_rule` was satisfied.
-  /// - "HAS_SATISFIED_POLICY" : The Consent has at least one policy that
-  /// matches the `resource_attributes` of the evaluated resource, and at least
-  /// one `authorization_rule` was satisfied.
-  core.String? evaluationResult;
-
-  ConsentEvaluation({this.evaluationResult});
-
-  ConsentEvaluation.fromJson(core.Map json_)
-    : this(evaluationResult: json_['evaluationResult'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (evaluationResult != null) 'evaluationResult': evaluationResult!,
-  };
-}
+typedef ConsentEvaluation = $ConsentEvaluation;
 
 /// How the server handles the consent header.
-class ConsentHeaderHandling {
-  /// Specifies the default server behavior when the header is empty.
-  ///
-  /// If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SCOPE_PROFILE_UNSPECIFIED" : If not specified, the default value
-  /// `PERMIT_EMPTY_SCOPE` is used.
-  /// - "PERMIT_EMPTY_SCOPE" : When no consent scopes are provided (for example,
-  /// if there's an empty or missing header), then consent check is disabled,
-  /// similar to when `access_enforced` is `false`. You can use audit logs to
-  /// differentiate these two cases by looking at the value of
-  /// `protopayload.metadata.consentMode`. If consents scopes are present, they
-  /// must be valid and within the allowed limits, otherwise the request will be
-  /// rejected with a `4xx` code.
-  /// - "REQUIRED_ON_READ" : The consent header must be non-empty when
-  /// performing read and search operations, otherwise the request is rejected
-  /// with a `4xx` code. Additionally, invalid consent scopes or scopes
-  /// exceeding the allowed limits are rejected.
-  core.String? profile;
-
-  ConsentHeaderHandling({this.profile});
-
-  ConsentHeaderHandling.fromJson(core.Map json_)
-    : this(profile: json_['profile'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (profile != null) 'profile': profile!,
-  };
-}
+typedef ConsentHeaderHandling = $ConsentHeaderHandling;
 
 /// List of resource names of Consent resources.
-class ConsentList {
-  /// The resource names of the Consents to evaluate against, of the form
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`.
-  core.List<core.String>? consents;
-
-  ConsentList({this.consents});
-
-  ConsentList.fromJson(core.Map json_)
-    : this(
-        consents:
-            (json_['consents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consents != null) 'consents': consents!,
-  };
-}
+typedef ConsentList = $ConsentList;
 
 /// Represents a consent store.
 class ConsentStore {
@@ -10675,78 +10289,10 @@ class DicomConfig {
 }
 
 /// Specifies the filter configuration for DICOM resources.
-class DicomFilterConfig {
-  /// The Cloud Storage location of the filter configuration file.
-  ///
-  /// The `gcs_uri` must be in the format `gs://bucket/path/to/object`. The
-  /// filter configuration file must contain a list of resource paths separated
-  /// by newline characters (\n or \r\n). Each resource path must be in the
-  /// format
-  /// "/studies/{studyUID}\[/series/{seriesUID}\[/instances/{instanceUID}\]\]"
-  /// The Cloud Healthcare API service account must have the
-  /// `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage
-  /// location.
-  core.String? resourcePathsGcsUri;
-
-  DicomFilterConfig({this.resourcePathsGcsUri});
-
-  DicomFilterConfig.fromJson(core.Map json_)
-    : this(resourcePathsGcsUri: json_['resourcePathsGcsUri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resourcePathsGcsUri != null)
-      'resourcePathsGcsUri': resourcePathsGcsUri!,
-  };
-}
+typedef DicomFilterConfig = $DicomFilterConfig;
 
 /// Contains the configuration for DICOM notifications.
-class DicomNotificationConfig {
-  /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
-  /// notifications of changes are published on.
-  ///
-  /// Supplied by the client. The notification is a `PubsubMessage` with the
-  /// following fields: * `PubsubMessage.Data` contains the resource name. *
-  /// `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed
-  /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
-  /// when the message was published. * `PubsubMessage.Attributes` contains the
-  /// following attributes: * `action`: The name of the endpoint that generated
-  /// the notification. Possible values are `StoreInstances`, `SetBlobSettings`,
-  /// `ImportDicomData`, etc. * `lastUpdatedTime`: The latest timestamp when the
-  /// DICOM instance was updated. * `storeName`: The resource name of the DICOM
-  /// store, of the form
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-  /// * `studyInstanceUID`: The study UID of the DICOM instance that was
-  /// changed. * `seriesInstanceUID`: The series UID of the DICOM instance that
-  /// was changed. * `sopInstanceUID`: The instance UID of the DICOM instance
-  /// that was changed. * `versionId`: The version ID of the DICOM instance that
-  /// was changed. * `modality`: The modality tag of the DICOM instance that was
-  /// changed. * `previousStorageClass`: The storage class where the DICOM
-  /// instance was previously stored if the storage class was changed. *
-  /// `storageClass`: The storage class where the DICOM instance is currently
-  /// stored. Note that notifications are only sent if the topic is non-empty.
-  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
-  /// scoped to a project. The Cloud Healthcare API service account,
-  /// service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have the
-  /// `pubsub.topics.publish` permission (which is typically included in
-  /// `roles/pubsub.publisher` role) on the given Pub/Sub topic. Not having
-  /// adequate permissions causes the calls that send notifications to fail
-  /// (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions).
-  /// If a notification can't be published to Pub/Sub, errors are logged to
-  /// Cloud Logging. For more information, see
-  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
-  ///
-  /// Required.
-  core.String? pubsubTopic;
-
-  DicomNotificationConfig({this.pubsubTopic});
-
-  DicomNotificationConfig.fromJson(core.Map json_)
-    : this(pubsubTopic: json_['pubsubTopic'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-  };
-}
+typedef DicomNotificationConfig = $DicomNotificationConfig;
 
 /// Represents a DICOM store.
 class DicomStore {
@@ -10841,57 +10387,7 @@ class DicomStore {
 }
 
 /// DicomStoreMetrics contains metrics describing a DICOM store.
-class DicomStoreMetrics {
-  /// Total blob storage bytes for all instances in the store.
-  core.String? blobStorageSizeBytes;
-
-  /// Number of instances in the store.
-  core.String? instanceCount;
-
-  /// Resource name of the DICOM store, of the form
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
-  core.String? name;
-
-  /// Number of series in the store.
-  core.String? seriesCount;
-
-  /// Total structured storage bytes for all instances in the store.
-  core.String? structuredStorageSizeBytes;
-
-  /// Number of studies in the store.
-  core.String? studyCount;
-
-  DicomStoreMetrics({
-    this.blobStorageSizeBytes,
-    this.instanceCount,
-    this.name,
-    this.seriesCount,
-    this.structuredStorageSizeBytes,
-    this.studyCount,
-  });
-
-  DicomStoreMetrics.fromJson(core.Map json_)
-    : this(
-        blobStorageSizeBytes: json_['blobStorageSizeBytes'] as core.String?,
-        instanceCount: json_['instanceCount'] as core.String?,
-        name: json_['name'] as core.String?,
-        seriesCount: json_['seriesCount'] as core.String?,
-        structuredStorageSizeBytes:
-            json_['structuredStorageSizeBytes'] as core.String?,
-        studyCount: json_['studyCount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blobStorageSizeBytes != null)
-      'blobStorageSizeBytes': blobStorageSizeBytes!,
-    if (instanceCount != null) 'instanceCount': instanceCount!,
-    if (name != null) 'name': name!,
-    if (seriesCount != null) 'seriesCount': seriesCount!,
-    if (structuredStorageSizeBytes != null)
-      'structuredStorageSizeBytes': structuredStorageSizeBytes!,
-    if (studyCount != null) 'studyCount': studyCount!,
-  };
-}
+typedef DicomStoreMetrics = $DicomStoreMetrics;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -10925,46 +10421,7 @@ class EncryptionSpec {
 }
 
 /// The candidate entities that an entity mention could link to.
-class Entity {
-  /// entity_id is a first class field entity_id uniquely identifies this
-  /// concept and its meta-vocabulary.
-  ///
-  /// For example, "UMLS/C0000970".
-  core.String? entityId;
-
-  /// preferred_term is the preferred term for this concept.
-  ///
-  /// For example, "Acetaminophen". For ad hoc entities formed by normalization,
-  /// this is the most popular unnormalized string.
-  core.String? preferredTerm;
-
-  /// Vocabulary codes are first-class fields and differentiated from the
-  /// concept unique identifier (entity_id).
-  ///
-  /// vocabulary_codes contains the representation of this concept in particular
-  /// vocabularies, such as ICD-10, SNOMED-CT and RxNORM. These are prefixed by
-  /// the name of the vocabulary, followed by the unique code within that
-  /// vocabulary. For example, "RXNORM/A10334543".
-  core.List<core.String>? vocabularyCodes;
-
-  Entity({this.entityId, this.preferredTerm, this.vocabularyCodes});
-
-  Entity.fromJson(core.Map json_)
-    : this(
-        entityId: json_['entityId'] as core.String?,
-        preferredTerm: json_['preferredTerm'] as core.String?,
-        vocabularyCodes:
-            (json_['vocabularyCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityId != null) 'entityId': entityId!,
-    if (preferredTerm != null) 'preferredTerm': preferredTerm!,
-    if (vocabularyCodes != null) 'vocabularyCodes': vocabularyCodes!,
-  };
-}
+typedef Entity = $Entity01;
 
 /// An entity mention in the document.
 class EntityMention {
@@ -11079,33 +10536,7 @@ class EntityMention {
 }
 
 /// Defines directed relationship from one entity mention to another.
-class EntityMentionRelationship {
-  /// The model's confidence in this annotation.
-  ///
-  /// A number between 0 and 1.
-  core.double? confidence;
-
-  /// object_id is the id of the object entity mention.
-  core.String? objectId;
-
-  /// subject_id is the id of the subject entity mention.
-  core.String? subjectId;
-
-  EntityMentionRelationship({this.confidence, this.objectId, this.subjectId});
-
-  EntityMentionRelationship.fromJson(core.Map json_)
-    : this(
-        confidence: (json_['confidence'] as core.num?)?.toDouble(),
-        objectId: json_['objectId'] as core.String?,
-        subjectId: json_['subjectId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidence != null) 'confidence': confidence!,
-    if (objectId != null) 'objectId': objectId!,
-    if (subjectId != null) 'subjectId': subjectId!,
-  };
-}
+typedef EntityMentionRelationship = $EntityMentionRelationship;
 
 /// Evaluate a user's Consents for all matching User data mappings.
 ///
@@ -11672,30 +11103,7 @@ class ExportResourcesRequest {
 typedef Expr = $Expr;
 
 /// A feature of an entity mention.
-class Feature {
-  /// The model's confidence in this feature annotation.
-  ///
-  /// A number between 0 and 1.
-  core.double? confidence;
-
-  /// The value of this feature annotation.
-  ///
-  /// Its range depends on the type of the feature.
-  core.String? value;
-
-  Feature({this.confidence, this.value});
-
-  Feature.fromJson(core.Map json_)
-    : this(
-        confidence: (json_['confidence'] as core.num?)?.toDouble(),
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidence != null) 'confidence': confidence!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Feature = $Feature01;
 
 /// Specifies how to handle de-identification of a FHIR store.
 class FhirConfig {
@@ -12107,38 +11515,7 @@ class FhirStore {
 }
 
 /// Count of resources and total storage size by type for a given FHIR store.
-class FhirStoreMetric {
-  /// The total count of FHIR resources in the store of this resource type.
-  core.String? count;
-
-  /// The FHIR resource type this metric applies to.
-  core.String? resourceType;
-
-  /// The total amount of structured storage used by FHIR resources of this
-  /// resource type in the store.
-  core.String? structuredStorageSizeBytes;
-
-  FhirStoreMetric({
-    this.count,
-    this.resourceType,
-    this.structuredStorageSizeBytes,
-  });
-
-  FhirStoreMetric.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.String?,
-        resourceType: json_['resourceType'] as core.String?,
-        structuredStorageSizeBytes:
-            json_['structuredStorageSizeBytes'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (resourceType != null) 'resourceType': resourceType!,
-    if (structuredStorageSizeBytes != null)
-      'structuredStorageSizeBytes': structuredStorageSizeBytes!,
-  };
-}
+typedef FhirStoreMetric = $FhirStoreMetric;
 
 /// List of metrics for a given FHIR store.
 class FhirStoreMetrics {
@@ -12171,50 +11548,7 @@ class FhirStoreMetrics {
 }
 
 /// A (sub) field of a type.
-class Field {
-  /// The maximum number of times this field can be repeated.
-  ///
-  /// 0 or -1 means unbounded.
-  core.int? maxOccurs;
-
-  /// The minimum number of times this field must be present/repeated.
-  core.int? minOccurs;
-
-  /// The name of the field.
-  ///
-  /// For example, "PID-1" or just "1".
-  core.String? name;
-
-  /// The HL7v2 table this field refers to.
-  ///
-  /// For example, PID-15 (Patient's Primary Language) usually refers to table
-  /// "0296".
-  core.String? table;
-
-  /// The type of this field.
-  ///
-  /// A Type with this name must be defined in an Hl7TypesConfig.
-  core.String? type;
-
-  Field({this.maxOccurs, this.minOccurs, this.name, this.table, this.type});
-
-  Field.fromJson(core.Map json_)
-    : this(
-        maxOccurs: json_['maxOccurs'] as core.int?,
-        minOccurs: json_['minOccurs'] as core.int?,
-        name: json_['name'] as core.String?,
-        table: json_['table'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxOccurs != null) 'maxOccurs': maxOccurs!,
-    if (minOccurs != null) 'minOccurs': minOccurs!,
-    if (name != null) 'name': name!,
-    if (table != null) 'table': table!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef Field = $Field;
 
 /// Specifies FHIR paths to match, and how to handle de-identification of
 /// matching fields.
@@ -12313,27 +11647,10 @@ class GcsDestination {
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
-typedef GcsSource = $GcsSource;
+typedef GcsSource = $GcsSource00;
 
 /// The Cloud Storage location for export.
-class GoogleCloudHealthcareV1ConsentGcsDestination {
-  /// URI for a Cloud Storage directory where the server writes result files, in
-  /// the format `gs://{bucket-id}/{path/to/destination/dir}`.
-  ///
-  /// If there is no trailing slash, the service appends one when composing the
-  /// object path. The user is responsible for creating the Cloud Storage bucket
-  /// and directory referenced in `uri_prefix`.
-  core.String? uriPrefix;
-
-  GoogleCloudHealthcareV1ConsentGcsDestination({this.uriPrefix});
-
-  GoogleCloudHealthcareV1ConsentGcsDestination.fromJson(core.Map json_)
-    : this(uriPrefix: json_['uriPrefix'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uriPrefix != null) 'uriPrefix': uriPrefix!,
-  };
-}
+typedef GoogleCloudHealthcareV1ConsentGcsDestination = $ConsentGcsDestination;
 
 /// Represents a user's consent in terms of the resources that can be accessed
 /// and under what conditions.
@@ -12487,32 +11804,7 @@ class GoogleCloudHealthcareV1DicomGcsDestination {
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
-class GoogleCloudHealthcareV1DicomGcsSource {
-  /// Points to a Cloud Storage URI containing file(s) with content only.
-  ///
-  /// The URI must be in the following format: `gs://{bucket_id}/{object_id}`.
-  /// The URI can include wildcards in `object_id` and thus identify multiple
-  /// files. Supported wildcards: * '*' to match 0 or more non-separator
-  /// characters * '**' to match 0 or more characters (including separators).
-  /// Must be used at the end of a path and with no other wildcards in the path.
-  /// Can also be used with a file extension (such as .dcm), which imports all
-  /// files with the extension in the specified directory and its
-  /// sub-directories. For example, `gs://my-bucket/my-directory / * *.dcm`
-  /// imports all files with .dcm extensions in `my-directory/` and its
-  /// sub-directories. * '?' to match 1 character. All other URI formats are
-  /// invalid. Files matching the wildcard are expected to contain content only,
-  /// no metadata.
-  core.String? uri;
-
-  GoogleCloudHealthcareV1DicomGcsSource({this.uri});
-
-  GoogleCloudHealthcareV1DicomGcsSource.fromJson(core.Map json_)
-    : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GoogleCloudHealthcareV1DicomGcsSource = $DicomGcsSource;
 
 /// StreamConfig specifies configuration for a streaming DICOM export.
 class GoogleCloudHealthcareV1DicomStreamConfig {
@@ -12649,7 +11941,7 @@ class GoogleCloudHealthcareV1FhirGcsDestination {
 }
 
 /// Specifies the configuration for importing data from Cloud Storage.
-typedef GoogleCloudHealthcareV1FhirGcsSource = $GcsSource;
+typedef GoogleCloudHealthcareV1FhirGcsSource = $GcsSource00;
 
 /// Construct representing a logical group or a segment.
 class GroupOrSegment {
@@ -12936,38 +12228,7 @@ class Hl7V2Store {
 }
 
 /// Count of messages and total storage size by type for a given HL7 store.
-class Hl7V2StoreMetric {
-  /// The total count of HL7v2 messages in the store for the given message type.
-  core.String? count;
-
-  /// The Hl7v2 message type this metric applies to, such as `ADT` or `ORU`.
-  core.String? messageType;
-
-  /// The total amount of structured storage used by HL7v2 messages of this
-  /// message type in the store.
-  core.String? structuredStorageSizeBytes;
-
-  Hl7V2StoreMetric({
-    this.count,
-    this.messageType,
-    this.structuredStorageSizeBytes,
-  });
-
-  Hl7V2StoreMetric.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.String?,
-        messageType: json_['messageType'] as core.String?,
-        structuredStorageSizeBytes:
-            json_['structuredStorageSizeBytes'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (messageType != null) 'messageType': messageType!,
-    if (structuredStorageSizeBytes != null)
-      'structuredStorageSizeBytes': structuredStorageSizeBytes!,
-  };
-}
+typedef Hl7V2StoreMetric = $Hl7V2StoreMetric;
 
 /// List of metrics for a given HL7v2 store.
 class Hl7V2StoreMetrics {
@@ -13020,45 +12281,7 @@ class Hl7V2StoreMetrics {
 typedef HttpBody = $HttpBody;
 
 /// Raw bytes representing consent artifact content.
-class Image {
-  /// Input only.
-  ///
-  /// Points to a Cloud Storage URI containing the consent artifact content. The
-  /// URI must be in the following format: `gs://{bucket_id}/{object_id}`. The
-  /// Cloud Healthcare API service account must have the
-  /// `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage
-  /// location. The consent artifact content at this URI is copied to a Cloud
-  /// Storage location managed by the Cloud Healthcare API. Responses to
-  /// fetching requests return the consent artifact content in raw_bytes.
-  core.String? gcsUri;
-
-  /// Consent artifact content represented as a stream of bytes.
-  ///
-  /// This field is populated when returned in GetConsentArtifact response, but
-  /// not included in CreateConsentArtifact and ListConsentArtifact response.
-  core.String? rawBytes;
-  core.List<core.int> get rawBytesAsBytes => convert.base64.decode(rawBytes!);
-
-  set rawBytesAsBytes(core.List<core.int> bytes_) {
-    rawBytes = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  Image({this.gcsUri, this.rawBytes});
-
-  Image.fromJson(core.Map json_)
-    : this(
-        gcsUri: json_['gcsUri'] as core.String?,
-        rawBytes: json_['rawBytes'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsUri != null) 'gcsUri': gcsUri!,
-    if (rawBytes != null) 'rawBytes': rawBytes!,
-  };
-}
+typedef Image = $Image02;
 
 /// Specifies how to handle de-identification of image pixels.
 class ImageConfig {
@@ -13355,63 +12578,11 @@ class IngestMessageResponse {
 /// project's Cloud Healthcare Service Agent service account. For more
 /// information, see
 /// [Creating a wrapped key](https://cloud.google.com/dlp/docs/create-wrapped-key).
-class KmsWrappedCryptoKey {
-  /// The resource name of the KMS CryptoKey to use for unwrapping.
-  ///
-  /// For example,
-  /// `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
-  ///
-  /// Required.
-  core.String? cryptoKey;
-
-  /// The wrapped data crypto key.
-  ///
-  /// Required.
-  core.String? wrappedKey;
-  core.List<core.int> get wrappedKeyAsBytes =>
-      convert.base64.decode(wrappedKey!);
-
-  set wrappedKeyAsBytes(core.List<core.int> bytes_) {
-    wrappedKey = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  KmsWrappedCryptoKey({this.cryptoKey, this.wrappedKey});
-
-  KmsWrappedCryptoKey.fromJson(core.Map json_)
-    : this(
-        cryptoKey: json_['cryptoKey'] as core.String?,
-        wrappedKey: json_['wrappedKey'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cryptoKey != null) 'cryptoKey': cryptoKey!,
-    if (wrappedKey != null) 'wrappedKey': wrappedKey!,
-  };
-}
+typedef KmsWrappedCryptoKey = $KmsWrappedCryptoKey;
 
 /// EntityMentions can be linked to multiple entities using a LinkedEntity
 /// message lets us add other fields, e.g. confidence.
-class LinkedEntity {
-  /// entity_id is a concept unique identifier.
-  ///
-  /// These are prefixed by a string that identifies the entity coding system,
-  /// followed by the unique identifier within that system. For example,
-  /// "UMLS/C0000970". This also supports ad hoc entities, which are formed by
-  /// normalizing entity mention content.
-  core.String? entityId;
-
-  LinkedEntity({this.entityId});
-
-  LinkedEntity.fromJson(core.Map json_)
-    : this(entityId: json_['entityId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityId != null) 'entityId': entityId!,
-  };
-}
+typedef LinkedEntity = $LinkedEntity;
 
 class ListAttributeDefinitionsResponse {
   /// The returned Attribute definitions.
@@ -13972,46 +13143,7 @@ class Message {
 }
 
 /// Specifies where to send notifications upon changes to a data store.
-class NotificationConfig {
-  /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that
-  /// notifications of changes are published on.
-  ///
-  /// Supplied by the client. PubsubMessage.Data contains the resource name.
-  /// PubsubMessage.MessageId is the ID of this message. It is guaranteed to be
-  /// unique within the topic. PubsubMessage.PublishTime is the time at which
-  /// the message was published. Notifications are only sent if the topic is
-  /// non-empty.
-  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
-  /// scoped to a project. Cloud Healthcare API service account must have
-  /// publisher permissions on the given Pub/Sub topic. Not having adequate
-  /// permissions causes the calls that send notifications to fail. If a
-  /// notification can't be published to Pub/Sub, errors are logged to Cloud
-  /// Logging (see
-  /// [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
-  /// If the number of errors exceeds a certain rate, some aren't submitted.
-  /// Note that not all operations trigger notifications, see
-  /// [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub)
-  /// for specific details.
-  core.String? pubsubTopic;
-
-  /// Indicates whether or not to send Pub/Sub notifications on bulk import.
-  ///
-  /// Only supported for DICOM imports.
-  core.bool? sendForBulkImport;
-
-  NotificationConfig({this.pubsubTopic, this.sendForBulkImport});
-
-  NotificationConfig.fromJson(core.Map json_)
-    : this(
-        pubsubTopic: json_['pubsubTopic'] as core.String?,
-        sendForBulkImport: json_['sendForBulkImport'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-    if (sendForBulkImport != null) 'sendForBulkImport': sendForBulkImport!,
-  };
-}
+typedef NotificationConfig = $NotificationConfig01;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -14194,53 +13326,10 @@ class ParserConfig {
 }
 
 /// A patient identifier and associated type.
-class PatientId {
-  /// ID type.
-  ///
-  /// For example, MRN or NHS.
-  core.String? type;
-
-  /// The patient's unique identifier.
-  core.String? value;
-
-  PatientId({this.type, this.value});
-
-  PatientId.fromJson(core.Map json_)
-    : this(
-        type: json_['type'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef PatientId = $PatientId;
 
 /// Apply consents given by a list of patients.
-class PatientScope {
-  /// The list of patient IDs whose Consent resources will be enforced.
-  ///
-  /// At most 10,000 patients can be specified. An empty list is equivalent to
-  /// all patients (meaning the entire FHIR store).
-  ///
-  /// Optional.
-  core.List<core.String>? patientIds;
-
-  PatientScope({this.patientIds});
-
-  PatientScope.fromJson(core.Map json_)
-    : this(
-        patientIds:
-            (json_['patientIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (patientIds != null) 'patientIds': patientIds!,
-  };
-}
+typedef PatientScope = $PatientScope;
 
 /// An Identity and Access Management (IAM) policy, which specifies access
 /// controls for Google Cloud resources.
@@ -14366,31 +13455,7 @@ class Policy {
 ///
 /// The Cloud Healthcare Service Agent requires the `roles/pubsub.publisher`
 /// Cloud IAM role on the Pub/Sub topic.
-class PubsubDestination {
-  /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that Pub/Sub
-  /// messages are published on.
-  ///
-  /// Supplied by the client. The `PubsubMessage` contains the following fields:
-  /// * `PubsubMessage.Data` contains the resource name. *
-  /// `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed
-  /// to be unique within the topic. * `PubsubMessage.PublishTime` is the time
-  /// when the message was published.
-  /// [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be
-  /// scoped to a project. The Cloud Healthcare API service account,
-  /// service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must
-  /// have publisher permissions on the given Pub/Sub topic. Not having adequate
-  /// permissions causes the calls that send notifications to fail.
-  core.String? pubsubTopic;
-
-  PubsubDestination({this.pubsubTopic});
-
-  PubsubDestination.fromJson(core.Map json_)
-    : this(pubsubTopic: json_['pubsubTopic'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pubsubTopic != null) 'pubsubTopic': pubsubTopic!,
-  };
-}
+typedef PubsubDestination = $PubsubDestination;
 
 /// Queries all data_ids that are consented for a given use in the given consent
 /// store and writes them to a specified destination.
@@ -14460,26 +13525,7 @@ typedef RedactConfig = $Empty;
 ///
 /// If the latest revision of the given Consent is in the `REJECTED` state, no
 /// new revision is committed.
-class RejectConsentRequest {
-  /// The resource name of the Consent artifact that contains documentation of
-  /// the user's rejection of the draft Consent, of the form
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-  ///
-  /// If the draft Consent had a Consent artifact, this Consent artifact
-  /// overwrites it.
-  ///
-  /// Optional.
-  core.String? consentArtifact;
-
-  RejectConsentRequest({this.consentArtifact});
-
-  RejectConsentRequest.fromJson(core.Map json_)
-    : this(consentArtifact: json_['consentArtifact'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consentArtifact != null) 'consentArtifact': consentArtifact!,
-  };
-}
+typedef RejectConsentRequest = $RejectConsentRequest;
 
 /// When using the INSPECT_AND_TRANSFORM action, each match is replaced with the
 /// name of the info_type.
@@ -14489,26 +13535,7 @@ class RejectConsentRequest {
 typedef ReplaceWithInfoTypeConfig = $Empty;
 
 /// A list of FHIR resources.
-class Resources {
-  /// List of resources IDs.
-  ///
-  /// For example, "Patient/1234".
-  core.List<core.String>? resources;
-
-  Resources({this.resources});
-
-  Resources.fromJson(core.Map json_)
-    : this(
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resources != null) 'resources': resources!,
-  };
-}
+typedef Resources = $Resources;
 
 /// The consent evaluation result for a single `data_id`.
 class Result {
@@ -14551,23 +13578,7 @@ class Result {
 ///
 /// If the latest revision of the given Consent is in the `REVOKED` state, no
 /// new revision is committed.
-class RevokeConsentRequest {
-  /// The resource name of the Consent artifact that contains proof of the
-  /// user's revocation of the Consent, of the form
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-  ///
-  /// Optional.
-  core.String? consentArtifact;
-
-  RevokeConsentRequest({this.consentArtifact});
-
-  RevokeConsentRequest.fromJson(core.Map json_)
-    : this(consentArtifact: json_['consentArtifact'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consentArtifact != null) 'consentArtifact': consentArtifact!,
-  };
-}
+typedef RevokeConsentRequest = $RevokeConsentRequest;
 
 class RollbackFhirResourceFilteringFields {
   /// A filter expression that matches data in the `Resource.meta` element.
@@ -14698,26 +13709,8 @@ class RollbackFhirResourcesRequest {
 /// Filtering fields for an HL7v2 rollback.
 ///
 /// Currently only supports a list of operation ids to roll back.
-class RollbackHL7MessagesFilteringFields {
-  /// A list of operation IDs to roll back.
-  ///
-  /// Optional.
-  core.List<core.String>? operationIds;
-
-  RollbackHL7MessagesFilteringFields({this.operationIds});
-
-  RollbackHL7MessagesFilteringFields.fromJson(core.Map json_)
-    : this(
-        operationIds:
-            (json_['operationIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (operationIds != null) 'operationIds': operationIds!,
-  };
-}
+typedef RollbackHL7MessagesFilteringFields =
+    $RollbackHL7MessagesFilteringFields;
 
 /// Point in time recovery rollback request.
 class RollbackHl7V2MessagesRequest {
@@ -15028,58 +14021,11 @@ class SchemaPackage {
 }
 
 /// An HL7v2 Segment.
-class SchemaSegment {
-  /// The maximum number of times this segment can be present in this group.
-  ///
-  /// 0 or -1 means unbounded.
-  core.int? maxOccurs;
-
-  /// The minimum number of times this segment can be present in this group.
-  core.int? minOccurs;
-
-  /// The Segment type.
-  ///
-  /// For example, "PID".
-  core.String? type;
-
-  SchemaSegment({this.maxOccurs, this.minOccurs, this.type});
-
-  SchemaSegment.fromJson(core.Map json_)
-    : this(
-        maxOccurs: json_['maxOccurs'] as core.int?,
-        minOccurs: json_['minOccurs'] as core.int?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxOccurs != null) 'maxOccurs': maxOccurs!,
-    if (minOccurs != null) 'minOccurs': minOccurs!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef SchemaSegment = $SchemaSegment;
 
 /// The content of an HL7v2 message in a structured format as specified by a
 /// schema.
-class SchematizedData {
-  /// JSON output of the parser.
-  core.String? data;
-
-  /// The error output of the parser.
-  core.String? error;
-
-  SchematizedData({this.data, this.error});
-
-  SchematizedData.fromJson(core.Map json_)
-    : this(
-        data: json_['data'] as core.String?,
-        error: json_['error'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (error != null) 'error': error!,
-  };
-}
+typedef SchematizedData = $SchematizedData;
 
 /// Request to search the resources in the specified FHIR store.
 class SearchResourcesRequest {
@@ -15105,90 +14051,10 @@ class SearchResourcesRequest {
 }
 
 /// A segment in a structured format.
-class Segment {
-  /// A mapping from the positional location to the value.
-  ///
-  /// The key string uses zero-based indexes separated by dots to identify
-  /// Fields, components and sub-components. A bracket notation is also used to
-  /// identify different instances of a repeated field. Regex for key:
-  /// (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1,
-  /// "hemoglobin") denotes that the first component of Field 0 has the value
-  /// "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of
-  /// the first component of Field 1 has the value "CBC". * (1\[0\].1, "HbA1c")
-  /// denotes that the first component of the first Instance of Field 1, which
-  /// is repeated, has the value "HbA1c".
-  core.Map<core.String, core.String>? fields;
-
-  /// A string that indicates the type of segment.
-  ///
-  /// For example, EVN or PID.
-  core.String? segmentId;
-
-  /// Set ID for segments that can be in a set.
-  ///
-  /// This can be empty if it's missing or isn't applicable.
-  core.String? setId;
-
-  Segment({this.fields, this.segmentId, this.setId});
-
-  Segment.fromJson(core.Map json_)
-    : this(
-        fields: (json_['fields'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        segmentId: json_['segmentId'] as core.String?,
-        setId: json_['setId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fields != null) 'fields': fields!,
-    if (segmentId != null) 'segmentId': segmentId!,
-    if (setId != null) 'setId': setId!,
-  };
-}
+typedef Segment = $Segment01;
 
 /// SeriesMetrics contains metrics describing a DICOM series.
-class SeriesMetrics {
-  /// Total blob storage bytes for all instances in the series.
-  core.String? blobStorageSizeBytes;
-
-  /// Number of instances in the series.
-  core.String? instanceCount;
-
-  /// The series resource path.
-  ///
-  /// For example,
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`.
-  core.String? series;
-
-  /// Total structured storage bytes for all instances in the series.
-  core.String? structuredStorageSizeBytes;
-
-  SeriesMetrics({
-    this.blobStorageSizeBytes,
-    this.instanceCount,
-    this.series,
-    this.structuredStorageSizeBytes,
-  });
-
-  SeriesMetrics.fromJson(core.Map json_)
-    : this(
-        blobStorageSizeBytes: json_['blobStorageSizeBytes'] as core.String?,
-        instanceCount: json_['instanceCount'] as core.String?,
-        series: json_['series'] as core.String?,
-        structuredStorageSizeBytes:
-            json_['structuredStorageSizeBytes'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blobStorageSizeBytes != null)
-      'blobStorageSizeBytes': blobStorageSizeBytes!,
-    if (instanceCount != null) 'instanceCount': instanceCount!,
-    if (series != null) 'series': series!,
-    if (structuredStorageSizeBytes != null)
-      'structuredStorageSizeBytes': structuredStorageSizeBytes!,
-  };
-}
+typedef SeriesMetrics = $SeriesMetrics;
 
 /// Request message for `SetBlobStorageSettings` method.
 class SetBlobStorageSettingsRequest {
@@ -15477,68 +14343,10 @@ class StreamConfig {
 
 /// StructuredStorageInfo contains details about the data stored in Structured
 /// Storage for the referenced resource.
-class StructuredStorageInfo {
-  /// Size in bytes of data stored in structured storage.
-  core.String? sizeBytes;
-
-  StructuredStorageInfo({this.sizeBytes});
-
-  StructuredStorageInfo.fromJson(core.Map json_)
-    : this(sizeBytes: json_['sizeBytes'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sizeBytes != null) 'sizeBytes': sizeBytes!,
-  };
-}
+typedef StructuredStorageInfo = $StructuredStorageInfo;
 
 /// StudyMetrics contains metrics describing a DICOM study.
-class StudyMetrics {
-  /// Total blob storage bytes for all instances in the study.
-  core.String? blobStorageSizeBytes;
-
-  /// Number of instances in the study.
-  core.String? instanceCount;
-
-  /// Number of series in the study.
-  core.String? seriesCount;
-
-  /// Total structured storage bytes for all instances in the study.
-  core.String? structuredStorageSizeBytes;
-
-  /// The study resource path.
-  ///
-  /// For example,
-  /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`.
-  core.String? study;
-
-  StudyMetrics({
-    this.blobStorageSizeBytes,
-    this.instanceCount,
-    this.seriesCount,
-    this.structuredStorageSizeBytes,
-    this.study,
-  });
-
-  StudyMetrics.fromJson(core.Map json_)
-    : this(
-        blobStorageSizeBytes: json_['blobStorageSizeBytes'] as core.String?,
-        instanceCount: json_['instanceCount'] as core.String?,
-        seriesCount: json_['seriesCount'] as core.String?,
-        structuredStorageSizeBytes:
-            json_['structuredStorageSizeBytes'] as core.String?,
-        study: json_['study'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (blobStorageSizeBytes != null)
-      'blobStorageSizeBytes': blobStorageSizeBytes!,
-    if (instanceCount != null) 'instanceCount': instanceCount!,
-    if (seriesCount != null) 'seriesCount': seriesCount!,
-    if (structuredStorageSizeBytes != null)
-      'structuredStorageSizeBytes': structuredStorageSizeBytes!,
-    if (study != null) 'study': study!,
-  };
-}
+typedef StudyMetrics = $StudyMetrics;
 
 /// List of tags to be filtered.
 class TagFilterList {
@@ -15632,54 +14440,10 @@ class TextConfig {
 }
 
 /// A span of text in the provided document.
-class TextSpan {
-  /// The unicode codepoint index of the beginning of this span.
-  core.int? beginOffset;
-
-  /// The original text contained in this span.
-  core.String? content;
-
-  TextSpan({this.beginOffset, this.content});
-
-  TextSpan.fromJson(core.Map json_)
-    : this(
-        beginOffset: json_['beginOffset'] as core.int?,
-        content: json_['content'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (beginOffset != null) 'beginOffset': beginOffset!,
-    if (content != null) 'content': content!,
-  };
-}
+typedef TextSpan = $TextSpan01;
 
 /// Configuration for FHIR BigQuery time-partitioned tables.
-class TimePartitioning {
-  /// Number of milliseconds for which to keep the storage for a partition.
-  core.String? expirationMs;
-
-  /// Type of partitioning.
-  /// Possible string values are:
-  /// - "PARTITION_TYPE_UNSPECIFIED" : Default unknown time.
-  /// - "HOUR" : Data partitioned by hour.
-  /// - "DAY" : Data partitioned by day.
-  /// - "MONTH" : Data partitioned by month.
-  /// - "YEAR" : Data partitioned by year.
-  core.String? type;
-
-  TimePartitioning({this.expirationMs, this.type});
-
-  TimePartitioning.fromJson(core.Map json_)
-    : this(
-        expirationMs: json_['expirationMs'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expirationMs != null) 'expirationMs': expirationMs!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef TimePartitioning = $TimePartitioning;
 
 /// Apply consents given by patients whose most recent consent changes are in
 /// the time range.
@@ -15687,32 +14451,7 @@ class TimePartitioning {
 /// Note that after identifying these patients, the server applies all Consent
 /// resources given by those patients, not just the Consent resources within the
 /// timestamp in the range.
-class TimeRange {
-  /// The latest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz If
-  /// not specified, the system uses the time when ApplyConsents was called.
-  ///
-  /// Optional.
-  core.String? end;
-
-  /// The earliest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz
-  /// If not specified, the system uses the FHIR store creation time.
-  ///
-  /// Optional.
-  core.String? start;
-
-  TimeRange({this.end, this.start});
-
-  TimeRange.fromJson(core.Map json_)
-    : this(
-        end: json_['end'] as core.String?,
-        start: json_['start'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (end != null) 'end': end!,
-    if (start != null) 'start': start!,
-  };
-}
+typedef TimeRange = $TimeRange01;
 
 /// A type definition for some HL7v2 type (incl.
 ///
@@ -15934,27 +14673,4 @@ class ValidationConfig {
 }
 
 /// Describes a selector for extracting and matching an MSH field to a value.
-class VersionSource {
-  /// The field to extract from the MSH segment.
-  ///
-  /// For example, "3.1" or "18\[1\].1".
-  core.String? mshField;
-
-  /// The value to match with the field.
-  ///
-  /// For example, "My Application Name" or "2.3".
-  core.String? value;
-
-  VersionSource({this.mshField, this.value});
-
-  VersionSource.fromJson(core.Map json_)
-    : this(
-        mshField: json_['mshField'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mshField != null) 'mshField': mshField!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef VersionSource = $VersionSource;

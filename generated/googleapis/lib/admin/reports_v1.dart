@@ -1792,7 +1792,7 @@ class FieldValueSelectionValue {
 }
 
 /// Setting a text list value.
-typedef FieldValueTextListValue = $Shared05;
+typedef FieldValueTextListValue = $Shared12;
 
 /// Setting a user list value by selecting multiple users.
 class FieldValueUserListValue {

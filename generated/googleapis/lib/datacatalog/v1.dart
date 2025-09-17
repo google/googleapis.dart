@@ -6543,54 +6543,12 @@ class GoogleCloudDatacatalogV1ReconcileTagsRequest {
 }
 
 /// Request message for RenameTagTemplateFieldEnumValue.
-class GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest {
-  /// The new display name of the enum value.
-  ///
-  /// For example, `my_new_enum_value`.
-  ///
-  /// Required.
-  core.String? newEnumValueDisplayName;
-
-  GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest({
-    this.newEnumValueDisplayName,
-  });
-
-  GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        newEnumValueDisplayName:
-            json_['newEnumValueDisplayName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newEnumValueDisplayName != null)
-      'newEnumValueDisplayName': newEnumValueDisplayName!,
-  };
-}
+typedef GoogleCloudDatacatalogV1RenameTagTemplateFieldEnumValueRequest =
+    $RenameTagTemplateFieldEnumValueRequest;
 
 /// Request message for RenameTagTemplateField.
-class GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest {
-  /// The new ID of this tag template field.
-  ///
-  /// For example, `my_new_field`.
-  ///
-  /// Required.
-  core.String? newTagTemplateFieldId;
-
-  GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest({
-    this.newTagTemplateFieldId,
-  });
-
-  GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest.fromJson(core.Map json_)
-    : this(
-        newTagTemplateFieldId: json_['newTagTemplateFieldId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (newTagTemplateFieldId != null)
-      'newTagTemplateFieldId': newTagTemplateFieldId!,
-  };
-}
+typedef GoogleCloudDatacatalogV1RenameTagTemplateFieldRequest =
+    $RenameTagTemplateFieldRequest;
 
 /// Request message for ReplaceTaxonomy.
 class GoogleCloudDatacatalogV1ReplaceTaxonomyRequest {
@@ -7637,19 +7595,7 @@ class GoogleCloudDatacatalogV1TagField {
 }
 
 /// An enum value.
-class GoogleCloudDatacatalogV1TagFieldEnumValue {
-  /// The display name of the enum value.
-  core.String? displayName;
-
-  GoogleCloudDatacatalogV1TagFieldEnumValue({this.displayName});
-
-  GoogleCloudDatacatalogV1TagFieldEnumValue.fromJson(core.Map json_)
-    : this(displayName: json_['displayName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-  };
-}
+typedef GoogleCloudDatacatalogV1TagFieldEnumValue = $TagFieldEnumValue;
 
 /// A tag template defines a tag that can have one or more typed fields.
 ///
@@ -7925,30 +7871,7 @@ class GoogleCloudDatacatalogV1Taxonomy {
 }
 
 /// The source system of the Taxonomy.
-class GoogleCloudDatacatalogV1TaxonomyService {
-  /// The service agent for the service.
-  core.String? identity;
-
-  /// The Google Cloud service name.
-  /// Possible string values are:
-  /// - "MANAGING_SYSTEM_UNSPECIFIED" : Default value
-  /// - "MANAGING_SYSTEM_DATAPLEX" : Dataplex Universal Catalog.
-  /// - "MANAGING_SYSTEM_OTHER" : Other
-  core.String? name;
-
-  GoogleCloudDatacatalogV1TaxonomyService({this.identity, this.name});
-
-  GoogleCloudDatacatalogV1TaxonomyService.fromJson(core.Map json_)
-    : this(
-        identity: json_['identity'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (identity != null) 'identity': identity!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef GoogleCloudDatacatalogV1TaxonomyService = $TaxonomyService;
 
 /// Request message for UnstarEntry.
 typedef GoogleCloudDatacatalogV1UnstarEntryRequest = $Empty;
@@ -8183,21 +8106,7 @@ class GoogleCloudDatacatalogV1VertexModelSpec {
 }
 
 /// Table view specification.
-class GoogleCloudDatacatalogV1ViewSpec {
-  /// The query that defines the table view.
-  ///
-  /// Output only.
-  core.String? viewQuery;
-
-  GoogleCloudDatacatalogV1ViewSpec({this.viewQuery});
-
-  GoogleCloudDatacatalogV1ViewSpec.fromJson(core.Map json_)
-    : this(viewQuery: json_['viewQuery'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (viewQuery != null) 'viewQuery': viewQuery!,
-  };
-}
+typedef GoogleCloudDatacatalogV1ViewSpec = $ViewSpec;
 
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {

@@ -7608,7 +7608,7 @@ class EnterpriseCrmEventbusProtoCustomSuspensionRequest {
   };
 }
 
-typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared07;
+typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared14;
 typedef EnterpriseCrmEventbusProtoDoubleParameterArray =
     $EventbusProtoDoubleParameterArray;
 
@@ -8189,7 +8189,7 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
   };
 }
 
-typedef EnterpriseCrmEventbusProtoIntArray = $Shared08;
+typedef EnterpriseCrmEventbusProtoIntArray = $Shared15;
 typedef EnterpriseCrmEventbusProtoIntParameterArray =
     $EventbusProtoIntParameterArray;
 
@@ -9724,7 +9724,7 @@ class EnterpriseCrmEventbusProtoTeardownTaskConfig {
   };
 }
 
-typedef EnterpriseCrmEventbusProtoToken = $Shared06;
+typedef EnterpriseCrmEventbusProtoToken = $Shared13;
 
 class EnterpriseCrmEventbusProtoTriggerCriteria {
   /// Standard filter expression, when true the workflow will be executed.
@@ -13442,7 +13442,7 @@ typedef GoogleCloudConnectorsV1LockConfig = $LockConfig;
 typedef GoogleCloudConnectorsV1LogConfig = $LogConfig;
 
 /// Node configuration for the connection.
-typedef GoogleCloudConnectorsV1NodeConfig = $NodeConfig;
+typedef GoogleCloudConnectorsV1NodeConfig = $NodeConfig00;
 
 /// Resource limits defined for connection pods of a given connector type.
 typedef GoogleCloudConnectorsV1ResourceLimits = $ResourceLimits;
@@ -13451,7 +13451,7 @@ typedef GoogleCloudConnectorsV1ResourceLimits = $ResourceLimits;
 typedef GoogleCloudConnectorsV1ResourceRequests = $ResourceRequests;
 
 /// Secret provides a reference to entries in Secret Manager.
-typedef GoogleCloudConnectorsV1Secret = $Secret;
+typedef GoogleCloudConnectorsV1Secret = $Secret01;
 
 /// SSL Configuration of a connection
 class GoogleCloudConnectorsV1SslConfig {

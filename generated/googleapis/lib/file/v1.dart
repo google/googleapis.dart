@@ -1476,40 +1476,12 @@ class FileShareConfig {
 }
 
 /// Fixed IOPS (input/output operations per second) parameters.
-class FixedIOPS {
-  /// Maximum IOPS.
-  ///
-  /// Required.
-  core.String? maxIops;
-
-  FixedIOPS({this.maxIops});
-
-  FixedIOPS.fromJson(core.Map json_)
-    : this(maxIops: json_['maxIops'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxIops != null) 'maxIops': maxIops!,
-  };
-}
+typedef FixedIOPS = $FixedIOPS;
 
 /// IOPS per TB.
 ///
 /// Filestore defines TB as 1024^4 bytes (TiB).
-class IOPSPerTB {
-  /// Maximum IOPS per TiB.
-  ///
-  /// Required.
-  core.String? maxIopsPerTb;
-
-  IOPSPerTB({this.maxIopsPerTb});
-
-  IOPSPerTB.fromJson(core.Map json_)
-    : this(maxIopsPerTb: json_['maxIopsPerTb'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxIopsPerTb != null) 'maxIopsPerTb': maxIopsPerTb!,
-  };
-}
+typedef IOPSPerTB = $IOPSPerTB;
 
 /// A Filestore instance.
 class Instance {
@@ -2278,80 +2250,10 @@ class PerformanceConfig {
 
 /// The enforced performance limits, calculated from the instance's performance
 /// configuration.
-class PerformanceLimits {
-  /// The max IOPS.
-  ///
-  /// Output only.
-  core.String? maxIops;
-
-  /// The max read IOPS.
-  ///
-  /// Output only.
-  core.String? maxReadIops;
-
-  /// The max read throughput in bytes per second.
-  ///
-  /// Output only.
-  core.String? maxReadThroughputBps;
-
-  /// The max write IOPS.
-  ///
-  /// Output only.
-  core.String? maxWriteIops;
-
-  /// The max write throughput in bytes per second.
-  ///
-  /// Output only.
-  core.String? maxWriteThroughputBps;
-
-  PerformanceLimits({
-    this.maxIops,
-    this.maxReadIops,
-    this.maxReadThroughputBps,
-    this.maxWriteIops,
-    this.maxWriteThroughputBps,
-  });
-
-  PerformanceLimits.fromJson(core.Map json_)
-    : this(
-        maxIops: json_['maxIops'] as core.String?,
-        maxReadIops: json_['maxReadIops'] as core.String?,
-        maxReadThroughputBps: json_['maxReadThroughputBps'] as core.String?,
-        maxWriteIops: json_['maxWriteIops'] as core.String?,
-        maxWriteThroughputBps: json_['maxWriteThroughputBps'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxIops != null) 'maxIops': maxIops!,
-    if (maxReadIops != null) 'maxReadIops': maxReadIops!,
-    if (maxReadThroughputBps != null)
-      'maxReadThroughputBps': maxReadThroughputBps!,
-    if (maxWriteIops != null) 'maxWriteIops': maxWriteIops!,
-    if (maxWriteThroughputBps != null)
-      'maxWriteThroughputBps': maxWriteThroughputBps!,
-  };
-}
+typedef PerformanceLimits = $PerformanceLimits;
 
 /// PromoteReplicaRequest promotes a Filestore standby instance (replica).
-class PromoteReplicaRequest {
-  /// The resource name of the peer instance to promote, in the format
-  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
-  ///
-  /// The peer instance is required if the operation is called on an active
-  /// instance.
-  ///
-  /// Optional.
-  core.String? peerInstance;
-
-  PromoteReplicaRequest({this.peerInstance});
-
-  PromoteReplicaRequest.fromJson(core.Map json_)
-    : this(peerInstance: json_['peerInstance'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (peerInstance != null) 'peerInstance': peerInstance!,
-  };
-}
+typedef PromoteReplicaRequest = $PromoteReplicaRequest;
 
 /// Replica configuration for the instance.
 class ReplicaConfig {
@@ -2489,109 +2391,10 @@ class RestoreInstanceRequest {
 
 /// RevertInstanceRequest reverts the given instance's file share to the
 /// specified snapshot.
-class RevertInstanceRequest {
-  /// The snapshot resource ID, in the format 'my-snapshot', where the specified
-  /// ID is the {snapshot_id} of the fully qualified name like
-  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`
-  ///
-  /// Required.
-  core.String? targetSnapshotId;
-
-  RevertInstanceRequest({this.targetSnapshotId});
-
-  RevertInstanceRequest.fromJson(core.Map json_)
-    : this(targetSnapshotId: json_['targetSnapshotId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetSnapshotId != null) 'targetSnapshotId': targetSnapshotId!,
-  };
-}
+typedef RevertInstanceRequest = $RevertInstanceRequest;
 
 /// A Filestore snapshot.
-class Snapshot {
-  /// The time when the snapshot was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// A description of the snapshot with 2048 characters or less.
-  ///
-  /// Requests with longer descriptions will be rejected.
-  core.String? description;
-
-  /// The amount of bytes needed to allocate a full copy of the snapshot content
-  ///
-  /// Output only.
-  core.String? filesystemUsedBytes;
-
-  /// Resource labels to represent user provided metadata.
-  core.Map<core.String, core.String>? labels;
-
-  /// The resource name of the snapshot, in the format
-  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The snapshot state.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State not set.
-  /// - "CREATING" : Snapshot is being created.
-  /// - "READY" : Snapshot is available for use.
-  /// - "DELETING" : Snapshot is being deleted.
-  core.String? state;
-
-  /// Input only.
-  ///
-  /// Immutable. Tag key-value pairs bound to this resource. Each key must be a
-  /// namespaced name and each value a short name. Example:
-  /// "123456789012/environment" : "production", "123456789013/costCenter" :
-  /// "marketing" See the documentation for more information: - Namespaced name:
-  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_key
-  /// - Short name:
-  /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing#retrieving_tag_value
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? tags;
-
-  Snapshot({
-    this.createTime,
-    this.description,
-    this.filesystemUsedBytes,
-    this.labels,
-    this.name,
-    this.state,
-    this.tags,
-  });
-
-  Snapshot.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        filesystemUsedBytes: json_['filesystemUsedBytes'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (filesystemUsedBytes != null)
-      'filesystemUsedBytes': filesystemUsedBytes!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (tags != null) 'tags': tags!,
-  };
-}
+typedef Snapshot = $Snapshot00;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

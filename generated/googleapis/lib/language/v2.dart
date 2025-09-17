@@ -1073,29 +1073,7 @@ class Sentence {
 
 /// Represents the feeling associated with the entire text or entities in the
 /// text.
-class Sentiment {
-  /// A non-negative number in the \[0, +inf\] range, which represents the
-  /// absolute magnitude of sentiment regardless of score (positive or
-  /// negative).
-  core.double? magnitude;
-
-  /// Sentiment score between -1.0 (negative sentiment) and 1.0 (positive
-  /// sentiment).
-  core.double? score;
-
-  Sentiment({this.magnitude, this.score});
-
-  Sentiment.fromJson(core.Map json_)
-    : this(
-        magnitude: (json_['magnitude'] as core.num?)?.toDouble(),
-        score: (json_['score'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (magnitude != null) 'magnitude': magnitude!,
-    if (score != null) 'score': score!,
-  };
-}
+typedef Sentiment = $Sentiment;
 
 /// Represents a text span in the input document.
-typedef TextSpan = $TextSpan;
+typedef TextSpan = $TextSpan00;

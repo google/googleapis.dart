@@ -1143,7 +1143,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Security patches are applied automatically to the runtime without requiring
 /// the function to be redeployed.
@@ -1450,40 +1450,7 @@ typedef Date = $Date;
 typedef DetachFunctionRequest = $Empty;
 
 /// Filters events based on exact matches on the CloudEvents attributes.
-class EventFilter {
-  /// The name of a CloudEvents attribute.
-  ///
-  /// Required.
-  core.String? attribute;
-
-  /// The operator used for matching the events with the value of the filter.
-  ///
-  /// If not specified, only events that have an exact key-value pair specified
-  /// in the filter are matched. The only allowed value is `match-path-pattern`.
-  ///
-  /// Optional.
-  core.String? operator;
-
-  /// The value for the attribute.
-  ///
-  /// Required.
-  core.String? value;
-
-  EventFilter({this.attribute, this.operator, this.value});
-
-  EventFilter.fromJson(core.Map json_)
-    : this(
-        attribute: json_['attribute'] as core.String?,
-        operator: json_['operator'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attribute != null) 'attribute': attribute!,
-    if (operator != null) 'operator': operator!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef EventFilter = $EventFilter;
 
 /// Describes EventTrigger, used to request events to be sent from another
 /// service.
@@ -1822,47 +1789,7 @@ typedef GenerateDownloadUrlRequest = $Empty;
 typedef GenerateDownloadUrlResponse = $GenerateDownloadUrlResponse;
 
 /// Request of `GenerateSourceUploadUrl` method.
-class GenerateUploadUrlRequest {
-  /// The function environment the generated upload url will be used for.
-  ///
-  /// The upload url for 2nd Gen functions can also be used for 1st gen
-  /// functions, but not vice versa. If not specified, 2nd generation-style
-  /// upload URLs are generated.
-  /// Possible string values are:
-  /// - "ENVIRONMENT_UNSPECIFIED" : Unspecified
-  /// - "GEN_1" : Gen 1
-  /// - "GEN_2" : Gen 2
-  core.String? environment;
-
-  /// Resource name of a KMS crypto key (managed by the user) used to
-  /// encrypt/decrypt function source code objects in intermediate Cloud Storage
-  /// buckets.
-  ///
-  /// When you generate an upload url and upload your source code, it gets
-  /// copied to an intermediate Cloud Storage bucket. The source code is then
-  /// copied to a versioned directory in the sources bucket in the consumer
-  /// project during the function deployment. It must match the pattern
-  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-  /// The Google Cloud Functions service account
-  /// (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be
-  /// granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter
-  /// (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the
-  /// Key/KeyRing/Project/Organization (least access preferred).
-  core.String? kmsKeyName;
-
-  GenerateUploadUrlRequest({this.environment, this.kmsKeyName});
-
-  GenerateUploadUrlRequest.fromJson(core.Map json_)
-    : this(
-        environment: json_['environment'] as core.String?,
-        kmsKeyName: json_['kmsKeyName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (environment != null) 'environment': environment!,
-    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-  };
-}
+typedef GenerateUploadUrlRequest = $GenerateUploadUrlRequest;
 
 /// Response of `GenerateSourceUploadUrl` method.
 class GenerateUploadUrlResponse {
@@ -1900,36 +1827,7 @@ class GenerateUploadUrlResponse {
 }
 
 /// Informational messages about the state of the Cloud Function or Operation.
-class GoogleCloudFunctionsV2StateMessage {
-  /// The message.
-  core.String? message;
-
-  /// Severity of the state message.
-  /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED" : Not specified. Invalid severity.
-  /// - "ERROR" : ERROR-level severity.
-  /// - "WARNING" : WARNING-level severity.
-  /// - "INFO" : INFO-level severity.
-  core.String? severity;
-
-  /// One-word CamelCase type of the state message.
-  core.String? type;
-
-  GoogleCloudFunctionsV2StateMessage({this.message, this.severity, this.type});
-
-  GoogleCloudFunctionsV2StateMessage.fromJson(core.Map json_)
-    : this(
-        message: json_['message'] as core.String?,
-        severity: json_['severity'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (message != null) 'message': message!,
-    if (severity != null) 'severity': severity!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef GoogleCloudFunctionsV2StateMessage = $StateMessage;
 
 /// Response for the `ListFunctions` method.
 class ListFunctionsResponse {
@@ -2058,22 +1956,7 @@ class ListRuntimesResponse {
 typedef Location = $Location00;
 
 /// Security patches are only applied when a function is redeployed.
-class OnDeployUpdatePolicy {
-  /// contains the runtime version which was used during latest function
-  /// deployment.
-  ///
-  /// Output only.
-  core.String? runtimeVersion;
-
-  OnDeployUpdatePolicy({this.runtimeVersion});
-
-  OnDeployUpdatePolicy.fromJson(core.Map json_)
-    : this(runtimeVersion: json_['runtimeVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
-  };
-}
+typedef OnDeployUpdatePolicy = $OnDeployUpdatePolicy;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -2273,65 +2156,7 @@ class Policy {
 typedef RedirectFunctionUpgradeTrafficRequest = $Empty;
 
 /// Location of the source in a Google Cloud Source Repository.
-class RepoSource {
-  /// Regex matching branches to build.
-  ///
-  /// The syntax of the regular expressions accepted is the syntax accepted by
-  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
-  core.String? branchName;
-
-  /// Explicit commit SHA to build.
-  core.String? commitSha;
-
-  /// Directory, relative to the source root, in which to run the build.
-  ///
-  /// This must be a relative path. If a step's `dir` is specified and is an
-  /// absolute path, this value is ignored for that step's execution. eg.
-  /// helloworld (no leading slash allowed)
-  core.String? dir;
-
-  /// ID of the project that owns the Cloud Source Repository.
-  ///
-  /// If omitted, the project ID requesting the build is assumed.
-  core.String? projectId;
-
-  /// Name of the Cloud Source Repository.
-  core.String? repoName;
-
-  /// Regex matching tags to build.
-  ///
-  /// The syntax of the regular expressions accepted is the syntax accepted by
-  /// RE2 and described at https://github.com/google/re2/wiki/Syntax
-  core.String? tagName;
-
-  RepoSource({
-    this.branchName,
-    this.commitSha,
-    this.dir,
-    this.projectId,
-    this.repoName,
-    this.tagName,
-  });
-
-  RepoSource.fromJson(core.Map json_)
-    : this(
-        branchName: json_['branchName'] as core.String?,
-        commitSha: json_['commitSha'] as core.String?,
-        dir: json_['dir'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        repoName: json_['repoName'] as core.String?,
-        tagName: json_['tagName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (branchName != null) 'branchName': branchName!,
-    if (commitSha != null) 'commitSha': commitSha!,
-    if (dir != null) 'dir': dir!,
-    if (projectId != null) 'projectId': projectId!,
-    if (repoName != null) 'repoName': repoName!,
-    if (tagName != null) 'tagName': tagName!,
-  };
-}
+typedef RepoSource = $RepoSource;
 
 /// Request for the `RollbackFunctionUpgradeTraffic` method.
 typedef RollbackFunctionUpgradeTrafficRequest = $Empty;
@@ -2423,74 +2248,10 @@ class Runtime {
 ///
 /// It has the information necessary to fetch the secret value from secret
 /// manager and expose it as an environment variable.
-class SecretEnvVar {
-  /// Name of the environment variable.
-  core.String? key;
-
-  /// Project identifier (preferably project number but can also be the project
-  /// ID) of the project that contains the secret.
-  ///
-  /// If not set, it is assumed that the secret is in the same project as the
-  /// function.
-  core.String? projectId;
-
-  /// Name of the secret in secret manager (not the full resource name).
-  core.String? secret;
-
-  /// Version of the secret (version number or the string 'latest').
-  ///
-  /// It is recommended to use a numeric version for secret environment
-  /// variables as any updates to the secret value is not reflected until new
-  /// instances start.
-  core.String? version;
-
-  SecretEnvVar({this.key, this.projectId, this.secret, this.version});
-
-  SecretEnvVar.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        secret: json_['secret'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (projectId != null) 'projectId': projectId!,
-    if (secret != null) 'secret': secret!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef SecretEnvVar = $SecretEnvVar;
 
 /// Configuration for a single version.
-class SecretVersion {
-  /// Relative path of the file under the mount path where the secret value for
-  /// this version will be fetched and made available.
-  ///
-  /// For example, setting the mount_path as '/etc/secrets' and path as
-  /// `secret_foo` would mount the secret value file at
-  /// `/etc/secrets/secret_foo`.
-  core.String? path;
-
-  /// Version of the secret (version number or the string 'latest').
-  ///
-  /// It is preferable to use `latest` version with secret volumes as secret
-  /// value changes are reflected immediately.
-  core.String? version;
-
-  SecretVersion({this.path, this.version});
-
-  SecretVersion.fromJson(core.Map json_)
-    : this(
-        path: json_['path'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef SecretVersion = $SecretVersion;
 
 /// Configuration for a secret volume.
 ///
@@ -2822,29 +2583,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request for the `SetupFunctionUpgradeConfig` method.
-class SetupFunctionUpgradeConfigRequest {
-  /// The trigger's service account.
-  ///
-  /// The service account must have permission to invoke Cloud Run services, the
-  /// permission is `run.routes.invoke`. If empty, defaults to the Compute
-  /// Engine default service account:
-  /// `{project_number}-compute@developer.gserviceaccount.com`.
-  ///
-  /// Optional.
-  core.String? triggerServiceAccount;
-
-  SetupFunctionUpgradeConfigRequest({this.triggerServiceAccount});
-
-  SetupFunctionUpgradeConfigRequest.fromJson(core.Map json_)
-    : this(
-        triggerServiceAccount: json_['triggerServiceAccount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (triggerServiceAccount != null)
-      'triggerServiceAccount': triggerServiceAccount!,
-  };
-}
+typedef SetupFunctionUpgradeConfigRequest = $SetupFunctionUpgradeConfigRequest;
 
 /// The location of the function source code.
 class Source {
@@ -2947,49 +2686,7 @@ class SourceProvenance {
 typedef Status = $Status00;
 
 /// Location of the source in an archive file in Google Cloud Storage.
-class StorageSource {
-  /// Google Cloud Storage bucket containing the source (see
-  /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
-  core.String? bucket;
-
-  /// Google Cloud Storage generation for the object.
-  ///
-  /// If the generation is omitted, the latest generation will be used.
-  core.String? generation;
-
-  /// Google Cloud Storage object containing the source.
-  ///
-  /// This object must be a gzipped archive file (`.tar.gz`) containing source
-  /// to build.
-  core.String? object;
-
-  /// When the specified storage bucket is a 1st gen function uploard url
-  /// bucket, this field should be set as the generated upload url for 1st gen
-  /// deployment.
-  core.String? sourceUploadUrl;
-
-  StorageSource({
-    this.bucket,
-    this.generation,
-    this.object,
-    this.sourceUploadUrl,
-  });
-
-  StorageSource.fromJson(core.Map json_)
-    : this(
-        bucket: json_['bucket'] as core.String?,
-        generation: json_['generation'] as core.String?,
-        object: json_['object'] as core.String?,
-        sourceUploadUrl: json_['sourceUploadUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-    if (generation != null) 'generation': generation!,
-    if (object != null) 'object': object!,
-    if (sourceUploadUrl != null) 'sourceUploadUrl': sourceUploadUrl!,
-  };
-}
+typedef StorageSource = $StorageSource;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

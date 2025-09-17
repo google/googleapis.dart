@@ -4414,7 +4414,7 @@ class InstanceMigrationEligibility {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef IsInstanceUpgradeableResponse = $Response;
+typedef IsInstanceUpgradeableResponse = $Response00;
 
 /// Response for listing environments.
 class ListEnvironmentsResponse {
@@ -5212,7 +5212,7 @@ class Policy {
 }
 
 /// Request for getting a new access token.
-typedef RefreshRuntimeTokenInternalRequest = $Request12;
+typedef RefreshRuntimeTokenInternalRequest = $Request14;
 
 /// Response with a new access token.
 class RefreshRuntimeTokenInternalResponse {
@@ -5760,7 +5760,7 @@ class RuntimeMigrationEligibility {
 /// See
 /// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 /// Not all combinations are valid.
-typedef RuntimeShieldedInstanceConfig = $ShieldedInstanceConfig;
+typedef RuntimeShieldedInstanceConfig = $ShieldedInstanceConfig02;
 
 /// Specifies the selection and configuration of software inside the runtime.
 ///
@@ -6189,7 +6189,7 @@ class SetInstanceMachineTypeRequest {
 /// See
 /// [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
 /// Not all combinations are valid.
-typedef ShieldedInstanceConfig = $ShieldedInstanceConfig;
+typedef ShieldedInstanceConfig = $ShieldedInstanceConfig02;
 
 /// Request for starting a notebook instance
 typedef StartInstanceRequest = $Empty;

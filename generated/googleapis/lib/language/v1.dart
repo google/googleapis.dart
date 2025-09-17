@@ -901,29 +901,7 @@ class AnnotateTextResponse {
 }
 
 /// Represents a category returned from the text classifier.
-class ClassificationCategory {
-  /// The classifier's confidence of the category.
-  ///
-  /// Number represents how certain the classifier is that this category
-  /// represents the given text.
-  core.double? confidence;
-
-  /// The name of the category representing the document.
-  core.String? name;
-
-  ClassificationCategory({this.confidence, this.name});
-
-  ClassificationCategory.fromJson(core.Map json_)
-    : this(
-        confidence: (json_['confidence'] as core.num?)?.toDouble(),
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidence != null) 'confidence': confidence!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef ClassificationCategory = $ClassificationCategory;
 
 /// Model options available for classification requests.
 class ClassificationModelOptions {
@@ -968,28 +946,7 @@ class ClassificationModelOptions {
 typedef ClassificationModelOptionsV1Model = $Empty;
 
 /// Options for the V2 model.
-class ClassificationModelOptionsV2Model {
-  /// The content categories used for classification.
-  /// Possible string values are:
-  /// - "CONTENT_CATEGORIES_VERSION_UNSPECIFIED" : If `ContentCategoriesVersion`
-  /// is not specified, this option will default to `V1`.
-  /// - "V1" : Legacy content categories of our initial launch in 2017.
-  /// - "V2" : Updated content categories in 2022.
-  core.String? contentCategoriesVersion;
-
-  ClassificationModelOptionsV2Model({this.contentCategoriesVersion});
-
-  ClassificationModelOptionsV2Model.fromJson(core.Map json_)
-    : this(
-        contentCategoriesVersion:
-            json_['contentCategoriesVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentCategoriesVersion != null)
-      'contentCategoriesVersion': contentCategoriesVersion!,
-  };
-}
+typedef ClassificationModelOptionsV2Model = $ClassificationModelOptionsV2Model;
 
 /// The document classification request message.
 class ClassifyTextRequest {
@@ -1059,116 +1016,7 @@ class ClassifyTextResponse {
 ///
 /// (For more information on dependency labels, see
 /// http://www.aclweb.org/anthology/P13-2017
-class DependencyEdge {
-  /// Represents the head of this token in the dependency tree.
-  ///
-  /// This is the index of the token which has an arc going to this token. The
-  /// index is the position of the token in the array of tokens returned by the
-  /// API method. If this token is a root token, then the `head_token_index` is
-  /// its own index.
-  core.int? headTokenIndex;
-
-  /// The parse label for the token.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown
-  /// - "ABBREV" : Abbreviation modifier
-  /// - "ACOMP" : Adjectival complement
-  /// - "ADVCL" : Adverbial clause modifier
-  /// - "ADVMOD" : Adverbial modifier
-  /// - "AMOD" : Adjectival modifier of an NP
-  /// - "APPOS" : Appositional modifier of an NP
-  /// - "ATTR" : Attribute dependent of a copular verb
-  /// - "AUX" : Auxiliary (non-main) verb
-  /// - "AUXPASS" : Passive auxiliary
-  /// - "CC" : Coordinating conjunction
-  /// - "CCOMP" : Clausal complement of a verb or adjective
-  /// - "CONJ" : Conjunct
-  /// - "CSUBJ" : Clausal subject
-  /// - "CSUBJPASS" : Clausal passive subject
-  /// - "DEP" : Dependency (unable to determine)
-  /// - "DET" : Determiner
-  /// - "DISCOURSE" : Discourse
-  /// - "DOBJ" : Direct object
-  /// - "EXPL" : Expletive
-  /// - "GOESWITH" : Goes with (part of a word in a text not well edited)
-  /// - "IOBJ" : Indirect object
-  /// - "MARK" : Marker (word introducing a subordinate clause)
-  /// - "MWE" : Multi-word expression
-  /// - "MWV" : Multi-word verbal expression
-  /// - "NEG" : Negation modifier
-  /// - "NN" : Noun compound modifier
-  /// - "NPADVMOD" : Noun phrase used as an adverbial modifier
-  /// - "NSUBJ" : Nominal subject
-  /// - "NSUBJPASS" : Passive nominal subject
-  /// - "NUM" : Numeric modifier of a noun
-  /// - "NUMBER" : Element of compound number
-  /// - "P" : Punctuation mark
-  /// - "PARATAXIS" : Parataxis relation
-  /// - "PARTMOD" : Participial modifier
-  /// - "PCOMP" : The complement of a preposition is a clause
-  /// - "POBJ" : Object of a preposition
-  /// - "POSS" : Possession modifier
-  /// - "POSTNEG" : Postverbal negative particle
-  /// - "PRECOMP" : Predicate complement
-  /// - "PRECONJ" : Preconjunt
-  /// - "PREDET" : Predeterminer
-  /// - "PREF" : Prefix
-  /// - "PREP" : Prepositional modifier
-  /// - "PRONL" : The relationship between a verb and verbal morpheme
-  /// - "PRT" : Particle
-  /// - "PS" : Associative or possessive marker
-  /// - "QUANTMOD" : Quantifier phrase modifier
-  /// - "RCMOD" : Relative clause modifier
-  /// - "RCMODREL" : Complementizer in relative clause
-  /// - "RDROP" : Ellipsis without a preceding predicate
-  /// - "REF" : Referent
-  /// - "REMNANT" : Remnant
-  /// - "REPARANDUM" : Reparandum
-  /// - "ROOT" : Root
-  /// - "SNUM" : Suffix specifying a unit of number
-  /// - "SUFF" : Suffix
-  /// - "TMOD" : Temporal modifier
-  /// - "TOPIC" : Topic marker
-  /// - "VMOD" : Clause headed by an infinite form of the verb that modifies a
-  /// noun
-  /// - "VOCATIVE" : Vocative
-  /// - "XCOMP" : Open clausal complement
-  /// - "SUFFIX" : Name suffix
-  /// - "TITLE" : Name title
-  /// - "ADVPHMOD" : Adverbial phrase modifier
-  /// - "AUXCAUS" : Causative auxiliary
-  /// - "AUXVV" : Helper auxiliary
-  /// - "DTMOD" : Rentaishi (Prenominal modifier)
-  /// - "FOREIGN" : Foreign words
-  /// - "KW" : Keyword
-  /// - "LIST" : List for chains of comparable items
-  /// - "NOMC" : Nominalized clause
-  /// - "NOMCSUBJ" : Nominalized clausal subject
-  /// - "NOMCSUBJPASS" : Nominalized clausal passive
-  /// - "NUMC" : Compound of numeric modifier
-  /// - "COP" : Copula
-  /// - "DISLOCATED" : Dislocated relation (for fronted/topicalized elements)
-  /// - "ASP" : Aspect marker
-  /// - "GMOD" : Genitive modifier
-  /// - "GOBJ" : Genitive object
-  /// - "INFMOD" : Infinitival modifier
-  /// - "MES" : Measure
-  /// - "NCOMP" : Nominal complement of a noun
-  core.String? label;
-
-  DependencyEdge({this.headTokenIndex, this.label});
-
-  DependencyEdge.fromJson(core.Map json_)
-    : this(
-        headTokenIndex: json_['headTokenIndex'] as core.int?,
-        label: json_['label'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (headTokenIndex != null) 'headTokenIndex': headTokenIndex!,
-    if (label != null) 'label': label!,
-  };
-}
+typedef DependencyEdge = $DependencyEdge;
 
 /// Represents the input to API methods.
 class Document {
@@ -1429,194 +1277,7 @@ class ModerateTextResponse {
 ///
 /// Parts of speech are as defined in
 /// http://www.lrec-conf.org/proceedings/lrec2012/pdf/274_Paper.pdf
-class PartOfSpeech {
-  /// The grammatical aspect.
-  /// Possible string values are:
-  /// - "ASPECT_UNKNOWN" : Aspect is not applicable in the analyzed language or
-  /// is not predicted.
-  /// - "PERFECTIVE" : Perfective
-  /// - "IMPERFECTIVE" : Imperfective
-  /// - "PROGRESSIVE" : Progressive
-  core.String? aspect;
-
-  /// The grammatical case.
-  /// Possible string values are:
-  /// - "CASE_UNKNOWN" : Case is not applicable in the analyzed language or is
-  /// not predicted.
-  /// - "ACCUSATIVE" : Accusative
-  /// - "ADVERBIAL" : Adverbial
-  /// - "COMPLEMENTIVE" : Complementive
-  /// - "DATIVE" : Dative
-  /// - "GENITIVE" : Genitive
-  /// - "INSTRUMENTAL" : Instrumental
-  /// - "LOCATIVE" : Locative
-  /// - "NOMINATIVE" : Nominative
-  /// - "OBLIQUE" : Oblique
-  /// - "PARTITIVE" : Partitive
-  /// - "PREPOSITIONAL" : Prepositional
-  /// - "REFLEXIVE_CASE" : Reflexive
-  /// - "RELATIVE_CASE" : Relative
-  /// - "VOCATIVE" : Vocative
-  core.String? case_;
-
-  /// The grammatical form.
-  /// Possible string values are:
-  /// - "FORM_UNKNOWN" : Form is not applicable in the analyzed language or is
-  /// not predicted.
-  /// - "ADNOMIAL" : Adnomial
-  /// - "AUXILIARY" : Auxiliary
-  /// - "COMPLEMENTIZER" : Complementizer
-  /// - "FINAL_ENDING" : Final ending
-  /// - "GERUND" : Gerund
-  /// - "REALIS" : Realis
-  /// - "IRREALIS" : Irrealis
-  /// - "SHORT" : Short form
-  /// - "LONG" : Long form
-  /// - "ORDER" : Order form
-  /// - "SPECIFIC" : Specific form
-  core.String? form;
-
-  /// The grammatical gender.
-  /// Possible string values are:
-  /// - "GENDER_UNKNOWN" : Gender is not applicable in the analyzed language or
-  /// is not predicted.
-  /// - "FEMININE" : Feminine
-  /// - "MASCULINE" : Masculine
-  /// - "NEUTER" : Neuter
-  core.String? gender;
-
-  /// The grammatical mood.
-  /// Possible string values are:
-  /// - "MOOD_UNKNOWN" : Mood is not applicable in the analyzed language or is
-  /// not predicted.
-  /// - "CONDITIONAL_MOOD" : Conditional
-  /// - "IMPERATIVE" : Imperative
-  /// - "INDICATIVE" : Indicative
-  /// - "INTERROGATIVE" : Interrogative
-  /// - "JUSSIVE" : Jussive
-  /// - "SUBJUNCTIVE" : Subjunctive
-  core.String? mood;
-
-  /// The grammatical number.
-  /// Possible string values are:
-  /// - "NUMBER_UNKNOWN" : Number is not applicable in the analyzed language or
-  /// is not predicted.
-  /// - "SINGULAR" : Singular
-  /// - "PLURAL" : Plural
-  /// - "DUAL" : Dual
-  core.String? number;
-
-  /// The grammatical person.
-  /// Possible string values are:
-  /// - "PERSON_UNKNOWN" : Person is not applicable in the analyzed language or
-  /// is not predicted.
-  /// - "FIRST" : First
-  /// - "SECOND" : Second
-  /// - "THIRD" : Third
-  /// - "REFLEXIVE_PERSON" : Reflexive
-  core.String? person;
-
-  /// The grammatical properness.
-  /// Possible string values are:
-  /// - "PROPER_UNKNOWN" : Proper is not applicable in the analyzed language or
-  /// is not predicted.
-  /// - "PROPER" : Proper
-  /// - "NOT_PROPER" : Not proper
-  core.String? proper;
-
-  /// The grammatical reciprocity.
-  /// Possible string values are:
-  /// - "RECIPROCITY_UNKNOWN" : Reciprocity is not applicable in the analyzed
-  /// language or is not predicted.
-  /// - "RECIPROCAL" : Reciprocal
-  /// - "NON_RECIPROCAL" : Non-reciprocal
-  core.String? reciprocity;
-
-  /// The part of speech tag.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Unknown
-  /// - "ADJ" : Adjective
-  /// - "ADP" : Adposition (preposition and postposition)
-  /// - "ADV" : Adverb
-  /// - "CONJ" : Conjunction
-  /// - "DET" : Determiner
-  /// - "NOUN" : Noun (common and proper)
-  /// - "NUM" : Cardinal number
-  /// - "PRON" : Pronoun
-  /// - "PRT" : Particle or other function word
-  /// - "PUNCT" : Punctuation
-  /// - "VERB" : Verb (all tenses and modes)
-  /// - "X" : Other: foreign words, typos, abbreviations
-  /// - "AFFIX" : Affix
-  core.String? tag;
-
-  /// The grammatical tense.
-  /// Possible string values are:
-  /// - "TENSE_UNKNOWN" : Tense is not applicable in the analyzed language or is
-  /// not predicted.
-  /// - "CONDITIONAL_TENSE" : Conditional
-  /// - "FUTURE" : Future
-  /// - "PAST" : Past
-  /// - "PRESENT" : Present
-  /// - "IMPERFECT" : Imperfect
-  /// - "PLUPERFECT" : Pluperfect
-  core.String? tense;
-
-  /// The grammatical voice.
-  /// Possible string values are:
-  /// - "VOICE_UNKNOWN" : Voice is not applicable in the analyzed language or is
-  /// not predicted.
-  /// - "ACTIVE" : Active
-  /// - "CAUSATIVE" : Causative
-  /// - "PASSIVE" : Passive
-  core.String? voice;
-
-  PartOfSpeech({
-    this.aspect,
-    this.case_,
-    this.form,
-    this.gender,
-    this.mood,
-    this.number,
-    this.person,
-    this.proper,
-    this.reciprocity,
-    this.tag,
-    this.tense,
-    this.voice,
-  });
-
-  PartOfSpeech.fromJson(core.Map json_)
-    : this(
-        aspect: json_['aspect'] as core.String?,
-        case_: json_['case'] as core.String?,
-        form: json_['form'] as core.String?,
-        gender: json_['gender'] as core.String?,
-        mood: json_['mood'] as core.String?,
-        number: json_['number'] as core.String?,
-        person: json_['person'] as core.String?,
-        proper: json_['proper'] as core.String?,
-        reciprocity: json_['reciprocity'] as core.String?,
-        tag: json_['tag'] as core.String?,
-        tense: json_['tense'] as core.String?,
-        voice: json_['voice'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aspect != null) 'aspect': aspect!,
-    if (case_ != null) 'case': case_!,
-    if (form != null) 'form': form!,
-    if (gender != null) 'gender': gender!,
-    if (mood != null) 'mood': mood!,
-    if (number != null) 'number': number!,
-    if (person != null) 'person': person!,
-    if (proper != null) 'proper': proper!,
-    if (reciprocity != null) 'reciprocity': reciprocity!,
-    if (tag != null) 'tag': tag!,
-    if (tense != null) 'tense': tense!,
-    if (voice != null) 'voice': voice!,
-  };
-}
+typedef PartOfSpeech = $PartOfSpeech;
 
 /// Represents a sentence in the input document.
 class Sentence {
@@ -1679,7 +1340,7 @@ class Sentiment {
 }
 
 /// Represents a text span in the input document.
-typedef TextSpan = $TextSpan;
+typedef TextSpan = $TextSpan00;
 
 /// Represents the smallest syntactic building block of the text.
 class Token {

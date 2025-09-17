@@ -715,7 +715,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -843,117 +843,7 @@ typedef Expr = $Expr;
 
 /// A Folder in an Organization's resource hierarchy, used to organize that
 /// Organization's resources.
-class Folder {
-  /// Optional capabilities configured for this folder (via UpdateCapability
-  /// API).
-  ///
-  /// Example: `folders/123/capabilities/app-management`.
-  ///
-  /// Output only.
-  core.List<core.String>? configuredCapabilities;
-
-  /// Timestamp when the Folder was created.
-  ///
-  /// Assigned by the server.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The folder's display name.
-  ///
-  /// A folder's display name must be unique amongst its siblings, e.g. no two
-  /// folders with the same parent can share the same display name. The display
-  /// name must start and end with a letter or digit, may contain letters,
-  /// digits, spaces, hyphens and underscores and can be no longer than 30
-  /// characters. This is captured by the regular expression:
-  /// `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
-  core.String? displayName;
-
-  /// The lifecycle state of the folder.
-  ///
-  /// Updates to the lifecycle_state must be performed via DeleteFolder and
-  /// UndeleteFolder.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : The normal and active state.
-  /// - "DELETE_REQUESTED" : The folder has been marked for deletion by the
-  /// user.
-  core.String? lifecycleState;
-
-  /// Management Project associated with this folder (if app-management
-  /// capability is enabled).
-  ///
-  /// Example: `projects/google-mp-123` OUTPUT ONLY.
-  ///
-  /// Output only.
-  core.String? managementProject;
-
-  /// The resource name of the Folder.
-  ///
-  /// Its format is `folders/{folder_id}`, for example: "folders/1234".
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The Folder's parent's resource name.
-  ///
-  /// Updates to the folder's parent must be performed via MoveFolder.
-  ///
-  /// Required.
-  core.String? parent;
-
-  /// Input only.
-  ///
-  /// Immutable. Tag keys/values directly bound to this folder. Each item in the
-  /// map must be expressed as " : ". For example: "123/environment" :
-  /// "production", "123/costCenter" : "marketing" Note: Currently this field is
-  /// in Preview.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? tags;
-
-  Folder({
-    this.configuredCapabilities,
-    this.createTime,
-    this.displayName,
-    this.lifecycleState,
-    this.managementProject,
-    this.name,
-    this.parent,
-    this.tags,
-  });
-
-  Folder.fromJson(core.Map json_)
-    : this(
-        configuredCapabilities:
-            (json_['configuredCapabilities'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        createTime: json_['createTime'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        lifecycleState: json_['lifecycleState'] as core.String?,
-        managementProject: json_['managementProject'] as core.String?,
-        name: json_['name'] as core.String?,
-        parent: json_['parent'] as core.String?,
-        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configuredCapabilities != null)
-      'configuredCapabilities': configuredCapabilities!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
-    if (managementProject != null) 'managementProject': managementProject!,
-    if (name != null) 'name': name!,
-    if (parent != null) 'parent': parent!,
-    if (tags != null) 'tags': tags!,
-  };
-}
+typedef Folder = $Folder;
 
 /// Request message for `GetIamPolicy` method.
 class GetIamPolicyRequest {
@@ -1013,24 +903,7 @@ class ListFoldersResponse {
 }
 
 /// The MoveFolder request message.
-class MoveFolderRequest {
-  /// The resource name of the Folder or Organization to reparent the folder
-  /// under.
-  ///
-  /// Must be of the form `folders/{folder_id}` or `organizations/{org_id}`.
-  ///
-  /// Required.
-  core.String? destinationParent;
-
-  MoveFolderRequest({this.destinationParent});
-
-  MoveFolderRequest.fromJson(core.Map json_)
-    : this(destinationParent: json_['destinationParent'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (destinationParent != null) 'destinationParent': destinationParent!,
-  };
-}
+typedef MoveFolderRequest = $MoveFolderRequest;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -1227,54 +1100,7 @@ class Policy {
 }
 
 /// The request message for searching folders.
-class SearchFoldersRequest {
-  /// The maximum number of folders to return in the response.
-  ///
-  /// The server can return fewer folders than requested. If unspecified, server
-  /// picks an appropriate default.
-  ///
-  /// Optional.
-  core.int? pageSize;
-
-  /// A pagination token returned from a previous call to `SearchFolders` that
-  /// indicates from where search should continue.
-  ///
-  /// Optional.
-  core.String? pageToken;
-
-  /// Search criteria used to select the Folders to return.
-  ///
-  /// If no search criteria is specified then all accessible folders will be
-  /// returned. Query expressions can be used to restrict results based upon
-  /// displayName, lifecycleState and parent, where the operators `=`, `NOT`,
-  /// `AND` and `OR` can be used along with the suffix wildcard symbol `*`. The
-  /// displayName field in a query expression should use escaped quotes for
-  /// values that include whitespace to prevent unexpected behavior. Some
-  /// example queries are: * Query `displayName=Test*` returns Folder resources
-  /// whose display name starts with "Test". * Query `lifecycleState=ACTIVE`
-  /// returns Folder resources with `lifecycleState` set to `ACTIVE`. * Query
-  /// `parent=folders/123` returns Folder resources that have `folders/123` as a
-  /// parent resource. * Query `parent=folders/123 AND lifecycleState=ACTIVE`
-  /// returns active Folder resources that have `folders/123` as a parent
-  /// resource. * Query `displayName=\\"Test String\\"` returns Folder resources
-  /// with display names that include both "Test" and "String".
-  core.String? query;
-
-  SearchFoldersRequest({this.pageSize, this.pageToken, this.query});
-
-  SearchFoldersRequest.fromJson(core.Map json_)
-    : this(
-        pageSize: json_['pageSize'] as core.int?,
-        pageToken: json_['pageToken'] as core.String?,
-        query: json_['query'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (query != null) 'query': query!,
-  };
-}
+typedef SearchFoldersRequest = $SearchFoldersRequest;
 
 /// The response message for searching folders.
 class SearchFoldersResponse {

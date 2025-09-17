@@ -1580,211 +1580,12 @@ class ProjectsPatchJobsInstanceDetailsResource {
 /// Apt patching is completed by executing `apt-get update && apt-get upgrade`.
 ///
 /// Additional options can be set to control how this is executed.
-class AptSettings {
-  /// List of packages to exclude from update.
-  ///
-  /// These packages will be excluded
-  core.List<core.String>? excludes;
-
-  /// An exclusive list of packages to be updated.
-  ///
-  /// These are the only packages that will be updated. If these packages are
-  /// not installed, they will be ignored. This field cannot be specified with
-  /// any other patch configuration fields.
-  core.List<core.String>? exclusivePackages;
-
-  /// By changing the type to DIST, the patching is performed using `apt-get
-  /// dist-upgrade` instead.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : By default, upgrade will be performed.
-  /// - "DIST" : Runs `apt-get dist-upgrade`.
-  /// - "UPGRADE" : Runs `apt-get upgrade`.
-  core.String? type;
-
-  AptSettings({this.excludes, this.exclusivePackages, this.type});
-
-  AptSettings.fromJson(core.Map json_)
-    : this(
-        excludes:
-            (json_['excludes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        exclusivePackages:
-            (json_['exclusivePackages'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (excludes != null) 'excludes': excludes!,
-    if (exclusivePackages != null) 'exclusivePackages': exclusivePackages!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef AptSettings = $AptSettings;
 
 /// Common Vulnerability Scoring System version 3.
 ///
 /// For details, see https://www.first.org/cvss/specification-document
-class CVSSv3 {
-  /// This metric describes the conditions beyond the attacker's control that
-  /// must exist in order to exploit the vulnerability.
-  /// Possible string values are:
-  /// - "ATTACK_COMPLEXITY_UNSPECIFIED" : Invalid value.
-  /// - "ATTACK_COMPLEXITY_LOW" : Specialized access conditions or extenuating
-  /// circumstances do not exist. An attacker can expect repeatable success when
-  /// attacking the vulnerable component.
-  /// - "ATTACK_COMPLEXITY_HIGH" : A successful attack depends on conditions
-  /// beyond the attacker's control. That is, a successful attack cannot be
-  /// accomplished at will, but requires the attacker to invest in some
-  /// measurable amount of effort in preparation or execution against the
-  /// vulnerable component before a successful attack can be expected.
-  core.String? attackComplexity;
-
-  /// This metric reflects the context by which vulnerability exploitation is
-  /// possible.
-  /// Possible string values are:
-  /// - "ATTACK_VECTOR_UNSPECIFIED" : Invalid value.
-  /// - "ATTACK_VECTOR_NETWORK" : The vulnerable component is bound to the
-  /// network stack and the set of possible attackers extends beyond the other
-  /// options listed below, up to and including the entire Internet.
-  /// - "ATTACK_VECTOR_ADJACENT" : The vulnerable component is bound to the
-  /// network stack, but the attack is limited at the protocol level to a
-  /// logically adjacent topology.
-  /// - "ATTACK_VECTOR_LOCAL" : The vulnerable component is not bound to the
-  /// network stack and the attacker's path is via read/write/execute
-  /// capabilities.
-  /// - "ATTACK_VECTOR_PHYSICAL" : The attack requires the attacker to
-  /// physically touch or manipulate the vulnerable component.
-  core.String? attackVector;
-
-  /// This metric measures the impact to the availability of the impacted
-  /// component resulting from a successfully exploited vulnerability.
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED" : Invalid value.
-  /// - "IMPACT_HIGH" : High impact.
-  /// - "IMPACT_LOW" : Low impact.
-  /// - "IMPACT_NONE" : No impact.
-  core.String? availabilityImpact;
-
-  /// The base score is a function of the base metric scores.
-  ///
-  /// https://www.first.org/cvss/specification-document#Base-Metrics
-  core.double? baseScore;
-
-  /// This metric measures the impact to the confidentiality of the information
-  /// resources managed by a software component due to a successfully exploited
-  /// vulnerability.
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED" : Invalid value.
-  /// - "IMPACT_HIGH" : High impact.
-  /// - "IMPACT_LOW" : Low impact.
-  /// - "IMPACT_NONE" : No impact.
-  core.String? confidentialityImpact;
-
-  /// The Exploitability sub-score equation is derived from the Base
-  /// Exploitability metrics.
-  ///
-  /// https://www.first.org/cvss/specification-document#2-1-Exploitability-Metrics
-  core.double? exploitabilityScore;
-
-  /// The Impact sub-score equation is derived from the Base Impact metrics.
-  core.double? impactScore;
-
-  /// This metric measures the impact to integrity of a successfully exploited
-  /// vulnerability.
-  /// Possible string values are:
-  /// - "IMPACT_UNSPECIFIED" : Invalid value.
-  /// - "IMPACT_HIGH" : High impact.
-  /// - "IMPACT_LOW" : Low impact.
-  /// - "IMPACT_NONE" : No impact.
-  core.String? integrityImpact;
-
-  /// This metric describes the level of privileges an attacker must possess
-  /// before successfully exploiting the vulnerability.
-  /// Possible string values are:
-  /// - "PRIVILEGES_REQUIRED_UNSPECIFIED" : Invalid value.
-  /// - "PRIVILEGES_REQUIRED_NONE" : The attacker is unauthorized prior to
-  /// attack, and therefore does not require any access to settings or files of
-  /// the vulnerable system to carry out an attack.
-  /// - "PRIVILEGES_REQUIRED_LOW" : The attacker requires privileges that
-  /// provide basic user capabilities that could normally affect only settings
-  /// and files owned by a user. Alternatively, an attacker with Low privileges
-  /// has the ability to access only non-sensitive resources.
-  /// - "PRIVILEGES_REQUIRED_HIGH" : The attacker requires privileges that
-  /// provide significant (e.g., administrative) control over the vulnerable
-  /// component allowing access to component-wide settings and files.
-  core.String? privilegesRequired;
-
-  /// The Scope metric captures whether a vulnerability in one vulnerable
-  /// component impacts resources in components beyond its security scope.
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED" : Invalid value.
-  /// - "SCOPE_UNCHANGED" : An exploited vulnerability can only affect resources
-  /// managed by the same security authority.
-  /// - "SCOPE_CHANGED" : An exploited vulnerability can affect resources beyond
-  /// the security scope managed by the security authority of the vulnerable
-  /// component.
-  core.String? scope;
-
-  /// This metric captures the requirement for a human user, other than the
-  /// attacker, to participate in the successful compromise of the vulnerable
-  /// component.
-  /// Possible string values are:
-  /// - "USER_INTERACTION_UNSPECIFIED" : Invalid value.
-  /// - "USER_INTERACTION_NONE" : The vulnerable system can be exploited without
-  /// interaction from any user.
-  /// - "USER_INTERACTION_REQUIRED" : Successful exploitation of this
-  /// vulnerability requires a user to take some action before the vulnerability
-  /// can be exploited.
-  core.String? userInteraction;
-
-  CVSSv3({
-    this.attackComplexity,
-    this.attackVector,
-    this.availabilityImpact,
-    this.baseScore,
-    this.confidentialityImpact,
-    this.exploitabilityScore,
-    this.impactScore,
-    this.integrityImpact,
-    this.privilegesRequired,
-    this.scope,
-    this.userInteraction,
-  });
-
-  CVSSv3.fromJson(core.Map json_)
-    : this(
-        attackComplexity: json_['attackComplexity'] as core.String?,
-        attackVector: json_['attackVector'] as core.String?,
-        availabilityImpact: json_['availabilityImpact'] as core.String?,
-        baseScore: (json_['baseScore'] as core.num?)?.toDouble(),
-        confidentialityImpact: json_['confidentialityImpact'] as core.String?,
-        exploitabilityScore:
-            (json_['exploitabilityScore'] as core.num?)?.toDouble(),
-        impactScore: (json_['impactScore'] as core.num?)?.toDouble(),
-        integrityImpact: json_['integrityImpact'] as core.String?,
-        privilegesRequired: json_['privilegesRequired'] as core.String?,
-        scope: json_['scope'] as core.String?,
-        userInteraction: json_['userInteraction'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attackComplexity != null) 'attackComplexity': attackComplexity!,
-    if (attackVector != null) 'attackVector': attackVector!,
-    if (availabilityImpact != null) 'availabilityImpact': availabilityImpact!,
-    if (baseScore != null) 'baseScore': baseScore!,
-    if (confidentialityImpact != null)
-      'confidentialityImpact': confidentialityImpact!,
-    if (exploitabilityScore != null)
-      'exploitabilityScore': exploitabilityScore!,
-    if (impactScore != null) 'impactScore': impactScore!,
-    if (integrityImpact != null) 'integrityImpact': integrityImpact!,
-    if (privilegesRequired != null) 'privilegesRequired': privilegesRequired!,
-    if (scope != null) 'scope': scope!,
-    if (userInteraction != null) 'userInteraction': userInteraction!,
-  };
-}
+typedef CVSSv3 = $CVSSv301;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -1997,7 +1798,7 @@ class ExecutePatchJobRequest {
 
 /// Message encapsulating a value that can be either absolute ("fixed") or
 /// relative ("percent") to a value.
-typedef FixedOrPercent = $FixedOrPercent;
+typedef FixedOrPercent = $FixedOrPercent00;
 
 /// Cloud Storage object representation.
 class GcsObject {
@@ -3342,75 +3143,13 @@ class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
 }
 
 /// ExecResource specific output.
-class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput {
-  /// Output from enforcement phase output file (if run).
-  ///
-  /// Output size is limited to 100K bytes.
-  core.String? enforcementOutput;
-  core.List<core.int> get enforcementOutputAsBytes =>
-      convert.base64.decode(enforcementOutput!);
-
-  set enforcementOutputAsBytes(core.List<core.int> bytes_) {
-    enforcementOutput = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput({
-    this.enforcementOutput,
-  });
-
-  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput.fromJson(
-    core.Map json_,
-  ) : this(enforcementOutput: json_['enforcementOutput'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enforcementOutput != null) 'enforcementOutput': enforcementOutput!,
-  };
-}
+typedef OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput =
+    $OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput;
 
 /// Step performed by the OS Config agent for configuring an `OSPolicy` resource
 /// to its desired state.
-class OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep {
-  /// An error message recorded during the execution of this step.
-  ///
-  /// Only populated if errors were encountered during this step execution.
-  core.String? errorMessage;
-
-  /// Configuration step type.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "VALIDATION" : Checks for resource conflicts such as schema errors.
-  /// - "DESIRED_STATE_CHECK" : Checks the current status of the desired state
-  /// for a resource.
-  /// - "DESIRED_STATE_ENFORCEMENT" : Enforces the desired state for a resource
-  /// that is not in desired state.
-  /// - "DESIRED_STATE_CHECK_POST_ENFORCEMENT" : Re-checks the status of the
-  /// desired state. This check is done for a resource after the enforcement of
-  /// all OS policies. This step is used to determine the final desired state
-  /// status for the resource. It accounts for any resources that might have
-  /// drifted from their desired state due to side effects from executing other
-  /// resources.
-  core.String? type;
-
-  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep({
-    this.errorMessage,
-    this.type,
-  });
-
-  OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep.fromJson(
-    core.Map json_,
-  ) : this(
-        errorMessage: json_['errorMessage'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep =
+    $OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep;
 
 /// Message to configure the rollout at the zonal level for the OS policy
 /// assignment.
@@ -4126,8 +3865,7 @@ typedef OSPolicyResourceRepositoryResourceAptRepository =
 ///
 /// These are added to a repo file that is managed at
 /// `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
-typedef OSPolicyResourceRepositoryResourceGooRepository =
-    $OSPolicyResourceRepositoryResourceGooRepository;
+typedef OSPolicyResourceRepositoryResourceGooRepository = $GooRepository;
 
 /// Represents a single yum package repository.
 ///
@@ -4146,21 +3884,7 @@ typedef OSPolicyResourceRepositoryResourceZypperRepository =
 /// Sets the time for a one time patch deployment.
 ///
 /// Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-class OneTimeSchedule {
-  /// The desired patch job execution time.
-  ///
-  /// Required.
-  core.String? executeTime;
-
-  OneTimeSchedule({this.executeTime});
-
-  OneTimeSchedule.fromJson(core.Map json_)
-    : this(executeTime: json_['executeTime'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executeTime != null) 'executeTime': executeTime!,
-  };
-}
+typedef OneTimeSchedule = $OneTimeSchedule;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -4610,24 +4334,7 @@ class PatchInstanceFilter {
 /// VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`.
 /// This means that the patch job is applied to VMs that have both the labels
 /// `env=test` and `app=web`.
-class PatchInstanceFilterGroupLabel {
-  /// Compute Engine instance labels that must be present for a VM instance to
-  /// be targeted by this filter.
-  core.Map<core.String, core.String>? labels;
-
-  PatchInstanceFilterGroupLabel({this.labels});
-
-  PatchInstanceFilterGroupLabel.fromJson(core.Map json_)
-    : this(
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labels != null) 'labels': labels!,
-  };
-}
+typedef PatchInstanceFilterGroupLabel = $PatchInstanceFilterGroupLabel;
 
 /// A high level representation of a patch job that is either in progress or has
 /// completed.
@@ -4787,70 +4494,7 @@ class PatchJob {
 ///
 /// For more information about reviewing VM instance details, see
 /// [Listing all VM instance details for a specific patch job](https://cloud.google.com/compute/docs/os-patch-management/manage-patch-jobs#list-instance-details).
-class PatchJobInstanceDetails {
-  /// The number of times the agent that the agent attempts to apply the patch.
-  core.String? attemptCount;
-
-  /// If the patch fails, this field provides the reason.
-  core.String? failureReason;
-
-  /// The unique identifier for the instance.
-  ///
-  /// This identifier is defined by the server.
-  core.String? instanceSystemId;
-
-  /// The instance name in the form `projects / * /zones / * /instances / * `
-  core.String? name;
-
-  /// Current state of instance patch.
-  /// Possible string values are:
-  /// - "PATCH_STATE_UNSPECIFIED" : Unspecified.
-  /// - "PENDING" : The instance is not yet notified.
-  /// - "INACTIVE" : Instance is inactive and cannot be patched.
-  /// - "NOTIFIED" : The instance is notified that it should be patched.
-  /// - "STARTED" : The instance has started the patching process.
-  /// - "DOWNLOADING_PATCHES" : The instance is downloading patches.
-  /// - "APPLYING_PATCHES" : The instance is applying patches.
-  /// - "REBOOTING" : The instance is rebooting.
-  /// - "SUCCEEDED" : The instance has completed applying patches.
-  /// - "SUCCEEDED_REBOOT_REQUIRED" : The instance has completed applying
-  /// patches but a reboot is required.
-  /// - "FAILED" : The instance has failed to apply the patch.
-  /// - "ACKED" : The instance acked the notification and will start shortly.
-  /// - "TIMED_OUT" : The instance exceeded the time out while applying the
-  /// patch.
-  /// - "RUNNING_PRE_PATCH_STEP" : The instance is running the pre-patch step.
-  /// - "RUNNING_POST_PATCH_STEP" : The instance is running the post-patch step.
-  /// - "NO_AGENT_DETECTED" : The service could not detect the presence of the
-  /// agent. Check to ensure that the agent is installed, running, and able to
-  /// communicate with the service.
-  core.String? state;
-
-  PatchJobInstanceDetails({
-    this.attemptCount,
-    this.failureReason,
-    this.instanceSystemId,
-    this.name,
-    this.state,
-  });
-
-  PatchJobInstanceDetails.fromJson(core.Map json_)
-    : this(
-        attemptCount: json_['attemptCount'] as core.String?,
-        failureReason: json_['failureReason'] as core.String?,
-        instanceSystemId: json_['instanceSystemId'] as core.String?,
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attemptCount != null) 'attemptCount': attemptCount!,
-    if (failureReason != null) 'failureReason': failureReason!,
-    if (instanceSystemId != null) 'instanceSystemId': instanceSystemId!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef PatchJobInstanceDetails = $PatchJobInstanceDetails;
 
 /// A summary of the current patch state across all instances that this patch
 /// job affects.
@@ -4858,131 +4502,7 @@ class PatchJobInstanceDetails {
 /// Contains counts of instances in different states. These states map to
 /// `InstancePatchState`. List patch job instance details to see the specific
 /// states of each instance.
-class PatchJobInstanceDetailsSummary {
-  /// Number of instances that have acked and will start shortly.
-  core.String? ackedInstanceCount;
-
-  /// Number of instances that are applying patches.
-  core.String? applyingPatchesInstanceCount;
-
-  /// Number of instances that are downloading patches.
-  core.String? downloadingPatchesInstanceCount;
-
-  /// Number of instances that failed.
-  core.String? failedInstanceCount;
-
-  /// Number of instances that are inactive.
-  core.String? inactiveInstanceCount;
-
-  /// Number of instances that do not appear to be running the agent.
-  ///
-  /// Check to ensure that the agent is installed, running, and able to
-  /// communicate with the service.
-  core.String? noAgentDetectedInstanceCount;
-
-  /// Number of instances notified about patch job.
-  core.String? notifiedInstanceCount;
-
-  /// Number of instances pending patch job.
-  core.String? pendingInstanceCount;
-
-  /// Number of instances that are running the post-patch step.
-  core.String? postPatchStepInstanceCount;
-
-  /// Number of instances that are running the pre-patch step.
-  core.String? prePatchStepInstanceCount;
-
-  /// Number of instances rebooting.
-  core.String? rebootingInstanceCount;
-
-  /// Number of instances that have started.
-  core.String? startedInstanceCount;
-
-  /// Number of instances that have completed successfully.
-  core.String? succeededInstanceCount;
-
-  /// Number of instances that require reboot.
-  core.String? succeededRebootRequiredInstanceCount;
-
-  /// Number of instances that exceeded the time out while applying the patch.
-  core.String? timedOutInstanceCount;
-
-  PatchJobInstanceDetailsSummary({
-    this.ackedInstanceCount,
-    this.applyingPatchesInstanceCount,
-    this.downloadingPatchesInstanceCount,
-    this.failedInstanceCount,
-    this.inactiveInstanceCount,
-    this.noAgentDetectedInstanceCount,
-    this.notifiedInstanceCount,
-    this.pendingInstanceCount,
-    this.postPatchStepInstanceCount,
-    this.prePatchStepInstanceCount,
-    this.rebootingInstanceCount,
-    this.startedInstanceCount,
-    this.succeededInstanceCount,
-    this.succeededRebootRequiredInstanceCount,
-    this.timedOutInstanceCount,
-  });
-
-  PatchJobInstanceDetailsSummary.fromJson(core.Map json_)
-    : this(
-        ackedInstanceCount: json_['ackedInstanceCount'] as core.String?,
-        applyingPatchesInstanceCount:
-            json_['applyingPatchesInstanceCount'] as core.String?,
-        downloadingPatchesInstanceCount:
-            json_['downloadingPatchesInstanceCount'] as core.String?,
-        failedInstanceCount: json_['failedInstanceCount'] as core.String?,
-        inactiveInstanceCount: json_['inactiveInstanceCount'] as core.String?,
-        noAgentDetectedInstanceCount:
-            json_['noAgentDetectedInstanceCount'] as core.String?,
-        notifiedInstanceCount: json_['notifiedInstanceCount'] as core.String?,
-        pendingInstanceCount: json_['pendingInstanceCount'] as core.String?,
-        postPatchStepInstanceCount:
-            json_['postPatchStepInstanceCount'] as core.String?,
-        prePatchStepInstanceCount:
-            json_['prePatchStepInstanceCount'] as core.String?,
-        rebootingInstanceCount: json_['rebootingInstanceCount'] as core.String?,
-        startedInstanceCount: json_['startedInstanceCount'] as core.String?,
-        succeededInstanceCount: json_['succeededInstanceCount'] as core.String?,
-        succeededRebootRequiredInstanceCount:
-            json_['succeededRebootRequiredInstanceCount'] as core.String?,
-        timedOutInstanceCount: json_['timedOutInstanceCount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ackedInstanceCount != null) 'ackedInstanceCount': ackedInstanceCount!,
-    if (applyingPatchesInstanceCount != null)
-      'applyingPatchesInstanceCount': applyingPatchesInstanceCount!,
-    if (downloadingPatchesInstanceCount != null)
-      'downloadingPatchesInstanceCount': downloadingPatchesInstanceCount!,
-    if (failedInstanceCount != null)
-      'failedInstanceCount': failedInstanceCount!,
-    if (inactiveInstanceCount != null)
-      'inactiveInstanceCount': inactiveInstanceCount!,
-    if (noAgentDetectedInstanceCount != null)
-      'noAgentDetectedInstanceCount': noAgentDetectedInstanceCount!,
-    if (notifiedInstanceCount != null)
-      'notifiedInstanceCount': notifiedInstanceCount!,
-    if (pendingInstanceCount != null)
-      'pendingInstanceCount': pendingInstanceCount!,
-    if (postPatchStepInstanceCount != null)
-      'postPatchStepInstanceCount': postPatchStepInstanceCount!,
-    if (prePatchStepInstanceCount != null)
-      'prePatchStepInstanceCount': prePatchStepInstanceCount!,
-    if (rebootingInstanceCount != null)
-      'rebootingInstanceCount': rebootingInstanceCount!,
-    if (startedInstanceCount != null)
-      'startedInstanceCount': startedInstanceCount!,
-    if (succeededInstanceCount != null)
-      'succeededInstanceCount': succeededInstanceCount!,
-    if (succeededRebootRequiredInstanceCount != null)
-      'succeededRebootRequiredInstanceCount':
-          succeededRebootRequiredInstanceCount!,
-    if (timedOutInstanceCount != null)
-      'timedOutInstanceCount': timedOutInstanceCount!,
-  };
-}
+typedef PatchJobInstanceDetailsSummary = $PatchJobInstanceDetailsSummary;
 
 /// Patch rollout configuration specifications.
 ///
@@ -5458,79 +4978,13 @@ class VulnerabilityReportVulnerabilityDetails {
 }
 
 /// A reference for this vulnerability.
-class VulnerabilityReportVulnerabilityDetailsReference {
-  /// The source of the reference e.g. NVD.
-  core.String? source;
-
-  /// The url of the reference.
-  core.String? url;
-
-  VulnerabilityReportVulnerabilityDetailsReference({this.source, this.url});
-
-  VulnerabilityReportVulnerabilityDetailsReference.fromJson(core.Map json_)
-    : this(
-        source: json_['source'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (source != null) 'source': source!,
-    if (url != null) 'url': url!,
-  };
-}
+typedef VulnerabilityReportVulnerabilityDetailsReference =
+    $VulnerabilityReportVulnerabilityDetailsReference;
 
 /// OS inventory item that is affected by a vulnerability or fixed as a result
 /// of a vulnerability.
-class VulnerabilityReportVulnerabilityItem {
-  /// Corresponds to the `AVAILABLE_PACKAGE` inventory item on the VM.
-  ///
-  /// If the vulnerability report was not updated after the VM inventory update,
-  /// these values might not display in VM inventory. If there is no available
-  /// fix, the field is empty. The `inventory_item` value specifies the latest
-  /// `SoftwarePackage` available to the VM that fixes the vulnerability.
-  core.String? availableInventoryItemId;
-
-  /// The recommended [CPE URI](https://cpe.mitre.org/specification/) update
-  /// that contains a fix for this vulnerability.
-  core.String? fixedCpeUri;
-
-  /// Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM.
-  ///
-  /// This field displays the inventory items affected by this vulnerability. If
-  /// the vulnerability report was not updated after the VM inventory update,
-  /// these values might not display in VM inventory. For some operating
-  /// systems, this field might be empty.
-  core.String? installedInventoryItemId;
-
-  /// The upstream OS patch, packages or KB that fixes the vulnerability.
-  core.String? upstreamFix;
-
-  VulnerabilityReportVulnerabilityItem({
-    this.availableInventoryItemId,
-    this.fixedCpeUri,
-    this.installedInventoryItemId,
-    this.upstreamFix,
-  });
-
-  VulnerabilityReportVulnerabilityItem.fromJson(core.Map json_)
-    : this(
-        availableInventoryItemId:
-            json_['availableInventoryItemId'] as core.String?,
-        fixedCpeUri: json_['fixedCpeUri'] as core.String?,
-        installedInventoryItemId:
-            json_['installedInventoryItemId'] as core.String?,
-        upstreamFix: json_['upstreamFix'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (availableInventoryItemId != null)
-      'availableInventoryItemId': availableInventoryItemId!,
-    if (fixedCpeUri != null) 'fixedCpeUri': fixedCpeUri!,
-    if (installedInventoryItemId != null)
-      'installedInventoryItemId': installedInventoryItemId!,
-    if (upstreamFix != null) 'upstreamFix': upstreamFix!,
-  };
-}
+typedef VulnerabilityReportVulnerabilityItem =
+    $VulnerabilityReportVulnerabilityItem;
 
 /// Represents one week day in a month.
 ///
@@ -5588,197 +5042,18 @@ class WeekDayOfMonth {
 }
 
 /// Represents a weekly schedule.
-class WeeklySchedule {
-  /// Day of the week.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
-  /// - "MONDAY" : Monday
-  /// - "TUESDAY" : Tuesday
-  /// - "WEDNESDAY" : Wednesday
-  /// - "THURSDAY" : Thursday
-  /// - "FRIDAY" : Friday
-  /// - "SATURDAY" : Saturday
-  /// - "SUNDAY" : Sunday
-  core.String? dayOfWeek;
-
-  WeeklySchedule({this.dayOfWeek});
-
-  WeeklySchedule.fromJson(core.Map json_)
-    : this(dayOfWeek: json_['dayOfWeek'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
-  };
-}
+typedef WeeklySchedule = $WeeklySchedule01;
 
 /// Windows patching is performed using the Windows Update Agent.
-class WindowsUpdateSettings {
-  /// Only apply updates of these windows update classifications.
-  ///
-  /// If empty, all updates are applied.
-  core.List<core.String>? classifications;
-
-  /// List of KBs to exclude from update.
-  core.List<core.String>? excludes;
-
-  /// An exclusive list of kbs to be updated.
-  ///
-  /// These are the only patches that will be updated. This field must not be
-  /// used with other patch configurations.
-  core.List<core.String>? exclusivePatches;
-
-  WindowsUpdateSettings({
-    this.classifications,
-    this.excludes,
-    this.exclusivePatches,
-  });
-
-  WindowsUpdateSettings.fromJson(core.Map json_)
-    : this(
-        classifications:
-            (json_['classifications'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        excludes:
-            (json_['excludes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        exclusivePatches:
-            (json_['exclusivePatches'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (classifications != null) 'classifications': classifications!,
-    if (excludes != null) 'excludes': excludes!,
-    if (exclusivePatches != null) 'exclusivePatches': exclusivePatches!,
-  };
-}
+typedef WindowsUpdateSettings = $WindowsUpdateSettings;
 
 /// Yum patching is performed by executing `yum update`.
 ///
 /// Additional options can be set to control how this is executed. Note that not
 /// all settings are supported on all platforms.
-class YumSettings {
-  /// List of packages to exclude from update.
-  ///
-  /// These packages are excluded by using the yum `--exclude` flag.
-  core.List<core.String>? excludes;
-
-  /// An exclusive list of packages to be updated.
-  ///
-  /// These are the only packages that will be updated. If these packages are
-  /// not installed, they will be ignored. This field must not be specified with
-  /// any other patch configuration fields.
-  core.List<core.String>? exclusivePackages;
-
-  /// Will cause patch to run `yum update-minimal` instead.
-  core.bool? minimal;
-
-  /// Adds the `--security` flag to `yum update`.
-  ///
-  /// Not supported on all platforms.
-  core.bool? security;
-
-  YumSettings({
-    this.excludes,
-    this.exclusivePackages,
-    this.minimal,
-    this.security,
-  });
-
-  YumSettings.fromJson(core.Map json_)
-    : this(
-        excludes:
-            (json_['excludes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        exclusivePackages:
-            (json_['exclusivePackages'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        minimal: json_['minimal'] as core.bool?,
-        security: json_['security'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (excludes != null) 'excludes': excludes!,
-    if (exclusivePackages != null) 'exclusivePackages': exclusivePackages!,
-    if (minimal != null) 'minimal': minimal!,
-    if (security != null) 'security': security!,
-  };
-}
+typedef YumSettings = $YumSettings;
 
 /// Zypper patching is performed by running `zypper patch`.
 ///
 /// See also https://en.opensuse.org/SDB:Zypper_manual.
-class ZypperSettings {
-  /// Install only patches with these categories.
-  ///
-  /// Common categories include security, recommended, and feature.
-  core.List<core.String>? categories;
-
-  /// List of patches to exclude from update.
-  core.List<core.String>? excludes;
-
-  /// An exclusive list of patches to be updated.
-  ///
-  /// These are the only patches that will be installed using 'zypper patch
-  /// patch:' command. This field must not be used with any other patch
-  /// configuration fields.
-  core.List<core.String>? exclusivePatches;
-
-  /// Install only patches with these severities.
-  ///
-  /// Common severities include critical, important, moderate, and low.
-  core.List<core.String>? severities;
-
-  /// Adds the `--with-optional` flag to `zypper patch`.
-  core.bool? withOptional;
-
-  /// Adds the `--with-update` flag, to `zypper patch`.
-  core.bool? withUpdate;
-
-  ZypperSettings({
-    this.categories,
-    this.excludes,
-    this.exclusivePatches,
-    this.severities,
-    this.withOptional,
-    this.withUpdate,
-  });
-
-  ZypperSettings.fromJson(core.Map json_)
-    : this(
-        categories:
-            (json_['categories'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        excludes:
-            (json_['excludes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        exclusivePatches:
-            (json_['exclusivePatches'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        severities:
-            (json_['severities'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        withOptional: json_['withOptional'] as core.bool?,
-        withUpdate: json_['withUpdate'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (categories != null) 'categories': categories!,
-    if (excludes != null) 'excludes': excludes!,
-    if (exclusivePatches != null) 'exclusivePatches': exclusivePatches!,
-    if (severities != null) 'severities': severities!,
-    if (withOptional != null) 'withOptional': withOptional!,
-    if (withUpdate != null) 'withUpdate': withUpdate!,
-  };
-}
+typedef ZypperSettings = $ZypperSettings;

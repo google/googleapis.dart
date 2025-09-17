@@ -8338,147 +8338,16 @@ class GoogleCloudDialogflowCxV3AdvancedSettings {
 }
 
 /// Define behaviors for DTMF (dual tone multi frequency).
-class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings {
-  /// If true, incoming audio is processed for DTMF (dual tone multi frequency)
-  /// events.
-  ///
-  /// For example, if the caller presses a button on their telephone keypad and
-  /// DTMF processing is enabled, Dialogflow will detect the event (e.g. a "3"
-  /// was pressed) in the incoming audio and pass the event to the bot to drive
-  /// business logic (e.g. when 3 is pressed, return the account balance).
-  core.bool? enabled;
-
-  /// Endpoint timeout setting for matching dtmf input to regex.
-  core.String? endpointingTimeoutDuration;
-
-  /// The digit that terminates a DTMF digit sequence.
-  core.String? finishDigit;
-
-  /// Interdigit timeout setting for matching dtmf input to regex.
-  core.String? interdigitTimeoutDuration;
-
-  /// Max length of DTMF digits.
-  core.int? maxDigits;
-
-  GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings({
-    this.enabled,
-    this.endpointingTimeoutDuration,
-    this.finishDigit,
-    this.interdigitTimeoutDuration,
-    this.maxDigits,
-  });
-
-  GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        endpointingTimeoutDuration:
-            json_['endpointingTimeoutDuration'] as core.String?,
-        finishDigit: json_['finishDigit'] as core.String?,
-        interdigitTimeoutDuration:
-            json_['interdigitTimeoutDuration'] as core.String?,
-        maxDigits: json_['maxDigits'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (endpointingTimeoutDuration != null)
-      'endpointingTimeoutDuration': endpointingTimeoutDuration!,
-    if (finishDigit != null) 'finishDigit': finishDigit!,
-    if (interdigitTimeoutDuration != null)
-      'interdigitTimeoutDuration': interdigitTimeoutDuration!,
-    if (maxDigits != null) 'maxDigits': maxDigits!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings =
+    $AdvancedSettingsDtmfSettings;
 
 /// Define behaviors on logging.
-class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings {
-  /// Enables consent-based end-user input redaction, if true, a pre-defined
-  /// session parameter `$session.params.conversation-redaction` will be used to
-  /// determine if the utterance should be redacted.
-  core.bool? enableConsentBasedRedaction;
-
-  /// Enables DF Interaction logging.
-  core.bool? enableInteractionLogging;
-
-  /// Enables Google Cloud Logging.
-  core.bool? enableStackdriverLogging;
-
-  GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings({
-    this.enableConsentBasedRedaction,
-    this.enableInteractionLogging,
-    this.enableStackdriverLogging,
-  });
-
-  GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings.fromJson(
-    core.Map json_,
-  ) : this(
-        enableConsentBasedRedaction:
-            json_['enableConsentBasedRedaction'] as core.bool?,
-        enableInteractionLogging:
-            json_['enableInteractionLogging'] as core.bool?,
-        enableStackdriverLogging:
-            json_['enableStackdriverLogging'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableConsentBasedRedaction != null)
-      'enableConsentBasedRedaction': enableConsentBasedRedaction!,
-    if (enableInteractionLogging != null)
-      'enableInteractionLogging': enableInteractionLogging!,
-    if (enableStackdriverLogging != null)
-      'enableStackdriverLogging': enableStackdriverLogging!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings =
+    $AdvancedSettingsLoggingSettings;
 
 /// Define behaviors of speech to text detection.
-class GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings {
-  /// Sensitivity of the speech model that detects the end of speech.
-  ///
-  /// Scale from 0 to 100.
-  core.int? endpointerSensitivity;
-
-  /// Mapping from language to Speech-to-Text model.
-  ///
-  /// The mapped Speech-to-Text model will be selected for requests from its
-  /// corresponding language. For more information, see
-  /// [Speech models](https://cloud.google.com/dialogflow/cx/docs/concept/speech-models).
-  core.Map<core.String, core.String>? models;
-
-  /// Timeout before detecting no speech.
-  core.String? noSpeechTimeout;
-
-  /// Use timeout based endpointing, interpreting endpointer sensitivity as
-  /// seconds of timeout value.
-  core.bool? useTimeoutBasedEndpointing;
-
-  GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings({
-    this.endpointerSensitivity,
-    this.models,
-    this.noSpeechTimeout,
-    this.useTimeoutBasedEndpointing,
-  });
-
-  GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings.fromJson(
-    core.Map json_,
-  ) : this(
-        endpointerSensitivity: json_['endpointerSensitivity'] as core.int?,
-        models: (json_['models'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        noSpeechTimeout: json_['noSpeechTimeout'] as core.String?,
-        useTimeoutBasedEndpointing:
-            json_['useTimeoutBasedEndpointing'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endpointerSensitivity != null)
-      'endpointerSensitivity': endpointerSensitivity!,
-    if (models != null) 'models': models!,
-    if (noSpeechTimeout != null) 'noSpeechTimeout': noSpeechTimeout!,
-    if (useTimeoutBasedEndpointing != null)
-      'useTimeoutBasedEndpointing': useTimeoutBasedEndpointing!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AdvancedSettingsSpeechSettings =
+    $AdvancedSettingsSpeechSettings;
 
 /// Agents are best described as Natural Language Understanding (NLU) modules
 /// that transform user requests into actionable data.
@@ -8774,96 +8643,16 @@ class GoogleCloudDialogflowCxV3Agent {
 }
 
 /// Settings for answer feedback collection.
-class GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings {
-  /// If enabled, end users will be able to provide answer feedback to
-  /// Dialogflow responses.
-  ///
-  /// Feature works only if interaction logging is enabled in the Dialogflow
-  /// agent.
-  ///
-  /// Optional.
-  core.bool? enableAnswerFeedback;
-
-  GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings({
-    this.enableAnswerFeedback,
-  });
-
-  GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings.fromJson(core.Map json_)
-    : this(enableAnswerFeedback: json_['enableAnswerFeedback'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableAnswerFeedback != null)
-      'enableAnswerFeedback': enableAnswerFeedback!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AgentAnswerFeedbackSettings =
+    $AgentAnswerFeedbackSettings;
 
 /// Settings for custom client certificates.
-class GoogleCloudDialogflowCxV3AgentClientCertificateSettings {
-  /// The name of the SecretManager secret version resource storing the
-  /// passphrase.
-  ///
-  /// 'passphrase' should be left unset if the private key is not encrypted.
-  /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
-  ///
-  /// Optional.
-  core.String? passphrase;
-
-  /// The name of the SecretManager secret version resource storing the private
-  /// key encoded in PEM format.
-  ///
-  /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
-  ///
-  /// Required.
-  core.String? privateKey;
-
-  /// The ssl certificate encoded in PEM format.
-  ///
-  /// This string must include the begin header and end footer lines.
-  ///
-  /// Required.
-  core.String? sslCertificate;
-
-  GoogleCloudDialogflowCxV3AgentClientCertificateSettings({
-    this.passphrase,
-    this.privateKey,
-    this.sslCertificate,
-  });
-
-  GoogleCloudDialogflowCxV3AgentClientCertificateSettings.fromJson(
-    core.Map json_,
-  ) : this(
-        passphrase: json_['passphrase'] as core.String?,
-        privateKey: json_['privateKey'] as core.String?,
-        sslCertificate: json_['sslCertificate'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (passphrase != null) 'passphrase': passphrase!,
-    if (privateKey != null) 'privateKey': privateKey!,
-    if (sslCertificate != null) 'sslCertificate': sslCertificate!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AgentClientCertificateSettings =
+    $AgentClientCertificateSettings;
 
 /// Settings for Gen App Builder.
-class GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings {
-  /// The full name of the Gen App Builder engine related to this agent if there
-  /// is one.
-  ///
-  /// Format: `projects/{Project ID}/locations/{Location
-  /// ID}/collections/{Collection ID}/engines/{Engine ID}`
-  ///
-  /// Required.
-  core.String? engine;
-
-  GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings({this.engine});
-
-  GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings.fromJson(core.Map json_)
-    : this(engine: json_['engine'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (engine != null) 'engine': engine!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AgentGenAppBuilderSettings =
+    $AgentGenAppBuilderSettings;
 
 /// Settings for connecting to Git repository for an agent.
 class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings {
@@ -8890,85 +8679,12 @@ class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings {
 }
 
 /// Settings of integration with GitHub.
-class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings {
-  /// The access token used to authenticate the access to the GitHub repository.
-  core.String? accessToken;
-
-  /// A list of branches configured to be used from Dialogflow.
-  core.List<core.String>? branches;
-
-  /// The unique repository display name for the GitHub repository.
-  core.String? displayName;
-
-  /// The GitHub repository URI related to the agent.
-  core.String? repositoryUri;
-
-  /// The branch of the GitHub repository tracked for this agent.
-  core.String? trackingBranch;
-
-  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings({
-    this.accessToken,
-    this.branches,
-    this.displayName,
-    this.repositoryUri,
-    this.trackingBranch,
-  });
-
-  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings.fromJson(
-    core.Map json_,
-  ) : this(
-        accessToken: json_['accessToken'] as core.String?,
-        branches:
-            (json_['branches'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        displayName: json_['displayName'] as core.String?,
-        repositoryUri: json_['repositoryUri'] as core.String?,
-        trackingBranch: json_['trackingBranch'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-    if (branches != null) 'branches': branches!,
-    if (displayName != null) 'displayName': displayName!,
-    if (repositoryUri != null) 'repositoryUri': repositoryUri!,
-    if (trackingBranch != null) 'trackingBranch': trackingBranch!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings =
+    $AgentGitIntegrationSettingsGithubSettings;
 
 /// Settings for end user personalization.
-class GoogleCloudDialogflowCxV3AgentPersonalizationSettings {
-  /// Default end user metadata, used when processing DetectIntent requests.
-  ///
-  /// Recommended to be filled as a template instead of hard-coded value, for
-  /// example { "age": "$session.params.age" }. The data will be merged with the
-  /// QueryParameters.end_user_metadata in DetectIntentRequest.query_params
-  /// during query processing.
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? defaultEndUserMetadata;
-
-  GoogleCloudDialogflowCxV3AgentPersonalizationSettings({
-    this.defaultEndUserMetadata,
-  });
-
-  GoogleCloudDialogflowCxV3AgentPersonalizationSettings.fromJson(core.Map json_)
-    : this(
-        defaultEndUserMetadata:
-            json_.containsKey('defaultEndUserMetadata')
-                ? json_['defaultEndUserMetadata']
-                    as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultEndUserMetadata != null)
-      'defaultEndUserMetadata': defaultEndUserMetadata!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AgentPersonalizationSettings =
+    $AgentPersonalizationSettings;
 
 /// AgentUtterance represents one message sent by the agent.
 typedef GoogleCloudDialogflowCxV3AgentUtterance = $Utterance;
@@ -9062,41 +8778,8 @@ class GoogleCloudDialogflowCxV3AnswerFeedback {
 }
 
 /// Stores extra information about why users provided thumbs down rating.
-class GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason {
-  /// Additional feedback about the rating.
-  ///
-  /// This field can be populated without choosing a predefined `reason`.
-  ///
-  /// Optional.
-  core.String? feedback;
-
-  /// Custom reason labels for thumbs down rating provided by the user.
-  ///
-  /// The maximum number of labels allowed is 10 and the maximum length of a
-  /// single label is 128 characters.
-  ///
-  /// Optional.
-  core.List<core.String>? reasonLabels;
-
-  GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason({
-    this.feedback,
-    this.reasonLabels,
-  });
-
-  GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason.fromJson(core.Map json_)
-    : this(
-        feedback: json_['feedback'] as core.String?,
-        reasonLabels:
-            (json_['reasonLabels'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (feedback != null) 'feedback': feedback!,
-    if (reasonLabels != null) 'reasonLabels': reasonLabels!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3AnswerFeedbackRatingReason =
+    $AnswerFeedbackRatingReason;
 
 /// Represents the natural speech audio to be processed.
 class GoogleCloudDialogflowCxV3AudioInput {
@@ -9158,86 +8841,15 @@ class GoogleCloudDialogflowCxV3AudioInput {
 /// phases. The durations are measured in terms of the audio length from the
 /// start of the input audio. No-speech event is a response with
 /// END_OF_UTTERANCE without any transcript following up.
-class GoogleCloudDialogflowCxV3BargeInConfig {
-  /// Duration that is not eligible for barge-in at the beginning of the input
-  /// audio.
-  core.String? noBargeInDuration;
-
-  /// Total duration for the playback at the beginning of the input audio.
-  core.String? totalDuration;
-
-  GoogleCloudDialogflowCxV3BargeInConfig({
-    this.noBargeInDuration,
-    this.totalDuration,
-  });
-
-  GoogleCloudDialogflowCxV3BargeInConfig.fromJson(core.Map json_)
-    : this(
-        noBargeInDuration: json_['noBargeInDuration'] as core.String?,
-        totalDuration: json_['totalDuration'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (noBargeInDuration != null) 'noBargeInDuration': noBargeInDuration!,
-    if (totalDuration != null) 'totalDuration': totalDuration!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3BargeInConfig = $BargeInConfig;
 
 /// The request message for TestCases.BatchDeleteTestCases.
-class GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest {
-  /// Format of test case names: `projects//locations//agents//testCases/`.
-  ///
-  /// Required.
-  core.List<core.String>? names;
-
-  GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest({this.names});
-
-  GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest.fromJson(core.Map json_)
-    : this(
-        names:
-            (json_['names'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (names != null) 'names': names!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3BatchDeleteTestCasesRequest =
+    $BatchDeleteTestCasesRequest;
 
 /// The request message for TestCases.BatchRunTestCases.
-class GoogleCloudDialogflowCxV3BatchRunTestCasesRequest {
-  /// If not set, draft environment is assumed.
-  ///
-  /// Format: `projects//locations//agents//environments/`.
-  ///
-  /// Optional.
-  core.String? environment;
-
-  /// Format: `projects//locations//agents//testCases/`.
-  ///
-  /// Required.
-  core.List<core.String>? testCases;
-
-  GoogleCloudDialogflowCxV3BatchRunTestCasesRequest({
-    this.environment,
-    this.testCases,
-  });
-
-  GoogleCloudDialogflowCxV3BatchRunTestCasesRequest.fromJson(core.Map json_)
-    : this(
-        environment: json_['environment'] as core.String?,
-        testCases:
-            (json_['testCases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (environment != null) 'environment': environment!,
-    if (testCases != null) 'testCases': testCases!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3BatchRunTestCasesRequest =
+    $BatchRunTestCasesRequest;
 
 /// Boost specification to boost certain documents.
 ///
@@ -9429,7 +9041,7 @@ class GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpec {
 /// The curve defined through these control points can only be monotonically
 /// increasing or decreasing(constant values are acceptable).
 typedef GoogleCloudDialogflowCxV3BoostSpecConditionBoostSpecBoostControlSpecControlPoint =
-    $BoostSpecConditionBoostSpecBoostControlSpecControlPoint;
+    $SpecControlPoint;
 
 /// Boost specifications for data stores.
 class GoogleCloudDialogflowCxV3BoostSpecs {
@@ -9529,185 +9141,18 @@ class GoogleCloudDialogflowCxV3CalculateCoverageResponse {
 }
 
 /// Changelogs represents a change made to a given agent.
-class GoogleCloudDialogflowCxV3Changelog {
-  /// The action of the change.
-  core.String? action;
-
-  /// The timestamp of the change.
-  core.String? createTime;
-
-  /// The affected resource display name of the change.
-  core.String? displayName;
-
-  /// The affected language code of the change.
-  core.String? languageCode;
-
-  /// The unique identifier of the changelog.
-  ///
-  /// Format: `projects//locations//agents//changelogs/`.
-  core.String? name;
-
-  /// The affected resource name of the change.
-  core.String? resource;
-
-  /// The affected resource type.
-  core.String? type;
-
-  /// Email address of the authenticated user.
-  core.String? userEmail;
-
-  GoogleCloudDialogflowCxV3Changelog({
-    this.action,
-    this.createTime,
-    this.displayName,
-    this.languageCode,
-    this.name,
-    this.resource,
-    this.type,
-    this.userEmail,
-  });
-
-  GoogleCloudDialogflowCxV3Changelog.fromJson(core.Map json_)
-    : this(
-        action: json_['action'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        languageCode: json_['languageCode'] as core.String?,
-        name: json_['name'] as core.String?,
-        resource: json_['resource'] as core.String?,
-        type: json_['type'] as core.String?,
-        userEmail: json_['userEmail'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (name != null) 'name': name!,
-    if (resource != null) 'resource': resource!,
-    if (type != null) 'type': type!,
-    if (userEmail != null) 'userEmail': userEmail!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3Changelog = $Changelog;
 
 /// The request message for Versions.CompareVersions.
-class GoogleCloudDialogflowCxV3CompareVersionsRequest {
-  /// The language to compare the flow versions for.
-  ///
-  /// If not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// are supported. Note: languages must be enabled in the agent before they
-  /// can be used.
-  core.String? languageCode;
-
-  /// Name of the target flow version to compare with the base version.
-  ///
-  /// Use version ID `0` to indicate the draft version of the specified flow.
-  /// Format: `projects//locations//agents//flows//versions/`.
-  ///
-  /// Required.
-  core.String? targetVersion;
-
-  GoogleCloudDialogflowCxV3CompareVersionsRequest({
-    this.languageCode,
-    this.targetVersion,
-  });
-
-  GoogleCloudDialogflowCxV3CompareVersionsRequest.fromJson(core.Map json_)
-    : this(
-        languageCode: json_['languageCode'] as core.String?,
-        targetVersion: json_['targetVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (targetVersion != null) 'targetVersion': targetVersion!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3CompareVersionsRequest =
+    $CompareVersionsRequest;
 
 /// The response message for Versions.CompareVersions.
-class GoogleCloudDialogflowCxV3CompareVersionsResponse {
-  /// JSON representation of the base version content.
-  core.String? baseVersionContentJson;
-
-  /// The timestamp when the two version compares.
-  core.String? compareTime;
-
-  /// JSON representation of the target version content.
-  core.String? targetVersionContentJson;
-
-  GoogleCloudDialogflowCxV3CompareVersionsResponse({
-    this.baseVersionContentJson,
-    this.compareTime,
-    this.targetVersionContentJson,
-  });
-
-  GoogleCloudDialogflowCxV3CompareVersionsResponse.fromJson(core.Map json_)
-    : this(
-        baseVersionContentJson: json_['baseVersionContentJson'] as core.String?,
-        compareTime: json_['compareTime'] as core.String?,
-        targetVersionContentJson:
-            json_['targetVersionContentJson'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseVersionContentJson != null)
-      'baseVersionContentJson': baseVersionContentJson!,
-    if (compareTime != null) 'compareTime': compareTime!,
-    if (targetVersionContentJson != null)
-      'targetVersionContentJson': targetVersionContentJson!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3CompareVersionsResponse =
+    $CompareVersionsResponse;
 
 /// Represents a result from running a test case in an agent environment.
-class GoogleCloudDialogflowCxV3ContinuousTestResult {
-  /// The resource name for the continuous test result.
-  ///
-  /// Format:
-  /// `projects//locations//agents//environments//continuousTestResults/`.
-  core.String? name;
-
-  /// The result of this continuous test run, i.e. whether all the tests in this
-  /// continuous test run pass or not.
-  /// Possible string values are:
-  /// - "AGGREGATED_TEST_RESULT_UNSPECIFIED" : Not specified. Should never be
-  /// used.
-  /// - "PASSED" : All the tests passed.
-  /// - "FAILED" : At least one test did not pass.
-  core.String? result;
-
-  /// Time when the continuous testing run starts.
-  core.String? runTime;
-
-  /// A list of individual test case results names in this continuous test run.
-  core.List<core.String>? testCaseResults;
-
-  GoogleCloudDialogflowCxV3ContinuousTestResult({
-    this.name,
-    this.result,
-    this.runTime,
-    this.testCaseResults,
-  });
-
-  GoogleCloudDialogflowCxV3ContinuousTestResult.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        result: json_['result'] as core.String?,
-        runTime: json_['runTime'] as core.String?,
-        testCaseResults:
-            (json_['testCaseResults'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (result != null) 'result': result!,
-    if (runTime != null) 'runTime': runTime!,
-    if (testCaseResults != null) 'testCaseResults': testCaseResults!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ContinuousTestResult = $ContinuousTestResult;
 
 /// One interaction between a human and virtual agent.
 ///
@@ -9921,57 +9366,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
 ///
 /// It represents a data store in Discovery Engine and the type of the contents
 /// it contains.
-class GoogleCloudDialogflowCxV3DataStoreConnection {
-  /// The full name of the referenced data store.
-  ///
-  /// Formats:
-  /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
-  /// `projects/{project}/locations/{location}/dataStores/{data_store}`
-  core.String? dataStore;
-
-  /// The type of the connected data store.
-  /// Possible string values are:
-  /// - "DATA_STORE_TYPE_UNSPECIFIED" : Not specified. This value indicates that
-  /// the data store type is not specified, so it will not be used during
-  /// search.
-  /// - "PUBLIC_WEB" : A data store that contains public web content.
-  /// - "UNSTRUCTURED" : A data store that contains unstructured private data.
-  /// - "STRUCTURED" : A data store that contains structured data (for example
-  /// FAQ).
-  core.String? dataStoreType;
-
-  /// The document processing mode for the data store connection.
-  ///
-  /// Should only be set for PUBLIC_WEB and UNSTRUCTURED data stores. If not set
-  /// it is considered as DOCUMENTS, as this is the legacy mode.
-  /// Possible string values are:
-  /// - "DOCUMENT_PROCESSING_MODE_UNSPECIFIED" : Not specified. This should be
-  /// set for STRUCTURED type data stores. Due to legacy reasons this is
-  /// considered as DOCUMENTS for STRUCTURED and PUBLIC_WEB data stores.
-  /// - "DOCUMENTS" : Documents are processed as documents.
-  /// - "CHUNKS" : Documents are converted to chunks.
-  core.String? documentProcessingMode;
-
-  GoogleCloudDialogflowCxV3DataStoreConnection({
-    this.dataStore,
-    this.dataStoreType,
-    this.documentProcessingMode,
-  });
-
-  GoogleCloudDialogflowCxV3DataStoreConnection.fromJson(core.Map json_)
-    : this(
-        dataStore: json_['dataStore'] as core.String?,
-        dataStoreType: json_['dataStoreType'] as core.String?,
-        documentProcessingMode: json_['documentProcessingMode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataStore != null) 'dataStore': dataStore!,
-    if (dataStoreType != null) 'dataStoreType': dataStoreType!,
-    if (documentProcessingMode != null)
-      'documentProcessingMode': documentProcessingMode!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DataStoreConnection = $DataStoreConnection;
 
 /// Data store connection feature output signals.
 ///
@@ -10127,35 +9522,8 @@ typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerGenerationModel
     $ModelCallSignals;
 
 /// Answer part with citation.
-class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart {
-  /// Citations for this answer part.
-  ///
-  /// Indices of `search_snippets`.
-  core.List<core.int>? supportingIndices;
-
-  /// Substring of the answer.
-  core.String? text;
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart({
-    this.supportingIndices,
-    this.text,
-  });
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart.fromJson(
-    core.Map json_,
-  ) : this(
-        supportingIndices:
-            (json_['supportingIndices'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
-        text: json_['text'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (supportingIndices != null) 'supportingIndices': supportingIndices!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsAnswerPart =
+    $DataStoreConnectionSignalsAnswerPart;
 
 /// Snippet cited by the answer generation model.
 class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet {
@@ -10190,152 +9558,23 @@ class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsCitedSnippet {
 }
 
 /// Grounding signals.
-class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals {
-  /// Represents the decision of the grounding check.
-  /// Possible string values are:
-  /// - "GROUNDING_DECISION_UNSPECIFIED" : Decision not specified.
-  /// - "ACCEPTED_BY_GROUNDING" : Grounding have accepted the answer.
-  /// - "REJECTED_BY_GROUNDING" : Grounding have rejected the answer.
-  core.String? decision;
-
-  /// Grounding score bucket setting.
-  /// Possible string values are:
-  /// - "GROUNDING_SCORE_BUCKET_UNSPECIFIED" : Score not specified.
-  /// - "VERY_LOW" : We have very low confidence that the answer is grounded.
-  /// - "LOW" : We have low confidence that the answer is grounded.
-  /// - "MEDIUM" : We have medium confidence that the answer is grounded.
-  /// - "HIGH" : We have high confidence that the answer is grounded.
-  /// - "VERY_HIGH" : We have very high confidence that the answer is grounded.
-  core.String? score;
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals({
-    this.decision,
-    this.score,
-  });
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals.fromJson(
-    core.Map json_,
-  ) : this(
-        decision: json_['decision'] as core.String?,
-        score: json_['score'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (decision != null) 'decision': decision!,
-    if (score != null) 'score': score!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsGroundingSignals =
+    $DataStoreConnectionSignalsGroundingSignals;
 
 /// Diagnostic info related to the rewriter model call.
 typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsRewriterModelCallSignals =
     $ModelCallSignals;
 
 /// Safety check results.
-class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals {
-  /// Specifies banned phrase match subject.
-  /// Possible string values are:
-  /// - "BANNED_PHRASE_MATCH_UNSPECIFIED" : No banned phrase check was executed.
-  /// - "BANNED_PHRASE_MATCH_NONE" : All banned phrase checks led to no match.
-  /// - "BANNED_PHRASE_MATCH_QUERY" : A banned phrase matched the query.
-  /// - "BANNED_PHRASE_MATCH_RESPONSE" : A banned phrase matched the response.
-  core.String? bannedPhraseMatch;
-
-  /// Safety decision.
-  /// Possible string values are:
-  /// - "SAFETY_DECISION_UNSPECIFIED" : Decision not specified.
-  /// - "ACCEPTED_BY_SAFETY_CHECK" : No manual or automatic safety check fired.
-  /// - "REJECTED_BY_SAFETY_CHECK" : One ore more safety checks fired.
-  core.String? decision;
-
-  /// The matched banned phrase if there was a match.
-  core.String? matchedBannedPhrase;
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals({
-    this.bannedPhraseMatch,
-    this.decision,
-    this.matchedBannedPhrase,
-  });
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals.fromJson(
-    core.Map json_,
-  ) : this(
-        bannedPhraseMatch: json_['bannedPhraseMatch'] as core.String?,
-        decision: json_['decision'] as core.String?,
-        matchedBannedPhrase: json_['matchedBannedPhrase'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bannedPhraseMatch != null) 'bannedPhraseMatch': bannedPhraseMatch!,
-    if (decision != null) 'decision': decision!,
-    if (matchedBannedPhrase != null)
-      'matchedBannedPhrase': matchedBannedPhrase!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSafetySignals =
+    $DataStoreConnectionSignalsSafetySignals;
 
 /// Search snippet details.
-class GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet {
-  /// Title of the enclosing document.
-  core.String? documentTitle;
-
-  /// Uri for the document.
-  ///
-  /// Present if specified for the document.
-  core.String? documentUri;
-
-  /// Metadata associated with the document.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  /// Text included in the prompt.
-  core.String? text;
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet({
-    this.documentTitle,
-    this.documentUri,
-    this.metadata,
-    this.text,
-  });
-
-  GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet.fromJson(
-    core.Map json_,
-  ) : this(
-        documentTitle: json_['documentTitle'] as core.String?,
-        documentUri: json_['documentUri'] as core.String?,
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
-        text: json_['text'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentTitle != null) 'documentTitle': documentTitle!,
-    if (documentUri != null) 'documentUri': documentUri!,
-    if (metadata != null) 'metadata': metadata!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DataStoreConnectionSignalsSearchSnippet =
+    $DataStoreConnectionSignalsSearchSnippet;
 
 /// The request message for Environments.DeployFlow.
-class GoogleCloudDialogflowCxV3DeployFlowRequest {
-  /// The flow version to deploy.
-  ///
-  /// Format: `projects//locations//agents//flows//versions/`.
-  ///
-  /// Required.
-  core.String? flowVersion;
-
-  GoogleCloudDialogflowCxV3DeployFlowRequest({this.flowVersion});
-
-  GoogleCloudDialogflowCxV3DeployFlowRequest.fromJson(core.Map json_)
-    : this(flowVersion: json_['flowVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (flowVersion != null) 'flowVersion': flowVersion!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DeployFlowRequest = $DeployFlowRequest;
 
 /// Represents a deployment in an environment.
 ///
@@ -10405,37 +9644,7 @@ class GoogleCloudDialogflowCxV3Deployment {
 }
 
 /// Result of the deployment.
-class GoogleCloudDialogflowCxV3DeploymentResult {
-  /// Results of test cases running before the deployment.
-  ///
-  /// Format: `projects//locations//agents//testCases//results/`.
-  core.List<core.String>? deploymentTestResults;
-
-  /// The name of the experiment triggered by this deployment.
-  ///
-  /// Format: projects//locations//agents//environments//experiments/.
-  core.String? experiment;
-
-  GoogleCloudDialogflowCxV3DeploymentResult({
-    this.deploymentTestResults,
-    this.experiment,
-  });
-
-  GoogleCloudDialogflowCxV3DeploymentResult.fromJson(core.Map json_)
-    : this(
-        deploymentTestResults:
-            (json_['deploymentTestResults'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        experiment: json_['experiment'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deploymentTestResults != null)
-      'deploymentTestResults': deploymentTestResults!,
-    if (experiment != null) 'experiment': experiment!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DeploymentResult = $DeploymentResult;
 
 /// The request to detect user's intent.
 class GoogleCloudDialogflowCxV3DetectIntentRequest {
@@ -10579,26 +9788,7 @@ class GoogleCloudDialogflowCxV3DetectIntentResponse {
 }
 
 /// Represents the input for dtmf event.
-class GoogleCloudDialogflowCxV3DtmfInput {
-  /// The dtmf digits.
-  core.String? digits;
-
-  /// The finish digit (if any).
-  core.String? finishDigit;
-
-  GoogleCloudDialogflowCxV3DtmfInput({this.digits, this.finishDigit});
-
-  GoogleCloudDialogflowCxV3DtmfInput.fromJson(core.Map json_)
-    : this(
-        digits: json_['digits'] as core.String?,
-        finishDigit: json_['finishDigit'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (digits != null) 'digits': digits!,
-    if (finishDigit != null) 'finishDigit': finishDigit!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3DtmfInput = $DtmfInput;
 
 /// Entities are extracted from user input and represent parameters that are
 /// meaningful to your application.
@@ -10726,60 +9916,11 @@ class GoogleCloudDialogflowCxV3EntityType {
 }
 
 /// An **entity entry** for an associated entity type.
-class GoogleCloudDialogflowCxV3EntityTypeEntity {
-  /// A collection of value synonyms.
-  ///
-  /// For example, if the entity type is *vegetable*, and `value` is
-  /// *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity
-  /// types: * This collection must contain exactly one synonym equal to
-  /// `value`.
-  ///
-  /// Required.
-  core.List<core.String>? synonyms;
-
-  /// The primary value associated with this entity entry.
-  ///
-  /// For example, if the entity type is *vegetable*, the value could be
-  /// *scallions*. For `KIND_MAP` entity types: * A canonical value to be used
-  /// in place of synonyms. For `KIND_LIST` entity types: * A string that can
-  /// contain references to other entity types (with or without aliases).
-  ///
-  /// Required.
-  core.String? value;
-
-  GoogleCloudDialogflowCxV3EntityTypeEntity({this.synonyms, this.value});
-
-  GoogleCloudDialogflowCxV3EntityTypeEntity.fromJson(core.Map json_)
-    : this(
-        synonyms:
-            (json_['synonyms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (synonyms != null) 'synonyms': synonyms!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3EntityTypeEntity = $EntityTypeEntity01;
 
 /// An excluded entity phrase that should not be matched.
-class GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase {
-  /// The word or phrase to be excluded.
-  ///
-  /// Required.
-  core.String? value;
-
-  GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase({this.value});
-
-  GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase.fromJson(core.Map json_)
-    : this(value: json_['value'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase =
+    $EntityTypeExcludedPhrase;
 
 /// Represents an environment for an agent.
 ///
@@ -10878,70 +10019,12 @@ class GoogleCloudDialogflowCxV3Environment {
 }
 
 /// The configuration for continuous tests.
-class GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig {
-  /// Whether to run test cases in TestCasesConfig.test_cases periodically.
-  ///
-  /// Default false. If set to true, run once a day.
-  core.bool? enableContinuousRun;
-
-  /// Whether to run test cases in TestCasesConfig.test_cases before deploying a
-  /// flow version to the environment.
-  ///
-  /// Default false.
-  core.bool? enablePredeploymentRun;
-
-  /// A list of test case names to run.
-  ///
-  /// They should be under the same agent. Format of each test case name:
-  /// `projects//locations//agents//testCases/`
-  core.List<core.String>? testCases;
-
-  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig({
-    this.enableContinuousRun,
-    this.enablePredeploymentRun,
-    this.testCases,
-  });
-
-  GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig.fromJson(core.Map json_)
-    : this(
-        enableContinuousRun: json_['enableContinuousRun'] as core.bool?,
-        enablePredeploymentRun: json_['enablePredeploymentRun'] as core.bool?,
-        testCases:
-            (json_['testCases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableContinuousRun != null)
-      'enableContinuousRun': enableContinuousRun!,
-    if (enablePredeploymentRun != null)
-      'enablePredeploymentRun': enablePredeploymentRun!,
-    if (testCases != null) 'testCases': testCases!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig =
+    $EnvironmentTestCasesConfig;
 
 /// Configuration for the version.
-class GoogleCloudDialogflowCxV3EnvironmentVersionConfig {
-  /// Flow, playbook and tool versions are supported.
-  ///
-  /// Format for flow version: projects//locations//agents//flows//versions/.
-  /// Format for playbook version:
-  /// projects//locations//agents//playbooks//versions/. Format for tool
-  /// version: projects//locations//agents//tools//versions/.
-  ///
-  /// Required.
-  core.String? version;
-
-  GoogleCloudDialogflowCxV3EnvironmentVersionConfig({this.version});
-
-  GoogleCloudDialogflowCxV3EnvironmentVersionConfig.fromJson(core.Map json_)
-    : this(version: json_['version'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (version != null) 'version': version!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3EnvironmentVersionConfig =
+    $EnvironmentVersionConfig;
 
 /// Configuration for webhooks.
 class GoogleCloudDialogflowCxV3EnvironmentWebhookConfig {
@@ -11047,19 +10130,7 @@ class GoogleCloudDialogflowCxV3EventHandler {
 }
 
 /// Represents the event to trigger.
-class GoogleCloudDialogflowCxV3EventInput {
-  /// Name of the event.
-  core.String? event;
-
-  GoogleCloudDialogflowCxV3EventInput({this.event});
-
-  GoogleCloudDialogflowCxV3EventInput.fromJson(core.Map json_)
-    : this(event: json_['event'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (event != null) 'event': event!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3EventInput = $EventInput01;
 
 /// Example represents a sample execution of the playbook in the conversation.
 ///
@@ -11431,44 +10502,8 @@ class GoogleCloudDialogflowCxV3ExperimentResult {
 
 /// A confidence interval is a range of possible values for the experiment
 /// objective you are trying to measure.
-class GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
-  /// The confidence level used to construct the interval, i.e. there is X%
-  /// chance that the true value is within this interval.
-  core.double? confidenceLevel;
-
-  /// Lower bound of the interval.
-  core.double? lowerBound;
-
-  /// The percent change between an experiment metric's value and the value for
-  /// its control.
-  core.double? ratio;
-
-  /// Upper bound of the interval.
-  core.double? upperBound;
-
-  GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval({
-    this.confidenceLevel,
-    this.lowerBound,
-    this.ratio,
-    this.upperBound,
-  });
-
-  GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval.fromJson(
-    core.Map json_,
-  ) : this(
-        confidenceLevel: (json_['confidenceLevel'] as core.num?)?.toDouble(),
-        lowerBound: (json_['lowerBound'] as core.num?)?.toDouble(),
-        ratio: (json_['ratio'] as core.num?)?.toDouble(),
-        upperBound: (json_['upperBound'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidenceLevel != null) 'confidenceLevel': confidenceLevel!,
-    if (lowerBound != null) 'lowerBound': lowerBound!,
-    if (ratio != null) 'ratio': ratio!,
-    if (upperBound != null) 'upperBound': upperBound!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval =
+    $ExperimentResultConfidenceInterval;
 
 /// Metric and corresponding confidence intervals.
 class GoogleCloudDialogflowCxV3ExperimentResultMetric {
@@ -11663,306 +10698,25 @@ class GoogleCloudDialogflowCxV3ExportAgentRequest {
 }
 
 /// Settings for exporting to a git branch.
-class GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination {
-  /// Commit message for the git push.
-  core.String? commitMessage;
-
-  /// Tracking branch for the git push.
-  core.String? trackingBranch;
-
-  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination({
-    this.commitMessage,
-    this.trackingBranch,
-  });
-
-  GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination.fromJson(
-    core.Map json_,
-  ) : this(
-        commitMessage: json_['commitMessage'] as core.String?,
-        trackingBranch: json_['trackingBranch'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (commitMessage != null) 'commitMessage': commitMessage!,
-    if (trackingBranch != null) 'trackingBranch': trackingBranch!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination =
+    $ExportAgentRequestGitDestination;
 
 /// The request message for EntityTypes.ExportEntityTypes.
-class GoogleCloudDialogflowCxV3ExportEntityTypesRequest {
-  /// The data format of the exported entity types.
-  ///
-  /// If not specified, `BLOB` is assumed.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format. Treated as `BLOB`.
-  /// - "BLOB" : EntityTypes will be exported as raw bytes.
-  /// - "JSON_PACKAGE" : EntityTypes will be exported in JSON Package format.
-  core.String? dataFormat;
-
-  /// The name of the entity types to export.
-  ///
-  /// Format: `projects//locations//agents//entityTypes/`.
-  ///
-  /// Required.
-  core.List<core.String>? entityTypes;
-
-  /// The option to return the serialized entity types inline.
-  ///
-  /// Optional.
-  core.bool? entityTypesContentInline;
-
-  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-  /// export the entity types to.
-  ///
-  /// The format of this URI must be `gs:///`. Dialogflow performs a write
-  /// operation for the Cloud Storage object on the caller's behalf, so your
-  /// request authentication must have write permissions for the object. For
-  /// more information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  ///
-  /// Optional.
-  core.String? entityTypesUri;
-
-  /// The language to retrieve the entity type for.
-  ///
-  /// The following fields are language dependent: * `EntityType.entities.value`
-  /// * `EntityType.entities.synonyms` * `EntityType.excluded_phrases.value` If
-  /// not specified, all language dependent fields will be retrieved.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// are supported. Note: languages must be enabled in the agent before they
-  /// can be used.
-  ///
-  /// Optional.
-  core.String? languageCode;
-
-  GoogleCloudDialogflowCxV3ExportEntityTypesRequest({
-    this.dataFormat,
-    this.entityTypes,
-    this.entityTypesContentInline,
-    this.entityTypesUri,
-    this.languageCode,
-  });
-
-  GoogleCloudDialogflowCxV3ExportEntityTypesRequest.fromJson(core.Map json_)
-    : this(
-        dataFormat: json_['dataFormat'] as core.String?,
-        entityTypes:
-            (json_['entityTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        entityTypesContentInline:
-            json_['entityTypesContentInline'] as core.bool?,
-        entityTypesUri: json_['entityTypesUri'] as core.String?,
-        languageCode: json_['languageCode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataFormat != null) 'dataFormat': dataFormat!,
-    if (entityTypes != null) 'entityTypes': entityTypes!,
-    if (entityTypesContentInline != null)
-      'entityTypesContentInline': entityTypesContentInline!,
-    if (entityTypesUri != null) 'entityTypesUri': entityTypesUri!,
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ExportEntityTypesRequest =
+    $ExportEntityTypesRequest;
 
 /// The request message for Flows.ExportFlow.
-class GoogleCloudDialogflowCxV3ExportFlowRequest {
-  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-  /// export the flow to.
-  ///
-  /// The format of this URI must be `gs:///`. If left unspecified, the
-  /// serialized flow is returned inline. Dialogflow performs a write operation
-  /// for the Cloud Storage object on the caller's behalf, so your request
-  /// authentication must have write permissions for the object. For more
-  /// information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  ///
-  /// Optional.
-  core.String? flowUri;
-
-  /// Whether to export flows referenced by the specified flow.
-  ///
-  /// Optional.
-  core.bool? includeReferencedFlows;
-
-  GoogleCloudDialogflowCxV3ExportFlowRequest({
-    this.flowUri,
-    this.includeReferencedFlows,
-  });
-
-  GoogleCloudDialogflowCxV3ExportFlowRequest.fromJson(core.Map json_)
-    : this(
-        flowUri: json_['flowUri'] as core.String?,
-        includeReferencedFlows: json_['includeReferencedFlows'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (flowUri != null) 'flowUri': flowUri!,
-    if (includeReferencedFlows != null)
-      'includeReferencedFlows': includeReferencedFlows!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ExportFlowRequest = $ExportFlowRequest;
 
 /// The request message for Intents.ExportIntents.
-class GoogleCloudDialogflowCxV3ExportIntentsRequest {
-  /// The data format of the exported intents.
-  ///
-  /// If not specified, `BLOB` is assumed.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format. Treated as `BLOB`.
-  /// - "BLOB" : Intents will be exported as raw bytes.
-  /// - "JSON" : Intents will be exported in JSON format.
-  /// - "CSV" : Intents will be exported in CSV format.
-  core.String? dataFormat;
-
-  /// The name of the intents to export.
-  ///
-  /// Format: `projects//locations//agents//intents/`.
-  ///
-  /// Required.
-  core.List<core.String>? intents;
-
-  /// The option to return the serialized intents inline.
-  ///
-  /// Optional.
-  core.bool? intentsContentInline;
-
-  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-  /// export the intents to.
-  ///
-  /// The format of this URI must be `gs:///`. Dialogflow performs a write
-  /// operation for the Cloud Storage object on the caller's behalf, so your
-  /// request authentication must have write permissions for the object. For
-  /// more information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  ///
-  /// Optional.
-  core.String? intentsUri;
-
-  GoogleCloudDialogflowCxV3ExportIntentsRequest({
-    this.dataFormat,
-    this.intents,
-    this.intentsContentInline,
-    this.intentsUri,
-  });
-
-  GoogleCloudDialogflowCxV3ExportIntentsRequest.fromJson(core.Map json_)
-    : this(
-        dataFormat: json_['dataFormat'] as core.String?,
-        intents:
-            (json_['intents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        intentsContentInline: json_['intentsContentInline'] as core.bool?,
-        intentsUri: json_['intentsUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataFormat != null) 'dataFormat': dataFormat!,
-    if (intents != null) 'intents': intents!,
-    if (intentsContentInline != null)
-      'intentsContentInline': intentsContentInline!,
-    if (intentsUri != null) 'intentsUri': intentsUri!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ExportIntentsRequest = $ExportIntentsRequest;
 
 /// The request message for Playbooks.ExportPlaybook.
-class GoogleCloudDialogflowCxV3ExportPlaybookRequest {
-  /// The data format of the exported agent.
-  ///
-  /// If not specified, `BLOB` is assumed.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
-  /// - "BLOB" : Flow content will be exported as raw bytes.
-  /// - "JSON" : Flow content will be exported in JSON format.
-  core.String? dataFormat;
-
-  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-  /// export the playbook to.
-  ///
-  /// The format of this URI must be `gs:///`. If left unspecified, the
-  /// serialized playbook is returned inline. Dialogflow performs a write
-  /// operation for the Cloud Storage object on the caller's behalf, so your
-  /// request authentication must have write permissions for the object. For
-  /// more information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  ///
-  /// Optional.
-  core.String? playbookUri;
-
-  GoogleCloudDialogflowCxV3ExportPlaybookRequest({
-    this.dataFormat,
-    this.playbookUri,
-  });
-
-  GoogleCloudDialogflowCxV3ExportPlaybookRequest.fromJson(core.Map json_)
-    : this(
-        dataFormat: json_['dataFormat'] as core.String?,
-        playbookUri: json_['playbookUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataFormat != null) 'dataFormat': dataFormat!,
-    if (playbookUri != null) 'playbookUri': playbookUri!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ExportPlaybookRequest = $ExportPlaybookRequest;
 
 /// The request message for TestCases.ExportTestCases.
-class GoogleCloudDialogflowCxV3ExportTestCasesRequest {
-  /// The data format of the exported test cases.
-  ///
-  /// If not specified, `BLOB` is assumed.
-  /// Possible string values are:
-  /// - "DATA_FORMAT_UNSPECIFIED" : Unspecified format.
-  /// - "BLOB" : Raw bytes.
-  /// - "JSON" : JSON format.
-  core.String? dataFormat;
-
-  /// The filter expression used to filter exported test cases, see
-  /// [API Filtering](https://aip.dev/160).
-  ///
-  /// The expression is case insensitive and supports the following syntax: name
-  /// = \[OR name = \] ... For example: * "name = t1 OR name = t2" matches the
-  /// test case with the exact resource name "t1" or "t2".
-  core.String? filter;
-
-  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-  /// export the test cases to.
-  ///
-  /// The format of this URI must be `gs:///`. If unspecified, the serialized
-  /// test cases is returned inline. Dialogflow performs a write operation for
-  /// the Cloud Storage object on the caller's behalf, so your request
-  /// authentication must have write permissions for the object. For more
-  /// information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  core.String? gcsUri;
-
-  GoogleCloudDialogflowCxV3ExportTestCasesRequest({
-    this.dataFormat,
-    this.filter,
-    this.gcsUri,
-  });
-
-  GoogleCloudDialogflowCxV3ExportTestCasesRequest.fromJson(core.Map json_)
-    : this(
-        dataFormat: json_['dataFormat'] as core.String?,
-        filter: json_['filter'] as core.String?,
-        gcsUri: json_['gcsUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataFormat != null) 'dataFormat': dataFormat!,
-    if (filter != null) 'filter': filter!,
-    if (gcsUri != null) 'gcsUri': gcsUri!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ExportTestCasesRequest =
+    $ExportTestCasesRequest;
 
 /// Filter specifications for data stores.
 class GoogleCloudDialogflowCxV3FilterSpecs {
@@ -12258,46 +11012,8 @@ class GoogleCloudDialogflowCxV3FlowInvocation {
 }
 
 /// Settings for multi-lingual agents.
-class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings {
-  /// Enable multi-language detection for this flow.
-  ///
-  /// This can be set only if agent level multi language setting is enabled.
-  ///
-  /// Optional.
-  core.bool? enableMultiLanguageDetection;
-
-  /// Agent will respond in the detected language if the detected language code
-  /// is in the supported resolved languages for this flow.
-  ///
-  /// This will be used only if multi-language training is enabled in the agent
-  /// and multi-language detection is enabled in the flow. The supported
-  /// languages must be a subset of the languages supported by the agent.
-  ///
-  /// Optional.
-  core.List<core.String>? supportedResponseLanguageCodes;
-
-  GoogleCloudDialogflowCxV3FlowMultiLanguageSettings({
-    this.enableMultiLanguageDetection,
-    this.supportedResponseLanguageCodes,
-  });
-
-  GoogleCloudDialogflowCxV3FlowMultiLanguageSettings.fromJson(core.Map json_)
-    : this(
-        enableMultiLanguageDetection:
-            json_['enableMultiLanguageDetection'] as core.bool?,
-        supportedResponseLanguageCodes:
-            (json_['supportedResponseLanguageCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableMultiLanguageDetection != null)
-      'enableMultiLanguageDetection': enableMultiLanguageDetection!,
-    if (supportedResponseLanguageCodes != null)
-      'supportedResponseLanguageCodes': supportedResponseLanguageCodes!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3FlowMultiLanguageSettings =
+    $FlowMultiLanguageSettings;
 
 /// The response message for Flows.GetFlowValidationResult.
 class GoogleCloudDialogflowCxV3FlowValidationResult {
@@ -12905,104 +11621,16 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
 }
 
 /// Generator settings used by the LLM to generate a text response.
-class GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings {
-  /// The generator to call.
-  ///
-  /// Format: `projects//locations//agents//generators/`.
-  ///
-  /// Required.
-  core.String? generator;
-
-  /// Map from placeholder parameter in the Generator to corresponding session
-  /// parameters.
-  ///
-  /// By default, Dialogflow uses the session parameter with the same name to
-  /// fill in the generator template. e.g. If there is a placeholder parameter
-  /// `city` in the Generator, Dialogflow default to fill in the `$city` with
-  /// `$session.params.city`. However, you may choose to fill `$city` with
-  /// `$session.params.desination-city`. - Map key: parameter ID - Map value:
-  /// session parameter name
-  core.Map<core.String, core.String>? inputParameters;
-
-  /// Output parameter which should contain the generator response.
-  ///
-  /// Required.
-  core.String? outputParameter;
-
-  GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings({
-    this.generator,
-    this.inputParameters,
-    this.outputParameter,
-  });
-
-  GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings.fromJson(core.Map json_)
-    : this(
-        generator: json_['generator'] as core.String?,
-        inputParameters: (json_['inputParameters']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        outputParameter: json_['outputParameter'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (generator != null) 'generator': generator!,
-    if (inputParameters != null) 'inputParameters': inputParameters!,
-    if (outputParameter != null) 'outputParameter': outputParameter!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3FulfillmentGeneratorSettings =
+    $FulfillmentGeneratorSettings;
 
 /// Setting a parameter value.
-class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
-  /// Display name of the parameter.
-  core.String? parameter;
-
-  /// The new value of the parameter.
-  ///
-  /// A null value clears the parameter.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Object? value;
-
-  GoogleCloudDialogflowCxV3FulfillmentSetParameterAction({
-    this.parameter,
-    this.value,
-  });
-
-  GoogleCloudDialogflowCxV3FulfillmentSetParameterAction.fromJson(
-    core.Map json_,
-  ) : this(
-        parameter: json_['parameter'] as core.String?,
-        value: json_['value'],
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parameter != null) 'parameter': parameter!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3FulfillmentSetParameterAction =
+    $FulfillmentSetParameterAction;
 
 /// Google Cloud Storage location for a Dialogflow operation that writes or
 /// exports objects (e.g. exported agent or transcripts) outside of Dialogflow.
-class GoogleCloudDialogflowCxV3GcsDestination {
-  /// The Google Cloud Storage URI for the exported objects.
-  ///
-  /// A URI is of the form: `gs://bucket/object-name-or-prefix` Whether a full
-  /// object name, or just a prefix, its usage depends on the Dialogflow
-  /// operation.
-  ///
-  /// Required.
-  core.String? uri;
-
-  GoogleCloudDialogflowCxV3GcsDestination({this.uri});
-
-  GoogleCloudDialogflowCxV3GcsDestination.fromJson(core.Map json_)
-    : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3GcsDestination = $GcsDestination03;
 
 /// Settings for Generative AI.
 class GoogleCloudDialogflowCxV3GenerativeSettings {
@@ -13119,105 +11747,15 @@ class GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettings {
 }
 
 /// Prompt template.
-class GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate {
-  /// Prompt name.
-  core.String? displayName;
-
-  /// If the flag is true, the prompt is frozen and cannot be modified by users.
-  core.bool? frozen;
-
-  /// Prompt text that is sent to a LLM on no-match default, placeholders are
-  /// filled downstream.
-  ///
-  /// For example: "Here is a conversation $conversation, a response is: "
-  core.String? promptText;
-
-  GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate({
-    this.displayName,
-    this.frozen,
-    this.promptText,
-  });
-
-  GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate.fromJson(
-    core.Map json_,
-  ) : this(
-        displayName: json_['displayName'] as core.String?,
-        frozen: json_['frozen'] as core.bool?,
-        promptText: json_['promptText'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (frozen != null) 'frozen': frozen!,
-    if (promptText != null) 'promptText': promptText!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3GenerativeSettingsFallbackSettingsPromptTemplate =
+    $GenerativeSettingsFallbackSettingsPromptTemplate;
 
 /// Settings for knowledge connector.
 ///
 /// These parameters are used for LLM prompt like "You are . You are a helpful
 /// and verbose at , . Your task is to help humans on ".
-class GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings {
-  /// Name of the virtual agent.
-  ///
-  /// Used for LLM prompt. Can be left empty.
-  core.String? agent;
-
-  /// Identity of the agent, e.g. "virtual agent", "AI assistant".
-  core.String? agentIdentity;
-
-  /// Agent scope, e.g. "Example company website", "internal Example company
-  /// website for employees", "manual of car owner".
-  core.String? agentScope;
-
-  /// Name of the company, organization or other entity that the agent
-  /// represents.
-  ///
-  /// Used for knowledge connector LLM prompt and for knowledge search.
-  core.String? business;
-
-  /// Company description, used for LLM prompt, e.g. "a family company selling
-  /// freshly roasted coffee beans".
-  core.String? businessDescription;
-
-  /// Whether to disable fallback to Data Store search results (in case the LLM
-  /// couldn't pick a proper answer).
-  ///
-  /// Per default the feature is enabled.
-  core.bool? disableDataStoreFallback;
-
-  GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings({
-    this.agent,
-    this.agentIdentity,
-    this.agentScope,
-    this.business,
-    this.businessDescription,
-    this.disableDataStoreFallback,
-  });
-
-  GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings.fromJson(
-    core.Map json_,
-  ) : this(
-        agent: json_['agent'] as core.String?,
-        agentIdentity: json_['agentIdentity'] as core.String?,
-        agentScope: json_['agentScope'] as core.String?,
-        business: json_['business'] as core.String?,
-        businessDescription: json_['businessDescription'] as core.String?,
-        disableDataStoreFallback:
-            json_['disableDataStoreFallback'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agent != null) 'agent': agent!,
-    if (agentIdentity != null) 'agentIdentity': agentIdentity!,
-    if (agentScope != null) 'agentScope': agentScope!,
-    if (business != null) 'business': business!,
-    if (businessDescription != null)
-      'businessDescription': businessDescription!,
-    if (disableDataStoreFallback != null)
-      'disableDataStoreFallback': disableDataStoreFallback!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3GenerativeSettingsKnowledgeConnectorSettings =
+    $GenerativeSettingsKnowledgeConnectorSettings;
 
 /// Generators contain prompt to be sent to the LLM model to generate text.
 ///
@@ -13314,76 +11852,11 @@ class GoogleCloudDialogflowCxV3Generator {
 /// Parameters to be passed to the LLM.
 ///
 /// If not set, default values will be used.
-class GoogleCloudDialogflowCxV3GeneratorModelParameter {
-  /// The maximum number of tokens to generate.
-  core.int? maxDecodeSteps;
-
-  /// The temperature used for sampling.
-  ///
-  /// Temperature sampling occurs after both topP and topK have been applied.
-  /// Valid range: \[0.0, 1.0\] Low temperature = less random. High temperature
-  /// = more random.
-  core.double? temperature;
-
-  /// If set, the sampling process in each step is limited to the top_k tokens
-  /// with highest probabilities.
-  ///
-  /// Valid range: \[1, 40\] or 1000+. Small topK = less random. Large topK =
-  /// more random.
-  core.int? topK;
-
-  /// If set, only the tokens comprising the top top_p probability mass are
-  /// considered.
-  ///
-  /// If both top_p and top_k are set, top_p will be used for further refining
-  /// candidates selected with top_k. Valid range: (0.0, 1.0\]. Small topP =
-  /// less random. Large topP = more random.
-  core.double? topP;
-
-  GoogleCloudDialogflowCxV3GeneratorModelParameter({
-    this.maxDecodeSteps,
-    this.temperature,
-    this.topK,
-    this.topP,
-  });
-
-  GoogleCloudDialogflowCxV3GeneratorModelParameter.fromJson(core.Map json_)
-    : this(
-        maxDecodeSteps: json_['maxDecodeSteps'] as core.int?,
-        temperature: (json_['temperature'] as core.num?)?.toDouble(),
-        topK: json_['topK'] as core.int?,
-        topP: (json_['topP'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxDecodeSteps != null) 'maxDecodeSteps': maxDecodeSteps!,
-    if (temperature != null) 'temperature': temperature!,
-    if (topK != null) 'topK': topK!,
-    if (topP != null) 'topP': topP!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3GeneratorModelParameter =
+    $GeneratorModelParameter;
 
 /// Represents a custom placeholder in the prompt text.
-class GoogleCloudDialogflowCxV3GeneratorPlaceholder {
-  /// Unique ID used to map custom placeholder to parameters in fulfillment.
-  core.String? id;
-
-  /// Custom placeholder value in the prompt text.
-  core.String? name;
-
-  GoogleCloudDialogflowCxV3GeneratorPlaceholder({this.id, this.name});
-
-  GoogleCloudDialogflowCxV3GeneratorPlaceholder.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3GeneratorPlaceholder = $GeneratorPlaceholder;
 
 /// Handler can be used to define custom logic to be executed based on the
 /// user-specified triggers.
@@ -13761,65 +12234,12 @@ class GoogleCloudDialogflowCxV3ImportPlaybookRequest {
 }
 
 /// The request message for TestCases.ImportTestCases.
-class GoogleCloudDialogflowCxV3ImportTestCasesRequest {
-  /// Uncompressed raw byte content for test cases.
-  core.String? content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
-
-  set contentAsBytes(core.List<core.int> bytes_) {
-    content = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-  /// import test cases from.
-  ///
-  /// The format of this URI must be `gs:///`. Dialogflow performs a read
-  /// operation for the Cloud Storage object on the caller's behalf, so your
-  /// request authentication must have read permissions for the object. For more
-  /// information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  core.String? gcsUri;
-
-  GoogleCloudDialogflowCxV3ImportTestCasesRequest({this.content, this.gcsUri});
-
-  GoogleCloudDialogflowCxV3ImportTestCasesRequest.fromJson(core.Map json_)
-    : this(
-        content: json_['content'] as core.String?,
-        gcsUri: json_['gcsUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (gcsUri != null) 'gcsUri': gcsUri!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ImportTestCasesRequest =
+    $ImportTestCasesRequest;
 
 /// Inline source for a Dialogflow operation that reads or imports objects (e.g.
 /// intents) into Dialogflow.
-class GoogleCloudDialogflowCxV3InlineSource {
-  /// The uncompressed byte content for the objects.
-  core.String? content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
-
-  set contentAsBytes(core.List<core.int> bytes_) {
-    content = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  GoogleCloudDialogflowCxV3InlineSource({this.content});
-
-  GoogleCloudDialogflowCxV3InlineSource.fromJson(core.Map json_)
-    : this(content: json_['content'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3InlineSource = $InlineSource;
 
 /// Instructs the speech recognizer on how to process the audio content.
 class GoogleCloudDialogflowCxV3InputAudioConfig {
@@ -14131,99 +12551,14 @@ class GoogleCloudDialogflowCxV3IntentCoverage {
 }
 
 /// The agent's intent.
-class GoogleCloudDialogflowCxV3IntentCoverageIntent {
-  /// Whether the intent is covered by at least one of the agent's test cases.
-  core.bool? covered;
-
-  /// The intent full resource name
-  core.String? intent;
-
-  GoogleCloudDialogflowCxV3IntentCoverageIntent({this.covered, this.intent});
-
-  GoogleCloudDialogflowCxV3IntentCoverageIntent.fromJson(core.Map json_)
-    : this(
-        covered: json_['covered'] as core.bool?,
-        intent: json_['intent'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (covered != null) 'covered': covered!,
-    if (intent != null) 'intent': intent!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3IntentCoverageIntent = $IntentCoverageIntent;
 
 /// Represents the intent to trigger programmatically rather than as a result of
 /// natural language processing.
-class GoogleCloudDialogflowCxV3IntentInput {
-  /// The unique identifier of the intent.
-  ///
-  /// Format: `projects//locations//agents//intents/`.
-  ///
-  /// Required.
-  core.String? intent;
-
-  GoogleCloudDialogflowCxV3IntentInput({this.intent});
-
-  GoogleCloudDialogflowCxV3IntentInput.fromJson(core.Map json_)
-    : this(intent: json_['intent'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intent != null) 'intent': intent!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3IntentInput = $IntentInput;
 
 /// Represents an intent parameter.
-class GoogleCloudDialogflowCxV3IntentParameter {
-  /// The entity type of the parameter.
-  ///
-  /// Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity
-  /// types (for example,
-  /// `projects/-/locations/-/agents/-/entityTypes/sys.date`), or
-  /// `projects//locations//agents//entityTypes/` for developer entity types.
-  ///
-  /// Required.
-  core.String? entityType;
-
-  /// The unique identifier of the parameter.
-  ///
-  /// This field is used by training phrases to annotate their parts.
-  ///
-  /// Required.
-  core.String? id;
-
-  /// Indicates whether the parameter represents a list of values.
-  core.bool? isList;
-
-  /// Indicates whether the parameter content should be redacted in log.
-  ///
-  /// If redaction is enabled, the parameter content will be replaced by
-  /// parameter name during logging. Note: the parameter content is subject to
-  /// redaction if either parameter level redaction or entity type level
-  /// redaction is enabled.
-  core.bool? redact;
-
-  GoogleCloudDialogflowCxV3IntentParameter({
-    this.entityType,
-    this.id,
-    this.isList,
-    this.redact,
-  });
-
-  GoogleCloudDialogflowCxV3IntentParameter.fromJson(core.Map json_)
-    : this(
-        entityType: json_['entityType'] as core.String?,
-        id: json_['id'] as core.String?,
-        isList: json_['isList'] as core.bool?,
-        redact: json_['redact'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (entityType != null) 'entityType': entityType!,
-    if (id != null) 'id': id!,
-    if (isList != null) 'isList': isList!,
-    if (redact != null) 'redact': redact!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3IntentParameter = $IntentParameter01;
 
 /// Represents an example that the agent is trained on to identify the intent.
 class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
@@ -14281,33 +12616,8 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
 }
 
 /// Represents a part of a training phrase.
-class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart {
-  /// The parameter used to annotate this part of the training phrase.
-  ///
-  /// This field is required for annotated parts of the training phrase.
-  core.String? parameterId;
-
-  /// The text for this part.
-  ///
-  /// Required.
-  core.String? text;
-
-  GoogleCloudDialogflowCxV3IntentTrainingPhrasePart({
-    this.parameterId,
-    this.text,
-  });
-
-  GoogleCloudDialogflowCxV3IntentTrainingPhrasePart.fromJson(core.Map json_)
-    : this(
-        parameterId: json_['parameterId'] as core.String?,
-        text: json_['text'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parameterId != null) 'parameterId': parameterId!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3IntentTrainingPhrasePart =
+    $IntentTrainingPhrasePart01;
 
 /// The Knowledge Connector settings for this page or flow.
 ///
@@ -15208,51 +13518,10 @@ class GoogleCloudDialogflowCxV3ListWebhooksResponse {
 }
 
 /// Settings for LLM models.
-class GoogleCloudDialogflowCxV3LlmModelSettings {
-  /// The selected LLM model.
-  core.String? model;
-
-  /// The custom prompt to use.
-  core.String? promptText;
-
-  GoogleCloudDialogflowCxV3LlmModelSettings({this.model, this.promptText});
-
-  GoogleCloudDialogflowCxV3LlmModelSettings.fromJson(core.Map json_)
-    : this(
-        model: json_['model'] as core.String?,
-        promptText: json_['promptText'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (model != null) 'model': model!,
-    if (promptText != null) 'promptText': promptText!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3LlmModelSettings = $LlmModelSettings;
 
 /// The request message for Versions.LoadVersion.
-class GoogleCloudDialogflowCxV3LoadVersionRequest {
-  /// This field is used to prevent accidental overwrite of other agent
-  /// resources, which can potentially impact other flow's behavior.
-  ///
-  /// If `allow_override_agent_resources` is false, conflicted agent-level
-  /// resources will not be overridden (i.e. intents, entities, webhooks).
-  core.bool? allowOverrideAgentResources;
-
-  GoogleCloudDialogflowCxV3LoadVersionRequest({
-    this.allowOverrideAgentResources,
-  });
-
-  GoogleCloudDialogflowCxV3LoadVersionRequest.fromJson(core.Map json_)
-    : this(
-        allowOverrideAgentResources:
-            json_['allowOverrideAgentResources'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowOverrideAgentResources != null)
-      'allowOverrideAgentResources': allowOverrideAgentResources!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3LoadVersionRequest = $LoadVersionRequest;
 
 /// The response message for Environments.LookupEnvironmentHistory.
 class GoogleCloudDialogflowCxV3LookupEnvironmentHistoryResponse {
@@ -15501,58 +13770,7 @@ class GoogleCloudDialogflowCxV3MatchIntentResponse {
 }
 
 /// Settings related to NLU.
-class GoogleCloudDialogflowCxV3NluSettings {
-  /// To filter out false positive results and still get variety in matched
-  /// natural language inputs for your agent, you can tune the machine learning
-  /// classification threshold.
-  ///
-  /// If the returned score value is less than the threshold value, then a
-  /// no-match event will be triggered. The score values range from 0.0
-  /// (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
-  /// default of 0.3 is used. You can set a separate classification threshold
-  /// for the flow in each language enabled for the agent.
-  core.double? classificationThreshold;
-
-  /// Indicates NLU model training mode.
-  /// Possible string values are:
-  /// - "MODEL_TRAINING_MODE_UNSPECIFIED" : Not specified.
-  /// `MODEL_TRAINING_MODE_AUTOMATIC` will be used.
-  /// - "MODEL_TRAINING_MODE_AUTOMATIC" : NLU model training is automatically
-  /// triggered when a flow gets modified. User can also manually trigger model
-  /// training in this mode.
-  /// - "MODEL_TRAINING_MODE_MANUAL" : User needs to manually trigger NLU model
-  /// training. Best for large flows whose models take long time to train.
-  core.String? modelTrainingMode;
-
-  /// Indicates the type of NLU model.
-  /// Possible string values are:
-  /// - "MODEL_TYPE_UNSPECIFIED" : Not specified. `MODEL_TYPE_STANDARD` will be
-  /// used.
-  /// - "MODEL_TYPE_STANDARD" : Use standard NLU model.
-  /// - "MODEL_TYPE_ADVANCED" : Use advanced NLU model.
-  core.String? modelType;
-
-  GoogleCloudDialogflowCxV3NluSettings({
-    this.classificationThreshold,
-    this.modelTrainingMode,
-    this.modelType,
-  });
-
-  GoogleCloudDialogflowCxV3NluSettings.fromJson(core.Map json_)
-    : this(
-        classificationThreshold:
-            (json_['classificationThreshold'] as core.num?)?.toDouble(),
-        modelTrainingMode: json_['modelTrainingMode'] as core.String?,
-        modelType: json_['modelType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (classificationThreshold != null)
-      'classificationThreshold': classificationThreshold!,
-    if (modelTrainingMode != null) 'modelTrainingMode': modelTrainingMode!,
-    if (modelType != null) 'modelType': modelType!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3NluSettings = $NluSettings;
 
 /// Instructs the speech synthesizer how to generate the output audio content.
 class GoogleCloudDialogflowCxV3OutputAudioConfig {
@@ -15788,21 +14006,7 @@ class GoogleCloudDialogflowCxV3Page {
 }
 
 /// Text input which can be used for prompt or banned phrases.
-class GoogleCloudDialogflowCxV3Phrase {
-  /// Text input which can be used for prompt or banned phrases.
-  ///
-  /// Required.
-  core.String? text;
-
-  GoogleCloudDialogflowCxV3Phrase({this.text});
-
-  GoogleCloudDialogflowCxV3Phrase.fromJson(core.Map json_)
-    : this(text: json_['text'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3Phrase = $Phrase00;
 
 /// Playbook is the basic building block to instruct the LLM how to execute a
 /// certain task.
@@ -15957,92 +14161,8 @@ class GoogleCloudDialogflowCxV3Playbook {
 
 /// The playbook import strategy used for resource conflict resolution
 /// associated with an ImportPlaybookRequest.
-class GoogleCloudDialogflowCxV3PlaybookImportStrategy {
-  /// Specifies the import strategy used when resolving conflicts with the main
-  /// playbook.
-  ///
-  /// If not specified, 'CREATE_NEW' is assumed.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "IMPORT_STRATEGY_UNSPECIFIED" : Unspecified. Treated as 'CREATE_NEW'.
-  /// - "IMPORT_STRATEGY_CREATE_NEW" : Create a new resource with a numeric
-  /// suffix appended to the end of the existing display name.
-  /// - "IMPORT_STRATEGY_REPLACE" : Replace existing resource with incoming
-  /// resource in the content to be imported.
-  /// - "IMPORT_STRATEGY_KEEP" : Keep existing resource and discard incoming
-  /// resource in the content to be imported.
-  /// - "IMPORT_STRATEGY_MERGE" : Combine existing and incoming resources when a
-  /// conflict is encountered.
-  /// - "IMPORT_STRATEGY_THROW_ERROR" : Throw error if a conflict is
-  /// encountered.
-  core.String? mainPlaybookImportStrategy;
-
-  /// Specifies the import strategy used when resolving referenced playbook/flow
-  /// conflicts.
-  ///
-  /// If not specified, 'CREATE_NEW' is assumed.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "IMPORT_STRATEGY_UNSPECIFIED" : Unspecified. Treated as 'CREATE_NEW'.
-  /// - "IMPORT_STRATEGY_CREATE_NEW" : Create a new resource with a numeric
-  /// suffix appended to the end of the existing display name.
-  /// - "IMPORT_STRATEGY_REPLACE" : Replace existing resource with incoming
-  /// resource in the content to be imported.
-  /// - "IMPORT_STRATEGY_KEEP" : Keep existing resource and discard incoming
-  /// resource in the content to be imported.
-  /// - "IMPORT_STRATEGY_MERGE" : Combine existing and incoming resources when a
-  /// conflict is encountered.
-  /// - "IMPORT_STRATEGY_THROW_ERROR" : Throw error if a conflict is
-  /// encountered.
-  core.String? nestedResourceImportStrategy;
-
-  /// Specifies the import strategy used when resolving tool conflicts.
-  ///
-  /// If not specified, 'CREATE_NEW' is assumed. This will be applied after the
-  /// main playbook and nested resource import strategies, meaning if the
-  /// playbook that references the tool is skipped, the tool will also be
-  /// skipped.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "IMPORT_STRATEGY_UNSPECIFIED" : Unspecified. Treated as 'CREATE_NEW'.
-  /// - "IMPORT_STRATEGY_CREATE_NEW" : Create a new resource with a numeric
-  /// suffix appended to the end of the existing display name.
-  /// - "IMPORT_STRATEGY_REPLACE" : Replace existing resource with incoming
-  /// resource in the content to be imported.
-  /// - "IMPORT_STRATEGY_KEEP" : Keep existing resource and discard incoming
-  /// resource in the content to be imported.
-  /// - "IMPORT_STRATEGY_MERGE" : Combine existing and incoming resources when a
-  /// conflict is encountered.
-  /// - "IMPORT_STRATEGY_THROW_ERROR" : Throw error if a conflict is
-  /// encountered.
-  core.String? toolImportStrategy;
-
-  GoogleCloudDialogflowCxV3PlaybookImportStrategy({
-    this.mainPlaybookImportStrategy,
-    this.nestedResourceImportStrategy,
-    this.toolImportStrategy,
-  });
-
-  GoogleCloudDialogflowCxV3PlaybookImportStrategy.fromJson(core.Map json_)
-    : this(
-        mainPlaybookImportStrategy:
-            json_['mainPlaybookImportStrategy'] as core.String?,
-        nestedResourceImportStrategy:
-            json_['nestedResourceImportStrategy'] as core.String?,
-        toolImportStrategy: json_['toolImportStrategy'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mainPlaybookImportStrategy != null)
-      'mainPlaybookImportStrategy': mainPlaybookImportStrategy!,
-    if (nestedResourceImportStrategy != null)
-      'nestedResourceImportStrategy': nestedResourceImportStrategy!,
-    if (toolImportStrategy != null) 'toolImportStrategy': toolImportStrategy!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3PlaybookImportStrategy =
+    $PlaybookImportStrategy;
 
 /// Input of the playbook.
 class GoogleCloudDialogflowCxV3PlaybookInput {
@@ -16926,26 +15046,7 @@ class GoogleCloudDialogflowCxV3QueryResult {
 }
 
 /// Resource name and display name.
-class GoogleCloudDialogflowCxV3ResourceName {
-  /// Display name.
-  core.String? displayName;
-
-  /// Name.
-  core.String? name;
-
-  GoogleCloudDialogflowCxV3ResourceName({this.displayName, this.name});
-
-  GoogleCloudDialogflowCxV3ResourceName.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResourceName = $ResourceName;
 
 /// Represents a response message that can be returned by a conversational
 /// agent.
@@ -17159,30 +15260,8 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
 /// entry_fulfillment of a Page if entering the page indicates that the
 /// conversation succeeded. * In a webhook response when you determine that you
 /// handled the customer issue.
-class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
-  /// Custom metadata.
-  ///
-  /// Dialogflow doesn't impose any structure on this.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess({this.metadata});
-
-  GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess.fromJson(
-    core.Map json_,
-  ) : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess =
+    $ResponseMessageConversationSuccess;
 
 /// Indicates that interaction with the Dialogflow agent has ended.
 ///
@@ -17205,30 +15284,8 @@ typedef GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard = $Empty;
 /// In the entry_fulfillment of a Page if entering the page indicates something
 /// went extremely wrong in the conversation. * In a webhook response when you
 /// determine that the customer issue can only be handled by a human.
-class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
-  /// Custom metadata for your handoff procedure.
-  ///
-  /// Dialogflow doesn't impose any structure on this.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? metadata;
-
-  GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff({this.metadata});
-
-  GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromJson(
-    core.Map json_,
-  ) : this(
-        metadata:
-            json_.containsKey('metadata')
-                ? json_['metadata'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (metadata != null) 'metadata': metadata!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff =
+    $ResponseMessageLiveAgentHandoff;
 
 /// Represents an audio message that is composed of both segments synthesized
 /// from the Dialogflow agent prompts and ones hosted externally at the
@@ -17262,185 +15319,25 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
 }
 
 /// Represents one segment of audio.
-class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment {
-  /// Whether the playback of this segment can be interrupted by the end user's
-  /// speech and the client should then start the next Dialogflow request.
-  ///
-  /// Output only.
-  core.bool? allowPlaybackInterruption;
-
-  /// Raw audio synthesized from the Dialogflow agent's response using the
-  /// output config specified in the request.
-  core.String? audio;
-  core.List<core.int> get audioAsBytes => convert.base64.decode(audio!);
-
-  set audioAsBytes(core.List<core.int> bytes_) {
-    audio = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// Client-specific URI that points to an audio clip accessible to the client.
-  ///
-  /// Dialogflow does not impose any validation on it.
-  core.String? uri;
-
-  GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment({
-    this.allowPlaybackInterruption,
-    this.audio,
-    this.uri,
-  });
-
-  GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment.fromJson(
-    core.Map json_,
-  ) : this(
-        allowPlaybackInterruption:
-            json_['allowPlaybackInterruption'] as core.bool?,
-        audio: json_['audio'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowPlaybackInterruption != null)
-      'allowPlaybackInterruption': allowPlaybackInterruption!,
-    if (audio != null) 'audio': audio!,
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment =
+    $ResponseMessageMixedAudioSegment;
 
 /// A text or ssml response that is preferentially used for TTS output audio
 /// synthesis, as described in the comment on the ResponseMessage message.
-class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
-  /// Whether the playback of this message can be interrupted by the end user's
-  /// speech and the client can then starts the next Dialogflow request.
-  ///
-  /// Output only.
-  core.bool? allowPlaybackInterruption;
-
-  /// The SSML text to be synthesized.
-  ///
-  /// For more information, see \[SSML\](/speech/text-to-speech/docs/ssml).
-  core.String? ssml;
-
-  /// The raw text to be synthesized.
-  core.String? text;
-
-  GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText({
-    this.allowPlaybackInterruption,
-    this.ssml,
-    this.text,
-  });
-
-  GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText.fromJson(
-    core.Map json_,
-  ) : this(
-        allowPlaybackInterruption:
-            json_['allowPlaybackInterruption'] as core.bool?,
-        ssml: json_['ssml'] as core.String?,
-        text: json_['text'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowPlaybackInterruption != null)
-      'allowPlaybackInterruption': allowPlaybackInterruption!,
-    if (ssml != null) 'ssml': ssml!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText =
+    $ResponseMessageOutputAudioText;
 
 /// Specifies an audio clip to be played by the client as part of the response.
-class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio {
-  /// Whether the playback of this message can be interrupted by the end user's
-  /// speech and the client can then starts the next Dialogflow request.
-  ///
-  /// Output only.
-  core.bool? allowPlaybackInterruption;
-
-  /// URI of the audio clip.
-  ///
-  /// Dialogflow does not impose any validation on this value. It is specific to
-  /// the client that reads it.
-  ///
-  /// Required.
-  core.String? audioUri;
-
-  GoogleCloudDialogflowCxV3ResponseMessagePlayAudio({
-    this.allowPlaybackInterruption,
-    this.audioUri,
-  });
-
-  GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(core.Map json_)
-    : this(
-        allowPlaybackInterruption:
-            json_['allowPlaybackInterruption'] as core.bool?,
-        audioUri: json_['audioUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowPlaybackInterruption != null)
-      'allowPlaybackInterruption': allowPlaybackInterruption!,
-    if (audioUri != null) 'audioUri': audioUri!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResponseMessagePlayAudio =
+    $ResponseMessagePlayAudio;
 
 /// Represents the signal that telles the client to transfer the phone call
 /// connected to the agent to a third-party endpoint.
-class GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall {
-  /// Transfer the call to a phone number in
-  /// [E.164 format](https://en.wikipedia.org/wiki/E.164).
-  core.String? phoneNumber;
-
-  GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall({
-    this.phoneNumber,
-  });
-
-  GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall.fromJson(
-    core.Map json_,
-  ) : this(phoneNumber: json_['phoneNumber'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall =
+    $ResponseMessageTelephonyTransferCall;
 
 /// The text response message.
-class GoogleCloudDialogflowCxV3ResponseMessageText {
-  /// Whether the playback of this message can be interrupted by the end user's
-  /// speech and the client can then starts the next Dialogflow request.
-  ///
-  /// Output only.
-  core.bool? allowPlaybackInterruption;
-
-  /// A collection of text response variants.
-  ///
-  /// If multiple variants are defined, only one text response variant is
-  /// returned at runtime.
-  ///
-  /// Required.
-  core.List<core.String>? text;
-
-  GoogleCloudDialogflowCxV3ResponseMessageText({
-    this.allowPlaybackInterruption,
-    this.text,
-  });
-
-  GoogleCloudDialogflowCxV3ResponseMessageText.fromJson(core.Map json_)
-    : this(
-        allowPlaybackInterruption:
-            json_['allowPlaybackInterruption'] as core.bool?,
-        text:
-            (json_['text'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowPlaybackInterruption != null)
-      'allowPlaybackInterruption': allowPlaybackInterruption!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ResponseMessageText = $ResponseMessageText;
 
 /// The request message for Agents.RestoreAgent.
 class GoogleCloudDialogflowCxV3RestoreAgentRequest {
@@ -17510,19 +15407,8 @@ class GoogleCloudDialogflowCxV3RestoreAgentRequest {
 }
 
 /// Settings for restoring from a git branch
-class GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource {
-  /// tracking branch for the git pull
-  core.String? trackingBranch;
-
-  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource({this.trackingBranch});
-
-  GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource.fromJson(core.Map json_)
-    : this(trackingBranch: json_['trackingBranch'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trackingBranch != null) 'trackingBranch': trackingBranch!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource =
+    $RestoreAgentRequestGitSource;
 
 /// The request message for Playbooks.RestorePlaybookVersion.
 typedef GoogleCloudDialogflowCxV3RestorePlaybookVersionRequest = $Empty;
@@ -17626,95 +15512,17 @@ class GoogleCloudDialogflowCxV3RolloutConfig {
 }
 
 /// A single rollout step with specified traffic allocation.
-class GoogleCloudDialogflowCxV3RolloutConfigRolloutStep {
-  /// The name of the rollout step;
-  core.String? displayName;
-
-  /// The minimum time that this step should last.
-  ///
-  /// Should be longer than 1 hour. If not set, the default minimum duration for
-  /// each step will be 1 hour.
-  core.String? minDuration;
-
-  /// The percentage of traffic allocated to the flow version of this rollout
-  /// step.
-  ///
-  /// (0%, 100%\].
-  core.int? trafficPercent;
-
-  GoogleCloudDialogflowCxV3RolloutConfigRolloutStep({
-    this.displayName,
-    this.minDuration,
-    this.trafficPercent,
-  });
-
-  GoogleCloudDialogflowCxV3RolloutConfigRolloutStep.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        minDuration: json_['minDuration'] as core.String?,
-        trafficPercent: json_['trafficPercent'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (minDuration != null) 'minDuration': minDuration!,
-    if (trafficPercent != null) 'trafficPercent': trafficPercent!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3RolloutConfigRolloutStep =
+    $RolloutConfigRolloutStep;
 
 /// State of the auto-rollout process.
-class GoogleCloudDialogflowCxV3RolloutState {
-  /// Start time of the current step.
-  core.String? startTime;
-
-  /// Display name of the current auto rollout step.
-  core.String? step;
-
-  /// Index of the current step in the auto rollout steps list.
-  core.int? stepIndex;
-
-  GoogleCloudDialogflowCxV3RolloutState({
-    this.startTime,
-    this.step,
-    this.stepIndex,
-  });
-
-  GoogleCloudDialogflowCxV3RolloutState.fromJson(core.Map json_)
-    : this(
-        startTime: json_['startTime'] as core.String?,
-        step: json_['step'] as core.String?,
-        stepIndex: json_['stepIndex'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (startTime != null) 'startTime': startTime!,
-    if (step != null) 'step': step!,
-    if (stepIndex != null) 'stepIndex': stepIndex!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3RolloutState = $RolloutState;
 
 /// The request message for Environments.RunContinuousTest.
 typedef GoogleCloudDialogflowCxV3RunContinuousTestRequest = $Empty;
 
 /// The request message for TestCases.RunTestCase.
-class GoogleCloudDialogflowCxV3RunTestCaseRequest {
-  /// Environment name.
-  ///
-  /// If not set, draft environment is assumed. Format:
-  /// `projects//locations//agents//environments/`.
-  ///
-  /// Optional.
-  core.String? environment;
-
-  GoogleCloudDialogflowCxV3RunTestCaseRequest({this.environment});
-
-  GoogleCloudDialogflowCxV3RunTestCaseRequest.fromJson(core.Map json_)
-    : this(environment: json_['environment'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (environment != null) 'environment': environment!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3RunTestCaseRequest = $RunTestCaseRequest;
 
 /// Settings for Generative Safety.
 class GoogleCloudDialogflowCxV3SafetySettings {
@@ -17778,51 +15586,11 @@ class GoogleCloudDialogflowCxV3SafetySettings {
 }
 
 /// Text input which can be used for prompt or banned phrases.
-class GoogleCloudDialogflowCxV3SafetySettingsPhrase {
-  /// Language code of the phrase.
-  ///
-  /// Required.
-  core.String? languageCode;
-
-  /// Text input which can be used for prompt or banned phrases.
-  ///
-  /// Required.
-  core.String? text;
-
-  GoogleCloudDialogflowCxV3SafetySettingsPhrase({this.languageCode, this.text});
-
-  GoogleCloudDialogflowCxV3SafetySettingsPhrase.fromJson(core.Map json_)
-    : this(
-        languageCode: json_['languageCode'] as core.String?,
-        text: json_['text'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3SafetySettingsPhrase = $SafetySettingsPhrase;
 
 /// Settings for prompt security checks.
-class GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings {
-  /// Enable prompt security checks.
-  ///
-  /// Optional.
-  core.bool? enablePromptSecurity;
-
-  GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings({
-    this.enablePromptSecurity,
-  });
-
-  GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings.fromJson(
-    core.Map json_,
-  ) : this(enablePromptSecurity: json_['enablePromptSecurity'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enablePromptSecurity != null)
-      'enablePromptSecurity': enablePromptSecurity!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3SafetySettingsPromptSecuritySettings =
+    $SafetySettingsPromptSecuritySettings;
 
 /// Search configuration for UCS search queries.
 class GoogleCloudDialogflowCxV3SearchConfig {
@@ -18045,93 +15813,20 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
 }
 
 /// Settings for exporting audio.
-class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
-  /// Filename pattern for exported audio.
-  core.String? audioExportPattern;
-
-  /// File format for exported audio file.
-  ///
-  /// Currently only in telephony recordings.
-  /// Possible string values are:
-  /// - "AUDIO_FORMAT_UNSPECIFIED" : Unspecified. Do not use.
-  /// - "MULAW" : G.711 mu-law PCM with 8kHz sample rate.
-  /// - "MP3" : MP3 file format.
-  /// - "OGG" : OGG Vorbis.
-  core.String? audioFormat;
-
-  /// Enable audio redaction if it is true.
-  ///
-  /// Note that this only redacts end-user audio data; Synthesised audio from
-  /// the virtual agent is not redacted.
-  core.bool? enableAudioRedaction;
-
-  /// Cloud Storage bucket to export audio record to.
-  ///
-  /// Setting this field would grant the Storage Object Creator role to the
-  /// Dialogflow Service Agent. API caller that tries to modify this field
-  /// should have the permission of storage.buckets.setIamPolicy.
-  core.String? gcsBucket;
-
-  /// Whether to store TTS audio.
-  ///
-  /// By default, TTS audio from the virtual agent is not exported.
-  core.bool? storeTtsAudio;
-
-  GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings({
-    this.audioExportPattern,
-    this.audioFormat,
-    this.enableAudioRedaction,
-    this.gcsBucket,
-    this.storeTtsAudio,
-  });
-
-  GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings.fromJson(
-    core.Map json_,
-  ) : this(
-        audioExportPattern: json_['audioExportPattern'] as core.String?,
-        audioFormat: json_['audioFormat'] as core.String?,
-        enableAudioRedaction: json_['enableAudioRedaction'] as core.bool?,
-        gcsBucket: json_['gcsBucket'] as core.String?,
-        storeTtsAudio: json_['storeTtsAudio'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audioExportPattern != null) 'audioExportPattern': audioExportPattern!,
-    if (audioFormat != null) 'audioFormat': audioFormat!,
-    if (enableAudioRedaction != null)
-      'enableAudioRedaction': enableAudioRedaction!,
-    if (gcsBucket != null) 'gcsBucket': gcsBucket!,
-    if (storeTtsAudio != null) 'storeTtsAudio': storeTtsAudio!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings =
+    $SecuritySettingsAudioExportSettings;
 
 /// Settings for exporting conversations to
 /// [Insights](https://cloud.google.com/contact-center/insights/docs).
-class GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings {
-  /// If enabled, we will automatically exports conversations to Insights and
-  /// Insights runs its analyzers.
-  core.bool? enableInsightsExport;
-
-  GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings({
-    this.enableInsightsExport,
-  });
-
-  GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings.fromJson(
-    core.Map json_,
-  ) : this(enableInsightsExport: json_['enableInsightsExport'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableInsightsExport != null)
-      'enableInsightsExport': enableInsightsExport!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings =
+    $SecuritySettingsInsightsExportSettings;
 
 /// The result of sentiment analysis.
 ///
 /// Sentiment analysis inspects user input and identifies the prevailing
 /// subjective opinion, especially to determine a user's attitude as positive,
 /// negative, or neutral.
-typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared12;
+typedef GoogleCloudDialogflowCxV3SentimentAnalysisResult = $Shared08;
 
 /// Session entity types are referred to as **User** entity types and are
 /// entities that are built for an individual user such as favorites,
@@ -18206,22 +15901,7 @@ class GoogleCloudDialogflowCxV3SessionEntityType {
 }
 
 /// Settings related to speech recognition.
-class GoogleCloudDialogflowCxV3SpeechToTextSettings {
-  /// Whether to use speech adaptation for speech recognition.
-  core.bool? enableSpeechAdaptation;
-
-  GoogleCloudDialogflowCxV3SpeechToTextSettings({this.enableSpeechAdaptation});
-
-  GoogleCloudDialogflowCxV3SpeechToTextSettings.fromJson(core.Map json_)
-    : this(
-        enableSpeechAdaptation: json_['enableSpeechAdaptation'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableSpeechAdaptation != null)
-      'enableSpeechAdaptation': enableSpeechAdaptation!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3SpeechToTextSettings = $SpeechToTextSettings;
 
 /// The request message for Experiments.StartExperiment.
 typedef GoogleCloudDialogflowCxV3StartExperimentRequest = $Empty;
@@ -18517,95 +16197,13 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
 }
 
 /// Represents configurations for a test case.
-class GoogleCloudDialogflowCxV3TestConfig {
-  /// Flow name to start the test case with.
-  ///
-  /// Format: `projects//locations//agents//flows/`. Only one of `flow` and
-  /// `page` should be set to indicate the starting point of the test case. If
-  /// neither is set, the test case will start with start page on the default
-  /// start flow.
-  core.String? flow;
-
-  /// The page to start the test case with.
-  ///
-  /// Format: `projects//locations//agents//flows//pages/`. Only one of `flow`
-  /// and `page` should be set to indicate the starting point of the test case.
-  /// If neither is set, the test case will start with start page on the default
-  /// start flow.
-  core.String? page;
-
-  /// Session parameters to be compared when calculating differences.
-  core.List<core.String>? trackingParameters;
-
-  GoogleCloudDialogflowCxV3TestConfig({
-    this.flow,
-    this.page,
-    this.trackingParameters,
-  });
-
-  GoogleCloudDialogflowCxV3TestConfig.fromJson(core.Map json_)
-    : this(
-        flow: json_['flow'] as core.String?,
-        page: json_['page'] as core.String?,
-        trackingParameters:
-            (json_['trackingParameters'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (flow != null) 'flow': flow!,
-    if (page != null) 'page': page!,
-    if (trackingParameters != null) 'trackingParameters': trackingParameters!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3TestConfig = $TestConfig;
 
 /// The description of differences between original and replayed agent output.
-class GoogleCloudDialogflowCxV3TestRunDifference {
-  /// A human readable description of the diff, showing the actual output vs
-  /// expected output.
-  core.String? description;
-
-  /// The type of diff.
-  /// Possible string values are:
-  /// - "DIFF_TYPE_UNSPECIFIED" : Should never be used.
-  /// - "INTENT" : The intent.
-  /// - "PAGE" : The page.
-  /// - "PARAMETERS" : The parameters.
-  /// - "UTTERANCE" : The message utterance.
-  /// - "FLOW" : The flow.
-  core.String? type;
-
-  GoogleCloudDialogflowCxV3TestRunDifference({this.description, this.type});
-
-  GoogleCloudDialogflowCxV3TestRunDifference.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3TestRunDifference = $TestRunDifference;
 
 /// Represents the natural language text to be processed.
-class GoogleCloudDialogflowCxV3TextInput {
-  /// The UTF-8 encoded natural language text to be processed.
-  ///
-  /// Required.
-  core.String? text;
-
-  GoogleCloudDialogflowCxV3TextInput({this.text});
-
-  GoogleCloudDialogflowCxV3TextInput.fromJson(core.Map json_)
-    : this(text: json_['text'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3TextInput = $TextInput01;
 
 /// Settings related to speech synthesizing.
 class GoogleCloudDialogflowCxV3TextToSpeechSettings {
@@ -18796,265 +16394,24 @@ class GoogleCloudDialogflowCxV3ToolAuthentication {
 }
 
 /// Config for authentication with API key.
-class GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig {
-  /// The API key.
-  ///
-  /// If the `secret_version_for_api_key` field is set, this field will be
-  /// ignored.
-  ///
-  /// Optional.
-  core.String? apiKey;
-
-  /// The parameter name or the header name of the API key.
-  ///
-  /// E.g., If the API request is "https://example.com/act?X-Api-Key=",
-  /// "X-Api-Key" would be the parameter name.
-  ///
-  /// Required.
-  core.String? keyName;
-
-  /// Key location in the request.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "REQUEST_LOCATION_UNSPECIFIED" : Default value. This value is unused.
-  /// - "HEADER" : Represents the key in http header.
-  /// - "QUERY_STRING" : Represents the key in query string.
-  core.String? requestLocation;
-
-  /// The name of the SecretManager secret version resource storing the API key.
-  ///
-  /// If this field is set, the `api_key` field will be ignored. Format:
-  /// `projects/{project}/secrets/{secret}/versions/{version}`
-  ///
-  /// Optional.
-  core.String? secretVersionForApiKey;
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig({
-    this.apiKey,
-    this.keyName,
-    this.requestLocation,
-    this.secretVersionForApiKey,
-  });
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        apiKey: json_['apiKey'] as core.String?,
-        keyName: json_['keyName'] as core.String?,
-        requestLocation: json_['requestLocation'] as core.String?,
-        secretVersionForApiKey: json_['secretVersionForApiKey'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiKey != null) 'apiKey': apiKey!,
-    if (keyName != null) 'keyName': keyName!,
-    if (requestLocation != null) 'requestLocation': requestLocation!,
-    if (secretVersionForApiKey != null)
-      'secretVersionForApiKey': secretVersionForApiKey!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolAuthenticationApiKeyConfig =
+    $ToolAuthenticationApiKeyConfig;
 
 /// Config for authentication using bearer token.
-class GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig {
-  /// The name of the SecretManager secret version resource storing the Bearer
-  /// token.
-  ///
-  /// If this field is set, the `token` field will be ignored. Format:
-  /// `projects/{project}/secrets/{secret}/versions/{version}`
-  ///
-  /// Optional.
-  core.String? secretVersionForToken;
-
-  /// The text token appended to the text `Bearer` to the request Authorization
-  /// header.
-  ///
-  /// [Session parameters reference](https://cloud.google.com/dialogflow/cx/docs/concept/parameter#session-ref)
-  /// can be used to pass the token dynamically, e.g.
-  /// `$session.params.parameter-id`.
-  ///
-  /// Optional.
-  core.String? token;
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig({
-    this.secretVersionForToken,
-    this.token,
-  });
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        secretVersionForToken: json_['secretVersionForToken'] as core.String?,
-        token: json_['token'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (secretVersionForToken != null)
-      'secretVersionForToken': secretVersionForToken!,
-    if (token != null) 'token': token!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolAuthenticationBearerTokenConfig =
+    $ToolAuthenticationBearerTokenConfig;
 
 /// Config for authentication with OAuth.
-class GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig {
-  /// The client ID from the OAuth provider.
-  ///
-  /// Required.
-  core.String? clientId;
-
-  /// The client secret from the OAuth provider.
-  ///
-  /// If the `secret_version_for_client_secret` field is set, this field will be
-  /// ignored.
-  ///
-  /// Optional.
-  core.String? clientSecret;
-
-  /// OAuth grant types.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "OAUTH_GRANT_TYPE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "CLIENT_CREDENTIAL" : Represents the
-  /// [client credential flow](https://oauth.net/2/grant-types/client-credentials).
-  core.String? oauthGrantType;
-
-  /// The OAuth scopes to grant.
-  ///
-  /// Optional.
-  core.List<core.String>? scopes;
-
-  /// The name of the SecretManager secret version resource storing the client
-  /// secret.
-  ///
-  /// If this field is set, the `client_secret` field will be ignored. Format:
-  /// `projects/{project}/secrets/{secret}/versions/{version}`
-  ///
-  /// Optional.
-  core.String? secretVersionForClientSecret;
-
-  /// The token endpoint in the OAuth provider to exchange for an access token.
-  ///
-  /// Required.
-  core.String? tokenEndpoint;
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig({
-    this.clientId,
-    this.clientSecret,
-    this.oauthGrantType,
-    this.scopes,
-    this.secretVersionForClientSecret,
-    this.tokenEndpoint,
-  });
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        clientId: json_['clientId'] as core.String?,
-        clientSecret: json_['clientSecret'] as core.String?,
-        oauthGrantType: json_['oauthGrantType'] as core.String?,
-        scopes:
-            (json_['scopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        secretVersionForClientSecret:
-            json_['secretVersionForClientSecret'] as core.String?,
-        tokenEndpoint: json_['tokenEndpoint'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientId != null) 'clientId': clientId!,
-    if (clientSecret != null) 'clientSecret': clientSecret!,
-    if (oauthGrantType != null) 'oauthGrantType': oauthGrantType!,
-    if (scopes != null) 'scopes': scopes!,
-    if (secretVersionForClientSecret != null)
-      'secretVersionForClientSecret': secretVersionForClientSecret!,
-    if (tokenEndpoint != null) 'tokenEndpoint': tokenEndpoint!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolAuthenticationOAuthConfig =
+    $ToolAuthenticationOAuthConfig;
 
 /// Config for auth using
 /// [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
-class GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig {
-  /// Indicate the auth token type generated from the
-  /// [Diglogflow service agent](https://cloud.google.com/iam/docs/service-agents#dialogflow-service-agent).
-  ///
-  /// The generated token is sent in the Authorization header.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SERVICE_AGENT_AUTH_UNSPECIFIED" : Service agent auth type unspecified.
-  /// Default to ID_TOKEN.
-  /// - "ID_TOKEN" : Use
-  /// [ID token](https://cloud.google.com/docs/authentication/token-types#id)
-  /// generated from service agent. This can be used to access Cloud Function
-  /// and Cloud Run after you grant Invoker role to
-  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
-  /// - "ACCESS_TOKEN" : Use
-  /// [access token](https://cloud.google.com/docs/authentication/token-types#access)
-  /// generated from service agent. This can be used to access other Google
-  /// Cloud APIs after you grant required roles to
-  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com`.
-  core.String? serviceAgentAuth;
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig({
-    this.serviceAgentAuth,
-  });
-
-  GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig.fromJson(
-    core.Map json_,
-  ) : this(serviceAgentAuth: json_['serviceAgentAuth'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (serviceAgentAuth != null) 'serviceAgentAuth': serviceAgentAuth!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolAuthenticationServiceAgentAuthConfig =
+    $ToolAuthenticationServiceAgentAuthConfig;
 
 /// Represents a call of a specific tool's action with the specified inputs.
-class GoogleCloudDialogflowCxV3ToolCall {
-  /// The name of the tool's action associated with this call.
-  ///
-  /// Required.
-  core.String? action;
-
-  /// The action's input parameters.
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? inputParameters;
-
-  /// The tool associated with this call.
-  ///
-  /// Format: `projects//locations//agents//tools/`.
-  ///
-  /// Required.
-  core.String? tool;
-
-  GoogleCloudDialogflowCxV3ToolCall({
-    this.action,
-    this.inputParameters,
-    this.tool,
-  });
-
-  GoogleCloudDialogflowCxV3ToolCall.fromJson(core.Map json_)
-    : this(
-        action: json_['action'] as core.String?,
-        inputParameters:
-            json_.containsKey('inputParameters')
-                ? json_['inputParameters']
-                    as core.Map<core.String, core.dynamic>
-                : null,
-        tool: json_['tool'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (inputParameters != null) 'inputParameters': inputParameters!,
-    if (tool != null) 'tool': tool!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolCall = $ToolCall02;
 
 /// The result of calling a tool's action that has been executed by the client.
 class GoogleCloudDialogflowCxV3ToolCallResult {
@@ -19164,53 +16521,7 @@ class GoogleCloudDialogflowCxV3ToolDataStoreTool {
 typedef GoogleCloudDialogflowCxV3ToolDataStoreToolFallbackPrompt = $Empty;
 
 /// A Function tool describes the functions to be invoked on the client side.
-class GoogleCloudDialogflowCxV3ToolFunctionTool {
-  /// The JSON schema is encapsulated in a google.protobuf.Struct to describe
-  /// the input of the function.
-  ///
-  /// This input is a JSON object that contains the function's parameters as
-  /// properties of the object.
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? inputSchema;
-
-  /// The JSON schema is encapsulated in a google.protobuf.Struct to describe
-  /// the output of the function.
-  ///
-  /// This output is a JSON object that contains the function's parameters as
-  /// properties of the object.
-  ///
-  /// Optional.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? outputSchema;
-
-  GoogleCloudDialogflowCxV3ToolFunctionTool({
-    this.inputSchema,
-    this.outputSchema,
-  });
-
-  GoogleCloudDialogflowCxV3ToolFunctionTool.fromJson(core.Map json_)
-    : this(
-        inputSchema:
-            json_.containsKey('inputSchema')
-                ? json_['inputSchema'] as core.Map<core.String, core.dynamic>
-                : null,
-        outputSchema:
-            json_.containsKey('outputSchema')
-                ? json_['outputSchema'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inputSchema != null) 'inputSchema': inputSchema!,
-    if (outputSchema != null) 'outputSchema': outputSchema!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolFunctionTool = $ToolFunctionTool;
 
 /// An OpenAPI tool is a way to provide the Tool specifications in the Open API
 /// schema format.
@@ -19277,25 +16588,8 @@ class GoogleCloudDialogflowCxV3ToolOpenApiTool {
 }
 
 /// Configuration for tools using Service Directory.
-class GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig {
-  /// The name of
-  /// [Service Directory](https://cloud.google.com/service-directory) service.
-  ///
-  /// Format: `projects//locations//namespaces//services/`. `LocationID` of the
-  /// service directory must be the same as the location of the agent.
-  ///
-  /// Required.
-  core.String? service;
-
-  GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig({this.service});
-
-  GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig.fromJson(core.Map json_)
-    : this(service: json_['service'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (service != null) 'service': service!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolServiceDirectoryConfig =
+    $ToolServiceDirectoryConfig;
 
 /// The TLS configuration.
 class GoogleCloudDialogflowCxV3ToolTLSConfig {
@@ -19325,48 +16619,7 @@ class GoogleCloudDialogflowCxV3ToolTLSConfig {
 }
 
 /// The CA certificate.
-class GoogleCloudDialogflowCxV3ToolTLSConfigCACert {
-  /// The allowed custom CA certificates (in DER format) for HTTPS verification.
-  ///
-  /// This overrides the default SSL trust store. If this is empty or
-  /// unspecified, Dialogflow will use Google's default trust store to verify
-  /// certificates. N.B. Make sure the HTTPS server certificates are signed with
-  /// "subject alt name". For instance a certificate can be self-signed using
-  /// the following command: ``` openssl x509 -req -days 200 -in example.com.csr
-  /// \ -signkey example.com.key \ -out example.com.crt \ -extfile <(printf
-  /// "\nsubjectAltName='DNS:www.example.com'") ```
-  ///
-  /// Required.
-  core.String? cert;
-  core.List<core.int> get certAsBytes => convert.base64.decode(cert!);
-
-  set certAsBytes(core.List<core.int> bytes_) {
-    cert = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The name of the allowed custom CA certificates.
-  ///
-  /// This can be used to disambiguate the custom CA certificates.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  GoogleCloudDialogflowCxV3ToolTLSConfigCACert({this.cert, this.displayName});
-
-  GoogleCloudDialogflowCxV3ToolTLSConfigCACert.fromJson(core.Map json_)
-    : this(
-        cert: json_['cert'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cert != null) 'cert': cert!,
-    if (displayName != null) 'displayName': displayName!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3ToolTLSConfigCACert = $ToolTLSConfigCACert;
 
 /// Stores metadata of the invocation of an action supported by a tool.
 class GoogleCloudDialogflowCxV3ToolUse {
@@ -19917,10 +17170,10 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
 typedef GoogleCloudDialogflowCxV3UserUtterance = $Utterance;
 
 /// The request message for Agents.ValidateAgent.
-typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request10;
+typedef GoogleCloudDialogflowCxV3ValidateAgentRequest = $Request07;
 
 /// The request message for Flows.ValidateFlow.
-typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request10;
+typedef GoogleCloudDialogflowCxV3ValidateFlowRequest = $Request07;
 
 /// Agent/flow validation message.
 class GoogleCloudDialogflowCxV3ValidationMessage {
@@ -20133,40 +17386,8 @@ class GoogleCloudDialogflowCxV3VersionVariants {
 }
 
 /// A single flow version with specified traffic allocation.
-class GoogleCloudDialogflowCxV3VersionVariantsVariant {
-  /// Whether the variant is for the control group.
-  core.bool? isControlGroup;
-
-  /// Percentage of the traffic which should be routed to this version of flow.
-  ///
-  /// Traffic allocation for a single flow must sum up to 1.0.
-  core.double? trafficAllocation;
-
-  /// The name of the flow version.
-  ///
-  /// Format: `projects//locations//agents//flows//versions/`.
-  core.String? version;
-
-  GoogleCloudDialogflowCxV3VersionVariantsVariant({
-    this.isControlGroup,
-    this.trafficAllocation,
-    this.version,
-  });
-
-  GoogleCloudDialogflowCxV3VersionVariantsVariant.fromJson(core.Map json_)
-    : this(
-        isControlGroup: json_['isControlGroup'] as core.bool?,
-        trafficAllocation:
-            (json_['trafficAllocation'] as core.num?)?.toDouble(),
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isControlGroup != null) 'isControlGroup': isControlGroup!,
-    if (trafficAllocation != null) 'trafficAllocation': trafficAllocation!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3VersionVariantsVariant =
+    $VersionVariantsVariant;
 
 /// Description of which voice to use for speech synthesis.
 class GoogleCloudDialogflowCxV3VoiceSelectionParams {
@@ -20492,91 +17713,13 @@ class GoogleCloudDialogflowCxV3WebhookGenericWebService {
 
 /// Represents configuration of OAuth client credential flow for 3rd party API
 /// authentication.
-class GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig {
-  /// The client ID provided by the 3rd party platform.
-  ///
-  /// Required.
-  core.String? clientId;
-
-  /// The client secret provided by the 3rd party platform.
-  ///
-  /// Optional.
-  core.String? clientSecret;
-
-  /// The OAuth scopes to grant.
-  ///
-  /// Optional.
-  core.List<core.String>? scopes;
-
-  /// The name of the SecretManager secret version resource storing the client
-  /// secret.
-  ///
-  /// If this field is set, the `client_secret` field will be ignored. Format:
-  /// `projects/{project}/secrets/{secret}/versions/{version}`
-  ///
-  /// Optional.
-  core.String? secretVersionForClientSecret;
-
-  /// The token endpoint provided by the 3rd party platform to exchange an
-  /// access token.
-  ///
-  /// Required.
-  core.String? tokenEndpoint;
-
-  GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig({
-    this.clientId,
-    this.clientSecret,
-    this.scopes,
-    this.secretVersionForClientSecret,
-    this.tokenEndpoint,
-  });
-
-  GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        clientId: json_['clientId'] as core.String?,
-        clientSecret: json_['clientSecret'] as core.String?,
-        scopes:
-            (json_['scopes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        secretVersionForClientSecret:
-            json_['secretVersionForClientSecret'] as core.String?,
-        tokenEndpoint: json_['tokenEndpoint'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientId != null) 'clientId': clientId!,
-    if (clientSecret != null) 'clientSecret': clientSecret!,
-    if (scopes != null) 'scopes': scopes!,
-    if (secretVersionForClientSecret != null)
-      'secretVersionForClientSecret': secretVersionForClientSecret!,
-    if (tokenEndpoint != null) 'tokenEndpoint': tokenEndpoint!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3WebhookGenericWebServiceOAuthConfig =
+    $WebhookGenericWebServiceOAuthConfig;
 
 /// Represents the value of an HTTP header stored in a SecretManager secret
 /// version.
-class GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue {
-  /// The SecretManager secret version resource storing the header value.
-  ///
-  /// Format: `projects/{project}/secrets/{secret}/versions/{version}`
-  ///
-  /// Required.
-  core.String? secretVersion;
-
-  GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue({
-    this.secretVersion,
-  });
-
-  GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue.fromJson(
-    core.Map json_,
-  ) : this(secretVersion: json_['secretVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (secretVersion != null) 'secretVersion': secretVersion!,
-  };
-}
+typedef GoogleCloudDialogflowCxV3WebhookGenericWebServiceSecretVersionHeaderValue =
+    $WebhookGenericWebServiceSecretVersionHeaderValue;
 
 /// Represents configuration for a
 /// [Service Directory](https://cloud.google.com/service-directory) service.

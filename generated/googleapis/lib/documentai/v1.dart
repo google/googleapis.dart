@@ -1557,7 +1557,7 @@ class ProjectsOperationsResource {
 }
 
 /// Encodes the detailed information of a barcode.
-typedef GoogleCloudDocumentaiV1Barcode = $GoogleCloudDocumentaiV1Barcode;
+typedef GoogleCloudDocumentaiV1Barcode = $Barcode;
 
 /// The common config to specify a set of documents used as input.
 class GoogleCloudDocumentaiV1BatchDocumentsInputConfig {
@@ -2087,7 +2087,7 @@ class GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageHeader {
 
 /// Represents where the chunk starts and ends in the document.
 typedef GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan =
-    $GoogleCloudDocumentaiV1DocumentChunkedDocumentChunkChunkPageSpan;
+    $DocumentChunkedDocumentChunkChunkPageSpan;
 
 /// Represents the parsed layout of a document as a collection of blocks that
 /// the document is divided into.
@@ -2269,7 +2269,7 @@ class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutList
 
 /// Represents where the block starts and ends in the document.
 typedef GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan =
-    $GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan;
+    $DocumentDocumentLayoutDocumentLayoutBlockLayoutPageSpan;
 
 /// Represents a table type block.
 class GoogleCloudDocumentaiV1DocumentDocumentLayoutDocumentLayoutBlockLayoutTableBlock {
@@ -2700,8 +2700,7 @@ class GoogleCloudDocumentaiV1DocumentEntityNormalizedValue {
 }
 
 /// Relationship between Entities.
-typedef GoogleCloudDocumentaiV1DocumentEntityRelation =
-    $GoogleCloudDocumentaiV1DocumentEntityRelation;
+typedef GoogleCloudDocumentaiV1DocumentEntityRelation = $DocumentEntityRelation;
 
 /// Config that controls the output of documents.
 ///
@@ -2771,30 +2770,8 @@ class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfig {
 }
 
 /// The sharding config for the output document.
-class GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig {
-  /// The number of overlapping pages between consecutive shards.
-  core.int? pagesOverlap;
-
-  /// The number of pages per shard.
-  core.int? pagesPerShard;
-
-  GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig({
-    this.pagesOverlap,
-    this.pagesPerShard,
-  });
-
-  GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        pagesOverlap: json_['pagesOverlap'] as core.int?,
-        pagesPerShard: json_['pagesPerShard'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pagesOverlap != null) 'pagesOverlap': pagesOverlap!,
-    if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
-  };
-}
+typedef GoogleCloudDocumentaiV1DocumentOutputConfigGcsOutputConfigShardingConfig =
+    $DocumentOutputConfigGcsOutputConfigShardingConfig;
 
 /// A page in a Document.
 class GoogleCloudDocumentaiV1DocumentPage {
@@ -3237,11 +3214,10 @@ class GoogleCloudDocumentaiV1DocumentPageDetectedBarcode {
 
 /// Detected language for a structural component.
 typedef GoogleCloudDocumentaiV1DocumentPageDetectedLanguage =
-    $GoogleCloudDocumentaiV1DocumentPageDetectedLanguage;
+    $DocumentPageDetectedLanguage;
 
 /// Dimension for the page.
-typedef GoogleCloudDocumentaiV1DocumentPageDimension =
-    $GoogleCloudDocumentaiV1DocumentPageDimension;
+typedef GoogleCloudDocumentaiV1DocumentPageDimension = $DocumentPageDimension;
 
 /// A form field detected on the page.
 class GoogleCloudDocumentaiV1DocumentPageFormField {
@@ -3351,8 +3327,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
 }
 
 /// Rendered image contents for this page.
-typedef GoogleCloudDocumentaiV1DocumentPageImage =
-    $GoogleCloudDocumentaiV1DocumentPageImage;
+typedef GoogleCloudDocumentaiV1DocumentPageImage = $DocumentPageImage;
 
 /// Image quality scores for the page image.
 class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
@@ -3394,7 +3369,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScores {
 
 /// Image Quality Defects
 typedef GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect =
-    $GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect;
+    $DocumentPageImageQualityScoresDetectedDefect;
 
 /// Visual element describing a layout unit on a page.
 class GoogleCloudDocumentaiV1DocumentPageLayout {
@@ -3513,8 +3488,7 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
 
 /// Representation for transformation matrix, intended to be compatible and used
 /// with OpenCV format for image manipulation.
-typedef GoogleCloudDocumentaiV1DocumentPageMatrix =
-    $GoogleCloudDocumentaiV1DocumentPageMatrix;
+typedef GoogleCloudDocumentaiV1DocumentPageMatrix = $DocumentPageMatrix;
 
 /// A collection of lines that a human would perceive as a paragraph.
 class GoogleCloudDocumentaiV1DocumentPageParagraph {
@@ -3842,7 +3816,7 @@ class GoogleCloudDocumentaiV1DocumentPageToken {
 
 /// Detected break at the end of a Token.
 typedef GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak =
-    $GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreak;
+    $DocumentPageTokenDetectedBreak;
 
 /// Font and other text style attributes.
 class GoogleCloudDocumentaiV1DocumentPageTokenStyleInfo {
@@ -4091,7 +4065,7 @@ class GoogleCloudDocumentaiV1DocumentProvenance {
 ///
 /// Used for referencing/aligning, removal and replacement operations.
 typedef GoogleCloudDocumentaiV1DocumentProvenanceParent =
-    $GoogleCloudDocumentaiV1DocumentProvenanceParent;
+    $DocumentProvenanceParent;
 
 /// Contains past or forward revisions of this document.
 class GoogleCloudDocumentaiV1DocumentRevision {
@@ -4174,7 +4148,7 @@ class GoogleCloudDocumentaiV1DocumentRevision {
 
 /// Human Review information of the document.
 typedef GoogleCloudDocumentaiV1DocumentRevisionHumanReview =
-    $GoogleCloudDocumentaiV1DocumentRevisionHumanReview;
+    $DocumentRevisionHumanReview;
 
 /// The schema defines the output of the processed document by a processor.
 class GoogleCloudDocumentaiV1DocumentSchema {
@@ -4305,25 +4279,8 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityType {
 }
 
 /// Defines the a list of enum values.
-class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues {
-  /// The individual values that this enum values type can include.
-  core.List<core.String>? values;
-
-  GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues({this.values});
-
-  GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues.fromJson(
-    core.Map json_,
-  ) : this(
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (values != null) 'values': values!,
-  };
-}
+typedef GoogleCloudDocumentaiV1DocumentSchemaEntityTypeEnumValues =
+    $DocumentSchemaEntityTypeEnumValues;
 
 /// Defines properties that can be part of the entity type.
 class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
@@ -4391,60 +4348,13 @@ class GoogleCloudDocumentaiV1DocumentSchemaEntityTypeProperty {
 }
 
 /// Metadata for global schema behavior.
-class GoogleCloudDocumentaiV1DocumentSchemaMetadata {
-  /// If true, on a given page, there can be multiple `document` annotations
-  /// covering it.
-  core.bool? documentAllowMultipleLabels;
-
-  /// If true, a `document` entity type can be applied to subdocument
-  /// (splitting).
-  ///
-  /// Otherwise, it can only be applied to the entire document (classification).
-  core.bool? documentSplitter;
-
-  /// If set, all the nested entities must be prefixed with the parents.
-  core.bool? prefixedNamingOnProperties;
-
-  /// If set, we will skip the naming format validation in the schema.
-  ///
-  /// So the string values in `DocumentSchema.EntityType.name` and
-  /// `DocumentSchema.EntityType.Property.name` will not be checked.
-  core.bool? skipNamingValidation;
-
-  GoogleCloudDocumentaiV1DocumentSchemaMetadata({
-    this.documentAllowMultipleLabels,
-    this.documentSplitter,
-    this.prefixedNamingOnProperties,
-    this.skipNamingValidation,
-  });
-
-  GoogleCloudDocumentaiV1DocumentSchemaMetadata.fromJson(core.Map json_)
-    : this(
-        documentAllowMultipleLabels:
-            json_['documentAllowMultipleLabels'] as core.bool?,
-        documentSplitter: json_['documentSplitter'] as core.bool?,
-        prefixedNamingOnProperties:
-            json_['prefixedNamingOnProperties'] as core.bool?,
-        skipNamingValidation: json_['skipNamingValidation'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (documentAllowMultipleLabels != null)
-      'documentAllowMultipleLabels': documentAllowMultipleLabels!,
-    if (documentSplitter != null) 'documentSplitter': documentSplitter!,
-    if (prefixedNamingOnProperties != null)
-      'prefixedNamingOnProperties': prefixedNamingOnProperties!,
-    if (skipNamingValidation != null)
-      'skipNamingValidation': skipNamingValidation!,
-  };
-}
+typedef GoogleCloudDocumentaiV1DocumentSchemaMetadata = $DocumentSchemaMetadata;
 
 /// For a large document, sharding may be performed to produce several document
 /// shards.
 ///
 /// Each document shard contains this field to detail which shard it is.
-typedef GoogleCloudDocumentaiV1DocumentShardInfo =
-    $GoogleCloudDocumentaiV1DocumentShardInfo;
+typedef GoogleCloudDocumentaiV1DocumentShardInfo = $DocumentShardInfo;
 
 /// Annotation for common text style attributes.
 ///
@@ -4539,8 +4449,7 @@ class GoogleCloudDocumentaiV1DocumentStyle {
 }
 
 /// Font size with unit.
-typedef GoogleCloudDocumentaiV1DocumentStyleFontSize =
-    $GoogleCloudDocumentaiV1DocumentStyleFontSize;
+typedef GoogleCloudDocumentaiV1DocumentStyleFontSize = $DocumentStyleFontSize;
 
 /// Text reference indexing into the Document.text.
 class GoogleCloudDocumentaiV1DocumentTextAnchor {
@@ -4581,7 +4490,7 @@ class GoogleCloudDocumentaiV1DocumentTextAnchor {
 /// another document shard for large sharded documents. See
 /// ShardInfo.text_offset
 typedef GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment =
-    $GoogleCloudDocumentaiV1DocumentTextAnchorTextSegment;
+    $DocumentTextAnchorTextSegment;
 
 /// This message is used for text changes aka.
 ///
@@ -4784,136 +4693,10 @@ class GoogleCloudDocumentaiV1EvaluationConfidenceLevelMetrics {
 }
 
 /// Evaluation counters for the documents that were used.
-class GoogleCloudDocumentaiV1EvaluationCounters {
-  /// How many documents were used in the evaluation.
-  core.int? evaluatedDocumentsCount;
-
-  /// How many documents were not included in the evaluation as Document AI
-  /// failed to process them.
-  core.int? failedDocumentsCount;
-
-  /// How many documents were sent for evaluation.
-  core.int? inputDocumentsCount;
-
-  /// How many documents were not included in the evaluation as they didn't pass
-  /// validation.
-  core.int? invalidDocumentsCount;
-
-  GoogleCloudDocumentaiV1EvaluationCounters({
-    this.evaluatedDocumentsCount,
-    this.failedDocumentsCount,
-    this.inputDocumentsCount,
-    this.invalidDocumentsCount,
-  });
-
-  GoogleCloudDocumentaiV1EvaluationCounters.fromJson(core.Map json_)
-    : this(
-        evaluatedDocumentsCount: json_['evaluatedDocumentsCount'] as core.int?,
-        failedDocumentsCount: json_['failedDocumentsCount'] as core.int?,
-        inputDocumentsCount: json_['inputDocumentsCount'] as core.int?,
-        invalidDocumentsCount: json_['invalidDocumentsCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (evaluatedDocumentsCount != null)
-      'evaluatedDocumentsCount': evaluatedDocumentsCount!,
-    if (failedDocumentsCount != null)
-      'failedDocumentsCount': failedDocumentsCount!,
-    if (inputDocumentsCount != null)
-      'inputDocumentsCount': inputDocumentsCount!,
-    if (invalidDocumentsCount != null)
-      'invalidDocumentsCount': invalidDocumentsCount!,
-  };
-}
+typedef GoogleCloudDocumentaiV1EvaluationCounters = $EvaluationCounters;
 
 /// Evaluation metrics, either in aggregate or about a specific entity.
-class GoogleCloudDocumentaiV1EvaluationMetrics {
-  /// The calculated f1 score.
-  core.double? f1Score;
-
-  /// The amount of false negatives.
-  core.int? falseNegativesCount;
-
-  /// The amount of false positives.
-  core.int? falsePositivesCount;
-
-  /// The amount of documents with a ground truth occurrence.
-  core.int? groundTruthDocumentCount;
-
-  /// The amount of occurrences in ground truth documents.
-  core.int? groundTruthOccurrencesCount;
-
-  /// The calculated precision.
-  core.double? precision;
-
-  /// The amount of documents with a predicted occurrence.
-  core.int? predictedDocumentCount;
-
-  /// The amount of occurrences in predicted documents.
-  core.int? predictedOccurrencesCount;
-
-  /// The calculated recall.
-  core.double? recall;
-
-  /// The amount of documents that had an occurrence of this label.
-  core.int? totalDocumentsCount;
-
-  /// The amount of true positives.
-  core.int? truePositivesCount;
-
-  GoogleCloudDocumentaiV1EvaluationMetrics({
-    this.f1Score,
-    this.falseNegativesCount,
-    this.falsePositivesCount,
-    this.groundTruthDocumentCount,
-    this.groundTruthOccurrencesCount,
-    this.precision,
-    this.predictedDocumentCount,
-    this.predictedOccurrencesCount,
-    this.recall,
-    this.totalDocumentsCount,
-    this.truePositivesCount,
-  });
-
-  GoogleCloudDocumentaiV1EvaluationMetrics.fromJson(core.Map json_)
-    : this(
-        f1Score: (json_['f1Score'] as core.num?)?.toDouble(),
-        falseNegativesCount: json_['falseNegativesCount'] as core.int?,
-        falsePositivesCount: json_['falsePositivesCount'] as core.int?,
-        groundTruthDocumentCount:
-            json_['groundTruthDocumentCount'] as core.int?,
-        groundTruthOccurrencesCount:
-            json_['groundTruthOccurrencesCount'] as core.int?,
-        precision: (json_['precision'] as core.num?)?.toDouble(),
-        predictedDocumentCount: json_['predictedDocumentCount'] as core.int?,
-        predictedOccurrencesCount:
-            json_['predictedOccurrencesCount'] as core.int?,
-        recall: (json_['recall'] as core.num?)?.toDouble(),
-        totalDocumentsCount: json_['totalDocumentsCount'] as core.int?,
-        truePositivesCount: json_['truePositivesCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (f1Score != null) 'f1Score': f1Score!,
-    if (falseNegativesCount != null)
-      'falseNegativesCount': falseNegativesCount!,
-    if (falsePositivesCount != null)
-      'falsePositivesCount': falsePositivesCount!,
-    if (groundTruthDocumentCount != null)
-      'groundTruthDocumentCount': groundTruthDocumentCount!,
-    if (groundTruthOccurrencesCount != null)
-      'groundTruthOccurrencesCount': groundTruthOccurrencesCount!,
-    if (precision != null) 'precision': precision!,
-    if (predictedDocumentCount != null)
-      'predictedDocumentCount': predictedDocumentCount!,
-    if (predictedOccurrencesCount != null)
-      'predictedOccurrencesCount': predictedOccurrencesCount!,
-    if (recall != null) 'recall': recall!,
-    if (totalDocumentsCount != null)
-      'totalDocumentsCount': totalDocumentsCount!,
-    if (truePositivesCount != null) 'truePositivesCount': truePositivesCount!,
-  };
-}
+typedef GoogleCloudDocumentaiV1EvaluationMetrics = $EvaluationMetrics;
 
 /// Metrics across multiple confidence levels.
 class GoogleCloudDocumentaiV1EvaluationMultiConfidenceMetrics {
@@ -5083,26 +4866,7 @@ class GoogleCloudDocumentaiV1FetchProcessorTypesResponse {
 }
 
 /// Specifies a document stored on Cloud Storage.
-class GoogleCloudDocumentaiV1GcsDocument {
-  /// The Cloud Storage object uri.
-  core.String? gcsUri;
-
-  /// An IANA MIME type (RFC6838) of the content.
-  core.String? mimeType;
-
-  GoogleCloudDocumentaiV1GcsDocument({this.gcsUri, this.mimeType});
-
-  GoogleCloudDocumentaiV1GcsDocument.fromJson(core.Map json_)
-    : this(
-        gcsUri: json_['gcsUri'] as core.String?,
-        mimeType: json_['mimeType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsUri != null) 'gcsUri': gcsUri!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
-}
+typedef GoogleCloudDocumentaiV1GcsDocument = $GcsDocument;
 
 /// Specifies a set of documents on Cloud Storage.
 class GoogleCloudDocumentaiV1GcsDocuments {
@@ -5129,67 +4893,10 @@ class GoogleCloudDocumentaiV1GcsDocuments {
 }
 
 /// Specifies all documents on Cloud Storage with a common prefix.
-class GoogleCloudDocumentaiV1GcsPrefix {
-  /// The URI prefix.
-  core.String? gcsUriPrefix;
-
-  GoogleCloudDocumentaiV1GcsPrefix({this.gcsUriPrefix});
-
-  GoogleCloudDocumentaiV1GcsPrefix.fromJson(core.Map json_)
-    : this(gcsUriPrefix: json_['gcsUriPrefix'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsUriPrefix != null) 'gcsUriPrefix': gcsUriPrefix!,
-  };
-}
+typedef GoogleCloudDocumentaiV1GcsPrefix = $GcsPrefix;
 
 /// The status of human review on a processed document.
-class GoogleCloudDocumentaiV1HumanReviewStatus {
-  /// The name of the operation triggered by the processed document.
-  ///
-  /// This field is populated only when the state is `HUMAN_REVIEW_IN_PROGRESS`.
-  /// It has the same response type and metadata as the long-running operation
-  /// returned by ReviewDocument.
-  core.String? humanReviewOperation;
-
-  /// The state of human review on the processing request.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
-  /// to an internal error.
-  /// - "SKIPPED" : Human review is skipped for the document. This can happen
-  /// because human review isn't enabled on the processor or the processing
-  /// request has been set to skip this document.
-  /// - "VALIDATION_PASSED" : Human review validation is triggered and passed,
-  /// so no review is needed.
-  /// - "IN_PROGRESS" : Human review validation is triggered and the document is
-  /// under review.
-  /// - "ERROR" : Some error happened during triggering human review, see the
-  /// state_message for details.
-  core.String? state;
-
-  /// A message providing more details about the human review state.
-  core.String? stateMessage;
-
-  GoogleCloudDocumentaiV1HumanReviewStatus({
-    this.humanReviewOperation,
-    this.state,
-    this.stateMessage,
-  });
-
-  GoogleCloudDocumentaiV1HumanReviewStatus.fromJson(core.Map json_)
-    : this(
-        humanReviewOperation: json_['humanReviewOperation'] as core.String?,
-        state: json_['state'] as core.String?,
-        stateMessage: json_['stateMessage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (humanReviewOperation != null)
-      'humanReviewOperation': humanReviewOperation!,
-    if (state != null) 'state': state!,
-    if (stateMessage != null) 'stateMessage': stateMessage!,
-  };
-}
+typedef GoogleCloudDocumentaiV1HumanReviewStatus = $HumanReviewStatus;
 
 /// The response from `ListEvaluations`.
 class GoogleCloudDocumentaiV1ListEvaluationsResponse {
@@ -5325,8 +5032,7 @@ class GoogleCloudDocumentaiV1ListProcessorsResponse {
 ///
 /// NOTE: the normalized vertex coordinates are relative to the original image
 /// and range from 0 to 1.
-typedef GoogleCloudDocumentaiV1NormalizedVertex =
-    $GoogleCloudDocumentaiV1NormalizedVertex;
+typedef GoogleCloudDocumentaiV1NormalizedVertex = $NormalizedVertex01;
 
 /// Config for Document OCR.
 class GoogleCloudDocumentaiV1OcrConfig {
@@ -5428,65 +5134,11 @@ class GoogleCloudDocumentaiV1OcrConfig {
 }
 
 /// Hints for OCR Engine
-class GoogleCloudDocumentaiV1OcrConfigHints {
-  /// List of BCP-47 language codes to use for OCR.
-  ///
-  /// In most cases, not specifying it yields the best results since it enables
-  /// automatic language detection. For languages based on the Latin alphabet,
-  /// setting hints is not needed. In rare cases, when the language of the text
-  /// in the image is known, setting a hint will help get better results
-  /// (although it will be a significant hindrance if the hint is wrong).
-  core.List<core.String>? languageHints;
-
-  GoogleCloudDocumentaiV1OcrConfigHints({this.languageHints});
-
-  GoogleCloudDocumentaiV1OcrConfigHints.fromJson(core.Map json_)
-    : this(
-        languageHints:
-            (json_['languageHints'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageHints != null) 'languageHints': languageHints!,
-  };
-}
+typedef GoogleCloudDocumentaiV1OcrConfigHints = $OcrConfigHints;
 
 /// Configurations for premium OCR features.
-class GoogleCloudDocumentaiV1OcrConfigPremiumFeatures {
-  /// Turn on font identification model and return font style information.
-  core.bool? computeStyleInfo;
-
-  /// Turn on the model that can extract LaTeX math formulas.
-  core.bool? enableMathOcr;
-
-  /// Turn on selection mark detector in OCR engine.
-  ///
-  /// Only available in OCR 2.0 (and later) processors.
-  core.bool? enableSelectionMarkDetection;
-
-  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures({
-    this.computeStyleInfo,
-    this.enableMathOcr,
-    this.enableSelectionMarkDetection,
-  });
-
-  GoogleCloudDocumentaiV1OcrConfigPremiumFeatures.fromJson(core.Map json_)
-    : this(
-        computeStyleInfo: json_['computeStyleInfo'] as core.bool?,
-        enableMathOcr: json_['enableMathOcr'] as core.bool?,
-        enableSelectionMarkDetection:
-            json_['enableSelectionMarkDetection'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (computeStyleInfo != null) 'computeStyleInfo': computeStyleInfo!,
-    if (enableMathOcr != null) 'enableMathOcr': enableMathOcr!,
-    if (enableSelectionMarkDetection != null)
-      'enableSelectionMarkDetection': enableSelectionMarkDetection!,
-  };
-}
+typedef GoogleCloudDocumentaiV1OcrConfigPremiumFeatures =
+    $OcrConfigPremiumFeatures;
 
 /// Options for Process API
 class GoogleCloudDocumentaiV1ProcessOptions {
@@ -5575,27 +5227,8 @@ class GoogleCloudDocumentaiV1ProcessOptions {
 }
 
 /// A list of individual page numbers.
-class GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector {
-  /// Indices of the pages (starting from 1).
-  ///
-  /// Optional.
-  core.List<core.int>? pages;
-
-  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector({this.pages});
-
-  GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector.fromJson(
-    core.Map json_,
-  ) : this(
-        pages:
-            (json_['pages'] as core.List?)
-                ?.map((value) => value as core.int)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pages != null) 'pages': pages!,
-  };
-}
+typedef GoogleCloudDocumentaiV1ProcessOptionsIndividualPageSelector =
+    $ProcessOptionsIndividualPageSelector;
 
 /// Serving config for layout parser processor.
 class GoogleCloudDocumentaiV1ProcessOptionsLayoutConfig {
@@ -6048,22 +5681,8 @@ class GoogleCloudDocumentaiV1ProcessorType {
 }
 
 /// The location information about where the processor is available.
-class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo {
-  /// The location ID.
-  ///
-  /// For supported locations, refer to \[regional and multi-regional
-  /// support\](/document-ai/docs/regions).
-  core.String? locationId;
-
-  GoogleCloudDocumentaiV1ProcessorTypeLocationInfo({this.locationId});
-
-  GoogleCloudDocumentaiV1ProcessorTypeLocationInfo.fromJson(core.Map json_)
-    : this(locationId: json_['locationId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (locationId != null) 'locationId': locationId!,
-  };
-}
+typedef GoogleCloudDocumentaiV1ProcessorTypeLocationInfo =
+    $ProcessorTypeLocationInfo;
 
 /// A processor version is an implementation of a processor.
 ///
@@ -6239,57 +5858,11 @@ class GoogleCloudDocumentaiV1ProcessorVersion {
 }
 
 /// Contains the alias and the aliased resource name of processor version.
-class GoogleCloudDocumentaiV1ProcessorVersionAlias {
-  /// The alias in the form of `processor_version` resource name.
-  core.String? alias;
-
-  /// The resource name of aliased processor version.
-  core.String? processorVersion;
-
-  GoogleCloudDocumentaiV1ProcessorVersionAlias({
-    this.alias,
-    this.processorVersion,
-  });
-
-  GoogleCloudDocumentaiV1ProcessorVersionAlias.fromJson(core.Map json_)
-    : this(
-        alias: json_['alias'] as core.String?,
-        processorVersion: json_['processorVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alias != null) 'alias': alias!,
-    if (processorVersion != null) 'processorVersion': processorVersion!,
-  };
-}
+typedef GoogleCloudDocumentaiV1ProcessorVersionAlias = $ProcessorVersionAlias;
 
 /// Information about the upcoming deprecation of this processor version.
-class GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo {
-  /// The time at which this processor version will be deprecated.
-  core.String? deprecationTime;
-
-  /// If set, the processor version that will be used as a replacement.
-  core.String? replacementProcessorVersion;
-
-  GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo({
-    this.deprecationTime,
-    this.replacementProcessorVersion,
-  });
-
-  GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo.fromJson(
-    core.Map json_,
-  ) : this(
-        deprecationTime: json_['deprecationTime'] as core.String?,
-        replacementProcessorVersion:
-            json_['replacementProcessorVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deprecationTime != null) 'deprecationTime': deprecationTime!,
-    if (replacementProcessorVersion != null)
-      'replacementProcessorVersion': replacementProcessorVersion!,
-  };
-}
+typedef GoogleCloudDocumentaiV1ProcessorVersionDeprecationInfo =
+    $ProcessorVersionDeprecationInfo;
 
 /// Information about Generative AI model-based processor versions.
 class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo {
@@ -6336,108 +5909,15 @@ class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfo {
 ///
 /// These are created with `Create New Version` in either the `Call foundation
 /// model` or `Fine tuning` tabs.
-class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo {
-  /// The base processor version ID for the custom model.
-  core.String? baseProcessorVersionId;
-
-  /// The type of custom model created by the user.
-  /// Possible string values are:
-  /// - "CUSTOM_MODEL_TYPE_UNSPECIFIED" : The model type is unspecified.
-  /// - "VERSIONED_FOUNDATION" : The model is a versioned foundation model.
-  /// - "FINE_TUNED" : The model is a finetuned foundation model.
-  core.String? customModelType;
-
-  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo({
-    this.baseProcessorVersionId,
-    this.customModelType,
-  });
-
-  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo.fromJson(
-    core.Map json_,
-  ) : this(
-        baseProcessorVersionId: json_['baseProcessorVersionId'] as core.String?,
-        customModelType: json_['customModelType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (baseProcessorVersionId != null)
-      'baseProcessorVersionId': baseProcessorVersionId!,
-    if (customModelType != null) 'customModelType': customModelType!,
-  };
-}
+typedef GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoCustomGenAiModelInfo =
+    $ProcessorVersionGenAiModelInfoCustomGenAiModelInfo;
 
 /// Information for a pretrained Google-managed foundation model.
-class GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo {
-  /// Whether finetuning is allowed for this base processor version.
-  core.bool? finetuningAllowed;
-
-  /// The minimum number of labeled documents in the training dataset required
-  /// for finetuning.
-  core.int? minTrainLabeledDocuments;
-
-  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo({
-    this.finetuningAllowed,
-    this.minTrainLabeledDocuments,
-  });
-
-  GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo.fromJson(
-    core.Map json_,
-  ) : this(
-        finetuningAllowed: json_['finetuningAllowed'] as core.bool?,
-        minTrainLabeledDocuments:
-            json_['minTrainLabeledDocuments'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (finetuningAllowed != null) 'finetuningAllowed': finetuningAllowed!,
-    if (minTrainLabeledDocuments != null)
-      'minTrainLabeledDocuments': minTrainLabeledDocuments!,
-  };
-}
+typedef GoogleCloudDocumentaiV1ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo =
+    $ProcessorVersionGenAiModelInfoFoundationGenAiModelInfo;
 
 /// Payload message of raw document content (bytes).
-class GoogleCloudDocumentaiV1RawDocument {
-  /// Inline document content.
-  core.String? content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
-
-  set contentAsBytes(core.List<core.int> bytes_) {
-    content = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The display name of the document, it supports all Unicode characters
-  /// except the following: `*`, `?`, `[`, `]`, `%`, `{`, `}`,`'`, `\"`, `,`
-  /// `~`, `=` and `:` are reserved.
-  ///
-  /// If not specified, a default ID is generated.
-  core.String? displayName;
-
-  /// An IANA MIME type (RFC6838) indicating the nature and format of the
-  /// content.
-  core.String? mimeType;
-
-  GoogleCloudDocumentaiV1RawDocument({
-    this.content,
-    this.displayName,
-    this.mimeType,
-  });
-
-  GoogleCloudDocumentaiV1RawDocument.fromJson(core.Map json_)
-    : this(
-        content: json_['content'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        mimeType: json_['mimeType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (displayName != null) 'displayName': displayName!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
-}
+typedef GoogleCloudDocumentaiV1RawDocument = $RawDocument;
 
 /// Request message for the ReviewDocument method.
 class GoogleCloudDocumentaiV1ReviewDocumentRequest {
@@ -6495,31 +5975,8 @@ class GoogleCloudDocumentaiV1ReviewDocumentRequest {
 }
 
 /// Request message for the SetDefaultProcessorVersion method.
-class GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest {
-  /// The resource name of child ProcessorVersion to use as default.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{version}`
-  ///
-  /// Required.
-  core.String? defaultProcessorVersion;
-
-  GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest({
-    this.defaultProcessorVersion,
-  });
-
-  GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest.fromJson(
-    core.Map json_,
-  ) : this(
-        defaultProcessorVersion:
-            json_['defaultProcessorVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (defaultProcessorVersion != null)
-      'defaultProcessorVersion': defaultProcessorVersion!,
-  };
-}
+typedef GoogleCloudDocumentaiV1SetDefaultProcessorVersionRequest =
+    $SetDefaultProcessorVersionRequest;
 
 /// Request message for the TrainProcessorVersion method.
 class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
@@ -6617,64 +6074,12 @@ class GoogleCloudDocumentaiV1TrainProcessorVersionRequest {
 
 /// Options to control the training of the Custom Document Extraction (CDE)
 /// Processor.
-class GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions {
-  /// Training method to use for CDE training.
-  /// Possible string values are:
-  /// - "TRAINING_METHOD_UNSPECIFIED"
-  /// - "MODEL_BASED"
-  /// - "TEMPLATE_BASED"
-  core.String? trainingMethod;
-
-  GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions({
-    this.trainingMethod,
-  });
-
-  GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions.fromJson(
-    core.Map json_,
-  ) : this(trainingMethod: json_['trainingMethod'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trainingMethod != null) 'trainingMethod': trainingMethod!,
-  };
-}
+typedef GoogleCloudDocumentaiV1TrainProcessorVersionRequestCustomDocumentExtractionOptions =
+    $TrainProcessorVersionRequestCustomDocumentExtractionOptions;
 
 /// Options to control foundation model tuning of the processor.
-class GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions {
-  /// The multiplier to apply to the recommended learning rate.
-  ///
-  /// Valid values are between 0.1 and 10. If not provided, recommended learning
-  /// rate will be used.
-  ///
-  /// Optional.
-  core.double? learningRateMultiplier;
-
-  /// The number of steps to run for model tuning.
-  ///
-  /// Valid values are between 1 and 400. If not provided, recommended steps
-  /// will be used.
-  ///
-  /// Optional.
-  core.int? trainSteps;
-
-  GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions({
-    this.learningRateMultiplier,
-    this.trainSteps,
-  });
-
-  GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions.fromJson(
-    core.Map json_,
-  ) : this(
-        learningRateMultiplier:
-            (json_['learningRateMultiplier'] as core.num?)?.toDouble(),
-        trainSteps: json_['trainSteps'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (learningRateMultiplier != null)
-      'learningRateMultiplier': learningRateMultiplier!,
-    if (trainSteps != null) 'trainSteps': trainSteps!,
-  };
-}
+typedef GoogleCloudDocumentaiV1TrainProcessorVersionRequestFoundationModelTuningOptions =
+    $TrainProcessorVersionRequestFoundationModelTuningOptions;
 
 /// The input data used to train a new ProcessorVersion.
 class GoogleCloudDocumentaiV1TrainProcessorVersionRequestInputData {
@@ -6719,7 +6124,7 @@ typedef GoogleCloudDocumentaiV1UndeployProcessorVersionRequest = $Empty;
 /// A vertex represents a 2D point in the image.
 ///
 /// NOTE: the vertex coordinates are in the same scale as the original image.
-typedef GoogleCloudDocumentaiV1Vertex = $GoogleCloudDocumentaiV1Vertex;
+typedef GoogleCloudDocumentaiV1Vertex = $Vertex01;
 
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {

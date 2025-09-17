@@ -2260,34 +2260,7 @@ class HistogramQuery {
 }
 
 /// Histogram result that matches HistogramQuery specified in searches.
-class HistogramQueryResult {
-  /// A map from the values of the facet associated with distinct values to the
-  /// number of matching entries with corresponding value.
-  ///
-  /// The key format is: * (for string histogram) string values stored in the
-  /// field. * (for named numeric bucket) name specified in `bucket()` function,
-  /// like for `bucket(0, MAX, "non-negative")`, the key will be `non-negative`.
-  /// * (for anonymous numeric bucket) range formatted as `-`, for example,
-  /// `0-1000`, `MIN-0`, and `0-MAX`.
-  core.Map<core.String, core.String>? histogram;
-
-  /// Requested histogram expression.
-  core.String? histogramQuery;
-
-  HistogramQueryResult({this.histogram, this.histogramQuery});
-
-  HistogramQueryResult.fromJson(core.Map json_)
-    : this(
-        histogram: (json_['histogram'] as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        histogramQuery: json_['histogramQuery'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (histogram != null) 'histogram': histogram!,
-    if (histogramQuery != null) 'histogramQuery': histogramQuery!,
-  };
-}
+typedef HistogramQueryResult = $HistogramQueryResult;
 
 /// A Job resource represents a job posting (also referred to as a "job listing"
 /// or "job requisition").

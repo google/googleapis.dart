@@ -1688,31 +1688,7 @@ class ProjectsLocationsWorkstationClustersWorkstationConfigsWorkstationsResource
 }
 
 /// An accelerator card attached to the instance.
-class Accelerator {
-  /// Number of accelerator cards exposed to the instance.
-  ///
-  /// Optional.
-  core.int? count;
-
-  /// Type of accelerator resource to attach to the instance, for example,
-  /// `"nvidia-tesla-p100"`.
-  ///
-  /// Optional.
-  core.String? type;
-
-  Accelerator({this.count, this.type});
-
-  Accelerator.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.int?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef Accelerator = $Accelerator01;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -1768,7 +1744,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -1986,84 +1962,7 @@ class BoostConfig {
 typedef CancelOperationRequest = $Empty;
 
 /// A Docker container.
-class Container {
-  /// Arguments passed to the entrypoint.
-  ///
-  /// Optional.
-  core.List<core.String>? args;
-
-  /// If set, overrides the default ENTRYPOINT specified by the image.
-  ///
-  /// Optional.
-  core.List<core.String>? command;
-
-  /// Environment variables passed to the container's entrypoint.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? env;
-
-  /// A Docker container image that defines a custom environment.
-  ///
-  /// Cloud Workstations provides a number of
-  /// [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images),
-  /// but you can create your own
-  /// [custom container images](https://cloud.google.com/workstations/docs/custom-container-images).
-  /// If using a private image, the `host.gceInstance.serviceAccount` field must
-  /// be specified in the workstation configuration. If using a custom container
-  /// image, the service account must have
-  /// [Artifact Registry Reader](https://cloud.google.com/artifact-registry/docs/access-control#roles)
-  /// permission to pull the specified image. Otherwise, the image must be
-  /// publicly accessible.
-  ///
-  /// Optional.
-  core.String? image;
-
-  /// If set, overrides the USER specified in the image with the given uid.
-  ///
-  /// Optional.
-  core.int? runAsUser;
-
-  /// If set, overrides the default DIR specified by the image.
-  ///
-  /// Optional.
-  core.String? workingDir;
-
-  Container({
-    this.args,
-    this.command,
-    this.env,
-    this.image,
-    this.runAsUser,
-    this.workingDir,
-  });
-
-  Container.fromJson(core.Map json_)
-    : this(
-        args:
-            (json_['args'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        command:
-            (json_['command'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        env: (json_['env'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        image: json_['image'] as core.String?,
-        runAsUser: json_['runAsUser'] as core.int?,
-        workingDir: json_['workingDir'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (args != null) 'args': args!,
-    if (command != null) 'command': command!,
-    if (env != null) 'env': env!,
-    if (image != null) 'image': image!,
-    if (runAsUser != null) 'runAsUser': runAsUser!,
-    if (workingDir != null) 'workingDir': workingDir!,
-  };
-}
+typedef Container = $Container;
 
 /// A customer-managed encryption key (CMEK) for the Compute Engine resources of
 /// the associated workstation configuration.
@@ -2071,58 +1970,10 @@ class Container {
 /// Specify the name of your Cloud KMS encryption key and the default service
 /// account. We recommend that you use a separate service account and follow
 /// [Cloud KMS best practices](https://cloud.google.com/kms/docs/separation-of-duties).
-class CustomerEncryptionKey {
-  /// The name of the Google Cloud KMS encryption key.
-  ///
-  /// For example,
-  /// `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`.
-  /// The key must be in the same region as the workstation configuration.
-  ///
-  /// Immutable.
-  core.String? kmsKey;
-
-  /// The service account to use with the specified KMS key.
-  ///
-  /// We recommend that you use a separate service account and follow KMS best
-  /// practices. For more information, see
-  /// [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties)
-  /// and `gcloud kms keys add-iam-policy-binding`
-  /// \[`--member`\](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
-  ///
-  /// Immutable.
-  core.String? kmsKeyServiceAccount;
-
-  CustomerEncryptionKey({this.kmsKey, this.kmsKeyServiceAccount});
-
-  CustomerEncryptionKey.fromJson(core.Map json_)
-    : this(
-        kmsKey: json_['kmsKey'] as core.String?,
-        kmsKeyServiceAccount: json_['kmsKeyServiceAccount'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (kmsKeyServiceAccount != null)
-      'kmsKeyServiceAccount': kmsKeyServiceAccount!,
-  };
-}
+typedef CustomerEncryptionKey = $CustomerEncryptionKey01;
 
 /// Configuration options for a custom domain.
-class DomainConfig {
-  /// Domain used by Workstations for HTTP ingress.
-  ///
-  /// Immutable.
-  core.String? domain;
-
-  DomainConfig({this.domain});
-
-  DomainConfig.fromJson(core.Map json_)
-    : this(domain: json_['domain'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domain != null) 'domain': domain!,
-  };
-}
+typedef DomainConfig = $DomainConfig;
 
 /// An ephemeral directory which won't persist across workstation sessions.
 ///
@@ -2176,44 +2027,10 @@ class EphemeralDirectory {
 typedef Expr = $Expr;
 
 /// Configuration options for Cluster HTTP Gateway.
-class GatewayConfig {
-  /// Whether HTTP/2 is enabled for this workstation cluster.
-  ///
-  /// Defaults to false.
-  ///
-  /// Optional.
-  core.bool? http2Enabled;
-
-  GatewayConfig({this.http2Enabled});
-
-  GatewayConfig.fromJson(core.Map json_)
-    : this(http2Enabled: json_['http2Enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (http2Enabled != null) 'http2Enabled': http2Enabled!,
-  };
-}
+typedef GatewayConfig = $GatewayConfig;
 
 /// A set of Compute Engine Confidential VM instance options.
-class GceConfidentialInstanceConfig {
-  /// Whether the instance has confidential compute enabled.
-  ///
-  /// Optional.
-  core.bool? enableConfidentialCompute;
-
-  GceConfidentialInstanceConfig({this.enableConfidentialCompute});
-
-  GceConfidentialInstanceConfig.fromJson(core.Map json_)
-    : this(
-        enableConfidentialCompute:
-            json_['enableConfidentialCompute'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableConfidentialCompute != null)
-      'enableConfidentialCompute': enableConfidentialCompute!,
-  };
-}
+typedef GceConfidentialInstanceConfig = $GceConfidentialInstanceConfig;
 
 /// A runtime using a Compute Engine instance.
 class GceInstance {
@@ -2458,103 +2275,10 @@ class GceInstance {
 }
 
 /// The Compute Engine instance host.
-class GceInstanceHost {
-  /// The ID of the Compute Engine instance.
-  ///
-  /// Optional. Output only.
-  core.String? id;
-
-  /// The name of the Compute Engine instance.
-  ///
-  /// Optional. Output only.
-  core.String? name;
-
-  /// The zone of the Compute Engine instance.
-  ///
-  /// Optional. Output only.
-  core.String? zone;
-
-  GceInstanceHost({this.id, this.name, this.zone});
-
-  GceInstanceHost.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef GceInstanceHost = $GceInstanceHost;
 
 /// An EphemeralDirectory is backed by a Compute Engine persistent disk.
-class GcePersistentDisk {
-  /// Type of the disk to use.
-  ///
-  /// Defaults to `"pd-standard"`.
-  ///
-  /// Optional.
-  core.String? diskType;
-
-  /// Whether the disk is read only.
-  ///
-  /// If true, the disk may be shared by multiple VMs and source_snapshot must
-  /// be set.
-  ///
-  /// Optional.
-  core.bool? readOnly;
-
-  /// Name of the disk image to use as the source for the disk.
-  ///
-  /// Must be empty if source_snapshot is set. Updating source_image will update
-  /// content in the ephemeral directory after the workstation is restarted.
-  /// Only file systems supported by Container-Optimized OS (COS) are explicitly
-  /// supported. For a list of supported file systems, please refer to the
-  /// [COS documentation](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems).
-  /// This field is mutable.
-  ///
-  /// Optional.
-  core.String? sourceImage;
-
-  /// Name of the snapshot to use as the source for the disk.
-  ///
-  /// Must be empty if source_image is set. Must be empty if read_only is false.
-  /// Updating source_snapshot will update content in the ephemeral directory
-  /// after the workstation is restarted. Only file systems supported by
-  /// Container-Optimized OS (COS) are explicitly supported. For a list of
-  /// supported file systems, see \[the filesystems available in
-  /// Container-Optimized
-  /// OS\](https://cloud.google.com/container-optimized-os/docs/concepts/supported-filesystems).
-  /// This field is mutable.
-  ///
-  /// Optional.
-  core.String? sourceSnapshot;
-
-  GcePersistentDisk({
-    this.diskType,
-    this.readOnly,
-    this.sourceImage,
-    this.sourceSnapshot,
-  });
-
-  GcePersistentDisk.fromJson(core.Map json_)
-    : this(
-        diskType: json_['diskType'] as core.String?,
-        readOnly: json_['readOnly'] as core.bool?,
-        sourceImage: json_['sourceImage'] as core.String?,
-        sourceSnapshot: json_['sourceSnapshot'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskType != null) 'diskType': diskType!,
-    if (readOnly != null) 'readOnly': readOnly!,
-    if (sourceImage != null) 'sourceImage': sourceImage!,
-    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
-  };
-}
+typedef GcePersistentDisk = $GcePersistentDisk;
 
 /// A Persistent Directory backed by a Compute Engine regional persistent disk.
 ///
@@ -2564,186 +2288,16 @@ class GcePersistentDisk {
 /// that mounts to the workstation VM at `/home` when the session starts and
 /// detaches when the session ends. If this field is empty, workstations created
 /// with this configuration do not have a persistent home directory.
-class GceRegionalPersistentDisk {
-  /// The
-  /// [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types)
-  /// for the home directory.
-  ///
-  /// Defaults to `"pd-standard"`.
-  ///
-  /// Optional.
-  core.String? diskType;
-
-  /// Type of file system that the disk should be formatted with.
-  ///
-  /// The workstation image must support this file system type. Must be empty if
-  /// source_snapshot is set. Defaults to `"ext4"`.
-  ///
-  /// Optional.
-  core.String? fsType;
-
-  /// Whether the persistent disk should be deleted when the workstation is
-  /// deleted.
-  ///
-  /// Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "RECLAIM_POLICY_UNSPECIFIED" : Do not use.
-  /// - "DELETE" : Delete the persistent disk when deleting the workstation.
-  /// - "RETAIN" : Keep the persistent disk when deleting the workstation. An
-  /// administrator must manually delete the disk.
-  core.String? reclaimPolicy;
-
-  /// The GB capacity of a persistent home directory for each workstation
-  /// created with this configuration.
-  ///
-  /// Must be empty if source_snapshot is set. Valid values are `10`, `50`,
-  /// `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB,
-  /// the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
-  ///
-  /// Optional.
-  core.int? sizeGb;
-
-  /// Name of the snapshot to use as the source for the disk.
-  ///
-  /// If set, size_gb and fs_type must be empty. Must be formatted as ext4 file
-  /// system with no partitions.
-  ///
-  /// Optional.
-  core.String? sourceSnapshot;
-
-  GceRegionalPersistentDisk({
-    this.diskType,
-    this.fsType,
-    this.reclaimPolicy,
-    this.sizeGb,
-    this.sourceSnapshot,
-  });
-
-  GceRegionalPersistentDisk.fromJson(core.Map json_)
-    : this(
-        diskType: json_['diskType'] as core.String?,
-        fsType: json_['fsType'] as core.String?,
-        reclaimPolicy: json_['reclaimPolicy'] as core.String?,
-        sizeGb: json_['sizeGb'] as core.int?,
-        sourceSnapshot: json_['sourceSnapshot'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskType != null) 'diskType': diskType!,
-    if (fsType != null) 'fsType': fsType!,
-    if (reclaimPolicy != null) 'reclaimPolicy': reclaimPolicy!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (sourceSnapshot != null) 'sourceSnapshot': sourceSnapshot!,
-  };
-}
+typedef GceRegionalPersistentDisk = $GceRegionalPersistentDisk;
 
 /// A set of Compute Engine Shielded instance options.
-class GceShieldedInstanceConfig {
-  /// Whether the instance has integrity monitoring enabled.
-  ///
-  /// Optional.
-  core.bool? enableIntegrityMonitoring;
-
-  /// Whether the instance has Secure Boot enabled.
-  ///
-  /// Optional.
-  core.bool? enableSecureBoot;
-
-  /// Whether the instance has the vTPM enabled.
-  ///
-  /// Optional.
-  core.bool? enableVtpm;
-
-  GceShieldedInstanceConfig({
-    this.enableIntegrityMonitoring,
-    this.enableSecureBoot,
-    this.enableVtpm,
-  });
-
-  GceShieldedInstanceConfig.fromJson(core.Map json_)
-    : this(
-        enableIntegrityMonitoring:
-            json_['enableIntegrityMonitoring'] as core.bool?,
-        enableSecureBoot: json_['enableSecureBoot'] as core.bool?,
-        enableVtpm: json_['enableVtpm'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableIntegrityMonitoring != null)
-      'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-    if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-    if (enableVtpm != null) 'enableVtpm': enableVtpm!,
-  };
-}
+typedef GceShieldedInstanceConfig = $GceShieldedInstanceConfig;
 
 /// Request message for GenerateAccessToken.
-class GenerateAccessTokenRequest {
-  /// Desired expiration time of the access token.
-  ///
-  /// This value must be at most 24 hours in the future. If a value is not
-  /// specified, the token's expiration time will be set to a default value of 1
-  /// hour in the future.
-  core.String? expireTime;
-
-  /// Port for which the access token should be generated.
-  ///
-  /// If specified, the generated access token grants access only to the
-  /// specified port of the workstation. If specified, values must be within the
-  /// range \[1 - 65535\]. If not specified, the generated access token grants
-  /// access to all ports of the workstation.
-  ///
-  /// Optional.
-  core.int? port;
-
-  /// Desired lifetime duration of the access token.
-  ///
-  /// This value must be at most 24 hours. If a value is not specified, the
-  /// token's lifetime will be set to a default value of 1 hour.
-  core.String? ttl;
-
-  GenerateAccessTokenRequest({this.expireTime, this.port, this.ttl});
-
-  GenerateAccessTokenRequest.fromJson(core.Map json_)
-    : this(
-        expireTime: json_['expireTime'] as core.String?,
-        port: json_['port'] as core.int?,
-        ttl: json_['ttl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (port != null) 'port': port!,
-    if (ttl != null) 'ttl': ttl!,
-  };
-}
+typedef GenerateAccessTokenRequest = $GenerateAccessTokenRequest01;
 
 /// Response message for GenerateAccessToken.
-class GenerateAccessTokenResponse {
-  /// The generated bearer access token.
-  ///
-  /// To use this token, include it in an Authorization header of an HTTP
-  /// request sent to the associated workstation's hostname—for example,
-  /// `Authorization: Bearer `.
-  core.String? accessToken;
-
-  /// Time at which the generated token will expire.
-  core.String? expireTime;
-
-  GenerateAccessTokenResponse({this.accessToken, this.expireTime});
-
-  GenerateAccessTokenResponse.fromJson(core.Map json_)
-    : this(
-        accessToken: json_['accessToken'] as core.String?,
-        expireTime: json_['expireTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accessToken != null) 'accessToken': accessToken!,
-    if (expireTime != null) 'expireTime': expireTime!,
-  };
-}
+typedef GenerateAccessTokenResponse = $GenerateAccessTokenResponse;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -3281,124 +2835,13 @@ class Policy {
 ///
 /// Both first and last are inclusive. To specify a single port, both first and
 /// last should be the same.
-class PortRange {
-  /// Starting port number for the current range of ports.
-  ///
-  /// Valid ports are 22, 80, and ports within the range 1024-65535.
-  ///
-  /// Required.
-  core.int? first;
-
-  /// Ending port number for the current range of ports.
-  ///
-  /// Valid ports are 22, 80, and ports within the range 1024-65535.
-  ///
-  /// Required.
-  core.int? last;
-
-  PortRange({this.first, this.last});
-
-  PortRange.fromJson(core.Map json_)
-    : this(
-        first: json_['first'] as core.int?,
-        last: json_['last'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (first != null) 'first': first!,
-    if (last != null) 'last': last!,
-  };
-}
+typedef PortRange = $PortRange;
 
 /// Configuration options for private workstation clusters.
-class PrivateClusterConfig {
-  /// Additional projects that are allowed to attach to the workstation
-  /// cluster's service attachment.
-  ///
-  /// By default, the workstation cluster's project and the VPC host project (if
-  /// different) are allowed.
-  ///
-  /// Optional.
-  core.List<core.String>? allowedProjects;
-
-  /// Hostname for the workstation cluster.
-  ///
-  /// This field will be populated only when private endpoint is enabled. To
-  /// access workstations in the workstation cluster, create a new DNS zone
-  /// mapping this domain name to an internal IP address and a forwarding rule
-  /// mapping that address to the service attachment.
-  ///
-  /// Output only.
-  core.String? clusterHostname;
-
-  /// Whether Workstations endpoint is private.
-  ///
-  /// Immutable.
-  core.bool? enablePrivateEndpoint;
-
-  /// Service attachment URI for the workstation cluster.
-  ///
-  /// The service attachment is created when private endpoint is enabled. To
-  /// access workstations in the workstation cluster, configure access to the
-  /// managed service using
-  /// [Private Service Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
-  ///
-  /// Output only.
-  core.String? serviceAttachmentUri;
-
-  PrivateClusterConfig({
-    this.allowedProjects,
-    this.clusterHostname,
-    this.enablePrivateEndpoint,
-    this.serviceAttachmentUri,
-  });
-
-  PrivateClusterConfig.fromJson(core.Map json_)
-    : this(
-        allowedProjects:
-            (json_['allowedProjects'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        clusterHostname: json_['clusterHostname'] as core.String?,
-        enablePrivateEndpoint: json_['enablePrivateEndpoint'] as core.bool?,
-        serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedProjects != null) 'allowedProjects': allowedProjects!,
-    if (clusterHostname != null) 'clusterHostname': clusterHostname!,
-    if (enablePrivateEndpoint != null)
-      'enablePrivateEndpoint': enablePrivateEndpoint!,
-    if (serviceAttachmentUri != null)
-      'serviceAttachmentUri': serviceAttachmentUri!,
-  };
-}
+typedef PrivateClusterConfig = $PrivateClusterConfig;
 
 /// A readiness check to be performed on a workstation.
-class ReadinessCheck {
-  /// Path to which the request should be sent.
-  ///
-  /// Optional.
-  core.String? path;
-
-  /// Port to which the request should be sent.
-  ///
-  /// Optional.
-  core.int? port;
-
-  ReadinessCheck({this.path, this.port});
-
-  ReadinessCheck.fromJson(core.Map json_)
-    : this(
-        path: json_['path'] as core.String?,
-        port: json_['port'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-    if (port != null) 'port': port!,
-  };
-}
+typedef ReadinessCheck = $ReadinessCheck01;
 
 /// Runtime host for the workstation.
 class RuntimeHost {
@@ -3458,40 +2901,7 @@ class SetIamPolicyRequest {
 }
 
 /// Request message for StartWorkstation.
-class StartWorkstationRequest {
-  /// If set, the workstation starts using the boost configuration with the
-  /// specified ID.
-  ///
-  /// Optional.
-  core.String? boostConfig;
-
-  /// If set, the request will be rejected if the latest version of the
-  /// workstation on the server does not have this ETag.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  /// If set, validate the request and preview the review, but do not actually
-  /// apply it.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  StartWorkstationRequest({this.boostConfig, this.etag, this.validateOnly});
-
-  StartWorkstationRequest.fromJson(core.Map json_)
-    : this(
-        boostConfig: json_['boostConfig'] as core.String?,
-        etag: json_['etag'] as core.String?,
-        validateOnly: json_['validateOnly'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boostConfig != null) 'boostConfig': boostConfig!,
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
-}
+typedef StartWorkstationRequest = $StartWorkstationRequest;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -3503,32 +2913,7 @@ class StartWorkstationRequest {
 typedef Status = $Status00;
 
 /// Request message for StopWorkstation.
-class StopWorkstationRequest {
-  /// If set, the request will be rejected if the latest version of the
-  /// workstation on the server does not have this ETag.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  /// If set, validate the request and preview the review, but do not actually
-  /// apply it.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  StopWorkstationRequest({this.etag, this.validateOnly});
-
-  StopWorkstationRequest.fromJson(core.Map json_)
-    : this(
-        etag: json_['etag'] as core.String?,
-        validateOnly: json_['validateOnly'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
-}
+typedef StopWorkstationRequest = $StopWorkstationRequest;
 
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;

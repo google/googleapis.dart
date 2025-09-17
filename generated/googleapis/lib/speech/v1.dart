@@ -739,40 +739,10 @@ class SpeechResource {
   }
 }
 
-class ABNFGrammar {
-  /// All declarations and rules of an ABNF grammar broken up into multiple
-  /// strings that will end up concatenated.
-  core.List<core.String>? abnfStrings;
-
-  ABNFGrammar({this.abnfStrings});
-
-  ABNFGrammar.fromJson(core.Map json_)
-    : this(
-        abnfStrings:
-            (json_['abnfStrings'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (abnfStrings != null) 'abnfStrings': abnfStrings!,
-  };
-}
+typedef ABNFGrammar = $ABNFGrammar;
 
 /// An item of the class.
-class ClassItem {
-  /// The class item's value.
-  core.String? value;
-
-  ClassItem({this.value});
-
-  ClassItem.fromJson(core.Map json_)
-    : this(value: json_['value'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
-}
+typedef ClassItem = $ClassItem;
 
 /// Message sent by the client for the `CreateCustomClass` method.
 class CreateCustomClassRequest {
@@ -1016,35 +986,7 @@ class CustomClass {
 typedef Empty = $Empty;
 
 /// A single replacement configuration.
-class Entry {
-  /// Whether the search is case sensitive.
-  core.bool? caseSensitive;
-
-  /// What to replace with.
-  ///
-  /// Max length is 100 characters.
-  core.String? replace;
-
-  /// What to replace.
-  ///
-  /// Max length is 100 characters.
-  core.String? search;
-
-  Entry({this.caseSensitive, this.replace, this.search});
-
-  Entry.fromJson(core.Map json_)
-    : this(
-        caseSensitive: json_['caseSensitive'] as core.bool?,
-        replace: json_['replace'] as core.String?,
-        search: json_['search'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (caseSensitive != null) 'caseSensitive': caseSensitive!,
-    if (replace != null) 'replace': replace!,
-    if (search != null) 'search': search!,
-  };
-}
+typedef Entry = $Entry01;
 
 /// Message returned to the client by the `ListCustomClasses` method.
 class ListCustomClassesResponse {
@@ -1285,36 +1227,7 @@ class Operation {
 /// specify a region, use a
 /// [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints)
 /// with matching `us` or `eu` location value.
-class Phrase {
-  /// Hint Boost.
-  ///
-  /// Overrides the boost set at the phrase set level. Positive value will
-  /// increase the probability that a specific phrase will be recognized over
-  /// other similar sounding phrases. The higher the boost, the higher the
-  /// chance of false positive recognition as well. Negative boost will simply
-  /// be ignored. Though `boost` can accept a wide range of positive values,
-  /// most use cases are best served with values between 0 and 20. We recommend
-  /// using a binary search approach to finding the optimal value for your use
-  /// case as well as adding phrases both with and without boost to your
-  /// requests.
-  core.double? boost;
-
-  /// The phrase itself.
-  core.String? value;
-
-  Phrase({this.boost, this.value});
-
-  Phrase.fromJson(core.Map json_)
-    : this(
-        boost: (json_['boost'] as core.num?)?.toDouble(),
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boost != null) 'boost': boost!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Phrase = $Phrase01;
 
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases in the results.
@@ -1486,44 +1399,7 @@ class PhraseSet {
 /// Either `content` or `uri` must be supplied. Supplying both or neither
 /// returns google.rpc.Code.INVALID_ARGUMENT. See
 /// [content limits](https://cloud.google.com/speech-to-text/quotas#content).
-class RecognitionAudio {
-  /// The audio data bytes encoded as specified in `RecognitionConfig`.
-  ///
-  /// Note: as with all bytes fields, proto buffers use a pure binary
-  /// representation, whereas JSON representations use base64.
-  core.String? content;
-  core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
-
-  set contentAsBytes(core.List<core.int> bytes_) {
-    content = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// URI that points to a file that contains audio data bytes as specified in
-  /// `RecognitionConfig`.
-  ///
-  /// The file must not be compressed (for example, gzip). Currently, only
-  /// Google Cloud Storage URIs are supported, which must be specified in the
-  /// following format: `gs://bucket_name/object_name` (other URI formats return
-  /// google.rpc.Code.INVALID_ARGUMENT). For more information, see
-  /// [Request URIs](https://cloud.google.com/storage/docs/reference-uris).
-  core.String? uri;
-
-  RecognitionAudio({this.content, this.uri});
-
-  RecognitionAudio.fromJson(core.Map json_)
-    : this(
-        content: json_['content'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef RecognitionAudio = $RecognitionAudio;
 
 /// Provides information to the recognizer that specifies how to process the
 /// request.
@@ -2084,58 +1960,7 @@ class RecognizeResponse {
 }
 
 /// Config to enable speaker diarization.
-class SpeakerDiarizationConfig {
-  /// If 'true', enables speaker detection for each recognized word in the top
-  /// alternative of the recognition result using a speaker_label provided in
-  /// the WordInfo.
-  core.bool? enableSpeakerDiarization;
-
-  /// Maximum number of speakers in the conversation.
-  ///
-  /// This range gives you more flexibility by allowing the system to
-  /// automatically determine the correct number of speakers. If not set, the
-  /// default value is 6.
-  core.int? maxSpeakerCount;
-
-  /// Minimum number of speakers in the conversation.
-  ///
-  /// This range gives you more flexibility by allowing the system to
-  /// automatically determine the correct number of speakers. If not set, the
-  /// default value is 2.
-  core.int? minSpeakerCount;
-
-  /// Unused.
-  ///
-  /// Output only.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.int? speakerTag;
-
-  SpeakerDiarizationConfig({
-    this.enableSpeakerDiarization,
-    this.maxSpeakerCount,
-    this.minSpeakerCount,
-    this.speakerTag,
-  });
-
-  SpeakerDiarizationConfig.fromJson(core.Map json_)
-    : this(
-        enableSpeakerDiarization:
-            json_['enableSpeakerDiarization'] as core.bool?,
-        maxSpeakerCount: json_['maxSpeakerCount'] as core.int?,
-        minSpeakerCount: json_['minSpeakerCount'] as core.int?,
-        speakerTag: json_['speakerTag'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableSpeakerDiarization != null)
-      'enableSpeakerDiarization': enableSpeakerDiarization!,
-    if (maxSpeakerCount != null) 'maxSpeakerCount': maxSpeakerCount!,
-    if (minSpeakerCount != null) 'minSpeakerCount': minSpeakerCount!,
-    if (speakerTag != null) 'speakerTag': speakerTag!,
-  };
-}
+typedef SpeakerDiarizationConfig = $SpeakerDiarizationConfig;
 
 /// Speech adaptation configuration.
 class SpeechAdaptation {
@@ -2208,76 +2033,11 @@ class SpeechAdaptation {
 }
 
 /// Information on speech adaptation use in results
-class SpeechAdaptationInfo {
-  /// Whether there was a timeout when applying speech adaptation.
-  ///
-  /// If true, adaptation had no effect in the response transcript.
-  core.bool? adaptationTimeout;
-
-  /// If set, returns a message specifying which part of the speech adaptation
-  /// request timed out.
-  core.String? timeoutMessage;
-
-  SpeechAdaptationInfo({this.adaptationTimeout, this.timeoutMessage});
-
-  SpeechAdaptationInfo.fromJson(core.Map json_)
-    : this(
-        adaptationTimeout: json_['adaptationTimeout'] as core.bool?,
-        timeoutMessage: json_['timeoutMessage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adaptationTimeout != null) 'adaptationTimeout': adaptationTimeout!,
-    if (timeoutMessage != null) 'timeoutMessage': timeoutMessage!,
-  };
-}
+typedef SpeechAdaptationInfo = $SpeechAdaptationInfo;
 
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases in the results.
-class SpeechContext {
-  /// Hint Boost.
-  ///
-  /// Positive value will increase the probability that a specific phrase will
-  /// be recognized over other similar sounding phrases. The higher the boost,
-  /// the higher the chance of false positive recognition as well. Negative
-  /// boost values would correspond to anti-biasing. Anti-biasing is not
-  /// enabled, so negative boost will simply be ignored. Though `boost` can
-  /// accept a wide range of positive values, most use cases are best served
-  /// with values between 0 and 20. We recommend using a binary search approach
-  /// to finding the optimal value for your use case.
-  core.double? boost;
-
-  /// A list of strings containing words and phrases "hints" so that the speech
-  /// recognition is more likely to recognize them.
-  ///
-  /// This can be used to improve the accuracy for specific words and phrases,
-  /// for example, if specific commands are typically spoken by the user. This
-  /// can also be used to add additional words to the vocabulary of the
-  /// recognizer. See
-  /// [usage limits](https://cloud.google.com/speech-to-text/quotas#content).
-  /// List items can also be set to classes for groups of words that represent
-  /// common concepts that occur in natural language. For example, rather than
-  /// providing phrase hints for every month of the year, using the $MONTH class
-  /// improves the likelihood of correctly transcribing audio that includes
-  /// months.
-  core.List<core.String>? phrases;
-
-  SpeechContext({this.boost, this.phrases});
-
-  SpeechContext.fromJson(core.Map json_)
-    : this(
-        boost: (json_['boost'] as core.num?)?.toDouble(),
-        phrases:
-            (json_['phrases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boost != null) 'boost': boost!,
-    if (phrases != null) 'phrases': phrases!,
-  };
-}
+typedef SpeechContext = $SpeechContext02;
 
 /// Alternative hypotheses (a.k.a. n-best list).
 class SpeechRecognitionAlternative {
@@ -2429,103 +2189,7 @@ class TranscriptNormalization {
 }
 
 /// Specifies an optional destination for the recognition results.
-class TranscriptOutputConfig {
-  /// Specifies a Cloud Storage URI for the recognition results.
-  ///
-  /// Must be specified in the format: `gs://bucket_name/object_name`, and the
-  /// bucket must already exist.
-  core.String? gcsUri;
-
-  TranscriptOutputConfig({this.gcsUri});
-
-  TranscriptOutputConfig.fromJson(core.Map json_)
-    : this(gcsUri: json_['gcsUri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gcsUri != null) 'gcsUri': gcsUri!,
-  };
-}
+typedef TranscriptOutputConfig = $TranscriptOutputConfig;
 
 /// Word-specific information for recognized words.
-class WordInfo {
-  /// The confidence estimate between 0.0 and 1.0.
-  ///
-  /// A higher number indicates an estimated greater likelihood that the
-  /// recognized words are correct. This field is set only for the top
-  /// alternative of a non-streaming result or, of a streaming result where
-  /// `is_final=true`. This field is not guaranteed to be accurate and users
-  /// should not rely on it to be always provided. The default of 0.0 is a
-  /// sentinel value indicating `confidence` was not set.
-  core.double? confidence;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the end of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? endTime;
-
-  /// A label value assigned for every unique speaker within the audio.
-  ///
-  /// This field specifies which speaker was detected to have spoken this word.
-  /// For some models, like medical_conversation this can be actual speaker
-  /// role, for example "patient" or "provider", but generally this would be a
-  /// number identifying a speaker. This field is only set if
-  /// enable_speaker_diarization = 'true' and only for the top alternative.
-  ///
-  /// Output only.
-  core.String? speakerLabel;
-
-  /// A distinct integer value is assigned for every speaker within the audio.
-  ///
-  /// This field specifies which one of those speakers was detected to have
-  /// spoken this word. Value ranges from '1' to diarization_speaker_count.
-  /// speaker_tag is set if enable_speaker_diarization = 'true' and only for the
-  /// top alternative. Note: Use speaker_label instead.
-  ///
-  /// Output only.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.int? speakerTag;
-
-  /// Time offset relative to the beginning of the audio, and corresponding to
-  /// the start of the spoken word.
-  ///
-  /// This field is only set if `enable_word_time_offsets=true` and only in the
-  /// top hypothesis. This is an experimental feature and the accuracy of the
-  /// time offset can vary.
-  core.String? startTime;
-
-  /// The word corresponding to this set of information.
-  core.String? word;
-
-  WordInfo({
-    this.confidence,
-    this.endTime,
-    this.speakerLabel,
-    this.speakerTag,
-    this.startTime,
-    this.word,
-  });
-
-  WordInfo.fromJson(core.Map json_)
-    : this(
-        confidence: (json_['confidence'] as core.num?)?.toDouble(),
-        endTime: json_['endTime'] as core.String?,
-        speakerLabel: json_['speakerLabel'] as core.String?,
-        speakerTag: json_['speakerTag'] as core.int?,
-        startTime: json_['startTime'] as core.String?,
-        word: json_['word'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidence != null) 'confidence': confidence!,
-    if (endTime != null) 'endTime': endTime!,
-    if (speakerLabel != null) 'speakerLabel': speakerLabel!,
-    if (speakerTag != null) 'speakerTag': speakerTag!,
-    if (startTime != null) 'startTime': startTime!,
-    if (word != null) 'word': word!,
-  };
-}
+typedef WordInfo = $WordInfo;

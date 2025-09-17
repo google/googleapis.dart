@@ -8123,38 +8123,7 @@ class GoogleCloudApihubV1GoogleServiceAccountConfig {
 }
 
 /// An aggregation of HTTP header occurrences.
-class GoogleCloudApihubV1Header {
-  /// The number of occurrences of this Header across transactions.
-  core.String? count;
-
-  /// Data type of header
-  /// Possible string values are:
-  /// - "DATA_TYPE_UNSPECIFIED" : Unspecified data type
-  /// - "BOOL" : Boolean data type
-  /// - "INTEGER" : Integer data type
-  /// - "FLOAT" : Float data type
-  /// - "STRING" : String data type
-  /// - "UUID" : UUID data type
-  core.String? dataType;
-
-  /// Header name.
-  core.String? name;
-
-  GoogleCloudApihubV1Header({this.count, this.dataType, this.name});
-
-  GoogleCloudApihubV1Header.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.String?,
-        dataType: json_['dataType'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (dataType != null) 'dataType': dataType!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef GoogleCloudApihubV1Header = $Header01;
 
 /// Host project registration refers to the registration of a Google cloud
 /// project with Api Hub as a host project.

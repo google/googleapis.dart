@@ -1384,7 +1384,7 @@ class ProjectsTestersResource {
 }
 
 /// Information to read/write to blobstore2.
-typedef GdataBlobstore2Info = $Blobstore2Info;
+typedef GdataBlobstore2Info = $Blobstore2Info00;
 
 /// A sequence of media data references representing composite data.
 ///
@@ -1550,7 +1550,7 @@ class GdataCompositeMedia {
 /// Scotty's best_guess, but this extended information provides the backend with
 /// more information so that it can make a better decision if needed. This is
 /// only used on media upload requests from Scotty.
-typedef GdataContentTypeInfo = $ContentTypeInfo;
+typedef GdataContentTypeInfo = $ContentTypeInfo00;
 
 /// Backend response for a Diff get checksums response.
 ///
@@ -1740,10 +1740,10 @@ class GdataDiffUploadResponse {
 ///
 /// For details on the Scotty Diff protocol, visit
 /// http://go/scotty-diff-protocol.
-typedef GdataDiffVersionResponse = $DiffVersionResponse;
+typedef GdataDiffVersionResponse = $DiffVersionResponse00;
 
 /// Parameters specific to media downloads.
-typedef GdataDownloadParameters = $DownloadParameters;
+typedef GdataDownloadParameters = $DownloadParameters00;
 
 /// A reference to data stored on the filesystem, on GFS or in blobstore.
 class GdataMedia {
@@ -2156,7 +2156,7 @@ class GdataMedia {
 /// This is a copy of the tech.blob.ObjectId proto, which could not be used
 /// directly here due to transitive closure issues with JavaScript support; see
 /// http://b/8801763.
-typedef GdataObjectId = $ObjectId;
+typedef GdataObjectId = $ObjectId00;
 
 /// Android App Bundle (AAB) information for a Firebase app.
 class GoogleFirebaseAppdistroV1AabInfo {

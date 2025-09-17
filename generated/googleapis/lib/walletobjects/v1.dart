@@ -5160,7 +5160,7 @@ class BarcodeSectionDetail {
 }
 
 /// Information to read/write to blobstore2.
-typedef Blobstore2Info = $Blobstore2Info;
+typedef Blobstore2Info = $Blobstore2Info00;
 
 class BoardingAndSeatingInfo {
   /// Set this field only if this flight boards through more than one door or
@@ -5827,7 +5827,7 @@ class CompositeMedia {
 /// Scotty's best_guess, but this extended information provides the backend with
 /// more information so that it can make a better decision if needed. This is
 /// only used on media upload requests from Scotty.
-typedef ContentTypeInfo = $ContentTypeInfo;
+typedef ContentTypeInfo = $ContentTypeInfo00;
 
 class DateTime {
   /// An ISO 8601 extended format date/time.
@@ -6115,7 +6115,7 @@ class DiffUploadResponse {
 ///
 /// For details on the Scotty Diff protocol, visit
 /// http://go/scotty-diff-protocol.
-typedef DiffVersionResponse = $DiffVersionResponse;
+typedef DiffVersionResponse = $DiffVersionResponse00;
 
 /// Information about how a class may be discovered and instantiated from within
 /// the Google Wallet app.
@@ -6238,7 +6238,7 @@ class DiscoverableProgramMerchantSignupInfo {
 }
 
 /// Parameters specific to media downloads.
-typedef DownloadParameters = $DownloadParameters;
+typedef DownloadParameters = $DownloadParameters00;
 
 class EventDateTime {
   /// A custom label to use for the doors open value (`doorsOpen`) on the card
@@ -13825,124 +13825,7 @@ class Media {
 }
 
 /// Extra information added to operations that support Scotty media requests.
-class MediaRequestInfo {
-  /// The number of current bytes uploaded or downloaded.
-  core.String? currentBytes;
-
-  /// Data to be copied to backend requests.
-  ///
-  /// Custom data is returned to Scotty in the agent_state field, which Scotty
-  /// will then provide in subsequent upload notifications.
-  core.String? customData;
-
-  /// Set if the http request info is diff encoded.
-  ///
-  /// The value of this field is the version number of the base revision. This
-  /// is corresponding to Apiary's mediaDiffObjectVersion
-  /// (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java).
-  /// See go/esf-scotty-diff-upload for more information.
-  core.String? diffObjectVersion;
-
-  /// The existence of the final_status field indicates that this is the last
-  /// call to the agent for this request_id.
-  ///
-  /// http://google3/uploader/agent/scotty_agent.proto?l=737&rcl=347601929
-  core.int? finalStatus;
-
-  /// The type of notification received from Scotty.
-  /// Possible string values are:
-  /// - "START" : Such requests signals the start of a request containing media
-  /// upload. Only the media field(s) in the inserted/updated resource are set.
-  /// The response should either return an error or succeed. On success,
-  /// responses don't need to contain anything.
-  /// - "PROGRESS" : Such requests signals that the upload has progressed and
-  /// that the backend might want to access the media file specified in relevant
-  /// fields in the resource. Only the media field(s) in the inserted/updated
-  /// resource are set. The response should either return an error or succeed.
-  /// On success, responses don't need to contain anything.
-  /// - "END" : Such requests signals the end of a request containing media
-  /// upload. END should be handled just like normal Insert/Upload requests,
-  /// that is, they should process the request and return a complete resource in
-  /// the response. Pointers to media data (a GFS path usually) appear in the
-  /// relevant fields in the inserted/updated resource. See gdata.Media in
-  /// data.proto.
-  /// - "RESPONSE_SENT" : Such requests occur after an END and signal that the
-  /// response has been sent back to the client. RESPONSE_SENT is only sent to
-  /// the backend if it is configured to receive them. The response does not
-  /// need to contain anything.
-  /// - "ERROR" : Such requests indicate that an error occurred while processing
-  /// the request. ERROR is only sent to the backend if it is configured to
-  /// receive them. It is not guaranteed that all errors will result in this
-  /// notification to the backend, even if the backend requests them. Since
-  /// these requests are just for informational purposes, the response does not
-  /// need to contain anything.
-  core.String? notificationType;
-
-  /// The Scotty request ID.
-  core.String? requestId;
-
-  /// The partition of the Scotty server handling this request.
-  ///
-  /// type is uploader_service.RequestReceivedParamsServingInfo
-  /// LINT.IfChange(request_received_params_serving_info_annotations)
-  /// LINT.ThenChange()
-  core.String? requestReceivedParamsServingInfo;
-  core.List<core.int> get requestReceivedParamsServingInfoAsBytes =>
-      convert.base64.decode(requestReceivedParamsServingInfo!);
-
-  set requestReceivedParamsServingInfoAsBytes(core.List<core.int> bytes_) {
-    requestReceivedParamsServingInfo = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The total size of the file.
-  core.String? totalBytes;
-
-  /// Whether the total bytes field contains an estimated data.
-  core.bool? totalBytesIsEstimated;
-
-  MediaRequestInfo({
-    this.currentBytes,
-    this.customData,
-    this.diffObjectVersion,
-    this.finalStatus,
-    this.notificationType,
-    this.requestId,
-    this.requestReceivedParamsServingInfo,
-    this.totalBytes,
-    this.totalBytesIsEstimated,
-  });
-
-  MediaRequestInfo.fromJson(core.Map json_)
-    : this(
-        currentBytes: json_['currentBytes'] as core.String?,
-        customData: json_['customData'] as core.String?,
-        diffObjectVersion: json_['diffObjectVersion'] as core.String?,
-        finalStatus: json_['finalStatus'] as core.int?,
-        notificationType: json_['notificationType'] as core.String?,
-        requestId: json_['requestId'] as core.String?,
-        requestReceivedParamsServingInfo:
-            json_['requestReceivedParamsServingInfo'] as core.String?,
-        totalBytes: json_['totalBytes'] as core.String?,
-        totalBytesIsEstimated: json_['totalBytesIsEstimated'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (currentBytes != null) 'currentBytes': currentBytes!,
-    if (customData != null) 'customData': customData!,
-    if (diffObjectVersion != null) 'diffObjectVersion': diffObjectVersion!,
-    if (finalStatus != null) 'finalStatus': finalStatus!,
-    if (notificationType != null) 'notificationType': notificationType!,
-    if (requestId != null) 'requestId': requestId!,
-    if (requestReceivedParamsServingInfo != null)
-      'requestReceivedParamsServingInfo': requestReceivedParamsServingInfo!,
-    if (totalBytes != null) 'totalBytes': totalBytes!,
-    if (totalBytesIsEstimated != null)
-      'totalBytesIsEstimated': totalBytesIsEstimated!,
-  };
-}
+typedef MediaRequestInfo = $MediaRequestInfo;
 
 /// Locations of interest for this class or object.
 ///
@@ -14240,7 +14123,7 @@ class Notifications {
 /// This is a copy of the tech.blob.ObjectId proto, which could not be used
 /// directly here due to transitive closure issues with JavaScript support; see
 /// http://b/8801763.
-typedef ObjectId = $ObjectId;
+typedef ObjectId = $ObjectId00;
 
 class OfferClass {
   /// Use `multipleDevicesAndHoldersAllowedStatus` instead.

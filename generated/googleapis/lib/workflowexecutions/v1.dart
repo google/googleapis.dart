@@ -1150,32 +1150,7 @@ class NavigationInfo {
 
 /// Position contains source position information about the stack trace element
 /// such as line number, column number and length of the code block in bytes.
-class Position {
-  /// The source code column position (of the line) the current instruction was
-  /// generated from.
-  core.String? column;
-
-  /// The number of bytes of source code making up this stack trace element.
-  core.String? length;
-
-  /// The source code line number the current instruction was generated from.
-  core.String? line;
-
-  Position({this.column, this.length, this.line});
-
-  Position.fromJson(core.Map json_)
-    : this(
-        column: json_['column'] as core.String?,
-        length: json_['length'] as core.String?,
-        line: json_['line'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (column != null) 'column': column!,
-    if (length != null) 'length': length!,
-    if (line != null) 'line': line!,
-  };
-}
+typedef Position = $Position01;
 
 /// A message that is published by publishers and consumed by subscribers.
 ///
@@ -1279,26 +1254,7 @@ class Status {
 }
 
 /// Represents a step of the workflow this execution is running.
-class Step {
-  /// Name of a routine within the workflow.
-  core.String? routine;
-
-  /// Name of a step within the routine.
-  core.String? step;
-
-  Step({this.routine, this.step});
-
-  Step.fromJson(core.Map json_)
-    : this(
-        routine: json_['routine'] as core.String?,
-        step: json_['step'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (routine != null) 'routine': routine!,
-    if (step != null) 'step': step!,
-  };
-}
+typedef Step = $Step;
 
 /// An StepEntry contains debugging information for a step transition in a
 /// workflow execution.

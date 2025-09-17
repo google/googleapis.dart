@@ -3222,57 +3222,16 @@ class PoliciesResource {
 /// The request for creating an IdpCredential with its associated payload.
 ///
 /// An InboundSamlSsoProfile can own up to 2 credentials.
-class AddIdpCredentialRequest {
-  /// PEM encoded x509 certificate containing the public key for verifying IdP
-  /// signatures.
-  core.String? pemData;
-
-  AddIdpCredentialRequest({this.pemData});
-
-  AddIdpCredentialRequest.fromJson(core.Map json_)
-    : this(pemData: json_['pemData'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pemData != null) 'pemData': pemData!,
-  };
-}
+typedef AddIdpCredentialRequest = $AddIdpCredentialRequest;
 
 /// Request to cancel sent invitation for target email in UserInvitation.
 typedef CancelUserInvitationRequest = $Empty;
 
 /// The response message for MembershipsService.CheckTransitiveMembership.
-class CheckTransitiveMembershipResponse {
-  /// Response does not include the possible roles of a member since the
-  /// behavior of this rpc is not all-or-nothing unlike the other rpcs.
-  ///
-  /// So, it may not be possible to list all the roles definitively, due to
-  /// possible lack of authorization in some of the paths.
-  core.bool? hasMembership;
-
-  CheckTransitiveMembershipResponse({this.hasMembership});
-
-  CheckTransitiveMembershipResponse.fromJson(core.Map json_)
-    : this(hasMembership: json_['hasMembership'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hasMembership != null) 'hasMembership': hasMembership!,
-  };
-}
+typedef CheckTransitiveMembershipResponse = $CheckTransitiveMembershipResponse;
 
 /// Information of a DSA public key.
-class DsaPublicKeyInfo {
-  /// Key size in bits (size of parameter P).
-  core.int? keySize;
-
-  DsaPublicKeyInfo({this.keySize});
-
-  DsaPublicKeyInfo.fromJson(core.Map json_)
-    : this(keySize: json_['keySize'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keySize != null) 'keySize': keySize!,
-  };
-}
+typedef DsaPublicKeyInfo = $DsaPublicKeyInfo;
 
 /// Dynamic group metadata like queries and status.
 class DynamicGroupMetadata {
@@ -3348,38 +3307,7 @@ class DynamicGroupQuery {
 }
 
 /// The current status of a dynamic group along with timestamp.
-class DynamicGroupStatus {
-  /// Status of the dynamic group.
-  /// Possible string values are:
-  /// - "STATUS_UNSPECIFIED" : Default.
-  /// - "UP_TO_DATE" : The dynamic group is up-to-date.
-  /// - "UPDATING_MEMBERSHIPS" : The dynamic group has just been created and
-  /// memberships are being updated.
-  /// - "INVALID_QUERY" : Group is in an unrecoverable state and its memberships
-  /// can't be updated.
-  core.String? status;
-
-  /// The latest time at which the dynamic group is guaranteed to be in the
-  /// given status.
-  ///
-  /// If status is `UP_TO_DATE`, the latest time at which the dynamic group was
-  /// confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time
-  /// at which dynamic group was created.
-  core.String? statusTime;
-
-  DynamicGroupStatus({this.status, this.statusTime});
-
-  DynamicGroupStatus.fromJson(core.Map json_)
-    : this(
-        status: json_['status'] as core.String?,
-        statusTime: json_['statusTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (status != null) 'status': status!,
-    if (statusTime != null) 'statusTime': statusTime!,
-  };
-}
+typedef DynamicGroupStatus = $DynamicGroupStatus;
 
 /// A unique identifier for an entity in the Cloud Identity Groups API.
 ///
@@ -3421,104 +3349,16 @@ class EntityKey {
 }
 
 /// The `MembershipRole` expiry details.
-class ExpiryDetail {
-  /// The time at which the `MembershipRole` will expire.
-  core.String? expireTime;
-
-  ExpiryDetail({this.expireTime});
-
-  ExpiryDetail.fromJson(core.Map json_)
-    : this(expireTime: json_['expireTime'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expireTime != null) 'expireTime': expireTime!,
-  };
-}
+typedef ExpiryDetail = $ExpiryDetail;
 
 /// Resource representing the Android specific attributes of a Device.
-class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
-  /// Whether the device passes Android CTS compliance.
-  core.bool? ctsProfileMatch;
-
-  /// Whether applications from unknown sources can be installed on device.
-  core.bool? enabledUnknownSources;
-
-  /// Whether any potentially harmful apps were detected on the device.
-  core.bool? hasPotentiallyHarmfulApps;
-
-  /// Whether this account is on an owner/primary profile.
-  ///
-  /// For phones, only true for owner profiles. Android 4+ devices can have
-  /// secondary or restricted user profiles.
-  core.bool? ownerProfileAccount;
-
-  /// Ownership privileges on device.
-  /// Possible string values are:
-  /// - "OWNERSHIP_PRIVILEGE_UNSPECIFIED" : Ownership privilege is not set.
-  /// - "DEVICE_ADMINISTRATOR" : Active device administrator privileges on the
-  /// device.
-  /// - "PROFILE_OWNER" : Profile Owner privileges. The account is in a managed
-  /// corporate profile.
-  /// - "DEVICE_OWNER" : Device Owner privileges on the device.
-  core.String? ownershipPrivilege;
-
-  /// Whether device supports Android work profiles.
-  ///
-  /// If false, this service will not block access to corp data even if an
-  /// administrator turns on the "Enforce Work Profile" policy.
-  core.bool? supportsWorkProfile;
-
-  /// Whether Android verified boot status is GREEN.
-  core.bool? verifiedBoot;
-
-  /// Whether Google Play Protect Verify Apps is enabled.
-  core.bool? verifyAppsEnabled;
-
-  GoogleAppsCloudidentityDevicesV1AndroidAttributes({
-    this.ctsProfileMatch,
-    this.enabledUnknownSources,
-    this.hasPotentiallyHarmfulApps,
-    this.ownerProfileAccount,
-    this.ownershipPrivilege,
-    this.supportsWorkProfile,
-    this.verifiedBoot,
-    this.verifyAppsEnabled,
-  });
-
-  GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(core.Map json_)
-    : this(
-        ctsProfileMatch: json_['ctsProfileMatch'] as core.bool?,
-        enabledUnknownSources: json_['enabledUnknownSources'] as core.bool?,
-        hasPotentiallyHarmfulApps:
-            json_['hasPotentiallyHarmfulApps'] as core.bool?,
-        ownerProfileAccount: json_['ownerProfileAccount'] as core.bool?,
-        ownershipPrivilege: json_['ownershipPrivilege'] as core.String?,
-        supportsWorkProfile: json_['supportsWorkProfile'] as core.bool?,
-        verifiedBoot: json_['verifiedBoot'] as core.bool?,
-        verifyAppsEnabled: json_['verifyAppsEnabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ctsProfileMatch != null) 'ctsProfileMatch': ctsProfileMatch!,
-    if (enabledUnknownSources != null)
-      'enabledUnknownSources': enabledUnknownSources!,
-    if (hasPotentiallyHarmfulApps != null)
-      'hasPotentiallyHarmfulApps': hasPotentiallyHarmfulApps!,
-    if (ownerProfileAccount != null)
-      'ownerProfileAccount': ownerProfileAccount!,
-    if (ownershipPrivilege != null) 'ownershipPrivilege': ownershipPrivilege!,
-    if (supportsWorkProfile != null)
-      'supportsWorkProfile': supportsWorkProfile!,
-    if (verifiedBoot != null) 'verifiedBoot': verifiedBoot!,
-    if (verifyAppsEnabled != null) 'verifyAppsEnabled': verifyAppsEnabled!,
-  };
-}
+typedef GoogleAppsCloudidentityDevicesV1AndroidAttributes = $AndroidAttributes;
 
 /// Request message for approving the device to access user data.
-typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request01;
+typedef GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest = $Request04;
 
 /// Request message for blocking account on device.
-typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request01;
+typedef GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest = $Request04;
 
 /// Contains information about browser profiles reported by the
 /// [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
@@ -3567,181 +3407,14 @@ class GoogleAppsCloudidentityDevicesV1BrowserAttributes {
 
 /// Browser-specific fields reported by the
 /// [Endpoint Verification extension](https://chromewebstore.google.com/detail/endpoint-verification/callobklhcbilhphinckomhgkigmfocg?pli=1).
-class GoogleAppsCloudidentityDevicesV1BrowserInfo {
-  /// Browser's management state.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "UNSPECIFIED" : Management state is not specified.
-  /// - "UNMANAGED" : Browser/Profile is not managed by any customer.
-  /// - "MANAGED_BY_OTHER_DOMAIN" : Browser/Profile is managed, but by some
-  /// other customer.
-  /// - "PROFILE_MANAGED" : Profile is managed by customer.
-  /// - "BROWSER_MANAGED" : Browser is managed by customer.
-  core.String? browserManagementState;
-
-  /// Version of the request initiating browser.
-  ///
-  /// E.g. `91.0.4442.4`.
-  core.String? browserVersion;
-
-  /// Current state of \[built-in DNS
-  /// client\](https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled).
-  core.bool? isBuiltInDnsClientEnabled;
-
-  /// Current state of
-  /// [bulk data analysis](https://chromeenterprise.google/policies/#OnBulkDataEntryEnterpriseConnector).
-  ///
-  /// Set to true if provider list from Chrome is non-empty.
-  core.bool? isBulkDataEntryAnalysisEnabled;
-
-  /// Current state of
-  /// [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
-  core.bool? isChromeCleanupEnabled;
-
-  /// Current state of
-  /// [Chrome Remote Desktop app](https://chromeenterprise.google/policies/#URLBlocklist).
-  core.bool? isChromeRemoteDesktopAppBlocked;
-
-  /// Current state of
-  /// [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector).
-  ///
-  /// Set to true if provider list from Chrome is non-empty.
-  core.bool? isFileDownloadAnalysisEnabled;
-
-  /// Current state of
-  /// [file upload analysis](https://chromeenterprise.google/policies/#OnFileAttachedEnterpriseConnector).
-  ///
-  /// Set to true if provider list from Chrome is non-empty.
-  core.bool? isFileUploadAnalysisEnabled;
-
-  /// Current state of \[real-time URL
-  /// check\](https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode).
-  ///
-  /// Set to true if provider list from Chrome is non-empty.
-  core.bool? isRealtimeUrlCheckEnabled;
-
-  /// Current state of
-  /// [security event analysis](https://chromeenterprise.google/policies/#OnSecurityEventEnterpriseConnector).
-  ///
-  /// Set to true if provider list from Chrome is non-empty.
-  core.bool? isSecurityEventAnalysisEnabled;
-
-  /// Current state of
-  /// [site isolation](https://chromeenterprise.google/policies/?policy=IsolateOrigins).
-  core.bool? isSiteIsolationEnabled;
-
-  /// Current state of \[third-party
-  /// blocking\](https://chromeenterprise.google/policies/#ThirdPartyBlockingEnabled).
-  core.bool? isThirdPartyBlockingEnabled;
-
-  /// Current state of
-  /// [password protection trigger](https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger).
-  /// Possible string values are:
-  /// - "PASSWORD_PROTECTION_TRIGGER_UNSPECIFIED" : Password protection is not
-  /// specified.
-  /// - "PROTECTION_OFF" : Password reuse is never detected.
-  /// - "PASSWORD_REUSE" : Warning is shown when the user reuses their protected
-  /// password on a non-allowed site.
-  /// - "PHISHING_REUSE" : Warning is shown when the user reuses their protected
-  /// password on a phishing site.
-  core.String? passwordProtectionWarningTrigger;
-
-  /// Current state of
-  /// [Safe Browsing protection level](https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel).
-  /// Possible string values are:
-  /// - "SAFE_BROWSING_LEVEL_UNSPECIFIED" : Browser protection level is not
-  /// specified.
-  /// - "DISABLED" : No protection against dangerous websites, downloads, and
-  /// extensions.
-  /// - "STANDARD" : Standard protection against websites, downloads, and
-  /// extensions that are known to be dangerous.
-  /// - "ENHANCED" : Faster, proactive protection against dangerous websites,
-  /// downloads, and extensions.
-  core.String? safeBrowsingProtectionLevel;
-
-  GoogleAppsCloudidentityDevicesV1BrowserInfo({
-    this.browserManagementState,
-    this.browserVersion,
-    this.isBuiltInDnsClientEnabled,
-    this.isBulkDataEntryAnalysisEnabled,
-    this.isChromeCleanupEnabled,
-    this.isChromeRemoteDesktopAppBlocked,
-    this.isFileDownloadAnalysisEnabled,
-    this.isFileUploadAnalysisEnabled,
-    this.isRealtimeUrlCheckEnabled,
-    this.isSecurityEventAnalysisEnabled,
-    this.isSiteIsolationEnabled,
-    this.isThirdPartyBlockingEnabled,
-    this.passwordProtectionWarningTrigger,
-    this.safeBrowsingProtectionLevel,
-  });
-
-  GoogleAppsCloudidentityDevicesV1BrowserInfo.fromJson(core.Map json_)
-    : this(
-        browserManagementState: json_['browserManagementState'] as core.String?,
-        browserVersion: json_['browserVersion'] as core.String?,
-        isBuiltInDnsClientEnabled:
-            json_['isBuiltInDnsClientEnabled'] as core.bool?,
-        isBulkDataEntryAnalysisEnabled:
-            json_['isBulkDataEntryAnalysisEnabled'] as core.bool?,
-        isChromeCleanupEnabled: json_['isChromeCleanupEnabled'] as core.bool?,
-        isChromeRemoteDesktopAppBlocked:
-            json_['isChromeRemoteDesktopAppBlocked'] as core.bool?,
-        isFileDownloadAnalysisEnabled:
-            json_['isFileDownloadAnalysisEnabled'] as core.bool?,
-        isFileUploadAnalysisEnabled:
-            json_['isFileUploadAnalysisEnabled'] as core.bool?,
-        isRealtimeUrlCheckEnabled:
-            json_['isRealtimeUrlCheckEnabled'] as core.bool?,
-        isSecurityEventAnalysisEnabled:
-            json_['isSecurityEventAnalysisEnabled'] as core.bool?,
-        isSiteIsolationEnabled: json_['isSiteIsolationEnabled'] as core.bool?,
-        isThirdPartyBlockingEnabled:
-            json_['isThirdPartyBlockingEnabled'] as core.bool?,
-        passwordProtectionWarningTrigger:
-            json_['passwordProtectionWarningTrigger'] as core.String?,
-        safeBrowsingProtectionLevel:
-            json_['safeBrowsingProtectionLevel'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (browserManagementState != null)
-      'browserManagementState': browserManagementState!,
-    if (browserVersion != null) 'browserVersion': browserVersion!,
-    if (isBuiltInDnsClientEnabled != null)
-      'isBuiltInDnsClientEnabled': isBuiltInDnsClientEnabled!,
-    if (isBulkDataEntryAnalysisEnabled != null)
-      'isBulkDataEntryAnalysisEnabled': isBulkDataEntryAnalysisEnabled!,
-    if (isChromeCleanupEnabled != null)
-      'isChromeCleanupEnabled': isChromeCleanupEnabled!,
-    if (isChromeRemoteDesktopAppBlocked != null)
-      'isChromeRemoteDesktopAppBlocked': isChromeRemoteDesktopAppBlocked!,
-    if (isFileDownloadAnalysisEnabled != null)
-      'isFileDownloadAnalysisEnabled': isFileDownloadAnalysisEnabled!,
-    if (isFileUploadAnalysisEnabled != null)
-      'isFileUploadAnalysisEnabled': isFileUploadAnalysisEnabled!,
-    if (isRealtimeUrlCheckEnabled != null)
-      'isRealtimeUrlCheckEnabled': isRealtimeUrlCheckEnabled!,
-    if (isSecurityEventAnalysisEnabled != null)
-      'isSecurityEventAnalysisEnabled': isSecurityEventAnalysisEnabled!,
-    if (isSiteIsolationEnabled != null)
-      'isSiteIsolationEnabled': isSiteIsolationEnabled!,
-    if (isThirdPartyBlockingEnabled != null)
-      'isThirdPartyBlockingEnabled': isThirdPartyBlockingEnabled!,
-    if (passwordProtectionWarningTrigger != null)
-      'passwordProtectionWarningTrigger': passwordProtectionWarningTrigger!,
-    if (safeBrowsingProtectionLevel != null)
-      'safeBrowsingProtectionLevel': safeBrowsingProtectionLevel!,
-  };
-}
+typedef GoogleAppsCloudidentityDevicesV1BrowserInfo = $BrowserInfo;
 
 /// Request message for cancelling an unfinished device wipe.
-typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request01;
+typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest = $Request04;
 
 /// Request message for cancelling an unfinished user account wipe.
 typedef GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest =
-    $Request01;
+    $Request04;
 
 /// Stores information about a certificate.
 class GoogleAppsCloudidentityDevicesV1CertificateAttributes {
@@ -3825,42 +3498,8 @@ class GoogleAppsCloudidentityDevicesV1CertificateAttributes {
 }
 
 /// CertificateTemplate (v3 Extension in X.509).
-class GoogleAppsCloudidentityDevicesV1CertificateTemplate {
-  /// The template id of the template.
-  ///
-  /// Example:
-  /// "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047".
-  core.String? id;
-
-  /// The Major version of the template.
-  ///
-  /// Example: 100.
-  core.int? majorVersion;
-
-  /// The minor version of the template.
-  ///
-  /// Example: 12.
-  core.int? minorVersion;
-
-  GoogleAppsCloudidentityDevicesV1CertificateTemplate({
-    this.id,
-    this.majorVersion,
-    this.minorVersion,
-  });
-
-  GoogleAppsCloudidentityDevicesV1CertificateTemplate.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        majorVersion: json_['majorVersion'] as core.int?,
-        minorVersion: json_['minorVersion'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (majorVersion != null) 'majorVersion': majorVersion!,
-    if (minorVersion != null) 'minorVersion': minorVersion!,
-  };
-}
+typedef GoogleAppsCloudidentityDevicesV1CertificateTemplate =
+    $CertificateTemplate;
 
 /// Represents the state associated with an API client calling the Devices API.
 ///
@@ -4021,35 +3660,8 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
 }
 
 /// Additional custom attribute values may be one of these types
-class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
-  /// Represents a boolean value.
-  core.bool? boolValue;
-
-  /// Represents a double value.
-  core.double? numberValue;
-
-  /// Represents a string value.
-  core.String? stringValue;
-
-  GoogleAppsCloudidentityDevicesV1CustomAttributeValue({
-    this.boolValue,
-    this.numberValue,
-    this.stringValue,
-  });
-
-  GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(core.Map json_)
-    : this(
-        boolValue: json_['boolValue'] as core.bool?,
-        numberValue: (json_['numberValue'] as core.num?)?.toDouble(),
-        stringValue: json_['stringValue'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (boolValue != null) 'boolValue': boolValue!,
-    if (numberValue != null) 'numberValue': numberValue!,
-    if (stringValue != null) 'stringValue': stringValue!,
-  };
-}
+typedef GoogleAppsCloudidentityDevicesV1CustomAttributeValue =
+    $CustomAttributeValue;
 
 ///  A Device within the Cloud Identity Devices API.
 ///
@@ -4763,7 +4375,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
 }
 
 /// Request message for starting an account wipe on device.
-typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request01;
+typedef GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest = $Request04;
 
 /// A group within the Cloud Identity Groups API.
 ///
@@ -5199,19 +4811,7 @@ class InboundSsoAssignment {
 }
 
 /// Response for IsInvitableUser RPC.
-class IsInvitableUserResponse {
-  /// Returns true if the email address is invitable.
-  core.bool? isInvitableUser;
-
-  IsInvitableUserResponse({this.isInvitableUser});
-
-  IsInvitableUserResponse.fromJson(core.Map json_)
-    : this(isInvitableUser: json_['isInvitableUser'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isInvitableUser != null) 'isInvitableUser': isInvitableUser!,
-  };
-}
+typedef IsInvitableUserResponse = $IsInvitableUserResponse;
 
 /// Response message for ListGroups operation.
 class ListGroupsResponse {
@@ -5806,30 +5406,8 @@ class MembershipRole {
 }
 
 /// The evaluated state of this restriction.
-class MembershipRoleRestrictionEvaluation {
-  /// The current state of the restriction
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default. Should not be used.
-  /// - "COMPLIANT" : The member adheres to the parent group's restriction.
-  /// - "FORWARD_COMPLIANT" : The group-group membership might be currently
-  /// violating some parent group's restriction but in future, it will never
-  /// allow any new member in the child group which can violate parent group's
-  /// restriction.
-  /// - "NON_COMPLIANT" : The member violates the parent group's restriction.
-  /// - "EVALUATING" : The state of the membership is under evaluation.
-  core.String? state;
-
-  MembershipRoleRestrictionEvaluation({this.state});
-
-  MembershipRoleRestrictionEvaluation.fromJson(core.Map json_)
-    : this(state: json_['state'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-  };
-}
+typedef MembershipRoleRestrictionEvaluation =
+    $MembershipRoleRestrictionEvaluation;
 
 /// The request message for MembershipsService.ModifyMembershipRoles.
 class ModifyMembershipRolesRequest {
@@ -6059,94 +5637,10 @@ class Policy {
 }
 
 /// PolicyQuery
-class PolicyQuery {
-  /// The group that the query applies to.
-  ///
-  /// This field is only set if there is a single value for group that satisfies
-  /// all clauses of the query. If no group applies, this will be the empty
-  /// string.
-  ///
-  /// Immutable.
-  core.String? group;
-
-  /// Non-empty default.
-  ///
-  /// The OrgUnit the query applies to. This field is only set if there is a
-  /// single value for org_unit that satisfies all clauses of the query.
-  ///
-  /// Required. Immutable.
-  core.String? orgUnit;
-
-  /// The CEL query that defines which entities the Policy applies to (ex.
-  ///
-  /// a User entity). For details about CEL see
-  /// https://opensource.google.com/projects/cel. The OrgUnits the Policy
-  /// applies to are represented by a clause like so:
-  /// entity.org_units.exists(org_unit, org_unit.org_unit_id ==
-  /// orgUnitId('{orgUnitId}')) The Group the Policy applies to are represented
-  /// by a clause like so: entity.groups.exists(group, group.group_id ==
-  /// groupId('{groupId}')) The Licenses the Policy applies to are represented
-  /// by a clause like so: entity.licenses.exists(license, license in
-  /// \['/product/{productId}/sku/{skuId}'\]) The above clauses can be present
-  /// in any combination, and used in conjunction with the &&, || and !
-  /// operators. The org_unit and group fields below are helper fields that
-  /// contain the corresponding value(s) as the query to make the query easier
-  /// to use.
-  ///
-  /// Immutable.
-  core.String? query;
-
-  /// The decimal sort order of this PolicyQuery.
-  ///
-  /// The value is relative to all other policies with the same setting type for
-  /// the customer. (There are no duplicates within this set).
-  ///
-  /// Output only.
-  core.double? sortOrder;
-
-  PolicyQuery({this.group, this.orgUnit, this.query, this.sortOrder});
-
-  PolicyQuery.fromJson(core.Map json_)
-    : this(
-        group: json_['group'] as core.String?,
-        orgUnit: json_['orgUnit'] as core.String?,
-        query: json_['query'] as core.String?,
-        sortOrder: (json_['sortOrder'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (group != null) 'group': group!,
-    if (orgUnit != null) 'orgUnit': orgUnit!,
-    if (query != null) 'query': query!,
-    if (sortOrder != null) 'sortOrder': sortOrder!,
-  };
-}
+typedef PolicyQuery = $PolicyQuery;
 
 /// The evaluated state of this restriction.
-class RestrictionEvaluation {
-  /// The current state of the restriction
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default. Should not be used.
-  /// - "EVALUATING" : The restriction state is currently being evaluated.
-  /// - "COMPLIANT" : All transitive memberships are adhering to restriction.
-  /// - "FORWARD_COMPLIANT" : Some transitive memberships violate the
-  /// restriction. No new violating memberships can be added.
-  /// - "NON_COMPLIANT" : Some transitive memberships violate the restriction.
-  /// New violating direct memberships will be denied while indirect memberships
-  /// may be added.
-  core.String? state;
-
-  RestrictionEvaluation({this.state});
-
-  RestrictionEvaluation.fromJson(core.Map json_)
-    : this(state: json_['state'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-  };
-}
+typedef RestrictionEvaluation = $RestrictionEvaluation;
 
 /// Evaluations of restrictions applied to parent group on this membership.
 class RestrictionEvaluations {
@@ -6175,127 +5669,16 @@ class RestrictionEvaluations {
 }
 
 /// Information of a RSA public key.
-class RsaPublicKeyInfo {
-  /// Key size in bits (size of the modulus).
-  core.int? keySize;
-
-  RsaPublicKeyInfo({this.keySize});
-
-  RsaPublicKeyInfo.fromJson(core.Map json_)
-    : this(keySize: json_['keySize'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (keySize != null) 'keySize': keySize!,
-  };
-}
+typedef RsaPublicKeyInfo = $RsaPublicKeyInfo;
 
 /// SAML IDP (identity provider) configuration.
-class SamlIdpConfig {
-  /// The **Change Password URL** of the identity provider.
-  ///
-  /// Users will be sent to this URL when changing their passwords at
-  /// `myaccount.google.com`. This takes precedence over the change password URL
-  /// configured at customer-level. Must use `HTTPS`.
-  core.String? changePasswordUri;
-
-  /// The SAML **Entity ID** of the identity provider.
-  ///
-  /// Required.
-  core.String? entityId;
-
-  /// The **Logout Redirect URL** (sign-out page URL) of the identity provider.
-  ///
-  /// When a user clicks the sign-out link on a Google page, they will be
-  /// redirected to this URL. This is a pure redirect with no attached SAML
-  /// `LogoutRequest` i.e. SAML single logout is not supported. Must use
-  /// `HTTPS`.
-  core.String? logoutRedirectUri;
-
-  /// The `SingleSignOnService` endpoint location (sign-in page URL) of the
-  /// identity provider.
-  ///
-  /// This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`.
-  /// Assumed to accept the `HTTP-Redirect` binding.
-  ///
-  /// Required.
-  core.String? singleSignOnServiceUri;
-
-  SamlIdpConfig({
-    this.changePasswordUri,
-    this.entityId,
-    this.logoutRedirectUri,
-    this.singleSignOnServiceUri,
-  });
-
-  SamlIdpConfig.fromJson(core.Map json_)
-    : this(
-        changePasswordUri: json_['changePasswordUri'] as core.String?,
-        entityId: json_['entityId'] as core.String?,
-        logoutRedirectUri: json_['logoutRedirectUri'] as core.String?,
-        singleSignOnServiceUri: json_['singleSignOnServiceUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (changePasswordUri != null) 'changePasswordUri': changePasswordUri!,
-    if (entityId != null) 'entityId': entityId!,
-    if (logoutRedirectUri != null) 'logoutRedirectUri': logoutRedirectUri!,
-    if (singleSignOnServiceUri != null)
-      'singleSignOnServiceUri': singleSignOnServiceUri!,
-  };
-}
+typedef SamlIdpConfig = $SamlIdpConfig;
 
 /// SAML SP (service provider) configuration.
-class SamlSpConfig {
-  /// The SAML **Assertion Consumer Service (ACS) URL** to be used for the
-  /// IDP-initiated login.
-  ///
-  /// Assumed to accept response messages via the `HTTP-POST` binding.
-  ///
-  /// Output only.
-  core.String? assertionConsumerServiceUri;
-
-  /// The SAML **Entity ID** for this service provider.
-  ///
-  /// Output only.
-  core.String? entityId;
-
-  SamlSpConfig({this.assertionConsumerServiceUri, this.entityId});
-
-  SamlSpConfig.fromJson(core.Map json_)
-    : this(
-        assertionConsumerServiceUri:
-            json_['assertionConsumerServiceUri'] as core.String?,
-        entityId: json_['entityId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (assertionConsumerServiceUri != null)
-      'assertionConsumerServiceUri': assertionConsumerServiceUri!,
-    if (entityId != null) 'entityId': entityId!,
-  };
-}
+typedef SamlSpConfig = $SamlSpConfig;
 
 /// Details that are applicable when `sso_mode` == `SAML_SSO`.
-class SamlSsoInfo {
-  /// Name of the `InboundSamlSsoProfile` to use.
-  ///
-  /// Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
-  ///
-  /// Required.
-  core.String? inboundSamlSsoProfile;
-
-  SamlSsoInfo({this.inboundSamlSsoProfile});
-
-  SamlSsoInfo.fromJson(core.Map json_)
-    : this(
-        inboundSamlSsoProfile: json_['inboundSamlSsoProfile'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inboundSamlSsoProfile != null)
-      'inboundSamlSsoProfile': inboundSamlSsoProfile!,
-  };
-}
+typedef SamlSsoInfo = $SamlSsoInfo;
 
 /// The response message for MembershipsService.SearchDirectGroups.
 class SearchDirectGroupsResponse {
@@ -6454,60 +5837,10 @@ class SecuritySettings {
 typedef SendUserInvitationRequest = $Empty;
 
 /// Setting
-class Setting {
-  /// The type of the Setting.
-  ///
-  /// .
-  ///
-  /// Required. Immutable.
-  core.String? type;
-
-  /// The value of the Setting.
-  ///
-  /// Required.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? value;
-
-  Setting({this.type, this.value});
-
-  Setting.fromJson(core.Map json_)
-    : this(
-        type: json_['type'] as core.String?,
-        value:
-            json_.containsKey('value')
-                ? json_['value'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (type != null) 'type': type!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Setting = $Setting;
 
 /// Controls sign-in behavior.
-class SignInBehavior {
-  /// When to redirect sign-ins to the IdP.
-  /// Possible string values are:
-  /// - "REDIRECT_CONDITION_UNSPECIFIED" : Default and means "always"
-  /// - "NEVER" : Sign-in flows where the user is prompted for their identity
-  /// will not redirect to the IdP (so the user will most likely be prompted by
-  /// Google for a password), but special flows like IdP-initiated SAML and
-  /// sign-in following automatic redirection to the IdP by domain-specific
-  /// service URLs will accept the IdP's assertion of the user's identity.
-  core.String? redirectCondition;
-
-  SignInBehavior({this.redirectCondition});
-
-  SignInBehavior.fromJson(core.Map json_)
-    : this(redirectCondition: json_['redirectCondition'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (redirectCondition != null) 'redirectCondition': redirectCondition!,
-  };
-}
+typedef SignInBehavior = $SignInBehavior;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -6519,22 +5852,7 @@ class SignInBehavior {
 typedef Status = $Status00;
 
 /// Message representing the role of a TransitiveMembership.
-class TransitiveMembershipRole {
-  /// TransitiveMembershipRole in string format.
-  ///
-  /// Currently supported TransitiveMembershipRoles: `"MEMBER"`, `"OWNER"`, and
-  /// `"MANAGER"`.
-  core.String? role;
-
-  TransitiveMembershipRole({this.role});
-
-  TransitiveMembershipRole.fromJson(core.Map json_)
-    : this(role: json_['role'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (role != null) 'role': role!,
-  };
-}
+typedef TransitiveMembershipRole = $TransitiveMembershipRole;
 
 /// The details of an update to a `MembershipRole`.
 class UpdateMembershipRolesParams {
@@ -6575,43 +5893,4 @@ class UpdateMembershipRolesParams {
 /// An unmanaged account shares an email address domain with the Google
 /// Workspace or Cloud Identity account but is not managed by it yet. If the
 /// user accepts the `UserInvitation`, the user account will become managed.
-class UserInvitation {
-  /// Number of invitation emails sent to the user.
-  core.String? mailsSentCount;
-
-  /// Shall be of the form
-  /// `customers/{customer}/userinvitations/{user_email_address}`.
-  core.String? name;
-
-  /// State of the `UserInvitation`.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the state
-  /// is omitted.
-  /// - "NOT_YET_SENT" : The `UserInvitation` has been created and is ready for
-  /// sending as an email.
-  /// - "INVITED" : The user has been invited by email.
-  /// - "ACCEPTED" : The user has accepted the invitation and is part of the
-  /// organization.
-  /// - "DECLINED" : The user declined the invitation.
-  core.String? state;
-
-  /// Time when the `UserInvitation` was last updated.
-  core.String? updateTime;
-
-  UserInvitation({this.mailsSentCount, this.name, this.state, this.updateTime});
-
-  UserInvitation.fromJson(core.Map json_)
-    : this(
-        mailsSentCount: json_['mailsSentCount'] as core.String?,
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mailsSentCount != null) 'mailsSentCount': mailsSentCount!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef UserInvitation = $UserInvitation;

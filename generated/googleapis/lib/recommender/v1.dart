@@ -3190,56 +3190,11 @@ class GoogleCloudRecommenderV1Insight {
 }
 
 /// Reference to an associated recommendation.
-class GoogleCloudRecommenderV1InsightRecommendationReference {
-  /// Recommendation resource name, e.g.
-  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/recommenders/\[RECOMMENDER_ID\]/recommendations/\[RECOMMENDATION_ID\]
-  core.String? recommendation;
-
-  GoogleCloudRecommenderV1InsightRecommendationReference({this.recommendation});
-
-  GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
-    core.Map json_,
-  ) : this(recommendation: json_['recommendation'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (recommendation != null) 'recommendation': recommendation!,
-  };
-}
+typedef GoogleCloudRecommenderV1InsightRecommendationReference =
+    $InsightRecommendationReference;
 
 /// Information related to insight state.
-class GoogleCloudRecommenderV1InsightStateInfo {
-  /// Insight state.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "ACTIVE" : Insight is active. Content for ACTIVE insights can be updated
-  /// by Google. ACTIVE insights can be marked DISMISSED OR ACCEPTED.
-  /// - "ACCEPTED" : Some action has been taken based on this insight. Insights
-  /// become accepted when a recommendation derived from the insight has been
-  /// marked CLAIMED, SUCCEEDED, or FAILED. ACTIVE insights can also be marked
-  /// ACCEPTED explicitly. Content for ACCEPTED insights is immutable. ACCEPTED
-  /// insights can only be marked ACCEPTED (which may update state metadata).
-  /// - "DISMISSED" : Insight is dismissed. Content for DISMISSED insights can
-  /// be updated by Google. DISMISSED insights can be marked as ACTIVE.
-  core.String? state;
-
-  /// A map of metadata for the state, provided by user or automations systems.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1InsightStateInfo({this.state, this.stateMetadata});
-
-  GoogleCloudRecommenderV1InsightStateInfo.fromJson(core.Map json_)
-    : this(
-        state: json_['state'] as core.String?,
-        stateMetadata: (json_['stateMetadata']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-    if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-  };
-}
+typedef GoogleCloudRecommenderV1InsightStateInfo = $InsightStateInfo;
 
 /// Configuration for an InsightType.
 class GoogleCloudRecommenderV1InsightTypeConfig {
@@ -3328,29 +3283,8 @@ class GoogleCloudRecommenderV1InsightTypeConfig {
 /// A configuration to customize the generation of insights.
 ///
 /// Eg, customizing the lookback period considered when generating a insight.
-class GoogleCloudRecommenderV1InsightTypeGenerationConfig {
-  /// Parameters for this InsightTypeGenerationConfig.
-  ///
-  /// These configs can be used by or are applied to all subtypes.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? params;
-
-  GoogleCloudRecommenderV1InsightTypeGenerationConfig({this.params});
-
-  GoogleCloudRecommenderV1InsightTypeGenerationConfig.fromJson(core.Map json_)
-    : this(
-        params:
-            json_.containsKey('params')
-                ? json_['params'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (params != null) 'params': params!,
-  };
-}
+typedef GoogleCloudRecommenderV1InsightTypeGenerationConfig =
+    $InsightTypeGenerationConfig;
 
 /// Response to the `ListInsights` method.
 class GoogleCloudRecommenderV1ListInsightsResponse {
@@ -3421,66 +3355,21 @@ class GoogleCloudRecommenderV1ListRecommendationsResponse {
 }
 
 /// Request for the `MarkInsightAccepted` method.
-class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
-  /// Fingerprint of the Insight.
-  ///
-  /// Provides optimistic locking.
-  ///
-  /// Required.
-  core.String? etag;
-
-  /// State properties user wish to include with this state.
-  ///
-  /// Full replace of the current state_metadata.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1MarkInsightAcceptedRequest({
-    this.etag,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(core.Map json_)
-    : this(
-        etag: json_['etag'] as core.String?,
-        stateMetadata: (json_['stateMetadata']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-  };
-}
+typedef GoogleCloudRecommenderV1MarkInsightAcceptedRequest =
+    $MarkInsightAcceptedRequest;
 
 /// Request for the `MarkRecommendationClaimed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request04;
+typedef GoogleCloudRecommenderV1MarkRecommendationClaimedRequest = $Request03;
 
 /// Request for the `MarkRecommendationDismissed` Method.
-class GoogleCloudRecommenderV1MarkRecommendationDismissedRequest {
-  /// Fingerprint of the Recommendation.
-  ///
-  /// Provides optimistic locking.
-  core.String? etag;
-
-  GoogleCloudRecommenderV1MarkRecommendationDismissedRequest({this.etag});
-
-  GoogleCloudRecommenderV1MarkRecommendationDismissedRequest.fromJson(
-    core.Map json_,
-  ) : this(etag: json_['etag'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-  };
-}
+typedef GoogleCloudRecommenderV1MarkRecommendationDismissedRequest =
+    $MarkRecommendationDismissedRequest;
 
 /// Request for the `MarkRecommendationFailed` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request04;
+typedef GoogleCloudRecommenderV1MarkRecommendationFailedRequest = $Request03;
 
 /// Request for the `MarkRecommendationSucceeded` Method.
-typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request04;
+typedef GoogleCloudRecommenderV1MarkRecommendationSucceededRequest = $Request03;
 
 /// Contains an operation for a resource loosely based on the JSON-PATCH format
 /// with support for: * Custom filters for describing partial array patch.
@@ -3854,67 +3743,14 @@ class GoogleCloudRecommenderV1RecommendationContent {
 }
 
 /// Reference to an associated insight.
-class GoogleCloudRecommenderV1RecommendationInsightReference {
-  /// Insight resource name, e.g.
-  /// projects/\[PROJECT_NUMBER\]/locations/\[LOCATION\]/insightTypes/\[INSIGHT_TYPE_ID\]/insights/\[INSIGHT_ID\]
-  core.String? insight;
-
-  GoogleCloudRecommenderV1RecommendationInsightReference({this.insight});
-
-  GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
-    core.Map json_,
-  ) : this(insight: json_['insight'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (insight != null) 'insight': insight!,
-  };
-}
+typedef GoogleCloudRecommenderV1RecommendationInsightReference =
+    $RecommendationInsightReference;
 
 /// Information for state.
 ///
 /// Contains state and metadata.
-class GoogleCloudRecommenderV1RecommendationStateInfo {
-  /// The state of the recommendation, Eg ACTIVE, SUCCEEDED, FAILED.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Default state. Don't use directly.
-  /// - "ACTIVE" : Recommendation is active and can be applied. Recommendations
-  /// content can be updated by Google. ACTIVE recommendations can be marked as
-  /// CLAIMED, SUCCEEDED, or FAILED.
-  /// - "CLAIMED" : Recommendation is in claimed state. Recommendations content
-  /// is immutable and cannot be updated by Google. CLAIMED recommendations can
-  /// be marked as CLAIMED, SUCCEEDED, or FAILED.
-  /// - "SUCCEEDED" : Recommendation is in succeeded state. Recommendations
-  /// content is immutable and cannot be updated by Google. SUCCEEDED
-  /// recommendations can be marked as SUCCEEDED, or FAILED.
-  /// - "FAILED" : Recommendation is in failed state. Recommendations content is
-  /// immutable and cannot be updated by Google. FAILED recommendations can be
-  /// marked as SUCCEEDED, or FAILED.
-  /// - "DISMISSED" : Recommendation is in dismissed state. Recommendation
-  /// content can be updated by Google. DISMISSED recommendations can be marked
-  /// as ACTIVE.
-  core.String? state;
-
-  /// A map of metadata for the state, provided by user or automations systems.
-  core.Map<core.String, core.String>? stateMetadata;
-
-  GoogleCloudRecommenderV1RecommendationStateInfo({
-    this.state,
-    this.stateMetadata,
-  });
-
-  GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(core.Map json_)
-    : this(
-        state: json_['state'] as core.String?,
-        stateMetadata: (json_['stateMetadata']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (state != null) 'state': state!,
-    if (stateMetadata != null) 'stateMetadata': stateMetadata!,
-  };
-}
+typedef GoogleCloudRecommenderV1RecommendationStateInfo =
+    $RecommendationStateInfo;
 
 /// Configuration for a Recommender.
 class GoogleCloudRecommenderV1RecommenderConfig {
@@ -4004,60 +3840,11 @@ class GoogleCloudRecommenderV1RecommenderConfig {
 ///
 /// Eg, customizing the lookback period considered when generating a
 /// recommendation.
-class GoogleCloudRecommenderV1RecommenderGenerationConfig {
-  /// Parameters for this RecommenderGenerationConfig.
-  ///
-  /// These configs can be used by or are applied to all subtypes.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? params;
-
-  GoogleCloudRecommenderV1RecommenderGenerationConfig({this.params});
-
-  GoogleCloudRecommenderV1RecommenderGenerationConfig.fromJson(core.Map json_)
-    : this(
-        params:
-            json_.containsKey('params')
-                ? json_['params'] as core.Map<core.String, core.dynamic>
-                : null,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (params != null) 'params': params!,
-  };
-}
+typedef GoogleCloudRecommenderV1RecommenderGenerationConfig =
+    $RecommenderGenerationConfig;
 
 /// Contains information on the impact of a reliability recommendation.
-class GoogleCloudRecommenderV1ReliabilityProjection {
-  /// Per-recommender projection.
-  ///
-  /// The values for Object must be JSON objects. It can consist of `num`,
-  /// `String`, `bool` and `null` as well as `Map` and `List` values.
-  core.Map<core.String, core.Object?>? details;
-
-  /// Reliability risks mitigated by this recommendation.
-  core.List<core.String>? risks;
-
-  GoogleCloudRecommenderV1ReliabilityProjection({this.details, this.risks});
-
-  GoogleCloudRecommenderV1ReliabilityProjection.fromJson(core.Map json_)
-    : this(
-        details:
-            json_.containsKey('details')
-                ? json_['details'] as core.Map<core.String, core.dynamic>
-                : null,
-        risks:
-            (json_['risks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (details != null) 'details': details!,
-    if (risks != null) 'risks': risks!,
-  };
-}
+typedef GoogleCloudRecommenderV1ReliabilityProjection = $ReliabilityProjection;
 
 /// Contains various ways of describing the impact on Security.
 class GoogleCloudRecommenderV1SecurityProjection {
@@ -4111,23 +3898,7 @@ class GoogleCloudRecommenderV1SustainabilityProjection {
 }
 
 /// Contains various matching options for values for a GCP resource field.
-class GoogleCloudRecommenderV1ValueMatcher {
-  /// To be used for full regex matching.
-  ///
-  /// The regular expression is using the Google RE2 syntax
-  /// (https://github.com/google/re2/wiki/Syntax), so to be used with
-  /// RE2::FullMatch
-  core.String? matchesPattern;
-
-  GoogleCloudRecommenderV1ValueMatcher({this.matchesPattern});
-
-  GoogleCloudRecommenderV1ValueMatcher.fromJson(core.Map json_)
-    : this(matchesPattern: json_['matchesPattern'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (matchesPattern != null) 'matchesPattern': matchesPattern!,
-  };
-}
+typedef GoogleCloudRecommenderV1ValueMatcher = $ValueMatcher;
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;

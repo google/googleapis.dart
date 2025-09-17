@@ -2341,19 +2341,7 @@ class ProjectsLocationsSupportedDatabaseFlagsResource {
 }
 
 /// AuthorizedNetwork contains metadata for an authorized network.
-class AuthorizedNetwork {
-  /// CIDR range for one authorzied network of the instance.
-  core.String? cidrRange;
-
-  AuthorizedNetwork({this.cidrRange});
-
-  AuthorizedNetwork.fromJson(core.Map json_)
-    : this(cidrRange: json_['cidrRange'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cidrRange != null) 'cidrRange': cidrRange!,
-  };
-}
+typedef AuthorizedNetwork = $AuthorizedNetwork;
 
 /// Message describing the user-specified automated backup policy.
 ///
@@ -2741,35 +2729,7 @@ class Backup {
 }
 
 /// Message describing a BackupSource.
-class BackupSource {
-  /// The name of the backup resource with the format: *
-  /// projects/{project}/locations/{region}/backups/{backup_id}
-  ///
-  /// Required.
-  core.String? backupName;
-
-  /// The system-generated UID of the backup which was used to create this
-  /// resource.
-  ///
-  /// The UID is generated when the backup is created, and it is retained until
-  /// the backup is deleted.
-  ///
-  /// Output only.
-  core.String? backupUid;
-
-  BackupSource({this.backupName, this.backupUid});
-
-  BackupSource.fromJson(core.Map json_)
-    : this(
-        backupName: json_['backupName'] as core.String?,
-        backupUid: json_['backupUid'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupName != null) 'backupName': backupName!,
-    if (backupUid != null) 'backupUid': backupUid!,
-  };
-}
+typedef BackupSource = $BackupSource;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -2807,37 +2767,7 @@ class ClientConnectionConfig {
 }
 
 /// The source CloudSQL backup resource.
-class CloudSQLBackupRunSource {
-  /// The CloudSQL backup run ID.
-  ///
-  /// Required.
-  core.String? backupRunId;
-
-  /// The CloudSQL instance ID.
-  ///
-  /// Required.
-  core.String? instanceId;
-
-  /// The project ID of the source CloudSQL instance.
-  ///
-  /// This should be the same as the AlloyDB cluster's project.
-  core.String? project;
-
-  CloudSQLBackupRunSource({this.backupRunId, this.instanceId, this.project});
-
-  CloudSQLBackupRunSource.fromJson(core.Map json_)
-    : this(
-        backupRunId: json_['backupRunId'] as core.String?,
-        instanceId: json_['instanceId'] as core.String?,
-        project: json_['project'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupRunId != null) 'backupRunId': backupRunId!,
-    if (instanceId != null) 'instanceId': instanceId!,
-    if (project != null) 'project': project!,
-  };
-}
+typedef CloudSQLBackupRunSource = $CloudSQLBackupRunSource;
 
 /// A cluster is a collection of regional AlloyDB resources.
 ///
@@ -3471,160 +3401,13 @@ class ContinuousBackupInfo {
 }
 
 /// Message describing a ContinuousBackupSource.
-class ContinuousBackupSource {
-  /// The source cluster from which to restore.
-  ///
-  /// This cluster must have continuous backup enabled for this operation to
-  /// succeed. For the required format, see the comment on the Cluster.name
-  /// field.
-  ///
-  /// Required.
-  core.String? cluster;
-
-  /// The point in time to restore to.
-  ///
-  /// Required.
-  core.String? pointInTime;
-
-  ContinuousBackupSource({this.cluster, this.pointInTime});
-
-  ContinuousBackupSource.fromJson(core.Map json_)
-    : this(
-        cluster: json_['cluster'] as core.String?,
-        pointInTime: json_['pointInTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cluster != null) 'cluster': cluster!,
-    if (pointInTime != null) 'pointInTime': pointInTime!,
-  };
-}
+typedef ContinuousBackupSource = $ContinuousBackupSource;
 
 /// Options for exporting data in CSV format.
-class CsvExportOptions {
-  /// Specifies the character that should appear before a data character that
-  /// needs to be escaped.
-  ///
-  /// The default is the same as quote character. The value of this argument has
-  /// to be a character in Hex ASCII Code.
-  ///
-  /// Optional.
-  core.String? escapeCharacter;
-
-  /// Specifies the character that separates columns within each row (line) of
-  /// the file.
-  ///
-  /// The default is comma. The value of this argument has to be a character in
-  /// Hex ASCII Code.
-  ///
-  /// Optional.
-  core.String? fieldDelimiter;
-
-  /// Specifies the quoting character to be used when a data value is quoted.
-  ///
-  /// The default is double-quote. The value of this argument has to be a
-  /// character in Hex ASCII Code.
-  ///
-  /// Optional.
-  core.String? quoteCharacter;
-
-  /// The SELECT query used to extract the data.
-  ///
-  /// Required.
-  core.String? selectQuery;
-
-  CsvExportOptions({
-    this.escapeCharacter,
-    this.fieldDelimiter,
-    this.quoteCharacter,
-    this.selectQuery,
-  });
-
-  CsvExportOptions.fromJson(core.Map json_)
-    : this(
-        escapeCharacter: json_['escapeCharacter'] as core.String?,
-        fieldDelimiter: json_['fieldDelimiter'] as core.String?,
-        quoteCharacter: json_['quoteCharacter'] as core.String?,
-        selectQuery: json_['selectQuery'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (escapeCharacter != null) 'escapeCharacter': escapeCharacter!,
-    if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
-    if (quoteCharacter != null) 'quoteCharacter': quoteCharacter!,
-    if (selectQuery != null) 'selectQuery': selectQuery!,
-  };
-}
+typedef CsvExportOptions = $CsvExportOptions;
 
 /// Options for importing data in CSV format.
-class CsvImportOptions {
-  /// The columns to which CSV data is imported.
-  ///
-  /// If not specified, all columns of the database table are loaded with CSV
-  /// data.
-  ///
-  /// Optional.
-  core.List<core.String>? columns;
-
-  /// Specifies the character that should appear before a data character that
-  /// needs to be escaped.
-  ///
-  /// The default is same as quote character. The value of this argument has to
-  /// be a character in Hex ASCII Code.
-  ///
-  /// Optional.
-  core.String? escapeCharacter;
-
-  /// Specifies the character that separates columns within each row (line) of
-  /// the file.
-  ///
-  /// The default is comma. The value of this argument has to be a character in
-  /// Hex ASCII Code.
-  ///
-  /// Optional.
-  core.String? fieldDelimiter;
-
-  /// Specifies the quoting character to be used when a data value is quoted.
-  ///
-  /// The default is double-quote. The value of this argument has to be a
-  /// character in Hex ASCII Code.
-  ///
-  /// Optional.
-  core.String? quoteCharacter;
-
-  /// The database table to import CSV file into.
-  ///
-  /// Required.
-  core.String? table;
-
-  CsvImportOptions({
-    this.columns,
-    this.escapeCharacter,
-    this.fieldDelimiter,
-    this.quoteCharacter,
-    this.table,
-  });
-
-  CsvImportOptions.fromJson(core.Map json_)
-    : this(
-        columns:
-            (json_['columns'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        escapeCharacter: json_['escapeCharacter'] as core.String?,
-        fieldDelimiter: json_['fieldDelimiter'] as core.String?,
-        quoteCharacter: json_['quoteCharacter'] as core.String?,
-        table: json_['table'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (columns != null) 'columns': columns!,
-    if (escapeCharacter != null) 'escapeCharacter': escapeCharacter!,
-    if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
-    if (quoteCharacter != null) 'quoteCharacter': quoteCharacter!,
-    if (table != null) 'table': table!,
-  };
-}
+typedef CsvImportOptions = $CsvImportOptions;
 
 /// DenyMaintenancePeriod definition.
 ///
@@ -3690,46 +3473,11 @@ typedef Empty = $Empty;
 
 /// EncryptionConfig describes the encryption config of a cluster or a backup
 /// that is encrypted with a CMEK (customer-managed encryption key).
-typedef EncryptionConfig = $EncryptionConfig;
+typedef EncryptionConfig = $EncryptionConfig00;
 
 /// EncryptionInfo describes the encryption information of a cluster or a
 /// backup.
-class EncryptionInfo {
-  /// Type of encryption.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Encryption type not specified. Defaults to
-  /// GOOGLE_DEFAULT_ENCRYPTION.
-  /// - "GOOGLE_DEFAULT_ENCRYPTION" : The data is encrypted at rest with a key
-  /// that is fully managed by Google. No key version will be populated. This is
-  /// the default state.
-  /// - "CUSTOMER_MANAGED_ENCRYPTION" : The data is encrypted at rest with a key
-  /// that is managed by the customer. KMS key versions will be populated.
-  core.String? encryptionType;
-
-  /// Cloud KMS key versions that are being used to protect the database or the
-  /// backup.
-  ///
-  /// Output only.
-  core.List<core.String>? kmsKeyVersions;
-
-  EncryptionInfo({this.encryptionType, this.kmsKeyVersions});
-
-  EncryptionInfo.fromJson(core.Map json_)
-    : this(
-        encryptionType: json_['encryptionType'] as core.String?,
-        kmsKeyVersions:
-            (json_['kmsKeyVersions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (encryptionType != null) 'encryptionType': encryptionType!,
-    if (kmsKeyVersions != null) 'kmsKeyVersions': kmsKeyVersions!,
-  };
-}
+typedef EncryptionInfo = $EncryptionInfo00;
 
 /// Export cluster request.
 class ExportClusterRequest {
@@ -3798,29 +3546,12 @@ class ExportClusterRequest {
 }
 
 /// Message for triggering failover on an Instance
-typedef FailoverInstanceRequest = $Request05;
+typedef FailoverInstanceRequest = $Request01;
 
 /// Destination for Export.
 ///
 /// Export will be done to cloud storage.
-class GcsDestination {
-  /// The path to the file in Google Cloud Storage where the export will be
-  /// stored.
-  ///
-  /// The URI is in the form `gs://bucketName/fileName`.
-  ///
-  /// Required.
-  core.String? uri;
-
-  GcsDestination({this.uri});
-
-  GcsDestination.fromJson(core.Map json_)
-    : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
+typedef GcsDestination = $GcsDestination00;
 
 /// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {
@@ -3948,53 +3679,7 @@ class ImportClusterRequest {
 }
 
 /// Message for triggering fault injection on an instance
-class InjectFaultRequest {
-  /// The type of fault to be injected in an instance.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "FAULT_TYPE_UNSPECIFIED" : The fault type is unknown.
-  /// - "STOP_VM" : Stop the VM
-  core.String? faultType;
-
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server ignores the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if the original operation with the same request ID
-  /// was received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// If set, performs request validation, for example, permission checks and
-  /// any other type of validation, but does not actually execute the create
-  /// request.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  InjectFaultRequest({this.faultType, this.requestId, this.validateOnly});
-
-  InjectFaultRequest.fromJson(core.Map json_)
-    : this(
-        faultType: json_['faultType'] as core.String?,
-        requestId: json_['requestId'] as core.String?,
-        validateOnly: json_['validateOnly'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (faultType != null) 'faultType': faultType!,
-    if (requestId != null) 'requestId': requestId!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
-}
+typedef InjectFaultRequest = $InjectFaultRequest;
 
 /// An Instance is a computing unit that an end customer can connect to.
 ///
@@ -4459,26 +4144,7 @@ class InstanceNetworkConfig {
 }
 
 /// Restrictions on INTEGER type values.
-class IntegerRestrictions {
-  /// The maximum value that can be specified, if applicable.
-  core.String? maxValue;
-
-  /// The minimum value that can be specified, if applicable.
-  core.String? minValue;
-
-  IntegerRestrictions({this.maxValue, this.minValue});
-
-  IntegerRestrictions.fromJson(core.Map json_)
-    : this(
-        maxValue: json_['maxValue'] as core.String?,
-        minValue: json_['minValue'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxValue != null) 'maxValue': maxValue!,
-    if (minValue != null) 'minValue': minValue!,
-  };
-}
+typedef IntegerRestrictions = $IntegerRestrictions;
 
 /// Message for response to listing Backups
 class ListBackupsResponse {
@@ -4691,29 +4357,7 @@ class ListUsersResponse {
 }
 
 /// MachineConfig describes the configuration of a machine.
-class MachineConfig {
-  /// The number of CPU's in the VM instance.
-  core.int? cpuCount;
-
-  /// Machine type of the VM instance.
-  ///
-  /// E.g. "n2-highmem-4", "n2-highmem-8", "c4a-highmem-4-lssd". cpu_count must
-  /// match the number of vCPUs in the machine type.
-  core.String? machineType;
-
-  MachineConfig({this.cpuCount, this.machineType});
-
-  MachineConfig.fromJson(core.Map json_)
-    : this(
-        cpuCount: json_['cpuCount'] as core.int?,
-        machineType: json_['machineType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpuCount != null) 'cpuCount': cpuCount!,
-    if (machineType != null) 'machineType': machineType!,
-  };
-}
+typedef MachineConfig = $MachineConfig;
 
 /// MaintenanceSchedule stores the maintenance schedule generated from the
 /// MaintenanceUpdatePolicy, once a maintenance rollout is triggered, if
@@ -4721,21 +4365,7 @@ class MachineConfig {
 ///
 /// The schedule is cleared once the update takes place. This field cannot be
 /// manually changed; modify the MaintenanceUpdatePolicy instead.
-class MaintenanceSchedule {
-  /// The scheduled start time for the maintenance.
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  MaintenanceSchedule({this.startTime});
-
-  MaintenanceSchedule.fromJson(core.Map json_)
-    : this(startTime: json_['startTime'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef MaintenanceSchedule = $MaintenanceSchedule00;
 
 /// MaintenanceUpdatePolicy defines the policy for system updates.
 class MaintenanceUpdatePolicy {
@@ -4821,127 +4451,16 @@ class MaintenanceWindow {
 
 /// Subset of the source instance configuration that is available when reading
 /// the cluster resource.
-class MigrationSource {
-  /// The host and port of the on-premises instance in host:port format
-  ///
-  /// Output only.
-  core.String? hostPort;
-
-  /// Place holder for the external source identifier(e.g DMS job name) that
-  /// created the cluster.
-  ///
-  /// Output only.
-  core.String? referenceId;
-
-  /// Type of migration source.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "MIGRATION_SOURCE_TYPE_UNSPECIFIED" : Migration source is unknown.
-  /// - "DMS" : DMS source means the cluster was created via DMS migration job.
-  core.String? sourceType;
-
-  MigrationSource({this.hostPort, this.referenceId, this.sourceType});
-
-  MigrationSource.fromJson(core.Map json_)
-    : this(
-        hostPort: json_['hostPort'] as core.String?,
-        referenceId: json_['referenceId'] as core.String?,
-        sourceType: json_['sourceType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostPort != null) 'hostPort': hostPort!,
-    if (referenceId != null) 'referenceId': referenceId!,
-    if (sourceType != null) 'sourceType': sourceType!,
-  };
-}
+typedef MigrationSource = $MigrationSource;
 
 /// Metadata related to network configuration.
-class NetworkConfig {
-  /// Name of the allocated IP range for the private IP AlloyDB cluster, for
-  /// example: "google-managed-services-default".
-  ///
-  /// If set, the instance IPs for this cluster will be created in the allocated
-  /// range. The range name must comply with RFC 1035. Specifically, the name
-  /// must be 1-63 characters long and match the regular expression
-  /// `[a-z]([-a-z0-9]*[a-z0-9])?`. Field name is intended to be consistent with
-  /// Cloud SQL.
-  ///
-  /// Optional.
-  core.String? allocatedIpRange;
-
-  /// The resource link for the VPC network in which cluster resources are
-  /// created and from which they are accessible via Private IP.
-  ///
-  /// The network must belong to the same project as the cluster. It is
-  /// specified in the form:
-  /// `projects/{project_number}/global/networks/{network_id}`. This is required
-  /// to create a cluster.
-  ///
-  /// Optional.
-  core.String? network;
-
-  NetworkConfig({this.allocatedIpRange, this.network});
-
-  NetworkConfig.fromJson(core.Map json_)
-    : this(
-        allocatedIpRange: json_['allocatedIpRange'] as core.String?,
-        network: json_['network'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocatedIpRange != null) 'allocatedIpRange': allocatedIpRange!,
-    if (network != null) 'network': network!,
-  };
-}
+typedef NetworkConfig = $NetworkConfig00;
 
 /// Details of a single node in the instance.
 ///
 /// Nodes in an AlloyDB instance are ephemeral, they can change during update,
 /// failover, autohealing and resize operations.
-class Node {
-  /// The identifier of the VM e.g. "test-read-0601-407e52be-ms3l".
-  ///
-  /// Output only.
-  core.String? id;
-
-  /// The private IP address of the VM e.g. "10.57.0.34".
-  ///
-  /// Output only.
-  core.String? ip;
-
-  /// Determined by state of the compute VM and postgres-service health.
-  ///
-  /// Compute VM state can have values listed in
-  /// https://cloud.google.com/compute/docs/instances/instance-life-cycle and
-  /// postgres-service health can have values: HEALTHY and UNHEALTHY.
-  ///
-  /// Output only.
-  core.String? state;
-
-  /// The Compute Engine zone of the VM e.g. "us-central1-b".
-  ///
-  /// Output only.
-  core.String? zoneId;
-
-  Node({this.id, this.ip, this.state, this.zoneId});
-
-  Node.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        ip: json_['ip'] as core.String?,
-        state: json_['state'] as core.String?,
-        zoneId: json_['zoneId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (ip != null) 'ip': ip!,
-    if (state != null) 'state': state!,
-    if (zoneId != null) 'zoneId': zoneId!,
-  };
-}
+typedef Node = $Node00;
 
 /// Observability Instance specific configuration.
 class ObservabilityInstanceConfig {
@@ -5109,183 +4628,19 @@ class Operation {
 ///
 /// It has the list of clusters that are replicating from this cluster. This
 /// should be set if and only if the cluster is of type PRIMARY.
-class PrimaryConfig {
-  /// Names of the clusters that are replicating from this cluster.
-  ///
-  /// Output only.
-  core.List<core.String>? secondaryClusterNames;
-
-  PrimaryConfig({this.secondaryClusterNames});
-
-  PrimaryConfig.fromJson(core.Map json_)
-    : this(
-        secondaryClusterNames:
-            (json_['secondaryClusterNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (secondaryClusterNames != null)
-      'secondaryClusterNames': secondaryClusterNames!,
-  };
-}
+typedef PrimaryConfig = $PrimaryConfig;
 
 /// Message for promoting a Cluster
-class PromoteClusterRequest {
-  /// The current etag of the Cluster.
-  ///
-  /// If an etag is provided and does not match the current etag of the Cluster,
-  /// deletion will be blocked and an ABORTED error will be returned.
-  ///
-  /// Optional.
-  core.String? etag;
-
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server ignores the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if original operation with the same request ID was
-  /// received, and if so, will ignore the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// If set, performs request validation, for example, permission checks and
-  /// any other type of validation, but does not actually execute the create
-  /// request.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  PromoteClusterRequest({this.etag, this.requestId, this.validateOnly});
-
-  PromoteClusterRequest.fromJson(core.Map json_)
-    : this(
-        etag: json_['etag'] as core.String?,
-        requestId: json_['requestId'] as core.String?,
-        validateOnly: json_['validateOnly'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (etag != null) 'etag': etag!,
-    if (requestId != null) 'requestId': requestId!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
-}
+typedef PromoteClusterRequest = $PromoteClusterRequest;
 
 /// Configuration for setting up PSC service automation.
 ///
 /// Consumer projects in the configs will be allowlisted automatically for the
 /// instance.
-class PscAutoConnectionConfig {
-  /// The consumer network for the PSC service automation, example:
-  /// "projects/vpc-host-project/global/networks/default".
-  ///
-  /// The consumer network might be hosted a different project than the consumer
-  /// project.
-  core.String? consumerNetwork;
-
-  /// The status of the service connection policy.
-  ///
-  /// Possible values: "STATE_UNSPECIFIED" - Default state, when Connection Map
-  /// is created initially. "VALID" - Set when policy and map configuration is
-  /// valid, and their matching can lead to allowing creation of PSC Connections
-  /// subject to other constraints like connections limit.
-  /// "CONNECTION_POLICY_MISSING" - No Service Connection Policy found for this
-  /// network and Service Class "POLICY_LIMIT_REACHED" - Service Connection
-  /// Policy limit reached for this network and Service Class
-  /// "CONSUMER_INSTANCE_PROJECT_NOT_ALLOWLISTED" - The consumer instance
-  /// project is not in AllowedGoogleProducersResourceHierarchyLevels of the
-  /// matching ServiceConnectionPolicy.
-  ///
-  /// Output only.
-  core.String? consumerNetworkStatus;
-
-  /// The consumer project to which the PSC service automation endpoint will be
-  /// created.
-  core.String? consumerProject;
-
-  /// The IP address of the PSC service automation endpoint.
-  ///
-  /// Output only.
-  core.String? ipAddress;
-
-  /// The status of the PSC service automation connection.
-  ///
-  /// Possible values: "STATE_UNSPECIFIED" - An invalid state as the default
-  /// case. "ACTIVE" - The connection has been created successfully. "FAILED" -
-  /// The connection is not functional since some resources on the connection
-  /// fail to be created. "CREATING" - The connection is being created.
-  /// "DELETING" - The connection is being deleted. "CREATE_REPAIRING" - The
-  /// connection is being repaired to complete creation. "DELETE_REPAIRING" -
-  /// The connection is being repaired to complete deletion.
-  ///
-  /// Output only.
-  core.String? status;
-
-  PscAutoConnectionConfig({
-    this.consumerNetwork,
-    this.consumerNetworkStatus,
-    this.consumerProject,
-    this.ipAddress,
-    this.status,
-  });
-
-  PscAutoConnectionConfig.fromJson(core.Map json_)
-    : this(
-        consumerNetwork: json_['consumerNetwork'] as core.String?,
-        consumerNetworkStatus: json_['consumerNetworkStatus'] as core.String?,
-        consumerProject: json_['consumerProject'] as core.String?,
-        ipAddress: json_['ipAddress'] as core.String?,
-        status: json_['status'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
-    if (consumerNetworkStatus != null)
-      'consumerNetworkStatus': consumerNetworkStatus!,
-    if (consumerProject != null) 'consumerProject': consumerProject!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (status != null) 'status': status!,
-  };
-}
+typedef PscAutoConnectionConfig = $PscAutoConnectionConfig00;
 
 /// PscConfig contains PSC related configuration at a cluster level.
-class PscConfig {
-  /// Create an instance that allows connections from Private Service Connect
-  /// endpoints to the instance.
-  ///
-  /// Optional.
-  core.bool? pscEnabled;
-
-  /// The project number that needs to be allowlisted on the network attachment
-  /// to enable outbound connectivity.
-  ///
-  /// Output only.
-  core.String? serviceOwnedProjectNumber;
-
-  PscConfig({this.pscEnabled, this.serviceOwnedProjectNumber});
-
-  PscConfig.fromJson(core.Map json_)
-    : this(
-        pscEnabled: json_['pscEnabled'] as core.bool?,
-        serviceOwnedProjectNumber:
-            json_['serviceOwnedProjectNumber'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pscEnabled != null) 'pscEnabled': pscEnabled!,
-    if (serviceOwnedProjectNumber != null)
-      'serviceOwnedProjectNumber': serviceOwnedProjectNumber!,
-  };
-}
+typedef PscConfig = $PscConfig00;
 
 /// PscInstanceConfig contains PSC related configuration at an instance level.
 class PscInstanceConfig {
@@ -5373,28 +4728,7 @@ class PscInstanceConfig {
 
 /// Configuration for setting up a PSC interface to enable outbound
 /// connectivity.
-class PscInterfaceConfig {
-  /// The network attachment resource created in the consumer network to which
-  /// the PSC interface will be linked.
-  ///
-  /// This is of the format:
-  /// "projects/${CONSUMER_PROJECT}/regions/${REGION}/networkAttachments/${NETWORK_ATTACHMENT_NAME}".
-  /// The network attachment must be in the same region as the instance.
-  core.String? networkAttachmentResource;
-
-  PscInterfaceConfig({this.networkAttachmentResource});
-
-  PscInterfaceConfig.fromJson(core.Map json_)
-    : this(
-        networkAttachmentResource:
-            json_['networkAttachmentResource'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (networkAttachmentResource != null)
-      'networkAttachmentResource': networkAttachmentResource!,
-  };
-}
+typedef PscInterfaceConfig = $PscInterfaceConfig;
 
 /// A backup's position in a quantity-based retention queue, of backups with the
 /// same source cluster and type, with length, retention, specified by the
@@ -5405,165 +4739,18 @@ class PscInterfaceConfig {
 /// type with a quantity-based retention of 3 and denoted by backup_id
 /// (position, retention). Safe: backup_5 (1, 3), backup_4, (2, 3), backup_3 (3,
 /// 3). Awaiting garbage collection: backup_2 (4, 3), backup_1 (5, 3)
-class QuantityBasedExpiry {
-  /// The backup's position among its backups with the same source cluster and
-  /// type, by descending chronological order create time(i.e. newest first).
-  ///
-  /// Output only.
-  core.int? retentionCount;
-
-  /// The length of the quantity-based queue, specified by the backup's
-  /// retention policy.
-  ///
-  /// Output only.
-  core.int? totalRetentionCount;
-
-  QuantityBasedExpiry({this.retentionCount, this.totalRetentionCount});
-
-  QuantityBasedExpiry.fromJson(core.Map json_)
-    : this(
-        retentionCount: json_['retentionCount'] as core.int?,
-        totalRetentionCount: json_['totalRetentionCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (retentionCount != null) 'retentionCount': retentionCount!,
-    if (totalRetentionCount != null)
-      'totalRetentionCount': totalRetentionCount!,
-  };
-}
+typedef QuantityBasedExpiry = $QuantityBasedExpiry;
 
 /// A quantity based policy specifies that a certain number of the most recent
 /// successful backups should be retained.
-class QuantityBasedRetention {
-  /// The number of backups to retain.
-  core.int? count;
-
-  QuantityBasedRetention({this.count});
-
-  QuantityBasedRetention.fromJson(core.Map json_)
-    : this(count: json_['count'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-  };
-}
+typedef QuantityBasedRetention = $QuantityBasedRetention;
 
 /// QueryInsights Instance specific configuration.
-class QueryInsightsInstanceConfig {
-  /// Number of query execution plans captured by Insights per minute for all
-  /// queries combined.
-  ///
-  /// The default value is 5. Any integer between 0 and 20 is considered valid.
-  core.int? queryPlansPerMinute;
-
-  /// Query string length.
-  ///
-  /// The default value is 1024. Any integer between 256 and 4500 is considered
-  /// valid.
-  core.int? queryStringLength;
-
-  /// Record application tags for an instance.
-  ///
-  /// This flag is turned "on" by default.
-  core.bool? recordApplicationTags;
-
-  /// Record client address for an instance.
-  ///
-  /// Client address is PII information. This flag is turned "on" by default.
-  core.bool? recordClientAddress;
-
-  QueryInsightsInstanceConfig({
-    this.queryPlansPerMinute,
-    this.queryStringLength,
-    this.recordApplicationTags,
-    this.recordClientAddress,
-  });
-
-  QueryInsightsInstanceConfig.fromJson(core.Map json_)
-    : this(
-        queryPlansPerMinute: json_['queryPlansPerMinute'] as core.int?,
-        queryStringLength: json_['queryStringLength'] as core.int?,
-        recordApplicationTags: json_['recordApplicationTags'] as core.bool?,
-        recordClientAddress: json_['recordClientAddress'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryPlansPerMinute != null)
-      'queryPlansPerMinute': queryPlansPerMinute!,
-    if (queryStringLength != null) 'queryStringLength': queryStringLength!,
-    if (recordApplicationTags != null)
-      'recordApplicationTags': recordApplicationTags!,
-    if (recordClientAddress != null)
-      'recordClientAddress': recordClientAddress!,
-  };
-}
+typedef QueryInsightsInstanceConfig = $QueryInsightsInstanceConfig;
 
 /// Configuration for a read pool instance.
-class ReadPoolConfig {
-  /// Read capacity, i.e. number of nodes in a read pool instance.
-  core.int? nodeCount;
-
-  ReadPoolConfig({this.nodeCount});
-
-  ReadPoolConfig.fromJson(core.Map json_)
-    : this(nodeCount: json_['nodeCount'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodeCount != null) 'nodeCount': nodeCount!,
-  };
-}
-
-class RestartInstanceRequest {
-  /// Full name of the nodes as obtained from INSTANCE_VIEW_FULL to restart
-  /// upon.
-  ///
-  /// Applicable only to read instances.
-  ///
-  /// Optional.
-  core.List<core.String>? nodeIds;
-
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server ignores the request if it has already been completed. The server
-  /// guarantees that for at least 60 minutes since the first request. For
-  /// example, consider a situation where you make an initial request and the
-  /// request times out. If you make the request again with the same request ID,
-  /// the server can check if the original operation with the same request ID
-  /// was received, and if so, ignores the second request. This prevents clients
-  /// from accidentally creating duplicate commitments. The request ID must be a
-  /// valid UUID with the exception that zero UUID is not supported
-  /// (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// If set, performs request validation, for example, permission checks and
-  /// any other type of validation, but does not actually execute the create
-  /// request.
-  ///
-  /// Optional.
-  core.bool? validateOnly;
-
-  RestartInstanceRequest({this.nodeIds, this.requestId, this.validateOnly});
-
-  RestartInstanceRequest.fromJson(core.Map json_)
-    : this(
-        nodeIds:
-            (json_['nodeIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        requestId: json_['requestId'] as core.String?,
-        validateOnly: json_['validateOnly'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nodeIds != null) 'nodeIds': nodeIds!,
-    if (requestId != null) 'requestId': requestId!,
-    if (validateOnly != null) 'validateOnly': validateOnly!,
-  };
-}
+typedef ReadPoolConfig = $ReadPoolConfig;
+typedef RestartInstanceRequest = $RestartInstanceRequest;
 
 /// Message for restoring a Cluster from a backup or another cluster at a given
 /// point in time.
@@ -5708,126 +4895,16 @@ class RestoreFromCloudSQLRequest {
 /// Configuration information for the secondary cluster.
 ///
 /// This should be set if and only if the cluster is of type SECONDARY.
-class SecondaryConfig {
-  /// The name of the primary cluster name with the format: *
-  /// projects/{project}/locations/{region}/clusters/{cluster_id}
-  core.String? primaryClusterName;
-
-  SecondaryConfig({this.primaryClusterName});
-
-  SecondaryConfig.fromJson(core.Map json_)
-    : this(primaryClusterName: json_['primaryClusterName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (primaryClusterName != null) 'primaryClusterName': primaryClusterName!,
-  };
-}
+typedef SecondaryConfig = $SecondaryConfig;
 
 /// Options for exporting data in SQL format.
-class SqlExportOptions {
-  /// If true, output commands to DROP all the dumped database objects prior to
-  /// outputting the commands for creating them.
-  ///
-  /// Optional.
-  core.bool? cleanTargetObjects;
-
-  /// If true, use DROP ...
-  ///
-  /// IF EXISTS commands to check for the object's existence before dropping it
-  /// in clean_target_objects mode.
-  ///
-  /// Optional.
-  core.bool? ifExistTargetObjects;
-
-  /// If true, only export the schema.
-  ///
-  /// Optional.
-  core.bool? schemaOnly;
-
-  /// Tables to export from.
-  ///
-  /// Optional.
-  core.List<core.String>? tables;
-
-  SqlExportOptions({
-    this.cleanTargetObjects,
-    this.ifExistTargetObjects,
-    this.schemaOnly,
-    this.tables,
-  });
-
-  SqlExportOptions.fromJson(core.Map json_)
-    : this(
-        cleanTargetObjects: json_['cleanTargetObjects'] as core.bool?,
-        ifExistTargetObjects: json_['ifExistTargetObjects'] as core.bool?,
-        schemaOnly: json_['schemaOnly'] as core.bool?,
-        tables:
-            (json_['tables'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cleanTargetObjects != null) 'cleanTargetObjects': cleanTargetObjects!,
-    if (ifExistTargetObjects != null)
-      'ifExistTargetObjects': ifExistTargetObjects!,
-    if (schemaOnly != null) 'schemaOnly': schemaOnly!,
-    if (tables != null) 'tables': tables!,
-  };
-}
+typedef SqlExportOptions = $SqlExportOptions;
 
 /// Options for importing data in SQL format.
 typedef SqlImportOptions = $Empty;
 
 /// SSL configuration.
-class SslConfig {
-  /// Certificate Authority (CA) source.
-  ///
-  /// Only CA_SOURCE_MANAGED is supported currently, and is the default value.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "CA_SOURCE_UNSPECIFIED" : Certificate Authority (CA) source not
-  /// specified. Defaults to CA_SOURCE_MANAGED.
-  /// - "CA_SOURCE_MANAGED" : Certificate Authority (CA) managed by the AlloyDB
-  /// Cluster.
-  core.String? caSource;
-
-  /// SSL mode.
-  ///
-  /// Specifies client-server SSL/TLS connection behavior.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SSL_MODE_UNSPECIFIED" : SSL mode is not specified. Defaults to
-  /// ENCRYPTED_ONLY.
-  /// - "SSL_MODE_ALLOW" : SSL connections are optional. CA verification not
-  /// enforced.
-  /// - "SSL_MODE_REQUIRE" : SSL connections are required. CA verification not
-  /// enforced. Clients may use locally self-signed certificates (default psql
-  /// client behavior).
-  /// - "SSL_MODE_VERIFY_CA" : SSL connections are required. CA verification
-  /// enforced. Clients must have certificates signed by a Cluster CA, for
-  /// example, using GenerateClientCertificate.
-  /// - "ALLOW_UNENCRYPTED_AND_ENCRYPTED" : SSL connections are optional. CA
-  /// verification not enforced.
-  /// - "ENCRYPTED_ONLY" : SSL connections are required. CA verification not
-  /// enforced.
-  core.String? sslMode;
-
-  SslConfig({this.caSource, this.sslMode});
-
-  SslConfig.fromJson(core.Map json_)
-    : this(
-        caSource: json_['caSource'] as core.String?,
-        sslMode: json_['sslMode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (caSource != null) 'caSource': caSource!,
-    if (sslMode != null) 'sslMode': sslMode!,
-  };
-}
+typedef SslConfig = $SslConfig;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -5839,26 +4916,7 @@ class SslConfig {
 typedef Status = $Status00;
 
 /// Restrictions on STRING type values
-class StringRestrictions {
-  /// The list of allowed values, if bounded.
-  ///
-  /// This field will be empty if there is a unbounded number of allowed values.
-  core.List<core.String>? allowedValues;
-
-  StringRestrictions({this.allowedValues});
-
-  StringRestrictions.fromJson(core.Map json_)
-    : this(
-        allowedValues:
-            (json_['allowedValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowedValues != null) 'allowedValues': allowedValues!,
-  };
-}
+typedef StringRestrictions = $StringRestrictions;
 
 /// SupportedDatabaseFlag gives general information about a database flag, like
 /// type and allowed values.
@@ -5988,60 +5046,14 @@ class SupportedDatabaseFlag {
 }
 
 /// Message for switching over to a cluster
-typedef SwitchoverClusterRequest = $Request05;
+typedef SwitchoverClusterRequest = $Request01;
 
 /// A time based retention policy specifies that all backups within a certain
 /// time period should be retained.
-class TimeBasedRetention {
-  /// The retention period.
-  core.String? retentionPeriod;
-
-  TimeBasedRetention({this.retentionPeriod});
-
-  TimeBasedRetention.fromJson(core.Map json_)
-    : this(retentionPeriod: json_['retentionPeriod'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (retentionPeriod != null) 'retentionPeriod': retentionPeriod!,
-  };
-}
+typedef TimeBasedRetention = $TimeBasedRetention;
 
 /// Contains information and all metadata related to TRIAL clusters.
-class TrialMetadata {
-  /// End time of the trial cluster.
-  core.String? endTime;
-
-  /// grace end time of the cluster.
-  core.String? graceEndTime;
-
-  /// start time of the trial cluster.
-  core.String? startTime;
-
-  /// Upgrade time of trial cluster to Standard cluster.
-  core.String? upgradeTime;
-
-  TrialMetadata({
-    this.endTime,
-    this.graceEndTime,
-    this.startTime,
-    this.upgradeTime,
-  });
-
-  TrialMetadata.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        graceEndTime: json_['graceEndTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        upgradeTime: json_['upgradeTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (graceEndTime != null) 'graceEndTime': graceEndTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (upgradeTime != null) 'upgradeTime': upgradeTime!,
-  };
-}
+typedef TrialMetadata = $TrialMetadata;
 
 /// Upgrades a cluster.
 class UpgradeClusterRequest {
@@ -6111,94 +5123,12 @@ class UpgradeClusterRequest {
 }
 
 /// Message describing User object.
-class User {
-  /// List of database roles this user has.
-  ///
-  /// The database role strings are subject to the PostgreSQL naming
-  /// conventions.
-  ///
-  /// Optional.
-  core.List<core.String>? databaseRoles;
-
-  /// Input only.
-  ///
-  /// If the user already exists and it has additional roles, keep them granted.
-  core.bool? keepExtraRoles;
-
-  /// Name of the resource in the form of
-  /// projects/{project}/locations/{location}/cluster/{cluster}/users/{user}.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Input only.
-  ///
-  /// Password for the user.
-  core.String? password;
-
-  /// Type of this user.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "USER_TYPE_UNSPECIFIED" : Unspecified user type.
-  /// - "ALLOYDB_BUILT_IN" : The default user type that authenticates via
-  /// password-based authentication.
-  /// - "ALLOYDB_IAM_USER" : Database user that can authenticate via IAM-Based
-  /// authentication.
-  core.String? userType;
-
-  User({
-    this.databaseRoles,
-    this.keepExtraRoles,
-    this.name,
-    this.password,
-    this.userType,
-  });
-
-  User.fromJson(core.Map json_)
-    : this(
-        databaseRoles:
-            (json_['databaseRoles'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        keepExtraRoles: json_['keepExtraRoles'] as core.bool?,
-        name: json_['name'] as core.String?,
-        password: json_['password'] as core.String?,
-        userType: json_['userType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (databaseRoles != null) 'databaseRoles': databaseRoles!,
-    if (keepExtraRoles != null) 'keepExtraRoles': keepExtraRoles!,
-    if (name != null) 'name': name!,
-    if (password != null) 'password': password!,
-    if (userType != null) 'userType': userType!,
-  };
-}
+typedef User = $User00;
 
 /// The username/password for a database user.
 ///
 /// Used for specifying initial users at cluster creation time.
-class UserPassword {
-  /// The initial password for the user.
-  core.String? password;
-
-  /// The database username.
-  core.String? user;
-
-  UserPassword({this.password, this.user});
-
-  UserPassword.fromJson(core.Map json_)
-    : this(
-        password: json_['password'] as core.String?,
-        user: json_['user'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (password != null) 'password': password!,
-    if (user != null) 'user': user!,
-  };
-}
+typedef UserPassword = $UserPassword;
 
 /// A weekly schedule starts a backup at prescribed start times within a day,
 /// for the specified days of the week.

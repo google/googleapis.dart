@@ -3882,59 +3882,11 @@ class AcceleratorConfig {
 
 /// AdditionalIPRangesConfig is the configuration for individual additional
 /// subnetwork attached to the cluster
-class AdditionalIPRangesConfig {
-  /// List of secondary ranges names within this subnetwork that can be used for
-  /// pod IPs.
-  ///
-  /// Example1: gke-pod-range1 Example2: gke-pod-range1,gke-pod-range2
-  core.List<core.String>? podIpv4RangeNames;
-
-  /// Name of the subnetwork.
-  ///
-  /// This can be the full path of the subnetwork or just the name. Example1:
-  /// my-subnet Example2:
-  /// projects/gke-project/regions/us-central1/subnetworks/my-subnet
-  core.String? subnetwork;
-
-  AdditionalIPRangesConfig({this.podIpv4RangeNames, this.subnetwork});
-
-  AdditionalIPRangesConfig.fromJson(core.Map json_)
-    : this(
-        podIpv4RangeNames:
-            (json_['podIpv4RangeNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        subnetwork: json_['subnetwork'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (podIpv4RangeNames != null) 'podIpv4RangeNames': podIpv4RangeNames!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-  };
-}
+typedef AdditionalIPRangesConfig = $AdditionalIPRangesConfig;
 
 /// AdditionalNodeNetworkConfig is the configuration for additional node
 /// networks within the NodeNetworkConfig message
-class AdditionalNodeNetworkConfig {
-  /// Name of the VPC where the additional interface belongs
-  core.String? network;
-
-  /// Name of the subnetwork where the additional interface belongs
-  core.String? subnetwork;
-
-  AdditionalNodeNetworkConfig({this.network, this.subnetwork});
-
-  AdditionalNodeNetworkConfig.fromJson(core.Map json_)
-    : this(
-        network: json_['network'] as core.String?,
-        subnetwork: json_['subnetwork'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (network != null) 'network': network!,
-    if (subnetwork != null) 'subnetwork': subnetwork!,
-  };
-}
+typedef AdditionalNodeNetworkConfig = $AdditionalNodeNetworkConfig;
 
 /// AdditionalPodNetworkConfig is the configuration for additional pod networks
 /// within the NodeNetworkConfig message
@@ -4257,199 +4209,29 @@ class AddonsConfig {
 
 /// AdvancedDatapathObservabilityConfig specifies configuration of observability
 /// features of advanced datapath.
-class AdvancedDatapathObservabilityConfig {
-  /// Expose flow metrics on nodes
-  core.bool? enableMetrics;
-
-  /// Enable Relay component
-  core.bool? enableRelay;
-
-  /// Method used to make Relay available
-  /// Possible string values are:
-  /// - "RELAY_MODE_UNSPECIFIED" : Default value. This shouldn't be used.
-  /// - "DISABLED" : disabled
-  /// - "INTERNAL_VPC_LB" : exposed via internal load balancer
-  /// - "EXTERNAL_LB" : exposed via external load balancer
-  core.String? relayMode;
-
-  AdvancedDatapathObservabilityConfig({
-    this.enableMetrics,
-    this.enableRelay,
-    this.relayMode,
-  });
-
-  AdvancedDatapathObservabilityConfig.fromJson(core.Map json_)
-    : this(
-        enableMetrics: json_['enableMetrics'] as core.bool?,
-        enableRelay: json_['enableRelay'] as core.bool?,
-        relayMode: json_['relayMode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableMetrics != null) 'enableMetrics': enableMetrics!,
-    if (enableRelay != null) 'enableRelay': enableRelay!,
-    if (relayMode != null) 'relayMode': relayMode!,
-  };
-}
+typedef AdvancedDatapathObservabilityConfig =
+    $AdvancedDatapathObservabilityConfig;
 
 /// Specifies options for controlling advanced machine features.
-class AdvancedMachineFeatures {
-  /// Whether or not to enable nested virtualization (defaults to false).
-  core.bool? enableNestedVirtualization;
-
-  /// Type of Performance Monitoring Unit (PMU) requested on node pool
-  /// instances.
-  ///
-  /// If unset, PMU will not be available to the node.
-  /// Possible string values are:
-  /// - "PERFORMANCE_MONITORING_UNIT_UNSPECIFIED" : PMU not enabled.
-  /// - "ARCHITECTURAL" : Architecturally defined non-LLC events.
-  /// - "STANDARD" : Most documented core/L2 events.
-  /// - "ENHANCED" : Most documented core/L2 and LLC events.
-  core.String? performanceMonitoringUnit;
-
-  /// The number of threads per physical core.
-  ///
-  /// To disable simultaneous multithreading (SMT) set this to 1. If unset, the
-  /// maximum number of threads supported per core by the underlying processor
-  /// is assumed.
-  core.String? threadsPerCore;
-
-  AdvancedMachineFeatures({
-    this.enableNestedVirtualization,
-    this.performanceMonitoringUnit,
-    this.threadsPerCore,
-  });
-
-  AdvancedMachineFeatures.fromJson(core.Map json_)
-    : this(
-        enableNestedVirtualization:
-            json_['enableNestedVirtualization'] as core.bool?,
-        performanceMonitoringUnit:
-            json_['performanceMonitoringUnit'] as core.String?,
-        threadsPerCore: json_['threadsPerCore'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableNestedVirtualization != null)
-      'enableNestedVirtualization': enableNestedVirtualization!,
-    if (performanceMonitoringUnit != null)
-      'performanceMonitoringUnit': performanceMonitoringUnit!,
-    if (threadsPerCore != null) 'threadsPerCore': threadsPerCore!,
-  };
-}
+typedef AdvancedMachineFeatures = $AdvancedMachineFeatures01;
 
 /// AnonymousAuthenticationConfig defines the settings needed to limit endpoints
 /// that allow anonymous authentication.
-class AnonymousAuthenticationConfig {
-  /// Defines the mode of limiting anonymous access in the cluster.
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : Default value not specified.
-  /// - "ENABLED" : Anonymous authentication is allowed for all endpoints.
-  /// - "LIMITED" : Anonymous authentication is allowed for only health check
-  /// endpoints.
-  core.String? mode;
-
-  AnonymousAuthenticationConfig({this.mode});
-
-  AnonymousAuthenticationConfig.fromJson(core.Map json_)
-    : this(mode: json_['mode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mode != null) 'mode': mode!,
-  };
-}
+typedef AnonymousAuthenticationConfig = $AnonymousAuthenticationConfig;
 
 /// Configuration for returning group information from authenticators.
-class AuthenticatorGroupsConfig {
-  /// Whether this cluster should return group membership lookups during
-  /// authentication using a group of security groups.
-  core.bool? enabled;
-
-  /// The name of the security group-of-groups to be used.
-  ///
-  /// Only relevant if enabled = true.
-  core.String? securityGroup;
-
-  AuthenticatorGroupsConfig({this.enabled, this.securityGroup});
-
-  AuthenticatorGroupsConfig.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        securityGroup: json_['securityGroup'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (securityGroup != null) 'securityGroup': securityGroup!,
-  };
-}
+typedef AuthenticatorGroupsConfig = $AuthenticatorGroupsConfig;
 
 /// AutoIpamConfig contains all information related to Auto IPAM
-class AutoIpamConfig {
-  /// The flag that enables Auto IPAM on this cluster
-  core.bool? enabled;
-
-  AutoIpamConfig({this.enabled});
-
-  AutoIpamConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef AutoIpamConfig = $AutoIpamConfig;
 
 /// AutoMonitoringConfig defines the configuration for GKE Workload
 /// Auto-Monitoring.
-class AutoMonitoringConfig {
-  /// Scope for GKE Workload Auto-Monitoring.
-  /// Possible string values are:
-  /// - "SCOPE_UNSPECIFIED" : Not set.
-  /// - "ALL" : Auto-Monitoring is enabled for all supported applications.
-  /// - "NONE" : Disable Auto-Monitoring.
-  core.String? scope;
-
-  AutoMonitoringConfig({this.scope});
-
-  AutoMonitoringConfig.fromJson(core.Map json_)
-    : this(scope: json_['scope'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-  };
-}
+typedef AutoMonitoringConfig = $AutoMonitoringConfig;
 
 /// AutoUpgradeOptions defines the set of options for the user to control how
 /// the Auto Upgrades will proceed.
-class AutoUpgradeOptions {
-  /// This field is set when upgrades are about to commence with the approximate
-  /// start time for the upgrades, in
-  /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-  ///
-  /// Output only.
-  core.String? autoUpgradeStartTime;
-
-  /// This field is set when upgrades are about to commence with the description
-  /// of the upgrade.
-  ///
-  /// Output only.
-  core.String? description;
-
-  AutoUpgradeOptions({this.autoUpgradeStartTime, this.description});
-
-  AutoUpgradeOptions.fromJson(core.Map json_)
-    : this(
-        autoUpgradeStartTime: json_['autoUpgradeStartTime'] as core.String?,
-        description: json_['description'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoUpgradeStartTime != null)
-      'autoUpgradeStartTime': autoUpgradeStartTime!,
-    if (description != null) 'description': description!,
-  };
-}
+typedef AutoUpgradeOptions = $AutoUpgradeOptions;
 
 /// Autopilot is the configuration for Autopilot settings on the cluster.
 class Autopilot {
@@ -4499,82 +4281,11 @@ class Autopilot {
 
 /// AutopilotCompatibilityIssue contains information about a specific
 /// compatibility issue with Autopilot mode.
-class AutopilotCompatibilityIssue {
-  /// The constraint type of the issue.
-  core.String? constraintType;
-
-  /// The description of the issue.
-  core.String? description;
-
-  /// A URL to a public documentation, which addresses resolving this issue.
-  core.String? documentationUrl;
-
-  /// The incompatibility type of this issue.
-  /// Possible string values are:
-  /// - "UNSPECIFIED" : Default value, should not be used.
-  /// - "INCOMPATIBILITY" : Indicates that the issue is a known incompatibility
-  /// between the cluster and Autopilot mode.
-  /// - "ADDITIONAL_CONFIG_REQUIRED" : Indicates the issue is an incompatibility
-  /// if customers take no further action to resolve.
-  /// - "PASSED_WITH_OPTIONAL_CONFIG" : Indicates the issue is not an
-  /// incompatibility, but depending on the workloads business logic, there is a
-  /// potential that they won't work on Autopilot.
-  core.String? incompatibilityType;
-
-  /// The last time when this issue was observed.
-  core.String? lastObservation;
-
-  /// The name of the resources which are subject to this issue.
-  core.List<core.String>? subjects;
-
-  AutopilotCompatibilityIssue({
-    this.constraintType,
-    this.description,
-    this.documentationUrl,
-    this.incompatibilityType,
-    this.lastObservation,
-    this.subjects,
-  });
-
-  AutopilotCompatibilityIssue.fromJson(core.Map json_)
-    : this(
-        constraintType: json_['constraintType'] as core.String?,
-        description: json_['description'] as core.String?,
-        documentationUrl: json_['documentationUrl'] as core.String?,
-        incompatibilityType: json_['incompatibilityType'] as core.String?,
-        lastObservation: json_['lastObservation'] as core.String?,
-        subjects:
-            (json_['subjects'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (constraintType != null) 'constraintType': constraintType!,
-    if (description != null) 'description': description!,
-    if (documentationUrl != null) 'documentationUrl': documentationUrl!,
-    if (incompatibilityType != null)
-      'incompatibilityType': incompatibilityType!,
-    if (lastObservation != null) 'lastObservation': lastObservation!,
-    if (subjects != null) 'subjects': subjects!,
-  };
-}
+typedef AutopilotCompatibilityIssue = $AutopilotCompatibilityIssue;
 
 /// AutopilotConfig contains configuration of autopilot feature for this
 /// nodepool.
-class AutopilotConfig {
-  /// Denotes that nodes belonging to this node pool are Autopilot nodes.
-  core.bool? enabled;
-
-  AutopilotConfig({this.enabled});
-
-  AutopilotConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef AutopilotConfig = $AutopilotConfig;
 
 /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created
 /// by NAP.
@@ -4711,45 +4422,10 @@ class AutoprovisioningNodePoolDefaults {
 }
 
 /// Best effort provisioning.
-class BestEffortProvisioning {
-  /// When this is enabled, cluster/node pool creations will ignore non-fatal
-  /// errors like stockout to best provision as many nodes as possible right now
-  /// and eventually bring up all target number of nodes
-  core.bool? enabled;
-
-  /// Minimum number of nodes to be provisioned to be considered as succeeded,
-  /// and the rest of nodes will be provisioned gradually and eventually when
-  /// stockout issue has been resolved.
-  core.int? minProvisionNodes;
-
-  BestEffortProvisioning({this.enabled, this.minProvisionNodes});
-
-  BestEffortProvisioning.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        minProvisionNodes: json_['minProvisionNodes'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (minProvisionNodes != null) 'minProvisionNodes': minProvisionNodes!,
-  };
-}
+typedef BestEffortProvisioning = $BestEffortProvisioning;
 
 /// Parameters for using BigQuery as the destination of resource usage export.
-class BigQueryDestination {
-  /// The ID of a BigQuery Dataset.
-  core.String? datasetId;
-
-  BigQueryDestination({this.datasetId});
-
-  BigQueryDestination.fromJson(core.Map json_)
-    : this(datasetId: json_['datasetId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (datasetId != null) 'datasetId': datasetId!,
-  };
-}
+typedef BigQueryDestination = $BigQueryDestination01;
 
 /// Configuration for Binary Authorization.
 class BinaryAuthorization {
@@ -4889,109 +4565,10 @@ class BlueGreenSettings {
 }
 
 /// BootDisk specifies the boot disk configuration for nodepools.
-class BootDisk {
-  /// Disk type of the boot disk.
-  ///
-  /// (i.e. Hyperdisk-Balanced, PD-Balanced, etc.)
-  core.String? diskType;
-
-  /// For Hyperdisk-Balanced only, the provisioned IOPS config value.
-  core.String? provisionedIops;
-
-  /// For Hyperdisk-Balanced only, the provisioned throughput config value.
-  core.String? provisionedThroughput;
-
-  /// Disk size in GB.
-  ///
-  /// Replaces NodeConfig.disk_size_gb
-  core.String? sizeGb;
-
-  BootDisk({
-    this.diskType,
-    this.provisionedIops,
-    this.provisionedThroughput,
-    this.sizeGb,
-  });
-
-  BootDisk.fromJson(core.Map json_)
-    : this(
-        diskType: json_['diskType'] as core.String?,
-        provisionedIops: json_['provisionedIops'] as core.String?,
-        provisionedThroughput: json_['provisionedThroughput'] as core.String?,
-        sizeGb: json_['sizeGb'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskType != null) 'diskType': diskType!,
-    if (provisionedIops != null) 'provisionedIops': provisionedIops!,
-    if (provisionedThroughput != null)
-      'provisionedThroughput': provisionedThroughput!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-  };
-}
+typedef BootDisk = $BootDisk;
 
 /// CancelOperationRequest cancels a single operation.
-class CancelOperationRequest {
-  /// The name (project, location, operation id) of the operation to cancel.
-  ///
-  /// Specified in the format `projects / * /locations / * /operations / * `.
-  core.String? name;
-
-  /// The server-assigned `name` of the operation.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? operationId;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the operation resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  CancelOperationRequest({
-    this.name,
-    this.operationId,
-    this.projectId,
-    this.zone,
-  });
-
-  CancelOperationRequest.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        operationId: json_['operationId'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (operationId != null) 'operationId': operationId!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef CancelOperationRequest = $CancelOperationRequest;
 
 /// CertificateAuthorityDomainConfig configures one or more fully qualified
 /// domain names (FQDN) to a specific certificate.
@@ -5062,73 +4639,13 @@ class CheckAutopilotCompatibilityResponse {
 }
 
 /// CidrBlock contains an optional name and one CIDR block.
-class CidrBlock {
-  /// cidr_block must be specified in CIDR notation.
-  core.String? cidrBlock;
-
-  /// display_name is an optional field for users to identify CIDR blocks.
-  core.String? displayName;
-
-  CidrBlock({this.cidrBlock, this.displayName});
-
-  CidrBlock.fromJson(core.Map json_)
-    : this(
-        cidrBlock: json_['cidrBlock'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cidrBlock != null) 'cidrBlock': cidrBlock!,
-    if (displayName != null) 'displayName': displayName!,
-  };
-}
+typedef CidrBlock = $CidrBlock01;
 
 /// Configuration for client certificates on the cluster.
-class ClientCertificateConfig {
-  /// Issue a client certificate.
-  core.bool? issueClientCertificate;
-
-  ClientCertificateConfig({this.issueClientCertificate});
-
-  ClientCertificateConfig.fromJson(core.Map json_)
-    : this(
-        issueClientCertificate: json_['issueClientCertificate'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (issueClientCertificate != null)
-      'issueClientCertificate': issueClientCertificate!,
-  };
-}
+typedef ClientCertificateConfig = $ClientCertificateConfig;
 
 /// Configuration options for the Cloud Run feature.
-class CloudRunConfig {
-  /// Whether Cloud Run addon is enabled for this cluster.
-  core.bool? disabled;
-
-  /// Which load balancer type is installed for Cloud Run.
-  /// Possible string values are:
-  /// - "LOAD_BALANCER_TYPE_UNSPECIFIED" : Load balancer type for Cloud Run is
-  /// unspecified.
-  /// - "LOAD_BALANCER_TYPE_EXTERNAL" : Install external load balancer for Cloud
-  /// Run.
-  /// - "LOAD_BALANCER_TYPE_INTERNAL" : Install internal load balancer for Cloud
-  /// Run.
-  core.String? loadBalancerType;
-
-  CloudRunConfig({this.disabled, this.loadBalancerType});
-
-  CloudRunConfig.fromJson(core.Map json_)
-    : this(
-        disabled: json_['disabled'] as core.bool?,
-        loadBalancerType: json_['loadBalancerType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-    if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
-  };
-}
+typedef CloudRunConfig = $CloudRunConfig;
 
 /// A Google Kubernetes Engine cluster.
 class Cluster {
@@ -7311,68 +6828,7 @@ class ClusterUpgradeInfo {
 }
 
 /// CompleteIPRotationRequest moves the cluster master back into single-IP mode.
-class CompleteIPRotationRequest {
-  /// The name of the cluster.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The name (project, location, cluster name) of the cluster to complete IP
-  /// rotation.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  CompleteIPRotationRequest({
-    this.clusterId,
-    this.name,
-    this.projectId,
-    this.zone,
-  });
-
-  CompleteIPRotationRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef CompleteIPRotationRequest = $CompleteIPRotationRequest;
 
 /// CompleteNodePoolUpgradeRequest sets the name of target node pool to complete
 /// upgrade.
@@ -7418,67 +6874,13 @@ typedef ComplianceStandard = $ComplianceStandard;
 
 /// ConfidentialNodes is configuration for the confidential nodes feature, which
 /// makes nodes run on confidential VMs.
-class ConfidentialNodes {
-  /// Defines the type of technology used by the confidential node.
-  /// Possible string values are:
-  /// - "CONFIDENTIAL_INSTANCE_TYPE_UNSPECIFIED" : No type specified. Do not use
-  /// this value.
-  /// - "SEV" : AMD Secure Encrypted Virtualization.
-  /// - "SEV_SNP" : AMD Secure Encrypted Virtualization - Secure Nested Paging.
-  /// - "TDX" : Intel Trust Domain eXtension.
-  core.String? confidentialInstanceType;
-
-  /// Whether Confidential Nodes feature is enabled.
-  core.bool? enabled;
-
-  ConfidentialNodes({this.confidentialInstanceType, this.enabled});
-
-  ConfidentialNodes.fromJson(core.Map json_)
-    : this(
-        confidentialInstanceType:
-            json_['confidentialInstanceType'] as core.String?,
-        enabled: json_['enabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (confidentialInstanceType != null)
-      'confidentialInstanceType': confidentialInstanceType!,
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef ConfidentialNodes = $ConfidentialNodes;
 
 /// Configuration options for the Config Connector add-on.
-class ConfigConnectorConfig {
-  /// Whether Cloud Connector is enabled for this cluster.
-  core.bool? enabled;
-
-  ConfigConnectorConfig({this.enabled});
-
-  ConfigConnectorConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef ConfigConnectorConfig = $ConfigConnectorConfig;
 
 /// Parameters for controlling consumption metering.
-class ConsumptionMeteringConfig {
-  /// Whether to enable consumption metering for this cluster.
-  ///
-  /// If enabled, a second BigQuery table will be created to hold resource
-  /// consumption records.
-  core.bool? enabled;
-
-  ConsumptionMeteringConfig({this.enabled});
-
-  ConsumptionMeteringConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef ConsumptionMeteringConfig = $ConsumptionMeteringConfig;
 
 /// ContainerdConfig contains configuration to customize containerd.
 class ContainerdConfig {
@@ -7540,19 +6942,7 @@ class ControlPlaneEndpointsConfig {
 }
 
 /// Configuration for fine-grained cost management feature.
-class CostManagementConfig {
-  /// Whether the feature is enabled or not.
-  core.bool? enabled;
-
-  CostManagementConfig({this.enabled});
-
-  CostManagementConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef CostManagementConfig = $CostManagementConfig;
 
 /// CreateClusterRequest creates a cluster.
 class CreateClusterRequest {
@@ -7691,88 +7081,10 @@ class CreateNodePoolRequest {
 }
 
 /// DNSConfig contains the desired set of options for configuring clusterDNS.
-class DNSConfig {
-  /// The domain used in Additive VPC scope.
-  ///
-  /// Optional.
-  core.String? additiveVpcScopeDnsDomain;
-
-  /// cluster_dns indicates which in-cluster DNS provider should be used.
-  /// Possible string values are:
-  /// - "PROVIDER_UNSPECIFIED" : Default value
-  /// - "PLATFORM_DEFAULT" : Use GKE default DNS provider(kube-dns) for DNS
-  /// resolution.
-  /// - "CLOUD_DNS" : Use CloudDNS for DNS resolution.
-  /// - "KUBE_DNS" : Use KubeDNS for DNS resolution.
-  core.String? clusterDns;
-
-  /// cluster_dns_domain is the suffix used for all cluster service records.
-  core.String? clusterDnsDomain;
-
-  /// cluster_dns_scope indicates the scope of access to cluster DNS records.
-  /// Possible string values are:
-  /// - "DNS_SCOPE_UNSPECIFIED" : Default value, will be inferred as cluster
-  /// scope.
-  /// - "CLUSTER_SCOPE" : DNS records are accessible from within the cluster.
-  /// - "VPC_SCOPE" : DNS records are accessible from within the VPC.
-  core.String? clusterDnsScope;
-
-  DNSConfig({
-    this.additiveVpcScopeDnsDomain,
-    this.clusterDns,
-    this.clusterDnsDomain,
-    this.clusterDnsScope,
-  });
-
-  DNSConfig.fromJson(core.Map json_)
-    : this(
-        additiveVpcScopeDnsDomain:
-            json_['additiveVpcScopeDnsDomain'] as core.String?,
-        clusterDns: json_['clusterDns'] as core.String?,
-        clusterDnsDomain: json_['clusterDnsDomain'] as core.String?,
-        clusterDnsScope: json_['clusterDnsScope'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (additiveVpcScopeDnsDomain != null)
-      'additiveVpcScopeDnsDomain': additiveVpcScopeDnsDomain!,
-    if (clusterDns != null) 'clusterDns': clusterDns!,
-    if (clusterDnsDomain != null) 'clusterDnsDomain': clusterDnsDomain!,
-    if (clusterDnsScope != null) 'clusterDnsScope': clusterDnsScope!,
-  };
-}
+typedef DNSConfig = $DNSConfig;
 
 /// Describes the configuration of a DNS endpoint.
-class DNSEndpointConfig {
-  /// Controls whether user traffic is allowed over this endpoint.
-  ///
-  /// Note that GCP-managed services may still use the endpoint even if this is
-  /// false.
-  core.bool? allowExternalTraffic;
-
-  /// The cluster's DNS endpoint configuration.
-  ///
-  /// A DNS format address. This is accessible from the public internet. Ex:
-  /// uid.us-central1.gke.goog. Always present, but the behavior may change
-  /// according to the value of DNSEndpointConfig.allow_external_traffic.
-  ///
-  /// Output only.
-  core.String? endpoint;
-
-  DNSEndpointConfig({this.allowExternalTraffic, this.endpoint});
-
-  DNSEndpointConfig.fromJson(core.Map json_)
-    : this(
-        allowExternalTraffic: json_['allowExternalTraffic'] as core.bool?,
-        endpoint: json_['endpoint'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowExternalTraffic != null)
-      'allowExternalTraffic': allowExternalTraffic!,
-    if (endpoint != null) 'endpoint': endpoint!,
-  };
-}
+typedef DNSEndpointConfig = $DNSEndpointConfig;
 
 /// Time window specified for daily maintenance operations.
 class DailyMaintenanceWindow {
@@ -7891,35 +7203,11 @@ class DatabaseEncryption {
 }
 
 /// DefaultComputeClassConfig defines default compute class configuration.
-class DefaultComputeClassConfig {
-  /// Enables default compute class.
-  core.bool? enabled;
-
-  DefaultComputeClassConfig({this.enabled});
-
-  DefaultComputeClassConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef DefaultComputeClassConfig = $DefaultComputeClassConfig;
 
 /// DefaultSnatStatus contains the desired state of whether default sNAT should
 /// be disabled on the cluster.
-class DefaultSnatStatus {
-  /// Disables cluster default sNAT rules.
-  core.bool? disabled;
-
-  DefaultSnatStatus({this.disabled});
-
-  DefaultSnatStatus.fromJson(core.Map json_)
-    : this(disabled: json_['disabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-  };
-}
+typedef DefaultSnatStatus = $DefaultSnatStatus;
 
 /// DesiredAdditionalIPRangesConfig is a wrapper used for cluster update
 /// operation and contains multiple AdditionalIPRangesConfigs.
@@ -7949,39 +7237,10 @@ class DesiredAdditionalIPRangesConfig {
 }
 
 /// DesiredEnterpriseConfig is a wrapper used for updating enterprise_config.
-class DesiredEnterpriseConfig {
-  /// desired_tier specifies the desired tier of the cluster.
-  /// Possible string values are:
-  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
-  /// cluster_tier is not set.
-  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
-  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
-  core.String? desiredTier;
-
-  DesiredEnterpriseConfig({this.desiredTier});
-
-  DesiredEnterpriseConfig.fromJson(core.Map json_)
-    : this(desiredTier: json_['desiredTier'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (desiredTier != null) 'desiredTier': desiredTier!,
-  };
-}
+typedef DesiredEnterpriseConfig = $DesiredEnterpriseConfig;
 
 /// Configuration for NodeLocal DNSCache
-class DnsCacheConfig {
-  /// Whether NodeLocal DNSCache is enabled for this cluster.
-  core.bool? enabled;
-
-  DnsCacheConfig({this.enabled});
-
-  DnsCacheConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef DnsCacheConfig = $DnsCacheConfig;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -7992,242 +7251,18 @@ class DnsCacheConfig {
 typedef Empty = $Empty;
 
 /// EnterpriseConfig is the cluster enterprise configuration.
-class EnterpriseConfig {
-  /// cluster_tier indicates the effective tier of the cluster.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
-  /// cluster_tier is not set.
-  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
-  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
-  core.String? clusterTier;
-
-  /// desired_tier specifies the desired tier of the cluster.
-  /// Possible string values are:
-  /// - "CLUSTER_TIER_UNSPECIFIED" : CLUSTER_TIER_UNSPECIFIED is when
-  /// cluster_tier is not set.
-  /// - "STANDARD" : STANDARD indicates a standard GKE cluster.
-  /// - "ENTERPRISE" : ENTERPRISE indicates a GKE Enterprise cluster.
-  core.String? desiredTier;
-
-  EnterpriseConfig({this.clusterTier, this.desiredTier});
-
-  EnterpriseConfig.fromJson(core.Map json_)
-    : this(
-        clusterTier: json_['clusterTier'] as core.String?,
-        desiredTier: json_['desiredTier'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterTier != null) 'clusterTier': clusterTier!,
-    if (desiredTier != null) 'desiredTier': desiredTier!,
-  };
-}
+typedef EnterpriseConfig = $EnterpriseConfig;
 
 /// EphemeralStorageLocalSsdConfig contains configuration for the node ephemeral
 /// storage using Local SSDs.
-class EphemeralStorageLocalSsdConfig {
-  /// Number of local SSDs to use for GKE Data Cache.
-  core.int? dataCacheCount;
-
-  /// Number of local SSDs to use to back ephemeral storage.
-  ///
-  /// Uses NVMe interfaces. A zero (or unset) value has different meanings
-  /// depending on machine type being used: 1. For pre-Gen3 machines, which
-  /// support flexible numbers of local ssds, zero (or unset) means to disable
-  /// using local SSDs as ephemeral storage. The limit for this value is
-  /// dependent upon the maximum number of disk available on a machine per zone.
-  /// See:
-  /// https://{$universe.dns_names.final_documentation_domain}/compute/docs/disks/local-ssd
-  /// for more information. 2. For Gen3 machines which dictate a specific number
-  /// of local ssds, zero (or unset) means to use the default number of local
-  /// ssds that goes with that machine type. For example, for a
-  /// c3-standard-8-lssd machine, 2 local ssds would be provisioned. For
-  /// c3-standard-8 (which doesn't support local ssds), 0 will be provisioned.
-  /// See
-  /// https://{$universe.dns_names.final_documentation_domain}/compute/docs/disks/local-ssd#choose_number_local_ssds
-  /// for more info.
-  core.int? localSsdCount;
-
-  EphemeralStorageLocalSsdConfig({this.dataCacheCount, this.localSsdCount});
-
-  EphemeralStorageLocalSsdConfig.fromJson(core.Map json_)
-    : this(
-        dataCacheCount: json_['dataCacheCount'] as core.int?,
-        localSsdCount: json_['localSsdCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataCacheCount != null) 'dataCacheCount': dataCacheCount!,
-    if (localSsdCount != null) 'localSsdCount': localSsdCount!,
-  };
-}
+typedef EphemeralStorageLocalSsdConfig = $EphemeralStorageLocalSsdConfig;
 
 /// Eviction grace periods are grace periods for each eviction signal.
-class EvictionGracePeriod {
-  /// Grace period for eviction due to imagefs available signal.
-  ///
-  /// Sample format: "10s". Must be \>= 0. See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? imagefsAvailable;
-
-  /// Grace period for eviction due to imagefs inodes free signal.
-  ///
-  /// Sample format: "10s". Must be \>= 0. See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? imagefsInodesFree;
-
-  /// Grace period for eviction due to memory available signal.
-  ///
-  /// Sample format: "10s". Must be \>= 0. See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? memoryAvailable;
-
-  /// Grace period for eviction due to nodefs available signal.
-  ///
-  /// Sample format: "10s". Must be \>= 0. See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? nodefsAvailable;
-
-  /// Grace period for eviction due to nodefs inodes free signal.
-  ///
-  /// Sample format: "10s". Must be \>= 0. See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? nodefsInodesFree;
-
-  /// Grace period for eviction due to pid available signal.
-  ///
-  /// Sample format: "10s". Must be \>= 0. See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? pidAvailable;
-
-  EvictionGracePeriod({
-    this.imagefsAvailable,
-    this.imagefsInodesFree,
-    this.memoryAvailable,
-    this.nodefsAvailable,
-    this.nodefsInodesFree,
-    this.pidAvailable,
-  });
-
-  EvictionGracePeriod.fromJson(core.Map json_)
-    : this(
-        imagefsAvailable: json_['imagefsAvailable'] as core.String?,
-        imagefsInodesFree: json_['imagefsInodesFree'] as core.String?,
-        memoryAvailable: json_['memoryAvailable'] as core.String?,
-        nodefsAvailable: json_['nodefsAvailable'] as core.String?,
-        nodefsInodesFree: json_['nodefsInodesFree'] as core.String?,
-        pidAvailable: json_['pidAvailable'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imagefsAvailable != null) 'imagefsAvailable': imagefsAvailable!,
-    if (imagefsInodesFree != null) 'imagefsInodesFree': imagefsInodesFree!,
-    if (memoryAvailable != null) 'memoryAvailable': memoryAvailable!,
-    if (nodefsAvailable != null) 'nodefsAvailable': nodefsAvailable!,
-    if (nodefsInodesFree != null) 'nodefsInodesFree': nodefsInodesFree!,
-    if (pidAvailable != null) 'pidAvailable': pidAvailable!,
-  };
-}
+typedef EvictionGracePeriod = $EvictionGracePeriod;
 
 /// Eviction minimum reclaims are the resource amounts of minimum reclaims for
 /// each eviction signal.
-class EvictionMinimumReclaim {
-  /// Minimum reclaim for eviction due to imagefs available signal.
-  ///
-  /// Only take percentage value for now. Sample format: "10%". Must be \<=10%.
-  /// See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? imagefsAvailable;
-
-  /// Minimum reclaim for eviction due to imagefs inodes free signal.
-  ///
-  /// Only take percentage value for now. Sample format: "10%". Must be \<=10%.
-  /// See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? imagefsInodesFree;
-
-  /// Minimum reclaim for eviction due to memory available signal.
-  ///
-  /// Only take percentage value for now. Sample format: "10%". Must be \<=10%.
-  /// See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? memoryAvailable;
-
-  /// Minimum reclaim for eviction due to nodefs available signal.
-  ///
-  /// Only take percentage value for now. Sample format: "10%". Must be \<=10%.
-  /// See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? nodefsAvailable;
-
-  /// Minimum reclaim for eviction due to nodefs inodes free signal.
-  ///
-  /// Only take percentage value for now. Sample format: "10%". Must be \<=10%.
-  /// See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? nodefsInodesFree;
-
-  /// Minimum reclaim for eviction due to pid available signal.
-  ///
-  /// Only take percentage value for now. Sample format: "10%". Must be \<=10%.
-  /// See
-  /// https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals
-  ///
-  /// Optional.
-  core.String? pidAvailable;
-
-  EvictionMinimumReclaim({
-    this.imagefsAvailable,
-    this.imagefsInodesFree,
-    this.memoryAvailable,
-    this.nodefsAvailable,
-    this.nodefsInodesFree,
-    this.pidAvailable,
-  });
-
-  EvictionMinimumReclaim.fromJson(core.Map json_)
-    : this(
-        imagefsAvailable: json_['imagefsAvailable'] as core.String?,
-        imagefsInodesFree: json_['imagefsInodesFree'] as core.String?,
-        memoryAvailable: json_['memoryAvailable'] as core.String?,
-        nodefsAvailable: json_['nodefsAvailable'] as core.String?,
-        nodefsInodesFree: json_['nodefsInodesFree'] as core.String?,
-        pidAvailable: json_['pidAvailable'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imagefsAvailable != null) 'imagefsAvailable': imagefsAvailable!,
-    if (imagefsInodesFree != null) 'imagefsInodesFree': imagefsInodesFree!,
-    if (memoryAvailable != null) 'memoryAvailable': memoryAvailable!,
-    if (nodefsAvailable != null) 'nodefsAvailable': nodefsAvailable!,
-    if (nodefsInodesFree != null) 'nodefsInodesFree': nodefsInodesFree!,
-    if (pidAvailable != null) 'pidAvailable': pidAvailable!,
-  };
-}
+typedef EvictionMinimumReclaim = $EvictionMinimumReclaim;
 
 /// Eviction signals are the current state of a particular resource at a
 /// specific point in time.
@@ -8335,246 +7370,45 @@ class EvictionSignals {
 }
 
 /// Configuration of Fast Socket feature.
-class FastSocket {
-  /// Whether Fast Socket features are enabled in the node pool.
-  core.bool? enabled;
-
-  FastSocket({this.enabled});
-
-  FastSocket.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef FastSocket = $FastSocket;
 
 /// Allows filtering to one or more specific event types.
 ///
 /// If event types are present, those and only those event types will be
 /// transmitted to the cluster. Other types will be skipped. If no filter is
 /// specified, or no event types are present, all event types will be sent
-class Filter {
-  /// Event types to allowlist.
-  core.List<core.String>? eventType;
-
-  Filter({this.eventType});
-
-  Filter.fromJson(core.Map json_)
-    : this(
-        eventType:
-            (json_['eventType'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (eventType != null) 'eventType': eventType!,
-  };
-}
+typedef Filter = $Filter;
 
 /// Fleet is the fleet configuration for the cluster.
-class Fleet {
-  /// The full resource name of the registered fleet membership of the cluster,
-  /// in the format `//gkehub.googleapis.com/projects / * /locations / *
-  /// /memberships / * `.
-  ///
-  /// Output only.
-  core.String? membership;
-
-  /// The type of the cluster's fleet membership.
-  /// Possible string values are:
-  /// - "MEMBERSHIP_TYPE_UNSPECIFIED" : The MembershipType is not set.
-  /// - "LIGHTWEIGHT" : The membership supports only lightweight compatible
-  /// features.
-  core.String? membershipType;
-
-  /// Whether the cluster has been registered through the fleet API.
-  ///
-  /// Output only.
-  core.bool? preRegistered;
-
-  /// The Fleet host project(project ID or project number) where this cluster
-  /// will be registered to.
-  ///
-  /// This field cannot be changed after the cluster has been registered.
-  core.String? project;
-
-  Fleet({
-    this.membership,
-    this.membershipType,
-    this.preRegistered,
-    this.project,
-  });
-
-  Fleet.fromJson(core.Map json_)
-    : this(
-        membership: json_['membership'] as core.String?,
-        membershipType: json_['membershipType'] as core.String?,
-        preRegistered: json_['preRegistered'] as core.bool?,
-        project: json_['project'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (membership != null) 'membership': membership!,
-    if (membershipType != null) 'membershipType': membershipType!,
-    if (preRegistered != null) 'preRegistered': preRegistered!,
-    if (project != null) 'project': project!,
-  };
-}
+typedef Fleet = $Fleet;
 
 /// GCPSecretManagerCertificateConfig configures a secret from
 /// [Google Secret Manager](https://{$universe.dns_names.final_documentation_domain}/secret-manager).
-class GCPSecretManagerCertificateConfig {
-  /// Secret URI, in the form
-  /// "projects/$PROJECT_ID/secrets/$SECRET_NAME/versions/$VERSION".
-  ///
-  /// Version can be fixed (e.g. "2") or "latest"
-  core.String? secretUri;
-
-  GCPSecretManagerCertificateConfig({this.secretUri});
-
-  GCPSecretManagerCertificateConfig.fromJson(core.Map json_)
-    : this(secretUri: json_['secretUri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (secretUri != null) 'secretUri': secretUri!,
-  };
-}
+typedef GCPSecretManagerCertificateConfig = $GCPSecretManagerCertificateConfig;
 
 /// GPUDriverInstallationConfig specifies the version of GPU driver to be auto
 /// installed.
-class GPUDriverInstallationConfig {
-  /// Mode for how the GPU driver is installed.
-  /// Possible string values are:
-  /// - "GPU_DRIVER_VERSION_UNSPECIFIED" : Default value is to not install any
-  /// GPU driver.
-  /// - "INSTALLATION_DISABLED" : Disable GPU driver auto installation and needs
-  /// manual installation
-  /// - "DEFAULT" : "Default" GPU driver in COS and Ubuntu.
-  /// - "LATEST" : "Latest" GPU driver in COS.
-  core.String? gpuDriverVersion;
-
-  GPUDriverInstallationConfig({this.gpuDriverVersion});
-
-  GPUDriverInstallationConfig.fromJson(core.Map json_)
-    : this(gpuDriverVersion: json_['gpuDriverVersion'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gpuDriverVersion != null) 'gpuDriverVersion': gpuDriverVersion!,
-  };
-}
+typedef GPUDriverInstallationConfig = $GPUDriverInstallationConfig;
 
 /// GPUSharingConfig represents the GPU sharing configuration for Hardware
 /// Accelerators.
-class GPUSharingConfig {
-  /// The type of GPU sharing strategy to enable on the GPU node.
-  /// Possible string values are:
-  /// - "GPU_SHARING_STRATEGY_UNSPECIFIED" : Default value.
-  /// - "TIME_SHARING" : GPUs are time-shared between containers.
-  /// - "MPS" : GPUs are shared between containers with NVIDIA MPS.
-  core.String? gpuSharingStrategy;
-
-  /// The max number of containers that can share a physical GPU.
-  core.String? maxSharedClientsPerGpu;
-
-  GPUSharingConfig({this.gpuSharingStrategy, this.maxSharedClientsPerGpu});
-
-  GPUSharingConfig.fromJson(core.Map json_)
-    : this(
-        gpuSharingStrategy: json_['gpuSharingStrategy'] as core.String?,
-        maxSharedClientsPerGpu: json_['maxSharedClientsPerGpu'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (gpuSharingStrategy != null) 'gpuSharingStrategy': gpuSharingStrategy!,
-    if (maxSharedClientsPerGpu != null)
-      'maxSharedClientsPerGpu': maxSharedClientsPerGpu!,
-  };
-}
+typedef GPUSharingConfig = $GPUSharingConfig;
 
 /// GatewayAPIConfig contains the desired config of Gateway API on this cluster.
-class GatewayAPIConfig {
-  /// The Gateway API release channel to use for Gateway API.
-  /// Possible string values are:
-  /// - "CHANNEL_UNSPECIFIED" : Default value.
-  /// - "CHANNEL_DISABLED" : Gateway API support is disabled
-  /// - "CHANNEL_EXPERIMENTAL" : Deprecated: use CHANNEL_STANDARD instead.
-  /// Gateway API support is enabled, experimental CRDs are installed
-  /// - "CHANNEL_STANDARD" : Gateway API support is enabled, standard CRDs are
-  /// installed
-  core.String? channel;
-
-  GatewayAPIConfig({this.channel});
-
-  GatewayAPIConfig.fromJson(core.Map json_)
-    : this(channel: json_['channel'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (channel != null) 'channel': channel!,
-  };
-}
+typedef GatewayAPIConfig = $GatewayAPIConfig;
 
 /// Configuration for the Compute Engine PD CSI driver.
-class GcePersistentDiskCsiDriverConfig {
-  /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
-  core.bool? enabled;
-
-  GcePersistentDiskCsiDriverConfig({this.enabled});
-
-  GcePersistentDiskCsiDriverConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef GcePersistentDiskCsiDriverConfig = $GcePersistentDiskCsiDriverConfig;
 
 /// GcfsConfig contains configurations of Google Container File System (image
 /// streaming).
-class GcfsConfig {
-  /// Whether to use GCFS.
-  core.bool? enabled;
-
-  GcfsConfig({this.enabled});
-
-  GcfsConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef GcfsConfig = $GcfsConfig;
 
 /// Configuration for the GCP Filestore CSI driver.
-class GcpFilestoreCsiDriverConfig {
-  /// Whether the GCP Filestore CSI driver is enabled for this cluster.
-  core.bool? enabled;
-
-  GcpFilestoreCsiDriverConfig({this.enabled});
-
-  GcpFilestoreCsiDriverConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef GcpFilestoreCsiDriverConfig = $GcpFilestoreCsiDriverConfig;
 
 /// Configuration for the Cloud Storage Fuse CSI driver.
-class GcsFuseCsiDriverConfig {
-  /// Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.
-  core.bool? enabled;
-
-  GcsFuseCsiDriverConfig({this.enabled});
-
-  GcsFuseCsiDriverConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef GcsFuseCsiDriverConfig = $GcsFuseCsiDriverConfig;
 
 /// GetJSONWebKeysResponse is a valid JSON Web Key Set as specified in rfc 7517
 class GetJSONWebKeysResponse {
@@ -8701,147 +7535,28 @@ class GetOpenIDConfigResponse {
 }
 
 /// GkeAutoUpgradeConfig is the configuration for GKE auto upgrades.
-class GkeAutoUpgradeConfig {
-  /// PatchMode specifies how auto upgrade patch builds should be selected.
-  /// Possible string values are:
-  /// - "PATCH_MODE_UNSPECIFIED" : PATCH_MODE_UNSPECIFIED defaults to using the
-  /// upgrade target from the channel's patch upgrade targets as the upgrade
-  /// target for the version.
-  /// - "ACCELERATED" : ACCELERATED denotes that the latest patch build in the
-  /// channel should be used as the upgrade target for the version.
-  core.String? patchMode;
-
-  GkeAutoUpgradeConfig({this.patchMode});
-
-  GkeAutoUpgradeConfig.fromJson(core.Map json_)
-    : this(patchMode: json_['patchMode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (patchMode != null) 'patchMode': patchMode!,
-  };
-}
+typedef GkeAutoUpgradeConfig = $GkeAutoUpgradeConfig;
 
 /// Configuration for the Backup for GKE Agent.
-class GkeBackupAgentConfig {
-  /// Whether the Backup for GKE agent is enabled for this cluster.
-  core.bool? enabled;
-
-  GkeBackupAgentConfig({this.enabled});
-
-  GkeBackupAgentConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef GkeBackupAgentConfig = $GkeBackupAgentConfig;
 
 /// Configuration for the High Scale Checkpointing.
-class HighScaleCheckpointingConfig {
-  /// Whether the High Scale Checkpointing is enabled for this cluster.
-  core.bool? enabled;
-
-  HighScaleCheckpointingConfig({this.enabled});
-
-  HighScaleCheckpointingConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef HighScaleCheckpointingConfig = $HighScaleCheckpointingConfig;
 
 /// Configuration options for the horizontal pod autoscaling feature, which
 /// increases or decreases the number of replica pods a replication controller
 /// has based on the resource usage of the existing pods.
-class HorizontalPodAutoscaling {
-  /// Whether the Horizontal Pod Autoscaling feature is enabled in the cluster.
-  ///
-  /// When enabled, it ensures that metrics are collected into Stackdriver
-  /// Monitoring.
-  core.bool? disabled;
-
-  HorizontalPodAutoscaling({this.disabled});
-
-  HorizontalPodAutoscaling.fromJson(core.Map json_)
-    : this(disabled: json_['disabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-  };
-}
+typedef HorizontalPodAutoscaling = $HorizontalPodAutoscaling;
 
 /// RFC-2616: cache control support
-class HttpCacheControlResponseHeader {
-  /// 14.6 response cache age, in seconds since the response is generated
-  core.String? age;
-
-  /// 14.9 request and response directives
-  core.String? directive;
-
-  /// 14.21 response cache expires, in RFC 1123 date format
-  core.String? expires;
-
-  HttpCacheControlResponseHeader({this.age, this.directive, this.expires});
-
-  HttpCacheControlResponseHeader.fromJson(core.Map json_)
-    : this(
-        age: json_['age'] as core.String?,
-        directive: json_['directive'] as core.String?,
-        expires: json_['expires'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (age != null) 'age': age!,
-    if (directive != null) 'directive': directive!,
-    if (expires != null) 'expires': expires!,
-  };
-}
+typedef HttpCacheControlResponseHeader = $HttpCacheControlResponseHeader;
 
 /// Configuration options for the HTTP (L7) load balancing controller addon,
 /// which makes it easy to set up HTTP load balancers for services in a cluster.
-class HttpLoadBalancing {
-  /// Whether the HTTP Load Balancing controller is enabled in the cluster.
-  ///
-  /// When enabled, it runs a small pod in the cluster that manages the load
-  /// balancers.
-  core.bool? disabled;
-
-  HttpLoadBalancing({this.disabled});
-
-  HttpLoadBalancing.fromJson(core.Map json_)
-    : this(disabled: json_['disabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-  };
-}
+typedef HttpLoadBalancing = $HttpLoadBalancing;
 
 /// Hugepages amount in both 2m and 1g size
-class HugepagesConfig {
-  /// Amount of 1G hugepages
-  ///
-  /// Optional.
-  core.int? hugepageSize1g;
-
-  /// Amount of 2M hugepages
-  ///
-  /// Optional.
-  core.int? hugepageSize2m;
-
-  HugepagesConfig({this.hugepageSize1g, this.hugepageSize2m});
-
-  HugepagesConfig.fromJson(core.Map json_)
-    : this(
-        hugepageSize1g: json_['hugepageSize1g'] as core.int?,
-        hugepageSize2m: json_['hugepageSize2m'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hugepageSize1g != null) 'hugepageSize1g': hugepageSize1g!,
-    if (hugepageSize2m != null) 'hugepageSize2m': hugepageSize2m!,
-  };
-}
+typedef HugepagesConfig = $HugepagesConfig;
 
 /// ILBSubsettingConfig contains the desired config of L4 Internal LoadBalancer
 /// subsetting on this cluster.
@@ -9244,102 +7959,14 @@ class IPEndpointsConfig {
 
 /// IdentityServiceConfig is configuration for Identity Service which allows
 /// customers to use external identity providers with the K8S API
-class IdentityServiceConfig {
-  /// Whether to enable the Identity Service component
-  core.bool? enabled;
-
-  IdentityServiceConfig({this.enabled});
-
-  IdentityServiceConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef IdentityServiceConfig = $IdentityServiceConfig;
 
 /// IntraNodeVisibilityConfig contains the desired config of the intra-node
 /// visibility on this cluster.
-class IntraNodeVisibilityConfig {
-  /// Enables intra node visibility for this cluster.
-  core.bool? enabled;
-
-  IntraNodeVisibilityConfig({this.enabled});
-
-  IntraNodeVisibilityConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef IntraNodeVisibilityConfig = $IntraNodeVisibilityConfig;
 
 /// Jwk is a JSON Web Key as specified in RFC 7517
-class Jwk {
-  /// Algorithm.
-  core.String? alg;
-
-  /// Used for ECDSA keys.
-  core.String? crv;
-
-  /// Used for RSA keys.
-  core.String? e;
-
-  /// Key ID.
-  core.String? kid;
-
-  /// Key Type.
-  core.String? kty;
-
-  /// Used for RSA keys.
-  core.String? n;
-
-  /// Permitted uses for the public keys.
-  core.String? use;
-
-  /// Used for ECDSA keys.
-  core.String? x;
-
-  /// Used for ECDSA keys.
-  core.String? y;
-
-  Jwk({
-    this.alg,
-    this.crv,
-    this.e,
-    this.kid,
-    this.kty,
-    this.n,
-    this.use,
-    this.x,
-    this.y,
-  });
-
-  Jwk.fromJson(core.Map json_)
-    : this(
-        alg: json_['alg'] as core.String?,
-        crv: json_['crv'] as core.String?,
-        e: json_['e'] as core.String?,
-        kid: json_['kid'] as core.String?,
-        kty: json_['kty'] as core.String?,
-        n: json_['n'] as core.String?,
-        use: json_['use'] as core.String?,
-        x: json_['x'] as core.String?,
-        y: json_['y'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alg != null) 'alg': alg!,
-    if (crv != null) 'crv': crv!,
-    if (e != null) 'e': e!,
-    if (kid != null) 'kid': kid!,
-    if (kty != null) 'kty': kty!,
-    if (n != null) 'n': n!,
-    if (use != null) 'use': use!,
-    if (x != null) 'x': x!,
-    if (y != null) 'y': y!,
-  };
-}
+typedef Jwk = $Jwk;
 
 /// K8sBetaAPIConfig , configuration for beta APIs
 class K8sBetaAPIConfig {
@@ -9362,39 +7989,11 @@ class K8sBetaAPIConfig {
 }
 
 /// Configuration for the Kubernetes Dashboard.
-class KubernetesDashboard {
-  /// Whether the Kubernetes Dashboard is enabled for this cluster.
-  core.bool? disabled;
-
-  KubernetesDashboard({this.disabled});
-
-  KubernetesDashboard.fromJson(core.Map json_)
-    : this(disabled: json_['disabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-  };
-}
+typedef KubernetesDashboard = $KubernetesDashboard;
 
 /// Configuration for the legacy Attribute Based Access Control authorization
 /// mode.
-class LegacyAbac {
-  /// Whether the ABAC authorizer is enabled for this cluster.
-  ///
-  /// When enabled, identities in the system, including service accounts, nodes,
-  /// and controllers, will have statically granted permissions beyond those
-  /// provided by the RBAC configuration or IAM.
-  core.bool? enabled;
-
-  LegacyAbac({this.enabled});
-
-  LegacyAbac.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef LegacyAbac = $LegacyAbac;
 
 /// Parameters that can be configured on Linux nodes.
 class LinuxNodeConfig {
@@ -9649,56 +8248,10 @@ class ListUsableSubnetworksResponse {
 
 /// LocalNvmeSsdBlockConfig contains configuration for using raw-block local
 /// NVMe SSDs
-class LocalNvmeSsdBlockConfig {
-  /// Number of local NVMe SSDs to use.
-  ///
-  /// The limit for this value is dependent upon the maximum number of disk
-  /// available on a machine per zone. See:
-  /// https://{$universe.dns_names.final_documentation_domain}/compute/docs/disks/local-ssd
-  /// for more information. A zero (or unset) value has different meanings
-  /// depending on machine type being used: 1. For pre-Gen3 machines, which
-  /// support flexible numbers of local ssds, zero (or unset) means to disable
-  /// using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate
-  /// a specific number of local ssds, zero (or unset) means to use the default
-  /// number of local ssds that goes with that machine type. For example, for a
-  /// c3-standard-8-lssd machine, 2 local ssds would be provisioned. For
-  /// c3-standard-8 (which doesn't support local ssds), 0 will be provisioned.
-  /// See
-  /// https://{$universe.dns_names.final_documentation_domain}/compute/docs/disks/local-ssd#choose_number_local_ssds
-  /// for more info.
-  core.int? localSsdCount;
-
-  LocalNvmeSsdBlockConfig({this.localSsdCount});
-
-  LocalNvmeSsdBlockConfig.fromJson(core.Map json_)
-    : this(localSsdCount: json_['localSsdCount'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (localSsdCount != null) 'localSsdCount': localSsdCount!,
-  };
-}
+typedef LocalNvmeSsdBlockConfig = $LocalNvmeSsdBlockConfig;
 
 /// LoggingComponentConfig is cluster logging component configuration.
-class LoggingComponentConfig {
-  /// Select components to collect logs.
-  ///
-  /// An empty set would disable all logging.
-  core.List<core.String>? enableComponents;
-
-  LoggingComponentConfig({this.enableComponents});
-
-  LoggingComponentConfig.fromJson(core.Map json_)
-    : this(
-        enableComponents:
-            (json_['enableComponents'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableComponents != null) 'enableComponents': enableComponents!,
-  };
-}
+typedef LoggingComponentConfig = $LoggingComponentConfig;
 
 /// LoggingConfig is cluster logging configuration.
 class LoggingConfig {
@@ -9724,72 +8277,13 @@ class LoggingConfig {
 }
 
 /// LoggingVariantConfig specifies the behaviour of the logging component.
-class LoggingVariantConfig {
-  /// Logging variant deployed on nodes.
-  /// Possible string values are:
-  /// - "VARIANT_UNSPECIFIED" : Default value. This shouldn't be used.
-  /// - "DEFAULT" : default logging variant.
-  /// - "MAX_THROUGHPUT" : maximum logging throughput variant.
-  core.String? variant;
-
-  LoggingVariantConfig({this.variant});
-
-  LoggingVariantConfig.fromJson(core.Map json_)
-    : this(variant: json_['variant'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (variant != null) 'variant': variant!,
-  };
-}
+typedef LoggingVariantConfig = $LoggingVariantConfig;
 
 /// Configuration for the Lustre CSI driver.
-class LustreCsiDriverConfig {
-  /// If set to true, the Lustre CSI driver will install Lustre kernel modules
-  /// using port 6988.
-  core.bool? enableLegacyLustrePort;
-
-  /// Whether the Lustre CSI driver is enabled for this cluster.
-  core.bool? enabled;
-
-  LustreCsiDriverConfig({this.enableLegacyLustrePort, this.enabled});
-
-  LustreCsiDriverConfig.fromJson(core.Map json_)
-    : this(
-        enableLegacyLustrePort: json_['enableLegacyLustrePort'] as core.bool?,
-        enabled: json_['enabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableLegacyLustrePort != null)
-      'enableLegacyLustrePort': enableLegacyLustrePort!,
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef LustreCsiDriverConfig = $LustreCsiDriverConfig;
 
 /// Represents the Maintenance exclusion option.
-class MaintenanceExclusionOptions {
-  /// Scope specifies the upgrade scope which upgrades are blocked by the
-  /// exclusion.
-  /// Possible string values are:
-  /// - "NO_UPGRADES" : NO_UPGRADES excludes all upgrades, including patch
-  /// upgrades and minor upgrades across control planes and nodes. This is the
-  /// default exclusion behavior.
-  /// - "NO_MINOR_UPGRADES" : NO_MINOR_UPGRADES excludes all minor upgrades for
-  /// the cluster, only patches are allowed.
-  /// - "NO_MINOR_OR_NODE_UPGRADES" : NO_MINOR_OR_NODE_UPGRADES excludes all
-  /// minor upgrades for the cluster, and also exclude all node pool upgrades.
-  /// Only control plane patches are allowed.
-  core.String? scope;
-
-  MaintenanceExclusionOptions({this.scope});
-
-  MaintenanceExclusionOptions.fromJson(core.Map json_)
-    : this(scope: json_['scope'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-  };
-}
+typedef MaintenanceExclusionOptions = $MaintenanceExclusionOptions;
 
 /// MaintenancePolicy defines the maintenance policy to be used for the cluster.
 class MaintenancePolicy {
@@ -10063,96 +8557,19 @@ class MasterAuthorizedNetworksConfig {
 }
 
 /// Constraints applied to pods.
-class MaxPodsConstraint {
-  /// Constraint enforced on the max num of pods per node.
-  core.String? maxPodsPerNode;
-
-  MaxPodsConstraint({this.maxPodsPerNode});
-
-  MaxPodsConstraint.fromJson(core.Map json_)
-    : this(maxPodsPerNode: json_['maxPodsPerNode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
-  };
-}
+typedef MaxPodsConstraint = $MaxPodsConstraint;
 
 /// The option enables the Kubernetes NUMA-aware Memory Manager feature.
 ///
 /// Detailed description about the feature can be found
 /// [here](https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/).
-class MemoryManager {
-  /// Controls the memory management policy on the Node.
-  ///
-  /// See
-  /// https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/#policies
-  /// The following values are allowed. * "none" * "static" The default value is
-  /// 'none' if unspecified.
-  core.String? policy;
-
-  MemoryManager({this.policy});
-
-  MemoryManager.fromJson(core.Map json_)
-    : this(policy: json_['policy'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-  };
-}
+typedef MemoryManager = $MemoryManager;
 
 /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
-class MeshCertificates {
-  /// enable_certificates controls issuance of workload mTLS certificates.
-  ///
-  /// If set, the GKE Workload Identity Certificates controller and node agent
-  /// will be deployed in the cluster, which can then be configured by creating
-  /// a WorkloadCertificateConfig Custom Resource. Requires Workload Identity
-  /// (workload_pool must be non-empty).
-  core.bool? enableCertificates;
-
-  MeshCertificates({this.enableCertificates});
-
-  MeshCertificates.fromJson(core.Map json_)
-    : this(enableCertificates: json_['enableCertificates'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableCertificates != null) 'enableCertificates': enableCertificates!,
-  };
-}
+typedef MeshCertificates = $Certificates;
 
 /// Progress metric is (string, int|float|string) pair.
-class Metric {
-  /// For metrics with floating point value.
-  core.double? doubleValue;
-
-  /// For metrics with integer value.
-  core.String? intValue;
-
-  /// Metric name, e.g., "nodes total", "percent done".
-  ///
-  /// Required.
-  core.String? name;
-
-  /// For metrics with custom values (ratios, visual progress, etc.).
-  core.String? stringValue;
-
-  Metric({this.doubleValue, this.intValue, this.name, this.stringValue});
-
-  Metric.fromJson(core.Map json_)
-    : this(
-        doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
-        intValue: json_['intValue'] as core.String?,
-        name: json_['name'] as core.String?,
-        stringValue: json_['stringValue'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (doubleValue != null) 'doubleValue': doubleValue!,
-    if (intValue != null) 'intValue': intValue!,
-    if (name != null) 'name': name!,
-    if (stringValue != null) 'stringValue': stringValue!,
-  };
-}
+typedef Metric = $Metric;
 
 /// MonitoringComponentConfig is cluster monitoring component configuration.
 class MonitoringComponentConfig {
@@ -10444,127 +8861,26 @@ class NetworkConfig {
 }
 
 /// Configuration of all network bandwidth tiers
-class NetworkPerformanceConfig {
-  /// Specifies the total network bandwidth tier for the NodePool.
-  /// Possible string values are:
-  /// - "TIER_UNSPECIFIED" : Default value
-  /// - "TIER_1" : Higher bandwidth, actual values based on VM size.
-  core.String? totalEgressBandwidthTier;
-
-  NetworkPerformanceConfig({this.totalEgressBandwidthTier});
-
-  NetworkPerformanceConfig.fromJson(core.Map json_)
-    : this(
-        totalEgressBandwidthTier:
-            json_['totalEgressBandwidthTier'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (totalEgressBandwidthTier != null)
-      'totalEgressBandwidthTier': totalEgressBandwidthTier!,
-  };
-}
+typedef NetworkPerformanceConfig = $NetworkPerformanceConfig01;
 
 /// Configuration options for the NetworkPolicy feature.
 ///
 /// https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
-class NetworkPolicy {
-  /// Whether network policy is enabled on the cluster.
-  core.bool? enabled;
-
-  /// The selected network policy provider.
-  /// Possible string values are:
-  /// - "PROVIDER_UNSPECIFIED" : Not set
-  /// - "CALICO" : Tigera (Calico Felix).
-  core.String? provider;
-
-  NetworkPolicy({this.enabled, this.provider});
-
-  NetworkPolicy.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        provider: json_['provider'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (provider != null) 'provider': provider!,
-  };
-}
+typedef NetworkPolicy = $NetworkPolicy;
 
 /// Configuration for NetworkPolicy.
 ///
 /// This only tracks whether the addon is enabled or not on the Master, it does
 /// not track whether network policy is enabled for the nodes.
-class NetworkPolicyConfig {
-  /// Whether NetworkPolicy is enabled for this cluster.
-  core.bool? disabled;
-
-  NetworkPolicyConfig({this.disabled});
-
-  NetworkPolicyConfig.fromJson(core.Map json_)
-    : this(disabled: json_['disabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disabled != null) 'disabled': disabled!,
-  };
-}
+typedef NetworkPolicyConfig = $NetworkPolicyConfig;
 
 /// Collection of Compute Engine network tags that can be applied to a node's
 /// underlying VM instance.
-class NetworkTags {
-  /// List of network tags.
-  core.List<core.String>? tags;
-
-  NetworkTags({this.tags});
-
-  NetworkTags.fromJson(core.Map json_)
-    : this(
-        tags:
-            (json_['tags'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tags != null) 'tags': tags!,
-  };
-}
+typedef NetworkTags = $NetworkTags;
 
 /// Specifies the NodeAffinity key, values, and affinity operator according to
 /// [shared sole tenant node group affinities](https://{$universe.dns_names.final_documentation_domain}/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
-class NodeAffinity {
-  /// Key for NodeAffinity.
-  core.String? key;
-
-  /// Operator for NodeAffinity.
-  /// Possible string values are:
-  /// - "OPERATOR_UNSPECIFIED" : Invalid or unspecified affinity operator.
-  /// - "IN" : Affinity operator.
-  /// - "NOT_IN" : Anti-affinity operator.
-  core.String? operator;
-
-  /// Values for NodeAffinity.
-  core.List<core.String>? values;
-
-  NodeAffinity({this.key, this.operator, this.values});
-
-  NodeAffinity.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        operator: json_['operator'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (operator != null) 'operator': operator!,
-    if (values != null) 'values': values!,
-  };
-}
+typedef NodeAffinity = $NodeAffinity;
 
 /// Parameters that describe the nodes in a cluster.
 ///
@@ -12071,78 +10387,7 @@ class NodePoolAutoConfig {
 
 /// NodePoolAutoscaling contains information required by cluster autoscaler to
 /// adjust the size of the node pool to the current cluster usage.
-class NodePoolAutoscaling {
-  /// Can this node pool be deleted automatically.
-  core.bool? autoprovisioned;
-
-  /// Is autoscaling enabled for this node pool.
-  core.bool? enabled;
-
-  /// Location policy used when scaling up a nodepool.
-  /// Possible string values are:
-  /// - "LOCATION_POLICY_UNSPECIFIED" : Not set.
-  /// - "BALANCED" : BALANCED is a best effort policy that aims to balance the
-  /// sizes of different zones.
-  /// - "ANY" : ANY policy picks zones that have the highest capacity available.
-  core.String? locationPolicy;
-
-  /// Maximum number of nodes for one location in the node pool.
-  ///
-  /// Must be \>= min_node_count. There has to be enough quota to scale up the
-  /// cluster.
-  core.int? maxNodeCount;
-
-  /// Minimum number of nodes for one location in the node pool.
-  ///
-  /// Must be greater than or equal to 0 and less than or equal to
-  /// max_node_count.
-  core.int? minNodeCount;
-
-  /// Maximum number of nodes in the node pool.
-  ///
-  /// Must be greater than or equal to total_min_node_count. There has to be
-  /// enough quota to scale up the cluster. The total_*_node_count fields are
-  /// mutually exclusive with the *_node_count fields.
-  core.int? totalMaxNodeCount;
-
-  /// Minimum number of nodes in the node pool.
-  ///
-  /// Must be greater than or equal to 0 and less than or equal to
-  /// total_max_node_count. The total_*_node_count fields are mutually exclusive
-  /// with the *_node_count fields.
-  core.int? totalMinNodeCount;
-
-  NodePoolAutoscaling({
-    this.autoprovisioned,
-    this.enabled,
-    this.locationPolicy,
-    this.maxNodeCount,
-    this.minNodeCount,
-    this.totalMaxNodeCount,
-    this.totalMinNodeCount,
-  });
-
-  NodePoolAutoscaling.fromJson(core.Map json_)
-    : this(
-        autoprovisioned: json_['autoprovisioned'] as core.bool?,
-        enabled: json_['enabled'] as core.bool?,
-        locationPolicy: json_['locationPolicy'] as core.String?,
-        maxNodeCount: json_['maxNodeCount'] as core.int?,
-        minNodeCount: json_['minNodeCount'] as core.int?,
-        totalMaxNodeCount: json_['totalMaxNodeCount'] as core.int?,
-        totalMinNodeCount: json_['totalMinNodeCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoprovisioned != null) 'autoprovisioned': autoprovisioned!,
-    if (enabled != null) 'enabled': enabled!,
-    if (locationPolicy != null) 'locationPolicy': locationPolicy!,
-    if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
-    if (minNodeCount != null) 'minNodeCount': minNodeCount!,
-    if (totalMaxNodeCount != null) 'totalMaxNodeCount': totalMaxNodeCount!,
-    if (totalMinNodeCount != null) 'totalMinNodeCount': totalMinNodeCount!,
-  };
-}
+typedef NodePoolAutoscaling = $NodePoolAutoscaling;
 
 /// Subset of Nodepool message that has defaults.
 class NodePoolDefaults {
@@ -12267,36 +10512,7 @@ class NodePoolUpgradeInfo {
 /// NoExecute. See
 /// [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration)
 /// for more information, including usage and the valid values.
-class NodeTaint {
-  /// Effect for taint.
-  /// Possible string values are:
-  /// - "EFFECT_UNSPECIFIED" : Not set
-  /// - "NO_SCHEDULE" : NoSchedule
-  /// - "PREFER_NO_SCHEDULE" : PreferNoSchedule
-  /// - "NO_EXECUTE" : NoExecute
-  core.String? effect;
-
-  /// Key for taint.
-  core.String? key;
-
-  /// Value for taint.
-  core.String? value;
-
-  NodeTaint({this.effect, this.key, this.value});
-
-  NodeTaint.fromJson(core.Map json_)
-    : this(
-        effect: json_['effect'] as core.String?,
-        key: json_['key'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effect != null) 'effect': effect!,
-    if (key != null) 'key': key!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef NodeTaint = $NodeTaint;
 
 /// Collection of Kubernetes
 /// [node taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration).
@@ -12619,31 +10835,7 @@ class Operation {
 
 /// OperationError records errors seen from CloudKMS keys encountered during
 /// updates to DatabaseEncryption configuration.
-class OperationError {
-  /// Description of the error seen during the operation.
-  core.String? errorMessage;
-
-  /// CloudKMS key resource that had the error.
-  core.String? keyName;
-
-  /// Time when the CloudKMS error was seen.
-  core.String? timestamp;
-
-  OperationError({this.errorMessage, this.keyName, this.timestamp});
-
-  OperationError.fromJson(core.Map json_)
-    : this(
-        errorMessage: json_['errorMessage'] as core.String?,
-        keyName: json_['keyName'] as core.String?,
-        timestamp: json_['timestamp'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-    if (keyName != null) 'keyName': keyName!,
-    if (timestamp != null) 'timestamp': timestamp!,
-  };
-}
+typedef OperationError = $OperationError00;
 
 /// Information about operation (or operation stage) progress.
 class OperationProgress {
@@ -12705,48 +10897,14 @@ class OperationProgress {
 }
 
 /// Configuration for the Cloud Storage Parallelstore CSI driver.
-class ParallelstoreCsiDriverConfig {
-  /// Whether the Cloud Storage Parallelstore CSI driver is enabled for this
-  /// cluster.
-  core.bool? enabled;
-
-  ParallelstoreCsiDriverConfig({this.enabled});
-
-  ParallelstoreCsiDriverConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef ParallelstoreCsiDriverConfig = $ParallelstoreCsiDriverConfig;
 
 /// ParentProductConfig is the configuration of the parent product of the
 /// cluster.
 ///
 /// This field is used by Google internal products that are built on top of a
 /// GKE cluster and take the ownership of the cluster.
-class ParentProductConfig {
-  /// Labels contain the configuration of the parent product.
-  core.Map<core.String, core.String>? labels;
-
-  /// Name of the parent product associated with the cluster.
-  core.String? productName;
-
-  ParentProductConfig({this.labels, this.productName});
-
-  ParentProductConfig.fromJson(core.Map json_)
-    : this(
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        productName: json_['productName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labels != null) 'labels': labels!,
-    if (productName != null) 'productName': productName!,
-  };
-}
+typedef ParentProductConfig = $ParentProductConfig;
 
 /// PlacementPolicy defines the placement policy used by the node pool.
 class PlacementPolicy {
@@ -12790,43 +10948,10 @@ class PlacementPolicy {
 
 /// PodAutoscaling is used for configuration of parameters for workload
 /// autoscaling.
-class PodAutoscaling {
-  /// Selected Horizontal Pod Autoscaling profile.
-  /// Possible string values are:
-  /// - "HPA_PROFILE_UNSPECIFIED" : HPA_PROFILE_UNSPECIFIED is used when no
-  /// custom HPA profile is set.
-  /// - "NONE" : Customers explicitly opt-out of HPA profiles.
-  /// - "PERFORMANCE" : PERFORMANCE is used when customers opt-in to the
-  /// performance HPA profile. In this profile we support a higher number of
-  /// HPAs per cluster and faster metrics collection for workload autoscaling.
-  core.String? hpaProfile;
-
-  PodAutoscaling({this.hpaProfile});
-
-  PodAutoscaling.fromJson(core.Map json_)
-    : this(hpaProfile: json_['hpaProfile'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hpaProfile != null) 'hpaProfile': hpaProfile!,
-  };
-}
+typedef PodAutoscaling = $PodAutoscaling;
 
 /// \[PRIVATE FIELD\] Config for pod CIDR size overprovisioning.
-class PodCIDROverprovisionConfig {
-  /// Whether Pod CIDR overprovisioning is disabled.
-  ///
-  /// Note: Pod CIDR overprovisioning is enabled by default.
-  core.bool? disable;
-
-  PodCIDROverprovisionConfig({this.disable});
-
-  PodCIDROverprovisionConfig.fromJson(core.Map json_)
-    : this(disable: json_['disable'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disable != null) 'disable': disable!,
-  };
-}
+typedef PodCIDROverprovisionConfig = $PodCIDROverprovisionConfig;
 
 /// Configuration options for private clusters.
 class PrivateClusterConfig {
@@ -12954,19 +11079,8 @@ class PrivateClusterConfig {
 }
 
 /// Configuration for controlling master global access settings.
-class PrivateClusterMasterGlobalAccessConfig {
-  /// Whenever master is accessible globally or not.
-  core.bool? enabled;
-
-  PrivateClusterMasterGlobalAccessConfig({this.enabled});
-
-  PrivateClusterMasterGlobalAccessConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef PrivateClusterMasterGlobalAccessConfig =
+    $PrivateClusterMasterGlobalAccessConfig;
 
 /// PrivateRegistryAccessConfig contains access configuration for private
 /// container registries.
@@ -13004,31 +11118,7 @@ class PrivateRegistryAccessConfig {
 
 /// PrivilegedAdmissionConfig stores the list of authorized allowlist paths for
 /// the cluster.
-class PrivilegedAdmissionConfig {
-  /// The customer allowlist Cloud Storage paths for the cluster.
-  ///
-  /// These paths are used with the `--autopilot-privileged-admission` flag to
-  /// authorize privileged workloads in Autopilot clusters. Paths can be
-  /// GKE-owned, in the format `gke:////`, or customer-owned, in the format
-  /// `gs:///`. Wildcards (`*`) are supported to authorize all allowlists under
-  /// specific paths or directories. Example: `gs://my-bucket / * ` will
-  /// authorize all allowlists under the `my-bucket` bucket.
-  core.List<core.String>? allowlistPaths;
-
-  PrivilegedAdmissionConfig({this.allowlistPaths});
-
-  PrivilegedAdmissionConfig.fromJson(core.Map json_)
-    : this(
-        allowlistPaths:
-            (json_['allowlistPaths'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistPaths != null) 'allowlistPaths': allowlistPaths!,
-  };
-}
+typedef PrivilegedAdmissionConfig = $PrivilegedAdmissionConfig;
 
 /// Pub/Sub specific notification config.
 class PubSub {
@@ -13068,112 +11158,21 @@ class PubSub {
 }
 
 /// QueuedProvisioning defines the queued provisioning used by the node pool.
-class QueuedProvisioning {
-  /// Denotes that this nodepool is QRM specific, meaning nodes can be only
-  /// obtained through queuing via the Cluster Autoscaler ProvisioningRequest
-  /// API.
-  core.bool? enabled;
-
-  QueuedProvisioning({this.enabled});
-
-  QueuedProvisioning.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef QueuedProvisioning = $QueuedProvisioning;
 
 /// RBACBindingConfig allows user to restrict ClusterRoleBindings an
 /// RoleBindings that can be created.
-class RBACBindingConfig {
-  /// Setting this to true will allow any ClusterRoleBinding and RoleBinding
-  /// with subjects system:authenticated.
-  core.bool? enableInsecureBindingSystemAuthenticated;
-
-  /// Setting this to true will allow any ClusterRoleBinding and RoleBinding
-  /// with subjets system:anonymous or system:unauthenticated.
-  core.bool? enableInsecureBindingSystemUnauthenticated;
-
-  RBACBindingConfig({
-    this.enableInsecureBindingSystemAuthenticated,
-    this.enableInsecureBindingSystemUnauthenticated,
-  });
-
-  RBACBindingConfig.fromJson(core.Map json_)
-    : this(
-        enableInsecureBindingSystemAuthenticated:
-            json_['enableInsecureBindingSystemAuthenticated'] as core.bool?,
-        enableInsecureBindingSystemUnauthenticated:
-            json_['enableInsecureBindingSystemUnauthenticated'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableInsecureBindingSystemAuthenticated != null)
-      'enableInsecureBindingSystemAuthenticated':
-          enableInsecureBindingSystemAuthenticated!,
-    if (enableInsecureBindingSystemUnauthenticated != null)
-      'enableInsecureBindingSystemUnauthenticated':
-          enableInsecureBindingSystemUnauthenticated!,
-  };
-}
+typedef RBACBindingConfig = $RBACBindingConfig;
 
 /// RangeInfo contains the range name and the range utilization by this cluster.
-class RangeInfo {
-  /// Name of a range.
-  ///
-  /// Output only.
-  core.String? rangeName;
-
-  /// The utilization of the range.
-  ///
-  /// Output only.
-  core.double? utilization;
-
-  RangeInfo({this.rangeName, this.utilization});
-
-  RangeInfo.fromJson(core.Map json_)
-    : this(
-        rangeName: json_['rangeName'] as core.String?,
-        utilization: (json_['utilization'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (rangeName != null) 'rangeName': rangeName!,
-    if (utilization != null) 'utilization': utilization!,
-  };
-}
+typedef RangeInfo = $RangeInfo;
 
 /// RayClusterLoggingConfig specifies configuration of Ray logging.
-class RayClusterLoggingConfig {
-  /// Enable log collection for Ray clusters.
-  core.bool? enabled;
-
-  RayClusterLoggingConfig({this.enabled});
-
-  RayClusterLoggingConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef RayClusterLoggingConfig = $RayClusterLoggingConfig;
 
 /// RayClusterMonitoringConfig specifies monitoring configuration for Ray
 /// clusters.
-class RayClusterMonitoringConfig {
-  /// Enable metrics collection for Ray clusters.
-  core.bool? enabled;
-
-  RayClusterMonitoringConfig({this.enabled});
-
-  RayClusterMonitoringConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef RayClusterMonitoringConfig = $RayClusterMonitoringConfig;
 
 /// Configuration options for the Ray Operator add-on.
 class RayOperatorConfig {
@@ -13273,33 +11272,7 @@ class RecurringTimeWindow {
 /// Release channels are arranged in order of risk. When a cluster is subscribed
 /// to a release channel, Google maintains both the master version and the node
 /// version. Node auto-upgrade defaults to true and cannot be disabled.
-class ReleaseChannel {
-  /// channel specifies which release channel the cluster is subscribed to.
-  /// Possible string values are:
-  /// - "UNSPECIFIED" : No channel specified.
-  /// - "RAPID" : RAPID channel is offered on an early access basis for
-  /// customers who want to test new releases. WARNING: Versions available in
-  /// the RAPID Channel may be subject to unresolved issues with no known
-  /// workaround and are not subject to any SLAs.
-  /// - "REGULAR" : Clusters subscribed to REGULAR receive versions that are
-  /// considered GA quality. REGULAR is intended for production users who want
-  /// to take advantage of new features.
-  /// - "STABLE" : Clusters subscribed to STABLE receive versions that are known
-  /// to be stable and reliable in production.
-  /// - "EXTENDED" : Clusters subscribed to EXTENDED receive extended support
-  /// and availability for versions which are known to be stable and reliable in
-  /// production.
-  core.String? channel;
-
-  ReleaseChannel({this.channel});
-
-  ReleaseChannel.fromJson(core.Map json_)
-    : this(channel: json_['channel'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (channel != null) 'channel': channel!,
-  };
-}
+typedef ReleaseChannel = $ReleaseChannel;
 
 /// ReleaseChannelConfig exposes configuration for a release channel.
 class ReleaseChannelConfig {
@@ -13359,45 +11332,7 @@ class ReleaseChannelConfig {
 /// [ReservationAffinity](https://{$universe.dns_names.final_documentation_domain}/compute/docs/instances/reserving-zonal-resources)
 /// is the configuration of desired reservation which instances could take
 /// capacity from.
-class ReservationAffinity {
-  /// Corresponds to the type of reservation consumption.
-  /// Possible string values are:
-  /// - "UNSPECIFIED" : Default value. This should not be used.
-  /// - "NO_RESERVATION" : Do not consume from any reserved capacity.
-  /// - "ANY_RESERVATION" : Consume any reservation available.
-  /// - "SPECIFIC_RESERVATION" : Must consume from a specific reservation. Must
-  /// specify key value fields for specifying the reservations.
-  core.String? consumeReservationType;
-
-  /// Corresponds to the label key of a reservation resource.
-  ///
-  /// To target a SPECIFIC_RESERVATION by name, specify
-  /// "compute.googleapis.com/reservation-name" as the key and specify the name
-  /// of your reservation as its value.
-  core.String? key;
-
-  /// Corresponds to the label value(s) of reservation resource(s).
-  core.List<core.String>? values;
-
-  ReservationAffinity({this.consumeReservationType, this.key, this.values});
-
-  ReservationAffinity.fromJson(core.Map json_)
-    : this(
-        consumeReservationType: json_['consumeReservationType'] as core.String?,
-        key: json_['key'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (consumeReservationType != null)
-      'consumeReservationType': consumeReservationType!,
-    if (key != null) 'key': key!,
-    if (values != null) 'values': values!,
-  };
-}
+typedef ReservationAffinity = $ReservationAffinity02;
 
 /// Collection of
 /// [GCP labels](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-labels).
@@ -13406,31 +11341,7 @@ typedef ResourceLabels = $Labels;
 /// Contains information about amount of some resource in the cluster.
 ///
 /// For memory, value should be in GB.
-class ResourceLimit {
-  /// Maximum amount of the resource in the cluster.
-  core.String? maximum;
-
-  /// Minimum amount of the resource in the cluster.
-  core.String? minimum;
-
-  /// Resource name "cpu", "memory" or gpu-specific string.
-  core.String? resourceType;
-
-  ResourceLimit({this.maximum, this.minimum, this.resourceType});
-
-  ResourceLimit.fromJson(core.Map json_)
-    : this(
-        maximum: json_['maximum'] as core.String?,
-        minimum: json_['minimum'] as core.String?,
-        resourceType: json_['resourceType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maximum != null) 'maximum': maximum!,
-    if (minimum != null) 'minimum': minimum!,
-    if (resourceType != null) 'resourceType': resourceType!,
-  };
-}
+typedef ResourceLimit = $ResourceLimit;
 
 /// A map of resource manager tag keys and values to be attached to the nodes
 /// for managing Compute Engine firewalls using Network Firewall Policies.
@@ -13515,90 +11426,7 @@ class ResourceUsageExportConfig {
 /// NodePool upgrade.
 ///
 /// This will be an no-op if the last upgrade successfully completed.
-class RollbackNodePoolUpgradeRequest {
-  /// The name of the cluster to rollback.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The name (project, location, cluster, node pool id) of the node poll to
-  /// rollback upgrade.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / *
-  /// /nodePools / * `.
-  core.String? name;
-
-  /// The name of the node pool to rollback.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? nodePoolId;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// Option for rollback to ignore the PodDisruptionBudget.
-  ///
-  /// Default value is false.
-  core.bool? respectPdb;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  RollbackNodePoolUpgradeRequest({
-    this.clusterId,
-    this.name,
-    this.nodePoolId,
-    this.projectId,
-    this.respectPdb,
-    this.zone,
-  });
-
-  RollbackNodePoolUpgradeRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        name: json_['name'] as core.String?,
-        nodePoolId: json_['nodePoolId'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        respectPdb: json_['respectPdb'] as core.bool?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (name != null) 'name': name!,
-    if (nodePoolId != null) 'nodePoolId': nodePoolId!,
-    if (projectId != null) 'projectId': projectId!,
-    if (respectPdb != null) 'respectPdb': respectPdb!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef RollbackNodePoolUpgradeRequest = $RollbackNodePoolUpgradeRequest;
 
 /// SandboxConfig contains configurations of the sandbox to use for the node.
 class SandboxConfig {
@@ -13620,30 +11448,7 @@ class SandboxConfig {
 
 /// SecondaryBootDisk represents a persistent disk attached to a node with
 /// special configurations based on its mode.
-class SecondaryBootDisk {
-  /// Fully-qualified resource ID for an existing disk image.
-  core.String? diskImage;
-
-  /// Disk mode (container image cache, etc.)
-  /// Possible string values are:
-  /// - "MODE_UNSPECIFIED" : MODE_UNSPECIFIED is when mode is not set.
-  /// - "CONTAINER_IMAGE_CACHE" : CONTAINER_IMAGE_CACHE is for using the
-  /// secondary boot disk as a container image cache.
-  core.String? mode;
-
-  SecondaryBootDisk({this.diskImage, this.mode});
-
-  SecondaryBootDisk.fromJson(core.Map json_)
-    : this(
-        diskImage: json_['diskImage'] as core.String?,
-        mode: json_['mode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (diskImage != null) 'diskImage': diskImage!,
-    if (mode != null) 'mode': mode!,
-  };
-}
+typedef SecondaryBootDisk = $SecondaryBootDisk;
 
 /// SecondaryBootDiskUpdateStrategy is a placeholder which will be extended in
 /// the future to define different options for updating secondary boot disks.
@@ -13736,19 +11541,7 @@ class ServerConfig {
 }
 
 /// Config to block services with externalIPs field.
-class ServiceExternalIPsConfig {
-  /// Whether Services with ExternalIPs field are allowed or not.
-  core.bool? enabled;
-
-  ServiceExternalIPsConfig({this.enabled});
-
-  ServiceExternalIPsConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef ServiceExternalIPsConfig = $ServiceExternalIPsConfig;
 
 /// SetAddonsConfigRequest sets the addons associated with the cluster.
 class SetAddonsConfigRequest {
@@ -13830,324 +11623,17 @@ class SetAddonsConfigRequest {
 /// SetLabelsRequest sets the Google Cloud Platform labels on a Google Container
 /// Engine cluster, which will in turn set them for Google Compute Engine
 /// resources used by that cluster
-class SetLabelsRequest {
-  /// The name of the cluster.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The fingerprint of the previous set of labels for this resource, used to
-  /// detect conflicts.
-  ///
-  /// The fingerprint is initially generated by Kubernetes Engine and changes
-  /// after every request to modify or update labels. You must always provide an
-  /// up-to-date fingerprint hash when updating or changing labels. Make a
-  /// `get()` request to the resource to get the latest fingerprint.
-  ///
-  /// Required.
-  core.String? labelFingerprint;
-
-  /// The name (project, location, cluster name) of the cluster to set labels.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The labels to set for that cluster.
-  ///
-  /// Required.
-  core.Map<core.String, core.String>? resourceLabels;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  SetLabelsRequest({
-    this.clusterId,
-    this.labelFingerprint,
-    this.name,
-    this.projectId,
-    this.resourceLabels,
-    this.zone,
-  });
-
-  SetLabelsRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        labelFingerprint: json_['labelFingerprint'] as core.String?,
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        resourceLabels: (json_['resourceLabels']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (resourceLabels != null) 'resourceLabels': resourceLabels!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef SetLabelsRequest = $SetLabelsRequest01;
 
 /// SetLegacyAbacRequest enables or disables the ABAC authorization mechanism
 /// for a cluster.
-class SetLegacyAbacRequest {
-  /// The name of the cluster to update.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// Whether ABAC authorization will be enabled in the cluster.
-  ///
-  /// Required.
-  core.bool? enabled;
-
-  /// The name (project, location, cluster name) of the cluster to set legacy
-  /// abac.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  SetLegacyAbacRequest({
-    this.clusterId,
-    this.enabled,
-    this.name,
-    this.projectId,
-    this.zone,
-  });
-
-  SetLegacyAbacRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        enabled: json_['enabled'] as core.bool?,
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (enabled != null) 'enabled': enabled!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef SetLegacyAbacRequest = $SetLegacyAbacRequest;
 
 /// SetLocationsRequest sets the locations of the cluster.
-class SetLocationsRequest {
-  /// The name of the cluster to upgrade.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The desired list of Google Compute Engine
-  /// [zones](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster's nodes should be located.
-  ///
-  /// Changing the locations a cluster is in will result in nodes being either
-  /// created or removed from the cluster, depending on whether locations are
-  /// being added or removed. This list must always include the cluster's
-  /// primary zone.
-  ///
-  /// Required.
-  core.List<core.String>? locations;
-
-  /// The name (project, location, cluster) of the cluster to set locations.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  SetLocationsRequest({
-    this.clusterId,
-    this.locations,
-    this.name,
-    this.projectId,
-    this.zone,
-  });
-
-  SetLocationsRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        locations:
-            (json_['locations'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (locations != null) 'locations': locations!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef SetLocationsRequest = $SetLocationsRequest;
 
 /// SetLoggingServiceRequest sets the logging service of a cluster.
-class SetLoggingServiceRequest {
-  /// The name of the cluster to upgrade.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The logging service the cluster should use to write logs.
-  ///
-  /// Currently available options: * `logging.googleapis.com/kubernetes` - The
-  /// Cloud Logging service with a Kubernetes-native resource model *
-  /// `logging.googleapis.com` - The legacy Cloud Logging service (no longer
-  /// available as of GKE 1.15). * `none` - no logs will be exported from the
-  /// cluster. If left as an empty string,`logging.googleapis.com/kubernetes`
-  /// will be used for GKE 1.14+ or `logging.googleapis.com` for earlier
-  /// versions.
-  ///
-  /// Required.
-  core.String? loggingService;
-
-  /// The name (project, location, cluster) of the cluster to set logging.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  SetLoggingServiceRequest({
-    this.clusterId,
-    this.loggingService,
-    this.name,
-    this.projectId,
-    this.zone,
-  });
-
-  SetLoggingServiceRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        loggingService: json_['loggingService'] as core.String?,
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (loggingService != null) 'loggingService': loggingService!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef SetLoggingServiceRequest = $SetLoggingServiceRequest;
 
 /// SetMaintenancePolicyRequest sets the maintenance policy for a cluster.
 class SetMaintenancePolicyRequest {
@@ -14307,83 +11793,7 @@ class SetMasterAuthRequest {
 }
 
 /// SetMonitoringServiceRequest sets the monitoring service of a cluster.
-class SetMonitoringServiceRequest {
-  /// The name of the cluster to upgrade.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The monitoring service the cluster should use to write metrics.
-  ///
-  /// Currently available options: * `monitoring.googleapis.com/kubernetes` -
-  /// The Cloud Monitoring service with a Kubernetes-native resource model *
-  /// `monitoring.googleapis.com` - The legacy Cloud Monitoring service (no
-  /// longer available as of GKE 1.15). * `none` - No metrics will be exported
-  /// from the cluster. If left as an empty
-  /// string,`monitoring.googleapis.com/kubernetes` will be used for GKE 1.14+
-  /// or `monitoring.googleapis.com` for earlier versions.
-  ///
-  /// Required.
-  core.String? monitoringService;
-
-  /// The name (project, location, cluster) of the cluster to set monitoring.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  SetMonitoringServiceRequest({
-    this.clusterId,
-    this.monitoringService,
-    this.name,
-    this.projectId,
-    this.zone,
-  });
-
-  SetMonitoringServiceRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        monitoringService: json_['monitoringService'] as core.String?,
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (monitoringService != null) 'monitoringService': monitoringService!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef SetMonitoringServiceRequest = $SetMonitoringServiceRequest;
 
 /// SetNetworkPolicyRequest enables/disables network policy for a cluster.
 class SetNetworkPolicyRequest {
@@ -14646,141 +12056,13 @@ class SetNodePoolManagementRequest {
 }
 
 /// SetNodePoolSizeRequest sets the size of a node pool.
-class SetNodePoolSizeRequest {
-  /// The name of the cluster to update.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The name (project, location, cluster, node pool id) of the node pool to
-  /// set size.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / *
-  /// /nodePools / * `.
-  core.String? name;
-
-  /// The desired node count for the pool.
-  ///
-  /// Required.
-  core.int? nodeCount;
-
-  /// The name of the node pool to update.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? nodePoolId;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  SetNodePoolSizeRequest({
-    this.clusterId,
-    this.name,
-    this.nodeCount,
-    this.nodePoolId,
-    this.projectId,
-    this.zone,
-  });
-
-  SetNodePoolSizeRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        name: json_['name'] as core.String?,
-        nodeCount: json_['nodeCount'] as core.int?,
-        nodePoolId: json_['nodePoolId'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (name != null) 'name': name!,
-    if (nodeCount != null) 'nodeCount': nodeCount!,
-    if (nodePoolId != null) 'nodePoolId': nodePoolId!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef SetNodePoolSizeRequest = $SetNodePoolSizeRequest;
 
 /// A set of Shielded Instance options.
-class ShieldedInstanceConfig {
-  /// Defines whether the instance has integrity monitoring enabled.
-  ///
-  /// Enables monitoring and attestation of the boot integrity of the instance.
-  /// The attestation is performed against the integrity policy baseline. This
-  /// baseline is initially derived from the implicitly trusted boot image when
-  /// the instance is created.
-  core.bool? enableIntegrityMonitoring;
-
-  /// Defines whether the instance has Secure Boot enabled.
-  ///
-  /// Secure Boot helps ensure that the system only runs authentic software by
-  /// verifying the digital signature of all boot components, and halting the
-  /// boot process if signature verification fails.
-  core.bool? enableSecureBoot;
-
-  ShieldedInstanceConfig({
-    this.enableIntegrityMonitoring,
-    this.enableSecureBoot,
-  });
-
-  ShieldedInstanceConfig.fromJson(core.Map json_)
-    : this(
-        enableIntegrityMonitoring:
-            json_['enableIntegrityMonitoring'] as core.bool?,
-        enableSecureBoot: json_['enableSecureBoot'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enableIntegrityMonitoring != null)
-      'enableIntegrityMonitoring': enableIntegrityMonitoring!,
-    if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
-  };
-}
+typedef ShieldedInstanceConfig = $ShieldedInstanceConfig01;
 
 /// Configuration of Shielded Nodes feature.
-class ShieldedNodes {
-  /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
-  core.bool? enabled;
-
-  ShieldedNodes({this.enabled});
-
-  ShieldedNodes.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef ShieldedNodes = $ShieldedNodes;
 
 /// SoleTenantConfig contains the NodeAffinities to specify what shared sole
 /// tenant node groups should back the node pool.
@@ -14819,125 +12101,14 @@ class SoleTenantConfig {
 }
 
 /// Standard rollout policy is the default policy for blue-green.
-class StandardRolloutPolicy {
-  /// Number of blue nodes to drain in a batch.
-  core.int? batchNodeCount;
-
-  /// Percentage of the blue pool nodes to drain in a batch.
-  ///
-  /// The range of this field should be (0.0, 1.0\].
-  core.double? batchPercentage;
-
-  /// Soak time after each batch gets drained.
-  ///
-  /// Default to zero.
-  core.String? batchSoakDuration;
-
-  StandardRolloutPolicy({
-    this.batchNodeCount,
-    this.batchPercentage,
-    this.batchSoakDuration,
-  });
-
-  StandardRolloutPolicy.fromJson(core.Map json_)
-    : this(
-        batchNodeCount: json_['batchNodeCount'] as core.int?,
-        batchPercentage: (json_['batchPercentage'] as core.num?)?.toDouble(),
-        batchSoakDuration: json_['batchSoakDuration'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (batchNodeCount != null) 'batchNodeCount': batchNodeCount!,
-    if (batchPercentage != null) 'batchPercentage': batchPercentage!,
-    if (batchSoakDuration != null) 'batchSoakDuration': batchSoakDuration!,
-  };
-}
+typedef StandardRolloutPolicy = $StandardRolloutPolicy;
 
 /// StartIPRotationRequest creates a new IP for the cluster and then performs a
 /// node upgrade on each node pool to point to the new IP.
-class StartIPRotationRequest {
-  /// The name of the cluster.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The name (project, location, cluster name) of the cluster to start IP
-  /// rotation.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// Whether to rotate credentials during IP rotation.
-  core.bool? rotateCredentials;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  StartIPRotationRequest({
-    this.clusterId,
-    this.name,
-    this.projectId,
-    this.rotateCredentials,
-    this.zone,
-  });
-
-  StartIPRotationRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        rotateCredentials: json_['rotateCredentials'] as core.bool?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (rotateCredentials != null) 'rotateCredentials': rotateCredentials!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef StartIPRotationRequest = $StartIPRotationRequest;
 
 /// Configuration for the Stateful HA add-on.
-class StatefulHAConfig {
-  /// Whether the Stateful HA add-on is enabled for this cluster.
-  core.bool? enabled;
-
-  StatefulHAConfig({this.enabled});
-
-  StatefulHAConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef StatefulHAConfig = $StatefulHAConfig;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -14950,132 +12121,7 @@ typedef Status = $Status00;
 
 /// StatusCondition describes why a cluster or a node pool has a certain status
 /// (e.g., ERROR or DEGRADED).
-class StatusCondition {
-  /// Canonical code of the condition.
-  /// Possible string values are:
-  /// - "OK" : Not an error; returned on success. HTTP Mapping: 200 OK
-  /// - "CANCELLED" : The operation was cancelled, typically by the caller. HTTP
-  /// Mapping: 499 Client Closed Request
-  /// - "UNKNOWN" : Unknown error. For example, this error may be returned when
-  /// a `Status` value received from another address space belongs to an error
-  /// space that is not known in this address space. Also errors raised by APIs
-  /// that do not return enough error information may be converted to this
-  /// error. HTTP Mapping: 500 Internal Server Error
-  /// - "INVALID_ARGUMENT" : The client specified an invalid argument. Note that
-  /// this differs from `FAILED_PRECONDITION`. `INVALID_ARGUMENT` indicates
-  /// arguments that are problematic regardless of the state of the system
-  /// (e.g., a malformed file name). HTTP Mapping: 400 Bad Request
-  /// - "DEADLINE_EXCEEDED" : The deadline expired before the operation could
-  /// complete. For operations that change the state of the system, this error
-  /// may be returned even if the operation has completed successfully. For
-  /// example, a successful response from a server could have been delayed long
-  /// enough for the deadline to expire. HTTP Mapping: 504 Gateway Timeout
-  /// - "NOT_FOUND" : Some requested entity (e.g., file or directory) was not
-  /// found. Note to server developers: if a request is denied for an entire
-  /// class of users, such as gradual feature rollout or undocumented allowlist,
-  /// `NOT_FOUND` may be used. If a request is denied for some users within a
-  /// class of users, such as user-based access control, `PERMISSION_DENIED`
-  /// must be used. HTTP Mapping: 404 Not Found
-  /// - "ALREADY_EXISTS" : The entity that a client attempted to create (e.g.,
-  /// file or directory) already exists. HTTP Mapping: 409 Conflict
-  /// - "PERMISSION_DENIED" : The caller does not have permission to execute the
-  /// specified operation. `PERMISSION_DENIED` must not be used for rejections
-  /// caused by exhausting some resource (use `RESOURCE_EXHAUSTED` instead for
-  /// those errors). `PERMISSION_DENIED` must not be used if the caller can not
-  /// be identified (use `UNAUTHENTICATED` instead for those errors). This error
-  /// code does not imply the request is valid or the requested entity exists or
-  /// satisfies other pre-conditions. HTTP Mapping: 403 Forbidden
-  /// - "UNAUTHENTICATED" : The request does not have valid authentication
-  /// credentials for the operation. HTTP Mapping: 401 Unauthorized
-  /// - "RESOURCE_EXHAUSTED" : Some resource has been exhausted, perhaps a
-  /// per-user quota, or perhaps the entire file system is out of space. HTTP
-  /// Mapping: 429 Too Many Requests
-  /// - "FAILED_PRECONDITION" : The operation was rejected because the system is
-  /// not in a state required for the operation's execution. For example, the
-  /// directory to be deleted is non-empty, an rmdir operation is applied to a
-  /// non-directory, etc. Service implementors can use the following guidelines
-  /// to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a)
-  /// Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use
-  /// `ABORTED` if the client should retry at a higher level. For example, when
-  /// a client-specified test-and-set fails, indicating the client should
-  /// restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the
-  /// client should not retry until the system state has been explicitly fixed.
-  /// For example, if an "rmdir" fails because the directory is non-empty,
-  /// `FAILED_PRECONDITION` should be returned since the client should not retry
-  /// unless the files are deleted from the directory. HTTP Mapping: 400 Bad
-  /// Request
-  /// - "ABORTED" : The operation was aborted, typically due to a concurrency
-  /// issue such as a sequencer check failure or transaction abort. See the
-  /// guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`,
-  /// and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
-  /// - "OUT_OF_RANGE" : The operation was attempted past the valid range. E.g.,
-  /// seeking or reading past end-of-file. Unlike `INVALID_ARGUMENT`, this error
-  /// indicates a problem that may be fixed if the system state changes. For
-  /// example, a 32-bit file system will generate `INVALID_ARGUMENT` if asked to
-  /// read at an offset that is not in the range \[0,2^32-1\], but it will
-  /// generate `OUT_OF_RANGE` if asked to read from an offset past the current
-  /// file size. There is a fair bit of overlap between `FAILED_PRECONDITION`
-  /// and `OUT_OF_RANGE`. We recommend using `OUT_OF_RANGE` (the more specific
-  /// error) when it applies so that callers who are iterating through a space
-  /// can easily look for an `OUT_OF_RANGE` error to detect when they are done.
-  /// HTTP Mapping: 400 Bad Request
-  /// - "UNIMPLEMENTED" : The operation is not implemented or is not
-  /// supported/enabled in this service. HTTP Mapping: 501 Not Implemented
-  /// - "INTERNAL" : Internal errors. This means that some invariants expected
-  /// by the underlying system have been broken. This error code is reserved for
-  /// serious errors. HTTP Mapping: 500 Internal Server Error
-  /// - "UNAVAILABLE" : The service is currently unavailable. This is most
-  /// likely a transient condition, which can be corrected by retrying with a
-  /// backoff. Note that it is not always safe to retry non-idempotent
-  /// operations. See the guidelines above for deciding between
-  /// `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 503
-  /// Service Unavailable
-  /// - "DATA_LOSS" : Unrecoverable data loss or corruption. HTTP Mapping: 500
-  /// Internal Server Error
-  core.String? canonicalCode;
-
-  /// Machine-friendly representation of the condition Deprecated.
-  ///
-  /// Use canonical_code instead.
-  /// Possible string values are:
-  /// - "UNKNOWN" : UNKNOWN indicates a generic condition.
-  /// - "GCE_STOCKOUT" : GCE_STOCKOUT indicates that Google Compute Engine
-  /// resources are temporarily unavailable.
-  /// - "GKE_SERVICE_ACCOUNT_DELETED" : GKE_SERVICE_ACCOUNT_DELETED indicates
-  /// that the user deleted their robot service account.
-  /// - "GCE_QUOTA_EXCEEDED" : Google Compute Engine quota was exceeded.
-  /// - "SET_BY_OPERATOR" : Cluster state was manually changed by an SRE due to
-  /// a system logic error.
-  /// - "CLOUD_KMS_KEY_ERROR" : Unable to perform an encrypt operation against
-  /// the CloudKMS key used for etcd level encryption.
-  /// - "CA_EXPIRING" : Cluster CA is expiring soon.
-  /// - "NODE_SERVICE_ACCOUNT_MISSING_PERMISSIONS" : Node service account is
-  /// missing permissions.
-  /// - "CLOUD_KMS_KEY_DESTROYED" : Cloud KMS key version used for etcd level
-  /// encryption has been destroyed. This is a permanent error.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? code;
-
-  /// Human-friendly representation of the condition
-  core.String? message;
-
-  StatusCondition({this.canonicalCode, this.code, this.message});
-
-  StatusCondition.fromJson(core.Map json_)
-    : this(
-        canonicalCode: json_['canonicalCode'] as core.String?,
-        code: json_['code'] as core.String?,
-        message: json_['message'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (canonicalCode != null) 'canonicalCode': canonicalCode!,
-    if (code != null) 'code': code!,
-    if (message != null) 'message': message!,
-  };
-}
+typedef StatusCondition = $StatusCondition;
 
 /// Represents an arbitrary window of time.
 class TimeWindow {
@@ -15118,45 +12164,7 @@ class TimeWindow {
 /// feature.
 ///
 /// See https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/
-class TopologyManager {
-  /// Configures the strategy for resource alignment.
-  ///
-  /// Allowed values are: * none: the default policy, and does not perform any
-  /// topology alignment. * restricted: the topology manager stores the
-  /// preferred NUMA node affinity for the container, and will reject the pod if
-  /// the affinity if not preferred. * best-effort: the topology manager stores
-  /// the preferred NUMA node affinity for the container. If the affinity is not
-  /// preferred, the topology manager will admit the pod to the node anyway. *
-  /// single-numa-node: the topology manager determines if the single NUMA node
-  /// affinity is possible. If it is, Topology Manager will store this and the
-  /// Hint Providers can then use this information when making the resource
-  /// allocation decision. If, however, this is not possible then the Topology
-  /// Manager will reject the pod from the node. This will result in a pod in a
-  /// Terminated state with a pod admission failure. The default policy value is
-  /// 'none' if unspecified. Details about each strategy can be found
-  /// [here](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies).
-  core.String? policy;
-
-  /// The Topology Manager aligns resources in following scopes: * container *
-  /// pod The default scope is 'container' if unspecified.
-  ///
-  /// See
-  /// https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-scopes
-  core.String? scope;
-
-  TopologyManager({this.policy, this.scope});
-
-  TopologyManager.fromJson(core.Map json_)
-    : this(
-        policy: json_['policy'] as core.String?,
-        scope: json_['scope'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (policy != null) 'policy': policy!,
-    if (scope != null) 'scope': scope!,
-  };
-}
+typedef TopologyManager = $TopologyManager;
 
 /// UpdateClusterRequest updates the settings of a cluster.
 class UpdateClusterRequest {
@@ -15258,82 +12266,7 @@ class UpdateInfo {
 }
 
 /// UpdateMasterRequest updates the master of the cluster.
-class UpdateMasterRequest {
-  /// The name of the cluster to upgrade.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? clusterId;
-
-  /// The Kubernetes version to change the master to.
-  ///
-  /// Users may specify either explicit versions offered by Kubernetes Engine or
-  /// version aliases, which have the following behavior: - "latest": picks the
-  /// highest valid Kubernetes version - "1.X": picks the highest valid
-  /// patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid
-  /// gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit
-  /// Kubernetes version - "-": picks the default Kubernetes version
-  ///
-  /// Required.
-  core.String? masterVersion;
-
-  /// The name (project, location, cluster) of the cluster to update.
-  ///
-  /// Specified in the format `projects / * /locations / * /clusters / * `.
-  core.String? name;
-
-  /// The Google Developers Console
-  /// [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects).
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? projectId;
-
-  /// The name of the Google Compute Engine
-  /// [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available)
-  /// in which the cluster resides.
-  ///
-  /// This field has been deprecated and replaced by the name field.
-  ///
-  /// Deprecated.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? zone;
-
-  UpdateMasterRequest({
-    this.clusterId,
-    this.masterVersion,
-    this.name,
-    this.projectId,
-    this.zone,
-  });
-
-  UpdateMasterRequest.fromJson(core.Map json_)
-    : this(
-        clusterId: json_['clusterId'] as core.String?,
-        masterVersion: json_['masterVersion'] as core.String?,
-        name: json_['name'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clusterId != null) 'clusterId': clusterId!,
-    if (masterVersion != null) 'masterVersion': masterVersion!,
-    if (name != null) 'name': name!,
-    if (projectId != null) 'projectId': projectId!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef UpdateMasterRequest = $UpdateMasterRequest;
 
 /// UpdateNodePoolRequests update a node pool's image and/or version.
 class UpdateNodePoolRequest {
@@ -15786,65 +12719,7 @@ class UpdateNodePoolRequest {
 
 /// UpgradeDetails contains detailed information of each individual upgrade
 /// operation.
-class UpgradeDetails {
-  /// The end timestamp of the upgrade.
-  core.String? endTime;
-
-  /// The version before the upgrade.
-  core.String? initialVersion;
-
-  /// The start timestamp of the upgrade.
-  core.String? startTime;
-
-  /// The start type of the upgrade.
-  /// Possible string values are:
-  /// - "START_TYPE_UNSPECIFIED" : Upgrade start type is unspecified.
-  /// - "AUTOMATIC" : Upgrade started automatically.
-  /// - "MANUAL" : Upgrade started manually.
-  core.String? startType;
-
-  /// The state of the upgrade.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "UNKNOWN" : Upgrade state is unknown.
-  /// - "FAILED" : Upgrade has failed with an error.
-  /// - "SUCCEEDED" : Upgrade has succeeded.
-  /// - "CANCELED" : Upgrade has been canceled.
-  /// - "RUNNING" : Upgrade is running.
-  core.String? state;
-
-  /// The version after the upgrade.
-  core.String? targetVersion;
-
-  UpgradeDetails({
-    this.endTime,
-    this.initialVersion,
-    this.startTime,
-    this.startType,
-    this.state,
-    this.targetVersion,
-  });
-
-  UpgradeDetails.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        initialVersion: json_['initialVersion'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        startType: json_['startType'] as core.String?,
-        state: json_['state'] as core.String?,
-        targetVersion: json_['targetVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (initialVersion != null) 'initialVersion': initialVersion!,
-    if (startTime != null) 'startTime': startTime!,
-    if (startType != null) 'startType': startType!,
-    if (state != null) 'state': state!,
-    if (targetVersion != null) 'targetVersion': targetVersion!,
-  };
-}
+typedef UpgradeDetails = $UpgradeDetails;
 
 /// These upgrade settings control the level of parallelism and the level of
 /// disruption caused by an upgrade.
@@ -16037,123 +12912,15 @@ class UsableSubnetworkSecondaryRange {
 
 /// UserManagedKeysConfig holds the resource address to Keys which are used for
 /// signing certs and token that are used for communication within cluster.
-class UserManagedKeysConfig {
-  /// The Certificate Authority Service caPool to use for the aggregation CA in
-  /// this cluster.
-  core.String? aggregationCa;
-
-  /// The Certificate Authority Service caPool to use for the cluster CA in this
-  /// cluster.
-  core.String? clusterCa;
-
-  /// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control
-  /// plane nodes.
-  core.String? controlPlaneDiskEncryptionKey;
-
-  /// Resource path of the Certificate Authority Service caPool to use for the
-  /// etcd API CA in this cluster.
-  core.String? etcdApiCa;
-
-  /// Resource path of the Certificate Authority Service caPool to use for the
-  /// etcd peer CA in this cluster.
-  core.String? etcdPeerCa;
-
-  /// Resource path of the Cloud KMS cryptoKey to use for encryption of internal
-  /// etcd backups.
-  core.String? gkeopsEtcdBackupEncryptionKey;
-
-  /// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs
-  /// issued by this cluster.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}`
-  core.List<core.String>? serviceAccountSigningKeys;
-
-  /// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs
-  /// issued by this cluster.
-  ///
-  /// Format:
-  /// `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion}`
-  core.List<core.String>? serviceAccountVerificationKeys;
-
-  UserManagedKeysConfig({
-    this.aggregationCa,
-    this.clusterCa,
-    this.controlPlaneDiskEncryptionKey,
-    this.etcdApiCa,
-    this.etcdPeerCa,
-    this.gkeopsEtcdBackupEncryptionKey,
-    this.serviceAccountSigningKeys,
-    this.serviceAccountVerificationKeys,
-  });
-
-  UserManagedKeysConfig.fromJson(core.Map json_)
-    : this(
-        aggregationCa: json_['aggregationCa'] as core.String?,
-        clusterCa: json_['clusterCa'] as core.String?,
-        controlPlaneDiskEncryptionKey:
-            json_['controlPlaneDiskEncryptionKey'] as core.String?,
-        etcdApiCa: json_['etcdApiCa'] as core.String?,
-        etcdPeerCa: json_['etcdPeerCa'] as core.String?,
-        gkeopsEtcdBackupEncryptionKey:
-            json_['gkeopsEtcdBackupEncryptionKey'] as core.String?,
-        serviceAccountSigningKeys:
-            (json_['serviceAccountSigningKeys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        serviceAccountVerificationKeys:
-            (json_['serviceAccountVerificationKeys'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregationCa != null) 'aggregationCa': aggregationCa!,
-    if (clusterCa != null) 'clusterCa': clusterCa!,
-    if (controlPlaneDiskEncryptionKey != null)
-      'controlPlaneDiskEncryptionKey': controlPlaneDiskEncryptionKey!,
-    if (etcdApiCa != null) 'etcdApiCa': etcdApiCa!,
-    if (etcdPeerCa != null) 'etcdPeerCa': etcdPeerCa!,
-    if (gkeopsEtcdBackupEncryptionKey != null)
-      'gkeopsEtcdBackupEncryptionKey': gkeopsEtcdBackupEncryptionKey!,
-    if (serviceAccountSigningKeys != null)
-      'serviceAccountSigningKeys': serviceAccountSigningKeys!,
-    if (serviceAccountVerificationKeys != null)
-      'serviceAccountVerificationKeys': serviceAccountVerificationKeys!,
-  };
-}
+typedef UserManagedKeysConfig = $UserManagedKeysConfig;
 
 /// VerticalPodAutoscaling contains global, per-cluster information required by
 /// Vertical Pod Autoscaler to automatically adjust the resources of pods
 /// controlled by it.
-class VerticalPodAutoscaling {
-  /// Enables vertical pod autoscaling.
-  core.bool? enabled;
-
-  VerticalPodAutoscaling({this.enabled});
-
-  VerticalPodAutoscaling.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef VerticalPodAutoscaling = $VerticalPodAutoscaling;
 
 /// Configuration of gVNIC feature.
-class VirtualNIC {
-  /// Whether gVNIC features are enabled in the node pool.
-  core.bool? enabled;
-
-  VirtualNIC({this.enabled});
-
-  VirtualNIC.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef VirtualNIC = $VirtualNIC;
 
 /// Parameters that can be configured on Windows nodes.
 ///
@@ -16221,30 +12988,4 @@ class WorkloadMetadataConfig {
 }
 
 /// WorkloadPolicyConfig is the configuration related to GCW workload policy
-class WorkloadPolicyConfig {
-  /// If true, workloads can use NET_ADMIN capability.
-  core.bool? allowNetAdmin;
-
-  /// If true, enables the GCW Auditor that audits workloads on standard
-  /// clusters.
-  core.bool? autopilotCompatibilityAuditingEnabled;
-
-  WorkloadPolicyConfig({
-    this.allowNetAdmin,
-    this.autopilotCompatibilityAuditingEnabled,
-  });
-
-  WorkloadPolicyConfig.fromJson(core.Map json_)
-    : this(
-        allowNetAdmin: json_['allowNetAdmin'] as core.bool?,
-        autopilotCompatibilityAuditingEnabled:
-            json_['autopilotCompatibilityAuditingEnabled'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowNetAdmin != null) 'allowNetAdmin': allowNetAdmin!,
-    if (autopilotCompatibilityAuditingEnabled != null)
-      'autopilotCompatibilityAuditingEnabled':
-          autopilotCompatibilityAuditingEnabled!,
-  };
-}
+typedef WorkloadPolicyConfig = $WorkloadPolicyConfig;

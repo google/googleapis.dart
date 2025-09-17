@@ -19161,26 +19161,7 @@ class GooglePrivacyDlpV2OutputStorageConfig {
 /// A partition ID identifies a grouping of entities. The grouping is always by
 /// project and namespace, however the namespace ID may be empty. A partition ID
 /// contains several dimensions: project ID and namespace ID.
-class GooglePrivacyDlpV2PartitionId {
-  /// If not empty, the ID of the namespace to which the entities belong.
-  core.String? namespaceId;
-
-  /// The ID of the project to which the entities belong.
-  core.String? projectId;
-
-  GooglePrivacyDlpV2PartitionId({this.namespaceId, this.projectId});
-
-  GooglePrivacyDlpV2PartitionId.fromJson(core.Map json_)
-    : this(
-        namespaceId: json_['namespaceId'] as core.String?,
-        projectId: json_['projectId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (namespaceId != null) 'namespaceId': namespaceId!,
-    if (projectId != null) 'projectId': projectId!,
-  };
-}
+typedef GooglePrivacyDlpV2PartitionId = $PartitionId;
 
 /// A (kind, ID/name) pair used to construct a key path.
 ///

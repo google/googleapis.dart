@@ -18172,7 +18172,7 @@ class GoogleCloudApigeeV1Access {
 /// Get action.
 ///
 /// For example, "Get" : { "name" : "target.name", "value" : "default" }
-typedef GoogleCloudApigeeV1AccessGet = $Shared06;
+typedef GoogleCloudApigeeV1AccessGet = $Shared13;
 
 /// Access logging configuration enables customers to ship the access logs from
 /// the tenant projects to their own project's cloud logging.
@@ -33320,7 +33320,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {
@@ -33815,7 +33815,7 @@ typedef GoogleTypeExpr = $Expr;
 /// The start must be less than or equal to the end. When the start equals the
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
-typedef GoogleTypeInterval = $Interval;
+typedef GoogleTypeInterval = $Interval00;
 
 /// Represents an amount of money with its currency type.
 typedef GoogleTypeMoney = $Money;

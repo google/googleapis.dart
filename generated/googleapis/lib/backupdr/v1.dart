@@ -3601,7 +3601,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Message describing a Backup object.
 class Backup {
@@ -5952,7 +5952,7 @@ class ComputeInstanceTargetEnvironment {
 }
 
 /// A set of Confidential Instance options.
-typedef ConfidentialInstanceConfig = $ConfidentialInstanceConfig;
+typedef ConfidentialInstanceConfig = $ConfidentialInstanceConfig00;
 
 /// A customer-supplied encryption key.
 class CustomerEncryptionKey {

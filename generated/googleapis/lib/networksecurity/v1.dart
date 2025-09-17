@@ -7793,200 +7793,14 @@ class ProjectsLocationsUrlListsResource {
 }
 
 /// Request used by the AddAddressGroupItems method.
-class AddAddressGroupItemsRequest {
-  /// List of items to add.
-  ///
-  /// Required.
-  core.List<core.String>? items;
-
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  AddAddressGroupItemsRequest({this.items, this.requestId});
-
-  AddAddressGroupItemsRequest.fromJson(core.Map json_)
-    : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        requestId: json_['requestId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (requestId != null) 'requestId': requestId!,
-  };
-}
+typedef AddAddressGroupItemsRequest = $AddAddressGroupItemsRequest;
 
 /// AddressGroup is a resource that specifies how a collection of IP/DNS used in
 /// Firewall Policy.
-class AddressGroup {
-  /// Capacity of the Address Group
-  ///
-  /// Required.
-  core.int? capacity;
-
-  /// The timestamp when the resource was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Free-text description of the resource.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// List of items.
-  ///
-  /// Optional.
-  core.List<core.String>? items;
-
-  /// Set of label tags associated with the AddressGroup resource.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// Name of the AddressGroup resource.
-  ///
-  /// It matches pattern `projects / * /locations/{location}/addressGroups/`.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// List of supported purposes of the Address Group.
-  ///
-  /// Optional.
-  core.List<core.String>? purpose;
-
-  /// Server-defined fully-qualified URL for this resource.
-  ///
-  /// Output only.
-  core.String? selfLink;
-
-  /// The type of the Address Group.
-  ///
-  /// Possible values are "IPv4" or "IPV6".
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value.
-  /// - "IPV4" : IP v4 ranges.
-  /// - "IPV6" : IP v6 ranges.
-  core.String? type;
-
-  /// The timestamp when the resource was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  AddressGroup({
-    this.capacity,
-    this.createTime,
-    this.description,
-    this.items,
-    this.labels,
-    this.name,
-    this.purpose,
-    this.selfLink,
-    this.type,
-    this.updateTime,
-  });
-
-  AddressGroup.fromJson(core.Map json_)
-    : this(
-        capacity: json_['capacity'] as core.int?,
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        items:
-            (json_['items'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        purpose:
-            (json_['purpose'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        selfLink: json_['selfLink'] as core.String?,
-        type: json_['type'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (capacity != null) 'capacity': capacity!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (items != null) 'items': items!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (purpose != null) 'purpose': purpose!,
-    if (selfLink != null) 'selfLink': selfLink!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef AddressGroup = $AddressGroup;
 
 /// Defines what action to take for antivirus threats per protocol.
-class AntivirusOverride {
-  /// Threat action override.
-  ///
-  /// For some threat types, only a subset of actions applies.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
-  /// - "DEFAULT_ACTION" : The default action (as specified by the vendor) is
-  /// taken.
-  /// - "ALLOW" : The packet matching this rule will be allowed to transmit.
-  /// - "ALERT" : The packet matching this rule will be allowed to transmit, but
-  /// a threat_log entry will be sent to the consumer project.
-  /// - "DENY" : The packet matching this rule will be dropped, and a threat_log
-  /// entry will be sent to the consumer project.
-  core.String? action;
-
-  /// Protocol to match.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PROTOCOL_UNSPECIFIED" : Protocol not specified.
-  /// - "SMTP" : SMTP protocol
-  /// - "SMB" : SMB protocol
-  /// - "POP3" : POP3 protocol
-  /// - "IMAP" : IMAP protocol
-  /// - "HTTP2" : HTTP2 protocol
-  /// - "HTTP" : HTTP protocol
-  /// - "FTP" : FTP protocol
-  core.String? protocol;
-
-  AntivirusOverride({this.action, this.protocol});
-
-  AntivirusOverride.fromJson(core.Map json_)
-    : this(
-        action: json_['action'] as core.String?,
-        protocol: json_['protocol'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (protocol != null) 'protocol': protocol!,
-  };
-}
+typedef AntivirusOverride = $AntivirusOverride;
 
 /// AuthorizationPolicy is a resource that specifies how a server should
 /// authorize incoming connections.
@@ -8422,30 +8236,7 @@ class AuthzPolicyAuthzRuleHeaderMatch {
 }
 
 /// Represents a range of IP Addresses.
-class AuthzPolicyAuthzRuleIpBlock {
-  /// The length of the address range.
-  ///
-  /// Required.
-  core.int? length;
-
-  /// The address prefix.
-  ///
-  /// Required.
-  core.String? prefix;
-
-  AuthzPolicyAuthzRuleIpBlock({this.length, this.prefix});
-
-  AuthzPolicyAuthzRuleIpBlock.fromJson(core.Map json_)
-    : this(
-        length: json_['length'] as core.int?,
-        prefix: json_['prefix'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (length != null) 'length': length!,
-    if (prefix != null) 'prefix': prefix!,
-  };
-}
+typedef AuthzPolicyAuthzRuleIpBlock = $AuthzPolicyAuthzRuleIpBlock;
 
 /// Describes the properties of a principal to be matched against.
 class AuthzPolicyAuthzRulePrincipal {
@@ -8548,88 +8339,11 @@ class AuthzPolicyAuthzRuleRequestResource {
 
 /// Describes a set of resource tag value permanent IDs to match against the
 /// resource manager tags value associated with the source VM of a request.
-class AuthzPolicyAuthzRuleRequestResourceTagValueIdSet {
-  /// A list of resource tag value permanent IDs to match against the resource
-  /// manager tags value associated with the source VM of a request.
-  ///
-  /// The match follows AND semantics which means all the ids must match.
-  /// Limited to 5 matches.
-  ///
-  /// Required.
-  core.List<core.String>? ids;
-
-  AuthzPolicyAuthzRuleRequestResourceTagValueIdSet({this.ids});
-
-  AuthzPolicyAuthzRuleRequestResourceTagValueIdSet.fromJson(core.Map json_)
-    : this(
-        ids:
-            (json_['ids'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ids != null) 'ids': ids!,
-  };
-}
+typedef AuthzPolicyAuthzRuleRequestResourceTagValueIdSet =
+    $AuthzPolicyAuthzRuleRequestResourceTagValueIdSet;
 
 /// Determines how a string value should be matched.
-class AuthzPolicyAuthzRuleStringMatch {
-  /// The input string must have the substring specified here.
-  ///
-  /// Note: empty contains match is not allowed, please use regex instead.
-  /// Examples: * ``abc`` matches the value ``xyz.abc.def``
-  core.String? contains;
-
-  /// The input string must match exactly the string specified here.
-  ///
-  /// Examples: * ``abc`` only matches the value ``abc``.
-  core.String? exact;
-
-  /// If true, indicates the exact/prefix/suffix/contains matching should be
-  /// case insensitive.
-  ///
-  /// For example, the matcher ``data`` will match both input string ``Data``
-  /// and ``data`` if set to true.
-  core.bool? ignoreCase;
-
-  /// The input string must have the prefix specified here.
-  ///
-  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
-  /// ``abc`` matches the value ``abc.xyz``
-  core.String? prefix;
-
-  /// The input string must have the suffix specified here.
-  ///
-  /// Note: empty prefix is not allowed, please use regex instead. Examples: *
-  /// ``abc`` matches the value ``xyz.abc``
-  core.String? suffix;
-
-  AuthzPolicyAuthzRuleStringMatch({
-    this.contains,
-    this.exact,
-    this.ignoreCase,
-    this.prefix,
-    this.suffix,
-  });
-
-  AuthzPolicyAuthzRuleStringMatch.fromJson(core.Map json_)
-    : this(
-        contains: json_['contains'] as core.String?,
-        exact: json_['exact'] as core.String?,
-        ignoreCase: json_['ignoreCase'] as core.bool?,
-        prefix: json_['prefix'] as core.String?,
-        suffix: json_['suffix'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contains != null) 'contains': contains!,
-    if (exact != null) 'exact': exact!,
-    if (ignoreCase != null) 'ignoreCase': ignoreCase!,
-    if (prefix != null) 'prefix': prefix!,
-    if (suffix != null) 'suffix': suffix!,
-  };
-}
+typedef AuthzPolicyAuthzRuleStringMatch = $AuthzPolicyAuthzRuleStringMatch;
 
 /// Describes properties of one or more targets of a request.
 class AuthzPolicyAuthzRuleTo {
@@ -8844,29 +8558,8 @@ class AuthzPolicyCustomProvider {
 /// Only one of cloudIap or authzExtension can be specified.
 ///
 /// Optional.
-class AuthzPolicyCustomProviderAuthzExtension {
-  /// A list of references to authorization extensions that will be invoked for
-  /// requests matching this policy.
-  ///
-  /// Limited to 1 custom provider.
-  ///
-  /// Required.
-  core.List<core.String>? resources;
-
-  AuthzPolicyCustomProviderAuthzExtension({this.resources});
-
-  AuthzPolicyCustomProviderAuthzExtension.fromJson(core.Map json_)
-    : this(
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (resources != null) 'resources': resources!,
-  };
-}
+typedef AuthzPolicyCustomProviderAuthzExtension =
+    $AuthzPolicyCustomProviderAuthzExtension;
 
 /// Delegates authorization decisions to Cloud IAP.
 ///
@@ -8880,48 +8573,7 @@ class AuthzPolicyCustomProviderAuthzExtension {
 typedef AuthzPolicyCustomProviderCloudIap = $Empty;
 
 /// Specifies the set of targets to which this policy should be applied to.
-class AuthzPolicyTarget {
-  /// All gateways and forwarding rules referenced by this policy and extensions
-  /// must share the same load balancing scheme.
-  ///
-  /// Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more
-  /// information, refer to
-  /// [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "LOAD_BALANCING_SCHEME_UNSPECIFIED" : Default value. Do not use.
-  /// - "INTERNAL_MANAGED" : Signifies that this is used for Regional internal
-  /// or Cross-region internal Application Load Balancing.
-  /// - "EXTERNAL_MANAGED" : Signifies that this is used for Global external or
-  /// Regional external Application Load Balancing.
-  /// - "INTERNAL_SELF_MANAGED" : Signifies that this is used for Cloud Service
-  /// Mesh. Meant for use by CSM GKE controller only.
-  core.String? loadBalancingScheme;
-
-  /// A list of references to the Forwarding Rules on which this policy will be
-  /// applied.
-  ///
-  /// Required.
-  core.List<core.String>? resources;
-
-  AuthzPolicyTarget({this.loadBalancingScheme, this.resources});
-
-  AuthzPolicyTarget.fromJson(core.Map json_)
-    : this(
-        loadBalancingScheme: json_['loadBalancingScheme'] as core.String?,
-        resources:
-            (json_['resources'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (loadBalancingScheme != null)
-      'loadBalancingScheme': loadBalancingScheme!,
-    if (resources != null) 'resources': resources!,
-  };
-}
+typedef AuthzPolicyTarget = $AuthzPolicyTarget;
 
 /// BackendAuthenticationConfig message groups the TrustConfig together with
 /// other settings that control how the load balancer authenticates, and
@@ -8935,113 +8587,7 @@ class AuthzPolicyTarget {
 /// to the backend, if the connection to the backend uses mTLS. You can attach
 /// the BackendAuthenticationConfig to the load balancer's BackendService
 /// directly determining how that BackendService negotiates TLS.
-class BackendAuthenticationConfig {
-  /// A reference to a certificatemanager.googleapis.com.Certificate resource.
-  ///
-  /// This is a relative resource path following the form
-  /// "projects/{project}/locations/{location}/certificates/{certificate}". Used
-  /// by a BackendService to negotiate mTLS when the backend connection uses TLS
-  /// and the backend requests a client certificate. Must have a CLIENT_AUTH
-  /// scope.
-  ///
-  /// Optional.
-  core.String? clientCertificate;
-
-  /// The timestamp when the resource was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Free-text description of the resource.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Etag of the resource.
-  ///
-  /// Output only.
-  core.String? etag;
-
-  /// Set of label tags associated with the resource.
-  core.Map<core.String, core.String>? labels;
-
-  /// Name of the BackendAuthenticationConfig resource.
-  ///
-  /// It matches the pattern `projects / *
-  /// /locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}`
-  ///
-  /// Required.
-  core.String? name;
-
-  /// A reference to a TrustConfig resource from the
-  /// certificatemanager.googleapis.com namespace.
-  ///
-  /// This is a relative resource path following the form
-  /// "projects/{project}/locations/{location}/trustConfigs/{trust_config}". A
-  /// BackendService uses the chain of trust represented by this TrustConfig, if
-  /// specified, to validate the server certificates presented by the backend.
-  /// Required unless wellKnownRoots is set to PUBLIC_ROOTS.
-  ///
-  /// Optional.
-  core.String? trustConfig;
-
-  /// The timestamp when the resource was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  /// Well known roots to use for server certificate validation.
-  /// Possible string values are:
-  /// - "WELL_KNOWN_ROOTS_UNSPECIFIED" : Equivalent to NONE.
-  /// - "NONE" : The BackendService will only validate server certificates
-  /// against roots specified in TrustConfig.
-  /// - "PUBLIC_ROOTS" : The BackendService uses a set of well-known public
-  /// roots, in addition to any roots specified in the trustConfig field, when
-  /// validating the server certificates presented by the backend. Validation
-  /// with these roots is only considered when the TlsSettings.sni field in the
-  /// BackendService is set. The well-known roots are a set of root CAs managed
-  /// by Google. CAs in this set can be added or removed without notice.
-  core.String? wellKnownRoots;
-
-  BackendAuthenticationConfig({
-    this.clientCertificate,
-    this.createTime,
-    this.description,
-    this.etag,
-    this.labels,
-    this.name,
-    this.trustConfig,
-    this.updateTime,
-    this.wellKnownRoots,
-  });
-
-  BackendAuthenticationConfig.fromJson(core.Map json_)
-    : this(
-        clientCertificate: json_['clientCertificate'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        etag: json_['etag'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        trustConfig: json_['trustConfig'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-        wellKnownRoots: json_['wellKnownRoots'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clientCertificate != null) 'clientCertificate': clientCertificate!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (trustConfig != null) 'trustConfig': trustConfig!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (wellKnownRoots != null) 'wellKnownRoots': wellKnownRoots!,
-  };
-}
+typedef BackendAuthenticationConfig = $BackendAuthenticationConfig;
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
@@ -9052,25 +8598,7 @@ typedef CancelOperationRequest = $Empty;
 /// one of them is enabled and configured by specifying this message. Workloads
 /// use the values from this message to locate and load the CertificateProvider
 /// instance configuration.
-class CertificateProviderInstance {
-  /// Plugin instance name, used to locate and load CertificateProvider instance
-  /// configuration.
-  ///
-  /// Set to "google_cloud_private_spiffe" to use Certificate Authority Service
-  /// certificate provider instance.
-  ///
-  /// Required.
-  core.String? pluginInstance;
-
-  CertificateProviderInstance({this.pluginInstance});
-
-  CertificateProviderInstance.fromJson(core.Map json_)
-    : this(pluginInstance: json_['pluginInstance'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pluginInstance != null) 'pluginInstance': pluginInstance!,
-  };
-}
+typedef CertificateProviderInstance = $CertificateProviderInstance;
 
 /// ClientTlsPolicy is a resource that specifies how a client should
 /// authenticate connections to backends of a service.
@@ -9181,92 +8709,17 @@ class ClientTlsPolicy {
 }
 
 /// Request used by the CloneAddressGroupItems method.
-class CloneAddressGroupItemsRequest {
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  /// Source address group to clone items from.
-  ///
-  /// Required.
-  core.String? sourceAddressGroup;
-
-  CloneAddressGroupItemsRequest({this.requestId, this.sourceAddressGroup});
-
-  CloneAddressGroupItemsRequest.fromJson(core.Map json_)
-    : this(
-        requestId: json_['requestId'] as core.String?,
-        sourceAddressGroup: json_['sourceAddressGroup'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (requestId != null) 'requestId': requestId!,
-    if (sourceAddressGroup != null) 'sourceAddressGroup': sourceAddressGroup!,
-  };
-}
+typedef CloneAddressGroupItemsRequest = $CloneAddressGroupItemsRequest;
 
 /// CustomInterceptProfile defines in-band integration behavior (intercept).
 ///
 /// It is used by firewall rules with an APPLY_SECURITY_PROFILE_GROUP action.
-class CustomInterceptProfile {
-  /// The target InterceptEndpointGroup.
-  ///
-  /// When a firewall rule with this security profile attached matches a packet,
-  /// the packet will be intercepted to the location-local target in this group.
-  ///
-  /// Required.
-  core.String? interceptEndpointGroup;
-
-  CustomInterceptProfile({this.interceptEndpointGroup});
-
-  CustomInterceptProfile.fromJson(core.Map json_)
-    : this(
-        interceptEndpointGroup: json_['interceptEndpointGroup'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (interceptEndpointGroup != null)
-      'interceptEndpointGroup': interceptEndpointGroup!,
-  };
-}
+typedef CustomInterceptProfile = $CustomInterceptProfile;
 
 /// CustomMirroringProfile defines out-of-band integration behavior (mirroring).
 ///
 /// It is used by mirroring rules with a MIRROR action.
-class CustomMirroringProfile {
-  /// The target MirroringEndpointGroup.
-  ///
-  /// When a mirroring rule with this security profile attached matches a
-  /// packet, a replica will be mirrored to the location-local target in this
-  /// group.
-  ///
-  /// Required.
-  core.String? mirroringEndpointGroup;
-
-  CustomMirroringProfile({this.mirroringEndpointGroup});
-
-  CustomMirroringProfile.fromJson(core.Map json_)
-    : this(
-        mirroringEndpointGroup: json_['mirroringEndpointGroup'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mirroringEndpointGroup != null)
-      'mirroringEndpointGroup': mirroringEndpointGroup!,
-  };
-}
+typedef CustomMirroringProfile = $CustomMirroringProfile;
 
 /// Specification of traffic destination attributes.
 class Destination {
@@ -9508,313 +8961,21 @@ class FirewallEndpoint {
 }
 
 /// Message describing Association object
-class FirewallEndpointAssociation {
-  /// Create time stamp
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Whether the association is disabled.
-  ///
-  /// True indicates that traffic won't be intercepted
-  ///
-  /// Optional.
-  core.bool? disabled;
-
-  /// The URL of the FirewallEndpoint that is being associated.
-  ///
-  /// Required.
-  core.String? firewallEndpoint;
-
-  /// Labels as key value pairs
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// Identifier.
-  ///
-  /// name of resource
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The URL of the network that is being associated.
-  ///
-  /// Required.
-  core.String? network;
-
-  /// Whether reconciling is in progress, recommended per
-  /// https://google.aip.dev/128.
-  ///
-  /// Output only.
-  core.bool? reconciling;
-
-  /// Current state of the association.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Not set.
-  /// - "CREATING" : Being created.
-  /// - "ACTIVE" : Active and ready for traffic.
-  /// - "DELETING" : Being deleted.
-  /// - "INACTIVE" : Down or in an error state.
-  /// - "ORPHAN" : The project that housed the association has been deleted.
-  core.String? state;
-
-  /// The URL of the TlsInspectionPolicy that is being associated.
-  ///
-  /// Optional.
-  core.String? tlsInspectionPolicy;
-
-  /// Update time stamp
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  FirewallEndpointAssociation({
-    this.createTime,
-    this.disabled,
-    this.firewallEndpoint,
-    this.labels,
-    this.name,
-    this.network,
-    this.reconciling,
-    this.state,
-    this.tlsInspectionPolicy,
-    this.updateTime,
-  });
-
-  FirewallEndpointAssociation.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        disabled: json_['disabled'] as core.bool?,
-        firewallEndpoint: json_['firewallEndpoint'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        network: json_['network'] as core.String?,
-        reconciling: json_['reconciling'] as core.bool?,
-        state: json_['state'] as core.String?,
-        tlsInspectionPolicy: json_['tlsInspectionPolicy'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (disabled != null) 'disabled': disabled!,
-    if (firewallEndpoint != null) 'firewallEndpoint': firewallEndpoint!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (tlsInspectionPolicy != null)
-      'tlsInspectionPolicy': tlsInspectionPolicy!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef FirewallEndpointAssociation = $FirewallEndpointAssociation;
 
 /// This is a subset of the FirewallEndpointAssociation message, containing
 /// fields to be used by the consumer.
-class FirewallEndpointAssociationReference {
-  /// The resource name of the FirewallEndpointAssociation.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/firewallEndpointAssociations/{id}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The VPC network associated.
-  ///
-  /// Format: projects/{project}/global/networks/{name}.
-  ///
-  /// Output only.
-  core.String? network;
-
-  FirewallEndpointAssociationReference({this.name, this.network});
-
-  FirewallEndpointAssociationReference.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        network: json_['network'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-  };
-}
+typedef FirewallEndpointAssociationReference =
+    $FirewallEndpointAssociationReference;
 
 /// The GatewaySecurityPolicy resource contains a collection of
 /// GatewaySecurityPolicyRules and associated metadata.
-class GatewaySecurityPolicy {
-  /// The timestamp when the resource was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Free-text description of the resource.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Name of the resource.
-  ///
-  /// Name is of the form
-  /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}
-  /// gateway_security_policy should match the
-  /// pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Name of a TLS Inspection Policy resource that defines how TLS inspection
-  /// will be performed for any rule(s) which enables it.
-  ///
-  /// Optional.
-  core.String? tlsInspectionPolicy;
-
-  /// The timestamp when the resource was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GatewaySecurityPolicy({
-    this.createTime,
-    this.description,
-    this.name,
-    this.tlsInspectionPolicy,
-    this.updateTime,
-  });
-
-  GatewaySecurityPolicy.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        name: json_['name'] as core.String?,
-        tlsInspectionPolicy: json_['tlsInspectionPolicy'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-    if (tlsInspectionPolicy != null)
-      'tlsInspectionPolicy': tlsInspectionPolicy!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef GatewaySecurityPolicy = $GatewaySecurityPolicy;
 
 /// The GatewaySecurityPolicyRule resource is in a nested collection within a
 /// GatewaySecurityPolicy and represents a traffic matching condition and
 /// associated action to perform.
-class GatewaySecurityPolicyRule {
-  /// CEL expression for matching on L7/application level criteria.
-  ///
-  /// Optional.
-  core.String? applicationMatcher;
-
-  /// Profile which tells what the primitive action should be.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "BASIC_PROFILE_UNSPECIFIED" : If there is not a mentioned action for the
-  /// target.
-  /// - "ALLOW" : Allow the matched traffic.
-  /// - "DENY" : Deny the matched traffic.
-  core.String? basicProfile;
-
-  /// Time when the rule was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Free-text description of the resource.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Whether the rule is enforced.
-  ///
-  /// Required.
-  core.bool? enabled;
-
-  /// Name of the resource.
-  ///
-  /// ame is the full resource name so
-  /// projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule}
-  /// rule should match the pattern: (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
-  ///
-  /// Required. Immutable.
-  core.String? name;
-
-  /// Priority of the rule.
-  ///
-  /// Lower number corresponds to higher precedence.
-  ///
-  /// Required.
-  core.int? priority;
-
-  /// CEL expression for matching on session criteria.
-  ///
-  /// Required.
-  core.String? sessionMatcher;
-
-  /// Flag to enable TLS inspection of traffic matching on , can only be true if
-  /// the parent GatewaySecurityPolicy references a TLSInspectionConfig.
-  ///
-  /// Optional.
-  core.bool? tlsInspectionEnabled;
-
-  /// Time when the rule was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  GatewaySecurityPolicyRule({
-    this.applicationMatcher,
-    this.basicProfile,
-    this.createTime,
-    this.description,
-    this.enabled,
-    this.name,
-    this.priority,
-    this.sessionMatcher,
-    this.tlsInspectionEnabled,
-    this.updateTime,
-  });
-
-  GatewaySecurityPolicyRule.fromJson(core.Map json_)
-    : this(
-        applicationMatcher: json_['applicationMatcher'] as core.String?,
-        basicProfile: json_['basicProfile'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        enabled: json_['enabled'] as core.bool?,
-        name: json_['name'] as core.String?,
-        priority: json_['priority'] as core.int?,
-        sessionMatcher: json_['sessionMatcher'] as core.String?,
-        tlsInspectionEnabled: json_['tlsInspectionEnabled'] as core.bool?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicationMatcher != null) 'applicationMatcher': applicationMatcher!,
-    if (basicProfile != null) 'basicProfile': basicProfile!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (enabled != null) 'enabled': enabled!,
-    if (name != null) 'name': name!,
-    if (priority != null) 'priority': priority!,
-    if (sessionMatcher != null) 'sessionMatcher': sessionMatcher!,
-    if (tlsInspectionEnabled != null)
-      'tlsInspectionEnabled': tlsInspectionEnabled!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef GatewaySecurityPolicyRule = $GatewaySecurityPolicyRule;
 
 /// Specification of certificate provider.
 ///
@@ -9859,23 +9020,7 @@ class GoogleCloudNetworksecurityV1CertificateProvider {
 }
 
 /// Specification of the GRPC Endpoint.
-class GoogleCloudNetworksecurityV1GrpcEndpoint {
-  /// The target URI of the gRPC endpoint.
-  ///
-  /// Only UDS path is supported, and should start with "unix:".
-  ///
-  /// Required.
-  core.String? targetUri;
-
-  GoogleCloudNetworksecurityV1GrpcEndpoint({this.targetUri});
-
-  GoogleCloudNetworksecurityV1GrpcEndpoint.fromJson(core.Map json_)
-    : this(targetUri: json_['targetUri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetUri != null) 'targetUri': targetUri!,
-  };
-}
+typedef GoogleCloudNetworksecurityV1GrpcEndpoint = $GrpcEndpoint;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -9931,7 +9076,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {
@@ -10203,41 +9348,7 @@ typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Specification of HTTP header match attributes.
-class HttpHeaderMatch {
-  /// The name of the HTTP header to match.
-  ///
-  /// For matching against the HTTP request's authority, use a headerMatch with
-  /// the header name ":authority". For matching a request's method, use the
-  /// headerName ":method".
-  ///
-  /// Required.
-  core.String? headerName;
-
-  /// The value of the header must match the regular expression specified in
-  /// regexMatch.
-  ///
-  /// For regular expression grammar, please see:
-  /// en.cppreference.com/w/cpp/regex/ecmascript For matching against a port
-  /// specified in the HTTP request, use a headerMatch with headerName set to
-  /// Host and a regular expression that satisfies the RFC2616 Host header's
-  /// port specifier.
-  ///
-  /// Required.
-  core.String? regexMatch;
-
-  HttpHeaderMatch({this.headerName, this.regexMatch});
-
-  HttpHeaderMatch.fromJson(core.Map json_)
-    : this(
-        headerName: json_['headerName'] as core.String?,
-        regexMatch: json_['regexMatch'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (headerName != null) 'headerName': headerName!,
-    if (regexMatch != null) 'regexMatch': regexMatch!,
-  };
-}
+typedef HttpHeaderMatch = $HttpHeaderMatch;
 
 /// A deployment represents a zonal intercept backend ready to accept
 /// GENEVE-encapsulated traffic, e.g. a zonal instance group fronted by an
@@ -10245,127 +9356,7 @@ class HttpHeaderMatch {
 ///
 /// Deployments are always part of a global deployment group which represents a
 /// global intercept service.
-class InterceptDeployment {
-  /// The timestamp when the resource was created.
-  ///
-  /// See https://google.aip.dev/148#timestamps.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// User-provided description of the deployment.
-  ///
-  /// Used as additional context for the deployment.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// The regional forwarding rule that fronts the interceptors, for example:
-  /// `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Required. Immutable.
-  core.String? forwardingRule;
-
-  /// The deployment group that this deployment is a part of, for example:
-  /// `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Required. Immutable.
-  core.String? interceptDeploymentGroup;
-
-  /// Labels are key/value pairs that help to organize and filter resources.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// Identifier.
-  ///
-  /// The resource name of this deployment, for example:
-  /// `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`.
-  /// See https://google.aip.dev/122 for more details.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The current state of the resource does not match the user's intended
-  /// state, and the system is working to reconcile them.
-  ///
-  /// This part of the normal operation (e.g. linking a new association to the
-  /// parent group). See https://google.aip.dev/128.
-  ///
-  /// Output only.
-  core.bool? reconciling;
-
-  /// The current state of the deployment.
-  ///
-  /// See https://google.aip.dev/216.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
-  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
-  /// - "CREATING" : The deployment is being created.
-  /// - "DELETING" : The deployment is being deleted.
-  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
-  /// most cases, this is a result of a transient issue within the system (e.g.
-  /// a delayed data-path config) and the system is expected to recover
-  /// automatically. See the parent deployment group's state for more details.
-  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
-  /// is a terminal state and the deployment is not expected to recover. The
-  /// only permitted operation is to retry deleting the deployment.
-  core.String? state;
-
-  /// The timestamp when the resource was most recently updated.
-  ///
-  /// See https://google.aip.dev/148#timestamps.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  InterceptDeployment({
-    this.createTime,
-    this.description,
-    this.forwardingRule,
-    this.interceptDeploymentGroup,
-    this.labels,
-    this.name,
-    this.reconciling,
-    this.state,
-    this.updateTime,
-  });
-
-  InterceptDeployment.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        forwardingRule: json_['forwardingRule'] as core.String?,
-        interceptDeploymentGroup:
-            json_['interceptDeploymentGroup'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        reconciling: json_['reconciling'] as core.bool?,
-        state: json_['state'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (forwardingRule != null) 'forwardingRule': forwardingRule!,
-    if (interceptDeploymentGroup != null)
-      'interceptDeploymentGroup': interceptDeploymentGroup!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef InterceptDeployment = $InterceptDeployment;
 
 /// A deployment group aggregates many zonal intercept backends (deployments)
 /// into a single global intercept service.
@@ -10525,63 +9516,12 @@ class InterceptDeploymentGroup {
 }
 
 /// An endpoint group connected to this deployment group.
-class InterceptDeploymentGroupConnectedEndpointGroup {
-  /// The connected endpoint group's resource name, for example:
-  /// `projects/123456789/locations/global/interceptEndpointGroups/my-eg`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Output only.
-  core.String? name;
-
-  InterceptDeploymentGroupConnectedEndpointGroup({this.name});
-
-  InterceptDeploymentGroupConnectedEndpointGroup.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
-}
+typedef InterceptDeploymentGroupConnectedEndpointGroup =
+    $InterceptDeploymentGroupConnectedEndpointGroup;
 
 /// A deployment belonging to this deployment group.
-class InterceptDeploymentGroupDeployment {
-  /// The name of the Intercept Deployment, in the format:
-  /// `projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}`.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Most recent known state of the deployment.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
-  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
-  /// - "CREATING" : The deployment is being created.
-  /// - "DELETING" : The deployment is being deleted.
-  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
-  /// most cases, this is a result of a transient issue within the system (e.g.
-  /// a delayed data-path config) and the system is expected to recover
-  /// automatically. See the parent deployment group's state for more details.
-  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
-  /// is a terminal state and the deployment is not expected to recover. The
-  /// only permitted operation is to retry deleting the deployment.
-  core.String? state;
-
-  InterceptDeploymentGroupDeployment({this.name, this.state});
-
-  InterceptDeploymentGroupDeployment.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef InterceptDeploymentGroupDeployment =
+    $InterceptDeploymentGroupDeployment;
 
 /// An endpoint group is a consumer frontend for a deployment group (backend).
 ///
@@ -10898,64 +9838,8 @@ class InterceptEndpointGroupAssociation {
 }
 
 /// The endpoint group's view of a connected association.
-class InterceptEndpointGroupAssociationDetails {
-  /// The connected association's resource name, for example:
-  /// `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-ega`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The associated network, for example:
-  /// projects/123456789/global/networks/my-network.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Output only.
-  core.String? network;
-
-  /// Most recent known state of the association.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Not set.
-  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
-  /// group.
-  /// - "CREATING" : The association is being created.
-  /// - "DELETING" : The association is being deleted.
-  /// - "CLOSED" : The association is disabled due to a breaking change in
-  /// another resource.
-  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
-  /// group. In most cases, this is a result of a transient issue within the
-  /// system (e.g. an inaccessible location) and the system is expected to
-  /// recover automatically. Check the `locations_details` field for more
-  /// details.
-  /// - "DELETE_FAILED" : An attempt to delete the association has failed. This
-  /// is a terminal state and the association is not expected to be usable as
-  /// some of its resources have been deleted. The only permitted operation is
-  /// to retry deleting the association.
-  core.String? state;
-
-  InterceptEndpointGroupAssociationDetails({
-    this.name,
-    this.network,
-    this.state,
-  });
-
-  InterceptEndpointGroupAssociationDetails.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        network: json_['network'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef InterceptEndpointGroupAssociationDetails =
+    $InterceptEndpointGroupAssociationDetails;
 
 /// Contains details about the state of an association in a specific cloud
 /// location.
@@ -11041,36 +9925,8 @@ class ListAddressGroupReferencesResponse {
 }
 
 /// The Reference of AddressGroup.
-class ListAddressGroupReferencesResponseAddressGroupReference {
-  /// FirewallPolicy that is using the Address Group.
-  core.String? firewallPolicy;
-
-  /// Rule priority of the FirewallPolicy that is using the Address Group.
-  core.int? rulePriority;
-
-  /// Cloud Armor SecurityPolicy that is using the Address Group.
-  core.String? securityPolicy;
-
-  ListAddressGroupReferencesResponseAddressGroupReference({
-    this.firewallPolicy,
-    this.rulePriority,
-    this.securityPolicy,
-  });
-
-  ListAddressGroupReferencesResponseAddressGroupReference.fromJson(
-    core.Map json_,
-  ) : this(
-        firewallPolicy: json_['firewallPolicy'] as core.String?,
-        rulePriority: json_['rulePriority'] as core.int?,
-        securityPolicy: json_['securityPolicy'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (firewallPolicy != null) 'firewallPolicy': firewallPolicy!,
-    if (rulePriority != null) 'rulePriority': rulePriority!,
-    if (securityPolicy != null) 'securityPolicy': securityPolicy!,
-  };
-}
+typedef ListAddressGroupReferencesResponseAddressGroupReference =
+    $ListAddressGroupReferencesResponseAddressGroupReference;
 
 /// Response returned by the ListAddressGroups method.
 class ListAddressGroupsResponse {
@@ -12098,127 +10954,7 @@ class MTLSPolicy {
 ///
 /// Deployments are always part of a global deployment group which represents a
 /// global mirroring service.
-class MirroringDeployment {
-  /// The timestamp when the resource was created.
-  ///
-  /// See https://google.aip.dev/148#timestamps.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// User-provided description of the deployment.
-  ///
-  /// Used as additional context for the deployment.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// The regional forwarding rule that fronts the mirroring collectors, for
-  /// example: `projects/123456789/regions/us-central1/forwardingRules/my-rule`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Required. Immutable.
-  core.String? forwardingRule;
-
-  /// Labels are key/value pairs that help to organize and filter resources.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// The deployment group that this deployment is a part of, for example:
-  /// `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Required. Immutable.
-  core.String? mirroringDeploymentGroup;
-
-  /// Identifier.
-  ///
-  /// The resource name of this deployment, for example:
-  /// `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`.
-  /// See https://google.aip.dev/122 for more details.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// The current state of the resource does not match the user's intended
-  /// state, and the system is working to reconcile them.
-  ///
-  /// This part of the normal operation (e.g. linking a new association to the
-  /// parent group). See https://google.aip.dev/128.
-  ///
-  /// Output only.
-  core.bool? reconciling;
-
-  /// The current state of the deployment.
-  ///
-  /// See https://google.aip.dev/216.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
-  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
-  /// - "CREATING" : The deployment is being created.
-  /// - "DELETING" : The deployment is being deleted.
-  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
-  /// most cases, this is a result of a transient issue within the system (e.g.
-  /// a delayed data-path config) and the system is expected to recover
-  /// automatically. See the parent deployment group's state for more details.
-  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
-  /// is a terminal state and the deployment is not expected to recover. The
-  /// only permitted operation is to retry deleting the deployment.
-  core.String? state;
-
-  /// The timestamp when the resource was most recently updated.
-  ///
-  /// See https://google.aip.dev/148#timestamps.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  MirroringDeployment({
-    this.createTime,
-    this.description,
-    this.forwardingRule,
-    this.labels,
-    this.mirroringDeploymentGroup,
-    this.name,
-    this.reconciling,
-    this.state,
-    this.updateTime,
-  });
-
-  MirroringDeployment.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        forwardingRule: json_['forwardingRule'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        mirroringDeploymentGroup:
-            json_['mirroringDeploymentGroup'] as core.String?,
-        name: json_['name'] as core.String?,
-        reconciling: json_['reconciling'] as core.bool?,
-        state: json_['state'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (forwardingRule != null) 'forwardingRule': forwardingRule!,
-    if (labels != null) 'labels': labels!,
-    if (mirroringDeploymentGroup != null)
-      'mirroringDeploymentGroup': mirroringDeploymentGroup!,
-    if (name != null) 'name': name!,
-    if (reconciling != null) 'reconciling': reconciling!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef MirroringDeployment = $MirroringDeployment;
 
 /// A deployment group aggregates many zonal mirroring backends (deployments)
 /// into a single global mirroring service.
@@ -12378,63 +11114,12 @@ class MirroringDeploymentGroup {
 }
 
 /// An endpoint group connected to this deployment group.
-class MirroringDeploymentGroupConnectedEndpointGroup {
-  /// The connected endpoint group's resource name, for example:
-  /// `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Output only.
-  core.String? name;
-
-  MirroringDeploymentGroupConnectedEndpointGroup({this.name});
-
-  MirroringDeploymentGroupConnectedEndpointGroup.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
-}
+typedef MirroringDeploymentGroupConnectedEndpointGroup =
+    $MirroringDeploymentGroupConnectedEndpointGroup;
 
 /// A deployment belonging to this deployment group.
-class MirroringDeploymentGroupDeployment {
-  /// The name of the Mirroring Deployment, in the format:
-  /// `projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}`.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Most recent known state of the deployment.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State not set (this is not a valid state).
-  /// - "ACTIVE" : The deployment is ready and in sync with the parent group.
-  /// - "CREATING" : The deployment is being created.
-  /// - "DELETING" : The deployment is being deleted.
-  /// - "OUT_OF_SYNC" : The deployment is out of sync with the parent group. In
-  /// most cases, this is a result of a transient issue within the system (e.g.
-  /// a delayed data-path config) and the system is expected to recover
-  /// automatically. See the parent deployment group's state for more details.
-  /// - "DELETE_FAILED" : An attempt to delete the deployment has failed. This
-  /// is a terminal state and the deployment is not expected to recover. The
-  /// only permitted operation is to retry deleting the deployment.
-  core.String? state;
-
-  MirroringDeploymentGroupDeployment({this.name, this.state});
-
-  MirroringDeploymentGroupDeployment.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef MirroringDeploymentGroupDeployment =
+    $MirroringDeploymentGroupDeployment;
 
 /// An endpoint group is a consumer frontend for a deployment group (backend).
 ///
@@ -12755,64 +11440,8 @@ class MirroringEndpointGroupAssociation {
 }
 
 /// The endpoint group's view of a connected association.
-class MirroringEndpointGroupAssociationDetails {
-  /// The connected association's resource name, for example:
-  /// `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-ega`.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The associated network, for example:
-  /// projects/123456789/global/networks/my-network.
-  ///
-  /// See https://google.aip.dev/124.
-  ///
-  /// Output only.
-  core.String? network;
-
-  /// Most recent known state of the association.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Not set.
-  /// - "ACTIVE" : The association is ready and in sync with the linked endpoint
-  /// group.
-  /// - "CREATING" : The association is being created.
-  /// - "DELETING" : The association is being deleted.
-  /// - "CLOSED" : The association is disabled due to a breaking change in
-  /// another resource.
-  /// - "OUT_OF_SYNC" : The association is out of sync with the linked endpoint
-  /// group. In most cases, this is a result of a transient issue within the
-  /// system (e.g. an inaccessible location) and the system is expected to
-  /// recover automatically. Check the `locations_details` field for more
-  /// details.
-  /// - "DELETE_FAILED" : An attempt to delete the association has failed. This
-  /// is a terminal state and the association is not expected to be usable as
-  /// some of its resources have been deleted. The only permitted operation is
-  /// to retry deleting the association.
-  core.String? state;
-
-  MirroringEndpointGroupAssociationDetails({
-    this.name,
-    this.network,
-    this.state,
-  });
-
-  MirroringEndpointGroupAssociationDetails.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        network: json_['network'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef MirroringEndpointGroupAssociationDetails =
+    $MirroringEndpointGroupAssociationDetails;
 
 /// Contains details about the state of an association in a specific cloud
 /// location.
@@ -12933,44 +11562,7 @@ class Operation {
 }
 
 /// Request used by the RemoveAddressGroupItems method.
-class RemoveAddressGroupItemsRequest {
-  /// List of items to remove.
-  ///
-  /// Required.
-  core.List<core.String>? items;
-
-  /// An optional request ID to identify requests.
-  ///
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// Optional.
-  core.String? requestId;
-
-  RemoveAddressGroupItemsRequest({this.items, this.requestId});
-
-  RemoveAddressGroupItemsRequest.fromJson(core.Map json_)
-    : this(
-        items:
-            (json_['items'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        requestId: json_['requestId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (items != null) 'items': items!,
-    if (requestId != null) 'requestId': requestId!,
-  };
-}
+typedef RemoveAddressGroupItemsRequest = $RemoveAddressGroupItemsRequest;
 
 /// Specification of rules.
 class Rule {
@@ -13147,113 +11739,7 @@ class SecurityProfile {
 
 /// SecurityProfileGroup is a resource that defines the behavior for various
 /// ProfileTypes.
-class SecurityProfileGroup {
-  /// Resource creation timestamp.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Reference to a SecurityProfile with the CustomIntercept configuration.
-  ///
-  /// Optional.
-  core.String? customInterceptProfile;
-
-  /// Reference to a SecurityProfile with the CustomMirroring configuration.
-  ///
-  /// Optional.
-  core.String? customMirroringProfile;
-
-  /// Identifier used by the data-path.
-  ///
-  /// Unique within {container, location}.
-  ///
-  /// Output only.
-  core.String? dataPathId;
-
-  /// An optional description of the profile group.
-  ///
-  /// Max length 2048 characters.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// This checksum is computed by the server based on the value of other
-  /// fields, and may be sent on update and delete requests to ensure the client
-  /// has an up-to-date value before proceeding.
-  ///
-  /// Output only.
-  core.String? etag;
-
-  /// Labels as key value pairs.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// Identifier.
-  ///
-  /// Name of the SecurityProfileGroup resource. It matches pattern
-  /// `projects|organizations / *
-  /// /locations/{location}/securityProfileGroups/{security_profile_group}`.
-  ///
-  /// Immutable.
-  core.String? name;
-
-  /// Reference to a SecurityProfile with the ThreatPrevention configuration.
-  ///
-  /// Optional.
-  core.String? threatPreventionProfile;
-
-  /// Last resource update timestamp.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  SecurityProfileGroup({
-    this.createTime,
-    this.customInterceptProfile,
-    this.customMirroringProfile,
-    this.dataPathId,
-    this.description,
-    this.etag,
-    this.labels,
-    this.name,
-    this.threatPreventionProfile,
-    this.updateTime,
-  });
-
-  SecurityProfileGroup.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        customInterceptProfile: json_['customInterceptProfile'] as core.String?,
-        customMirroringProfile: json_['customMirroringProfile'] as core.String?,
-        dataPathId: json_['dataPathId'] as core.String?,
-        description: json_['description'] as core.String?,
-        etag: json_['etag'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        threatPreventionProfile:
-            json_['threatPreventionProfile'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (customInterceptProfile != null)
-      'customInterceptProfile': customInterceptProfile!,
-    if (customMirroringProfile != null)
-      'customMirroringProfile': customMirroringProfile!,
-    if (dataPathId != null) 'dataPathId': dataPathId!,
-    if (description != null) 'description': description!,
-    if (etag != null) 'etag': etag!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (threatPreventionProfile != null)
-      'threatPreventionProfile': threatPreventionProfile!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef SecurityProfileGroup = $SecurityProfileGroup;
 
 /// ServerTlsPolicy is a resource that specifies how a server should
 /// authenticate incoming requests.
@@ -13371,104 +11857,10 @@ class ServerTlsPolicy {
 }
 
 /// Defines what action to take for a specific severity match.
-class SeverityOverride {
-  /// Threat action override.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
-  /// - "DEFAULT_ACTION" : The default action (as specified by the vendor) is
-  /// taken.
-  /// - "ALLOW" : The packet matching this rule will be allowed to transmit.
-  /// - "ALERT" : The packet matching this rule will be allowed to transmit, but
-  /// a threat_log entry will be sent to the consumer project.
-  /// - "DENY" : The packet matching this rule will be dropped, and a threat_log
-  /// entry will be sent to the consumer project.
-  core.String? action;
-
-  /// Severity level to match.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED" : Severity level not specified.
-  /// - "INFORMATIONAL" : Suspicious events that do not pose an immediate
-  /// threat, but that are reported to call attention to deeper problems that
-  /// could possibly exist.
-  /// - "LOW" : Warning-level threats that have very little impact on an
-  /// organization's infrastructure. They usually require local or physical
-  /// system access and may often result in victim privacy issues and
-  /// information leakage.
-  /// - "MEDIUM" : Minor threats in which impact is minimized, that do not
-  /// compromise the target or exploits that require an attacker to reside on
-  /// the same local network as the victim, affect only non-standard
-  /// configurations or obscure applications, or provide very limited access.
-  /// - "HIGH" : Threats that have the ability to become critical but have
-  /// mitigating factors; for example, they may be difficult to exploit, do not
-  /// result in elevated privileges, or do not have a large victim pool.
-  /// - "CRITICAL" : Serious threats, such as those that affect default
-  /// installations of widely deployed software, result in root compromise of
-  /// servers, and the exploit code is widely available to attackers. The
-  /// attacker usually does not need any special authentication credentials or
-  /// knowledge about the individual victims and the target does not need to be
-  /// manipulated into performing any special functions.
-  core.String? severity;
-
-  SeverityOverride({this.action, this.severity});
-
-  SeverityOverride.fromJson(core.Map json_)
-    : this(
-        action: json_['action'] as core.String?,
-        severity: json_['severity'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (severity != null) 'severity': severity!,
-  };
-}
+typedef SeverityOverride = $SeverityOverride;
 
 /// Specification of traffic source attributes.
-class Source {
-  /// List of CIDR ranges to match based on source IP address.
-  ///
-  /// At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR
-  /// (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone
-  /// should be avoided. The IP addresses of any load balancers or proxies
-  /// should be considered untrusted.
-  ///
-  /// Optional.
-  core.List<core.String>? ipBlocks;
-
-  /// List of peer identities to match for authorization.
-  ///
-  /// At least one principal should match. Each peer can be an exact match, or a
-  /// prefix match (example, "namespace / * ") or a suffix match (example, " * /
-  /// service-account") or a presence match "*". Authorization based on the
-  /// principal name without certificate validation (configured by
-  /// ServerTlsPolicy resource) is considered insecure.
-  ///
-  /// Optional.
-  core.List<core.String>? principals;
-
-  Source({this.ipBlocks, this.principals});
-
-  Source.fromJson(core.Map json_)
-    : this(
-        ipBlocks:
-            (json_['ipBlocks'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        principals:
-            (json_['principals'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipBlocks != null) 'ipBlocks': ipBlocks!,
-    if (principals != null) 'principals': principals!,
-  };
-}
+typedef Source = $Source01;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -13480,61 +11872,7 @@ class Source {
 typedef Status = $Status00;
 
 /// Defines what action to take for a specific threat_id match.
-class ThreatOverride {
-  /// Threat action override.
-  ///
-  /// For some threat types, only a subset of actions applies.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "THREAT_ACTION_UNSPECIFIED" : Threat action not specified.
-  /// - "DEFAULT_ACTION" : The default action (as specified by the vendor) is
-  /// taken.
-  /// - "ALLOW" : The packet matching this rule will be allowed to transmit.
-  /// - "ALERT" : The packet matching this rule will be allowed to transmit, but
-  /// a threat_log entry will be sent to the consumer project.
-  /// - "DENY" : The packet matching this rule will be dropped, and a threat_log
-  /// entry will be sent to the consumer project.
-  core.String? action;
-
-  /// Vendor-specific ID of a threat to override.
-  ///
-  /// Required.
-  core.String? threatId;
-
-  /// Type of the threat (read only).
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "THREAT_TYPE_UNSPECIFIED" : Type of threat not specified.
-  /// - "UNKNOWN" : Type of threat is not derivable from threat ID. An override
-  /// will be created for all types. Firewall will ignore overridden signature
-  /// ID's that don't exist in the specific type.
-  /// - "VULNERABILITY" : Threats related to system flaws that an attacker might
-  /// otherwise attempt to exploit.
-  /// - "ANTIVIRUS" : Threats related to viruses and malware found in
-  /// executables and file types.
-  /// - "SPYWARE" : Threats related to command-and-control (C2) activity, where
-  /// spyware on an infected client is collecting data without the user's
-  /// consent and/or communicating with a remote attacker.
-  /// - "DNS" : Threats related to DNS.
-  core.String? type;
-
-  ThreatOverride({this.action, this.threatId, this.type});
-
-  ThreatOverride.fromJson(core.Map json_)
-    : this(
-        action: json_['action'] as core.String?,
-        threatId: json_['threatId'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (threatId != null) 'threatId': threatId!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef ThreatOverride = $ThreatOverride;
 
 /// ThreatPreventionProfile defines an action for specific threat signatures or
 /// severity levels.
@@ -13601,221 +11939,11 @@ class ThreatPreventionProfile {
 
 /// The TlsInspectionPolicy resource contains references to CA pools in
 /// Certificate Authority Service and associated metadata.
-class TlsInspectionPolicy {
-  /// A CA pool resource used to issue interception certificates.
-  ///
-  /// The CA pool string has a relative resource path following the form
-  /// "projects/{project}/locations/{location}/caPools/{ca_pool}".
-  ///
-  /// Required.
-  core.String? caPool;
-
-  /// The timestamp when the resource was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// List of custom TLS cipher suites selected.
-  ///
-  /// This field is valid only if the selected tls_feature_profile is CUSTOM.
-  /// The compute.SslPoliciesService.ListAvailableFeatures method returns the
-  /// set of features that can be specified in this list. Note that Secure Web
-  /// Proxy does not yet honor this field.
-  ///
-  /// Optional.
-  core.List<core.String>? customTlsFeatures;
-
-  /// Free-text description of the resource.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// If FALSE (the default), use our default set of public CAs in addition to
-  /// any CAs specified in trust_config.
-  ///
-  /// These public CAs are currently based on the Mozilla Root Program and are
-  /// subject to change over time. If TRUE, do not accept our default set of
-  /// public CAs. Only CAs specified in trust_config will be accepted. This
-  /// defaults to FALSE (use public CAs in addition to trust_config) for
-  /// backwards compatibility, but trusting public root CAs is *not recommended*
-  /// unless the traffic in question is outbound to public web servers. When
-  /// possible, prefer setting this to "false" and explicitly specifying trusted
-  /// CAs and certificates in a TrustConfig. Note that Secure Web Proxy does not
-  /// yet honor this field.
-  ///
-  /// Optional.
-  core.bool? excludePublicCaSet;
-
-  /// Minimum TLS version that the firewall should use when negotiating
-  /// connections with both clients and servers.
-  ///
-  /// If this is not set, then the default value is to allow the broadest set of
-  /// clients and servers (TLS 1.0 or higher). Setting this to more restrictive
-  /// values may improve security, but may also prevent the firewall from
-  /// connecting to some clients or servers. Note that Secure Web Proxy does not
-  /// yet honor this field.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TLS_VERSION_UNSPECIFIED" : Indicates no TLS version was specified.
-  /// - "TLS_1_0" : TLS 1.0
-  /// - "TLS_1_1" : TLS 1.1
-  /// - "TLS_1_2" : TLS 1.2
-  /// - "TLS_1_3" : TLS 1.3
-  core.String? minTlsVersion;
-
-  /// Name of the resource.
-  ///
-  /// Name is of the form
-  /// projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy}
-  /// tls_inspection_policy should match the
-  /// pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The selected Profile.
-  ///
-  /// If this is not set, then the default value is to allow the broadest set of
-  /// clients and servers ("PROFILE_COMPATIBLE"). Setting this to more
-  /// restrictive values may improve security, but may also prevent the TLS
-  /// inspection proxy from connecting to some clients or servers. Note that
-  /// Secure Web Proxy does not yet honor this field.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "PROFILE_UNSPECIFIED" : Indicates no profile was specified.
-  /// - "PROFILE_COMPATIBLE" : Compatible profile. Allows the broadest set of
-  /// clients, even those which support only out-of-date SSL features to
-  /// negotiate with the TLS inspection proxy.
-  /// - "PROFILE_MODERN" : Modern profile. Supports a wide set of SSL features,
-  /// allowing modern clients to negotiate SSL with the TLS inspection proxy.
-  /// - "PROFILE_RESTRICTED" : Restricted profile. Supports a reduced set of SSL
-  /// features, intended to meet stricter compliance requirements.
-  /// - "PROFILE_CUSTOM" : Custom profile. Allow only the set of allowed SSL
-  /// features specified in the custom_features field of SslPolicy.
-  core.String? tlsFeatureProfile;
-
-  /// A TrustConfig resource used when making a connection to the TLS server.
-  ///
-  /// This is a relative resource path following the form
-  /// "projects/{project}/locations/{location}/trustConfigs/{trust_config}".
-  /// This is necessary to intercept TLS connections to servers with
-  /// certificates signed by a private CA or self-signed certificates. Note that
-  /// Secure Web Proxy does not yet honor this field.
-  ///
-  /// Optional.
-  core.String? trustConfig;
-
-  /// The timestamp when the resource was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  TlsInspectionPolicy({
-    this.caPool,
-    this.createTime,
-    this.customTlsFeatures,
-    this.description,
-    this.excludePublicCaSet,
-    this.minTlsVersion,
-    this.name,
-    this.tlsFeatureProfile,
-    this.trustConfig,
-    this.updateTime,
-  });
-
-  TlsInspectionPolicy.fromJson(core.Map json_)
-    : this(
-        caPool: json_['caPool'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        customTlsFeatures:
-            (json_['customTlsFeatures'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        description: json_['description'] as core.String?,
-        excludePublicCaSet: json_['excludePublicCaSet'] as core.bool?,
-        minTlsVersion: json_['minTlsVersion'] as core.String?,
-        name: json_['name'] as core.String?,
-        tlsFeatureProfile: json_['tlsFeatureProfile'] as core.String?,
-        trustConfig: json_['trustConfig'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (caPool != null) 'caPool': caPool!,
-    if (createTime != null) 'createTime': createTime!,
-    if (customTlsFeatures != null) 'customTlsFeatures': customTlsFeatures!,
-    if (description != null) 'description': description!,
-    if (excludePublicCaSet != null) 'excludePublicCaSet': excludePublicCaSet!,
-    if (minTlsVersion != null) 'minTlsVersion': minTlsVersion!,
-    if (name != null) 'name': name!,
-    if (tlsFeatureProfile != null) 'tlsFeatureProfile': tlsFeatureProfile!,
-    if (trustConfig != null) 'trustConfig': trustConfig!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef TlsInspectionPolicy = $TlsInspectionPolicy;
 
 /// UrlList proto helps users to set reusable, independently manageable lists of
 /// hosts, host patterns, URLs, URL patterns.
-class UrlList {
-  /// Time when the security policy was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Free-text description of the resource.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Name of the resource provided by the user.
-  ///
-  /// Name is of the form
-  /// projects/{project}/locations/{location}/urlLists/{url_list} url_list
-  /// should match the pattern:(^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$).
-  ///
-  /// Required.
-  core.String? name;
-
-  /// Time when the security policy was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  /// FQDNs and URLs.
-  ///
-  /// Required.
-  core.List<core.String>? values;
-
-  UrlList({
-    this.createTime,
-    this.description,
-    this.name,
-    this.updateTime,
-    this.values,
-  });
-
-  UrlList.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        name: json_['name'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-        values:
-            (json_['values'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (name != null) 'name': name!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (values != null) 'values': values!,
-  };
-}
+typedef UrlList = $UrlList;
 
 /// Specification of ValidationCA.
 ///

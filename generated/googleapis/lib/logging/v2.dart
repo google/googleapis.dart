@@ -2633,6 +2633,46 @@ class EntriesResource {
     );
   }
 
+  /// Streaming read of log entries as they are received.
+  ///
+  /// Until the stream is terminated, it will continue reading logs.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TailLogEntriesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TailLogEntriesResponse> tail(
+    TailLogEntriesRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v2/entries:tail';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TailLogEntriesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Writes log entries to Logging.
   ///
   /// This API method is the only way to send log entries to Logging. This
@@ -17441,6 +17481,133 @@ class SummaryField {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (field != null) 'field': field!,
+  };
+}
+
+/// Information about entries that were omitted from the session.
+class SuppressionInfo {
+  /// The reason that entries were omitted from the session.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unexpected default.
+  /// - "RATE_LIMIT" : Indicates suppression occurred due to relevant entries
+  /// being received in excess of rate limits. For quotas and limits, see
+  /// Logging API quotas and limits
+  /// (https://cloud.google.com/logging/quotas#api-limits).
+  /// - "NOT_CONSUMED" : Indicates suppression occurred due to the client not
+  /// consuming responses quickly enough.
+  core.String? reason;
+
+  /// A lower bound on the count of entries omitted due to reason.
+  core.int? suppressedCount;
+
+  SuppressionInfo({this.reason, this.suppressedCount});
+
+  SuppressionInfo.fromJson(core.Map json_)
+    : this(
+        reason: json_['reason'] as core.String?,
+        suppressedCount: json_['suppressedCount'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (reason != null) 'reason': reason!,
+    if (suppressedCount != null) 'suppressedCount': suppressedCount!,
+  };
+}
+
+/// The parameters to TailLogEntries.
+class TailLogEntriesRequest {
+  /// The amount of time to buffer log entries at the server before being
+  /// returned to prevent out of order results due to late arriving log entries.
+  ///
+  /// Valid values are between 0-60000 milliseconds. Defaults to 2000
+  /// milliseconds.
+  ///
+  /// Optional.
+  core.String? bufferWindow;
+
+  /// Only log entries that match the filter are returned.
+  ///
+  /// An empty filter matches all log entries in the resources listed in
+  /// resource_names. Referencing a parent resource that is not listed in
+  /// resource_names will cause the filter to return no results. The maximum
+  /// length of a filter is 20,000 characters.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// Name of a parent resource from which to retrieve log entries:
+  /// projects/\[PROJECT_ID\] organizations/\[ORGANIZATION_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\] folders/\[FOLDER_ID\]May
+  /// alternatively be one or more views:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// billingAccounts/\[BILLING_ACCOUNT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  /// folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]
+  ///
+  /// Required.
+  core.List<core.String>? resourceNames;
+
+  TailLogEntriesRequest({this.bufferWindow, this.filter, this.resourceNames});
+
+  TailLogEntriesRequest.fromJson(core.Map json_)
+    : this(
+        bufferWindow: json_['bufferWindow'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        resourceNames:
+            (json_['resourceNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (bufferWindow != null) 'bufferWindow': bufferWindow!,
+    if (filter != null) 'filter': filter!,
+    if (resourceNames != null) 'resourceNames': resourceNames!,
+  };
+}
+
+/// Result returned from TailLogEntries.
+class TailLogEntriesResponse {
+  /// A list of log entries.
+  ///
+  /// Each response in the stream will order entries with increasing values of
+  /// LogEntry.timestamp. Ordering is not guaranteed between separate responses.
+  core.List<LogEntry>? entries;
+
+  /// If entries that otherwise would have been included in the session were not
+  /// sent back to the client, counts of relevant entries omitted from the
+  /// session with the reason that they were not included.
+  ///
+  /// There will be at most one of each reason per response. The counts
+  /// represent the number of suppressed entries since the last streamed
+  /// response.
+  core.List<SuppressionInfo>? suppressionInfo;
+
+  TailLogEntriesResponse({this.entries, this.suppressionInfo});
+
+  TailLogEntriesResponse.fromJson(core.Map json_)
+    : this(
+        entries:
+            (json_['entries'] as core.List?)
+                ?.map(
+                  (value) => LogEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        suppressionInfo:
+            (json_['suppressionInfo'] as core.List?)
+                ?.map(
+                  (value) => SuppressionInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (entries != null) 'entries': entries!,
+    if (suppressionInfo != null) 'suppressionInfo': suppressionInfo!,
   };
 }
 

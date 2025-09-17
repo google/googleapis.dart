@@ -2051,7 +2051,7 @@ class GoogleCloudPolicysimulatorV1AccessStateDiff {
 }
 
 /// Information about the principal, resource, and permission to check.
-typedef GoogleCloudPolicysimulatorV1AccessTuple = $V1AccessTuple;
+typedef GoogleCloudPolicysimulatorV1AccessTuple = $AccessTuple;
 
 /// Details about how a binding in a policy affects a principal's ability to use
 /// a permission.
@@ -2188,49 +2188,8 @@ class GoogleCloudPolicysimulatorV1BindingExplanation {
 }
 
 /// Details about whether the binding includes the principal.
-class GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership {
-  /// Indicates whether the binding includes the principal.
-  /// Possible string values are:
-  /// - "MEMBERSHIP_UNSPECIFIED" : Default value. This value is unused.
-  /// - "MEMBERSHIP_INCLUDED" : The binding includes the principal. The
-  /// principal can be included directly or indirectly. For example: * A
-  /// principal is included directly if that principal is listed in the binding.
-  /// * A principal is included indirectly if that principal is in a Google
-  /// group or Google Workspace domain that is listed in the binding.
-  /// - "MEMBERSHIP_NOT_INCLUDED" : The binding does not include the principal.
-  /// - "MEMBERSHIP_UNKNOWN_INFO_DENIED" : The user who created the Replay is
-  /// not allowed to access the binding.
-  /// - "MEMBERSHIP_UNKNOWN_UNSUPPORTED" : The principal is an unsupported type.
-  /// Only Google Accounts and service accounts are supported.
-  core.String? membership;
-
-  /// The relevance of the principal's status to the overall determination for
-  /// the binding.
-  /// Possible string values are:
-  /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Default value. This value is unused.
-  /// - "NORMAL" : The data point has a limited effect on the result. Changing
-  /// the data point is unlikely to affect the overall determination.
-  /// - "HIGH" : The data point has a strong effect on the result. Changing the
-  /// data point is likely to affect the overall determination.
-  core.String? relevance;
-
-  GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership({
-    this.membership,
-    this.relevance,
-  });
-
-  GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership.fromJson(
-    core.Map json_,
-  ) : this(
-        membership: json_['membership'] as core.String?,
-        relevance: json_['relevance'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (membership != null) 'membership': membership!,
-    if (relevance != null) 'relevance': relevance!,
-  };
-}
+typedef GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership =
+    $BindingExplanationAnnotatedMembership;
 
 /// Details about how a set of policies, listed in ExplainedPolicy, resulted in
 /// a certain AccessState when replaying an access tuple.
@@ -2818,61 +2777,8 @@ class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview {
 
 /// A summary of the state of all resources scanned for compliance with the
 /// changed OrgPolicy.
-class GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts {
-  /// Number of scanned resources with zero violations.
-  ///
-  /// Output only.
-  core.int? compliant;
-
-  /// Number of resources that returned an error when scanned.
-  ///
-  /// Output only.
-  core.int? errors;
-
-  /// Number of scanned resources with at least one violation.
-  ///
-  /// Output only.
-  core.int? noncompliant;
-
-  /// Number of resources checked for compliance.
-  ///
-  /// Must equal: unenforced + noncompliant + compliant + error
-  ///
-  /// Output only.
-  core.int? scanned;
-
-  /// Number of resources where the constraint was not enforced, i.e. the Policy
-  /// set `enforced: false` for that resource.
-  ///
-  /// Output only.
-  core.int? unenforced;
-
-  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts({
-    this.compliant,
-    this.errors,
-    this.noncompliant,
-    this.scanned,
-    this.unenforced,
-  });
-
-  GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts.fromJson(
-    core.Map json_,
-  ) : this(
-        compliant: json_['compliant'] as core.int?,
-        errors: json_['errors'] as core.int?,
-        noncompliant: json_['noncompliant'] as core.int?,
-        scanned: json_['scanned'] as core.int?,
-        unenforced: json_['unenforced'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (compliant != null) 'compliant': compliant!,
-    if (errors != null) 'errors': errors!,
-    if (noncompliant != null) 'noncompliant': noncompliant!,
-    if (scanned != null) 'scanned': scanned!,
-    if (unenforced != null) 'unenforced': unenforced!,
-  };
-}
+typedef GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts =
+    $OrgPolicyViolationsPreviewResourceCounts;
 
 /// A resource describing a `Replay`, or simulation.
 class GoogleCloudPolicysimulatorV1Replay {
@@ -3175,55 +3081,7 @@ class GoogleCloudPolicysimulatorV1ReplayResultsSummary {
 ///
 /// It is similar in concept to google.cloud.asset.v1.Resource, but focuses on
 /// the information specifically used by Simulator.
-class GoogleCloudPolicysimulatorV1ResourceContext {
-  /// The ancestry path of the resource in Google Cloud
-  /// [resource hierarchy](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy),
-  /// represented as a list of relative resource names.
-  ///
-  /// An ancestry path starts with the closest ancestor in the hierarchy and
-  /// ends at root. If the resource is a project, folder, or organization, the
-  /// ancestry path starts from the resource itself. Example:
-  /// `["projects/123456789", "folders/5432", "organizations/1234"]`
-  core.List<core.String>? ancestors;
-
-  /// The asset type of the resource as defined by CAIS.
-  ///
-  /// Example: `compute.googleapis.com/Firewall` See
-  /// [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types)
-  /// for more information.
-  core.String? assetType;
-
-  /// The full name of the resource.
-  ///
-  /// Example:
-  /// `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`
-  /// See
-  /// [Resource names](https://cloud.google.com/apis/design/resource_names#full_resource_name)
-  /// for more information.
-  core.String? resource;
-
-  GoogleCloudPolicysimulatorV1ResourceContext({
-    this.ancestors,
-    this.assetType,
-    this.resource,
-  });
-
-  GoogleCloudPolicysimulatorV1ResourceContext.fromJson(core.Map json_)
-    : this(
-        ancestors:
-            (json_['ancestors'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        assetType: json_['assetType'] as core.String?,
-        resource: json_['resource'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ancestors != null) 'ancestors': ancestors!,
-    if (assetType != null) 'assetType': assetType!,
-    if (resource != null) 'resource': resource!,
-  };
-}
+typedef GoogleCloudPolicysimulatorV1ResourceContext = $ResourceContext;
 
 /// Specifies the audit configuration for a service.
 ///
@@ -3279,7 +3137,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {

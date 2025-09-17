@@ -46,9 +46,6 @@ class CloudTasksApi {
   static const cloudPlatformScope =
       'https://www.googleapis.com/auth/cloud-platform';
 
-  /// Manage tasks and queues in the Cloud Tasks service
-  static const cloudTasksScope = 'https://www.googleapis.com/auth/cloud-tasks';
-
   final commons.ApiRequester _requester;
 
   ProjectsResource get projects => ProjectsResource(_requester);
@@ -1338,68 +1335,7 @@ class AppEngineHttpRequest {
 /// \[`appengine.applications.get`\](https://cloud.google.com/appengine/docs/admin-api/access-control)
 /// Google IAM permission for the project and the following scope:
 /// `https://www.googleapis.com/auth/cloud-platform`
-class AppEngineRouting {
-  /// The host that the task is sent to.
-  ///
-  /// The host is constructed from the domain name of the app associated with
-  /// the queue's project ID (for example .appspot.com), and the service,
-  /// version, and instance. Tasks which were created using the App Engine SDK
-  /// might have a custom domain name. For more information, see
-  /// [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed).
-  ///
-  /// Output only.
-  core.String? host;
-
-  /// App instance.
-  ///
-  /// By default, the task is sent to an instance which is available when the
-  /// task is attempted. Requests can only be sent to a specific instance if
-  /// [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes).
-  /// App Engine Flex does not support instances. For more information, see
-  /// [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed)
-  /// and
-  /// [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
-  core.String? instance;
-
-  /// App service.
-  ///
-  /// By default, the task is sent to the service which is the default service
-  /// when the task is attempted. For some queues or tasks which were created
-  /// using the App Engine Task Queue API, host is not parsable into service,
-  /// version, and instance. For example, some tasks which were created using
-  /// the App Engine SDK use a custom domain name; custom domains are not parsed
-  /// by Cloud Tasks. If host is not parsable, then service, version, and
-  /// instance are the empty string.
-  core.String? service;
-
-  /// App version.
-  ///
-  /// By default, the task is sent to the version which is the default version
-  /// when the task is attempted. For some queues or tasks which were created
-  /// using the App Engine Task Queue API, host is not parsable into service,
-  /// version, and instance. For example, some tasks which were created using
-  /// the App Engine SDK use a custom domain name; custom domains are not parsed
-  /// by Cloud Tasks. If host is not parsable, then service, version, and
-  /// instance are the empty string.
-  core.String? version;
-
-  AppEngineRouting({this.host, this.instance, this.service, this.version});
-
-  AppEngineRouting.fromJson(core.Map json_)
-    : this(
-        host: json_['host'] as core.String?,
-        instance: json_['instance'] as core.String?,
-        service: json_['service'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (host != null) 'host': host!,
-    if (instance != null) 'instance': instance!,
-    if (service != null) 'service': service!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef AppEngineRouting = $AppEngineRouting01;
 
 /// The status of a task attempt.
 class Attempt {
@@ -1616,34 +1552,7 @@ class BufferTaskResponse {
 
 /// Describes the customer-managed encryption key (CMEK) configuration
 /// associated with a project and location.
-class CmekConfig {
-  /// Resource name of the Cloud KMS key, of the form
-  /// `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`,
-  /// that will be used to encrypt the Queues & Tasks in the region.
-  ///
-  /// Setting this as blank will turn off CMEK encryption.
-  core.String? kmsKey;
-
-  /// The config resource name which includes the project and location and must
-  /// end in 'cmekConfig', in the format
-  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
-  ///
-  /// Output only.
-  core.String? name;
-
-  CmekConfig({this.kmsKey, this.name});
-
-  CmekConfig.fromJson(core.Map json_)
-    : this(
-        kmsKey: json_['kmsKey'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKey != null) 'kmsKey': kmsKey!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef CmekConfig = $CmekConfig;
 
 /// Request message for CreateTask.
 class CreateTaskRequest {
@@ -1769,26 +1678,7 @@ typedef GetPolicyOptions = $GetPolicyOptions00;
 /// Defines a header message.
 ///
 /// A header can have a key and a value.
-class Header {
-  /// The Key of the header.
-  core.String? key;
-
-  /// The Value of the header.
-  core.String? value;
-
-  Header({this.key, this.value});
-
-  Header.fromJson(core.Map json_)
-    : this(
-        key: json_['key'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (key != null) 'key': key!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Header = $Header02;
 
 /// Wraps the Header object.
 class HeaderOverride {
@@ -2197,88 +2087,19 @@ typedef Location = $Location00;
 ///
 /// This type of authorization should generally only be used when calling Google
 /// APIs hosted on *.googleapis.com.
-class OAuthToken {
-  /// OAuth scope to be used for generating OAuth access token.
-  ///
-  /// If not specified, "https://www.googleapis.com/auth/cloud-platform" will be
-  /// used.
-  core.String? scope;
-
-  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-  /// to be used for generating OAuth token.
-  ///
-  /// The service account must be within the same project as the queue. The
-  /// caller must have iam.serviceAccounts.actAs permission for the service
-  /// account.
-  core.String? serviceAccountEmail;
-
-  OAuthToken({this.scope, this.serviceAccountEmail});
-
-  OAuthToken.fromJson(core.Map json_)
-    : this(
-        scope: json_['scope'] as core.String?,
-        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (scope != null) 'scope': scope!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
-}
+typedef OAuthToken = $OAuthToken00;
 
 /// Contains information needed for generating an
 /// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
 ///
 /// This type of authorization can be used for many scenarios, including calling
 /// Cloud Run, or endpoints where you intend to validate the token yourself.
-class OidcToken {
-  /// Audience to be used when generating OIDC token.
-  ///
-  /// If not specified, the URI specified in target will be used.
-  core.String? audience;
-
-  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-  /// to be used for generating OIDC token.
-  ///
-  /// The service account must be within the same project as the queue. The
-  /// caller must have iam.serviceAccounts.actAs permission for the service
-  /// account.
-  core.String? serviceAccountEmail;
-
-  OidcToken({this.audience, this.serviceAccountEmail});
-
-  OidcToken.fromJson(core.Map json_)
-    : this(
-        audience: json_['audience'] as core.String?,
-        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
-}
+typedef OidcToken = $OidcToken00;
 
 /// PathOverride.
 ///
 /// Path message defines path override for HTTP targets.
-class PathOverride {
-  /// The URI path (e.g., /users/1234).
-  ///
-  /// Default is an empty string.
-  core.String? path;
-
-  PathOverride({this.path});
-
-  PathOverride.fromJson(core.Map json_)
-    : this(path: json_['path'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (path != null) 'path': path!,
-  };
-}
+typedef PathOverride = $PathOverride;
 
 /// Request message for PauseQueue.
 typedef PauseQueueRequest = $Empty;
@@ -2397,21 +2218,7 @@ typedef PurgeQueueRequest = $Empty;
 /// QueryOverride.
 ///
 /// Query message defines query override for HTTP targets.
-class QueryOverride {
-  /// The query parameters (e.g., qparam1=123&qparam2=456).
-  ///
-  /// Default is an empty string.
-  core.String? queryParams;
-
-  QueryOverride({this.queryParams});
-
-  QueryOverride.fromJson(core.Map json_)
-    : this(queryParams: json_['queryParams'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (queryParams != null) 'queryParams': queryParams!,
-  };
-}
+typedef QueryOverride = $QueryOverride;
 
 /// A queue is a container of related tasks.
 ///
@@ -2659,139 +2466,10 @@ typedef ResumeQueueRequest = $Empty;
 /// Retry config.
 ///
 /// These settings determine when a failed task attempt is retried.
-class RetryConfig {
-  /// Number of attempts per task.
-  ///
-  /// Cloud Tasks will attempt the task `max_attempts` times (that is, if the
-  /// first attempt fails, then there will be `max_attempts - 1` retries). Must
-  /// be \>= -1. If unspecified when the queue is created, Cloud Tasks will pick
-  /// the default. -1 indicates unlimited attempts. This field has the same
-  /// meaning as
-  /// [task_retry_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  /// Note: Cloud Tasks stops retrying only when `max_attempts` and
-  /// `max_retry_duration` are both satisfied. When the task has been attempted
-  /// `max_attempts` times and when the `max_retry_duration` time has passed, no
-  /// further attempts are made, and the task is deleted. If you want your task
-  /// to retry infinitely, you must set `max_attempts` to -1 and
-  /// `max_retry_duration` to 0.
-  core.int? maxAttempts;
-
-  /// A task will be scheduled for retry between min_backoff and max_backoff
-  /// duration after it fails, if the queue's RetryConfig specifies that the
-  /// task should be retried.
-  ///
-  /// If unspecified when the queue is created, Cloud Tasks will pick the
-  /// default. The value must be given as a string that indicates the length of
-  /// time (in seconds) followed by `s` (for "seconds"). For more information on
-  /// the format, see the documentation for
-  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
-  /// `max_backoff` will be truncated to the nearest second. This field has the
-  /// same meaning as
-  /// [max_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.String? maxBackoff;
-
-  /// The time between retries will double `max_doublings` times.
-  ///
-  /// A task's retry interval starts at min_backoff, then doubles
-  /// `max_doublings` times, then increases linearly, and finally retries at
-  /// intervals of max_backoff up to max_attempts times. For example, if
-  /// min_backoff is 10s, max_backoff is 300s, and `max_doublings` is 3, then
-  /// the a task will first be retried in 10s. The retry interval will double
-  /// three times, and then increase linearly by 2^3 * 10s. Finally, the task
-  /// will retry at intervals of max_backoff until the task has been attempted
-  /// max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s,
-  /// 160s, 240s, 300s, 300s, .... If unspecified when the queue is created,
-  /// Cloud Tasks will pick the default. This field has the same meaning as
-  /// [max_doublings in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.int? maxDoublings;
-
-  /// If positive, `max_retry_duration` specifies the time limit for retrying a
-  /// failed task, measured from when the task was first attempted.
-  ///
-  /// Once `max_retry_duration` time has passed *and* the task has been
-  /// attempted max_attempts times, no further attempts will be made and the
-  /// task will be deleted. If zero, then the task age is unlimited. If
-  /// unspecified when the queue is created, Cloud Tasks will pick the default.
-  /// The value must be given as a string that indicates the length of time (in
-  /// seconds) followed by `s` (for "seconds"). For the maximum possible value
-  /// or the format, see the documentation for
-  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
-  /// `max_retry_duration` will be truncated to the nearest second. This field
-  /// has the same meaning as
-  /// [task_age_limit in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.String? maxRetryDuration;
-
-  /// A task will be scheduled for retry between min_backoff and max_backoff
-  /// duration after it fails, if the queue's RetryConfig specifies that the
-  /// task should be retried.
-  ///
-  /// If unspecified when the queue is created, Cloud Tasks will pick the
-  /// default. The value must be given as a string that indicates the length of
-  /// time (in seconds) followed by `s` (for "seconds"). For more information on
-  /// the format, see the documentation for
-  /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration).
-  /// `min_backoff` will be truncated to the nearest second. This field has the
-  /// same meaning as
-  /// [min_backoff_seconds in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
-  core.String? minBackoff;
-
-  RetryConfig({
-    this.maxAttempts,
-    this.maxBackoff,
-    this.maxDoublings,
-    this.maxRetryDuration,
-    this.minBackoff,
-  });
-
-  RetryConfig.fromJson(core.Map json_)
-    : this(
-        maxAttempts: json_['maxAttempts'] as core.int?,
-        maxBackoff: json_['maxBackoff'] as core.String?,
-        maxDoublings: json_['maxDoublings'] as core.int?,
-        maxRetryDuration: json_['maxRetryDuration'] as core.String?,
-        minBackoff: json_['minBackoff'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxAttempts != null) 'maxAttempts': maxAttempts!,
-    if (maxBackoff != null) 'maxBackoff': maxBackoff!,
-    if (maxDoublings != null) 'maxDoublings': maxDoublings!,
-    if (maxRetryDuration != null) 'maxRetryDuration': maxRetryDuration!,
-    if (minBackoff != null) 'minBackoff': minBackoff!,
-  };
-}
+typedef RetryConfig = $RetryConfig01;
 
 /// Request message for forcing a task to run now using RunTask.
-class RunTaskRequest {
-  /// The response_view specifies which subset of the Task will be returned.
-  ///
-  /// By default response_view is BASIC; not all information is retrieved by
-  /// default because some data, such as payloads, might be desirable to return
-  /// only when needed because of its large size or because of the sensitivity
-  /// of data that it contains. Authorization for FULL requires
-  /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
-  /// permission on the Task resource.
-  /// Possible string values are:
-  /// - "VIEW_UNSPECIFIED" : Unspecified. Defaults to BASIC.
-  /// - "BASIC" : The basic view omits fields which can be large or can contain
-  /// sensitive data. This view does not include the body in
-  /// AppEngineHttpRequest. Bodies are desirable to return only when needed,
-  /// because they can be large and because of the sensitivity of the data that
-  /// you choose to store in it.
-  /// - "FULL" : All information is returned. Authorization for FULL requires
-  /// `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/)
-  /// permission on the Queue resource.
-  core.String? responseView;
-
-  RunTaskRequest({this.responseView});
-
-  RunTaskRequest.fromJson(core.Map json_)
-    : this(responseView: json_['responseView'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (responseView != null) 'responseView': responseView!,
-  };
-}
+typedef RunTaskRequest = $RunTaskRequest;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {
@@ -2821,23 +2499,7 @@ class SetIamPolicyRequest {
 
 /// Configuration options for writing logs to
 /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
-class StackdriverLoggingConfig {
-  /// Specifies the fraction of operations to write to
-  /// [Stackdriver Logging](https://cloud.google.com/logging/docs/).
-  ///
-  /// This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is
-  /// the default and means that no operations are logged.
-  core.double? samplingRatio;
-
-  StackdriverLoggingConfig({this.samplingRatio});
-
-  StackdriverLoggingConfig.fromJson(core.Map json_)
-    : this(samplingRatio: (json_['samplingRatio'] as core.num?)?.toDouble());
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (samplingRatio != null) 'samplingRatio': samplingRatio!,
-  };
-}
+typedef StackdriverLoggingConfig = $StackdriverLoggingConfig;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.

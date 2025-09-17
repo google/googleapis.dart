@@ -16,9 +16,6 @@
 // ignore_for_file: unreachable_from_main
 // ignore_for_file: unused_local_variable
 
-@unittest.Skip()
-library;
-
 import 'dart:async' as async;
 import 'dart:convert' as convert;
 import 'dart:core' as core;

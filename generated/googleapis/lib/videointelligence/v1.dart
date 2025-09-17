@@ -595,242 +595,32 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
 }
 
 /// Config for EXPLICIT_CONTENT_DETECTION.
-class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
-  /// Model to use for explicit content detection.
-  ///
-  /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest".
-  core.String? model;
-
-  GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig({this.model});
-
-  GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
-    core.Map json_,
-  ) : this(model: json_['model'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (model != null) 'model': model!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig =
+    $ExplicitContentDetectionConfig;
 
 /// Config for FACE_DETECTION.
-class GoogleCloudVideointelligenceV1FaceDetectionConfig {
-  /// Whether to enable face attributes detection, such as glasses,
-  /// dark_glasses, mouth_open etc.
-  ///
-  /// Ignored if 'include_bounding_boxes' is set to false.
-  core.bool? includeAttributes;
-
-  /// Whether bounding boxes are included in the face annotation output.
-  core.bool? includeBoundingBoxes;
-
-  /// Model to use for face detection.
-  ///
-  /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest".
-  core.String? model;
-
-  GoogleCloudVideointelligenceV1FaceDetectionConfig({
-    this.includeAttributes,
-    this.includeBoundingBoxes,
-    this.model,
-  });
-
-  GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(core.Map json_)
-    : this(
-        includeAttributes: json_['includeAttributes'] as core.bool?,
-        includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
-        model: json_['model'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includeAttributes != null) 'includeAttributes': includeAttributes!,
-    if (includeBoundingBoxes != null)
-      'includeBoundingBoxes': includeBoundingBoxes!,
-    if (model != null) 'model': model!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1FaceDetectionConfig =
+    $FaceDetectionConfig;
 
 /// Config for LABEL_DETECTION.
-class GoogleCloudVideointelligenceV1LabelDetectionConfig {
-  /// The confidence threshold we perform filtering on the labels from
-  /// frame-level detection.
-  ///
-  /// If not set, it is set to 0.4 by default. The valid range for this
-  /// threshold is \[0.1, 0.9\]. Any value set outside of this range will be
-  /// clipped. Note: For best results, follow the default threshold. We will
-  /// update the default threshold everytime when we release a new model.
-  core.double? frameConfidenceThreshold;
-
-  /// What labels should be detected with LABEL_DETECTION, in addition to
-  /// video-level labels or segment-level labels.
-  ///
-  /// If unspecified, defaults to `SHOT_MODE`.
-  /// Possible string values are:
-  /// - "LABEL_DETECTION_MODE_UNSPECIFIED" : Unspecified.
-  /// - "SHOT_MODE" : Detect shot-level labels.
-  /// - "FRAME_MODE" : Detect frame-level labels.
-  /// - "SHOT_AND_FRAME_MODE" : Detect both shot-level and frame-level labels.
-  core.String? labelDetectionMode;
-
-  /// Model to use for label detection.
-  ///
-  /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest".
-  core.String? model;
-
-  /// Whether the video has been shot from a stationary (i.e., non-moving)
-  /// camera.
-  ///
-  /// When set to true, might improve detection accuracy for moving objects.
-  /// Should be used with `SHOT_AND_FRAME_MODE` enabled.
-  core.bool? stationaryCamera;
-
-  /// The confidence threshold we perform filtering on the labels from
-  /// video-level and shot-level detections.
-  ///
-  /// If not set, it's set to 0.3 by default. The valid range for this threshold
-  /// is \[0.1, 0.9\]. Any value set outside of this range will be clipped.
-  /// Note: For best results, follow the default threshold. We will update the
-  /// default threshold everytime when we release a new model.
-  core.double? videoConfidenceThreshold;
-
-  GoogleCloudVideointelligenceV1LabelDetectionConfig({
-    this.frameConfidenceThreshold,
-    this.labelDetectionMode,
-    this.model,
-    this.stationaryCamera,
-    this.videoConfidenceThreshold,
-  });
-
-  GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(core.Map json_)
-    : this(
-        frameConfidenceThreshold:
-            (json_['frameConfidenceThreshold'] as core.num?)?.toDouble(),
-        labelDetectionMode: json_['labelDetectionMode'] as core.String?,
-        model: json_['model'] as core.String?,
-        stationaryCamera: json_['stationaryCamera'] as core.bool?,
-        videoConfidenceThreshold:
-            (json_['videoConfidenceThreshold'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (frameConfidenceThreshold != null)
-      'frameConfidenceThreshold': frameConfidenceThreshold!,
-    if (labelDetectionMode != null) 'labelDetectionMode': labelDetectionMode!,
-    if (model != null) 'model': model!,
-    if (stationaryCamera != null) 'stationaryCamera': stationaryCamera!,
-    if (videoConfidenceThreshold != null)
-      'videoConfidenceThreshold': videoConfidenceThreshold!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1LabelDetectionConfig =
+    $LabelDetectionConfig;
 
 /// Config for OBJECT_TRACKING.
-class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
-  /// Model to use for object tracking.
-  ///
-  /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest".
-  core.String? model;
-
-  GoogleCloudVideointelligenceV1ObjectTrackingConfig({this.model});
-
-  GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(core.Map json_)
-    : this(model: json_['model'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (model != null) 'model': model!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1ObjectTrackingConfig =
+    $ObjectTrackingConfig;
 
 /// Config for PERSON_DETECTION.
-class GoogleCloudVideointelligenceV1PersonDetectionConfig {
-  /// Whether to enable person attributes detection, such as cloth color (black,
-  /// blue, etc), type (coat, dress, etc), pattern (plain, floral, etc), hair,
-  /// etc.
-  ///
-  /// Ignored if 'include_bounding_boxes' is set to false.
-  core.bool? includeAttributes;
-
-  /// Whether bounding boxes are included in the person detection annotation
-  /// output.
-  core.bool? includeBoundingBoxes;
-
-  /// Whether to enable pose landmarks detection.
-  ///
-  /// Ignored if 'include_bounding_boxes' is set to false.
-  core.bool? includePoseLandmarks;
-
-  GoogleCloudVideointelligenceV1PersonDetectionConfig({
-    this.includeAttributes,
-    this.includeBoundingBoxes,
-    this.includePoseLandmarks,
-  });
-
-  GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(core.Map json_)
-    : this(
-        includeAttributes: json_['includeAttributes'] as core.bool?,
-        includeBoundingBoxes: json_['includeBoundingBoxes'] as core.bool?,
-        includePoseLandmarks: json_['includePoseLandmarks'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (includeAttributes != null) 'includeAttributes': includeAttributes!,
-    if (includeBoundingBoxes != null)
-      'includeBoundingBoxes': includeBoundingBoxes!,
-    if (includePoseLandmarks != null)
-      'includePoseLandmarks': includePoseLandmarks!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1PersonDetectionConfig =
+    $PersonDetectionConfig;
 
 /// Config for SHOT_CHANGE_DETECTION.
-class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
-  /// Model to use for shot change detection.
-  ///
-  /// Supported values: "builtin/stable" (the default if unset),
-  /// "builtin/latest", and "builtin/legacy".
-  core.String? model;
-
-  GoogleCloudVideointelligenceV1ShotChangeDetectionConfig({this.model});
-
-  GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
-    core.Map json_,
-  ) : this(model: json_['model'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (model != null) 'model': model!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1ShotChangeDetectionConfig =
+    $ShotChangeDetectionConfig;
 
 /// Provides "hints" to the speech recognizer to favor specific words and
 /// phrases in the results.
-class GoogleCloudVideointelligenceV1SpeechContext {
-  /// A list of strings containing words and phrases "hints" so that the speech
-  /// recognition is more likely to recognize them.
-  ///
-  /// This can be used to improve the accuracy for specific words and phrases,
-  /// for example, if specific commands are typically spoken by the user. This
-  /// can also be used to add additional words to the vocabulary of the
-  /// recognizer. See
-  /// [usage limits](https://cloud.google.com/speech/limits#content).
-  ///
-  /// Optional.
-  core.List<core.String>? phrases;
-
-  GoogleCloudVideointelligenceV1SpeechContext({this.phrases});
-
-  GoogleCloudVideointelligenceV1SpeechContext.fromJson(core.Map json_)
-    : this(
-        phrases:
-            (json_['phrases'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (phrases != null) 'phrases': phrases!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1SpeechContext = $SpeechContext00;
 
 /// Config for SPEECH_TRANSCRIPTION.
 class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
@@ -973,40 +763,8 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
 }
 
 /// Config for TEXT_DETECTION.
-class GoogleCloudVideointelligenceV1TextDetectionConfig {
-  /// Language hint can be specified if the language to be detected is known a
-  /// priori.
-  ///
-  /// It can increase the accuracy of the detection. Language hint must be
-  /// language code in BCP-47 format. Automatic language detection is performed
-  /// if no hint is provided.
-  core.List<core.String>? languageHints;
-
-  /// Model to use for text detection.
-  ///
-  /// Supported values: "builtin/stable" (the default if unset) and
-  /// "builtin/latest".
-  core.String? model;
-
-  GoogleCloudVideointelligenceV1TextDetectionConfig({
-    this.languageHints,
-    this.model,
-  });
-
-  GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(core.Map json_)
-    : this(
-        languageHints:
-            (json_['languageHints'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        model: json_['model'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageHints != null) 'languageHints': languageHints!,
-    if (model != null) 'model': model!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1TextDetectionConfig =
+    $TextDetectionConfig;
 
 /// Video context and/or feature-specific parameters.
 class GoogleCloudVideointelligenceV1VideoContext {
@@ -1146,31 +904,7 @@ class GoogleCloudVideointelligenceV1VideoContext {
 }
 
 /// Video segment.
-class GoogleCloudVideointelligenceV1VideoSegment {
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// end of the segment (inclusive).
-  core.String? endTimeOffset;
-
-  /// Time-offset, relative to the beginning of the video, corresponding to the
-  /// start of the segment (inclusive).
-  core.String? startTimeOffset;
-
-  GoogleCloudVideointelligenceV1VideoSegment({
-    this.endTimeOffset,
-    this.startTimeOffset,
-  });
-
-  GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map json_)
-    : this(
-        endTimeOffset: json_['endTimeOffset'] as core.String?,
-        startTimeOffset: json_['startTimeOffset'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
-    if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
-  };
-}
+typedef GoogleCloudVideointelligenceV1VideoSegment = $VideoSegment;
 
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;

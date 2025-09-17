@@ -1757,7 +1757,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// A replication policy that replicates the Secret payload without any
 /// restrictions.
@@ -1927,47 +1927,10 @@ class Binding {
 
 /// Configuration for encrypting secret payloads using customer-managed
 /// encryption keys (CMEK).
-class CustomerManagedEncryption {
-  /// The resource name of the Cloud KMS CryptoKey used to encrypt secret
-  /// payloads.
-  ///
-  /// For secrets using the UserManaged replication policy type, Cloud KMS
-  /// CryptoKeys must reside in the same location as the replica location. For
-  /// secrets using the Automatic replication policy type, Cloud KMS CryptoKeys
-  /// must reside in `global`. The expected format is `projects / * /locations /
-  /// * /keyRings / * /cryptoKeys / * `.
-  ///
-  /// Required.
-  core.String? kmsKeyName;
-
-  CustomerManagedEncryption({this.kmsKeyName});
-
-  CustomerManagedEncryption.fromJson(core.Map json_)
-    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-  };
-}
+typedef CustomerManagedEncryption = $CustomerManagedEncryption;
 
 /// Describes the status of customer-managed encryption.
-class CustomerManagedEncryptionStatus {
-  /// The resource name of the Cloud KMS CryptoKeyVersion used to encrypt the
-  /// secret payload, in the following format: `projects / * /locations / *
-  /// /keyRings / * /cryptoKeys / * /versions / * `.
-  ///
-  /// Required.
-  core.String? kmsKeyVersionName;
-
-  CustomerManagedEncryptionStatus({this.kmsKeyVersionName});
-
-  CustomerManagedEncryptionStatus.fromJson(core.Map json_)
-    : this(kmsKeyVersionName: json_['kmsKeyVersionName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName!,
-  };
-}
+typedef CustomerManagedEncryptionStatus = $CustomerManagedEncryptionStatus;
 
 /// Request message for SecretManagerService.DestroySecretVersion.
 typedef DestroySecretVersionRequest = $SecretVersionRequest;
@@ -2389,38 +2352,7 @@ class ReplicationStatus {
 /// At next_rotation_time, Secret Manager will send a Pub/Sub notification to
 /// the topics configured on the Secret. Secret.topics must be set to configure
 /// rotation.
-class Rotation {
-  /// Timestamp in UTC at which the Secret is scheduled to rotate.
-  ///
-  /// Cannot be set to less than 300s (5 min) in the future and at most
-  /// 3153600000s (100 years). next_rotation_time MUST be set if rotation_period
-  /// is set.
-  ///
-  /// Optional.
-  core.String? nextRotationTime;
-
-  /// Input only.
-  ///
-  /// The Duration between rotation notifications. Must be in seconds and at
-  /// least 3600s (1h) and at most 3153600000s (100 years). If rotation_period
-  /// is set, next_rotation_time must be set. next_rotation_time will be
-  /// advanced by this period when the service automatically sends rotation
-  /// notifications.
-  core.String? rotationPeriod;
-
-  Rotation({this.nextRotationTime, this.rotationPeriod});
-
-  Rotation.fromJson(core.Map json_)
-    : this(
-        nextRotationTime: json_['nextRotationTime'] as core.String?,
-        rotationPeriod: json_['rotationPeriod'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
-    if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
-  };
-}
+typedef Rotation = $Rotation;
 
 /// A Secret is a logical secret whose value and versions can be accessed.
 ///
@@ -2632,47 +2564,7 @@ class Secret {
 ///
 /// This contains the sensitive secret payload that is associated with a
 /// SecretVersion.
-class SecretPayload {
-  /// The secret data.
-  ///
-  /// Must be no larger than 64KiB.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> bytes_) {
-    data = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// If specified, SecretManagerService will verify the integrity of the
-  /// received data on SecretManagerService.AddSecretVersion calls using the
-  /// crc32c checksum and store it to include in future
-  /// SecretManagerService.AccessSecretVersion responses.
-  ///
-  /// If a checksum is not provided in the SecretManagerService.AddSecretVersion
-  /// request, the SecretManagerService will generate and store one for you. The
-  /// CRC32C value is encoded as a Int64 for compatibility, and can be safely
-  /// downconverted to uint32 in languages that support this type.
-  /// https://cloud.google.com/apis/design/design_patterns#integer_types
-  ///
-  /// Optional.
-  core.String? dataCrc32c;
-
-  SecretPayload({this.data, this.dataCrc32c});
-
-  SecretPayload.fromJson(core.Map json_)
-    : this(
-        data: json_['data'] as core.String?,
-        dataCrc32c: json_['dataCrc32c'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (dataCrc32c != null) 'dataCrc32c': dataCrc32c!,
-  };
-}
+typedef SecretPayload = $SecretPayload;
 
 /// A secret version resource in the Secret Manager API.
 class SecretVersion {

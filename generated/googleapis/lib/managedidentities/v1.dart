@@ -2732,57 +2732,11 @@ class Domain {
 }
 
 /// DomainJoinMachineRequest is the request message for DomainJoinMachine method
-class DomainJoinMachineRequest {
-  /// force if True, forces domain join even if the computer account already
-  /// exists.
-  ///
-  /// Optional.
-  core.bool? force;
-
-  /// OU name where the VM needs to be domain joined
-  ///
-  /// Optional.
-  core.String? ouName;
-
-  /// Full instance id token of compute engine VM to verify instance identity.
-  ///
-  /// More about this:
-  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity#request_signature
-  ///
-  /// Required.
-  core.String? vmIdToken;
-
-  DomainJoinMachineRequest({this.force, this.ouName, this.vmIdToken});
-
-  DomainJoinMachineRequest.fromJson(core.Map json_)
-    : this(
-        force: json_['force'] as core.bool?,
-        ouName: json_['ouName'] as core.String?,
-        vmIdToken: json_['vmIdToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (force != null) 'force': force!,
-    if (ouName != null) 'ouName': ouName!,
-    if (vmIdToken != null) 'vmIdToken': vmIdToken!,
-  };
-}
+typedef DomainJoinMachineRequest = $DomainJoinMachineRequest;
 
 /// DomainJoinMachineResponse is the response message for DomainJoinMachine
 /// method
-class DomainJoinMachineResponse {
-  /// Offline domain join blob as the response
-  core.String? domainJoinBlob;
-
-  DomainJoinMachineResponse({this.domainJoinBlob});
-
-  DomainJoinMachineResponse.fromJson(core.Map json_)
-    : this(domainJoinBlob: json_['domainJoinBlob'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainJoinBlob != null) 'domainJoinBlob': domainJoinBlob!,
-  };
-}
+typedef DomainJoinMachineResponse = $DomainJoinMachineResponse;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -2839,44 +2793,7 @@ class EnableMigrationRequest {
 typedef Expr = $Expr;
 
 /// ExtendSchemaRequest is the request message for ExtendSchema method.
-class ExtendSchemaRequest {
-  /// Description for Schema Change.
-  ///
-  /// Required.
-  core.String? description;
-
-  /// File uploaded as a byte stream input.
-  core.String? fileContents;
-  core.List<core.int> get fileContentsAsBytes =>
-      convert.base64.decode(fileContents!);
-
-  set fileContentsAsBytes(core.List<core.int> bytes_) {
-    fileContents = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// File stored in Cloud Storage bucket and represented in the form
-  /// projects/{project_id}/buckets/{bucket_name}/objects/{object_name} File
-  /// should be in the same project as the domain.
-  core.String? gcsPath;
-
-  ExtendSchemaRequest({this.description, this.fileContents, this.gcsPath});
-
-  ExtendSchemaRequest.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        fileContents: json_['fileContents'] as core.String?,
-        gcsPath: json_['gcsPath'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (fileContents != null) 'fileContents': fileContents!,
-    if (gcsPath != null) 'gcsPath': gcsPath!,
-  };
-}
+typedef ExtendSchemaRequest = $ExtendSchemaRequest;
 
 /// LDAPSSettings represents the ldaps settings for domain resource.
 ///
@@ -3203,59 +3120,11 @@ typedef Location = $Location00;
 
 /// OnPremDomainDetails is the message which contains details of on-prem domain
 /// which is trusted and needs to be migrated.
-class OnPremDomainDetails {
-  /// Option to disable SID filtering.
-  ///
-  /// Optional.
-  core.bool? disableSidFiltering;
-
-  /// FQDN of the on-prem domain being migrated.
-  ///
-  /// Required.
-  core.String? domainName;
-
-  OnPremDomainDetails({this.disableSidFiltering, this.domainName});
-
-  OnPremDomainDetails.fromJson(core.Map json_)
-    : this(
-        disableSidFiltering: json_['disableSidFiltering'] as core.bool?,
-        domainName: json_['domainName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableSidFiltering != null)
-      'disableSidFiltering': disableSidFiltering!,
-    if (domainName != null) 'domainName': domainName!,
-  };
-}
+typedef OnPremDomainDetails = $OnPremDomainDetails;
 
 /// OnPremDomainDetails is the message which contains details of on-prem domain
 /// which is trusted and needs to be migrated.
-class OnPremDomainSIDDetails {
-  /// FQDN of the on-prem domain being migrated.
-  core.String? name;
-
-  /// Current SID filtering state.
-  /// Possible string values are:
-  /// - "SID_FILTERING_STATE_UNSPECIFIED" : SID Filtering is in unspecified
-  /// state.
-  /// - "ENABLED" : SID Filtering is Enabled.
-  /// - "DISABLED" : SID Filtering is Disabled.
-  core.String? sidFilteringState;
-
-  OnPremDomainSIDDetails({this.name, this.sidFilteringState});
-
-  OnPremDomainSIDDetails.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        sidFilteringState: json_['sidFilteringState'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (sidFilteringState != null) 'sidFilteringState': sidFilteringState!,
-  };
-}
+typedef OnPremDomainSIDDetails = $OnPremDomainSIDDetails;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -3536,73 +3405,16 @@ class Policy {
 }
 
 /// Request message for ReconfigureTrust
-class ReconfigureTrustRequest {
-  /// The target DNS server IP addresses to resolve the remote domain involved
-  /// in the trust.
-  ///
-  /// Required.
-  core.List<core.String>? targetDnsIpAddresses;
-
-  /// The fully-qualified target domain name which will be in trust with current
-  /// domain.
-  ///
-  /// Required.
-  core.String? targetDomainName;
-
-  ReconfigureTrustRequest({this.targetDnsIpAddresses, this.targetDomainName});
-
-  ReconfigureTrustRequest.fromJson(core.Map json_)
-    : this(
-        targetDnsIpAddresses:
-            (json_['targetDnsIpAddresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        targetDomainName: json_['targetDomainName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetDnsIpAddresses != null)
-      'targetDnsIpAddresses': targetDnsIpAddresses!,
-    if (targetDomainName != null) 'targetDomainName': targetDomainName!,
-  };
-}
+typedef ReconfigureTrustRequest = $ReconfigureTrustRequest;
 
 /// Request message for ResetAdminPassword
 typedef ResetAdminPasswordRequest = $Empty;
 
 /// Response message for ResetAdminPassword
-class ResetAdminPasswordResponse {
-  /// A random password.
-  ///
-  /// See admin for more information.
-  core.String? password;
-
-  ResetAdminPasswordResponse({this.password});
-
-  ResetAdminPasswordResponse.fromJson(core.Map json_)
-    : this(password: json_['password'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (password != null) 'password': password!,
-  };
-}
+typedef ResetAdminPasswordResponse = $ResetAdminPasswordResponse;
 
 /// RestoreDomainRequest is the request received by RestoreDomain rpc
-class RestoreDomainRequest {
-  /// ID of the backup to be restored
-  ///
-  /// Required.
-  core.String? backupId;
-
-  RestoreDomainRequest({this.backupId});
-
-  RestoreDomainRequest.fromJson(core.Map json_)
-    : this(backupId: json_['backupId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (backupId != null) 'backupId': backupId!,
-  };
-}
+typedef RestoreDomainRequest = $RestoreDomainRequest;
 
 /// Request message for `SetIamPolicy` method.
 class SetIamPolicyRequest {

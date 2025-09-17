@@ -195,45 +195,29 @@ void checkGenerateMediationReportRequest(api.GenerateMediationReportRequest o) {
   buildCounterGenerateMediationReportRequest--;
 }
 
-core.int buildCounterGenerateMediationReportResponseElement = 0;
-api.GenerateMediationReportResponseElement
-buildGenerateMediationReportResponseElement() {
-  final o = api.GenerateMediationReportResponseElement();
-  buildCounterGenerateMediationReportResponseElement++;
-  if (buildCounterGenerateMediationReportResponseElement < 3) {
+core.int buildCounterGenerateMediationReportResponse = 0;
+api.GenerateMediationReportResponse buildGenerateMediationReportResponse() {
+  final o = api.GenerateMediationReportResponse();
+  buildCounterGenerateMediationReportResponse++;
+  if (buildCounterGenerateMediationReportResponse < 3) {
     o.footer = buildReportFooter();
     o.header = buildReportHeader();
     o.row = buildReportRow();
   }
-  buildCounterGenerateMediationReportResponseElement--;
+  buildCounterGenerateMediationReportResponse--;
   return o;
-}
-
-void checkGenerateMediationReportResponseElement(
-  api.GenerateMediationReportResponseElement o,
-) {
-  buildCounterGenerateMediationReportResponseElement++;
-  if (buildCounterGenerateMediationReportResponseElement < 3) {
-    checkReportFooter(o.footer!);
-    checkReportHeader(o.header!);
-    checkReportRow(o.row!);
-  }
-  buildCounterGenerateMediationReportResponseElement--;
-}
-
-api.GenerateMediationReportResponse buildGenerateMediationReportResponse() {
-  return [
-    buildGenerateMediationReportResponseElement(),
-    buildGenerateMediationReportResponseElement(),
-  ];
 }
 
 void checkGenerateMediationReportResponse(
   api.GenerateMediationReportResponse o,
 ) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGenerateMediationReportResponseElement(o[0]);
-  checkGenerateMediationReportResponseElement(o[1]);
+  buildCounterGenerateMediationReportResponse++;
+  if (buildCounterGenerateMediationReportResponse < 3) {
+    checkReportFooter(o.footer!);
+    checkReportHeader(o.header!);
+    checkReportRow(o.row!);
+  }
+  buildCounterGenerateMediationReportResponse--;
 }
 
 core.int buildCounterGenerateNetworkReportRequest = 0;
@@ -255,43 +239,27 @@ void checkGenerateNetworkReportRequest(api.GenerateNetworkReportRequest o) {
   buildCounterGenerateNetworkReportRequest--;
 }
 
-core.int buildCounterGenerateNetworkReportResponseElement = 0;
-api.GenerateNetworkReportResponseElement
-buildGenerateNetworkReportResponseElement() {
-  final o = api.GenerateNetworkReportResponseElement();
-  buildCounterGenerateNetworkReportResponseElement++;
-  if (buildCounterGenerateNetworkReportResponseElement < 3) {
+core.int buildCounterGenerateNetworkReportResponse = 0;
+api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
+  final o = api.GenerateNetworkReportResponse();
+  buildCounterGenerateNetworkReportResponse++;
+  if (buildCounterGenerateNetworkReportResponse < 3) {
     o.footer = buildReportFooter();
     o.header = buildReportHeader();
     o.row = buildReportRow();
   }
-  buildCounterGenerateNetworkReportResponseElement--;
+  buildCounterGenerateNetworkReportResponse--;
   return o;
 }
 
-void checkGenerateNetworkReportResponseElement(
-  api.GenerateNetworkReportResponseElement o,
-) {
-  buildCounterGenerateNetworkReportResponseElement++;
-  if (buildCounterGenerateNetworkReportResponseElement < 3) {
+void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
+  buildCounterGenerateNetworkReportResponse++;
+  if (buildCounterGenerateNetworkReportResponse < 3) {
     checkReportFooter(o.footer!);
     checkReportHeader(o.header!);
     checkReportRow(o.row!);
   }
-  buildCounterGenerateNetworkReportResponseElement--;
-}
-
-api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
-  return [
-    buildGenerateNetworkReportResponseElement(),
-    buildGenerateNetworkReportResponseElement(),
-  ];
-}
-
-void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
-  unittest.expect(o, unittest.hasLength(2));
-  checkGenerateNetworkReportResponseElement(o[0]);
-  checkGenerateNetworkReportResponseElement(o[1]);
+  buildCounterGenerateNetworkReportResponse--;
 }
 
 core.List<api.AdUnit> buildUnnamed1() => [buildAdUnit(), buildAdUnit()];
@@ -933,29 +901,13 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GenerateMediationReportResponseElement', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGenerateMediationReportResponseElement();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateMediationReportResponseElement.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkGenerateMediationReportResponseElement(od);
-    });
-  });
-
   unittest.group('obj-schema-GenerateMediationReportResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateMediationReportResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          (oJson as core.List)
-              .map(
-                (value) => api.GenerateMediationReportResponseElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
-              .toList();
+      final od = api.GenerateMediationReportResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGenerateMediationReportResponse(od);
     });
   });
@@ -971,29 +923,13 @@ void main() {
     });
   });
 
-  unittest.group('obj-schema-GenerateNetworkReportResponseElement', () {
-    unittest.test('to-json--from-json', () async {
-      final o = buildGenerateNetworkReportResponseElement();
-      final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od = api.GenerateNetworkReportResponseElement.fromJson(
-        oJson as core.Map<core.String, core.dynamic>,
-      );
-      checkGenerateNetworkReportResponseElement(od);
-    });
-  });
-
   unittest.group('obj-schema-GenerateNetworkReportResponse', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGenerateNetworkReportResponse();
       final oJson = convert.jsonDecode(convert.jsonEncode(o));
-      final od =
-          (oJson as core.List)
-              .map(
-                (value) => api.GenerateNetworkReportResponseElement.fromJson(
-                  value as core.Map<core.String, core.dynamic>,
-                ),
-              )
-              .toList();
+      final od = api.GenerateNetworkReportResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
       checkGenerateNetworkReportResponse(od);
     });
   });

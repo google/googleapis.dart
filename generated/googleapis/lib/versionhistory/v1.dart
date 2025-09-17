@@ -395,7 +395,7 @@ class Channel {
 /// The start must be less than or equal to the end. When the start equals the
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
-typedef Interval = $Interval;
+typedef Interval = $Interval00;
 
 /// Response message for ListChannels.
 class ListChannelsResponse {

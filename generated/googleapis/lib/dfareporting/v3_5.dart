@@ -483,7 +483,7 @@ class CreativeCustomEvent {
 }
 
 /// Represents a DimensionValue resource.
-typedef DimensionValue = $DimensionValue;
+typedef DimensionValue = $DimensionValue01;
 
 /// Offset Position.
 typedef OffsetPosition = $OffsetPosition;

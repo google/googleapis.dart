@@ -4321,7 +4321,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// An Authorized View of a Cloud Bigtable Table.
 class AuthorizedView {
@@ -6225,7 +6225,7 @@ class GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
 }
 
 /// Deprecated: prefer the equivalent `Utf8Bytes`.
-typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared02;
+typedef GoogleBigtableAdminV2TypeStringEncodingUtf8Raw = $Shared03;
 
 /// A structured data value, consisting of fields which map to dynamically typed
 /// values.

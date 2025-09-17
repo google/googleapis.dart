@@ -19851,7 +19851,7 @@ class DimensionFilter {
 }
 
 /// Represents a DimensionValue resource.
-typedef DimensionValue = $DimensionValue;
+typedef DimensionValue = $DimensionValue01;
 
 /// Represents the list of DimensionValue resources.
 class DimensionValueList {

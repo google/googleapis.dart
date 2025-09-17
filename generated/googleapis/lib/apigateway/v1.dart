@@ -1577,91 +1577,7 @@ class ProjectsLocationsOperationsResource {
 }
 
 /// An API that can be served by one or more Gateways.
-class ApigatewayApi {
-  /// Created time.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Display name.
-  ///
-  /// Optional.
-  core.String? displayName;
-
-  /// Resource labels to represent user-provided metadata.
-  ///
-  /// Refer to cloud documentation on labels for more details.
-  /// https://cloud.google.com/compute/docs/labeling-resources
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// The name of a Google Managed Service (
-  /// https://cloud.google.com/service-infrastructure/docs/glossary#managed).
-  ///
-  /// If not specified, a new Service will automatically be created in the same
-  /// project as this API.
-  ///
-  /// Optional. Immutable.
-  core.String? managedService;
-
-  /// Resource name of the API.
-  ///
-  /// Format: projects/{project}/locations/global/apis/{api}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// State of the API.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : API does not have a state yet.
-  /// - "CREATING" : API is being created.
-  /// - "ACTIVE" : API is active.
-  /// - "FAILED" : API creation failed.
-  /// - "DELETING" : API is being deleted.
-  /// - "UPDATING" : API is being updated.
-  core.String? state;
-
-  /// Updated time.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  ApigatewayApi({
-    this.createTime,
-    this.displayName,
-    this.labels,
-    this.managedService,
-    this.name,
-    this.state,
-    this.updateTime,
-  });
-
-  ApigatewayApi.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        managedService: json_['managedService'] as core.String?,
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (managedService != null) 'managedService': managedService!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef ApigatewayApi = $ApigatewayApi;
 
 /// An API Configuration is a combination of settings for both the Managed
 /// Service and Gateways serving this API Config.
@@ -1828,36 +1744,7 @@ class ApigatewayApiConfig {
 }
 
 /// A lightweight description of a file.
-class ApigatewayApiConfigFile {
-  /// The bytes that constitute the file.
-  core.String? contents;
-  core.List<core.int> get contentsAsBytes => convert.base64.decode(contents!);
-
-  set contentsAsBytes(core.List<core.int> bytes_) {
-    contents = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The file path (full or relative path).
-  ///
-  /// This is typically the path of the file when it is uploaded.
-  core.String? path;
-
-  ApigatewayApiConfigFile({this.contents, this.path});
-
-  ApigatewayApiConfigFile.fromJson(core.Map json_)
-    : this(
-        contents: json_['contents'] as core.String?,
-        path: json_['path'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contents != null) 'contents': contents!,
-    if (path != null) 'path': path!,
-  };
-}
+typedef ApigatewayApiConfigFile = $ApigatewayApiConfigFile;
 
 /// A gRPC service definition.
 class ApigatewayApiConfigGrpcServiceDefinition {
@@ -1984,7 +1871,7 @@ class ApigatewayAuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef ApigatewayAuditLogConfig = $AuditLogConfig;
+typedef ApigatewayAuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class ApigatewayBinding {
@@ -2117,98 +2004,7 @@ typedef ApigatewayExpr = $Expr;
 ///
 /// It performs API-Method and/or API-Consumer specific actions based on an API
 /// Config such as authentication, policy enforcement, and backend selection.
-class ApigatewayGateway {
-  /// Resource name of the API Config for this Gateway.
-  ///
-  /// Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
-  ///
-  /// Required.
-  core.String? apiConfig;
-
-  /// Created time.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The default API Gateway host name of the form
-  /// `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-  ///
-  /// Output only.
-  core.String? defaultHostname;
-
-  /// Display name.
-  ///
-  /// Optional.
-  core.String? displayName;
-
-  /// Resource labels to represent user-provided metadata.
-  ///
-  /// Refer to cloud documentation on labels for more details.
-  /// https://cloud.google.com/compute/docs/labeling-resources
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// Resource name of the Gateway.
-  ///
-  /// Format: projects/{project}/locations/{location}/gateways/{gateway}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The current state of the Gateway.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Gateway does not have a state yet.
-  /// - "CREATING" : Gateway is being created.
-  /// - "ACTIVE" : Gateway is running and ready for requests.
-  /// - "FAILED" : Gateway creation failed.
-  /// - "DELETING" : Gateway is being deleted.
-  /// - "UPDATING" : Gateway is being updated.
-  core.String? state;
-
-  /// Updated time.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  ApigatewayGateway({
-    this.apiConfig,
-    this.createTime,
-    this.defaultHostname,
-    this.displayName,
-    this.labels,
-    this.name,
-    this.state,
-    this.updateTime,
-  });
-
-  ApigatewayGateway.fromJson(core.Map json_)
-    : this(
-        apiConfig: json_['apiConfig'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        defaultHostname: json_['defaultHostname'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (apiConfig != null) 'apiConfig': apiConfig!,
-    if (createTime != null) 'createTime': createTime!,
-    if (defaultHostname != null) 'defaultHostname': defaultHostname!,
-    if (displayName != null) 'displayName': displayName!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef ApigatewayGateway = $ApigatewayGateway;
 
 /// Response message for ApiGatewayService.ListApiConfigs
 class ApigatewayListApiConfigsResponse {

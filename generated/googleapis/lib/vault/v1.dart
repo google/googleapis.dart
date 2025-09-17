@@ -2635,7 +2635,7 @@ class HeldDriveQuery {
 }
 
 /// Query options for group holds.
-typedef HeldGroupsQuery = $Query;
+typedef HeldGroupsQuery = $Query01;
 
 /// Options for Chat holds.
 class HeldHangoutsChatQuery {
@@ -2654,7 +2654,7 @@ class HeldHangoutsChatQuery {
 }
 
 /// Query options for Gmail holds.
-typedef HeldMailQuery = $Query;
+typedef HeldMailQuery = $Query01;
 
 /// The organizational unit covered by a hold.
 ///

@@ -2388,37 +2388,7 @@ class AnalyticsHubSubscriptionInfo {
 /// Configuration for writing message data in Avro format.
 ///
 /// Message payloads and metadata will be written to files as an Avro binary.
-class AvroConfig {
-  /// When true, the output Cloud Storage file will be serialized using the
-  /// topic schema, if it exists.
-  ///
-  /// Optional.
-  core.bool? useTopicSchema;
-
-  /// When true, write the subscription name, message_id, publish_time,
-  /// attributes, and ordering_key as additional fields in the output.
-  ///
-  /// The subscription name, message_id, and publish_time fields are put in
-  /// their own fields while all other message properties other than data (for
-  /// example, an ordering_key, if present) are added as entries in the
-  /// attributes map.
-  ///
-  /// Optional.
-  core.bool? writeMetadata;
-
-  AvroConfig({this.useTopicSchema, this.writeMetadata});
-
-  AvroConfig.fromJson(core.Map json_)
-    : this(
-        useTopicSchema: json_['useTopicSchema'] as core.bool?,
-        writeMetadata: json_['writeMetadata'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (useTopicSchema != null) 'useTopicSchema': useTopicSchema!,
-    if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-  };
-}
+typedef AvroConfig = $AvroConfig;
 
 /// Configuration for reading Cloud Storage data in Avro binary format.
 ///
@@ -3364,27 +3334,7 @@ typedef Empty = $Empty;
 
 /// A policy that specifies the conditions for resource expiration (i.e.,
 /// automatic resource deletion).
-class ExpirationPolicy {
-  /// Specifies the "time-to-live" duration for an associated resource.
-  ///
-  /// The resource expires if it is not active for a period of `ttl`. The
-  /// definition of "activity" depends on the type of the associated resource.
-  /// The minimum and maximum allowed values for `ttl` depend on the type of the
-  /// associated resource, as well. If `ttl` is not set, the associated resource
-  /// never expires.
-  ///
-  /// Optional.
-  core.String? ttl;
-
-  ExpirationPolicy({this.ttl});
-
-  ExpirationPolicy.fromJson(core.Map json_)
-    : this(ttl: json_['ttl'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ttl != null) 'ttl': ttl!,
-  };
-}
+typedef ExpirationPolicy = $ExpirationPolicy;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -3404,49 +3354,7 @@ class ExpirationPolicy {
 /// functions that may be referenced within an expression are determined by the
 /// service that evaluates it. See the service documentation for additional
 /// information.
-class Expr {
-  /// Description of the expression.
-  ///
-  /// This is a longer text which describes the expression, e.g. when hovered
-  /// over it in a UI.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Textual representation of an expression in Common Expression Language
-  /// syntax.
-  core.String? expression;
-
-  /// String indicating the location of the expression for error reporting, e.g.
-  /// a file name and a position in the file.
-  ///
-  /// Optional.
-  core.String? location;
-
-  /// Title for the expression, i.e. a short string describing its purpose.
-  ///
-  /// This can be used e.g. in UIs which allow to enter the expression.
-  ///
-  /// Optional.
-  core.String? title;
-
-  Expr({this.description, this.expression, this.location, this.title});
-
-  Expr.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        expression: json_['expression'] as core.String?,
-        location: json_['location'] as core.String?,
-        title: json_['title'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (expression != null) 'expression': expression!,
-    if (location != null) 'location': location!,
-    if (title != null) 'title': title!,
-  };
-}
+typedef Expr = $Expr;
 
 /// Settings for an ingestion data source on a topic.
 class IngestionDataSourceSettings {
@@ -3965,63 +3873,11 @@ class ModifyPushConfigRequest {
 }
 
 /// Sets the `data` field as the HTTP body for delivery.
-class NoWrapper {
-  /// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:`
-  /// headers of the HTTP request.
-  ///
-  /// Writes the Pub/Sub message attributes to `:` headers of the HTTP request.
-  ///
-  /// Optional.
-  core.bool? writeMetadata;
-
-  NoWrapper({this.writeMetadata});
-
-  NoWrapper.fromJson(core.Map json_)
-    : this(writeMetadata: json_['writeMetadata'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (writeMetadata != null) 'writeMetadata': writeMetadata!,
-  };
-}
+typedef NoWrapper = $NoWrapper;
 
 /// Contains information needed for generating an
 /// [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-class OidcToken {
-  /// Audience to be used when generating OIDC token.
-  ///
-  /// The audience claim identifies the recipients that the JWT is intended for.
-  /// The audience value is a single case-sensitive string. Having multiple
-  /// values (array) for the audience field is not supported. More info about
-  /// the OIDC JWT token audience here:
-  /// https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified,
-  /// the Push endpoint URL will be used.
-  ///
-  /// Optional.
-  core.String? audience;
-
-  /// [Service account email](https://cloud.google.com/iam/docs/service-accounts)
-  /// used for generating the OIDC token.
-  ///
-  /// For more information on setting up authentication, see
-  /// [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
-  ///
-  /// Optional.
-  core.String? serviceAccountEmail;
-
-  OidcToken({this.audience, this.serviceAccountEmail});
-
-  OidcToken.fromJson(core.Map json_)
-    : this(
-        audience: json_['audience'] as core.String?,
-        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (audience != null) 'audience': audience!,
-    if (serviceAccountEmail != null)
-      'serviceAccountEmail': serviceAccountEmail!,
-  };
-}
+typedef OidcToken = $OidcToken01;
 
 /// Settings for Platform Logs produced by Pub/Sub.
 class PlatformLogsSettings {
@@ -4223,83 +4079,7 @@ class PublishResponse {
 /// for more information. See
 /// [quotas and limits](https://cloud.google.com/pubsub/quotas) for more
 /// information about message limits.
-class PubsubMessage {
-  /// Attributes for this message.
-  ///
-  /// If this field is empty, the message must contain non-empty data. This can
-  /// be used to filter messages on the subscription.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? attributes;
-
-  /// The message data field.
-  ///
-  /// If this field is empty, the message must contain at least one attribute.
-  ///
-  /// Optional.
-  core.String? data;
-  core.List<core.int> get dataAsBytes => convert.base64.decode(data!);
-
-  set dataAsBytes(core.List<core.int> bytes_) {
-    data = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// ID of this message, assigned by the server when the message is published.
-  ///
-  /// Guaranteed to be unique within the topic. This value may be read by a
-  /// subscriber that receives a `PubsubMessage` via a `Pull` call or a push
-  /// delivery. It must not be populated by the publisher in a `Publish` call.
-  core.String? messageId;
-
-  /// If non-empty, identifies related messages for which publish order should
-  /// be respected.
-  ///
-  /// If a `Subscription` has `enable_message_ordering` set to `true`, messages
-  /// published with the same non-empty `ordering_key` value will be delivered
-  /// to subscribers in the order in which they are received by the Pub/Sub
-  /// system. All `PubsubMessage`s published in a given `PublishRequest` must
-  /// specify the same `ordering_key` value. For more information, see
-  /// [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
-  ///
-  /// Optional.
-  core.String? orderingKey;
-
-  /// The time at which the message was published, populated by the server when
-  /// it receives the `Publish` call.
-  ///
-  /// It must not be populated by the publisher in a `Publish` call.
-  core.String? publishTime;
-
-  PubsubMessage({
-    this.attributes,
-    this.data,
-    this.messageId,
-    this.orderingKey,
-    this.publishTime,
-  });
-
-  PubsubMessage.fromJson(core.Map json_)
-    : this(
-        attributes: (json_['attributes']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        data: json_['data'] as core.String?,
-        messageId: json_['messageId'] as core.String?,
-        orderingKey: json_['orderingKey'] as core.String?,
-        publishTime: json_['publishTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (attributes != null) 'attributes': attributes!,
-    if (data != null) 'data': data!,
-    if (messageId != null) 'messageId': messageId!,
-    if (orderingKey != null) 'orderingKey': orderingKey!,
-    if (publishTime != null) 'publishTime': publishTime!,
-  };
-}
+typedef PubsubMessage = $PubsubMessage;
 
 /// The payload to the push endpoint is in the form of the JSON representation
 /// of a PubsubMessage
@@ -4524,34 +4304,7 @@ class ReceivedMessage {
 /// given message. Retry Policy is implemented on a best effort basis. At times,
 /// the delay between consecutive deliveries may not match the configuration.
 /// That is, delay can be more or less than configured backoff.
-class RetryPolicy {
-  /// The maximum delay between consecutive deliveries of a given message.
-  ///
-  /// Value should be between 0 and 600 seconds. Defaults to 600 seconds.
-  ///
-  /// Optional.
-  core.String? maximumBackoff;
-
-  /// The minimum delay between consecutive deliveries of a given message.
-  ///
-  /// Value should be between 0 and 600 seconds. Defaults to 10 seconds.
-  ///
-  /// Optional.
-  core.String? minimumBackoff;
-
-  RetryPolicy({this.maximumBackoff, this.minimumBackoff});
-
-  RetryPolicy.fromJson(core.Map json_)
-    : this(
-        maximumBackoff: json_['maximumBackoff'] as core.String?,
-        minimumBackoff: json_['minimumBackoff'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
-    if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
-  };
-}
+typedef RetryPolicy = $RetryPolicy;
 
 /// Request for the `RollbackSchema` method.
 class RollbackSchemaRequest {
@@ -5157,49 +4910,10 @@ class Subscription {
 }
 
 /// Request message for `TestIamPermissions` method.
-class TestIamPermissionsRequest {
-  /// The set of permissions to check for the `resource`.
-  ///
-  /// Permissions with wildcards (such as `*` or `storage.*`) are not allowed.
-  /// For more information see
-  /// [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsRequest({this.permissions});
-
-  TestIamPermissionsRequest.fromJson(core.Map json_)
-    : this(
-        permissions:
-            (json_['permissions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (permissions != null) 'permissions': permissions!,
-  };
-}
+typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
-class TestIamPermissionsResponse {
-  /// A subset of `TestPermissionsRequest.permissions` that the caller is
-  /// allowed.
-  core.List<core.String>? permissions;
-
-  TestIamPermissionsResponse({this.permissions});
-
-  TestIamPermissionsResponse.fromJson(core.Map json_)
-    : this(
-        permissions:
-            (json_['permissions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (permissions != null) 'permissions': permissions!,
-  };
-}
+typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Configuration for writing message data in text format.
 ///

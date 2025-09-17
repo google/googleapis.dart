@@ -2676,7 +2676,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -4036,7 +4036,7 @@ class EcKeyType {
 typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
-typedef EnableCertificateAuthorityRequest = $Request03;
+typedef EnableCertificateAuthorityRequest = $Request09;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -4124,7 +4124,7 @@ class ExtendedKeyUsageOptions {
 }
 
 /// Request message for CertificateAuthorityService.FetchCaCerts.
-typedef FetchCaCertsRequest = $Request03;
+typedef FetchCaCertsRequest = $Request09;
 
 /// Response message for CertificateAuthorityService.FetchCaCerts.
 class FetchCaCertsResponse {
@@ -5829,7 +5829,7 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 
 /// Request message for
 /// CertificateAuthorityService.UndeleteCertificateAuthority.
-typedef UndeleteCertificateAuthorityRequest = $Request03;
+typedef UndeleteCertificateAuthorityRequest = $Request09;
 
 /// User-defined URLs for accessing content published by this
 /// CertificateAuthority.

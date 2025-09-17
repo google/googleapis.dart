@@ -2753,7 +2753,7 @@ class Operation {
 }
 
 /// Product contains the details of a product.
-typedef Product = $Shared14;
+typedef Product = $Shared23;
 
 /// Message represent resource in execution result
 class Resource {
@@ -4034,7 +4034,7 @@ class SapDiscoveryWorkloadProperties {
 }
 
 /// A product name and version.
-typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared14;
+typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared23;
 
 /// A SAP software component name, version, and type.
 class SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {

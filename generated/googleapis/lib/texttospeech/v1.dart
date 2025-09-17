@@ -409,25 +409,7 @@ class VoicesResource {
 }
 
 /// Used for advanced voice options.
-class AdvancedVoiceOptions {
-  /// Only for Journey voices.
-  ///
-  /// If false, the synthesis is context aware and has a higher latency.
-  core.bool? lowLatencyJourneySynthesis;
-
-  AdvancedVoiceOptions({this.lowLatencyJourneySynthesis});
-
-  AdvancedVoiceOptions.fromJson(core.Map json_)
-    : this(
-        lowLatencyJourneySynthesis:
-            json_['lowLatencyJourneySynthesis'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lowLatencyJourneySynthesis != null)
-      'lowLatencyJourneySynthesis': lowLatencyJourneySynthesis!,
-  };
-}
+typedef AdvancedVoiceOptions = $AdvancedVoiceOptions;
 
 /// Description of audio data to be synthesized.
 class AudioConfig {
@@ -547,59 +529,7 @@ class AudioConfig {
 typedef CancelOperationRequest = $Empty;
 
 /// Pronunciation customization for a phrase.
-class CustomPronunciationParams {
-  /// The phonetic encoding of the phrase.
-  /// Possible string values are:
-  /// - "PHONETIC_ENCODING_UNSPECIFIED" : Not specified.
-  /// - "PHONETIC_ENCODING_IPA" : IPA, such as apple -\> ˈæpəl.
-  /// https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
-  /// - "PHONETIC_ENCODING_X_SAMPA" : X-SAMPA, such as apple -\> "{p@l".
-  /// https://en.wikipedia.org/wiki/X-SAMPA
-  /// - "PHONETIC_ENCODING_JAPANESE_YOMIGANA" : For reading-to-pron conversion
-  /// to work well, the `pronunciation` field should only contain Kanji,
-  /// Hiragana, and Katakana. The pronunciation can also contain pitch accents.
-  /// The start of a pitch phrase is specified with `^` and the down-pitch
-  /// position is specified with `!`, for example: phrase:端 pronunciation:^はし
-  /// phrase:箸 pronunciation:^は!し phrase:橋 pronunciation:^はし! We currently only
-  /// support the Tokyo dialect, which allows at most one down-pitch per phrase
-  /// (i.e. at most one `!` between `^`).
-  /// - "PHONETIC_ENCODING_PINYIN" : Used to specify pronunciations for Mandarin
-  /// words. See https://en.wikipedia.org/wiki/Pinyin. For example: 朝阳, the
-  /// pronunciation is "chao2 yang2". The number represents the tone, and there
-  /// is a space between syllables. Neutral tones are represented by 5, for
-  /// example 孩子 "hai2 zi5".
-  core.String? phoneticEncoding;
-
-  /// The phrase to which the customization is applied.
-  ///
-  /// The phrase can be multiple words, such as proper nouns, but shouldn't span
-  /// the length of the sentence.
-  core.String? phrase;
-
-  /// The pronunciation of the phrase.
-  ///
-  /// This must be in the phonetic encoding specified above.
-  core.String? pronunciation;
-
-  CustomPronunciationParams({
-    this.phoneticEncoding,
-    this.phrase,
-    this.pronunciation,
-  });
-
-  CustomPronunciationParams.fromJson(core.Map json_)
-    : this(
-        phoneticEncoding: json_['phoneticEncoding'] as core.String?,
-        phrase: json_['phrase'] as core.String?,
-        pronunciation: json_['pronunciation'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (phoneticEncoding != null) 'phoneticEncoding': phoneticEncoding!,
-    if (phrase != null) 'phrase': phrase!,
-    if (pronunciation != null) 'pronunciation': pronunciation!,
-  };
-}
+typedef CustomPronunciationParams = $CustomPronunciationParams01;
 
 /// A collection of pronunciation customizations.
 class CustomPronunciations {
@@ -626,42 +556,7 @@ class CustomPronunciations {
 }
 
 /// Description of the custom voice to be synthesized.
-class CustomVoiceParams {
-  /// The name of the AutoML model that synthesizes the custom voice.
-  ///
-  /// Required.
-  core.String? model;
-
-  /// The usage of the synthesized audio to be reported.
-  ///
-  /// Optional. Deprecated.
-  /// Possible string values are:
-  /// - "REPORTED_USAGE_UNSPECIFIED" : Request with reported usage unspecified
-  /// will be rejected.
-  /// - "REALTIME" : For scenarios where the synthesized audio is not
-  /// downloadable and can only be used once. For example, real-time request in
-  /// IVR system.
-  /// - "OFFLINE" : For scenarios where the synthesized audio is downloadable
-  /// and can be reused. For example, the synthesized audio is downloaded,
-  /// stored in customer service system and played repeatedly.
-  @core.Deprecated(
-    'Not supported. Member documentation may have more information.',
-  )
-  core.String? reportedUsage;
-
-  CustomVoiceParams({this.model, this.reportedUsage});
-
-  CustomVoiceParams.fromJson(core.Map json_)
-    : this(
-        model: json_['model'] as core.String?,
-        reportedUsage: json_['reportedUsage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (model != null) 'model': model!,
-    if (reportedUsage != null) 'reportedUsage': reportedUsage!,
-  };
-}
+typedef CustomVoiceParams = $CustomVoiceParams;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1068,103 +963,13 @@ class SynthesizeSpeechResponse {
 }
 
 /// A multi-speaker turn.
-class Turn {
-  /// The speaker of the turn, for example, 'O' or 'Q'.
-  ///
-  /// Please refer to documentation for available speakers.
-  ///
-  /// Required.
-  core.String? speaker;
-
-  /// The text to speak.
-  ///
-  /// Required.
-  core.String? text;
-
-  Turn({this.speaker, this.text});
-
-  Turn.fromJson(core.Map json_)
-    : this(
-        speaker: json_['speaker'] as core.String?,
-        text: json_['text'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (speaker != null) 'speaker': speaker!,
-    if (text != null) 'text': text!,
-  };
-}
+typedef Turn = $Turn;
 
 /// Description of a voice supported by the TTS service.
-class Voice {
-  /// The languages that this voice supports, expressed as
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags
-  /// (e.g. "en-US", "es-419", "cmn-tw").
-  core.List<core.String>? languageCodes;
-
-  /// The name of this voice.
-  ///
-  /// Each distinct voice has a unique name.
-  core.String? name;
-
-  /// The natural sample rate (in hertz) for this voice.
-  core.int? naturalSampleRateHertz;
-
-  /// The gender of this voice.
-  /// Possible string values are:
-  /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender. In
-  /// VoiceSelectionParams, this means that the client doesn't care which gender
-  /// the selected voice will have. In the Voice field of ListVoicesResponse,
-  /// this may mean that the voice doesn't fit any of the other categories in
-  /// this enum, or that the gender of the voice isn't known.
-  /// - "MALE" : A male voice.
-  /// - "FEMALE" : A female voice.
-  /// - "NEUTRAL" : A gender-neutral voice. This voice is not yet supported.
-  core.String? ssmlGender;
-
-  Voice({
-    this.languageCodes,
-    this.name,
-    this.naturalSampleRateHertz,
-    this.ssmlGender,
-  });
-
-  Voice.fromJson(core.Map json_)
-    : this(
-        languageCodes:
-            (json_['languageCodes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        name: json_['name'] as core.String?,
-        naturalSampleRateHertz: json_['naturalSampleRateHertz'] as core.int?,
-        ssmlGender: json_['ssmlGender'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCodes != null) 'languageCodes': languageCodes!,
-    if (name != null) 'name': name!,
-    if (naturalSampleRateHertz != null)
-      'naturalSampleRateHertz': naturalSampleRateHertz!,
-    if (ssmlGender != null) 'ssmlGender': ssmlGender!,
-  };
-}
+typedef Voice = $Voice;
 
 /// The configuration of Voice Clone feature.
-class VoiceCloneParams {
-  /// Created by GenerateVoiceCloningKey.
-  ///
-  /// Required.
-  core.String? voiceCloningKey;
-
-  VoiceCloneParams({this.voiceCloningKey});
-
-  VoiceCloneParams.fromJson(core.Map json_)
-    : this(voiceCloningKey: json_['voiceCloningKey'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (voiceCloningKey != null) 'voiceCloningKey': voiceCloningKey!,
-  };
-}
+typedef VoiceCloneParams = $VoiceCloneParams;
 
 /// Description of which voice to use for a synthesis request.
 class VoiceSelectionParams {

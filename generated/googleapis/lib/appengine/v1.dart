@@ -3126,81 +3126,7 @@ class ProjectsLocationsApplicationsServicesVersionsResource {
 
 /// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration
 /// for API handlers.
-class ApiConfigHandler {
-  /// Action to take when users access resources that require authentication.
-  ///
-  /// Defaults to redirect.
-  /// Possible string values are:
-  /// - "AUTH_FAIL_ACTION_UNSPECIFIED" : Not specified.
-  /// AUTH_FAIL_ACTION_REDIRECT is assumed.
-  /// - "AUTH_FAIL_ACTION_REDIRECT" : Redirects user to "accounts.google.com".
-  /// The user is redirected back to the application URL after signing in or
-  /// creating an account.
-  /// - "AUTH_FAIL_ACTION_UNAUTHORIZED" : Rejects request with a 401 HTTP status
-  /// code and an error message.
-  core.String? authFailAction;
-
-  /// Level of login required to access this resource.
-  ///
-  /// Defaults to optional.
-  /// Possible string values are:
-  /// - "LOGIN_UNSPECIFIED" : Not specified. LOGIN_OPTIONAL is assumed.
-  /// - "LOGIN_OPTIONAL" : Does not require that the user is signed in.
-  /// - "LOGIN_ADMIN" : If the user is not signed in, the auth_fail_action is
-  /// taken. In addition, if the user is not an administrator for the
-  /// application, they are given an error message regardless of
-  /// auth_fail_action. If the user is an administrator, the handler proceeds.
-  /// - "LOGIN_REQUIRED" : If the user has signed in, the handler proceeds
-  /// normally. Otherwise, the auth_fail_action is taken.
-  core.String? login;
-
-  /// Path to the script from the application root directory.
-  core.String? script;
-
-  /// Security (HTTPS) enforcement for this URL.
-  /// Possible string values are:
-  /// - "SECURE_UNSPECIFIED" : Not specified.
-  /// - "SECURE_DEFAULT" : Both HTTP and HTTPS requests with URLs that match the
-  /// handler succeed without redirects. The application can examine the request
-  /// to determine which protocol was used, and respond accordingly.
-  /// - "SECURE_NEVER" : Requests for a URL that match this handler that use
-  /// HTTPS are automatically redirected to the HTTP equivalent URL.
-  /// - "SECURE_OPTIONAL" : Both HTTP and HTTPS requests with URLs that match
-  /// the handler succeed without redirects. The application can examine the
-  /// request to determine which protocol was used and respond accordingly.
-  /// - "SECURE_ALWAYS" : Requests for a URL that match this handler that do not
-  /// use HTTPS are automatically redirected to the HTTPS URL with the same
-  /// path. Query parameters are reserved for the redirect.
-  core.String? securityLevel;
-
-  /// URL to serve the endpoint at.
-  core.String? url;
-
-  ApiConfigHandler({
-    this.authFailAction,
-    this.login,
-    this.script,
-    this.securityLevel,
-    this.url,
-  });
-
-  ApiConfigHandler.fromJson(core.Map json_)
-    : this(
-        authFailAction: json_['authFailAction'] as core.String?,
-        login: json_['login'] as core.String?,
-        script: json_['script'] as core.String?,
-        securityLevel: json_['securityLevel'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authFailAction != null) 'authFailAction': authFailAction!,
-    if (login != null) 'login': login!,
-    if (script != null) 'script': script!,
-    if (securityLevel != null) 'securityLevel': securityLevel!,
-    if (url != null) 'url': url!,
-  };
-}
+typedef ApiConfigHandler = $ApiConfigHandler;
 
 /// Uses Google Cloud Endpoints to handle requests.
 typedef ApiEndpointHandler = $Handler;
@@ -3532,30 +3458,7 @@ class AuthorizedCertificate {
 ///
 /// To authorize use of a domain, verify ownership via Search Console
 /// (https://search.google.com/search-console/welcome).
-class AuthorizedDomain {
-  /// Fully qualified domain name of the domain authorized for use.
-  ///
-  /// Example: example.com.
-  core.String? id;
-
-  /// Full path to the AuthorizedDomain resource in the API.
-  ///
-  /// Example: apps/myapp/authorizedDomains/example.com.@OutputOnly
-  core.String? name;
-
-  AuthorizedDomain({this.id, this.name});
-
-  AuthorizedDomain.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef AuthorizedDomain = $AuthorizedDomain;
 
 /// Automatic scaling is based on request rate, response latencies, and other
 /// application metrics.
@@ -3702,27 +3605,7 @@ class AutomaticScaling {
 ///
 /// The instance will be turned down when the app becomes idle. Basic scaling is
 /// ideal for work that is intermittent or driven by user activity.
-class BasicScaling {
-  /// Duration of time after the last request that an instance must wait before
-  /// the instance is shut down.
-  core.String? idleTimeout;
-
-  /// Maximum number of instances to create for this version.
-  core.int? maxInstances;
-
-  BasicScaling({this.idleTimeout, this.maxInstances});
-
-  BasicScaling.fromJson(core.Map json_)
-    : this(
-        idleTimeout: json_['idleTimeout'] as core.String?,
-        maxInstances: json_['maxInstances'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (idleTimeout != null) 'idleTimeout': idleTimeout!,
-    if (maxInstances != null) 'maxInstances': maxInstances!,
-  };
-}
+typedef BasicScaling = $BasicScaling;
 
 /// Request message for Firewall.BatchUpdateIngressRules.
 class BatchUpdateIngressRulesRequest {
@@ -3773,115 +3656,24 @@ class BatchUpdateIngressRulesResponse {
 }
 
 /// An SSL certificate obtained from a certificate authority.
-class CertificateRawData {
-  /// Unencrypted PEM encoded RSA private key.
-  ///
-  /// This field is set once on certificate creation and then encrypted. The key
-  /// size must be 2048 bits or fewer. Must include the header and footer.
-  /// Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY-----
-  /// @InputOnly
-  core.String? privateKey;
-
-  /// PEM encoded x.509 public key certificate.
-  ///
-  /// This field is set once on certificate creation. Must include the header
-  /// and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE-----
-  core.String? publicCertificate;
-
-  CertificateRawData({this.privateKey, this.publicCertificate});
-
-  CertificateRawData.fromJson(core.Map json_)
-    : this(
-        privateKey: json_['privateKey'] as core.String?,
-        publicCertificate: json_['publicCertificate'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (privateKey != null) 'privateKey': privateKey!,
-    if (publicCertificate != null) 'publicCertificate': publicCertificate!,
-  };
-}
+typedef CertificateRawData = $CertificateRawData;
 
 /// Options for the build operations performed as a part of the version
 /// deployment.
 ///
 /// Only applicable for App Engine flexible environment when creating a version
 /// using source code directly.
-class CloudBuildOptions {
-  /// Path to the yaml file used in deployment, used to determine runtime
-  /// configuration details.Required for flexible environment builds.See
-  /// https://cloud.google.com/appengine/docs/standard/python/config/appref for
-  /// more details.
-  core.String? appYamlPath;
-
-  /// The Cloud Build timeout used as part of any dependent builds performed by
-  /// version creation.
-  ///
-  /// Defaults to 10 minutes.
-  core.String? cloudBuildTimeout;
-
-  CloudBuildOptions({this.appYamlPath, this.cloudBuildTimeout});
-
-  CloudBuildOptions.fromJson(core.Map json_)
-    : this(
-        appYamlPath: json_['appYamlPath'] as core.String?,
-        cloudBuildTimeout: json_['cloudBuildTimeout'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appYamlPath != null) 'appYamlPath': appYamlPath!,
-    if (cloudBuildTimeout != null) 'cloudBuildTimeout': cloudBuildTimeout!,
-  };
-}
+typedef CloudBuildOptions = $CloudBuildOptions;
 
 /// Docker image that is used to create a container and start a VM instance for
 /// the version that you deploy.
 ///
 /// Only applicable for instances running in the App Engine flexible
 /// environment.
-class ContainerInfo {
-  /// URI to the hosted container image in Google Container Registry.
-  ///
-  /// The URI must be fully qualified and include a tag or digest. Examples:
-  /// "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
-  core.String? image;
-
-  ContainerInfo({this.image});
-
-  ContainerInfo.fromJson(core.Map json_)
-    : this(image: json_['image'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (image != null) 'image': image!,
-  };
-}
+typedef ContainerInfo = $ContainerInfo;
 
 /// Target scaling by CPU usage.
-class CpuUtilization {
-  /// Period of time over which CPU utilization is calculated.
-  core.String? aggregationWindowLength;
-
-  /// Target CPU utilization ratio to maintain when scaling.
-  ///
-  /// Must be between 0 and 1.
-  core.double? targetUtilization;
-
-  CpuUtilization({this.aggregationWindowLength, this.targetUtilization});
-
-  CpuUtilization.fromJson(core.Map json_)
-    : this(
-        aggregationWindowLength:
-            json_['aggregationWindowLength'] as core.String?,
-        targetUtilization:
-            (json_['targetUtilization'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (aggregationWindowLength != null)
-      'aggregationWindowLength': aggregationWindowLength!,
-    if (targetUtilization != null) 'targetUtilization': targetUtilization!,
-  };
-}
+typedef CpuUtilization = $CpuUtilization;
 
 /// Represents a whole or partial calendar date, such as a birthday.
 ///
@@ -3895,25 +3687,7 @@ class CpuUtilization {
 typedef Date = $Date;
 
 /// Request message for Instances.DebugInstance.
-class DebugInstanceRequest {
-  /// Public SSH key to add to the instance.
-  ///
-  /// Examples: \[USERNAME\]:ssh-rsa \[KEY_VALUE\] \[USERNAME\]
-  /// \[USERNAME\]:ssh-rsa \[KEY_VALUE\] google-ssh
-  /// {"userName":"\[USERNAME\]","expireOn":"\[EXPIRE_TIME\]"}For more
-  /// information, see Adding and Removing SSH Keys
-  /// (https://cloud.google.com/compute/docs/instances/adding-removing-ssh-keys).
-  core.String? sshKey;
-
-  DebugInstanceRequest({this.sshKey});
-
-  DebugInstanceRequest.fromJson(core.Map json_)
-    : this(sshKey: json_['sshKey'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (sshKey != null) 'sshKey': sshKey!,
-  };
-}
+typedef DebugInstanceRequest = $DebugInstanceRequest;
 
 /// Code and application artifacts used to deploy a version to App Engine.
 class Deployment {
@@ -3980,47 +3754,7 @@ class Deployment {
 /// Target scaling by disk usage.
 ///
 /// Only applicable in the App Engine flexible environment.
-class DiskUtilization {
-  /// Target bytes read per second.
-  core.int? targetReadBytesPerSecond;
-
-  /// Target ops read per seconds.
-  core.int? targetReadOpsPerSecond;
-
-  /// Target bytes written per second.
-  core.int? targetWriteBytesPerSecond;
-
-  /// Target ops written per second.
-  core.int? targetWriteOpsPerSecond;
-
-  DiskUtilization({
-    this.targetReadBytesPerSecond,
-    this.targetReadOpsPerSecond,
-    this.targetWriteBytesPerSecond,
-    this.targetWriteOpsPerSecond,
-  });
-
-  DiskUtilization.fromJson(core.Map json_)
-    : this(
-        targetReadBytesPerSecond:
-            json_['targetReadBytesPerSecond'] as core.int?,
-        targetReadOpsPerSecond: json_['targetReadOpsPerSecond'] as core.int?,
-        targetWriteBytesPerSecond:
-            json_['targetWriteBytesPerSecond'] as core.int?,
-        targetWriteOpsPerSecond: json_['targetWriteOpsPerSecond'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetReadBytesPerSecond != null)
-      'targetReadBytesPerSecond': targetReadBytesPerSecond!,
-    if (targetReadOpsPerSecond != null)
-      'targetReadOpsPerSecond': targetReadOpsPerSecond!,
-    if (targetWriteBytesPerSecond != null)
-      'targetWriteBytesPerSecond': targetWriteBytesPerSecond!,
-    if (targetWriteOpsPerSecond != null)
-      'targetWriteOpsPerSecond': targetWriteOpsPerSecond!,
-  };
-}
+typedef DiskUtilization = $DiskUtilization;
 
 /// A domain serving an App Engine application.
 class DomainMapping {
@@ -4090,584 +3824,46 @@ typedef Empty = $Empty;
 /// deployments.The fields here refer to the name and configuration ID of a
 /// "service" resource in the Service Management API
 /// (https://cloud.google.com/service-management/overview).
-class EndpointsApiService {
-  /// Endpoints service configuration ID as specified by the Service Management
-  /// API.
-  ///
-  /// For example "2016-09-19r1".By default, the rollout strategy for Endpoints
-  /// is RolloutStrategy.FIXED. This means that Endpoints starts up with a
-  /// particular configuration ID. When a new configuration is rolled out,
-  /// Endpoints must be given the new configuration ID. The config_id field is
-  /// used to give the configuration ID and is required in this case.Endpoints
-  /// also has a rollout strategy called RolloutStrategy.MANAGED. When using
-  /// this, Endpoints fetches the latest configuration and does not need the
-  /// configuration ID. In this case, config_id must be omitted.
-  core.String? configId;
-
-  /// Enable or disable trace sampling.
-  ///
-  /// By default, this is set to false for enabled.
-  core.bool? disableTraceSampling;
-
-  /// Endpoints service name which is the name of the "service" resource in the
-  /// Service Management API.
-  ///
-  /// For example "myapi.endpoints.myproject.cloud.goog"
-  core.String? name;
-
-  /// Endpoints rollout strategy.
-  ///
-  /// If FIXED, config_id must be specified. If MANAGED, config_id must be
-  /// omitted.
-  /// Possible string values are:
-  /// - "UNSPECIFIED_ROLLOUT_STRATEGY" : Not specified. Defaults to FIXED.
-  /// - "FIXED" : Endpoints service configuration ID will be fixed to the
-  /// configuration ID specified by config_id.
-  /// - "MANAGED" : Endpoints service configuration ID will be updated with each
-  /// rollout.
-  core.String? rolloutStrategy;
-
-  EndpointsApiService({
-    this.configId,
-    this.disableTraceSampling,
-    this.name,
-    this.rolloutStrategy,
-  });
-
-  EndpointsApiService.fromJson(core.Map json_)
-    : this(
-        configId: json_['configId'] as core.String?,
-        disableTraceSampling: json_['disableTraceSampling'] as core.bool?,
-        name: json_['name'] as core.String?,
-        rolloutStrategy: json_['rolloutStrategy'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (configId != null) 'configId': configId!,
-    if (disableTraceSampling != null)
-      'disableTraceSampling': disableTraceSampling!,
-    if (name != null) 'name': name!,
-    if (rolloutStrategy != null) 'rolloutStrategy': rolloutStrategy!,
-  };
-}
+typedef EndpointsApiService = $EndpointsApiService;
 
 /// The entrypoint for the application.
-class Entrypoint {
-  /// The format should be a shell command that can be fed to bash -c.
-  core.String? shell;
-
-  Entrypoint({this.shell});
-
-  Entrypoint.fromJson(core.Map json_)
-    : this(shell: json_['shell'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (shell != null) 'shell': shell!,
-  };
-}
+typedef Entrypoint = $Entrypoint;
 
 /// Custom static error page to be served when an error occurs.
-class ErrorHandler {
-  /// Error condition this handler applies to.
-  /// Possible string values are:
-  /// - "ERROR_CODE_UNSPECIFIED" : Not specified. ERROR_CODE_DEFAULT is assumed.
-  /// - "ERROR_CODE_DEFAULT" : All other error types.
-  /// - "ERROR_CODE_OVER_QUOTA" : Application has exceeded a resource quota.
-  /// - "ERROR_CODE_DOS_API_DENIAL" : Client blocked by the application's Denial
-  /// of Service protection configuration.
-  /// - "ERROR_CODE_TIMEOUT" : Deadline reached before the application responds.
-  core.String? errorCode;
-
-  /// MIME type of file.
-  ///
-  /// Defaults to text/html.
-  core.String? mimeType;
-
-  /// Static file content to be served for this error.
-  core.String? staticFile;
-
-  ErrorHandler({this.errorCode, this.mimeType, this.staticFile});
-
-  ErrorHandler.fromJson(core.Map json_)
-    : this(
-        errorCode: json_['errorCode'] as core.String?,
-        mimeType: json_['mimeType'] as core.String?,
-        staticFile: json_['staticFile'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorCode != null) 'errorCode': errorCode!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (staticFile != null) 'staticFile': staticFile!,
-  };
-}
+typedef ErrorHandler = $ErrorHandler;
 
 /// The feature specific settings to be used in the application.
 ///
 /// These define behaviors that are user configurable.
-class FeatureSettings {
-  /// Boolean value indicating if split health checks should be used instead of
-  /// the legacy health checks.
-  ///
-  /// At an app.yaml level, this means defaulting to 'readiness_check' and
-  /// 'liveness_check' values instead of 'health_check' ones. Once the legacy
-  /// 'health_check' behavior is deprecated, and this value is always true, this
-  /// setting can be removed.
-  core.bool? splitHealthChecks;
-
-  /// If true, use Container-Optimized OS
-  /// (https://cloud.google.com/container-optimized-os/) base image for VMs,
-  /// rather than a base Debian image.
-  core.bool? useContainerOptimizedOs;
-
-  FeatureSettings({this.splitHealthChecks, this.useContainerOptimizedOs});
-
-  FeatureSettings.fromJson(core.Map json_)
-    : this(
-        splitHealthChecks: json_['splitHealthChecks'] as core.bool?,
-        useContainerOptimizedOs: json_['useContainerOptimizedOs'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (splitHealthChecks != null) 'splitHealthChecks': splitHealthChecks!,
-    if (useContainerOptimizedOs != null)
-      'useContainerOptimizedOs': useContainerOptimizedOs!,
-  };
-}
+typedef FeatureSettings = $FeatureSettings;
 
 /// Single source file that is part of the version to be deployed.
 ///
 /// Each source file that is deployed must be specified separately.
-class FileInfo {
-  /// The MIME type of the file.Defaults to the value from Google Cloud Storage.
-  core.String? mimeType;
-
-  /// The SHA1 hash of the file, in hex.
-  core.String? sha1Sum;
-
-  /// URL source to use to fetch this file.
-  ///
-  /// Must be a URL to a resource in Google Cloud Storage in the form
-  /// 'http(s)://storage.googleapis.com//'.
-  core.String? sourceUrl;
-
-  FileInfo({this.mimeType, this.sha1Sum, this.sourceUrl});
-
-  FileInfo.fromJson(core.Map json_)
-    : this(
-        mimeType: json_['mimeType'] as core.String?,
-        sha1Sum: json_['sha1Sum'] as core.String?,
-        sourceUrl: json_['sourceUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (sha1Sum != null) 'sha1Sum': sha1Sum!,
-    if (sourceUrl != null) 'sourceUrl': sourceUrl!,
-  };
-}
+typedef FileInfo = $FileInfo;
 
 /// A single firewall rule that is evaluated against incoming traffic and
 /// provides an action to take on matched requests.
-class FirewallRule {
-  /// The action to take on matched requests.
-  /// Possible string values are:
-  /// - "UNSPECIFIED_ACTION"
-  /// - "ALLOW" : Matching requests are allowed.
-  /// - "DENY" : Matching requests are denied.
-  core.String? action;
-
-  /// An optional string description of this rule.
-  ///
-  /// This field has a maximum length of 400 characters.
-  core.String? description;
-
-  /// A positive integer between 1, Int32.MaxValue-1 that defines the order of
-  /// rule evaluation.
-  ///
-  /// Rules with the lowest priority are evaluated first.A default rule at
-  /// priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous
-  /// rule matches. Only the action of this rule can be modified by the user.
-  core.int? priority;
-
-  /// IP address or range, defined using CIDR notation, of requests that this
-  /// rule applies to.
-  ///
-  /// You can use the wildcard character "*" to match all IPs equivalent to
-  /// "0/0" and "::/0" together. Examples: 192.168.1.1 or 192.168.0.0/16 or
-  /// 2001:db8::/32 or 2001:0db8:0000:0042:0000:8a2e:0370:7334. Truncation will
-  /// be silently performed on addresses which are not properly truncated. For
-  /// example, 1.2.3.4/24 is accepted as the same address as 1.2.3.0/24.
-  /// Similarly, for IPv6, 2001:db8::1/32 is accepted as the same address as
-  /// 2001:db8::/32.
-  core.String? sourceRange;
-
-  FirewallRule({
-    this.action,
-    this.description,
-    this.priority,
-    this.sourceRange,
-  });
-
-  FirewallRule.fromJson(core.Map json_)
-    : this(
-        action: json_['action'] as core.String?,
-        description: json_['description'] as core.String?,
-        priority: json_['priority'] as core.int?,
-        sourceRange: json_['sourceRange'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (action != null) 'action': action!,
-    if (description != null) 'description': description!,
-    if (priority != null) 'priority': priority!,
-    if (sourceRange != null) 'sourceRange': sourceRange!,
-  };
-}
+typedef FirewallRule = $FirewallRule;
 
 /// Runtime settings for the App Engine flexible environment.
-class FlexibleRuntimeSettings {
-  /// The operating system of the application runtime.
-  core.String? operatingSystem;
-
-  /// The runtime version of an App Engine flexible application.
-  core.String? runtimeVersion;
-
-  FlexibleRuntimeSettings({this.operatingSystem, this.runtimeVersion});
-
-  FlexibleRuntimeSettings.fromJson(core.Map json_)
-    : this(
-        operatingSystem: json_['operatingSystem'] as core.String?,
-        runtimeVersion: json_['runtimeVersion'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (operatingSystem != null) 'operatingSystem': operatingSystem!,
-    if (runtimeVersion != null) 'runtimeVersion': runtimeVersion!,
-  };
-}
+typedef FlexibleRuntimeSettings = $FlexibleRuntimeSettings;
 
 /// Health checking configuration for VM instances.
 ///
 /// Unhealthy instances are killed and replaced with new instances. Only
 /// applicable for instances in App Engine flexible environment.
-class HealthCheck {
-  /// Interval between health checks.
-  core.String? checkInterval;
-
-  /// Whether to explicitly disable health checks for this instance.
-  core.bool? disableHealthCheck;
-
-  /// Number of consecutive successful health checks required before receiving
-  /// traffic.
-  core.int? healthyThreshold;
-
-  /// Host header to send when performing an HTTP health check.
-  ///
-  /// Example: "myapp.appspot.com"
-  core.String? host;
-
-  /// Number of consecutive failed health checks required before an instance is
-  /// restarted.
-  core.int? restartThreshold;
-
-  /// Time before the health check is considered failed.
-  core.String? timeout;
-
-  /// Number of consecutive failed health checks required before removing
-  /// traffic.
-  core.int? unhealthyThreshold;
-
-  HealthCheck({
-    this.checkInterval,
-    this.disableHealthCheck,
-    this.healthyThreshold,
-    this.host,
-    this.restartThreshold,
-    this.timeout,
-    this.unhealthyThreshold,
-  });
-
-  HealthCheck.fromJson(core.Map json_)
-    : this(
-        checkInterval: json_['checkInterval'] as core.String?,
-        disableHealthCheck: json_['disableHealthCheck'] as core.bool?,
-        healthyThreshold: json_['healthyThreshold'] as core.int?,
-        host: json_['host'] as core.String?,
-        restartThreshold: json_['restartThreshold'] as core.int?,
-        timeout: json_['timeout'] as core.String?,
-        unhealthyThreshold: json_['unhealthyThreshold'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checkInterval != null) 'checkInterval': checkInterval!,
-    if (disableHealthCheck != null) 'disableHealthCheck': disableHealthCheck!,
-    if (healthyThreshold != null) 'healthyThreshold': healthyThreshold!,
-    if (host != null) 'host': host!,
-    if (restartThreshold != null) 'restartThreshold': restartThreshold!,
-    if (timeout != null) 'timeout': timeout!,
-    if (unhealthyThreshold != null) 'unhealthyThreshold': unhealthyThreshold!,
-  };
-}
+typedef HealthCheck = $HealthCheck;
 
 /// Identity-Aware Proxy
-class IdentityAwareProxy {
-  /// Whether the serving infrastructure will authenticate and authorize all
-  /// incoming requests.If true, the oauth2_client_id and oauth2_client_secret
-  /// fields must be non-empty.
-  core.bool? enabled;
-
-  /// OAuth2 client ID to use for the authentication flow.
-  core.String? oauth2ClientId;
-
-  /// OAuth2 client secret to use for the authentication flow.For security
-  /// reasons, this value cannot be retrieved via the API.
-  ///
-  /// Instead, the SHA-256 hash of the value is returned in the
-  /// oauth2_client_secret_sha256 field.@InputOnly
-  core.String? oauth2ClientSecret;
-
-  /// Hex-encoded SHA-256 hash of the client secret.@OutputOnly
-  ///
-  /// Output only.
-  core.String? oauth2ClientSecretSha256;
-
-  IdentityAwareProxy({
-    this.enabled,
-    this.oauth2ClientId,
-    this.oauth2ClientSecret,
-    this.oauth2ClientSecretSha256,
-  });
-
-  IdentityAwareProxy.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        oauth2ClientId: json_['oauth2ClientId'] as core.String?,
-        oauth2ClientSecret: json_['oauth2ClientSecret'] as core.String?,
-        oauth2ClientSecretSha256:
-            json_['oauth2ClientSecretSha256'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (oauth2ClientId != null) 'oauth2ClientId': oauth2ClientId!,
-    if (oauth2ClientSecret != null) 'oauth2ClientSecret': oauth2ClientSecret!,
-    if (oauth2ClientSecretSha256 != null)
-      'oauth2ClientSecretSha256': oauth2ClientSecretSha256!,
-  };
-}
+typedef IdentityAwareProxy = $IdentityAwareProxy;
 
 /// An Instance resource is the computing unit that App Engine uses to
 /// automatically scale an application.
-class Instance {
-  /// App Engine release this instance is running on.
-  ///
-  /// Output only.
-  core.String? appEngineRelease;
-
-  /// Availability of the instance.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "UNSPECIFIED"
-  /// - "RESIDENT"
-  /// - "DYNAMIC"
-  core.String? availability;
-
-  /// Average latency (ms) over the last minute.
-  ///
-  /// Output only.
-  core.int? averageLatency;
-
-  /// Number of errors since this instance was started.
-  ///
-  /// Output only.
-  core.int? errors;
-
-  /// Relative name of the instance within the version.
-  ///
-  /// Example: instance-1.
-  ///
-  /// Output only.
-  core.String? id;
-
-  /// Total memory in use (bytes).
-  ///
-  /// Output only.
-  core.String? memoryUsage;
-
-  /// Full path to the Instance resource in the API.
-  ///
-  /// Example: apps/myapp/services/default/versions/v1/instances/instance-1.
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Average queries per second (QPS) over the last minute.
-  ///
-  /// Output only.
-  core.double? qps;
-
-  /// Number of requests since this instance was started.
-  ///
-  /// Output only.
-  core.int? requests;
-
-  /// Time that this instance was started.@OutputOnly
-  ///
-  /// Output only.
-  core.String? startTime;
-
-  /// Whether this instance is in debug mode.
-  ///
-  /// Only applicable for instances in App Engine flexible environment.
-  ///
-  /// Output only.
-  core.bool? vmDebugEnabled;
-
-  /// Virtual machine ID of this instance.
-  ///
-  /// Only applicable for instances in App Engine flexible environment.
-  ///
-  /// Output only.
-  core.String? vmId;
-
-  /// The IP address of this instance.
-  ///
-  /// Only applicable for instances in App Engine flexible environment.
-  ///
-  /// Output only.
-  core.String? vmIp;
-
-  /// The liveness health check of this instance.
-  ///
-  /// Only applicable for instances in App Engine flexible environment.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "LIVENESS_STATE_UNSPECIFIED" : There is no liveness health check for the
-  /// instance. Only applicable for instances in App Engine standard
-  /// environment.
-  /// - "UNKNOWN" : The health checking system is aware of the instance but its
-  /// health is not known at the moment.
-  /// - "HEALTHY" : The instance is reachable i.e. a connection to the
-  /// application health checking endpoint can be established, and conforms to
-  /// the requirements defined by the health check.
-  /// - "UNHEALTHY" : The instance is reachable, but does not conform to the
-  /// requirements defined by the health check.
-  /// - "DRAINING" : The instance is being drained. The existing connections to
-  /// the instance have time to complete, but the new ones are being refused.
-  /// - "TIMEOUT" : The instance is unreachable i.e. a connection to the
-  /// application health checking endpoint cannot be established, or the server
-  /// does not respond within the specified timeout.
-  core.String? vmLiveness;
-
-  /// Name of the virtual machine where this instance lives.
-  ///
-  /// Only applicable for instances in App Engine flexible environment.
-  ///
-  /// Output only.
-  core.String? vmName;
-
-  /// Status of the virtual machine where this instance lives.
-  ///
-  /// Only applicable for instances in App Engine flexible environment.
-  ///
-  /// Output only.
-  core.String? vmStatus;
-
-  /// Zone where the virtual machine is located.
-  ///
-  /// Only applicable for instances in App Engine flexible environment.
-  ///
-  /// Output only.
-  core.String? vmZoneName;
-
-  Instance({
-    this.appEngineRelease,
-    this.availability,
-    this.averageLatency,
-    this.errors,
-    this.id,
-    this.memoryUsage,
-    this.name,
-    this.qps,
-    this.requests,
-    this.startTime,
-    this.vmDebugEnabled,
-    this.vmId,
-    this.vmIp,
-    this.vmLiveness,
-    this.vmName,
-    this.vmStatus,
-    this.vmZoneName,
-  });
-
-  Instance.fromJson(core.Map json_)
-    : this(
-        appEngineRelease: json_['appEngineRelease'] as core.String?,
-        availability: json_['availability'] as core.String?,
-        averageLatency: json_['averageLatency'] as core.int?,
-        errors: json_['errors'] as core.int?,
-        id: json_['id'] as core.String?,
-        memoryUsage: json_['memoryUsage'] as core.String?,
-        name: json_['name'] as core.String?,
-        qps: (json_['qps'] as core.num?)?.toDouble(),
-        requests: json_['requests'] as core.int?,
-        startTime: json_['startTime'] as core.String?,
-        vmDebugEnabled: json_['vmDebugEnabled'] as core.bool?,
-        vmId: json_['vmId'] as core.String?,
-        vmIp: json_['vmIp'] as core.String?,
-        vmLiveness: json_['vmLiveness'] as core.String?,
-        vmName: json_['vmName'] as core.String?,
-        vmStatus: json_['vmStatus'] as core.String?,
-        vmZoneName: json_['vmZoneName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appEngineRelease != null) 'appEngineRelease': appEngineRelease!,
-    if (availability != null) 'availability': availability!,
-    if (averageLatency != null) 'averageLatency': averageLatency!,
-    if (errors != null) 'errors': errors!,
-    if (id != null) 'id': id!,
-    if (memoryUsage != null) 'memoryUsage': memoryUsage!,
-    if (name != null) 'name': name!,
-    if (qps != null) 'qps': qps!,
-    if (requests != null) 'requests': requests!,
-    if (startTime != null) 'startTime': startTime!,
-    if (vmDebugEnabled != null) 'vmDebugEnabled': vmDebugEnabled!,
-    if (vmId != null) 'vmId': vmId!,
-    if (vmIp != null) 'vmIp': vmIp!,
-    if (vmLiveness != null) 'vmLiveness': vmLiveness!,
-    if (vmName != null) 'vmName': vmName!,
-    if (vmStatus != null) 'vmStatus': vmStatus!,
-    if (vmZoneName != null) 'vmZoneName': vmZoneName!,
-  };
-}
+typedef Instance = $Instance05;
 
 /// Third-party Python runtime library that is required by the application.
-class Library {
-  /// Name of the library.
-  ///
-  /// Example: "django".
-  core.String? name;
-
-  /// Version of the library to select, or "latest".
-  core.String? version;
-
-  Library({this.name, this.version});
-
-  Library.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef Library = $Library;
 
 /// Response message for AuthorizedCertificates.ListAuthorizedCertificates.
 class ListAuthorizedCertificatesResponse {
@@ -4962,294 +4158,31 @@ class ListVersionsResponse {
 /// Health checking configuration for VM instances.
 ///
 /// Unhealthy instances are killed and replaced with new instances.
-class LivenessCheck {
-  /// Interval between health checks.
-  core.String? checkInterval;
-
-  /// Number of consecutive failed checks required before considering the VM
-  /// unhealthy.
-  core.int? failureThreshold;
-
-  /// Host header to send when performing a HTTP Liveness check.
-  ///
-  /// Example: "myapp.appspot.com"
-  core.String? host;
-
-  /// The initial delay before starting to execute the checks.
-  core.String? initialDelay;
-
-  /// The request path.
-  core.String? path;
-
-  /// Number of consecutive successful checks required before considering the VM
-  /// healthy.
-  core.int? successThreshold;
-
-  /// Time before the check is considered failed.
-  core.String? timeout;
-
-  LivenessCheck({
-    this.checkInterval,
-    this.failureThreshold,
-    this.host,
-    this.initialDelay,
-    this.path,
-    this.successThreshold,
-    this.timeout,
-  });
-
-  LivenessCheck.fromJson(core.Map json_)
-    : this(
-        checkInterval: json_['checkInterval'] as core.String?,
-        failureThreshold: json_['failureThreshold'] as core.int?,
-        host: json_['host'] as core.String?,
-        initialDelay: json_['initialDelay'] as core.String?,
-        path: json_['path'] as core.String?,
-        successThreshold: json_['successThreshold'] as core.int?,
-        timeout: json_['timeout'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (checkInterval != null) 'checkInterval': checkInterval!,
-    if (failureThreshold != null) 'failureThreshold': failureThreshold!,
-    if (host != null) 'host': host!,
-    if (initialDelay != null) 'initialDelay': initialDelay!,
-    if (path != null) 'path': path!,
-    if (successThreshold != null) 'successThreshold': successThreshold!,
-    if (timeout != null) 'timeout': timeout!,
-  };
-}
+typedef LivenessCheck = $LivenessCheck;
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location01;
 
 /// A certificate managed by App Engine.
-class ManagedCertificate {
-  /// Time at which the certificate was last renewed.
-  ///
-  /// The renewal process is fully managed. Certificate renewal will
-  /// automatically occur before the certificate expires. Renewal errors can be
-  /// tracked via ManagementStatus.@OutputOnly
-  core.String? lastRenewalTime;
-
-  /// Status of certificate management.
-  ///
-  /// Refers to the most recent certificate acquisition or renewal
-  /// attempt.@OutputOnly
-  /// Possible string values are:
-  /// - "MANAGEMENT_STATUS_UNSPECIFIED"
-  /// - "OK" : Certificate was successfully obtained and inserted into the
-  /// serving system.
-  /// - "PENDING" : Certificate is under active attempts to acquire or renew.
-  /// - "FAILED_RETRYING_NOT_VISIBLE" : Most recent renewal failed due to an
-  /// invalid DNS setup and will be retried. Renewal attempts will continue to
-  /// fail until the certificate domain's DNS configuration is fixed. The last
-  /// successfully provisioned certificate may still be serving.
-  /// - "FAILED_PERMANENT" : All renewal attempts have been exhausted, likely
-  /// due to an invalid DNS setup.
-  /// - "FAILED_RETRYING_CAA_FORBIDDEN" : Most recent renewal failed due to an
-  /// explicit CAA record that does not include one of the in-use CAs (Google CA
-  /// and Let's Encrypt). Renewals will continue to fail until the CAA is
-  /// reconfigured. The last successfully provisioned certificate may still be
-  /// serving.
-  /// - "FAILED_RETRYING_CAA_CHECKING" : Most recent renewal failed due to a CAA
-  /// retrieval failure. This means that the domain's DNS provider does not
-  /// properly handle CAA records, failing requests for CAA records when no CAA
-  /// records are defined. Renewals will continue to fail until the DNS provider
-  /// is changed or a CAA record is added for the given domain. The last
-  /// successfully provisioned certificate may still be serving.
-  core.String? status;
-
-  ManagedCertificate({this.lastRenewalTime, this.status});
-
-  ManagedCertificate.fromJson(core.Map json_)
-    : this(
-        lastRenewalTime: json_['lastRenewalTime'] as core.String?,
-        status: json_['status'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (lastRenewalTime != null) 'lastRenewalTime': lastRenewalTime!,
-    if (status != null) 'status': status!,
-  };
-}
+typedef ManagedCertificate = $ManagedCertificate;
 
 /// A service with manual scaling runs continuously, allowing you to perform
 /// complex initialization and rely on the state of its memory over time.
-class ManualScaling {
-  /// Number of instances to assign to the service at the start.
-  ///
-  /// This number can later be altered by using the Modules API
-  /// (https://cloud.google.com/appengine/docs/python/modules/functions)
-  /// set_num_instances() function.
-  core.int? instances;
-
-  ManualScaling({this.instances});
-
-  ManualScaling.fromJson(core.Map json_)
-    : this(instances: json_['instances'] as core.int?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (instances != null) 'instances': instances!,
-  };
-}
+typedef ManualScaling = $ManualScaling;
 
 /// Extra network settings.
 ///
 /// Only applicable in the App Engine flexible environment.
-class Network {
-  /// List of ports, or port pairs, to forward from the virtual machine to the
-  /// application container.
-  ///
-  /// Only applicable in the App Engine flexible environment.
-  core.List<core.String>? forwardedPorts;
-
-  /// The IP mode for instances.
-  ///
-  /// Only applicable in the App Engine flexible environment.
-  /// Possible string values are:
-  /// - "INSTANCE_IP_MODE_UNSPECIFIED" : Unspecified is treated as EXTERNAL.
-  /// - "EXTERNAL" : Instances are created with both internal and external IP
-  /// addresses.
-  /// - "INTERNAL" : Instances are created with internal IP addresses only.
-  core.String? instanceIpMode;
-
-  /// Tag to apply to the instance during creation.
-  ///
-  /// Only applicable in the App Engine flexible environment.
-  core.String? instanceTag;
-
-  /// Google Compute Engine network where the virtual machines are created.
-  ///
-  /// Specify the short name, not the resource path.Defaults to default.
-  core.String? name;
-
-  /// Enable session affinity.
-  ///
-  /// Only applicable in the App Engine flexible environment.
-  core.bool? sessionAffinity;
-
-  /// Google Cloud Platform sub-network where the virtual machines are created.
-  ///
-  /// Specify the short name, not the resource path.If a subnetwork name is
-  /// specified, a network name will also be required unless it is for the
-  /// default network. If the network that the instance is being created in is a
-  /// Legacy network, then the IP address is allocated from the IPv4Range. If
-  /// the network that the instance is being created in is an auto Subnet Mode
-  /// Network, then only network name should be specified (not the
-  /// subnetwork_name) and the IP address is created from the IPCidrRange of the
-  /// subnetwork that exists in that zone for that network. If the network that
-  /// the instance is being created in is a custom Subnet Mode Network, then the
-  /// subnetwork_name must be specified and the IP address is created from the
-  /// IPCidrRange of the subnetwork.If specified, the subnetwork must exist in
-  /// the same region as the App Engine flexible environment application.
-  core.String? subnetworkName;
-
-  Network({
-    this.forwardedPorts,
-    this.instanceIpMode,
-    this.instanceTag,
-    this.name,
-    this.sessionAffinity,
-    this.subnetworkName,
-  });
-
-  Network.fromJson(core.Map json_)
-    : this(
-        forwardedPorts:
-            (json_['forwardedPorts'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        instanceIpMode: json_['instanceIpMode'] as core.String?,
-        instanceTag: json_['instanceTag'] as core.String?,
-        name: json_['name'] as core.String?,
-        sessionAffinity: json_['sessionAffinity'] as core.bool?,
-        subnetworkName: json_['subnetworkName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (forwardedPorts != null) 'forwardedPorts': forwardedPorts!,
-    if (instanceIpMode != null) 'instanceIpMode': instanceIpMode!,
-    if (instanceTag != null) 'instanceTag': instanceTag!,
-    if (name != null) 'name': name!,
-    if (sessionAffinity != null) 'sessionAffinity': sessionAffinity!,
-    if (subnetworkName != null) 'subnetworkName': subnetworkName!,
-  };
-}
+typedef Network = $Network;
 
 /// A NetworkSettings resource is a container for ingress settings for a version
 /// or service.
-class NetworkSettings {
-  /// The ingress settings for version or service.
-  /// Possible string values are:
-  /// - "INGRESS_TRAFFIC_ALLOWED_UNSPECIFIED" : Unspecified
-  /// - "INGRESS_TRAFFIC_ALLOWED_ALL" : Allow HTTP traffic from public and
-  /// private sources.
-  /// - "INGRESS_TRAFFIC_ALLOWED_INTERNAL_ONLY" : Allow HTTP traffic from only
-  /// private VPC sources.
-  /// - "INGRESS_TRAFFIC_ALLOWED_INTERNAL_AND_LB" : Allow HTTP traffic from
-  /// private VPC sources and through load balancers.
-  core.String? ingressTrafficAllowed;
-
-  NetworkSettings({this.ingressTrafficAllowed});
-
-  NetworkSettings.fromJson(core.Map json_)
-    : this(
-        ingressTrafficAllowed: json_['ingressTrafficAllowed'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ingressTrafficAllowed != null)
-      'ingressTrafficAllowed': ingressTrafficAllowed!,
-  };
-}
+typedef NetworkSettings = $NetworkSettings;
 
 /// Target scaling by network usage.
 ///
 /// Only applicable in the App Engine flexible environment.
-class NetworkUtilization {
-  /// Target bytes received per second.
-  core.int? targetReceivedBytesPerSecond;
-
-  /// Target packets received per second.
-  core.int? targetReceivedPacketsPerSecond;
-
-  /// Target bytes sent per second.
-  core.int? targetSentBytesPerSecond;
-
-  /// Target packets sent per second.
-  core.int? targetSentPacketsPerSecond;
-
-  NetworkUtilization({
-    this.targetReceivedBytesPerSecond,
-    this.targetReceivedPacketsPerSecond,
-    this.targetSentBytesPerSecond,
-    this.targetSentPacketsPerSecond,
-  });
-
-  NetworkUtilization.fromJson(core.Map json_)
-    : this(
-        targetReceivedBytesPerSecond:
-            json_['targetReceivedBytesPerSecond'] as core.int?,
-        targetReceivedPacketsPerSecond:
-            json_['targetReceivedPacketsPerSecond'] as core.int?,
-        targetSentBytesPerSecond:
-            json_['targetSentBytesPerSecond'] as core.int?,
-        targetSentPacketsPerSecond:
-            json_['targetSentPacketsPerSecond'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetReceivedBytesPerSecond != null)
-      'targetReceivedBytesPerSecond': targetReceivedBytesPerSecond!,
-    if (targetReceivedPacketsPerSecond != null)
-      'targetReceivedPacketsPerSecond': targetReceivedPacketsPerSecond!,
-    if (targetSentBytesPerSecond != null)
-      'targetSentBytesPerSecond': targetSentBytesPerSecond!,
-    if (targetSentPacketsPerSecond != null)
-      'targetSentPacketsPerSecond': targetSentPacketsPerSecond!,
-  };
-}
+typedef NetworkUtilization = $NetworkUtilization;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -5328,63 +4261,7 @@ class Operation {
 /// Readiness checking configuration for VM instances.
 ///
 /// Unhealthy instances are removed from traffic rotation.
-class ReadinessCheck {
-  /// A maximum time limit on application initialization, measured from moment
-  /// the application successfully replies to a healthcheck until it is ready to
-  /// serve traffic.
-  core.String? appStartTimeout;
-
-  /// Interval between health checks.
-  core.String? checkInterval;
-
-  /// Number of consecutive failed checks required before removing traffic.
-  core.int? failureThreshold;
-
-  /// Host header to send when performing a HTTP Readiness check.
-  ///
-  /// Example: "myapp.appspot.com"
-  core.String? host;
-
-  /// The request path.
-  core.String? path;
-
-  /// Number of consecutive successful checks required before receiving traffic.
-  core.int? successThreshold;
-
-  /// Time before the check is considered failed.
-  core.String? timeout;
-
-  ReadinessCheck({
-    this.appStartTimeout,
-    this.checkInterval,
-    this.failureThreshold,
-    this.host,
-    this.path,
-    this.successThreshold,
-    this.timeout,
-  });
-
-  ReadinessCheck.fromJson(core.Map json_)
-    : this(
-        appStartTimeout: json_['appStartTimeout'] as core.String?,
-        checkInterval: json_['checkInterval'] as core.String?,
-        failureThreshold: json_['failureThreshold'] as core.int?,
-        host: json_['host'] as core.String?,
-        path: json_['path'] as core.String?,
-        successThreshold: json_['successThreshold'] as core.int?,
-        timeout: json_['timeout'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appStartTimeout != null) 'appStartTimeout': appStartTimeout!,
-    if (checkInterval != null) 'checkInterval': checkInterval!,
-    if (failureThreshold != null) 'failureThreshold': failureThreshold!,
-    if (host != null) 'host': host!,
-    if (path != null) 'path': path!,
-    if (successThreshold != null) 'successThreshold': successThreshold!,
-    if (timeout != null) 'timeout': timeout!,
-  };
-}
+typedef ReadinessCheck = $ReadinessCheck00;
 
 /// Request message for 'Applications.RepairApplication'.
 typedef RepairApplicationRequest = $Empty;
@@ -5392,33 +4269,7 @@ typedef RepairApplicationRequest = $Empty;
 /// Target scaling by request utilization.
 ///
 /// Only applicable in the App Engine flexible environment.
-class RequestUtilization {
-  /// Target number of concurrent requests.
-  core.int? targetConcurrentRequests;
-
-  /// Target requests per second.
-  core.int? targetRequestCountPerSecond;
-
-  RequestUtilization({
-    this.targetConcurrentRequests,
-    this.targetRequestCountPerSecond,
-  });
-
-  RequestUtilization.fromJson(core.Map json_)
-    : this(
-        targetConcurrentRequests:
-            json_['targetConcurrentRequests'] as core.int?,
-        targetRequestCountPerSecond:
-            json_['targetRequestCountPerSecond'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (targetConcurrentRequests != null)
-      'targetConcurrentRequests': targetConcurrentRequests!,
-    if (targetRequestCountPerSecond != null)
-      'targetRequestCountPerSecond': targetRequestCountPerSecond!,
-  };
-}
+typedef RequestUtilization = $RequestUtilization;
 
 /// A DNS resource record.
 class ResourceRecord {
@@ -5781,125 +4632,14 @@ class SslSettings {
 }
 
 /// Scheduler settings for standard environment.
-class StandardSchedulerSettings {
-  /// Maximum number of instances to run for this version.
-  ///
-  /// Set to 2147483647 to disable max_instances configuration.
-  core.int? maxInstances;
-
-  /// Minimum number of instances to run for this version.
-  ///
-  /// Set to zero to disable min_instances configuration.
-  core.int? minInstances;
-
-  /// Target CPU utilization ratio to maintain when scaling.
-  core.double? targetCpuUtilization;
-
-  /// Target throughput utilization ratio to maintain when scaling
-  core.double? targetThroughputUtilization;
-
-  StandardSchedulerSettings({
-    this.maxInstances,
-    this.minInstances,
-    this.targetCpuUtilization,
-    this.targetThroughputUtilization,
-  });
-
-  StandardSchedulerSettings.fromJson(core.Map json_)
-    : this(
-        maxInstances: json_['maxInstances'] as core.int?,
-        minInstances: json_['minInstances'] as core.int?,
-        targetCpuUtilization:
-            (json_['targetCpuUtilization'] as core.num?)?.toDouble(),
-        targetThroughputUtilization:
-            (json_['targetThroughputUtilization'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxInstances != null) 'maxInstances': maxInstances!,
-    if (minInstances != null) 'minInstances': minInstances!,
-    if (targetCpuUtilization != null)
-      'targetCpuUtilization': targetCpuUtilization!,
-    if (targetThroughputUtilization != null)
-      'targetThroughputUtilization': targetThroughputUtilization!,
-  };
-}
+typedef StandardSchedulerSettings = $StandardSchedulerSettings;
 
 /// Files served directly to the user for a given URL, such as images, CSS
 /// stylesheets, or JavaScript source files.
 ///
 /// Static file handlers describe which files in the application directory are
 /// static files, and which URLs serve them.
-class StaticFilesHandler {
-  /// Whether files should also be uploaded as code data.
-  ///
-  /// By default, files declared in static file handlers are uploaded as static
-  /// data and are only served to end users; they cannot be read by the
-  /// application. If enabled, uploads are charged against both your code and
-  /// static data storage resource quotas.
-  core.bool? applicationReadable;
-
-  /// Time a static file served by this handler should be cached by web proxies
-  /// and browsers.
-  core.String? expiration;
-
-  /// HTTP headers to use for all responses from these URLs.
-  core.Map<core.String, core.String>? httpHeaders;
-
-  /// MIME type used to serve all files served by this handler.Defaults to
-  /// file-specific MIME types, which are derived from each file's filename
-  /// extension.
-  core.String? mimeType;
-
-  /// Path to the static files matched by the URL pattern, from the application
-  /// root directory.
-  ///
-  /// The path can refer to text matched in groupings in the URL pattern.
-  core.String? path;
-
-  /// Whether this handler should match the request if the file referenced by
-  /// the handler does not exist.
-  core.bool? requireMatchingFile;
-
-  /// Regular expression that matches the file paths for all files that should
-  /// be referenced by this handler.
-  core.String? uploadPathRegex;
-
-  StaticFilesHandler({
-    this.applicationReadable,
-    this.expiration,
-    this.httpHeaders,
-    this.mimeType,
-    this.path,
-    this.requireMatchingFile,
-    this.uploadPathRegex,
-  });
-
-  StaticFilesHandler.fromJson(core.Map json_)
-    : this(
-        applicationReadable: json_['applicationReadable'] as core.bool?,
-        expiration: json_['expiration'] as core.String?,
-        httpHeaders: (json_['httpHeaders']
-                as core.Map<core.String, core.dynamic>?)
-            ?.map((key, value) => core.MapEntry(key, value as core.String)),
-        mimeType: json_['mimeType'] as core.String?,
-        path: json_['path'] as core.String?,
-        requireMatchingFile: json_['requireMatchingFile'] as core.bool?,
-        uploadPathRegex: json_['uploadPathRegex'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (applicationReadable != null)
-      'applicationReadable': applicationReadable!,
-    if (expiration != null) 'expiration': expiration!,
-    if (httpHeaders != null) 'httpHeaders': httpHeaders!,
-    if (mimeType != null) 'mimeType': mimeType!,
-    if (path != null) 'path': path!,
-    if (requireMatchingFile != null)
-      'requireMatchingFile': requireMatchingFile!,
-    if (uploadPathRegex != null) 'uploadPathRegex': uploadPathRegex!,
-  };
-}
+typedef StaticFilesHandler = $StaticFilesHandler;
 
 /// The Status type defines a logical error model that is suitable for different
 /// programming environments, including REST APIs and RPC APIs.
@@ -5914,88 +4654,10 @@ typedef Status = $Status00;
 ///
 /// Traffic splits define how traffic directed to the service is assigned to
 /// versions.
-class TrafficSplit {
-  /// Mapping from version IDs within the service to fractional (0.000, 1\]
-  /// allocations of traffic for that version.
-  ///
-  /// Each version can be specified only once, but some versions in the service
-  /// may not have any traffic allocation. Services that have traffic allocated
-  /// cannot be deleted until either the service is deleted or their traffic
-  /// allocation is removed. Allocations must sum to 1. Up to two decimal place
-  /// precision is supported for IP-based splits and up to three decimal places
-  /// is supported for cookie-based splits.
-  core.Map<core.String, core.double>? allocations;
-
-  /// Mechanism used to determine which version a request is sent to.
-  ///
-  /// The traffic selection algorithm will be stable for either type until
-  /// allocations are changed.
-  /// Possible string values are:
-  /// - "UNSPECIFIED" : Diversion method unspecified.
-  /// - "COOKIE" : Diversion based on a specially named cookie, "GOOGAPPUID."
-  /// The cookie must be set by the application itself or no diversion will
-  /// occur.
-  /// - "IP" : Diversion based on applying the modulus operation to a
-  /// fingerprint of the IP address.
-  /// - "RANDOM" : Diversion based on weighted random assignment. An incoming
-  /// request is randomly routed to a version in the traffic split, with
-  /// probability proportional to the version's traffic share.
-  core.String? shardBy;
-
-  TrafficSplit({this.allocations, this.shardBy});
-
-  TrafficSplit.fromJson(core.Map json_)
-    : this(
-        allocations:
-            (json_['allocations'] as core.Map<core.String, core.dynamic>?)?.map(
-              (key, value) =>
-                  core.MapEntry(key, (value as core.num).toDouble()),
-            ),
-        shardBy: json_['shardBy'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allocations != null) 'allocations': allocations!,
-    if (shardBy != null) 'shardBy': shardBy!,
-  };
-}
+typedef TrafficSplit = $TrafficSplit00;
 
 /// Rules to match an HTTP request and dispatch that request to a service.
-class UrlDispatchRule {
-  /// Domain name to match against.
-  ///
-  /// The wildcard "*" is supported if specified before a period: "*.".Defaults
-  /// to matching all domains: "*".
-  core.String? domain;
-
-  /// Pathname within the host.
-  ///
-  /// Must start with a "/". A single "*" can be included at the end of the
-  /// path.The sum of the lengths of the domain and path may not exceed 100
-  /// characters.
-  core.String? path;
-
-  /// Resource ID of a service in this application that should serve the matched
-  /// request.
-  ///
-  /// The service must already exist. Example: default.
-  core.String? service;
-
-  UrlDispatchRule({this.domain, this.path, this.service});
-
-  UrlDispatchRule.fromJson(core.Map json_)
-    : this(
-        domain: json_['domain'] as core.String?,
-        path: json_['path'] as core.String?,
-        service: json_['service'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domain != null) 'domain': domain!,
-    if (path != null) 'path': path!,
-    if (service != null) 'service': service!,
-  };
-}
+typedef UrlDispatchRule = $UrlDispatchRule;
 
 /// URL pattern and description of how the URL should be handled.
 ///
@@ -6616,86 +5278,10 @@ class Version {
 /// Volumes mounted within the app container.
 ///
 /// Only applicable in the App Engine flexible environment.
-class Volume {
-  /// Unique name for the volume.
-  core.String? name;
-
-  /// Volume size in gigabytes.
-  core.double? sizeGb;
-
-  /// Underlying volume type, e.g. 'tmpfs'.
-  core.String? volumeType;
-
-  Volume({this.name, this.sizeGb, this.volumeType});
-
-  Volume.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        sizeGb: (json_['sizeGb'] as core.num?)?.toDouble(),
-        volumeType: json_['volumeType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (sizeGb != null) 'sizeGb': sizeGb!,
-    if (volumeType != null) 'volumeType': volumeType!,
-  };
-}
+typedef Volume = $Volume;
 
 /// VPC access connector specification.
-class VpcAccessConnector {
-  /// The egress setting for the connector, controlling what traffic is diverted
-  /// through it.
-  /// Possible string values are:
-  /// - "EGRESS_SETTING_UNSPECIFIED"
-  /// - "ALL_TRAFFIC" : Force the use of VPC Access for all egress traffic from
-  /// the function.
-  /// - "PRIVATE_IP_RANGES" : Use the VPC Access Connector for private IP space
-  /// from RFC1918.
-  core.String? egressSetting;
-
-  /// Full Serverless VPC Access Connector name e.g.
-  /// projects/my-project/locations/us-central1/connectors/c1.
-  core.String? name;
-
-  VpcAccessConnector({this.egressSetting, this.name});
-
-  VpcAccessConnector.fromJson(core.Map json_)
-    : this(
-        egressSetting: json_['egressSetting'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (egressSetting != null) 'egressSetting': egressSetting!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef VpcAccessConnector = $VpcAccessConnector;
 
 /// The zip file information for a zip deployment.
-class ZipInfo {
-  /// An estimate of the number of files in a zip for a zip deployment.
-  ///
-  /// If set, must be greater than or equal to the actual number of files. Used
-  /// for optimizing performance; if not provided, deployment may be slow.
-  core.int? filesCount;
-
-  /// URL of the zip file to deploy from.
-  ///
-  /// Must be a URL to a resource in Google Cloud Storage in the form
-  /// 'http(s)://storage.googleapis.com//'.
-  core.String? sourceUrl;
-
-  ZipInfo({this.filesCount, this.sourceUrl});
-
-  ZipInfo.fromJson(core.Map json_)
-    : this(
-        filesCount: json_['filesCount'] as core.int?,
-        sourceUrl: json_['sourceUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filesCount != null) 'filesCount': filesCount!,
-    if (sourceUrl != null) 'sourceUrl': sourceUrl!,
-  };
-}
+typedef ZipInfo = $ZipInfo;

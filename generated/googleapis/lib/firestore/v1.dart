@@ -1218,13 +1218,9 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return (response_ as core.List)
-        .map(
-          (value) => BatchGetDocumentsResponseElement.fromJson(
-            value as core.Map<core.String, core.dynamic>,
-          ),
-        )
-        .toList();
+    return BatchGetDocumentsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Applies a batch of write operations.
@@ -1767,6 +1763,51 @@ class ProjectsDatabasesDocumentsResource {
     );
   }
 
+  /// Listens to changes.
+  ///
+  /// This method is only available via gRPC or WebChannel (not REST).
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [database] - Required. The database name. In the format:
+  /// `projects/{project_id}/databases/{database_id}`.
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListenResponse> listen(
+    ListenRequest request,
+    core.String database, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$database') + '/documents:listen';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ListenResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Partitions a query by returning partition cursors that can be used to run
   /// the query in parallel.
   ///
@@ -1974,13 +2015,9 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return (response_ as core.List)
-        .map(
-          (value) => RunAggregationQueryResponseElement.fromJson(
-            value as core.Map<core.String, core.dynamic>,
-          ),
-        )
-        .toList();
+    return RunAggregationQueryResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Runs a query.
@@ -2025,13 +2062,9 @@ class ProjectsDatabasesDocumentsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return (response_ as core.List)
-        .map(
-          (value) => RunQueryResponseElement.fromJson(
-            value as core.Map<core.String, core.dynamic>,
-          ),
-        )
-        .toList();
+    return RunQueryResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -3026,7 +3059,8 @@ class BatchGetDocumentsRequest {
   };
 }
 
-class BatchGetDocumentsResponseElement {
+/// The streamed response for Firestore.BatchGetDocuments.
+class BatchGetDocumentsResponse {
   /// A document that was requested.
   Document? found;
 
@@ -3058,14 +3092,14 @@ class BatchGetDocumentsResponseElement {
         .replaceAll('+', '-');
   }
 
-  BatchGetDocumentsResponseElement({
+  BatchGetDocumentsResponse({
     this.found,
     this.missing,
     this.readTime,
     this.transaction,
   });
 
-  BatchGetDocumentsResponseElement.fromJson(core.Map json_)
+  BatchGetDocumentsResponse.fromJson(core.Map json_)
     : this(
         found:
             json_.containsKey('found')
@@ -3085,9 +3119,6 @@ class BatchGetDocumentsResponseElement {
     if (transaction != null) 'transaction': transaction!,
   };
 }
-
-/// The streamed response for Firestore.BatchGetDocuments.
-typedef BatchGetDocumentsResponse = core.List<BatchGetDocumentsResponseElement>;
 
 /// The request for Firestore.BatchWrite.
 class BatchWriteRequest {
@@ -3189,55 +3220,60 @@ class BeginTransactionRequest {
 }
 
 /// The response for Firestore.BeginTransaction.
-class BeginTransactionResponse {
-  /// The transaction that was started.
-  core.String? transaction;
-  core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction!);
+typedef BeginTransactionResponse = $BeginTransactionResponse01;
 
-  set transactionAsBytes(core.List<core.int> bytes_) {
-    transaction = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
+/// A sequence of bits, encoded in a byte array.
+///
+/// Each byte in the `bitmap` byte array stores 8 bits of the sequence. The only
+/// exception is the last byte, which may store 8 _or fewer_ bits. The `padding`
+/// defines the number of bits of the last byte to be ignored as "padding". The
+/// values of these "padding" bits are unspecified and must be ignored. To
+/// retrieve the first bit, bit 0, calculate: `(bitmap[0] & 0x01) != 0`. To
+/// retrieve the second bit, bit 1, calculate: `(bitmap[0] & 0x02) != 0`. To
+/// retrieve the third bit, bit 2, calculate: `(bitmap[0] & 0x04) != 0`. To
+/// retrieve the fourth bit, bit 3, calculate: `(bitmap[0] & 0x08) != 0`. To
+/// retrieve bit n, calculate: `(bitmap[n / 8] & (0x01 << (n % 8))) != 0`. The
+/// "size" of a `BitSequence` (the number of bits it contains) is calculated by
+/// this formula: `(bitmap.length * 8) - padding`.
+typedef BitSequence = $BitSequence;
 
-  BeginTransactionResponse({this.transaction});
+/// A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter).
+///
+/// The bloom filter hashes the entries with MD5 and treats the resulting
+/// 128-bit hash as 2 distinct 64-bit hash values, interpreted as unsigned
+/// integers using 2's complement encoding. These two hash values, named `h1`
+/// and `h2`, are then used to compute the `hash_count` hash values using the
+/// formula, starting at `i=0`: h(i) = h1 + (i * h2) These resulting values are
+/// then taken modulo the number of bits in the bloom filter to get the bits of
+/// the bloom filter to test for the given entry.
+class BloomFilter {
+  /// The bloom filter data.
+  BitSequence? bits;
 
-  BeginTransactionResponse.fromJson(core.Map json_)
-    : this(transaction: json_['transaction'] as core.String?);
+  /// The number of hashes used by the algorithm.
+  core.int? hashCount;
+
+  BloomFilter({this.bits, this.hashCount});
+
+  BloomFilter.fromJson(core.Map json_)
+    : this(
+        bits:
+            json_.containsKey('bits')
+                ? BitSequence.fromJson(
+                  json_['bits'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hashCount: json_['hashCount'] as core.int?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-    if (transaction != null) 'transaction': transaction!,
+    if (bits != null) 'bits': bits!,
+    if (hashCount != null) 'hashCount': hashCount!,
   };
 }
 
 /// A selection of a collection, such as `messages as m1`.
-class CollectionSelector {
-  /// When false, selects only collections that are immediate children of the
-  /// `parent` specified in the containing `RunQueryRequest`.
-  ///
-  /// When true, selects all descendant collections.
-  core.bool? allDescendants;
-
-  /// The collection ID.
-  ///
-  /// When set, selects only collections with this ID.
-  core.String? collectionId;
-
-  CollectionSelector({this.allDescendants, this.collectionId});
-
-  CollectionSelector.fromJson(core.Map json_)
-    : this(
-        allDescendants: json_['allDescendants'] as core.bool?,
-        collectionId: json_['collectionId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allDescendants != null) 'allDescendants': allDescendants!,
-    if (collectionId != null) 'collectionId': collectionId!,
-  };
-}
+typedef CollectionSelector = $CollectionSelector;
 
 /// The request for Firestore.Commit.
 class CommitRequest {
@@ -3353,25 +3389,7 @@ class CompositeFilter {
 ///
 /// The `COUNT(*)` aggregation function operates on the entire document so it
 /// does not require a field reference.
-class Count {
-  /// Optional constraint on the maximum number of documents to count.
-  ///
-  /// This provides a way to set an upper bound on the number of documents to
-  /// scan, limiting latency, and cost. Unspecified is interpreted as no bound.
-  /// High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k
-  /// ); ``` Requires: * Must be greater than zero when present.
-  ///
-  /// Optional.
-  core.String? upTo;
-
-  Count({this.upTo});
-
-  Count.fromJson(core.Map json_) : this(upTo: json_['upTo'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (upTo != null) 'upTo': upTo!,
-  };
-}
+typedef Count = $Count01;
 
 /// A position in a query result set.
 class Cursor {
@@ -3474,31 +3492,73 @@ class Document {
   };
 }
 
+/// A Document has changed.
+///
+/// May be the result of multiple writes, including deletes, that ultimately
+/// resulted in a new value for the Document. Multiple DocumentChange messages
+/// may be returned for the same logical change, if multiple targets are
+/// affected.
+class DocumentChange {
+  /// The new state of the Document.
+  ///
+  /// If `mask` is set, contains only fields that were updated or added.
+  Document? document;
+
+  /// A set of target IDs for targets that no longer match this document.
+  core.List<core.int>? removedTargetIds;
+
+  /// A set of target IDs of targets that match this document.
+  core.List<core.int>? targetIds;
+
+  DocumentChange({this.document, this.removedTargetIds, this.targetIds});
+
+  DocumentChange.fromJson(core.Map json_)
+    : this(
+        document:
+            json_.containsKey('document')
+                ? Document.fromJson(
+                  json_['document'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        removedTargetIds:
+            (json_['removedTargetIds'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+        targetIds:
+            (json_['targetIds'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (document != null) 'document': document!,
+    if (removedTargetIds != null) 'removedTargetIds': removedTargetIds!,
+    if (targetIds != null) 'targetIds': targetIds!,
+  };
+}
+
+/// A Document has been deleted.
+///
+/// May be the result of multiple writes, including updates, the last of which
+/// deleted the Document. Multiple DocumentDelete messages may be returned for
+/// the same logical delete, if multiple targets are affected.
+typedef DocumentDelete = $DocumentDelete;
+
 /// A set of field paths on a document.
 ///
 /// Used to restrict a get or update operation on a document to a subset of its
 /// fields. This is different from standard field masks, as this is always
 /// scoped to a Document, and takes in account the dynamic nature of Value.
-class DocumentMask {
-  /// The list of field paths in the mask.
-  ///
-  /// See Document.fields for a field path syntax reference.
-  core.List<core.String>? fieldPaths;
+typedef DocumentMask = $DocumentMask;
 
-  DocumentMask({this.fieldPaths});
-
-  DocumentMask.fromJson(core.Map json_)
-    : this(
-        fieldPaths:
-            (json_['fieldPaths'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldPaths != null) 'fieldPaths': fieldPaths!,
-  };
-}
+/// A Document has been removed from the view of the targets.
+///
+/// Sent if the document is no longer relevant to a target and is out of view.
+/// Can be sent instead of a DocumentDelete or a DocumentChange if the server
+/// can not send the new value of the document. Multiple DocumentRemove messages
+/// may be returned for the same logical write or delete, if multiple targets
+/// are affected.
+typedef DocumentRemove = $DocumentRemove;
 
 /// A transformation of a document.
 class DocumentTransform {
@@ -3532,6 +3592,9 @@ class DocumentTransform {
   };
 }
 
+/// A target specified by a set of documents names.
+typedef DocumentsTarget = $DocumentsTarget;
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -3542,6 +3605,57 @@ typedef Empty = $Empty;
 
 /// Execution statistics for the query.
 typedef ExecutionStats = $ExecutionStats;
+
+/// A digest of all the documents that match a given target.
+class ExistenceFilter {
+  /// The total count of documents that match target_id.
+  ///
+  /// If different from the count of documents in the client that match, the
+  /// client must manually determine which documents no longer match the target.
+  /// The client can use the `unchanged_names` bloom filter to assist with this
+  /// determination by testing ALL the document names against the filter; if the
+  /// document name is NOT in the filter, it means the document no longer
+  /// matches the target.
+  core.int? count;
+
+  /// The target ID to which this filter applies.
+  core.int? targetId;
+
+  /// A bloom filter that, despite its name, contains the UTF-8 byte encodings
+  /// of the resource names of ALL the documents that match target_id, in the
+  /// form
+  /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+  ///
+  /// This bloom filter may be omitted at the server's discretion, such as if it
+  /// is deemed that the client will not make use of it or if it is too
+  /// computationally expensive to calculate or transmit. Clients must
+  /// gracefully handle this field being absent by falling back to the logic
+  /// used before this field existed; that is, re-add the target without a
+  /// resume token to figure out which documents in the client's cache are out
+  /// of sync.
+  BloomFilter? unchangedNames;
+
+  ExistenceFilter({this.count, this.targetId, this.unchangedNames});
+
+  ExistenceFilter.fromJson(core.Map json_)
+    : this(
+        count: json_['count'] as core.int?,
+        targetId: json_['targetId'] as core.int?,
+        unchangedNames:
+            json_.containsKey('unchangedNames')
+                ? BloomFilter.fromJson(
+                  json_['unchangedNames']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (count != null) 'count': count!,
+    if (targetId != null) 'targetId': targetId!,
+    if (unchangedNames != null) 'unchangedNames': unchangedNames!,
+  };
+}
 
 /// Explain metrics for the query.
 class ExplainMetrics {
@@ -3648,22 +3762,7 @@ class FieldFilter {
 }
 
 /// A reference to a field in a document, ex: `stats.operations`.
-class FieldReference {
-  /// A reference to a field in a document.
-  ///
-  /// Requires: * MUST be a dot-delimited (`.`) string of segments, where each
-  /// segment conforms to document field name limitations.
-  core.String? fieldPath;
-
-  FieldReference({this.fieldPath});
-
-  FieldReference.fromJson(core.Map json_)
-    : this(fieldPath: json_['fieldPath'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (fieldPath != null) 'fieldPath': fieldPath!,
-  };
-}
+typedef FieldReference = $FieldReference;
 
 /// A transformation of a field of the document.
 class FieldTransform {
@@ -5840,62 +5939,10 @@ class GoogleLongrunningOperation {
 typedef LatLng = $LatLng;
 
 /// The request for Firestore.ListCollectionIds.
-class ListCollectionIdsRequest {
-  /// The maximum number of results to return.
-  core.int? pageSize;
-
-  /// A page token.
-  ///
-  /// Must be a value from ListCollectionIdsResponse.
-  core.String? pageToken;
-
-  /// Reads documents as they were at the given time.
-  ///
-  /// This must be a microsecond precision timestamp within the past one hour,
-  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
-  /// minute timestamp within the past 7 days.
-  core.String? readTime;
-
-  ListCollectionIdsRequest({this.pageSize, this.pageToken, this.readTime});
-
-  ListCollectionIdsRequest.fromJson(core.Map json_)
-    : this(
-        pageSize: json_['pageSize'] as core.int?,
-        pageToken: json_['pageToken'] as core.String?,
-        readTime: json_['readTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pageSize != null) 'pageSize': pageSize!,
-    if (pageToken != null) 'pageToken': pageToken!,
-    if (readTime != null) 'readTime': readTime!,
-  };
-}
+typedef ListCollectionIdsRequest = $ListCollectionIdsRequest;
 
 /// The response from Firestore.ListCollectionIds.
-class ListCollectionIdsResponse {
-  /// The collection ids.
-  core.List<core.String>? collectionIds;
-
-  /// A page token that may be used to continue the list.
-  core.String? nextPageToken;
-
-  ListCollectionIdsResponse({this.collectionIds, this.nextPageToken});
-
-  ListCollectionIdsResponse.fromJson(core.Map json_)
-    : this(
-        collectionIds:
-            (json_['collectionIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (collectionIds != null) 'collectionIds': collectionIds!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
-}
+typedef ListCollectionIdsResponse = $ListCollectionIdsResponse;
 
 /// The response for Firestore.ListDocuments.
 class ListDocumentsResponse {
@@ -5954,6 +6001,116 @@ class ListLocationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (locations != null) 'locations': locations!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// A request for Firestore.Listen
+class ListenRequest {
+  /// A target to add to this stream.
+  Target? addTarget;
+
+  /// Labels associated with this target change.
+  core.Map<core.String, core.String>? labels;
+
+  /// The ID of a target to remove from this stream.
+  core.int? removeTarget;
+
+  ListenRequest({this.addTarget, this.labels, this.removeTarget});
+
+  ListenRequest.fromJson(core.Map json_)
+    : this(
+        addTarget:
+            json_.containsKey('addTarget')
+                ? Target.fromJson(
+                  json_['addTarget'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        removeTarget: json_['removeTarget'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (addTarget != null) 'addTarget': addTarget!,
+    if (labels != null) 'labels': labels!,
+    if (removeTarget != null) 'removeTarget': removeTarget!,
+  };
+}
+
+/// The response for Firestore.Listen.
+class ListenResponse {
+  /// A Document has changed.
+  DocumentChange? documentChange;
+
+  /// A Document has been deleted.
+  DocumentDelete? documentDelete;
+
+  /// A Document has been removed from a target (because it is no longer
+  /// relevant to that target).
+  DocumentRemove? documentRemove;
+
+  /// A filter to apply to the set of documents previously returned for the
+  /// given target.
+  ///
+  /// Returned when documents may have been removed from the given target, but
+  /// the exact documents are unknown.
+  ExistenceFilter? filter;
+
+  /// Targets have changed.
+  TargetChange? targetChange;
+
+  ListenResponse({
+    this.documentChange,
+    this.documentDelete,
+    this.documentRemove,
+    this.filter,
+    this.targetChange,
+  });
+
+  ListenResponse.fromJson(core.Map json_)
+    : this(
+        documentChange:
+            json_.containsKey('documentChange')
+                ? DocumentChange.fromJson(
+                  json_['documentChange']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        documentDelete:
+            json_.containsKey('documentDelete')
+                ? DocumentDelete.fromJson(
+                  json_['documentDelete']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        documentRemove:
+            json_.containsKey('documentRemove')
+                ? DocumentRemove.fromJson(
+                  json_['documentRemove']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        filter:
+            json_.containsKey('filter')
+                ? ExistenceFilter.fromJson(
+                  json_['filter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetChange:
+            json_.containsKey('targetChange')
+                ? TargetChange.fromJson(
+                  json_['targetChange'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (documentChange != null) 'documentChange': documentChange!,
+    if (documentDelete != null) 'documentDelete': documentDelete!,
+    if (documentRemove != null) 'documentRemove': documentRemove!,
+    if (filter != null) 'filter': filter!,
+    if (targetChange != null) 'targetChange': targetChange!,
   };
 }
 
@@ -6146,31 +6303,7 @@ class PartitionQueryResponse {
 typedef PlanSummary = $PlanSummary;
 
 /// A precondition on a document, used for conditional operations.
-class Precondition {
-  /// When set to `true`, the target document must exist.
-  ///
-  /// When set to `false`, the target document must not exist.
-  core.bool? exists;
-
-  /// When set, the target document must exist and have been last updated at
-  /// that time.
-  ///
-  /// Timestamp must be microsecond aligned.
-  core.String? updateTime;
-
-  Precondition({this.exists, this.updateTime});
-
-  Precondition.fromJson(core.Map json_)
-    : this(
-        exists: json_['exists'] as core.bool?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (exists != null) 'exists': exists!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
+typedef Precondition = $Precondition;
 
 /// The projection of document's fields to return.
 class Projection {
@@ -6199,77 +6332,51 @@ class Projection {
   };
 }
 
-/// Options for a transaction that can only be used to read documents.
-class ReadOnly {
-  /// Reads documents at the given time.
+/// A target specified by a query.
+class QueryTarget {
+  /// The parent resource name.
   ///
-  /// This must be a microsecond precision timestamp within the past one hour,
-  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
-  /// minute timestamp within the past 7 days.
-  core.String? readTime;
+  /// In the format: `projects/{project_id}/databases/{database_id}/documents`
+  /// or
+  /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+  /// For example: `projects/my-project/databases/my-database/documents` or
+  /// `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+  core.String? parent;
 
-  ReadOnly({this.readTime});
+  /// A structured query.
+  StructuredQuery? structuredQuery;
 
-  ReadOnly.fromJson(core.Map json_)
-    : this(readTime: json_['readTime'] as core.String?);
+  QueryTarget({this.parent, this.structuredQuery});
+
+  QueryTarget.fromJson(core.Map json_)
+    : this(
+        parent: json_['parent'] as core.String?,
+        structuredQuery:
+            json_.containsKey('structuredQuery')
+                ? StructuredQuery.fromJson(
+                  json_['structuredQuery']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
-    if (readTime != null) 'readTime': readTime!,
+    if (parent != null) 'parent': parent!,
+    if (structuredQuery != null) 'structuredQuery': structuredQuery!,
   };
 }
+
+/// Options for a transaction that can only be used to read documents.
+typedef ReadOnly = $ReadOnly01;
 
 /// Options for a transaction that can be used to read and write documents.
 ///
 /// Firestore does not allow 3rd party auth requests to create read-write.
 /// transactions.
-class ReadWrite {
-  /// An optional transaction to retry.
-  core.String? retryTransaction;
-  core.List<core.int> get retryTransactionAsBytes =>
-      convert.base64.decode(retryTransaction!);
-
-  set retryTransactionAsBytes(core.List<core.int> bytes_) {
-    retryTransaction = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  ReadWrite({this.retryTransaction});
-
-  ReadWrite.fromJson(core.Map json_)
-    : this(retryTransaction: json_['retryTransaction'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (retryTransaction != null) 'retryTransaction': retryTransaction!,
-  };
-}
+typedef ReadWrite = $ReadWrite01;
 
 /// The request for Firestore.Rollback.
-class RollbackRequest {
-  /// The transaction to roll back.
-  ///
-  /// Required.
-  core.String? transaction;
-  core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction!);
-
-  set transactionAsBytes(core.List<core.int> bytes_) {
-    transaction = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  RollbackRequest({this.transaction});
-
-  RollbackRequest.fromJson(core.Map json_)
-    : this(transaction: json_['transaction'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (transaction != null) 'transaction': transaction!,
-  };
-}
+typedef RollbackRequest = $RollbackRequest;
 
 /// The request for Firestore.RunAggregationQuery.
 class RunAggregationQueryRequest {
@@ -6356,7 +6463,8 @@ class RunAggregationQueryRequest {
   };
 }
 
-class RunAggregationQueryResponseElement {
+/// The response for Firestore.RunAggregationQuery.
+class RunAggregationQueryResponse {
   /// Query explain metrics.
   ///
   /// This is only present when the RunAggregationQueryRequest.explain_options
@@ -6393,14 +6501,14 @@ class RunAggregationQueryResponseElement {
         .replaceAll('+', '-');
   }
 
-  RunAggregationQueryResponseElement({
+  RunAggregationQueryResponse({
     this.explainMetrics,
     this.readTime,
     this.result,
     this.transaction,
   });
 
-  RunAggregationQueryResponseElement.fromJson(core.Map json_)
+  RunAggregationQueryResponse.fromJson(core.Map json_)
     : this(
         explainMetrics:
             json_.containsKey('explainMetrics')
@@ -6426,10 +6534,6 @@ class RunAggregationQueryResponseElement {
     if (transaction != null) 'transaction': transaction!,
   };
 }
-
-/// The response for Firestore.RunAggregationQuery.
-typedef RunAggregationQueryResponse =
-    core.List<RunAggregationQueryResponseElement>;
 
 /// The request for Firestore.RunQuery.
 class RunQueryRequest {
@@ -6515,7 +6619,8 @@ class RunQueryRequest {
   };
 }
 
-class RunQueryResponseElement {
+/// The response for Firestore.RunQuery.
+class RunQueryResponse {
   /// A query result, not set when reporting partial progress.
   Document? document;
 
@@ -6558,7 +6663,7 @@ class RunQueryResponseElement {
         .replaceAll('+', '-');
   }
 
-  RunQueryResponseElement({
+  RunQueryResponse({
     this.document,
     this.done,
     this.explainMetrics,
@@ -6567,7 +6672,7 @@ class RunQueryResponseElement {
     this.transaction,
   });
 
-  RunQueryResponseElement.fromJson(core.Map json_)
+  RunQueryResponse.fromJson(core.Map json_)
     : this(
         document:
             json_.containsKey('document')
@@ -6597,9 +6702,6 @@ class RunQueryResponseElement {
     if (transaction != null) 'transaction': transaction!,
   };
 }
-
-/// The response for Firestore.RunQuery.
-typedef RunQueryResponse = core.List<RunQueryResponseElement>;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -6841,6 +6943,189 @@ class Sum {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (field != null) 'field': field!,
+  };
+}
+
+/// A specification of a set of documents to listen to.
+class Target {
+  /// A target specified by a set of document names.
+  DocumentsTarget? documents;
+
+  /// The number of documents that last matched the query at the resume token or
+  /// read time.
+  ///
+  /// This value is only relevant when a `resume_type` is provided. This value
+  /// being present and greater than zero signals that the client wants
+  /// `ExistenceFilter.unchanged_names` to be included in the response.
+  core.int? expectedCount;
+
+  /// If the target should be removed once it is current and consistent.
+  core.bool? once;
+
+  /// A target specified by a query.
+  QueryTarget? query;
+
+  /// Start listening after a specific `read_time`.
+  ///
+  /// The client must know the state of matching documents at this time.
+  core.String? readTime;
+
+  /// A resume token from a prior TargetChange for an identical target.
+  ///
+  /// Using a resume token with a different target is unsupported and may fail.
+  core.String? resumeToken;
+  core.List<core.int> get resumeTokenAsBytes =>
+      convert.base64.decode(resumeToken!);
+
+  set resumeTokenAsBytes(core.List<core.int> bytes_) {
+    resumeToken = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The target ID that identifies the target on the stream.
+  ///
+  /// Must be a positive number and non-zero. If `target_id` is 0 (or
+  /// unspecified), the server will assign an ID for this target and return that
+  /// in a `TargetChange::ADD` event. Once a target with `target_id=0` is added,
+  /// all subsequent targets must also have `target_id=0`. If an `AddTarget`
+  /// request with `target_id != 0` is sent to the server after a target with
+  /// `target_id=0` is added, the server will immediately send a response with a
+  /// `TargetChange::Remove` event. Note that if the client sends multiple
+  /// `AddTarget` requests without an ID, the order of IDs returned in
+  /// `TargetChange.target_ids` are undefined. Therefore, clients should provide
+  /// a target ID instead of relying on the server to assign one. If `target_id`
+  /// is non-zero, there must not be an existing active target on this stream
+  /// with the same ID.
+  core.int? targetId;
+
+  Target({
+    this.documents,
+    this.expectedCount,
+    this.once,
+    this.query,
+    this.readTime,
+    this.resumeToken,
+    this.targetId,
+  });
+
+  Target.fromJson(core.Map json_)
+    : this(
+        documents:
+            json_.containsKey('documents')
+                ? DocumentsTarget.fromJson(
+                  json_['documents'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        expectedCount: json_['expectedCount'] as core.int?,
+        once: json_['once'] as core.bool?,
+        query:
+            json_.containsKey('query')
+                ? QueryTarget.fromJson(
+                  json_['query'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        readTime: json_['readTime'] as core.String?,
+        resumeToken: json_['resumeToken'] as core.String?,
+        targetId: json_['targetId'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (documents != null) 'documents': documents!,
+    if (expectedCount != null) 'expectedCount': expectedCount!,
+    if (once != null) 'once': once!,
+    if (query != null) 'query': query!,
+    if (readTime != null) 'readTime': readTime!,
+    if (resumeToken != null) 'resumeToken': resumeToken!,
+    if (targetId != null) 'targetId': targetId!,
+  };
+}
+
+/// Targets being watched have changed.
+class TargetChange {
+  /// The error that resulted in this change, if applicable.
+  Status? cause;
+
+  /// The consistent `read_time` for the given `target_ids` (omitted when the
+  /// target_ids are not at a consistent snapshot).
+  ///
+  /// The stream is guaranteed to send a `read_time` with `target_ids` empty
+  /// whenever the entire stream reaches a new consistent snapshot. ADD,
+  /// CURRENT, and RESET messages are guaranteed to (eventually) result in a new
+  /// consistent snapshot (while NO_CHANGE and REMOVE messages are not). For a
+  /// given stream, `read_time` is guaranteed to be monotonically increasing.
+  core.String? readTime;
+
+  /// A token that can be used to resume the stream for the given `target_ids`,
+  /// or all targets if `target_ids` is empty.
+  ///
+  /// Not set on every target change.
+  core.String? resumeToken;
+  core.List<core.int> get resumeTokenAsBytes =>
+      convert.base64.decode(resumeToken!);
+
+  set resumeTokenAsBytes(core.List<core.int> bytes_) {
+    resumeToken = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// The type of change that occurred.
+  /// Possible string values are:
+  /// - "NO_CHANGE" : No change has occurred. Used only to send an updated
+  /// `resume_token`.
+  /// - "ADD" : The targets have been added.
+  /// - "REMOVE" : The targets have been removed.
+  /// - "CURRENT" : The targets reflect all changes committed before the targets
+  /// were added to the stream. This will be sent after or with a `read_time`
+  /// that is greater than or equal to the time at which the targets were added.
+  /// Listeners can wait for this change if read-after-write semantics are
+  /// desired.
+  /// - "RESET" : The targets have been reset, and a new initial state for the
+  /// targets will be returned in subsequent changes. After the initial state is
+  /// complete, `CURRENT` will be returned even if the target was previously
+  /// indicated to be `CURRENT`.
+  core.String? targetChangeType;
+
+  /// The target IDs of targets that have changed.
+  ///
+  /// If empty, the change applies to all targets. The order of the target IDs
+  /// is not defined.
+  core.List<core.int>? targetIds;
+
+  TargetChange({
+    this.cause,
+    this.readTime,
+    this.resumeToken,
+    this.targetChangeType,
+    this.targetIds,
+  });
+
+  TargetChange.fromJson(core.Map json_)
+    : this(
+        cause:
+            json_.containsKey('cause')
+                ? Status.fromJson(
+                  json_['cause'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        readTime: json_['readTime'] as core.String?,
+        resumeToken: json_['resumeToken'] as core.String?,
+        targetChangeType: json_['targetChangeType'] as core.String?,
+        targetIds:
+            (json_['targetIds'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cause != null) 'cause': cause!,
+    if (readTime != null) 'readTime': readTime!,
+    if (resumeToken != null) 'resumeToken': resumeToken!,
+    if (targetChangeType != null) 'targetChangeType': targetChangeType!,
+    if (targetIds != null) 'targetIds': targetIds!,
   };
 }
 

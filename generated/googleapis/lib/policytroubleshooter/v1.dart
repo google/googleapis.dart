@@ -105,7 +105,7 @@ class IamResource {
 }
 
 /// Information about the principal, resource, and permission to check.
-typedef GoogleCloudPolicytroubleshooterV1AccessTuple = $V1AccessTuple;
+typedef GoogleCloudPolicytroubleshooterV1AccessTuple = $AccessTuple;
 
 /// Details about how a binding in a policy affects a principal's ability to use
 /// a permission.
@@ -528,7 +528,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {

@@ -8330,7 +8330,7 @@ class GoogleIamV1AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig00;
 
 /// Associates `members`, or principals, with a `role`.
 class GoogleIamV1Binding {
@@ -8764,7 +8764,7 @@ typedef GoogleTypeExpr = $Expr;
 /// to proto2. This schema has been open-sourced only to facilitate the
 /// migration of Google products with MessageSet-bearing messages to open-source
 /// environments.
-typedef Proto2BridgeMessageSet = $Shared02;
+typedef Proto2BridgeMessageSet = $Shared03;
 
 /// Wire-format for a Status object
 class UtilStatusProto {

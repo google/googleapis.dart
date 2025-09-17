@@ -5900,7 +5900,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Autoscaling policy describes the behavior of the autoscaling with respect to
 /// the resource utilization.
@@ -7014,7 +7014,7 @@ class HcxActivationKey {
 /// The start must be less than or equal to the end. When the start equals the
 /// end, the interval is empty (matches no time). When both start and end are
 /// unspecified, the interval matches any time.
-typedef Interval = $Interval;
+typedef Interval = $Interval00;
 
 /// An IP range provided in any one of the supported formats.
 class IpRange {
@@ -8810,7 +8810,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared13;
+typedef Nsx = $Shared22;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -10157,7 +10157,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared13;
+typedef Vcenter = $Shared22;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

@@ -1233,28 +1233,7 @@ class BeginTransactionRequest {
 }
 
 /// The response for Datastore.BeginTransaction.
-class BeginTransactionResponse {
-  /// The transaction identifier (always present).
-  core.String? transaction;
-  core.List<core.int> get transactionAsBytes =>
-      convert.base64.decode(transaction!);
-
-  set transactionAsBytes(core.List<core.int> bytes_) {
-    transaction = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  BeginTransactionResponse({this.transaction});
-
-  BeginTransactionResponse.fromJson(core.Map json_)
-    : this(transaction: json_['transaction'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (transaction != null) 'transaction': transaction!,
-  };
-}
+typedef BeginTransactionResponse = $BeginTransactionResponse00;
 
 /// The request for Datastore.Commit.
 class CommitRequest {
@@ -1427,26 +1406,7 @@ class CompositeFilter {
 ///
 /// The `COUNT(*)` aggregation function operates on the entire entity so it does
 /// not require a field reference.
-class Count {
-  /// Optional constraint on the maximum number of entities to count.
-  ///
-  /// This provides a way to set an upper bound on the number of entities to
-  /// scan, limiting latency, and cost. Unspecified is interpreted as no bound.
-  /// If a zero value is provided, a count result of zero should always be
-  /// expected. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER (
-  /// SELECT * FROM k ); ``` Requires: * Must be non-negative when present.
-  ///
-  /// Optional.
-  core.String? upTo;
-
-  Count({this.upTo});
-
-  Count.fromJson(core.Map json_) : this(upTo: json_['upTo'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (upTo != null) 'upTo': upTo!,
-  };
-}
+typedef Count = $Count00;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1767,37 +1727,7 @@ class FindNearest {
 /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=\['Foo',
 /// 'Bar'\], namespace_ids=\['', 'Baz'\] The entire Baz namespace: kinds=\[\],
 /// namespace_ids=\['Baz'\]
-class GoogleDatastoreAdminV1EntityFilter {
-  /// If empty, then this represents all kinds.
-  core.List<core.String>? kinds;
-
-  /// An empty list represents all namespaces.
-  ///
-  /// This is the preferred usage for projects that don't use namespaces. An
-  /// empty string element represents the default namespace. This should be used
-  /// if the project has data in non-default namespaces, but doesn't want to
-  /// include them. Each namespace in this list must be unique.
-  core.List<core.String>? namespaceIds;
-
-  GoogleDatastoreAdminV1EntityFilter({this.kinds, this.namespaceIds});
-
-  GoogleDatastoreAdminV1EntityFilter.fromJson(core.Map json_)
-    : this(
-        kinds:
-            (json_['kinds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        namespaceIds:
-            (json_['namespaceIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kinds != null) 'kinds': kinds!,
-    if (namespaceIds != null) 'namespaceIds': namespaceIds!,
-  };
-}
+typedef GoogleDatastoreAdminV1EntityFilter = $EntityFilter;
 
 /// The request for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.
 class GoogleDatastoreAdminV1ExportEntitiesRequest {
@@ -2751,44 +2681,7 @@ class PartitionId {
 ///
 /// If either name or ID is set, the element is complete. If neither is set, the
 /// element is incomplete.
-class PathElement {
-  /// The auto-allocated ID of the entity.
-  ///
-  /// Never equal to zero. Values less than zero are discouraged and may not be
-  /// supported in the future.
-  core.String? id;
-
-  /// The kind of the entity.
-  ///
-  /// A kind matching regex `__.*__` is reserved/read-only. A kind must not
-  /// contain more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be
-  /// valid UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as
-  /// `__bytes__` where `` is the base-64 encoding of the bytes.
-  core.String? kind;
-
-  /// The name of the entity.
-  ///
-  /// A name matching regex `__.*__` is reserved/read-only. A name must not be
-  /// more than 1500 bytes when UTF-8 encoded. Cannot be `""`. Must be valid
-  /// UTF-8 bytes. Legacy values that are not valid UTF-8 are encoded as
-  /// `__bytes__` where `` is the base-64 encoding of the bytes.
-  core.String? name;
-
-  PathElement({this.id, this.kind, this.name});
-
-  PathElement.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        kind: json_['kind'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (kind != null) 'kind': kind!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef PathElement = $PathElement;
 
 /// Planning phase information for the query.
 typedef PlanSummary = $PlanSummary;
@@ -2879,30 +2772,7 @@ class PropertyFilter {
 
 /// The set of arbitrarily nested property paths used to restrict an operation
 /// to only a subset of properties in an entity.
-class PropertyMask {
-  /// The paths to the properties covered by this mask.
-  ///
-  /// A path is a list of property names separated by dots (`.`), for example
-  /// `foo.bar` means the property `bar` inside the entity property `foo` inside
-  /// the entity associated with this path. If a property name contains a dot
-  /// `.` or a backslash `\`, then that name must be escaped. A path must not be
-  /// empty, and may not reference a value inside an array value.
-  core.List<core.String>? paths;
-
-  PropertyMask({this.paths});
-
-  PropertyMask.fromJson(core.Map json_)
-    : this(
-        paths:
-            (json_['paths'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (paths != null) 'paths': paths!,
-  };
-}
+typedef PropertyMask = $PropertyMask;
 
 /// The desired order for a specific property.
 class PropertyOrder {
@@ -2938,22 +2808,7 @@ class PropertyOrder {
 }
 
 /// A reference to a property relative to the kind expressions.
-class PropertyReference {
-  /// A reference to a property.
-  ///
-  /// Requires: * MUST be a dot-delimited (`.`) string of segments, where each
-  /// segment conforms to entity property name limitations.
-  core.String? name;
-
-  PropertyReference({this.name});
-
-  PropertyReference.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
-}
+typedef PropertyReference = $PropertyReference;
 
 /// A transformation of an entity property.
 class PropertyTransform {
@@ -3375,23 +3230,7 @@ class QueryResultBatch {
 }
 
 /// Options specific to read-only transactions.
-class ReadOnly {
-  /// Reads entities at the given time.
-  ///
-  /// This must be a microsecond precision timestamp within the past one hour,
-  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
-  /// minute timestamp within the past 7 days.
-  core.String? readTime;
-
-  ReadOnly({this.readTime});
-
-  ReadOnly.fromJson(core.Map json_)
-    : this(readTime: json_['readTime'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (readTime != null) 'readTime': readTime!,
-  };
-}
+typedef ReadOnly = $ReadOnly00;
 
 /// The options shared by read requests.
 class ReadOptions {
@@ -3463,29 +3302,7 @@ class ReadOptions {
 }
 
 /// Options specific to read / write transactions.
-class ReadWrite {
-  /// The transaction identifier of the transaction being retried.
-  core.String? previousTransaction;
-  core.List<core.int> get previousTransactionAsBytes =>
-      convert.base64.decode(previousTransaction!);
-
-  set previousTransactionAsBytes(core.List<core.int> bytes_) {
-    previousTransaction = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  ReadWrite({this.previousTransaction});
-
-  ReadWrite.fromJson(core.Map json_)
-    : this(previousTransaction: json_['previousTransaction'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (previousTransaction != null)
-      'previousTransaction': previousTransaction!,
-  };
-}
+typedef ReadWrite = $ReadWrite00;
 
 /// The request for Datastore.ReserveIds.
 class ReserveIdsRequest {

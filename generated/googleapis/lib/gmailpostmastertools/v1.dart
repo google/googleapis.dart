@@ -33,6 +33,7 @@ import 'dart:core' as core;
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
 
+import '../shared.dart';
 import '../src/user_agent.dart';
 
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
@@ -291,130 +292,14 @@ class DomainsTrafficStatsResource {
 }
 
 /// Metric on a particular delivery error type.
-class DeliveryError {
-  /// The class of delivery error.
-  /// Possible string values are:
-  /// - "DELIVERY_ERROR_CLASS_UNSPECIFIED" : The default value which should
-  /// never be used explicitly.
-  /// - "PERMANENT_ERROR" : Delivery of message has been rejected.
-  /// - "TEMPORARY_ERROR" : Temporary failure of message delivery to the
-  /// recipient.
-  core.String? errorClass;
-
-  /// The ratio of messages where the error occurred vs all authenticated
-  /// traffic.
-  core.double? errorRatio;
-
-  /// The type of delivery error.
-  /// Possible string values are:
-  /// - "DELIVERY_ERROR_TYPE_UNSPECIFIED" : The default value which should never
-  /// be used explicitly.
-  /// - "RATE_LIMIT_EXCEEDED" : The Domain or IP is sending traffic at a
-  /// suspiciously high rate, due to which temporary rate limits have been
-  /// imposed. The limit will be lifted when Gmail is confident enough of the
-  /// nature of the traffic.
-  /// - "SUSPECTED_SPAM" : The traffic is suspected to be spam, by Gmail, for
-  /// various reasons.
-  /// - "CONTENT_SPAMMY" : The traffic is suspected to be spammy, specific to
-  /// the content.
-  /// - "BAD_ATTACHMENT" : Traffic contains attachments not supported by Gmail.
-  /// - "BAD_DMARC_POLICY" : The sender domain has set up a DMARC rejection
-  /// policy.
-  /// - "LOW_IP_REPUTATION" : The IP reputation of the sending IP is very low.
-  /// - "LOW_DOMAIN_REPUTATION" : The Domain reputation of the sending domain is
-  /// very low.
-  /// - "IP_IN_RBL" : The IP is listed in one or more public \[Real-time
-  /// Blackhole Lists\](http://en.wikipedia.org/wiki/DNSBL). Work with the RBL
-  /// to get your IP delisted.
-  /// - "DOMAIN_IN_RBL" : The Domain is listed in one or more public \[Real-time
-  /// Blackhole Lists\](http://en.wikipedia.org/wiki/DNSBL). Work with the RBL
-  /// to get your domain delisted.
-  /// - "BAD_PTR_RECORD" : The sending IP is missing a
-  /// [PTR record](https://support.google.com/domains/answer/3251147#ptr).
-  core.String? errorType;
-
-  DeliveryError({this.errorClass, this.errorRatio, this.errorType});
-
-  DeliveryError.fromJson(core.Map json_)
-    : this(
-        errorClass: json_['errorClass'] as core.String?,
-        errorRatio: (json_['errorRatio'] as core.num?)?.toDouble(),
-        errorType: json_['errorType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorClass != null) 'errorClass': errorClass!,
-    if (errorRatio != null) 'errorRatio': errorRatio!,
-    if (errorType != null) 'errorType': errorType!,
-  };
-}
+typedef DeliveryError = $DeliveryError;
 
 /// A registered domain resource in the Postmaster API.
-class Domain {
-  /// Timestamp when the user registered this domain.
-  ///
-  /// Assigned by the server.
-  core.String? createTime;
-
-  /// The resource name of the Domain.
-  ///
-  /// Domain names have the form `domains/{domain_name}`, where domain_name is
-  /// the fully qualified domain name (i.e., mymail.mydomain.com).
-  core.String? name;
-
-  /// User’s permission for this domain.
-  ///
-  /// Assigned by the server.
-  /// Possible string values are:
-  /// - "PERMISSION_UNSPECIFIED" : The default value and should never be used
-  /// explicitly.
-  /// - "OWNER" : User has read access to the domain and can share access with
-  /// others.
-  /// - "READER" : User has read access to the domain.
-  /// - "NONE" : User doesn't have permission to access information about the
-  /// domain. User did not verify ownership of domain nor was access granted by
-  /// other domain owners.
-  core.String? permission;
-
-  Domain({this.createTime, this.name, this.permission});
-
-  Domain.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        name: json_['name'] as core.String?,
-        permission: json_['permission'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (name != null) 'name': name!,
-    if (permission != null) 'permission': permission!,
-  };
-}
+typedef Domain = $Domain;
 
 /// [Feedback loop](https://support.google.com/mail/answer/6254652) identifier
 /// information.
-class FeedbackLoop {
-  /// Feedback loop identifier that uniquely identifies individual campaigns.
-  core.String? id;
-
-  /// The ratio of user marked spam messages with the identifier vs the total
-  /// number of inboxed messages with that identifier.
-  core.double? spamRatio;
-
-  FeedbackLoop({this.id, this.spamRatio});
-
-  FeedbackLoop.fromJson(core.Map json_)
-    : this(
-        id: json_['id'] as core.String?,
-        spamRatio: (json_['spamRatio'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (id != null) 'id': id!,
-    if (spamRatio != null) 'spamRatio': spamRatio!,
-  };
-}
+typedef FeedbackLoop = $FeedbackLoop;
 
 /// IP Reputation information for a set of IPs in a specific reputation
 /// category.

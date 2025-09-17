@@ -3534,47 +3534,7 @@ class DocumentOutputConfig {
 }
 
 /// A translated document message.
-class DocumentTranslation {
-  /// The array of translated documents.
-  ///
-  /// It is expected to be size 1 for now. We may produce multiple translated
-  /// documents in the future for other type of file formats.
-  core.List<core.String>? byteStreamOutputs;
-
-  /// The detected language for the input document.
-  ///
-  /// If the user did not provide the source language for the input document,
-  /// this field will have the language code automatically detected. If the
-  /// source language was passed, auto-detection of the language does not occur
-  /// and this field is empty.
-  core.String? detectedLanguageCode;
-
-  /// The translated document's mime type.
-  core.String? mimeType;
-
-  DocumentTranslation({
-    this.byteStreamOutputs,
-    this.detectedLanguageCode,
-    this.mimeType,
-  });
-
-  DocumentTranslation.fromJson(core.Map json_)
-    : this(
-        byteStreamOutputs:
-            (json_['byteStreamOutputs'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        detectedLanguageCode: json_['detectedLanguageCode'] as core.String?,
-        mimeType: json_['mimeType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (byteStreamOutputs != null) 'byteStreamOutputs': byteStreamOutputs!,
-    if (detectedLanguageCode != null)
-      'detectedLanguageCode': detectedLanguageCode!,
-    if (mimeType != null) 'mimeType': mimeType!,
-  };
-}
+typedef DocumentTranslation = $DocumentTranslation;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -3711,7 +3671,7 @@ class GcsDestination {
 }
 
 /// The Google Cloud Storage location for the input content.
-typedef GcsInputSource = $Source;
+typedef GcsInputSource = $Source00;
 
 /// The Google Cloud Storage location for the output content.
 class GcsOutputDestination {
@@ -3735,7 +3695,7 @@ class GcsOutputDestination {
 }
 
 /// The Google Cloud Storage location for the input content.
-typedef GcsSource = $Source;
+typedef GcsSource = $Source00;
 
 /// Represents a glossary built from user-provided data.
 class Glossary {

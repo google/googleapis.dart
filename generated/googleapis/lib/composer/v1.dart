@@ -1523,71 +1523,11 @@ class ProjectsLocationsOperationsResource {
 }
 
 /// The policy for airflow metadata database retention.
-class AirflowMetadataRetentionPolicyConfig {
-  /// How many days data should be retained for.
-  ///
-  /// Optional.
-  core.int? retentionDays;
-
-  /// Retention can be either enabled or disabled.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "RETENTION_MODE_UNSPECIFIED" : Default mode doesn't change environment
-  /// parameters.
-  /// - "RETENTION_MODE_ENABLED" : Retention policy is enabled.
-  /// - "RETENTION_MODE_DISABLED" : Retention policy is disabled.
-  core.String? retentionMode;
-
-  AirflowMetadataRetentionPolicyConfig({
-    this.retentionDays,
-    this.retentionMode,
-  });
-
-  AirflowMetadataRetentionPolicyConfig.fromJson(core.Map json_)
-    : this(
-        retentionDays: json_['retentionDays'] as core.int?,
-        retentionMode: json_['retentionMode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (retentionDays != null) 'retentionDays': retentionDays!,
-    if (retentionMode != null) 'retentionMode': retentionMode!,
-  };
-}
+typedef AirflowMetadataRetentionPolicyConfig =
+    $AirflowMetadataRetentionPolicyConfig;
 
 /// Allowed IP range with user-provided description.
-class AllowedIpRange {
-  /// User-provided description.
-  ///
-  /// It must contain at most 300 characters.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// IP address or range, defined using CIDR notation, of requests that this
-  /// rule applies to.
-  ///
-  /// Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or
-  /// `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be
-  /// properly truncated. For example, `1.2.3.4/24` should be truncated to
-  /// `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to
-  /// `2001:db8::/32`.
-  core.String? value;
-
-  AllowedIpRange({this.description, this.value});
-
-  AllowedIpRange.fromJson(core.Map json_)
-    : this(
-        description: json_['description'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (description != null) 'description': description!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef AllowedIpRange = $AllowedIpRange;
 
 /// Request to check whether image upgrade will succeed.
 class CheckUpgradeRequest {
@@ -1627,43 +1567,10 @@ class CheckUpgradeRequest {
 }
 
 /// CIDR block with an optional name.
-class CidrBlock {
-  /// CIDR block that must be specified in CIDR notation.
-  core.String? cidrBlock;
-
-  /// User-defined name that identifies the CIDR block.
-  core.String? displayName;
-
-  CidrBlock({this.cidrBlock, this.displayName});
-
-  CidrBlock.fromJson(core.Map json_)
-    : this(
-        cidrBlock: json_['cidrBlock'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cidrBlock != null) 'cidrBlock': cidrBlock!,
-    if (displayName != null) 'displayName': displayName!,
-  };
-}
+typedef CidrBlock = $CidrBlock00;
 
 /// Configuration for Cloud Data Lineage integration.
-class CloudDataLineageIntegration {
-  /// Whether or not Cloud Data Lineage integration is enabled.
-  ///
-  /// Optional.
-  core.bool? enabled;
-
-  CloudDataLineageIntegration({this.enabled});
-
-  CloudDataLineageIntegration.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-  };
-}
+typedef CloudDataLineageIntegration = $CloudDataLineageIntegration;
 
 /// Information about a single workload.
 class ComposerWorkload {
@@ -1711,98 +1618,13 @@ class ComposerWorkload {
 }
 
 /// Workload status.
-class ComposerWorkloadStatus {
-  /// Detailed message of the status.
-  ///
-  /// Output only.
-  core.String? detailedStatusMessage;
-
-  /// Workload state.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "COMPOSER_WORKLOAD_STATE_UNSPECIFIED" : Not able to determine the status
-  /// of the workload.
-  /// - "PENDING" : Workload is in pending state and has not yet started.
-  /// - "OK" : Workload is running fine.
-  /// - "WARNING" : Workload is running but there are some non-critical
-  /// problems.
-  /// - "ERROR" : Workload is not running due to an error.
-  /// - "SUCCEEDED" : Workload has finished execution with success.
-  /// - "FAILED" : Workload has finished execution with failure.
-  core.String? state;
-
-  /// Text to provide more descriptive status.
-  ///
-  /// Output only.
-  core.String? statusMessage;
-
-  ComposerWorkloadStatus({
-    this.detailedStatusMessage,
-    this.state,
-    this.statusMessage,
-  });
-
-  ComposerWorkloadStatus.fromJson(core.Map json_)
-    : this(
-        detailedStatusMessage: json_['detailedStatusMessage'] as core.String?,
-        state: json_['state'] as core.String?,
-        statusMessage: json_['statusMessage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detailedStatusMessage != null)
-      'detailedStatusMessage': detailedStatusMessage!,
-    if (state != null) 'state': state!,
-    if (statusMessage != null) 'statusMessage': statusMessage!,
-  };
-}
+typedef ComposerWorkloadStatus = $ComposerWorkloadStatus;
 
 /// Configuration for resources used by Airflow DAG processors.
 ///
 /// This field is supported for Cloud Composer environments in versions
 /// composer-3-airflow-*.*.*-build.* and newer.
-class DagProcessorResource {
-  /// The number of DAG processors.
-  ///
-  /// If not provided or set to 0, a single DAG processor instance will be
-  /// created.
-  ///
-  /// Optional.
-  core.int? count;
-
-  /// CPU request and limit for a single Airflow DAG processor replica.
-  ///
-  /// Optional.
-  core.double? cpu;
-
-  /// Memory (GB) request and limit for a single Airflow DAG processor replica.
-  ///
-  /// Optional.
-  core.double? memoryGb;
-
-  /// Storage (GB) request and limit for a single Airflow DAG processor replica.
-  ///
-  /// Optional.
-  core.double? storageGb;
-
-  DagProcessorResource({this.count, this.cpu, this.memoryGb, this.storageGb});
-
-  DagProcessorResource.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.int?,
-        cpu: (json_['cpu'] as core.num?)?.toDouble(),
-        memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-        storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
-}
+typedef DagProcessorResource = $DagProcessorResource;
 
 /// The configuration setting for Airflow database data retention mechanism.
 class DataRetentionConfig {
@@ -1849,40 +1671,7 @@ class DataRetentionConfig {
 
 /// The configuration of Cloud SQL instance that is used by the Apache Airflow
 /// software.
-class DatabaseConfig {
-  /// Cloud SQL machine type used by Airflow database.
-  ///
-  /// It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8
-  /// or db-n1-standard-16. If not specified, db-n1-standard-2 will be used.
-  /// Supported for Cloud Composer environments in versions
-  /// composer-1.*.*-airflow-*.*.*.
-  ///
-  /// Optional.
-  core.String? machineType;
-
-  /// The Compute Engine zone where the Airflow database is created.
-  ///
-  /// If zone is provided, it must be in the region selected for the
-  /// environment. If zone is not provided, a zone is automatically selected.
-  /// The zone can only be set during environment creation. Supported for Cloud
-  /// Composer environments in versions composer-2.*.*-airflow-*.*.*.
-  ///
-  /// Optional.
-  core.String? zone;
-
-  DatabaseConfig({this.machineType, this.zone});
-
-  DatabaseConfig.fromJson(core.Map json_)
-    : this(
-        machineType: json_['machineType'] as core.String?,
-        zone: json_['zone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-    if (zone != null) 'zone': zone!,
-  };
-}
+typedef DatabaseConfig = $DatabaseConfig;
 
 /// Request to trigger database failover (only for highly resilient
 /// environments).
@@ -1911,24 +1700,7 @@ typedef Empty = $Empty;
 /// The encryption options for the Cloud Composer environment and its
 /// dependencies.Supported for Cloud Composer environments in versions
 /// composer-1.*.*-airflow-*.*.*.
-class EncryptionConfig {
-  /// Customer-managed Encryption Key available through Google's Key Management
-  /// Service.
-  ///
-  /// Cannot be updated. If not specified, Google-managed key will be used.
-  ///
-  /// Optional.
-  core.String? kmsKeyName;
-
-  EncryptionConfig({this.kmsKeyName});
-
-  EncryptionConfig.fromJson(core.Map json_)
-    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
-  };
-}
+typedef EncryptionConfig = $EncryptionConfig01;
 
 /// An environment for running orchestration tasks.
 class Environment {
@@ -2353,143 +2125,16 @@ class EnvironmentConfig {
 }
 
 /// Execute Airflow Command request.
-class ExecuteAirflowCommandRequest {
-  /// Airflow command.
-  core.String? command;
-
-  /// Parameters for the Airflow command/subcommand as an array of arguments.
-  ///
-  /// It may contain positional arguments like `["my-dag-id"]`, key-value
-  /// parameters like `["--foo=bar"]` or `["--foo","bar"]`, or other flags like
-  /// `["-f"]`.
-  core.List<core.String>? parameters;
-
-  /// Airflow subcommand.
-  core.String? subcommand;
-
-  ExecuteAirflowCommandRequest({
-    this.command,
-    this.parameters,
-    this.subcommand,
-  });
-
-  ExecuteAirflowCommandRequest.fromJson(core.Map json_)
-    : this(
-        command: json_['command'] as core.String?,
-        parameters:
-            (json_['parameters'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        subcommand: json_['subcommand'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (command != null) 'command': command!,
-    if (parameters != null) 'parameters': parameters!,
-    if (subcommand != null) 'subcommand': subcommand!,
-  };
-}
+typedef ExecuteAirflowCommandRequest = $ExecuteAirflowCommandRequest;
 
 /// Response to ExecuteAirflowCommandRequest.
-class ExecuteAirflowCommandResponse {
-  /// Error message.
-  ///
-  /// Empty if there was no error.
-  core.String? error;
-
-  /// The unique ID of the command execution for polling.
-  core.String? executionId;
-
-  /// The name of the pod where the command is executed.
-  core.String? pod;
-
-  /// The namespace of the pod where the command is executed.
-  core.String? podNamespace;
-
-  ExecuteAirflowCommandResponse({
-    this.error,
-    this.executionId,
-    this.pod,
-    this.podNamespace,
-  });
-
-  ExecuteAirflowCommandResponse.fromJson(core.Map json_)
-    : this(
-        error: json_['error'] as core.String?,
-        executionId: json_['executionId'] as core.String?,
-        pod: json_['pod'] as core.String?,
-        podNamespace: json_['podNamespace'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (executionId != null) 'executionId': executionId!,
-    if (pod != null) 'pod': pod!,
-    if (podNamespace != null) 'podNamespace': podNamespace!,
-  };
-}
+typedef ExecuteAirflowCommandResponse = $ExecuteAirflowCommandResponse;
 
 /// Information about how a command ended.
-class ExitInfo {
-  /// Error message.
-  ///
-  /// Empty if there was no error.
-  core.String? error;
-
-  /// The exit code from the command execution.
-  core.int? exitCode;
-
-  ExitInfo({this.error, this.exitCode});
-
-  ExitInfo.fromJson(core.Map json_)
-    : this(
-        error: json_['error'] as core.String?,
-        exitCode: json_['exitCode'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (error != null) 'error': error!,
-    if (exitCode != null) 'exitCode': exitCode!,
-  };
-}
+typedef ExitInfo = $ExitInfo;
 
 /// Response for FetchDatabasePropertiesRequest.
-class FetchDatabasePropertiesResponse {
-  /// The availability status of the failover replica.
-  ///
-  /// A false status indicates that the failover replica is out of sync. The
-  /// primary instance can only fail over to the failover replica when the
-  /// status is true.
-  core.bool? isFailoverReplicaAvailable;
-
-  /// The Compute Engine zone that the instance is currently serving from.
-  core.String? primaryGceZone;
-
-  /// The Compute Engine zone that the failover instance is currently serving
-  /// from for a regional Cloud SQL instance.
-  core.String? secondaryGceZone;
-
-  FetchDatabasePropertiesResponse({
-    this.isFailoverReplicaAvailable,
-    this.primaryGceZone,
-    this.secondaryGceZone,
-  });
-
-  FetchDatabasePropertiesResponse.fromJson(core.Map json_)
-    : this(
-        isFailoverReplicaAvailable:
-            json_['isFailoverReplicaAvailable'] as core.bool?,
-        primaryGceZone: json_['primaryGceZone'] as core.String?,
-        secondaryGceZone: json_['secondaryGceZone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isFailoverReplicaAvailable != null)
-      'isFailoverReplicaAvailable': isFailoverReplicaAvailable!,
-    if (primaryGceZone != null) 'primaryGceZone': primaryGceZone!,
-    if (secondaryGceZone != null) 'secondaryGceZone': secondaryGceZone!,
-  };
-}
+typedef FetchDatabasePropertiesResponse = $FetchDatabasePropertiesResponse;
 
 /// Configuration for controlling how IPs are allocated in the GKE cluster
 /// running the Apache Airflow software.
@@ -2644,26 +2289,7 @@ class ImageVersion {
 }
 
 /// Contains information about a single line from logs.
-class Line {
-  /// Text content of the log line.
-  core.String? content;
-
-  /// Number of the line.
-  core.int? lineNumber;
-
-  Line({this.content, this.lineNumber});
-
-  Line.fromJson(core.Map json_)
-    : this(
-        content: json_['content'] as core.String?,
-        lineNumber: json_['lineNumber'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (content != null) 'content': content!,
-    if (lineNumber != null) 'lineNumber': lineNumber!,
-  };
-}
+typedef Line = $Line;
 
 /// The environments in a project and location.
 class ListEnvironmentsResponse {
@@ -2848,58 +2474,7 @@ class ListWorkloadsResponse {
 }
 
 /// Request to load a snapshot into a Cloud Composer environment.
-class LoadSnapshotRequest {
-  /// Whether or not to skip setting Airflow overrides when loading the
-  /// environment's state.
-  core.bool? skipAirflowOverridesSetting;
-
-  /// Whether or not to skip setting environment variables when loading the
-  /// environment's state.
-  core.bool? skipEnvironmentVariablesSetting;
-
-  /// Whether or not to skip copying Cloud Storage data when loading the
-  /// environment's state.
-  core.bool? skipGcsDataCopying;
-
-  /// Whether or not to skip installing Pypi packages when loading the
-  /// environment's state.
-  core.bool? skipPypiPackagesInstallation;
-
-  /// A Cloud Storage path to a snapshot to load, e.g.:
-  /// "gs://my-bucket/snapshots/project_location_environment_timestamp".
-  core.String? snapshotPath;
-
-  LoadSnapshotRequest({
-    this.skipAirflowOverridesSetting,
-    this.skipEnvironmentVariablesSetting,
-    this.skipGcsDataCopying,
-    this.skipPypiPackagesInstallation,
-    this.snapshotPath,
-  });
-
-  LoadSnapshotRequest.fromJson(core.Map json_)
-    : this(
-        skipAirflowOverridesSetting:
-            json_['skipAirflowOverridesSetting'] as core.bool?,
-        skipEnvironmentVariablesSetting:
-            json_['skipEnvironmentVariablesSetting'] as core.bool?,
-        skipGcsDataCopying: json_['skipGcsDataCopying'] as core.bool?,
-        skipPypiPackagesInstallation:
-            json_['skipPypiPackagesInstallation'] as core.bool?,
-        snapshotPath: json_['snapshotPath'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (skipAirflowOverridesSetting != null)
-      'skipAirflowOverridesSetting': skipAirflowOverridesSetting!,
-    if (skipEnvironmentVariablesSetting != null)
-      'skipEnvironmentVariablesSetting': skipEnvironmentVariablesSetting!,
-    if (skipGcsDataCopying != null) 'skipGcsDataCopying': skipGcsDataCopying!,
-    if (skipPypiPackagesInstallation != null)
-      'skipPypiPackagesInstallation': skipPypiPackagesInstallation!,
-    if (snapshotPath != null) 'snapshotPath': snapshotPath!,
-  };
-}
+typedef LoadSnapshotRequest = $LoadSnapshotRequest;
 
 /// The configuration settings for Cloud Composer maintenance window.
 ///
@@ -2985,32 +2560,7 @@ class MasterAuthorizedNetworksConfig {
 
 /// Configuration options for networking connections in the Composer 2
 /// environment.
-class NetworkingConfig {
-  /// Indicates the user requested specific connection type between Tenant and
-  /// Customer projects.
-  ///
-  /// You cannot set networking connection type in public IP environment.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "CONNECTION_TYPE_UNSPECIFIED" : No specific connection type was
-  /// requested, so the environment uses the default value corresponding to the
-  /// rest of its configuration.
-  /// - "VPC_PEERING" : Requests the use of VPC peerings for connecting the
-  /// Customer and Tenant projects.
-  /// - "PRIVATE_SERVICE_CONNECT" : Requests the use of Private Service Connect
-  /// for connecting the Customer and Tenant projects.
-  core.String? connectionType;
-
-  NetworkingConfig({this.connectionType});
-
-  NetworkingConfig.fromJson(core.Map json_)
-    : this(connectionType: json_['connectionType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (connectionType != null) 'connectionType': connectionType!,
-  };
-}
+typedef NetworkingConfig = $NetworkingConfig;
 
 /// The configuration information for the Kubernetes Engine nodes running the
 /// Apache Airflow software.
@@ -3301,41 +2851,7 @@ class Operation {
 }
 
 /// Poll Airflow Command request.
-class PollAirflowCommandRequest {
-  /// The unique ID of the command execution.
-  core.String? executionId;
-
-  /// Line number from which new logs should be fetched.
-  core.int? nextLineNumber;
-
-  /// The name of the pod where the command is executed.
-  core.String? pod;
-
-  /// The namespace of the pod where the command is executed.
-  core.String? podNamespace;
-
-  PollAirflowCommandRequest({
-    this.executionId,
-    this.nextLineNumber,
-    this.pod,
-    this.podNamespace,
-  });
-
-  PollAirflowCommandRequest.fromJson(core.Map json_)
-    : this(
-        executionId: json_['executionId'] as core.String?,
-        nextLineNumber: json_['nextLineNumber'] as core.int?,
-        pod: json_['pod'] as core.String?,
-        podNamespace: json_['podNamespace'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionId != null) 'executionId': executionId!,
-    if (nextLineNumber != null) 'nextLineNumber': nextLineNumber!,
-    if (pod != null) 'pod': pod!,
-    if (podNamespace != null) 'podNamespace': podNamespace!,
-  };
-}
+typedef PollAirflowCommandRequest = $PollAirflowCommandRequest;
 
 /// Response to PollAirflowCommandRequest.
 class PollAirflowCommandResponse {
@@ -3626,111 +3142,13 @@ class RecoveryConfig {
 typedef RestartWebServerRequest = $Empty;
 
 /// Request to create a snapshot of a Cloud Composer environment.
-class SaveSnapshotRequest {
-  /// Location in a Cloud Storage where the snapshot is going to be stored,
-  /// e.g.: "gs://my-bucket/snapshots".
-  core.String? snapshotLocation;
-
-  SaveSnapshotRequest({this.snapshotLocation});
-
-  SaveSnapshotRequest.fromJson(core.Map json_)
-    : this(snapshotLocation: json_['snapshotLocation'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
-  };
-}
+typedef SaveSnapshotRequest = $SaveSnapshotRequest;
 
 /// The configuration for scheduled snapshot creation mechanism.
-class ScheduledSnapshotsConfig {
-  /// Whether scheduled snapshots creation is enabled.
-  ///
-  /// Optional.
-  core.bool? enabled;
-
-  /// The cron expression representing the time when snapshots creation
-  /// mechanism runs.
-  ///
-  /// This field is subject to additional validation around frequency of
-  /// execution.
-  ///
-  /// Optional.
-  core.String? snapshotCreationSchedule;
-
-  /// The Cloud Storage location for storing automatically created snapshots.
-  ///
-  /// Optional.
-  core.String? snapshotLocation;
-
-  /// Time zone that sets the context to interpret snapshot_creation_schedule.
-  ///
-  /// Optional.
-  core.String? timeZone;
-
-  ScheduledSnapshotsConfig({
-    this.enabled,
-    this.snapshotCreationSchedule,
-    this.snapshotLocation,
-    this.timeZone,
-  });
-
-  ScheduledSnapshotsConfig.fromJson(core.Map json_)
-    : this(
-        enabled: json_['enabled'] as core.bool?,
-        snapshotCreationSchedule:
-            json_['snapshotCreationSchedule'] as core.String?,
-        snapshotLocation: json_['snapshotLocation'] as core.String?,
-        timeZone: json_['timeZone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (enabled != null) 'enabled': enabled!,
-    if (snapshotCreationSchedule != null)
-      'snapshotCreationSchedule': snapshotCreationSchedule!,
-    if (snapshotLocation != null) 'snapshotLocation': snapshotLocation!,
-    if (timeZone != null) 'timeZone': timeZone!,
-  };
-}
+typedef ScheduledSnapshotsConfig = $ScheduledSnapshotsConfig;
 
 /// Configuration for resources used by Airflow schedulers.
-class SchedulerResource {
-  /// The number of schedulers.
-  ///
-  /// Optional.
-  core.int? count;
-
-  /// CPU request and limit for a single Airflow scheduler replica.
-  ///
-  /// Optional.
-  core.double? cpu;
-
-  /// Memory (GB) request and limit for a single Airflow scheduler replica.
-  ///
-  /// Optional.
-  core.double? memoryGb;
-
-  /// Storage (GB) request and limit for a single Airflow scheduler replica.
-  ///
-  /// Optional.
-  core.double? storageGb;
-
-  SchedulerResource({this.count, this.cpu, this.memoryGb, this.storageGb});
-
-  SchedulerResource.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.int?,
-        cpu: (json_['cpu'] as core.num?)?.toDouble(),
-        memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-        storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
-}
+typedef SchedulerResource = $SchedulerResource;
 
 /// Specifies the selection and configuration of software inside the
 /// environment.
@@ -3902,238 +3320,33 @@ class SoftwareConfig {
 typedef Status = $Status00;
 
 /// Stop Airflow Command request.
-class StopAirflowCommandRequest {
-  /// The unique ID of the command execution.
-  core.String? executionId;
-
-  /// If true, the execution is terminated forcefully (SIGKILL).
-  ///
-  /// If false, the execution is stopped gracefully, giving it time for cleanup.
-  core.bool? force;
-
-  /// The name of the pod where the command is executed.
-  core.String? pod;
-
-  /// The namespace of the pod where the command is executed.
-  core.String? podNamespace;
-
-  StopAirflowCommandRequest({
-    this.executionId,
-    this.force,
-    this.pod,
-    this.podNamespace,
-  });
-
-  StopAirflowCommandRequest.fromJson(core.Map json_)
-    : this(
-        executionId: json_['executionId'] as core.String?,
-        force: json_['force'] as core.bool?,
-        pod: json_['pod'] as core.String?,
-        podNamespace: json_['podNamespace'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (executionId != null) 'executionId': executionId!,
-    if (force != null) 'force': force!,
-    if (pod != null) 'pod': pod!,
-    if (podNamespace != null) 'podNamespace': podNamespace!,
-  };
-}
+typedef StopAirflowCommandRequest = $StopAirflowCommandRequest;
 
 /// Response to StopAirflowCommandRequest.
-class StopAirflowCommandResponse {
-  /// Whether the execution is still running.
-  core.bool? isDone;
-
-  /// Output message from stopping execution request.
-  core.List<core.String>? output;
-
-  StopAirflowCommandResponse({this.isDone, this.output});
-
-  StopAirflowCommandResponse.fromJson(core.Map json_)
-    : this(
-        isDone: json_['isDone'] as core.bool?,
-        output:
-            (json_['output'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (isDone != null) 'isDone': isDone!,
-    if (output != null) 'output': output!,
-  };
-}
+typedef StopAirflowCommandResponse = $StopAirflowCommandResponse;
 
 /// The configuration for data storage in the environment.
-class StorageConfig {
-  /// The name of the Cloud Storage bucket used by the environment.
-  ///
-  /// No `gs://` prefix.
-  ///
-  /// Optional.
-  core.String? bucket;
-
-  StorageConfig({this.bucket});
-
-  StorageConfig.fromJson(core.Map json_)
-    : this(bucket: json_['bucket'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucket != null) 'bucket': bucket!,
-  };
-}
+typedef StorageConfig = $StorageConfig;
 
 /// The configuration setting for Task Logs.
-class TaskLogsRetentionConfig {
-  /// The mode of storage for Airflow workers task logs.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "TASK_LOGS_STORAGE_MODE_UNSPECIFIED" : This configuration is not
-  /// specified by the user.
-  /// - "CLOUD_LOGGING_AND_CLOUD_STORAGE" : Store task logs in Cloud Logging and
-  /// in the environment's Cloud Storage bucket.
-  /// - "CLOUD_LOGGING_ONLY" : Store task logs in Cloud Logging only.
-  core.String? storageMode;
-
-  TaskLogsRetentionConfig({this.storageMode});
-
-  TaskLogsRetentionConfig.fromJson(core.Map json_)
-    : this(storageMode: json_['storageMode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (storageMode != null) 'storageMode': storageMode!,
-  };
-}
+typedef TaskLogsRetentionConfig = $TaskLogsRetentionConfig;
 
 /// Configuration for resources used by Airflow triggerers.
-class TriggererResource {
-  /// The number of triggerers.
-  ///
-  /// Optional.
-  core.int? count;
-
-  /// CPU request and limit for a single Airflow triggerer replica.
-  ///
-  /// Optional.
-  core.double? cpu;
-
-  /// Memory (GB) request and limit for a single Airflow triggerer replica.
-  ///
-  /// Optional.
-  core.double? memoryGb;
-
-  TriggererResource({this.count, this.cpu, this.memoryGb});
-
-  TriggererResource.fromJson(core.Map json_)
-    : this(
-        count: json_['count'] as core.int?,
-        cpu: (json_['cpu'] as core.num?)?.toDouble(),
-        memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (count != null) 'count': count!,
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-  };
-}
+typedef TriggererResource = $TriggererResource;
 
 /// User workloads ConfigMap used by Airflow tasks that run with Kubernetes
 /// executor or KubernetesPodOperator.
-class UserWorkloadsConfigMap {
-  /// The "data" field of Kubernetes ConfigMap, organized in key-value pairs.
-  ///
-  /// For details see:
-  /// https://kubernetes.io/docs/concepts/configuration/configmap/ Example: {
-  /// "example_key": "example_value", "another_key": "another_value" }
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? data;
-
-  /// Identifier.
-  ///
-  /// The resource name of the ConfigMap, in the form:
-  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}"
-  core.String? name;
-
-  UserWorkloadsConfigMap({this.data, this.name});
-
-  UserWorkloadsConfigMap.fromJson(core.Map json_)
-    : this(
-        data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef UserWorkloadsConfigMap = $UserWorkloadsConfigMap;
 
 /// User workloads Secret used by Airflow tasks that run with Kubernetes
 /// executor or KubernetesPodOperator.
-class UserWorkloadsSecret {
-  /// The "data" field of Kubernetes Secret, organized in key-value pairs, which
-  /// can contain sensitive values such as a password, a token, or a key.
-  ///
-  /// The values for all keys have to be base64-encoded strings. For details
-  /// see: https://kubernetes.io/docs/concepts/configuration/secret/ Example: {
-  /// "example": "ZXhhbXBsZV92YWx1ZQ==", "another-example":
-  /// "YW5vdGhlcl9leGFtcGxlX3ZhbHVl" }
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? data;
-
-  /// Identifier.
-  ///
-  /// The resource name of the Secret, in the form:
-  /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}"
-  core.String? name;
-
-  UserWorkloadsSecret({this.data, this.name});
-
-  UserWorkloadsSecret.fromJson(core.Map json_)
-    : this(
-        data: (json_['data'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (data != null) 'data': data!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef UserWorkloadsSecret = $UserWorkloadsSecret;
 
 /// The configuration settings for the Airflow web server App Engine instance.
 ///
 /// Supported for Cloud Composer environments in versions
 /// composer-1.*.*-airflow-*.*.*
-class WebServerConfig {
-  /// Machine type on which Airflow web server is running.
-  ///
-  /// It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or
-  /// composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be
-  /// used. Value custom is returned only in response, if Airflow web server
-  /// parameters were manually changed to a non-standard values.
-  ///
-  /// Optional.
-  core.String? machineType;
-
-  WebServerConfig({this.machineType});
-
-  WebServerConfig.fromJson(core.Map json_)
-    : this(machineType: json_['machineType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (machineType != null) 'machineType': machineType!,
-  };
-}
+typedef WebServerConfig = $WebServerConfig;
 
 /// Network-level access control policy for the Airflow web server.
 class WebServerNetworkAccessControl {
@@ -4160,90 +3373,10 @@ class WebServerNetworkAccessControl {
 }
 
 /// Configuration for resources used by Airflow web server.
-class WebServerResource {
-  /// CPU request and limit for Airflow web server.
-  ///
-  /// Optional.
-  core.double? cpu;
-
-  /// Memory (GB) request and limit for Airflow web server.
-  ///
-  /// Optional.
-  core.double? memoryGb;
-
-  /// Storage (GB) request and limit for Airflow web server.
-  ///
-  /// Optional.
-  core.double? storageGb;
-
-  WebServerResource({this.cpu, this.memoryGb, this.storageGb});
-
-  WebServerResource.fromJson(core.Map json_)
-    : this(
-        cpu: (json_['cpu'] as core.num?)?.toDouble(),
-        memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-        storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpu != null) 'cpu': cpu!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
-}
+typedef WebServerResource = $WebServerResource;
 
 /// Configuration for resources used by Airflow workers.
-class WorkerResource {
-  /// CPU request and limit for a single Airflow worker replica.
-  ///
-  /// Optional.
-  core.double? cpu;
-
-  /// Maximum number of workers for autoscaling.
-  ///
-  /// Optional.
-  core.int? maxCount;
-
-  /// Memory (GB) request and limit for a single Airflow worker replica.
-  ///
-  /// Optional.
-  core.double? memoryGb;
-
-  /// Minimum number of workers for autoscaling.
-  ///
-  /// Optional.
-  core.int? minCount;
-
-  /// Storage (GB) request and limit for a single Airflow worker replica.
-  ///
-  /// Optional.
-  core.double? storageGb;
-
-  WorkerResource({
-    this.cpu,
-    this.maxCount,
-    this.memoryGb,
-    this.minCount,
-    this.storageGb,
-  });
-
-  WorkerResource.fromJson(core.Map json_)
-    : this(
-        cpu: (json_['cpu'] as core.num?)?.toDouble(),
-        maxCount: json_['maxCount'] as core.int?,
-        memoryGb: (json_['memoryGb'] as core.num?)?.toDouble(),
-        minCount: json_['minCount'] as core.int?,
-        storageGb: (json_['storageGb'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cpu != null) 'cpu': cpu!,
-    if (maxCount != null) 'maxCount': maxCount!,
-    if (memoryGb != null) 'memoryGb': memoryGb!,
-    if (minCount != null) 'minCount': minCount!,
-    if (storageGb != null) 'storageGb': storageGb!,
-  };
-}
+typedef WorkerResource = $WorkerResource;
 
 /// The Kubernetes workloads configuration for GKE cluster associated with the
 /// Cloud Composer environment.

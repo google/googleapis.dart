@@ -854,100 +854,15 @@ class ProjectsJobsResource {
 }
 
 /// Application related details of a job posting.
-class ApplicationInfo {
-  /// Optional but at least one of uris, emails or instruction must be
-  /// specified.
-  ///
-  /// Use this field to specify email address(es) to which resumes or
-  /// applications can be sent. The maximum number of allowed characters for
-  /// each entry is 255.
-  core.List<core.String>? emails;
-
-  /// Optional but at least one of uris, emails or instruction must be
-  /// specified.
-  ///
-  /// Use this field to provide instructions, such as "Mail your application to
-  /// ...", that a candidate can follow to apply for the job. This field accepts
-  /// and sanitizes HTML input, and also accepts bold, italic, ordered list, and
-  /// unordered list markup tags. The maximum number of allowed characters is
-  /// 3,000.
-  core.String? instruction;
-
-  /// Optional but at least one of uris, emails or instruction must be
-  /// specified.
-  ///
-  /// Use this URI field to direct an applicant to a website, for example to
-  /// link to an online application form. The maximum number of allowed
-  /// characters for each entry is 2,000.
-  core.List<core.String>? uris;
-
-  ApplicationInfo({this.emails, this.instruction, this.uris});
-
-  ApplicationInfo.fromJson(core.Map json_)
-    : this(
-        emails:
-            (json_['emails'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        instruction: json_['instruction'] as core.String?,
-        uris:
-            (json_['uris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (emails != null) 'emails': emails!,
-    if (instruction != null) 'instruction': instruction!,
-    if (uris != null) 'uris': uris!,
-  };
-}
+typedef ApplicationInfo = $ApplicationInfo;
 
 /// Input only.
 ///
 /// Batch delete jobs request.
-class BatchDeleteJobsRequest {
-  /// The filter string specifies the jobs to be deleted.
-  ///
-  /// Supported operator: =, AND The fields eligible for filtering are: *
-  /// `companyName` (Required) * `requisitionId` (Required) Sample Query:
-  /// companyName = "projects/api-test-project/companies/123" AND requisitionId
-  /// = "req-1"
-  ///
-  /// Required.
-  core.String? filter;
-
-  BatchDeleteJobsRequest({this.filter});
-
-  BatchDeleteJobsRequest.fromJson(core.Map json_)
-    : this(filter: json_['filter'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filter != null) 'filter': filter!,
-  };
-}
+typedef BatchDeleteJobsRequest = $BatchDeleteJobsRequest;
 
 /// Represents starting and ending value of a range in double.
-class BucketRange {
-  /// Starting value of the bucket range.
-  core.double? from;
-
-  /// Ending value of the bucket range.
-  core.double? to;
-
-  BucketRange({this.from, this.to});
-
-  BucketRange.fromJson(core.Map json_)
-    : this(
-        from: (json_['from'] as core.num?)?.toDouble(),
-        to: (json_['to'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (from != null) 'from': from!,
-    if (to != null) 'to': to!,
-  };
-}
+typedef BucketRange = $BucketRange;
 
 /// Represents count of jobs within one bucket.
 class BucketizedCount {
@@ -1824,36 +1739,7 @@ class CompleteQueryResponse {
 /// Resource that represents completion results.
 ///
 /// Output only.
-class CompletionResult {
-  /// The URI of the company image for CompletionType.COMPANY_NAME.
-  core.String? imageUri;
-
-  /// The suggestion for the query.
-  core.String? suggestion;
-
-  /// The completion topic.
-  /// Possible string values are:
-  /// - "COMPLETION_TYPE_UNSPECIFIED" : Default value.
-  /// - "JOB_TITLE" : Only suggest job titles.
-  /// - "COMPANY_NAME" : Only suggest company names.
-  /// - "COMBINED" : Suggest both job titles and company names.
-  core.String? type;
-
-  CompletionResult({this.imageUri, this.suggestion, this.type});
-
-  CompletionResult.fromJson(core.Map json_)
-    : this(
-        imageUri: json_['imageUri'] as core.String?,
-        suggestion: json_['suggestion'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (imageUri != null) 'imageUri': imageUri!,
-    if (suggestion != null) 'suggestion': suggestion!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef CompletionResult = $CompletionResult;
 
 /// The report event request.
 class CreateClientEventRequest {
@@ -1933,56 +1819,7 @@ class CreateJobRequest {
 }
 
 /// Custom attribute values that are either filterable or non-filterable.
-class CustomAttribute {
-  /// If the `filterable` flag is true, the custom field values may be used for
-  /// custom attribute filters JobQuery.custom_attribute_filter.
-  ///
-  /// If false, these values may not be used for custom attribute filters.
-  /// Default is false.
-  ///
-  /// Optional.
-  core.bool? filterable;
-
-  /// Optional but exactly one of string_values or long_values must be
-  /// specified.
-  ///
-  /// This field is used to perform number range search. (`EQ`, `GT`, `GE`,
-  /// `LE`, `LT`) over filterable `long_value`. Currently at most 1 long_values
-  /// is supported.
-  core.List<core.String>? longValues;
-
-  /// Optional but exactly one of string_values or long_values must be
-  /// specified.
-  ///
-  /// This field is used to perform a string match (`CASE_SENSITIVE_MATCH` or
-  /// `CASE_INSENSITIVE_MATCH`) search. For filterable `string_value`s, a
-  /// maximum total number of 200 values is allowed, with each `string_value`
-  /// has a byte size of no more than 500B. For unfilterable `string_values`,
-  /// the maximum total byte size of unfilterable `string_values` is 50KB. Empty
-  /// string is not allowed.
-  core.List<core.String>? stringValues;
-
-  CustomAttribute({this.filterable, this.longValues, this.stringValues});
-
-  CustomAttribute.fromJson(core.Map json_)
-    : this(
-        filterable: json_['filterable'] as core.bool?,
-        longValues:
-            (json_['longValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        stringValues:
-            (json_['stringValues'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (filterable != null) 'filterable': filterable!,
-    if (longValues != null) 'longValues': longValues!,
-    if (stringValues != null) 'stringValues': stringValues!,
-  };
-}
+typedef CustomAttribute = $CustomAttribute02;
 
 /// Custom attributes histogram request.
 ///
@@ -2088,44 +1925,7 @@ class CustomAttributeHistogramResult {
 ///
 /// Providing this information improves the quality of the search results across
 /// devices.
-class DeviceInfo {
-  /// Type of the device.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "DEVICE_TYPE_UNSPECIFIED" : The device type isn't specified.
-  /// - "WEB" : A desktop web browser, such as, Chrome, Firefox, Safari, or
-  /// Internet Explorer)
-  /// - "MOBILE_WEB" : A mobile device web browser, such as a phone or tablet
-  /// with a Chrome browser.
-  /// - "ANDROID" : An Android device native application.
-  /// - "IOS" : An iOS device native application.
-  /// - "BOT" : A bot, as opposed to a device operated by human beings, such as
-  /// a web crawler.
-  /// - "OTHER" : Other devices types.
-  core.String? deviceType;
-
-  /// A device-specific ID.
-  ///
-  /// The ID must be a unique identifier that distinguishes the device from
-  /// other devices.
-  ///
-  /// Optional.
-  core.String? id;
-
-  DeviceInfo({this.deviceType, this.id});
-
-  DeviceInfo.fromJson(core.Map json_)
-    : this(
-        deviceType: json_['deviceType'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (deviceType != null) 'deviceType': deviceType!,
-    if (id != null) 'id': id!,
-  };
-}
+typedef DeviceInfo = $DeviceInfo;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -2206,69 +2006,7 @@ class HistogramFacets {
 /// corresponding count of jobs for that filter.
 ///
 /// Output only.
-class HistogramResult {
-  /// The Histogram search filters.
-  /// Possible string values are:
-  /// - "SEARCH_TYPE_UNSPECIFIED" : The default value if search type is not
-  /// specified.
-  /// - "COMPANY_ID" : Filter by the company id field.
-  /// - "EMPLOYMENT_TYPE" : Filter by the employment type field, such as
-  /// `FULL_TIME` or `PART_TIME`.
-  /// - "COMPANY_SIZE" : Filter by the company size type field, such as `BIG`,
-  /// `SMALL` or `BIGGER`.
-  /// - "DATE_PUBLISHED" : Filter by the date published field. Possible return
-  /// values are: * PAST_24_HOURS (The past 24 hours) * PAST_3_DAYS (The past 3
-  /// days) * PAST_WEEK (The past 7 days) * PAST_MONTH (The past 30 days) *
-  /// PAST_YEAR (The past 365 days)
-  /// - "EDUCATION_LEVEL" : Filter by the required education level of the job.
-  /// - "EXPERIENCE_LEVEL" : Filter by the required experience level of the job.
-  /// - "ADMIN_1" : Filter by Admin1, which is a global placeholder for
-  /// referring to state, province, or the particular term a country uses to
-  /// define the geographic structure below the country level. Examples include
-  /// states codes such as "CA", "IL", "NY", and provinces, such as "BC".
-  /// - "COUNTRY" : Filter by the country code of job, such as US, JP, FR.
-  /// - "CITY" : Filter by the "city name", "Admin1 code", for example,
-  /// "Mountain View, CA" or "New York, NY".
-  /// - "LOCALE" : Filter by the locale field of a job, such as "en-US",
-  /// "fr-FR". This is the BCP-47 language code, such as "en-US" or "sr-Latn".
-  /// For more information, see
-  /// [Tags for Identifying Languages](https://tools.ietf.org/html/bcp47).
-  /// - "LANGUAGE" : Filter by the language code portion of the locale field,
-  /// such as "en" or "fr".
-  /// - "CATEGORY" : Filter by the Category.
-  /// - "CITY_COORDINATE" : Filter by the city center GPS coordinate (latitude
-  /// and longitude), for example, 37.4038522,-122.0987765. Since the
-  /// coordinates of a city center can change, clients may need to refresh them
-  /// periodically.
-  /// - "ADMIN_1_COUNTRY" : A combination of state or province code with a
-  /// country code. This field differs from `JOB_ADMIN1`, which can be used in
-  /// multiple countries.
-  /// - "COMPANY_DISPLAY_NAME" : Company display name.
-  /// - "BASE_COMPENSATION_UNIT" : Base compensation unit.
-  core.String? searchType;
-
-  /// A map from the values of field to the number of jobs with that value in
-  /// this search result.
-  ///
-  /// Key: search type (filter names, such as the companyName). Values: the
-  /// count of jobs that match the filter for this search.
-  core.Map<core.String, core.int>? values;
-
-  HistogramResult({this.searchType, this.values});
-
-  HistogramResult.fromJson(core.Map json_)
-    : this(
-        searchType: json_['searchType'] as core.String?,
-        values: (json_['values'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.int),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (searchType != null) 'searchType': searchType!,
-    if (values != null) 'values': values!,
-  };
-}
+typedef HistogramResult = $HistogramResult;
 
 /// Histogram results that match HistogramFacets specified in SearchJobsRequest.
 ///
@@ -2827,102 +2565,7 @@ class JobDerivedInfo {
 
 /// An event issued when a job seeker interacts with the application that
 /// implements Cloud Talent Solution.
-class JobEvent {
-  /// The job name(s) associated with this event.
-  ///
-  /// For example, if this is an impression event, this field contains the
-  /// identifiers of all jobs shown to the job seeker. If this was a view event,
-  /// this field contains the identifier of the viewed job.
-  ///
-  /// Required.
-  core.List<core.String>? jobs;
-
-  /// The type of the event (see JobEventType).
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "JOB_EVENT_TYPE_UNSPECIFIED" : The event is unspecified by other
-  /// provided values.
-  /// - "IMPRESSION" : The job seeker or other entity interacting with the
-  /// service has had a job rendered in their view, such as in a list of search
-  /// results in a compressed or clipped format. This event is typically
-  /// associated with the viewing of a jobs list on a single page by a job
-  /// seeker.
-  /// - "VIEW" : The job seeker, or other entity interacting with the service,
-  /// has viewed the details of a job, including the full description. This
-  /// event doesn't apply to the viewing a snippet of a job appearing as a part
-  /// of the job search results. Viewing a snippet is associated with an
-  /// impression).
-  /// - "VIEW_REDIRECT" : The job seeker or other entity interacting with the
-  /// service performed an action to view a job and was redirected to a
-  /// different website for job.
-  /// - "APPLICATION_START" : The job seeker or other entity interacting with
-  /// the service began the process or demonstrated the intention of applying
-  /// for a job.
-  /// - "APPLICATION_FINISH" : The job seeker or other entity interacting with
-  /// the service submitted an application for a job.
-  /// - "APPLICATION_QUICK_SUBMISSION" : The job seeker or other entity
-  /// interacting with the service submitted an application for a job with a
-  /// single click without entering information. If a job seeker performs this
-  /// action, send only this event to the service. Do not also send
-  /// JobEventType.APPLICATION_START or JobEventType.APPLICATION_FINISH events.
-  /// - "APPLICATION_REDIRECT" : The job seeker or other entity interacting with
-  /// the service performed an action to apply to a job and was redirected to a
-  /// different website to complete the application.
-  /// - "APPLICATION_START_FROM_SEARCH" : The job seeker or other entity
-  /// interacting with the service began the process or demonstrated the
-  /// intention of applying for a job from the search results page without
-  /// viewing the details of the job posting. If sending this event,
-  /// JobEventType.VIEW event shouldn't be sent.
-  /// - "APPLICATION_REDIRECT_FROM_SEARCH" : The job seeker, or other entity
-  /// interacting with the service, performs an action with a single click from
-  /// the search results page to apply to a job (without viewing the details of
-  /// the job posting), and is redirected to a different website to complete the
-  /// application. If a candidate performs this action, send only this event to
-  /// the service. Do not also send JobEventType.APPLICATION_START,
-  /// JobEventType.APPLICATION_FINISH or JobEventType.VIEW events.
-  /// - "APPLICATION_COMPANY_SUBMIT" : This event should be used when a company
-  /// submits an application on behalf of a job seeker. This event is intended
-  /// for use by staffing agencies attempting to place candidates.
-  /// - "BOOKMARK" : The job seeker or other entity interacting with the service
-  /// demonstrated an interest in a job by bookmarking or saving it.
-  /// - "NOTIFICATION" : The job seeker or other entity interacting with the
-  /// service was sent a notification, such as an email alert or device
-  /// notification, containing one or more jobs listings generated by the
-  /// service.
-  /// - "HIRED" : The job seeker or other entity interacting with the service
-  /// was employed by the hiring entity (employer). Send this event only if the
-  /// job seeker was hired through an application that was initiated by a search
-  /// conducted through the Cloud Talent Solution service.
-  /// - "SENT_CV" : A recruiter or staffing agency submitted an application on
-  /// behalf of the candidate after interacting with the service to identify a
-  /// suitable job posting.
-  /// - "INTERVIEW_GRANTED" : The entity interacting with the service (for
-  /// example, the job seeker), was granted an initial interview by the hiring
-  /// entity (employer). This event should only be sent if the job seeker was
-  /// granted an interview as part of an application that was initiated by a
-  /// search conducted through / recommendation provided by the Cloud Talent
-  /// Solution service.
-  /// - "NOT_INTERESTED" : The job seeker or other entity interacting with the
-  /// service showed no interest in the job.
-  core.String? type;
-
-  JobEvent({this.jobs, this.type});
-
-  JobEvent.fromJson(core.Map json_)
-    : this(
-        jobs:
-            (json_['jobs'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (jobs != null) 'jobs': jobs!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef JobEvent = $JobEvent;
 
 /// Input only.
 ///
@@ -3510,38 +3153,7 @@ typedef Money = $Money;
 ///
 /// Use this field to specify bucketing option for the histogram search
 /// response.
-class NumericBucketingOption {
-  /// Two adjacent values form a histogram bucket.
-  ///
-  /// Values should be in ascending order. For example, if \[5, 10, 15\] are
-  /// provided, four buckets are created: (-inf, 5), 5, 10), \[10, 15), \[15,
-  /// inf). At most 20 \[buckets_bound is supported.
-  ///
-  /// Required.
-  core.List<core.double>? bucketBounds;
-
-  /// If set to true, the histogram result includes minimum/maximum value of the
-  /// numeric field.
-  ///
-  /// Optional.
-  core.bool? requiresMinMax;
-
-  NumericBucketingOption({this.bucketBounds, this.requiresMinMax});
-
-  NumericBucketingOption.fromJson(core.Map json_)
-    : this(
-        bucketBounds:
-            (json_['bucketBounds'] as core.List?)
-                ?.map((value) => (value as core.num).toDouble())
-                .toList(),
-        requiresMinMax: json_['requiresMinMax'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bucketBounds != null) 'bucketBounds': bucketBounds!,
-    if (requiresMinMax != null) 'requiresMinMax': requiresMinMax!,
-  };
-}
+typedef NumericBucketingOption = $NumericBucketingOption;
 
 /// Custom numeric bucketing result.
 ///
@@ -3605,46 +3217,7 @@ typedef PostalAddress = $PostalAddress00;
 /// Input only.
 ///
 /// Options for job processing.
-class ProcessingOptions {
-  /// If set to `true`, the service does not attempt to resolve a more precise
-  /// address for the job.
-  ///
-  /// Optional.
-  core.bool? disableStreetAddressResolution;
-
-  /// Option for job HTML content sanitization.
-  ///
-  /// Applied fields are: * description * applicationInfo.instruction *
-  /// incentives * qualifications * responsibilities HTML tags in these fields
-  /// may be stripped if sanitiazation is not disabled. Defaults to
-  /// HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "HTML_SANITIZATION_UNSPECIFIED" : Default value.
-  /// - "HTML_SANITIZATION_DISABLED" : Disables sanitization on HTML input.
-  /// - "SIMPLE_FORMATTING_ONLY" : Sanitizes HTML input, only accepts bold,
-  /// italic, ordered list, and unordered list markup tags.
-  core.String? htmlSanitization;
-
-  ProcessingOptions({
-    this.disableStreetAddressResolution,
-    this.htmlSanitization,
-  });
-
-  ProcessingOptions.fromJson(core.Map json_)
-    : this(
-        disableStreetAddressResolution:
-            json_['disableStreetAddressResolution'] as core.bool?,
-        htmlSanitization: json_['htmlSanitization'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (disableStreetAddressResolution != null)
-      'disableStreetAddressResolution': disableStreetAddressResolution!,
-    if (htmlSanitization != null) 'htmlSanitization': htmlSanitization!,
-  };
-}
+typedef ProcessingOptions = $ProcessingOptions;
 
 /// Input only.
 ///
@@ -4091,26 +3664,7 @@ class SearchJobsResponse {
 /// Spell check result.
 ///
 /// Output only.
-class SpellingCorrection {
-  /// Indicates if the query was corrected by the spell checker.
-  core.bool? corrected;
-
-  /// Correction output consisting of the corrected keyword string.
-  core.String? correctedText;
-
-  SpellingCorrection({this.corrected, this.correctedText});
-
-  SpellingCorrection.fromJson(core.Map json_)
-    : this(
-        corrected: json_['corrected'] as core.bool?,
-        correctedText: json_['correctedText'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (corrected != null) 'corrected': corrected!,
-    if (correctedText != null) 'correctedText': correctedText!,
-  };
-}
+typedef SpellingCorrection = $SpellingCorrection;
 
 /// Represents a time of day.
 ///
@@ -4120,26 +3674,7 @@ class SpellingCorrection {
 typedef TimeOfDay = $TimeOfDay;
 
 /// Message representing a period of time between two timestamps.
-class TimestampRange {
-  /// End of the period.
-  core.String? endTime;
-
-  /// Begin of the period.
-  core.String? startTime;
-
-  TimestampRange({this.endTime, this.startTime});
-
-  TimestampRange.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef TimestampRange = $TimestampRange;
 
 /// Input only.
 ///

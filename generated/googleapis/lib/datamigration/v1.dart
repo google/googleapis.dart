@@ -3817,7 +3817,7 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// AuthorizedNetwork contains metadata for an authorized network.
 class AuthorizedNetwork {
@@ -5534,7 +5534,7 @@ class DatabaseEntity {
 }
 
 /// DatabaseInstance acts as a parent entity to other database entities.
-typedef DatabaseInstanceEntity = $Entity;
+typedef DatabaseInstanceEntity = $Entity00;
 
 /// A message defining the database engine and provider.
 class DatabaseType {
@@ -5724,7 +5724,7 @@ typedef Empty = $Empty;
 
 /// EncryptionConfig describes the encryption config of a cluster that is
 /// encrypted with a CMEK (customer-managed encryption key).
-typedef EncryptionConfig = $EncryptionConfig;
+typedef EncryptionConfig = $EncryptionConfig00;
 
 /// A single DDL statement for a specific entity
 class EntityDdl {
@@ -9170,43 +9170,7 @@ class ResumeMigrationJobRequest {
 /// https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript)
 /// to produce the script that will help set up the reverse SSH tunnel, and to
 /// set up the VPC peering between the Cloud SQL private network and the VPC.
-class ReverseSshConnectivity {
-  /// The name of the virtual machine (Compute Engine) used as the bastion
-  /// server for the SSH tunnel.
-  core.String? vm;
-
-  /// The IP of the virtual machine (Compute Engine) used as the bastion server
-  /// for the SSH tunnel.
-  ///
-  /// Required.
-  core.String? vmIp;
-
-  /// The forwarding port of the virtual machine (Compute Engine) used as the
-  /// bastion server for the SSH tunnel.
-  ///
-  /// Required.
-  core.int? vmPort;
-
-  /// The name of the VPC to peer with the Cloud SQL private network.
-  core.String? vpc;
-
-  ReverseSshConnectivity({this.vm, this.vmIp, this.vmPort, this.vpc});
-
-  ReverseSshConnectivity.fromJson(core.Map json_)
-    : this(
-        vm: json_['vm'] as core.String?,
-        vmIp: json_['vmIp'] as core.String?,
-        vmPort: json_['vmPort'] as core.int?,
-        vpc: json_['vpc'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vm != null) 'vm': vm!,
-    if (vmIp != null) 'vmIp': vmIp!,
-    if (vmPort != null) 'vmPort': vmPort!,
-    if (vpc != null) 'vpc': vpc!,
-  };
-}
+typedef ReverseSshConnectivity = $ReverseSshConnectivity;
 
 /// Request message for 'RollbackConversionWorkspace' request.
 typedef RollbackConversionWorkspaceRequest = $Empty;
@@ -9269,7 +9233,7 @@ class RulesFile {
 /// interchangeably when they refer to a namespace or a collection of other
 /// database entities. Can store additional information which is schema
 /// specific.
-typedef SchemaEntity = $Entity;
+typedef SchemaEntity = $Entity00;
 
 /// Response message for 'SearchBackgroundJobs' request.
 class SearchBackgroundJobsResponse {
@@ -9957,40 +9921,7 @@ class SourceTextFilter {
 }
 
 /// An entry for an Access Control list.
-class SqlAclEntry {
-  /// The time when this access control entry expires in
-  /// [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example:
-  /// `2012-11-15T16:19:00.094Z`.
-  core.String? expireTime;
-
-  /// A label to identify this entry.
-  core.String? label;
-
-  /// Input only.
-  ///
-  /// The time-to-leave of this access control entry.
-  core.String? ttl;
-
-  /// The allowlisted value for the access control list.
-  core.String? value;
-
-  SqlAclEntry({this.expireTime, this.label, this.ttl, this.value});
-
-  SqlAclEntry.fromJson(core.Map json_)
-    : this(
-        expireTime: json_['expireTime'] as core.String?,
-        label: json_['label'] as core.String?,
-        ttl: json_['ttl'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (expireTime != null) 'expireTime': expireTime!,
-    if (label != null) 'label': label!,
-    if (ttl != null) 'ttl': ttl!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef SqlAclEntry = $SqlAclEntry;
 
 /// IP Management configuration.
 class SqlIpConfig {
@@ -10474,19 +10405,7 @@ class SqlServerToPostgresConfig {
 }
 
 /// Response message for 'GenerateSshScript' request.
-class SshScript {
-  /// The ssh configuration script.
-  core.String? script;
-
-  SshScript({this.script});
-
-  SshScript.fromJson(core.Map json_)
-    : this(script: json_['script'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (script != null) 'script': script!,
-  };
-}
+typedef SshScript = $SshScript;
 
 /// SSL configuration information.
 class SslConfig {
@@ -11177,50 +11096,10 @@ class ViewEntity {
 }
 
 /// VM creation configuration message
-class VmCreationConfig {
-  /// The subnet name the vm needs to be created in.
-  core.String? subnet;
-
-  /// VM instance machine type to create.
-  ///
-  /// Required.
-  core.String? vmMachineType;
-
-  /// The Google Cloud Platform zone to create the VM in.
-  core.String? vmZone;
-
-  VmCreationConfig({this.subnet, this.vmMachineType, this.vmZone});
-
-  VmCreationConfig.fromJson(core.Map json_)
-    : this(
-        subnet: json_['subnet'] as core.String?,
-        vmMachineType: json_['vmMachineType'] as core.String?,
-        vmZone: json_['vmZone'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (subnet != null) 'subnet': subnet!,
-    if (vmMachineType != null) 'vmMachineType': vmMachineType!,
-    if (vmZone != null) 'vmZone': vmZone!,
-  };
-}
+typedef VmCreationConfig = $VmCreationConfig;
 
 /// VM selection configuration message
-class VmSelectionConfig {
-  /// The Google Cloud Platform zone the VM is located.
-  ///
-  /// Required.
-  core.String? vmZone;
-
-  VmSelectionConfig({this.vmZone});
-
-  VmSelectionConfig.fromJson(core.Map json_)
-    : this(vmZone: json_['vmZone'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vmZone != null) 'vmZone': vmZone!,
-  };
-}
+typedef VmSelectionConfig = $VmSelectionConfig;
 
 /// The VPC peering configuration is used to create VPC peering with the
 /// consumer's VPC.
@@ -11256,16 +11135,4 @@ class VpcPeeringConfig {
 ///
 /// We will use this information to set up the VPC peering connection between
 /// Cloud SQL and this VPC.
-class VpcPeeringConnectivity {
-  /// The name of the VPC network to peer with the Cloud SQL private network.
-  core.String? vpc;
-
-  VpcPeeringConnectivity({this.vpc});
-
-  VpcPeeringConnectivity.fromJson(core.Map json_)
-    : this(vpc: json_['vpc'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vpc != null) 'vpc': vpc!,
-  };
-}
+typedef VpcPeeringConnectivity = $VpcPeeringConnectivity;

@@ -8738,7 +8738,7 @@ class AppVersionRange {
 }
 
 /// Deprecated: subscription archiving is not supported.
-typedef ArchiveSubscriptionRequest = $Shared02;
+typedef ArchiveSubscriptionRequest = $Shared03;
 
 /// Metadata of an asset module.
 class AssetModuleMetadata {
@@ -10972,26 +10972,7 @@ class DeviceGroup {
 }
 
 /// Identifier of a device.
-class DeviceId {
-  /// Value of Build.BRAND.
-  core.String? buildBrand;
-
-  /// Value of Build.DEVICE.
-  core.String? buildDevice;
-
-  DeviceId({this.buildBrand, this.buildDevice});
-
-  DeviceId.fromJson(core.Map json_)
-    : this(
-        buildBrand: json_['buildBrand'] as core.String?,
-        buildDevice: json_['buildDevice'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (buildBrand != null) 'buildBrand': buildBrand!,
-    if (buildDevice != null) 'buildDevice': buildDevice!,
-  };
-}
+typedef DeviceId = $DeviceId;
 
 /// Characteristics of the user's device.
 class DeviceMetadata {
@@ -15333,7 +15314,7 @@ class OtherRegionsSubscriptionOfferPhasePrices {
 ///
 /// List operations that supports paging return only one "page" of results. This
 /// protocol buffer message describes the page that has been returned.
-typedef PageInfo = $PageInfo;
+typedef PageInfo = $PageInfo01;
 
 /// Details of a paid app purchase.
 typedef PaidAppDetails = $Empty;

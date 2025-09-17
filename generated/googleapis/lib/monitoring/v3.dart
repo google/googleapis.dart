@@ -8416,42 +8416,7 @@ class Minutes {
 /// "gce_instance" has labels "project_id", "instance_id" and "zone": { "type":
 /// "gce_instance", "labels": { "project_id": "my-project", "instance_id":
 /// "12345678901234", "zone": "us-central1-a" }}
-class MonitoredResource {
-  /// Values for all of the labels listed in the associated monitored resource
-  /// descriptor.
-  ///
-  /// For example, Compute Engine VM instances use the labels "project_id",
-  /// "instance_id", and "zone".
-  ///
-  /// Required.
-  core.Map<core.String, core.String>? labels;
-
-  /// The monitored resource type.
-  ///
-  /// This field must match the type field of a MonitoredResourceDescriptor
-  /// object. For example, the type of a Compute Engine VM instance is
-  /// gce_instance. For a list of types, see Monitoring resource types
-  /// (https://cloud.google.com/monitoring/api/resources) and Logging resource
-  /// types (https://cloud.google.com/logging/docs/api/v2/resource-list).
-  ///
-  /// Required.
-  core.String? type;
-
-  MonitoredResource({this.labels, this.type});
-
-  MonitoredResource.fromJson(core.Map json_)
-    : this(
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (labels != null) 'labels': labels!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef MonitoredResource = $MonitoredResource;
 
 /// An object that describes the schema of a MonitoredResource object using a
 /// type name and a set of labels.
@@ -9400,26 +9365,7 @@ class QueryTimeSeriesResponse {
 }
 
 /// The range of the population values.
-class Range {
-  /// The maximum of the population values.
-  core.double? max;
-
-  /// The minimum of the population values.
-  core.double? min;
-
-  Range({this.max, this.min});
-
-  Range.fromJson(core.Map json_)
-    : this(
-        max: (json_['max'] as core.num?)?.toDouble(),
-        min: (json_['min'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (max != null) 'max': max!,
-    if (min != null) 'min': min!,
-  };
-}
+typedef Range = $Range;
 
 /// Service Level Indicators for which atomic units of service are counted
 /// directly.
@@ -10207,33 +10153,7 @@ class Telemetry {
 /// are closed. If the start time of a new interval is the same as the end time
 /// of the previous interval, then data written at the new start time could
 /// overwrite data written at the previous end time.
-class TimeInterval {
-  /// The end of the time interval.
-  ///
-  /// Required.
-  core.String? endTime;
-
-  /// The beginning of the time interval.
-  ///
-  /// The default value for the start time is the end time. The start time must
-  /// not be later than the end time.
-  ///
-  /// Optional.
-  core.String? startTime;
-
-  TimeInterval({this.endTime, this.startTime});
-
-  TimeInterval.fromJson(core.Map json_)
-    : this(
-        endTime: json_['endTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (endTime != null) 'endTime': endTime!,
-    if (startTime != null) 'startTime': startTime!,
-  };
-}
+typedef TimeInterval = $TimeInterval;
 
 /// Represents a time of day.
 ///

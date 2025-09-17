@@ -1579,24 +1579,10 @@ class AuditConfig {
 /// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
 /// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
 /// exempting jose@example.com from DATA_READ logging.
-typedef AuditLogConfig = $AuditLogConfig;
+typedef AuditLogConfig = $AuditLogConfig00;
 
 /// Defines an authorization code.
-class AuthorizationCode {
-  /// The Authorization Code in ASCII.
-  ///
-  /// It can be used to transfer the domain to or from another registrar.
-  core.String? code;
-
-  AuthorizationCode({this.code});
-
-  AuthorizationCode.fromJson(core.Map json_)
-    : this(code: json_['code'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-  };
-}
+typedef AuthorizationCode = $AuthorizationCode;
 
 /// Associates `members`, or principals, with a `role`.
 class Binding {
@@ -2149,163 +2135,23 @@ class Domain {
 }
 
 /// Domain forwarding configuration.
-class DomainForwarding {
-  /// If true, forwards the path after the domain name to the same path at the
-  /// new address.
-  core.bool? pathForwarding;
-
-  /// The PEM-encoded certificate chain.
-  core.String? pemCertificate;
-
-  /// The redirect type.
-  /// Possible string values are:
-  /// - "REDIRECT_TYPE_UNSPECIFIED" : Redirect Type is unspecified.
-  /// - "TEMPORARY" : 301 redirect. Allows to propagate changes to the
-  /// forwarding address quickly.
-  /// - "PERMANENT" : 302 redirect. Allows browsers to cache the forwarding
-  /// address. This may help the address resolve more quickly. Changes may take
-  /// longer to propagate
-  core.String? redirectType;
-
-  /// If true, the forwarding works also over HTTPS.
-  core.bool? sslEnabled;
-
-  /// The subdomain of the registered domain that is being forwarded.
-  ///
-  /// E.g. `www.example.com`, `example.com` (i.e. the registered domain itself)
-  /// or `*.example.com` (i.e. all subdomains).
-  core.String? subdomain;
-
-  /// The target of the domain forwarding, i.e. the path to redirect the
-  /// `subdomain` to.
-  core.String? targetUri;
-
-  DomainForwarding({
-    this.pathForwarding,
-    this.pemCertificate,
-    this.redirectType,
-    this.sslEnabled,
-    this.subdomain,
-    this.targetUri,
-  });
-
-  DomainForwarding.fromJson(core.Map json_)
-    : this(
-        pathForwarding: json_['pathForwarding'] as core.bool?,
-        pemCertificate: json_['pemCertificate'] as core.String?,
-        redirectType: json_['redirectType'] as core.String?,
-        sslEnabled: json_['sslEnabled'] as core.bool?,
-        subdomain: json_['subdomain'] as core.String?,
-        targetUri: json_['targetUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pathForwarding != null) 'pathForwarding': pathForwarding!,
-    if (pemCertificate != null) 'pemCertificate': pemCertificate!,
-    if (redirectType != null) 'redirectType': redirectType!,
-    if (sslEnabled != null) 'sslEnabled': sslEnabled!,
-    if (subdomain != null) 'subdomain': subdomain!,
-    if (targetUri != null) 'targetUri': targetUri!,
-  };
-}
+typedef DomainForwarding = $DomainForwarding;
 
 /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC
 /// for a domain.
 ///
 /// It contains a digest (hash) of a DNSKEY record that must be present in the
 /// domain's DNS zone.
-class DsRecord {
-  /// The algorithm used to generate the referenced DNSKEY.
-  /// Possible string values are:
-  /// - "ALGORITHM_UNSPECIFIED" : The algorithm is unspecified.
-  /// - "RSAMD5" : RSA/MD5. Cannot be used for new deployments.
-  /// - "DH" : Diffie-Hellman. Cannot be used for new deployments.
-  /// - "DSA" : DSA/SHA1. Not recommended for new deployments.
-  /// - "ECC" : ECC. Not recommended for new deployments.
-  /// - "RSASHA1" : RSA/SHA-1. Not recommended for new deployments.
-  /// - "DSANSEC3SHA1" : DSA-NSEC3-SHA1. Not recommended for new deployments.
-  /// - "RSASHA1NSEC3SHA1" : RSA/SHA1-NSEC3-SHA1. Not recommended for new
-  /// deployments.
-  /// - "RSASHA256" : RSA/SHA-256.
-  /// - "RSASHA512" : RSA/SHA-512.
-  /// - "ECCGOST" : GOST R 34.10-2001.
-  /// - "ECDSAP256SHA256" : ECDSA Curve P-256 with SHA-256.
-  /// - "ECDSAP384SHA384" : ECDSA Curve P-384 with SHA-384.
-  /// - "ED25519" : Ed25519.
-  /// - "ED448" : Ed448.
-  /// - "INDIRECT" : Reserved for Indirect Keys. Cannot be used for new
-  /// deployments.
-  /// - "PRIVATEDNS" : Private algorithm. Cannot be used for new deployments.
-  /// - "PRIVATEOID" : Private algorithm OID. Cannot be used for new
-  /// deployments.
-  core.String? algorithm;
-
-  /// The digest generated from the referenced DNSKEY.
-  core.String? digest;
-
-  /// The hash function used to generate the digest of the referenced DNSKEY.
-  /// Possible string values are:
-  /// - "DIGEST_TYPE_UNSPECIFIED" : The DigestType is unspecified.
-  /// - "SHA1" : SHA-1. Not recommended for new deployments.
-  /// - "SHA256" : SHA-256.
-  /// - "GOST3411" : GOST R 34.11-94.
-  /// - "SHA384" : SHA-384.
-  core.String? digestType;
-
-  /// The key tag of the record.
-  ///
-  /// Must be set in range 0 -- 65535.
-  core.int? keyTag;
-
-  DsRecord({this.algorithm, this.digest, this.digestType, this.keyTag});
-
-  DsRecord.fromJson(core.Map json_)
-    : this(
-        algorithm: json_['algorithm'] as core.String?,
-        digest: json_['digest'] as core.String?,
-        digestType: json_['digestType'] as core.String?,
-        keyTag: json_['keyTag'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
-    if (digest != null) 'digest': digest!,
-    if (digestType != null) 'digestType': digestType!,
-    if (keyTag != null) 'keyTag': keyTag!,
-  };
-}
+typedef DsRecord = $DsRecord;
 
 /// Email forwarding configuration.
-class EmailForwarding {
-  /// An alias recipient email that forwards emails to the
-  /// `target_email_address`.
-  ///
-  /// For example, `admin@example.com` or `*@example.com` (wildcard alias
-  /// forwards all the emails under the registered domain).
-  core.String? alias;
-
-  /// Target email that receives emails sent to the `alias`.
-  core.String? targetEmailAddress;
-
-  EmailForwarding({this.alias, this.targetEmailAddress});
-
-  EmailForwarding.fromJson(core.Map json_)
-    : this(
-        alias: json_['alias'] as core.String?,
-        targetEmailAddress: json_['targetEmailAddress'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (alias != null) 'alias': alias!,
-    if (targetEmailAddress != null) 'targetEmailAddress': targetEmailAddress!,
-  };
-}
+typedef EmailForwarding = $EmailForwarding;
 
 /// Deprecated: For more information, see
 /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
 ///
 /// Request for the `ExportRegistration` method.
-typedef ExportRegistrationRequest = $Shared02;
+typedef ExportRegistrationRequest = $Shared03;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.
@@ -2432,45 +2278,7 @@ class GeoPolicyItem {
 /// `ns.example.com` is a name server for `example.com`, the host
 /// `ns.example.com` must have a glue record to break the circular DNS
 /// reference.
-class GlueRecord {
-  /// Domain name of the host in Punycode format.
-  ///
-  /// Required.
-  core.String? hostName;
-
-  /// List of IPv4 addresses corresponding to this host in the standard decimal
-  /// format (e.g. `198.51.100.1`).
-  ///
-  /// At least one of `ipv4_address` and `ipv6_address` must be set.
-  core.List<core.String>? ipv4Addresses;
-
-  /// List of IPv6 addresses corresponding to this host in the standard
-  /// hexadecimal format (e.g. `2001:db8::`).
-  ///
-  /// At least one of `ipv4_address` and `ipv6_address` must be set.
-  core.List<core.String>? ipv6Addresses;
-
-  GlueRecord({this.hostName, this.ipv4Addresses, this.ipv6Addresses});
-
-  GlueRecord.fromJson(core.Map json_)
-    : this(
-        hostName: json_['hostName'] as core.String?,
-        ipv4Addresses:
-            (json_['ipv4Addresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        ipv6Addresses:
-            (json_['ipv6Addresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hostName != null) 'hostName': hostName!,
-    if (ipv4Addresses != null) 'ipv4Addresses': ipv4Addresses!,
-    if (ipv6Addresses != null) 'ipv6Addresses': ipv6Addresses!,
-  };
-}
+typedef GlueRecord = $GlueRecord;
 
 /// Deprecated: For more information, see
 /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
@@ -2582,51 +2390,10 @@ class HealthCheckTargets {
 /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
 ///
 /// Request for the `ImportDomain` method.
-class ImportDomainRequest {
-  /// The domain name.
-  ///
-  /// Unicode domain names must be expressed in Punycode format.
-  ///
-  /// Required.
-  core.String? domainName;
-
-  /// Set of labels associated with the `Registration`.
-  core.Map<core.String, core.String>? labels;
-
-  ImportDomainRequest({this.domainName, this.labels});
-
-  ImportDomainRequest.fromJson(core.Map json_)
-    : this(
-        domainName: json_['domainName'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domainName != null) 'domainName': domainName!,
-    if (labels != null) 'labels': labels!,
-  };
-}
+typedef ImportDomainRequest = $ImportDomainRequest;
 
 /// Request for the `InitiatePushTransfer` method.
-class InitiatePushTransferRequest {
-  /// The Tag of the new registrar.
-  ///
-  /// Can be found at [List of registrars](https://nominet.uk/registrar-list/).
-  ///
-  /// Required.
-  core.String? tag;
-
-  InitiatePushTransferRequest({this.tag});
-
-  InitiatePushTransferRequest.fromJson(core.Map json_)
-    : this(tag: json_['tag'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (tag != null) 'tag': tag!,
-  };
-}
+typedef InitiatePushTransferRequest = $InitiatePushTransferRequest;
 
 /// The response message for Locations.ListLocations.
 class ListLocationsResponse {
@@ -2719,186 +2486,13 @@ class ListRegistrationsResponse {
 }
 
 /// The configuration for an individual load balancer to health check.
-class LoadBalancerTarget {
-  /// The frontend IP address of the load balancer to health check.
-  core.String? ipAddress;
-
-  /// The protocol of the load balancer to health check.
-  /// Possible string values are:
-  /// - "UNDEFINED"
-  /// - "TCP" : Indicates the load balancer is accessible via TCP.
-  /// - "UDP" : Indicates the load balancer is accessible via UDP.
-  core.String? ipProtocol;
-
-  /// The type of load balancer specified by this target.
-  ///
-  /// This value must match the configuration of the load balancer located at
-  /// the LoadBalancerTarget's IP address, port, and region. Use the following:
-  /// - *regionalL4ilb*: for a regional internal passthrough Network Load
-  /// Balancer. - *regionalL7ilb*: for a regional internal Application Load
-  /// Balancer. - *globalL7ilb*: for a global internal Application Load
-  /// Balancer.
-  /// Possible string values are:
-  /// - "NONE"
-  /// - "GLOBAL_L7ILB" : Indicates the load balancer is a Cross-Region
-  /// Application Load Balancer.
-  /// - "REGIONAL_L4ILB" : Indicates the load balancer is a Regional Network
-  /// Passthrough Load Balancer.
-  /// - "REGIONAL_L7ILB" : Indicates the load balancer is a Regional Application
-  /// Load Balancer.
-  core.String? loadBalancerType;
-
-  /// The fully qualified URL of the network that the load balancer is attached
-  /// to.
-  ///
-  /// This should be formatted like
-  /// `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`.
-  core.String? networkUrl;
-
-  /// The configured port of the load balancer.
-  core.String? port;
-
-  /// The project ID in which the load balancer is located.
-  core.String? project;
-
-  /// The region in which the load balancer is located.
-  core.String? region;
-
-  LoadBalancerTarget({
-    this.ipAddress,
-    this.ipProtocol,
-    this.loadBalancerType,
-    this.networkUrl,
-    this.port,
-    this.project,
-    this.region,
-  });
-
-  LoadBalancerTarget.fromJson(core.Map json_)
-    : this(
-        ipAddress: json_['ipAddress'] as core.String?,
-        ipProtocol: json_['ipProtocol'] as core.String?,
-        loadBalancerType: json_['loadBalancerType'] as core.String?,
-        networkUrl: json_['networkUrl'] as core.String?,
-        port: json_['port'] as core.String?,
-        project: json_['project'] as core.String?,
-        region: json_['region'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (ipProtocol != null) 'ipProtocol': ipProtocol!,
-    if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
-    if (networkUrl != null) 'networkUrl': networkUrl!,
-    if (port != null) 'port': port!,
-    if (project != null) 'project': project!,
-    if (region != null) 'region': region!,
-  };
-}
+typedef LoadBalancerTarget = $LoadBalancerTarget;
 
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
 /// Defines renewal, billing, and transfer settings for a `Registration`.
-class ManagementSettings {
-  /// The actual transfer lock state for this `Registration`.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "TRANSFER_LOCK_STATE_UNSPECIFIED" : The state is unspecified.
-  /// - "UNLOCKED" : The domain is unlocked and can be transferred to another
-  /// registrar.
-  /// - "LOCKED" : The domain is locked and cannot be transferred to another
-  /// registrar.
-  core.String? effectiveTransferLockState;
-
-  /// The desired renewal method for this `Registration`.
-  ///
-  /// The actual `renewal_method` is automatically updated to reflect this
-  /// choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual
-  /// `renewalMethod` is treated as if it were set to `AUTOMATIC_RENEWAL`. You
-  /// cannot use `RENEWAL_DISABLED` during resource creation, and you can update
-  /// the renewal status only when the `Registration` resource has state
-  /// `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to
-  /// `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be set to
-  /// `RENEWAL_DISABLED` in case of problems with the billing account or
-  /// reported domain abuse. In such cases, check the `issues` field on the
-  /// `Registration`. After the problem is resolved, the `renewal_method` is
-  /// automatically updated to `preferred_renewal_method` in a few hours.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "RENEWAL_METHOD_UNSPECIFIED" : The renewal method is undefined.
-  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year.
-  /// - "MANUAL_RENEWAL" : Deprecated: For more information, see
-  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
-  /// This option was never used. Use `RENEWAL_DISABLED` instead.
-  /// - "RENEWAL_DISABLED" : The domain won't be renewed and will expire at its
-  /// expiration time.
-  core.String? preferredRenewalMethod;
-
-  /// The actual renewal method for this `Registration`.
-  ///
-  /// When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual
-  /// `renewal_method` can be equal to `RENEWAL_DISABLED`—for example, when
-  /// there are problems with the billing account or reported domain abuse. In
-  /// such cases, check the `issues` field on the `Registration`. After the
-  /// problem is resolved, the `renewal_method` is automatically updated to
-  /// `preferred_renewal_method` in a few hours.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "RENEWAL_METHOD_UNSPECIFIED" : The renewal method is undefined.
-  /// - "AUTOMATIC_RENEWAL" : The domain is automatically renewed each year.
-  /// - "MANUAL_RENEWAL" : Deprecated: For more information, see
-  /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
-  /// This option was never used. Use `RENEWAL_DISABLED` instead.
-  /// - "RENEWAL_DISABLED" : The domain won't be renewed and will expire at its
-  /// expiration time.
-  core.String? renewalMethod;
-
-  /// This is the desired transfer lock state for this `Registration`.
-  ///
-  /// A transfer lock controls whether the domain can be transferred to another
-  /// registrar. The transfer lock state of the domain is returned in the
-  /// `effective_transfer_lock_state` property. The transfer lock state values
-  /// might be different for the following reasons: * `transfer_lock_state` was
-  /// updated only a short time ago. * Domains with the
-  /// `TRANSFER_LOCK_UNSUPPORTED_BY_REGISTRY` state are in the list of
-  /// `domain_properties`. These domains are always in the `UNLOCKED` state.
-  /// Possible string values are:
-  /// - "TRANSFER_LOCK_STATE_UNSPECIFIED" : The state is unspecified.
-  /// - "UNLOCKED" : The domain is unlocked and can be transferred to another
-  /// registrar.
-  /// - "LOCKED" : The domain is locked and cannot be transferred to another
-  /// registrar.
-  core.String? transferLockState;
-
-  ManagementSettings({
-    this.effectiveTransferLockState,
-    this.preferredRenewalMethod,
-    this.renewalMethod,
-    this.transferLockState,
-  });
-
-  ManagementSettings.fromJson(core.Map json_)
-    : this(
-        effectiveTransferLockState:
-            json_['effectiveTransferLockState'] as core.String?,
-        preferredRenewalMethod: json_['preferredRenewalMethod'] as core.String?,
-        renewalMethod: json_['renewalMethod'] as core.String?,
-        transferLockState: json_['transferLockState'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (effectiveTransferLockState != null)
-      'effectiveTransferLockState': effectiveTransferLockState!,
-    if (preferredRenewalMethod != null)
-      'preferredRenewalMethod': preferredRenewalMethod!,
-    if (renewalMethod != null) 'renewalMethod': renewalMethod!,
-    if (transferLockState != null) 'transferLockState': transferLockState!,
-  };
-}
+typedef ManagementSettings = $ManagementSettings;
 
 /// Represents an amount of money with its currency type.
 typedef Money = $Money;

@@ -2096,19 +2096,7 @@ class BuyersPublisherProfilesResource {
 ///
 /// Accepting a proposal implies acceptance of the publisher
 /// terms_and_conditions, if any.
-class AcceptProposalRequest {
-  /// The last known client revision number of the proposal.
-  core.String? proposalRevision;
-
-  AcceptProposalRequest({this.proposalRevision});
-
-  AcceptProposalRequest.fromJson(core.Map json_)
-    : this(proposalRevision: json_['proposalRevision'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (proposalRevision != null) 'proposalRevision': proposalRevision!,
-  };
-}
+typedef AcceptProposalRequest = $AcceptProposalRequest;
 
 /// Request message for activating a client.
 typedef ActivateClientRequest = $Empty;
@@ -2117,61 +2105,11 @@ typedef ActivateClientRequest = $Empty;
 typedef ActivateClientUserRequest = $Empty;
 
 /// Represents size of a single ad slot, or a creative.
-class AdSize {
-  /// The height of the ad slot in pixels.
-  ///
-  /// This field will be present only when size type is `PIXEL`.
-  core.String? height;
-
-  /// The type of the ad slot size.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : A placeholder for an undefined size type.
-  /// - "PIXEL" : Ad slot with size specified by height and width in pixels.
-  /// - "INTERSTITIAL" : Special size to describe an interstitial ad slot.
-  /// - "NATIVE" : Native (mobile) ads rendered by the publisher.
-  /// - "FLUID" : Fluid size (responsive size) can be resized automatically with
-  /// the change of outside environment.
-  core.String? type;
-
-  /// The width of the ad slot in pixels.
-  ///
-  /// This field will be present only when size type is `PIXEL`.
-  core.String? width;
-
-  AdSize({this.height, this.type, this.width});
-
-  AdSize.fromJson(core.Map json_)
-    : this(
-        height: json_['height'] as core.String?,
-        type: json_['type'] as core.String?,
-        width: json_['width'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (height != null) 'height': height!,
-    if (type != null) 'type': type!,
-    if (width != null) 'width': width!,
-  };
-}
+typedef AdSize = $AdSize;
 
 /// Request message for adding creative to be used in the bidding process for
 /// the finalized deal.
-class AddCreativeRequest {
-  /// Name of the creative to add to the finalized deal, in the format
-  /// `buyers/{buyerAccountId}/creatives/{creativeId}`.
-  ///
-  /// See creative.name.
-  core.String? creative;
-
-  AddCreativeRequest({this.creative});
-
-  AddCreativeRequest.fromJson(core.Map json_)
-    : this(creative: json_['creative'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creative != null) 'creative': creative!,
-  };
-}
+typedef AddCreativeRequest = $AddCreativeRequest;
 
 /// Request to add a note.
 class AddNoteRequest {
@@ -2398,314 +2336,24 @@ typedef CancelNegotiationRequest = $Empty;
 /// Based on the client's role, its client users will have varying levels of
 /// restricted access to the Marketplace and certain other sections of the
 /// Authorized Buyers UI.
-class Client {
-  /// Display name shown to publishers.
-  ///
-  /// Must be unique for clients without partnerClientId specified. Maximum
-  /// length of 255 characters is allowed.
-  ///
-  /// Required.
-  core.String? displayName;
-
-  /// The resource name of the client.
-  ///
-  /// Format: `buyers/{accountId}/clients/{clientAccountId}`
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Arbitrary unique identifier provided by the buyer.
-  ///
-  /// This field can be used to associate a client with an identifier in the
-  /// namespace of the buyer, lookup clients by that identifier and verify
-  /// whether an Authorized Buyers account of the client already exists. If
-  /// present, must be unique across all the clients.
-  core.String? partnerClientId;
-
-  /// The role assigned to the client.
-  ///
-  /// Each role implies a set of permissions granted to the client.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "CLIENT_ROLE_UNSPECIFIED" : A placeholder for an undefined client role.
-  /// This value should never be specified in user input for create or update
-  /// method, otherwise an error will be returned.
-  /// - "CLIENT_DEAL_VIEWER" : Users associated with this client role can only
-  /// view proposals and deals in the Marketplace UI. They cannot negotiate or
-  /// approve proposals and deals sent from publishers or send RFP to
-  /// publishers.
-  /// - "CLIENT_DEAL_NEGOTIATOR" : Users associated with this client role can
-  /// view and negotiate on the proposals and deals in the Marketplace UI sent
-  /// from publishers and send RFP to publishers, but cannot approve the
-  /// proposals and deals by themselves. The buyer can approve the proposals and
-  /// deals on behalf of the client.
-  /// - "CLIENT_DEAL_APPROVER" : Users associated with this client role can
-  /// view, negotiate and approve proposals and deals in the Marketplace UI and
-  /// send RFP to publishers.
-  core.String? role;
-
-  /// Whether the client will be visible to sellers.
-  core.bool? sellerVisible;
-
-  /// The state of the client.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : A placeholder for an undefined client state.
-  /// Should not be used.
-  /// - "ACTIVE" : A client that is currently active and allowed to access the
-  /// Authorized Buyers UI.
-  /// - "INACTIVE" : A client that is currently inactive and not allowed to
-  /// access the Authorized Buyers UI.
-  core.String? state;
-
-  Client({
-    this.displayName,
-    this.name,
-    this.partnerClientId,
-    this.role,
-    this.sellerVisible,
-    this.state,
-  });
-
-  Client.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        name: json_['name'] as core.String?,
-        partnerClientId: json_['partnerClientId'] as core.String?,
-        role: json_['role'] as core.String?,
-        sellerVisible: json_['sellerVisible'] as core.bool?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (name != null) 'name': name!,
-    if (partnerClientId != null) 'partnerClientId': partnerClientId!,
-    if (role != null) 'role': role!,
-    if (sellerVisible != null) 'sellerVisible': sellerVisible!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef Client = $Client;
 
 /// A user of a client who has restricted access to the Marketplace and certain
 /// other sections of the Authorized Buyers UI based on the role granted to the
 /// associated client.
-class ClientUser {
-  /// The client user's email address that has to be unique across all users for
-  /// the same client.
-  ///
-  /// Required.
-  core.String? email;
-
-  /// The resource name of the client user.
-  ///
-  /// Format: `buyers/{accountId}/clients/{clientAccountId}/users/{userId}`
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// The state of the client user.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : A placeholder for an undefined user state.
-  /// - "INVITED" : A user who was created but hasn't accepted the invitation
-  /// yet, not allowed to access the Authorized Buyers UI.
-  /// - "ACTIVE" : A user that is currently active and allowed to access the
-  /// Authorized Buyers UI.
-  /// - "INACTIVE" : A user that is currently inactive and not allowed to access
-  /// the Authorized Buyers UI.
-  core.String? state;
-
-  ClientUser({this.email, this.name, this.state});
-
-  ClientUser.fromJson(core.Map json_)
-    : this(
-        email: json_['email'] as core.String?,
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (email != null) 'email': email!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef ClientUser = $ClientUser;
 
 /// Contains information on how a buyer or seller can be reached.
-class Contact {
-  /// The display_name of the contact.
-  core.String? displayName;
-
-  /// Email address for the contact.
-  core.String? email;
-
-  Contact({this.displayName, this.email});
-
-  Contact.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        email: json_['email'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (email != null) 'email': email!,
-  };
-}
+typedef Contact = $Contact;
 
 /// Message captures data about the creatives in the deal.
-class CreativeRequirements {
-  /// The format of the creative, only applicable for programmatic guaranteed
-  /// and preferred deals.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CREATIVE_FORMAT_UNSPECIFIED" : A placeholder for an unspecified
-  /// creative format.
-  /// - "DISPLAY" : Banner creatives such as image or HTML5 assets.
-  /// - "VIDEO" : Video creatives that can be played in a video player.
-  /// - "AUDIO" : Audio creatives that can play during audio content or point to
-  /// a third party ad server.
-  core.String? creativeFormat;
-
-  /// Specifies the creative pre-approval policy.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CREATIVE_PRE_APPROVAL_POLICY_UNSPECIFIED" : A placeholder for an
-  /// undefined creative pre-approval policy.
-  /// - "SELLER_PRE_APPROVAL_REQUIRED" : The seller needs to approve each
-  /// creative before it can serve.
-  /// - "SELLER_PRE_APPROVAL_NOT_REQUIRED" : The seller does not need to approve
-  /// each creative before it can serve.
-  core.String? creativePreApprovalPolicy;
-
-  /// Specifies whether the creative is safeFrame compatible.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CREATIVE_SAFE_FRAME_COMPATIBILITY_UNSPECIFIED" : A placeholder for an
-  /// undefined creative safe-frame compatibility.
-  /// - "COMPATIBLE" : The creatives need to be compatible with the safe frame
-  /// option.
-  /// - "INCOMPATIBLE" : The creatives can be incompatible with the safe frame
-  /// option.
-  core.String? creativeSafeFrameCompatibility;
-
-  /// The max duration of the video creative in milliseconds.
-  ///
-  /// only applicable for deals with video creatives.
-  ///
-  /// Output only.
-  core.String? maxAdDurationMs;
-
-  /// Specifies the creative source for programmatic deals.
-  ///
-  /// PUBLISHER means creative is provided by seller and ADVERTISER means
-  /// creative is provided by the buyer.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "PROGRAMMATIC_CREATIVE_SOURCE_UNSPECIFIED" : A placeholder for an
-  /// undefined programmatic creative source.
-  /// - "ADVERTISER" : The advertiser provides the creatives.
-  /// - "PUBLISHER" : The publisher provides the creatives to be served.
-  core.String? programmaticCreativeSource;
-
-  /// Skippable video ads allow viewers to skip ads after 5 seconds.
-  ///
-  /// Only applicable for deals with video creatives.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SKIPPABLE_AD_TYPE_UNSPECIFIED" : A placeholder for an unspecified
-  /// skippable ad type.
-  /// - "SKIPPABLE" : Video ad that can be skipped after 5 seconds. This value
-  /// will appear in RTB bid requests as
-  /// SkippableBidRequestType::REQUIRE_SKIPPABLE.
-  /// - "INSTREAM_SELECT" : Video ad that can be skipped after 5 seconds, and is
-  /// counted as engaged view after 30 seconds. The creative is hosted on
-  /// YouTube only, and viewcount of the YouTube video increments after the
-  /// engaged view. This value will appear in RTB bid requests as
-  /// SkippableBidRequestType::REQUIRE_SKIPPABLE.
-  /// - "NOT_SKIPPABLE" : This video ad is not skippable. This value will appear
-  /// in RTB bid requests as SkippableBidRequestType::BLOCK_SKIPPABLE.
-  /// - "ANY" : This video ad can be skipped after 5 seconds or not-skippable.
-  /// This value will appear in RTB bid requests as
-  /// SkippableBidRequestType::ALLOW_SKIPPABLE.
-  core.String? skippableAdType;
-
-  CreativeRequirements({
-    this.creativeFormat,
-    this.creativePreApprovalPolicy,
-    this.creativeSafeFrameCompatibility,
-    this.maxAdDurationMs,
-    this.programmaticCreativeSource,
-    this.skippableAdType,
-  });
-
-  CreativeRequirements.fromJson(core.Map json_)
-    : this(
-        creativeFormat: json_['creativeFormat'] as core.String?,
-        creativePreApprovalPolicy:
-            json_['creativePreApprovalPolicy'] as core.String?,
-        creativeSafeFrameCompatibility:
-            json_['creativeSafeFrameCompatibility'] as core.String?,
-        maxAdDurationMs: json_['maxAdDurationMs'] as core.String?,
-        programmaticCreativeSource:
-            json_['programmaticCreativeSource'] as core.String?,
-        skippableAdType: json_['skippableAdType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (creativeFormat != null) 'creativeFormat': creativeFormat!,
-    if (creativePreApprovalPolicy != null)
-      'creativePreApprovalPolicy': creativePreApprovalPolicy!,
-    if (creativeSafeFrameCompatibility != null)
-      'creativeSafeFrameCompatibility': creativeSafeFrameCompatibility!,
-    if (maxAdDurationMs != null) 'maxAdDurationMs': maxAdDurationMs!,
-    if (programmaticCreativeSource != null)
-      'programmaticCreativeSource': programmaticCreativeSource!,
-    if (skippableAdType != null) 'skippableAdType': skippableAdType!,
-  };
-}
+typedef CreativeRequirements = $CreativeRequirements;
 
 /// Generic targeting used for targeting dimensions that contains a list of
 /// included and excluded numeric IDs.
 ///
 /// This cannot be filtered using list filter syntax.
-class CriteriaTargeting {
-  /// A list of numeric IDs to be excluded.
-  core.List<core.String>? excludedCriteriaIds;
-
-  /// A list of numeric IDs to be included.
-  core.List<core.String>? targetedCriteriaIds;
-
-  CriteriaTargeting({this.excludedCriteriaIds, this.targetedCriteriaIds});
-
-  CriteriaTargeting.fromJson(core.Map json_)
-    : this(
-        excludedCriteriaIds:
-            (json_['excludedCriteriaIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        targetedCriteriaIds:
-            (json_['targetedCriteriaIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (excludedCriteriaIds != null)
-      'excludedCriteriaIds': excludedCriteriaIds!,
-    if (targetedCriteriaIds != null)
-      'targetedCriteriaIds': targetedCriteriaIds!,
-  };
-}
+typedef CriteriaTargeting = $CriteriaTargeting;
 
 /// Defines targeting for a period of time on a specific week day.
 class DayPart {
@@ -3119,36 +2767,7 @@ class Deal {
 }
 
 /// Information related to deal pausing.
-class DealPausingInfo {
-  /// The reason for the pausing of the deal; empty for active deals.
-  core.String? pauseReason;
-
-  /// The party that first paused the deal; unspecified for active deals.
-  /// Possible string values are:
-  /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
-  /// buyer/seller role.
-  /// - "BUYER" : Specifies the role as buyer.
-  /// - "SELLER" : Specifies the role as seller.
-  core.String? pauseRole;
-
-  /// Whether pausing is consented between buyer and seller for the deal.
-  core.bool? pausingConsented;
-
-  DealPausingInfo({this.pauseReason, this.pauseRole, this.pausingConsented});
-
-  DealPausingInfo.fromJson(core.Map json_)
-    : this(
-        pauseReason: json_['pauseReason'] as core.String?,
-        pauseRole: json_['pauseRole'] as core.String?,
-        pausingConsented: json_['pausingConsented'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (pauseReason != null) 'pauseReason': pauseReason!,
-    if (pauseRole != null) 'pauseRole': pauseRole!,
-    if (pausingConsented != null) 'pausingConsented': pausingConsented!,
-  };
-}
+typedef DealPausingInfo = $DealPausingInfo;
 
 /// Message contains details about how the deal will be paced.
 class DeliveryControl {
@@ -3355,81 +2974,11 @@ class FinalizedDeal {
 /// Google Play Store URL. iOS App ID (which is a number) can be found at the
 /// end of iTunes store URL. First party mobile applications is either included
 /// or excluded.
-class FirstPartyMobileApplicationTargeting {
-  /// A list of application IDs to be excluded.
-  core.List<core.String>? excludedAppIds;
-
-  /// A list of application IDs to be included.
-  core.List<core.String>? targetedAppIds;
-
-  FirstPartyMobileApplicationTargeting({
-    this.excludedAppIds,
-    this.targetedAppIds,
-  });
-
-  FirstPartyMobileApplicationTargeting.fromJson(core.Map json_)
-    : this(
-        excludedAppIds:
-            (json_['excludedAppIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        targetedAppIds:
-            (json_['targetedAppIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (excludedAppIds != null) 'excludedAppIds': excludedAppIds!,
-    if (targetedAppIds != null) 'targetedAppIds': targetedAppIds!,
-  };
-}
+typedef FirstPartyMobileApplicationTargeting =
+    $FirstPartyMobileApplicationTargeting;
 
 /// Message contains details about publisher-set frequency caps of the delivery.
-class FrequencyCap {
-  /// The maximum number of impressions that can be served to a user within the
-  /// specified time period.
-  core.int? maxImpressions;
-
-  /// The time unit.
-  ///
-  /// Along with num_time_units defines the amount of time over which
-  /// impressions per user are counted and capped.
-  /// Possible string values are:
-  /// - "TIME_UNIT_TYPE_UNSPECIFIED" : A placeholder for an undefined time unit
-  /// type. This just indicates the variable with this value hasn't been
-  /// initialized.
-  /// - "MINUTE" : Minute unit.
-  /// - "HOUR" : Hour unit.
-  /// - "DAY" : Day unit.
-  /// - "WEEK" : Week unit.
-  /// - "MONTH" : Month unit.
-  /// - "LIFETIME" : Lifecycle/Lifetime unit.
-  /// - "POD" : Pod unit.
-  /// - "STREAM" : Stream unit.
-  core.String? timeUnitType;
-
-  /// The amount of time, in the units specified by time_unit_type.
-  ///
-  /// Defines the amount of time over which impressions per user are counted and
-  /// capped.
-  core.int? timeUnitsCount;
-
-  FrequencyCap({this.maxImpressions, this.timeUnitType, this.timeUnitsCount});
-
-  FrequencyCap.fromJson(core.Map json_)
-    : this(
-        maxImpressions: json_['maxImpressions'] as core.int?,
-        timeUnitType: json_['timeUnitType'] as core.String?,
-        timeUnitsCount: json_['timeUnitsCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (maxImpressions != null) 'maxImpressions': maxImpressions!,
-    if (timeUnitType != null) 'timeUnitType': timeUnitType!,
-    if (timeUnitsCount != null) 'timeUnitsCount': timeUnitsCount!,
-  };
-}
+typedef FrequencyCap = $FrequencyCap01;
 
 /// Represents the size of an ad unit that can be targeted on a bid request.
 class InventorySizeTargeting {
@@ -3473,24 +3022,7 @@ class InventorySizeTargeting {
 }
 
 /// Targeting of the inventory types a bid request can originate from.
-class InventoryTypeTargeting {
-  /// The list of targeted inventory types for the bid request.
-  core.List<core.String>? inventoryTypes;
-
-  InventoryTypeTargeting({this.inventoryTypes});
-
-  InventoryTypeTargeting.fromJson(core.Map json_)
-    : this(
-        inventoryTypes:
-            (json_['inventoryTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (inventoryTypes != null) 'inventoryTypes': inventoryTypes!,
-  };
-}
+typedef InventoryTypeTargeting = $InventoryTypeTargeting;
 
 /// Response message for listing auction packages.
 class ListAuctionPackagesResponse {
@@ -3869,21 +3401,7 @@ class MarketplaceTargeting {
 }
 
 /// Describes a single Media Planner account.
-class MediaPlanner {
-  /// Account ID of the media planner.
-  ///
-  /// Output only.
-  core.String? accountId;
-
-  MediaPlanner({this.accountId});
-
-  MediaPlanner.fromJson(core.Map json_)
-    : this(accountId: json_['accountId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (accountId != null) 'accountId': accountId!,
-  };
-}
+typedef MediaPlanner = $MediaPlanner;
 
 /// Mobile application targeting settings.
 class MobileApplicationTargeting {
@@ -3915,42 +3433,7 @@ typedef Money = $Money;
 
 /// A text note attached to the proposal to facilitate the communication between
 /// buyers and sellers.
-class Note {
-  /// When this note was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The role who created the note.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "BUYER_SELLER_ROLE_UNSPECIFIED" : A placeholder for an undefined
-  /// buyer/seller role.
-  /// - "BUYER" : Specifies the role as buyer.
-  /// - "SELLER" : Specifies the role as seller.
-  core.String? creatorRole;
-
-  /// The text of the note.
-  ///
-  /// Maximum length is 1024 characters.
-  core.String? note;
-
-  Note({this.createTime, this.creatorRole, this.note});
-
-  Note.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        creatorRole: json_['creatorRole'] as core.String?,
-        note: json_['note'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (creatorRole != null) 'creatorRole': creatorRole!,
-    if (note != null) 'note': note!,
-  };
-}
+typedef Note = $Note;
 
 /// Represents targeting information for operating systems.
 class OperatingSystemTargeting {
@@ -3992,21 +3475,7 @@ class OperatingSystemTargeting {
 }
 
 /// Request message for pausing a finalized deal.
-class PauseFinalizedDealRequest {
-  /// The reason to pause the finalized deal, will be displayed to the seller.
-  ///
-  /// Maximum length is 1000 characters.
-  core.String? reason;
-
-  PauseFinalizedDealRequest({this.reason});
-
-  PauseFinalizedDealRequest.fromJson(core.Map json_)
-    : this(reason: json_['reason'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (reason != null) 'reason': reason!,
-  };
-}
+typedef PauseFinalizedDealRequest = $PauseFinalizedDealRequest;
 
 /// Represents targeting about where the ads can appear, for example, certain
 /// sites or mobile applications.
@@ -4132,22 +3601,7 @@ class PrivateAuctionTerms {
 }
 
 /// Buyers are allowed to store certain types of private data in a proposal.
-class PrivateData {
-  /// A buyer specified reference ID.
-  ///
-  /// This can be queried in the list operations (max-length: 1024 unicode code
-  /// units).
-  core.String? referenceId;
-
-  PrivateData({this.referenceId});
-
-  PrivateData.fromJson(core.Map json_)
-    : this(referenceId: json_['referenceId'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (referenceId != null) 'referenceId': referenceId!,
-  };
-}
+typedef PrivateData = $PrivateData;
 
 /// Pricing terms for Programmatic Guaranteed Deals.
 class ProgrammaticGuaranteedTerms {
@@ -4625,54 +4079,7 @@ class PublisherProfile {
 }
 
 /// A mobile application that contains a external app ID, name, and app store.
-class PublisherProfileMobileApplication {
-  /// The app store the app belongs to.
-  ///
-  /// Can be used to filter the response of the publisherProfiles.list method.
-  /// Possible string values are:
-  /// - "APP_STORE_TYPE_UNSPECIFIED" : A placeholder for an unknown app store.
-  /// - "APPLE_ITUNES" : Apple iTunes
-  /// - "GOOGLE_PLAY" : Google Play
-  /// - "ROKU" : Roku
-  /// - "AMAZON_FIRE_TV" : Amazon Fire TV
-  /// - "PLAYSTATION" : PlayStation
-  /// - "XBOX" : Xbox
-  /// - "SAMSUNG_TV" : Samsung TV
-  /// - "AMAZON" : Amazon Appstore
-  /// - "OPPO" : OPPO App Market
-  /// - "SAMSUNG" : Samsung Galaxy Store
-  /// - "VIVO" : VIVO App Store
-  /// - "XIAOMI" : Xiaomi GetApps
-  /// - "LG_TV" : LG TV
-  core.String? appStore;
-
-  /// The external ID for the app from its app store.
-  ///
-  /// Can be used to filter the response of the publisherProfiles.list method.
-  core.String? externalAppId;
-
-  /// The name of the app.
-  core.String? name;
-
-  PublisherProfileMobileApplication({
-    this.appStore,
-    this.externalAppId,
-    this.name,
-  });
-
-  PublisherProfileMobileApplication.fromJson(core.Map json_)
-    : this(
-        appStore: json_['appStore'] as core.String?,
-        externalAppId: json_['externalAppId'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (appStore != null) 'appStore': appStore!,
-    if (externalAppId != null) 'externalAppId': externalAppId!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef PublisherProfileMobileApplication = $PublisherProfileMobileApplication;
 
 /// Request message for resuming a finalized deal.
 typedef ResumeFinalizedDealRequest = $Empty;
@@ -4681,57 +4088,7 @@ typedef ResumeFinalizedDealRequest = $Empty;
 ///
 /// For what each metric means refer to
 /// [Report metrics](https://support.google.com/adxbuyer/answer/6115195#report-metrics)
-class RtbMetrics {
-  /// Ad impressions in last 7 days.
-  core.String? adImpressions7Days;
-
-  /// Bid rate in last 7 days, calculated by (bids / bid requests).
-  core.double? bidRate7Days;
-
-  /// Bid requests in last 7 days.
-  core.String? bidRequests7Days;
-
-  /// Bids in last 7 days.
-  core.String? bids7Days;
-
-  /// Filtered bid rate in last 7 days, calculated by (filtered bids / bids).
-  core.double? filteredBidRate7Days;
-
-  /// Must bid rate for current month.
-  core.double? mustBidRateCurrentMonth;
-
-  RtbMetrics({
-    this.adImpressions7Days,
-    this.bidRate7Days,
-    this.bidRequests7Days,
-    this.bids7Days,
-    this.filteredBidRate7Days,
-    this.mustBidRateCurrentMonth,
-  });
-
-  RtbMetrics.fromJson(core.Map json_)
-    : this(
-        adImpressions7Days: json_['adImpressions7Days'] as core.String?,
-        bidRate7Days: (json_['bidRate7Days'] as core.num?)?.toDouble(),
-        bidRequests7Days: json_['bidRequests7Days'] as core.String?,
-        bids7Days: json_['bids7Days'] as core.String?,
-        filteredBidRate7Days:
-            (json_['filteredBidRate7Days'] as core.num?)?.toDouble(),
-        mustBidRateCurrentMonth:
-            (json_['mustBidRateCurrentMonth'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adImpressions7Days != null) 'adImpressions7Days': adImpressions7Days!,
-    if (bidRate7Days != null) 'bidRate7Days': bidRate7Days!,
-    if (bidRequests7Days != null) 'bidRequests7Days': bidRequests7Days!,
-    if (bids7Days != null) 'bids7Days': bids7Days!,
-    if (filteredBidRate7Days != null)
-      'filteredBidRate7Days': filteredBidRate7Days!,
-    if (mustBidRateCurrentMonth != null)
-      'mustBidRateCurrentMonth': mustBidRateCurrentMonth!,
-  };
-}
+typedef RtbMetrics = $RtbMetrics;
 
 /// Request to send an RFP.
 ///
@@ -4892,30 +4249,7 @@ typedef SetReadyToServeRequest = $Empty;
 typedef SubscribeAuctionPackageRequest = $Empty;
 
 /// Request message for SubscribeAuctionPackageClients.
-class SubscribeClientsRequest {
-  /// A list of client buyers to subscribe to the auction package, with client
-  /// buyer in the format `buyers/{accountId}/clients/{clientAccountId}`.
-  ///
-  /// The current buyer will be subscribed to the auction package regardless of
-  /// the list contents if not already.
-  ///
-  /// Optional.
-  core.List<core.String>? clients;
-
-  SubscribeClientsRequest({this.clients});
-
-  SubscribeClientsRequest.fromJson(core.Map json_)
-    : this(
-        clients:
-            (json_['clients'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clients != null) 'clients': clients!,
-  };
-}
+typedef SubscribeClientsRequest = $SubscribeClientsRequest;
 
 /// Represents targeting about various types of technology.
 class TechnologyTargeting {
@@ -4984,27 +4318,7 @@ typedef TimeZone = $TimeZone;
 typedef UnsubscribeAuctionPackageRequest = $Empty;
 
 /// Request message for UnsubscribeAuctionPackage.
-class UnsubscribeClientsRequest {
-  /// A list of client buyers to unsubscribe from the auction package, with
-  /// client buyer in the format `buyers/{accountId}/clients/{clientAccountId}`.
-  ///
-  /// Optional.
-  core.List<core.String>? clients;
-
-  UnsubscribeClientsRequest({this.clients});
-
-  UnsubscribeClientsRequest.fromJson(core.Map json_)
-    : this(
-        clients:
-            (json_['clients'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (clients != null) 'clients': clients!,
-  };
-}
+typedef UnsubscribeClientsRequest = $UnsubscribeClientsRequest;
 
 /// Request message for updating the deal at the given revision number.
 class UpdateDealRequest {
@@ -5054,65 +4368,7 @@ class UpdateDealRequest {
 ///
 /// For Private Auction Deals, URLs are either included or excluded. For
 /// Programmatic Guaranteed and Preferred Deals, this doesn't apply.
-class UriTargeting {
-  /// A list of URLs to be excluded.
-  core.List<core.String>? excludedUris;
-
-  /// A list of URLs to be included.
-  core.List<core.String>? targetedUris;
-
-  UriTargeting({this.excludedUris, this.targetedUris});
-
-  UriTargeting.fromJson(core.Map json_)
-    : this(
-        excludedUris:
-            (json_['excludedUris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        targetedUris:
-            (json_['targetedUris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (excludedUris != null) 'excludedUris': excludedUris!,
-    if (targetedUris != null) 'targetedUris': targetedUris!,
-  };
-}
+typedef UriTargeting = $UriTargeting;
 
 /// Represents targeting information about video.
-class VideoTargeting {
-  /// A list of video positions to be excluded.
-  ///
-  /// When this field is populated, the targeted_position_types field must be
-  /// empty.
-  core.List<core.String>? excludedPositionTypes;
-
-  /// A list of video positions to be included.
-  ///
-  /// When this field is populated, the excluded_position_types field must be
-  /// empty.
-  core.List<core.String>? targetedPositionTypes;
-
-  VideoTargeting({this.excludedPositionTypes, this.targetedPositionTypes});
-
-  VideoTargeting.fromJson(core.Map json_)
-    : this(
-        excludedPositionTypes:
-            (json_['excludedPositionTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        targetedPositionTypes:
-            (json_['targetedPositionTypes'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (excludedPositionTypes != null)
-      'excludedPositionTypes': excludedPositionTypes!,
-    if (targetedPositionTypes != null)
-      'targetedPositionTypes': targetedPositionTypes!,
-  };
-}
+typedef VideoTargeting = $VideoTargeting;

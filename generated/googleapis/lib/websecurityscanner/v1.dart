@@ -743,74 +743,10 @@ class Authentication {
 ///
 /// Web Security Scanner Service crawls the web applications, following all
 /// links within the scope of sites, to find the URLs to test against.
-class CrawledUrl {
-  /// The body of the request that was used to visit the URL.
-  ///
-  /// Output only.
-  core.String? body;
-
-  /// The http method of the request that was used to visit the URL, in
-  /// uppercase.
-  ///
-  /// Output only.
-  core.String? httpMethod;
-
-  /// The URL that was crawled.
-  ///
-  /// Output only.
-  core.String? url;
-
-  CrawledUrl({this.body, this.httpMethod, this.url});
-
-  CrawledUrl.fromJson(core.Map json_)
-    : this(
-        body: json_['body'] as core.String?,
-        httpMethod: json_['httpMethod'] as core.String?,
-        url: json_['url'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (body != null) 'body': body!,
-    if (httpMethod != null) 'httpMethod': httpMethod!,
-    if (url != null) 'url': url!,
-  };
-}
+typedef CrawledUrl = $CrawledUrl;
 
 /// Describes authentication configuration that uses a custom account.
-class CustomAccount {
-  /// The login form URL of the website.
-  ///
-  /// Required.
-  core.String? loginUrl;
-
-  /// Input only.
-  ///
-  /// The password of the custom account. The credential is stored encrypted and
-  /// not returned in any response nor included in audit logs.
-  ///
-  /// Required.
-  core.String? password;
-
-  /// The user name of the custom account.
-  ///
-  /// Required.
-  core.String? username;
-
-  CustomAccount({this.loginUrl, this.password, this.username});
-
-  CustomAccount.fromJson(core.Map json_)
-    : this(
-        loginUrl: json_['loginUrl'] as core.String?,
-        password: json_['password'] as core.String?,
-        username: json_['username'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (loginUrl != null) 'loginUrl': loginUrl!,
-    if (password != null) 'password': password!,
-    if (username != null) 'username': username!,
-  };
-}
+typedef CustomAccount = $CustomAccount;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1067,61 +1003,13 @@ class FindingTypeStats {
 }
 
 /// ! Information about a vulnerability with an HTML.
-class Form {
-  /// ! The URI where to send the form when it's submitted.
-  core.String? actionUri;
-
-  /// ! The names of form fields related to the vulnerability.
-  core.List<core.String>? fields;
-
-  Form({this.actionUri, this.fields});
-
-  Form.fromJson(core.Map json_)
-    : this(
-        actionUri: json_['actionUri'] as core.String?,
-        fields:
-            (json_['fields'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (actionUri != null) 'actionUri': actionUri!,
-    if (fields != null) 'fields': fields!,
-  };
-}
+typedef Form = $Form;
 
 /// Describes authentication configuration that uses a Google account.
-class GoogleAccount {
-  /// Input only.
-  ///
-  /// The password of the Google account. The credential is stored encrypted and
-  /// not returned in any response nor included in audit logs.
-  ///
-  /// Required.
-  core.String? password;
-
-  /// The user name of the Google account.
-  ///
-  /// Required.
-  core.String? username;
-
-  GoogleAccount({this.password, this.username});
-
-  GoogleAccount.fromJson(core.Map json_)
-    : this(
-        password: json_['password'] as core.String?,
-        username: json_['username'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (password != null) 'password': password!,
-    if (username != null) 'username': username!,
-  };
-}
+typedef GoogleAccount = $GoogleAccount;
 
 /// Describes a HTTP Header.
-typedef Header = $Header;
+typedef Header = $Header00;
 
 /// Describes authentication configuration for Identity-Aware-Proxy (IAP).
 class IapCredential {
@@ -1315,34 +1203,7 @@ class ListScanRunsResponse {
 }
 
 /// Information reported for an outdated library.
-class OutdatedLibrary {
-  /// URLs to learn more information about the vulnerabilities in the library.
-  core.List<core.String>? learnMoreUrls;
-
-  /// The name of the outdated library.
-  core.String? libraryName;
-
-  /// The version number.
-  core.String? version;
-
-  OutdatedLibrary({this.learnMoreUrls, this.libraryName, this.version});
-
-  OutdatedLibrary.fromJson(core.Map json_)
-    : this(
-        learnMoreUrls:
-            (json_['learnMoreUrls'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        libraryName: json_['libraryName'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (learnMoreUrls != null) 'learnMoreUrls': learnMoreUrls!,
-    if (libraryName != null) 'libraryName': libraryName!,
-    if (version != null) 'version': version!,
-  };
-}
+typedef OutdatedLibrary = $OutdatedLibrary;
 
 /// A ScanConfig resource contains the configurations to launch a scan.
 class ScanConfig {
@@ -1882,33 +1743,7 @@ class ScanRunWarningTrace {
 }
 
 /// Scan schedule configuration.
-class Schedule {
-  /// The duration of time between executions in days.
-  ///
-  /// Required.
-  core.int? intervalDurationDays;
-
-  /// A timestamp indicates when the next run will be scheduled.
-  ///
-  /// The value is refreshed by the server after each run. If unspecified, it
-  /// will default to current server time, which means the scan will be
-  /// scheduled to start immediately.
-  core.String? scheduleTime;
-
-  Schedule({this.intervalDurationDays, this.scheduleTime});
-
-  Schedule.fromJson(core.Map json_)
-    : this(
-        intervalDurationDays: json_['intervalDurationDays'] as core.int?,
-        scheduleTime: json_['scheduleTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (intervalDurationDays != null)
-      'intervalDurationDays': intervalDurationDays!,
-    if (scheduleTime != null) 'scheduleTime': scheduleTime!,
-  };
-}
+typedef Schedule = $Schedule;
 
 /// Request for the `StartScanRun` method.
 typedef StartScanRunRequest = $Empty;
@@ -1918,26 +1753,7 @@ typedef StopScanRunRequest = $Empty;
 
 /// Information regarding any resource causing the vulnerability such as
 /// JavaScript sources, image, audio files, etc.
-class ViolatingResource {
-  /// The MIME type of this resource.
-  core.String? contentType;
-
-  /// URL of this violating resource.
-  core.String? resourceUrl;
-
-  ViolatingResource({this.contentType, this.resourceUrl});
-
-  ViolatingResource.fromJson(core.Map json_)
-    : this(
-        contentType: json_['contentType'] as core.String?,
-        resourceUrl: json_['resourceUrl'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (contentType != null) 'contentType': contentType!,
-    if (resourceUrl != null) 'resourceUrl': resourceUrl!,
-  };
-}
+typedef ViolatingResource = $ViolatingResource;
 
 /// Information about vulnerable or missing HTTP Headers.
 class VulnerableHeaders {
@@ -1976,24 +1792,7 @@ class VulnerableHeaders {
 }
 
 /// Information about vulnerable request parameters.
-class VulnerableParameters {
-  /// The vulnerable parameter names.
-  core.List<core.String>? parameterNames;
-
-  VulnerableParameters({this.parameterNames});
-
-  VulnerableParameters.fromJson(core.Map json_)
-    : this(
-        parameterNames:
-            (json_['parameterNames'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (parameterNames != null) 'parameterNames': parameterNames!,
-  };
-}
+typedef VulnerableParameters = $VulnerableParameters;
 
 /// Information reported for an XSS.
 class Xss {
@@ -2060,29 +1859,4 @@ class Xss {
 }
 
 /// Information reported for an XXE.
-class Xxe {
-  /// Location within the request where the payload was placed.
-  /// Possible string values are:
-  /// - "LOCATION_UNSPECIFIED" : Unknown Location.
-  /// - "COMPLETE_REQUEST_BODY" : The XML payload replaced the complete request
-  /// body.
-  core.String? payloadLocation;
-
-  /// The XML string that triggered the XXE vulnerability.
-  ///
-  /// Non-payload values might be redacted.
-  core.String? payloadValue;
-
-  Xxe({this.payloadLocation, this.payloadValue});
-
-  Xxe.fromJson(core.Map json_)
-    : this(
-        payloadLocation: json_['payloadLocation'] as core.String?,
-        payloadValue: json_['payloadValue'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (payloadLocation != null) 'payloadLocation': payloadLocation!,
-    if (payloadValue != null) 'payloadValue': payloadValue!,
-  };
-}
+typedef Xxe = $Xxe;

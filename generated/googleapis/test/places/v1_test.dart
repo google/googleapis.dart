@@ -3429,7 +3429,7 @@ void main() {
   unittest.group('resource-PlacesResource', () {
     unittest.test('method--autocomplete', () async {
       final mock = HttpServerMock();
-      final res = api.PlacesApi(mock).places;
+      final res = api.MapsPlacesApi(mock).places;
       final arg_request = buildGoogleMapsPlacesV1AutocompletePlacesRequest();
       final arg_$fields = 'foo';
       mock.register(
@@ -3493,7 +3493,7 @@ void main() {
 
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
-      final res = api.PlacesApi(mock).places;
+      final res = api.MapsPlacesApi(mock).places;
       final arg_name = 'foo';
       final arg_languageCode = 'foo';
       final arg_regionCode = 'foo';
@@ -3567,7 +3567,7 @@ void main() {
 
     unittest.test('method--searchNearby', () async {
       final mock = HttpServerMock();
-      final res = api.PlacesApi(mock).places;
+      final res = api.MapsPlacesApi(mock).places;
       final arg_request = buildGoogleMapsPlacesV1SearchNearbyRequest();
       final arg_$fields = 'foo';
       mock.register(
@@ -3631,7 +3631,7 @@ void main() {
 
     unittest.test('method--searchText', () async {
       final mock = HttpServerMock();
-      final res = api.PlacesApi(mock).places;
+      final res = api.MapsPlacesApi(mock).places;
       final arg_request = buildGoogleMapsPlacesV1SearchTextRequest();
       final arg_$fields = 'foo';
       mock.register(
@@ -3694,7 +3694,7 @@ void main() {
   unittest.group('resource-PlacesPhotosResource', () {
     unittest.test('method--getMedia', () async {
       final mock = HttpServerMock();
-      final res = api.PlacesApi(mock).places.photos;
+      final res = api.MapsPlacesApi(mock).places.photos;
       final arg_name = 'foo';
       final arg_maxHeightPx = 42;
       final arg_maxWidthPx = 42;

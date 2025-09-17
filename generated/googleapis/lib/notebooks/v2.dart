@@ -1656,7 +1656,7 @@ class CheckAuthorizationResponse {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef CheckInstanceUpgradabilityResponse = $Response;
+typedef CheckInstanceUpgradabilityResponse = $Response00;
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
@@ -2314,23 +2314,7 @@ class GceSetup {
 }
 
 /// Request message for generating an EUC for the instance owner.
-class GenerateAccessTokenRequest {
-  /// The VM identity token (a JWT) for authenticating the VM.
-  ///
-  /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
-  ///
-  /// Required.
-  core.String? vmToken;
-
-  GenerateAccessTokenRequest({this.vmToken});
-
-  GenerateAccessTokenRequest.fromJson(core.Map json_)
-    : this(vmToken: json_['vmToken'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (vmToken != null) 'vmToken': vmToken!,
-  };
-}
+typedef GenerateAccessTokenRequest = $GenerateAccessTokenRequest00;
 
 /// Response message for generating an EUC for the instance owner.
 class GenerateAccessTokenResponse {
@@ -3464,7 +3448,7 @@ class UpgradeHistoryEntry {
 typedef UpgradeInstanceRequest = $Empty;
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request12;
+typedef UpgradeInstanceSystemRequest = $Request14;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

@@ -7276,23 +7276,7 @@ class AccountImageImprovements {
 }
 
 /// Settings for the Automatic Image Improvements.
-class AccountImageImprovementsSettings {
-  /// Enables automatic image improvements.
-  core.bool? allowAutomaticImageImprovements;
-
-  AccountImageImprovementsSettings({this.allowAutomaticImageImprovements});
-
-  AccountImageImprovementsSettings.fromJson(core.Map json_)
-    : this(
-        allowAutomaticImageImprovements:
-            json_['allowAutomaticImageImprovements'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowAutomaticImageImprovements != null)
-      'allowAutomaticImageImprovements': allowAutomaticImageImprovements!,
-  };
-}
+typedef AccountImageImprovementsSettings = $Settings;
 
 /// An issue affecting specific merchant.
 class AccountIssue {
@@ -7758,23 +7742,7 @@ class AccountReturnCarrier {
 /// estimated delivery times based on various factors: * Delivery address of an
 /// order * Current handling time and shipping time settings * Estimated
 /// weekdays or business days * Parcel tracking data
-class AccountShippingImprovements {
-  /// Enables automatic shipping improvements.
-  core.bool? allowShippingImprovements;
-
-  AccountShippingImprovements({this.allowShippingImprovements});
-
-  AccountShippingImprovements.fromJson(core.Map json_)
-    : this(
-        allowShippingImprovements:
-            json_['allowShippingImprovements'] as core.bool?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowShippingImprovements != null)
-      'allowShippingImprovements': allowShippingImprovements!,
-  };
-}
+typedef AccountShippingImprovements = $ShippingImprovements;
 
 /// The status of an account, that is, information about its products, which is
 /// computed offline and not returned immediately at insertion time.
@@ -9736,30 +9704,7 @@ class Breakdown {
 }
 
 /// Region with code and localized name.
-class BreakdownRegion {
-  /// The
-  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
-  core.String? code;
-
-  /// The localized name of the region.
-  ///
-  /// For region with code='001' the value is 'All countries' or the equivalent
-  /// in other languages.
-  core.String? name;
-
-  BreakdownRegion({this.code, this.name});
-
-  BreakdownRegion.fromJson(core.Map json_)
-    : this(
-        code: json_['code'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (code != null) 'code': code!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef BreakdownRegion = $Region;
 
 /// Action that is implemented and performed in (your) third-party application.
 ///
@@ -9836,29 +9781,7 @@ class BuiltInSimpleAction {
 }
 
 /// Long text from external source.
-class BuiltInSimpleActionAdditionalContent {
-  /// Long text organized into paragraphs.
-  core.List<core.String>? paragraphs;
-
-  /// Title of the additional content;
-  core.String? title;
-
-  BuiltInSimpleActionAdditionalContent({this.paragraphs, this.title});
-
-  BuiltInSimpleActionAdditionalContent.fromJson(core.Map json_)
-    : this(
-        paragraphs:
-            (json_['paragraphs'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        title: json_['title'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (paragraphs != null) 'paragraphs': paragraphs!,
-    if (title != null) 'title': title!,
-  };
-}
+typedef BuiltInSimpleActionAdditionalContent = $AdditionalContent;
 
 /// Action that is implemented and performed in (your) third-party application.
 ///
@@ -16988,10 +16911,10 @@ class PostalCodeRange {
   };
 }
 
-typedef Price = $Shared11;
+typedef Price = $Shared19;
 
 /// The price represented as a number and currency.
-typedef PriceAmount = $Shared11;
+typedef PriceAmount = $Shared19;
 
 /// Price competitiveness fields requested by the merchant in the query.
 ///
@@ -18825,48 +18748,8 @@ class ProductShipping {
   };
 }
 
-class ProductShippingDimension {
-  /// The unit of value.
-  core.String? unit;
-
-  /// The dimension of the product used to calculate the shipping cost of the
-  /// item.
-  core.double? value;
-
-  ProductShippingDimension({this.unit, this.value});
-
-  ProductShippingDimension.fromJson(core.Map json_)
-    : this(
-        unit: json_['unit'] as core.String?,
-        value: (json_['value'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unit != null) 'unit': unit!,
-    if (value != null) 'value': value!,
-  };
-}
-
-class ProductShippingWeight {
-  /// The unit of value.
-  core.String? unit;
-
-  /// The weight of the product used to calculate the shipping cost of the item.
-  core.double? value;
-
-  ProductShippingWeight({this.unit, this.value});
-
-  ProductShippingWeight.fromJson(core.Map json_)
-    : this(
-        unit: json_['unit'] as core.String?,
-        value: (json_['value'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unit != null) 'unit': unit!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef ProductShippingDimension = $ShippingDimension;
+typedef ProductShippingWeight = $ShippingWeight;
 
 /// The status of a product, that is, information about a product computed
 /// asynchronously.
@@ -19286,47 +19169,8 @@ class ProductTax {
   };
 }
 
-class ProductUnitPricingBaseMeasure {
-  /// The unit of the denominator.
-  core.String? unit;
-
-  /// The denominator of the unit price.
-  core.String? value;
-
-  ProductUnitPricingBaseMeasure({this.unit, this.value});
-
-  ProductUnitPricingBaseMeasure.fromJson(core.Map json_)
-    : this(
-        unit: json_['unit'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unit != null) 'unit': unit!,
-    if (value != null) 'value': value!,
-  };
-}
-
-class ProductUnitPricingMeasure {
-  /// The unit of the measure.
-  core.String? unit;
-
-  /// The measure of an item.
-  core.double? value;
-
-  ProductUnitPricingMeasure({this.unit, this.value});
-
-  ProductUnitPricingMeasure.fromJson(core.Map json_)
-    : this(
-        unit: json_['unit'] as core.String?,
-        value: (json_['value'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (unit != null) 'unit': unit!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef ProductUnitPricingBaseMeasure = $UnitPricingBaseMeasure;
+typedef ProductUnitPricingMeasure = $UnitPricingMeasure;
 
 /// Product fields.
 ///
@@ -22006,10 +21850,10 @@ class RequestPhoneVerificationResponse {
 }
 
 /// Request message for the RequestReviewFreeListings Program method.
-typedef RequestReviewFreeListingsRequest = $Request09;
+typedef RequestReviewFreeListingsRequest = $Request13;
 
 /// Request message for the RequestReviewShoppingAds program method.
-typedef RequestReviewShoppingAdsRequest = $Request09;
+typedef RequestReviewShoppingAdsRequest = $Request13;
 
 /// Return address resource.
 class ReturnAddress {
@@ -23552,26 +23396,7 @@ class ServiceStoreConfigCutoffConfig {
 }
 
 /// Time in hours and minutes in the local timezone when local delivery ends.
-class ServiceStoreConfigCutoffConfigLocalCutoffTime {
-  /// Hour local delivery orders must be placed by to process the same day.
-  core.String? hour;
-
-  /// Minute local delivery orders must be placed by to process the same day.
-  core.String? minute;
-
-  ServiceStoreConfigCutoffConfigLocalCutoffTime({this.hour, this.minute});
-
-  ServiceStoreConfigCutoffConfigLocalCutoffTime.fromJson(core.Map json_)
-    : this(
-        hour: json_['hour'] as core.String?,
-        minute: json_['minute'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (hour != null) 'hour': hour!,
-    if (minute != null) 'minute': minute!,
-  };
-}
+typedef ServiceStoreConfigCutoffConfigLocalCutoffTime = $LocalCutoffTime;
 
 /// The merchant account's shipping settings.
 ///
@@ -24177,42 +24002,7 @@ class Table {
 }
 
 /// Block of text that may contain a tooltip with more information.
-class TextWithTooltip {
-  /// Value of the tooltip as a simple text.
-  core.String? simpleTooltipValue;
-
-  /// Value of the message as a simple text.
-  core.String? simpleValue;
-
-  /// The suggested type of an icon for tooltip, if a tooltip is present.
-  /// Possible string values are:
-  /// - "TOOLTIP_ICON_STYLE_UNSPECIFIED" : Default value. Will never be provided
-  /// by the API.
-  /// - "INFO" : Used when the tooltip adds additional information to the
-  /// context, the 'i' can be used as an icon.
-  /// - "QUESTION" : Used when the tooltip shows helpful information, the '?'
-  /// can be used as an icon.
-  core.String? tooltipIconStyle;
-
-  TextWithTooltip({
-    this.simpleTooltipValue,
-    this.simpleValue,
-    this.tooltipIconStyle,
-  });
-
-  TextWithTooltip.fromJson(core.Map json_)
-    : this(
-        simpleTooltipValue: json_['simpleTooltipValue'] as core.String?,
-        simpleValue: json_['simpleValue'] as core.String?,
-        tooltipIconStyle: json_['tooltipIconStyle'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (simpleTooltipValue != null) 'simpleTooltipValue': simpleTooltipValue!,
-    if (simpleValue != null) 'simpleValue': simpleValue!,
-    if (tooltipIconStyle != null) 'tooltipIconStyle': tooltipIconStyle!,
-  };
-}
+typedef TextWithTooltip = $TextWithTooltip;
 
 /// A message that represents a time period.
 class TimePeriod {

@@ -18326,7 +18326,7 @@ class FloodlightGroup {
 
 /// Settings that control the number of times a user may be shown with the same
 /// ad during a given time period.
-typedef FrequencyCap = $FrequencyCap;
+typedef FrequencyCap = $FrequencyCap00;
 
 /// Details for assigned gender targeting option.
 ///
@@ -23209,7 +23209,7 @@ typedef SessionPositionAssignedTargetingOptionDetails =
 /// A single site.
 ///
 /// Sites are apps or websites belonging to a channel.
-typedef Site = $Site;
+typedef Site = $Site00;
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -23922,7 +23922,7 @@ class ThirdPartyVerifierAssignedTargetingOptionDetails {
 }
 
 /// A time range.
-typedef TimeRange = $TimeRange;
+typedef TimeRange = $TimeRange00;
 
 /// Timer event of the creative.
 typedef TimerEvent = $TimerEvent;

@@ -652,93 +652,7 @@ class Account {
 }
 
 /// Address data.
-class Address {
-  /// First line of address.
-  ///
-  /// Max length 64 bytes or 30 characters.
-  core.String? address1;
-
-  /// Second line of address.
-  ///
-  /// Max length 64 bytes or 30 characters.
-  core.String? address2;
-
-  /// City.
-  ///
-  /// Max length 60 bytes or 30 characters.
-  core.String? city;
-
-  /// Name of the company.
-  ///
-  /// Max length 255 bytes or 34 characters.
-  core.String? company;
-
-  /// Contact name of the company.
-  ///
-  /// Max length 128 bytes or 34 characters.
-  core.String? contact;
-
-  /// Fax number with international code (i.e. +441234567890).
-  core.String? fax;
-
-  /// Phone number with international code (i.e. +441234567890).
-  core.String? phone;
-
-  /// Country/Region code.
-  ///
-  /// The region is specified as a CLDR region code (e.g. "US", "FR").
-  core.String? regionCode;
-
-  /// State.
-  ///
-  /// Max length 60 bytes or 30 characters.
-  core.String? state;
-
-  /// Zip/post code.
-  ///
-  /// Max length 10 bytes or 10 characters.
-  core.String? zip;
-
-  Address({
-    this.address1,
-    this.address2,
-    this.city,
-    this.company,
-    this.contact,
-    this.fax,
-    this.phone,
-    this.regionCode,
-    this.state,
-    this.zip,
-  });
-
-  Address.fromJson(core.Map json_)
-    : this(
-        address1: json_['address1'] as core.String?,
-        address2: json_['address2'] as core.String?,
-        city: json_['city'] as core.String?,
-        company: json_['company'] as core.String?,
-        contact: json_['contact'] as core.String?,
-        fax: json_['fax'] as core.String?,
-        phone: json_['phone'] as core.String?,
-        regionCode: json_['regionCode'] as core.String?,
-        state: json_['state'] as core.String?,
-        zip: json_['zip'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (address1 != null) 'address1': address1!,
-    if (address2 != null) 'address2': address2!,
-    if (city != null) 'city': city!,
-    if (company != null) 'company': company!,
-    if (contact != null) 'contact': contact!,
-    if (fax != null) 'fax': fax!,
-    if (phone != null) 'phone': phone!,
-    if (regionCode != null) 'regionCode': regionCode!,
-    if (state != null) 'state': state!,
-    if (zip != null) 'zip': zip!,
-  };
-}
+typedef Address = $Address00;
 
 /// Request definition for the account close rpc.
 typedef CloseAccountRequest = $Empty;
@@ -897,73 +811,13 @@ class ListSitesResponse {
 }
 
 /// Response definition for the lookup account rpc.
-class LookupAccountResponse {
-  /// The name of the Account Format: platforms/{platform}/accounts/{account_id}
-  core.String? name;
-
-  LookupAccountResponse({this.name});
-
-  LookupAccountResponse.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
-}
+typedef LookupAccountResponse = $LookupAccountResponse;
 
 /// Response definition for the site request review rpc.
 typedef RequestSiteReviewResponse = $Empty;
 
 /// Representation of a Site.
-class Site {
-  /// Domain/sub-domain of the site.
-  ///
-  /// Must be a valid domain complying with
-  /// [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) and formatted as punycode
-  /// [RFC 3492](https://www.ietf.org/rfc/rfc3492.txt) in case the domain
-  /// contains unicode characters.
-  core.String? domain;
-
-  /// Resource name of a site.
-  ///
-  /// Format: platforms/{platform}/accounts/{account}/sites/{site}
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// State of a site.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : State unspecified.
-  /// - "REQUIRES_REVIEW" : Either: - The site hasn't been checked yet. - The
-  /// site is inactive and needs another review before it can show ads again.
-  /// Learn how to
-  /// [request a review for an inactive site](https://support.google.com/adsense/answer/9393996).
-  /// - "GETTING_READY" : Google is running some checks on the site. This
-  /// usually takes a few days, but in some cases it can take two to four weeks.
-  /// - "READY" : The site is ready to show ads. Learn how to
-  /// [set up ads on the site](https://support.google.com/adsense/answer/7037624).
-  /// - "NEEDS_ATTENTION" : Publisher needs to fix some issues before the site
-  /// is ready to show ads. Learn what to do
-  /// [if a new site isn't ready](https://support.google.com/adsense/answer/9061852).
-  core.String? state;
-
-  Site({this.domain, this.name, this.state});
-
-  Site.fromJson(core.Map json_)
-    : this(
-        domain: json_['domain'] as core.String?,
-        name: json_['name'] as core.String?,
-        state: json_['state'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (domain != null) 'domain': domain!,
-    if (name != null) 'name': name!,
-    if (state != null) 'state': state!,
-  };
-}
+typedef Site = $Site01;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

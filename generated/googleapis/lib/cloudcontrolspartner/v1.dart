@@ -784,75 +784,11 @@ class AccessApprovalRequest {
 }
 
 /// Reason for the access.
-class AccessReason {
-  /// More detail about certain reason types.
-  ///
-  /// See comments for each type above.
-  core.String? detail;
-
-  /// Type of access justification.
-  /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Default value for proto, shouldn't be used.
-  /// - "CUSTOMER_INITIATED_SUPPORT" : Customer made a request or raised an
-  /// issue that required the principal to access customer data. `detail` is of
-  /// the form ("#####" is the issue ID): - "Feedback Report: #####" - "Case
-  /// Number: #####" - "Case ID: #####" - "E-PIN Reference: #####" -
-  /// "Google-#####" - "T-#####"
-  /// - "GOOGLE_INITIATED_SERVICE" : The principal accessed customer data in
-  /// order to diagnose or resolve a suspected issue in services. Often this
-  /// access is used to confirm that customers are not affected by a suspected
-  /// service issue or to remediate a reversible system issue.
-  /// - "GOOGLE_INITIATED_REVIEW" : Google initiated service for security,
-  /// fraud, abuse, or compliance purposes.
-  /// - "THIRD_PARTY_DATA_REQUEST" : The principal was compelled to access
-  /// customer data in order to respond to a legal third party data request or
-  /// process, including legal processes from customers themselves.
-  /// - "GOOGLE_RESPONSE_TO_PRODUCTION_ALERT" : The principal accessed customer
-  /// data in order to diagnose or resolve a suspected issue in services or a
-  /// known outage.
-  /// - "CLOUD_INITIATED_ACCESS" : Similar to 'GOOGLE_INITIATED_SERVICE' or
-  /// 'GOOGLE_INITIATED_REVIEW', but with universe agnostic naming. The
-  /// principal accessed customer data in order to diagnose or resolve a
-  /// suspected issue in services or a known outage, or for security, fraud,
-  /// abuse, or compliance review purposes.
-  core.String? type;
-
-  AccessReason({this.detail, this.type});
-
-  AccessReason.fromJson(core.Map json_)
-    : this(
-        detail: json_['detail'] as core.String?,
-        type: json_['type'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (detail != null) 'detail': detail!,
-    if (type != null) 'type': type!,
-  };
-}
+typedef AccessReason = $AccessReason;
 
 /// Information around the error that occurred if the connection state is
 /// anything other than available or unspecified
-class ConnectionError {
-  /// The error domain for the error
-  core.String? errorDomain;
-
-  /// The error message for the error
-  core.String? errorMessage;
-
-  ConnectionError({this.errorDomain, this.errorMessage});
-
-  ConnectionError.fromJson(core.Map json_)
-    : this(
-        errorDomain: json_['errorDomain'] as core.String?,
-        errorMessage: json_['errorMessage'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (errorDomain != null) 'errorDomain': errorDomain!,
-    if (errorMessage != null) 'errorMessage': errorMessage!,
-  };
-}
+typedef ConnectionError = $ConnectionError;
 
 /// Remediation instructions to resolve violation via cloud console
 typedef Console = $Console;
@@ -946,53 +882,7 @@ class CustomerOnboardingState {
 }
 
 /// Container for customer onboarding information
-class CustomerOnboardingStep {
-  /// Current state of the step
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "COMPLETION_STATE_UNSPECIFIED" : Unspecified completion state.
-  /// - "PENDING" : Task started (has start date) but not yet completed.
-  /// - "SUCCEEDED" : Succeeded state.
-  /// - "FAILED" : Failed state.
-  /// - "NOT_APPLICABLE" : Not applicable state.
-  core.String? completionState;
-
-  /// The completion time of the onboarding step
-  core.String? completionTime;
-
-  /// The starting time of the onboarding step
-  core.String? startTime;
-
-  /// The onboarding step
-  /// Possible string values are:
-  /// - "STEP_UNSPECIFIED" : Unspecified step
-  /// - "KAJ_ENROLLMENT" : KAJ Enrollment
-  /// - "CUSTOMER_ENVIRONMENT" : Customer Environment
-  core.String? step;
-
-  CustomerOnboardingStep({
-    this.completionState,
-    this.completionTime,
-    this.startTime,
-    this.step,
-  });
-
-  CustomerOnboardingStep.fromJson(core.Map json_)
-    : this(
-        completionState: json_['completionState'] as core.String?,
-        completionTime: json_['completionTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        step: json_['step'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionState != null) 'completionState': completionState!,
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (step != null) 'step': step!,
-  };
-}
+typedef CustomerOnboardingStep = $CustomerOnboardingStep;
 
 /// Details about the EKM connection
 class EkmConnection {
@@ -1073,33 +963,7 @@ class EkmConnections {
 }
 
 /// Holds information needed by Mudbray to use partner EKMs for workloads.
-class EkmMetadata {
-  /// Endpoint for sending requests to the EKM for key provisioning during
-  /// Assured Workload creation.
-  core.String? ekmEndpointUri;
-
-  /// The Cloud EKM partner.
-  /// Possible string values are:
-  /// - "EKM_SOLUTION_UNSPECIFIED" : Unspecified EKM solution
-  /// - "FORTANIX" : EKM Partner Fortanix
-  /// - "FUTUREX" : EKM Partner FutureX
-  /// - "THALES" : EKM Partner Thales
-  /// - "VIRTRU" : This enum value is never used.
-  core.String? ekmSolution;
-
-  EkmMetadata({this.ekmEndpointUri, this.ekmSolution});
-
-  EkmMetadata.fromJson(core.Map json_)
-    : this(
-        ekmEndpointUri: json_['ekmEndpointUri'] as core.String?,
-        ekmSolution: json_['ekmSolution'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (ekmEndpointUri != null) 'ekmEndpointUri': ekmEndpointUri!,
-    if (ekmSolution != null) 'ekmSolution': ekmSolution!,
-  };
-}
+typedef EkmMetadata = $EkmMetadata;
 
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
@@ -1401,32 +1265,7 @@ class Partner {
 }
 
 /// The permissions granted to the partner for a workload
-class PartnerPermissions {
-  /// Identifier.
-  ///
-  /// Format:
-  /// `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/partnerPermissions`
-  core.String? name;
-
-  /// The partner permissions granted for the workload
-  core.List<core.String>? partnerPermissions;
-
-  PartnerPermissions({this.name, this.partnerPermissions});
-
-  PartnerPermissions.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        partnerPermissions:
-            (json_['partnerPermissions'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (partnerPermissions != null) 'partnerPermissions': partnerPermissions!,
-  };
-}
+typedef PartnerPermissions = $PartnerPermissions;
 
 /// Represents remediation guidance to resolve compliance violation for
 /// AssuredWorkload
@@ -1482,32 +1321,7 @@ class Remediation {
 }
 
 /// Represents the SKU a partner owns inside Google Cloud to sell to customers.
-class Sku {
-  /// Display name of the product identified by the SKU.
-  ///
-  /// A partner may want to show partner branded names for their offerings such
-  /// as local sovereign cloud solutions.
-  core.String? displayName;
-
-  /// Argentum product SKU, that is associated with the partner offerings to
-  /// customers used by Syntro for billing purposes.
-  ///
-  /// SKUs can represent resold Google products or support services.
-  core.String? id;
-
-  Sku({this.displayName, this.id});
-
-  Sku.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        id: json_['id'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (id != null) 'id': id!,
-  };
-}
+typedef Sku = $Sku;
 
 /// Details of resource Violation
 class Violation {
@@ -1748,50 +1562,4 @@ class WorkloadOnboardingState {
 }
 
 /// Container for workload onboarding information.
-class WorkloadOnboardingStep {
-  /// The completion state of the onboarding step.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "COMPLETION_STATE_UNSPECIFIED" : Unspecified completion state.
-  /// - "PENDING" : Task started (has start date) but not yet completed.
-  /// - "SUCCEEDED" : Succeeded state.
-  /// - "FAILED" : Failed state.
-  /// - "NOT_APPLICABLE" : Not applicable state.
-  core.String? completionState;
-
-  /// The completion time of the onboarding step.
-  core.String? completionTime;
-
-  /// The starting time of the onboarding step.
-  core.String? startTime;
-
-  /// The onboarding step.
-  /// Possible string values are:
-  /// - "STEP_UNSPECIFIED" : Unspecified step.
-  /// - "EKM_PROVISIONED" : EKM Provisioned step.
-  /// - "SIGNED_ACCESS_APPROVAL_CONFIGURED" : Signed Access Approval step.
-  core.String? step;
-
-  WorkloadOnboardingStep({
-    this.completionState,
-    this.completionTime,
-    this.startTime,
-    this.step,
-  });
-
-  WorkloadOnboardingStep.fromJson(core.Map json_)
-    : this(
-        completionState: json_['completionState'] as core.String?,
-        completionTime: json_['completionTime'] as core.String?,
-        startTime: json_['startTime'] as core.String?,
-        step: json_['step'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (completionState != null) 'completionState': completionState!,
-    if (completionTime != null) 'completionTime': completionTime!,
-    if (startTime != null) 'startTime': startTime!,
-    if (step != null) 'step': step!,
-  };
-}
+typedef WorkloadOnboardingStep = $WorkloadOnboardingStep;
