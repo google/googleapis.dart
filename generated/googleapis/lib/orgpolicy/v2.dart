@@ -2149,8 +2149,8 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   ///
   /// Passes parameter values when policy enforcement is enabled. Ensure that
   /// parameter value types match those defined in the constraint definition.
-  /// For example: { "allowedLocations" : \["us-east1", "us-west1"\], "allowAll"
-  /// : true }
+  /// For example: ``` { "allowedLocations" : ["us-east1", "us-west1"],
+  /// "allowAll" : true } ```
   ///
   /// Optional.
   ///

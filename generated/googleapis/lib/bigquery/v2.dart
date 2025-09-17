@@ -5002,8 +5002,10 @@ class DataMaskingStatistics {
   };
 }
 
-/// Data policy option proto, it currently supports name only, will support
-/// precedence later.
+/// Data policy option.
+///
+/// For more information, see
+/// [Mask data by applying data policies to a column](https://cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column/).
 class DataPolicyOption {
   /// Data policy resource name in the form of
   /// projects/project_id/locations/location_id/dataPolicies/data_policy_id.
@@ -8767,6 +8769,15 @@ class JobConfiguration {
   /// \[Pick one\] Configures a load job.
   JobConfigurationLoad? load;
 
+  /// INTERNAL: DO NOT USE.
+  ///
+  /// The maximum rate of slot consumption to allow for this job. If set, the
+  /// number of slots used to execute the job will be throttled to try and keep
+  /// its slot consumption below the requested rate.
+  ///
+  /// Optional.
+  core.int? maxSlots;
+
   /// \[Pick one\] Configures a query job.
   JobConfigurationQuery? query;
 
@@ -8788,6 +8799,7 @@ class JobConfiguration {
     this.jobType,
     this.labels,
     this.load,
+    this.maxSlots,
     this.query,
     this.reservation,
   });
@@ -8818,6 +8830,7 @@ class JobConfiguration {
                   json_['load'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        maxSlots: json_['maxSlots'] as core.int?,
         query:
             json_.containsKey('query')
                 ? JobConfigurationQuery.fromJson(
@@ -8835,6 +8848,7 @@ class JobConfiguration {
     if (jobType != null) 'jobType': jobType!,
     if (labels != null) 'labels': labels!,
     if (load != null) 'load': load!,
+    if (maxSlots != null) 'maxSlots': maxSlots!,
     if (query != null) 'query': query!,
     if (reservation != null) 'reservation': reservation!,
   };
@@ -13715,6 +13729,15 @@ class QueryRequest {
   /// Optional.
   core.int? maxResults;
 
+  /// INTERNAL: DO NOT USE.
+  ///
+  /// The maximum rate of slot consumption to allow for this job. If set, the
+  /// number of slots used to execute the job will be throttled to try and keep
+  /// its slot consumption below the requested rate. This limit is best effort.
+  ///
+  /// Optional.
+  core.int? maxSlots;
+
   /// Limits the bytes billed for this query.
   ///
   /// Queries with bytes billed above this limit will fail (without incurring a
@@ -13835,6 +13858,7 @@ class QueryRequest {
     this.labels,
     this.location,
     this.maxResults,
+    this.maxSlots,
     this.maximumBytesBilled,
     this.parameterMode,
     this.preserveNulls,
@@ -13889,6 +13913,7 @@ class QueryRequest {
         ),
         location: json_['location'] as core.String?,
         maxResults: json_['maxResults'] as core.int?,
+        maxSlots: json_['maxSlots'] as core.int?,
         maximumBytesBilled: json_['maximumBytesBilled'] as core.String?,
         parameterMode: json_['parameterMode'] as core.String?,
         preserveNulls: json_['preserveNulls'] as core.bool?,
@@ -13925,6 +13950,7 @@ class QueryRequest {
     if (labels != null) 'labels': labels!,
     if (location != null) 'location': location!,
     if (maxResults != null) 'maxResults': maxResults!,
+    if (maxSlots != null) 'maxSlots': maxSlots!,
     if (maximumBytesBilled != null) 'maximumBytesBilled': maximumBytesBilled!,
     if (parameterMode != null) 'parameterMode': parameterMode!,
     if (preserveNulls != null) 'preserveNulls': preserveNulls!,
@@ -14643,16 +14669,17 @@ class Routine {
 
   /// The body of the routine.
   ///
-  /// For functions, this is the expression in the AS clause. If language=SQL,
-  /// it is the substring inside (but excluding) the parentheses. For example,
-  /// for the function created with the following statement: `CREATE FUNCTION
-  /// JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body
-  /// is `concat(x, "\n", y)` (\n is not replaced with linebreak). If
-  /// language=JAVASCRIPT, it is the evaluated string in the AS clause. For
+  /// For functions, this is the expression in the AS clause. If `language =
+  /// "SQL"`, it is the substring inside (but excluding) the parentheses. For
   /// example, for the function created with the following statement: `CREATE
-  /// FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The
-  /// definition_body is `return "\n";\n` Note that both \n are replaced with
-  /// linebreaks.
+  /// FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The
+  /// definition_body is `concat(x, "\n", y)` (\n is not replaced with
+  /// linebreak). If `language="JAVASCRIPT"`, it is the evaluated string in the
+  /// AS clause. For example, for the function created with the following
+  /// statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return
+  /// "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are
+  /// replaced with linebreaks. If `definition_body` references another routine,
+  /// then that routine must be fully qualified with its project ID.
   ///
   /// Required.
   core.String? definitionBody;
@@ -17437,7 +17464,7 @@ class TableFieldSchema {
   /// Optional.
   core.String? collation;
 
-  /// Data policy options, will replace the data_policies.
+  /// Data policies attached to this field, used for field-level access control.
   ///
   /// Optional.
   core.List<DataPolicyOption>? dataPolicies;

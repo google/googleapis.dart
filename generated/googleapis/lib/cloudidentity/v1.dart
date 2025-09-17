@@ -27,6 +27,7 @@
 ///     - [DevicesDeviceUsersClientStatesResource]
 /// - [GroupsResource]
 ///   - [GroupsMembershipsResource]
+/// - [InboundOidcSsoProfilesResource]
 /// - [InboundSamlSsoProfilesResource]
 ///   - [InboundSamlSsoProfilesIdpCredentialsResource]
 /// - [InboundSsoAssignmentsResource]
@@ -99,6 +100,8 @@ class CloudIdentityApi {
   CustomersResource get customers => CustomersResource(_requester);
   DevicesResource get devices => DevicesResource(_requester);
   GroupsResource get groups => GroupsResource(_requester);
+  InboundOidcSsoProfilesResource get inboundOidcSsoProfiles =>
+      InboundOidcSsoProfilesResource(_requester);
   InboundSamlSsoProfilesResource get inboundSamlSsoProfiles =>
       InboundSamlSsoProfilesResource(_requester);
   InboundSsoAssignmentsResource get inboundSsoAssignments =>
@@ -2455,6 +2458,243 @@ class GroupsMembershipsResource {
     return SearchTransitiveMembershipsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class InboundOidcSsoProfilesResource {
+  final commons.ApiRequester _requester;
+
+  InboundOidcSsoProfilesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates an InboundOidcSsoProfile for a customer.
+  ///
+  /// When the target customer has enabled \[Multi-party approval for sensitive
+  /// actions\](https://support.google.com/a/answer/13790448), the `Operation`
+  /// in the response will have `"done": false`, it will not have a response,
+  /// and the metadata will have `"state": "awaiting-multi-party-approval"`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    InboundOidcSsoProfile request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/inboundOidcSsoProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an InboundOidcSsoProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the InboundOidcSsoProfile to delete. Format:
+  /// `inboundOidcSsoProfiles/{sso_profile_id}`
+  /// Value must have pattern `^inboundOidcSsoProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets an InboundOidcSsoProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The
+  /// [resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the InboundOidcSsoProfile to get. Format:
+  /// `inboundOidcSsoProfiles/{sso_profile_id}`
+  /// Value must have pattern `^inboundOidcSsoProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [InboundOidcSsoProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<InboundOidcSsoProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return InboundOidcSsoProfile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists InboundOidcSsoProfile objects for a Google enterprise customer.
+  ///
+  /// Request parameters:
+  ///
+  /// [filter] - A
+  /// [Common Expression Language](https://github.com/google/cel-spec)
+  /// expression to filter the results. The only supported filter is filtering
+  /// by customer. For example: `customer=="customers/C0123abc"`. Omitting the
+  /// filter or specifying a filter of `customer=="customers/my_customer"` will
+  /// return the profiles for the customer that the caller (authenticated user)
+  /// belongs to. Specifying a filter of `customer==""` will return the global
+  /// shared OIDC profiles.
+  ///
+  /// [pageSize] - The maximum number of InboundOidcSsoProfiles to return. The
+  /// service may return fewer than this value. If omitted (or defaulted to
+  /// zero) the server will use a sensible default. This default may change over
+  /// time. The maximum allowed value is 100. Requests with page_size greater
+  /// than that will be silently interpreted as having this maximum value.
+  ///
+  /// [pageToken] - A page token, received from a previous
+  /// `ListInboundOidcSsoProfiles` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListInboundOidcSsoProfiles` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInboundOidcSsoProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInboundOidcSsoProfilesResponse> list({
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/inboundOidcSsoProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInboundOidcSsoProfilesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an InboundOidcSsoProfile.
+  ///
+  /// When the target customer has enabled \[Multi-party approval for sensitive
+  /// actions\](https://support.google.com/a/answer/13790448), the `Operation`
+  /// in the response will have `"done": false`, it will not have a response,
+  /// and the metadata will have `"state": "awaiting-multi-party-approval"`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only.
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the OIDC SSO profile.
+  /// Value must have pattern `^inboundOidcSsoProfiles/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to be updated.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    InboundOidcSsoProfile request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -5032,6 +5272,70 @@ class IdpCredential {
   };
 }
 
+/// An [OIDC](https://openid.net/developers/how-connect-works/) federation
+/// between a Google enterprise customer and an OIDC identity provider.
+class InboundOidcSsoProfile {
+  /// The customer.
+  ///
+  /// For example: `customers/C0123abc`.
+  ///
+  /// Immutable.
+  core.String? customer;
+
+  /// Human-readable name of the OIDC SSO profile.
+  core.String? displayName;
+
+  /// OIDC identity provider configuration.
+  OidcIdpConfig? idpConfig;
+
+  /// [Resource name](https://cloud.google.com/apis/design/resource_names) of
+  /// the OIDC SSO profile.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// OIDC relying party (RP) configuration for this OIDC SSO profile.
+  ///
+  /// These are the RP details provided by Google that should be configured on
+  /// the corresponding identity provider.
+  OidcRpConfig? rpConfig;
+
+  InboundOidcSsoProfile({
+    this.customer,
+    this.displayName,
+    this.idpConfig,
+    this.name,
+    this.rpConfig,
+  });
+
+  InboundOidcSsoProfile.fromJson(core.Map json_)
+    : this(
+        customer: json_['customer'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        idpConfig:
+            json_.containsKey('idpConfig')
+                ? OidcIdpConfig.fromJson(
+                  json_['idpConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        rpConfig:
+            json_.containsKey('rpConfig')
+                ? OidcRpConfig.fromJson(
+                  json_['rpConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (customer != null) 'customer': customer!,
+    if (displayName != null) 'displayName': displayName!,
+    if (idpConfig != null) 'idpConfig': idpConfig!,
+    if (name != null) 'name': name!,
+    if (rpConfig != null) 'rpConfig': rpConfig!,
+  };
+}
+
 /// A [SAML 2.0](https://www.oasis-open.org/standards#samlv2.0) federation
 /// between a Google enterprise customer and a SAML identity provider.
 class InboundSamlSsoProfile {
@@ -5111,6 +5415,11 @@ class InboundSsoAssignment {
   /// Output only.
   core.String? name;
 
+  /// OpenID Connect SSO details.
+  ///
+  /// Must be set if and only if `sso_mode` is set to `OIDC_SSO`.
+  OidcSsoInfo? oidcSsoInfo;
+
   /// Must be zero (which is the default value so it can be omitted) for
   /// assignments with `target_org_unit` set and must be
   /// greater-than-or-equal-to one for assignments with `target_group` set.
@@ -5134,6 +5443,8 @@ class InboundSsoAssignment {
   /// - "SSO_OFF" : Disable SSO for the targeted users.
   /// - "SAML_SSO" : Use an external SAML Identity Provider for SSO for the
   /// targeted users.
+  /// - "OIDC_SSO" : Use an external OIDC Identity Provider for SSO for the
+  /// targeted users.
   /// - "DOMAIN_WIDE_SAML_IF_ENABLED" : Use the domain-wide SAML Identity
   /// Provider for the targeted users if one is configured; otherwise, this is
   /// equivalent to `SSO_OFF`. Note that this will also be equivalent to
@@ -5155,6 +5466,7 @@ class InboundSsoAssignment {
   InboundSsoAssignment({
     this.customer,
     this.name,
+    this.oidcSsoInfo,
     this.rank,
     this.samlSsoInfo,
     this.signInBehavior,
@@ -5167,6 +5479,12 @@ class InboundSsoAssignment {
     : this(
         customer: json_['customer'] as core.String?,
         name: json_['name'] as core.String?,
+        oidcSsoInfo:
+            json_.containsKey('oidcSsoInfo')
+                ? OidcSsoInfo.fromJson(
+                  json_['oidcSsoInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         rank: json_['rank'] as core.int?,
         samlSsoInfo:
             json_.containsKey('samlSsoInfo')
@@ -5189,6 +5507,7 @@ class InboundSsoAssignment {
   core.Map<core.String, core.dynamic> toJson() => {
     if (customer != null) 'customer': customer!,
     if (name != null) 'name': name!,
+    if (oidcSsoInfo != null) 'oidcSsoInfo': oidcSsoInfo!,
     if (rank != null) 'rank': rank!,
     if (samlSsoInfo != null) 'samlSsoInfo': samlSsoInfo!,
     if (signInBehavior != null) 'signInBehavior': signInBehavior!,
@@ -5272,6 +5591,42 @@ class ListIdpCredentialsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (idpCredentials != null) 'idpCredentials': idpCredentials!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// Response of the InboundOidcSsoProfilesService.ListInboundOidcSsoProfiles
+/// method.
+class ListInboundOidcSsoProfilesResponse {
+  /// List of InboundOidcSsoProfiles.
+  core.List<InboundOidcSsoProfile>? inboundOidcSsoProfiles;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListInboundOidcSsoProfilesResponse({
+    this.inboundOidcSsoProfiles,
+    this.nextPageToken,
+  });
+
+  ListInboundOidcSsoProfilesResponse.fromJson(core.Map json_)
+    : this(
+        inboundOidcSsoProfiles:
+            (json_['inboundOidcSsoProfiles'] as core.List?)
+                ?.map(
+                  (value) => InboundOidcSsoProfile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (inboundOidcSsoProfiles != null)
+      'inboundOidcSsoProfiles': inboundOidcSsoProfiles!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
   };
 }
@@ -5910,6 +6265,94 @@ class ModifyMembershipRolesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (membership != null) 'membership': membership!,
+  };
+}
+
+/// OIDC IDP (identity provider) configuration.
+class OidcIdpConfig {
+  /// The **Change Password URL** of the identity provider.
+  ///
+  /// Users will be sent to this URL when changing their passwords at
+  /// `myaccount.google.com`. This takes precedence over the change password URL
+  /// configured at customer-level. Must use `HTTPS`.
+  core.String? changePasswordUri;
+
+  /// The Issuer identifier for the IdP.
+  ///
+  /// Must be a URL. The discovery URL will be derived from this as described in
+  /// Section 4 of
+  /// [the OIDC specification](https://openid.net/specs/openid-connect-discovery-1_0.html).
+  ///
+  /// Required.
+  core.String? issuerUri;
+
+  OidcIdpConfig({this.changePasswordUri, this.issuerUri});
+
+  OidcIdpConfig.fromJson(core.Map json_)
+    : this(
+        changePasswordUri: json_['changePasswordUri'] as core.String?,
+        issuerUri: json_['issuerUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (changePasswordUri != null) 'changePasswordUri': changePasswordUri!,
+    if (issuerUri != null) 'issuerUri': issuerUri!,
+  };
+}
+
+/// OIDC RP (relying party) configuration.
+class OidcRpConfig {
+  /// OAuth2 client ID for OIDC.
+  core.String? clientId;
+
+  /// Input only.
+  ///
+  /// OAuth2 client secret for OIDC.
+  core.String? clientSecret;
+
+  /// The URL(s) that this client may use in authentication requests.
+  ///
+  /// Output only.
+  core.List<core.String>? redirectUris;
+
+  OidcRpConfig({this.clientId, this.clientSecret, this.redirectUris});
+
+  OidcRpConfig.fromJson(core.Map json_)
+    : this(
+        clientId: json_['clientId'] as core.String?,
+        clientSecret: json_['clientSecret'] as core.String?,
+        redirectUris:
+            (json_['redirectUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clientId != null) 'clientId': clientId!,
+    if (clientSecret != null) 'clientSecret': clientSecret!,
+    if (redirectUris != null) 'redirectUris': redirectUris!,
+  };
+}
+
+/// Details that are applicable when `sso_mode` is set to `OIDC_SSO`.
+class OidcSsoInfo {
+  /// Name of the `InboundOidcSsoProfile` to use.
+  ///
+  /// Must be of the form `inboundOidcSsoProfiles/{inbound_oidc_sso_profile}`.
+  ///
+  /// Required.
+  core.String? inboundOidcSsoProfile;
+
+  OidcSsoInfo({this.inboundOidcSsoProfile});
+
+  OidcSsoInfo.fromJson(core.Map json_)
+    : this(
+        inboundOidcSsoProfile: json_['inboundOidcSsoProfile'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (inboundOidcSsoProfile != null)
+      'inboundOidcSsoProfile': inboundOidcSsoProfile!,
   };
 }
 

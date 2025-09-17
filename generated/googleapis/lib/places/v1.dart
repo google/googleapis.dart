@@ -618,7 +618,35 @@ class GoogleMapsPlacesV1AddressDescriptorLandmark {
 /// Information about the author of the UGC data.
 ///
 /// Used in Photo, and Review.
-typedef GoogleMapsPlacesV1AuthorAttribution = $AuthorAttribution;
+class GoogleMapsPlacesV1AuthorAttribution {
+  /// Name of the author of the Photo or Review.
+  core.String? displayName;
+
+  /// Profile photo URI of the author of the Photo or Review.
+  core.String? photoUri;
+
+  /// URI of the author of the Photo or Review.
+  core.String? uri;
+
+  GoogleMapsPlacesV1AuthorAttribution({
+    this.displayName,
+    this.photoUri,
+    this.uri,
+  });
+
+  GoogleMapsPlacesV1AuthorAttribution.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        photoUri: json_['photoUri'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (photoUri != null) 'photoUri': photoUri!,
+    if (uri != null) 'uri': uri!,
+  };
+}
 
 /// Request proto for AutocompletePlaces.
 class GoogleMapsPlacesV1AutocompletePlacesRequest {
@@ -2774,7 +2802,7 @@ class GoogleMapsPlacesV1PlaceEvChargeAmenitySummary {
   /// A summary of the nearby restaurants.
   GoogleMapsPlacesV1ContentBlock? restaurant;
 
-  /// A summary of the nearby gas stations.
+  /// A summary of the nearby stores.
   GoogleMapsPlacesV1ContentBlock? store;
 
   GoogleMapsPlacesV1PlaceEvChargeAmenitySummary({

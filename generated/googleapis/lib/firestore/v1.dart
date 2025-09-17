@@ -217,7 +217,7 @@ class ProjectsDatabasesResource {
   /// 4-63 characters. Valid characters are /a-z-/ with first character a letter
   /// and the last a letter or a number. Must not be UUID-like
   /// /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)" database ID
-  /// is also valid.
+  /// is also valid if the database is Standard edition.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2623,9 +2623,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4202,7 +4202,7 @@ class GoogleFirestoreAdminV1CloneDatabaseRequest {
   /// value should be 4-63 characters. Valid characters are /a-z-/ with first
   /// character a letter and the last a letter or a number. Must not be
   /// UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)"
-  /// database ID is also valid.
+  /// database ID is also valid if the database is Standard edition.
   ///
   /// Required.
   core.String? databaseId;
@@ -4890,16 +4890,31 @@ class GoogleFirestoreAdminV1Index {
   /// Possible string values are:
   /// - "DENSITY_UNSPECIFIED" : Unspecified. It will use database default
   /// setting. This value is input only.
-  /// - "SPARSE_ALL" : In order for an index entry to be added, the document
-  /// must contain all fields specified in the index. This is the only allowed
-  /// value for indexes having ApiScope `ANY_API` and `DATASTORE_MODE_API`.
-  /// - "SPARSE_ANY" : In order for an index entry to be added, the document
-  /// must contain at least one of the fields specified in the index.
-  /// Non-existent fields are treated as having a NULL value when generating
-  /// index entries.
-  /// - "DENSE" : An index entry will be added regardless of whether the
-  /// document contains any of the fields specified in the index. Non-existent
-  /// fields are treated as having a NULL value when generating index entries.
+  /// - "SPARSE_ALL" : An index entry will only exist if ALL fields are present
+  /// in the document. This is both the default and only allowed value for
+  /// Standard Edition databases (for both Cloud Firestore `ANY_API` and Cloud
+  /// Datastore `DATASTORE_MODE_API`). Take for example the following document:
+  /// ``` { "__name__": "...", "a": 1, "b": 2, "c": 3 } ``` an index on `(a ASC,
+  /// b ASC, c ASC, __name__ ASC)` will generate an index entry for this
+  /// document since `a`, 'b', `c`, and `__name__` are all present but an index
+  /// of `(a ASC, d ASC, __name__ ASC)` will not generate an index entry for
+  /// this document since `d` is missing. This means that such indexes can only
+  /// be used to serve a query when the query has either implicit or explicit
+  /// requirements that all fields from the index are present.
+  /// - "SPARSE_ANY" : An index entry will exist if ANY field are present in the
+  /// document. This is used as the definition of a sparse index for Enterprise
+  /// Edition databases. Take for example the following document: ``` {
+  /// "__name__": "...", "a": 1, "b": 2, "c": 3 } ``` an index on `(a ASC, d
+  /// ASC)` will generate an index entry for this document since `a` is present,
+  /// and will fill in an `unset` value for `d`. An index on `(d ASC, e ASC)`
+  /// will not generate any index entry as neither `d` nor `e` are present. An
+  /// index that contains `__name__` will generate an index entry for all
+  /// documents since Firestore guarantees that all documents have a `__name__`
+  /// field.
+  /// - "DENSE" : An index entry will exist regardless of if the fields are
+  /// present or not. This is the default density for an Enterprise Edition
+  /// database. The index will store `unset` values for fields that are not
+  /// present in the document.
   core.String? density;
 
   /// The fields supported by this index.
@@ -4980,6 +4995,14 @@ class GoogleFirestoreAdminV1Index {
   /// attempted to create this index failed, then re-create the index.
   core.String? state;
 
+  /// Whether it is an unique index.
+  ///
+  /// Unique index ensures all values for the indexed field(s) are unique across
+  /// documents.
+  ///
+  /// Optional.
+  core.bool? unique;
+
   GoogleFirestoreAdminV1Index({
     this.apiScope,
     this.density,
@@ -4989,6 +5012,7 @@ class GoogleFirestoreAdminV1Index {
     this.queryScope,
     this.shardCount,
     this.state,
+    this.unique,
   });
 
   GoogleFirestoreAdminV1Index.fromJson(core.Map json_)
@@ -5008,6 +5032,7 @@ class GoogleFirestoreAdminV1Index {
         queryScope: json_['queryScope'] as core.String?,
         shardCount: json_['shardCount'] as core.int?,
         state: json_['state'] as core.String?,
+        unique: json_['unique'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5019,6 +5044,7 @@ class GoogleFirestoreAdminV1Index {
     if (queryScope != null) 'queryScope': queryScope!,
     if (shardCount != null) 'shardCount': shardCount!,
     if (state != null) 'state': state!,
+    if (unique != null) 'unique': unique!,
   };
 }
 
@@ -5422,7 +5448,7 @@ class GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /// value should be 4-63 characters. Valid characters are /a-z-/ with first
   /// character a letter and the last a letter or a number. Must not be
   /// UUID-like /\[0-9a-f\]{8}(-\[0-9a-f\]{4}){3}-\[0-9a-f\]{12}/. "(default)"
-  /// database ID is also valid.
+  /// database ID is also valid if the database is Standard edition.
   ///
   /// Required.
   core.String? databaseId;

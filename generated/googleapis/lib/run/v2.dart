@@ -5920,7 +5920,7 @@ class GoogleCloudRunV2SecretVolumeSource {
   core.int? defaultMode;
 
   /// If unspecified, the volume will expose a file whose name is the secret,
-  /// relative to VolumeMount.mount_path.
+  /// relative to VolumeMount.mount_path + VolumeMount.sub_path.
   ///
   /// If specified, the key will be used as the version to fetch from Cloud
   /// Secret Manager and the path will be the name of the file exposed in the
@@ -6621,6 +6621,52 @@ class GoogleCloudRunV2SubmitBuildRequest {
   /// Required.
   core.String? imageUri;
 
+  /// The machine type from default pool to use for the build.
+  ///
+  /// If left blank, cloudbuild will use a sensible default. Currently only
+  /// E2_HIGHCPU_8 is supported. If worker_pool is set, this field will be
+  /// ignored.
+  ///
+  /// Optional.
+  core.String? machineType;
+
+  /// The release track of the client that initiated the build request.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "LAUNCH_STAGE_UNSPECIFIED" : Do not use this default value.
+  /// - "UNIMPLEMENTED" : The feature is not yet implemented. Users can not use
+  /// it.
+  /// - "PRELAUNCH" : Prelaunch features are hidden from users and are only
+  /// visible internally.
+  /// - "EARLY_ACCESS" : Early Access features are limited to a closed group of
+  /// testers. To use these features, you must sign up in advance and sign a
+  /// Trusted Tester agreement (which includes confidentiality provisions).
+  /// These features may be unstable, changed in backward-incompatible ways, and
+  /// are not guaranteed to be released.
+  /// - "ALPHA" : Alpha is a limited availability test for releases before they
+  /// are cleared for widespread use. By Alpha, all significant design issues
+  /// are resolved and we are in the process of verifying functionality. Alpha
+  /// customers need to apply for access, agree to applicable terms, and have
+  /// their projects allowlisted. Alpha releases don't have to be feature
+  /// complete, no SLAs are provided, and there are no technical support
+  /// obligations, but they will be far enough along that customers can actually
+  /// use them in test environments or for limited-use tests -- just like they
+  /// would in normal production cases.
+  /// - "BETA" : Beta is the point at which we are ready to open a release for
+  /// any customer to use. There are no SLA or technical support obligations in
+  /// a Beta release. Products will be complete from a feature perspective, but
+  /// may have some open outstanding issues. Beta releases are suitable for
+  /// limited production use cases.
+  /// - "GA" : GA features are open to all developers and are considered stable
+  /// and fully qualified for production use.
+  /// - "DEPRECATED" : Deprecated features are scheduled to be shut down and
+  /// removed. For more information, see the "Deprecation Policy" section of our
+  /// [Terms of Service](https://cloud.google.com/terms/) and the
+  /// [Google Cloud Platform Subject to the Deprecation Policy](https://cloud.google.com/terms/deprecation)
+  /// documentation.
+  core.String? releaseTrack;
+
   /// The service account to use for the build.
   ///
   /// If not set, the default Cloud Build service account for the project will
@@ -6655,6 +6701,8 @@ class GoogleCloudRunV2SubmitBuildRequest {
     this.buildpackBuild,
     this.dockerBuild,
     this.imageUri,
+    this.machineType,
+    this.releaseTrack,
     this.serviceAccount,
     this.storageSource,
     this.tags,
@@ -6677,6 +6725,8 @@ class GoogleCloudRunV2SubmitBuildRequest {
                 )
                 : null,
         imageUri: json_['imageUri'] as core.String?,
+        machineType: json_['machineType'] as core.String?,
+        releaseTrack: json_['releaseTrack'] as core.String?,
         serviceAccount: json_['serviceAccount'] as core.String?,
         storageSource:
             json_.containsKey('storageSource')
@@ -6695,6 +6745,8 @@ class GoogleCloudRunV2SubmitBuildRequest {
     if (buildpackBuild != null) 'buildpackBuild': buildpackBuild!,
     if (dockerBuild != null) 'dockerBuild': dockerBuild!,
     if (imageUri != null) 'imageUri': imageUri!,
+    if (machineType != null) 'machineType': machineType!,
+    if (releaseTrack != null) 'releaseTrack': releaseTrack!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
     if (storageSource != null) 'storageSource': storageSource!,
     if (tags != null) 'tags': tags!,
@@ -7566,17 +7618,27 @@ class GoogleCloudRunV2VolumeMount {
   /// Required.
   core.String? name;
 
-  GoogleCloudRunV2VolumeMount({this.mountPath, this.name});
+  /// Path within the volume from which the container's volume should be
+  /// mounted.
+  ///
+  /// Defaults to "" (volume's root).
+  ///
+  /// Optional.
+  core.String? subPath;
+
+  GoogleCloudRunV2VolumeMount({this.mountPath, this.name, this.subPath});
 
   GoogleCloudRunV2VolumeMount.fromJson(core.Map json_)
     : this(
         mountPath: json_['mountPath'] as core.String?,
         name: json_['name'] as core.String?,
+        subPath: json_['subPath'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (mountPath != null) 'mountPath': mountPath!,
     if (name != null) 'name': name!,
+    if (subPath != null) 'subPath': subPath!,
   };
 }
 
@@ -7779,7 +7841,7 @@ class GoogleCloudRunV2WorkerPool {
   /// Output only.
   core.String? latestCreatedRevision;
 
-  /// Name of the latest revision that is serving traffic.
+  /// Name of the latest revision that is serving workloads.
   ///
   /// See comments in `reconciling` for additional information on reconciliation
   /// process in Cloud Run.
@@ -7839,7 +7901,7 @@ class GoogleCloudRunV2WorkerPool {
   /// Format: `projects/{project}/locations/{location}/workerPools/{worker_id}`
   core.String? name;
 
-  /// The generation of this WorkerPool currently serving traffic.
+  /// The generation of this WorkerPool currently serving workloads.
   ///
   /// See comments in `reconciling` for additional information on reconciliation
   /// process in Cloud Run. Please note that unlike v1, this is an int64 value.
@@ -7856,15 +7918,16 @@ class GoogleCloudRunV2WorkerPool {
   /// will asynchronously perform all necessary steps to bring the WorkerPool to
   /// the desired serving state. This process is called reconciliation. While
   /// reconciliation is in process, `observed_generation`,
-  /// `latest_ready_revison`, `traffic_statuses`, and `uri` will have transient
-  /// values that might mismatch the intended state: Once reconciliation is over
-  /// (and this field is false), there are two possible outcomes: reconciliation
-  /// succeeded and the serving state matches the WorkerPool, or there was an
-  /// error, and reconciliation failed. This state can be found in
-  /// `terminal_condition.state`. If reconciliation succeeded, the following
-  /// fields will match: `traffic` and `traffic_statuses`, `observed_generation`
-  /// and `generation`, `latest_ready_revision` and `latest_created_revision`.
-  /// If reconciliation failed, `traffic_statuses`, `observed_generation`, and
+  /// `latest_ready_revison`, `instance_split_statuses`, and `uri` will have
+  /// transient values that might mismatch the intended state: Once
+  /// reconciliation is over (and this field is false), there are two possible
+  /// outcomes: reconciliation succeeded and the serving state matches the
+  /// WorkerPool, or there was an error, and reconciliation failed. This state
+  /// can be found in `terminal_condition.state`. If reconciliation succeeded,
+  /// the following fields will match: `instance_splits` and
+  /// `instance_split_statuses`, `observed_generation` and `generation`,
+  /// `latest_ready_revision` and `latest_created_revision`. If reconciliation
+  /// failed, `instance_split_statuses`, `observed_generation`, and
   /// `latest_ready_revision` will have the state of the last serving revision,
   /// or empty for newly created WorkerPools. Additional information on the
   /// failure can be found in `terminal_condition` and `conditions`.

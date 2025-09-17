@@ -151,6 +151,25 @@ void checkAttachedDisk(api.AttachedDisk o) {
   buildCounterAttachedDisk--;
 }
 
+core.int buildCounterBootDiskConfig = 0;
+api.BootDiskConfig buildBootDiskConfig() {
+  final o = api.BootDiskConfig();
+  buildCounterBootDiskConfig++;
+  if (buildCounterBootDiskConfig < 3) {
+    o.customerEncryptionKey = buildCustomerEncryptionKey();
+  }
+  buildCounterBootDiskConfig--;
+  return o;
+}
+
+void checkBootDiskConfig(api.BootDiskConfig o) {
+  buildCounterBootDiskConfig++;
+  if (buildCounterBootDiskConfig < 3) {
+    checkCustomerEncryptionKey(o.customerEncryptionKey!);
+  }
+  buildCounterBootDiskConfig--;
+}
+
 core.int buildCounterCreatingData = 0;
 api.CreatingData buildCreatingData() {
   final o = api.CreatingData();
@@ -164,6 +183,25 @@ void checkCreatingData(api.CreatingData o) {
   buildCounterCreatingData++;
   if (buildCounterCreatingData < 3) {}
   buildCounterCreatingData--;
+}
+
+core.int buildCounterCustomerEncryptionKey = 0;
+api.CustomerEncryptionKey buildCustomerEncryptionKey() {
+  final o = api.CustomerEncryptionKey();
+  buildCounterCustomerEncryptionKey++;
+  if (buildCounterCustomerEncryptionKey < 3) {
+    o.kmsKeyName = 'foo';
+  }
+  buildCounterCustomerEncryptionKey--;
+  return o;
+}
+
+void checkCustomerEncryptionKey(api.CustomerEncryptionKey o) {
+  buildCounterCustomerEncryptionKey++;
+  if (buildCounterCustomerEncryptionKey < 3) {
+    unittest.expect(o.kmsKeyName!, unittest.equals('foo'));
+  }
+  buildCounterCustomerEncryptionKey--;
 }
 
 core.int buildCounterDeletingData = 0;
@@ -856,6 +894,7 @@ api.Node buildNode() {
     o.acceleratorConfig = buildAcceleratorConfig();
     o.acceleratorType = 'foo';
     o.apiVersion = 'foo';
+    o.bootDiskConfig = buildBootDiskConfig();
     o.cidrBlock = 'foo';
     o.createTime = 'foo';
     o.dataDisks = buildUnnamed16();
@@ -890,6 +929,7 @@ void checkNode(api.Node o) {
     checkAcceleratorConfig(o.acceleratorConfig!);
     unittest.expect(o.acceleratorType!, unittest.equals('foo'));
     unittest.expect(o.apiVersion!, unittest.equals('foo'));
+    checkBootDiskConfig(o.bootDiskConfig!);
     unittest.expect(o.cidrBlock!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     checkUnnamed16(o.dataDisks!);
@@ -1553,6 +1593,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-BootDiskConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildBootDiskConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.BootDiskConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkBootDiskConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-CreatingData', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCreatingData();
@@ -1561,6 +1612,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCreatingData(od);
+    });
+  });
+
+  unittest.group('obj-schema-CustomerEncryptionKey', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCustomerEncryptionKey();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CustomerEncryptionKey.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCustomerEncryptionKey(od);
     });
   });
 

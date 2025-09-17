@@ -24,6 +24,7 @@
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
 ///     - [OrganizationsLocationsOperationsResource]
+///     - [OrganizationsLocationsVpcFlowLogsConfigsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsGlobalResource]
@@ -88,6 +89,8 @@ class OrganizationsLocationsResource {
 
   OrganizationsLocationsOperationsResource get operations =>
       OrganizationsLocationsOperationsResource(_requester);
+  OrganizationsLocationsVpcFlowLogsConfigsResource get vpcFlowLogsConfigs =>
+      OrganizationsLocationsVpcFlowLogsConfigsResource(_requester);
 
   OrganizationsLocationsResource(commons.ApiRequester client)
     : _requester = client;
@@ -131,9 +134,9 @@ class OrganizationsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -365,6 +368,272 @@ class OrganizationsLocationsOperationsResource {
   }
 }
 
+class OrganizationsLocationsVpcFlowLogsConfigsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsVpcFlowLogsConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new `VpcFlowLogsConfig`.
+  ///
+  /// If a configuration with the exact same settings already exists (even if
+  /// the ID is different), the creation fails. Notes: 1. Creating a
+  /// configuration with `state=DISABLED` will fail 2. The following fields are
+  /// not considered as settings for the purpose of the check mentioned above,
+  /// therefore - creating another configuration with the same fields but
+  /// different values for the following fields will fail as well: * name *
+  /// create_time * update_time * labels * description
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the VpcFlowLogsConfig to
+  /// create, in one of the following formats: - For project-level resources:
+  /// `projects/{project_id}/locations/global` - For organization-level
+  /// resources: `organizations/{organization_id}/locations/global`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [vpcFlowLogsConfigId] - Required. ID of the `VpcFlowLogsConfig`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    VpcFlowLogsConfig request,
+    core.String parent, {
+    core.String? vpcFlowLogsConfigId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (vpcFlowLogsConfigId != null)
+        'vpcFlowLogsConfigId': [vpcFlowLogsConfigId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vpcFlowLogsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a specific `VpcFlowLogsConfig`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the VpcFlowLogsConfig, in one of
+  /// the following formats: - For a project-level resource:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// - For an organization-level resource:
+  /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/vpcFlowLogsConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of a specific `VpcFlowLogsConfig`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the VpcFlowLogsConfig, in one of
+  /// the following formats: - For project-level resources:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// - For organization-level resources:
+  /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/vpcFlowLogsConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [VpcFlowLogsConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<VpcFlowLogsConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return VpcFlowLogsConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all `VpcFlowLogsConfigs` in a given organization.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the VpcFlowLogsConfig, in one
+  /// of the following formats: - For project-level resourcs:
+  /// `projects/{project_id}/locations/global` - For organization-level
+  /// resources: `organizations/{organization_id}/locations/global`
+  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists the `VpcFlowLogsConfigs` that match the filter
+  /// expression. A filter expression must use the supported
+  /// [CEL logic operators](https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+  ///
+  /// [orderBy] - Optional. Field to use to sort the list.
+  ///
+  /// [pageSize] - Optional. Number of `VpcFlowLogsConfigs` to return.
+  ///
+  /// [pageToken] - Optional. Page token from an earlier query, as returned in
+  /// `next_page_token`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListVpcFlowLogsConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListVpcFlowLogsConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/vpcFlowLogsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListVpcFlowLogsConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an existing `VpcFlowLogsConfig`.
+  ///
+  /// If a configuration with the exact same settings already exists (even if
+  /// the ID is different), the creation fails. Notes: 1. Updating a
+  /// configuration with `state=DISABLED` will fail 2. The following fields are
+  /// not considered as settings for the purpose of the check mentioned above,
+  /// therefore - updating another configuration with the same fields but
+  /// different values for the following fields will fail as well: * name *
+  /// create_time * update_time * labels * description
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Unique name of the configuration. The name can have
+  /// one of the following forms: - For project-level configurations:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// - For organization-level configurations:
+  /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/vpcFlowLogsConfigs/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. Mask of fields to update. At least one path must
+  /// be supplied in this field. For example, to change the state of the
+  /// configuration to ENABLED, specify `update_mask` = `"state"`, and the
+  /// `vpc_flow_logs_config` would be: `vpc_flow_logs_config = { name =
+  /// "projects/my-project/locations/global/vpcFlowLogsConfigs/my-config" state
+  /// = "ENABLED" }`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    VpcFlowLogsConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -426,9 +695,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1256,7 +1525,7 @@ class ProjectsLocationsNetworkMonitoringProvidersResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the resource. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+  /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+$`.
   ///
@@ -1296,7 +1565,7 @@ class ProjectsLocationsNetworkMonitoringProvidersResource {
   ///
   /// [parent] - Required. Parent value for
   /// ListNetworkMonitoringProvidersRequest. Format:
-  /// projects/{project}/locations/{location}
+  /// `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of monitoring points to return.
@@ -1903,6 +2172,131 @@ class ProjectsLocationsVpcFlowLogsConfigsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC
+  /// Flow Logs configurations applicable to the specified project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the VpcFlowLogsConfig,
+  /// specified in the following format:
+  /// `projects/{project_id}/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists the `VpcFlowLogsConfigs` that match the filter
+  /// expression. A filter expression must use the supported
+  /// [CEL logic operators](https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+  ///
+  /// [pageSize] - Optional. Number of `VpcFlowLogsConfigs` to return.
+  ///
+  /// [pageToken] - Optional. Page token from an earlier query, as returned in
+  /// `next_page_token`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [QueryOrgVpcFlowLogsConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<QueryOrgVpcFlowLogsConfigsResponse> queryOrgVpcFlowLogsConfigs(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return QueryOrgVpcFlowLogsConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs
+  /// configurations applicable to a specified resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the VpcFlowLogsConfig,
+  /// specified in the following format:
+  /// `projects/{project_id}/locations/global`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Lists the `EffectiveVpcFlowLogsConfigs` that match
+  /// the filter expression. A filter expression must use the supported
+  /// [CEL logic operators](https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators).
+  ///
+  /// [pageSize] - Optional. Number of `EffectiveVpcFlowLogsConfigs` to return.
+  /// Default is 30.
+  ///
+  /// [pageToken] - Optional. Page token from an earlier query, as returned in
+  /// `next_page_token`.
+  ///
+  /// [resource] - Required. The resource to get the effective VPC Flow Logs
+  /// configuration for. The resource must belong to the same project as the
+  /// parent. The resource must be a network, subnetwork, interconnect
+  /// attachment, VPN tunnel, or a project.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ShowEffectiveFlowLogsConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ShowEffectiveFlowLogsConfigsResponse>
+  showEffectiveFlowLogsConfigs(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? resource,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (resource != null) 'resource': [resource],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ShowEffectiveFlowLogsConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3007,7 +3401,17 @@ class DropInfo {
   /// network to the destination IP address.
   /// - "CLOUD_NAT_PROTOCOL_UNSUPPORTED" : Packet is dropped by Cloud NAT due to
   /// using an unsupported protocol.
+  /// - "L2_INTERCONNECT_UNSUPPORTED_PROTOCOL" : Packet is dropped due to using
+  /// an unsupported protocol (any other than UDP) for L2 Interconnect.
+  /// - "L2_INTERCONNECT_UNSUPPORTED_PORT" : Packet is dropped due to using an
+  /// unsupported port (any other than 6081) for L2 Interconnect.
+  /// - "L2_INTERCONNECT_DESTINATION_IP_MISMATCH" : Packet is dropped due to
+  /// destination IP not matching the appliance mapping IPs configured on the L2
+  /// Interconnect attachment.
   core.String? cause;
+
+  /// Geolocation (region code) of the destination IP address (if relevant).
+  core.String? destinationGeolocationCode;
 
   /// Destination IP address of the dropped packet (if relevant).
   core.String? destinationIp;
@@ -3018,31 +3422,43 @@ class DropInfo {
   /// URI of the resource that caused the drop.
   core.String? resourceUri;
 
+  /// Geolocation (region code) of the source IP address (if relevant).
+  core.String? sourceGeolocationCode;
+
   /// Source IP address of the dropped packet (if relevant).
   core.String? sourceIp;
 
   DropInfo({
     this.cause,
+    this.destinationGeolocationCode,
     this.destinationIp,
     this.region,
     this.resourceUri,
+    this.sourceGeolocationCode,
     this.sourceIp,
   });
 
   DropInfo.fromJson(core.Map json_)
     : this(
         cause: json_['cause'] as core.String?,
+        destinationGeolocationCode:
+            json_['destinationGeolocationCode'] as core.String?,
         destinationIp: json_['destinationIp'] as core.String?,
         region: json_['region'] as core.String?,
         resourceUri: json_['resourceUri'] as core.String?,
+        sourceGeolocationCode: json_['sourceGeolocationCode'] as core.String?,
         sourceIp: json_['sourceIp'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (cause != null) 'cause': cause!,
+    if (destinationGeolocationCode != null)
+      'destinationGeolocationCode': destinationGeolocationCode!,
     if (destinationIp != null) 'destinationIp': destinationIp!,
     if (region != null) 'region': region!,
     if (resourceUri != null) 'resourceUri': resourceUri!,
+    if (sourceGeolocationCode != null)
+      'sourceGeolocationCode': sourceGeolocationCode!,
     if (sourceIp != null) 'sourceIp': sourceIp!,
   };
 }
@@ -3060,6 +3476,178 @@ class EdgeLocation {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (metropolitanArea != null) 'metropolitanArea': metropolitanArea!,
+  };
+}
+
+/// A configuration to generate a response for GetEffectiveVpcFlowLogsConfig
+/// request.
+class EffectiveVpcFlowLogsConfig {
+  /// The aggregation interval for the logs.
+  ///
+  /// Default value is INTERVAL_5_SEC.
+  /// Possible string values are:
+  /// - "AGGREGATION_INTERVAL_UNSPECIFIED" : If not specified, will default to
+  /// INTERVAL_5_SEC.
+  /// - "INTERVAL_5_SEC" : Aggregate logs in 5s intervals.
+  /// - "INTERVAL_30_SEC" : Aggregate logs in 30s intervals.
+  /// - "INTERVAL_1_MIN" : Aggregate logs in 1m intervals.
+  /// - "INTERVAL_5_MIN" : Aggregate logs in 5m intervals.
+  /// - "INTERVAL_10_MIN" : Aggregate logs in 10m intervals.
+  /// - "INTERVAL_15_MIN" : Aggregate logs in 15m intervals.
+  core.String? aggregationInterval;
+
+  /// Determines whether to include cross project annotations in the logs.
+  ///
+  /// This field is available only for organization configurations. If not
+  /// specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
+  /// Possible string values are:
+  /// - "CROSS_PROJECT_METADATA_UNSPECIFIED" : If not specified, the default is
+  /// CROSS_PROJECT_METADATA_ENABLED.
+  /// - "CROSS_PROJECT_METADATA_ENABLED" : When CROSS_PROJECT_METADATA_ENABLED,
+  /// metadata from other projects will be included in the logs.
+  /// - "CROSS_PROJECT_METADATA_DISABLED" : When
+  /// CROSS_PROJECT_METADATA_DISABLED, metadata from other projects will not be
+  /// included in the logs.
+  core.String? crossProjectMetadata;
+
+  /// Export filter used to define which VPC Flow Logs should be logged.
+  core.String? filterExpr;
+
+  /// The value of the field must be in (0, 1\].
+  ///
+  /// The sampling rate of VPC Flow Logs where 1.0 means all collected logs are
+  /// reported. Setting the sampling rate to 0.0 is not allowed. If you want to
+  /// disable VPC Flow Logs, use the state field instead. Default value is 1.0.
+  core.double? flowSampling;
+
+  /// Traffic will be logged from the Interconnect Attachment.
+  ///
+  /// Format:
+  /// projects/{project_id}/regions/{region}/interconnectAttachments/{name}
+  core.String? interconnectAttachment;
+
+  /// Configures whether all, none or a subset of metadata fields should be
+  /// added to the reported VPC flow logs.
+  ///
+  /// Default value is INCLUDE_ALL_METADATA.
+  /// Possible string values are:
+  /// - "METADATA_UNSPECIFIED" : If not specified, will default to
+  /// INCLUDE_ALL_METADATA.
+  /// - "INCLUDE_ALL_METADATA" : Include all metadata fields.
+  /// - "EXCLUDE_ALL_METADATA" : Exclude all metadata fields.
+  /// - "CUSTOM_METADATA" : Include only custom fields (specified in
+  /// metadata_fields).
+  core.String? metadata;
+
+  /// Custom metadata fields to include in the reported VPC flow logs.
+  ///
+  /// Can only be specified if "metadata" was set to CUSTOM_METADATA.
+  core.List<core.String>? metadataFields;
+
+  /// Unique name of the configuration.
+  ///
+  /// The name can have one of the following forms: - For project-level
+  /// configurations:
+  /// `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// - For organization-level configurations:
+  /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
+  /// - For a Compute config, the name will be the path of the subnet:
+  /// `projects/{project_id}/regions/{region}/subnetworks/{subnet_id}`
+  core.String? name;
+
+  /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments
+  /// within the network.
+  ///
+  /// Format: projects/{project_id}/global/networks/{name}
+  core.String? network;
+
+  /// Specifies the scope of the config (e.g., SUBNET, NETWORK, ORGANIZATION..).
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : Scope is unspecified.
+  /// - "SUBNET" : Target resource is a subnet (Network Management API).
+  /// - "COMPUTE_API_SUBNET" : Target resource is a subnet, and the config
+  /// originates from the Compute API.
+  /// - "NETWORK" : Target resource is a network.
+  /// - "VPN_TUNNEL" : Target resource is a VPN tunnel.
+  /// - "INTERCONNECT_ATTACHMENT" : Target resource is an interconnect
+  /// attachment.
+  /// - "ORGANIZATION" : Configuration applies to an entire organization.
+  core.String? scope;
+
+  /// The state of the VPC Flow Log configuration.
+  ///
+  /// Default value is ENABLED. When creating a new configuration, it must be
+  /// enabled. Setting state=DISABLED will pause the log generation for this
+  /// config.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : If not specified, will default to ENABLED.
+  /// - "ENABLED" : When ENABLED, this configuration will generate logs.
+  /// - "DISABLED" : When DISABLED, this configuration will not generate logs.
+  core.String? state;
+
+  /// Traffic will be logged from VMs within the subnetwork.
+  ///
+  /// Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+  core.String? subnet;
+
+  /// Traffic will be logged from the VPN Tunnel.
+  ///
+  /// Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
+  core.String? vpnTunnel;
+
+  EffectiveVpcFlowLogsConfig({
+    this.aggregationInterval,
+    this.crossProjectMetadata,
+    this.filterExpr,
+    this.flowSampling,
+    this.interconnectAttachment,
+    this.metadata,
+    this.metadataFields,
+    this.name,
+    this.network,
+    this.scope,
+    this.state,
+    this.subnet,
+    this.vpnTunnel,
+  });
+
+  EffectiveVpcFlowLogsConfig.fromJson(core.Map json_)
+    : this(
+        aggregationInterval: json_['aggregationInterval'] as core.String?,
+        crossProjectMetadata: json_['crossProjectMetadata'] as core.String?,
+        filterExpr: json_['filterExpr'] as core.String?,
+        flowSampling: (json_['flowSampling'] as core.num?)?.toDouble(),
+        interconnectAttachment: json_['interconnectAttachment'] as core.String?,
+        metadata: json_['metadata'] as core.String?,
+        metadataFields:
+            (json_['metadataFields'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        scope: json_['scope'] as core.String?,
+        state: json_['state'] as core.String?,
+        subnet: json_['subnet'] as core.String?,
+        vpnTunnel: json_['vpnTunnel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (aggregationInterval != null)
+      'aggregationInterval': aggregationInterval!,
+    if (crossProjectMetadata != null)
+      'crossProjectMetadata': crossProjectMetadata!,
+    if (filterExpr != null) 'filterExpr': filterExpr!,
+    if (flowSampling != null) 'flowSampling': flowSampling!,
+    if (interconnectAttachment != null)
+      'interconnectAttachment': interconnectAttachment!,
+    if (metadata != null) 'metadata': metadata!,
+    if (metadataFields != null) 'metadataFields': metadataFields!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (scope != null) 'scope': scope!,
+    if (state != null) 'state': state!,
+    if (subnet != null) 'subnet': subnet!,
+    if (vpnTunnel != null) 'vpnTunnel': vpnTunnel!,
   };
 }
 
@@ -3098,8 +3686,8 @@ class Endpoint {
   /// Forwarding rules are also used for protocol forwarding, Private Service
   /// Connect and other network services to provide forwarding information in
   /// the control plane. Applicable only to destination endpoint. Format:
-  /// projects/{project}/global/forwardingRules/{id} or
-  /// projects/{project}/regions/{region}/forwardingRules/{id}
+  /// `projects/{project}/global/forwardingRules/{id}` or
+  /// `projects/{project}/regions/{region}/forwardingRules/{id}`
   core.String? forwardingRule;
 
   /// Specifies the type of the target of the forwarding rule.
@@ -3456,6 +4044,15 @@ class FirewallInfo {
   /// This field is not applicable to firewall policy rules.
   core.List<core.String>? targetTags;
 
+  /// Target type of the firewall rule.
+  /// Possible string values are:
+  /// - "TARGET_TYPE_UNSPECIFIED" : Target type is not specified. In this case
+  /// we treat the rule as applying to INSTANCES target type.
+  /// - "INSTANCES" : Firewall rule applies to instances.
+  /// - "INTERNAL_MANAGED_LB" : Firewall rule applies to internal managed load
+  /// balancers.
+  core.String? targetType;
+
   /// The URI of the firewall rule.
   ///
   /// This field is not applicable to implied VPC firewall rules.
@@ -3473,6 +4070,7 @@ class FirewallInfo {
     this.priority,
     this.targetServiceAccounts,
     this.targetTags,
+    this.targetType,
     this.uri,
   });
 
@@ -3495,6 +4093,7 @@ class FirewallInfo {
             (json_['targetTags'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        targetType: json_['targetType'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
@@ -3511,6 +4110,7 @@ class FirewallInfo {
     if (targetServiceAccounts != null)
       'targetServiceAccounts': targetServiceAccounts!,
     if (targetTags != null) 'targetTags': targetTags!,
+    if (targetType != null) 'targetType': targetType!,
     if (uri != null) 'uri': uri!,
   };
 }
@@ -3690,6 +4290,28 @@ class GKEMasterInfo {
   };
 }
 
+/// The geographical location of the MonitoringPoint.
+class GeoLocation {
+  /// Country.
+  core.String? country;
+
+  /// Formatted address.
+  core.String? formattedAddress;
+
+  GeoLocation({this.country, this.formattedAddress});
+
+  GeoLocation.fromJson(core.Map json_)
+    : this(
+        country: json_['country'] as core.String?,
+        formattedAddress: json_['formattedAddress'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (country != null) 'country': country!,
+    if (formattedAddress != null) 'formattedAddress': formattedAddress!,
+  };
+}
+
 /// For display only.
 ///
 /// Details of a Google Service sending packets to a VPC network. Although the
@@ -3819,6 +4441,35 @@ class Host {
 
 /// For display only.
 ///
+/// Metadata associated with a hybrid subnet.
+class HybridSubnetInfo {
+  /// Name of a hybrid subnet.
+  core.String? displayName;
+
+  /// Name of a Google Cloud region where the hybrid subnet is configured.
+  core.String? region;
+
+  /// URI of a hybrid subnet.
+  core.String? uri;
+
+  HybridSubnetInfo({this.displayName, this.region, this.uri});
+
+  HybridSubnetInfo.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        region: json_['region'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (region != null) 'region': region!,
+    if (uri != null) 'uri': uri!,
+  };
+}
+
+/// For display only.
+///
 /// Metadata associated with a Compute Engine instance.
 class InstanceInfo {
   /// Name of a Compute Engine instance.
@@ -3911,6 +4562,75 @@ class InstanceInfo {
     if (running != null) 'running': running!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
     if (status != null) 'status': status!,
+    if (uri != null) 'uri': uri!,
+  };
+}
+
+/// For display only.
+///
+/// Metadata associated with an Interconnect attachment.
+class InterconnectAttachmentInfo {
+  /// URI of the Cloud Router to be used for dynamic routing.
+  core.String? cloudRouterUri;
+
+  /// Name of an Interconnect attachment.
+  core.String? displayName;
+
+  /// URI of the Interconnect where the Interconnect attachment is configured.
+  core.String? interconnectUri;
+
+  /// Appliance IP address that was matched for L2_DEDICATED attachments.
+  core.String? l2AttachmentMatchedIpAddress;
+
+  /// Name of a Google Cloud region where the Interconnect attachment is
+  /// configured.
+  core.String? region;
+
+  /// The type of interconnect attachment this is.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type.
+  /// - "DEDICATED" : Attachment to a dedicated interconnect.
+  /// - "PARTNER" : Attachment to a partner interconnect, created by the
+  /// customer.
+  /// - "PARTNER_PROVIDER" : Attachment to a partner interconnect, created by
+  /// the partner.
+  /// - "L2_DEDICATED" : Attachment to a L2 interconnect, created by the
+  /// customer.
+  core.String? type;
+
+  /// URI of an Interconnect attachment.
+  core.String? uri;
+
+  InterconnectAttachmentInfo({
+    this.cloudRouterUri,
+    this.displayName,
+    this.interconnectUri,
+    this.l2AttachmentMatchedIpAddress,
+    this.region,
+    this.type,
+    this.uri,
+  });
+
+  InterconnectAttachmentInfo.fromJson(core.Map json_)
+    : this(
+        cloudRouterUri: json_['cloudRouterUri'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        interconnectUri: json_['interconnectUri'] as core.String?,
+        l2AttachmentMatchedIpAddress:
+            json_['l2AttachmentMatchedIpAddress'] as core.String?,
+        region: json_['region'] as core.String?,
+        type: json_['type'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cloudRouterUri != null) 'cloudRouterUri': cloudRouterUri!,
+    if (displayName != null) 'displayName': displayName!,
+    if (interconnectUri != null) 'interconnectUri': interconnectUri!,
+    if (l2AttachmentMatchedIpAddress != null)
+      'l2AttachmentMatchedIpAddress': l2AttachmentMatchedIpAddress!,
+    if (region != null) 'region': region!,
+    if (type != null) 'type': type!,
     if (uri != null) 'uri': uri!,
   };
 }
@@ -4510,10 +5230,10 @@ class MonitoringPoint {
 
   /// The geographical location of the MonitoringPoint.
   ///
-  /// Examples: - "New York, NY, USA" - "Berlin, Germany"
+  /// ;
   ///
   /// Output only.
-  core.String? geoLocation;
+  GeoLocation? geoLocation;
 
   /// The host information of the MonitoringPoint.
   ///
@@ -4556,6 +5276,11 @@ class MonitoringPoint {
   /// Output only.
   core.String? updateTime;
 
+  /// Indicates if an upgrade is available for the MonitoringPoint.
+  ///
+  /// Output only.
+  core.bool? upgradeAvailable;
+
   /// The type of upgrade available for the MonitoringPoint.
   ///
   /// Output only.
@@ -4589,6 +5314,7 @@ class MonitoringPoint {
     this.providerTags,
     this.type,
     this.updateTime,
+    this.upgradeAvailable,
     this.upgradeType,
     this.version,
   });
@@ -4603,7 +5329,12 @@ class MonitoringPoint {
             (json_['errors'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
-        geoLocation: json_['geoLocation'] as core.String?,
+        geoLocation:
+            json_.containsKey('geoLocation')
+                ? GeoLocation.fromJson(
+                  json_['geoLocation'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         host:
             json_.containsKey('host')
                 ? Host.fromJson(
@@ -4631,6 +5362,7 @@ class MonitoringPoint {
                 .toList(),
         type: json_['type'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
+        upgradeAvailable: json_['upgradeAvailable'] as core.bool?,
         upgradeType: json_['upgradeType'] as core.String?,
         version: json_['version'] as core.String?,
       );
@@ -4651,6 +5383,7 @@ class MonitoringPoint {
     if (providerTags != null) 'providerTags': providerTags!,
     if (type != null) 'type': type!,
     if (updateTime != null) 'updateTime': updateTime!,
+    if (upgradeAvailable != null) 'upgradeAvailable': upgradeAvailable!,
     if (upgradeType != null) 'upgradeType': upgradeType!,
     if (version != null) 'version': version!,
   };
@@ -4717,6 +5450,7 @@ class NatInfo {
   /// to internal address.
   /// - "CLOUD_NAT" : Cloud NAT Gateway.
   /// - "PRIVATE_SERVICE_CONNECT" : Private service connect NAT.
+  /// - "GKE_POD_IP_MASQUERADING" : GKE Pod IP address masquerading.
   core.String? type;
 
   NatInfo({
@@ -4894,6 +5628,11 @@ class NetworkMonitoringProvider {
   /// Output only.
   core.String? createTime;
 
+  /// The list of error messages detected for the NetworkMonitoringProvider.
+  ///
+  /// Output only.
+  core.List<core.String>? errors;
+
   /// Identifier.
   ///
   /// Name of the resource. Format:
@@ -4937,6 +5676,7 @@ class NetworkMonitoringProvider {
 
   NetworkMonitoringProvider({
     this.createTime,
+    this.errors,
     this.name,
     this.providerType,
     this.providerUri,
@@ -4947,6 +5687,10 @@ class NetworkMonitoringProvider {
   NetworkMonitoringProvider.fromJson(core.Map json_)
     : this(
         createTime: json_['createTime'] as core.String?,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         name: json_['name'] as core.String?,
         providerType: json_['providerType'] as core.String?,
         providerUri: json_['providerUri'] as core.String?,
@@ -4956,6 +5700,7 @@ class NetworkMonitoringProvider {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (createTime != null) 'createTime': createTime!,
+    if (errors != null) 'errors': errors!,
     if (name != null) 'name': name!,
     if (providerType != null) 'providerType': providerType!,
     if (providerUri != null) 'providerUri': providerUri!,
@@ -4978,8 +5723,10 @@ class NetworkPath {
 
   /// Geographical location of the destination MonitoringPoint.
   ///
+  /// ;
+  ///
   /// Output only.
-  core.String? destinationGeoLocation;
+  GeoLocation? destinationGeoLocation;
 
   /// The display name of the network path.
   ///
@@ -5084,7 +5831,13 @@ class NetworkPath {
     : this(
         createTime: json_['createTime'] as core.String?,
         destination: json_['destination'] as core.String?,
-        destinationGeoLocation: json_['destinationGeoLocation'] as core.String?,
+        destinationGeoLocation:
+            json_.containsKey('destinationGeoLocation')
+                ? GeoLocation.fromJson(
+                  json_['destinationGeoLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         displayName: json_['displayName'] as core.String?,
         dualEnded: json_['dualEnded'] as core.bool?,
         monitoringEnabled: json_['monitoringEnabled'] as core.bool?,
@@ -5471,7 +6224,6 @@ class ProviderTag {
   /// - "RESOURCE_TYPE_UNSPECIFIED" : The default value. This value is used if
   /// the status is omitted.
   /// - "NETWORK_PATH" : Network path.
-  /// - "PATH_TEMPLATE" : Path template.
   /// - "WEB_PATH" : Web path.
   /// - "MONITORING_POLICY" : Monitoring policy.
   /// - "MONITORING_POINT" : Monitoring point.
@@ -5584,6 +6336,48 @@ class ProxyConnectionInfo {
     if (oldSourcePort != null) 'oldSourcePort': oldSourcePort!,
     if (protocol != null) 'protocol': protocol!,
     if (subnetUri != null) 'subnetUri': subnetUri!,
+  };
+}
+
+/// Response for the `QueryVpcFlowLogsConfigs` method.
+class QueryOrgVpcFlowLogsConfigsResponse {
+  /// Page token to fetch the next set of configurations.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached (when querying all locations with
+  /// `-`).
+  core.List<core.String>? unreachable;
+
+  /// List of VPC Flow Log configurations.
+  core.List<VpcFlowLogsConfig>? vpcFlowLogsConfigs;
+
+  QueryOrgVpcFlowLogsConfigsResponse({
+    this.nextPageToken,
+    this.unreachable,
+    this.vpcFlowLogsConfigs,
+  });
+
+  QueryOrgVpcFlowLogsConfigsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        vpcFlowLogsConfigs:
+            (json_['vpcFlowLogsConfigs'] as core.List?)
+                ?.map(
+                  (value) => VpcFlowLogsConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+    if (vpcFlowLogsConfigs != null) 'vpcFlowLogsConfigs': vpcFlowLogsConfigs!,
   };
 }
 
@@ -6103,6 +6897,49 @@ class SetIamPolicyRequest {
   };
 }
 
+/// Response for the `ShowEffectiveFlowLogsConfigs` method.
+class ShowEffectiveFlowLogsConfigsResponse {
+  /// List of Effective Vpc Flow Logs configurations.
+  core.List<EffectiveVpcFlowLogsConfig>? effectiveFlowLogsConfigs;
+
+  /// Page token to fetch the next set of configurations.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached (when querying all locations with
+  /// `-`).
+  core.List<core.String>? unreachable;
+
+  ShowEffectiveFlowLogsConfigsResponse({
+    this.effectiveFlowLogsConfigs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ShowEffectiveFlowLogsConfigsResponse.fromJson(core.Map json_)
+    : this(
+        effectiveFlowLogsConfigs:
+            (json_['effectiveFlowLogsConfigs'] as core.List?)
+                ?.map(
+                  (value) => EffectiveVpcFlowLogsConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (effectiveFlowLogsConfigs != null)
+      'effectiveFlowLogsConfigs': effectiveFlowLogsConfigs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// Probing results for a single edge device.
 class SingleEdgeResponse {
   /// The EdgeLocation from which a packet, destined to the internet, will
@@ -6251,8 +7088,14 @@ class Step {
   /// Display information of a Google service
   GoogleServiceInfo? googleService;
 
+  /// Display information of a hybrid subnet.
+  HybridSubnetInfo? hybridSubnet;
+
   /// Display information of a Compute Engine instance.
   InstanceInfo? instance;
+
+  /// Display information of an interconnect attachment.
+  InterconnectAttachmentInfo? interconnectAttachment;
 
   /// Display information of the load balancers.
   ///
@@ -6355,10 +7198,14 @@ class Step {
   /// Compute Engine internal load balancer.
   /// - "ARRIVE_AT_EXTERNAL_LOAD_BALANCER" : Forwarding state: arriving at a
   /// Compute Engine external load balancer.
+  /// - "ARRIVE_AT_HYBRID_SUBNET" : Forwarding state: arriving at a hybrid
+  /// subnet. Appropriate routing configuration will be determined here.
   /// - "ARRIVE_AT_VPN_GATEWAY" : Forwarding state: arriving at a Cloud VPN
   /// gateway.
   /// - "ARRIVE_AT_VPN_TUNNEL" : Forwarding state: arriving at a Cloud VPN
   /// tunnel.
+  /// - "ARRIVE_AT_INTERCONNECT_ATTACHMENT" : Forwarding state: arriving at an
+  /// interconnect attachment.
   /// - "ARRIVE_AT_VPC_CONNECTOR" : Forwarding state: arriving at a VPC
   /// connector.
   /// - "DIRECT_VPC_EGRESS_CONNECTION" : Forwarding state: for packets
@@ -6367,7 +7214,8 @@ class Step {
   /// - "SERVERLESS_EXTERNAL_CONNECTION" : Forwarding state: for packets
   /// originating from a serverless endpoint forwarded through public (external)
   /// connectivity.
-  /// - "NAT" : Transition state: packet header translated.
+  /// - "NAT" : Transition state: packet header translated. The `nat` field is
+  /// populated with the translation information.
   /// - "PROXY_CONNECTION" : Transition state: original connection is terminated
   /// and a new proxied connection is initiated.
   /// - "DELIVER" : Final state: packet could be delivered.
@@ -6410,7 +7258,9 @@ class Step {
     this.forwardingRule,
     this.gkeMaster,
     this.googleService,
+    this.hybridSubnet,
     this.instance,
+    this.interconnectAttachment,
     this.loadBalancer,
     this.loadBalancerBackendInfo,
     this.nat,
@@ -6522,10 +7372,23 @@ class Step {
                   json_['googleService'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        hybridSubnet:
+            json_.containsKey('hybridSubnet')
+                ? HybridSubnetInfo.fromJson(
+                  json_['hybridSubnet'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         instance:
             json_.containsKey('instance')
                 ? InstanceInfo.fromJson(
                   json_['instance'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        interconnectAttachment:
+            json_.containsKey('interconnectAttachment')
+                ? InterconnectAttachmentInfo.fromJson(
+                  json_['interconnectAttachment']
+                      as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         loadBalancer:
@@ -6637,7 +7500,10 @@ class Step {
     if (forwardingRule != null) 'forwardingRule': forwardingRule!,
     if (gkeMaster != null) 'gkeMaster': gkeMaster!,
     if (googleService != null) 'googleService': googleService!,
+    if (hybridSubnet != null) 'hybridSubnet': hybridSubnet!,
     if (instance != null) 'instance': instance!,
+    if (interconnectAttachment != null)
+      'interconnectAttachment': interconnectAttachment!,
     if (loadBalancer != null) 'loadBalancer': loadBalancer!,
     if (loadBalancerBackendInfo != null)
       'loadBalancerBackendInfo': loadBalancerBackendInfo!,
@@ -6793,6 +7659,22 @@ class VpcFlowLogsConfig {
   /// Output only.
   core.String? createTime;
 
+  /// Determines whether to include cross project annotations in the logs.
+  ///
+  /// This field is available only for organization configurations. If not
+  /// specified in org configs will be set to CROSS_PROJECT_METADATA_ENABLED.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CROSS_PROJECT_METADATA_UNSPECIFIED" : If not specified, the default is
+  /// CROSS_PROJECT_METADATA_ENABLED.
+  /// - "CROSS_PROJECT_METADATA_ENABLED" : When CROSS_PROJECT_METADATA_ENABLED,
+  /// metadata from other projects will be included in the logs.
+  /// - "CROSS_PROJECT_METADATA_DISABLED" : When
+  /// CROSS_PROJECT_METADATA_DISABLED, metadata from other projects will not be
+  /// included in the logs.
+  core.String? crossProjectMetadata;
+
   /// The user-supplied description of the VPC Flow Logs configuration.
   ///
   /// Maximum of 512 characters.
@@ -6856,6 +7738,12 @@ class VpcFlowLogsConfig {
   /// `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}`
   core.String? name;
 
+  /// Traffic will be logged from VMs, VPN tunnels and Interconnect Attachments
+  /// within the network.
+  ///
+  /// Format: projects/{project_id}/global/networks/{name}
+  core.String? network;
+
   /// The state of the VPC Flow Log configuration.
   ///
   /// Default value is ENABLED. When creating a new configuration, it must be
@@ -6868,6 +7756,11 @@ class VpcFlowLogsConfig {
   /// - "ENABLED" : When ENABLED, this configuration will generate logs.
   /// - "DISABLED" : When DISABLED, this configuration will not generate logs.
   core.String? state;
+
+  /// Traffic will be logged from VMs within the subnetwork.
+  ///
+  /// Format: projects/{project_id}/regions/{region}/subnetworks/{name}
+  core.String? subnet;
 
   /// Describes the state of the configured target resource for diagnostic
   /// purposes.
@@ -6893,6 +7786,7 @@ class VpcFlowLogsConfig {
   VpcFlowLogsConfig({
     this.aggregationInterval,
     this.createTime,
+    this.crossProjectMetadata,
     this.description,
     this.filterExpr,
     this.flowSampling,
@@ -6901,7 +7795,9 @@ class VpcFlowLogsConfig {
     this.metadata,
     this.metadataFields,
     this.name,
+    this.network,
     this.state,
+    this.subnet,
     this.targetResourceState,
     this.updateTime,
     this.vpnTunnel,
@@ -6911,6 +7807,7 @@ class VpcFlowLogsConfig {
     : this(
         aggregationInterval: json_['aggregationInterval'] as core.String?,
         createTime: json_['createTime'] as core.String?,
+        crossProjectMetadata: json_['crossProjectMetadata'] as core.String?,
         description: json_['description'] as core.String?,
         filterExpr: json_['filterExpr'] as core.String?,
         flowSampling: (json_['flowSampling'] as core.num?)?.toDouble(),
@@ -6924,7 +7821,9 @@ class VpcFlowLogsConfig {
                 ?.map((value) => value as core.String)
                 .toList(),
         name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
         state: json_['state'] as core.String?,
+        subnet: json_['subnet'] as core.String?,
         targetResourceState: json_['targetResourceState'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         vpnTunnel: json_['vpnTunnel'] as core.String?,
@@ -6934,6 +7833,8 @@ class VpcFlowLogsConfig {
     if (aggregationInterval != null)
       'aggregationInterval': aggregationInterval!,
     if (createTime != null) 'createTime': createTime!,
+    if (crossProjectMetadata != null)
+      'crossProjectMetadata': crossProjectMetadata!,
     if (description != null) 'description': description!,
     if (filterExpr != null) 'filterExpr': filterExpr!,
     if (flowSampling != null) 'flowSampling': flowSampling!,
@@ -6943,7 +7844,9 @@ class VpcFlowLogsConfig {
     if (metadata != null) 'metadata': metadata!,
     if (metadataFields != null) 'metadataFields': metadataFields!,
     if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
     if (state != null) 'state': state!,
+    if (subnet != null) 'subnet': subnet!,
     if (targetResourceState != null)
       'targetResourceState': targetResourceState!,
     if (updateTime != null) 'updateTime': updateTime!,

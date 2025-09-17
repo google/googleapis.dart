@@ -228,9 +228,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4579,7 +4579,7 @@ class ConfigVariableTemplate {
   /// Optional.
   core.String? key;
 
-  /// Location Tyep denotes where this value should be sent in BYOC connections.
+  /// Location Type denotes where this value should be sent in BYOC connections.
   ///
   /// Optional.
   /// Possible string values are:
@@ -5475,13 +5475,8 @@ class ConnectorInfraConfig {
   /// Indicate whether connector is being migrated to TLS.
   core.bool? migrateTls;
 
-  /// Indicate whether connector is being migrated to use direct VPC egress.
-  /// Possible string values are:
-  /// - "NETWORK_EGRESS_MODE_UNSPECIFIED" : Network egress mode is not
-  /// specified.
-  /// - "SERVERLESS_VPC_ACCESS_CONNECTOR" : Default model VPC Access Connector.
-  /// - "DIRECT_VPC_EGRESS" : Direct VPC Egress.
-  core.String? networkEgressMode;
+  /// Network egress mode override to migrate to direct VPC egress.
+  NetworkEgressModeOverride? networkEgressModeOverride;
 
   /// Indicate whether cloud spanner is required for connector job.
   core.bool? provisionCloudSpanner;
@@ -5511,7 +5506,7 @@ class ConnectorInfraConfig {
     this.maxInstanceRequestConcurrency,
     this.migrateDeploymentModel,
     this.migrateTls,
-    this.networkEgressMode,
+    this.networkEgressModeOverride,
     this.provisionCloudSpanner,
     this.provisionMemstore,
     this.ratelimitThreshold,
@@ -5540,7 +5535,13 @@ class ConnectorInfraConfig {
             json_['maxInstanceRequestConcurrency'] as core.int?,
         migrateDeploymentModel: json_['migrateDeploymentModel'] as core.bool?,
         migrateTls: json_['migrateTls'] as core.bool?,
-        networkEgressMode: json_['networkEgressMode'] as core.String?,
+        networkEgressModeOverride:
+            json_.containsKey('networkEgressModeOverride')
+                ? NetworkEgressModeOverride.fromJson(
+                  json_['networkEgressModeOverride']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         provisionCloudSpanner: json_['provisionCloudSpanner'] as core.bool?,
         provisionMemstore: json_['provisionMemstore'] as core.bool?,
         ratelimitThreshold: json_['ratelimitThreshold'] as core.String?,
@@ -5576,7 +5577,8 @@ class ConnectorInfraConfig {
     if (migrateDeploymentModel != null)
       'migrateDeploymentModel': migrateDeploymentModel!,
     if (migrateTls != null) 'migrateTls': migrateTls!,
-    if (networkEgressMode != null) 'networkEgressMode': networkEgressMode!,
+    if (networkEgressModeOverride != null)
+      'networkEgressModeOverride': networkEgressModeOverride!,
     if (provisionCloudSpanner != null)
       'provisionCloudSpanner': provisionCloudSpanner!,
     if (provisionMemstore != null) 'provisionMemstore': provisionMemstore!,
@@ -10084,6 +10086,48 @@ class NetworkConfig {
   core.Map<core.String, core.dynamic> toJson() => {
     if (egressIps != null) 'egressIps': egressIps!,
     if (egressMode != null) 'egressMode': egressMode!,
+  };
+}
+
+/// NetworkEgressModeOverride provides the network egress mode override for a
+/// connector.
+class NetworkEgressModeOverride {
+  /// boolean should be set to true to make sure only eventing enabled
+  /// connections are migrated to direct vpc egress.
+  core.bool? isEventingOverrideEnabled;
+
+  /// boolean should be set to true to make sure only async operations enabled
+  /// connections are migrated to direct vpc egress.
+  core.bool? isJobsOverrideEnabled;
+
+  /// Determines the VPC Egress mode for the connector.
+  /// Possible string values are:
+  /// - "NETWORK_EGRESS_MODE_UNSPECIFIED" : Network Egress mode is not
+  /// specified.
+  /// - "SERVERLESS_VPC_ACCESS_CONNECTOR" : Default model VPC Access Connector.
+  /// - "DIRECT_VPC_EGRESS" : Direct VPC Egress.
+  core.String? networkEgressMode;
+
+  NetworkEgressModeOverride({
+    this.isEventingOverrideEnabled,
+    this.isJobsOverrideEnabled,
+    this.networkEgressMode,
+  });
+
+  NetworkEgressModeOverride.fromJson(core.Map json_)
+    : this(
+        isEventingOverrideEnabled:
+            json_['isEventingOverrideEnabled'] as core.bool?,
+        isJobsOverrideEnabled: json_['isJobsOverrideEnabled'] as core.bool?,
+        networkEgressMode: json_['networkEgressMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (isEventingOverrideEnabled != null)
+      'isEventingOverrideEnabled': isEventingOverrideEnabled!,
+    if (isJobsOverrideEnabled != null)
+      'isJobsOverrideEnabled': isJobsOverrideEnabled!,
+    if (networkEgressMode != null) 'networkEgressMode': networkEgressMode!,
   };
 }
 

@@ -31,12 +31,18 @@
 ///       - [ProjectsLocationsCloudExadataInfrastructuresDbServersResource]
 ///     - [ProjectsLocationsCloudVmClustersResource]
 ///       - [ProjectsLocationsCloudVmClustersDbNodesResource]
+///     - [ProjectsLocationsDatabaseCharacterSetsResource]
+///     - [ProjectsLocationsDatabasesResource]
+///     - [ProjectsLocationsDbSystemInitialStorageSizesResource]
 ///     - [ProjectsLocationsDbSystemShapesResource]
+///     - [ProjectsLocationsDbSystemsResource]
+///     - [ProjectsLocationsDbVersionsResource]
 ///     - [ProjectsLocationsEntitlementsResource]
 ///     - [ProjectsLocationsGiVersionsResource]
 ///     - [ProjectsLocationsOdbNetworksResource]
 ///       - [ProjectsLocationsOdbNetworksOdbSubnetsResource]
 ///     - [ProjectsLocationsOperationsResource]
+///     - [ProjectsLocationsPluggableDatabasesResource]
 library;
 
 import 'dart:async' as async;
@@ -103,8 +109,19 @@ class ProjectsLocationsResource {
       ProjectsLocationsCloudExadataInfrastructuresResource(_requester);
   ProjectsLocationsCloudVmClustersResource get cloudVmClusters =>
       ProjectsLocationsCloudVmClustersResource(_requester);
+  ProjectsLocationsDatabaseCharacterSetsResource get databaseCharacterSets =>
+      ProjectsLocationsDatabaseCharacterSetsResource(_requester);
+  ProjectsLocationsDatabasesResource get databases =>
+      ProjectsLocationsDatabasesResource(_requester);
+  ProjectsLocationsDbSystemInitialStorageSizesResource
+  get dbSystemInitialStorageSizes =>
+      ProjectsLocationsDbSystemInitialStorageSizesResource(_requester);
   ProjectsLocationsDbSystemShapesResource get dbSystemShapes =>
       ProjectsLocationsDbSystemShapesResource(_requester);
+  ProjectsLocationsDbSystemsResource get dbSystems =>
+      ProjectsLocationsDbSystemsResource(_requester);
+  ProjectsLocationsDbVersionsResource get dbVersions =>
+      ProjectsLocationsDbVersionsResource(_requester);
   ProjectsLocationsEntitlementsResource get entitlements =>
       ProjectsLocationsEntitlementsResource(_requester);
   ProjectsLocationsGiVersionsResource get giVersions =>
@@ -113,6 +130,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOdbNetworksResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
+  ProjectsLocationsPluggableDatabasesResource get pluggableDatabases =>
+      ProjectsLocationsPluggableDatabasesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -155,9 +174,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1050,6 +1069,12 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
   /// the following format: projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, at most 50 Exadata infrastructures will be returned. The
   /// maximum value is 1000; values above 1000 will be coerced to 1000.
@@ -1069,11 +1094,15 @@ class ProjectsLocationsCloudExadataInfrastructuresResource {
   /// this method will complete with the same error.
   async.Future<ListCloudExadataInfrastructuresResponse> list(
     core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1427,6 +1456,232 @@ class ProjectsLocationsCloudVmClustersDbNodesResource {
   }
 }
 
+class ProjectsLocationsDatabaseCharacterSetsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatabaseCharacterSetsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// List DatabaseCharacterSets for the given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for DatabaseCharacterSets in the
+  /// following format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Only the **character_set_type** field is supported in the
+  /// following format: `character_set_type="{characterSetType}"`. Accepted
+  /// values include `DATABASE` and `NATIONAL`.
+  ///
+  /// [pageSize] - Optional. The maximum number of DatabaseCharacterSets to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 50 DatabaseCharacterSets will be returned. The maximum value is 1000;
+  /// values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDatabaseCharacterSets` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListDatabaseCharacterSets` must match the call that provided the page
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDatabaseCharacterSetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDatabaseCharacterSetsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/databaseCharacterSets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDatabaseCharacterSetsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDatabasesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatabasesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single Database.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Database resource in the following
+  /// format: projects/{project}/locations/{region}/databases/{database}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Database].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Database> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Database.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the Databases for the given project, location and DbSystem.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource name in the following format:
+  /// projects/{project}/locations/{region}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. list for container databases is supported only with a valid
+  /// dbSystem (full resource name) filter in this format:
+  /// `dbSystem="projects/{project}/locations/{location}/dbSystems/{dbSystemId}"`
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, a maximum of 50 System Versions will be returned. The maximum
+  /// value is 1000; values above 1000 will be reset to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying the requested page of results
+  /// to return. All fields except the filter should remain the same as in the
+  /// request that provided this page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDatabasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDatabasesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/databases';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDatabasesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDbSystemInitialStorageSizesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbSystemInitialStorageSizesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Lists all the DbSystemInitialStorageSizes for the given project and
+  /// location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the DbSystemInitialStorageSize
+  /// resource with the format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, a maximum of 50 System Versions will be returned. The maximum
+  /// value is 1000; values above 1000 will be reset to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying the requested page of results
+  /// to return. All fields except the filter should remain the same as in the
+  /// request that provided this page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDbSystemInitialStorageSizesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDbSystemInitialStorageSizesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/dbSystemInitialStorageSizes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDbSystemInitialStorageSizesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsDbSystemShapesResource {
   final commons.ApiRequester _requester;
 
@@ -1440,6 +1695,10 @@ class ProjectsLocationsDbSystemShapesResource {
   /// [parent] - Required. The parent value for Database System Shapes in the
   /// following format: projects/{project}/locations/{location}.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. Only the gcp_oracle_zone_id field is supported in this format:
+  /// `gcp_oracle_zone_id="{gcp_oracle_zone_id}"`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, at most 50 database system shapes will be returned. The
@@ -1460,11 +1719,13 @@ class ProjectsLocationsDbSystemShapesResource {
   /// this method will complete with the same error.
   async.Future<ListDbSystemShapesResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
       if ($fields != null) 'fields': [$fields],
@@ -1478,6 +1739,280 @@ class ProjectsLocationsDbSystemShapesResource {
       queryParams: queryParams_,
     );
     return ListDbSystemShapesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDbSystemsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbSystemsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new DbSystem in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The value for parent of the DbSystem in the following
+  /// format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [dbSystemId] - Required. The ID of the DbSystem to create. This value is
+  /// restricted to (^\[a-z\](\[a-z0-9-\]{0,61}\[a-z0-9\])?$) and must be a
+  /// maximum of 63 characters in length. The value must start with a letter and
+  /// end with a letter or a number.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    DbSystem request,
+    core.String parent, {
+    core.String? dbSystemId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (dbSystemId != null) 'dbSystemId': [dbSystemId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dbSystems';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single DbSystem.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DbSystem in the following format:
+  /// projects/{project}/locations/{location}/dbSystems/{db_system}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dbSystems/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single DbSystem.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DbSystem in the following format:
+  /// projects/{project}/locations/{location}/dbSystems/{db_system}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/dbSystems/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DbSystem].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DbSystem> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DbSystem.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists all the DbSystems for the given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for DbSystems in the following
+  /// format: projects/{project}/locations/{location}.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request.
+  ///
+  /// [orderBy] - Optional. An expression for ordering the results of the
+  /// request.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 DbSystems will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDbSystemsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDbSystemsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dbSystems';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDbSystemsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDbVersionsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDbVersionsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// List DbVersions for the given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for the DbVersion resource with the
+  /// format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression that matches a subset of the
+  /// DbVersions to show. The supported filter for dbSystem creation is
+  /// `db_system_shape = {db_system_shape} AND storage_management =
+  /// {storage_management}`. If no filter is provided, all DbVersions will be
+  /// returned.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, a maximum of 50 System Versions will be returned. The maximum
+  /// value is 1000; values above 1000 will be reset to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying the requested page of results
+  /// to return. All fields except the filter should remain the same as in the
+  /// request that provided this page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDbVersionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDbVersionsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dbVersions';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDbVersionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1555,8 +2090,8 @@ class ProjectsLocationsGiVersionsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. An expression for filtering the results of the
-  /// request. Only the shape and gi_version fields are supported in this
-  /// format: `shape="{shape}"`.
+  /// request. Only the shape, gcp_oracle_zone and gi_version fields are
+  /// supported in this format: `shape="{shape}"`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
   /// unspecified, a maximum of 50 Oracle Grid Infrastructure (GI) versions will
@@ -2196,6 +2731,111 @@ class ProjectsLocationsOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsPluggableDatabasesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsPluggableDatabasesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single PluggableDatabase.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the PluggableDatabase resource in the
+  /// following format:
+  /// projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/pluggableDatabases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PluggableDatabase].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PluggableDatabase> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return PluggableDatabase.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all the PluggableDatabases for the given project, location and
+  /// Container Database.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// PluggableDatabases. Format: projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression for filtering the results of the
+  /// request. List for pluggable databases is supported only with a valid
+  /// container database (full resource name) filter in this format:
+  /// `database="projects/{project}/locations/{location}/databases/{database}"`
+  ///
+  /// [pageSize] - Optional. The maximum number of PluggableDatabases to return.
+  /// The service may return fewer than this value.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListPluggableDatabases` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListPluggableDatabases` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListPluggableDatabasesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListPluggableDatabasesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/pluggableDatabases';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListPluggableDatabasesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3819,6 +4459,30 @@ class AutonomousDbVersion {
   };
 }
 
+/// The details of the database backup destination.
+class BackupDestinationDetails {
+  /// The type of the database backup destination.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKUP_DESTINATION_TYPE_UNSPECIFIED" : Default unspecified value.
+  /// - "NFS" : Backup destination type is NFS.
+  /// - "RECOVERY_APPLIANCE" : Backup destination type is Recovery Appliance.
+  /// - "OBJECT_STORE" : Backup destination type is Object Store.
+  /// - "LOCAL" : Backup destination type is Local.
+  /// - "DBRS" : Backup destination type is DBRS.
+  core.String? type;
+
+  BackupDestinationDetails({this.type});
+
+  BackupDestinationDetails.fromJson(core.Map json_)
+    : this(type: json_['type'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (type != null) 'type': type!,
+  };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -3889,7 +4553,10 @@ class CloudExadataInfrastructure {
   /// Output only.
   core.String? entitlementId;
 
-  /// Google Cloud Platform location where Oracle Exadata is hosted.
+  /// The GCP Oracle zone where Oracle Exadata Infrastructure is hosted.
+  ///
+  /// Example: us-east4-b-r2. If not specified, the system will pick a zone
+  /// based on availability.
   ///
   /// Optional.
   core.String? gcpOracleZone;
@@ -4305,12 +4972,19 @@ class CloudVmCluster {
   /// Required.
   core.String? exadataInfrastructure;
 
-  /// Google Cloud Platform location where Oracle Exadata is hosted.
+  /// The GCP Oracle zone where Oracle CloudVmCluster is hosted.
   ///
-  /// It is same as Google Cloud Platform Oracle zone of Exadata infrastructure.
+  /// This will be the same as the gcp_oracle_zone of the
+  /// CloudExadataInfrastructure. Example: us-east4-b-r2.
   ///
   /// Output only.
   core.String? gcpOracleZone;
+
+  /// The identity connector details which will allow OCI to securely access the
+  /// resources in the customer project.
+  ///
+  /// Output only.
+  IdentityConnector? identityConnector;
 
   /// Labels or tags associated with the VM Cluster.
   ///
@@ -4361,6 +5035,7 @@ class CloudVmCluster {
     this.displayName,
     this.exadataInfrastructure,
     this.gcpOracleZone,
+    this.identityConnector,
     this.labels,
     this.name,
     this.network,
@@ -4378,6 +5053,13 @@ class CloudVmCluster {
         displayName: json_['displayName'] as core.String?,
         exadataInfrastructure: json_['exadataInfrastructure'] as core.String?,
         gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        identityConnector:
+            json_.containsKey('identityConnector')
+                ? IdentityConnector.fromJson(
+                  json_['identityConnector']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -4402,6 +5084,7 @@ class CloudVmCluster {
     if (exadataInfrastructure != null)
       'exadataInfrastructure': exadataInfrastructure!,
     if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
+    if (identityConnector != null) 'identityConnector': identityConnector!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
     if (network != null) 'network': network!,
@@ -4812,6 +5495,227 @@ class DataCollectionOptions {
   };
 }
 
+/// Data collection options for DbSystem.
+class DataCollectionOptionsDbSystem {
+  /// Indicates whether to enable data collection for diagnostics.
+  ///
+  /// Optional.
+  core.bool? isDiagnosticsEventsEnabled;
+
+  /// Indicates whether to enable incident logs and trace collection.
+  ///
+  /// Optional.
+  core.bool? isIncidentLogsEnabled;
+
+  DataCollectionOptionsDbSystem({
+    this.isDiagnosticsEventsEnabled,
+    this.isIncidentLogsEnabled,
+  });
+
+  DataCollectionOptionsDbSystem.fromJson(core.Map json_)
+    : this(
+        isDiagnosticsEventsEnabled:
+            json_['isDiagnosticsEventsEnabled'] as core.bool?,
+        isIncidentLogsEnabled: json_['isIncidentLogsEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (isDiagnosticsEventsEnabled != null)
+      'isDiagnosticsEventsEnabled': isDiagnosticsEventsEnabled!,
+    if (isIncidentLogsEnabled != null)
+      'isIncidentLogsEnabled': isIncidentLogsEnabled!,
+  };
+}
+
+/// Details of the Database resource.
+///
+/// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/Database/
+class Database {
+  /// The password for the default ADMIN user.
+  ///
+  /// Required.
+  core.String? adminPassword;
+
+  /// The character set for the database.
+  ///
+  /// The default is AL32UTF8.
+  ///
+  /// Optional.
+  core.String? characterSet;
+
+  /// The date and time that the Database was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The database ID of the Database.
+  ///
+  /// Optional.
+  core.String? databaseId;
+
+  /// The name of the DbHome resource associated with the Database.
+  ///
+  /// Optional.
+  core.String? dbHomeName;
+
+  /// The database name.
+  ///
+  /// The name must begin with an alphabetic character and can contain a maximum
+  /// of eight alphanumeric characters. Special characters are not permitted.
+  ///
+  /// Optional.
+  core.String? dbName;
+
+  /// The DB_UNIQUE_NAME of the Oracle Database being backed up.
+  ///
+  /// Optional.
+  core.String? dbUniqueName;
+
+  /// The GCP Oracle zone where the Database is created.
+  ///
+  /// Output only.
+  core.String? gcpOracleZone;
+
+  /// Identifier.
+  ///
+  /// The name of the Database resource in the following format:
+  /// projects/{project}/locations/{region}/databases/{database}
+  core.String? name;
+
+  /// The national character set for the database.
+  ///
+  /// The default is AL16UTF16.
+  ///
+  /// Optional.
+  core.String? ncharacterSet;
+
+  /// HTTPS link to OCI resources exposed to Customer via UI Interface.
+  ///
+  /// Output only.
+  core.String? ociUrl;
+
+  /// The Status of Operations Insights for this Database.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "OPERATIONS_INSIGHTS_STATUS_UNSPECIFIED" : Default unspecified value.
+  /// - "ENABLING" : Indicates that the operations insights are being enabled.
+  /// - "ENABLED" : Indicates that the operations insights are enabled.
+  /// - "DISABLING" : Indicates that the operations insights are being disabled.
+  /// - "NOT_ENABLED" : Indicates that the operations insights are not enabled.
+  /// - "FAILED_ENABLING" : Indicates that the operations insights failed to
+  /// enable.
+  /// - "FAILED_DISABLING" : Indicates that the operations insights failed to
+  /// disable.
+  core.String? opsInsightsStatus;
+
+  /// The properties of the Database.
+  ///
+  /// Optional.
+  DatabaseProperties? properties;
+
+  /// The TDE wallet password for the database.
+  ///
+  /// Optional.
+  core.String? tdeWalletPassword;
+
+  Database({
+    this.adminPassword,
+    this.characterSet,
+    this.createTime,
+    this.databaseId,
+    this.dbHomeName,
+    this.dbName,
+    this.dbUniqueName,
+    this.gcpOracleZone,
+    this.name,
+    this.ncharacterSet,
+    this.ociUrl,
+    this.opsInsightsStatus,
+    this.properties,
+    this.tdeWalletPassword,
+  });
+
+  Database.fromJson(core.Map json_)
+    : this(
+        adminPassword: json_['adminPassword'] as core.String?,
+        characterSet: json_['characterSet'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        databaseId: json_['databaseId'] as core.String?,
+        dbHomeName: json_['dbHomeName'] as core.String?,
+        dbName: json_['dbName'] as core.String?,
+        dbUniqueName: json_['dbUniqueName'] as core.String?,
+        gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        name: json_['name'] as core.String?,
+        ncharacterSet: json_['ncharacterSet'] as core.String?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        opsInsightsStatus: json_['opsInsightsStatus'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? DatabaseProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        tdeWalletPassword: json_['tdeWalletPassword'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adminPassword != null) 'adminPassword': adminPassword!,
+    if (characterSet != null) 'characterSet': characterSet!,
+    if (createTime != null) 'createTime': createTime!,
+    if (databaseId != null) 'databaseId': databaseId!,
+    if (dbHomeName != null) 'dbHomeName': dbHomeName!,
+    if (dbName != null) 'dbName': dbName!,
+    if (dbUniqueName != null) 'dbUniqueName': dbUniqueName!,
+    if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
+    if (name != null) 'name': name!,
+    if (ncharacterSet != null) 'ncharacterSet': ncharacterSet!,
+    if (ociUrl != null) 'ociUrl': ociUrl!,
+    if (opsInsightsStatus != null) 'opsInsightsStatus': opsInsightsStatus!,
+    if (properties != null) 'properties': properties!,
+    if (tdeWalletPassword != null) 'tdeWalletPassword': tdeWalletPassword!,
+  };
+}
+
+/// Details of the Database character set resource.
+class DatabaseCharacterSet {
+  /// The character set name for the Database which is the ID in the resource
+  /// name.
+  ///
+  /// Output only.
+  core.String? characterSet;
+
+  /// The character set type for the Database.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CHARACTER_SET_TYPE_UNSPECIFIED" : Character set type is not specified.
+  /// - "DATABASE" : Character set type is set to database.
+  /// - "NATIONAL" : Character set type is set to national.
+  core.String? characterSetType;
+
+  /// Identifier.
+  ///
+  /// The name of the Database Character Set resource in the following format:
+  /// projects/{project}/locations/{region}/databaseCharacterSets/{database_character_set}
+  core.String? name;
+
+  DatabaseCharacterSet({this.characterSet, this.characterSetType, this.name});
+
+  DatabaseCharacterSet.fromJson(core.Map json_)
+    : this(
+        characterSet: json_['characterSet'] as core.String?,
+        characterSetType: json_['characterSetType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (characterSet != null) 'characterSet': characterSet!,
+    if (characterSetType != null) 'characterSetType': characterSetType!,
+    if (name != null) 'name': name!,
+  };
+}
+
 /// The connection string profile to allow clients to group.
 ///
 /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/datatypes/DatabaseConnectionStringProfile
@@ -4925,6 +5829,312 @@ class DatabaseConnectionStringProfile {
     if (syntaxFormat != null) 'syntaxFormat': syntaxFormat!,
     if (tlsAuthentication != null) 'tlsAuthentication': tlsAuthentication!,
     if (value != null) 'value': value!,
+  };
+}
+
+/// The configuration of the Database Management service.
+class DatabaseManagementConfig {
+  /// The status of the Database Management service.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MANAGEMENT_STATE_UNSPECIFIED" : The status is not specified.
+  /// - "ENABLING" : The Database Management service is enabling.
+  /// - "ENABLED" : The Database Management service is enabled.
+  /// - "DISABLING" : The Database Management service is disabling.
+  /// - "DISABLED" : The Database Management service is disabled.
+  /// - "UPDATING" : The Database Management service is updating.
+  /// - "FAILED_ENABLING" : The Database Management service failed to enable.
+  /// - "FAILED_DISABLING" : The Database Management service failed to disable.
+  /// - "FAILED_UPDATING" : The Database Management service failed to update.
+  core.String? managementState;
+
+  /// The Database Management type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "MANAGEMENT_TYPE_UNSPECIFIED" : The type is not specified.
+  /// - "BASIC" : Basic Database Management.
+  /// - "ADVANCED" : Advanced Database Management.
+  core.String? managementType;
+
+  DatabaseManagementConfig({this.managementState, this.managementType});
+
+  DatabaseManagementConfig.fromJson(core.Map json_)
+    : this(
+        managementState: json_['managementState'] as core.String?,
+        managementType: json_['managementType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (managementState != null) 'managementState': managementState!,
+    if (managementType != null) 'managementType': managementType!,
+  };
+}
+
+/// The properties of a Database.
+class DatabaseProperties {
+  /// The Database Management config.
+  ///
+  /// Output only.
+  DatabaseManagementConfig? databaseManagementConfig;
+
+  /// Backup options for the Database.
+  ///
+  /// Optional.
+  DbBackupConfig? dbBackupConfig;
+
+  /// The Oracle Database version.
+  ///
+  /// Required.
+  core.String? dbVersion;
+
+  /// State of the Database.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DATABASE_LIFECYCLE_STATE_UNSPECIFIED" : Default unspecified value.
+  /// - "PROVISIONING" : Indicates that the resource is in provisioning state.
+  /// - "AVAILABLE" : Indicates that the resource is in available state.
+  /// - "UPDATING" : Indicates that the resource is in updating state.
+  /// - "BACKUP_IN_PROGRESS" : Indicates that the resource is in backup in
+  /// progress state.
+  /// - "UPGRADING" : Indicates that the resource is in upgrading state.
+  /// - "CONVERTING" : Indicates that the resource is in converting state.
+  /// - "TERMINATING" : Indicates that the resource is in terminating state.
+  /// - "TERMINATED" : Indicates that the resource is in terminated state.
+  /// - "RESTORE_FAILED" : Indicates that the resource is in restore failed
+  /// state.
+  /// - "FAILED" : Indicates that the resource is in failed state.
+  core.String? state;
+
+  DatabaseProperties({
+    this.databaseManagementConfig,
+    this.dbBackupConfig,
+    this.dbVersion,
+    this.state,
+  });
+
+  DatabaseProperties.fromJson(core.Map json_)
+    : this(
+        databaseManagementConfig:
+            json_.containsKey('databaseManagementConfig')
+                ? DatabaseManagementConfig.fromJson(
+                  json_['databaseManagementConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dbBackupConfig:
+            json_.containsKey('dbBackupConfig')
+                ? DbBackupConfig.fromJson(
+                  json_['dbBackupConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dbVersion: json_['dbVersion'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (databaseManagementConfig != null)
+      'databaseManagementConfig': databaseManagementConfig!,
+    if (dbBackupConfig != null) 'dbBackupConfig': dbBackupConfig!,
+    if (dbVersion != null) 'dbVersion': dbVersion!,
+    if (state != null) 'state': state!,
+  };
+}
+
+/// Backup Options for the Database.
+class DbBackupConfig {
+  /// If set to true, enables automatic backups on the database.
+  ///
+  /// Optional.
+  core.bool? autoBackupEnabled;
+
+  /// The day of the week on which the full backup should be performed on the
+  /// database.
+  ///
+  /// If no value is provided, it will default to Sunday.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DAY_OF_WEEK_UNSPECIFIED" : The day of the week is unspecified.
+  /// - "MONDAY" : Monday
+  /// - "TUESDAY" : Tuesday
+  /// - "WEDNESDAY" : Wednesday
+  /// - "THURSDAY" : Thursday
+  /// - "FRIDAY" : Friday
+  /// - "SATURDAY" : Saturday
+  /// - "SUNDAY" : Sunday
+  core.String? autoFullBackupDay;
+
+  /// The window in which the full backup should be performed on the database.
+  ///
+  /// If no value is provided, the default is anytime.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKUP_WINDOW_UNSPECIFIED" : Default unspecified value.
+  /// - "SLOT_ONE" : 12:00 AM - 2:00 AM
+  /// - "SLOT_TWO" : 2:00 AM - 4:00 AM
+  /// - "SLOT_THREE" : 4:00 AM - 6:00 AM
+  /// - "SLOT_FOUR" : 6:00 AM - 8:00 AM
+  /// - "SLOT_FIVE" : 8:00 AM - 10:00 AM
+  /// - "SLOT_SIX" : 10:00 AM - 12:00 PM
+  /// - "SLOT_SEVEN" : 12:00 PM - 2:00 PM
+  /// - "SLOT_EIGHT" : 2:00 PM - 4:00 PM
+  /// - "SLOT_NINE" : 4:00 PM - 6:00 PM
+  /// - "SLOT_TEN" : 6:00 PM - 8:00 PM
+  /// - "SLOT_ELEVEN" : 8:00 PM - 10:00 PM
+  /// - "SLOT_TWELVE" : 10:00 PM - 12:00 AM
+  core.String? autoFullBackupWindow;
+
+  /// The window in which the incremental backup should be performed on the
+  /// database.
+  ///
+  /// If no value is provided, the default is anytime except the auto full
+  /// backup day.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKUP_WINDOW_UNSPECIFIED" : Default unspecified value.
+  /// - "SLOT_ONE" : 12:00 AM - 2:00 AM
+  /// - "SLOT_TWO" : 2:00 AM - 4:00 AM
+  /// - "SLOT_THREE" : 4:00 AM - 6:00 AM
+  /// - "SLOT_FOUR" : 6:00 AM - 8:00 AM
+  /// - "SLOT_FIVE" : 8:00 AM - 10:00 AM
+  /// - "SLOT_SIX" : 10:00 AM - 12:00 PM
+  /// - "SLOT_SEVEN" : 12:00 PM - 2:00 PM
+  /// - "SLOT_EIGHT" : 2:00 PM - 4:00 PM
+  /// - "SLOT_NINE" : 4:00 PM - 6:00 PM
+  /// - "SLOT_TEN" : 6:00 PM - 8:00 PM
+  /// - "SLOT_ELEVEN" : 8:00 PM - 10:00 PM
+  /// - "SLOT_TWELVE" : 10:00 PM - 12:00 AM
+  core.String? autoIncrementalBackupWindow;
+
+  /// This defines when the backups will be deleted after Database termination.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "BACKUP_DELETION_POLICY_UNSPECIFIED" : Default unspecified value.
+  /// - "DELETE_IMMEDIATELY" : Keeps the backup for predefined time i.e. 72
+  /// hours and then delete permanently.
+  /// - "DELETE_AFTER_RETENTION_PERIOD" : Keeps the backups as per the policy
+  /// defined for database backups.
+  core.String? backupDeletionPolicy;
+
+  /// Details of the database backup destinations.
+  ///
+  /// Optional.
+  core.List<BackupDestinationDetails>? backupDestinationDetails;
+
+  /// The number of days an automatic backup is retained before being
+  /// automatically deleted.
+  ///
+  /// This value determines the earliest point in time to which a database can
+  /// be restored. Min: 1, Max: 60.
+  ///
+  /// Optional.
+  core.int? retentionPeriodDays;
+
+  DbBackupConfig({
+    this.autoBackupEnabled,
+    this.autoFullBackupDay,
+    this.autoFullBackupWindow,
+    this.autoIncrementalBackupWindow,
+    this.backupDeletionPolicy,
+    this.backupDestinationDetails,
+    this.retentionPeriodDays,
+  });
+
+  DbBackupConfig.fromJson(core.Map json_)
+    : this(
+        autoBackupEnabled: json_['autoBackupEnabled'] as core.bool?,
+        autoFullBackupDay: json_['autoFullBackupDay'] as core.String?,
+        autoFullBackupWindow: json_['autoFullBackupWindow'] as core.String?,
+        autoIncrementalBackupWindow:
+            json_['autoIncrementalBackupWindow'] as core.String?,
+        backupDeletionPolicy: json_['backupDeletionPolicy'] as core.String?,
+        backupDestinationDetails:
+            (json_['backupDestinationDetails'] as core.List?)
+                ?.map(
+                  (value) => BackupDestinationDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        retentionPeriodDays: json_['retentionPeriodDays'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (autoBackupEnabled != null) 'autoBackupEnabled': autoBackupEnabled!,
+    if (autoFullBackupDay != null) 'autoFullBackupDay': autoFullBackupDay!,
+    if (autoFullBackupWindow != null)
+      'autoFullBackupWindow': autoFullBackupWindow!,
+    if (autoIncrementalBackupWindow != null)
+      'autoIncrementalBackupWindow': autoIncrementalBackupWindow!,
+    if (backupDeletionPolicy != null)
+      'backupDeletionPolicy': backupDeletionPolicy!,
+    if (backupDestinationDetails != null)
+      'backupDestinationDetails': backupDestinationDetails!,
+    if (retentionPeriodDays != null)
+      'retentionPeriodDays': retentionPeriodDays!,
+  };
+}
+
+/// Details of the Database Home resource.
+class DbHome {
+  /// The Database resource.
+  ///
+  /// Required.
+  Database? database;
+
+  /// A valid Oracle Database version.
+  ///
+  /// For a list of supported versions, use the ListDbVersions operation.
+  ///
+  /// Required.
+  core.String? dbVersion;
+
+  /// The display name for the Database Home.
+  ///
+  /// The name does not have to be unique within your project.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// Whether unified auditing is enabled for the Database Home.
+  ///
+  /// Optional.
+  core.bool? isUnifiedAuditingEnabled;
+
+  DbHome({
+    this.database,
+    this.dbVersion,
+    this.displayName,
+    this.isUnifiedAuditingEnabled,
+  });
+
+  DbHome.fromJson(core.Map json_)
+    : this(
+        database:
+            json_.containsKey('database')
+                ? Database.fromJson(
+                  json_['database'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dbVersion: json_['dbVersion'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        isUnifiedAuditingEnabled:
+            json_['isUnifiedAuditingEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (database != null) 'database': database!,
+    if (dbVersion != null) 'dbVersion': dbVersion!,
+    if (displayName != null) 'displayName': displayName!,
+    if (isUnifiedAuditingEnabled != null)
+      'isUnifiedAuditingEnabled': isUnifiedAuditingEnabled!,
   };
 }
 
@@ -5201,6 +6411,478 @@ class DbServerProperties {
   };
 }
 
+/// Details of the DbSystem (BaseDB) resource.
+///
+/// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/DbSystem/
+class DbSystem {
+  /// The date and time that the DbSystem was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The display name for the System db.
+  ///
+  /// The name does not have to be unique within your project.
+  ///
+  /// Required.
+  core.String? displayName;
+
+  /// The ID of the subscription entitlement associated with the DbSystem
+  ///
+  /// Output only.
+  core.String? entitlementId;
+
+  /// The GCP Oracle zone where Oracle DbSystem is hosted.
+  ///
+  /// Example: us-east4-b-r2. If not specified, the system will pick a zone
+  /// based on availability.
+  ///
+  /// Optional.
+  core.String? gcpOracleZone;
+
+  /// The labels or tags associated with the DbSystem.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the DbSystem resource in the following format:
+  /// projects/{project}/locations/{region}/dbSystems/{db_system}
+  core.String? name;
+
+  /// HTTPS link to OCI resources exposed to Customer via UI Interface.
+  ///
+  /// Output only.
+  core.String? ociUrl;
+
+  /// The name of the OdbNetwork associated with the DbSystem.
+  ///
+  /// Format: projects/{project}/locations/{location}/odbNetworks/{odb_network}
+  /// It is optional but if specified, this should match the parent ODBNetwork
+  /// of the OdbSubnet.
+  ///
+  /// Optional.
+  core.String? odbNetwork;
+
+  /// The name of the OdbSubnet associated with the DbSystem for IP allocation.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
+  ///
+  /// Required.
+  core.String? odbSubnet;
+
+  /// The properties of the DbSystem.
+  ///
+  /// Optional.
+  DbSystemProperties? properties;
+
+  DbSystem({
+    this.createTime,
+    this.displayName,
+    this.entitlementId,
+    this.gcpOracleZone,
+    this.labels,
+    this.name,
+    this.ociUrl,
+    this.odbNetwork,
+    this.odbSubnet,
+    this.properties,
+  });
+
+  DbSystem.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        entitlementId: json_['entitlementId'] as core.String?,
+        gcpOracleZone: json_['gcpOracleZone'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        odbNetwork: json_['odbNetwork'] as core.String?,
+        odbSubnet: json_['odbSubnet'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? DbSystemProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (entitlementId != null) 'entitlementId': entitlementId!,
+    if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (ociUrl != null) 'ociUrl': ociUrl!,
+    if (odbNetwork != null) 'odbNetwork': odbNetwork!,
+    if (odbSubnet != null) 'odbSubnet': odbSubnet!,
+    if (properties != null) 'properties': properties!,
+  };
+}
+
+/// Summary of the DbSystem initial storage size.
+class DbSystemInitialStorageSize {
+  /// The name of the resource.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The properties of the DbSystem initial storage size summary.
+  ///
+  /// Output only.
+  DbSystemInitialStorageSizeProperties? properties;
+
+  DbSystemInitialStorageSize({this.name, this.properties});
+
+  DbSystemInitialStorageSize.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? DbSystemInitialStorageSizeProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (properties != null) 'properties': properties!,
+  };
+}
+
+/// The properties of a DbSystem initial storage size summary.
+class DbSystemInitialStorageSizeProperties {
+  /// List of storage disk details available for launches from backup.
+  ///
+  /// Output only.
+  core.List<StorageSizeDetails>? launchFromBackupStorageSizeDetails;
+
+  /// VM shape platform type
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SHAPE_TYPE_UNSPECIFIED" : Unspecified shape type.
+  /// - "STANDARD_X86" : Standard X86.
+  core.String? shapeType;
+
+  /// The storage option used in DB system.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STORAGE_MANAGEMENT_UNSPECIFIED" : Unspecified storage management.
+  /// - "ASM" : Automatic Storage Management.
+  /// - "LVM" : Logical Volume Management.
+  core.String? storageManagement;
+
+  /// List of storage disk details.
+  ///
+  /// Output only.
+  core.List<StorageSizeDetails>? storageSizeDetails;
+
+  DbSystemInitialStorageSizeProperties({
+    this.launchFromBackupStorageSizeDetails,
+    this.shapeType,
+    this.storageManagement,
+    this.storageSizeDetails,
+  });
+
+  DbSystemInitialStorageSizeProperties.fromJson(core.Map json_)
+    : this(
+        launchFromBackupStorageSizeDetails:
+            (json_['launchFromBackupStorageSizeDetails'] as core.List?)
+                ?.map(
+                  (value) => StorageSizeDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        shapeType: json_['shapeType'] as core.String?,
+        storageManagement: json_['storageManagement'] as core.String?,
+        storageSizeDetails:
+            (json_['storageSizeDetails'] as core.List?)
+                ?.map(
+                  (value) => StorageSizeDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (launchFromBackupStorageSizeDetails != null)
+      'launchFromBackupStorageSizeDetails': launchFromBackupStorageSizeDetails!,
+    if (shapeType != null) 'shapeType': shapeType!,
+    if (storageManagement != null) 'storageManagement': storageManagement!,
+    if (storageSizeDetails != null) 'storageSizeDetails': storageSizeDetails!,
+  };
+}
+
+/// Details of the DbSystem Options.
+class DbSystemOptions {
+  /// The storage option used in DB system.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STORAGE_MANAGEMENT_UNSPECIFIED" : The storage management is
+  /// unspecified.
+  /// - "ASM" : Automatic storage management.
+  /// - "LVM" : Logical Volume management.
+  core.String? storageManagement;
+
+  DbSystemOptions({this.storageManagement});
+
+  DbSystemOptions.fromJson(core.Map json_)
+    : this(storageManagement: json_['storageManagement'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (storageManagement != null) 'storageManagement': storageManagement!,
+  };
+}
+
+/// The properties of a DbSystem.
+class DbSystemProperties {
+  /// The number of CPU cores to enable for the DbSystem.
+  ///
+  /// Required.
+  core.int? computeCount;
+
+  /// The compute model of the DbSystem.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "COMPUTE_MODEL_UNSPECIFIED" : The compute model is unspecified.
+  /// - "ECPU" : The compute model is virtual.
+  /// - "OCPU" : The compute model is physical.
+  core.String? computeModel;
+
+  /// Data collection options for diagnostics.
+  ///
+  /// Optional.
+  DataCollectionOptionsDbSystem? dataCollectionOptions;
+
+  /// The data storage size in GB that is currently available to DbSystems.
+  ///
+  /// Optional.
+  core.int? dataStorageSizeGb;
+
+  /// The database edition of the DbSystem.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DB_SYSTEM_DATABASE_EDITION_UNSPECIFIED" : The database edition is
+  /// unspecified.
+  /// - "STANDARD_EDITION" : The database edition is Standard.
+  /// - "ENTERPRISE_EDITION" : The database edition is Enterprise.
+  /// - "ENTERPRISE_EDITION_HIGH_PERFORMANCE" : The database edition is
+  /// Enterprise Edition.
+  core.String? databaseEdition;
+
+  /// Details for creating a Database Home.
+  ///
+  /// Optional.
+  DbHome? dbHome;
+
+  /// The options for the DbSystem.
+  ///
+  /// Optional.
+  DbSystemOptions? dbSystemOptions;
+
+  /// The host domain name of the DbSystem.
+  ///
+  /// Optional.
+  core.String? domain;
+
+  /// The hostname of the DbSystem.
+  ///
+  /// Output only.
+  core.String? hostname;
+
+  /// Prefix for DB System host names.
+  ///
+  /// Optional.
+  core.String? hostnamePrefix;
+
+  /// The initial data storage size in GB.
+  ///
+  /// Required.
+  core.int? initialDataStorageSizeGb;
+
+  /// The license model of the DbSystem.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LICENSE_MODEL_UNSPECIFIED" : The license model is unspecified.
+  /// - "LICENSE_INCLUDED" : The license model is included.
+  /// - "BRING_YOUR_OWN_LICENSE" : The license model is bring your own license.
+  core.String? licenseModel;
+
+  /// State of the DbSystem.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DB_SYSTEM_LIFECYCLE_STATE_UNSPECIFIED" : Default unspecified value.
+  /// - "PROVISIONING" : Indicates that the resource is in provisioning state.
+  /// - "AVAILABLE" : Indicates that the resource is in available state.
+  /// - "UPDATING" : Indicates that the resource is in updating state.
+  /// - "TERMINATING" : Indicates that the resource is in terminating state.
+  /// - "TERMINATED" : Indicates that the resource is in terminated state.
+  /// - "FAILED" : Indicates that the resource is in failed state.
+  /// - "MIGRATED" : Indicates that the resource has been migrated.
+  /// - "MAINTENANCE_IN_PROGRESS" : Indicates that the resource is in
+  /// maintenance in progress state.
+  /// - "NEEDS_ATTENTION" : Indicates that the resource needs attention.
+  /// - "UPGRADING" : Indicates that the resource is upgrading.
+  core.String? lifecycleState;
+
+  /// The memory size in GB.
+  ///
+  /// Optional.
+  core.int? memorySizeGb;
+
+  /// The number of nodes in the DbSystem.
+  ///
+  /// Optional.
+  core.int? nodeCount;
+
+  /// OCID of the DbSystem.
+  ///
+  /// Output only.
+  core.String? ocid;
+
+  /// The private IP address of the DbSystem.
+  ///
+  /// Optional.
+  core.String? privateIp;
+
+  /// The reco/redo storage size in GB.
+  ///
+  /// Optional.
+  core.int? recoStorageSizeGb;
+
+  /// Shape of DB System.
+  ///
+  /// Required.
+  core.String? shape;
+
+  /// SSH public keys to be stored with the DbSystem.
+  ///
+  /// Required.
+  core.List<core.String>? sshPublicKeys;
+
+  /// Time zone of the DbSystem.
+  ///
+  /// Optional.
+  TimeZone? timeZone;
+
+  DbSystemProperties({
+    this.computeCount,
+    this.computeModel,
+    this.dataCollectionOptions,
+    this.dataStorageSizeGb,
+    this.databaseEdition,
+    this.dbHome,
+    this.dbSystemOptions,
+    this.domain,
+    this.hostname,
+    this.hostnamePrefix,
+    this.initialDataStorageSizeGb,
+    this.licenseModel,
+    this.lifecycleState,
+    this.memorySizeGb,
+    this.nodeCount,
+    this.ocid,
+    this.privateIp,
+    this.recoStorageSizeGb,
+    this.shape,
+    this.sshPublicKeys,
+    this.timeZone,
+  });
+
+  DbSystemProperties.fromJson(core.Map json_)
+    : this(
+        computeCount: json_['computeCount'] as core.int?,
+        computeModel: json_['computeModel'] as core.String?,
+        dataCollectionOptions:
+            json_.containsKey('dataCollectionOptions')
+                ? DataCollectionOptionsDbSystem.fromJson(
+                  json_['dataCollectionOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataStorageSizeGb: json_['dataStorageSizeGb'] as core.int?,
+        databaseEdition: json_['databaseEdition'] as core.String?,
+        dbHome:
+            json_.containsKey('dbHome')
+                ? DbHome.fromJson(
+                  json_['dbHome'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dbSystemOptions:
+            json_.containsKey('dbSystemOptions')
+                ? DbSystemOptions.fromJson(
+                  json_['dbSystemOptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        domain: json_['domain'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        hostnamePrefix: json_['hostnamePrefix'] as core.String?,
+        initialDataStorageSizeGb:
+            json_['initialDataStorageSizeGb'] as core.int?,
+        licenseModel: json_['licenseModel'] as core.String?,
+        lifecycleState: json_['lifecycleState'] as core.String?,
+        memorySizeGb: json_['memorySizeGb'] as core.int?,
+        nodeCount: json_['nodeCount'] as core.int?,
+        ocid: json_['ocid'] as core.String?,
+        privateIp: json_['privateIp'] as core.String?,
+        recoStorageSizeGb: json_['recoStorageSizeGb'] as core.int?,
+        shape: json_['shape'] as core.String?,
+        sshPublicKeys:
+            (json_['sshPublicKeys'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        timeZone:
+            json_.containsKey('timeZone')
+                ? TimeZone.fromJson(
+                  json_['timeZone'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (computeCount != null) 'computeCount': computeCount!,
+    if (computeModel != null) 'computeModel': computeModel!,
+    if (dataCollectionOptions != null)
+      'dataCollectionOptions': dataCollectionOptions!,
+    if (dataStorageSizeGb != null) 'dataStorageSizeGb': dataStorageSizeGb!,
+    if (databaseEdition != null) 'databaseEdition': databaseEdition!,
+    if (dbHome != null) 'dbHome': dbHome!,
+    if (dbSystemOptions != null) 'dbSystemOptions': dbSystemOptions!,
+    if (domain != null) 'domain': domain!,
+    if (hostname != null) 'hostname': hostname!,
+    if (hostnamePrefix != null) 'hostnamePrefix': hostnamePrefix!,
+    if (initialDataStorageSizeGb != null)
+      'initialDataStorageSizeGb': initialDataStorageSizeGb!,
+    if (licenseModel != null) 'licenseModel': licenseModel!,
+    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+    if (memorySizeGb != null) 'memorySizeGb': memorySizeGb!,
+    if (nodeCount != null) 'nodeCount': nodeCount!,
+    if (ocid != null) 'ocid': ocid!,
+    if (privateIp != null) 'privateIp': privateIp!,
+    if (recoStorageSizeGb != null) 'recoStorageSizeGb': recoStorageSizeGb!,
+    if (shape != null) 'shape': shape!,
+    if (sshPublicKeys != null) 'sshPublicKeys': sshPublicKeys!,
+    if (timeZone != null) 'timeZone': timeZone!,
+  };
+}
+
 /// Details of the Database System Shapes resource.
 ///
 /// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/DbSystemShapeSummary/
@@ -5318,6 +7000,115 @@ class DbSystemShape {
     if (minStorageCount != null) 'minStorageCount': minStorageCount!,
     if (name != null) 'name': name!,
     if (shape != null) 'shape': shape!,
+  };
+}
+
+/// A valid Oracle Database version.
+class DbVersion {
+  /// The name of the DbVersion resource in the following format:
+  /// projects/{project}/locations/{region}/dbVersions/{db_version}
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The properties of the DbVersion.
+  ///
+  /// Output only.
+  DbVersionProperties? properties;
+
+  DbVersion({this.name, this.properties});
+
+  DbVersion.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? DbVersionProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (properties != null) 'properties': properties!,
+  };
+}
+
+/// The properties of a DbVersion.
+class DbVersionProperties {
+  /// True if this version of the Oracle Database software is the latest version
+  /// for a release.
+  ///
+  /// Output only.
+  core.bool? isLatestForMajorVersion;
+
+  /// True if this version of the Oracle Database software is the preview
+  /// version.
+  ///
+  /// Output only.
+  core.bool? isPreviewDbVersion;
+
+  /// True if this version of the Oracle Database software is supported for
+  /// Upgrade.
+  ///
+  /// Output only.
+  core.bool? isUpgradeSupported;
+
+  /// True if this version of the Oracle Database software supports pluggable
+  /// databases.
+  ///
+  /// Output only.
+  core.bool? supportsPdb;
+
+  /// A valid Oracle Database version.
+  ///
+  /// Output only.
+  core.String? version;
+
+  DbVersionProperties({
+    this.isLatestForMajorVersion,
+    this.isPreviewDbVersion,
+    this.isUpgradeSupported,
+    this.supportsPdb,
+    this.version,
+  });
+
+  DbVersionProperties.fromJson(core.Map json_)
+    : this(
+        isLatestForMajorVersion: json_['isLatestForMajorVersion'] as core.bool?,
+        isPreviewDbVersion: json_['isPreviewDbVersion'] as core.bool?,
+        isUpgradeSupported: json_['isUpgradeSupported'] as core.bool?,
+        supportsPdb: json_['supportsPdb'] as core.bool?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (isLatestForMajorVersion != null)
+      'isLatestForMajorVersion': isLatestForMajorVersion!,
+    if (isPreviewDbVersion != null) 'isPreviewDbVersion': isPreviewDbVersion!,
+    if (isUpgradeSupported != null) 'isUpgradeSupported': isUpgradeSupported!,
+    if (supportsPdb != null) 'supportsPdb': supportsPdb!,
+    if (version != null) 'version': version!,
+  };
+}
+
+/// Wrapper message for the value of a defined tag.
+class DefinedTagValue {
+  /// The tags within the namespace.
+  core.Map<core.String, core.String>? tags;
+
+  DefinedTagValue({this.tags});
+
+  DefinedTagValue.fromJson(core.Map json_)
+    : this(
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (tags != null) 'tags': tags!,
   };
 }
 
@@ -5486,6 +7277,44 @@ class GiVersion {
   core.Map<core.String, core.dynamic> toJson() => {
     if (name != null) 'name': name!,
     if (version != null) 'version': version!,
+  };
+}
+
+/// The identity connector details which will allow OCI to securely access the
+/// resources in the customer project.
+class IdentityConnector {
+  /// The connection state of the identity connector.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONNECTION_STATE_UNSPECIFIED" : Default unspecified value.
+  /// - "CONNECTED" : The identity pool connection is connected.
+  /// - "PARTIALLY_CONNECTED" : The identity pool connection is partially
+  /// connected.
+  /// - "DISCONNECTED" : The identity pool connection is disconnected.
+  /// - "UNKNOWN" : The identity pool connection is in an unknown state.
+  core.String? connectionState;
+
+  /// A google managed service account on which customers can grant roles to
+  /// access resources in the customer project.
+  ///
+  /// Example:
+  /// `p176944527254-55-75119d87fd8f@gcp-sa-oci.iam.gserviceaccount.com`
+  ///
+  /// Output only.
+  core.String? serviceAgentEmail;
+
+  IdentityConnector({this.connectionState, this.serviceAgentEmail});
+
+  IdentityConnector.fromJson(core.Map json_)
+    : this(
+        connectionState: json_['connectionState'] as core.String?,
+        serviceAgentEmail: json_['serviceAgentEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (connectionState != null) 'connectionState': connectionState!,
+    if (serviceAgentEmail != null) 'serviceAgentEmail': serviceAgentEmail!,
   };
 }
 
@@ -5683,6 +7512,68 @@ class ListCloudVmClustersResponse {
   };
 }
 
+/// The response for `DatabaseCharacterSet.List`.
+class ListDatabaseCharacterSetsResponse {
+  /// The list of DatabaseCharacterSets.
+  core.List<DatabaseCharacterSet>? databaseCharacterSets;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListDatabaseCharacterSetsResponse({
+    this.databaseCharacterSets,
+    this.nextPageToken,
+  });
+
+  ListDatabaseCharacterSetsResponse.fromJson(core.Map json_)
+    : this(
+        databaseCharacterSets:
+            (json_['databaseCharacterSets'] as core.List?)
+                ?.map(
+                  (value) => DatabaseCharacterSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (databaseCharacterSets != null)
+      'databaseCharacterSets': databaseCharacterSets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// The response for `Database.List`.
+class ListDatabasesResponse {
+  /// The list of Databases.
+  core.List<Database>? databases;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListDatabasesResponse({this.databases, this.nextPageToken});
+
+  ListDatabasesResponse.fromJson(core.Map json_)
+    : this(
+        databases:
+            (json_['databases'] as core.List?)
+                ?.map(
+                  (value) => Database.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (databases != null) 'databases': databases!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// The response for `DbNode.List`.
 class ListDbNodesResponse {
   /// The list of DB Nodes
@@ -5741,6 +7632,39 @@ class ListDbServersResponse {
   };
 }
 
+/// The response for `DbSystemInitialStorageSizes.List`.
+class ListDbSystemInitialStorageSizesResponse {
+  /// The list of DbSystemInitialStorageSizes.
+  core.List<DbSystemInitialStorageSize>? dbSystemInitialStorageSizes;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListDbSystemInitialStorageSizesResponse({
+    this.dbSystemInitialStorageSizes,
+    this.nextPageToken,
+  });
+
+  ListDbSystemInitialStorageSizesResponse.fromJson(core.Map json_)
+    : this(
+        dbSystemInitialStorageSizes:
+            (json_['dbSystemInitialStorageSizes'] as core.List?)
+                ?.map(
+                  (value) => DbSystemInitialStorageSize.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dbSystemInitialStorageSizes != null)
+      'dbSystemInitialStorageSizes': dbSystemInitialStorageSizes!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// The response for `DbSystemShape.List`.
 class ListDbSystemShapesResponse {
   /// The list of Database System shapes.
@@ -5766,6 +7690,64 @@ class ListDbSystemShapesResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (dbSystemShapes != null) 'dbSystemShapes': dbSystemShapes!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// The response for `DbSystem.List`.
+class ListDbSystemsResponse {
+  /// The list of DbSystems.
+  core.List<DbSystem>? dbSystems;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListDbSystemsResponse({this.dbSystems, this.nextPageToken});
+
+  ListDbSystemsResponse.fromJson(core.Map json_)
+    : this(
+        dbSystems:
+            (json_['dbSystems'] as core.List?)
+                ?.map(
+                  (value) => DbSystem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dbSystems != null) 'dbSystems': dbSystems!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// The response for `DbVersions.List`.
+class ListDbVersionsResponse {
+  /// The list of DbVersions.
+  core.List<DbVersion>? dbVersions;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  ListDbVersionsResponse({this.dbVersions, this.nextPageToken});
+
+  ListDbVersionsResponse.fromJson(core.Map json_)
+    : this(
+        dbVersions:
+            (json_['dbVersions'] as core.List?)
+                ?.map(
+                  (value) => DbVersion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dbVersions != null) 'dbVersions': dbVersions!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
   };
 }
@@ -5970,6 +7952,35 @@ class ListOperationsResponse {
   };
 }
 
+/// The response for `PluggableDatabase.List`.
+class ListPluggableDatabasesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of PluggableDatabases.
+  core.List<PluggableDatabase>? pluggableDatabases;
+
+  ListPluggableDatabasesResponse({this.nextPageToken, this.pluggableDatabases});
+
+  ListPluggableDatabasesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        pluggableDatabases:
+            (json_['pluggableDatabases'] as core.List?)
+                ?.map(
+                  (value) => PluggableDatabase.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (pluggableDatabases != null) 'pluggableDatabases': pluggableDatabases!,
+  };
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -6119,6 +8130,14 @@ class OdbNetwork {
   /// Output only.
   core.String? entitlementId;
 
+  /// The GCP Oracle zone where OdbNetwork is hosted.
+  ///
+  /// Example: us-east4-b-r2. If not specified, the system will pick a zone
+  /// based on availability.
+  ///
+  /// Optional.
+  core.String? gcpOracleZone;
+
   /// Labels or tags associated with the resource.
   ///
   /// Optional.
@@ -6150,6 +8169,7 @@ class OdbNetwork {
   OdbNetwork({
     this.createTime,
     this.entitlementId,
+    this.gcpOracleZone,
     this.labels,
     this.name,
     this.network,
@@ -6160,6 +8180,7 @@ class OdbNetwork {
     : this(
         createTime: json_['createTime'] as core.String?,
         entitlementId: json_['entitlementId'] as core.String?,
+        gcpOracleZone: json_['gcpOracleZone'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -6171,6 +8192,7 @@ class OdbNetwork {
   core.Map<core.String, core.dynamic> toJson() => {
     if (createTime != null) 'createTime': createTime!,
     if (entitlementId != null) 'entitlementId': entitlementId!,
+    if (gcpOracleZone != null) 'gcpOracleZone': gcpOracleZone!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
     if (network != null) 'network': network!,
@@ -6326,6 +8348,323 @@ class Operation {
   };
 }
 
+/// The PluggableDatabase resource.
+///
+/// https://docs.oracle.com/en-us/iaas/api/#/en/database/20160918/PluggableDatabase/
+class PluggableDatabase {
+  /// The date and time that the PluggableDatabase was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Identifier.
+  ///
+  /// The name of the PluggableDatabase resource in the following format:
+  /// projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database}
+  core.String? name;
+
+  /// HTTPS link to OCI resources exposed to Customer via UI Interface.
+  ///
+  /// Output only.
+  core.String? ociUrl;
+
+  /// The properties of the PluggableDatabase.
+  ///
+  /// Optional.
+  PluggableDatabaseProperties? properties;
+
+  PluggableDatabase({this.createTime, this.name, this.ociUrl, this.properties});
+
+  PluggableDatabase.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        ociUrl: json_['ociUrl'] as core.String?,
+        properties:
+            json_.containsKey('properties')
+                ? PluggableDatabaseProperties.fromJson(
+                  json_['properties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (name != null) 'name': name!,
+    if (ociUrl != null) 'ociUrl': ociUrl!,
+    if (properties != null) 'properties': properties!,
+  };
+}
+
+/// The connection strings used to connect to the Oracle Database.
+class PluggableDatabaseConnectionStrings {
+  /// All connection strings to use to connect to the pluggable database.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? allConnectionStrings;
+
+  /// The default connection string to use to connect to the pluggable database.
+  ///
+  /// Optional.
+  core.String? pdbDefault;
+
+  /// The default connection string to use to connect to the pluggable database
+  /// using IP.
+  ///
+  /// Optional.
+  core.String? pdbIpDefault;
+
+  PluggableDatabaseConnectionStrings({
+    this.allConnectionStrings,
+    this.pdbDefault,
+    this.pdbIpDefault,
+  });
+
+  PluggableDatabaseConnectionStrings.fromJson(core.Map json_)
+    : this(
+        allConnectionStrings: (json_['allConnectionStrings']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        pdbDefault: json_['pdbDefault'] as core.String?,
+        pdbIpDefault: json_['pdbIpDefault'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allConnectionStrings != null)
+      'allConnectionStrings': allConnectionStrings!,
+    if (pdbDefault != null) 'pdbDefault': pdbDefault!,
+    if (pdbIpDefault != null) 'pdbIpDefault': pdbIpDefault!,
+  };
+}
+
+/// The Pluggable Database Node Level Details.
+class PluggableDatabaseNodeLevelDetails {
+  /// The Node name of the Database home.
+  ///
+  /// Required.
+  core.String? nodeName;
+
+  /// The mode that the pluggable database is in to open it.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "PLUGGABLE_DATABASE_OPEN_MODE_UNSPECIFIED" : The open mode is
+  /// unspecified.
+  /// - "READ_ONLY" : The pluggable database is opened in read-only mode.
+  /// - "READ_WRITE" : The pluggable database is opened in read-write mode.
+  /// - "MOUNTED" : The pluggable database is mounted.
+  /// - "MIGRATE" : The pluggable database is migrated.
+  core.String? openMode;
+
+  /// The OCID of the Pluggable Database.
+  ///
+  /// Required.
+  core.String? pluggableDatabaseId;
+
+  PluggableDatabaseNodeLevelDetails({
+    this.nodeName,
+    this.openMode,
+    this.pluggableDatabaseId,
+  });
+
+  PluggableDatabaseNodeLevelDetails.fromJson(core.Map json_)
+    : this(
+        nodeName: json_['nodeName'] as core.String?,
+        openMode: json_['openMode'] as core.String?,
+        pluggableDatabaseId: json_['pluggableDatabaseId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nodeName != null) 'nodeName': nodeName!,
+    if (openMode != null) 'openMode': openMode!,
+    if (pluggableDatabaseId != null)
+      'pluggableDatabaseId': pluggableDatabaseId!,
+  };
+}
+
+/// The properties of a PluggableDatabase.
+class PluggableDatabaseProperties {
+  /// The OCID of the compartment.
+  ///
+  /// Required.
+  core.String? compartmentId;
+
+  /// The Connection strings used to connect to the Oracle Database.
+  ///
+  /// Optional.
+  PluggableDatabaseConnectionStrings? connectionStrings;
+
+  /// The OCID of the CDB.
+  ///
+  /// Required.
+  core.String? containerDatabaseOcid;
+
+  /// The configuration of the Database Management service.
+  ///
+  /// Output only.
+  DatabaseManagementConfig? databaseManagementConfig;
+
+  /// Defined tags for this resource.
+  ///
+  /// Each key is predefined and scoped to a namespace.
+  ///
+  /// Optional.
+  core.Map<core.String, DefinedTagValue>? definedTags;
+
+  /// Free-form tags for this resource.
+  ///
+  /// Each tag is a simple key-value pair with no predefined name, type, or
+  /// namespace.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? freeformTags;
+
+  /// The restricted mode of the pluggable database.
+  ///
+  /// If a pluggable database is opened in restricted mode, the user needs both
+  /// create a session and have restricted session privileges to connect to it.
+  ///
+  /// Optional.
+  core.bool? isRestricted;
+
+  /// Additional information about the current lifecycle state.
+  ///
+  /// Output only.
+  core.String? lifecycleDetails;
+
+  /// The current state of the pluggable database.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "PLUGGABLE_DATABASE_LIFECYCLE_STATE_UNSPECIFIED" : The lifecycle state
+  /// is unspecified.
+  /// - "PROVISIONING" : The pluggable database is provisioning.
+  /// - "AVAILABLE" : The pluggable database is available.
+  /// - "TERMINATING" : The pluggable database is terminating.
+  /// - "TERMINATED" : The pluggable database is terminated.
+  /// - "UPDATING" : The pluggable database is updating.
+  /// - "FAILED" : The pluggable database is in a failed state.
+  /// - "RELOCATING" : The pluggable database is relocating.
+  /// - "RELOCATED" : The pluggable database is relocated.
+  /// - "REFRESHING" : The pluggable database is refreshing.
+  /// - "RESTORE_IN_PROGRESS" : The pluggable database is restoring.
+  /// - "RESTORE_FAILED" : The pluggable database restore failed.
+  /// - "BACKUP_IN_PROGRESS" : The pluggable database is backing up.
+  /// - "DISABLED" : The pluggable database is disabled.
+  core.String? lifecycleState;
+
+  /// The OCID of the pluggable database.
+  ///
+  /// Output only.
+  core.String? ocid;
+
+  /// The status of Operations Insights for this Database.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "OPERATIONS_INSIGHTS_STATE_UNSPECIFIED" : The status is not specified.
+  /// - "ENABLING" : Operations Insights is enabling.
+  /// - "ENABLED" : Operations Insights is enabled.
+  /// - "DISABLING" : Operations Insights is disabling.
+  /// - "NOT_ENABLED" : Operations Insights is not enabled.
+  /// - "FAILED_ENABLING" : Operations Insights failed to enable.
+  /// - "FAILED_DISABLING" : Operations Insights failed to disable.
+  core.String? operationsInsightsState;
+
+  /// The database name.
+  ///
+  /// Required.
+  core.String? pdbName;
+
+  /// Pluggable Database Node Level Details
+  ///
+  /// Optional.
+  core.List<PluggableDatabaseNodeLevelDetails>? pdbNodeLevelDetails;
+
+  PluggableDatabaseProperties({
+    this.compartmentId,
+    this.connectionStrings,
+    this.containerDatabaseOcid,
+    this.databaseManagementConfig,
+    this.definedTags,
+    this.freeformTags,
+    this.isRestricted,
+    this.lifecycleDetails,
+    this.lifecycleState,
+    this.ocid,
+    this.operationsInsightsState,
+    this.pdbName,
+    this.pdbNodeLevelDetails,
+  });
+
+  PluggableDatabaseProperties.fromJson(core.Map json_)
+    : this(
+        compartmentId: json_['compartmentId'] as core.String?,
+        connectionStrings:
+            json_.containsKey('connectionStrings')
+                ? PluggableDatabaseConnectionStrings.fromJson(
+                  json_['connectionStrings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        containerDatabaseOcid: json_['containerDatabaseOcid'] as core.String?,
+        databaseManagementConfig:
+            json_.containsKey('databaseManagementConfig')
+                ? DatabaseManagementConfig.fromJson(
+                  json_['databaseManagementConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        definedTags:
+            (json_['definedTags'] as core.Map<core.String, core.dynamic>?)?.map(
+              (key, value) => core.MapEntry(
+                key,
+                DefinedTagValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        freeformTags: (json_['freeformTags']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        isRestricted: json_['isRestricted'] as core.bool?,
+        lifecycleDetails: json_['lifecycleDetails'] as core.String?,
+        lifecycleState: json_['lifecycleState'] as core.String?,
+        ocid: json_['ocid'] as core.String?,
+        operationsInsightsState:
+            json_['operationsInsightsState'] as core.String?,
+        pdbName: json_['pdbName'] as core.String?,
+        pdbNodeLevelDetails:
+            (json_['pdbNodeLevelDetails'] as core.List?)
+                ?.map(
+                  (value) => PluggableDatabaseNodeLevelDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (compartmentId != null) 'compartmentId': compartmentId!,
+    if (connectionStrings != null) 'connectionStrings': connectionStrings!,
+    if (containerDatabaseOcid != null)
+      'containerDatabaseOcid': containerDatabaseOcid!,
+    if (databaseManagementConfig != null)
+      'databaseManagementConfig': databaseManagementConfig!,
+    if (definedTags != null) 'definedTags': definedTags!,
+    if (freeformTags != null) 'freeformTags': freeformTags!,
+    if (isRestricted != null) 'isRestricted': isRestricted!,
+    if (lifecycleDetails != null) 'lifecycleDetails': lifecycleDetails!,
+    if (lifecycleState != null) 'lifecycleState': lifecycleState!,
+    if (ocid != null) 'ocid': ocid!,
+    if (operationsInsightsState != null)
+      'operationsInsightsState': operationsInsightsState!,
+    if (pdbName != null) 'pdbName': pdbName!,
+    if (pdbNodeLevelDetails != null)
+      'pdbNodeLevelDetails': pdbNodeLevelDetails!,
+  };
+}
+
 /// The request for `AutonomousDatabase.Restart`.
 typedef RestartAutonomousDatabaseRequest = $Empty;
 
@@ -6447,6 +8786,37 @@ typedef Status = $Status00;
 
 /// The request for `AutonomousDatabase.Stop`.
 typedef StopAutonomousDatabaseRequest = $Empty;
+
+/// The initial storage size, in gigabytes, that is applicable for virtual
+/// machine DBSystem.
+class StorageSizeDetails {
+  /// The data storage size, in gigabytes, that is applicable for virtual
+  /// machine DBSystem.
+  ///
+  /// Output only.
+  core.int? dataStorageSizeInGbs;
+
+  /// The RECO/REDO storage size, in gigabytes, that is applicable for virtual
+  /// machine DBSystem.
+  ///
+  /// Output only.
+  core.int? recoStorageSizeInGbs;
+
+  StorageSizeDetails({this.dataStorageSizeInGbs, this.recoStorageSizeInGbs});
+
+  StorageSizeDetails.fromJson(core.Map json_)
+    : this(
+        dataStorageSizeInGbs: json_['dataStorageSizeInGbs'] as core.int?,
+        recoStorageSizeInGbs: json_['recoStorageSizeInGbs'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dataStorageSizeInGbs != null)
+      'dataStorageSizeInGbs': dataStorageSizeInGbs!,
+    if (recoStorageSizeInGbs != null)
+      'recoStorageSizeInGbs': recoStorageSizeInGbs!,
+  };
+}
 
 /// The request for `OracleDatabase.SwitchoverAutonomousDatabase`.
 class SwitchoverAutonomousDatabaseRequest {

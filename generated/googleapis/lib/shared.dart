@@ -1048,6 +1048,7 @@ class $AppAssignedTargetingOptionDetails {
   /// not explicitly listed elsewhere.
   /// - "APP_PLATFORM_LG_TV" : The app platform is LG TV.
   /// - "APP_PLATFORM_VIZIO_TV" : The app platform is VIZIO TV.
+  /// - "APP_PLATFORM_VIDAA" : The app platform is Vidaa.
   core.String? appPlatform;
 
   /// The display name of the app.
@@ -1661,6 +1662,7 @@ class $AuditAdvertiserResponse {
 /// - cloudresourcemanager:v3 : AuditLogConfig
 /// - config:v1 : AuditLogConfig
 /// - connectors:v1 : AuditLogConfig
+/// - contactcenterinsights:v1 : GoogleIamV1AuditLogConfig
 /// - contentwarehouse:v1 : GoogleIamV1AuditLogConfig
 /// - datafusion:v1 : AuditLogConfig
 /// - datamigration:v1 : AuditLogConfig
@@ -1759,36 +1761,6 @@ class $AuthRequirement {
   core.Map<core.String, core.dynamic> toJson() => {
     if (audiences != null) 'audiences': audiences!,
     if (providerId != null) 'providerId': providerId!,
-  };
-}
-
-/// Used by:
-///
-/// - aiplatform:v1 : GoogleCloudAiplatformV1GroundingChunkMapsPlaceAnswerSourcesAuthorAttribution
-/// - places:v1 : GoogleMapsPlacesV1AuthorAttribution
-class $AuthorAttribution {
-  /// Name of the author of the Photo or Review.
-  core.String? displayName;
-
-  /// Profile photo URI of the author of the Photo or Review.
-  core.String? photoUri;
-
-  /// URI of the author of the Photo or Review.
-  core.String? uri;
-
-  $AuthorAttribution({this.displayName, this.photoUri, this.uri});
-
-  $AuthorAttribution.fromJson(core.Map json_)
-    : this(
-        displayName: json_['displayName'] as core.String?,
-        photoUri: json_['photoUri'] as core.String?,
-        uri: json_['uri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (displayName != null) 'displayName': displayName!,
-    if (photoUri != null) 'photoUri': photoUri!,
-    if (uri != null) 'uri': uri!,
   };
 }
 
@@ -2428,6 +2400,29 @@ class $BusinessChainTargetingOptionDetails {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : CISAKnownExploitedVulnerabilities
+/// - ondemandscanning:v1 : CISAKnownExploitedVulnerabilities
+class $CISAKnownExploitedVulnerabilities {
+  /// Whether the vulnerability is known to have been leveraged as part of a
+  /// ransomware campaign.
+  core.String? knownRansomwareCampaignUse;
+
+  $CISAKnownExploitedVulnerabilities({this.knownRansomwareCampaignUse});
+
+  $CISAKnownExploitedVulnerabilities.fromJson(core.Map json_)
+    : this(
+        knownRansomwareCampaignUse:
+            json_['knownRansomwareCampaignUse'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (knownRansomwareCampaignUse != null)
+      'knownRansomwareCampaignUse': knownRansomwareCampaignUse!,
+  };
+}
+
+/// Used by:
+///
 /// - containeranalysis:v1 : CVSS
 /// - ondemandscanning:v1 : CVSS
 class $CVSS {
@@ -2849,6 +2844,78 @@ class $CertificateChains {
 
 /// Used by:
 ///
+/// - manufacturers:v1 : Certification
+/// - manufacturers:v1 : GoogleShoppingManufacturersV1ProductCertification
+class $Certification {
+  /// Name of the certification body.
+  ///
+  /// Required.
+  core.String? authority;
+
+  /// A unique code to identify the certification.
+  ///
+  /// Optional.
+  core.String? code;
+
+  /// A URL link to the certification.
+  ///
+  /// Optional.
+  core.String? link;
+
+  /// A URL link to the certification logo.
+  ///
+  /// Optional.
+  core.String? logo;
+
+  /// Name of the certification.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// The expiration date (UTC).
+  ///
+  /// Optional.
+  core.String? validUntil;
+
+  /// A custom value of the certification.
+  ///
+  /// Optional.
+  core.String? value;
+
+  $Certification({
+    this.authority,
+    this.code,
+    this.link,
+    this.logo,
+    this.name,
+    this.validUntil,
+    this.value,
+  });
+
+  $Certification.fromJson(core.Map json_)
+    : this(
+        authority: json_['authority'] as core.String?,
+        code: json_['code'] as core.String?,
+        link: json_['link'] as core.String?,
+        logo: json_['logo'] as core.String?,
+        name: json_['name'] as core.String?,
+        validUntil: json_['validUntil'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (authority != null) 'authority': authority!,
+    if (code != null) 'code': code!,
+    if (link != null) 'link': link!,
+    if (logo != null) 'logo': logo!,
+    if (name != null) 'name': name!,
+    if (validUntil != null) 'validUntil': validUntil!,
+    if (value != null) 'value': value!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v2 : Channel
 /// - displayvideo:v3 : Channel
 /// - displayvideo:v4 : Channel
@@ -3196,9 +3263,6 @@ class $ClusterUpgradeUpgradeStatus {
   /// upgrade doesn't finish within a certain limit, despite it's actual status.
   /// - "COMPLETE" : The upgrade has passed all post conditions (soaking). At
   /// the scope level, this means all eligible clusters are in COMPLETE status.
-  /// - "FORCED_COMPLETE" : The upgrade was forced into soaking and the soaking
-  /// time has passed. This is the equivalent of COMPLETE status for upgrades
-  /// that were forced into soaking.
   core.String? code;
 
   /// Reason for this status.
@@ -4921,6 +4985,121 @@ class $CreativeClickThroughUrl {
 
 /// Used by:
 ///
+/// - cloudkms:v1 : CryptoKeyVersionTemplate
+/// - kmsinventory:v1 : GoogleCloudKmsV1CryptoKeyVersionTemplate
+class $CryptoKeyVersionTemplate {
+  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
+  ///
+  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
+  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
+  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
+  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
+  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
+  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
+  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
+  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
+  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
+  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA256 digest.
+  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
+  /// a SHA512 digest.
+  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 2048 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 3072 bit key.
+  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
+  /// with a 4096 bit key.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
+  /// digest.
+  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
+  /// digest.
+  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
+  /// digest. Other hash functions can also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
+  /// curve is only supported for HSM protection level. Other hash functions can
+  /// also be used:
+  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
+  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
+  /// input).
+  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
+  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
+  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
+  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
+  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
+  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
+  /// encryption by an external key manager.
+  /// - "ML_KEM_768" : ML-KEM-768 (FIPS 203)
+  /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
+  /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
+  /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
+  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
+  /// Signature Algorithm, at security level 3. Randomized version.
+  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
+  /// digital signature algorithm, at security level 1. Randomized version.
+  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
+  /// hash-based digital signature algorithm, at security level 1. Randomized
+  /// pre-hash version supporting SHA256 digests.
+  core.String? algorithm;
+
+  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
+  /// template.
+  ///
+  /// Immutable. Defaults to SOFTWARE.
+  /// Possible string values are:
+  /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
+  /// - "SOFTWARE" : Crypto operations are performed in software.
+  /// - "HSM" : Crypto operations are performed in a Hardware Security Module.
+  /// - "EXTERNAL" : Crypto operations are performed by an external key manager.
+  /// - "EXTERNAL_VPC" : Crypto operations are performed in an EKM-over-VPC
+  /// backend.
+  core.String? protectionLevel;
+
+  $CryptoKeyVersionTemplate({this.algorithm, this.protectionLevel});
+
+  $CryptoKeyVersionTemplate.fromJson(core.Map json_)
+    : this(
+        algorithm: json_['algorithm'] as core.String?,
+        protectionLevel: json_['protectionLevel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (algorithm != null) 'algorithm': algorithm!,
+    if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+  };
+}
+
+/// Used by:
+///
 /// - displayvideo:v3 : CustomBiddingAlgorithmRulesError
 /// - displayvideo:v4 : CustomBiddingAlgorithmRulesError
 class $CustomBiddingAlgorithmRulesError {
@@ -6518,17 +6697,43 @@ class $DrainingMachine {
 /// - displayvideo:v3 : DuplicateLineItemRequest
 /// - displayvideo:v4 : DuplicateLineItemRequest
 class $DuplicateLineItemRequest {
+  /// Whether this line item will serve European Union political ads.
+  ///
+  /// If contains_eu_political_ads has been set to
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then
+  /// this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
+  /// not otherwise specified. This field can then be updated using the UI, API,
+  /// or Structured Data Files. *Warning*: Starting **September 8, 2025**, this
+  /// field must be set. If not, either the value
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line
+  /// item if the parent advertiser has declared that it does not serve EU
+  /// political ads, or **the request will fail**.
+  /// Possible string values are:
+  /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
+  /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
+  /// - "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING" : Does not contain EU
+  /// political advertising.
+  core.String? containsEuPoliticalAds;
+
   /// The display name of the new line item.
   ///
   /// Must be UTF-8 encoded with a maximum size of 240 bytes.
   core.String? targetDisplayName;
 
-  $DuplicateLineItemRequest({this.targetDisplayName});
+  $DuplicateLineItemRequest({
+    this.containsEuPoliticalAds,
+    this.targetDisplayName,
+  });
 
   $DuplicateLineItemRequest.fromJson(core.Map json_)
-    : this(targetDisplayName: json_['targetDisplayName'] as core.String?);
+    : this(
+        containsEuPoliticalAds: json_['containsEuPoliticalAds'] as core.String?,
+        targetDisplayName: json_['targetDisplayName'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (containsEuPoliticalAds != null)
+      'containsEuPoliticalAds': containsEuPoliticalAds!,
     if (targetDisplayName != null) 'targetDisplayName': targetDisplayName!,
   };
 }
@@ -6776,6 +6981,7 @@ class $EgressSource {
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelBatchPredictionJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelCustomJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelDataLabelingJobRequest
+/// - aiplatform:v1 : GoogleCloudAiplatformV1CancelEvaluationRunRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelHyperparameterTuningJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelNasJobRequest
 /// - aiplatform:v1 : GoogleCloudAiplatformV1CancelPipelineJobRequest
@@ -6823,11 +7029,13 @@ class $EgressSource {
 /// - alloydb:v1 : CancelOperationRequest
 /// - alloydb:v1 : Empty
 /// - alloydb:v1 : SqlImportOptions
+/// - analyticshub:v1 : ApproveQueryTemplateRequest
 /// - analyticshub:v1 : DefaultExchangeConfig
 /// - analyticshub:v1 : Empty
 /// - analyticshub:v1 : PubsubWrapper
 /// - analyticshub:v1 : RefreshSubscriptionRequest
 /// - analyticshub:v1 : RevokeSubscriptionResponse
+/// - analyticshub:v1 : SubmitQueryTemplateRequest
 /// - analyticshub:v1 : TextConfig
 /// - androiddeviceprovisioning:v1 : Empty
 /// - androidmanagement:v1 : Empty
@@ -6835,6 +7043,8 @@ class $EgressSource {
 /// - androidpublisher:v3 : AddTargetingResponse
 /// - androidpublisher:v3 : CancelAppRecoveryRequest
 /// - androidpublisher:v3 : CancelAppRecoveryResponse
+/// - androidpublisher:v3 : CancelSubscriptionPurchaseResponse
+/// - androidpublisher:v3 : DeferredItemRemoval
 /// - androidpublisher:v3 : DeployAppRecoveryRequest
 /// - androidpublisher:v3 : DeployAppRecoveryResponse
 /// - androidpublisher:v3 : DeveloperInitiatedCancellation
@@ -6884,6 +7094,7 @@ class $EgressSource {
 /// - apihub:v1 : GoogleCloudApihubV1DisablePluginRequest
 /// - apihub:v1 : GoogleCloudApihubV1EnablePluginRequest
 /// - apihub:v1 : GoogleCloudApihubV1LintSpecRequest
+/// - apihub:v1 : GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
 /// - apihub:v1 : GoogleLongrunningCancelOperationRequest
 /// - apikeys:v2 : V2UndeleteKeyRequest
 /// - appengine:v1 : Empty
@@ -6915,6 +7126,7 @@ class $EgressSource {
 /// - authorizedbuyersmarketplace:v1 : UnsubscribeAuctionPackageRequest
 /// - backupdr:v1 : CancelOperationRequest
 /// - backupdr:v1 : Empty
+/// - backupdr:v1 : SubscribeTrialRequest
 /// - baremetalsolution:v2 : DisableHyperthreadingRequest
 /// - baremetalsolution:v2 : DisableInteractiveSerialConsoleRequest
 /// - baremetalsolution:v2 : Empty
@@ -7045,6 +7257,7 @@ class $EgressSource {
 /// - composer:v1 : DatabaseFailoverRequest
 /// - composer:v1 : Empty
 /// - composer:v1 : RestartWebServerRequest
+/// - compute:v1 : InterconnectApplicationAwareInterconnectStrictPriorityPolicy
 /// - compute:v1 : ResourcePolicyDiskConsistencyGroupPolicy
 /// - config:v1 : CancelOperationRequest
 /// - config:v1 : Empty
@@ -7421,6 +7634,7 @@ class $EgressSource {
 /// - networksecurity:v1 : AuthzPolicyCustomProviderCloudIap
 /// - networksecurity:v1 : CancelOperationRequest
 /// - networksecurity:v1 : Empty
+/// - networksecurity:v1 : FirewallEndpointEndpointSettings
 /// - networkservices:v1 : CancelOperationRequest
 /// - networkservices:v1 : Empty
 /// - notebooks:v1 : BootImage
@@ -7457,9 +7671,9 @@ class $EgressSource {
 /// - parallelstore:v1 : CancelOperationRequest
 /// - parallelstore:v1 : GoogleProtobufEmpty
 /// - parametermanager:v1 : Empty
-/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest
-/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest
-/// - paymentsresellersubscription:v1 : GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
+/// - paymentsresellersubscription:v1 : ResumeSubscriptionRequest
+/// - paymentsresellersubscription:v1 : SuspendSubscriptionRequest
+/// - paymentsresellersubscription:v1 : UndoCancelSubscriptionRequest
 /// - people:v1 : Empty
 /// - playintegrity:v1 : WriteDeviceRecallResponse
 /// - privateca:v1 : CancelOperationRequest
@@ -7600,9 +7814,12 @@ class $EgressSource {
 /// - vmmigration:v1 : AdaptingOSStep
 /// - vmmigration:v1 : CancelCloneJobRequest
 /// - vmmigration:v1 : CancelCutoverJobRequest
+/// - vmmigration:v1 : CancelDiskMigrationJobRequest
 /// - vmmigration:v1 : CancelImageImportJobRequest
 /// - vmmigration:v1 : CancelOperationRequest
+/// - vmmigration:v1 : CopyingSourceDiskSnapshotStep
 /// - vmmigration:v1 : CreatingImageStep
+/// - vmmigration:v1 : CreatingSourceDiskSnapshotStep
 /// - vmmigration:v1 : DataDiskImageImport
 /// - vmmigration:v1 : DisksMigrationDisksTargetDefaults
 /// - vmmigration:v1 : DisksMigrationDisksTargetDetails
@@ -7616,7 +7833,9 @@ class $EgressSource {
 /// - vmmigration:v1 : PauseMigrationRequest
 /// - vmmigration:v1 : PostProcessingStep
 /// - vmmigration:v1 : PreparingVMDisksStep
+/// - vmmigration:v1 : ProvisioningTargetDiskStep
 /// - vmmigration:v1 : ResumeMigrationRequest
+/// - vmmigration:v1 : RunDiskMigrationJobRequest
 /// - vmmigration:v1 : ShuttingDownSourceVMStep
 /// - vmmigration:v1 : SkipOsAdaptation
 /// - vmmigration:v1 : StartMigrationRequest
@@ -8891,6 +9110,33 @@ class $Explicit {
 
 /// Used by:
 ///
+/// - containeranalysis:v1 : ExploitPredictionScoringSystem
+/// - ondemandscanning:v1 : ExploitPredictionScoringSystem
+class $ExploitPredictionScoringSystem {
+  /// The percentile of the current score, the proportion of all scored
+  /// vulnerabilities with the same or a lower EPSS score
+  core.double? percentile;
+
+  /// The EPSS score representing the probability \[0-1\] of exploitation in the
+  /// wild in the next 30 days
+  core.double? score;
+
+  $ExploitPredictionScoringSystem({this.percentile, this.score});
+
+  $ExploitPredictionScoringSystem.fromJson(core.Map json_)
+    : this(
+        percentile: (json_['percentile'] as core.num?)?.toDouble(),
+        score: (json_['score'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (percentile != null) 'percentile': percentile!,
+    if (score != null) 'score': score!,
+  };
+}
+
+/// Used by:
+///
 /// - logging:v2 : Exponential
 /// - monitoring:v3 : Exponential
 class $Exponential {
@@ -9004,6 +9250,7 @@ class $ExportOptions01 {
 /// - compute:v1 : Expr
 /// - config:v1 : Expr
 /// - connectors:v1 : Expr
+/// - contactcenterinsights:v1 : GoogleTypeExpr
 /// - containeranalysis:v1 : Expr
 /// - contentwarehouse:v1 : GoogleTypeExpr
 /// - datacatalog:v1 : Expr
@@ -16594,6 +16841,8 @@ class $Parallelstore {
 
 /// Used by:
 ///
+/// - compute:v1 : BackendBucketParams
+/// - compute:v1 : BackendServiceParams
 /// - compute:v1 : FirewallParams
 /// - compute:v1 : NetworkParams
 /// - compute:v1 : RouteParams
@@ -17309,6 +17558,7 @@ class $Permissions {
 /// - compute:v1 : TestPermissionsResponse
 /// - config:v1 : TestIamPermissionsResponse
 /// - connectors:v1 : TestIamPermissionsResponse
+/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsResponse
 /// - containeranalysis:v1 : TestIamPermissionsResponse
 /// - datacatalog:v1 : TestIamPermissionsResponse
 /// - datafusion:v1 : TestIamPermissionsResponse
@@ -18819,6 +19069,24 @@ class $RemarketingConfig {
 
 /// Used by:
 ///
+/// - compute:v1 : NetworksRemovePeeringRequest
+/// - compute:v1 : NetworksRequestRemovePeeringRequest
+class $RemovePeeringRequest {
+  /// Name of the peering, which should conform to RFC1035.
+  core.String? name;
+
+  $RemovePeeringRequest({this.name});
+
+  $RemovePeeringRequest.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Used by:
+///
 /// - docs:v1 : ReplaceAllTextResponse
 /// - slides:v1 : ReplaceAllTextResponse
 class $ReplaceAllTextResponse {
@@ -19808,6 +20076,9 @@ class $SdfConfig {
   /// guide\](/display-video/api/structured-data-file/v8-migration-guide) before
   /// migrating to this version.
   /// - "SDF_VERSION_8_1" : SDF version 8.1.
+  /// - "SDF_VERSION_9" : SDF version 9. Read the \[v9 migration
+  /// guide\](/display-video/api/structured-data-file/v9-migration-guide) before
+  /// migrating to this version.
   core.String? version;
 
   $SdfConfig({this.adminEmail, this.version});
@@ -20223,8 +20494,28 @@ class $ServiceMeshCondition {
   /// cluster.
   /// - "MODERNIZATION_COMPLETED" : Modernization is completed for a cluster.
   /// - "MODERNIZATION_ABORTED" : Modernization is aborted for a cluster.
+  /// - "MODERNIZATION_PREPARING" : Preparing cluster so that its workloads can
+  /// be migrated.
+  /// - "MODERNIZATION_STALLED" : Modernization is stalled for a cluster.
+  /// - "MODERNIZATION_PREPARED" : Cluster has been prepared for its workloads
+  /// to be migrated.
+  /// - "MODERNIZATION_MIGRATING_WORKLOADS" : Migrating the cluster's workloads
+  /// to the new implementation.
+  /// - "MODERNIZATION_ROLLING_BACK_CLUSTER" : Rollback is in progress for
+  /// modernization of a cluster.
   /// - "MODERNIZATION_WILL_BE_SCHEDULED" : Modernization will be scheduled for
   /// a fleet.
+  /// - "MODERNIZATION_MANUAL" : Fleet is opted out from automated
+  /// modernization.
+  /// - "MODERNIZATION_ELIGIBLE" : Fleet is eligible for modernization.
+  /// - "MODERNIZATION_MODERNIZING" : Modernization of one or more clusters in a
+  /// fleet is in progress.
+  /// - "MODERNIZATION_MODERNIZED_SOAKING" : Modernization of all the fleet's
+  /// clusters is complete. Soaking before finalizing the modernization.
+  /// - "MODERNIZATION_FINALIZED" : Modernization is finalized for all clusters
+  /// in a fleet. Rollback is no longer allowed.
+  /// - "MODERNIZATION_ROLLING_BACK_FLEET" : Rollback is in progress for
+  /// modernization of all clusters in a fleet.
   core.String? code;
 
   /// A short summary about the issue.
@@ -21924,6 +22215,7 @@ class $TenantProjectRequest {
 /// - cloudtasks:v2 : TestIamPermissionsRequest
 /// - config:v1 : TestIamPermissionsRequest
 /// - connectors:v1 : TestIamPermissionsRequest
+/// - contactcenterinsights:v1 : GoogleIamV1TestIamPermissionsRequest
 /// - containeranalysis:v1 : TestIamPermissionsRequest
 /// - datacatalog:v1 : TestIamPermissionsRequest
 /// - datafusion:v1 : TestIamPermissionsRequest
@@ -23706,9 +23998,10 @@ class $YoutubeAndPartnersBiddingStrategy {
   /// When the bidding strategy is assigned at the line item level, this field
   /// is only applicable for the following strategy types: *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *
-  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` When the bidding
-  /// strategy is assigned at the ad group level, this field is only applicable
-  /// for the following strategy types: *
+  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` *
+  /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_SHARE_OF_VOICE` When
+  /// the bidding strategy is assigned at the ad group level, this field is only
+  /// applicable for the following strategy types: *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` *
   /// `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` *

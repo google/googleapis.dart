@@ -284,6 +284,7 @@ api.Cluster buildCluster() {
     o.satisfiesPzs = true;
     o.state = 'foo';
     o.tlsConfig = buildTlsConfig();
+    o.updateOptions = buildUpdateOptions();
     o.updateTime = 'foo';
   }
   buildCounterCluster--;
@@ -303,6 +304,7 @@ void checkCluster(api.Cluster o) {
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
     unittest.expect(o.state!, unittest.equals('foo'));
     checkTlsConfig(o.tlsConfig!);
+    checkUpdateOptions(o.updateOptions!);
     unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterCluster--;
@@ -1771,6 +1773,25 @@ void checkTrustConfig(api.TrustConfig o) {
   buildCounterTrustConfig--;
 }
 
+core.int buildCounterUpdateOptions = 0;
+api.UpdateOptions buildUpdateOptions() {
+  final o = api.UpdateOptions();
+  buildCounterUpdateOptions++;
+  if (buildCounterUpdateOptions < 3) {
+    o.allowBrokerDownscaleOnClusterUpscale = true;
+  }
+  buildCounterUpdateOptions--;
+  return o;
+}
+
+void checkUpdateOptions(api.UpdateOptions o) {
+  buildCounterUpdateOptions++;
+  if (buildCounterUpdateOptions < 3) {
+    unittest.expect(o.allowBrokerDownscaleOnClusterUpscale!, unittest.isTrue);
+  }
+  buildCounterUpdateOptions--;
+}
+
 core.int buildCounterUpdateSchemaConfigRequest = 0;
 api.UpdateSchemaConfigRequest buildUpdateSchemaConfigRequest() {
   final o = api.UpdateSchemaConfigRequest();
@@ -2464,6 +2485,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkTrustConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-UpdateOptions', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUpdateOptions();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UpdateOptions.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUpdateOptions(od);
     });
   });
 
@@ -5334,6 +5366,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.ManagedKafkaApi(mock).projects.locations.schemaRegistries;
       final arg_parent = 'foo';
+      final arg_view = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -5368,6 +5401,7 @@ void main() {
               );
             }
           }
+          unittest.expect(queryMap['view']!.first, unittest.equals(arg_view));
           unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
@@ -5379,7 +5413,11 @@ void main() {
         }),
         true,
       );
-      final response = await res.list(arg_parent, $fields: arg_$fields);
+      final response = await res.list(
+        arg_parent,
+        view: arg_view,
+        $fields: arg_$fields,
+      );
       checkListSchemaRegistriesResponse(
         response as api.ListSchemaRegistriesResponse,
       );

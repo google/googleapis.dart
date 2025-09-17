@@ -4780,6 +4780,8 @@ class SendRfpRequest {
   CriteriaTargeting? geoTargeting;
 
   /// Inventory sizes to be targeted.
+  ///
+  /// Only PIXEL inventory size type is supported.
   InventorySizeTargeting? inventorySizeTargeting;
 
   /// A message that is sent to the publisher.

@@ -731,6 +731,7 @@ api.AutoRenewingPlan buildAutoRenewingPlan() {
     o.autoRenewEnabled = true;
     o.installmentDetails = buildInstallmentPlan();
     o.priceChangeDetails = buildSubscriptionItemPriceChangeDetails();
+    o.priceStepUpConsentDetails = buildPriceStepUpConsentDetails();
     o.recurringPrice = buildMoney();
   }
   buildCounterAutoRenewingPlan--;
@@ -743,6 +744,7 @@ void checkAutoRenewingPlan(api.AutoRenewingPlan o) {
     unittest.expect(o.autoRenewEnabled!, unittest.isTrue);
     checkInstallmentPlan(o.installmentDetails!);
     checkSubscriptionItemPriceChangeDetails(o.priceChangeDetails!);
+    checkPriceStepUpConsentDetails(o.priceStepUpConsentDetails!);
     checkMoney(o.recurringPrice!);
   }
   buildCounterAutoRenewingPlan--;
@@ -1839,6 +1841,45 @@ void checkCancelOneTimeProductOfferRequest(
   buildCounterCancelOneTimeProductOfferRequest--;
 }
 
+core.int buildCounterCancelSubscriptionPurchaseRequest = 0;
+api.CancelSubscriptionPurchaseRequest buildCancelSubscriptionPurchaseRequest() {
+  final o = api.CancelSubscriptionPurchaseRequest();
+  buildCounterCancelSubscriptionPurchaseRequest++;
+  if (buildCounterCancelSubscriptionPurchaseRequest < 3) {
+    o.cancellationContext = buildCancellationContext();
+  }
+  buildCounterCancelSubscriptionPurchaseRequest--;
+  return o;
+}
+
+void checkCancelSubscriptionPurchaseRequest(
+  api.CancelSubscriptionPurchaseRequest o,
+) {
+  buildCounterCancelSubscriptionPurchaseRequest++;
+  if (buildCounterCancelSubscriptionPurchaseRequest < 3) {
+    checkCancellationContext(o.cancellationContext!);
+  }
+  buildCounterCancelSubscriptionPurchaseRequest--;
+}
+
+core.int buildCounterCancelSubscriptionPurchaseResponse = 0;
+api.CancelSubscriptionPurchaseResponse
+buildCancelSubscriptionPurchaseResponse() {
+  final o = api.CancelSubscriptionPurchaseResponse();
+  buildCounterCancelSubscriptionPurchaseResponse++;
+  if (buildCounterCancelSubscriptionPurchaseResponse < 3) {}
+  buildCounterCancelSubscriptionPurchaseResponse--;
+  return o;
+}
+
+void checkCancelSubscriptionPurchaseResponse(
+  api.CancelSubscriptionPurchaseResponse o,
+) {
+  buildCounterCancelSubscriptionPurchaseResponse++;
+  if (buildCounterCancelSubscriptionPurchaseResponse < 3) {}
+  buildCounterCancelSubscriptionPurchaseResponse--;
+}
+
 core.int buildCounterCancelSurveyResult = 0;
 api.CancelSurveyResult buildCancelSurveyResult() {
   final o = api.CancelSurveyResult();
@@ -1883,6 +1924,25 @@ void checkCanceledStateContext(api.CanceledStateContext o) {
     checkUserInitiatedCancellation(o.userInitiatedCancellation!);
   }
   buildCounterCanceledStateContext--;
+}
+
+core.int buildCounterCancellationContext = 0;
+api.CancellationContext buildCancellationContext() {
+  final o = api.CancellationContext();
+  buildCounterCancellationContext++;
+  if (buildCounterCancellationContext < 3) {
+    o.cancellationType = 'foo';
+  }
+  buildCounterCancellationContext--;
+  return o;
+}
+
+void checkCancellationContext(api.CancellationContext o) {
+  buildCounterCancellationContext++;
+  if (buildCounterCancellationContext < 3) {
+    unittest.expect(o.cancellationType!, unittest.equals('foo'));
+  }
+  buildCounterCancellationContext--;
 }
 
 core.int buildCounterCancellationEvent = 0;
@@ -2182,6 +2242,21 @@ void checkDeactivateSubscriptionOfferRequest(
     unittest.expect(o.productId!, unittest.equals('foo'));
   }
   buildCounterDeactivateSubscriptionOfferRequest--;
+}
+
+core.int buildCounterDeferredItemRemoval = 0;
+api.DeferredItemRemoval buildDeferredItemRemoval() {
+  final o = api.DeferredItemRemoval();
+  buildCounterDeferredItemRemoval++;
+  if (buildCounterDeferredItemRemoval < 3) {}
+  buildCounterDeferredItemRemoval--;
+  return o;
+}
+
+void checkDeferredItemRemoval(api.DeferredItemRemoval o) {
+  buildCounterDeferredItemRemoval++;
+  if (buildCounterDeferredItemRemoval < 3) {}
+  buildCounterDeferredItemRemoval--;
 }
 
 core.int buildCounterDeferredItemReplacement = 0;
@@ -5448,6 +5523,29 @@ void checkPrice(api.Price o) {
   buildCounterPrice--;
 }
 
+core.int buildCounterPriceStepUpConsentDetails = 0;
+api.PriceStepUpConsentDetails buildPriceStepUpConsentDetails() {
+  final o = api.PriceStepUpConsentDetails();
+  buildCounterPriceStepUpConsentDetails++;
+  if (buildCounterPriceStepUpConsentDetails < 3) {
+    o.consentDeadlineTime = 'foo';
+    o.newPrice = buildMoney();
+    o.state = 'foo';
+  }
+  buildCounterPriceStepUpConsentDetails--;
+  return o;
+}
+
+void checkPriceStepUpConsentDetails(api.PriceStepUpConsentDetails o) {
+  buildCounterPriceStepUpConsentDetails++;
+  if (buildCounterPriceStepUpConsentDetails < 3) {
+    unittest.expect(o.consentDeadlineTime!, unittest.equals('foo'));
+    checkMoney(o.newPrice!);
+    unittest.expect(o.state!, unittest.equals('foo'));
+  }
+  buildCounterPriceStepUpConsentDetails--;
+}
+
 core.int buildCounterProcessedEvent = 0;
 api.ProcessedEvent buildProcessedEvent() {
   final o = api.ProcessedEvent();
@@ -7067,6 +7165,7 @@ api.SubscriptionPurchaseLineItem buildSubscriptionPurchaseLineItem() {
   buildCounterSubscriptionPurchaseLineItem++;
   if (buildCounterSubscriptionPurchaseLineItem < 3) {
     o.autoRenewingPlan = buildAutoRenewingPlan();
+    o.deferredItemRemoval = buildDeferredItemRemoval();
     o.deferredItemReplacement = buildDeferredItemReplacement();
     o.expiryTime = 'foo';
     o.latestSuccessfulOrderId = 'foo';
@@ -7083,6 +7182,7 @@ void checkSubscriptionPurchaseLineItem(api.SubscriptionPurchaseLineItem o) {
   buildCounterSubscriptionPurchaseLineItem++;
   if (buildCounterSubscriptionPurchaseLineItem < 3) {
     checkAutoRenewingPlan(o.autoRenewingPlan!);
+    checkDeferredItemRemoval(o.deferredItemRemoval!);
     checkDeferredItemReplacement(o.deferredItemReplacement!);
     unittest.expect(o.expiryTime!, unittest.equals('foo'));
     unittest.expect(o.latestSuccessfulOrderId!, unittest.equals('foo'));
@@ -9161,6 +9261,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CancelSubscriptionPurchaseRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelSubscriptionPurchaseRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelSubscriptionPurchaseRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCancelSubscriptionPurchaseRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-CancelSubscriptionPurchaseResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancelSubscriptionPurchaseResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancelSubscriptionPurchaseResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCancelSubscriptionPurchaseResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-CancelSurveyResult', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCancelSurveyResult();
@@ -9180,6 +9302,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCanceledStateContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-CancellationContext', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCancellationContext();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CancellationContext.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCancellationContext(od);
     });
   });
 
@@ -9312,6 +9445,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDeactivateSubscriptionOfferRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DeferredItemRemoval', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeferredItemRemoval();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeferredItemRemoval.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDeferredItemRemoval(od);
     });
   });
 
@@ -10582,6 +10726,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPrice(od);
+    });
+  });
+
+  unittest.group('obj-schema-PriceStepUpConsentDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPriceStepUpConsentDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PriceStepUpConsentDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPriceStepUpConsentDetails(od);
     });
   });
 
@@ -22596,6 +22751,101 @@ void main() {
   });
 
   unittest.group('resource-PurchasesSubscriptionsv2Resource', () {
+    unittest.test('method--cancel', () async {
+      final mock = HttpServerMock();
+      final res = api.AndroidPublisherApi(mock).purchases.subscriptionsv2;
+      final arg_request = buildCancelSubscriptionPurchaseRequest();
+      final arg_packageName = 'foo';
+      final arg_token = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.CancelSubscriptionPurchaseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkCancelSubscriptionPurchaseRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 33),
+            unittest.equals('androidpublisher/v3/applications/'),
+          );
+          pathOffset += 33;
+          index = path.indexOf(
+            '/purchases/subscriptionsv2/tokens/',
+            pathOffset,
+          );
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_packageName'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 34),
+            unittest.equals('/purchases/subscriptionsv2/tokens/'),
+          );
+          pathOffset += 34;
+          index = path.indexOf(':cancel', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_token'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 7),
+            unittest.equals(':cancel'),
+          );
+          pathOffset += 7;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildCancelSubscriptionPurchaseResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.cancel(
+        arg_request,
+        arg_packageName,
+        arg_token,
+        $fields: arg_$fields,
+      );
+      checkCancelSubscriptionPurchaseResponse(
+        response as api.CancelSubscriptionPurchaseResponse,
+      );
+    });
+
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
       final res = api.AndroidPublisherApi(mock).purchases.subscriptionsv2;

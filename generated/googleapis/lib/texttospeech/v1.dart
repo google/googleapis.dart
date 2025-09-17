@@ -860,6 +860,12 @@ class SynthesisInput {
   /// Only applicable for multi-speaker synthesis.
   MultiSpeakerMarkup? multiSpeakerMarkup;
 
+  /// This is system instruction supported only for controllable voice models.
+  ///
+  /// If used, we will pass text to Flash TTS as is. Can only used with Flash
+  /// TTS. What AI Studio calls Style Instructions.
+  core.String? prompt;
+
   /// The SSML document to be synthesized.
   ///
   /// The SSML document must be valid and well-formed. Otherwise the RPC will
@@ -874,6 +880,7 @@ class SynthesisInput {
     this.customPronunciations,
     this.markup,
     this.multiSpeakerMarkup,
+    this.prompt,
     this.ssml,
     this.text,
   });
@@ -895,6 +902,7 @@ class SynthesisInput {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        prompt: json_['prompt'] as core.String?,
         ssml: json_['ssml'] as core.String?,
         text: json_['text'] as core.String?,
       );
@@ -904,6 +912,7 @@ class SynthesisInput {
       'customPronunciations': customPronunciations!,
     if (markup != null) 'markup': markup!,
     if (multiSpeakerMarkup != null) 'multiSpeakerMarkup': multiSpeakerMarkup!,
+    if (prompt != null) 'prompt': prompt!,
     if (ssml != null) 'ssml': ssml!,
     if (text != null) 'text': text!,
   };
@@ -1190,6 +1199,14 @@ class VoiceSelectionParams {
   /// Required.
   core.String? languageCode;
 
+  /// The name of the model.
+  ///
+  /// If set, the service will choose the model matching the specified
+  /// configuration.
+  ///
+  /// Optional.
+  core.String? modelName;
+
   /// The name of the voice.
   ///
   /// If both the name and the gender are not set, the service will choose a
@@ -1225,6 +1242,7 @@ class VoiceSelectionParams {
   VoiceSelectionParams({
     this.customVoice,
     this.languageCode,
+    this.modelName,
     this.name,
     this.ssmlGender,
     this.voiceClone,
@@ -1239,6 +1257,7 @@ class VoiceSelectionParams {
                 )
                 : null,
         languageCode: json_['languageCode'] as core.String?,
+        modelName: json_['modelName'] as core.String?,
         name: json_['name'] as core.String?,
         ssmlGender: json_['ssmlGender'] as core.String?,
         voiceClone:
@@ -1252,6 +1271,7 @@ class VoiceSelectionParams {
   core.Map<core.String, core.dynamic> toJson() => {
     if (customVoice != null) 'customVoice': customVoice!,
     if (languageCode != null) 'languageCode': languageCode!,
+    if (modelName != null) 'modelName': modelName!,
     if (name != null) 'name': name!,
     if (ssmlGender != null) 'ssmlGender': ssmlGender!,
     if (voiceClone != null) 'voiceClone': voiceClone!,

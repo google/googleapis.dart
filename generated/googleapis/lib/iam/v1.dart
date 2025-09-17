@@ -410,9 +410,8 @@ class LocationsWorkforcePoolsResource {
   /// [location] - The location of the pool. Format: `locations/{location}`.
   /// Value must have pattern `^locations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of pools to return. If unspecified, at
-  /// most 50 pools will be returned. The maximum value is 1000; values above
-  /// 1000 are truncated to 1000.
+  /// [pageSize] - The maximum number of pools to return. The default value is
+  /// 50. The maximum value is 100.
   ///
   /// [pageToken] - A page token, received from a previous `ListWorkforcePools`
   /// call. Provide this to retrieve the subsequent page.
@@ -4088,7 +4087,7 @@ class ProjectsLocationsWorkloadIdentityPoolsNamespacesManagedIdentitiesResource 
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the managed identity.
+  /// [name] - Identifier. The resource name of the managed identity.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/namespaces/\[^/\]+/managedIdentities/\[^/\]+$`.
   ///
@@ -4658,7 +4657,7 @@ class ProjectsLocationsWorkloadIdentityPoolsProvidersResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The resource name of the provider.
+  /// [name] - Identifier. The resource name of the provider.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/workloadIdentityPools/\[^/\]+/providers/\[^/\]+$`.
   ///
@@ -10502,8 +10501,8 @@ class WorkforcePoolProvider {
   /// Optional.
   core.String? displayName;
 
-  /// Time after which the workload pool provider will be permanently purged and
-  /// cannot be recovered.
+  /// Time after which the workforce identity pool provider will be permanently
+  /// purged and cannot be recovered.
   ///
   /// Output only.
   core.String? expireTime;
@@ -10518,8 +10517,7 @@ class WorkforcePoolProvider {
   /// or attribute condition expressions. To keep extended group memberships up
   /// to date, extended groups are retrieved when the user signs in and at
   /// regular intervals during the user's active session. Each user identity in
-  /// the workforce identity pool must map to a specific, unique Microsoft Entra
-  /// ID user.
+  /// the workforce identity pool must map to a unique Microsoft Entra ID user.
   ///
   /// Optional.
   GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client?
@@ -11004,12 +11002,16 @@ class WorkloadIdentityPoolManagedIdentity {
   /// A description of the managed identity.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Whether the managed identity is disabled.
   ///
   /// If disabled, credentials may no longer be issued for the identity, however
   /// existing credentials will still be accepted until they expire.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// Time after which the managed identity will be permanently purged and
@@ -11018,9 +11020,9 @@ class WorkloadIdentityPoolManagedIdentity {
   /// Output only.
   core.String? expireTime;
 
-  /// The resource name of the managed identity.
+  /// Identifier.
   ///
-  /// Output only.
+  /// The resource name of the managed identity.
   core.String? name;
 
   /// The state of the managed identity.
@@ -11069,6 +11071,8 @@ class WorkloadIdentityPoolNamespace {
   /// A description of the namespace.
   ///
   /// Cannot exceed 256 characters.
+  ///
+  /// Optional.
   core.String? description;
 
   /// Whether the namespace is disabled.
@@ -11076,6 +11080,8 @@ class WorkloadIdentityPoolNamespace {
   /// If disabled, credentials may no longer be issued for identities within
   /// this namespace, however existing credentials will still be accepted until
   /// they expire.
+  ///
+  /// Optional.
   core.bool? disabled;
 
   /// Time after which the namespace will be permanently purged and cannot be
@@ -11238,9 +11244,9 @@ class WorkloadIdentityPoolProvider {
   /// Output only.
   core.String? expireTime;
 
-  /// The resource name of the provider.
+  /// Identifier.
   ///
-  /// Output only.
+  /// The resource name of the provider.
   core.String? name;
 
   /// An OpenId Connect 1.0 identity provider.

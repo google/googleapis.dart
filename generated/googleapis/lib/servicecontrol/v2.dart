@@ -138,10 +138,10 @@ class ServicesResource {
   /// be called after the operations have been executed. For more information,
   /// see
   /// [Telemetry Reporting](https://cloud.google.com/service-infrastructure/docs/telemetry-reporting).
-  /// NOTE: The telemetry reporting has a hard limit of 1000 operations and 1MB
-  /// per Report call. It is recommended to have no more than 100 operations per
-  /// call. This method requires the `servicemanagement.services.report`
-  /// permission on the specified service. For more information, see
+  /// NOTE: The telemetry reporting has a hard limit of 100 operations and 1MB
+  /// per Report call. This method requires the
+  /// `servicemanagement.services.report` permission on the specified service.
+  /// For more information, see
   /// [Service Control API Access Control](https://cloud.google.com/service-infrastructure/docs/service-control/access-control).
   ///
   /// [request] - The metadata request object.
@@ -404,6 +404,9 @@ class Auth {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? claims;
 
+  /// Attributes of the OAuth token associated with the request.
+  Oauth? oauth;
+
   /// The authorized presenter of the credential.
   ///
   /// Reflects the optional Authorized Presenter (`azp`) claim within a JWT or
@@ -423,6 +426,7 @@ class Auth {
     this.accessLevels,
     this.audiences,
     this.claims,
+    this.oauth,
     this.presenter,
     this.principal,
   });
@@ -441,6 +445,12 @@ class Auth {
             json_.containsKey('claims')
                 ? json_['claims'] as core.Map<core.String, core.dynamic>
                 : null,
+        oauth:
+            json_.containsKey('oauth')
+                ? Oauth.fromJson(
+                  json_['oauth'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         presenter: json_['presenter'] as core.String?,
         principal: json_['principal'] as core.String?,
       );
@@ -449,6 +459,7 @@ class Auth {
     if (accessLevels != null) 'accessLevels': accessLevels!,
     if (audiences != null) 'audiences': audiences!,
     if (claims != null) 'claims': claims!,
+    if (oauth != null) 'oauth': oauth!,
     if (presenter != null) 'presenter': presenter!,
     if (principal != null) 'principal': principal!,
   };
@@ -552,6 +563,26 @@ class CheckResponse {
     if (dynamicMetadata != null) 'dynamicMetadata': dynamicMetadata!,
     if (headers != null) 'headers': headers!,
     if (status != null) 'status': status!,
+  };
+}
+
+/// This message defines attributes associated with OAuth credentials.
+class Oauth {
+  /// The optional OAuth client ID.
+  ///
+  /// This is the unique public identifier issued by an authorization server to
+  /// a registered client application. Empty string is equivalent to no oauth
+  /// client id. WARNING: This is for MCP tools/call and tools/list
+  /// authorization and not for general use.
+  core.String? clientId;
+
+  Oauth({this.clientId});
+
+  Oauth.fromJson(core.Map json_)
+    : this(clientId: json_['clientId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clientId != null) 'clientId': clientId!,
   };
 }
 

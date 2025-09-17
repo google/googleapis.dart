@@ -2763,6 +2763,60 @@ class ProjectsLocationsCatalogsPlacementsResource {
   ProjectsLocationsCatalogsPlacementsResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Performs a conversational search.
+  ///
+  /// This feature is only available for users who have Conversational Search
+  /// enabled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [placement] - Required. The resource name of the search engine placement,
+  /// such as `projects / *
+  /// /locations/global/catalogs/default_catalog/placements/default_search` or
+  /// `projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+  /// This field is used to identify the serving config name and the set of
+  /// models that will be used to make the search.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/placements/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ConversationalSearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ConversationalSearchResponse>
+  conversationalSearch(
+    GoogleCloudRetailV2ConversationalSearchRequest request,
+    core.String placement, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$placement') + ':conversationalSearch';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ConversationalSearchResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Makes a recommendation prediction.
   ///
   /// [request] - The metadata request object.
@@ -2924,6 +2978,60 @@ class ProjectsLocationsCatalogsServingConfigsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudRetailV2ServingConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Performs a conversational search.
+  ///
+  /// This feature is only available for users who have Conversational Search
+  /// enabled.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [placement] - Required. The resource name of the search engine placement,
+  /// such as `projects / *
+  /// /locations/global/catalogs/default_catalog/placements/default_search` or
+  /// `projects / *
+  /// /locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
+  /// This field is used to identify the serving config name and the set of
+  /// models that will be used to make the search.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/catalogs/\[^/\]+/servingConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudRetailV2ConversationalSearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudRetailV2ConversationalSearchResponse>
+  conversationalSearch(
+    GoogleCloudRetailV2ConversationalSearchRequest request,
+    core.String placement, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v2/' + core.Uri.encodeFull('$placement') + ':conversationalSearch';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudRetailV2ConversationalSearchResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -5442,6 +5550,641 @@ class GoogleCloudRetailV2ConversationalSearchCustomizationConfig {
       'intentClassificationConfig': intentClassificationConfig!,
     if (retailerDisplayName != null)
       'retailerDisplayName': retailerDisplayName!,
+  };
+}
+
+/// Request message for ConversationalSearchService.ConversationalSearch method.
+class GoogleCloudRetailV2ConversationalSearchRequest {
+  /// The branch resource name, such as `projects / *
+  /// /locations/global/catalogs/default_catalog/branches/0`.
+  ///
+  /// Use "default_branch" as the branch ID or leave this field empty, to search
+  /// products under the default branch.
+  ///
+  /// Required.
+  core.String? branch;
+
+  /// This field specifies the conversation id, which maintains the state of the
+  /// conversation between client side and server side.
+  ///
+  /// Use the value from the previous
+  /// ConversationalSearchResponse.conversation_id. For the initial request,
+  /// this should be empty.
+  ///
+  /// Optional.
+  core.String? conversationId;
+
+  /// This field specifies all conversational filtering related parameters.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec?
+  conversationalFilteringSpec;
+
+  /// The categories associated with a category page.
+  ///
+  /// Must be set for category navigation queries to achieve good search
+  /// quality. The format should be the same as UserEvent.page_categories; To
+  /// represent full path of category, use '\>' sign to separate different
+  /// hierarchies. If '\>' is part of the category name, replace it with other
+  /// character(s). Category pages include special pages such as sales or
+  /// promotions. For instance, a special sale page may have the category
+  /// hierarchy: "pageCategories" : \["Sales \> 2017 Black Friday Deals"\].
+  ///
+  /// Optional.
+  core.List<core.String>? pageCategories;
+
+  /// Raw search query to be searched for.
+  ///
+  /// If this field is empty, the request is considered a category browsing
+  /// request.
+  ///
+  /// Optional.
+  core.String? query;
+
+  /// The safety settings to be applied to the generated content.
+  ///
+  /// Optional.
+  core.List<GoogleCloudRetailV2SafetySetting>? safetySettings;
+
+  /// Search parameters.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2ConversationalSearchRequestSearchParams? searchParams;
+
+  /// User information.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2UserInfo? userInfo;
+
+  /// The user labels applied to a resource must meet the following
+  /// requirements: * Each resource can have multiple labels, up to a maximum of
+  /// 64.
+  ///
+  /// * Each label must be a key-value pair. * Keys have a minimum length of 1
+  /// character and a maximum length of 63 characters and cannot be empty.
+  /// Values can be empty and have a maximum length of 63 characters. * Keys and
+  /// values can contain only lowercase letters, numeric characters,
+  /// underscores, and dashes. All characters must use UTF-8 encoding, and
+  /// international characters are allowed. * The key portion of a label must be
+  /// unique. However, you can use the same key with multiple resources. * Keys
+  /// must start with a lowercase letter or international character. See
+  /// [Google Cloud Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements)
+  /// for more details.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? userLabels;
+
+  /// A unique identifier for tracking visitors.
+  ///
+  /// For example, this could be implemented with an HTTP cookie, which should
+  /// be able to uniquely identify a visitor on a single device. This unique
+  /// identifier should not change if the visitor logs in or out of the website.
+  /// This should be the same identifier as UserEvent.visitor_id. The field must
+  /// be a UTF-8 encoded string with a length limit of 128 characters.
+  /// Otherwise, an INVALID_ARGUMENT error is returned.
+  ///
+  /// Required.
+  core.String? visitorId;
+
+  GoogleCloudRetailV2ConversationalSearchRequest({
+    this.branch,
+    this.conversationId,
+    this.conversationalFilteringSpec,
+    this.pageCategories,
+    this.query,
+    this.safetySettings,
+    this.searchParams,
+    this.userInfo,
+    this.userLabels,
+    this.visitorId,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchRequest.fromJson(core.Map json_)
+    : this(
+        branch: json_['branch'] as core.String?,
+        conversationId: json_['conversationId'] as core.String?,
+        conversationalFilteringSpec:
+            json_.containsKey('conversationalFilteringSpec')
+                ? GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec.fromJson(
+                  json_['conversationalFilteringSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        pageCategories:
+            (json_['pageCategories'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        query: json_['query'] as core.String?,
+        safetySettings:
+            (json_['safetySettings'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRetailV2SafetySetting.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        searchParams:
+            json_.containsKey('searchParams')
+                ? GoogleCloudRetailV2ConversationalSearchRequestSearchParams.fromJson(
+                  json_['searchParams'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userInfo:
+            json_.containsKey('userInfo')
+                ? GoogleCloudRetailV2UserInfo.fromJson(
+                  json_['userInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        visitorId: json_['visitorId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (branch != null) 'branch': branch!,
+    if (conversationId != null) 'conversationId': conversationId!,
+    if (conversationalFilteringSpec != null)
+      'conversationalFilteringSpec': conversationalFilteringSpec!,
+    if (pageCategories != null) 'pageCategories': pageCategories!,
+    if (query != null) 'query': query!,
+    if (safetySettings != null) 'safetySettings': safetySettings!,
+    if (searchParams != null) 'searchParams': searchParams!,
+    if (userInfo != null) 'userInfo': userInfo!,
+    if (userLabels != null) 'userLabels': userLabels!,
+    if (visitorId != null) 'visitorId': visitorId!,
+  };
+}
+
+/// This field specifies all conversational filtering related parameters
+/// addition to conversational retail search.
+class GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec {
+  /// Mode to control Conversational Filtering.
+  ///
+  /// Defaults to Mode.DISABLED if it's unset.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MODE_UNSPECIFIED" : Default value.
+  /// - "DISABLED" : Disables Conversational Filtering when using Conversational
+  /// Search.
+  /// - "ENABLED" : Enables Conversational Filtering when using Conversational
+  /// Search.
+  /// - "CONVERSATIONAL_FILTER_ONLY" : Enables Conversational Filtering without
+  /// Conversational Search.
+  core.String? conversationalFilteringMode;
+
+  /// This field is deprecated.
+  ///
+  /// Please use ConversationalFilteringSpec.conversational_filtering_mode
+  /// instead.
+  ///
+  /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.bool? enableConversationalFiltering;
+
+  /// This field specifies the current user answer during the conversational
+  /// filtering search.
+  ///
+  /// It can be either user selected from suggested answers or user input plain
+  /// text.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2ConversationalSearchRequestUserAnswer? userAnswer;
+
+  GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec({
+    this.conversationalFilteringMode,
+    this.enableConversationalFiltering,
+    this.userAnswer,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchRequestConversationalFilteringSpec.fromJson(
+    core.Map json_,
+  ) : this(
+        conversationalFilteringMode:
+            json_['conversationalFilteringMode'] as core.String?,
+        enableConversationalFiltering:
+            json_['enableConversationalFiltering'] as core.bool?,
+        userAnswer:
+            json_.containsKey('userAnswer')
+                ? GoogleCloudRetailV2ConversationalSearchRequestUserAnswer.fromJson(
+                  json_['userAnswer'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (conversationalFilteringMode != null)
+      'conversationalFilteringMode': conversationalFilteringMode!,
+    if (enableConversationalFiltering != null)
+      'enableConversationalFiltering': enableConversationalFiltering!,
+    if (userAnswer != null) 'userAnswer': userAnswer!,
+  };
+}
+
+/// Search parameters.
+class GoogleCloudRetailV2ConversationalSearchRequestSearchParams {
+  /// The boost spec to specify the boosting of search results.
+  ///
+  /// The syntax of the boost spec is the same as SearchRequest.boost_spec.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2SearchRequestBoostSpec? boostSpec;
+
+  /// The canonical filter string to restrict search results.
+  ///
+  /// The syntax of the canonical filter string is the same as
+  /// SearchRequest.canonical_filter.
+  ///
+  /// Optional.
+  core.String? canonicalFilter;
+
+  /// The filter string to restrict search results.
+  ///
+  /// The syntax of the filter string is the same as SearchRequest.filter.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  /// The sort string to specify the sorting of search results.
+  ///
+  /// The syntax of the sort string is the same as SearchRequest.sort.
+  ///
+  /// Optional.
+  core.String? sortBy;
+
+  GoogleCloudRetailV2ConversationalSearchRequestSearchParams({
+    this.boostSpec,
+    this.canonicalFilter,
+    this.filter,
+    this.sortBy,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchRequestSearchParams.fromJson(
+    core.Map json_,
+  ) : this(
+        boostSpec:
+            json_.containsKey('boostSpec')
+                ? GoogleCloudRetailV2SearchRequestBoostSpec.fromJson(
+                  json_['boostSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        canonicalFilter: json_['canonicalFilter'] as core.String?,
+        filter: json_['filter'] as core.String?,
+        sortBy: json_['sortBy'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (boostSpec != null) 'boostSpec': boostSpec!,
+    if (canonicalFilter != null) 'canonicalFilter': canonicalFilter!,
+    if (filter != null) 'filter': filter!,
+    if (sortBy != null) 'sortBy': sortBy!,
+  };
+}
+
+/// This field specifies the current user answer during the conversational
+/// filtering search.
+///
+/// This can be either user selected from suggested answers or user input plain
+/// text.
+class GoogleCloudRetailV2ConversationalSearchRequestUserAnswer {
+  /// This field specifies the selected answer during the conversational search.
+  ///
+  /// This should be a subset of
+  /// ConversationalSearchResponse.followup_question.suggested_answers.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer?
+  selectedAnswer;
+
+  /// This field specifies the incremental input text from the user during the
+  /// conversational search.
+  core.String? textAnswer;
+
+  GoogleCloudRetailV2ConversationalSearchRequestUserAnswer({
+    this.selectedAnswer,
+    this.textAnswer,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchRequestUserAnswer.fromJson(
+    core.Map json_,
+  ) : this(
+        selectedAnswer:
+            json_.containsKey('selectedAnswer')
+                ? GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer.fromJson(
+                  json_['selectedAnswer']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textAnswer: json_['textAnswer'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (selectedAnswer != null) 'selectedAnswer': selectedAnswer!,
+    if (textAnswer != null) 'textAnswer': textAnswer!,
+  };
+}
+
+/// This field specifies the selected answers during the conversational search.
+class GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer {
+  /// This field specifies the selected answer which is a attribute key-value.
+  ///
+  /// Optional.
+  GoogleCloudRetailV2ProductAttributeValue? productAttributeValue;
+
+  GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer({
+    this.productAttributeValue,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer.fromJson(
+    core.Map json_,
+  ) : this(
+        productAttributeValue:
+            json_.containsKey('productAttributeValue')
+                ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                  json_['productAttributeValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (productAttributeValue != null)
+      'productAttributeValue': productAttributeValue!,
+  };
+}
+
+/// Response message for ConversationalSearchService.ConversationalSearch
+/// method.
+class GoogleCloudRetailV2ConversationalSearchResponse {
+  /// Conversation UUID.
+  ///
+  /// This field will be stored in client side storage to maintain the
+  /// conversation session with server and will be used for next search
+  /// request's ConversationalSearchRequest.conversation_id to restore
+  /// conversation state in server.
+  core.String? conversationId;
+
+  /// This field specifies all related information that is needed on client side
+  /// for UI rendering of conversational filtering search.
+  GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult?
+  conversationalFilteringResult;
+
+  /// The conversational answer-based text response generated by the Server.
+  core.String? conversationalTextResponse;
+
+  /// The conversational followup question generated for Intent refinement.
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion?
+  followupQuestion;
+
+  /// The proposed refined search queries.
+  ///
+  /// They can be used to fetch the relevant search results. When using
+  /// CONVERSATIONAL_FILTER_ONLY mode, the refined_query from search response
+  /// will be populated here.
+  core.List<GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch>?
+  refinedSearch;
+
+  /// The state of the response generation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unknown.
+  /// - "STREAMING" : Response generation is being streamed.
+  /// - "SUCCEEDED" : Response generation has succeeded.
+  core.String? state;
+
+  /// The types Retail classifies the search query as.
+  ///
+  /// Supported values are: - "ORDER_SUPPORT" - "SIMPLE_PRODUCT_SEARCH" -
+  /// "INTENT_REFINEMENT" - "PRODUCT_DETAILS" - "PRODUCT_COMPARISON" -
+  /// "DEALS_AND_COUPONS" - "STORE_RELEVANT" - "BLOCKLISTED" - "BEST_PRODUCT" -
+  /// "RETAIL_SUPPORT" - "DISABLED"
+  core.List<core.String>? userQueryTypes;
+
+  GoogleCloudRetailV2ConversationalSearchResponse({
+    this.conversationId,
+    this.conversationalFilteringResult,
+    this.conversationalTextResponse,
+    this.followupQuestion,
+    this.refinedSearch,
+    this.state,
+    this.userQueryTypes,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchResponse.fromJson(core.Map json_)
+    : this(
+        conversationId: json_['conversationId'] as core.String?,
+        conversationalFilteringResult:
+            json_.containsKey('conversationalFilteringResult')
+                ? GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult.fromJson(
+                  json_['conversationalFilteringResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        conversationalTextResponse:
+            json_['conversationalTextResponse'] as core.String?,
+        followupQuestion:
+            json_.containsKey('followupQuestion')
+                ? GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion.fromJson(
+                  json_['followupQuestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        refinedSearch:
+            (json_['refinedSearch'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+        userQueryTypes:
+            (json_['userQueryTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (conversationId != null) 'conversationId': conversationId!,
+    if (conversationalFilteringResult != null)
+      'conversationalFilteringResult': conversationalFilteringResult!,
+    if (conversationalTextResponse != null)
+      'conversationalTextResponse': conversationalTextResponse!,
+    if (followupQuestion != null) 'followupQuestion': followupQuestion!,
+    if (refinedSearch != null) 'refinedSearch': refinedSearch!,
+    if (state != null) 'state': state!,
+    if (userQueryTypes != null) 'userQueryTypes': userQueryTypes!,
+  };
+}
+
+/// This field specifies all related information that is needed on client side
+/// for UI rendering of conversational filtering search.
+class GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult {
+  /// This is the incremental additional filters implied from the current user
+  /// answer.
+  ///
+  /// User should add the suggested addition filters to the previous
+  /// ConversationalSearchRequest.search_params.filter and SearchRequest.filter,
+  /// and use the merged filter in the follow up requests.
+  GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter?
+  additionalFilter;
+
+  /// The conversational filtering question.
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion?
+  followupQuestion;
+
+  GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult({
+    this.additionalFilter,
+    this.followupQuestion,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResult.fromJson(
+    core.Map json_,
+  ) : this(
+        additionalFilter:
+            json_.containsKey('additionalFilter')
+                ? GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter.fromJson(
+                  json_['additionalFilter']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        followupQuestion:
+            json_.containsKey('followupQuestion')
+                ? GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion.fromJson(
+                  json_['followupQuestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (additionalFilter != null) 'additionalFilter': additionalFilter!,
+    if (followupQuestion != null) 'followupQuestion': followupQuestion!,
+  };
+}
+
+/// Additional filter that client side need to apply.
+class GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter {
+  /// Product attribute value, including an attribute key and an attribute
+  /// value.
+  ///
+  /// Other types can be added here in the future.
+  GoogleCloudRetailV2ProductAttributeValue? productAttributeValue;
+
+  GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter({
+    this.productAttributeValue,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter.fromJson(
+    core.Map json_,
+  ) : this(
+        productAttributeValue:
+            json_.containsKey('productAttributeValue')
+                ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                  json_['productAttributeValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (productAttributeValue != null)
+      'productAttributeValue': productAttributeValue!,
+  };
+}
+
+/// The conversational followup question generated for Intent refinement.
+class GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion {
+  /// The conversational followup question generated for Intent refinement.
+  core.String? followupQuestion;
+
+  /// The answer options provided to client for the follow-up question.
+  core.List<
+    GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer
+  >?
+  suggestedAnswers;
+
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion({
+    this.followupQuestion,
+    this.suggestedAnswers,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion.fromJson(
+    core.Map json_,
+  ) : this(
+        followupQuestion: json_['followupQuestion'] as core.String?,
+        suggestedAnswers:
+            (json_['suggestedAnswers'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (followupQuestion != null) 'followupQuestion': followupQuestion!,
+    if (suggestedAnswers != null) 'suggestedAnswers': suggestedAnswers!,
+  };
+}
+
+/// Suggested answers to the follow-up question.
+///
+/// If it's numerical attribute, only ProductAttributeInterval will be set. If
+/// it's textual attribute, only productAttributeValue will be set.
+class GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer {
+  /// Product attribute value, including an attribute key and an attribute
+  /// value.
+  ///
+  /// Other types can be added here in the future.
+  GoogleCloudRetailV2ProductAttributeValue? productAttributeValue;
+
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer({
+    this.productAttributeValue,
+  });
+
+  GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestionSuggestedAnswer.fromJson(
+    core.Map json_,
+  ) : this(
+        productAttributeValue:
+            json_.containsKey('productAttributeValue')
+                ? GoogleCloudRetailV2ProductAttributeValue.fromJson(
+                  json_['productAttributeValue']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (productAttributeValue != null)
+      'productAttributeValue': productAttributeValue!,
+  };
+}
+
+/// The proposed refined search for intent-refinement/bundled shopping
+/// conversation.
+///
+/// When using CONVERSATIONAL_FILTER_ONLY mode, the refined_query from search
+/// response will be populated here.
+class GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch {
+  /// The query to be used for search.
+  core.String? query;
+
+  GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch({this.query});
+
+  GoogleCloudRetailV2ConversationalSearchResponseRefinedSearch.fromJson(
+    core.Map json_,
+  ) : this(query: json_['query'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (query != null) 'query': query!,
   };
 }
 
@@ -9396,6 +10139,62 @@ class GoogleCloudRetailV2RuleTwowaySynonymsAction {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (synonyms != null) 'synonyms': synonyms!,
+  };
+}
+
+/// Safety settings.
+class GoogleCloudRetailV2SafetySetting {
+  /// Harm category.
+  /// Possible string values are:
+  /// - "HARM_CATEGORY_UNSPECIFIED" : The harm category is unspecified.
+  /// - "HARM_CATEGORY_HATE_SPEECH" : The harm category is hate speech.
+  /// - "HARM_CATEGORY_DANGEROUS_CONTENT" : The harm category is dangerous
+  /// content.
+  /// - "HARM_CATEGORY_HARASSMENT" : The harm category is harassment.
+  /// - "HARM_CATEGORY_SEXUALLY_EXPLICIT" : The harm category is sexually
+  /// explicit content.
+  /// - "HARM_CATEGORY_CIVIC_INTEGRITY" : The harm category is civic integrity.
+  core.String? category;
+
+  /// Specify if the threshold is used for probability or severity score.
+  ///
+  /// If not specified, the threshold is used for probability score.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HARM_BLOCK_METHOD_UNSPECIFIED" : The harm block method is unspecified.
+  /// - "SEVERITY" : The harm block method uses both probability and severity
+  /// scores.
+  /// - "PROBABILITY" : The harm block method uses the probability score.
+  core.String? method;
+
+  /// The harm block threshold.
+  /// Possible string values are:
+  /// - "HARM_BLOCK_THRESHOLD_UNSPECIFIED" : Unspecified harm block threshold.
+  /// - "BLOCK_LOW_AND_ABOVE" : Block low threshold and above (i.e. block more).
+  /// - "BLOCK_MEDIUM_AND_ABOVE" : Block medium threshold and above.
+  /// - "BLOCK_ONLY_HIGH" : Block only high threshold (i.e. block less).
+  /// - "BLOCK_NONE" : Block none.
+  /// - "OFF" : Turn off the safety filter.
+  core.String? threshold;
+
+  GoogleCloudRetailV2SafetySetting({
+    this.category,
+    this.method,
+    this.threshold,
+  });
+
+  GoogleCloudRetailV2SafetySetting.fromJson(core.Map json_)
+    : this(
+        category: json_['category'] as core.String?,
+        method: json_['method'] as core.String?,
+        threshold: json_['threshold'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (category != null) 'category': category!,
+    if (method != null) 'method': method!,
+    if (threshold != null) 'threshold': threshold!,
   };
 }
 

@@ -8722,6 +8722,8 @@ class NonBillableWinningBidStatusRow {
   /// reported from the client during playback.
   /// - "LOST_IN_MEDIATION" : The buyer was not billed because the ad was
   /// outplaced in the mediation waterfall.
+  /// - "OVERDELIVERED_IMPRESSION" : The impression was not billed because it
+  /// exceeded a guaranteed deal delivery goal.
   core.String? status;
 
   NonBillableWinningBidStatusRow({

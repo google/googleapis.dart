@@ -2120,9 +2120,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -4049,7 +4049,8 @@ class CSIVolumeSource {
   ///
   /// For Google Cloud Storage volumes, the following attributes are supported:
   /// * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run
-  /// Service identity must have access to this bucket.
+  /// Service identity must have access to this bucket. * mountOptions:
+  /// comma-separated list of mount options to pass to the gcsfuse.
   core.Map<core.String, core.String>? volumeAttributes;
 
   CSIVolumeSource({this.driver, this.readOnly, this.volumeAttributes});
@@ -5716,15 +5717,18 @@ class HTTPHeader {
 /// Allocations can be done to a specific Revision name, or pointing to the
 /// latest Ready Revision.
 class InstanceSplit {
-  /// Uses the "status.latestReadyRevisionName" to determine the traffic target.
+  /// Uses the "status.latestReadyRevisionName" to determine the instance split
+  /// target.
   ///
-  /// When it changes, traffic will automatically migrate from the prior "latest
-  /// ready" revision to the new one.
+  /// When it changes, workloads will automatically migrate from the prior
+  /// "latest ready" revision to the new one.
   core.bool? latestRevision;
 
   /// Specifies percent of the instance split to this Revision.
   ///
   /// This defaults to zero if unspecified.
+  ///
+  /// Optional.
   core.int? percent;
 
   /// Revision to which to assign this portion of instances.
@@ -7310,6 +7314,8 @@ class RevisionSpec {
   /// Runtime.
   ///
   /// Leave unset for default.
+  ///
+  /// Optional.
   core.String? runtimeClassName;
 
   /// Email address of the IAM service account associated with the revision of
@@ -9051,7 +9057,7 @@ class WorkerPoolStatus {
   /// * `Ready`: `True` when all underlying resources are ready.
   core.List<GoogleCloudRunV1Condition>? conditions;
 
-  /// Holds the configured traffic distribution.
+  /// Holds the configured workload distribution.
   ///
   /// These entries will always contain RevisionName references. When
   /// ConfigurationName appears in the spec, this will hold the

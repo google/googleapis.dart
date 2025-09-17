@@ -12782,6 +12782,24 @@ class Advertiser {
   /// Output only.
   core.String? advertiserId;
 
+  /// Whether this advertiser contains line items that serve European Union
+  /// political ads.
+  ///
+  /// If this field is set to `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING`, then
+  /// the following will happen: * Any new line items created under this
+  /// advertiser will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
+  /// not otherwise specified. * Any existing line items under this advertiser
+  /// that do not have a set value be updated to
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` within a day.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
+  /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
+  /// - "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING" : Does not contain EU
+  /// political advertising.
+  core.String? containsEuPoliticalAds;
+
   /// Creative related settings of the advertiser.
   ///
   /// Required.
@@ -12864,6 +12882,7 @@ class Advertiser {
   Advertiser({
     this.adServerConfig,
     this.advertiserId,
+    this.containsEuPoliticalAds,
     this.creativeConfig,
     this.dataAccessConfig,
     this.displayName,
@@ -12887,6 +12906,7 @@ class Advertiser {
                 )
                 : null,
         advertiserId: json_['advertiserId'] as core.String?,
+        containsEuPoliticalAds: json_['containsEuPoliticalAds'] as core.String?,
         creativeConfig:
             json_.containsKey('creativeConfig')
                 ? AdvertiserCreativeConfig.fromJson(
@@ -12931,6 +12951,8 @@ class Advertiser {
   core.Map<core.String, core.dynamic> toJson() => {
     if (adServerConfig != null) 'adServerConfig': adServerConfig!,
     if (advertiserId != null) 'advertiserId': advertiserId!,
+    if (containsEuPoliticalAds != null)
+      'containsEuPoliticalAds': containsEuPoliticalAds!,
     if (creativeConfig != null) 'creativeConfig': creativeConfig!,
     if (dataAccessConfig != null) 'dataAccessConfig': dataAccessConfig!,
     if (displayName != null) 'displayName': displayName!,
@@ -15373,7 +15395,8 @@ class BulkUpdateLineItemsRequest {
 
   /// A field mask identifying which fields to update.
   ///
-  /// Only the following fields are currently supported: * entityStatus
+  /// Only the following fields are currently supported: * entityStatus *
+  /// containsEuPoliticalAds
   ///
   /// Required.
   core.String? updateMask;
@@ -16372,6 +16395,9 @@ class CreateSdfDownloadTaskRequest {
   /// guide\](/display-video/api/structured-data-file/v8-migration-guide) before
   /// migrating to this version.
   /// - "SDF_VERSION_8_1" : SDF version 8.1.
+  /// - "SDF_VERSION_9" : SDF version 9. Read the \[v9 migration
+  /// guide\](/display-video/api/structured-data-file/v9-migration-guide) before
+  /// migrating to this version.
   core.String? version;
 
   CreateSdfDownloadTaskRequest({
@@ -18343,6 +18369,24 @@ typedef GenderTargetingOptionDetails = $GenderTargetingOptionDetails;
 
 /// Request message for LineItemService.GenerateDefaultLineItem.
 class GenerateDefaultLineItemRequest {
+  /// Whether this line item will serve European Union political ads.
+  ///
+  /// If contains_eu_political_ads has been set to
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then
+  /// this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
+  /// not otherwise specified. This field can then be updated using the UI, API,
+  /// or Structured Data Files. *Warning*: Starting **September 8, 2025**, this
+  /// field must be set. If not, either the value
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned to the line
+  /// item if the parent advertiser has declared that it does not serve EU
+  /// political ads, or **the request will fail**.
+  /// Possible string values are:
+  /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
+  /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
+  /// - "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING" : Does not contain EU
+  /// political advertising.
+  core.String? containsEuPoliticalAds;
+
   /// The display name of the line item.
   ///
   /// Must be UTF-8 encoded with a maximum size of 240 bytes.
@@ -18436,6 +18480,7 @@ class GenerateDefaultLineItemRequest {
   MobileApp? mobileApp;
 
   GenerateDefaultLineItemRequest({
+    this.containsEuPoliticalAds,
     this.displayName,
     this.insertionOrderId,
     this.lineItemType,
@@ -18444,6 +18489,7 @@ class GenerateDefaultLineItemRequest {
 
   GenerateDefaultLineItemRequest.fromJson(core.Map json_)
     : this(
+        containsEuPoliticalAds: json_['containsEuPoliticalAds'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         insertionOrderId: json_['insertionOrderId'] as core.String?,
         lineItemType: json_['lineItemType'] as core.String?,
@@ -18456,6 +18502,8 @@ class GenerateDefaultLineItemRequest {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (containsEuPoliticalAds != null)
+      'containsEuPoliticalAds': containsEuPoliticalAds!,
     if (displayName != null) 'displayName': displayName!,
     if (insertionOrderId != null) 'insertionOrderId': insertionOrderId!,
     if (lineItemType != null) 'lineItemType': lineItemType!,
@@ -20197,6 +20245,24 @@ class LineItem {
   /// Output only.
   core.String? campaignId;
 
+  /// Whether this line item will serve European Union political ads.
+  ///
+  /// If contains_eu_political_ads has been set to
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` in the parent advertiser, then
+  /// this field will be assigned `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` if
+  /// not otherwise specified. This field can then be updated using the UI, API,
+  /// or Structured Data Files. *Warning*: Starting **September 8, 2025**, this
+  /// field must be set when creating a new line item. If not, either the value
+  /// `DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING` will be assigned if the parent
+  /// advertiser has declared that it does not serve EU political ads, or **the
+  /// `advertisers.lineItems.create` request will fail**.
+  /// Possible string values are:
+  /// - "EU_POLITICAL_ADVERTISING_STATUS_UNKNOWN" : Unknown.
+  /// - "CONTAINS_EU_POLITICAL_ADVERTISING" : Contains EU political advertising.
+  /// - "DOES_NOT_CONTAIN_EU_POLITICAL_ADVERTISING" : Does not contain EU
+  /// political advertising.
+  core.String? containsEuPoliticalAds;
+
   /// The conversion tracking setting of the line item.
   ConversionCountingConfig? conversionCounting;
 
@@ -20422,6 +20488,7 @@ class LineItem {
     this.bidStrategy,
     this.budget,
     this.campaignId,
+    this.containsEuPoliticalAds,
     this.conversionCounting,
     this.creativeIds,
     this.displayName,
@@ -20461,6 +20528,7 @@ class LineItem {
                 )
                 : null,
         campaignId: json_['campaignId'] as core.String?,
+        containsEuPoliticalAds: json_['containsEuPoliticalAds'] as core.String?,
         conversionCounting:
             json_.containsKey('conversionCounting')
                 ? ConversionCountingConfig.fromJson(
@@ -20552,6 +20620,8 @@ class LineItem {
     if (bidStrategy != null) 'bidStrategy': bidStrategy!,
     if (budget != null) 'budget': budget!,
     if (campaignId != null) 'campaignId': campaignId!,
+    if (containsEuPoliticalAds != null)
+      'containsEuPoliticalAds': containsEuPoliticalAds!,
     if (conversionCounting != null) 'conversionCounting': conversionCounting!,
     if (creativeIds != null) 'creativeIds': creativeIds!,
     if (displayName != null) 'displayName': displayName!,

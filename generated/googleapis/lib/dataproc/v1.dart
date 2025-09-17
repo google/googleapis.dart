@@ -2269,7 +2269,7 @@ class ProjectsLocationsSessionTemplatesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the session template.
+  /// [name] - Required. Identifier. The resource name of the session template.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/sessionTemplates/\[^/\]+$`.
   ///
@@ -7532,13 +7532,25 @@ class AnalyzeBatchRequest {
   /// Optional.
   core.String? requestId;
 
-  AnalyzeBatchRequest({this.requestId});
+  /// The requestor ID is used to identify if the request comes from a GCA
+  /// investigation or the old Ask Gemini Experience.
+  ///
+  ///
+  ///
+  /// Optional.
+  core.String? requestorId;
+
+  AnalyzeBatchRequest({this.requestId, this.requestorId});
 
   AnalyzeBatchRequest.fromJson(core.Map json_)
-    : this(requestId: json_['requestId'] as core.String?);
+    : this(
+        requestId: json_['requestId'] as core.String?,
+        requestorId: json_['requestorId'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (requestId != null) 'requestId': requestId!,
+    if (requestorId != null) 'requestorId': requestorId!,
   };
 }
 
@@ -8648,14 +8660,14 @@ class ClusterConfig {
   /// Optional.
   core.List<AuxiliaryNodeGroup>? auxiliaryNodeGroups;
 
-  /// The tier of the cluster.
+  /// The cluster tier.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "CLUSTER_TIER_UNSPECIFIED" : Not set. Works the same as
   /// CLUSTER_TIER_STANDARD.
-  /// - "CLUSTER_TIER_STANDARD" : Standard dataproc cluster.
-  /// - "CLUSTER_TIER_PREMIUM" : Premium dataproc cluster.
+  /// - "CLUSTER_TIER_STANDARD" : Standard Dataproc cluster.
+  /// - "CLUSTER_TIER_PREMIUM" : Premium Dataproc cluster.
   core.String? clusterTier;
 
   /// The type of the cluster.
@@ -16538,6 +16550,8 @@ class SessionTemplate {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// The resource name of the session template.
   ///
   /// Required.

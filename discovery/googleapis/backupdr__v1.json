@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250723",
+    "revision": "20250910",
     "rootUrl": "https://backupdr.googleapis.com/",
     "servicePath": "",
     "title": "Backup and DR Service API",
@@ -138,6 +138,31 @@
                                 "https://www.googleapis.com/auth/cloud-platform"
                             ]
                         },
+                        "getTrial": {
+                            "description": "Gets the Trial state for a given project",
+                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/trial",
+                            "httpMethod": "GET",
+                            "id": "backupdr.projects.locations.getTrial",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "Required. The name of the trial to retrieve.",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/locations/[^/]+/trial$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "response": {
+                                "$ref": "Trial"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
                         "list": {
                             "description": "Lists information about the supported locations for this service.",
                             "flatPath": "v1/projects/{projectsId}/locations",
@@ -148,7 +173,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -2058,6 +2083,38 @@
                                     ]
                                 }
                             }
+                        },
+                        "trial": {
+                            "methods": {
+                                "subscribe": {
+                                    "description": "Subscribes to a trial for a project",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/trial:subscribe",
+                                    "httpMethod": "POST",
+                                    "id": "backupdr.projects.locations.trial.subscribe",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. The parent resource where this trial will be created.",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/trial:subscribe",
+                                    "request": {
+                                        "$ref": "SubscribeTrialRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Trial"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
                         }
                     }
                 }
@@ -3135,7 +3192,7 @@
             "id": "BackupRule",
             "properties": {
                 "backupRetentionDays": {
-                    "description": "Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload specific for all other rules.",
+                    "description": "Required. Configures the duration for which backup data will be kept. It is defined in “days”. The value should be greater than or equal to minimum enforced retention of the backup vault. Minimum value is 1 and maximum value is 36159 for custom retention on-demand backup. Minimum and maximum values are workload specific for all other rules. Note: Longer retention can lead to higher storage costs post introductory trial. We recommend starting with a short duration of 3 days or less.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -3186,7 +3243,7 @@
                     "type": "string"
                 },
                 "backupMinimumEnforcedRetentionDuration": {
-                    "description": "Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended.",
+                    "description": "Required. The default and minimum enforced retention for each backup within the backup vault. The enforced retention for each backup can be extended. Note: Longer minimum enforced retention period impacts potential storage costs post introductory trial. We recommend starting with a short duration of 3 days or less.",
                     "format": "google-duration",
                     "type": "string"
                 },
@@ -4031,6 +4088,10 @@
             "description": "DiskBackupProperties represents the properties of a Disk backup.",
             "id": "DiskBackupProperties",
             "properties": {
+                "accessMode": {
+                    "description": "The access mode of the source disk.",
+                    "type": "string"
+                },
                 "architecture": {
                     "description": "The architecture of the source disk. Valid values are ARM64 or X86_64.",
                     "enum": [
@@ -4049,6 +4110,10 @@
                     "description": "A description of the source disk.",
                     "type": "string"
                 },
+                "enableConfidentialCompute": {
+                    "description": "Indicates whether the source disk is using confidential compute mode.",
+                    "type": "boolean"
+                },
                 "guestOsFeature": {
                     "description": "A list of guest OS features that are applicable to this backup.",
                     "items": {
@@ -4056,12 +4121,34 @@
                     },
                     "type": "array"
                 },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "The labels of the source disk.",
+                    "type": "object"
+                },
                 "licenses": {
                     "description": "A list of publicly available licenses that are applicable to this backup. This is applicable if the original image had licenses attached, e.g. Windows image.",
                     "items": {
                         "type": "string"
                     },
                     "type": "array"
+                },
+                "physicalBlockSizeBytes": {
+                    "description": "The physical block size of the source disk.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "provisionedIops": {
+                    "description": "The number of IOPS provisioned for the source disk.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "provisionedThroughput": {
+                    "description": "The number of throughput provisioned for the source disk.",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "region": {
                     "description": "Region and zone are mutually exclusive fields. The URL of the region of the source disk.",
@@ -4081,6 +4168,10 @@
                 },
                 "sourceDisk": {
                     "description": "The source disk used to create this backup.",
+                    "type": "string"
+                },
+                "storagePool": {
+                    "description": "The storage pool of the source disk.",
                     "type": "string"
                 },
                 "type": {
@@ -4933,6 +5024,30 @@
             },
             "type": "object"
         },
+        "LocationMetadata": {
+            "id": "LocationMetadata",
+            "properties": {
+                "unsupportedFeatures": {
+                    "items": {
+                        "enum": [
+                            "FEATURE_UNSPECIFIED",
+                            "MANAGEMENT_SERVER",
+                            "COMPUTE_INSTANCE",
+                            "PROTECTION_SUMMARY"
+                        ],
+                        "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "ManagementServer": {
             "description": "ManagementServer describes a single BackupDR ManagementServer instance.",
             "id": "ManagementServer",
@@ -5472,12 +5587,16 @@
                     "enum": [
                         "RESOURCE_TYPE_UNSPECIFIED",
                         "CLOUD_SQL_INSTANCE",
-                        "COMPUTE_ENGINE_VM"
+                        "COMPUTE_ENGINE_VM",
+                        "COMPUTE_ENGINE_DISK",
+                        "COMPUTE_ENGINE_REGIONAL_DISK"
                     ],
                     "enumDescriptions": [
                         "Resource type not set.",
                         "Cloud SQL instance.",
-                        "Compute Engine VM."
+                        "Compute Engine VM.",
+                        "Compute Engine Disk.",
+                        "Compute Engine Regional Disk."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -5895,6 +6014,12 @@
             },
             "type": "object"
         },
+        "SubscribeTrialRequest": {
+            "description": "Request message for subscribing to a trial.",
+            "id": "SubscribeTrialRequest",
+            "properties": {},
+            "type": "object"
+        },
         "Tags": {
             "description": "A set of instance tags.",
             "id": "Tags",
@@ -5944,6 +6069,65 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Trial": {
+            "description": "Represents a Trial for a project.",
+            "id": "Trial",
+            "properties": {
+                "endReason": {
+                    "description": "Output only. The reason for ending the trial.",
+                    "enum": [
+                        "END_REASON_UNSPECIFIED",
+                        "MOVE_TO_PAID",
+                        "DISCONTINUED"
+                    ],
+                    "enumDescriptions": [
+                        "End reason not set.",
+                        "Trial is deliberately ended by the user to transition to paid usage.",
+                        "Trial is discontinued before expiration."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "endTime": {
+                    "description": "Output only. The time when the trial will expire.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Identifier. The resource name of the trial. Format: projects/{project}/locations/{location}/trial",
+                    "type": "string"
+                },
+                "startTime": {
+                    "description": "Output only. The time when the trial was subscribed.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The state of the trial.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "SUBSCRIBED",
+                        "UNSUBSCRIBED",
+                        "EXPIRED",
+                        "ELIGIBLE",
+                        "NOT_ELIGIBLE"
+                    ],
+                    "enumDescriptions": [
+                        "State not set.",
+                        "Trial is subscribed.",
+                        "Trial is unsubscribed before expiration.",
+                        "Trial is expired post 30 days of subscription.",
+                        "Trial is eligible for enablement.",
+                        "Trial is not eligible for enablement."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"

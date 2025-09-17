@@ -1029,73 +1029,7 @@ class Capacity {
 }
 
 /// Description of a certification.
-class Certification {
-  /// Name of the certification body.
-  ///
-  /// Required.
-  core.String? authority;
-
-  /// A unique code to identify the certification.
-  ///
-  /// Required.
-  core.String? code;
-
-  /// A URL link to the certification.
-  ///
-  /// Optional.
-  core.String? link;
-
-  /// A URL link to the certification logo.
-  ///
-  /// Optional.
-  core.String? logo;
-
-  /// Name of the certification.
-  ///
-  /// Required.
-  core.String? name;
-
-  /// The expiration date (UTC).
-  ///
-  /// Optional.
-  core.String? validUntil;
-
-  /// A custom value of the certification.
-  ///
-  /// Optional.
-  core.String? value;
-
-  Certification({
-    this.authority,
-    this.code,
-    this.link,
-    this.logo,
-    this.name,
-    this.validUntil,
-    this.value,
-  });
-
-  Certification.fromJson(core.Map json_)
-    : this(
-        authority: json_['authority'] as core.String?,
-        code: json_['code'] as core.String?,
-        link: json_['link'] as core.String?,
-        logo: json_['logo'] as core.String?,
-        name: json_['name'] as core.String?,
-        validUntil: json_['validUntil'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authority != null) 'authority': authority!,
-    if (code != null) 'code': code!,
-    if (link != null) 'link': link!,
-    if (logo != null) 'logo': logo!,
-    if (name != null) 'name': name!,
-    if (validUntil != null) 'validUntil': validUntil!,
-    if (value != null) 'value': value!,
-  };
-}
+typedef Certification = $Certification;
 
 /// The number of products in a single package.
 ///
@@ -1253,41 +1187,7 @@ class FloatUnit {
 }
 
 /// Description of a certification.
-class GoogleShoppingManufacturersV1ProductCertification {
-  /// Name of the certification body.
-  ///
-  /// Required.
-  core.String? authority;
-
-  /// A unique code to identify the certification.
-  ///
-  /// Required.
-  core.String? code;
-
-  /// Name of the certification.
-  ///
-  /// Required.
-  core.String? name;
-
-  GoogleShoppingManufacturersV1ProductCertification({
-    this.authority,
-    this.code,
-    this.name,
-  });
-
-  GoogleShoppingManufacturersV1ProductCertification.fromJson(core.Map json_)
-    : this(
-        authority: json_['authority'] as core.String?,
-        code: json_['code'] as core.String?,
-        name: json_['name'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (authority != null) 'authority': authority!,
-    if (code != null) 'code': code!,
-    if (name != null) 'name': name!,
-  };
-}
+typedef GoogleShoppingManufacturersV1ProductCertification = $Certification;
 
 class Grocery {
   /// Active ingredients.

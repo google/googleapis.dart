@@ -289,11 +289,10 @@ class ProjectsJobsResource {
     );
   }
 
-  /// A Job is a multi-stage computation graph run by the Cloud Dataflow
-  /// service.
+  /// Creates a Dataflow job.
   ///
-  /// Creates a Cloud Dataflow job. To create a job, we recommend using
-  /// `projects.locations.jobs.create` with a
+  /// To create a job, we recommend using `projects.locations.jobs.create` with
+  /// a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`. Do not enter confidential information when you
@@ -1187,11 +1186,10 @@ class ProjectsLocationsJobsResource {
   ProjectsLocationsJobsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// A Job is a multi-stage computation graph run by the Cloud Dataflow
-  /// service.
+  /// Creates a Dataflow job.
   ///
-  /// Creates a Cloud Dataflow job. To create a job, we recommend using
-  /// `projects.locations.jobs.create` with a
+  /// To create a job, we recommend using `projects.locations.jobs.create` with
+  /// a
   /// [regional endpoint](https://cloud.google.com/dataflow/docs/concepts/regional-endpoints).
   /// Using `projects.jobs.create` is not recommended, as your job will always
   /// start in `us-central1`. Do not enter confidential information when you
@@ -5004,6 +5002,8 @@ class ExecutionStageState {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are interested.
+  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` is not implemented yet.
+  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` is not implemented yet.
   core.String? executionStageState;
 
   ExecutionStageState({
@@ -6093,6 +6093,8 @@ class Job {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are interested.
+  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` is not implemented yet.
+  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` is not implemented yet.
   core.String? currentState;
 
   /// The timestamp associated with the current state.
@@ -6224,6 +6226,8 @@ class Job {
   /// indicates that the batch job's associated resources are currently being
   /// cleaned up after a successful run. Currently, this is an opt-in feature,
   /// please reach out to Cloud support team if you are interested.
+  /// - "JOB_STATE_PAUSING" : `JOB_STATE_PAUSING` is not implemented yet.
+  /// - "JOB_STATE_PAUSED" : `JOB_STATE_PAUSED` is not implemented yet.
   core.String? requestedState;
 
   /// This field may ONLY be modified at runtime using the projects.jobs.update

@@ -1247,9 +1247,6 @@ class ExecutionRequest {
 /// project can contain multiple files.
 class File {
   /// Creation date timestamp.
-  ///
-  /// This read-only field is only visible to users who have WRITER permission
-  /// for the script project.
   core.String? createTime;
 
   /// The defined set of functions in the script file, if any.
@@ -1257,8 +1254,8 @@ class File {
 
   /// The user who modified the file most recently.
   ///
-  /// This read-only field is only visible to users who have WRITER permission
-  /// for the script project.
+  /// The details visible in this object are controlled by the profile
+  /// visibility settings of the last modifying user.
   GoogleAppsScriptTypeUser? lastModifyUser;
 
   /// The name of the file.
@@ -1281,9 +1278,6 @@ class File {
   core.String? type;
 
   /// Last modified date timestamp.
-  ///
-  /// This read-only field is only visible to users who have WRITER permission
-  /// for the script project.
   core.String? updateTime;
 
   File({

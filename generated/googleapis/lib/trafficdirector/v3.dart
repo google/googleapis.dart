@@ -1792,9 +1792,8 @@ class SocketAddress {
   ///
   /// If this field is set, Envoy will create the socket in the specified
   /// network namespace. .. note:: Setting this parameter requires Envoy to run
-  /// with the ``CAP_NET_ADMIN`` capability. .. note:: Currently only used for
-  /// Listener sockets. .. attention:: Network namespaces are only configurable
-  /// on Linux. Otherwise, this field has no effect.
+  /// with the ``CAP_NET_ADMIN`` capability. .. attention:: Network namespaces
+  /// are only configurable on Linux. Otherwise, this field has no effect.
   core.String? networkNamespaceFilepath;
   core.int? portValue;
 
@@ -2102,7 +2101,7 @@ class UpdateFailureState {
   };
 }
 
-/// Specifies the way to match a ProtobufWkt::Value.
+/// Specifies the way to match a Protobuf::Value.
 ///
 /// Primitive values and ListValue are supported. StructValue is not supported
 /// and is always not matched. \[#next-free-field: 8\]

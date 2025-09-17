@@ -2523,6 +2523,58 @@ void checkGoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse(
   buildCounterGoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse--;
 }
 
+core.int buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest =
+    0;
+api.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest
+buildGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest() {
+  final o = api.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest();
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest++;
+  if (buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest <
+      3) {
+    o.action = 'foo';
+    o.data = 'foo';
+    o.dataType = 'foo';
+    o.relativePath = 'foo';
+  }
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest--;
+  return o;
+}
+
+void checkGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest(
+  api.GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest o,
+) {
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest++;
+  if (buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest <
+      3) {
+    unittest.expect(o.action!, unittest.equals('foo'));
+    unittest.expect(o.data!, unittest.equals('foo'));
+    unittest.expect(o.dataType!, unittest.equals('foo'));
+    unittest.expect(o.relativePath!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest--;
+}
+
+core.int buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse =
+    0;
+api.GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse
+buildGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse() {
+  final o = api.GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse();
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse++;
+  if (buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse <
+      3) {}
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse--;
+  return o;
+}
+
+void checkGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse(
+  api.GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse o,
+) {
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse++;
+  if (buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse <
+      3) {}
+  buildCounterGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse--;
+}
+
 core.int buildCounterGoogleCloudApihubV1MatchResult = 0;
 api.GoogleCloudApihubV1MatchResult buildGoogleCloudApihubV1MatchResult() {
   final o = api.GoogleCloudApihubV1MatchResult();
@@ -4839,6 +4891,38 @@ void main() {
           oJson as core.Map<core.String, core.dynamic>,
         );
         checkGoogleCloudApihubV1LookupRuntimeProjectAttachmentResponse(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse(od);
       });
     },
   );
@@ -10808,6 +10892,76 @@ void main() {
       );
       checkGoogleCloudApihubV1ListPluginInstancesResponse(
         response as api.GoogleCloudApihubV1ListPluginInstancesResponse,
+      );
+    });
+
+    unittest.test('method--manageSourceData', () async {
+      final mock = HttpServerMock();
+      final res = api.APIHubApi(mock).projects.locations.plugins.instances;
+      final arg_request =
+          buildGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .GoogleCloudApihubV1ManagePluginInstanceSourceDataRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkGoogleCloudApihubV1ManagePluginInstanceSourceDataRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.manageSourceData(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkGoogleCloudApihubV1ManagePluginInstanceSourceDataResponse(
+        response
+            as api.GoogleCloudApihubV1ManagePluginInstanceSourceDataResponse,
       );
     });
 

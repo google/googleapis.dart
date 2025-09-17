@@ -3461,7 +3461,7 @@ class RegularFile {
   ///
   /// Must be an absolute, allowlisted path. If the file exists, it will be
   /// replaced. The following device-side directories and any of their
-  /// subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage
+  /// subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard
   /// ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of
   /// these directory trees is invalid. The paths /sdcard and /data will be made
   /// available and treated as implicit path substitutions. E.g. if /sdcard on a

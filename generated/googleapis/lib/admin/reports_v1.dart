@@ -103,7 +103,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)`.
   /// Possible string values are:
   /// - "access_transparency" : The Google Workspace Access Transparency
   /// activity reports return information about different types of Access
@@ -121,6 +121,9 @@ class ActivitiesResource {
   /// customers.
   /// - "gcp" : The Google Cloud Platform application's activity reports return
   /// information about various GCP activity events.
+  /// - "gmail" : The Gmail application's activity reports return information
+  /// about various \[Gmail activity
+  /// events\](/admin-sdk/reports/v1/appendix/activity/gmail).
   /// - "gplus" : The Google+ application's activity reports return information
   /// about various Google+ activity events.
   /// - "groups" : The Google Groups application's activity reports return
@@ -159,6 +162,9 @@ class ActivitiesResource {
   /// - "gemini_in_workspace_apps" : The Gemini for Workspace activity reports
   /// return information about various types of Gemini activity events performed
   /// by users within a Workspace application.
+  /// - "classroom" : The Classroom activity reports return information about
+  /// different types of
+  /// [Classroom activity events](https://developers.google.com/workspace/admin/reports/v1/appendix/activity/classroom).
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -184,7 +190,8 @@ class ActivitiesResource {
   /// itself can be requested in August. If the `endTime` is not specified, the
   /// report returns all activities from the `startTime` until the current time
   /// or the most recent 180 days if the `startTime` is more than 180 days in
-  /// the past.
+  /// the past. For Gmail requests, `startTime` and `endTime` must be provided
+  /// and the difference must not be greater than 30 days.
   /// Value must have pattern
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
@@ -264,7 +271,9 @@ class ActivitiesResource {
   /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
   /// The report returns all activities from `startTime` until `endTime`. The
   /// `startTime` must be before the `endTime` (if specified) and the current
-  /// time when the request is made, or the API returns an error.
+  /// time when the request is made, or the API returns an error. For Gmail
+  /// requests, `startTime` and `endTime` must be provided and the difference
+  /// must not be greater than 30 days.
   /// Value must have pattern
   /// `(\d\d\d\d)-(\d\d)-(\d\d)T(\d\d):(\d\d):(\d\d)(?:\.(\d+))?(?:(Z)|(\[-+\])(\d\d):(\d\d))`.
   ///
@@ -341,7 +350,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
+  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)`.
   /// Possible string values are:
   /// - "access_transparency" : The Google Workspace Access Transparency
   /// activity reports return information about different types of Access
@@ -392,6 +401,9 @@ class ActivitiesResource {
   /// - "keep" : The Keep application's activity reports return information
   /// about various Google Keep activity events. The Keep activity report is
   /// only available for Google Workspace Business and Enterprise customers.
+  /// - "classroom" : The Classroom activity reports return information about
+  /// different types of
+  /// [Classroom activity events](https://developers.google.com/workspace/admin/reports/v1/appendix/activity/classroom).
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's

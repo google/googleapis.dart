@@ -451,6 +451,27 @@ void checkBuilderConfig(api.BuilderConfig o) {
   buildCounterBuilderConfig--;
 }
 
+core.int buildCounterCISAKnownExploitedVulnerabilities = 0;
+api.CISAKnownExploitedVulnerabilities buildCISAKnownExploitedVulnerabilities() {
+  final o = api.CISAKnownExploitedVulnerabilities();
+  buildCounterCISAKnownExploitedVulnerabilities++;
+  if (buildCounterCISAKnownExploitedVulnerabilities < 3) {
+    o.knownRansomwareCampaignUse = 'foo';
+  }
+  buildCounterCISAKnownExploitedVulnerabilities--;
+  return o;
+}
+
+void checkCISAKnownExploitedVulnerabilities(
+  api.CISAKnownExploitedVulnerabilities o,
+) {
+  buildCounterCISAKnownExploitedVulnerabilities++;
+  if (buildCounterCISAKnownExploitedVulnerabilities < 3) {
+    unittest.expect(o.knownRansomwareCampaignUse!, unittest.equals('foo'));
+  }
+  buildCounterCISAKnownExploitedVulnerabilities--;
+}
+
 core.int buildCounterCVSS = 0;
 api.CVSS buildCVSS() {
   final o = api.CVSS();
@@ -850,6 +871,27 @@ void checkEnvelopeSignature(api.EnvelopeSignature o) {
     unittest.expect(o.sig!, unittest.equals('foo'));
   }
   buildCounterEnvelopeSignature--;
+}
+
+core.int buildCounterExploitPredictionScoringSystem = 0;
+api.ExploitPredictionScoringSystem buildExploitPredictionScoringSystem() {
+  final o = api.ExploitPredictionScoringSystem();
+  buildCounterExploitPredictionScoringSystem++;
+  if (buildCounterExploitPredictionScoringSystem < 3) {
+    o.percentile = 42.0;
+    o.score = 42.0;
+  }
+  buildCounterExploitPredictionScoringSystem--;
+  return o;
+}
+
+void checkExploitPredictionScoringSystem(api.ExploitPredictionScoringSystem o) {
+  buildCounterExploitPredictionScoringSystem++;
+  if (buildCounterExploitPredictionScoringSystem < 3) {
+    unittest.expect(o.percentile!, unittest.equals(42.0));
+    unittest.expect(o.score!, unittest.equals(42.0));
+  }
+  buildCounterExploitPredictionScoringSystem--;
 }
 
 core.Map<core.String, core.String> buildUnnamed19() => {'x': 'foo', 'y': 'foo'};
@@ -2477,6 +2519,27 @@ void checkResourceDescriptor(api.ResourceDescriptor o) {
   buildCounterResourceDescriptor--;
 }
 
+core.int buildCounterRisk = 0;
+api.Risk buildRisk() {
+  final o = api.Risk();
+  buildCounterRisk++;
+  if (buildCounterRisk < 3) {
+    o.cisaKev = buildCISAKnownExploitedVulnerabilities();
+    o.epss = buildExploitPredictionScoringSystem();
+  }
+  buildCounterRisk--;
+  return o;
+}
+
+void checkRisk(api.Risk o) {
+  buildCounterRisk++;
+  if (buildCounterRisk < 3) {
+    checkCISAKnownExploitedVulnerabilities(o.cisaKev!);
+    checkExploitPredictionScoringSystem(o.epss!);
+  }
+  buildCounterRisk--;
+}
+
 core.List<api.ResourceDescriptor> buildUnnamed53() => [
   buildResourceDescriptor(),
   buildResourceDescriptor(),
@@ -3370,6 +3433,7 @@ api.VulnerabilityOccurrence buildVulnerabilityOccurrence() {
     o.longDescription = 'foo';
     o.packageIssue = buildUnnamed74();
     o.relatedUrls = buildUnnamed75();
+    o.risk = buildRisk();
     o.severity = 'foo';
     o.shortDescription = 'foo';
     o.type = 'foo';
@@ -3392,6 +3456,7 @@ void checkVulnerabilityOccurrence(api.VulnerabilityOccurrence o) {
     unittest.expect(o.longDescription!, unittest.equals('foo'));
     checkUnnamed74(o.packageIssue!);
     checkUnnamed75(o.relatedUrls!);
+    checkRisk(o.risk!);
     unittest.expect(o.severity!, unittest.equals('foo'));
     unittest.expect(o.shortDescription!, unittest.equals('foo'));
     unittest.expect(o.type!, unittest.equals('foo'));
@@ -3580,6 +3645,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CISAKnownExploitedVulnerabilities', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCISAKnownExploitedVulnerabilities();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CISAKnownExploitedVulnerabilities.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCISAKnownExploitedVulnerabilities(od);
+    });
+  });
+
   unittest.group('obj-schema-CVSS', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCVSS();
@@ -3720,6 +3796,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkEnvelopeSignature(od);
+    });
+  });
+
+  unittest.group('obj-schema-ExploitPredictionScoringSystem', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExploitPredictionScoringSystem();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExploitPredictionScoringSystem.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkExploitPredictionScoringSystem(od);
     });
   });
 
@@ -4241,6 +4328,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkResourceDescriptor(od);
+    });
+  });
+
+  unittest.group('obj-schema-Risk', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRisk();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Risk.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRisk(od);
     });
   });
 

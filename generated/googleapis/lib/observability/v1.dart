@@ -22,6 +22,7 @@
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsScopesResource]
+///     - [ProjectsLocationsTraceScopesResource]
 library;
 
 import 'dart:async' as async;
@@ -75,6 +76,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsScopesResource get scopes =>
       ProjectsLocationsScopesResource(_requester);
+  ProjectsLocationsTraceScopesResource get traceScopes =>
+      ProjectsLocationsTraceScopesResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -117,9 +120,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -446,6 +449,238 @@ class ProjectsLocationsScopesResource {
   }
 }
 
+class ProjectsLocationsTraceScopesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTraceScopesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Create a new TraceScope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The full resource name of the location where the
+  /// trace scope should be created
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\] For example:
+  /// projects/my-project/locations/global
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [traceScopeId] - Required. A client-assigned identifier for the trace
+  /// scope.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TraceScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TraceScope> create(
+    TraceScope request,
+    core.String parent, {
+    core.String? traceScopeId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (traceScopeId != null) 'traceScopeId': [traceScopeId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/traceScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TraceScope.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Delete a TraceScope.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the trace scope to delete:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/traceScopes/\[TRACE_SCOPE_ID\]
+  /// For example:
+  /// projects/my-project/locations/global/traceScopes/my-trace-scope
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/traceScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get TraceScope resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the trace scope:
+  /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/traceScopes/\[TRACE_SCOPE_ID\]
+  /// For example:
+  /// projects/my-project/locations/global/traceScopes/my-trace-scope
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/traceScopes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TraceScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TraceScope> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TraceScope.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List TraceScopes of a project in a particular location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The full resource name of the location to look for
+  /// trace scopes: projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\] For
+  /// example: projects/my-project/locations/global
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return from this
+  /// request. Non-positive values are ignored. The presence of
+  /// `next_page_token` in the response indicates that more results might be
+  /// available.
+  ///
+  /// [pageToken] - Optional. If present, then retrieve the next batch of
+  /// results from the preceding call to this method. `page_token` must be the
+  /// value of `next_page_token` from the previous response. The values of other
+  /// method parameters should be identical to those in the previous call.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTraceScopesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTraceScopesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/traceScopes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTraceScopesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update a TraceScope.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the trace scope. For example:
+  /// projects/my-project/locations/global/traceScopes/my-trace-scope
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/traceScopes/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TraceScope].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TraceScope> patch(
+    TraceScope request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TraceScope.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -512,6 +747,43 @@ class ListOperationsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+  };
+}
+
+/// Response for listing TraceScopes.
+class ListTraceScopesResponse {
+  /// If there might be more results than appear in this response, then
+  /// `next_page_token` is included.
+  ///
+  /// To get the next set of results, call the same method again using the value
+  /// of `next_page_token` as `page_token`.
+  ///
+  /// Optional.
+  core.String? nextPageToken;
+
+  /// A list of trace scopes.
+  ///
+  /// Optional.
+  core.List<TraceScope>? traceScopes;
+
+  ListTraceScopesResponse({this.nextPageToken, this.traceScopes});
+
+  ListTraceScopesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        traceScopes:
+            (json_['traceScopes'] as core.List?)
+                ?.map(
+                  (value) => TraceScope.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (traceScopes != null) 'traceScopes': traceScopes!,
   };
 }
 
@@ -610,6 +882,14 @@ class Scope {
   /// `_Default`.
   core.String? name;
 
+  /// The resource name of the `TraceScope`.
+  ///
+  /// For example:
+  /// projects/myproject/locations/global/traceScopes/my-trace-scope
+  ///
+  /// Required.
+  core.String? traceScope;
+
   /// Update timestamp.
   ///
   /// Note: The Update timestamp for the default scope is initially unset.
@@ -617,18 +897,20 @@ class Scope {
   /// Output only.
   core.String? updateTime;
 
-  Scope({this.logScope, this.name, this.updateTime});
+  Scope({this.logScope, this.name, this.traceScope, this.updateTime});
 
   Scope.fromJson(core.Map json_)
     : this(
         logScope: json_['logScope'] as core.String?,
         name: json_['name'] as core.String?,
+        traceScope: json_['traceScope'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (logScope != null) 'logScope': logScope!,
     if (name != null) 'name': name!,
+    if (traceScope != null) 'traceScope': traceScope!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
 }
@@ -641,3 +923,66 @@ class Scope {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// A trace scope is a collection of resources whose traces are queried
+/// together.
+class TraceScope {
+  /// The creation timestamp of the trace scope.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Describes this trace scope.
+  ///
+  /// The maximum length of the description is 8000 characters.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Identifier.
+  ///
+  /// The resource name of the trace scope. For example:
+  /// projects/my-project/locations/global/traceScopes/my-trace-scope
+  core.String? name;
+
+  /// Names of the projects that are included in this trace scope.
+  ///
+  /// * `projects/[PROJECT_ID]` A trace scope can include a maximum of 20
+  /// projects.
+  ///
+  /// Required.
+  core.List<core.String>? resourceNames;
+
+  /// The last update timestamp of the trace scope.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  TraceScope({
+    this.createTime,
+    this.description,
+    this.name,
+    this.resourceNames,
+    this.updateTime,
+  });
+
+  TraceScope.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        resourceNames:
+            (json_['resourceNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (resourceNames != null) 'resourceNames': resourceNames!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}

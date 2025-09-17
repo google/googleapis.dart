@@ -974,6 +974,12 @@ buildGoogleFirebaseAppcheckV1PlayIntegrityConfig() {
   final o = api.GoogleFirebaseAppcheckV1PlayIntegrityConfig();
   buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfig++;
   if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfig < 3) {
+    o.accountDetails =
+        buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails();
+    o.appIntegrity =
+        buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity();
+    o.deviceIntegrity =
+        buildGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity();
     o.name = 'foo';
     o.tokenTtl = 'foo';
   }
@@ -986,10 +992,92 @@ void checkGoogleFirebaseAppcheckV1PlayIntegrityConfig(
 ) {
   buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfig++;
   if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfig < 3) {
+    checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails(
+      o.accountDetails!,
+    );
+    checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity(
+      o.appIntegrity!,
+    );
+    checkGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity(
+      o.deviceIntegrity!,
+    );
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.tokenTtl!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfig--;
+}
+
+core.int buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails =
+    0;
+api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails
+buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails() {
+  final o = api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails();
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails++;
+  if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails <
+      3) {
+    o.requireLicensed = true;
+  }
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails(
+  api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails++;
+  if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails <
+      3) {
+    unittest.expect(o.requireLicensed!, unittest.isTrue);
+  }
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails--;
+}
+
+core.int buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity =
+    0;
+api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity
+buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity() {
+  final o = api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity();
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity++;
+  if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity < 3) {
+    o.allowUnrecognizedVersion = true;
+  }
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity(
+  api.GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity++;
+  if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity < 3) {
+    unittest.expect(o.allowUnrecognizedVersion!, unittest.isTrue);
+  }
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity--;
+}
+
+core.int
+buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity = 0;
+api.GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity
+buildGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity() {
+  final o = api.GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity();
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity++;
+  if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity <
+      3) {
+    o.minDeviceRecognitionLevel = 'foo';
+  }
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity(
+  api.GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity++;
+  if (buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity <
+      3) {
+    unittest.expect(o.minDeviceRecognitionLevel!, unittest.equals('foo'));
+  }
+  buildCounterGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity--;
 }
 
 core.int buildCounterGoogleFirebaseAppcheckV1PublicJwk = 0;
@@ -1063,6 +1151,8 @@ buildGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig() {
   buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig++;
   if (buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig < 3) {
     o.name = 'foo';
+    o.riskAnalysis =
+        buildGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis();
     o.siteKey = 'foo';
     o.tokenTtl = 'foo';
   }
@@ -1076,10 +1166,38 @@ void checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig(
   buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig++;
   if (buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig < 3) {
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis(
+      o.riskAnalysis!,
+    );
     unittest.expect(o.siteKey!, unittest.equals('foo'));
     unittest.expect(o.tokenTtl!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig--;
+}
+
+core.int
+buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis = 0;
+api.GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis
+buildGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis() {
+  final o = api.GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis();
+  buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis++;
+  if (buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis <
+      3) {
+    o.minValidScore = 42.0;
+  }
+  buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis--;
+  return o;
+}
+
+void checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis(
+  api.GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis o,
+) {
+  buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis++;
+  if (buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis <
+      3) {
+    unittest.expect(o.minValidScore!, unittest.equals(42.0));
+  }
+  buildCounterGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis--;
 }
 
 core.int buildCounterGoogleFirebaseAppcheckV1RecaptchaV3Config = 0;
@@ -1088,6 +1206,7 @@ buildGoogleFirebaseAppcheckV1RecaptchaV3Config() {
   final o = api.GoogleFirebaseAppcheckV1RecaptchaV3Config();
   buildCounterGoogleFirebaseAppcheckV1RecaptchaV3Config++;
   if (buildCounterGoogleFirebaseAppcheckV1RecaptchaV3Config < 3) {
+    o.minValidScore = 42.0;
     o.name = 'foo';
     o.siteSecret = 'foo';
     o.siteSecretSet = true;
@@ -1102,6 +1221,7 @@ void checkGoogleFirebaseAppcheckV1RecaptchaV3Config(
 ) {
   buildCounterGoogleFirebaseAppcheckV1RecaptchaV3Config++;
   if (buildCounterGoogleFirebaseAppcheckV1RecaptchaV3Config < 3) {
+    unittest.expect(o.minValidScore!, unittest.equals(42.0));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.siteSecret!, unittest.equals('foo'));
     unittest.expect(o.siteSecretSet!, unittest.isTrue);
@@ -1777,6 +1897,54 @@ void main() {
     });
   });
 
+  unittest.group(
+    'obj-schema-GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAccountDetails(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleFirebaseAppcheckV1PlayIntegrityConfigAppIntegrity(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleFirebaseAppcheckV1PlayIntegrityConfigDeviceIntegrity(od);
+      });
+    },
+  );
+
   unittest.group('obj-schema-GoogleFirebaseAppcheckV1PublicJwk', () {
     unittest.test('to-json--from-json', () async {
       final o = buildGoogleFirebaseAppcheckV1PublicJwk();
@@ -1810,6 +1978,22 @@ void main() {
           oJson as core.Map<core.String, core.dynamic>,
         );
         checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleFirebaseAppcheckV1RecaptchaEnterpriseConfigRiskAnalysis(od);
       });
     },
   );

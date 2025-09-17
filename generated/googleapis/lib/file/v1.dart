@@ -126,9 +126,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1513,6 +1513,11 @@ class IOPSPerTB {
 
 /// A Filestore instance.
 class Instance {
+  /// The increase/decrease capacity step size in GB.
+  ///
+  /// Output only.
+  core.String? capacityStepSizeGb;
+
   /// The time when the instance was created.
   ///
   /// Output only.
@@ -1553,6 +1558,16 @@ class Instance {
 
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
+
+  /// The max capacity of the instance in GB.
+  ///
+  /// Output only.
+  core.String? maxCapacityGb;
+
+  /// The min capacity of the instance in GB.
+  ///
+  /// Output only.
+  core.String? minCapacityGb;
 
   /// The resource name of the instance, in the format
   /// `projects/{project}/locations/{location}/instances/{instance}`.
@@ -1672,6 +1687,7 @@ class Instance {
   core.String? tier;
 
   Instance({
+    this.capacityStepSizeGb,
     this.createTime,
     this.customPerformanceSupported,
     this.deletionProtectionEnabled,
@@ -1681,6 +1697,8 @@ class Instance {
     this.fileShares,
     this.kmsKeyName,
     this.labels,
+    this.maxCapacityGb,
+    this.minCapacityGb,
     this.name,
     this.networks,
     this.performanceConfig,
@@ -1698,6 +1716,7 @@ class Instance {
 
   Instance.fromJson(core.Map json_)
     : this(
+        capacityStepSizeGb: json_['capacityStepSizeGb'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         customPerformanceSupported:
             json_['customPerformanceSupported'] as core.bool?,
@@ -1719,6 +1738,8 @@ class Instance {
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        maxCapacityGb: json_['maxCapacityGb'] as core.String?,
+        minCapacityGb: json_['minCapacityGb'] as core.String?,
         name: json_['name'] as core.String?,
         networks:
             (json_['networks'] as core.List?)
@@ -1764,6 +1785,7 @@ class Instance {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (capacityStepSizeGb != null) 'capacityStepSizeGb': capacityStepSizeGb!,
     if (createTime != null) 'createTime': createTime!,
     if (customPerformanceSupported != null)
       'customPerformanceSupported': customPerformanceSupported!,
@@ -1776,6 +1798,8 @@ class Instance {
     if (fileShares != null) 'fileShares': fileShares!,
     if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
     if (labels != null) 'labels': labels!,
+    if (maxCapacityGb != null) 'maxCapacityGb': maxCapacityGb!,
+    if (minCapacityGb != null) 'minCapacityGb': minCapacityGb!,
     if (name != null) 'name': name!,
     if (networks != null) 'networks': networks!,
     if (performanceConfig != null) 'performanceConfig': performanceConfig!,
@@ -1999,6 +2023,9 @@ class NetworkConfig {
   /// - "PRIVATE_SERVICE_ACCESS" : Connect to your Filestore instance using
   /// Private Service Access. Private services access provides an IP address
   /// range for multiple Google Cloud services, including Filestore.
+  /// - "PRIVATE_SERVICE_CONNECT" : Connect to your Filestore instance using
+  /// Private Service Connect. A connection policy must exist in the region for
+  /// the VPC network and the google-cloud-filestore service class.
   core.String? connectMode;
 
   /// IPv4 addresses in the format `{octet1}.{octet2}.{octet3}.{octet4}` or IPv6
@@ -2018,6 +2045,13 @@ class NetworkConfig {
   /// [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance
   /// is connected.
   core.String? network;
+
+  /// Private Service Connect configuration.
+  ///
+  /// Should only be set when connect_mode is PRIVATE_SERVICE_CONNECT.
+  ///
+  /// Optional.
+  PscConfig? pscConfig;
 
   /// Optional, reserved_ip_range can have one of the following two types of
   /// values.
@@ -2043,6 +2077,7 @@ class NetworkConfig {
     this.ipAddresses,
     this.modes,
     this.network,
+    this.pscConfig,
     this.reservedIpRange,
   });
 
@@ -2058,6 +2093,12 @@ class NetworkConfig {
                 ?.map((value) => value as core.String)
                 .toList(),
         network: json_['network'] as core.String?,
+        pscConfig:
+            json_.containsKey('pscConfig')
+                ? PscConfig.fromJson(
+                  json_['pscConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         reservedIpRange: json_['reservedIpRange'] as core.String?,
       );
 
@@ -2066,6 +2107,7 @@ class NetworkConfig {
     if (ipAddresses != null) 'ipAddresses': ipAddresses!,
     if (modes != null) 'modes': modes!,
     if (network != null) 'network': network!,
+    if (pscConfig != null) 'pscConfig': pscConfig!,
     if (reservedIpRange != null) 'reservedIpRange': reservedIpRange!,
   };
 }
@@ -2106,6 +2148,15 @@ class NfsExportOptions {
   /// ranges/addresses for each FileShareConfig among all NfsExportOptions.
   core.List<core.String>? ipRanges;
 
+  /// The source VPC network for ip_ranges.
+  ///
+  /// Required for instances using Private Service Connect, optional otherwise.
+  /// If provided, must be the same network specified in the
+  /// `NetworkConfig.network` field.
+  ///
+  /// Optional.
+  core.String? network;
+
   /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory,
   /// or ROOT_SQUASH, for not allowing root access.
   ///
@@ -2123,6 +2174,7 @@ class NfsExportOptions {
     this.anonGid,
     this.anonUid,
     this.ipRanges,
+    this.network,
     this.squashMode,
   });
 
@@ -2135,6 +2187,7 @@ class NfsExportOptions {
             (json_['ipRanges'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        network: json_['network'] as core.String?,
         squashMode: json_['squashMode'] as core.String?,
       );
 
@@ -2143,6 +2196,7 @@ class NfsExportOptions {
     if (anonGid != null) 'anonGid': anonGid!,
     if (anonUid != null) 'anonUid': anonUid!,
     if (ipRanges != null) 'ipRanges': ipRanges!,
+    if (network != null) 'network': network!,
     if (squashMode != null) 'squashMode': squashMode!,
   };
 }
@@ -2353,6 +2407,28 @@ class PromoteReplicaRequest {
   };
 }
 
+/// Private Service Connect configuration.
+class PscConfig {
+  /// Consumer service project in which the Private Service Connect endpoint
+  /// would be set up.
+  ///
+  /// This is optional, and only relevant in case the network is a shared VPC.
+  /// If this is not specified, the endpoint would be setup in the VPC host
+  /// project.
+  ///
+  /// Optional.
+  core.String? endpointProject;
+
+  PscConfig({this.endpointProject});
+
+  PscConfig.fromJson(core.Map json_)
+    : this(endpointProject: json_['endpointProject'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endpointProject != null) 'endpointProject': endpointProject!,
+  };
+}
+
 /// Replica configuration for the instance.
 class ReplicaConfig {
   /// The timestamp of the latest replication snapshot taken on the active
@@ -2377,6 +2453,10 @@ class ReplicaConfig {
   /// - "FAILED" : The replica is experiencing an issue and might be unusable.
   /// You can get further details from the `stateReasons` field of the
   /// `ReplicaConfig` object.
+  /// - "PROMOTING" : The replica is being promoted.
+  /// - "PAUSING" : The replica is being paused.
+  /// - "PAUSED" : The replica is paused.
+  /// - "RESUMING" : The replica is being resumed.
   core.String? state;
 
   /// Additional information about the replication state, if available.

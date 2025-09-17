@@ -173,6 +173,7 @@ api.Auth buildAuth() {
     o.accessLevels = buildUnnamed2();
     o.audiences = buildUnnamed3();
     o.claims = buildUnnamed4();
+    o.oauth = buildOauth();
     o.presenter = 'foo';
     o.principal = 'foo';
   }
@@ -186,6 +187,7 @@ void checkAuth(api.Auth o) {
     checkUnnamed2(o.accessLevels!);
     checkUnnamed3(o.audiences!);
     checkUnnamed4(o.claims!);
+    checkOauth(o.oauth!);
     unittest.expect(o.presenter!, unittest.equals('foo'));
     unittest.expect(o.principal!, unittest.equals('foo'));
   }
@@ -284,6 +286,25 @@ void checkCheckResponse(api.CheckResponse o) {
     checkStatus(o.status!);
   }
   buildCounterCheckResponse--;
+}
+
+core.int buildCounterOauth = 0;
+api.Oauth buildOauth() {
+  final o = api.Oauth();
+  buildCounterOauth++;
+  if (buildCounterOauth < 3) {
+    o.clientId = 'foo';
+  }
+  buildCounterOauth--;
+  return o;
+}
+
+void checkOauth(api.Oauth o) {
+  buildCounterOauth++;
+  if (buildCounterOauth < 3) {
+    unittest.expect(o.clientId!, unittest.equals('foo'));
+  }
+  buildCounterOauth--;
 }
 
 core.Map<core.String, core.String> buildUnnamed8() => {'x': 'foo', 'y': 'foo'};
@@ -681,6 +702,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCheckResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Oauth', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildOauth();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Oauth.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkOauth(od);
     });
   });
 

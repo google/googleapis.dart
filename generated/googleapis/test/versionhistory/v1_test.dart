@@ -205,6 +205,17 @@ void checkPlatform(api.Platform o) {
   buildCounterPlatform--;
 }
 
+core.List<api.RolloutData> buildUnnamed4() => [
+  buildRolloutData(),
+  buildRolloutData(),
+];
+
+void checkUnnamed4(core.List<api.RolloutData> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRolloutData(o[0]);
+  checkRolloutData(o[1]);
+}
+
 core.int buildCounterRelease = 0;
 api.Release buildRelease() {
   final o = api.Release();
@@ -214,6 +225,7 @@ api.Release buildRelease() {
     o.fractionGroup = 'foo';
     o.name = 'foo';
     o.pinnable = true;
+    o.rolloutData = buildUnnamed4();
     o.serving = buildInterval();
     o.version = 'foo';
   }
@@ -228,10 +240,40 @@ void checkRelease(api.Release o) {
     unittest.expect(o.fractionGroup!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.pinnable!, unittest.isTrue);
+    checkUnnamed4(o.rolloutData!);
     checkInterval(o.serving!);
     unittest.expect(o.version!, unittest.equals('foo'));
   }
   buildCounterRelease--;
+}
+
+core.List<core.String> buildUnnamed5() => ['foo', 'foo'];
+
+void checkUnnamed5(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRolloutData = 0;
+api.RolloutData buildRolloutData() {
+  final o = api.RolloutData();
+  buildCounterRolloutData++;
+  if (buildCounterRolloutData < 3) {
+    o.rolloutName = 'foo';
+    o.tag = buildUnnamed5();
+  }
+  buildCounterRolloutData--;
+  return o;
+}
+
+void checkRolloutData(api.RolloutData o) {
+  buildCounterRolloutData++;
+  if (buildCounterRolloutData < 3) {
+    unittest.expect(o.rolloutName!, unittest.equals('foo'));
+    checkUnnamed5(o.tag!);
+  }
+  buildCounterRolloutData--;
 }
 
 core.int buildCounterVersion = 0;
@@ -341,6 +383,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRelease(od);
+    });
+  });
+
+  unittest.group('obj-schema-RolloutData', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRolloutData();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RolloutData.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRolloutData(od);
     });
   });
 

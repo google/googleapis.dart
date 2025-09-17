@@ -868,10 +868,12 @@ api.GoogleFirebaseAppdistroV1Release buildGoogleFirebaseAppdistroV1Release() {
     o.buildVersion = 'foo';
     o.createTime = 'foo';
     o.displayVersion = 'foo';
+    o.expireTime = 'foo';
     o.firebaseConsoleUri = 'foo';
     o.name = 'foo';
     o.releaseNotes = buildGoogleFirebaseAppdistroV1ReleaseNotes();
     o.testingUri = 'foo';
+    o.updateTime = 'foo';
   }
   buildCounterGoogleFirebaseAppdistroV1Release--;
   return o;
@@ -886,10 +888,12 @@ void checkGoogleFirebaseAppdistroV1Release(
     unittest.expect(o.buildVersion!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.displayVersion!, unittest.equals('foo'));
+    unittest.expect(o.expireTime!, unittest.equals('foo'));
     unittest.expect(o.firebaseConsoleUri!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkGoogleFirebaseAppdistroV1ReleaseNotes(o.releaseNotes!);
     unittest.expect(o.testingUri!, unittest.equals('foo'));
+    unittest.expect(o.updateTime!, unittest.equals('foo'));
   }
   buildCounterGoogleFirebaseAppdistroV1Release--;
 }

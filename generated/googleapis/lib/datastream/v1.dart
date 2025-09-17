@@ -174,9 +174,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3257,6 +3257,23 @@ class LookupStreamObjectRequest {
 /// destination table.
 typedef Merge = $Empty;
 
+/// MongoDB change stream position
+class MongodbChangeStreamPosition {
+  /// The timestamp (in epoch seconds) to start change stream from.
+  ///
+  /// Required.
+  core.String? startTime;
+
+  MongodbChangeStreamPosition({this.startTime});
+
+  MongodbChangeStreamPosition.fromJson(core.Map json_)
+    : this(startTime: json_['startTime'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
 /// MongoDB Cluster structure.
 class MongodbCluster {
   /// MongoDB databases in the cluster.
@@ -5879,6 +5896,9 @@ class SourceObjectIdentifier {
 
 /// CDC strategy to start replicating from a specific position in the source.
 class SpecificStartPosition {
+  /// MongoDB change stream position to start replicating from.
+  MongodbChangeStreamPosition? mongodbChangeStreamPosition;
+
   /// MySQL GTID set to start replicating from.
   MysqlGtidPosition? mysqlGtidPosition;
 
@@ -5892,6 +5912,7 @@ class SpecificStartPosition {
   SqlServerLsnPosition? sqlServerLsnPosition;
 
   SpecificStartPosition({
+    this.mongodbChangeStreamPosition,
     this.mysqlGtidPosition,
     this.mysqlLogPosition,
     this.oracleScnPosition,
@@ -5900,6 +5921,13 @@ class SpecificStartPosition {
 
   SpecificStartPosition.fromJson(core.Map json_)
     : this(
+        mongodbChangeStreamPosition:
+            json_.containsKey('mongodbChangeStreamPosition')
+                ? MongodbChangeStreamPosition.fromJson(
+                  json_['mongodbChangeStreamPosition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         mysqlGtidPosition:
             json_.containsKey('mysqlGtidPosition')
                 ? MysqlGtidPosition.fromJson(
@@ -5931,6 +5959,8 @@ class SpecificStartPosition {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (mongodbChangeStreamPosition != null)
+      'mongodbChangeStreamPosition': mongodbChangeStreamPosition!,
     if (mysqlGtidPosition != null) 'mysqlGtidPosition': mysqlGtidPosition!,
     if (mysqlLogPosition != null) 'mysqlLogPosition': mysqlLogPosition!,
     if (oracleScnPosition != null) 'oracleScnPosition': oracleScnPosition!,

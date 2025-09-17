@@ -1783,6 +1783,18 @@ class Assignment {
   /// - "CONTINUOUS" : Continuous SQL jobs will use this reservation.
   /// Reservations with continuous assignments cannot be mixed with
   /// non-continuous assignments.
+  /// - "BACKGROUND_CHANGE_DATA_CAPTURE" : Finer granularity background jobs for
+  /// capturing changes in a source database and streaming them into BigQuery.
+  /// Reservations with this job type take priority over a default BACKGROUND
+  /// reservation assignment (if it exists).
+  /// - "BACKGROUND_COLUMN_METADATA_INDEX" : Finer granularity background jobs
+  /// for refreshing cached metadata for BigQuery tables. Reservations with this
+  /// job type take priority over a default BACKGROUND reservation assignment
+  /// (if it exists).
+  /// - "BACKGROUND_SEARCH_INDEX_REFRESH" : Finer granularity background jobs
+  /// for refreshing search indexes upon BigQuery table columns. Reservations
+  /// with this job type take priority over a default BACKGROUND reservation
+  /// assignment (if it exists).
   core.String? jobType;
 
   /// Name of the resource.
@@ -2317,13 +2329,18 @@ typedef Expr = $Expr;
 
 /// The request for ReservationService.FailoverReservation.
 class FailoverReservationRequest {
-  /// failover mode for the failover operation.
+  /// A parameter that determines how writes that are pending replication are
+  /// handled after a failover is initiated.
+  ///
+  /// If not specified, HARD failover mode is used by default.
   ///
   /// Optional.
   /// Possible string values are:
   /// - "FAILOVER_MODE_UNSPECIFIED" : Invalid value.
   /// - "SOFT" : When customers initiate a soft failover, BigQuery will wait
-  /// until all committed writes are replicated to the secondary.
+  /// until all committed writes are replicated to the secondary. This mode
+  /// requires both regions to be available for the failover to succeed and
+  /// prevents data loss.
   /// - "HARD" : When customers initiate a hard failover, BigQuery will not wait
   /// until all committed writes are replicated to the secondary. There can be
   /// data loss for hard failover.

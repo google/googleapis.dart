@@ -992,6 +992,7 @@ buildGoogleCloudDocumentaiV1DocumentEntity() {
     o.id = 'foo';
     o.mentionId = 'foo';
     o.mentionText = 'foo';
+    o.method = 'foo';
     o.normalizedValue =
         buildGoogleCloudDocumentaiV1DocumentEntityNormalizedValue();
     o.pageAnchor = buildGoogleCloudDocumentaiV1DocumentPageAnchor();
@@ -1014,6 +1015,7 @@ void checkGoogleCloudDocumentaiV1DocumentEntity(
     unittest.expect(o.id!, unittest.equals('foo'));
     unittest.expect(o.mentionId!, unittest.equals('foo'));
     unittest.expect(o.mentionText!, unittest.equals('foo'));
+    unittest.expect(o.method!, unittest.equals('foo'));
     checkGoogleCloudDocumentaiV1DocumentEntityNormalizedValue(
       o.normalizedValue!,
     );

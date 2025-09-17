@@ -1455,6 +1455,57 @@ class InstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Execute SQL statements.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [project] - Required. Project ID of the project that contains the
+  /// instance.
+  ///
+  /// [instance] - Required. Database instance ID. This does not include the
+  /// project ID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SqlInstancesExecuteSqlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SqlInstancesExecuteSqlResponse> executeSql(
+    ExecuteSqlPayload request,
+    core.String project,
+    core.String instance, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'sql/v1beta4/projects/' +
+        commons.escapeVariable('$project') +
+        '/instances/' +
+        commons.escapeVariable('$instance') +
+        '/executeSql';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SqlInstancesExecuteSqlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL
   /// dump or CSV file.
   ///
@@ -2054,6 +2105,14 @@ class InstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [mode] - Optional. Reset SSL mode to use.
+  /// Possible string values are:
+  /// - "RESET_SSL_MODE_UNSPECIFIED" : Reset SSL mode is not specified.
+  /// - "ALL" : Refresh all TLS configs. This is the default behaviour.
+  /// - "SYNC_FROM_PRIMARY" : Refreshes the replication-related TLS
+  /// configuration settings provided by the primary instance. Not applicable to
+  /// on-premises replication instances.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2067,9 +2126,11 @@ class InstancesResource {
   async.Future<Operation> resetSslConfig(
     core.String project,
     core.String instance, {
+    core.String? mode,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (mode != null) 'mode': [mode],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2667,6 +2728,10 @@ class ProjectsInstancesResource {
   ///
   /// [instance] - Cloud SQL instance ID. This does not include the project ID.
   ///
+  /// [sourceInstanceDeletionTime] - The timestamp used to identify the time
+  /// when the source instance is deleted. If this instance is deleted, then you
+  /// must set the timestamp.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2680,9 +2745,12 @@ class ProjectsInstancesResource {
   async.Future<SqlInstancesGetLatestRecoveryTimeResponse> getLatestRecoveryTime(
     core.String project,
     core.String instance, {
+    core.String? sourceInstanceDeletionTime,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (sourceInstanceDeletionTime != null)
+        'sourceInstanceDeletionTime': [sourceInstanceDeletionTime],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3652,8 +3720,6 @@ class AvailableDatabaseVersion {
 }
 
 /// A backup resource.
-///
-/// Next ID: 30
 class Backup {
   /// This output contains the following values: start_time: All database writes
   /// up to this time are available.
@@ -4581,6 +4647,12 @@ class CloneContext {
   /// Optional.
   core.String? preferredZone;
 
+  /// The timestamp used to identify the time when the source instance is
+  /// deleted.
+  ///
+  /// If this instance is deleted, then you must set the timestamp.
+  core.String? sourceInstanceDeletionTime;
+
   CloneContext({
     this.allocatedIpRange,
     this.binLogCoordinates,
@@ -4591,6 +4663,7 @@ class CloneContext {
     this.pointInTime,
     this.preferredSecondaryZone,
     this.preferredZone,
+    this.sourceInstanceDeletionTime,
   });
 
   CloneContext.fromJson(core.Map json_)
@@ -4614,6 +4687,8 @@ class CloneContext {
         pointInTime: json_['pointInTime'] as core.String?,
         preferredSecondaryZone: json_['preferredSecondaryZone'] as core.String?,
         preferredZone: json_['preferredZone'] as core.String?,
+        sourceInstanceDeletionTime:
+            json_['sourceInstanceDeletionTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -4628,6 +4703,30 @@ class CloneContext {
     if (preferredSecondaryZone != null)
       'preferredSecondaryZone': preferredSecondaryZone!,
     if (preferredZone != null) 'preferredZone': preferredZone!,
+    if (sourceInstanceDeletionTime != null)
+      'sourceInstanceDeletionTime': sourceInstanceDeletionTime!,
+  };
+}
+
+/// Contains the name and datatype of a column.
+class Column {
+  /// Name of the column.
+  core.String? name;
+
+  /// Datatype of the column.
+  core.String? type;
+
+  Column({this.name, this.type});
+
+  Column.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
   };
 }
 
@@ -4819,6 +4918,17 @@ class ConnectSettings {
   /// This is always `sql#connectSettings`.
   core.String? kind;
 
+  /// mdx_protocol_support controls how the client uses metadata exchange when
+  /// connecting to the instance.
+  ///
+  /// The values in the list representing parts of the MDX protocol that are
+  /// supported by this instance. When the list is empty, the instance does not
+  /// support MDX, so the client must not send an MDX request. The default is
+  /// empty.
+  ///
+  /// Optional. Output only.
+  core.List<core.String>? mdxProtocolSupport;
+
   /// The number of read pool nodes in a read pool.
   core.int? nodeCount;
 
@@ -4858,6 +4968,7 @@ class ConnectSettings {
     this.dnsNames,
     this.ipAddresses,
     this.kind,
+    this.mdxProtocolSupport,
     this.nodeCount,
     this.nodes,
     this.pscEnabled,
@@ -4892,6 +5003,10 @@ class ConnectSettings {
                 )
                 .toList(),
         kind: json_['kind'] as core.String?,
+        mdxProtocolSupport:
+            (json_['mdxProtocolSupport'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         nodeCount: json_['nodeCount'] as core.int?,
         nodes:
             (json_['nodes'] as core.List?)
@@ -4921,6 +5036,7 @@ class ConnectSettings {
     if (dnsNames != null) 'dnsNames': dnsNames!,
     if (ipAddresses != null) 'ipAddresses': ipAddresses!,
     if (kind != null) 'kind': kind!,
+    if (mdxProtocolSupport != null) 'mdxProtocolSupport': mdxProtocolSupport!,
     if (nodeCount != null) 'nodeCount': nodeCount!,
     if (nodes != null) 'nodes': nodes!,
     if (pscEnabled != null) 'pscEnabled': pscEnabled!,
@@ -4940,7 +5056,16 @@ class ConnectionPoolConfig {
   /// Optional.
   core.List<ConnectionPoolFlags>? flags;
 
-  ConnectionPoolConfig({this.connectionPoolingEnabled, this.flags});
+  /// Number of connection poolers.
+  ///
+  /// Output only.
+  core.int? poolerCount;
+
+  ConnectionPoolConfig({
+    this.connectionPoolingEnabled,
+    this.flags,
+    this.poolerCount,
+  });
 
   ConnectionPoolConfig.fromJson(core.Map json_)
     : this(
@@ -4954,12 +5079,14 @@ class ConnectionPoolConfig {
                   ),
                 )
                 .toList(),
+        poolerCount: json_['poolerCount'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (connectionPoolingEnabled != null)
       'connectionPoolingEnabled': connectionPoolingEnabled!,
     if (flags != null) 'flags': flags!,
+    if (poolerCount != null) 'poolerCount': poolerCount!,
   };
 }
 
@@ -5166,9 +5293,6 @@ class DatabaseInstance {
   /// - "SECOND_GEN" : V2 speckle instance.
   /// - "EXTERNAL" : On premises instance.
   core.String? backendType;
-
-  /// Clears private network settings when the instance is restored.
-  core.bool? clearNetwork;
 
   /// Connection name of the Cloud SQL instance used in connection strings.
   core.String? connectionName;
@@ -5529,7 +5653,6 @@ class DatabaseInstance {
   DatabaseInstance({
     this.availableMaintenanceVersions,
     this.backendType,
-    this.clearNetwork,
     this.connectionName,
     this.createTime,
     this.currentDiskSize,
@@ -5588,7 +5711,6 @@ class DatabaseInstance {
                 ?.map((value) => value as core.String)
                 .toList(),
         backendType: json_['backendType'] as core.String?,
-        clearNetwork: json_['clearNetwork'] as core.bool?,
         connectionName: json_['connectionName'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         currentDiskSize: json_['currentDiskSize'] as core.String?,
@@ -5748,7 +5870,6 @@ class DatabaseInstance {
     if (availableMaintenanceVersions != null)
       'availableMaintenanceVersions': availableMaintenanceVersions!,
     if (backendType != null) 'backendType': backendType!,
-    if (clearNetwork != null) 'clearNetwork': clearNetwork!,
     if (connectionName != null) 'connectionName': connectionName!,
     if (createTime != null) 'createTime': createTime!,
     if (currentDiskSize != null) 'currentDiskSize': currentDiskSize!,
@@ -6154,6 +6275,87 @@ class DnsNameMapping {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
+
+/// The request payload used to execute SQL statements.
+class ExecuteSqlPayload {
+  /// When set to true, the API caller identity associated with the request is
+  /// used for database authentication.
+  ///
+  /// The API caller must be an IAM user in the database.
+  ///
+  /// Optional.
+  core.bool? autoIamAuthn;
+
+  /// Name of the database on which the statement will be executed.
+  ///
+  /// Optional.
+  core.String? database;
+
+  /// Controls how the API should respond when the SQL execution result exceeds
+  /// 10 MB.
+  ///
+  /// The default mode is to throw an error.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PARTIAL_RESULT_MODE_UNSPECIFIED" : Unspecified mode, effectively the
+  /// same as `FAIL_PARTIAL_RESULT`.
+  /// - "FAIL_PARTIAL_RESULT" : Throw an error if the result exceeds 10 MB.
+  /// Don't return the result.
+  /// - "ALLOW_PARTIAL_RESULT" : Return a truncated result and set
+  /// `partial_result` to true if the result exceeds 10 MB. Don't throw an
+  /// error.
+  core.String? partialResultMode;
+
+  /// The maximum number of rows returned per SQL statement.
+  ///
+  /// Optional.
+  core.String? rowLimit;
+
+  /// SQL statements to run on the database.
+  ///
+  /// It can be a single statement or a sequence of statements separated by
+  /// semicolons.
+  ///
+  /// Required.
+  core.String? sqlStatement;
+
+  /// The name of an existing database user to connect to the database.
+  ///
+  /// When `auto_iam_authn` is set to true, this field is ignored and the API
+  /// caller's IAM user is used.
+  ///
+  /// Optional.
+  core.String? user;
+
+  ExecuteSqlPayload({
+    this.autoIamAuthn,
+    this.database,
+    this.partialResultMode,
+    this.rowLimit,
+    this.sqlStatement,
+    this.user,
+  });
+
+  ExecuteSqlPayload.fromJson(core.Map json_)
+    : this(
+        autoIamAuthn: json_['autoIamAuthn'] as core.bool?,
+        database: json_['database'] as core.String?,
+        partialResultMode: json_['partialResultMode'] as core.String?,
+        rowLimit: json_['rowLimit'] as core.String?,
+        sqlStatement: json_['sqlStatement'] as core.String?,
+        user: json_['user'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (autoIamAuthn != null) 'autoIamAuthn': autoIamAuthn!,
+    if (database != null) 'database': database!,
+    if (partialResultMode != null) 'partialResultMode': partialResultMode!,
+    if (rowLimit != null) 'rowLimit': rowLimit!,
+    if (sqlStatement != null) 'sqlStatement': sqlStatement!,
+    if (user != null) 'user': user!,
+  };
+}
 
 /// Options for exporting BAK files (SQL Server-only)
 class ExportContextBakExportOptions {
@@ -6631,6 +6833,31 @@ class FailoverContext {
   core.Map<core.String, core.dynamic> toJson() => {
     if (kind != null) 'kind': kind!,
     if (settingsVersion != null) 'settingsVersion': settingsVersion!,
+  };
+}
+
+/// Config used to determine the final backup settings for the instance.
+class FinalBackupConfig {
+  /// Whether the final backup is enabled for the instance.
+  core.bool? enabled;
+
+  /// The number of days to retain the final backup after the instance deletion.
+  ///
+  /// The final backup will be purged at (time_of_instance_deletion +
+  /// retention_days).
+  core.int? retentionDays;
+
+  FinalBackupConfig({this.enabled, this.retentionDays});
+
+  FinalBackupConfig.fromJson(core.Map json_)
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        retentionDays: json_['retentionDays'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+    if (retentionDays != null) 'retentionDays': retentionDays!,
   };
 }
 
@@ -7813,6 +8040,14 @@ class InstancesRestoreBackupRequest {
   /// Parameters required to perform the restore backup operation.
   RestoreBackupContext? restoreBackupContext;
 
+  /// This field has the same purpose as restore_instance_settings, changes any
+  /// instance settings stored in the backup you are restoring from.
+  ///
+  /// With the difference that these fields are cleared in the settings.
+  ///
+  /// Optional.
+  core.List<core.String>? restoreInstanceClearOverridesFieldNames;
+
   /// By using this parameter, Cloud SQL overrides any instance settings stored
   /// in the backup you are restoring from.
   ///
@@ -7827,6 +8062,7 @@ class InstancesRestoreBackupRequest {
     this.backup,
     this.backupdrBackup,
     this.restoreBackupContext,
+    this.restoreInstanceClearOverridesFieldNames,
     this.restoreInstanceSettings,
   });
 
@@ -7841,6 +8077,10 @@ class InstancesRestoreBackupRequest {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        restoreInstanceClearOverridesFieldNames:
+            (json_['restoreInstanceClearOverridesFieldNames'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         restoreInstanceSettings:
             json_.containsKey('restoreInstanceSettings')
                 ? DatabaseInstance.fromJson(
@@ -7855,6 +8095,9 @@ class InstancesRestoreBackupRequest {
     if (backupdrBackup != null) 'backupdrBackup': backupdrBackup!,
     if (restoreBackupContext != null)
       'restoreBackupContext': restoreBackupContext!,
+    if (restoreInstanceClearOverridesFieldNames != null)
+      'restoreInstanceClearOverridesFieldNames':
+          restoreInstanceClearOverridesFieldNames!,
     if (restoreInstanceSettings != null)
       'restoreInstanceSettings': restoreInstanceSettings!,
   };
@@ -8344,6 +8587,53 @@ class MaintenanceWindow {
     if (hour != null) 'hour': hour!,
     if (kind != null) 'kind': kind!,
     if (updateTrack != null) 'updateTrack': updateTrack!,
+  };
+}
+
+/// Represents a notice or warning message from the database.
+class Message {
+  /// The full message string.
+  ///
+  /// For PostgreSQL, this is a formatted string that may include severity,
+  /// code, and the notice/warning message. For MySQL, this contains the warning
+  /// message.
+  core.String? message;
+
+  /// The severity of the message (e.g., "NOTICE" for PostgreSQL, "WARNING" for
+  /// MySQL).
+  core.String? severity;
+
+  Message({this.message, this.severity});
+
+  Message.fromJson(core.Map json_)
+    : this(
+        message: json_['message'] as core.String?,
+        severity: json_['severity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (message != null) 'message': message!,
+    if (severity != null) 'severity': severity!,
+  };
+}
+
+/// The additional metadata information regarding the execution of the SQL
+/// statements.
+class Metadata {
+  /// The time taken to execute the SQL statements.
+  core.String? sqlStatementExecutionTime;
+
+  Metadata({this.sqlStatementExecutionTime});
+
+  Metadata.fromJson(core.Map json_)
+    : this(
+        sqlStatementExecutionTime:
+            json_['sqlStatementExecutionTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (sqlStatementExecutionTime != null)
+      'sqlStatementExecutionTime': sqlStatementExecutionTime!,
   };
 }
 
@@ -9054,7 +9344,6 @@ class PointInTimeRestoreContext {
   /// [RFC 1035](https://tools.ietf.org/html/rfc1035) standards. Specifically,
   /// the name must be 1-63 characters long and match the regular expression
   /// \[a-z\](\[-a-z0-9\]*\[a-z0-9\])?. Reserved for future use.
-  /// http://go/speckle-subnet-picker-clone
   ///
   /// Optional.
   core.String? allocatedIpRange;
@@ -9343,6 +9632,107 @@ class PscConfig {
   };
 }
 
+/// QueryResult contains the result of executing a single SQL statement.
+class QueryResult {
+  /// List of columns included in the result.
+  ///
+  /// This also includes the data type of the column.
+  core.List<Column>? columns;
+
+  /// Message related to the SQL execution result.
+  core.String? message;
+
+  /// Set to true if the SQL execution's result is truncated due to size limits.
+  core.bool? partialResult;
+
+  /// Rows returned by the SQL statement.
+  core.List<Row>? rows;
+
+  QueryResult({this.columns, this.message, this.partialResult, this.rows});
+
+  QueryResult.fromJson(core.Map json_)
+    : this(
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map(
+                  (value) => Column.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        message: json_['message'] as core.String?,
+        partialResult: json_['partialResult'] as core.bool?,
+        rows:
+            (json_['rows'] as core.List?)
+                ?.map(
+                  (value) => Row.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (columns != null) 'columns': columns!,
+    if (message != null) 'message': message!,
+    if (partialResult != null) 'partialResult': partialResult!,
+    if (rows != null) 'rows': rows!,
+  };
+}
+
+/// The read pool auto-scale configuration.
+class ReadPoolAutoScaleConfig {
+  /// Indicates whether read pool auto scaling supports scale in operations
+  /// (removing nodes).
+  core.bool? disableScaleIn;
+
+  /// Indicates whether read pool auto scaling is enabled.
+  core.bool? enabled;
+
+  /// Maximum number of read pool nodes to be maintained.
+  core.int? maxNodeCount;
+
+  /// Minimum number of read pool nodes to be maintained.
+  core.int? minNodeCount;
+
+  /// Target metrics for read pool auto scaling.
+  ///
+  /// Optional.
+  core.List<TargetMetric>? targetMetrics;
+
+  ReadPoolAutoScaleConfig({
+    this.disableScaleIn,
+    this.enabled,
+    this.maxNodeCount,
+    this.minNodeCount,
+    this.targetMetrics,
+  });
+
+  ReadPoolAutoScaleConfig.fromJson(core.Map json_)
+    : this(
+        disableScaleIn: json_['disableScaleIn'] as core.bool?,
+        enabled: json_['enabled'] as core.bool?,
+        maxNodeCount: json_['maxNodeCount'] as core.int?,
+        minNodeCount: json_['minNodeCount'] as core.int?,
+        targetMetrics:
+            (json_['targetMetrics'] as core.List?)
+                ?.map(
+                  (value) => TargetMetric.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (disableScaleIn != null) 'disableScaleIn': disableScaleIn!,
+    if (enabled != null) 'enabled': enabled!,
+    if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
+    if (minNodeCount != null) 'minNodeCount': minNodeCount!,
+    if (targetMetrics != null) 'targetMetrics': targetMetrics!,
+  };
+}
+
 /// Read-replica configuration for connecting to the primary instance.
 class ReplicaConfiguration {
   /// Specifies if a SQL Server replica is a cascadable replica.
@@ -9591,6 +9981,30 @@ class RotateServerCertificateContext {
   };
 }
 
+/// Contains the values for a row.
+class Row {
+  /// The values for the row.
+  core.List<Value>? values;
+
+  Row({this.values});
+
+  Row.fromJson(core.Map json_)
+    : this(
+        values:
+            (json_['values'] as core.List?)
+                ?.map(
+                  (value) => Value.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (values != null) 'values': values!,
+  };
+}
+
 /// A list of objects that the user selects for replication from an external
 /// source instance.
 class SelectedObjects {
@@ -9769,6 +10183,11 @@ class Settings {
   /// Optional.
   core.bool? enableGoogleMlIntegration;
 
+  /// The final backup configuration for the instance.
+  ///
+  /// Optional.
+  FinalBackupConfig? finalBackupConfig;
+
   /// Insights configuration, for now relevant only for Postgres.
   InsightsConfig? insightsConfig;
 
@@ -9808,6 +10227,11 @@ class Settings {
   /// - "PACKAGE" : The instance is billed at a monthly flat rate.
   /// - "PER_USE" : The instance is billed per usage.
   core.String? pricingPlan;
+
+  /// The read pool auto-scale configuration for the instance.
+  ///
+  /// Optional.
+  ReadPoolAutoScaleConfig? readPoolAutoScaleConfig;
 
   /// Configuration value for recreation of replica after certain replication
   /// lag.
@@ -9899,6 +10323,7 @@ class Settings {
     this.edition,
     this.enableDataplexIntegration,
     this.enableGoogleMlIntegration,
+    this.finalBackupConfig,
     this.insightsConfig,
     this.ipConfiguration,
     this.kind,
@@ -9906,6 +10331,7 @@ class Settings {
     this.maintenanceWindow,
     this.passwordValidationPolicy,
     this.pricingPlan,
+    this.readPoolAutoScaleConfig,
     this.replicationLagMaxSeconds,
     this.replicationType,
     this.retainBackupsOnDelete,
@@ -9996,6 +10422,13 @@ class Settings {
             json_['enableDataplexIntegration'] as core.bool?,
         enableGoogleMlIntegration:
             json_['enableGoogleMlIntegration'] as core.bool?,
+        finalBackupConfig:
+            json_.containsKey('finalBackupConfig')
+                ? FinalBackupConfig.fromJson(
+                  json_['finalBackupConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         insightsConfig:
             json_.containsKey('insightsConfig')
                 ? InsightsConfig.fromJson(
@@ -10033,6 +10466,13 @@ class Settings {
                 )
                 : null,
         pricingPlan: json_['pricingPlan'] as core.String?,
+        readPoolAutoScaleConfig:
+            json_.containsKey('readPoolAutoScaleConfig')
+                ? ReadPoolAutoScaleConfig.fromJson(
+                  json_['readPoolAutoScaleConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         replicationLagMaxSeconds:
             json_['replicationLagMaxSeconds'] as core.int?,
         replicationType: json_['replicationType'] as core.String?,
@@ -10091,6 +10531,7 @@ class Settings {
       'enableDataplexIntegration': enableDataplexIntegration!,
     if (enableGoogleMlIntegration != null)
       'enableGoogleMlIntegration': enableGoogleMlIntegration!,
+    if (finalBackupConfig != null) 'finalBackupConfig': finalBackupConfig!,
     if (insightsConfig != null) 'insightsConfig': insightsConfig!,
     if (ipConfiguration != null) 'ipConfiguration': ipConfiguration!,
     if (kind != null) 'kind': kind!,
@@ -10099,6 +10540,8 @@ class Settings {
     if (passwordValidationPolicy != null)
       'passwordValidationPolicy': passwordValidationPolicy!,
     if (pricingPlan != null) 'pricingPlan': pricingPlan!,
+    if (readPoolAutoScaleConfig != null)
+      'readPoolAutoScaleConfig': readPoolAutoScaleConfig!,
     if (replicationLagMaxSeconds != null)
       'replicationLagMaxSeconds': replicationLagMaxSeconds!,
     if (replicationType != null) 'replicationType': replicationType!,
@@ -10118,23 +10561,72 @@ class Settings {
 
 /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 class SqlActiveDirectoryConfig {
+  /// The secret manager key storing the administrator credential.
+  ///
+  /// (e.g., projects/{project}/secrets/{secret}).
+  ///
+  /// Optional.
+  core.String? adminCredentialSecretName;
+
+  /// Domain controller IPv4 addresses used to bootstrap Active Directory.
+  ///
+  /// Optional.
+  core.List<core.String>? dnsServers;
+
   /// The name of the domain (e.g., mydomain.com).
   core.String? domain;
 
   /// This is always sql#activeDirectoryConfig.
   core.String? kind;
 
-  SqlActiveDirectoryConfig({this.domain, this.kind});
+  /// The mode of the Active Directory configuration.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ACTIVE_DIRECTORY_MODE_UNSPECIFIED" : Unspecified mode.
+  /// - "MANAGED_ACTIVE_DIRECTORY" : Managed Active Directory mode. This is the
+  /// fallback option to maintain backward compatibility.
+  /// - "SELF_MANAGED_ACTIVE_DIRECTORY" : Self-managed Active Directory mode.
+  core.String? mode;
+
+  /// The organizational unit distinguished name.
+  ///
+  /// This is the full hierarchical path to the organizational unit.
+  ///
+  /// Optional.
+  core.String? organizationalUnit;
+
+  SqlActiveDirectoryConfig({
+    this.adminCredentialSecretName,
+    this.dnsServers,
+    this.domain,
+    this.kind,
+    this.mode,
+    this.organizationalUnit,
+  });
 
   SqlActiveDirectoryConfig.fromJson(core.Map json_)
     : this(
+        adminCredentialSecretName:
+            json_['adminCredentialSecretName'] as core.String?,
+        dnsServers:
+            (json_['dnsServers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         domain: json_['domain'] as core.String?,
         kind: json_['kind'] as core.String?,
+        mode: json_['mode'] as core.String?,
+        organizationalUnit: json_['organizationalUnit'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (adminCredentialSecretName != null)
+      'adminCredentialSecretName': adminCredentialSecretName!,
+    if (dnsServers != null) 'dnsServers': dnsServers!,
     if (domain != null) 'domain': domain!,
     if (kind != null) 'kind': kind!,
+    if (mode != null) 'mode': mode!,
+    if (organizationalUnit != null) 'organizationalUnit': organizationalUnit!,
   };
 }
 
@@ -10264,6 +10756,18 @@ class SqlExternalSyncSettingError {
   /// exist on the source instance.
   /// - "PSC_ONLY_INSTANCE_WITH_NO_NETWORK_ATTACHMENT_URI" : PSC only
   /// destination instance does not have a network attachment URI.
+  /// - "SELECTED_OBJECTS_REFERENCE_UNSELECTED_OBJECTS" : Selected objects
+  /// reference unselected objects. Based on their object type (foreign key
+  /// constraint or view), selected objects will fail during migration.
+  /// - "PROMPT_DELETE_EXISTING" : The migration will delete existing data in
+  /// the replica; set replica_overwrite_enabled in the request to acknowledge
+  /// this. This is an error. MySQL only.
+  /// - "WILL_DELETE_EXISTING" : The migration will delete existing data in the
+  /// replica; replica_overwrite_enabled was set in the request acknowledging
+  /// this. This is a warning rather than an error. MySQL only.
+  /// - "PG_DDL_REPLICATION_INSUFFICIENT_PRIVILEGE" : The replication user is
+  /// missing specific privileges to setup DDL replication. (e.g. CREATE EVENT
+  /// TRIGGER, CREATE SCHEMA) for PostgreSQL.
   core.String? type;
 
   SqlExternalSyncSettingError({this.detail, this.kind, this.type});
@@ -10294,6 +10798,58 @@ class SqlInstancesAcquireSsrsLeaseResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (operationId != null) 'operationId': operationId!,
+  };
+}
+
+/// Execute SQL statements response.
+class SqlInstancesExecuteSqlResponse {
+  /// A list of notices and warnings generated during query execution.
+  ///
+  /// For PostgreSQL, this includes all notices and warnings. For MySQL, this
+  /// includes warnings generated by the last executed statement. To retrieve
+  /// all warnings for a multi-statement query, `SHOW WARNINGS` must be executed
+  /// after each statement.
+  core.List<Message>? messages;
+
+  /// The additional metadata information regarding the execution of the SQL
+  /// statements.
+  Metadata? metadata;
+
+  /// The list of results after executing all the SQL statements.
+  core.List<QueryResult>? results;
+
+  SqlInstancesExecuteSqlResponse({this.messages, this.metadata, this.results});
+
+  SqlInstancesExecuteSqlResponse.fromJson(core.Map json_)
+    : this(
+        messages:
+            (json_['messages'] as core.List?)
+                ?.map(
+                  (value) => Message.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        metadata:
+            json_.containsKey('metadata')
+                ? Metadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) => QueryResult.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (messages != null) 'messages': messages!,
+    if (metadata != null) 'metadata': metadata!,
+    if (results != null) 'results': results!,
   };
 }
 
@@ -10331,6 +10887,9 @@ class SqlInstancesGetDiskShrinkConfigResponse {
 
 /// Instance get latest recovery time response.
 class SqlInstancesGetLatestRecoveryTimeResponse {
+  /// Timestamp, identifies the earliest recovery time of the source instance.
+  core.String? earliestRecoveryTime;
+
   /// This is always `sql#getLatestRecoveryTime`.
   core.String? kind;
 
@@ -10338,17 +10897,21 @@ class SqlInstancesGetLatestRecoveryTimeResponse {
   core.String? latestRecoveryTime;
 
   SqlInstancesGetLatestRecoveryTimeResponse({
+    this.earliestRecoveryTime,
     this.kind,
     this.latestRecoveryTime,
   });
 
   SqlInstancesGetLatestRecoveryTimeResponse.fromJson(core.Map json_)
     : this(
+        earliestRecoveryTime: json_['earliestRecoveryTime'] as core.String?,
         kind: json_['kind'] as core.String?,
         latestRecoveryTime: json_['latestRecoveryTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (earliestRecoveryTime != null)
+      'earliestRecoveryTime': earliestRecoveryTime!,
     if (kind != null) 'kind': kind!,
     if (latestRecoveryTime != null) 'latestRecoveryTime': latestRecoveryTime!,
   };
@@ -10414,6 +10977,16 @@ class SqlInstancesStartExternalSyncRequest {
   /// MySQL-specific settings for start external sync.
   MySqlSyncConfig? mysqlSyncConfig;
 
+  /// MySQL only.
+  ///
+  /// True if end-user has confirmed that this SES call will wipe replica
+  /// databases overlapping with the proposed selected_objects. If this field is
+  /// not set and there are both overlapping and additional databases proposed,
+  /// an error will be returned.
+  ///
+  /// Optional.
+  core.bool? replicaOverwriteEnabled;
+
   /// Whether to skip the verification step (VESS).
   core.bool? skipVerification;
 
@@ -10443,6 +11016,7 @@ class SqlInstancesStartExternalSyncRequest {
   SqlInstancesStartExternalSyncRequest({
     this.migrationType,
     this.mysqlSyncConfig,
+    this.replicaOverwriteEnabled,
     this.skipVerification,
     this.syncMode,
     this.syncParallelLevel,
@@ -10458,6 +11032,7 @@ class SqlInstancesStartExternalSyncRequest {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        replicaOverwriteEnabled: json_['replicaOverwriteEnabled'] as core.bool?,
         skipVerification: json_['skipVerification'] as core.bool?,
         syncMode: json_['syncMode'] as core.String?,
         syncParallelLevel: json_['syncParallelLevel'] as core.String?,
@@ -10466,6 +11041,8 @@ class SqlInstancesStartExternalSyncRequest {
   core.Map<core.String, core.dynamic> toJson() => {
     if (migrationType != null) 'migrationType': migrationType!,
     if (mysqlSyncConfig != null) 'mysqlSyncConfig': mysqlSyncConfig!,
+    if (replicaOverwriteEnabled != null)
+      'replicaOverwriteEnabled': replicaOverwriteEnabled!,
     if (skipVerification != null) 'skipVerification': skipVerification!,
     if (syncMode != null) 'syncMode': syncMode!,
     if (syncParallelLevel != null) 'syncParallelLevel': syncParallelLevel!,
@@ -11067,6 +11644,28 @@ class SyncFlags {
   };
 }
 
+/// Target metric for read pool auto scaling.
+class TargetMetric {
+  /// The metric name to be used for auto scaling.
+  core.String? metric;
+
+  /// The target value for the metric.
+  core.double? targetValue;
+
+  TargetMetric({this.metric, this.targetValue});
+
+  TargetMetric.fromJson(core.Map json_)
+    : this(
+        metric: json_['metric'] as core.String?,
+        targetValue: (json_['targetValue'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (metric != null) 'metric': metric!,
+    if (targetValue != null) 'targetValue': targetValue!,
+  };
+}
+
 /// A Google Cloud SQL service tier resource.
 class Tier {
   /// The maximum disk size of this tier in bytes.
@@ -11188,6 +11787,19 @@ class User {
   /// Optional.
   core.String? host;
 
+  /// Indicates if a group is active or inactive for IAM database
+  /// authentication.
+  /// Possible string values are:
+  /// - "IAM_STATUS_UNSPECIFIED" : The default value for users that are not of
+  /// type CLOUD_IAM_GROUP. Only CLOUD_IAM_GROUP users will be inactive or
+  /// active. Users with an IamStatus of IAM_STATUS_UNSPECIFIED will not display
+  /// whether they are active or inactive as that is not applicable to them.
+  /// - "INACTIVE" : INACTIVE indicates a group is not available for IAM
+  /// database authentication.
+  /// - "ACTIVE" : ACTIVE indicates a group is available for IAM database
+  /// authentication.
+  core.String? iamStatus;
+
   /// The name of the Cloud SQL instance.
   ///
   /// This does not include the project ID. Can be omitted for *update* because
@@ -11234,6 +11846,7 @@ class User {
     this.dualPasswordType,
     this.etag,
     this.host,
+    this.iamStatus,
     this.instance,
     this.kind,
     this.name,
@@ -11249,6 +11862,7 @@ class User {
         dualPasswordType: json_['dualPasswordType'] as core.String?,
         etag: json_['etag'] as core.String?,
         host: json_['host'] as core.String?,
+        iamStatus: json_['iamStatus'] as core.String?,
         instance: json_['instance'] as core.String?,
         kind: json_['kind'] as core.String?,
         name: json_['name'] as core.String?,
@@ -11275,6 +11889,7 @@ class User {
     if (dualPasswordType != null) 'dualPasswordType': dualPasswordType!,
     if (etag != null) 'etag': etag!,
     if (host != null) 'host': host!,
+    if (iamStatus != null) 'iamStatus': iamStatus!,
     if (instance != null) 'instance': instance!,
     if (kind != null) 'kind': kind!,
     if (name != null) 'name': name!,
@@ -11381,5 +11996,27 @@ class UsersListResponse {
     if (items != null) 'items': items!,
     if (kind != null) 'kind': kind!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// The cell value of the table.
+class Value {
+  /// If cell value is null, then this flag will be set to true.
+  core.bool? nullValue;
+
+  /// The cell value represented in string format.
+  core.String? value;
+
+  Value({this.nullValue, this.value});
+
+  Value.fromJson(core.Map json_)
+    : this(
+        nullValue: json_['nullValue'] as core.bool?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nullValue != null) 'nullValue': nullValue!,
+    if (value != null) 'value': value!,
   };
 }

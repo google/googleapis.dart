@@ -28,7 +28,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250715",
+    "revision": "20250902",
     "rootUrl": "https://dialogflow.googleapis.com/",
     "servicePath": "",
     "title": "Dialogflow API",
@@ -4411,7 +4411,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -14085,6 +14085,11 @@
                 "faqAnswer": {
                     "$ref": "GoogleCloudDialogflowV2FaqAnswer",
                     "description": "Output only. The FAQ answer.",
+                    "readOnly": true
+                },
+                "generatorSuggestion": {
+                    "$ref": "GoogleCloudDialogflowV2GeneratorSuggestion",
+                    "description": "Output only. The generator suggestion.",
                     "readOnly": true
                 }
             },

@@ -11476,10 +11476,24 @@ class Image {
   )
   core.String? kind;
 
-  /// The URI for the image.
+  /// An ID for an already uploaded private image.
+  ///
+  /// Either this or source_uri should be set. Requests setting both or neither
+  /// will be rejected. Please contact support to use private images.
+  core.String? privateImageId;
+
+  /// A URI for the image.
+  ///
+  /// Either this or private_image_id should be set. Requests setting both or
+  /// neither will be rejected.
   ImageUri? sourceUri;
 
-  Image({this.contentDescription, this.kind, this.sourceUri});
+  Image({
+    this.contentDescription,
+    this.kind,
+    this.privateImageId,
+    this.sourceUri,
+  });
 
   Image.fromJson(core.Map json_)
     : this(
@@ -11491,6 +11505,7 @@ class Image {
                 )
                 : null,
         kind: json_['kind'] as core.String?,
+        privateImageId: json_['privateImageId'] as core.String?,
         sourceUri:
             json_.containsKey('sourceUri')
                 ? ImageUri.fromJson(
@@ -11502,6 +11517,7 @@ class Image {
   core.Map<core.String, core.dynamic> toJson() => {
     if (contentDescription != null) 'contentDescription': contentDescription!,
     if (kind != null) 'kind': kind!,
+    if (privateImageId != null) 'privateImageId': privateImageId!,
     if (sourceUri != null) 'sourceUri': sourceUri!,
   };
 }
@@ -13878,6 +13894,21 @@ class MediaRequestInfo {
   /// need to contain anything.
   core.String? notificationType;
 
+  /// The physical headers provided by RequestReceivedParameters in Scotty
+  /// request.
+  ///
+  /// type is uploader_service.KeyValuePairs.
+  core.String? physicalHeaders;
+  core.List<core.int> get physicalHeadersAsBytes =>
+      convert.base64.decode(physicalHeaders!);
+
+  set physicalHeadersAsBytes(core.List<core.int> bytes_) {
+    physicalHeaders = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
   /// The Scotty request ID.
   core.String? requestId;
 
@@ -13909,6 +13940,7 @@ class MediaRequestInfo {
     this.diffObjectVersion,
     this.finalStatus,
     this.notificationType,
+    this.physicalHeaders,
     this.requestId,
     this.requestReceivedParamsServingInfo,
     this.totalBytes,
@@ -13922,6 +13954,7 @@ class MediaRequestInfo {
         diffObjectVersion: json_['diffObjectVersion'] as core.String?,
         finalStatus: json_['finalStatus'] as core.int?,
         notificationType: json_['notificationType'] as core.String?,
+        physicalHeaders: json_['physicalHeaders'] as core.String?,
         requestId: json_['requestId'] as core.String?,
         requestReceivedParamsServingInfo:
             json_['requestReceivedParamsServingInfo'] as core.String?,
@@ -13935,6 +13968,7 @@ class MediaRequestInfo {
     if (diffObjectVersion != null) 'diffObjectVersion': diffObjectVersion!,
     if (finalStatus != null) 'finalStatus': finalStatus!,
     if (notificationType != null) 'notificationType': notificationType!,
+    if (physicalHeaders != null) 'physicalHeaders': physicalHeaders!,
     if (requestId != null) 'requestId': requestId!,
     if (requestReceivedParamsServingInfo != null)
       'requestReceivedParamsServingInfo': requestReceivedParamsServingInfo!,

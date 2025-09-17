@@ -231,6 +231,7 @@ api.Deployment buildDeployment() {
     o.latestRevision = 'foo';
     o.lockState = 'foo';
     o.name = 'foo';
+    o.providerConfig = buildProviderConfig();
     o.quotaValidation = 'foo';
     o.serviceAccount = 'foo';
     o.state = 'foo';
@@ -262,6 +263,7 @@ void checkDeployment(api.Deployment o) {
     unittest.expect(o.latestRevision!, unittest.equals('foo'));
     unittest.expect(o.lockState!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkProviderConfig(o.providerConfig!);
     unittest.expect(o.quotaValidation!, unittest.equals('foo'));
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
@@ -1050,6 +1052,7 @@ api.Preview buildPreview() {
     o.name = 'foo';
     o.previewArtifacts = buildPreviewArtifacts();
     o.previewMode = 'foo';
+    o.providerConfig = buildProviderConfig();
     o.serviceAccount = 'foo';
     o.state = 'foo';
     o.terraformBlueprint = buildTerraformBlueprint();
@@ -1078,6 +1081,7 @@ void checkPreview(api.Preview o) {
     unittest.expect(o.name!, unittest.equals('foo'));
     checkPreviewArtifacts(o.previewArtifacts!);
     unittest.expect(o.previewMode!, unittest.equals('foo'));
+    checkProviderConfig(o.providerConfig!);
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
     checkTerraformBlueprint(o.terraformBlueprint!);
@@ -1247,6 +1251,25 @@ void checkPropertyDrift(api.PropertyDrift o) {
     unittest.expect(o.path!, unittest.equals('foo'));
   }
   buildCounterPropertyDrift--;
+}
+
+core.int buildCounterProviderConfig = 0;
+api.ProviderConfig buildProviderConfig() {
+  final o = api.ProviderConfig();
+  buildCounterProviderConfig++;
+  if (buildCounterProviderConfig < 3) {
+    o.sourceType = 'foo';
+  }
+  buildCounterProviderConfig--;
+  return o;
+}
+
+void checkProviderConfig(api.ProviderConfig o) {
+  buildCounterProviderConfig++;
+  if (buildCounterProviderConfig < 3) {
+    unittest.expect(o.sourceType!, unittest.equals('foo'));
+  }
+  buildCounterProviderConfig--;
 }
 
 core.Map<core.String, api.ResourceCAIInfo> buildUnnamed36() => {
@@ -1484,6 +1507,7 @@ api.Revision buildRevision() {
     o.importExistingResources = true;
     o.logs = 'foo';
     o.name = 'foo';
+    o.providerConfig = buildProviderConfig();
     o.quotaValidation = 'foo';
     o.quotaValidationResults = 'foo';
     o.serviceAccount = 'foo';
@@ -1512,6 +1536,7 @@ void checkRevision(api.Revision o) {
     unittest.expect(o.importExistingResources!, unittest.isTrue);
     unittest.expect(o.logs!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    checkProviderConfig(o.providerConfig!);
     unittest.expect(o.quotaValidation!, unittest.equals('foo'));
     unittest.expect(o.quotaValidationResults!, unittest.equals('foo'));
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
@@ -2223,6 +2248,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPropertyDrift(od);
+    });
+  });
+
+  unittest.group('obj-schema-ProviderConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildProviderConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ProviderConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkProviderConfig(od);
     });
   });
 

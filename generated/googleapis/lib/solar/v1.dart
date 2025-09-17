@@ -96,10 +96,7 @@ class BuildingInsightsResource {
   /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
   /// at 0.25 m/pixel.
   /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
-  /// at 0.25 m/pixel. **Note:** This enum is only available if
-  /// `experiments=EXPANDED_COVERAGE` is set in the request. For more
-  /// information, see
-  /// [Expanded Coverage](https://developers.google.com/maps/documentation/solar/expanded-coverage).
+  /// at 0.25 m/pixel.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -197,10 +194,7 @@ class DataLayersResource {
   /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
   /// at 0.25 m/pixel.
   /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
-  /// at 0.25 m/pixel. **Note:** This enum is only available if
-  /// `experiments=EXPANDED_COVERAGE` is set in the request. For more
-  /// information, see
-  /// [Expanded Coverage](https://developers.google.com/maps/documentation/solar/expanded-coverage).
+  /// at 0.25 m/pixel.
   ///
   /// [view] - Optional. The desired subset of the data to return.
   /// Possible string values are:
@@ -335,10 +329,7 @@ class BuildingInsights {
   /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
   /// at 0.25 m/pixel.
   /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
-  /// at 0.25 m/pixel. **Note:** This enum is only available if
-  /// `experiments=EXPANDED_COVERAGE` is set in the request. For more
-  /// information, see
-  /// [Expanded Coverage](https://developers.google.com/maps/documentation/solar/expanded-coverage).
+  /// at 0.25 m/pixel.
   core.String? imageryQuality;
 
   /// The resource name for the building, of the format `buildings/{place_id}`.
@@ -573,10 +564,7 @@ class DataLayers {
   /// - "LOW" : Solar data is derived from enhanced satellite imagery processed
   /// at 0.25 m/pixel.
   /// - "BASE" : Solar data is derived from enhanced satellite imagery processed
-  /// at 0.25 m/pixel. **Note:** This enum is only available if
-  /// `experiments=EXPANDED_COVERAGE` is set in the request. For more
-  /// information, see
-  /// [Expanded Coverage](https://developers.google.com/maps/documentation/solar/expanded-coverage).
+  /// at 0.25 m/pixel.
   core.String? imageryQuality;
 
   /// The URL for the building mask image: one bit per pixel saying whether that

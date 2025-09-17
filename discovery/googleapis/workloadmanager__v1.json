@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250727",
+    "revision": "20250903",
     "rootUrl": "https://workloadmanager.googleapis.com/",
     "servicePath": "",
     "title": "Workload Manager API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -910,9 +910,25 @@
                     "description": "Optional. The available version of the agent in artifact registry.",
                     "type": "string"
                 },
+                "hanaMonitoring": {
+                    "$ref": "ServiceStates",
+                    "description": "Optional. HANA monitoring metrics of the agent."
+                },
                 "installedVersion": {
                     "description": "Optional. The installed version of the agent on the host.",
                     "type": "string"
+                },
+                "isFullyEnabled": {
+                    "description": "Optional. Whether the agent is fully enabled. If false, the agent is has some issues.",
+                    "type": "boolean"
+                },
+                "processMetrics": {
+                    "$ref": "ServiceStates",
+                    "description": "Optional. The Process metrics of the agent."
+                },
+                "systemDiscovery": {
+                    "$ref": "ServiceStates",
+                    "description": "Optional. The System discovery metrics of the agent."
                 }
             },
             "type": "object"
@@ -1241,7 +1257,7 @@
                     "readOnly": true
                 },
                 "kind": {
-                    "description": "Output only. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.",
+                    "description": "Output only. ",
                     "enum": [
                         "RESOURCE_KIND_UNSPECIFIED",
                         "RESOURCE_KIND_INSTANCE",
@@ -1274,7 +1290,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Output only. resource name",
+                    "description": "Output only. resource name Example: compute.googleapis.com/projects/wlm-obs-dev/zones/us-central1-a/instances/sap-pri",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -1444,6 +1460,20 @@
                     "description": "Output only. [Output only] End time stamp",
                     "format": "google-datetime",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "engine": {
+                    "description": "Optional. Engine",
+                    "enum": [
+                        "ENGINE_UNSPECIFIED",
+                        "ENGINE_SCANNER",
+                        "V2"
+                    ],
+                    "enumDescriptions": [
+                        "The original CG",
+                        "SlimCG / Scanner",
+                        "Evaluation Engine V2"
+                    ],
                     "type": "string"
                 },
                 "evaluationId": {
@@ -1633,6 +1663,23 @@
             },
             "type": "object"
         },
+        "IAMPermission": {
+            "description": "The IAM permission status.",
+            "id": "IAMPermission",
+            "properties": {
+                "granted": {
+                    "description": "Output only. Whether the permission is granted.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "Output only. The name of the permission.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Insight": {
             "description": "A presentation of host resource usage where the workload runs.",
             "id": "Insight",
@@ -1642,7 +1689,7 @@
                     "description": "The insights data for the agent status."
                 },
                 "instanceId": {
-                    "description": "Required. The instance id where the insight is generated from",
+                    "description": "Optional. The instance id where the insight is generated from",
                     "type": "string"
                 },
                 "sapDiscovery": {
@@ -2140,6 +2187,20 @@
                 "revisionId": {
                     "description": "Output only. the version of the rule",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "ruleType": {
+                    "description": "The type of the rule.",
+                    "enum": [
+                        "RULE_TYPE_UNSPECIFIED",
+                        "BASELINE",
+                        "CUSTOM"
+                    ],
+                    "enumDescriptions": [
+                        "Not specified.",
+                        "Baseline rules",
+                        "Custom rules"
+                    ],
                     "type": "string"
                 },
                 "secondaryCategory": {
@@ -2977,6 +3038,42 @@
             },
             "type": "object"
         },
+        "ServiceStates": {
+            "description": "The state of the service.",
+            "id": "ServiceStates",
+            "properties": {
+                "iamPermissions": {
+                    "description": "Optional. Output only. The IAM permissions for the service.",
+                    "items": {
+                        "$ref": "IAMPermission"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
+                "state": {
+                    "description": "Output only. The overall state of the service.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "CONFIG_FAILURE",
+                        "IAM_FAILURE",
+                        "FUNCTIONALITY_FAILURE",
+                        "ENABLED",
+                        "DISABLED"
+                    ],
+                    "enumDescriptions": [
+                        "The state is unspecified.",
+                        "The state means the service has config errors.",
+                        "The state means the service has IAM permission errors.",
+                        "The state means the service has functionality errors.",
+                        "The state means the service has no error.",
+                        "The state means the service disabled."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ShellCommand": {
             "description": "* A ShellCommand is invoked via the agent's command line executor",
             "id": "ShellCommand",
@@ -3146,7 +3243,7 @@
                     "type": "string"
                 },
                 "instanceName": {
-                    "description": "Required. instance_name lists the human readable name of the instance that the data comes from.",
+                    "description": "Optional. instance_name lists the human readable name of the instance that the data comes from.",
                     "type": "string"
                 },
                 "projectId": {

@@ -6946,9 +6946,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -14586,10 +14586,16 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
   /// Output only.
   GoogleCloudDialogflowV2FaqAnswer? faqAnswer;
 
+  /// The generator suggestion.
+  ///
+  /// Output only.
+  GoogleCloudDialogflowV2GeneratorSuggestion? generatorSuggestion;
+
   GoogleCloudDialogflowV2AgentAssistantRecord({
     this.articleSuggestionAnswer,
     this.dialogflowAssistAnswer,
     this.faqAnswer,
+    this.generatorSuggestion,
   });
 
   GoogleCloudDialogflowV2AgentAssistantRecord.fromJson(core.Map json_)
@@ -14614,6 +14620,13 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
                   json_['faqAnswer'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        generatorSuggestion:
+            json_.containsKey('generatorSuggestion')
+                ? GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(
+                  json_['generatorSuggestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -14622,6 +14635,8 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
     if (dialogflowAssistAnswer != null)
       'dialogflowAssistAnswer': dialogflowAssistAnswer!,
     if (faqAnswer != null) 'faqAnswer': faqAnswer!,
+    if (generatorSuggestion != null)
+      'generatorSuggestion': generatorSuggestion!,
   };
 }
 

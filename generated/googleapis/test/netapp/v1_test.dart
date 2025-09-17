@@ -559,12 +559,15 @@ api.HybridReplicationParameters buildHybridReplicationParameters() {
   if (buildCounterHybridReplicationParameters < 3) {
     o.clusterLocation = 'foo';
     o.description = 'foo';
+    o.hybridReplicationType = 'foo';
     o.labels = buildUnnamed10();
+    o.largeVolumeConstituentCount = 42;
     o.peerClusterName = 'foo';
     o.peerIpAddresses = buildUnnamed11();
     o.peerSvmName = 'foo';
     o.peerVolumeName = 'foo';
     o.replication = 'foo';
+    o.replicationSchedule = 'foo';
   }
   buildCounterHybridReplicationParameters--;
   return o;
@@ -575,12 +578,15 @@ void checkHybridReplicationParameters(api.HybridReplicationParameters o) {
   if (buildCounterHybridReplicationParameters < 3) {
     unittest.expect(o.clusterLocation!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
+    unittest.expect(o.hybridReplicationType!, unittest.equals('foo'));
     checkUnnamed10(o.labels!);
+    unittest.expect(o.largeVolumeConstituentCount!, unittest.equals(42));
     unittest.expect(o.peerClusterName!, unittest.equals('foo'));
     checkUnnamed11(o.peerIpAddresses!);
     unittest.expect(o.peerSvmName!, unittest.equals('foo'));
     unittest.expect(o.peerVolumeName!, unittest.equals('foo'));
     unittest.expect(o.replication!, unittest.equals('foo'));
+    unittest.expect(o.replicationSchedule!, unittest.equals('foo'));
   }
   buildCounterHybridReplicationParameters--;
 }
@@ -1359,6 +1365,7 @@ api.Replication buildReplication() {
     o.healthy = true;
     o.hybridPeeringDetails = buildHybridPeeringDetails();
     o.hybridReplicationType = 'foo';
+    o.hybridReplicationUserCommands = buildUserCommands();
     o.labels = buildUnnamed40();
     o.mirrorState = 'foo';
     o.name = 'foo';
@@ -1384,6 +1391,7 @@ void checkReplication(api.Replication o) {
     unittest.expect(o.healthy!, unittest.isTrue);
     checkHybridPeeringDetails(o.hybridPeeringDetails!);
     unittest.expect(o.hybridReplicationType!, unittest.equals('foo'));
+    checkUserCommands(o.hybridReplicationUserCommands!);
     checkUnnamed40(o.labels!);
     unittest.expect(o.mirrorState!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -1477,6 +1485,7 @@ api.SimpleExportPolicyRule buildSimpleExportPolicyRule() {
   if (buildCounterSimpleExportPolicyRule < 3) {
     o.accessType = 'foo';
     o.allowedClients = 'foo';
+    o.anonUid = 'foo';
     o.hasRootAccess = 'foo';
     o.kerberos5ReadOnly = true;
     o.kerberos5ReadWrite = true;
@@ -1486,6 +1495,7 @@ api.SimpleExportPolicyRule buildSimpleExportPolicyRule() {
     o.kerberos5pReadWrite = true;
     o.nfsv3 = true;
     o.nfsv4 = true;
+    o.squashMode = 'foo';
   }
   buildCounterSimpleExportPolicyRule--;
   return o;
@@ -1496,6 +1506,7 @@ void checkSimpleExportPolicyRule(api.SimpleExportPolicyRule o) {
   if (buildCounterSimpleExportPolicyRule < 3) {
     unittest.expect(o.accessType!, unittest.equals('foo'));
     unittest.expect(o.allowedClients!, unittest.equals('foo'));
+    unittest.expect(o.anonUid!, unittest.equals('foo'));
     unittest.expect(o.hasRootAccess!, unittest.equals('foo'));
     unittest.expect(o.kerberos5ReadOnly!, unittest.isTrue);
     unittest.expect(o.kerberos5ReadWrite!, unittest.isTrue);
@@ -1505,6 +1516,7 @@ void checkSimpleExportPolicyRule(api.SimpleExportPolicyRule o) {
     unittest.expect(o.kerberos5pReadWrite!, unittest.isTrue);
     unittest.expect(o.nfsv3!, unittest.isTrue);
     unittest.expect(o.nfsv4!, unittest.isTrue);
+    unittest.expect(o.squashMode!, unittest.equals('foo'));
   }
   buildCounterSimpleExportPolicyRule--;
 }
@@ -1670,7 +1682,9 @@ api.StoragePool buildStoragePool() {
   if (buildCounterStoragePool < 3) {
     o.activeDirectory = 'foo';
     o.allowAutoTiering = true;
+    o.availableThroughputMibps = 42.0;
     o.capacityGib = 'foo';
+    o.coldTierSizeUsedGib = 'foo';
     o.createTime = 'foo';
     o.customPerformanceEnabled = true;
     o.description = 'foo';
@@ -1678,12 +1692,14 @@ api.StoragePool buildStoragePool() {
     o.encryptionType = 'foo';
     o.globalAccessAllowed = true;
     o.hotTierSizeGib = 'foo';
+    o.hotTierSizeUsedGib = 'foo';
     o.kmsConfig = 'foo';
     o.labels = buildUnnamed44();
     o.ldapEnabled = true;
     o.name = 'foo';
     o.network = 'foo';
     o.psaRange = 'foo';
+    o.qosType = 'foo';
     o.replicaZone = 'foo';
     o.satisfiesPzi = true;
     o.satisfiesPzs = true;
@@ -1705,7 +1721,9 @@ void checkStoragePool(api.StoragePool o) {
   if (buildCounterStoragePool < 3) {
     unittest.expect(o.activeDirectory!, unittest.equals('foo'));
     unittest.expect(o.allowAutoTiering!, unittest.isTrue);
+    unittest.expect(o.availableThroughputMibps!, unittest.equals(42.0));
     unittest.expect(o.capacityGib!, unittest.equals('foo'));
+    unittest.expect(o.coldTierSizeUsedGib!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.customPerformanceEnabled!, unittest.isTrue);
     unittest.expect(o.description!, unittest.equals('foo'));
@@ -1713,12 +1731,14 @@ void checkStoragePool(api.StoragePool o) {
     unittest.expect(o.encryptionType!, unittest.equals('foo'));
     unittest.expect(o.globalAccessAllowed!, unittest.isTrue);
     unittest.expect(o.hotTierSizeGib!, unittest.equals('foo'));
+    unittest.expect(o.hotTierSizeUsedGib!, unittest.equals('foo'));
     unittest.expect(o.kmsConfig!, unittest.equals('foo'));
     checkUnnamed44(o.labels!);
     unittest.expect(o.ldapEnabled!, unittest.isTrue);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.psaRange!, unittest.equals('foo'));
+    unittest.expect(o.qosType!, unittest.equals('foo'));
     unittest.expect(o.replicaZone!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
     unittest.expect(o.satisfiesPzs!, unittest.isTrue);
@@ -1820,6 +1840,33 @@ void checkTransferStats(api.TransferStats o) {
   buildCounterTransferStats--;
 }
 
+core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
+
+void checkUnnamed45(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterUserCommands = 0;
+api.UserCommands buildUserCommands() {
+  final o = api.UserCommands();
+  buildCounterUserCommands++;
+  if (buildCounterUserCommands < 3) {
+    o.commands = buildUnnamed45();
+  }
+  buildCounterUserCommands--;
+  return o;
+}
+
+void checkUserCommands(api.UserCommands o) {
+  buildCounterUserCommands++;
+  if (buildCounterUserCommands < 3) {
+    checkUnnamed45(o.commands!);
+  }
+  buildCounterUserCommands--;
+}
+
 core.int buildCounterValidateDirectoryServiceRequest = 0;
 api.ValidateDirectoryServiceRequest buildValidateDirectoryServiceRequest() {
   final o = api.ValidateDirectoryServiceRequest();
@@ -1879,31 +1926,23 @@ void checkVerifyKmsConfigResponse(api.VerifyKmsConfigResponse o) {
   buildCounterVerifyKmsConfigResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed46() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed45(core.Map<core.String, core.String> o) {
+void checkUnnamed46(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.MountOption> buildUnnamed46() => [
+core.List<api.MountOption> buildUnnamed47() => [
   buildMountOption(),
   buildMountOption(),
 ];
 
-void checkUnnamed46(core.List<api.MountOption> o) {
+void checkUnnamed47(core.List<api.MountOption> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkMountOption(o[0]);
   checkMountOption(o[1]);
-}
-
-core.List<core.String> buildUnnamed47() => ['foo', 'foo'];
-
-void checkUnnamed47(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
@@ -1917,6 +1956,14 @@ void checkUnnamed48(core.List<core.String> o) {
 core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
 
 void checkUnnamed49(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed50() => ['foo', 'foo'];
+
+void checkUnnamed50(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1936,31 +1983,33 @@ api.Volume buildVolume() {
     o.encryptionType = 'foo';
     o.exportPolicy = buildExportPolicy();
     o.hasReplication = true;
+    o.hotTierSizeUsedGib = 'foo';
     o.hybridReplicationParameters = buildHybridReplicationParameters();
     o.kerberosEnabled = true;
     o.kmsConfig = 'foo';
-    o.labels = buildUnnamed45();
+    o.labels = buildUnnamed46();
     o.largeCapacity = true;
     o.ldapEnabled = true;
-    o.mountOptions = buildUnnamed46();
+    o.mountOptions = buildUnnamed47();
     o.multipleEndpoints = true;
     o.name = 'foo';
     o.network = 'foo';
-    o.protocols = buildUnnamed47();
+    o.protocols = buildUnnamed48();
     o.psaRange = 'foo';
     o.replicaZone = 'foo';
     o.restoreParameters = buildRestoreParameters();
-    o.restrictedActions = buildUnnamed48();
+    o.restrictedActions = buildUnnamed49();
     o.securityStyle = 'foo';
     o.serviceLevel = 'foo';
     o.shareName = 'foo';
-    o.smbSettings = buildUnnamed49();
+    o.smbSettings = buildUnnamed50();
     o.snapReserve = 42.0;
     o.snapshotDirectory = true;
     o.snapshotPolicy = buildSnapshotPolicy();
     o.state = 'foo';
     o.stateDetails = 'foo';
     o.storagePool = 'foo';
+    o.throughputMibps = 42.0;
     o.tieringPolicy = buildTieringPolicy();
     o.unixPermissions = 'foo';
     o.usedGib = 'foo';
@@ -1982,31 +2031,33 @@ void checkVolume(api.Volume o) {
     unittest.expect(o.encryptionType!, unittest.equals('foo'));
     checkExportPolicy(o.exportPolicy!);
     unittest.expect(o.hasReplication!, unittest.isTrue);
+    unittest.expect(o.hotTierSizeUsedGib!, unittest.equals('foo'));
     checkHybridReplicationParameters(o.hybridReplicationParameters!);
     unittest.expect(o.kerberosEnabled!, unittest.isTrue);
     unittest.expect(o.kmsConfig!, unittest.equals('foo'));
-    checkUnnamed45(o.labels!);
+    checkUnnamed46(o.labels!);
     unittest.expect(o.largeCapacity!, unittest.isTrue);
     unittest.expect(o.ldapEnabled!, unittest.isTrue);
-    checkUnnamed46(o.mountOptions!);
+    checkUnnamed47(o.mountOptions!);
     unittest.expect(o.multipleEndpoints!, unittest.isTrue);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.network!, unittest.equals('foo'));
-    checkUnnamed47(o.protocols!);
+    checkUnnamed48(o.protocols!);
     unittest.expect(o.psaRange!, unittest.equals('foo'));
     unittest.expect(o.replicaZone!, unittest.equals('foo'));
     checkRestoreParameters(o.restoreParameters!);
-    checkUnnamed48(o.restrictedActions!);
+    checkUnnamed49(o.restrictedActions!);
     unittest.expect(o.securityStyle!, unittest.equals('foo'));
     unittest.expect(o.serviceLevel!, unittest.equals('foo'));
     unittest.expect(o.shareName!, unittest.equals('foo'));
-    checkUnnamed49(o.smbSettings!);
+    checkUnnamed50(o.smbSettings!);
     unittest.expect(o.snapReserve!, unittest.equals(42.0));
     unittest.expect(o.snapshotDirectory!, unittest.isTrue);
     checkSnapshotPolicy(o.snapshotPolicy!);
     unittest.expect(o.state!, unittest.equals('foo'));
     unittest.expect(o.stateDetails!, unittest.equals('foo'));
     unittest.expect(o.storagePool!, unittest.equals('foo'));
+    unittest.expect(o.throughputMibps!, unittest.equals(42.0));
     checkTieringPolicy(o.tieringPolicy!);
     unittest.expect(o.unixPermissions!, unittest.equals('foo'));
     unittest.expect(o.usedGib!, unittest.equals('foo'));
@@ -2040,9 +2091,9 @@ void checkWeeklySchedule(api.WeeklySchedule o) {
   buildCounterWeeklySchedule--;
 }
 
-core.List<core.String> buildUnnamed50() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed51() => ['foo', 'foo'];
 
-void checkUnnamed50(core.List<core.String> o) {
+void checkUnnamed51(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2588,6 +2639,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-UserCommands', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildUserCommands();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.UserCommands.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkUserCommands(od);
+    });
+  });
+
   unittest.group('obj-schema-ValidateDirectoryServiceRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildValidateDirectoryServiceRequest();
@@ -2701,7 +2763,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.NetAppFilesApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed50();
+      final arg_extraLocationTypes = buildUnnamed51();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';

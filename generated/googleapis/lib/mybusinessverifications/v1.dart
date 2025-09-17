@@ -753,6 +753,7 @@ class Verification {
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
   /// - "VETTED_PARTNER" : This option may not be available for all locations.
+  /// - "TRUSTED_PARTNER" : Verify the location via a trusted partner.
   core.String? method;
 
   /// Resource name of the verification.
@@ -825,6 +826,7 @@ class VerificationOption {
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
   /// - "VETTED_PARTNER" : This option may not be available for all locations.
+  /// - "TRUSTED_PARTNER" : Verify the location via a trusted partner.
   core.String? verificationMethod;
 
   VerificationOption({
@@ -955,6 +957,7 @@ class VerifyLocationRequest {
   /// - "AUTO" : Verify the location without additional user action. This option
   /// may not be available for all locations.
   /// - "VETTED_PARTNER" : This option may not be available for all locations.
+  /// - "TRUSTED_PARTNER" : Verify the location via a trusted partner.
   core.String? method;
 
   /// The input for PHONE_CALL/SMS method The phone number that should be called
@@ -975,6 +978,10 @@ class VerifyLocationRequest {
   /// Optional.
   VerificationToken? token;
 
+  /// The input for TRUSTED_PARTNER method The verification token that is
+  /// associated to the location.
+  core.String? trustedPartnerToken;
+
   VerifyLocationRequest({
     this.context,
     this.emailAddress,
@@ -983,6 +990,7 @@ class VerifyLocationRequest {
     this.method,
     this.phoneNumber,
     this.token,
+    this.trustedPartnerToken,
   });
 
   VerifyLocationRequest.fromJson(core.Map json_)
@@ -1004,6 +1012,7 @@ class VerifyLocationRequest {
                   json_['token'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        trustedPartnerToken: json_['trustedPartnerToken'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1014,6 +1023,8 @@ class VerifyLocationRequest {
     if (method != null) 'method': method!,
     if (phoneNumber != null) 'phoneNumber': phoneNumber!,
     if (token != null) 'token': token!,
+    if (trustedPartnerToken != null)
+      'trustedPartnerToken': trustedPartnerToken!,
   };
 }
 

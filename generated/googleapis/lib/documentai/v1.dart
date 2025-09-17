@@ -227,9 +227,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2474,6 +2474,18 @@ class GoogleCloudDocumentaiV1DocumentEntity {
   /// Optional.
   core.String? mentionText;
 
+  /// Specifies how the entity's value is obtained.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "METHOD_UNSPECIFIED" : When the method is not specified, it should be
+  /// treated as `EXTRACT`.
+  /// - "EXTRACT" : The entity's value is directly extracted as-is from the
+  /// document text.
+  /// - "DERIVE" : The entity's value is derived through inference and is not
+  /// necessarily an exact text extraction from the document.
+  core.String? method;
+
   /// Normalized entity value.
   ///
   /// Absent if the extracted value could not be converted or the type (e.g.
@@ -2523,6 +2535,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
     this.id,
     this.mentionId,
     this.mentionText,
+    this.method,
     this.normalizedValue,
     this.pageAnchor,
     this.properties,
@@ -2538,6 +2551,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
         id: json_['id'] as core.String?,
         mentionId: json_['mentionId'] as core.String?,
         mentionText: json_['mentionText'] as core.String?,
+        method: json_['method'] as core.String?,
         normalizedValue:
             json_.containsKey('normalizedValue')
                 ? GoogleCloudDocumentaiV1DocumentEntityNormalizedValue.fromJson(
@@ -2580,6 +2594,7 @@ class GoogleCloudDocumentaiV1DocumentEntity {
     if (id != null) 'id': id!,
     if (mentionId != null) 'mentionId': mentionId!,
     if (mentionText != null) 'mentionText': mentionText!,
+    if (method != null) 'method': method!,
     if (normalizedValue != null) 'normalizedValue': normalizedValue!,
     if (pageAnchor != null) 'pageAnchor': pageAnchor!,
     if (properties != null) 'properties': properties!,

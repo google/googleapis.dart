@@ -434,7 +434,11 @@ buildGoogleShoppingManufacturersV1ProductCertification() {
   if (buildCounterGoogleShoppingManufacturersV1ProductCertification < 3) {
     o.authority = 'foo';
     o.code = 'foo';
+    o.link = 'foo';
+    o.logo = 'foo';
     o.name = 'foo';
+    o.validUntil = 'foo';
+    o.value = 'foo';
   }
   buildCounterGoogleShoppingManufacturersV1ProductCertification--;
   return o;
@@ -447,7 +451,11 @@ void checkGoogleShoppingManufacturersV1ProductCertification(
   if (buildCounterGoogleShoppingManufacturersV1ProductCertification < 3) {
     unittest.expect(o.authority!, unittest.equals('foo'));
     unittest.expect(o.code!, unittest.equals('foo'));
+    unittest.expect(o.link!, unittest.equals('foo'));
+    unittest.expect(o.logo!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.validUntil!, unittest.equals('foo'));
+    unittest.expect(o.value!, unittest.equals('foo'));
   }
   buildCounterGoogleShoppingManufacturersV1ProductCertification--;
 }

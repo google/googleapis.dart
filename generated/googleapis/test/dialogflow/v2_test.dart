@@ -241,6 +241,7 @@ buildGoogleCloudDialogflowV2AgentAssistantRecord() {
     o.dialogflowAssistAnswer =
         buildGoogleCloudDialogflowV2DialogflowAssistAnswer();
     o.faqAnswer = buildGoogleCloudDialogflowV2FaqAnswer();
+    o.generatorSuggestion = buildGoogleCloudDialogflowV2GeneratorSuggestion();
   }
   buildCounterGoogleCloudDialogflowV2AgentAssistantRecord--;
   return o;
@@ -256,6 +257,7 @@ void checkGoogleCloudDialogflowV2AgentAssistantRecord(
       o.dialogflowAssistAnswer!,
     );
     checkGoogleCloudDialogflowV2FaqAnswer(o.faqAnswer!);
+    checkGoogleCloudDialogflowV2GeneratorSuggestion(o.generatorSuggestion!);
   }
   buildCounterGoogleCloudDialogflowV2AgentAssistantRecord--;
 }

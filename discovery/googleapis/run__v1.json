@@ -188,6 +188,11 @@
         },
         {
             "description": "Locational Endpoint",
+            "endpointUrl": "https://us-central2-run.googleapis.com/",
+            "location": "us-central2"
+        },
+        {
+            "description": "Locational Endpoint",
             "endpointUrl": "https://us-east1-run.googleapis.com/",
             "location": "us-east1"
         },
@@ -200,6 +205,11 @@
             "description": "Locational Endpoint",
             "endpointUrl": "https://us-east5-run.googleapis.com/",
             "location": "us-east5"
+        },
+        {
+            "description": "Locational Endpoint",
+            "endpointUrl": "https://us-east7-run.googleapis.com/",
+            "location": "us-east7"
         },
         {
             "description": "Locational Endpoint",
@@ -225,6 +235,11 @@
             "description": "Locational Endpoint",
             "endpointUrl": "https://us-west4-run.googleapis.com/",
             "location": "us-west4"
+        },
+        {
+            "description": "Locational Endpoint",
+            "endpointUrl": "https://us-west8-run.googleapis.com/",
+            "location": "us-west8"
         }
     ],
     "icons": {
@@ -237,7 +252,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250704",
+    "revision": "20250905",
     "rootUrl": "https://run.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Run Admin API",
@@ -1731,7 +1746,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -3004,7 +3019,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket.",
+                    "description": "stores driver specific attributes. For Google Cloud Storage volumes, the following attributes are supported: * bucketName: the name of the Cloud Storage bucket to mount. The Cloud Run Service identity must have access to this bucket. * mountOptions: comma-separated list of mount options to pass to the gcsfuse.",
                     "type": "object"
                 }
             },
@@ -4709,7 +4724,7 @@
             "id": "GoogleDevtoolsCloudbuildV1NpmPackage",
             "properties": {
                 "packagePath": {
-                    "description": "Path to the package.json. e.g. workspace/path/to/package",
+                    "description": "Optional. Path to the package.json. e.g. workspace/path/to/package Only one of `archive` or `package_path` can be specified.",
                     "type": "string"
                 },
                 "repository": {
@@ -5319,11 +5334,11 @@
             "id": "InstanceSplit",
             "properties": {
                 "latestRevision": {
-                    "description": "Uses the \"status.latestReadyRevisionName\" to determine the traffic target. When it changes, traffic will automatically migrate from the prior \"latest ready\" revision to the new one.",
+                    "description": "Uses the \"status.latestReadyRevisionName\" to determine the instance split target. When it changes, workloads will automatically migrate from the prior \"latest ready\" revision to the new one.",
                     "type": "boolean"
                 },
                 "percent": {
-                    "description": "Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.",
+                    "description": "Optional. Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.",
                     "format": "int32",
                     "type": "integer"
                 },
@@ -6176,7 +6191,7 @@
                     "type": "object"
                 },
                 "runtimeClassName": {
-                    "description": "Runtime. Leave unset for default.",
+                    "description": "Optional. Runtime. Leave unset for default.",
                     "type": "string"
                 },
                 "serviceAccountName": {
@@ -6944,7 +6959,7 @@
                     "type": "array"
                 },
                 "instanceSplits": {
-                    "description": "Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.",
+                    "description": "Holds the configured workload distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.",
                     "items": {
                         "$ref": "InstanceSplit"
                     },

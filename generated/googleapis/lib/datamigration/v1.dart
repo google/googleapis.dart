@@ -180,9 +180,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -6277,6 +6277,24 @@ class GenerateTcpProxyScriptRequest {
   };
 }
 
+/// Metadata for heterogeneous migration jobs objects.
+class HeterogeneousMetadata {
+  /// The number of unsupported events.
+  core.String? unsupportedEventsCount;
+
+  HeterogeneousMetadata({this.unsupportedEventsCount});
+
+  HeterogeneousMetadata.fromJson(core.Map json_)
+    : this(
+        unsupportedEventsCount: json_['unsupportedEventsCount'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (unsupportedEventsCount != null)
+      'unsupportedEventsCount': unsupportedEventsCount!,
+  };
+}
+
 /// Request message for 'ImportMappingRules' request.
 class ImportMappingRulesRequest {
   /// Should the conversion workspace be committed automatically after the
@@ -7661,6 +7679,11 @@ class MigrationJobObject {
   /// Output only.
   Status? error;
 
+  /// Metadata for heterogeneous migration jobs objects.
+  ///
+  /// Output only.
+  HeterogeneousMetadata? heterogeneousMetadata;
+
   /// The object's name.
   core.String? name;
 
@@ -7704,6 +7727,7 @@ class MigrationJobObject {
   MigrationJobObject({
     this.createTime,
     this.error,
+    this.heterogeneousMetadata,
     this.name,
     this.phase,
     this.sourceObject,
@@ -7718,6 +7742,13 @@ class MigrationJobObject {
             json_.containsKey('error')
                 ? Status.fromJson(
                   json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        heterogeneousMetadata:
+            json_.containsKey('heterogeneousMetadata')
+                ? HeterogeneousMetadata.fromJson(
+                  json_['heterogeneousMetadata']
+                      as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         name: json_['name'] as core.String?,
@@ -7735,6 +7766,8 @@ class MigrationJobObject {
   core.Map<core.String, core.dynamic> toJson() => {
     if (createTime != null) 'createTime': createTime!,
     if (error != null) 'error': error!,
+    if (heterogeneousMetadata != null)
+      'heterogeneousMetadata': heterogeneousMetadata!,
     if (name != null) 'name': name!,
     if (phase != null) 'phase': phase!,
     if (sourceObject != null) 'sourceObject': sourceObject!,
@@ -10097,10 +10130,22 @@ class SqlServerConnectionProfile {
   /// SQL instance ID of the source.
   core.String? cloudSqlId;
 
+  /// The project id of the Cloud SQL instance.
+  ///
+  /// If not provided, the project id of the connection profile will be used.
+  ///
+  /// Optional.
+  core.String? cloudSqlProjectId;
+
   /// The name of the specific database within the host.
   ///
   /// Required.
   core.String? database;
+
+  /// The Database Mirroring (DBM) port of the source SQL Server instance.
+  ///
+  /// Optional.
+  core.int? dbmPort;
 
   /// Forward SSH tunnel connectivity.
   ForwardSshTunnelConnectivity? forwardSshConnectivity;
@@ -10152,7 +10197,9 @@ class SqlServerConnectionProfile {
   SqlServerConnectionProfile({
     this.backups,
     this.cloudSqlId,
+    this.cloudSqlProjectId,
     this.database,
+    this.dbmPort,
     this.forwardSshConnectivity,
     this.host,
     this.password,
@@ -10174,7 +10221,9 @@ class SqlServerConnectionProfile {
                 )
                 : null,
         cloudSqlId: json_['cloudSqlId'] as core.String?,
+        cloudSqlProjectId: json_['cloudSqlProjectId'] as core.String?,
         database: json_['database'] as core.String?,
+        dbmPort: json_['dbmPort'] as core.int?,
         forwardSshConnectivity:
             json_.containsKey('forwardSshConnectivity')
                 ? ForwardSshTunnelConnectivity.fromJson(
@@ -10219,7 +10268,9 @@ class SqlServerConnectionProfile {
   core.Map<core.String, core.dynamic> toJson() => {
     if (backups != null) 'backups': backups!,
     if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
+    if (cloudSqlProjectId != null) 'cloudSqlProjectId': cloudSqlProjectId!,
     if (database != null) 'database': database!,
+    if (dbmPort != null) 'dbmPort': dbmPort!,
     if (forwardSshConnectivity != null)
       'forwardSshConnectivity': forwardSshConnectivity!,
     if (host != null) 'host': host!,
@@ -10234,6 +10285,38 @@ class SqlServerConnectionProfile {
     if (staticIpConnectivity != null)
       'staticIpConnectivity': staticIpConnectivity!,
     if (username != null) 'username': username!,
+  };
+}
+
+/// Configuration for distributed availability group (DAG) for the SQL Server
+/// homogeneous migration.
+class SqlServerDagConfig {
+  /// The name of the linked server that points to the source SQL Server
+  /// instance.
+  ///
+  /// Only used by DAG migrations.
+  ///
+  /// Required.
+  core.String? linkedServer;
+
+  /// The name of the source availability group.
+  ///
+  /// Only used by DAG migrations.
+  ///
+  /// Required.
+  core.String? sourceAg;
+
+  SqlServerDagConfig({this.linkedServer, this.sourceAg});
+
+  SqlServerDagConfig.fromJson(core.Map json_)
+    : this(
+        linkedServer: json_['linkedServer'] as core.String?,
+        sourceAg: json_['sourceAg'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (linkedServer != null) 'linkedServer': linkedServer!,
+    if (sourceAg != null) 'sourceAg': sourceAg!,
   };
 }
 
@@ -10333,6 +10416,12 @@ class SqlServerHomogeneousMigrationJobConfig {
   /// Required.
   core.String? backupFilePattern;
 
+  /// Configuration for distributed availability group (DAG) for the SQL Server
+  /// homogeneous migration.
+  ///
+  /// Optional.
+  SqlServerDagConfig? dagConfig;
+
   /// Backup details per database in Cloud Storage.
   ///
   /// Required.
@@ -10350,6 +10439,7 @@ class SqlServerHomogeneousMigrationJobConfig {
 
   SqlServerHomogeneousMigrationJobConfig({
     this.backupFilePattern,
+    this.dagConfig,
     this.databaseBackups,
     this.promoteWhenReady,
     this.useDiffBackup,
@@ -10358,6 +10448,12 @@ class SqlServerHomogeneousMigrationJobConfig {
   SqlServerHomogeneousMigrationJobConfig.fromJson(core.Map json_)
     : this(
         backupFilePattern: json_['backupFilePattern'] as core.String?,
+        dagConfig:
+            json_.containsKey('dagConfig')
+                ? SqlServerDagConfig.fromJson(
+                  json_['dagConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         databaseBackups:
             (json_['databaseBackups'] as core.List?)
                 ?.map(
@@ -10372,6 +10468,7 @@ class SqlServerHomogeneousMigrationJobConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (backupFilePattern != null) 'backupFilePattern': backupFilePattern!,
+    if (dagConfig != null) 'dagConfig': dagConfig!,
     if (databaseBackups != null) 'databaseBackups': databaseBackups!,
     if (promoteWhenReady != null) 'promoteWhenReady': promoteWhenReady!,
     if (useDiffBackup != null) 'useDiffBackup': useDiffBackup!,

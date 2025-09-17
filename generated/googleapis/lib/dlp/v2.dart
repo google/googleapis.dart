@@ -11621,8 +11621,8 @@ class GooglePrivacyDlpV2DataProfileAction {
   /// analytics\](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
   GooglePrivacyDlpV2PublishToChronicle? publishToChronicle;
 
-  /// Publishes a portion of each profile to Dataplex Catalog with the aspect
-  /// type Sensitive Data Protection Profile.
+  /// Publishes a portion of each profile to Dataplex Universal Catalog with the
+  /// aspect type Sensitive Data Protection Profile.
   GooglePrivacyDlpV2PublishToDataplexCatalog? publishToDataplexCatalog;
 
   /// Publishes findings to Security Command Center for each data profile.
@@ -16530,6 +16530,11 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// A sample that is a true positive for this infoType.
   core.String? example;
 
+  /// Locations at which this feature can be used.
+  ///
+  /// May change over time.
+  GooglePrivacyDlpV2LocationSupport? locationSupport;
+
   /// Internal name of the infoType.
   core.String? name;
 
@@ -16556,6 +16561,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     this.description,
     this.displayName,
     this.example,
+    this.locationSupport,
     this.name,
     this.sensitivityScore,
     this.specificInfoTypes,
@@ -16576,6 +16582,13 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         example: json_['example'] as core.String?,
+        locationSupport:
+            json_.containsKey('locationSupport')
+                ? GooglePrivacyDlpV2LocationSupport.fromJson(
+                  json_['locationSupport']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         sensitivityScore:
             json_.containsKey('sensitivityScore')
@@ -16607,6 +16620,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     if (description != null) 'description': description!,
     if (displayName != null) 'displayName': displayName!,
     if (example != null) 'example': example!,
+    if (locationSupport != null) 'locationSupport': locationSupport!,
     if (name != null) 'name': name!,
     if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
     if (specificInfoTypes != null) 'specificInfoTypes': specificInfoTypes!,
@@ -18674,6 +18688,45 @@ class GooglePrivacyDlpV2Location {
   };
 }
 
+/// Locations at which a feature can be used.
+class GooglePrivacyDlpV2LocationSupport {
+  /// Specific locations where the feature may be used.
+  ///
+  /// Examples: us-central1, us, asia, global If scope is ANY_LOCATION, no
+  /// regions will be listed.
+  core.List<core.String>? locations;
+
+  /// The current scope for location on this feature.
+  ///
+  /// This may expand over time.
+  /// Possible string values are:
+  /// - "REGIONALIZATION_SCOPE_UNSPECIFIED" : Invalid.
+  /// - "REGIONAL" : Feature may be used with one or more regions. See locations
+  /// for details.
+  /// - "ANY_LOCATION" : Feature may be used anywhere. Default value.
+  core.String? regionalizationScope;
+
+  GooglePrivacyDlpV2LocationSupport({
+    this.locations,
+    this.regionalizationScope,
+  });
+
+  GooglePrivacyDlpV2LocationSupport.fromJson(core.Map json_)
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        regionalizationScope: json_['regionalizationScope'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (locations != null) 'locations': locations!,
+    if (regionalizationScope != null)
+      'regionalizationScope': regionalizationScope!,
+  };
+}
+
 /// Job trigger option for hybrid jobs.
 ///
 /// Jobs must be manually created and finished.
@@ -19825,14 +19878,14 @@ typedef GooglePrivacyDlpV2PublishSummaryToCscc = $Empty;
 /// Message expressing intention to publish to Google Security Operations.
 typedef GooglePrivacyDlpV2PublishToChronicle = $Empty;
 
-/// Create Dataplex Catalog aspects for profiled resources with the aspect type
-/// Sensitive Data Protection Profile.
+/// Create Dataplex Universal Catalog aspects for profiled resources with the
+/// aspect type Sensitive Data Protection Profile.
 ///
 /// To learn more about aspects, see
 /// https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
 class GooglePrivacyDlpV2PublishToDataplexCatalog {
-  /// Whether creating a Dataplex Catalog aspect for a profiled resource should
-  /// lower the risk of the profile for that resource.
+  /// Whether creating a Dataplex Universal Catalog aspect for a profiled
+  /// resource should lower the risk of the profile for that resource.
   ///
   /// This also lowers the data risk of resources at the lower levels of the
   /// resource hierarchy. For example, reducing the data risk of a table data
@@ -21945,8 +21998,9 @@ class GooglePrivacyDlpV2Tag {
   /// The namespaced name for the tag value to attach to Google Cloud resources.
   ///
   /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for
-  /// example, "123456/environment/prod". This is only set for Google Cloud
-  /// resources.
+  /// example, "123456/environment/prod" for an organization parent, or
+  /// "my-project/environment/prod" for a project parent. This is only set for
+  /// Google Cloud resources.
   core.String? namespacedTagValue;
 
   /// The value of a tag key-value pair.
@@ -22076,7 +22130,8 @@ class GooglePrivacyDlpV2TagValue {
   /// The namespaced name for the tag value to attach to resources.
   ///
   /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for
-  /// example, "123456/environment/prod".
+  /// example, "123456/environment/prod" for an organization parent, or
+  /// "my-project/environment/prod" for a project parent.
   core.String? namespacedValue;
 
   GooglePrivacyDlpV2TagValue({this.namespacedValue});

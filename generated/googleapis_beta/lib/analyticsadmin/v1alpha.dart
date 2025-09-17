@@ -1367,7 +1367,7 @@ class PropertiesResource {
     );
   }
 
-  /// Returns the singleton data retention settings for this property.
+  /// Returns the reporting identity settings for this property.
   ///
   /// Request parameters:
   ///

@@ -476,6 +476,54 @@ void checkCryptoKeyVersionTemplate(api.CryptoKeyVersionTemplate o) {
   buildCounterCryptoKeyVersionTemplate--;
 }
 
+core.int buildCounterDecapsulateRequest = 0;
+api.DecapsulateRequest buildDecapsulateRequest() {
+  final o = api.DecapsulateRequest();
+  buildCounterDecapsulateRequest++;
+  if (buildCounterDecapsulateRequest < 3) {
+    o.ciphertext = 'foo';
+    o.ciphertextCrc32c = 'foo';
+  }
+  buildCounterDecapsulateRequest--;
+  return o;
+}
+
+void checkDecapsulateRequest(api.DecapsulateRequest o) {
+  buildCounterDecapsulateRequest++;
+  if (buildCounterDecapsulateRequest < 3) {
+    unittest.expect(o.ciphertext!, unittest.equals('foo'));
+    unittest.expect(o.ciphertextCrc32c!, unittest.equals('foo'));
+  }
+  buildCounterDecapsulateRequest--;
+}
+
+core.int buildCounterDecapsulateResponse = 0;
+api.DecapsulateResponse buildDecapsulateResponse() {
+  final o = api.DecapsulateResponse();
+  buildCounterDecapsulateResponse++;
+  if (buildCounterDecapsulateResponse < 3) {
+    o.name = 'foo';
+    o.protectionLevel = 'foo';
+    o.sharedSecret = 'foo';
+    o.sharedSecretCrc32c = 'foo';
+    o.verifiedCiphertextCrc32c = true;
+  }
+  buildCounterDecapsulateResponse--;
+  return o;
+}
+
+void checkDecapsulateResponse(api.DecapsulateResponse o) {
+  buildCounterDecapsulateResponse++;
+  if (buildCounterDecapsulateResponse < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.protectionLevel!, unittest.equals('foo'));
+    unittest.expect(o.sharedSecret!, unittest.equals('foo'));
+    unittest.expect(o.sharedSecretCrc32c!, unittest.equals('foo'));
+    unittest.expect(o.verifiedCiphertextCrc32c!, unittest.isTrue);
+  }
+  buildCounterDecapsulateResponse--;
+}
+
 core.int buildCounterDecryptRequest = 0;
 api.DecryptRequest buildDecryptRequest() {
   final o = api.DecryptRequest();
@@ -2148,6 +2196,28 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCryptoKeyVersionTemplate(od);
+    });
+  });
+
+  unittest.group('obj-schema-DecapsulateRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDecapsulateRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DecapsulateRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDecapsulateRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DecapsulateResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDecapsulateResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DecapsulateResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDecapsulateResponse(od);
     });
   });
 
@@ -5932,6 +6002,72 @@ void main() {
         $fields: arg_$fields,
       );
       checkCryptoKeyVersion(response as api.CryptoKeyVersion);
+    });
+
+    unittest.test('method--decapsulate', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(
+            mock,
+          ).projects.locations.keyRings.cryptoKeys.cryptoKeyVersions;
+      final arg_request = buildDecapsulateRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.DecapsulateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkDecapsulateRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildDecapsulateResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.decapsulate(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkDecapsulateResponse(response as api.DecapsulateResponse);
     });
 
     unittest.test('method--destroy', () async {

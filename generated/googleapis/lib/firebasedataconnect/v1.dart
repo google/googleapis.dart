@@ -130,9 +130,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -644,6 +644,58 @@ class ProjectsLocationsServicesResource {
     return Service.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Execute introspection query against the Firebase Data Connect's generated
+  /// GraphQL schema.
+  ///
+  /// GraphQL introspection query provides metadata such as what tables the
+  /// schema have, what queries and mutations can be performed on the schema,
+  /// and so on. Read more at https://graphql.org/learn/introspection.
+  /// IntrospectGraphql can read schema metadata but cannot read rows from Cloud
+  /// SQL instance, which can be done via ExecuteGraphqlRead.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The relative resource name of Firebase Data Connect
+  /// service, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service} ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GraphqlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GraphqlResponse> introspectGraphql(
+    GraphqlRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':introspectGraphql';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GraphqlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists Services in a given project and location.
   ///
   /// Request parameters:
@@ -1054,6 +1106,106 @@ class ProjectsLocationsServicesConnectorsResource {
       queryParams: queryParams_,
     );
     return Connector.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Impersonate a mutation defined on a Firebase Data Connect connector.
+  ///
+  /// It grants the admin SDK access to mutations defined in the given
+  /// connector. The caller can choose to impersonate a particular Firebase Auth
+  /// user, or skip @auth completely.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the connector to find the
+  /// predefined query/mutation, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GraphqlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GraphqlResponse> impersonateMutation(
+    ImpersonateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':impersonateMutation';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GraphqlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Impersonate a query defined on a Firebase Data Connect connector.
+  ///
+  /// It grants the admin SDK access to queries defined in the given connector.
+  /// The caller can choose to impersonate a particular Firebase Auth user, or
+  /// skip @auth completely.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the connector to find the
+  /// predefined query/mutation, in the format: ```
+  /// projects/{project}/locations/{location}/services/{service}/connectors/{connector}
+  /// ```
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/services/\[^/\]+/connectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GraphqlResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GraphqlResponse> impersonateQuery(
+    ImpersonateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':impersonateQuery';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GraphqlResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Lists Connectors in a given project and location.
@@ -2129,6 +2281,53 @@ class GraphqlResponse {
   };
 }
 
+/// The Impersonate request to Firebase Data Connect.
+class ImpersonateRequest {
+  /// Additional GraphQL request information.
+  ///
+  /// Optional.
+  GraphqlRequestExtensions? extensions;
+
+  /// The name of the GraphQL operation name.
+  ///
+  /// Required because all Connector operations must be named. See
+  /// https://graphql.org/learn/queries/#operation-name.
+  ///
+  /// Required.
+  core.String? operationName;
+
+  /// Values for GraphQL variables provided in this request.
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? variables;
+
+  ImpersonateRequest({this.extensions, this.operationName, this.variables});
+
+  ImpersonateRequest.fromJson(core.Map json_)
+    : this(
+        extensions:
+            json_.containsKey('extensions')
+                ? GraphqlRequestExtensions.fromJson(
+                  json_['extensions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        operationName: json_['operationName'] as core.String?,
+        variables:
+            json_.containsKey('variables')
+                ? json_['variables'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (extensions != null) 'extensions': extensions!,
+    if (operationName != null) 'operationName': operationName!,
+    if (variables != null) 'variables': variables!,
+  };
+}
+
 /// Impersonation configures the Firebase Auth context to impersonate.
 class Impersonation {
   /// Evaluate the auth policy with a customized JWT auth token.
@@ -2451,6 +2650,22 @@ class PostgreSql {
   /// Required.
   core.String? database;
 
+  /// Ephemeral is true if this data connect service is served from temporary
+  /// in-memory emulation of Postgres.
+  ///
+  /// While Cloud SQL is being provisioned, the data connect service provides
+  /// the ephemeral service to help developers get started. Once the Cloud SQL
+  /// is provisioned, Data Connect service will transfer its data on a
+  /// best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data
+  /// sources will expire after 24 hour. The data will be lost if they aren't
+  /// transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`,
+  /// mutations to the database are not guaranteed to be durably persisted, even
+  /// if an OK status code is returned. All or parts of the data may be lost or
+  /// reverted to earlier versions.
+  ///
+  /// Output only.
+  core.bool? ephemeral;
+
   /// Configure how to perform Postgresql schema migration.
   ///
   /// Optional.
@@ -2488,11 +2703,15 @@ class PostgreSql {
   /// No Postgres data source is linked.
   ///
   /// If set, don't allow `database` and `schema_validation` to be configured.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? unlinked;
 
   PostgreSql({
     this.cloudSql,
     this.database,
+    this.ephemeral,
     this.schemaMigration,
     this.schemaValidation,
     this.unlinked,
@@ -2507,6 +2726,7 @@ class PostgreSql {
                 )
                 : null,
         database: json_['database'] as core.String?,
+        ephemeral: json_['ephemeral'] as core.bool?,
         schemaMigration: json_['schemaMigration'] as core.String?,
         schemaValidation: json_['schemaValidation'] as core.String?,
         unlinked: json_['unlinked'] as core.bool?,
@@ -2515,6 +2735,7 @@ class PostgreSql {
   core.Map<core.String, core.dynamic> toJson() => {
     if (cloudSql != null) 'cloudSql': cloudSql!,
     if (database != null) 'database': database!,
+    if (ephemeral != null) 'ephemeral': ephemeral!,
     if (schemaMigration != null) 'schemaMigration': schemaMigration!,
     if (schemaValidation != null) 'schemaValidation': schemaValidation!,
     if (unlinked != null) 'unlinked': unlinked!,

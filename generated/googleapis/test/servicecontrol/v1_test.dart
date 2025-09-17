@@ -218,6 +218,7 @@ api.CheckInfo buildCheckInfo() {
   if (buildCounterCheckInfo < 3) {
     o.apiKeyUid = 'foo';
     o.consumerInfo = buildConsumerInfo();
+    o.ignoreApiKeyUidAsCredentialId = true;
     o.unusedArguments = buildUnnamed4();
   }
   buildCounterCheckInfo--;
@@ -229,6 +230,7 @@ void checkCheckInfo(api.CheckInfo o) {
   if (buildCounterCheckInfo < 3) {
     unittest.expect(o.apiKeyUid!, unittest.equals('foo'));
     checkConsumerInfo(o.consumerInfo!);
+    unittest.expect(o.ignoreApiKeyUidAsCredentialId!, unittest.isTrue);
     checkUnnamed4(o.unusedArguments!);
   }
   buildCounterCheckInfo--;

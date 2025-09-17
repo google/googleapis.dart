@@ -385,6 +385,7 @@ api.AnalyzeBatchRequest buildAnalyzeBatchRequest() {
   buildCounterAnalyzeBatchRequest++;
   if (buildCounterAnalyzeBatchRequest < 3) {
     o.requestId = 'foo';
+    o.requestorId = 'foo';
   }
   buildCounterAnalyzeBatchRequest--;
   return o;
@@ -394,6 +395,7 @@ void checkAnalyzeBatchRequest(api.AnalyzeBatchRequest o) {
   buildCounterAnalyzeBatchRequest++;
   if (buildCounterAnalyzeBatchRequest < 3) {
     unittest.expect(o.requestId!, unittest.equals('foo'));
+    unittest.expect(o.requestorId!, unittest.equals('foo'));
   }
   buildCounterAnalyzeBatchRequest--;
 }

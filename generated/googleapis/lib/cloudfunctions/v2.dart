@@ -91,9 +91,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3019,7 +3019,9 @@ class UpgradeInfo {
   /// - "UPGRADE_STATE_UNSPECIFIED" : Unspecified state. Most functions are in
   /// this upgrade state.
   /// - "ELIGIBLE_FOR_2ND_GEN_UPGRADE" : Functions in this state are eligible
-  /// for 1st Gen -\> 2nd Gen upgrade.
+  /// for 1st Gen upgrade.
+  /// - "INELIGIBLE_FOR_UPGRADE_UNTIL_REDEPLOYMENT" : Functions in this state
+  /// are ineligible for 1st Gen upgrade until redeployment with newer runtime.
   /// - "UPGRADE_OPERATION_IN_PROGRESS" : An upgrade related operation is in
   /// progress.
   /// - "SETUP_FUNCTION_UPGRADE_CONFIG_SUCCESSFUL" : SetupFunctionUpgradeConfig

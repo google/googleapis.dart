@@ -4333,6 +4333,7 @@ api.ResourceOptions buildResourceOptions() {
   buildCounterResourceOptions++;
   if (buildCounterResourceOptions < 3) {
     o.connectVersion = 'foo';
+    o.k8sGitVersion = 'foo';
     o.k8sVersion = 'foo';
     o.v1beta1Crd = true;
   }
@@ -4344,6 +4345,7 @@ void checkResourceOptions(api.ResourceOptions o) {
   buildCounterResourceOptions++;
   if (buildCounterResourceOptions < 3) {
     unittest.expect(o.connectVersion!, unittest.equals('foo'));
+    unittest.expect(o.k8sGitVersion!, unittest.equals('foo'));
     unittest.expect(o.k8sVersion!, unittest.equals('foo'));
     unittest.expect(o.v1beta1Crd!, unittest.isTrue);
   }

@@ -173,7 +173,8 @@ class FoldersResource {
   /// Request parameters:
   ///
   /// [name] - Identifier. Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig`.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   /// Value must have pattern `^folders/\[^/\]+/autokeyConfig$`.
   ///
   /// [updateMask] - Required. Masks which fields of the AutokeyConfig to
@@ -718,9 +719,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2499,6 +2500,52 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
     );
   }
 
+  /// Decapsulates data that was encapsulated with a public key retrieved from
+  /// GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose
+  /// KEY_ENCAPSULATION.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the CryptoKeyVersion to use for
+  /// decapsulation.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/keyRings/\[^/\]+/cryptoKeys/\[^/\]+/cryptoKeyVersions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DecapsulateResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DecapsulateResponse> decapsulate(
+    DecapsulateRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':decapsulate';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return DecapsulateResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Schedule a CryptoKeyVersion for destruction.
   ///
   /// Upon calling this method, CryptoKeyVersion.state will be set to
@@ -2614,9 +2661,14 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource {
   /// and
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13)
   /// for more information.
+  /// - "DER" : The returned public key will be encoded in DER format (the
+  /// PrivateKeyInfo structure from RFC 5208).
   /// - "NIST_PQC" : This is supported only for PQC algorithms. The key material
   /// is returned in the format defined by NIST PQC standards (FIPS 203, FIPS
   /// 204, and FIPS 205).
+  /// - "XWING_RAW_BYTES" : The returned public key is in raw bytes format
+  /// defined in its standard
+  /// https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3770,7 +3822,7 @@ class AuditConfig {
 /// exempting jose@example.com from DATA_READ logging.
 typedef AuditLogConfig = $AuditLogConfig;
 
-/// Cloud KMS Autokey configuration for a folder.
+/// Cloud KMS Autokey configuration for a folder or project.
 class AutokeyConfig {
   /// A checksum computed by the server based on the value of other fields.
   ///
@@ -3799,7 +3851,8 @@ class AutokeyConfig {
   /// Identifier.
   ///
   /// Name of the AutokeyConfig resource, e.g.
-  /// `folders/{FOLDER_NUMBER}/autokeyConfig`.
+  /// `folders/{FOLDER_NUMBER}/autokeyConfig`
+  /// `projects/{PROJECT_NUMBER}/autokeyConfig`.
   core.String? name;
 
   /// The state for the AutokeyConfig.
@@ -4190,6 +4243,8 @@ class CryptoKey {
   /// interoperable symmetric encryption and does not support automatic
   /// CryptoKey rotation.
   /// - "MAC" : CryptoKeys with this purpose may be used with MacSign.
+  /// - "KEY_ENCAPSULATION" : CryptoKeys with this purpose may be used with
+  /// GetPublicKey and Decapsulate.
   core.String? purpose;
 
   /// next_rotation_time will be advanced by this period when the service
@@ -4352,6 +4407,10 @@ class CryptoKeyVersion {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "ML_KEM_768" : ML-KEM-768 (FIPS 203)
+  /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
+  /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
+  /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
@@ -4575,90 +4634,65 @@ class CryptoKeyVersion {
 /// A CryptoKeyVersionTemplate specifies the properties to use when creating a
 /// new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or
 /// automatically as a result of auto-rotation.
-class CryptoKeyVersionTemplate {
-  /// Algorithm to use when creating a CryptoKeyVersion based on this template.
-  ///
-  /// For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if
-  /// both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+typedef CryptoKeyVersionTemplate = $CryptoKeyVersionTemplate;
+
+/// Request message for KeyManagementService.Decapsulate.
+class DecapsulateRequest {
+  /// The ciphertext produced from encapsulation with the named CryptoKeyVersion
+  /// public key(s).
   ///
   /// Required.
-  /// Possible string values are:
-  /// - "CRYPTO_KEY_VERSION_ALGORITHM_UNSPECIFIED" : Not specified.
-  /// - "GOOGLE_SYMMETRIC_ENCRYPTION" : Creates symmetric encryption keys.
-  /// - "AES_128_GCM" : AES-GCM (Galois Counter Mode) using 128-bit keys.
-  /// - "AES_256_GCM" : AES-GCM (Galois Counter Mode) using 256-bit keys.
-  /// - "AES_128_CBC" : AES-CBC (Cipher Block Chaining Mode) using 128-bit keys.
-  /// - "AES_256_CBC" : AES-CBC (Cipher Block Chaining Mode) using 256-bit keys.
-  /// - "AES_128_CTR" : AES-CTR (Counter Mode) using 128-bit keys.
-  /// - "AES_256_CTR" : AES-CTR (Counter Mode) using 256-bit keys.
-  /// - "RSA_SIGN_PSS_2048_SHA256" : RSASSA-PSS 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_3072_SHA256" : RSASSA-PSS 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA256" : RSASSA-PSS 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_SIGN_PSS_4096_SHA512" : RSASSA-PSS 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_SIGN_PKCS1_2048_SHA256" : RSASSA-PKCS1-v1_5 with a 2048 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_3072_SHA256" : RSASSA-PKCS1-v1_5 with a 3072 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA256" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA256 digest.
-  /// - "RSA_SIGN_PKCS1_4096_SHA512" : RSASSA-PKCS1-v1_5 with a 4096 bit key and
-  /// a SHA512 digest.
-  /// - "RSA_SIGN_RAW_PKCS1_2048" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 2048 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_3072" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 3072 bit key.
-  /// - "RSA_SIGN_RAW_PKCS1_4096" : RSASSA-PKCS1-v1_5 signing without encoding,
-  /// with a 4096 bit key.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA256" : RSAES-OAEP 2048 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA256" : RSAES-OAEP 3072 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA256" : RSAES-OAEP 4096 bit key with a SHA256
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA512" : RSAES-OAEP 4096 bit key with a SHA512
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_2048_SHA1" : RSAES-OAEP 2048 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_3072_SHA1" : RSAES-OAEP 3072 bit key with a SHA1
-  /// digest.
-  /// - "RSA_DECRYPT_OAEP_4096_SHA1" : RSAES-OAEP 4096 bit key with a SHA1
-  /// digest.
-  /// - "EC_SIGN_P256_SHA256" : ECDSA on the NIST P-256 curve with a SHA256
-  /// digest. Other hash functions can also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "EC_SIGN_P384_SHA384" : ECDSA on the NIST P-384 curve with a SHA384
-  /// digest. Other hash functions can also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "EC_SIGN_SECP256K1_SHA256" : ECDSA on the non-NIST secp256k1 curve. This
-  /// curve is only supported for HSM protection level. Other hash functions can
-  /// also be used:
-  /// https://cloud.google.com/kms/docs/create-validate-signatures#ecdsa_support_for_other_hash_algorithms
-  /// - "EC_SIGN_ED25519" : EdDSA on the Curve25519 in pure mode (taking data as
-  /// input).
-  /// - "HMAC_SHA256" : HMAC-SHA256 signing with a 256 bit key.
-  /// - "HMAC_SHA1" : HMAC-SHA1 signing with a 160 bit key.
-  /// - "HMAC_SHA384" : HMAC-SHA384 signing with a 384 bit key.
-  /// - "HMAC_SHA512" : HMAC-SHA512 signing with a 512 bit key.
-  /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
-  /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
-  /// encryption by an external key manager.
-  /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
-  /// Signature Algorithm, at security level 3. Randomized version.
-  /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
-  /// digital signature algorithm, at security level 1. Randomized version.
-  /// - "PQ_SIGN_HASH_SLH_DSA_SHA2_128S_SHA256" : The post-quantum stateless
-  /// hash-based digital signature algorithm, at security level 1. Randomized
-  /// pre-hash version supporting SHA256 digests.
-  core.String? algorithm;
+  core.String? ciphertext;
+  core.List<core.int> get ciphertextAsBytes =>
+      convert.base64.decode(ciphertext!);
 
-  /// ProtectionLevel to use when creating a CryptoKeyVersion based on this
-  /// template.
+  set ciphertextAsBytes(core.List<core.int> bytes_) {
+    ciphertext = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// A CRC32C checksum of the DecapsulateRequest.ciphertext.
   ///
-  /// Immutable. Defaults to SOFTWARE.
+  /// If specified, KeyManagementService will verify the integrity of the
+  /// received DecapsulateRequest.ciphertext using this checksum.
+  /// KeyManagementService will report an error if the checksum verification
+  /// fails. If you receive a checksum error, your client should verify that
+  /// CRC32C(DecapsulateRequest.ciphertext) is equal to
+  /// DecapsulateRequest.ciphertext_crc32c, and if so, perform a limited number
+  /// of retries. A persistent mismatch may indicate an issue in your
+  /// computation of the CRC32C checksum. Note: This field is defined as int64
+  /// for reasons of compatibility across different languages. However, it is a
+  /// non-negative integer, which will never exceed 2^32-1, and can be safely
+  /// downconverted to uint32 in languages that support this type.
+  ///
+  /// Optional.
+  core.String? ciphertextCrc32c;
+
+  DecapsulateRequest({this.ciphertext, this.ciphertextCrc32c});
+
+  DecapsulateRequest.fromJson(core.Map json_)
+    : this(
+        ciphertext: json_['ciphertext'] as core.String?,
+        ciphertextCrc32c: json_['ciphertextCrc32c'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (ciphertext != null) 'ciphertext': ciphertext!,
+    if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
+  };
+}
+
+/// Response message for KeyManagementService.Decapsulate.
+class DecapsulateResponse {
+  /// The resource name of the CryptoKeyVersion used for decapsulation.
+  ///
+  /// Check this field to verify that the intended resource was used for
+  /// decapsulation.
+  core.String? name;
+
+  /// The ProtectionLevel of the CryptoKeyVersion used in decapsulation.
   /// Possible string values are:
   /// - "PROTECTION_LEVEL_UNSPECIFIED" : Not specified.
   /// - "SOFTWARE" : Crypto operations are performed in software.
@@ -4668,17 +4702,71 @@ class CryptoKeyVersionTemplate {
   /// backend.
   core.String? protectionLevel;
 
-  CryptoKeyVersionTemplate({this.algorithm, this.protectionLevel});
+  /// The decapsulated shared_secret originally encapsulated with the matching
+  /// public key.
+  core.String? sharedSecret;
+  core.List<core.int> get sharedSecretAsBytes =>
+      convert.base64.decode(sharedSecret!);
 
-  CryptoKeyVersionTemplate.fromJson(core.Map json_)
+  set sharedSecretAsBytes(core.List<core.int> bytes_) {
+    sharedSecret = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Integrity verification field.
+  ///
+  /// A CRC32C checksum of the returned DecapsulateResponse.shared_secret. An
+  /// integrity check of DecapsulateResponse.shared_secret can be performed by
+  /// computing the CRC32C checksum of DecapsulateResponse.shared_secret and
+  /// comparing your results to this field. Discard the response in case of
+  /// non-matching checksum values, and perform a limited number of retries. A
+  /// persistent mismatch may indicate an issue in your computation of the
+  /// CRC32C checksum. Note: receiving this response message indicates that
+  /// KeyManagementService is able to successfully decrypt the ciphertext. Note:
+  /// This field is defined as int64 for reasons of compatibility across
+  /// different languages. However, it is a non-negative integer, which will
+  /// never exceed 2^32-1, and can be safely downconverted to uint32 in
+  /// languages that support this type.
+  core.String? sharedSecretCrc32c;
+
+  /// Integrity verification field.
+  ///
+  /// A flag indicating whether DecapsulateRequest.ciphertext_crc32c was
+  /// received by KeyManagementService and used for the integrity verification
+  /// of the ciphertext. A false value of this field indicates either that
+  /// DecapsulateRequest.ciphertext_crc32c was left unset or that it was not
+  /// delivered to KeyManagementService. If you've set
+  /// DecapsulateRequest.ciphertext_crc32c but this field is still false,
+  /// discard the response and perform a limited number of retries.
+  core.bool? verifiedCiphertextCrc32c;
+
+  DecapsulateResponse({
+    this.name,
+    this.protectionLevel,
+    this.sharedSecret,
+    this.sharedSecretCrc32c,
+    this.verifiedCiphertextCrc32c,
+  });
+
+  DecapsulateResponse.fromJson(core.Map json_)
     : this(
-        algorithm: json_['algorithm'] as core.String?,
+        name: json_['name'] as core.String?,
         protectionLevel: json_['protectionLevel'] as core.String?,
+        sharedSecret: json_['sharedSecret'] as core.String?,
+        sharedSecretCrc32c: json_['sharedSecretCrc32c'] as core.String?,
+        verifiedCiphertextCrc32c:
+            json_['verifiedCiphertextCrc32c'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
-    if (algorithm != null) 'algorithm': algorithm!,
+    if (name != null) 'name': name!,
     if (protectionLevel != null) 'protectionLevel': protectionLevel!,
+    if (sharedSecret != null) 'sharedSecret': sharedSecret!,
+    if (sharedSecretCrc32c != null) 'sharedSecretCrc32c': sharedSecretCrc32c!,
+    if (verifiedCiphertextCrc32c != null)
+      'verifiedCiphertextCrc32c': verifiedCiphertextCrc32c!,
   };
 }
 
@@ -5397,6 +5485,10 @@ class ImportCryptoKeyVersionRequest {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "ML_KEM_768" : ML-KEM-768 (FIPS 203)
+  /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
+  /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
+  /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
@@ -6711,6 +6803,10 @@ class PublicKey {
   /// - "HMAC_SHA224" : HMAC-SHA224 signing with a 224 bit key.
   /// - "EXTERNAL_SYMMETRIC_ENCRYPTION" : Algorithm representing symmetric
   /// encryption by an external key manager.
+  /// - "ML_KEM_768" : ML-KEM-768 (FIPS 203)
+  /// - "ML_KEM_1024" : ML-KEM-1024 (FIPS 203)
+  /// - "KEM_XWING" : X-Wing hybrid KEM combining ML-KEM-768 with X25519
+  /// following datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem/.
   /// - "PQ_SIGN_ML_DSA_65" : The post-quantum Module-Lattice-Based Digital
   /// Signature Algorithm, at security level 3. Randomized version.
   /// - "PQ_SIGN_SLH_DSA_SHA2_128S" : The post-quantum stateless hash-based
@@ -6776,9 +6872,14 @@ class PublicKey {
   /// and
   /// [Textual Encoding of Subject Public Key Info](https://tools.ietf.org/html/rfc7468#section-13)
   /// for more information.
+  /// - "DER" : The returned public key will be encoded in DER format (the
+  /// PrivateKeyInfo structure from RFC 5208).
   /// - "NIST_PQC" : This is supported only for PQC algorithms. The key material
   /// is returned in the format defined by NIST PQC standards (FIPS 203, FIPS
   /// 204, and FIPS 205).
+  /// - "XWING_RAW_BYTES" : The returned public key is in raw bytes format
+  /// defined in its standard
+  /// https://datatracker.ietf.org/doc/draft-connolly-cfrg-xwing-kem.
   core.String? publicKeyFormat;
 
   PublicKey({

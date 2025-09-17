@@ -151,8 +151,8 @@ class AppsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the Application resource to get.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `name`. Required. Name of the Application resource to
+  /// get. Example: apps/myapp.
   ///
   /// [includeExtraData] - Options to include extra data
   /// Possible string values are:
@@ -251,8 +251,8 @@ class AppsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the Application resource to update.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `name`. Required. Name of the Application resource to
+  /// update. Example: apps/myapp.
   ///
   /// [updateMask] - Required. Standard field mask for the set of fields to be
   /// updated.
@@ -306,8 +306,8 @@ class AppsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the application to repair. Example:
-  /// apps/myapp
+  /// [appsId] - Part of `name`. Required. Name of the application to repair.
+  /// Example: apps/myapp
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -353,8 +353,8 @@ class AppsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -396,8 +396,8 @@ class AppsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource to delete. Example:
-  /// apps/myapp/authorizedCertificates/12345.
+  /// [appsId] - Part of `name`. Required. Name of the resource to delete.
+  /// Example: apps/myapp/authorizedCertificates/12345.
   ///
   /// [authorizedCertificatesId] - Part of `name`. See documentation of
   /// `appsId`.
@@ -439,8 +439,8 @@ class AppsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/authorizedCertificates/12345.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/authorizedCertificates/12345.
   ///
   /// [authorizedCertificatesId] - Part of `name`. See documentation of
   /// `appsId`.
@@ -494,8 +494,8 @@ class AppsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [pageSize] - Maximum results to return per page.
   ///
@@ -559,8 +559,8 @@ class AppsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource to update. Example:
-  /// apps/myapp/authorizedCertificates/12345.
+  /// [appsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/authorizedCertificates/12345.
   ///
   /// [authorizedCertificatesId] - Part of `name`. See documentation of
   /// `appsId`.
@@ -620,8 +620,8 @@ class AppsAuthorizedDomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [pageSize] - Maximum results to return per page.
   ///
@@ -678,8 +678,8 @@ class AppsDomainMappingsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [overrideStrategy] - Whether the domain creation should override any
   /// existing mappings for this domain. By default, overrides are rejected.
@@ -735,8 +735,8 @@ class AppsDomainMappingsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource to delete. Example:
-  /// apps/myapp/domainMappings/example.com.
+  /// [appsId] - Part of `name`. Required. Name of the resource to delete.
+  /// Example: apps/myapp/domainMappings/example.com.
   ///
   /// [domainMappingsId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -777,8 +777,8 @@ class AppsDomainMappingsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/domainMappings/example.com.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/domainMappings/example.com.
   ///
   /// [domainMappingsId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -821,8 +821,8 @@ class AppsDomainMappingsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [pageSize] - Maximum results to return per page.
   ///
@@ -874,8 +874,8 @@ class AppsDomainMappingsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource to update. Example:
-  /// apps/myapp/domainMappings/example.com.
+  /// [appsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/domainMappings/example.com.
   ///
   /// [domainMappingsId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -992,8 +992,9 @@ class AppsFirewallIngressRulesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Firewall collection in
-  /// which to create a new rule. Example: apps/myapp/firewall/ingressRules.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Firewall
+  /// collection in which to create a new rule. Example:
+  /// apps/myapp/firewall/ingressRules.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1278,9 +1279,9 @@ class AppsLocationsResource {
   /// [appsId] - Part of `name`. The resource that owns the locations
   /// collection, if applicable.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -1443,8 +1444,8 @@ class AppsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -1485,8 +1486,8 @@ class AppsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -1527,8 +1528,8 @@ class AppsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [pageSize] - Maximum results to return per page.
   ///
@@ -1574,8 +1575,8 @@ class AppsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource to update. Example:
-  /// apps/myapp/services/default.
+  /// [appsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/services/default.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -1652,8 +1653,8 @@ class AppsServicesVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent resource to create this
-  /// version under. Example: apps/myapp/services/default.
+  /// [appsId] - Part of `parent`. Required. Name of the parent resource to
+  /// create this version under. Example: apps/myapp/services/default.
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
@@ -1698,8 +1699,8 @@ class AppsServicesVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default/versions/v1.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -1748,8 +1749,8 @@ class AppsServicesVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default/versions/v1.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -1805,8 +1806,8 @@ class AppsServicesVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Service resource. Example:
-  /// apps/myapp/services/default.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Service
+  /// resource. Example: apps/myapp/services/default.
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
@@ -1903,8 +1904,8 @@ class AppsServicesVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource to update. Example:
-  /// apps/myapp/services/default/versions/1.
+  /// [appsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/services/default/versions/1.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -1973,8 +1974,8 @@ class AppsServicesVersionsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default/versions/v1/instances/instance-1.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1/instances/instance-1.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -2041,8 +2042,8 @@ class AppsServicesVersionsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default/versions/v1/instances/instance-1.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1/instances/instance-1.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -2093,8 +2094,8 @@ class AppsServicesVersionsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default/versions/v1/instances/instance-1.
+  /// [appsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1/instances/instance-1.
   ///
   /// [servicesId] - Part of `name`. See documentation of `appsId`.
   ///
@@ -2147,8 +2148,8 @@ class AppsServicesVersionsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [appsId] - Part of `parent`. Name of the parent Version resource. Example:
-  /// apps/myapp/services/default/versions/v1.
+  /// [appsId] - Part of `parent`. Required. Name of the parent Version
+  /// resource. Example: apps/myapp/services/default/versions/v1.
   ///
   /// [servicesId] - Part of `parent`. See documentation of `appsId`.
   ///
@@ -2248,8 +2249,8 @@ class ProjectsLocationsApplicationsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the Application resource to update.
-  /// Example: apps/myapp.
+  /// [projectsId] - Part of `name`. Required. Name of the Application resource
+  /// to update. Example: apps/myapp.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -2313,8 +2314,8 @@ class ProjectsLocationsApplicationsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [projectsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
   ///
@@ -2366,8 +2367,8 @@ class ProjectsLocationsApplicationsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource to delete. Example:
-  /// apps/myapp/authorizedCertificates/12345.
+  /// [projectsId] - Part of `name`. Required. Name of the resource to delete.
+  /// Example: apps/myapp/authorizedCertificates/12345.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -2419,8 +2420,8 @@ class ProjectsLocationsApplicationsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/authorizedCertificates/12345.
+  /// [projectsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/authorizedCertificates/12345.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -2484,8 +2485,8 @@ class ProjectsLocationsApplicationsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [projectsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
   ///
@@ -2559,8 +2560,8 @@ class ProjectsLocationsApplicationsAuthorizedCertificatesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource to update. Example:
-  /// apps/myapp/authorizedCertificates/12345.
+  /// [projectsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/authorizedCertificates/12345.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -2631,8 +2632,8 @@ class ProjectsLocationsApplicationsAuthorizedDomainsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [projectsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
   ///
@@ -2703,8 +2704,8 @@ class ProjectsLocationsApplicationsDomainMappingsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `parent`. Name of the parent Application resource.
-  /// Example: apps/myapp.
+  /// [projectsId] - Part of `parent`. Required. Name of the parent Application
+  /// resource. Example: apps/myapp.
   ///
   /// [locationsId] - Part of `parent`. See documentation of `projectsId`.
   ///
@@ -2769,8 +2770,8 @@ class ProjectsLocationsApplicationsDomainMappingsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/domainMappings/example.com.
+  /// [projectsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/domainMappings/example.com.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -2833,8 +2834,8 @@ class ProjectsLocationsApplicationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default.
+  /// [projectsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -2887,8 +2888,8 @@ class ProjectsLocationsApplicationsServicesResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource to update. Example:
-  /// apps/myapp/services/default.
+  /// [projectsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/services/default.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -2971,8 +2972,8 @@ class ProjectsLocationsApplicationsServicesVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource requested. Example:
-  /// apps/myapp/services/default/versions/v1.
+  /// [projectsId] - Part of `name`. Required. Name of the resource requested.
+  /// Example: apps/myapp/services/default/versions/v1.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -3063,8 +3064,8 @@ class ProjectsLocationsApplicationsServicesVersionsResource {
   ///
   /// Request parameters:
   ///
-  /// [projectsId] - Part of `name`. Name of the resource to update. Example:
-  /// apps/myapp/services/default/versions/1.
+  /// [projectsId] - Part of `name`. Required. Name of the resource to update.
+  /// Example: apps/myapp/services/default/versions/1.
   ///
   /// [locationsId] - Part of `name`. See documentation of `projectsId`.
   ///
@@ -3283,12 +3284,6 @@ class Application {
   /// stored.Defaults to us-central.View the list of supported locations
   /// (https://cloud.google.com/appengine/docs/locations).
   core.String? locationId;
-
-  /// Full path to the Application resource in the API.
-  ///
-  /// Example: apps/myapp.@OutputOnly
-  ///
-  /// Output only.
   core.String? name;
 
   /// The service account associated with the application.
@@ -4269,6 +4264,12 @@ class FileInfo {
 
 /// A single firewall rule that is evaluated against incoming traffic and
 /// provides an action to take on matched requests.
+///
+/// A positive integer between 1, Int32.MaxValue-1 that defines the order of
+/// rule evaluation. Rules with the lowest priority are evaluated first.A
+/// default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic
+/// when no previous rule matches. Only the action of this rule can be modified
+/// by the user.
 class FirewallRule {
   /// The action to take on matched requests.
   /// Possible string values are:
@@ -4281,13 +4282,6 @@ class FirewallRule {
   ///
   /// This field has a maximum length of 400 characters.
   core.String? description;
-
-  /// A positive integer between 1, Int32.MaxValue-1 that defines the order of
-  /// rule evaluation.
-  ///
-  /// Rules with the lowest priority are evaluated first.A default rule at
-  /// priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous
-  /// rule matches. Only the action of this rule can be modified by the user.
   core.int? priority;
 
   /// IP address or range, defined using CIDR notation, of requests that this

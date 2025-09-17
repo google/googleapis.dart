@@ -115,83 +115,6 @@ class OperationsResource {
 
   OperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
-  /// to `Code.CANCELLED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be cancelled.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> cancel(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':cancel';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a long-running operation.
-  ///
-  /// This method indicates that the client is no longer interested in the
-  /// operation result. It does not cancel the operation. If the server doesn't
-  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - The name of the operation resource to be deleted.
-  /// Value must have pattern `^operations/.*$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Empty].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Gets the latest state of a long-running operation.
   ///
   /// Clients can use this method to poll the operation result at intervals as
@@ -2403,6 +2326,7 @@ class ProjectsInstancesMaterializedViewsResource {
   ///
   /// [name] - Identifier. The unique name of the materialized view. Format:
   /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`
+  /// Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/materializedViews/\[^/\]+$`.
   ///
@@ -4061,38 +3985,6 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Gets information about a location.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Resource name for the location.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Location].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Location> get(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v2/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -4100,9 +3992,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -6590,6 +6482,18 @@ class Instance {
   /// destroyed if the creation process encounters an error.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example: -
+  /// "123/environment": "production", - "123/costCenter": "marketing" Tags and
+  /// Labels (above) are both used to bind metadata to resources, with different
+  /// use-cases. See
+  /// https://cloud.google.com/resource-manager/docs/tags/tags-overview for an
+  /// in-depth overview on the difference between tags and labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The type of the instance.
   ///
   /// Defaults to `PRODUCTION`.
@@ -6611,6 +6515,7 @@ class Instance {
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.state,
+    this.tags,
     this.type,
   });
 
@@ -6625,6 +6530,9 @@ class Instance {
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         state: json_['state'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         type: json_['type'] as core.String?,
       );
 
@@ -6636,6 +6544,7 @@ class Instance {
     if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
     if (state != null) 'state': state!,
+    if (tags != null) 'tags': tags!,
     if (type != null) 'type': type!,
   };
 }
@@ -7140,13 +7049,15 @@ class LogicalView {
 /// A materialized view object that can be referenced in SQL queries.
 class MaterializedView {
   /// Set to true to make the MaterializedView protected against deletion.
+  ///
+  /// Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
   core.bool? deletionProtection;
 
   /// The etag for this materialized view.
   ///
   /// This may be sent on update requests to ensure that the client has an
   /// up-to-date value before proceeding. The server returns an ABORTED error on
-  /// a mismatched etag.
+  /// a mismatched etag. Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
   ///
   /// Optional.
   core.String? etag;
@@ -7155,9 +7066,12 @@ class MaterializedView {
   ///
   /// The unique name of the materialized view. Format:
   /// `projects/{project}/instances/{instance}/materializedViews/{materialized_view}`
+  /// Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`.
   core.String? name;
 
   /// The materialized view's select query.
+  ///
+  /// Views: `SCHEMA_VIEW`, `FULL`.
   ///
   /// Required. Immutable.
   core.String? query;

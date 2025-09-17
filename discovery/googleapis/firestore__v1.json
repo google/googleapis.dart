@@ -18,6 +18,18 @@
     "description": "Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development. ",
     "discoveryVersion": "v1",
     "documentationLink": "https://cloud.google.com/firestore",
+    "endpoints": [
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://firestore.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://batch-firestore.us-east7.rep.googleapis.com/",
+            "location": "us-east7"
+        }
+    ],
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -28,7 +40,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250618",
+    "revision": "20250908",
     "rootUrl": "https://firestore.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Firestore API",
@@ -184,7 +196,7 @@
                             ],
                             "parameters": {
                                 "databaseId": {
-                                    "description": "Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. \"(default)\" database ID is also valid.",
+                                    "description": "Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. \"(default)\" database ID is also valid if the database is Standard edition.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1792,7 +1804,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -2902,7 +2914,7 @@
             "id": "GoogleFirestoreAdminV1CloneDatabaseRequest",
             "properties": {
                 "databaseId": {
-                    "description": "Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. \"(default)\" database ID is also valid.",
+                    "description": "Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. \"(default)\" database ID is also valid if the database is Standard edition.",
                     "type": "string"
                 },
                 "encryptionConfig": {
@@ -3501,9 +3513,9 @@
                     ],
                     "enumDescriptions": [
                         "Unspecified. It will use database default setting. This value is input only.",
-                        "In order for an index entry to be added, the document must contain all fields specified in the index. This is the only allowed value for indexes having ApiScope `ANY_API` and `DATASTORE_MODE_API`.",
-                        "In order for an index entry to be added, the document must contain at least one of the fields specified in the index. Non-existent fields are treated as having a NULL value when generating index entries.",
-                        "An index entry will be added regardless of whether the document contains any of the fields specified in the index. Non-existent fields are treated as having a NULL value when generating index entries."
+                        "An index entry will only exist if ALL fields are present in the document. This is both the default and only allowed value for Standard Edition databases (for both Cloud Firestore `ANY_API` and Cloud Datastore `DATASTORE_MODE_API`). Take for example the following document: ``` { \"__name__\": \"...\", \"a\": 1, \"b\": 2, \"c\": 3 } ``` an index on `(a ASC, b ASC, c ASC, __name__ ASC)` will generate an index entry for this document since `a`, 'b', `c`, and `__name__` are all present but an index of `(a ASC, d ASC, __name__ ASC)` will not generate an index entry for this document since `d` is missing. This means that such indexes can only be used to serve a query when the query has either implicit or explicit requirements that all fields from the index are present.",
+                        "An index entry will exist if ANY field are present in the document. This is used as the definition of a sparse index for Enterprise Edition databases. Take for example the following document: ``` { \"__name__\": \"...\", \"a\": 1, \"b\": 2, \"c\": 3 } ``` an index on `(a ASC, d ASC)` will generate an index entry for this document since `a` is present, and will fill in an `unset` value for `d`. An index on `(d ASC, e ASC)` will not generate any index entry as neither `d` nor `e` are present. An index that contains `__name__` will generate an index entry for all documents since Firestore guarantees that all documents have a `__name__` field.",
+                        "An index entry will exist regardless of if the fields are present or not. This is the default density for an Enterprise Edition database. The index will store `unset` values for fields that are not present in the document."
                     ],
                     "type": "string"
                 },
@@ -3558,6 +3570,10 @@
                         "The index was being created, but something went wrong. There is no active long-running operation for the index, and the most recently finished long-running operation failed. The index is not updated when writing a document. Some index data may exist. Use the google.longrunning.Operations API to determine why the operation that last attempted to create this index failed, then re-create the index."
                     ],
                     "type": "string"
+                },
+                "unique": {
+                    "description": "Optional. Whether it is an unique index. Unique index ensures all values for the indexed field(s) are unique across documents.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -3938,7 +3954,7 @@
                     "type": "string"
                 },
                 "databaseId": {
-                    "description": "Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. \"(default)\" database ID is also valid.",
+                    "description": "Required. The ID to use for the database, which will become the final component of the database's resource name. This database ID must not be associated with an existing database. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. \"(default)\" database ID is also valid if the database is Standard edition.",
                     "type": "string"
                 },
                 "encryptionConfig": {

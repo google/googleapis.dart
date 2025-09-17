@@ -30,13 +30,18 @@
 ///           - [ProjectsLocationsGlobalHubsRouteTablesRoutesResource]
 ///       - [ProjectsLocationsGlobalPolicyBasedRoutesResource]
 ///     - [ProjectsLocationsInternalRangesResource]
+///     - [ProjectsLocationsMulticloudDataTransferConfigsResource]
+/// - [ProjectsLocationsMulticloudDataTransferConfigsDestinationsResource]
+///     - [ProjectsLocationsMulticloudDataTransferSupportedServicesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRegionalEndpointsResource]
+///     - [ProjectsLocationsRemoteTransportProfilesResource]
 ///     - [ProjectsLocationsServiceClassesResource]
 ///     - [ProjectsLocationsServiceConnectionMapsResource]
 ///     - [ProjectsLocationsServiceConnectionPoliciesResource]
 ///     - [ProjectsLocationsServiceConnectionTokensResource]
 ///     - [ProjectsLocationsSpokesResource]
+///     - [ProjectsLocationsTransportsResource]
 library;
 
 import 'dart:async' as async;
@@ -91,10 +96,21 @@ class ProjectsLocationsResource {
       ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsInternalRangesResource get internalRanges =>
       ProjectsLocationsInternalRangesResource(_requester);
+  ProjectsLocationsMulticloudDataTransferConfigsResource
+  get multicloudDataTransferConfigs =>
+      ProjectsLocationsMulticloudDataTransferConfigsResource(_requester);
+  ProjectsLocationsMulticloudDataTransferSupportedServicesResource
+  get multicloudDataTransferSupportedServices =>
+      ProjectsLocationsMulticloudDataTransferSupportedServicesResource(
+        _requester,
+      );
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRegionalEndpointsResource get regionalEndpoints =>
       ProjectsLocationsRegionalEndpointsResource(_requester);
+  ProjectsLocationsRemoteTransportProfilesResource
+  get remoteTransportProfiles =>
+      ProjectsLocationsRemoteTransportProfilesResource(_requester);
   ProjectsLocationsServiceClassesResource get serviceClasses =>
       ProjectsLocationsServiceClassesResource(_requester);
   ProjectsLocationsServiceConnectionMapsResource get serviceConnectionMaps =>
@@ -107,6 +123,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsServiceConnectionTokensResource(_requester);
   ProjectsLocationsSpokesResource get spokes =>
       ProjectsLocationsSpokesResource(_requester);
+  ProjectsLocationsTransportsResource get transports =>
+      ProjectsLocationsTransportsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -149,9 +167,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2313,6 +2331,704 @@ class ProjectsLocationsInternalRangesResource {
   }
 }
 
+class ProjectsLocationsMulticloudDataTransferConfigsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMulticloudDataTransferConfigsDestinationsResource
+  get destinations =>
+      ProjectsLocationsMulticloudDataTransferConfigsDestinationsResource(
+        _requester,
+      );
+
+  ProjectsLocationsMulticloudDataTransferConfigsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a `MulticloudDataTransferConfig` resource in a specified project
+  /// and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [multicloudDataTransferConfigId] - Required. The ID to use for the
+  /// `MulticloudDataTransferConfig` resource, which becomes the final component
+  /// of the `MulticloudDataTransferConfig` resource name.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server can
+  /// ignore the request if it has already been completed. The server waits for
+  /// at least 60 minutes since the first request. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// can ignore the second request. This prevents clients from accidentally
+  /// creating duplicate `MulticloudDataTransferConfig` resources. The request
+  /// ID must be a valid UUID with the exception that zero UUID
+  /// (00000000-0000-0000-0000-000000000000) isn't supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    MulticloudDataTransferConfig request,
+    core.String parent, {
+    core.String? multicloudDataTransferConfigId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (multicloudDataTransferConfigId != null)
+        'multicloudDataTransferConfigId': [multicloudDataTransferConfigId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/multicloudDataTransferConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a `MulticloudDataTransferConfig` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `MulticloudDataTransferConfig` resource
+  /// to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag is computed by the server, and might be sent
+  /// with update and delete requests so that the client has an up-to-date value
+  /// before proceeding.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server can
+  /// ignore the request if it has already been completed. The server waits for
+  /// at least 60 minutes since the first request. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// can ignore the second request. This prevents clients from accidentally
+  /// creating duplicate `MulticloudDataTransferConfig` resources. The request
+  /// ID must be a valid UUID with the exception that zero UUID
+  /// (00000000-0000-0000-0000-000000000000) isn't supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the details of a `MulticloudDataTransferConfig` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `MulticloudDataTransferConfig` resource
+  /// to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MulticloudDataTransferConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MulticloudDataTransferConfig> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MulticloudDataTransferConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists the `MulticloudDataTransferConfig` resources in a specified project
+  /// and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Optional. The sort order of the results.
+  ///
+  /// [pageSize] - Optional. The maximum number of results listed per page.
+  ///
+  /// [pageToken] - Optional. The page token.
+  ///
+  /// [returnPartialSuccess] - Optional. If `true`, allows partial responses for
+  /// multi-regional aggregated list requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMulticloudDataTransferConfigsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMulticloudDataTransferConfigsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/multicloudDataTransferConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMulticloudDataTransferConfigsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a `MulticloudDataTransferConfig` resource in a specified project
+  /// and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the `MulticloudDataTransferConfig`
+  /// resource. Format:
+  /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server can
+  /// ignore the request if it has already been completed. The server waits for
+  /// at least 60 minutes since the first request. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// can ignore the second request. This prevents clients from accidentally
+  /// creating duplicate `MulticloudDataTransferConfig` resources. The request
+  /// ID must be a valid UUID with the exception that zero UUID
+  /// (00000000-0000-0000-0000-000000000000) isn't supported.
+  ///
+  /// [updateMask] - Optional. `FieldMask` is used to specify the fields in the
+  /// `MulticloudDataTransferConfig` resource to be overwritten by the update.
+  /// The fields specified in `update_mask` are relative to the resource, not
+  /// the full request. A field is overwritten if it is in the mask. If you
+  /// don't specify a mask, all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    MulticloudDataTransferConfig request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsMulticloudDataTransferConfigsDestinationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMulticloudDataTransferConfigsDestinationsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Creates a `Destination` resource in a specified project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+$`.
+  ///
+  /// [destinationId] - Required. The ID to use for the `Destination` resource,
+  /// which becomes the final component of the `Destination` resource name.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server can
+  /// ignore the request if it has already been completed. The server waits for
+  /// at least 60 minutes since the first request. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// can ignore the second request. This prevents clients from accidentally
+  /// creating duplicate `Destination` resources. The request ID must be a valid
+  /// UUID with the exception that zero UUID
+  /// (00000000-0000-0000-0000-000000000000) isn't supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    Destination request,
+    core.String parent, {
+    core.String? destinationId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (destinationId != null) 'destinationId': [destinationId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/destinations';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a `Destination` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `Destination` resource to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+/destinations/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. The etag is computed by the server, and might be sent
+  /// with update and delete requests so that the client has an up-to-date value
+  /// before proceeding.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server can
+  /// ignore the request if it has already been completed. The server waits for
+  /// at least 60 minutes since the first request. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// can ignore the second request. The request ID must be a valid UUID with
+  /// the exception that zero UUID (00000000-0000-0000-0000-000000000000) isn't
+  /// supported.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the details of a `Destination` resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the `Destination` resource to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+/destinations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Destination].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Destination> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Destination.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists the `Destination` resources in a specified project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Optional. The sort order of the results.
+  ///
+  /// [pageSize] - Optional. The maximum number of results listed per page.
+  ///
+  /// [pageToken] - Optional. The page token.
+  ///
+  /// [returnPartialSuccess] - Optional. If `true`, allow partial responses for
+  /// multi-regional aggregated list requests.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDestinationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDestinationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/destinations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDestinationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a `Destination` resource in a specified project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the `Destination` resource. Format:
+  /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}/destinations/{destination}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferConfigs/\[^/\]+/destinations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server can
+  /// ignore the request if it has already been completed. The server waits for
+  /// at least 60 minutes since the first request. For example, consider a
+  /// situation where you make an initial request and the request times out. If
+  /// you make the request again with the same request ID, the server can check
+  /// if original operation with the same request ID was received, and if so,
+  /// can ignore the second request. The request ID must be a valid UUID with
+  /// the exception that zero UUID (00000000-0000-0000-0000-000000000000) isn't
+  /// supported.
+  ///
+  /// [updateMask] - Optional. \`FieldMask is used to specify the fields to be
+  /// overwritten in the \`Destination\` resource by the update. The fields
+  /// specified in \`update_mask\` are relative to the resource, not the full
+  /// request. A field is overwritten if it is in the mask. If you don't specify
+  /// a mask, all fields are overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    Destination request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsMulticloudDataTransferSupportedServicesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsMulticloudDataTransferSupportedServicesResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets the details of a service that is supported for Data Transfer
+  /// Essentials.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the service.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/multicloudDataTransferSupportedServices/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [MulticloudDataTransferSupportedService].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<MulticloudDataTransferSupportedService> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return MulticloudDataTransferSupportedService.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists the services in the project for a region that are supported for Data
+  /// Transfer Essentials.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of results listed per page.
+  ///
+  /// [pageToken] - Optional. The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListMulticloudDataTransferSupportedServicesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListMulticloudDataTransferSupportedServicesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/multicloudDataTransferSupportedServices';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListMulticloudDataTransferSupportedServicesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -2709,6 +3425,107 @@ class ProjectsLocationsRegionalEndpointsResource {
       queryParams: queryParams_,
     );
     return ListRegionalEndpointsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsRemoteTransportProfilesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsRemoteTransportProfilesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets details of a single RemoteTransportProfile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/remoteTransportProfiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [RemoteTransportProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<RemoteTransportProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return RemoteTransportProfile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists RemoteTransportProfiles in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListRemoteTransportProfilesRequest.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListRemoteTransportProfilesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListRemoteTransportProfilesResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/remoteTransportProfiles';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListRemoteTransportProfilesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3562,6 +4379,26 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   /// ServiceConnectionPolicy. ex. projects/123/locations/us-east1
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [autoSubnetworkConfig_allocRangeSpace] - Optional. The space where we
+  /// search for a free range to create a subnetwork. It can be narrow down or
+  /// pick a different space. This is in standard CIDR format. If not specified,
+  /// “10.0.0.0/8” is used. Only eligible for IPV4_ONLY and IPV4_IPV6
+  /// subnetwork.
+  ///
+  /// [autoSubnetworkConfig_ipStack] - Optional. The requested IP stack for the
+  /// subnetwork. If not specified, IPv4 is used.
+  /// Possible string values are:
+  /// - "SUBNET_IP_STACK_UNSPECIFIED" : Default value. Will create an IPV4_ONLY
+  /// subnetwork by default.
+  /// - "IPV4_ONLY" : Will create an IPV4_ONLY subnetwork.
+  /// - "IPV6_ONLY" : Will create an IPV6_ONLY subnetwork.
+  /// - "IPV4_IPV6" : Will use IPv4 and IPv6 (dual stack).
+  ///
+  /// [autoSubnetworkConfig_prefixLength] - Optional. The desired prefix length
+  /// for the subnet's IP address range. E.g., 24 for a /24. The actual range is
+  /// allocated from available space. If not specified, 24 is used. Only
+  /// eligible for IPV4_ONLY and IPV4_IPV6 subnetwork.
+  ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID so that if you must retry your request, the
   /// server will know to ignore the request if it has already been completed.
@@ -3578,6 +4415,15 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   /// '\[...\]/projects/p/locations/l/serviceConnectionPolicies/foo') See
   /// https://google.aip.dev/122#resource-id-segments Unique per location.
   ///
+  /// [subnetworkMode] - Optional. If this field is not set, USER_PROVIDED is
+  /// the inferred value to use.
+  /// Possible string values are:
+  /// - "SUBNETWORK_MODE_UNSPECIFIED" : The default value if the enum is unset.
+  /// Note user is not allowed to set the subnetwork mode to this value.
+  /// - "USER_PROVIDED" : Subnetworks are provided from the user input.
+  /// - "AUTO_CREATED" : Subnetwork list is empty from the user input. A
+  /// subnetwork will be created automatically.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3591,15 +4437,30 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   async.Future<GoogleLongrunningOperation> create(
     ServiceConnectionPolicy request,
     core.String parent, {
+    core.String? autoSubnetworkConfig_allocRangeSpace,
+    core.String? autoSubnetworkConfig_ipStack,
+    core.int? autoSubnetworkConfig_prefixLength,
     core.String? requestId,
     core.String? serviceConnectionPolicyId,
+    core.String? subnetworkMode,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (autoSubnetworkConfig_allocRangeSpace != null)
+        'autoSubnetworkConfig.allocRangeSpace': [
+          autoSubnetworkConfig_allocRangeSpace,
+        ],
+      if (autoSubnetworkConfig_ipStack != null)
+        'autoSubnetworkConfig.ipStack': [autoSubnetworkConfig_ipStack],
+      if (autoSubnetworkConfig_prefixLength != null)
+        'autoSubnetworkConfig.prefixLength': [
+          '${autoSubnetworkConfig_prefixLength}',
+        ],
       if (requestId != null) 'requestId': [requestId],
       if (serviceConnectionPolicyId != null)
         'serviceConnectionPolicyId': [serviceConnectionPolicyId],
+      if (subnetworkMode != null) 'subnetworkMode': [subnetworkMode],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4652,6 +5513,279 @@ class ProjectsLocationsSpokesResource {
   }
 }
 
+class ProjectsLocationsTransportsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTransportsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new Transport in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Value for parent.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [transportId] - Required. Id of the requesting object
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    Transport request,
+    core.String parent, {
+    core.String? requestId,
+    core.String? transportId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (transportId != null) 'transportId': [transportId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transports';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a single Transport.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single Transport.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Transport].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Transport> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Transport.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists Transports in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListTransportsRequest.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filtering results.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results.
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, server will pick an appropriate default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTransportsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTransportsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transports';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTransportsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single Transport.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Name of the resource, see google.aip.dev/122 for
+  /// resource naming.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Transport resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields present in the request will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> patch(
+    Transport request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// The request for HubService.AcceptHubSpoke.
 class AcceptHubSpokeRequest {
   /// A request ID to identify requests.
@@ -4876,6 +6010,59 @@ class AutoAccept {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (autoAcceptProjects != null) 'autoAcceptProjects': autoAcceptProjects!,
+  };
+}
+
+/// Information for the automatically created subnetwork and its associated IR.
+class AutoCreatedSubnetworkInfo {
+  /// URI of the automatically created Internal Range.
+  ///
+  /// Only set if the subnetwork mode is AUTO_CREATED during creation.
+  ///
+  /// Output only.
+  core.String? internalRange;
+
+  /// URI of the automatically created Internal Range reference.
+  ///
+  /// Only set if the subnetwork mode is AUTO_CREATED during creation.
+  ///
+  /// Output only.
+  core.String? internalRangeRef;
+
+  /// URI of the automatically created subnetwork.
+  ///
+  /// Only set if the subnetwork mode is AUTO_CREATED during creation.
+  ///
+  /// Output only.
+  core.String? subnetwork;
+
+  /// URI of the automatically created subnetwork reference.
+  ///
+  /// Only set if the subnetwork mode is AUTO_CREATED during creation.
+  ///
+  /// Output only.
+  core.String? subnetworkRef;
+
+  AutoCreatedSubnetworkInfo({
+    this.internalRange,
+    this.internalRangeRef,
+    this.subnetwork,
+    this.subnetworkRef,
+  });
+
+  AutoCreatedSubnetworkInfo.fromJson(core.Map json_)
+    : this(
+        internalRange: json_['internalRange'] as core.String?,
+        internalRangeRef: json_['internalRangeRef'] as core.String?,
+        subnetwork: json_['subnetwork'] as core.String?,
+        subnetworkRef: json_['subnetworkRef'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (internalRange != null) 'internalRange': internalRange!,
+    if (internalRangeRef != null) 'internalRangeRef': internalRangeRef!,
+    if (subnetwork != null) 'subnetwork': subnetwork!,
+    if (subnetworkRef != null) 'subnetworkRef': subnetworkRef!,
   };
 }
 
@@ -5275,6 +6462,176 @@ class ConsumerPscConnection {
     if (serviceAttachmentUri != null)
       'serviceAttachmentUri': serviceAttachmentUri!,
     if (state != null) 'state': state!,
+  };
+}
+
+/// The `Destination` resource.
+///
+/// It specifies the IP prefix and the associated autonomous system numbers
+/// (ASN) that you want to include in a `MulticloudDataTransferConfig` resource.
+class Destination {
+  /// Time when the `Destination` resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Unordered list.
+  ///
+  /// The list of `DestinationEndpoint` resources configured for the IP prefix.
+  ///
+  /// Required.
+  core.List<DestinationEndpoint>? endpoints;
+
+  /// The etag is computed by the server, and might be sent with update and
+  /// delete requests so that the client has an up-to-date value before
+  /// proceeding.
+  core.String? etag;
+
+  /// The IP prefix that represents your workload on another CSP.
+  ///
+  /// Required. Immutable.
+  core.String? ipPrefix;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the `Destination` resource. Format:
+  /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}/destinations/{destination}`.
+  core.String? name;
+
+  /// The timeline of the expected `Destination` states or the current rest
+  /// state.
+  ///
+  /// If a state change is expected, the value is `ADDING`, `DELETING` or
+  /// `SUSPENDING`, depending on the action specified. Example:
+  /// "state_timeline": { "states": \[ { // The time when the `Destination`
+  /// resource will be activated. "effectiveTime": "2024-12-01T08:00:00Z",
+  /// "state": "ADDING" }, { // The time when the `Destination` resource will be
+  /// suspended. "effectiveTime": "2024-12-01T20:00:00Z", "state": "SUSPENDING"
+  /// } \] }
+  ///
+  /// Output only.
+  StateTimeline? stateTimeline;
+
+  /// The Google-generated unique ID for the `Destination` resource.
+  ///
+  /// This value is unique across all `Destination` resources. If a resource is
+  /// deleted and another with the same name is created, the new resource is
+  /// assigned a different and unique ID.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Time when the `Destination` resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Destination({
+    this.createTime,
+    this.description,
+    this.endpoints,
+    this.etag,
+    this.ipPrefix,
+    this.labels,
+    this.name,
+    this.stateTimeline,
+    this.uid,
+    this.updateTime,
+  });
+
+  Destination.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        endpoints:
+            (json_['endpoints'] as core.List?)
+                ?.map(
+                  (value) => DestinationEndpoint.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        ipPrefix: json_['ipPrefix'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        stateTimeline:
+            json_.containsKey('stateTimeline')
+                ? StateTimeline.fromJson(
+                  json_['stateTimeline'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (endpoints != null) 'endpoints': endpoints!,
+    if (etag != null) 'etag': etag!,
+    if (ipPrefix != null) 'ipPrefix': ipPrefix!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (stateTimeline != null) 'stateTimeline': stateTimeline!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// The metadata for a `DestinationEndpoint` resource.
+class DestinationEndpoint {
+  /// The ASN of the remote IP prefix.
+  ///
+  /// Required.
+  core.String? asn;
+
+  /// The CSP of the remote IP prefix.
+  ///
+  /// Required.
+  core.String? csp;
+
+  /// The state of the `DestinationEndpoint` resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : An invalid state, which is the default case.
+  /// - "VALID" : The `DestinationEndpoint` resource is valid.
+  /// - "INVALID" : The `DestinationEndpoint` resource is invalid.
+  core.String? state;
+
+  /// Time when the `DestinationEndpoint` resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  DestinationEndpoint({this.asn, this.csp, this.state, this.updateTime});
+
+  DestinationEndpoint.fromJson(core.Map json_)
+    : this(
+        asn: json_['asn'] as core.String?,
+        csp: json_['csp'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (asn != null) 'asn': asn!,
+    if (csp != null) 'csp': csp!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -6045,8 +7402,10 @@ class InternalRange {
   /// Can be set to narrow down or pick a different address space while
   /// searching for a free range.
   ///
-  /// If not set, defaults to the "10.0.0.0/8" address space. This can be used
-  /// to search in other rfc-1918 address spaces like "172.16.0.0/12" and
+  /// If not set, defaults to the \["10.0.0.0/8", "172.16.0.0/12",
+  /// "192.168.0.0/16"\] address space (for auto-mode networks, the "10.0.0.0/9"
+  /// range is used instead of "10.0.0.0/8"). This can be used to target the
+  /// search in other rfc-1918 address spaces like "172.16.0.0/12" and
   /// "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
   ///
   /// Optional.
@@ -6543,6 +7902,47 @@ class LinkedVpnTunnels {
   };
 }
 
+/// Response message to list `Destination` resources.
+class ListDestinationsResponse {
+  /// The list of `Destination` resources to be listed.
+  core.List<Destination>? destinations;
+
+  /// The next page token.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListDestinationsResponse({
+    this.destinations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDestinationsResponse.fromJson(core.Map json_)
+    : this(
+        destinations:
+            (json_['destinations'] as core.List?)
+                ?.map(
+                  (value) => Destination.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (destinations != null) 'destinations': destinations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// Response for HubService.ListGroups method.
 class ListGroupsResponse {
   /// The requested groups.
@@ -6739,6 +8139,84 @@ class ListLocationsResponse {
   };
 }
 
+/// Response message to list `MulticloudDataTransferConfig` resources.
+class ListMulticloudDataTransferConfigsResponse {
+  /// The list of `MulticloudDataTransferConfig` resources to be listed.
+  core.List<MulticloudDataTransferConfig>? multicloudDataTransferConfigs;
+
+  /// The next page token.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListMulticloudDataTransferConfigsResponse({
+    this.multicloudDataTransferConfigs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListMulticloudDataTransferConfigsResponse.fromJson(core.Map json_)
+    : this(
+        multicloudDataTransferConfigs:
+            (json_['multicloudDataTransferConfigs'] as core.List?)
+                ?.map(
+                  (value) => MulticloudDataTransferConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (multicloudDataTransferConfigs != null)
+      'multicloudDataTransferConfigs': multicloudDataTransferConfigs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// Response message to list the services in your project in regions that are
+/// eligible for Data Transfer Essentials configuration.
+class ListMulticloudDataTransferSupportedServicesResponse {
+  /// The list of supported services.
+  core.List<MulticloudDataTransferSupportedService>?
+  multicloudDataTransferSupportedServices;
+
+  /// The next page token.
+  core.String? nextPageToken;
+
+  ListMulticloudDataTransferSupportedServicesResponse({
+    this.multicloudDataTransferSupportedServices,
+    this.nextPageToken,
+  });
+
+  ListMulticloudDataTransferSupportedServicesResponse.fromJson(core.Map json_)
+    : this(
+        multicloudDataTransferSupportedServices:
+            (json_['multicloudDataTransferSupportedServices'] as core.List?)
+                ?.map(
+                  (value) => MulticloudDataTransferSupportedService.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (multicloudDataTransferSupportedServices != null)
+      'multicloudDataTransferSupportedServices':
+          multicloudDataTransferSupportedServices!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// Response for PolicyBasedRoutingService.ListPolicyBasedRoutes method.
 class ListPolicyBasedRoutesResponse {
   /// The next pagination token in the List response.
@@ -6823,6 +8301,50 @@ class ListRegionalEndpointsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (regionalEndpoints != null) 'regionalEndpoints': regionalEndpoints!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// Message for response to listing RemoteTransportProfiles
+class ListRemoteTransportProfilesResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of RemoteTransportProfiles.
+  core.List<RemoteTransportProfile>? remoteTransportProfiles;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListRemoteTransportProfilesResponse({
+    this.nextPageToken,
+    this.remoteTransportProfiles,
+    this.unreachable,
+  });
+
+  ListRemoteTransportProfilesResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        remoteTransportProfiles:
+            (json_['remoteTransportProfiles'] as core.List?)
+                ?.map(
+                  (value) => RemoteTransportProfile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (remoteTransportProfiles != null)
+      'remoteTransportProfiles': remoteTransportProfiles!,
     if (unreachable != null) 'unreachable': unreachable!,
   };
 }
@@ -7130,6 +8652,49 @@ class ListSpokesResponse {
   };
 }
 
+/// Message for response to listing Transports.
+class ListTransportsResponse {
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// The list of Transport.
+  core.List<Transport>? transports;
+
+  /// Unordered list.
+  ///
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListTransportsResponse({
+    this.nextPageToken,
+    this.transports,
+    this.unreachable,
+  });
+
+  ListTransportsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        transports:
+            (json_['transports'] as core.List?)
+                ?.map(
+                  (value) => Transport.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (transports != null) 'transports': transports!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
@@ -7164,6 +8729,162 @@ class Migration {
   core.Map<core.String, core.dynamic> toJson() => {
     if (source != null) 'source': source!,
     if (target != null) 'target': target!,
+  };
+}
+
+/// The `MulticloudDataTransferConfig` resource.
+///
+/// It lists the services that you configure for Data Transfer Essentials
+/// billing and metering.
+class MulticloudDataTransferConfig {
+  /// Time when the `MulticloudDataTransferConfig` resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// A description of this resource.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The number of `Destination` resources in use with the
+  /// `MulticloudDataTransferConfig` resource.
+  ///
+  /// Output only.
+  core.int? destinationsActiveCount;
+
+  /// The number of `Destination` resources configured for the
+  /// `MulticloudDataTransferConfig` resource.
+  ///
+  /// Output only.
+  core.int? destinationsCount;
+
+  /// The etag is computed by the server, and might be sent with update and
+  /// delete requests so that the client has an up-to-date value before
+  /// proceeding.
+  core.String? etag;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of the `MulticloudDataTransferConfig` resource. Format:
+  /// `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}`.
+  core.String? name;
+
+  /// Maps services to their current or planned states.
+  ///
+  /// Service names are keys, and the associated values describe the state of
+  /// the service. If a state change is expected, the value is either `ADDING`
+  /// or `DELETING`, depending on the actions taken. Sample output: "services":
+  /// { "big-query": { "states": \[ { "effectiveTime": "2024-12-12T08:00:00Z"
+  /// "state": "ADDING", }, \] }, "cloud-storage": { "states": \[ { "state":
+  /// "ACTIVE", } \] } }
+  ///
+  /// Optional.
+  core.Map<core.String, StateTimeline>? services;
+
+  /// The Google-generated unique ID for the `MulticloudDataTransferConfig`
+  /// resource.
+  ///
+  /// This value is unique across all `MulticloudDataTransferConfig` resources.
+  /// If a resource is deleted and another with the same name is created, the
+  /// new resource is assigned a different and unique ID.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Time when the `MulticloudDataTransferConfig` resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  MulticloudDataTransferConfig({
+    this.createTime,
+    this.description,
+    this.destinationsActiveCount,
+    this.destinationsCount,
+    this.etag,
+    this.labels,
+    this.name,
+    this.services,
+    this.uid,
+    this.updateTime,
+  });
+
+  MulticloudDataTransferConfig.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        destinationsActiveCount: json_['destinationsActiveCount'] as core.int?,
+        destinationsCount: json_['destinationsCount'] as core.int?,
+        etag: json_['etag'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        services: (json_['services'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                StateTimeline.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (destinationsActiveCount != null)
+      'destinationsActiveCount': destinationsActiveCount!,
+    if (destinationsCount != null) 'destinationsCount': destinationsCount!,
+    if (etag != null) 'etag': etag!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (services != null) 'services': services!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// A service in your project in a region that is eligible for Data Transfer
+/// Essentials configuration.
+class MulticloudDataTransferSupportedService {
+  /// Identifier.
+  ///
+  /// The name of the service.
+  core.String? name;
+
+  /// The network service tier or regional endpoint supported for the service.
+  ///
+  /// Output only.
+  core.List<ServiceConfig>? serviceConfigs;
+
+  MulticloudDataTransferSupportedService({this.name, this.serviceConfigs});
+
+  MulticloudDataTransferSupportedService.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        serviceConfigs:
+            (json_['serviceConfigs'] as core.List?)
+                ?.map(
+                  (value) => ServiceConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (serviceConfigs != null) 'serviceConfigs': serviceConfigs!,
   };
 }
 
@@ -8241,6 +9962,148 @@ class RejectSpokeUpdateRequest {
   };
 }
 
+/// Message describing RemoteTransportProfile object.
+class RemoteTransportProfile {
+  /// Create time stamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the profile.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Type of provisioning flows supported by this profile.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "KEY_PROVISIONING_FLOW_UNSPECIFIED" : Unspecified key provisioning flow.
+  /// - "INPUT_ONLY" : The activationKey field on the Transport must be included
+  /// in a create or patch request to establish connectivity.
+  /// - "OUTPUT_ONLY" : The generatedActivationKey field is populated and must
+  /// be read from the resource and passed into the other provider.
+  /// - "INPUT_OR_OUTPUT" : Both activation key fields are allowed for
+  /// establishing connectivity. If a key is input, the generated key is still
+  /// present after provisioning is finished.
+  core.String? flow;
+
+  /// Labels as key value pairs.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Name of the resource in the format of $provider-$site.
+  core.String? name;
+
+  /// Order state for this profile.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "CLOSED" : Not enough capacity for customers to order.
+  /// - "OPEN" : Enough capacity to fulfill an order.
+  core.String? orderState;
+
+  /// Name of the provider on the other end of this profile.
+  ///
+  /// E.g. “Amazon Web Services” or “Microsoft Azure”.
+  ///
+  /// Output only.
+  core.String? provider;
+
+  /// If the profile is a Cloud Service Provider with compute resources, this is
+  /// populated with the region where connectivity is being established.
+  ///
+  /// If the profile provides facility-level selection, this is an identity of
+  /// the facility any connections on this profile are going through.
+  ///
+  /// Output only.
+  core.String? providerSite;
+
+  /// GCP Region where this profile is available.
+  ///
+  /// Output only.
+  core.String? region;
+
+  /// Availability class that will be configured for this particular
+  /// RemoteTransportProfile.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SERVICE_LEVEL_AVAILABILITY_UNSPECIFIED" : Unspecified service level
+  /// availability.
+  /// - "HIGH" : This represents a 99.9% service level on the availability of
+  /// the configured connectivity.
+  /// - "MAXIMUM" : This represents a 99.99% service level on the availability
+  /// of the configured connectivity.
+  core.String? sla;
+
+  /// List of bandwidth enum values that are supported by this profile.
+  ///
+  /// Output only.
+  core.List<core.String>? supportedBandwidths;
+
+  /// Update time stamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  RemoteTransportProfile({
+    this.createTime,
+    this.description,
+    this.flow,
+    this.labels,
+    this.name,
+    this.orderState,
+    this.provider,
+    this.providerSite,
+    this.region,
+    this.sla,
+    this.supportedBandwidths,
+    this.updateTime,
+  });
+
+  RemoteTransportProfile.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        flow: json_['flow'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        orderState: json_['orderState'] as core.String?,
+        provider: json_['provider'] as core.String?,
+        providerSite: json_['providerSite'] as core.String?,
+        region: json_['region'] as core.String?,
+        sla: json_['sla'] as core.String?,
+        supportedBandwidths:
+            (json_['supportedBandwidths'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (flow != null) 'flow': flow!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (orderState != null) 'orderState': orderState!,
+    if (provider != null) 'provider': provider!,
+    if (providerSite != null) 'providerSite': providerSite!,
+    if (region != null) 'region': region!,
+    if (sla != null) 'sla': sla!,
+    if (supportedBandwidths != null)
+      'supportedBandwidths': supportedBandwidths!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// A route defines a path from VM instances within a spoke to a specific
 /// destination resource.
 ///
@@ -8689,6 +10552,44 @@ class ServiceClass {
   };
 }
 
+/// Specifies eligibility information for the service.
+class ServiceConfig {
+  /// The eligibility criteria for the service.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ELIGIBILITY_CRITERIA_UNSPECIFIED" : The service is not eligible for
+  /// Data Transfer Essentials configuration. This is the default case.
+  /// - "NETWORK_SERVICE_TIER_PREMIUM_ONLY" : The service is eligible for Data
+  /// Transfer Essentials configuration only for Premium Tier.
+  /// - "NETWORK_SERVICE_TIER_STANDARD_ONLY" : The service is eligible for Data
+  /// Transfer Essentials configuration only for Standard Tier.
+  /// - "REQUEST_ENDPOINT_REGIONAL_ENDPOINT_ONLY" : The service is eligible for
+  /// Data Transfer Essentials configuration only for the regional endpoint.
+  core.String? eligibilityCriteria;
+
+  /// The end time for eligibility criteria support.
+  ///
+  /// If not specified, no planned end time is set.
+  ///
+  /// Output only.
+  core.String? supportEndTime;
+
+  ServiceConfig({this.eligibilityCriteria, this.supportEndTime});
+
+  ServiceConfig.fromJson(core.Map json_)
+    : this(
+        eligibilityCriteria: json_['eligibilityCriteria'] as core.String?,
+        supportEndTime: json_['supportEndTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (eligibilityCriteria != null)
+      'eligibilityCriteria': eligibilityCriteria!,
+    if (supportEndTime != null) 'supportEndTime': supportEndTime!,
+  };
+}
+
 /// The ServiceConnectionMap resource.
 class ServiceConnectionMap {
   /// The PSC configurations on consumer side.
@@ -8740,7 +10641,7 @@ class ServiceConnectionMap {
   /// The service class identifier this ServiceConnectionMap is for.
   ///
   /// The user of ServiceConnectionMap create API needs to have
-  /// networkconnecitivty.serviceclasses.use iam permission for the service
+  /// networkconnectivity.serviceClasses.use IAM permission for the service
   /// class.
   core.String? serviceClass;
 
@@ -8836,6 +10737,12 @@ class ServiceConnectionMap {
 
 /// The ServiceConnectionPolicy resource.
 class ServiceConnectionPolicy {
+  /// Information for the automatically created subnetwork and its associated
+  /// IR.
+  ///
+  /// Output only.
+  AutoCreatedSubnetworkInfo? autoCreatedSubnetInfo;
+
   /// Time when the ServiceConnectionPolicy was created.
   ///
   /// Output only.
@@ -8902,6 +10809,7 @@ class ServiceConnectionPolicy {
   core.String? updateTime;
 
   ServiceConnectionPolicy({
+    this.autoCreatedSubnetInfo,
     this.createTime,
     this.description,
     this.etag,
@@ -8917,6 +10825,13 @@ class ServiceConnectionPolicy {
 
   ServiceConnectionPolicy.fromJson(core.Map json_)
     : this(
+        autoCreatedSubnetInfo:
+            json_.containsKey('autoCreatedSubnetInfo')
+                ? AutoCreatedSubnetworkInfo.fromJson(
+                  json_['autoCreatedSubnetInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         etag: json_['etag'] as core.String?,
@@ -8945,6 +10860,8 @@ class ServiceConnectionPolicy {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (autoCreatedSubnetInfo != null)
+      'autoCreatedSubnetInfo': autoCreatedSubnetInfo!,
     if (createTime != null) 'createTime': createTime!,
     if (description != null) 'description': description!,
     if (etag != null) 'etag': etag!,
@@ -9507,6 +11424,44 @@ class SpokeTypeCount {
   };
 }
 
+/// The state and activation time details of the resource state.
+class StateMetadata {
+  /// Accompanies only the transient states, which include `ADDING`, `DELETING`,
+  /// and `SUSPENDING`, to denote the time until which the transient state of
+  /// the resource will be effective.
+  ///
+  /// For instance, if the state is `ADDING`, this field shows the time when the
+  /// resource state transitions to `ACTIVE`.
+  ///
+  /// Output only.
+  core.String? effectiveTime;
+
+  /// The state of the resource.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : An invalid state, which is the default case.
+  /// - "ADDING" : The resource is being added.
+  /// - "ACTIVE" : The resource is in use.
+  /// - "DELETING" : The resource is being deleted.
+  /// - "SUSPENDING" : The resource is being suspended.
+  /// - "SUSPENDED" : The resource is suspended and not in use.
+  core.String? state;
+
+  StateMetadata({this.effectiveTime, this.state});
+
+  StateMetadata.fromJson(core.Map json_)
+    : this(
+        effectiveTime: json_['effectiveTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (effectiveTime != null) 'effectiveTime': effectiveTime!,
+    if (state != null) 'state': state!,
+  };
+}
+
 /// The reason a spoke is inactive.
 class StateReason {
   /// The code associated with this reason.
@@ -9547,11 +11502,240 @@ class StateReason {
   };
 }
 
+/// The timeline of the pending states for a resource.
+class StateTimeline {
+  /// The state and activation time details of the resource state.
+  ///
+  /// Output only.
+  core.List<StateMetadata>? states;
+
+  StateTimeline({this.states});
+
+  StateTimeline.fromJson(core.Map json_)
+    : this(
+        states:
+            (json_['states'] as core.List?)
+                ?.map(
+                  (value) => StateMetadata.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (states != null) 'states': states!,
+  };
+}
+
 /// Request message for `TestIamPermissions` method.
 typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Message describing Transport object.
+class Transport {
+  /// Administrative state of the underlying connectivity.
+  ///
+  /// If set to true (default), connectivity should be available between your
+  /// environments. If set to false, the connectivity over these links is
+  /// disabled. Disabling your Transport does not affect billing, and retains
+  /// the underlying network bandwidth associated with the connectivity.
+  ///
+  /// Optional.
+  core.bool? adminEnabled;
+
+  /// \[Preview only\] List of IP Prefixes that will be advertised to the remote
+  /// provider.
+  ///
+  /// Both IPv4 and IPv6 addresses are supported.
+  ///
+  /// Optional.
+  core.String? advertisedRoutes;
+
+  /// Bandwidth of the Transport.
+  ///
+  /// This must be one of the supported bandwidths for the remote profile.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "BANDWIDTH_UNSPECIFIED" : Unspecified bandwidth.
+  /// - "BPS_50M" : 50 Megabits per second.
+  /// - "BPS_100M" : 100 Megabits per second.
+  /// - "BPS_200M" : 200 Megabits per second.
+  /// - "BPS_300M" : 300 Megabits per second.
+  /// - "BPS_400M" : 400 Megabits per second.
+  /// - "BPS_500M" : 500 Megabits per second.
+  /// - "BPS_1G" : 1 Gigabit per second.
+  /// - "BPS_2G" : 2 Gigabits per second.
+  /// - "BPS_5G" : 5 Gigabits per second.
+  /// - "BPS_10G" : 10 Gigabits per second.
+  core.String? bandwidth;
+
+  /// Create time stamp.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the Transport.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Google-generated activation key.
+  ///
+  /// This is only output if the selected profile supports an OUTPUT key flow.
+  /// Inputting this to the provider is only valid while the resource is in a
+  /// PENDING_KEY state. Once the provider has accepted the key, the resource
+  /// will move to the CONFIGURING state.
+  ///
+  /// Output only.
+  core.String? generatedActivationKey;
+
+  /// Labels as key value pairs.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The maximum transmission unit (MTU) of a packet that can be sent over this
+  /// transport.
+  ///
+  /// Output only.
+  core.int? mtuLimit;
+
+  /// Identifier.
+  ///
+  /// Name of the resource, see google.aip.dev/122 for resource naming.
+  core.String? name;
+
+  /// \[Preview only\] Resource URL of the Network that will be peered with this
+  /// Transport.
+  ///
+  /// This field must be provided during resource creation and cannot be
+  /// changed.
+  ///
+  /// Required.
+  core.String? network;
+
+  /// Key used for establishing a connection with the remote transport.
+  ///
+  /// This key can only be provided if the profile supports an INPUT key flow
+  /// and the resource is in the PENDING_KEY state.
+  ///
+  /// Optional.
+  core.String? providedActivationKey;
+
+  /// GCP Region where this Transport is located.
+  ///
+  /// Required.
+  core.String? region;
+
+  /// Resource URL of the remoteTransportProfile that this Transport is
+  /// connecting to.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/remoteTransportProfiles/{remote_transport_profile}
+  ///
+  /// Required.
+  core.String? remoteProfile;
+
+  /// IP version stack for the established connectivity.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STACK_TYPE_UNSPECIFIED" : Unspecified stack type.
+  /// - "IPV4_ONLY" : Only IPv4 is supported. (default)
+  /// - "IPV4_IPV6" : Both IPv4 and IPv6 are supported.
+  core.String? stackType;
+
+  /// State of the underlying connectivity.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state.
+  /// - "CREATING" : The resource exists locally and is being created /
+  /// associated with the resource on the remote provider’s end of the
+  /// underlying connectivity.
+  /// - "PENDING_CONFIG" : The Transport exists on both sides of the connection,
+  /// and is waiting for configuration to finalize and be verified as
+  /// operational.
+  /// - "PENDING_KEY" : The Transport was created in GCP. Depending on the
+  /// profile’s key provisioning flow, this is either waiting for an activation
+  /// key to be input (the key will be validated that it uses remote resources
+  /// that match the Transport), or for the generated key to be input to the
+  /// provider for finalizing. The configured bandwidth is not yet guaranteed.
+  /// - "ACTIVE" : The Transport is configured and the underlying connectivity
+  /// is considered operational.
+  core.String? state;
+
+  /// Update time stamp.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Transport({
+    this.adminEnabled,
+    this.advertisedRoutes,
+    this.bandwidth,
+    this.createTime,
+    this.description,
+    this.generatedActivationKey,
+    this.labels,
+    this.mtuLimit,
+    this.name,
+    this.network,
+    this.providedActivationKey,
+    this.region,
+    this.remoteProfile,
+    this.stackType,
+    this.state,
+    this.updateTime,
+  });
+
+  Transport.fromJson(core.Map json_)
+    : this(
+        adminEnabled: json_['adminEnabled'] as core.bool?,
+        advertisedRoutes: json_['advertisedRoutes'] as core.String?,
+        bandwidth: json_['bandwidth'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        generatedActivationKey: json_['generatedActivationKey'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        mtuLimit: json_['mtuLimit'] as core.int?,
+        name: json_['name'] as core.String?,
+        network: json_['network'] as core.String?,
+        providedActivationKey: json_['providedActivationKey'] as core.String?,
+        region: json_['region'] as core.String?,
+        remoteProfile: json_['remoteProfile'] as core.String?,
+        stackType: json_['stackType'] as core.String?,
+        state: json_['state'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adminEnabled != null) 'adminEnabled': adminEnabled!,
+    if (advertisedRoutes != null) 'advertisedRoutes': advertisedRoutes!,
+    if (bandwidth != null) 'bandwidth': bandwidth!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (generatedActivationKey != null)
+      'generatedActivationKey': generatedActivationKey!,
+    if (labels != null) 'labels': labels!,
+    if (mtuLimit != null) 'mtuLimit': mtuLimit!,
+    if (name != null) 'name': name!,
+    if (network != null) 'network': network!,
+    if (providedActivationKey != null)
+      'providedActivationKey': providedActivationKey!,
+    if (region != null) 'region': region!,
+    if (remoteProfile != null) 'remoteProfile': remoteProfile!,
+    if (stackType != null) 'stackType': stackType!,
+    if (state != null) 'state': state!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
 
 /// VM instances that this policy-based route applies to.
 class VirtualMachine {

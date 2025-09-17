@@ -138,13 +138,6 @@ The Cloud Storage for Firebase API enables programmatic management of Cloud Stor
 - [Original documentation](https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/gkehub_v2alpha/gkehub_v2alpha-library.html)
 
-#### Cloud Life Sciences API - `lifesciences/v2beta`
-
-Cloud Life Sciences is a suite of services and tools for managing, processing, and transforming life sciences data.
-
-- [Original documentation](https://cloud.google.com/life-sciences)
-- [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/lifesciences_v2beta/lifesciences_v2beta-library.html)
-
 #### SAS Portal API (Testing) - `prod_tt_sasportal/v1alpha1`
 
 - [Original documentation](https://developers.google.com/spectrum-access-system/)

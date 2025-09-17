@@ -3010,6 +3010,7 @@ api.JobConfiguration buildJobConfiguration() {
     o.jobType = 'foo';
     o.labels = buildUnnamed56();
     o.load = buildJobConfigurationLoad();
+    o.maxSlots = 42;
     o.query = buildJobConfigurationQuery();
     o.reservation = 'foo';
   }
@@ -3027,6 +3028,7 @@ void checkJobConfiguration(api.JobConfiguration o) {
     unittest.expect(o.jobType!, unittest.equals('foo'));
     checkUnnamed56(o.labels!);
     checkJobConfigurationLoad(o.load!);
+    unittest.expect(o.maxSlots!, unittest.equals(42));
     checkJobConfigurationQuery(o.query!);
     unittest.expect(o.reservation!, unittest.equals('foo'));
   }
@@ -5241,6 +5243,7 @@ api.QueryRequest buildQueryRequest() {
     o.labels = buildUnnamed116();
     o.location = 'foo';
     o.maxResults = 42;
+    o.maxSlots = 42;
     o.maximumBytesBilled = 'foo';
     o.parameterMode = 'foo';
     o.preserveNulls = true;
@@ -5273,6 +5276,7 @@ void checkQueryRequest(api.QueryRequest o) {
     checkUnnamed116(o.labels!);
     unittest.expect(o.location!, unittest.equals('foo'));
     unittest.expect(o.maxResults!, unittest.equals(42));
+    unittest.expect(o.maxSlots!, unittest.equals(42));
     unittest.expect(o.maximumBytesBilled!, unittest.equals('foo'));
     unittest.expect(o.parameterMode!, unittest.equals('foo'));
     unittest.expect(o.preserveNulls!, unittest.isTrue);

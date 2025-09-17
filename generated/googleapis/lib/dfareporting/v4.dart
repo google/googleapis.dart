@@ -13560,6 +13560,17 @@ class Advertiser {
   /// Default email address used in sender field for tag emails.
   core.String? defaultEmail;
 
+  /// Whether the advertiser plans to serve EU political ads.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ADVERTISER_PLANS_TO_SERVE_EU_POLITICAL_ADS" : You'll need to confirm if
+  /// your campaign contains EU political advertising.
+  /// - "ADVERTISER_DOES_NOT_PLAN_TO_SERVE_EU_POLITICAL_ADS" : All new campaigns
+  /// will have “No” selected for the question that asks if your campaign has EU
+  /// political ads. You can change this for any campaign at any time.
+  core.String? euPoliticalAdsDeclaration;
+
   /// Floodlight configuration ID of this advertiser.
   ///
   /// The floodlight configuration ID will be created automatically, so on
@@ -13629,6 +13640,7 @@ class Advertiser {
     this.clickThroughUrlSuffix,
     this.defaultClickThroughEventTagId,
     this.defaultEmail,
+    this.euPoliticalAdsDeclaration,
     this.floodlightConfigurationId,
     this.floodlightConfigurationIdDimensionValue,
     this.id,
@@ -13650,6 +13662,8 @@ class Advertiser {
         defaultClickThroughEventTagId:
             json_['defaultClickThroughEventTagId'] as core.String?,
         defaultEmail: json_['defaultEmail'] as core.String?,
+        euPoliticalAdsDeclaration:
+            json_['euPoliticalAdsDeclaration'] as core.String?,
         floodlightConfigurationId:
             json_['floodlightConfigurationId'] as core.String?,
         floodlightConfigurationIdDimensionValue:
@@ -13691,6 +13705,8 @@ class Advertiser {
     if (defaultClickThroughEventTagId != null)
       'defaultClickThroughEventTagId': defaultClickThroughEventTagId!,
     if (defaultEmail != null) 'defaultEmail': defaultEmail!,
+    if (euPoliticalAdsDeclaration != null)
+      'euPoliticalAdsDeclaration': euPoliticalAdsDeclaration!,
     if (floodlightConfigurationId != null)
       'floodlightConfigurationId': floodlightConfigurationId!,
     if (floodlightConfigurationIdDimensionValue != null)
@@ -14578,6 +14594,18 @@ class Campaign {
   core.String? defaultLandingPageId;
   core.DateTime? endDate;
 
+  /// Whether the campaign has EU political ads.
+  ///
+  /// Campaign Manager 360 doesn't allow campaigns with EU political ads to
+  /// serve in the EU. They can still serve in other regions.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "CONTAINS_EU_POLITICAL_ADS" : The campaign contains EU political ads.
+  /// - "DOES_NOT_CONTAIN_EU_POLITICAL_ADS" : The campaign does not contain EU
+  /// political ads.
+  core.String? euPoliticalAdsDeclaration;
+
   /// Overrides that can be used to activate or deactivate advertiser event
   /// tags.
   core.List<EventTagOverride>? eventTagOverrides;
@@ -14638,6 +14666,7 @@ class Campaign {
     this.defaultClickThroughEventTagProperties,
     this.defaultLandingPageId,
     this.endDate,
+    this.euPoliticalAdsDeclaration,
     this.eventTagOverrides,
     this.externalId,
     this.id,
@@ -14725,6 +14754,8 @@ class Campaign {
             json_.containsKey('endDate')
                 ? core.DateTime.parse(json_['endDate'] as core.String)
                 : null,
+        euPoliticalAdsDeclaration:
+            json_['euPoliticalAdsDeclaration'] as core.String?,
         eventTagOverrides:
             (json_['eventTagOverrides'] as core.List?)
                 ?.map(
@@ -14795,6 +14826,8 @@ class Campaign {
     if (endDate != null)
       'endDate':
           "${endDate!.year.toString().padLeft(4, '0')}-${endDate!.month.toString().padLeft(2, '0')}-${endDate!.day.toString().padLeft(2, '0')}",
+    if (euPoliticalAdsDeclaration != null)
+      'euPoliticalAdsDeclaration': euPoliticalAdsDeclaration!,
     if (eventTagOverrides != null) 'eventTagOverrides': eventTagOverrides!,
     if (externalId != null) 'externalId': externalId!,
     if (id != null) 'id': id!,
@@ -24180,6 +24213,8 @@ class MeasurementPartnerWrappingData {
   /// - "VPAID_ONLY_FILTERING"
   /// - "VPAID_FILTERING"
   /// - "NON_VPAID_FILTERING"
+  /// - "BLOCKING_FILTERING_VPAID"
+  /// - "BLOCKING_FILTERING_VPAID_ONLY"
   core.String? tagWrappingMode;
 
   /// Tag provided by the measurement partner during wrapping.
@@ -25311,6 +25346,11 @@ class Placement {
   /// This is a read-only, auto-generated field.
   DimensionValue? advertiserIdDimensionValue;
 
+  /// Whether the placement is enabled for YouTube integration.
+  ///
+  /// Optional.
+  core.bool? allowOnYoutube;
+
   /// Campaign ID of this placement.
   ///
   /// This field is a required field on insertion.
@@ -25549,6 +25589,13 @@ class Placement {
   /// Whether this placement opts out of tag wrapping.
   core.bool? wrappingOptOut;
 
+  /// YouTube settings for the placement.
+  ///
+  /// The placement must be enabled for YouTube to use this field.
+  ///
+  /// Optional.
+  YoutubeSettings? youtubeSettings;
+
   Placement({
     this.accountId,
     this.activeStatus,
@@ -25557,6 +25604,7 @@ class Placement {
     this.additionalSizes,
     this.advertiserId,
     this.advertiserIdDimensionValue,
+    this.allowOnYoutube,
     this.campaignId,
     this.campaignIdDimensionValue,
     this.comment,
@@ -25596,6 +25644,7 @@ class Placement {
     this.videoSettings,
     this.vpaidAdapterChoice,
     this.wrappingOptOut,
+    this.youtubeSettings,
   });
 
   Placement.fromJson(core.Map json_)
@@ -25620,6 +25669,7 @@ class Placement {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        allowOnYoutube: json_['allowOnYoutube'] as core.bool?,
         campaignId: json_['campaignId'] as core.String?,
         campaignIdDimensionValue:
             json_.containsKey('campaignIdDimensionValue')
@@ -25748,6 +25798,13 @@ class Placement {
                 : null,
         vpaidAdapterChoice: json_['vpaidAdapterChoice'] as core.String?,
         wrappingOptOut: json_['wrappingOptOut'] as core.bool?,
+        youtubeSettings:
+            json_.containsKey('youtubeSettings')
+                ? YoutubeSettings.fromJson(
+                  json_['youtubeSettings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -25760,6 +25817,7 @@ class Placement {
     if (advertiserId != null) 'advertiserId': advertiserId!,
     if (advertiserIdDimensionValue != null)
       'advertiserIdDimensionValue': advertiserIdDimensionValue!,
+    if (allowOnYoutube != null) 'allowOnYoutube': allowOnYoutube!,
     if (campaignId != null) 'campaignId': campaignId!,
     if (campaignIdDimensionValue != null)
       'campaignIdDimensionValue': campaignIdDimensionValue!,
@@ -25809,6 +25867,7 @@ class Placement {
     if (videoSettings != null) 'videoSettings': videoSettings!,
     if (vpaidAdapterChoice != null) 'vpaidAdapterChoice': vpaidAdapterChoice!,
     if (wrappingOptOut != null) 'wrappingOptOut': wrappingOptOut!,
+    if (youtubeSettings != null) 'youtubeSettings': youtubeSettings!,
   };
 }
 
@@ -31645,5 +31704,92 @@ class VideoSettings {
       'publisherSpecificationId': publisherSpecificationId!,
     if (skippableSettings != null) 'skippableSettings': skippableSettings!,
     if (transcodeSettings != null) 'transcodeSettings': transcodeSettings!,
+  };
+}
+
+/// Contains the YouTube settings.
+class YoutubeSettings {
+  /// The IDs of the creatives to use for the business logo.
+  ///
+  /// Currently only one creative is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? businessLogoCreativeIds;
+
+  /// The business name.
+  ///
+  /// Optional.
+  core.String? businessName;
+
+  /// The call to actions.
+  ///
+  /// Currently only one call to action is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? callToActions;
+
+  /// The descriptions.
+  ///
+  /// Currently only one description is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? descriptions;
+
+  /// The headlines associated with the call to actions.
+  ///
+  /// Currently only one headline is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? headlines;
+
+  /// The long headlines.
+  ///
+  /// Currently only one long headline is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? longHeadlines;
+
+  YoutubeSettings({
+    this.businessLogoCreativeIds,
+    this.businessName,
+    this.callToActions,
+    this.descriptions,
+    this.headlines,
+    this.longHeadlines,
+  });
+
+  YoutubeSettings.fromJson(core.Map json_)
+    : this(
+        businessLogoCreativeIds:
+            (json_['businessLogoCreativeIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        businessName: json_['businessName'] as core.String?,
+        callToActions:
+            (json_['callToActions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        descriptions:
+            (json_['descriptions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        headlines:
+            (json_['headlines'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        longHeadlines:
+            (json_['longHeadlines'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (businessLogoCreativeIds != null)
+      'businessLogoCreativeIds': businessLogoCreativeIds!,
+    if (businessName != null) 'businessName': businessName!,
+    if (callToActions != null) 'callToActions': callToActions!,
+    if (descriptions != null) 'descriptions': descriptions!,
+    if (headlines != null) 'headlines': headlines!,
+    if (longHeadlines != null) 'longHeadlines': longHeadlines!,
   };
 }

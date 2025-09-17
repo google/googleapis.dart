@@ -106,6 +106,7 @@
 ///   - [OrganizationsOptimizedHostStatsResource]
 ///   - [OrganizationsReportsResource]
 ///   - [OrganizationsSecurityAssessmentResultsResource]
+///   - [OrganizationsSecurityFeedbackResource]
 ///   - [OrganizationsSecurityMonitoringConditionsResource]
 ///   - [OrganizationsSecurityProfilesResource]
 ///     - [OrganizationsSecurityProfilesEnvironmentsResource]
@@ -263,6 +264,8 @@ class OrganizationsResource {
   OrganizationsSecurityAssessmentResultsResource
   get securityAssessmentResults =>
       OrganizationsSecurityAssessmentResultsResource(_requester);
+  OrganizationsSecurityFeedbackResource get securityFeedback =>
+      OrganizationsSecurityFeedbackResource(_requester);
   OrganizationsSecurityMonitoringConditionsResource
   get securityMonitoringConditions =>
       OrganizationsSecurityMonitoringConditionsResource(_requester);
@@ -4066,14 +4069,16 @@ class OrganizationsAppsResource {
   /// `approved` or `revoked`. Defaults to `approved`.
   ///
   /// [pageSize] - Optional. Count of apps a single page can have in the
-  /// response. If unspecified, at most 100 apps will be returned. The maximum
-  /// value is 100; values above 100 will be coerced to 100. "page_size" is
+  /// response. If unspecified, at most 1000 apps will be returned. The maximum
+  /// value is 1000; values above 1000 will be coerced to 1000. "page_size" is
   /// supported from ver 1.10.0 and above.
   ///
   /// [pageToken] - Optional. The starting index record for listing the
   /// developers. "page_token" is supported from ver 1.10.0 and above.
   ///
-  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 1000.
+  /// [rows] - Optional. Maximum number of app IDs to return. Defaults to 1000,
+  /// which is also the upper limit. To get more than 1000, use pagination with
+  /// 'pageSize' and 'pageToken' parameters.
   ///
   /// [startKey] - Returns the list of apps starting from the specified app ID.
   ///
@@ -15665,6 +15670,248 @@ class OrganizationsSecurityAssessmentResultsResource {
   }
 }
 
+class OrganizationsSecurityFeedbackResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsSecurityFeedbackResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new report containing customer feedback.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization. Use the following structure
+  /// in your request: `organizations/{org}`.
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [securityFeedbackId] - Optional. The id for this feedback report. If not
+  /// provided, it will be set to a system-generated UUID.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityFeedback].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityFeedback> create(
+    GoogleCloudApigeeV1SecurityFeedback request,
+    core.String parent, {
+    core.String? securityFeedbackId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (securityFeedbackId != null)
+        'securityFeedbackId': [securityFeedbackId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityFeedback';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityFeedback.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a specific feedback report.
+  ///
+  /// Used for "undo" of a feedback submission.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the SecurityFeedback to delete. Use the
+  /// following structure in your request:
+  /// `organizations/{org}/securityFeedback/{feedback_id}`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityFeedback/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a specific customer feedback report.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the SecurityFeedback. Format:
+  /// `organizations/{org}/securityFeedback/{feedback_id}` Example:
+  /// organizations/apigee-organization-name/securityFeedback/feedback-id
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityFeedback/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityFeedback].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityFeedback> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityFeedback.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all feedback reports which have already been submitted.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Name of the organization. Format:
+  /// `organizations/{org}`. Example:
+  /// organizations/apigee-organization-name/securityFeedback
+  /// Value must have pattern `^organizations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of feedback reports to return.
+  /// The service may return fewer than this value.
+  /// LINT.IfChange(documented_page_size_limits) If unspecified, at most 10
+  /// feedback reports will be returned. The maximum value is 100; values above
+  /// 100 will be coerced to 100. LINT.ThenChange(
+  /// //depot/google3/edge/sense/boq/service/v1/securityfeedback/securityfeedback_rpc.go:page_size_limits
+  /// )
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListSecurityFeedback` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListSecurityFeedback`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1ListSecurityFeedbackResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1ListSecurityFeedbackResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/securityFeedback';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1ListSecurityFeedbackResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a specific feedback report.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The feedback name is intended to be a
+  /// system-generated uuid.
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/securityFeedback/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudApigeeV1SecurityFeedback].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudApigeeV1SecurityFeedback> patch(
+    GoogleCloudApigeeV1SecurityFeedback request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudApigeeV1SecurityFeedback.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class OrganizationsSecurityMonitoringConditionsResource {
   final commons.ApiRequester _requester;
 
@@ -18359,7 +18606,11 @@ class GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
   ///
   /// * A negative value of `adjustment` means that that the API provider wants
   /// to adjust the balance for an over-charged developer i.e. the balance of
-  /// the developer will increase.
+  /// the developer will increase. NOTE: An adjustment cannot increase the
+  /// balance of the developer beyond the balance as of the most recent credit.
+  /// For example, if a developer's balance is updated to be $100, and they
+  /// spend $10, a negative adjustment can only increase the balance of the
+  /// developer to $100.
   GoogleTypeMoney? adjustment;
 
   GoogleCloudApigeeV1AdjustDeveloperBalanceRequest({this.adjustment});
@@ -20570,7 +20821,7 @@ class GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
   ///
   /// For Apigee, the environment is the scope of the resources.
   ///
-  /// Required.
+  /// Optional.
   core.String? scope;
 
   GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest({
@@ -26552,6 +26803,41 @@ class GoogleCloudApigeeV1ListSecurityActionsResponse {
   };
 }
 
+/// Response for ListSecurityFeedback
+class GoogleCloudApigeeV1ListSecurityFeedbackResponse {
+  /// A token that can be sent as `page_token` in `ListSecurityFeedbackRequest`
+  /// to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// List of SecurityFeedback reports.
+  core.List<GoogleCloudApigeeV1SecurityFeedback>? securityFeedback;
+
+  GoogleCloudApigeeV1ListSecurityFeedbackResponse({
+    this.nextPageToken,
+    this.securityFeedback,
+  });
+
+  GoogleCloudApigeeV1ListSecurityFeedbackResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        securityFeedback:
+            (json_['securityFeedback'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudApigeeV1SecurityFeedback.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (securityFeedback != null) 'securityFeedback': securityFeedback!,
+  };
+}
+
 /// Response for ListSecurityIncidents.
 class GoogleCloudApigeeV1ListSecurityIncidentsResponse {
   /// A token that can be sent as `page_token` to retrieve the next page.
@@ -30966,6 +31252,143 @@ class GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommen
   };
 }
 
+/// Represents a feedback report from an Advanced API Security customer.
+class GoogleCloudApigeeV1SecurityFeedback {
+  /// Optional text the user can provide for additional, unstructured context.
+  ///
+  /// Optional.
+  core.String? comment;
+
+  /// The time when this specific feedback id was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The display name of the feedback.
+  ///
+  /// Optional.
+  core.String? displayName;
+
+  /// One or more attribute/value pairs for constraining the feedback.
+  ///
+  /// Required.
+  core.List<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>?
+  feedbackContexts;
+
+  /// The type of feedback being submitted.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FEEDBACK_TYPE_UNSPECIFIED" : Unspecified feedback type.
+  /// - "EXCLUDED_DETECTION" : Feedback identifying attributes to be excluded
+  /// from detections.
+  core.String? feedbackType;
+
+  /// Identifier.
+  ///
+  /// The feedback name is intended to be a system-generated uuid.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// The reason for the feedback.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unspecified reason.
+  /// - "INTERNAL_SYSTEM" : The feedback is created for an internal system.
+  /// - "NON_RISK_CLIENT" : The feedback is created for a non-risk client.
+  /// - "NAT" : The feedback is created for to label NAT.
+  /// - "PENETRATION_TEST" : The feedback is created for a penetration test.
+  /// - "OTHER" : The feedback is created for other reasons.
+  core.String? reason;
+
+  /// The time when this specific feedback id was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudApigeeV1SecurityFeedback({
+    this.comment,
+    this.createTime,
+    this.displayName,
+    this.feedbackContexts,
+    this.feedbackType,
+    this.name,
+    this.reason,
+    this.updateTime,
+  });
+
+  GoogleCloudApigeeV1SecurityFeedback.fromJson(core.Map json_)
+    : this(
+        comment: json_['comment'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        feedbackContexts:
+            (json_['feedbackContexts'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudApigeeV1SecurityFeedbackFeedbackContext.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        feedbackType: json_['feedbackType'] as core.String?,
+        name: json_['name'] as core.String?,
+        reason: json_['reason'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (comment != null) 'comment': comment!,
+    if (createTime != null) 'createTime': createTime!,
+    if (displayName != null) 'displayName': displayName!,
+    if (feedbackContexts != null) 'feedbackContexts': feedbackContexts!,
+    if (feedbackType != null) 'feedbackType': feedbackType!,
+    if (name != null) 'name': name!,
+    if (reason != null) 'reason': reason!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// FeedbackContext captures the intent of the submitted feedback.
+class GoogleCloudApigeeV1SecurityFeedbackFeedbackContext {
+  /// The attribute the user is providing feedback about.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ATTRIBUTE_UNSPECIFIED" : Unspecified attribute.
+  /// - "ATTRIBUTE_ENVIRONMENTS" : Values will be a list of environments.
+  /// - "ATTRIBUTE_IP_ADDRESS_RANGES" : Values will be a list of IP addresses.
+  /// This could be either IPv4 or IPv6.
+  /// - "ATTRIBUTE_API_KEYS" : Values will be a list of API keys.
+  core.String? attribute;
+
+  /// The values of the attribute the user is providing feedback about.
+  ///
+  /// Required.
+  core.List<core.String>? values;
+
+  GoogleCloudApigeeV1SecurityFeedbackFeedbackContext({
+    this.attribute,
+    this.values,
+  });
+
+  GoogleCloudApigeeV1SecurityFeedbackFeedbackContext.fromJson(core.Map json_)
+    : this(
+        attribute: json_['attribute'] as core.String?,
+        values:
+            (json_['values'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (attribute != null) 'attribute': attribute!,
+    if (values != null) 'values': values!,
+  };
+}
+
 /// Represents an SecurityIncident resource.
 class GoogleCloudApigeeV1SecurityIncident {
   /// Detection types which are part of the incident.
@@ -31103,7 +31526,7 @@ class GoogleCloudApigeeV1SecurityMonitoringCondition {
   ///
   /// For Apigee, the environment is the scope of the resources.
   ///
-  /// Required.
+  /// Optional.
   core.String? scope;
 
   /// Total number of deployed resources within scope.

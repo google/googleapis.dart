@@ -442,6 +442,7 @@ api.CloneContext buildCloneContext() {
     o.pointInTime = 'foo';
     o.preferredSecondaryZone = 'foo';
     o.preferredZone = 'foo';
+    o.sourceInstanceDeletionTime = 'foo';
   }
   buildCounterCloneContext--;
   return o;
@@ -459,8 +460,30 @@ void checkCloneContext(api.CloneContext o) {
     unittest.expect(o.pointInTime!, unittest.equals('foo'));
     unittest.expect(o.preferredSecondaryZone!, unittest.equals('foo'));
     unittest.expect(o.preferredZone!, unittest.equals('foo'));
+    unittest.expect(o.sourceInstanceDeletionTime!, unittest.equals('foo'));
   }
   buildCounterCloneContext--;
+}
+
+core.int buildCounterColumn = 0;
+api.Column buildColumn() {
+  final o = api.Column();
+  buildCounterColumn++;
+  if (buildCounterColumn < 3) {
+    o.name = 'foo';
+    o.type = 'foo';
+  }
+  buildCounterColumn--;
+  return o;
+}
+
+void checkColumn(api.Column o) {
+  buildCounterColumn++;
+  if (buildCounterColumn < 3) {
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.type!, unittest.equals('foo'));
+  }
+  buildCounterColumn--;
 }
 
 core.List<api.DnsNameMapping> buildUnnamed2() => [
@@ -540,12 +563,20 @@ void checkUnnamed6(core.List<api.IpMapping> o) {
   checkIpMapping(o[1]);
 }
 
-core.List<api.ConnectPoolNodeConfig> buildUnnamed7() => [
+core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+
+void checkUnnamed7(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.ConnectPoolNodeConfig> buildUnnamed8() => [
   buildConnectPoolNodeConfig(),
   buildConnectPoolNodeConfig(),
 ];
 
-void checkUnnamed7(core.List<api.ConnectPoolNodeConfig> o) {
+void checkUnnamed8(core.List<api.ConnectPoolNodeConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnectPoolNodeConfig(o[0]);
   checkConnectPoolNodeConfig(o[1]);
@@ -563,8 +594,9 @@ api.ConnectSettings buildConnectSettings() {
     o.dnsNames = buildUnnamed5();
     o.ipAddresses = buildUnnamed6();
     o.kind = 'foo';
+    o.mdxProtocolSupport = buildUnnamed7();
     o.nodeCount = 42;
-    o.nodes = buildUnnamed7();
+    o.nodes = buildUnnamed8();
     o.pscEnabled = true;
     o.region = 'foo';
     o.serverCaCert = buildSslCert();
@@ -584,8 +616,9 @@ void checkConnectSettings(api.ConnectSettings o) {
     checkUnnamed5(o.dnsNames!);
     checkUnnamed6(o.ipAddresses!);
     unittest.expect(o.kind!, unittest.equals('foo'));
+    checkUnnamed7(o.mdxProtocolSupport!);
     unittest.expect(o.nodeCount!, unittest.equals(42));
-    checkUnnamed7(o.nodes!);
+    checkUnnamed8(o.nodes!);
     unittest.expect(o.pscEnabled!, unittest.isTrue);
     unittest.expect(o.region!, unittest.equals('foo'));
     checkSslCert(o.serverCaCert!);
@@ -594,12 +627,12 @@ void checkConnectSettings(api.ConnectSettings o) {
   buildCounterConnectSettings--;
 }
 
-core.List<api.ConnectionPoolFlags> buildUnnamed8() => [
+core.List<api.ConnectionPoolFlags> buildUnnamed9() => [
   buildConnectionPoolFlags(),
   buildConnectionPoolFlags(),
 ];
 
-void checkUnnamed8(core.List<api.ConnectionPoolFlags> o) {
+void checkUnnamed9(core.List<api.ConnectionPoolFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkConnectionPoolFlags(o[0]);
   checkConnectionPoolFlags(o[1]);
@@ -611,7 +644,8 @@ api.ConnectionPoolConfig buildConnectionPoolConfig() {
   buildCounterConnectionPoolConfig++;
   if (buildCounterConnectionPoolConfig < 3) {
     o.connectionPoolingEnabled = true;
-    o.flags = buildUnnamed8();
+    o.flags = buildUnnamed9();
+    o.poolerCount = 42;
   }
   buildCounterConnectionPoolConfig--;
   return o;
@@ -621,7 +655,8 @@ void checkConnectionPoolConfig(api.ConnectionPoolConfig o) {
   buildCounterConnectionPoolConfig++;
   if (buildCounterConnectionPoolConfig < 3) {
     unittest.expect(o.connectionPoolingEnabled!, unittest.isTrue);
-    checkUnnamed8(o.flags!);
+    checkUnnamed9(o.flags!);
+    unittest.expect(o.poolerCount!, unittest.equals(42));
   }
   buildCounterConnectionPoolConfig--;
 }
@@ -722,20 +757,20 @@ void checkDatabaseFlags(api.DatabaseFlags o) {
   buildCounterDatabaseFlags--;
 }
 
-core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
 
-void checkUnnamed9(core.List<core.String> o) {
+void checkUnnamed10(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.DnsNameMapping> buildUnnamed10() => [
+core.List<api.DnsNameMapping> buildUnnamed11() => [
   buildDnsNameMapping(),
   buildDnsNameMapping(),
 ];
 
-void checkUnnamed10(core.List<api.DnsNameMapping> o) {
+void checkUnnamed11(core.List<api.DnsNameMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsNameMapping(o[0]);
   checkDnsNameMapping(o[1]);
@@ -764,34 +799,26 @@ void checkDatabaseInstanceFailoverReplica(
   buildCounterDatabaseInstanceFailoverReplica--;
 }
 
-core.List<api.IpMapping> buildUnnamed11() => [
+core.List<api.IpMapping> buildUnnamed12() => [
   buildIpMapping(),
   buildIpMapping(),
 ];
 
-void checkUnnamed11(core.List<api.IpMapping> o) {
+void checkUnnamed12(core.List<api.IpMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIpMapping(o[0]);
   checkIpMapping(o[1]);
 }
 
-core.List<api.PoolNodeConfig> buildUnnamed12() => [
+core.List<api.PoolNodeConfig> buildUnnamed13() => [
   buildPoolNodeConfig(),
   buildPoolNodeConfig(),
 ];
 
-void checkUnnamed12(core.List<api.PoolNodeConfig> o) {
+void checkUnnamed13(core.List<api.PoolNodeConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPoolNodeConfig(o[0]);
   checkPoolNodeConfig(o[1]);
-}
-
-core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
-
-void checkUnnamed13(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
@@ -802,20 +829,28 @@ void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed15() => {'x': 'foo', 'y': 'foo'};
+core.List<core.String> buildUnnamed15() => ['foo', 'foo'];
 
-void checkUnnamed15(core.Map<core.String, core.String> o) {
+void checkUnnamed15(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.String> buildUnnamed16() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed16(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.List<api.AvailableDatabaseVersion> buildUnnamed16() => [
+core.List<api.AvailableDatabaseVersion> buildUnnamed17() => [
   buildAvailableDatabaseVersion(),
   buildAvailableDatabaseVersion(),
 ];
 
-void checkUnnamed16(core.List<api.AvailableDatabaseVersion> o) {
+void checkUnnamed17(core.List<api.AvailableDatabaseVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAvailableDatabaseVersion(o[0]);
   checkAvailableDatabaseVersion(o[1]);
@@ -826,9 +861,8 @@ api.DatabaseInstance buildDatabaseInstance() {
   final o = api.DatabaseInstance();
   buildCounterDatabaseInstance++;
   if (buildCounterDatabaseInstance < 3) {
-    o.availableMaintenanceVersions = buildUnnamed9();
+    o.availableMaintenanceVersions = buildUnnamed10();
     o.backendType = 'foo';
-    o.clearNetwork = true;
     o.connectionName = 'foo';
     o.createTime = 'foo';
     o.currentDiskSize = 'foo';
@@ -837,14 +871,14 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.diskEncryptionConfiguration = buildDiskEncryptionConfiguration();
     o.diskEncryptionStatus = buildDiskEncryptionStatus();
     o.dnsName = 'foo';
-    o.dnsNames = buildUnnamed10();
+    o.dnsNames = buildUnnamed11();
     o.etag = 'foo';
     o.failoverReplica = buildDatabaseInstanceFailoverReplica();
     o.gceZone = 'foo';
     o.geminiConfig = buildGeminiInstanceConfig();
     o.includeReplicasForMajorVersionUpgrade = true;
     o.instanceType = 'foo';
-    o.ipAddresses = buildUnnamed11();
+    o.ipAddresses = buildUnnamed12();
     o.ipv6Address = 'foo';
     o.kind = 'foo';
     o.maintenanceVersion = 'foo';
@@ -852,7 +886,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.maxDiskSize = 'foo';
     o.name = 'foo';
     o.nodeCount = 42;
-    o.nodes = buildUnnamed12();
+    o.nodes = buildUnnamed13();
     o.onPremisesConfiguration = buildOnPremisesConfiguration();
     o.outOfDiskReport = buildSqlOutOfDiskReport();
     o.primaryDnsName = 'foo';
@@ -860,7 +894,7 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.pscServiceAttachmentLink = 'foo';
     o.region = 'foo';
     o.replicaConfiguration = buildReplicaConfiguration();
-    o.replicaNames = buildUnnamed13();
+    o.replicaNames = buildUnnamed14();
     o.replicationCluster = buildReplicationCluster();
     o.rootPassword = 'foo';
     o.satisfiesPzi = true;
@@ -873,10 +907,10 @@ api.DatabaseInstance buildDatabaseInstance() {
     o.settings = buildSettings();
     o.sqlNetworkArchitecture = 'foo';
     o.state = 'foo';
-    o.suspensionReason = buildUnnamed14();
+    o.suspensionReason = buildUnnamed15();
     o.switchTransactionLogsToCloudStorageEnabled = true;
-    o.tags = buildUnnamed15();
-    o.upgradableDatabaseVersions = buildUnnamed16();
+    o.tags = buildUnnamed16();
+    o.upgradableDatabaseVersions = buildUnnamed17();
     o.writeEndpoint = 'foo';
   }
   buildCounterDatabaseInstance--;
@@ -886,9 +920,8 @@ api.DatabaseInstance buildDatabaseInstance() {
 void checkDatabaseInstance(api.DatabaseInstance o) {
   buildCounterDatabaseInstance++;
   if (buildCounterDatabaseInstance < 3) {
-    checkUnnamed9(o.availableMaintenanceVersions!);
+    checkUnnamed10(o.availableMaintenanceVersions!);
     unittest.expect(o.backendType!, unittest.equals('foo'));
-    unittest.expect(o.clearNetwork!, unittest.isTrue);
     unittest.expect(o.connectionName!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.currentDiskSize!, unittest.equals('foo'));
@@ -897,14 +930,14 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkDiskEncryptionConfiguration(o.diskEncryptionConfiguration!);
     checkDiskEncryptionStatus(o.diskEncryptionStatus!);
     unittest.expect(o.dnsName!, unittest.equals('foo'));
-    checkUnnamed10(o.dnsNames!);
+    checkUnnamed11(o.dnsNames!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     checkDatabaseInstanceFailoverReplica(o.failoverReplica!);
     unittest.expect(o.gceZone!, unittest.equals('foo'));
     checkGeminiInstanceConfig(o.geminiConfig!);
     unittest.expect(o.includeReplicasForMajorVersionUpgrade!, unittest.isTrue);
     unittest.expect(o.instanceType!, unittest.equals('foo'));
-    checkUnnamed11(o.ipAddresses!);
+    checkUnnamed12(o.ipAddresses!);
     unittest.expect(o.ipv6Address!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.maintenanceVersion!, unittest.equals('foo'));
@@ -912,7 +945,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     unittest.expect(o.maxDiskSize!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nodeCount!, unittest.equals(42));
-    checkUnnamed12(o.nodes!);
+    checkUnnamed13(o.nodes!);
     checkOnPremisesConfiguration(o.onPremisesConfiguration!);
     checkSqlOutOfDiskReport(o.outOfDiskReport!);
     unittest.expect(o.primaryDnsName!, unittest.equals('foo'));
@@ -920,7 +953,7 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     unittest.expect(o.pscServiceAttachmentLink!, unittest.equals('foo'));
     unittest.expect(o.region!, unittest.equals('foo'));
     checkReplicaConfiguration(o.replicaConfiguration!);
-    checkUnnamed13(o.replicaNames!);
+    checkUnnamed14(o.replicaNames!);
     checkReplicationCluster(o.replicationCluster!);
     unittest.expect(o.rootPassword!, unittest.equals('foo'));
     unittest.expect(o.satisfiesPzi!, unittest.isTrue);
@@ -933,21 +966,21 @@ void checkDatabaseInstance(api.DatabaseInstance o) {
     checkSettings(o.settings!);
     unittest.expect(o.sqlNetworkArchitecture!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
-    checkUnnamed14(o.suspensionReason!);
+    checkUnnamed15(o.suspensionReason!);
     unittest.expect(
       o.switchTransactionLogsToCloudStorageEnabled!,
       unittest.isTrue,
     );
-    checkUnnamed15(o.tags!);
-    checkUnnamed16(o.upgradableDatabaseVersions!);
+    checkUnnamed16(o.tags!);
+    checkUnnamed17(o.upgradableDatabaseVersions!);
     unittest.expect(o.writeEndpoint!, unittest.equals('foo'));
   }
   buildCounterDatabaseInstance--;
 }
 
-core.List<api.Database> buildUnnamed17() => [buildDatabase(), buildDatabase()];
+core.List<api.Database> buildUnnamed18() => [buildDatabase(), buildDatabase()];
 
-void checkUnnamed17(core.List<api.Database> o) {
+void checkUnnamed18(core.List<api.Database> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabase(o[0]);
   checkDatabase(o[1]);
@@ -958,7 +991,7 @@ api.DatabasesListResponse buildDatabasesListResponse() {
   final o = api.DatabasesListResponse();
   buildCounterDatabasesListResponse++;
   if (buildCounterDatabasesListResponse < 3) {
-    o.items = buildUnnamed17();
+    o.items = buildUnnamed18();
     o.kind = 'foo';
   }
   buildCounterDatabasesListResponse--;
@@ -968,7 +1001,7 @@ api.DatabasesListResponse buildDatabasesListResponse() {
 void checkDatabasesListResponse(api.DatabasesListResponse o) {
   buildCounterDatabasesListResponse++;
   if (buildCounterDatabasesListResponse < 3) {
-    checkUnnamed17(o.items!);
+    checkUnnamed18(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterDatabasesListResponse--;
@@ -1181,6 +1214,35 @@ void checkEmpty(api.Empty o) {
   buildCounterEmpty--;
 }
 
+core.int buildCounterExecuteSqlPayload = 0;
+api.ExecuteSqlPayload buildExecuteSqlPayload() {
+  final o = api.ExecuteSqlPayload();
+  buildCounterExecuteSqlPayload++;
+  if (buildCounterExecuteSqlPayload < 3) {
+    o.autoIamAuthn = true;
+    o.database = 'foo';
+    o.partialResultMode = 'foo';
+    o.rowLimit = 'foo';
+    o.sqlStatement = 'foo';
+    o.user = 'foo';
+  }
+  buildCounterExecuteSqlPayload--;
+  return o;
+}
+
+void checkExecuteSqlPayload(api.ExecuteSqlPayload o) {
+  buildCounterExecuteSqlPayload++;
+  if (buildCounterExecuteSqlPayload < 3) {
+    unittest.expect(o.autoIamAuthn!, unittest.isTrue);
+    unittest.expect(o.database!, unittest.equals('foo'));
+    unittest.expect(o.partialResultMode!, unittest.equals('foo'));
+    unittest.expect(o.rowLimit!, unittest.equals('foo'));
+    unittest.expect(o.sqlStatement!, unittest.equals('foo'));
+    unittest.expect(o.user!, unittest.equals('foo'));
+  }
+  buildCounterExecuteSqlPayload--;
+}
+
 core.int buildCounterExportContextBakExportOptions = 0;
 api.ExportContextBakExportOptions buildExportContextBakExportOptions() {
   final o = api.ExportContextBakExportOptions();
@@ -1239,9 +1301,9 @@ void checkExportContextCsvExportOptions(api.ExportContextCsvExportOptions o) {
   buildCounterExportContextCsvExportOptions--;
 }
 
-core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
 
-void checkUnnamed18(core.List<core.String> o) {
+void checkUnnamed19(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1293,9 +1355,9 @@ void checkExportContextSqlExportOptionsPostgresExportOptions(
   buildCounterExportContextSqlExportOptionsPostgresExportOptions--;
 }
 
-core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1312,7 +1374,7 @@ api.ExportContextSqlExportOptions buildExportContextSqlExportOptions() {
     o.postgresExportOptions =
         buildExportContextSqlExportOptionsPostgresExportOptions();
     o.schemaOnly = true;
-    o.tables = buildUnnamed19();
+    o.tables = buildUnnamed20();
     o.threads = 42;
   }
   buildCounterExportContextSqlExportOptions--;
@@ -1328,7 +1390,7 @@ void checkExportContextSqlExportOptions(api.ExportContextSqlExportOptions o) {
       o.postgresExportOptions!,
     );
     unittest.expect(o.schemaOnly!, unittest.isTrue);
-    checkUnnamed19(o.tables!);
+    checkUnnamed20(o.tables!);
     unittest.expect(o.threads!, unittest.equals(42));
   }
   buildCounterExportContextSqlExportOptions--;
@@ -1366,7 +1428,7 @@ api.ExportContext buildExportContext() {
   if (buildCounterExportContext < 3) {
     o.bakExportOptions = buildExportContextBakExportOptions();
     o.csvExportOptions = buildExportContextCsvExportOptions();
-    o.databases = buildUnnamed18();
+    o.databases = buildUnnamed19();
     o.fileType = 'foo';
     o.kind = 'foo';
     o.offload = true;
@@ -1383,7 +1445,7 @@ void checkExportContext(api.ExportContext o) {
   if (buildCounterExportContext < 3) {
     checkExportContextBakExportOptions(o.bakExportOptions!);
     checkExportContextCsvExportOptions(o.csvExportOptions!);
-    checkUnnamed18(o.databases!);
+    checkUnnamed19(o.databases!);
     unittest.expect(o.fileType!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.offload!, unittest.isTrue);
@@ -1434,12 +1496,25 @@ void checkFailoverContext(api.FailoverContext o) {
   buildCounterFailoverContext--;
 }
 
-core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+core.int buildCounterFinalBackupConfig = 0;
+api.FinalBackupConfig buildFinalBackupConfig() {
+  final o = api.FinalBackupConfig();
+  buildCounterFinalBackupConfig++;
+  if (buildCounterFinalBackupConfig < 3) {
+    o.enabled = true;
+    o.retentionDays = 42;
+  }
+  buildCounterFinalBackupConfig--;
+  return o;
+}
 
-void checkUnnamed20(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+void checkFinalBackupConfig(api.FinalBackupConfig o) {
+  buildCounterFinalBackupConfig++;
+  if (buildCounterFinalBackupConfig < 3) {
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(o.retentionDays!, unittest.equals(42));
+  }
+  buildCounterFinalBackupConfig--;
 }
 
 core.List<core.String> buildUnnamed21() => ['foo', 'foo'];
@@ -1458,14 +1533,22 @@ void checkUnnamed22(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
+
+void checkUnnamed23(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterFlag = 0;
 api.Flag buildFlag() {
   final o = api.Flag();
   buildCounterFlag++;
   if (buildCounterFlag < 3) {
-    o.allowedIntValues = buildUnnamed20();
-    o.allowedStringValues = buildUnnamed21();
-    o.appliesTo = buildUnnamed22();
+    o.allowedIntValues = buildUnnamed21();
+    o.allowedStringValues = buildUnnamed22();
+    o.appliesTo = buildUnnamed23();
     o.flagScope = 'foo';
     o.inBeta = true;
     o.kind = 'foo';
@@ -1484,9 +1567,9 @@ api.Flag buildFlag() {
 void checkFlag(api.Flag o) {
   buildCounterFlag++;
   if (buildCounterFlag < 3) {
-    checkUnnamed20(o.allowedIntValues!);
-    checkUnnamed21(o.allowedStringValues!);
-    checkUnnamed22(o.appliesTo!);
+    checkUnnamed21(o.allowedIntValues!);
+    checkUnnamed22(o.allowedStringValues!);
+    checkUnnamed23(o.appliesTo!);
     unittest.expect(o.flagScope!, unittest.equals('foo'));
     unittest.expect(o.inBeta!, unittest.isTrue);
     unittest.expect(o.kind!, unittest.equals('foo'));
@@ -1501,9 +1584,9 @@ void checkFlag(api.Flag o) {
   buildCounterFlag--;
 }
 
-core.List<api.Flag> buildUnnamed23() => [buildFlag(), buildFlag()];
+core.List<api.Flag> buildUnnamed24() => [buildFlag(), buildFlag()];
 
-void checkUnnamed23(core.List<api.Flag> o) {
+void checkUnnamed24(core.List<api.Flag> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFlag(o[0]);
   checkFlag(o[1]);
@@ -1514,7 +1597,7 @@ api.FlagsListResponse buildFlagsListResponse() {
   final o = api.FlagsListResponse();
   buildCounterFlagsListResponse++;
   if (buildCounterFlagsListResponse < 3) {
-    o.items = buildUnnamed23();
+    o.items = buildUnnamed24();
     o.kind = 'foo';
   }
   buildCounterFlagsListResponse--;
@@ -1524,7 +1607,7 @@ api.FlagsListResponse buildFlagsListResponse() {
 void checkFlagsListResponse(api.FlagsListResponse o) {
   buildCounterFlagsListResponse++;
   if (buildCounterFlagsListResponse < 3) {
-    checkUnnamed23(o.items!);
+    checkUnnamed24(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterFlagsListResponse--;
@@ -1662,9 +1745,9 @@ void checkImportContextBakImportOptions(api.ImportContextBakImportOptions o) {
   buildCounterImportContextBakImportOptions--;
 }
 
-core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
-void checkUnnamed24(core.List<core.String> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1675,7 +1758,7 @@ api.ImportContextCsvImportOptions buildImportContextCsvImportOptions() {
   final o = api.ImportContextCsvImportOptions();
   buildCounterImportContextCsvImportOptions++;
   if (buildCounterImportContextCsvImportOptions < 3) {
-    o.columns = buildUnnamed24();
+    o.columns = buildUnnamed25();
     o.escapeCharacter = 'foo';
     o.fieldsTerminatedBy = 'foo';
     o.linesTerminatedBy = 'foo';
@@ -1689,7 +1772,7 @@ api.ImportContextCsvImportOptions buildImportContextCsvImportOptions() {
 void checkImportContextCsvImportOptions(api.ImportContextCsvImportOptions o) {
   buildCounterImportContextCsvImportOptions++;
   if (buildCounterImportContextCsvImportOptions < 3) {
-    checkUnnamed24(o.columns!);
+    checkUnnamed25(o.columns!);
     unittest.expect(o.escapeCharacter!, unittest.equals('foo'));
     unittest.expect(o.fieldsTerminatedBy!, unittest.equals('foo'));
     unittest.expect(o.linesTerminatedBy!, unittest.equals('foo'));
@@ -1994,23 +2077,23 @@ void checkInstancesImportRequest(api.InstancesImportRequest o) {
   buildCounterInstancesImportRequest--;
 }
 
-core.List<api.DatabaseInstance> buildUnnamed25() => [
+core.List<api.DatabaseInstance> buildUnnamed26() => [
   buildDatabaseInstance(),
   buildDatabaseInstance(),
 ];
 
-void checkUnnamed25(core.List<api.DatabaseInstance> o) {
+void checkUnnamed26(core.List<api.DatabaseInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseInstance(o[0]);
   checkDatabaseInstance(o[1]);
 }
 
-core.List<api.ApiWarning> buildUnnamed26() => [
+core.List<api.ApiWarning> buildUnnamed27() => [
   buildApiWarning(),
   buildApiWarning(),
 ];
 
-void checkUnnamed26(core.List<api.ApiWarning> o) {
+void checkUnnamed27(core.List<api.ApiWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiWarning(o[0]);
   checkApiWarning(o[1]);
@@ -2021,10 +2104,10 @@ api.InstancesListResponse buildInstancesListResponse() {
   final o = api.InstancesListResponse();
   buildCounterInstancesListResponse++;
   if (buildCounterInstancesListResponse < 3) {
-    o.items = buildUnnamed25();
+    o.items = buildUnnamed26();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
-    o.warnings = buildUnnamed26();
+    o.warnings = buildUnnamed27();
   }
   buildCounterInstancesListResponse--;
   return o;
@@ -2033,17 +2116,17 @@ api.InstancesListResponse buildInstancesListResponse() {
 void checkInstancesListResponse(api.InstancesListResponse o) {
   buildCounterInstancesListResponse++;
   if (buildCounterInstancesListResponse < 3) {
-    checkUnnamed25(o.items!);
+    checkUnnamed26(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed26(o.warnings!);
+    checkUnnamed27(o.warnings!);
   }
   buildCounterInstancesListResponse--;
 }
 
-core.List<api.SslCert> buildUnnamed27() => [buildSslCert(), buildSslCert()];
+core.List<api.SslCert> buildUnnamed28() => [buildSslCert(), buildSslCert()];
 
-void checkUnnamed27(core.List<api.SslCert> o) {
+void checkUnnamed28(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -2055,7 +2138,7 @@ api.InstancesListServerCasResponse buildInstancesListServerCasResponse() {
   buildCounterInstancesListServerCasResponse++;
   if (buildCounterInstancesListServerCasResponse < 3) {
     o.activeVersion = 'foo';
-    o.certs = buildUnnamed27();
+    o.certs = buildUnnamed28();
     o.kind = 'foo';
   }
   buildCounterInstancesListServerCasResponse--;
@@ -2066,23 +2149,23 @@ void checkInstancesListServerCasResponse(api.InstancesListServerCasResponse o) {
   buildCounterInstancesListServerCasResponse++;
   if (buildCounterInstancesListServerCasResponse < 3) {
     unittest.expect(o.activeVersion!, unittest.equals('foo'));
-    checkUnnamed27(o.certs!);
+    checkUnnamed28(o.certs!);
     unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterInstancesListServerCasResponse--;
 }
 
-core.List<api.SslCert> buildUnnamed28() => [buildSslCert(), buildSslCert()];
+core.List<api.SslCert> buildUnnamed29() => [buildSslCert(), buildSslCert()];
 
-void checkUnnamed28(core.List<api.SslCert> o) {
+void checkUnnamed29(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
 }
 
-core.List<api.SslCert> buildUnnamed29() => [buildSslCert(), buildSslCert()];
+core.List<api.SslCert> buildUnnamed30() => [buildSslCert(), buildSslCert()];
 
-void checkUnnamed29(core.List<api.SslCert> o) {
+void checkUnnamed30(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -2095,9 +2178,9 @@ buildInstancesListServerCertificatesResponse() {
   buildCounterInstancesListServerCertificatesResponse++;
   if (buildCounterInstancesListServerCertificatesResponse < 3) {
     o.activeVersion = 'foo';
-    o.caCerts = buildUnnamed28();
+    o.caCerts = buildUnnamed29();
     o.kind = 'foo';
-    o.serverCerts = buildUnnamed29();
+    o.serverCerts = buildUnnamed30();
   }
   buildCounterInstancesListServerCertificatesResponse--;
   return o;
@@ -2109,9 +2192,9 @@ void checkInstancesListServerCertificatesResponse(
   buildCounterInstancesListServerCertificatesResponse++;
   if (buildCounterInstancesListServerCertificatesResponse < 3) {
     unittest.expect(o.activeVersion!, unittest.equals('foo'));
-    checkUnnamed28(o.caCerts!);
+    checkUnnamed29(o.caCerts!);
     unittest.expect(o.kind!, unittest.equals('foo'));
-    checkUnnamed29(o.serverCerts!);
+    checkUnnamed30(o.serverCerts!);
   }
   buildCounterInstancesListServerCertificatesResponse--;
 }
@@ -2135,6 +2218,14 @@ void checkInstancesReencryptRequest(api.InstancesReencryptRequest o) {
   buildCounterInstancesReencryptRequest--;
 }
 
+core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
+
+void checkUnnamed31(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterInstancesRestoreBackupRequest = 0;
 api.InstancesRestoreBackupRequest buildInstancesRestoreBackupRequest() {
   final o = api.InstancesRestoreBackupRequest();
@@ -2143,6 +2234,7 @@ api.InstancesRestoreBackupRequest buildInstancesRestoreBackupRequest() {
     o.backup = 'foo';
     o.backupdrBackup = 'foo';
     o.restoreBackupContext = buildRestoreBackupContext();
+    o.restoreInstanceClearOverridesFieldNames = buildUnnamed31();
     o.restoreInstanceSettings = buildDatabaseInstance();
   }
   buildCounterInstancesRestoreBackupRequest--;
@@ -2155,6 +2247,7 @@ void checkInstancesRestoreBackupRequest(api.InstancesRestoreBackupRequest o) {
     unittest.expect(o.backup!, unittest.equals('foo'));
     unittest.expect(o.backupdrBackup!, unittest.equals('foo'));
     checkRestoreBackupContext(o.restoreBackupContext!);
+    checkUnnamed31(o.restoreInstanceClearOverridesFieldNames!);
     checkDatabaseInstance(o.restoreInstanceSettings!);
   }
   buildCounterInstancesRestoreBackupRequest--;
@@ -2241,17 +2334,17 @@ void checkInterval(api.Interval o) {
   buildCounterInterval--;
 }
 
-core.List<api.AclEntry> buildUnnamed30() => [buildAclEntry(), buildAclEntry()];
+core.List<api.AclEntry> buildUnnamed32() => [buildAclEntry(), buildAclEntry()];
 
-void checkUnnamed30(core.List<api.AclEntry> o) {
+void checkUnnamed32(core.List<api.AclEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAclEntry(o[0]);
   checkAclEntry(o[1]);
 }
 
-core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed33() => ['foo', 'foo'];
 
-void checkUnnamed31(core.List<core.String> o) {
+void checkUnnamed33(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2263,8 +2356,8 @@ api.IpConfiguration buildIpConfiguration() {
   buildCounterIpConfiguration++;
   if (buildCounterIpConfiguration < 3) {
     o.allocatedIpRange = 'foo';
-    o.authorizedNetworks = buildUnnamed30();
-    o.customSubjectAlternativeNames = buildUnnamed31();
+    o.authorizedNetworks = buildUnnamed32();
+    o.customSubjectAlternativeNames = buildUnnamed33();
     o.enablePrivatePathForGoogleCloudServices = true;
     o.ipv4Enabled = true;
     o.privateNetwork = 'foo';
@@ -2282,8 +2375,8 @@ void checkIpConfiguration(api.IpConfiguration o) {
   buildCounterIpConfiguration++;
   if (buildCounterIpConfiguration < 3) {
     unittest.expect(o.allocatedIpRange!, unittest.equals('foo'));
-    checkUnnamed30(o.authorizedNetworks!);
-    checkUnnamed31(o.customSubjectAlternativeNames!);
+    checkUnnamed32(o.authorizedNetworks!);
+    checkUnnamed33(o.customSubjectAlternativeNames!);
     unittest.expect(
       o.enablePrivatePathForGoogleCloudServices!,
       unittest.isTrue,
@@ -2322,20 +2415,20 @@ void checkIpMapping(api.IpMapping o) {
   buildCounterIpMapping--;
 }
 
-core.List<api.Backup> buildUnnamed32() => [buildBackup(), buildBackup()];
+core.List<api.Backup> buildUnnamed34() => [buildBackup(), buildBackup()];
 
-void checkUnnamed32(core.List<api.Backup> o) {
+void checkUnnamed34(core.List<api.Backup> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBackup(o[0]);
   checkBackup(o[1]);
 }
 
-core.List<api.ApiWarning> buildUnnamed33() => [
+core.List<api.ApiWarning> buildUnnamed35() => [
   buildApiWarning(),
   buildApiWarning(),
 ];
 
-void checkUnnamed33(core.List<api.ApiWarning> o) {
+void checkUnnamed35(core.List<api.ApiWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApiWarning(o[0]);
   checkApiWarning(o[1]);
@@ -2346,9 +2439,9 @@ api.ListBackupsResponse buildListBackupsResponse() {
   final o = api.ListBackupsResponse();
   buildCounterListBackupsResponse++;
   if (buildCounterListBackupsResponse < 3) {
-    o.backups = buildUnnamed32();
+    o.backups = buildUnnamed34();
     o.nextPageToken = 'foo';
-    o.warnings = buildUnnamed33();
+    o.warnings = buildUnnamed35();
   }
   buildCounterListBackupsResponse--;
   return o;
@@ -2357,9 +2450,9 @@ api.ListBackupsResponse buildListBackupsResponse() {
 void checkListBackupsResponse(api.ListBackupsResponse o) {
   buildCounterListBackupsResponse++;
   if (buildCounterListBackupsResponse < 3) {
-    checkUnnamed32(o.backups!);
+    checkUnnamed34(o.backups!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed33(o.warnings!);
+    checkUnnamed35(o.warnings!);
   }
   buildCounterListBackupsResponse--;
 }
@@ -2414,6 +2507,46 @@ void checkMaintenanceWindow(api.MaintenanceWindow o) {
   buildCounterMaintenanceWindow--;
 }
 
+core.int buildCounterMessage = 0;
+api.Message buildMessage() {
+  final o = api.Message();
+  buildCounterMessage++;
+  if (buildCounterMessage < 3) {
+    o.message = 'foo';
+    o.severity = 'foo';
+  }
+  buildCounterMessage--;
+  return o;
+}
+
+void checkMessage(api.Message o) {
+  buildCounterMessage++;
+  if (buildCounterMessage < 3) {
+    unittest.expect(o.message!, unittest.equals('foo'));
+    unittest.expect(o.severity!, unittest.equals('foo'));
+  }
+  buildCounterMessage--;
+}
+
+core.int buildCounterMetadata = 0;
+api.Metadata buildMetadata() {
+  final o = api.Metadata();
+  buildCounterMetadata++;
+  if (buildCounterMetadata < 3) {
+    o.sqlStatementExecutionTime = 'foo';
+  }
+  buildCounterMetadata--;
+  return o;
+}
+
+void checkMetadata(api.Metadata o) {
+  buildCounterMetadata++;
+  if (buildCounterMetadata < 3) {
+    unittest.expect(o.sqlStatementExecutionTime!, unittest.equals('foo'));
+  }
+  buildCounterMetadata--;
+}
+
 core.int buildCounterMySqlReplicaConfiguration = 0;
 api.MySqlReplicaConfiguration buildMySqlReplicaConfiguration() {
   final o = api.MySqlReplicaConfiguration();
@@ -2453,12 +2586,12 @@ void checkMySqlReplicaConfiguration(api.MySqlReplicaConfiguration o) {
   buildCounterMySqlReplicaConfiguration--;
 }
 
-core.List<api.SyncFlags> buildUnnamed34() => [
+core.List<api.SyncFlags> buildUnnamed36() => [
   buildSyncFlags(),
   buildSyncFlags(),
 ];
 
-void checkUnnamed34(core.List<api.SyncFlags> o) {
+void checkUnnamed36(core.List<api.SyncFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSyncFlags(o[0]);
   checkSyncFlags(o[1]);
@@ -2469,7 +2602,7 @@ api.MySqlSyncConfig buildMySqlSyncConfig() {
   final o = api.MySqlSyncConfig();
   buildCounterMySqlSyncConfig++;
   if (buildCounterMySqlSyncConfig < 3) {
-    o.initialSyncFlags = buildUnnamed34();
+    o.initialSyncFlags = buildUnnamed36();
   }
   buildCounterMySqlSyncConfig--;
   return o;
@@ -2478,17 +2611,17 @@ api.MySqlSyncConfig buildMySqlSyncConfig() {
 void checkMySqlSyncConfig(api.MySqlSyncConfig o) {
   buildCounterMySqlSyncConfig++;
   if (buildCounterMySqlSyncConfig < 3) {
-    checkUnnamed34(o.initialSyncFlags!);
+    checkUnnamed36(o.initialSyncFlags!);
   }
   buildCounterMySqlSyncConfig--;
 }
 
-core.List<api.SelectedObjects> buildUnnamed35() => [
+core.List<api.SelectedObjects> buildUnnamed37() => [
   buildSelectedObjects(),
   buildSelectedObjects(),
 ];
 
-void checkUnnamed35(core.List<api.SelectedObjects> o) {
+void checkUnnamed37(core.List<api.SelectedObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSelectedObjects(o[0]);
   checkSelectedObjects(o[1]);
@@ -2506,7 +2639,7 @@ api.OnPremisesConfiguration buildOnPremisesConfiguration() {
     o.hostPort = 'foo';
     o.kind = 'foo';
     o.password = 'foo';
-    o.selectedObjects = buildUnnamed35();
+    o.selectedObjects = buildUnnamed37();
     o.sourceInstance = buildInstanceReference();
     o.sslOption = 'foo';
     o.username = 'foo';
@@ -2525,7 +2658,7 @@ void checkOnPremisesConfiguration(api.OnPremisesConfiguration o) {
     unittest.expect(o.hostPort!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.password!, unittest.equals('foo'));
-    checkUnnamed35(o.selectedObjects!);
+    checkUnnamed37(o.selectedObjects!);
     checkInstanceReference(o.sourceInstance!);
     unittest.expect(o.sslOption!, unittest.equals('foo'));
     unittest.expect(o.username!, unittest.equals('foo'));
@@ -2611,12 +2744,12 @@ void checkOperationError(api.OperationError o) {
   buildCounterOperationError--;
 }
 
-core.List<api.OperationError> buildUnnamed36() => [
+core.List<api.OperationError> buildUnnamed38() => [
   buildOperationError(),
   buildOperationError(),
 ];
 
-void checkUnnamed36(core.List<api.OperationError> o) {
+void checkUnnamed38(core.List<api.OperationError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperationError(o[0]);
   checkOperationError(o[1]);
@@ -2627,7 +2760,7 @@ api.OperationErrors buildOperationErrors() {
   final o = api.OperationErrors();
   buildCounterOperationErrors++;
   if (buildCounterOperationErrors < 3) {
-    o.errors = buildUnnamed36();
+    o.errors = buildUnnamed38();
     o.kind = 'foo';
   }
   buildCounterOperationErrors--;
@@ -2637,18 +2770,18 @@ api.OperationErrors buildOperationErrors() {
 void checkOperationErrors(api.OperationErrors o) {
   buildCounterOperationErrors++;
   if (buildCounterOperationErrors < 3) {
-    checkUnnamed36(o.errors!);
+    checkUnnamed38(o.errors!);
     unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterOperationErrors--;
 }
 
-core.List<api.Operation> buildUnnamed37() => [
+core.List<api.Operation> buildUnnamed39() => [
   buildOperation(),
   buildOperation(),
 ];
 
-void checkUnnamed37(core.List<api.Operation> o) {
+void checkUnnamed39(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkOperation(o[0]);
   checkOperation(o[1]);
@@ -2659,7 +2792,7 @@ api.OperationsListResponse buildOperationsListResponse() {
   final o = api.OperationsListResponse();
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    o.items = buildUnnamed37();
+    o.items = buildUnnamed39();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -2670,7 +2803,7 @@ api.OperationsListResponse buildOperationsListResponse() {
 void checkOperationsListResponse(api.OperationsListResponse o) {
   buildCounterOperationsListResponse++;
   if (buildCounterOperationsListResponse < 3) {
-    checkUnnamed37(o.items!);
+    checkUnnamed39(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
@@ -2779,23 +2912,23 @@ void checkPointInTimeRestoreContext(api.PointInTimeRestoreContext o) {
   buildCounterPointInTimeRestoreContext--;
 }
 
-core.List<api.DnsNameMapping> buildUnnamed38() => [
+core.List<api.DnsNameMapping> buildUnnamed40() => [
   buildDnsNameMapping(),
   buildDnsNameMapping(),
 ];
 
-void checkUnnamed38(core.List<api.DnsNameMapping> o) {
+void checkUnnamed40(core.List<api.DnsNameMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDnsNameMapping(o[0]);
   checkDnsNameMapping(o[1]);
 }
 
-core.List<api.IpMapping> buildUnnamed39() => [
+core.List<api.IpMapping> buildUnnamed41() => [
   buildIpMapping(),
   buildIpMapping(),
 ];
 
-void checkUnnamed39(core.List<api.IpMapping> o) {
+void checkUnnamed41(core.List<api.IpMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkIpMapping(o[0]);
   checkIpMapping(o[1]);
@@ -2807,9 +2940,9 @@ api.PoolNodeConfig buildPoolNodeConfig() {
   buildCounterPoolNodeConfig++;
   if (buildCounterPoolNodeConfig < 3) {
     o.dnsName = 'foo';
-    o.dnsNames = buildUnnamed38();
+    o.dnsNames = buildUnnamed40();
     o.gceZone = 'foo';
-    o.ipAddresses = buildUnnamed39();
+    o.ipAddresses = buildUnnamed41();
     o.name = 'foo';
     o.state = 'foo';
   }
@@ -2821,9 +2954,9 @@ void checkPoolNodeConfig(api.PoolNodeConfig o) {
   buildCounterPoolNodeConfig++;
   if (buildCounterPoolNodeConfig < 3) {
     unittest.expect(o.dnsName!, unittest.equals('foo'));
-    checkUnnamed38(o.dnsNames!);
+    checkUnnamed40(o.dnsNames!);
     unittest.expect(o.gceZone!, unittest.equals('foo'));
-    checkUnnamed39(o.ipAddresses!);
+    checkUnnamed41(o.ipAddresses!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
   }
@@ -2857,20 +2990,20 @@ void checkPscAutoConnectionConfig(api.PscAutoConnectionConfig o) {
   buildCounterPscAutoConnectionConfig--;
 }
 
-core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
 
-void checkUnnamed40(core.List<core.String> o) {
+void checkUnnamed42(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.PscAutoConnectionConfig> buildUnnamed41() => [
+core.List<api.PscAutoConnectionConfig> buildUnnamed43() => [
   buildPscAutoConnectionConfig(),
   buildPscAutoConnectionConfig(),
 ];
 
-void checkUnnamed41(core.List<api.PscAutoConnectionConfig> o) {
+void checkUnnamed43(core.List<api.PscAutoConnectionConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPscAutoConnectionConfig(o[0]);
   checkPscAutoConnectionConfig(o[1]);
@@ -2881,9 +3014,9 @@ api.PscConfig buildPscConfig() {
   final o = api.PscConfig();
   buildCounterPscConfig++;
   if (buildCounterPscConfig < 3) {
-    o.allowedConsumerProjects = buildUnnamed40();
+    o.allowedConsumerProjects = buildUnnamed42();
     o.networkAttachmentUri = 'foo';
-    o.pscAutoConnections = buildUnnamed41();
+    o.pscAutoConnections = buildUnnamed43();
     o.pscEnabled = true;
   }
   buildCounterPscConfig--;
@@ -2893,12 +3026,91 @@ api.PscConfig buildPscConfig() {
 void checkPscConfig(api.PscConfig o) {
   buildCounterPscConfig++;
   if (buildCounterPscConfig < 3) {
-    checkUnnamed40(o.allowedConsumerProjects!);
+    checkUnnamed42(o.allowedConsumerProjects!);
     unittest.expect(o.networkAttachmentUri!, unittest.equals('foo'));
-    checkUnnamed41(o.pscAutoConnections!);
+    checkUnnamed43(o.pscAutoConnections!);
     unittest.expect(o.pscEnabled!, unittest.isTrue);
   }
   buildCounterPscConfig--;
+}
+
+core.List<api.Column> buildUnnamed44() => [buildColumn(), buildColumn()];
+
+void checkUnnamed44(core.List<api.Column> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkColumn(o[0]);
+  checkColumn(o[1]);
+}
+
+core.List<api.Row> buildUnnamed45() => [buildRow(), buildRow()];
+
+void checkUnnamed45(core.List<api.Row> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRow(o[0]);
+  checkRow(o[1]);
+}
+
+core.int buildCounterQueryResult = 0;
+api.QueryResult buildQueryResult() {
+  final o = api.QueryResult();
+  buildCounterQueryResult++;
+  if (buildCounterQueryResult < 3) {
+    o.columns = buildUnnamed44();
+    o.message = 'foo';
+    o.partialResult = true;
+    o.rows = buildUnnamed45();
+  }
+  buildCounterQueryResult--;
+  return o;
+}
+
+void checkQueryResult(api.QueryResult o) {
+  buildCounterQueryResult++;
+  if (buildCounterQueryResult < 3) {
+    checkUnnamed44(o.columns!);
+    unittest.expect(o.message!, unittest.equals('foo'));
+    unittest.expect(o.partialResult!, unittest.isTrue);
+    checkUnnamed45(o.rows!);
+  }
+  buildCounterQueryResult--;
+}
+
+core.List<api.TargetMetric> buildUnnamed46() => [
+  buildTargetMetric(),
+  buildTargetMetric(),
+];
+
+void checkUnnamed46(core.List<api.TargetMetric> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkTargetMetric(o[0]);
+  checkTargetMetric(o[1]);
+}
+
+core.int buildCounterReadPoolAutoScaleConfig = 0;
+api.ReadPoolAutoScaleConfig buildReadPoolAutoScaleConfig() {
+  final o = api.ReadPoolAutoScaleConfig();
+  buildCounterReadPoolAutoScaleConfig++;
+  if (buildCounterReadPoolAutoScaleConfig < 3) {
+    o.disableScaleIn = true;
+    o.enabled = true;
+    o.maxNodeCount = 42;
+    o.minNodeCount = 42;
+    o.targetMetrics = buildUnnamed46();
+  }
+  buildCounterReadPoolAutoScaleConfig--;
+  return o;
+}
+
+void checkReadPoolAutoScaleConfig(api.ReadPoolAutoScaleConfig o) {
+  buildCounterReadPoolAutoScaleConfig++;
+  if (buildCounterReadPoolAutoScaleConfig < 3) {
+    unittest.expect(o.disableScaleIn!, unittest.isTrue);
+    unittest.expect(o.enabled!, unittest.isTrue);
+    unittest.expect(o.maxNodeCount!, unittest.equals(42));
+    unittest.expect(o.minNodeCount!, unittest.equals(42));
+    checkUnnamed46(o.targetMetrics!);
+  }
+  buildCounterReadPoolAutoScaleConfig--;
 }
 
 core.int buildCounterReplicaConfiguration = 0;
@@ -3037,6 +3249,33 @@ void checkRotateServerCertificateContext(api.RotateServerCertificateContext o) {
   buildCounterRotateServerCertificateContext--;
 }
 
+core.List<api.Value> buildUnnamed47() => [buildValue(), buildValue()];
+
+void checkUnnamed47(core.List<api.Value> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkValue(o[0]);
+  checkValue(o[1]);
+}
+
+core.int buildCounterRow = 0;
+api.Row buildRow() {
+  final o = api.Row();
+  buildCounterRow++;
+  if (buildCounterRow < 3) {
+    o.values = buildUnnamed47();
+  }
+  buildCounterRow--;
+  return o;
+}
+
+void checkRow(api.Row o) {
+  buildCounterRow++;
+  if (buildCounterRow < 3) {
+    checkUnnamed47(o.values!);
+  }
+  buildCounterRow--;
+}
+
 core.int buildCounterSelectedObjects = 0;
 api.SelectedObjects buildSelectedObjects() {
   final o = api.SelectedObjects();
@@ -3056,39 +3295,39 @@ void checkSelectedObjects(api.SelectedObjects o) {
   buildCounterSelectedObjects--;
 }
 
-core.List<core.String> buildUnnamed42() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
 
-void checkUnnamed42(core.List<core.String> o) {
+void checkUnnamed48(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.DatabaseFlags> buildUnnamed43() => [
+core.List<api.DatabaseFlags> buildUnnamed49() => [
   buildDatabaseFlags(),
   buildDatabaseFlags(),
 ];
 
-void checkUnnamed43(core.List<api.DatabaseFlags> o) {
+void checkUnnamed49(core.List<api.DatabaseFlags> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDatabaseFlags(o[0]);
   checkDatabaseFlags(o[1]);
 }
 
-core.List<api.DenyMaintenancePeriod> buildUnnamed44() => [
+core.List<api.DenyMaintenancePeriod> buildUnnamed50() => [
   buildDenyMaintenancePeriod(),
   buildDenyMaintenancePeriod(),
 ];
 
-void checkUnnamed44(core.List<api.DenyMaintenancePeriod> o) {
+void checkUnnamed50(core.List<api.DenyMaintenancePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDenyMaintenancePeriod(o[0]);
   checkDenyMaintenancePeriod(o[1]);
 }
 
-core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed51() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed45(core.Map<core.String, core.String> o) {
+void checkUnnamed51(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -3102,7 +3341,7 @@ api.Settings buildSettings() {
     o.activationPolicy = 'foo';
     o.activeDirectoryConfig = buildSqlActiveDirectoryConfig();
     o.advancedMachineFeatures = buildAdvancedMachineFeatures();
-    o.authorizedGaeApplications = buildUnnamed42();
+    o.authorizedGaeApplications = buildUnnamed48();
     o.availabilityType = 'foo';
     o.backupConfiguration = buildBackupConfiguration();
     o.collation = 'foo';
@@ -3114,13 +3353,14 @@ api.Settings buildSettings() {
     o.dataDiskProvisionedThroughput = 'foo';
     o.dataDiskSizeGb = 'foo';
     o.dataDiskType = 'foo';
-    o.databaseFlags = buildUnnamed43();
+    o.databaseFlags = buildUnnamed49();
     o.databaseReplicationEnabled = true;
     o.deletionProtectionEnabled = true;
-    o.denyMaintenancePeriods = buildUnnamed44();
+    o.denyMaintenancePeriods = buildUnnamed50();
     o.edition = 'foo';
     o.enableDataplexIntegration = true;
     o.enableGoogleMlIntegration = true;
+    o.finalBackupConfig = buildFinalBackupConfig();
     o.insightsConfig = buildInsightsConfig();
     o.ipConfiguration = buildIpConfiguration();
     o.kind = 'foo';
@@ -3128,6 +3368,7 @@ api.Settings buildSettings() {
     o.maintenanceWindow = buildMaintenanceWindow();
     o.passwordValidationPolicy = buildPasswordValidationPolicy();
     o.pricingPlan = 'foo';
+    o.readPoolAutoScaleConfig = buildReadPoolAutoScaleConfig();
     o.replicationLagMaxSeconds = 42;
     o.replicationType = 'foo';
     o.retainBackupsOnDelete = true;
@@ -3137,7 +3378,7 @@ api.Settings buildSettings() {
     o.storageAutoResizeLimit = 'foo';
     o.tier = 'foo';
     o.timeZone = 'foo';
-    o.userLabels = buildUnnamed45();
+    o.userLabels = buildUnnamed51();
   }
   buildCounterSettings--;
   return o;
@@ -3149,7 +3390,7 @@ void checkSettings(api.Settings o) {
     unittest.expect(o.activationPolicy!, unittest.equals('foo'));
     checkSqlActiveDirectoryConfig(o.activeDirectoryConfig!);
     checkAdvancedMachineFeatures(o.advancedMachineFeatures!);
-    checkUnnamed42(o.authorizedGaeApplications!);
+    checkUnnamed48(o.authorizedGaeApplications!);
     unittest.expect(o.availabilityType!, unittest.equals('foo'));
     checkBackupConfiguration(o.backupConfiguration!);
     unittest.expect(o.collation!, unittest.equals('foo'));
@@ -3161,13 +3402,14 @@ void checkSettings(api.Settings o) {
     unittest.expect(o.dataDiskProvisionedThroughput!, unittest.equals('foo'));
     unittest.expect(o.dataDiskSizeGb!, unittest.equals('foo'));
     unittest.expect(o.dataDiskType!, unittest.equals('foo'));
-    checkUnnamed43(o.databaseFlags!);
+    checkUnnamed49(o.databaseFlags!);
     unittest.expect(o.databaseReplicationEnabled!, unittest.isTrue);
     unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
-    checkUnnamed44(o.denyMaintenancePeriods!);
+    checkUnnamed50(o.denyMaintenancePeriods!);
     unittest.expect(o.edition!, unittest.equals('foo'));
     unittest.expect(o.enableDataplexIntegration!, unittest.isTrue);
     unittest.expect(o.enableGoogleMlIntegration!, unittest.isTrue);
+    checkFinalBackupConfig(o.finalBackupConfig!);
     checkInsightsConfig(o.insightsConfig!);
     checkIpConfiguration(o.ipConfiguration!);
     unittest.expect(o.kind!, unittest.equals('foo'));
@@ -3175,6 +3417,7 @@ void checkSettings(api.Settings o) {
     checkMaintenanceWindow(o.maintenanceWindow!);
     checkPasswordValidationPolicy(o.passwordValidationPolicy!);
     unittest.expect(o.pricingPlan!, unittest.equals('foo'));
+    checkReadPoolAutoScaleConfig(o.readPoolAutoScaleConfig!);
     unittest.expect(o.replicationLagMaxSeconds!, unittest.equals(42));
     unittest.expect(o.replicationType!, unittest.equals('foo'));
     unittest.expect(o.retainBackupsOnDelete!, unittest.isTrue);
@@ -3184,9 +3427,17 @@ void checkSettings(api.Settings o) {
     unittest.expect(o.storageAutoResizeLimit!, unittest.equals('foo'));
     unittest.expect(o.tier!, unittest.equals('foo'));
     unittest.expect(o.timeZone!, unittest.equals('foo'));
-    checkUnnamed45(o.userLabels!);
+    checkUnnamed51(o.userLabels!);
   }
   buildCounterSettings--;
+}
+
+core.List<core.String> buildUnnamed52() => ['foo', 'foo'];
+
+void checkUnnamed52(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.int buildCounterSqlActiveDirectoryConfig = 0;
@@ -3194,8 +3445,12 @@ api.SqlActiveDirectoryConfig buildSqlActiveDirectoryConfig() {
   final o = api.SqlActiveDirectoryConfig();
   buildCounterSqlActiveDirectoryConfig++;
   if (buildCounterSqlActiveDirectoryConfig < 3) {
+    o.adminCredentialSecretName = 'foo';
+    o.dnsServers = buildUnnamed52();
     o.domain = 'foo';
     o.kind = 'foo';
+    o.mode = 'foo';
+    o.organizationalUnit = 'foo';
   }
   buildCounterSqlActiveDirectoryConfig--;
   return o;
@@ -3204,8 +3459,12 @@ api.SqlActiveDirectoryConfig buildSqlActiveDirectoryConfig() {
 void checkSqlActiveDirectoryConfig(api.SqlActiveDirectoryConfig o) {
   buildCounterSqlActiveDirectoryConfig++;
   if (buildCounterSqlActiveDirectoryConfig < 3) {
+    unittest.expect(o.adminCredentialSecretName!, unittest.equals('foo'));
+    checkUnnamed52(o.dnsServers!);
     unittest.expect(o.domain!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.mode!, unittest.equals('foo'));
+    unittest.expect(o.organizationalUnit!, unittest.equals('foo'));
   }
   buildCounterSqlActiveDirectoryConfig--;
 }
@@ -3255,6 +3514,48 @@ void checkSqlInstancesAcquireSsrsLeaseResponse(
   buildCounterSqlInstancesAcquireSsrsLeaseResponse--;
 }
 
+core.List<api.Message> buildUnnamed53() => [buildMessage(), buildMessage()];
+
+void checkUnnamed53(core.List<api.Message> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkMessage(o[0]);
+  checkMessage(o[1]);
+}
+
+core.List<api.QueryResult> buildUnnamed54() => [
+  buildQueryResult(),
+  buildQueryResult(),
+];
+
+void checkUnnamed54(core.List<api.QueryResult> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkQueryResult(o[0]);
+  checkQueryResult(o[1]);
+}
+
+core.int buildCounterSqlInstancesExecuteSqlResponse = 0;
+api.SqlInstancesExecuteSqlResponse buildSqlInstancesExecuteSqlResponse() {
+  final o = api.SqlInstancesExecuteSqlResponse();
+  buildCounterSqlInstancesExecuteSqlResponse++;
+  if (buildCounterSqlInstancesExecuteSqlResponse < 3) {
+    o.messages = buildUnnamed53();
+    o.metadata = buildMetadata();
+    o.results = buildUnnamed54();
+  }
+  buildCounterSqlInstancesExecuteSqlResponse--;
+  return o;
+}
+
+void checkSqlInstancesExecuteSqlResponse(api.SqlInstancesExecuteSqlResponse o) {
+  buildCounterSqlInstancesExecuteSqlResponse++;
+  if (buildCounterSqlInstancesExecuteSqlResponse < 3) {
+    checkUnnamed53(o.messages!);
+    checkMetadata(o.metadata!);
+    checkUnnamed54(o.results!);
+  }
+  buildCounterSqlInstancesExecuteSqlResponse--;
+}
+
 core.int buildCounterSqlInstancesGetDiskShrinkConfigResponse = 0;
 api.SqlInstancesGetDiskShrinkConfigResponse
 buildSqlInstancesGetDiskShrinkConfigResponse() {
@@ -3287,6 +3588,7 @@ buildSqlInstancesGetLatestRecoveryTimeResponse() {
   final o = api.SqlInstancesGetLatestRecoveryTimeResponse();
   buildCounterSqlInstancesGetLatestRecoveryTimeResponse++;
   if (buildCounterSqlInstancesGetLatestRecoveryTimeResponse < 3) {
+    o.earliestRecoveryTime = 'foo';
     o.kind = 'foo';
     o.latestRecoveryTime = 'foo';
   }
@@ -3299,6 +3601,7 @@ void checkSqlInstancesGetLatestRecoveryTimeResponse(
 ) {
   buildCounterSqlInstancesGetLatestRecoveryTimeResponse++;
   if (buildCounterSqlInstancesGetLatestRecoveryTimeResponse < 3) {
+    unittest.expect(o.earliestRecoveryTime!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.latestRecoveryTime!, unittest.equals('foo'));
   }
@@ -3375,6 +3678,7 @@ buildSqlInstancesStartExternalSyncRequest() {
   if (buildCounterSqlInstancesStartExternalSyncRequest < 3) {
     o.migrationType = 'foo';
     o.mysqlSyncConfig = buildMySqlSyncConfig();
+    o.replicaOverwriteEnabled = true;
     o.skipVerification = true;
     o.syncMode = 'foo';
     o.syncParallelLevel = 'foo';
@@ -3390,6 +3694,7 @@ void checkSqlInstancesStartExternalSyncRequest(
   if (buildCounterSqlInstancesStartExternalSyncRequest < 3) {
     unittest.expect(o.migrationType!, unittest.equals('foo'));
     checkMySqlSyncConfig(o.mysqlSyncConfig!);
+    unittest.expect(o.replicaOverwriteEnabled!, unittest.isTrue);
     unittest.expect(o.skipVerification!, unittest.isTrue);
     unittest.expect(o.syncMode!, unittest.equals('foo'));
     unittest.expect(o.syncParallelLevel!, unittest.equals('foo'));
@@ -3397,12 +3702,12 @@ void checkSqlInstancesStartExternalSyncRequest(
   buildCounterSqlInstancesStartExternalSyncRequest--;
 }
 
-core.List<api.ExternalSyncSelectedObject> buildUnnamed46() => [
+core.List<api.ExternalSyncSelectedObject> buildUnnamed55() => [
   buildExternalSyncSelectedObject(),
   buildExternalSyncSelectedObject(),
 ];
 
-void checkUnnamed46(core.List<api.ExternalSyncSelectedObject> o) {
+void checkUnnamed55(core.List<api.ExternalSyncSelectedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkExternalSyncSelectedObject(o[0]);
   checkExternalSyncSelectedObject(o[1]);
@@ -3416,7 +3721,7 @@ buildSqlInstancesVerifyExternalSyncSettingsRequest() {
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsRequest < 3) {
     o.migrationType = 'foo';
     o.mysqlSyncConfig = buildMySqlSyncConfig();
-    o.selectedObjects = buildUnnamed46();
+    o.selectedObjects = buildUnnamed55();
     o.syncMode = 'foo';
     o.syncParallelLevel = 'foo';
     o.verifyConnectionOnly = true;
@@ -3433,7 +3738,7 @@ void checkSqlInstancesVerifyExternalSyncSettingsRequest(
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsRequest < 3) {
     unittest.expect(o.migrationType!, unittest.equals('foo'));
     checkMySqlSyncConfig(o.mysqlSyncConfig!);
-    checkUnnamed46(o.selectedObjects!);
+    checkUnnamed55(o.selectedObjects!);
     unittest.expect(o.syncMode!, unittest.equals('foo'));
     unittest.expect(o.syncParallelLevel!, unittest.equals('foo'));
     unittest.expect(o.verifyConnectionOnly!, unittest.isTrue);
@@ -3442,23 +3747,23 @@ void checkSqlInstancesVerifyExternalSyncSettingsRequest(
   buildCounterSqlInstancesVerifyExternalSyncSettingsRequest--;
 }
 
-core.List<api.SqlExternalSyncSettingError> buildUnnamed47() => [
+core.List<api.SqlExternalSyncSettingError> buildUnnamed56() => [
   buildSqlExternalSyncSettingError(),
   buildSqlExternalSyncSettingError(),
 ];
 
-void checkUnnamed47(core.List<api.SqlExternalSyncSettingError> o) {
+void checkUnnamed56(core.List<api.SqlExternalSyncSettingError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlExternalSyncSettingError(o[0]);
   checkSqlExternalSyncSettingError(o[1]);
 }
 
-core.List<api.SqlExternalSyncSettingError> buildUnnamed48() => [
+core.List<api.SqlExternalSyncSettingError> buildUnnamed57() => [
   buildSqlExternalSyncSettingError(),
   buildSqlExternalSyncSettingError(),
 ];
 
-void checkUnnamed48(core.List<api.SqlExternalSyncSettingError> o) {
+void checkUnnamed57(core.List<api.SqlExternalSyncSettingError> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSqlExternalSyncSettingError(o[0]);
   checkSqlExternalSyncSettingError(o[1]);
@@ -3470,9 +3775,9 @@ buildSqlInstancesVerifyExternalSyncSettingsResponse() {
   final o = api.SqlInstancesVerifyExternalSyncSettingsResponse();
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    o.errors = buildUnnamed47();
+    o.errors = buildUnnamed56();
     o.kind = 'foo';
-    o.warnings = buildUnnamed48();
+    o.warnings = buildUnnamed57();
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
   return o;
@@ -3483,9 +3788,9 @@ void checkSqlInstancesVerifyExternalSyncSettingsResponse(
 ) {
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse++;
   if (buildCounterSqlInstancesVerifyExternalSyncSettingsResponse < 3) {
-    checkUnnamed47(o.errors!);
+    checkUnnamed56(o.errors!);
     unittest.expect(o.kind!, unittest.equals('foo'));
-    checkUnnamed48(o.warnings!);
+    checkUnnamed57(o.warnings!);
   }
   buildCounterSqlInstancesVerifyExternalSyncSettingsResponse--;
 }
@@ -3582,9 +3887,9 @@ void checkSqlServerDatabaseDetails(api.SqlServerDatabaseDetails o) {
   buildCounterSqlServerDatabaseDetails--;
 }
 
-core.List<core.String> buildUnnamed49() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed58() => ['foo', 'foo'];
 
-void checkUnnamed49(core.List<core.String> o) {
+void checkUnnamed58(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3596,7 +3901,7 @@ api.SqlServerUserDetails buildSqlServerUserDetails() {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     o.disabled = true;
-    o.serverRoles = buildUnnamed49();
+    o.serverRoles = buildUnnamed58();
   }
   buildCounterSqlServerUserDetails--;
   return o;
@@ -3606,7 +3911,7 @@ void checkSqlServerUserDetails(api.SqlServerUserDetails o) {
   buildCounterSqlServerUserDetails++;
   if (buildCounterSqlServerUserDetails < 3) {
     unittest.expect(o.disabled!, unittest.isTrue);
-    checkUnnamed49(o.serverRoles!);
+    checkUnnamed58(o.serverRoles!);
   }
   buildCounterSqlServerUserDetails--;
 }
@@ -3751,9 +4056,9 @@ void checkSslCertsInsertResponse(api.SslCertsInsertResponse o) {
   buildCounterSslCertsInsertResponse--;
 }
 
-core.List<api.SslCert> buildUnnamed50() => [buildSslCert(), buildSslCert()];
+core.List<api.SslCert> buildUnnamed59() => [buildSslCert(), buildSslCert()];
 
-void checkUnnamed50(core.List<api.SslCert> o) {
+void checkUnnamed59(core.List<api.SslCert> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSslCert(o[0]);
   checkSslCert(o[1]);
@@ -3764,7 +4069,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
   final o = api.SslCertsListResponse();
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    o.items = buildUnnamed50();
+    o.items = buildUnnamed59();
     o.kind = 'foo';
   }
   buildCounterSslCertsListResponse--;
@@ -3774,7 +4079,7 @@ api.SslCertsListResponse buildSslCertsListResponse() {
 void checkSslCertsListResponse(api.SslCertsListResponse o) {
   buildCounterSslCertsListResponse++;
   if (buildCounterSslCertsListResponse < 3) {
-    checkUnnamed50(o.items!);
+    checkUnnamed59(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterSslCertsListResponse--;
@@ -3801,9 +4106,30 @@ void checkSyncFlags(api.SyncFlags o) {
   buildCounterSyncFlags--;
 }
 
-core.List<core.String> buildUnnamed51() => ['foo', 'foo'];
+core.int buildCounterTargetMetric = 0;
+api.TargetMetric buildTargetMetric() {
+  final o = api.TargetMetric();
+  buildCounterTargetMetric++;
+  if (buildCounterTargetMetric < 3) {
+    o.metric = 'foo';
+    o.targetValue = 42.0;
+  }
+  buildCounterTargetMetric--;
+  return o;
+}
 
-void checkUnnamed51(core.List<core.String> o) {
+void checkTargetMetric(api.TargetMetric o) {
+  buildCounterTargetMetric++;
+  if (buildCounterTargetMetric < 3) {
+    unittest.expect(o.metric!, unittest.equals('foo'));
+    unittest.expect(o.targetValue!, unittest.equals(42.0));
+  }
+  buildCounterTargetMetric--;
+}
+
+core.List<core.String> buildUnnamed60() => ['foo', 'foo'];
+
+void checkUnnamed60(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3817,7 +4143,7 @@ api.Tier buildTier() {
     o.DiskQuota = 'foo';
     o.RAM = 'foo';
     o.kind = 'foo';
-    o.region = buildUnnamed51();
+    o.region = buildUnnamed60();
     o.tier = 'foo';
   }
   buildCounterTier--;
@@ -3830,15 +4156,15 @@ void checkTier(api.Tier o) {
     unittest.expect(o.DiskQuota!, unittest.equals('foo'));
     unittest.expect(o.RAM!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
-    checkUnnamed51(o.region!);
+    checkUnnamed60(o.region!);
     unittest.expect(o.tier!, unittest.equals('foo'));
   }
   buildCounterTier--;
 }
 
-core.List<api.Tier> buildUnnamed52() => [buildTier(), buildTier()];
+core.List<api.Tier> buildUnnamed61() => [buildTier(), buildTier()];
 
-void checkUnnamed52(core.List<api.Tier> o) {
+void checkUnnamed61(core.List<api.Tier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTier(o[0]);
   checkTier(o[1]);
@@ -3849,7 +4175,7 @@ api.TiersListResponse buildTiersListResponse() {
   final o = api.TiersListResponse();
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    o.items = buildUnnamed52();
+    o.items = buildUnnamed61();
     o.kind = 'foo';
   }
   buildCounterTiersListResponse--;
@@ -3859,7 +4185,7 @@ api.TiersListResponse buildTiersListResponse() {
 void checkTiersListResponse(api.TiersListResponse o) {
   buildCounterTiersListResponse++;
   if (buildCounterTiersListResponse < 3) {
-    checkUnnamed52(o.items!);
+    checkUnnamed61(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
   }
   buildCounterTiersListResponse--;
@@ -3894,6 +4220,7 @@ api.User buildUser() {
     o.dualPasswordType = 'foo';
     o.etag = 'foo';
     o.host = 'foo';
+    o.iamStatus = 'foo';
     o.instance = 'foo';
     o.kind = 'foo';
     o.name = 'foo';
@@ -3913,6 +4240,7 @@ void checkUser(api.User o) {
     unittest.expect(o.dualPasswordType!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.host!, unittest.equals('foo'));
+    unittest.expect(o.iamStatus!, unittest.equals('foo'));
     unittest.expect(o.instance!, unittest.equals('foo'));
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -3952,9 +4280,9 @@ void checkUserPasswordValidationPolicy(api.UserPasswordValidationPolicy o) {
   buildCounterUserPasswordValidationPolicy--;
 }
 
-core.List<api.User> buildUnnamed53() => [buildUser(), buildUser()];
+core.List<api.User> buildUnnamed62() => [buildUser(), buildUser()];
 
-void checkUnnamed53(core.List<api.User> o) {
+void checkUnnamed62(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkUser(o[0]);
   checkUser(o[1]);
@@ -3965,7 +4293,7 @@ api.UsersListResponse buildUsersListResponse() {
   final o = api.UsersListResponse();
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    o.items = buildUnnamed53();
+    o.items = buildUnnamed62();
     o.kind = 'foo';
     o.nextPageToken = 'foo';
   }
@@ -3976,11 +4304,32 @@ api.UsersListResponse buildUsersListResponse() {
 void checkUsersListResponse(api.UsersListResponse o) {
   buildCounterUsersListResponse++;
   if (buildCounterUsersListResponse < 3) {
-    checkUnnamed53(o.items!);
+    checkUnnamed62(o.items!);
     unittest.expect(o.kind!, unittest.equals('foo'));
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterUsersListResponse--;
+}
+
+core.int buildCounterValue = 0;
+api.Value buildValue() {
+  final o = api.Value();
+  buildCounterValue++;
+  if (buildCounterValue < 3) {
+    o.nullValue = true;
+    o.value = 'foo';
+  }
+  buildCounterValue--;
+  return o;
+}
+
+void checkValue(api.Value o) {
+  buildCounterValue++;
+  if (buildCounterValue < 3) {
+    unittest.expect(o.nullValue!, unittest.isTrue);
+    unittest.expect(o.value!, unittest.equals('foo'));
+  }
+  buildCounterValue--;
 }
 
 void main() {
@@ -4135,6 +4484,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkCloneContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-Column', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildColumn();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Column.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkColumn(od);
     });
   });
 
@@ -4347,6 +4707,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ExecuteSqlPayload', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildExecuteSqlPayload();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ExecuteSqlPayload.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkExecuteSqlPayload(od);
+    });
+  });
+
   unittest.group('obj-schema-ExportContextBakExportOptions', () {
     unittest.test('to-json--from-json', () async {
       final o = buildExportContextBakExportOptions();
@@ -4450,6 +4821,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFailoverContext(od);
+    });
+  });
+
+  unittest.group('obj-schema-FinalBackupConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFinalBackupConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FinalBackupConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFinalBackupConfig(od);
     });
   });
 
@@ -4845,6 +5227,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Message', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMessage();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Message.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMessage(od);
+    });
+  });
+
+  unittest.group('obj-schema-Metadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Metadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkMetadata(od);
+    });
+  });
+
   unittest.group('obj-schema-MySqlReplicaConfiguration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildMySqlReplicaConfiguration();
@@ -4999,6 +5403,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-QueryResult', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQueryResult();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QueryResult.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQueryResult(od);
+    });
+  });
+
+  unittest.group('obj-schema-ReadPoolAutoScaleConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildReadPoolAutoScaleConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ReadPoolAutoScaleConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkReadPoolAutoScaleConfig(od);
+    });
+  });
+
   unittest.group('obj-schema-ReplicaConfiguration', () {
     unittest.test('to-json--from-json', () async {
       final o = buildReplicaConfiguration();
@@ -5065,6 +5491,15 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Row', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRow();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
+      checkRow(od);
+    });
+  });
+
   unittest.group('obj-schema-SelectedObjects', () {
     unittest.test('to-json--from-json', () async {
       final o = buildSelectedObjects();
@@ -5117,6 +5552,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkSqlInstancesAcquireSsrsLeaseResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-SqlInstancesExecuteSqlResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSqlInstancesExecuteSqlResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SqlInstancesExecuteSqlResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSqlInstancesExecuteSqlResponse(od);
     });
   });
 
@@ -5357,6 +5803,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-TargetMetric', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildTargetMetric();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.TargetMetric.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkTargetMetric(od);
+    });
+  });
+
   unittest.group('obj-schema-Tier', () {
     unittest.test('to-json--from-json', () async {
       final o = buildTier();
@@ -5420,6 +5877,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkUsersListResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-Value', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildValue();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Value.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkValue(od);
     });
   });
 
@@ -7657,6 +8125,98 @@ void main() {
       checkOperation(response as api.Operation);
     });
 
+    unittest.test('method--executeSql', () async {
+      final mock = HttpServerMock();
+      final res = api.SQLAdminApi(mock).instances;
+      final arg_request = buildExecuteSqlPayload();
+      final arg_project = 'foo';
+      final arg_instance = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.ExecuteSqlPayload.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkExecuteSqlPayload(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 21),
+            unittest.equals('sql/v1beta4/projects/'),
+          );
+          pathOffset += 21;
+          index = path.indexOf('/instances/', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_project'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/instances/'),
+          );
+          pathOffset += 11;
+          index = path.indexOf('/executeSql', pathOffset);
+          unittest.expect(index >= 0, unittest.isTrue);
+          subPart = core.Uri.decodeQueryComponent(
+            path.substring(pathOffset, index),
+          );
+          pathOffset = index;
+          unittest.expect(subPart, unittest.equals('$arg_instance'));
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 11),
+            unittest.equals('/executeSql'),
+          );
+          pathOffset += 11;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSqlInstancesExecuteSqlResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.executeSql(
+        arg_request,
+        arg_project,
+        arg_instance,
+        $fields: arg_$fields,
+      );
+      checkSqlInstancesExecuteSqlResponse(
+        response as api.SqlInstancesExecuteSqlResponse,
+      );
+    });
+
     unittest.test('method--export', () async {
       final mock = HttpServerMock();
       final res = api.SQLAdminApi(mock).instances;
@@ -8644,6 +9204,7 @@ void main() {
       final res = api.SQLAdminApi(mock).instances;
       final arg_project = 'foo';
       final arg_instance = 'foo';
+      final arg_mode = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -8701,6 +9262,7 @@ void main() {
               );
             }
           }
+          unittest.expect(queryMap['mode']!.first, unittest.equals(arg_mode));
           unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
@@ -8715,6 +9277,7 @@ void main() {
       final response = await res.resetSslConfig(
         arg_project,
         arg_instance,
+        mode: arg_mode,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);
@@ -9725,6 +10288,7 @@ void main() {
       final res = api.SQLAdminApi(mock).projects.instances;
       final arg_project = 'foo';
       final arg_instance = 'foo';
+      final arg_sourceInstanceDeletionTime = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -9783,6 +10347,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['sourceInstanceDeletionTime']!.first,
+            unittest.equals(arg_sourceInstanceDeletionTime),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -9798,6 +10366,7 @@ void main() {
       final response = await res.getLatestRecoveryTime(
         arg_project,
         arg_instance,
+        sourceInstanceDeletionTime: arg_sourceInstanceDeletionTime,
         $fields: arg_$fields,
       );
       checkSqlInstancesGetLatestRecoveryTimeResponse(

@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250729",
+    "revision": "20250909",
     "rootUrl": "https://redis.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Memorystore for Redis API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -1338,8 +1338,26 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "lastBackupTime": {
+                    "description": "Output only. The last time a backup was created in the backup collection.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "name": {
                     "description": "Identifier. Full resource path of the backup collection.",
+                    "type": "string"
+                },
+                "totalBackupCount": {
+                    "description": "Output only. Total number of backups in the backup collection.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "totalBackupSizeBytes": {
+                    "description": "Output only. Total size of all backups in the backup collection.",
+                    "format": "int64",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "uid": {
@@ -1503,7 +1521,8 @@
             "id": "Cluster",
             "properties": {
                 "allowFewerZonesDeployment": {
-                    "description": "Optional. Immutable. Allows customers to specify if they are okay with deploying a multi-zone cluster in less than 3 zones. Once set, if there is a zonal outage during the cluster creation, the cluster will only be deployed in 2 zones, and stay within the 2 zones for its lifecycle.",
+                    "deprecated": true,
+                    "description": "Optional. Immutable. Deprecated, do not use.",
                     "type": "boolean"
                 },
                 "asyncClusterEndpointsDeletionEnabled": {
@@ -1574,6 +1593,13 @@
                 "kmsKey": {
                     "description": "Optional. The KMS key used to encrypt the at-rest data of the cluster.",
                     "type": "string"
+                },
+                "labels": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Labels to represent user-provided metadata.",
+                    "type": "object"
                 },
                 "maintenancePolicy": {
                     "$ref": "ClusterMaintenancePolicy",
@@ -1995,7 +2021,7 @@
             "type": "object"
         },
         "DatabaseResourceFeed": {
-            "description": "DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into Condor platform. Next ID: 10",
+            "description": "DatabaseResourceFeed is the top level proto to be used to ingest different database resource level events into Condor platform. Next ID: 13",
             "id": "DatabaseResourceFeed",
             "properties": {
                 "backupdrMetadata": {
@@ -2005,6 +2031,10 @@
                 "configBasedSignalData": {
                     "$ref": "ConfigBasedSignalData",
                     "description": "Config based signal data is used to ingest signals that are generated based on the configuration of the database resource."
+                },
+                "databaseResourceSignalData": {
+                    "$ref": "DatabaseResourceSignalData",
+                    "description": "Database resource signal data is used to ingest signals from database resource signal feeds."
                 },
                 "feedTimestamp": {
                     "description": "Required. Timestamp when feed is generated.",
@@ -2020,7 +2050,8 @@
                         "SECURITY_FINDING_DATA",
                         "RECOMMENDATION_SIGNAL_DATA",
                         "CONFIG_BASED_SIGNAL_DATA",
-                        "BACKUPDR_METADATA"
+                        "BACKUPDR_METADATA",
+                        "DATABASE_RESOURCE_SIGNAL_DATA"
                     ],
                     "enumDescriptions": [
                         "",
@@ -2029,7 +2060,8 @@
                         "Database resource security health signal data",
                         "Database resource recommendation signal data",
                         "Database config based signal data",
-                        "Database resource metadata from BackupDR"
+                        "Database resource metadata from BackupDR",
+                        "Database resource signal data"
                     ],
                     "type": "string"
                 },
@@ -2049,6 +2081,10 @@
                 },
                 "resourceMetadata": {
                     "$ref": "DatabaseResourceMetadata"
+                },
+                "skipIngestion": {
+                    "description": "Optional. If true, the feed won't be ingested by DB Center. This indicates that the feed is intentionally skipped. For example, BackupDR feeds are only needed for resources integrated with DB Center (e.g., CloudSQL, AlloyDB). Feeds for non-integrated resources (e.g., Compute Engine, Persistent Disk) can be skipped.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -2268,7 +2304,8 @@
                         "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED",
                         "SIGNAL_TYPE_MANY_IDLE_CONNECTIONS",
                         "SIGNAL_TYPE_REPLICATION_LAG",
-                        "SIGNAL_TYPE_OUTDATED_VERSION"
+                        "SIGNAL_TYPE_OUTDATED_VERSION",
+                        "SIGNAL_TYPE_OUTDATED_CLIENT"
                     ],
                     "enumDeprecated": [
                         false,
@@ -2277,6 +2314,7 @@
                         true,
                         true,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -2474,7 +2512,8 @@
                         "Schema not optimized.",
                         "High number of idle connections.",
                         "Replication delay.",
-                        "Outdated version."
+                        "Outdated version.",
+                        "Outdated client."
                     ],
                     "type": "string"
                 },
@@ -2538,7 +2577,7 @@
             "type": "object"
         },
         "DatabaseResourceMetadata": {
-            "description": "Common model for database resource instance metadata. Next ID: 26",
+            "description": "Common model for database resource instance metadata. Next ID: 27",
             "id": "DatabaseResourceMetadata",
             "properties": {
                 "availabilityConfiguration": {
@@ -2591,12 +2630,14 @@
                     "enum": [
                         "EDITION_UNSPECIFIED",
                         "EDITION_ENTERPRISE",
-                        "EDITION_ENTERPRISE_PLUS"
+                        "EDITION_ENTERPRISE_PLUS",
+                        "EDITION_STANDARD"
                     ],
                     "enumDescriptions": [
                         "Default, to make it consistent with instance edition enum.",
                         "Represents the enterprise edition.",
-                        "Represents the enterprise plus edition."
+                        "Represents the enterprise plus edition.",
+                        "Represents the standard edition."
                     ],
                     "type": "string"
                 },
@@ -2741,6 +2782,10 @@
                 "userLabelSet": {
                     "$ref": "UserLabels",
                     "description": "User-provided labels associated with the resource"
+                },
+                "zone": {
+                    "description": "The resource zone. This is only applicable for zonal resources and will be empty for regional and multi-regional resources.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -2901,7 +2946,8 @@
                         "SIGNAL_TYPE_SCHEMA_NOT_OPTIMIZED",
                         "SIGNAL_TYPE_MANY_IDLE_CONNECTIONS",
                         "SIGNAL_TYPE_REPLICATION_LAG",
-                        "SIGNAL_TYPE_OUTDATED_VERSION"
+                        "SIGNAL_TYPE_OUTDATED_VERSION",
+                        "SIGNAL_TYPE_OUTDATED_CLIENT"
                     ],
                     "enumDeprecated": [
                         false,
@@ -2910,6 +2956,7 @@
                         true,
                         true,
                         true,
+                        false,
                         false,
                         false,
                         false,
@@ -3107,7 +3154,69 @@
                         "Schema not optimized.",
                         "High number of idle connections.",
                         "Replication delay.",
-                        "Outdated version."
+                        "Outdated version.",
+                        "Outdated client."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DatabaseResourceSignalData": {
+            "description": "Database resource signal data. This is used to send signals to Condor which are based on the DB/Instance/Fleet level configurations. These will be used to send signals for all inventory types. Next ID: 7",
+            "id": "DatabaseResourceSignalData",
+            "properties": {
+                "fullResourceName": {
+                    "description": "Required. Full Resource name of the source resource.",
+                    "type": "string"
+                },
+                "lastRefreshTime": {
+                    "description": "Required. Last time signal was refreshed",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "resourceId": {
+                    "$ref": "DatabaseResourceId",
+                    "description": "Database resource id."
+                },
+                "signalBoolValue": {
+                    "description": "Signal data for boolean signals.",
+                    "type": "boolean"
+                },
+                "signalState": {
+                    "description": "Required. Output only. Signal state of the signal",
+                    "enum": [
+                        "SIGNAL_STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "INACTIVE",
+                        "DISMISSED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified signal state.",
+                        "Signal is active and requires attention.",
+                        "Signal is inactive and does not require attention.",
+                        "Signal is dismissed by the user and should not be shown to the user again."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "signalType": {
+                    "description": "Required. Signal type of the signal",
+                    "enum": [
+                        "SIGNAL_TYPE_UNSPECIFIED",
+                        "SIGNAL_TYPE_OUTDATED_MINOR_VERSION",
+                        "SIGNAL_TYPE_DATABASE_AUDITING_DISABLED",
+                        "SIGNAL_TYPE_NO_ROOT_PASSWORD",
+                        "SIGNAL_TYPE_EXPOSED_TO_PUBLIC_ACCESS",
+                        "SIGNAL_TYPE_UNENCRYPTED_CONNECTIONS"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified signal type.",
+                        "Outdated Minor Version",
+                        "Represents database auditing is disabled.",
+                        "Represents if a database has a password configured for the root account or not.",
+                        "Represents if a resource is exposed to public access.",
+                        "Represents if a resources requires all incoming connections to use SSL or not."
                     ],
                     "type": "string"
                 }

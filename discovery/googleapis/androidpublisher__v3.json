@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250724",
+    "revision": "20250904",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Android Developer API",
@@ -4799,7 +4799,7 @@
                             ]
                         },
                         "cancel": {
-                            "description": "Cancels a user's subscription purchase. The subscription remains valid until its expiration time.",
+                            "description": "Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support.",
                             "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
                             "httpMethod": "POST",
                             "id": "androidpublisher.purchases.subscriptions.cancel",
@@ -4989,6 +4989,40 @@
                 },
                 "subscriptionsv2": {
                     "methods": {
+                        "cancel": {
+                            "description": "Cancel a subscription purchase for the user.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancel",
+                            "httpMethod": "POST",
+                            "id": "androidpublisher.purchases.subscriptionsv2.cancel",
+                            "parameterOrder": [
+                                "packageName",
+                                "token"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "description": "Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "description": "Required. The token provided to the user's device when the subscription was purchased.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:cancel",
+                            "request": {
+                                "$ref": "CancelSubscriptionPurchaseRequest"
+                            },
+                            "response": {
+                                "$ref": "CancelSubscriptionPurchaseResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        },
                         "get": {
                             "description": "Get metadata about a subscription",
                             "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}",
@@ -6176,9 +6210,13 @@
                     "$ref": "SubscriptionItemPriceChangeDetails",
                     "description": "The information of the last price change for the item since subscription signup."
                 },
+                "priceStepUpConsentDetails": {
+                    "$ref": "PriceStepUpConsentDetails",
+                    "description": "The information of the latest price step-up consent."
+                },
                 "recurringPrice": {
                     "$ref": "Money",
-                    "description": "The current recurring price of the auto renewing plan. Note that the price does not take into account discounts and taxes, call orders.get API instead if transaction details are needed."
+                    "description": "The current recurring price of the auto renewing plan. Note that the price does not take into account discounts and does not include taxes for tax-exclusive pricing, please call orders.get API instead if transaction details are needed."
                 }
             },
             "type": "object"
@@ -6738,6 +6776,23 @@
             },
             "type": "object"
         },
+        "CancelSubscriptionPurchaseRequest": {
+            "description": "Request for the purchases.subscriptionsv2.cancel API.",
+            "id": "CancelSubscriptionPurchaseRequest",
+            "properties": {
+                "cancellationContext": {
+                    "$ref": "CancellationContext",
+                    "description": "Required. Additional details around the subscription revocation."
+                }
+            },
+            "type": "object"
+        },
+        "CancelSubscriptionPurchaseResponse": {
+            "description": "Response for the purchases.subscriptionsv2.cancel API.",
+            "id": "CancelSubscriptionPurchaseResponse",
+            "properties": {},
+            "type": "object"
+        },
         "CancelSurveyResult": {
             "description": "Result of the cancel survey when the subscription was canceled by the user.",
             "id": "CancelSurveyResult",
@@ -6788,6 +6843,27 @@
                 "userInitiatedCancellation": {
                     "$ref": "UserInitiatedCancellation",
                     "description": "Subscription was canceled by user."
+                }
+            },
+            "type": "object"
+        },
+        "CancellationContext": {
+            "description": "Cancellation context of the purchases.subscriptionsv2.cancel API.",
+            "id": "CancellationContext",
+            "properties": {
+                "cancellationType": {
+                    "description": "Required. The type of cancellation for the purchased subscription.",
+                    "enum": [
+                        "CANCELLATION_TYPE_UNSPECIFIED",
+                        "USER_REQUESTED_STOP_RENEWALS",
+                        "DEVELOPER_REQUESTED_STOP_PAYMENTS"
+                    ],
+                    "enumDescriptions": [
+                        "Cancellation type unspecified.",
+                        "Cancellation requested by the user, and the subscription can be restored. It only stops the subscription's next renewal. For an installment subscription, users still need to finish the commitment period. For more details on renewals and payments, see https://developer.android.com/google/play/billing/subscriptions#installments",
+                        "Cancellation requested by the developer, and the subscription cannot be restored. It stops the subscription's next payment. For an installment subscription, users will not need to pay the next payment and finish the commitment period. For more details on renewals and payments, see https://developer.android.com/google/play/billing/subscriptions#installments"
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -7057,6 +7133,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "DeferredItemRemoval": {
+            "description": "Information related to deferred item replacement.",
+            "id": "DeferredItemRemoval",
+            "properties": {},
             "type": "object"
         },
         "DeferredItemReplacement": {
@@ -9376,15 +9458,13 @@
                         "AVAILABILITY_UNSPECIFIED",
                         "AVAILABLE",
                         "NO_LONGER_AVAILABLE",
-                        "AVAILABLE_IF_RELEASED",
-                        "AVAILABLE_FOR_OFFERS_ONLY"
+                        "AVAILABLE_IF_RELEASED"
                     ],
                     "enumDescriptions": [
                         "Unspecified availability. Must not be used.",
                         "The purchase option is available to users.",
                         "The purchase option is no longer available to users. This value can only be used if the availability was previously set as AVAILABLE.",
-                        "The purchase option is initially unavailable, but made available via a released pre-order offer.",
-                        "The purchase option is unavailable but offers linked to it (i.e. Play Points offer) are available."
+                        "The purchase option is initially unavailable, but made available via a released pre-order offer."
                     ],
                     "type": "string"
                 },
@@ -9824,6 +9904,39 @@
                 },
                 "priceMicros": {
                     "description": "Price in 1/million of the currency base unit, represented as a string.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PriceStepUpConsentDetails": {
+            "description": "Information related to a price step-up that requires user consent.",
+            "id": "PriceStepUpConsentDetails",
+            "properties": {
+                "consentDeadlineTime": {
+                    "description": "The deadline by which the user must provide consent. If consent is not provided by this time, the subscription will be canceled.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "newPrice": {
+                    "$ref": "Money",
+                    "description": "The new price which requires user consent."
+                },
+                "state": {
+                    "description": "Output only. The state of the price step-up consent.",
+                    "enum": [
+                        "CONSENT_STATE_UNSPECIFIED",
+                        "PENDING",
+                        "CONFIRMED",
+                        "COMPLETED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified consent state.",
+                        "The user has not yet provided consent.",
+                        "The user has consented, and the new price is waiting to take effect.",
+                        "The user has consented, and the new price has taken effect."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },
@@ -11321,6 +11434,10 @@
                     "$ref": "AutoRenewingPlan",
                     "description": "The item is auto renewing."
                 },
+                "deferredItemRemoval": {
+                    "$ref": "DeferredItemRemoval",
+                    "description": "Information for deferred item removal."
+                },
                 "deferredItemReplacement": {
                     "$ref": "DeferredItemReplacement",
                     "description": "Information for deferred item replacement."
@@ -11895,7 +12012,7 @@
             "properties": {
                 "countryTargeting": {
                     "$ref": "CountryTargeting",
-                    "description": "Restricts a release to a specific set of countries."
+                    "description": "Restricts a release to a specific set of countries. Note this is only allowed to be set for inProgress releases in the production track."
                 },
                 "inAppUpdatePriority": {
                     "description": "In-app update priority of the release. All newly added APKs in the release will be considered at this priority. Can take values in the range [0, 5], with 5 the highest priority. Defaults to 0. in_app_update_priority can not be updated once the release is rolled out. See https://developer.android.com/guide/playcore/in-app-updates.",
