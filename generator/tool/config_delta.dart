@@ -38,15 +38,21 @@ You migt also want to do
       if (oldApi == newApi) {
         continue;
       }
-      stderr.writeln(
-        [
-          api.padRight(30),
-          'old:',
-          oldApi.padRight(10),
-          'new:',
-          newApi.padRight(10),
-        ].join('\t'),
-      );
+      if (newApi == 'null') {
+        stderr.writeln('- `$api` removed');
+      } else if (oldApi == 'null') {
+        stderr.writeln('- `$api` new!');
+      } else {
+        stderr.writeln(
+          [
+            api.padRight(30),
+            'old:',
+            oldApi.padRight(10),
+            'new:',
+            newApi.padRight(10),
+          ].join('\t'),
+        );
+      }
     }
   }
 
@@ -59,7 +65,7 @@ You migt also want to do
   print(rows.map((row) => row.map((e) => '"$e"').join(',')).join('\n'));
 }
 
-Iterable<Configuration> _configs(String version, String path) sync* {
+Iterable<_Configuration> _configs(String version, String path) sync* {
   stderr.writeln('file: $version');
   final fileContents = File(path).readAsStringSync();
   final yaml = loadYaml(fileContents, sourceUrl: Uri.parse(path)) as YamlMap;
@@ -87,17 +93,17 @@ Iterable<Configuration> _configs(String version, String path) sync* {
 
       apis.putIfAbsent(apiName, SplayTreeSet.new).add(apiVersion);
     }
-    yield Configuration(name, version, apis);
+    yield _Configuration(name, version, apis);
   }
 }
 
 const _names = {'googleapis', 'googleapis_beta'};
 
-class Configuration {
+class _Configuration {
   final String name;
   final String version;
 
   final Map<String, Set<String>> apis;
 
-  Configuration(this.name, this.version, this.apis);
+  _Configuration(this.name, this.version, this.apis);
 }

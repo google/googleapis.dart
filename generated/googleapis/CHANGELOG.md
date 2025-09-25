@@ -1,6 +1,24 @@
-## 14.1.0-wip
+## 15.0.0
 
 - Require `sdk: ^3.7.0`
+
+### APIs
+
+- `analyticsreporting` removed
+- `apihub` new!
+- `cloudcommerceprocurement` new!
+- `cloudlocationfinder` new!
+- `dfareporting` added `v5`
+- `firebaseapphosting` new!
+- `firebasedataconnect` new!
+- `managedkafka` new!
+- `merchantapi` new!
+- `metastore` removed `v2`
+- `observability` new!
+- `osconfig` - added `v2`
+- `parametermanager` new!
+- `securesourcemanager` new!
+- `storagebatchoperations` new!
 
 ## 14.0.0
 
