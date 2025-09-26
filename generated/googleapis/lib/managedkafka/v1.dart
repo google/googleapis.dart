@@ -153,9 +153,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2279,6 +2279,18 @@ class ProjectsLocationsSchemaRegistriesResource {
   /// listed. Structured like: `projects/{project}/locations/{location}`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
+  /// [view] - Optional. Specifies the view to return for the schema registry
+  /// instances. If not specified, the default view is
+  /// SCHEMA_REGISTRY_VIEW_BASIC.
+  /// Possible string values are:
+  /// - "SCHEMA_REGISTRY_VIEW_UNSPECIFIED" : The unset value. The API will
+  /// default to SCHEMA_REGISTRY_VIEW_BASIC.
+  /// - "SCHEMA_REGISTRY_VIEW_BASIC" : If SchemaRegistryView is not specified,
+  /// this is the default value. Returns only the name of the schema registry.
+  /// The contexts associated with it are not included.
+  /// - "SCHEMA_REGISTRY_VIEW_FULL" : Returns the name of the schema registry
+  /// and all the contexts associated with it.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2291,9 +2303,11 @@ class ProjectsLocationsSchemaRegistriesResource {
   /// this method will complete with the same error.
   async.Future<ListSchemaRegistriesResponse> list(
     core.String parent, {
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4974,6 +4988,12 @@ class Cluster {
   /// Optional.
   TlsConfig? tlsConfig;
 
+  /// UpdateOptions represents options that control how updates to the cluster
+  /// are applied.
+  ///
+  /// Optional.
+  UpdateOptions? updateOptions;
+
   /// The time when the cluster was last updated.
   ///
   /// Output only.
@@ -4990,6 +5010,7 @@ class Cluster {
     this.satisfiesPzs,
     this.state,
     this.tlsConfig,
+    this.updateOptions,
     this.updateTime,
   });
 
@@ -5029,6 +5050,12 @@ class Cluster {
                   json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        updateOptions:
+            json_.containsKey('updateOptions')
+                ? UpdateOptions.fromJson(
+                  json_['updateOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -5043,6 +5070,7 @@ class Cluster {
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
     if (state != null) 'state': state!,
     if (tlsConfig != null) 'tlsConfig': tlsConfig!,
+    if (updateOptions != null) 'updateOptions': updateOptions!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
 }
@@ -6679,6 +6707,39 @@ class TrustConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (casConfigs != null) 'casConfigs': casConfigs!,
+  };
+}
+
+/// UpdateOptions specifies options that influence how a cluster update is
+/// applied.
+///
+/// These options control the behavior of the update process, rather than
+/// defining the desired end-state of a cluster.
+class UpdateOptions {
+  /// If true, allows an update operation that increases the total vCPU and/or
+  /// memory allocation of the cluster to significantly decrease the per-broker
+  /// vCPU and/or memory allocation.
+  ///
+  /// This can result in reduced performance and availability. By default, the
+  /// update operation will fail if an upscale request results in a vCPU or
+  /// memory allocation for the brokers that is smaller than 90% of the current
+  /// broker size.
+  ///
+  /// Optional.
+  core.bool? allowBrokerDownscaleOnClusterUpscale;
+
+  UpdateOptions({this.allowBrokerDownscaleOnClusterUpscale});
+
+  UpdateOptions.fromJson(core.Map json_)
+    : this(
+        allowBrokerDownscaleOnClusterUpscale:
+            json_['allowBrokerDownscaleOnClusterUpscale'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allowBrokerDownscaleOnClusterUpscale != null)
+      'allowBrokerDownscaleOnClusterUpscale':
+          allowBrokerDownscaleOnClusterUpscale!,
   };
 }
 

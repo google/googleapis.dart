@@ -137,9 +137,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1521,6 +1521,64 @@ class ProjectsLocationsOperationsResource {
   }
 }
 
+/// The URI of an storage archive or a signed URL to use as the build source.
+class ArchiveSource {
+  /// The author contained in the metadata of a version control change.
+  ///
+  /// Optional.
+  SourceUserMetadata? author;
+
+  /// An optional message that describes the uploaded version of the source
+  /// code.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Signed URL to an archive in a storage bucket.
+  core.String? externalSignedUri;
+
+  /// Relative path in the archive.
+  ///
+  /// Optional.
+  core.String? rootDirectory;
+
+  /// URI to an archive in Cloud Storage.
+  ///
+  /// The object must be a zipped (.zip) or gzipped archive file (.tar.gz)
+  /// containing source to deploy.
+  core.String? userStorageUri;
+
+  ArchiveSource({
+    this.author,
+    this.description,
+    this.externalSignedUri,
+    this.rootDirectory,
+    this.userStorageUri,
+  });
+
+  ArchiveSource.fromJson(core.Map json_)
+    : this(
+        author:
+            json_.containsKey('author')
+                ? SourceUserMetadata.fromJson(
+                  json_['author'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        externalSignedUri: json_['externalSignedUri'] as core.String?,
+        rootDirectory: json_['rootDirectory'] as core.String?,
+        userStorageUri: json_['userStorageUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (author != null) 'author': author!,
+    if (description != null) 'description': description!,
+    if (externalSignedUri != null) 'externalSignedUri': externalSignedUri!,
+    if (rootDirectory != null) 'rootDirectory': rootDirectory!,
+    if (userStorageUri != null) 'userStorageUri': userStorageUri!,
+  };
+}
+
 /// A backend is the primary resource of App Hosting.
 class Backend {
   /// Unstructured key value map that may be set by external tools to store and
@@ -1604,6 +1662,14 @@ class Backend {
   /// Output only.
   core.bool? reconciling;
 
+  /// A field that, if true, indicates that incoming request logs are disabled
+  /// for this backend.
+  ///
+  /// Incoming request logs are enabled by default.
+  ///
+  /// Optional.
+  core.bool? requestLogsDisabled;
+
   /// The name of the service account used for Cloud Build and Cloud Run.
   ///
   /// Should have the role roles/firebaseapphosting.computeRunner or equivalent
@@ -1665,6 +1731,7 @@ class Backend {
     this.mode,
     this.name,
     this.reconciling,
+    this.requestLogsDisabled,
     this.serviceAccount,
     this.servingLocality,
     this.uid,
@@ -1703,6 +1770,7 @@ class Backend {
         mode: json_['mode'] as core.String?,
         name: json_['name'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
+        requestLogsDisabled: json_['requestLogsDisabled'] as core.bool?,
         serviceAccount: json_['serviceAccount'] as core.String?,
         servingLocality: json_['servingLocality'] as core.String?,
         uid: json_['uid'] as core.String?,
@@ -1724,6 +1792,8 @@ class Backend {
     if (mode != null) 'mode': mode!,
     if (name != null) 'name': name!,
     if (reconciling != null) 'reconciling': reconciling!,
+    if (requestLogsDisabled != null)
+      'requestLogsDisabled': requestLogsDisabled!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
     if (servingLocality != null) 'servingLocality': servingLocality!,
     if (uid != null) 'uid': uid!,
@@ -1933,16 +2003,25 @@ class Build {
 
 /// The source for the build.
 class BuildSource {
+  /// An archive source.
+  ArchiveSource? archive;
+
   /// A codebase source.
   CodebaseSource? codebase;
 
   /// An Artifact Registry container image source.
   ContainerSource? container;
 
-  BuildSource({this.codebase, this.container});
+  BuildSource({this.archive, this.codebase, this.container});
 
   BuildSource.fromJson(core.Map json_)
     : this(
+        archive:
+            json_.containsKey('archive')
+                ? ArchiveSource.fromJson(
+                  json_['archive'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         codebase:
             json_.containsKey('codebase')
                 ? CodebaseSource.fromJson(
@@ -1958,6 +2037,7 @@ class BuildSource {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (archive != null) 'archive': archive!,
     if (codebase != null) 'codebase': codebase!,
     if (container != null) 'container': container!,
   };
@@ -3127,7 +3207,7 @@ class Rollout {
   /// It doesn't have to be built; a rollout will wait for a build to be ready
   /// before updating traffic.
   ///
-  /// Immutable.
+  /// Required. Immutable.
   core.String? build;
 
   /// Time at which the rollout was created.
@@ -3425,6 +3505,43 @@ class ServingBehavior {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (redirect != null) 'redirect': redirect!,
+  };
+}
+
+/// Metadata for the user who started the build.
+class SourceUserMetadata {
+  /// The user-chosen displayname.
+  ///
+  /// May be empty.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The account email linked to the EUC that created the build.
+  ///
+  /// May be a service account or other robot account.
+  ///
+  /// Output only.
+  core.String? email;
+
+  /// The URI of a profile photo associated with the user who created the build.
+  ///
+  /// Output only.
+  core.String? imageUri;
+
+  SourceUserMetadata({this.displayName, this.email, this.imageUri});
+
+  SourceUserMetadata.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        email: json_['email'] as core.String?,
+        imageUri: json_['imageUri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (email != null) 'email': email!,
+    if (imageUri != null) 'imageUri': imageUri!,
   };
 }
 

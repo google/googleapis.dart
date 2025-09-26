@@ -215,9 +215,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -9151,7 +9151,15 @@ class ResourceOptions {
   /// Optional.
   core.String? connectVersion;
 
-  /// Major version of the Kubernetes cluster.
+  /// Git version of the Kubernetes cluster.
+  ///
+  /// This is only used to gate the Connect Agent migration to svc.id.goog on
+  /// GDC-SO 1.33.100 patch and above.
+  ///
+  /// Optional.
+  core.String? k8sGitVersion;
+
+  /// Major and minor version of the Kubernetes cluster.
   ///
   /// This is only used to determine which version to use for the
   /// CustomResourceDefinition resources, `apiextensions/v1beta1`
@@ -9169,17 +9177,24 @@ class ResourceOptions {
   /// Optional.
   core.bool? v1beta1Crd;
 
-  ResourceOptions({this.connectVersion, this.k8sVersion, this.v1beta1Crd});
+  ResourceOptions({
+    this.connectVersion,
+    this.k8sGitVersion,
+    this.k8sVersion,
+    this.v1beta1Crd,
+  });
 
   ResourceOptions.fromJson(core.Map json_)
     : this(
         connectVersion: json_['connectVersion'] as core.String?,
+        k8sGitVersion: json_['k8sGitVersion'] as core.String?,
         k8sVersion: json_['k8sVersion'] as core.String?,
         v1beta1Crd: json_['v1beta1Crd'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (connectVersion != null) 'connectVersion': connectVersion!,
+    if (k8sGitVersion != null) 'k8sGitVersion': k8sGitVersion!,
     if (k8sVersion != null) 'k8sVersion': k8sVersion!,
     if (v1beta1Crd != null) 'v1beta1Crd': v1beta1Crd!,
   };

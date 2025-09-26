@@ -261,10 +261,8 @@ class AccountDetails {
   /// Possible string values are:
   /// - "UNKNOWN" : Play does not have sufficient information to evaluate
   /// licensing details
-  /// - "LICENSED" : The app and certificate match the versions distributed by
-  /// Play.
-  /// - "UNLICENSED" : The certificate or package name does not match Google
-  /// Play records.
+  /// - "LICENSED" : The user has a valid license to use the app.
+  /// - "UNLICENSED" : The user does not have a valid license to use the app.
   /// - "UNEVALUATED" : Licensing details were not evaluated since a necessary
   /// requirement was missed. For example DeviceIntegrity did not meet the
   /// minimum bar or the application was not a known Play version.
@@ -599,6 +597,32 @@ class EnvironmentDetails {
   };
 }
 
+/// Contains the account information such as the licensing status for the user
+/// in the scope.
+class PcAccountDetails {
+  /// Details about the licensing status of the user for the app in the scope.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Play does not have sufficient information to evaluate
+  /// licensing details
+  /// - "LICENSED" : The user has a valid license to use the app.
+  /// - "UNLICENSED" : The user does not have a valid license to use the app.
+  /// - "UNEVALUATED" : Licensing details were not evaluated since a necessary
+  /// requirement was missed.
+  core.String? appLicensingVerdict;
+
+  PcAccountDetails({this.appLicensingVerdict});
+
+  PcAccountDetails.fromJson(core.Map json_)
+    : this(appLicensingVerdict: json_['appLicensingVerdict'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (appLicensingVerdict != null)
+      'appLicensingVerdict': appLicensingVerdict!,
+  };
+}
+
 /// Contains the device attestation information.
 class PcDeviceIntegrity {
   /// Details about the integrity of the device the app is running on.
@@ -657,8 +681,27 @@ class PcRequestDetails {
   };
 }
 
+/// Contains additional information generated for testing responses.
+class PcTestingDetails {
+  /// Indicates that the information contained in this payload is a testing
+  /// response that is statically overridden for a tester.
+  core.bool? isTestingResponse;
+
+  PcTestingDetails({this.isTestingResponse});
+
+  PcTestingDetails.fromJson(core.Map json_)
+    : this(isTestingResponse: json_['isTestingResponse'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (isTestingResponse != null) 'isTestingResponse': isTestingResponse!,
+  };
+}
+
 /// Contains PC device attestation details.
 class PcTokenPayloadExternal {
+  /// Details about the account information such as the licensing status.
+  PcAccountDetails? accountDetails;
+
   /// Details about the device integrity.
   ///
   /// Required.
@@ -669,10 +712,26 @@ class PcTokenPayloadExternal {
   /// Required.
   PcRequestDetails? requestDetails;
 
-  PcTokenPayloadExternal({this.deviceIntegrity, this.requestDetails});
+  /// Indicates that this payload is generated for testing purposes and contains
+  /// any additional data that is linked with testing status.
+  PcTestingDetails? testingDetails;
+
+  PcTokenPayloadExternal({
+    this.accountDetails,
+    this.deviceIntegrity,
+    this.requestDetails,
+    this.testingDetails,
+  });
 
   PcTokenPayloadExternal.fromJson(core.Map json_)
     : this(
+        accountDetails:
+            json_.containsKey('accountDetails')
+                ? PcAccountDetails.fromJson(
+                  json_['accountDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         deviceIntegrity:
             json_.containsKey('deviceIntegrity')
                 ? PcDeviceIntegrity.fromJson(
@@ -687,11 +746,20 @@ class PcTokenPayloadExternal {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        testingDetails:
+            json_.containsKey('testingDetails')
+                ? PcTestingDetails.fromJson(
+                  json_['testingDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (accountDetails != null) 'accountDetails': accountDetails!,
     if (deviceIntegrity != null) 'deviceIntegrity': deviceIntegrity!,
     if (requestDetails != null) 'requestDetails': requestDetails!,
+    if (testingDetails != null) 'testingDetails': testingDetails!,
   };
 }
 

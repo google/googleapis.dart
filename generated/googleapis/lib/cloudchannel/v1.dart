@@ -5381,6 +5381,53 @@ class GoogleCloudChannelV1DateRange {
   };
 }
 
+/// Represents a single component of the total discount applicable on a Price.
+class GoogleCloudChannelV1DiscountComponent {
+  /// Fixed value discount.
+  GoogleTypeMoney? discountAbsolute;
+
+  /// Discount percentage, represented as decimal.
+  ///
+  /// For example, a 20% discount will be represented as 0.2.
+  core.double? discountPercentage;
+
+  /// Type of the discount.
+  /// Possible string values are:
+  /// - "DISCOUNT_TYPE_UNSPECIFIED" : Not used.
+  /// - "REGIONAL_DISCOUNT" : Regional discount.
+  /// - "PROMOTIONAL_DISCOUNT" : Promotional discount.
+  /// - "SALES_DISCOUNT" : Sales-provided discount.
+  /// - "RESELLER_MARGIN" : Reseller margin.
+  /// - "DEAL_CODE" : Deal code discount.
+  core.String? discountType;
+
+  GoogleCloudChannelV1DiscountComponent({
+    this.discountAbsolute,
+    this.discountPercentage,
+    this.discountType,
+  });
+
+  GoogleCloudChannelV1DiscountComponent.fromJson(core.Map json_)
+    : this(
+        discountAbsolute:
+            json_.containsKey('discountAbsolute')
+                ? GoogleTypeMoney.fromJson(
+                  json_['discountAbsolute']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        discountPercentage:
+            (json_['discountPercentage'] as core.num?)?.toDouble(),
+        discountType: json_['discountType'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (discountAbsolute != null) 'discountAbsolute': discountAbsolute!,
+    if (discountPercentage != null) 'discountPercentage': discountPercentage!,
+    if (discountType != null) 'discountType': discountType!,
+  };
+}
+
 /// Required Edu Attributes
 class GoogleCloudChannelV1EduData {
   /// Size of the institute.
@@ -7113,17 +7160,30 @@ class GoogleCloudChannelV1Price {
   /// For example, a 20% discount will be represent as 0.2.
   core.double? discount;
 
+  /// Breakdown of the discount into its components.
+  ///
+  /// This will be empty if there is no discount present.
+  core.List<GoogleCloudChannelV1DiscountComponent>? discountComponents;
+
   /// Effective Price after applying the discounts.
   GoogleTypeMoney? effectivePrice;
 
   /// Link to external price list, such as link to Google Voice rate card.
   core.String? externalPriceUri;
 
+  /// The time period with respect to which base and effective prices are
+  /// defined.
+  ///
+  /// Example: 1 month, 6 months, 1 year, etc.
+  GoogleCloudChannelV1Period? pricePeriod;
+
   GoogleCloudChannelV1Price({
     this.basePrice,
     this.discount,
+    this.discountComponents,
     this.effectivePrice,
     this.externalPriceUri,
+    this.pricePeriod,
   });
 
   GoogleCloudChannelV1Price.fromJson(core.Map json_)
@@ -7135,6 +7195,14 @@ class GoogleCloudChannelV1Price {
                 )
                 : null,
         discount: (json_['discount'] as core.num?)?.toDouble(),
+        discountComponents:
+            (json_['discountComponents'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudChannelV1DiscountComponent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         effectivePrice:
             json_.containsKey('effectivePrice')
                 ? GoogleTypeMoney.fromJson(
@@ -7143,13 +7211,21 @@ class GoogleCloudChannelV1Price {
                 )
                 : null,
         externalPriceUri: json_['externalPriceUri'] as core.String?,
+        pricePeriod:
+            json_.containsKey('pricePeriod')
+                ? GoogleCloudChannelV1Period.fromJson(
+                  json_['pricePeriod'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (basePrice != null) 'basePrice': basePrice!,
     if (discount != null) 'discount': discount!,
+    if (discountComponents != null) 'discountComponents': discountComponents!,
     if (effectivePrice != null) 'effectivePrice': effectivePrice!,
     if (externalPriceUri != null) 'externalPriceUri': externalPriceUri!,
+    if (pricePeriod != null) 'pricePeriod': pricePeriod!,
   };
 }
 
@@ -8980,7 +9056,7 @@ typedef GoogleTypeMoney = $Money;
 /// with UI elements for input or editing of fields outside countries where that
 /// field is used. For more guidance on how to use this schema, see:
 /// https://support.google.com/business/answer/6397478.
-typedef GoogleTypePostalAddress = $PostalAddress00;
+typedef GoogleTypePostalAddress = $PostalAddress;
 
 /// Represents a time zone from the
 /// [IANA Time Zone Database](https://www.iana.org/time-zones).

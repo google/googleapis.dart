@@ -2866,6 +2866,7 @@ api.Image buildImage() {
   if (buildCounterImage < 3) {
     o.contentDescription = buildLocalizedString();
     o.kind = 'foo';
+    o.privateImageId = 'foo';
     o.sourceUri = buildImageUri();
   }
   buildCounterImage--;
@@ -2877,6 +2878,7 @@ void checkImage(api.Image o) {
   if (buildCounterImage < 3) {
     checkLocalizedString(o.contentDescription!);
     unittest.expect(o.kind!, unittest.equals('foo'));
+    unittest.expect(o.privateImageId!, unittest.equals('foo'));
     checkImageUri(o.sourceUri!);
   }
   buildCounterImage--;
@@ -3871,6 +3873,7 @@ api.MediaRequestInfo buildMediaRequestInfo() {
     o.diffObjectVersion = 'foo';
     o.finalStatus = 42;
     o.notificationType = 'foo';
+    o.physicalHeaders = 'foo';
     o.requestId = 'foo';
     o.requestReceivedParamsServingInfo = 'foo';
     o.totalBytes = 'foo';
@@ -3888,6 +3891,7 @@ void checkMediaRequestInfo(api.MediaRequestInfo o) {
     unittest.expect(o.diffObjectVersion!, unittest.equals('foo'));
     unittest.expect(o.finalStatus!, unittest.equals(42));
     unittest.expect(o.notificationType!, unittest.equals('foo'));
+    unittest.expect(o.physicalHeaders!, unittest.equals('foo'));
     unittest.expect(o.requestId!, unittest.equals('foo'));
     unittest.expect(
       o.requestReceivedParamsServingInfo!,

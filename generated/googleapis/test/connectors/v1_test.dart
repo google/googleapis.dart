@@ -763,7 +763,7 @@ api.ConnectorInfraConfig buildConnectorInfraConfig() {
     o.maxInstanceRequestConcurrency = 42;
     o.migrateDeploymentModel = true;
     o.migrateTls = true;
-    o.networkEgressMode = 'foo';
+    o.networkEgressModeOverride = buildNetworkEgressModeOverride();
     o.provisionCloudSpanner = true;
     o.provisionMemstore = true;
     o.ratelimitThreshold = 'foo';
@@ -793,7 +793,7 @@ void checkConnectorInfraConfig(api.ConnectorInfraConfig o) {
     unittest.expect(o.maxInstanceRequestConcurrency!, unittest.equals(42));
     unittest.expect(o.migrateDeploymentModel!, unittest.isTrue);
     unittest.expect(o.migrateTls!, unittest.isTrue);
-    unittest.expect(o.networkEgressMode!, unittest.equals('foo'));
+    checkNetworkEgressModeOverride(o.networkEgressModeOverride!);
     unittest.expect(o.provisionCloudSpanner!, unittest.isTrue);
     unittest.expect(o.provisionMemstore!, unittest.isTrue);
     unittest.expect(o.ratelimitThreshold!, unittest.equals('foo'));
@@ -3880,6 +3880,29 @@ void checkNetworkConfig(api.NetworkConfig o) {
   buildCounterNetworkConfig--;
 }
 
+core.int buildCounterNetworkEgressModeOverride = 0;
+api.NetworkEgressModeOverride buildNetworkEgressModeOverride() {
+  final o = api.NetworkEgressModeOverride();
+  buildCounterNetworkEgressModeOverride++;
+  if (buildCounterNetworkEgressModeOverride < 3) {
+    o.isEventingOverrideEnabled = true;
+    o.isJobsOverrideEnabled = true;
+    o.networkEgressMode = 'foo';
+  }
+  buildCounterNetworkEgressModeOverride--;
+  return o;
+}
+
+void checkNetworkEgressModeOverride(api.NetworkEgressModeOverride o) {
+  buildCounterNetworkEgressModeOverride++;
+  if (buildCounterNetworkEgressModeOverride < 3) {
+    unittest.expect(o.isEventingOverrideEnabled!, unittest.isTrue);
+    unittest.expect(o.isJobsOverrideEnabled!, unittest.isTrue);
+    unittest.expect(o.networkEgressMode!, unittest.equals('foo'));
+  }
+  buildCounterNetworkEgressModeOverride--;
+}
+
 core.int buildCounterNodeConfig = 0;
 api.NodeConfig buildNodeConfig() {
   final o = api.NodeConfig();
@@ -6532,6 +6555,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkNetworkConfig(od);
+    });
+  });
+
+  unittest.group('obj-schema-NetworkEgressModeOverride', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildNetworkEgressModeOverride();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.NetworkEgressModeOverride.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkNetworkEgressModeOverride(od);
     });
   });
 

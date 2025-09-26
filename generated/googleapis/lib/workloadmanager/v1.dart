@@ -136,9 +136,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1181,22 +1181,77 @@ class AgentStates {
   /// Optional.
   core.String? availableVersion;
 
+  /// HANA monitoring metrics of the agent.
+  ///
+  /// Optional.
+  ServiceStates? hanaMonitoring;
+
   /// The installed version of the agent on the host.
   ///
   /// Optional.
   core.String? installedVersion;
 
-  AgentStates({this.availableVersion, this.installedVersion});
+  /// Whether the agent is fully enabled.
+  ///
+  /// If false, the agent is has some issues.
+  ///
+  /// Optional.
+  core.bool? isFullyEnabled;
+
+  /// The Process metrics of the agent.
+  ///
+  /// Optional.
+  ServiceStates? processMetrics;
+
+  /// The System discovery metrics of the agent.
+  ///
+  /// Optional.
+  ServiceStates? systemDiscovery;
+
+  AgentStates({
+    this.availableVersion,
+    this.hanaMonitoring,
+    this.installedVersion,
+    this.isFullyEnabled,
+    this.processMetrics,
+    this.systemDiscovery,
+  });
 
   AgentStates.fromJson(core.Map json_)
     : this(
         availableVersion: json_['availableVersion'] as core.String?,
+        hanaMonitoring:
+            json_.containsKey('hanaMonitoring')
+                ? ServiceStates.fromJson(
+                  json_['hanaMonitoring']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         installedVersion: json_['installedVersion'] as core.String?,
+        isFullyEnabled: json_['isFullyEnabled'] as core.bool?,
+        processMetrics:
+            json_.containsKey('processMetrics')
+                ? ServiceStates.fromJson(
+                  json_['processMetrics']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        systemDiscovery:
+            json_.containsKey('systemDiscovery')
+                ? ServiceStates.fromJson(
+                  json_['systemDiscovery']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (availableVersion != null) 'availableVersion': availableVersion!,
+    if (hanaMonitoring != null) 'hanaMonitoring': hanaMonitoring!,
     if (installedVersion != null) 'installedVersion': installedVersion!,
+    if (isFullyEnabled != null) 'isFullyEnabled': isFullyEnabled!,
+    if (processMetrics != null) 'processMetrics': processMetrics!,
+    if (systemDiscovery != null) 'systemDiscovery': systemDiscovery!,
   };
 }
 
@@ -1643,7 +1698,7 @@ class CloudResource {
   /// Output only.
   InstanceProperties? instanceProperties;
 
-  /// ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.
+  ///
   ///
   /// Output only.
   /// Possible string values are:
@@ -1661,7 +1716,8 @@ class CloudResource {
   /// - "RESOURCE_KIND_INSTANCE_GROUP" : This is a compute instance group.
   core.String? kind;
 
-  /// resource name
+  /// resource name Example:
+  /// compute.googleapis.com/projects/wlm-obs-dev/zones/us-central1-a/instances/sap-pri
   ///
   /// Output only.
   core.String? name;
@@ -1923,6 +1979,15 @@ class Execution {
   /// Output only.
   core.String? endTime;
 
+  /// Engine
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ENGINE_UNSPECIFIED" : The original CG
+  /// - "ENGINE_SCANNER" : SlimCG / Scanner
+  /// - "V2" : Evaluation Engine V2
+  core.String? engine;
+
   /// Evaluation ID
   ///
   /// Output only.
@@ -1987,6 +2052,7 @@ class Execution {
 
   Execution({
     this.endTime,
+    this.engine,
     this.evaluationId,
     this.externalDataSources,
     this.inventoryTime,
@@ -2003,6 +2069,7 @@ class Execution {
   Execution.fromJson(core.Map json_)
     : this(
         endTime: json_['endTime'] as core.String?,
+        engine: json_['engine'] as core.String?,
         evaluationId: json_['evaluationId'] as core.String?,
         externalDataSources:
             (json_['externalDataSources'] as core.List?)
@@ -2046,6 +2113,7 @@ class Execution {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (endTime != null) 'endTime': endTime!,
+    if (engine != null) 'engine': engine!,
     if (evaluationId != null) 'evaluationId': evaluationId!,
     if (externalDataSources != null)
       'externalDataSources': externalDataSources!,
@@ -2214,6 +2282,32 @@ class GceInstanceFilter {
   };
 }
 
+/// The IAM permission status.
+class IAMPermission {
+  /// Whether the permission is granted.
+  ///
+  /// Output only.
+  core.bool? granted;
+
+  /// The name of the permission.
+  ///
+  /// Output only.
+  core.String? name;
+
+  IAMPermission({this.granted, this.name});
+
+  IAMPermission.fromJson(core.Map json_)
+    : this(
+        granted: json_['granted'] as core.bool?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (granted != null) 'granted': granted!,
+    if (name != null) 'name': name!,
+  };
+}
+
 /// A presentation of host resource usage where the workload runs.
 class Insight {
   /// The insights data for the agent status.
@@ -2221,8 +2315,11 @@ class Insight {
 
   /// The instance id where the insight is generated from
   ///
-  /// Required.
+  /// Optional.
   core.String? instanceId;
+
+  /// The insights data for the OpenShift workload validation.
+  OpenShiftValidation? openShiftValidation;
 
   /// The insights data for SAP system discovery.
   ///
@@ -2247,6 +2344,7 @@ class Insight {
   Insight({
     this.agentStatus,
     this.instanceId,
+    this.openShiftValidation,
     this.sapDiscovery,
     this.sapValidation,
     this.sentTime,
@@ -2263,6 +2361,13 @@ class Insight {
                 )
                 : null,
         instanceId: json_['instanceId'] as core.String?,
+        openShiftValidation:
+            json_.containsKey('openShiftValidation')
+                ? OpenShiftValidation.fromJson(
+                  json_['openShiftValidation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sapDiscovery:
             json_.containsKey('sapDiscovery')
                 ? SapDiscovery.fromJson(
@@ -2295,6 +2400,8 @@ class Insight {
   core.Map<core.String, core.dynamic> toJson() => {
     if (agentStatus != null) 'agentStatus': agentStatus!,
     if (instanceId != null) 'instanceId': instanceId!,
+    if (openShiftValidation != null)
+      'openShiftValidation': openShiftValidation!,
     if (sapDiscovery != null) 'sapDiscovery': sapDiscovery!,
     if (sapValidation != null) 'sapValidation': sapValidation!,
     if (sentTime != null) 'sentTime': sentTime!,
@@ -2678,6 +2785,11 @@ class Notice {
   };
 }
 
+/// A presentation of OpenShift workload insight.
+///
+/// The schema of OpenShift workloads validation related data.
+typedef OpenShiftValidation = $Empty;
+
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
 class Operation {
@@ -2892,6 +3004,13 @@ class Rule {
   /// Output only.
   core.String? revisionId;
 
+  /// The type of the rule.
+  /// Possible string values are:
+  /// - "RULE_TYPE_UNSPECIFIED" : Not specified.
+  /// - "BASELINE" : Baseline rules
+  /// - "CUSTOM" : Custom rules
+  core.String? ruleType;
+
   /// the secondary category
   core.String? secondaryCategory;
 
@@ -2912,6 +3031,7 @@ class Rule {
     this.primaryCategory,
     this.remediation,
     this.revisionId,
+    this.ruleType,
     this.secondaryCategory,
     this.severity,
     this.tags,
@@ -2927,6 +3047,7 @@ class Rule {
         primaryCategory: json_['primaryCategory'] as core.String?,
         remediation: json_['remediation'] as core.String?,
         revisionId: json_['revisionId'] as core.String?,
+        ruleType: json_['ruleType'] as core.String?,
         secondaryCategory: json_['secondaryCategory'] as core.String?,
         severity: json_['severity'] as core.String?,
         tags:
@@ -2944,6 +3065,7 @@ class Rule {
     if (primaryCategory != null) 'primaryCategory': primaryCategory!,
     if (remediation != null) 'remediation': remediation!,
     if (revisionId != null) 'revisionId': revisionId!,
+    if (ruleType != null) 'ruleType': ruleType!,
     if (secondaryCategory != null) 'secondaryCategory': secondaryCategory!,
     if (severity != null) 'severity': severity!,
     if (tags != null) 'tags': tags!,
@@ -4319,6 +4441,47 @@ class ScannedResource {
   };
 }
 
+/// The state of the service.
+class ServiceStates {
+  /// The IAM permissions for the service.
+  ///
+  /// Optional. Output only.
+  core.List<IAMPermission>? iamPermissions;
+
+  /// The overall state of the service.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "CONFIG_FAILURE" : The state means the service has config errors.
+  /// - "IAM_FAILURE" : The state means the service has IAM permission errors.
+  /// - "FUNCTIONALITY_FAILURE" : The state means the service has functionality
+  /// errors.
+  /// - "ENABLED" : The state means the service has no error.
+  /// - "DISABLED" : The state means the service disabled.
+  core.String? state;
+
+  ServiceStates({this.iamPermissions, this.state});
+
+  ServiceStates.fromJson(core.Map json_)
+    : this(
+        iamPermissions:
+            (json_['iamPermissions'] as core.List?)
+                ?.map(
+                  (value) => IAMPermission.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (iamPermissions != null) 'iamPermissions': iamPermissions!,
+    if (state != null) 'state': state!,
+  };
+}
+
 /// * A ShellCommand is invoked via the agent's command line executor
 class ShellCommand {
   /// args is a string of arguments to be passed to the command.
@@ -4525,7 +4688,7 @@ class TorsoValidation {
   /// instance_name lists the human readable name of the instance that the data
   /// comes from.
   ///
-  /// Required.
+  /// Optional.
   core.String? instanceName;
 
   /// project_id lists the human readable cloud project that the data comes

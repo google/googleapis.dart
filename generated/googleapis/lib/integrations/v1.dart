@@ -3020,6 +3020,49 @@ class ProjectsLocationsIntegrationsVersionsResource {
     );
   }
 
+  /// Execute the integration in draft state
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Auto-generated primary key.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/integrations/\[^/\]+/versions/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudIntegrationsV1alphaTestIntegrationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudIntegrationsV1alphaTestIntegrationsResponse> test(
+    GoogleCloudIntegrationsV1alphaTestIntegrationsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':test';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudIntegrationsV1alphaTestIntegrationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Sets the status of the ACTIVE integration to SNAPSHOT with a new tag
   /// "PREVIOUSLY_PUBLISHED" after validating it.
   ///

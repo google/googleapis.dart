@@ -172,9 +172,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1291,8 +1291,55 @@ class AttachedDisk {
   };
 }
 
+/// Sets the boot disk configuration for the TPU node.
+class BootDiskConfig {
+  /// Customer encryption key for boot disk.
+  ///
+  /// Optional.
+  CustomerEncryptionKey? customerEncryptionKey;
+
+  BootDiskConfig({this.customerEncryptionKey});
+
+  BootDiskConfig.fromJson(core.Map json_)
+    : this(
+        customerEncryptionKey:
+            json_.containsKey('customerEncryptionKey')
+                ? CustomerEncryptionKey.fromJson(
+                  json_['customerEncryptionKey']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (customerEncryptionKey != null)
+      'customerEncryptionKey': customerEncryptionKey!,
+  };
+}
+
 /// Further data for the creating state.
 typedef CreatingData = $Empty;
+
+/// Defines the customer encryption key for disk encryption.
+class CustomerEncryptionKey {
+  /// The name of the encryption key that is stored in Google Cloud KMS.
+  ///
+  /// For example: "kmsKeyName":
+  /// "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY
+  /// The fully-qualifed key name may be returned for resource GET requests. For
+  /// example: "kmsKeyName":
+  /// "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1
+  core.String? kmsKeyName;
+
+  CustomerEncryptionKey({this.kmsKeyName});
+
+  CustomerEncryptionKey.fromJson(core.Map json_)
+    : this(kmsKeyName: json_['kmsKeyName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+  };
+}
 
 /// Further data for the deleting state.
 typedef DeletingData = $Empty;
@@ -1859,6 +1906,11 @@ class Node {
   /// - "V2" : TPU API V2 version.
   core.String? apiVersion;
 
+  /// Boot disk configuration.
+  ///
+  /// Optional.
+  BootDiskConfig? bootDiskConfig;
+
   /// The CIDR block that the TPU node will use when selecting an IP address.
   ///
   /// This CIDR block must be a /29 block; the Compute Engine networks API
@@ -2011,6 +2063,7 @@ class Node {
     this.acceleratorConfig,
     this.acceleratorType,
     this.apiVersion,
+    this.bootDiskConfig,
     this.cidrBlock,
     this.createTime,
     this.dataDisks,
@@ -2047,6 +2100,13 @@ class Node {
                 : null,
         acceleratorType: json_['acceleratorType'] as core.String?,
         apiVersion: json_['apiVersion'] as core.String?,
+        bootDiskConfig:
+            json_.containsKey('bootDiskConfig')
+                ? BootDiskConfig.fromJson(
+                  json_['bootDiskConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         cidrBlock: json_['cidrBlock'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         dataDisks:
@@ -2139,6 +2199,7 @@ class Node {
     if (acceleratorConfig != null) 'acceleratorConfig': acceleratorConfig!,
     if (acceleratorType != null) 'acceleratorType': acceleratorType!,
     if (apiVersion != null) 'apiVersion': apiVersion!,
+    if (bootDiskConfig != null) 'bootDiskConfig': bootDiskConfig!,
     if (cidrBlock != null) 'cidrBlock': cidrBlock!,
     if (createTime != null) 'createTime': createTime!,
     if (dataDisks != null) 'dataDisks': dataDisks!,

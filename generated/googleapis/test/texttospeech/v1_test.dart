@@ -422,6 +422,7 @@ api.SynthesisInput buildSynthesisInput() {
     o.customPronunciations = buildCustomPronunciations();
     o.markup = 'foo';
     o.multiSpeakerMarkup = buildMultiSpeakerMarkup();
+    o.prompt = 'foo';
     o.ssml = 'foo';
     o.text = 'foo';
   }
@@ -435,6 +436,7 @@ void checkSynthesisInput(api.SynthesisInput o) {
     checkCustomPronunciations(o.customPronunciations!);
     unittest.expect(o.markup!, unittest.equals('foo'));
     checkMultiSpeakerMarkup(o.multiSpeakerMarkup!);
+    unittest.expect(o.prompt!, unittest.equals('foo'));
     unittest.expect(o.ssml!, unittest.equals('foo'));
     unittest.expect(o.text!, unittest.equals('foo'));
   }
@@ -590,6 +592,7 @@ api.VoiceSelectionParams buildVoiceSelectionParams() {
   if (buildCounterVoiceSelectionParams < 3) {
     o.customVoice = buildCustomVoiceParams();
     o.languageCode = 'foo';
+    o.modelName = 'foo';
     o.name = 'foo';
     o.ssmlGender = 'foo';
     o.voiceClone = buildVoiceCloneParams();
@@ -603,6 +606,7 @@ void checkVoiceSelectionParams(api.VoiceSelectionParams o) {
   if (buildCounterVoiceSelectionParams < 3) {
     checkCustomVoiceParams(o.customVoice!);
     unittest.expect(o.languageCode!, unittest.equals('foo'));
+    unittest.expect(o.modelName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.ssmlGender!, unittest.equals('foo'));
     checkVoiceCloneParams(o.voiceClone!);

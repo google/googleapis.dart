@@ -14,7 +14,7 @@
 
 /// Cloud Dataplex API - v1
 ///
-/// Dataplex API is used to manage the lifecycle of data lakes.
+/// A unified, intelligent governance solution for data and AI assets.
 ///
 /// For more information, see <https://cloud.google.com/dataplex/docs>
 ///
@@ -74,7 +74,7 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
-/// Dataplex API is used to manage the lifecycle of data lakes.
+/// A unified, intelligent governance solution for data and AI assets.
 class CloudDataplexApi {
   /// See, edit, configure, and delete your Google Cloud data and see the email
   /// address for your Google Account.
@@ -807,9 +807,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -860,6 +860,12 @@ class ProjectsLocationsResource {
   }
 
   /// Looks up an entry by name using the permission on the source system.
+  ///
+  /// Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
+  /// Metastore metadata that is stored in Dataplex Universal Catalog is
+  /// changing. For more information, see Changes to metadata stored in Dataplex
+  /// Universal Catalog
+  /// (https://cloud.google.com/dataplex/docs/metadata-changes).
   ///
   /// Request parameters:
   ///
@@ -935,8 +941,7 @@ class ProjectsLocationsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [orderBy] - Optional. Specifies the ordering of results. Supported values
-  /// are: relevance (default) last_modified_timestamp last_modified_timestamp
-  /// asc
+  /// are: relevance last_modified_timestamp last_modified_timestamp asc
   ///
   /// [pageSize] - Optional. Number of results in the search page. If \<=0, then
   /// defaults to 10. Max limit for page_size is 1000. Throws an invalid
@@ -946,8 +951,8 @@ class ProjectsLocationsResource {
   /// call. Provide this to retrieve the subsequent page.
   ///
   /// [query] - Required. The query against which entries in scope should be
-  /// matched. The query syntax is defined in Search syntax for Dataplex Catalog
-  /// (https://cloud.google.com/dataplex/docs/search-syntax).
+  /// matched. The query syntax is defined in Search syntax for Dataplex
+  /// Universal Catalog (https://cloud.google.com/dataplex/docs/search-syntax).
   ///
   /// [scope] - Optional. The scope under which the search should be operating.
   /// It must either be organizations/ or projects/. If it is unspecified, it
@@ -1879,65 +1884,6 @@ class ProjectsLocationsDataProductsResource {
   ProjectsLocationsDataProductsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/dataProducts/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy.Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected.Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset.The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1.To learn which resources support
-  /// conditions in their IAM policies, see the IAM documentation
-  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
   /// Sets the access control policy on the specified resource.
   ///
   /// Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and
@@ -2045,65 +1991,6 @@ class ProjectsLocationsDataProductsDataAssetsResource {
 
   ProjectsLocationsDataProductsDataAssetsResource(commons.ApiRequester client)
     : _requester = client;
-
-  /// Gets the access control policy for a resource.
-  ///
-  /// Returns an empty policy if the resource exists and does not have a policy
-  /// set.
-  ///
-  /// Request parameters:
-  ///
-  /// [resource] - REQUIRED: The resource for which the policy is being
-  /// requested. See Resource names
-  /// (https://cloud.google.com/apis/design/resource_names) for the appropriate
-  /// value for this field.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/dataProducts/\[^/\]+/dataAssets/\[^/\]+$`.
-  ///
-  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
-  /// that will be used to format the policy.Valid values are 0, 1, and 3.
-  /// Requests specifying an invalid value will be rejected.Requests for
-  /// policies with any conditional role bindings must specify version 3.
-  /// Policies with no conditional role bindings may specify any valid value or
-  /// leave the field unset.The policy in the response might use the policy
-  /// version that you specified, or it might use a lower policy version. For
-  /// example, if you specify version 3, but the policy has no conditional role
-  /// bindings, the response uses version 1.To learn which resources support
-  /// conditions in their IAM policies, see the IAM documentation
-  /// (https://cloud.google.com/iam/help/conditions/resource-policies).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleIamV1Policy].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleIamV1Policy> getIamPolicy(
-    core.String resource, {
-    core.int? options_requestedPolicyVersion,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (options_requestedPolicyVersion != null)
-        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return GoogleIamV1Policy.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
 
   /// Sets the access control policy on the specified resource.
   ///
@@ -4327,6 +4214,12 @@ class ProjectsLocationsEntryGroupsEntriesResource {
 
   /// Gets an Entry.
   ///
+  /// Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
+  /// Metastore metadata that is stored in Dataplex Universal Catalog is
+  /// changing. For more information, see Changes to metadata stored in Dataplex
+  /// Universal Catalog
+  /// (https://cloud.google.com/dataplex/docs/metadata-changes).
+  ///
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the Entry:
@@ -4389,6 +4282,12 @@ class ProjectsLocationsEntryGroupsEntriesResource {
   }
 
   /// Lists Entries within an EntryGroup.
+  ///
+  /// Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc
+  /// Metastore metadata that is stored in Dataplex Universal Catalog is
+  /// changing. For more information, see Changes to metadata stored in Dataplex
+  /// Universal Catalog
+  /// (https://cloud.google.com/dataplex/docs/metadata-changes).
   ///
   /// Request parameters:
   ///
@@ -10607,8 +10506,8 @@ class ProjectsLocationsMetadataJobsResource {
 
   /// Creates a metadata job.
   ///
-  /// For example, use a metadata job to import Dataplex Catalog entries and
-  /// aspects from a third-party system into Dataplex.
+  /// For example, use a metadata job to import metadata from a third-party
+  /// system into Dataplex Universal Catalog.
   ///
   /// [request] - The metadata request object.
   ///
@@ -11541,8 +11440,8 @@ class GoogleCloudDataplexV1AspectType {
 /// Authorization for an AspectType.
 class GoogleCloudDataplexV1AspectTypeAuthorization {
   /// The IAM permission grantable on the EntryGroup to allow access to
-  /// instantiate Aspects of Dataplex owned AspectTypes, only settable for
-  /// Dataplex owned Types.
+  /// instantiate Aspects of Dataplex Universal Catalog owned AspectTypes, only
+  /// settable for Dataplex Universal Catalog owned Types.
   ///
   /// Immutable.
   core.String? alternateUsePermission;
@@ -13329,6 +13228,196 @@ class GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions {
   };
 }
 
+/// The output of a DataDocumentation scan.
+class GoogleCloudDataplexV1DataDocumentationResult {
+  /// Table result for insights.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationResultTableResult? tableResult;
+
+  GoogleCloudDataplexV1DataDocumentationResult({this.tableResult});
+
+  GoogleCloudDataplexV1DataDocumentationResult.fromJson(core.Map json_)
+    : this(
+        tableResult:
+            json_.containsKey('tableResult')
+                ? GoogleCloudDataplexV1DataDocumentationResultTableResult.fromJson(
+                  json_['tableResult'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (tableResult != null) 'tableResult': tableResult!,
+  };
+}
+
+/// Column of a table with generated metadata and nested fields.
+class GoogleCloudDataplexV1DataDocumentationResultField {
+  /// Generated description for columns and fields.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// Nested fields.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataDocumentationResultField>? fields;
+
+  /// The name of the column.
+  ///
+  /// Output only.
+  core.String? name;
+
+  GoogleCloudDataplexV1DataDocumentationResultField({
+    this.description,
+    this.fields,
+    this.name,
+  });
+
+  GoogleCloudDataplexV1DataDocumentationResultField.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDataplexV1DataDocumentationResultField.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (description != null) 'description': description!,
+    if (fields != null) 'fields': fields!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// A sample SQL query in data documentation.
+class GoogleCloudDataplexV1DataDocumentationResultQuery {
+  /// The description for the query.
+  ///
+  /// Output only.
+  core.String? description;
+
+  /// The SQL query string which can be executed.
+  ///
+  /// Output only.
+  core.String? sql;
+
+  GoogleCloudDataplexV1DataDocumentationResultQuery({
+    this.description,
+    this.sql,
+  });
+
+  GoogleCloudDataplexV1DataDocumentationResultQuery.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        sql: json_['sql'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (description != null) 'description': description!,
+    if (sql != null) 'sql': sql!,
+  };
+}
+
+/// Schema of the table with generated metadata of columns.
+class GoogleCloudDataplexV1DataDocumentationResultSchema {
+  /// The list of columns.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataDocumentationResultField>? fields;
+
+  GoogleCloudDataplexV1DataDocumentationResultSchema({this.fields});
+
+  GoogleCloudDataplexV1DataDocumentationResultSchema.fromJson(core.Map json_)
+    : this(
+        fields:
+            (json_['fields'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDataplexV1DataDocumentationResultField.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fields != null) 'fields': fields!,
+  };
+}
+
+/// Generated metadata about the table.
+class GoogleCloudDataplexV1DataDocumentationResultTableResult {
+  /// The service-qualified full resource name of the cloud resource.
+  ///
+  /// Ex:
+  /// bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Generated description of the table.
+  ///
+  /// Output only.
+  core.String? overview;
+
+  /// Sample SQL queries for the table.
+  ///
+  /// Output only.
+  core.List<GoogleCloudDataplexV1DataDocumentationResultQuery>? queries;
+
+  /// Schema of the table with generated metadata of the columns in the schema.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationResultSchema? schema;
+
+  GoogleCloudDataplexV1DataDocumentationResultTableResult({
+    this.name,
+    this.overview,
+    this.queries,
+    this.schema,
+  });
+
+  GoogleCloudDataplexV1DataDocumentationResultTableResult.fromJson(
+    core.Map json_,
+  ) : this(
+        name: json_['name'] as core.String?,
+        overview: json_['overview'] as core.String?,
+        queries:
+            (json_['queries'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDataplexV1DataDocumentationResultQuery.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        schema:
+            json_.containsKey('schema')
+                ? GoogleCloudDataplexV1DataDocumentationResultSchema.fromJson(
+                  json_['schema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (overview != null) 'overview': overview!,
+    if (queries != null) 'queries': queries!,
+    if (schema != null) 'schema': schema!,
+  };
+}
+
+/// DataDocumentation scan related spec.
+typedef GoogleCloudDataplexV1DataDocumentationSpec = $Empty;
+
 /// DataProfileResult defines the output of DataProfileScan.
 ///
 /// Each field of the table will have field type specific profile result.
@@ -13340,12 +13429,18 @@ class GoogleCloudDataplexV1DataProfileResult {
   postScanActionsResult;
 
   /// The profile information per field.
+  ///
+  /// Output only.
   GoogleCloudDataplexV1DataProfileResultProfile? profile;
 
   /// The count of rows scanned.
+  ///
+  /// Output only.
   core.String? rowCount;
 
   /// The data scanned for this result.
+  ///
+  /// Output only.
   GoogleCloudDataplexV1ScannedData? scannedData;
 
   GoogleCloudDataplexV1DataProfileResult({
@@ -13425,6 +13520,8 @@ typedef GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExpor
 /// Contains name, type, mode and field type specific profile information.
 class GoogleCloudDataplexV1DataProfileResultProfile {
   /// List of fields with structural and profile information for each field.
+  ///
+  /// Output only.
   core.List<GoogleCloudDataplexV1DataProfileResultProfileField>? fields;
 
   GoogleCloudDataplexV1DataProfileResultProfile({this.fields});
@@ -13453,20 +13550,28 @@ class GoogleCloudDataplexV1DataProfileResultProfileField {
   ///
   /// Possible values include: REQUIRED, if it is a required field. NULLABLE, if
   /// it is an optional field. REPEATED, if it is a repeated field.
+  ///
+  /// Output only.
   core.String? mode;
 
   /// The name of the field.
+  ///
+  /// Output only.
   core.String? name;
 
   /// Profile information for the corresponding field.
+  ///
+  /// Output only.
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo? profile;
 
   /// The data type retrieved from the schema of the data source.
   ///
   /// For instance, for a BigQuery native table, it is the BigQuery Table Schema
   /// (https://cloud.google.com/bigquery/docs/reference/rest/v2/tables#tablefieldschema).
-  /// For a Dataplex Entity, it is the Entity Schema
+  /// For a Dataplex Universal Catalog Entity, it is the Entity Schema
   /// (https://cloud.google.com/dataplex/docs/reference/rpc/google.cloud.dataplex.v1#type_3).
+  ///
+  /// Output only.
   core.String? type;
 
   GoogleCloudDataplexV1DataProfileResultProfileField({
@@ -13503,6 +13608,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   ///
   /// Not available for complex non-groupable field type, including RECORD,
   /// ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE mode.
+  ///
+  /// Output only.
   core.double? distinctRatio;
 
   /// Double type field information.
@@ -13514,6 +13621,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   integerProfile;
 
   /// Ratio of rows with null value against total scanned rows.
+  ///
+  /// Output only.
   core.double? nullRatio;
 
   /// String type field information.
@@ -13527,6 +13636,8 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   /// is smaller. Not available for complex non-groupable field type, including
   /// RECORD, ARRAY, GEOGRAPHY, and JSON, as well as fields with REPEATABLE
   /// mode.
+  ///
+  /// Output only.
   core.List<
     GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue
   >?
@@ -13591,16 +13702,22 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
   /// Average of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.double? average;
 
   /// Maximum of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.double? max;
 
   /// Minimum of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.double? min;
 
   /// A quartile divides the number of data points into four parts, or quarters,
@@ -13615,11 +13732,15 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldIn
   /// quartile, as 75% of the data lies below this point. Here, the quartiles is
   /// provided as an ordered list of quartile values for the scanned data,
   /// occurring in order Q1, median, Q3.
+  ///
+  /// Output only.
   core.List<core.double>? quartiles;
 
   /// Standard deviation of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.double? standardDeviation;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo({
@@ -13658,16 +13779,22 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
   /// Average of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.double? average;
 
   /// Maximum of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.String? max;
 
   /// Minimum of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.String? min;
 
   /// A quartile divides the number of data points into four parts, or quarters,
@@ -13682,11 +13809,15 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
   /// quartile, as 75% of the data lies below this point. Here, the quartiles is
   /// provided as an ordered list of approximate quartile values for the scanned
   /// data, occurring in order Q1, median, Q3.
+  ///
+  /// Output only.
   core.List<core.String>? quartiles;
 
   /// Standard deviation of non-null values in the scanned data.
   ///
   /// NaN, if the field has a NaN.
+  ///
+  /// Output only.
   core.double? standardDeviation;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo({
@@ -13723,12 +13854,18 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldI
 /// The profile information for a string type field.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo {
   /// Average length of non-null values in the scanned data.
+  ///
+  /// Output only.
   core.double? averageLength;
 
   /// Maximum length of non-null values in the scanned data.
+  ///
+  /// Output only.
   core.String? maxLength;
 
   /// Minimum length of non-null values in the scanned data.
+  ///
+  /// Output only.
   core.String? minLength;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo({
@@ -13755,13 +13892,19 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
 /// Top N non-null values in the scanned data.
 class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
   /// Count of the corresponding value in the scanned data.
+  ///
+  /// Output only.
   core.String? count;
 
   /// Ratio of the corresponding value in the field against the total number of
   /// rows in the scanned data.
+  ///
+  /// Output only.
   core.double? ratio;
 
   /// String value of a top N non-null value.
+  ///
+  /// Output only.
   core.String? value;
 
   GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue({
@@ -13808,9 +13951,7 @@ class GoogleCloudDataplexV1DataProfileSpec {
   /// A filter applied to all rows in a single DataScan job.
   ///
   /// The filter needs to be a valid SQL expression for a WHERE clause in
-  /// GoogleSQL syntax
-  /// (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#where_clause).Example:
-  /// col1 \>= 0 AND col2 \< 10
+  /// BigQuery standard SQL syntax. Example: col1 \>= 0 AND col2 \< 10
   ///
   /// Optional.
   core.String? rowFilter;
@@ -13899,7 +14040,6 @@ class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
   ///
   /// Format:
   /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
-  /// or projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
   ///
   /// Optional.
   core.String? resultsTable;
@@ -14007,7 +14147,7 @@ class GoogleCloudDataplexV1DataQualityDimension {
   /// Custom dimension name is supported with all uppercase letters and maximum
   /// length of 30 characters.
   ///
-  /// Optional.
+  /// Output only.
   core.String? name;
 
   GoogleCloudDataplexV1DataQualityDimension({this.name});
@@ -14067,7 +14207,8 @@ class GoogleCloudDataplexV1DataQualityDimensionResult {
 
 /// The output of a DataQualityScan.
 class GoogleCloudDataplexV1DataQualityResult {
-  /// The status of publishing the data scan to Catalog.
+  /// The status of publishing the data scan as Dataplex Universal Catalog
+  /// metadata.
   ///
   /// Output only.
   GoogleCloudDataplexV1DataScanCatalogPublishingStatus? catalogPublishingStatus;
@@ -14752,8 +14893,8 @@ typedef GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation = $Empty;
 
 /// DataQualityScan related setting.
 class GoogleCloudDataplexV1DataQualitySpec {
-  /// If set, the latest DataScan job result will be published to Dataplex
-  /// Catalog.
+  /// If set, the latest DataScan job result will be published as Dataplex
+  /// Universal Catalog metadata.
   ///
   /// Optional.
   core.bool? catalogPublishingEnabled;
@@ -15038,7 +15179,11 @@ class GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
 /// (https://cloud.google.com/dataplex/docs/data-profiling-overview). Data
 /// discovery: scans data in Cloud Storage buckets to extract and then catalog
 /// metadata. For more information, see Discover and catalog Cloud Storage data
-/// (https://cloud.google.com/bigquery/docs/automatic-discovery).
+/// (https://cloud.google.com/bigquery/docs/automatic-discovery). Data
+/// documentation: analyzes the table details and generates insights including
+/// descriptions and sample SQL queries for the table. For more information, see
+/// Generate data insights in BigQuery
+/// (https://cloud.google.com/bigquery/docs/data-insights).
 class GoogleCloudDataplexV1DataScan {
   /// The time when the scan was created.
   ///
@@ -15057,6 +15202,14 @@ class GoogleCloudDataplexV1DataScan {
 
   /// Settings for a data discovery scan.
   GoogleCloudDataplexV1DataDiscoverySpec? dataDiscoverySpec;
+
+  /// The result of a data documentation scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationResult? dataDocumentationResult;
+
+  /// Settings for a data documentation scan.
+  GoogleCloudDataplexV1DataDocumentationSpec? dataDocumentationSpec;
 
   /// The result of a data profile scan.
   ///
@@ -15133,6 +15286,7 @@ class GoogleCloudDataplexV1DataScan {
   /// - "DATA_QUALITY" : Data quality scan.
   /// - "DATA_PROFILE" : Data profile scan.
   /// - "DATA_DISCOVERY" : Data discovery scan.
+  /// - "DATA_DOCUMENTATION" : Data documentation scan.
   core.String? type;
 
   /// System generated globally unique ID for the scan.
@@ -15153,6 +15307,8 @@ class GoogleCloudDataplexV1DataScan {
     this.data,
     this.dataDiscoveryResult,
     this.dataDiscoverySpec,
+    this.dataDocumentationResult,
+    this.dataDocumentationSpec,
     this.dataProfileResult,
     this.dataProfileSpec,
     this.dataQualityResult,
@@ -15189,6 +15345,20 @@ class GoogleCloudDataplexV1DataScan {
             json_.containsKey('dataDiscoverySpec')
                 ? GoogleCloudDataplexV1DataDiscoverySpec.fromJson(
                   json_['dataDiscoverySpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataDocumentationResult:
+            json_.containsKey('dataDocumentationResult')
+                ? GoogleCloudDataplexV1DataDocumentationResult.fromJson(
+                  json_['dataDocumentationResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataDocumentationSpec:
+            json_.containsKey('dataDocumentationSpec')
+                ? GoogleCloudDataplexV1DataDocumentationSpec.fromJson(
+                  json_['dataDocumentationSpec']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -15251,6 +15421,10 @@ class GoogleCloudDataplexV1DataScan {
     if (dataDiscoveryResult != null)
       'dataDiscoveryResult': dataDiscoveryResult!,
     if (dataDiscoverySpec != null) 'dataDiscoverySpec': dataDiscoverySpec!,
+    if (dataDocumentationResult != null)
+      'dataDocumentationResult': dataDocumentationResult!,
+    if (dataDocumentationSpec != null)
+      'dataDocumentationSpec': dataDocumentationSpec!,
     if (dataProfileResult != null) 'dataProfileResult': dataProfileResult!,
     if (dataProfileSpec != null) 'dataProfileSpec': dataProfileSpec!,
     if (dataQualityResult != null) 'dataQualityResult': dataQualityResult!,
@@ -15268,7 +15442,8 @@ class GoogleCloudDataplexV1DataScan {
   };
 }
 
-/// The status of publishing the data scan result to Catalog.
+/// The status of publishing the data scan result as Dataplex Universal Catalog
+/// metadata.
 class GoogleCloudDataplexV1DataScanCatalogPublishingStatus {
   /// Execution state for catalog publishing.
   ///
@@ -15379,6 +15554,16 @@ class GoogleCloudDataplexV1DataScanJob {
   /// Output only.
   GoogleCloudDataplexV1DataDiscoverySpec? dataDiscoverySpec;
 
+  /// The result of a data documentation scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationResult? dataDocumentationResult;
+
+  /// Settings for a data documentation scan.
+  ///
+  /// Output only.
+  GoogleCloudDataplexV1DataDocumentationSpec? dataDocumentationSpec;
+
   /// The result of a data profile scan.
   ///
   /// Output only.
@@ -15445,6 +15630,7 @@ class GoogleCloudDataplexV1DataScanJob {
   /// - "DATA_QUALITY" : Data quality scan.
   /// - "DATA_PROFILE" : Data profile scan.
   /// - "DATA_DISCOVERY" : Data discovery scan.
+  /// - "DATA_DOCUMENTATION" : Data documentation scan.
   core.String? type;
 
   /// System generated globally unique ID for the DataScanJob.
@@ -15456,6 +15642,8 @@ class GoogleCloudDataplexV1DataScanJob {
     this.createTime,
     this.dataDiscoveryResult,
     this.dataDiscoverySpec,
+    this.dataDocumentationResult,
+    this.dataDocumentationSpec,
     this.dataProfileResult,
     this.dataProfileSpec,
     this.dataQualityResult,
@@ -15483,6 +15671,20 @@ class GoogleCloudDataplexV1DataScanJob {
             json_.containsKey('dataDiscoverySpec')
                 ? GoogleCloudDataplexV1DataDiscoverySpec.fromJson(
                   json_['dataDiscoverySpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataDocumentationResult:
+            json_.containsKey('dataDocumentationResult')
+                ? GoogleCloudDataplexV1DataDocumentationResult.fromJson(
+                  json_['dataDocumentationResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dataDocumentationSpec:
+            json_.containsKey('dataDocumentationSpec')
+                ? GoogleCloudDataplexV1DataDocumentationSpec.fromJson(
+                  json_['dataDocumentationSpec']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -15528,6 +15730,10 @@ class GoogleCloudDataplexV1DataScanJob {
     if (dataDiscoveryResult != null)
       'dataDiscoveryResult': dataDiscoveryResult!,
     if (dataDiscoverySpec != null) 'dataDiscoverySpec': dataDiscoverySpec!,
+    if (dataDocumentationResult != null)
+      'dataDocumentationResult': dataDocumentationResult!,
+    if (dataDocumentationSpec != null)
+      'dataDocumentationSpec': dataDocumentationSpec!,
     if (dataProfileResult != null) 'dataProfileResult': dataProfileResult!,
     if (dataProfileSpec != null) 'dataProfileSpec': dataProfileSpec!,
     if (dataQualityResult != null) 'dataQualityResult': dataQualityResult!,
@@ -15544,8 +15750,8 @@ class GoogleCloudDataplexV1DataScanJob {
 
 /// The data source for DataScan.
 class GoogleCloudDataplexV1DataSource {
-  /// The Dataplex entity that represents the data source (e.g. BigQuery table)
-  /// for DataScan, of the form:
+  /// The Dataplex Universal Catalog entity that represents the data source
+  /// (e.g. BigQuery table) for DataScan, of the form:
   /// projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}.
   ///
   /// Immutable.
@@ -15556,7 +15762,8 @@ class GoogleCloudDataplexV1DataSource {
   ///
   /// The field could either be: Cloud Storage bucket for DataDiscoveryScan
   /// Format: //storage.googleapis.com/projects/PROJECT_ID/buckets/BUCKET_ID or
-  /// BigQuery table of type "TABLE" for DataProfileScan/DataQualityScan Format:
+  /// BigQuery table of type "TABLE" for
+  /// DataProfileScan/DataQualityScan/DataDocumentationScan Format:
   /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
   ///
   /// Immutable.
@@ -16108,7 +16315,7 @@ class GoogleCloudDataplexV1Entry {
   /// Optional.
   core.Map<core.String, GoogleCloudDataplexV1Aspect>? aspects;
 
-  /// The time when the entry was created in Dataplex.
+  /// The time when the entry was created in Dataplex Universal Catalog.
   ///
   /// Output only.
   core.String? createTime;
@@ -16147,7 +16354,7 @@ class GoogleCloudDataplexV1Entry {
   /// Optional. Immutable.
   core.String? parentEntry;
 
-  /// The time when the entry was last updated in Dataplex.
+  /// The time when the entry was last updated in Dataplex Universal Catalog.
   ///
   /// Output only.
   core.String? updateTime;
@@ -16716,8 +16923,8 @@ class GoogleCloudDataplexV1EntryTypeAspectInfo {
 /// Authorization for an Entry Type.
 class GoogleCloudDataplexV1EntryTypeAuthorization {
   /// The IAM permission grantable on the Entry Group to allow access to
-  /// instantiate Entries of Dataplex owned Entry Types, only settable for
-  /// Dataplex owned Types.
+  /// instantiate Entries of Dataplex Universal Catalog owned Entry Types, only
+  /// settable for Dataplex Universal Catalog owned Types.
   ///
   /// Immutable.
   core.String? alternateUsePermission;
@@ -16987,7 +17194,7 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources {
 
 /// Software Runtime Configuration to run Analyze.
 class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime {
-  /// Dataplex Image version.
+  /// Dataplex Universal Catalog Image version.
   ///
   /// Required.
   core.String? imageVersion;
@@ -17108,8 +17315,8 @@ typedef GoogleCloudDataplexV1GenerateDataQualityRulesRequest = $Empty;
 
 /// Response details for data quality rule recommendations.
 class GoogleCloudDataplexV1GenerateDataQualityRulesResponse {
-  /// The data quality rules that Dataplex generates based on the results of a
-  /// data profiling scan.
+  /// The data quality rules that Dataplex Universal Catalog generates based on
+  /// the results of a data profiling scan.
   core.List<GoogleCloudDataplexV1DataQualityRule>? rule;
 
   GoogleCloudDataplexV1GenerateDataQualityRulesResponse({this.rule});
@@ -17495,7 +17702,7 @@ class GoogleCloudDataplexV1Job {
   /// - "CANCELLED" : The job cancellation was successful.
   /// - "SUCCEEDED" : The job completed successfully.
   /// - "FAILED" : The job is no longer running due to an error.
-  /// - "ABORTED" : The job was cancelled outside of Dataplex.
+  /// - "ABORTED" : The job was cancelled outside of Dataplex Universal Catalog.
   core.String? state;
 
   /// Job execution trigger.
@@ -17503,8 +17710,8 @@ class GoogleCloudDataplexV1Job {
   /// Output only.
   /// Possible string values are:
   /// - "TRIGGER_UNSPECIFIED" : The trigger is unspecified.
-  /// - "TASK_CONFIG" : The job was triggered by Dataplex based on trigger spec
-  /// from task definition.
+  /// - "TASK_CONFIG" : The job was triggered by Dataplex Universal Catalog
+  /// based on trigger spec from task definition.
   /// - "RUN_REQUEST" : The job was triggered by the explicit call of Task API.
   core.String? trigger;
 
@@ -18906,10 +19113,10 @@ class GoogleCloudDataplexV1MetadataJobExportJobSpec {
   ///
   /// You can optionally specify a custom prefix after the bucket name, in the
   /// format gs://{bucket}/{prefix}/. The maximum length of the custom prefix is
-  /// 128 characters. Dataplex constructs the object path for the exported files
-  /// by using the bucket name and prefix that you provide, followed by a
-  /// system-generated path.The bucket must be in the same VPC Service Controls
-  /// perimeter as the job.
+  /// 128 characters. Dataplex Universal Catalog constructs the object path for
+  /// the exported files by using the bucket name and prefix that you provide,
+  /// followed by a system-generated path.The bucket must be in the same VPC
+  /// Service Controls perimeter as the job.
   ///
   /// Required.
   core.String? outputPath;
@@ -19126,10 +19333,10 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpec {
   /// Possible string values are:
   /// - "SYNC_MODE_UNSPECIFIED" : Sync mode unspecified.
   /// - "FULL" : All resources in the job's scope are modified. If a resource
-  /// exists in Dataplex but isn't included in the metadata import file, the
-  /// resource is deleted when you run the metadata job. Use this mode to
-  /// perform a full sync of the set of entries in the job scope.This sync mode
-  /// is supported for entries.
+  /// exists in Dataplex Universal Catalog but isn't included in the metadata
+  /// import file, the resource is deleted when you run the metadata job. Use
+  /// this mode to perform a full sync of the set of entries in the job
+  /// scope.This sync mode is supported for entries.
   /// - "INCREMENTAL" : Only the resources that are explicitly included in the
   /// metadata import file are modified. Use this mode to modify a subset of
   /// resources while leaving unreferenced resources unchanged.This sync mode is
@@ -19145,10 +19352,10 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpec {
   /// Possible string values are:
   /// - "SYNC_MODE_UNSPECIFIED" : Sync mode unspecified.
   /// - "FULL" : All resources in the job's scope are modified. If a resource
-  /// exists in Dataplex but isn't included in the metadata import file, the
-  /// resource is deleted when you run the metadata job. Use this mode to
-  /// perform a full sync of the set of entries in the job scope.This sync mode
-  /// is supported for entries.
+  /// exists in Dataplex Universal Catalog but isn't included in the metadata
+  /// import file, the resource is deleted when you run the metadata job. Use
+  /// this mode to perform a full sync of the set of entries in the job
+  /// scope.This sync mode is supported for entries.
   /// - "INCREMENTAL" : Only the resources that are explicitly included in the
   /// metadata import file are modified. Use this mode to modify a subset of
   /// resources while leaving unreferenced resources unchanged.This sync mode is
@@ -19259,13 +19466,13 @@ class GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   /// Optional.
   core.List<core.String>? aspectTypes;
 
-  /// The entry group that is in scope for the import job, specified as a
-  /// relative resource name in the format
+  /// The entry groups that are in scope for the import job, specified as
+  /// relative resource names in the format
   /// projects/{project_number_or_id}/locations/{location_id}/entryGroups/{entry_group_id}.
   ///
-  /// Only entries and aspects that belong to the specified entry group are
-  /// affected by the job.Must contain exactly one element. The entry group and
-  /// the job must be in the same location.
+  /// Only entries and aspects that belong to the specified entry groups are
+  /// affected by the job.The entry groups and the job must be in the same
+  /// location.
   ///
   /// Required.
   core.List<core.String>? entryGroups;
@@ -19648,13 +19855,19 @@ class GoogleCloudDataplexV1ScannedData {
 /// A data range denoted by a pair of start/end values of a field.
 class GoogleCloudDataplexV1ScannedDataIncrementalField {
   /// Value that marks the end of the range.
+  ///
+  /// Output only.
   core.String? end;
 
   /// The field that contains values which monotonically increases over time
   /// (e.g. a timestamp column).
+  ///
+  /// Output only.
   core.String? field;
 
   /// Value that marks the start of the range.
+  ///
+  /// Output only.
   core.String? start;
 
   GoogleCloudDataplexV1ScannedDataIncrementalField({
@@ -19703,16 +19916,18 @@ class GoogleCloudDataplexV1Schema {
   /// gs://bucket/path/to/table/dt=2019-10-31/lang=en/late.
   core.String? partitionStyle;
 
-  /// Set to true if user-managed or false if managed by Dataplex.
+  /// Set to true if user-managed or false if managed by Dataplex Universal
+  /// Catalog.
   ///
-  /// The default is false (managed by Dataplex). Set to falseto enable Dataplex
-  /// discovery to update the schema. including new data discovery, schema
-  /// inference, and schema evolution. Users retain the ability to input and
-  /// edit the schema. Dataplex treats schema input by the user as though
-  /// produced by a previous Dataplex discovery operation, and it will evolve
-  /// the schema and take action based on that treatment. Set to true to fully
-  /// manage the entity schema. This setting guarantees that Dataplex will not
-  /// change schema fields.
+  /// The default is false (managed by Dataplex Universal Catalog). Set to
+  /// falseto enable Dataplex Universal Catalog discovery to update the schema.
+  /// including new data discovery, schema inference, and schema evolution.
+  /// Users retain the ability to input and edit the schema. Dataplex Universal
+  /// Catalog treats schema input by the user as though produced by a previous
+  /// Dataplex Universal Catalog discovery operation, and it will evolve the
+  /// schema and take action based on that treatment. Set to true to fully
+  /// manage the entity schema. This setting guarantees that Dataplex Universal
+  /// Catalog will not change schema fields.
   ///
   /// Required.
   core.bool? userManaged;

@@ -1124,13 +1124,14 @@ class SpacesResource {
   /// Returns a list of spaces in a Google Workspace organization based on an
   /// administrator's search.
   ///
+  /// In the request, set `use_admin_access` to `true`. For an example, see
+  /// [Search for and manage spaces](https://developers.google.com/workspace/chat/search-manage-admin).
   /// Requires
   /// [user authentication with administrator privileges](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user#admin-privileges)
   /// and one of the following
   /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
   /// - `https://www.googleapis.com/auth/chat.admin.spaces.readonly` -
-  /// `https://www.googleapis.com/auth/chat.admin.spaces` In the request, set
-  /// `use_admin_access` to `true`.
+  /// `https://www.googleapis.com/auth/chat.admin.spaces`
   ///
   /// Request parameters:
   ///
@@ -1985,8 +1986,18 @@ class SpacesMessagesResource {
   /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
   /// -
   /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
-  /// with the authorization scope: - `https://www.googleapis.com/auth/chat.bot`
-  /// -
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.bot`: When using this authorization
+  /// scope, this method returns details about a message the Chat app has access
+  /// to, like direct messages and
+  /// [slash commands](https://developers.google.com/workspace/chat/slash-commands)
+  /// that invoke the Chat app. -
+  /// `https://www.googleapis.com/auth/chat.app.messages.readonly` with
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth)
+  /// (available in
+  /// [Developer Preview](https://developers.google.com/workspace/preview)).
+  /// When using this authentication scope, this method returns details about a
+  /// public message in a space. -
   /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
   /// with one of the following authorization scopes: -
   /// `https://www.googleapis.com/auth/chat.messages.readonly` -
@@ -2030,15 +2041,25 @@ class SpacesMessagesResource {
   /// Lists messages in a space that the caller is a member of, including
   /// messages from blocked members and spaces.
   ///
+  /// System messages, like those announcing new space members, aren't included.
   /// If you list messages from a space with no messages, the response is an
   /// empty object. When using a REST/HTTP interface, the response contains an
   /// empty JSON object, `{}`. For an example, see
   /// [List messages](https://developers.google.com/workspace/chat/api/guides/v1/messages/list).
-  /// Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
-  /// with one of the following
-  /// [authorization scopes](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes):
-  /// - `https://www.googleapis.com/auth/chat.messages.readonly` -
+  /// Supports the following types of
+  /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize):
+  /// -
+  /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
+  /// [Developer Preview](https://developers.google.com/workspace/preview) with
+  /// the authorization scope: -
+  /// `https://www.googleapis.com/auth/chat.app.messages.readonly`. When using
+  /// this authentication scope, this method only returns public messages in a
+  /// space. It doesn't include private messages. -
+  /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.messages.readonly` -
   /// `https://www.googleapis.com/auth/chat.messages` -
   /// `https://www.googleapis.com/auth/chat.import` (import mode spaces only)
   ///
@@ -2176,7 +2197,8 @@ class SpacesMessagesResource {
   /// authentication\](/chat/api/guides/auth/service-accounts).) - `cards_v2`
   /// (Requires \[app authentication\](/chat/api/guides/auth/service-accounts).)
   /// - `accessory_widgets` (Requires \[app
-  /// authentication\](/chat/api/guides/auth/service-accounts).)
+  /// authentication\](/chat/api/guides/auth/service-accounts).) -
+  /// `quoted_message_metadata` (Only allows removal of the quoted message.)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2260,7 +2282,8 @@ class SpacesMessagesResource {
   /// authentication\](/chat/api/guides/auth/service-accounts).) - `cards_v2`
   /// (Requires \[app authentication\](/chat/api/guides/auth/service-accounts).)
   /// - `accessory_widgets` (Requires \[app
-  /// authentication\](/chat/api/guides/auth/service-accounts).)
+  /// authentication\](/chat/api/guides/auth/service-accounts).) -
+  /// `quoted_message_metadata` (Only allows removal of the quoted message.)
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4683,6 +4706,12 @@ class GoogleAppsCardV1Card {
   /// the top card in the card stack.
   core.String? displayStyle;
 
+  /// The expression data for the card.
+  ///
+  /// Only supported by Google Workspace Workflow, but not Google Chat apps or
+  /// Google Workspace add-ons.
+  core.List<GoogleAppsCardV1ExpressionData>? expressionData;
+
   /// The fixed footer shown at the bottom of this card.
   ///
   /// Setting `fixedFooter` without specifying a `primaryButton` or a
@@ -4733,6 +4762,7 @@ class GoogleAppsCardV1Card {
   GoogleAppsCardV1Card({
     this.cardActions,
     this.displayStyle,
+    this.expressionData,
     this.fixedFooter,
     this.header,
     this.name,
@@ -4752,6 +4782,14 @@ class GoogleAppsCardV1Card {
                 )
                 .toList(),
         displayStyle: json_['displayStyle'] as core.String?,
+        expressionData:
+            (json_['expressionData'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1ExpressionData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         fixedFooter:
             json_.containsKey('fixedFooter')
                 ? GoogleAppsCardV1CardFixedFooter.fromJson(
@@ -4786,6 +4824,7 @@ class GoogleAppsCardV1Card {
   core.Map<core.String, core.dynamic> toJson() => {
     if (cardActions != null) 'cardActions': cardActions!,
     if (displayStyle != null) 'displayStyle': displayStyle!,
+    if (expressionData != null) 'expressionData': expressionData!,
     if (fixedFooter != null) 'fixedFooter': fixedFooter!,
     if (header != null) 'header': header!,
     if (name != null) 'name': name!,
@@ -4938,9 +4977,9 @@ class GoogleAppsCardV1CardHeader {
   };
 }
 
-/// [Developer Preview](https://developers.google.com/workspace/preview): A
-/// carousel, also known as a slider, rotates and displays a list of widgets in
-/// a slideshow format, with buttons navigating to the previous or next widget.
+/// A carousel, also known as a slider, rotates and displays a list of widgets
+/// in a slideshow format, with buttons navigating to the previous or next
+/// widget.
 ///
 /// For example, this is a JSON representation of a carousel that contains three
 /// text paragraph widgets. ``` { "carouselCards": [ { "widgets": [ {
@@ -4972,8 +5011,7 @@ class GoogleAppsCardV1Carousel {
   };
 }
 
-/// [Developer Preview](https://developers.google.com/workspace/preview): A card
-/// that can be displayed as a carousel item.
+/// A card that can be displayed as a carousel item.
 ///
 /// [Google Chat apps](https://developers.google.com/workspace/chat):
 class GoogleAppsCardV1CarouselCard {
@@ -5318,6 +5356,105 @@ class GoogleAppsCardV1Columns {
   };
 }
 
+/// Represents an action that is not specific to a widget.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1CommonWidgetAction {
+  /// The action to update the visibility of a widget.
+  GoogleAppsCardV1UpdateVisibilityAction? updateVisibilityAction;
+
+  GoogleAppsCardV1CommonWidgetAction({this.updateVisibilityAction});
+
+  GoogleAppsCardV1CommonWidgetAction.fromJson(core.Map json_)
+    : this(
+        updateVisibilityAction:
+            json_.containsKey('updateVisibilityAction')
+                ? GoogleAppsCardV1UpdateVisibilityAction.fromJson(
+                  json_['updateVisibilityAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (updateVisibilityAction != null)
+      'updateVisibilityAction': updateVisibilityAction!,
+  };
+}
+
+/// Represents a condition that can be used to trigger an action.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1Condition {
+  /// The unique identifier of the ActionRule.
+  core.String? actionRuleId;
+
+  /// The condition that is determined by the expression data.
+  GoogleAppsCardV1ExpressionDataCondition? expressionDataCondition;
+
+  GoogleAppsCardV1Condition({this.actionRuleId, this.expressionDataCondition});
+
+  GoogleAppsCardV1Condition.fromJson(core.Map json_)
+    : this(
+        actionRuleId: json_['actionRuleId'] as core.String?,
+        expressionDataCondition:
+            json_.containsKey('expressionDataCondition')
+                ? GoogleAppsCardV1ExpressionDataCondition.fromJson(
+                  json_['expressionDataCondition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (actionRuleId != null) 'actionRuleId': actionRuleId!,
+    if (expressionDataCondition != null)
+      'expressionDataCondition': expressionDataCondition!,
+  };
+}
+
+/// A configuration object that helps configure the data sources for a widget.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1DataSourceConfig {
+  /// The data is from a Google Workspace application.
+  GoogleAppsCardV1PlatformDataSource? platformDataSource;
+
+  /// The data is from a remote data provider.
+  GoogleAppsCardV1Action? remoteDataSource;
+
+  GoogleAppsCardV1DataSourceConfig({
+    this.platformDataSource,
+    this.remoteDataSource,
+  });
+
+  GoogleAppsCardV1DataSourceConfig.fromJson(core.Map json_)
+    : this(
+        platformDataSource:
+            json_.containsKey('platformDataSource')
+                ? GoogleAppsCardV1PlatformDataSource.fromJson(
+                  json_['platformDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        remoteDataSource:
+            json_.containsKey('remoteDataSource')
+                ? GoogleAppsCardV1Action.fromJson(
+                  json_['remoteDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (platformDataSource != null) 'platformDataSource': platformDataSource!,
+    if (remoteDataSource != null) 'remoteDataSource': remoteDataSource!,
+  };
+}
+
 /// Lets users input a date, a time, or both a date and a time.
 ///
 /// Supports form submission validation. When `Action.all_widgets_are_required`
@@ -5330,6 +5467,13 @@ class GoogleAppsCardV1Columns {
 /// to input the information correctly. \[Google Workspace add-ons and Chat
 /// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1DateTimePicker {
+  /// A data source that's unique to a Google Workspace host application, such
+  /// as Gmail emails, Google Calendar events, or Google Chat messages.
+  ///
+  /// Only supported by Google Workspace Workflows, but not Google Chat API or
+  /// Google Workspace Add-ons.
+  HostAppDataSourceMarkup? hostAppDataSource;
+
   /// The text that prompts users to input a date, a time, or a date and time.
   ///
   /// For example, if users are scheduling an appointment, use a label such as
@@ -5373,6 +5517,7 @@ class GoogleAppsCardV1DateTimePicker {
   core.String? valueMsEpoch;
 
   GoogleAppsCardV1DateTimePicker({
+    this.hostAppDataSource,
     this.label,
     this.name,
     this.onChangeAction,
@@ -5383,6 +5528,13 @@ class GoogleAppsCardV1DateTimePicker {
 
   GoogleAppsCardV1DateTimePicker.fromJson(core.Map json_)
     : this(
+        hostAppDataSource:
+            json_.containsKey('hostAppDataSource')
+                ? HostAppDataSourceMarkup.fromJson(
+                  json_['hostAppDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         label: json_['label'] as core.String?,
         name: json_['name'] as core.String?,
         onChangeAction:
@@ -5398,6 +5550,7 @@ class GoogleAppsCardV1DateTimePicker {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (hostAppDataSource != null) 'hostAppDataSource': hostAppDataSource!,
     if (label != null) 'label': label!,
     if (name != null) 'name': name!,
     if (onChangeAction != null) 'onChangeAction': onChangeAction!,
@@ -5421,8 +5574,20 @@ class GoogleAppsCardV1DecoratedText {
   /// Always wraps.
   core.String? bottomLabel;
 
+  /// `TextParagraph` equivalent of `bottom_label`.
+  ///
+  /// Always wraps. Allows for more complex formatting than `bottom_label`.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  GoogleAppsCardV1TextParagraph? bottomLabelText;
+
   /// A button that a user can click to trigger an action.
   GoogleAppsCardV1Button? button;
+
+  /// `TextParagraph` equivalent of `text`.
+  ///
+  /// Allows for more complex formatting than `text`.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  GoogleAppsCardV1TextParagraph? contentText;
 
   /// An icon displayed after the text.
   ///
@@ -5445,6 +5610,19 @@ class GoogleAppsCardV1DecoratedText {
   /// The icon displayed in front of the text.
   GoogleAppsCardV1Icon? startIcon;
 
+  /// Vertical alignment of the start icon.
+  ///
+  /// If not set, the icon will be vertically centered.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VERTICAL_ALIGNMENT_UNSPECIFIED" : Unspecified type. Do not use.
+  /// - "TOP" : Alignment to the top position.
+  /// - "MIDDLE" : Alignment to the middle position.
+  /// - "BOTTOM" : Alignment to the bottom position.
+  core.String? startIconVerticalAlignment;
+
   /// A switch widget that a user can click to change its state and trigger an
   /// action.
   GoogleAppsCardV1SwitchControl? switchControl;
@@ -5465,6 +5643,12 @@ class GoogleAppsCardV1DecoratedText {
   /// Always truncates.
   core.String? topLabel;
 
+  /// `TextParagraph` equivalent of `top_label`.
+  ///
+  /// Always truncates. Allows for more complex formatting than `top_label`.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  GoogleAppsCardV1TextParagraph? topLabelText;
+
   /// The wrap text setting.
   ///
   /// If `true`, the text wraps and displays on multiple lines. Otherwise, the
@@ -5474,24 +5658,41 @@ class GoogleAppsCardV1DecoratedText {
 
   GoogleAppsCardV1DecoratedText({
     this.bottomLabel,
+    this.bottomLabelText,
     this.button,
+    this.contentText,
     this.endIcon,
     this.icon,
     this.onClick,
     this.startIcon,
+    this.startIconVerticalAlignment,
     this.switchControl,
     this.text,
     this.topLabel,
+    this.topLabelText,
     this.wrapText,
   });
 
   GoogleAppsCardV1DecoratedText.fromJson(core.Map json_)
     : this(
         bottomLabel: json_['bottomLabel'] as core.String?,
+        bottomLabelText:
+            json_.containsKey('bottomLabelText')
+                ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['bottomLabelText']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         button:
             json_.containsKey('button')
                 ? GoogleAppsCardV1Button.fromJson(
                   json_['button'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contentText:
+            json_.containsKey('contentText')
+                ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['contentText'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         endIcon:
@@ -5518,6 +5719,8 @@ class GoogleAppsCardV1DecoratedText {
                   json_['startIcon'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        startIconVerticalAlignment:
+            json_['startIconVerticalAlignment'] as core.String?,
         switchControl:
             json_.containsKey('switchControl')
                 ? GoogleAppsCardV1SwitchControl.fromJson(
@@ -5526,19 +5729,30 @@ class GoogleAppsCardV1DecoratedText {
                 : null,
         text: json_['text'] as core.String?,
         topLabel: json_['topLabel'] as core.String?,
+        topLabelText:
+            json_.containsKey('topLabelText')
+                ? GoogleAppsCardV1TextParagraph.fromJson(
+                  json_['topLabelText'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         wrapText: json_['wrapText'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (bottomLabel != null) 'bottomLabel': bottomLabel!,
+    if (bottomLabelText != null) 'bottomLabelText': bottomLabelText!,
     if (button != null) 'button': button!,
+    if (contentText != null) 'contentText': contentText!,
     if (endIcon != null) 'endIcon': endIcon!,
     if (icon != null) 'icon': icon!,
     if (onClick != null) 'onClick': onClick!,
     if (startIcon != null) 'startIcon': startIcon!,
+    if (startIconVerticalAlignment != null)
+      'startIconVerticalAlignment': startIconVerticalAlignment!,
     if (switchControl != null) 'switchControl': switchControl!,
     if (text != null) 'text': text!,
     if (topLabel != null) 'topLabel': topLabel!,
+    if (topLabelText != null) 'topLabelText': topLabelText!,
     if (wrapText != null) 'wrapText': wrapText!,
   };
 }
@@ -5551,6 +5765,133 @@ class GoogleAppsCardV1DecoratedText {
 /// apps\](https://developers.google.com/workspace/extend): For example, the
 /// following JSON creates a divider: ``` "divider": {} ```
 typedef GoogleAppsCardV1Divider = $Empty;
+
+/// Represents an actionthat can be performed on an ui element.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1EventAction {
+  /// The unique identifier of the ActionRule.
+  core.String? actionRuleId;
+
+  /// Common widget action.
+  GoogleAppsCardV1CommonWidgetAction? commonWidgetAction;
+
+  /// The list of triggers that will be triggered after the EventAction is
+  /// executed.
+  core.List<GoogleAppsCardV1Trigger>? postEventTriggers;
+
+  GoogleAppsCardV1EventAction({
+    this.actionRuleId,
+    this.commonWidgetAction,
+    this.postEventTriggers,
+  });
+
+  GoogleAppsCardV1EventAction.fromJson(core.Map json_)
+    : this(
+        actionRuleId: json_['actionRuleId'] as core.String?,
+        commonWidgetAction:
+            json_.containsKey('commonWidgetAction')
+                ? GoogleAppsCardV1CommonWidgetAction.fromJson(
+                  json_['commonWidgetAction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        postEventTriggers:
+            (json_['postEventTriggers'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Trigger.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (actionRuleId != null) 'actionRuleId': actionRuleId!,
+    if (commonWidgetAction != null) 'commonWidgetAction': commonWidgetAction!,
+    if (postEventTriggers != null) 'postEventTriggers': postEventTriggers!,
+  };
+}
+
+/// Represents the data that is used to evaluate an expression.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1ExpressionData {
+  /// The list of conditions that are determined by the expression evaluation
+  /// result.
+  core.List<GoogleAppsCardV1Condition>? conditions;
+
+  /// The list of actions that the ExpressionData can be used.
+  core.List<GoogleAppsCardV1EventAction>? eventActions;
+
+  /// The uncompiled expression.
+  core.String? expression;
+
+  /// The unique identifier of the ExpressionData.
+  core.String? id;
+
+  GoogleAppsCardV1ExpressionData({
+    this.conditions,
+    this.eventActions,
+    this.expression,
+    this.id,
+  });
+
+  GoogleAppsCardV1ExpressionData.fromJson(core.Map json_)
+    : this(
+        conditions:
+            (json_['conditions'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1Condition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        eventActions:
+            (json_['eventActions'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1EventAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        expression: json_['expression'] as core.String?,
+        id: json_['id'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (conditions != null) 'conditions': conditions!,
+    if (eventActions != null) 'eventActions': eventActions!,
+    if (expression != null) 'expression': expression!,
+    if (id != null) 'id': id!,
+  };
+}
+
+/// Represents a condition that is evaluated using CEL.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1ExpressionDataCondition {
+  /// The type of the condition.
+  /// Possible string values are:
+  /// - "CONDITION_TYPE_UNSPECIFIED" : Unspecified condition type.
+  /// - "EXPRESSION_EVALUATION_SUCCESS" : The expression evaluation was
+  /// successful.
+  /// - "EXPRESSION_EVALUATION_FAILURE" : The expression evaluation was
+  /// unsuccessful.
+  core.String? conditionType;
+
+  GoogleAppsCardV1ExpressionDataCondition({this.conditionType});
+
+  GoogleAppsCardV1ExpressionDataCondition.fromJson(core.Map json_)
+    : this(conditionType: json_['conditionType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (conditionType != null) 'conditionType': conditionType!,
+  };
+}
 
 /// Displays a grid with a collection of items.
 ///
@@ -5974,8 +6315,7 @@ class GoogleAppsCardV1MaterialIcon {
   };
 }
 
-/// [Developer Preview](https://developers.google.com/workspace/preview): A list
-/// of widgets that can be displayed in a containing layout, such as a
+/// A list of widgets that can be displayed in a containing layout, such as a
 /// `CarouselCard`.
 ///
 /// [Google Chat apps](https://developers.google.com/workspace/chat):
@@ -6322,6 +6662,14 @@ class GoogleAppsCardV1Section {
   /// add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
   core.String? header;
 
+  /// A unique ID assigned to the section that's used to identify the section to
+  /// be mutated.
+  ///
+  /// The ID has a character limit of 64 characters and should be in the format
+  /// of `[a-zA-Z0-9-]+`. Only supported by Google Workspace Workflow, but not
+  /// Google Chat apps or Google Workspace add-ons.
+  core.String? id;
+
   /// The number of uncollapsible widgets which remain visible even when a
   /// section is collapsed.
   ///
@@ -6341,6 +6689,7 @@ class GoogleAppsCardV1Section {
     this.collapseControl,
     this.collapsible,
     this.header,
+    this.id,
     this.uncollapsibleWidgetsCount,
     this.widgets,
   });
@@ -6356,6 +6705,7 @@ class GoogleAppsCardV1Section {
                 : null,
         collapsible: json_['collapsible'] as core.bool?,
         header: json_['header'] as core.String?,
+        id: json_['id'] as core.String?,
         uncollapsibleWidgetsCount:
             json_['uncollapsibleWidgetsCount'] as core.int?,
         widgets:
@@ -6372,6 +6722,7 @@ class GoogleAppsCardV1Section {
     if (collapseControl != null) 'collapseControl': collapseControl!,
     if (collapsible != null) 'collapsible': collapsible!,
     if (header != null) 'header': header!,
+    if (id != null) 'id': id!,
     if (uncollapsibleWidgetsCount != null)
       'uncollapsibleWidgetsCount': uncollapsibleWidgetsCount!,
     if (widgets != null) 'widgets': widgets!,
@@ -6394,6 +6745,17 @@ class GoogleAppsCardV1Section {
 /// \[Google Workspace add-ons and Chat
 /// apps\](https://developers.google.com/workspace/extend):
 class GoogleAppsCardV1SelectionInput {
+  /// The data source configs for the selection control.
+  ///
+  /// This field provides more fine-grained control over the data source. If
+  /// specified, the `multi_select_max_selected_items` field,
+  /// `multi_select_min_query_length` field, `external_data_source` field and
+  /// `platform_data_source` field are ignored. Only supported by Google
+  /// Workspace Workflow, but not Google Chat apps or Google Workspace add-ons.
+  ///
+  /// Optional.
+  core.List<GoogleAppsCardV1DataSourceConfig>? dataSourceConfigs;
+
   /// An external data source, such as a relational database.
   GoogleAppsCardV1Action? externalDataSource;
 
@@ -6484,6 +6846,7 @@ class GoogleAppsCardV1SelectionInput {
   core.String? type;
 
   GoogleAppsCardV1SelectionInput({
+    this.dataSourceConfigs,
     this.externalDataSource,
     this.hintText,
     this.items,
@@ -6498,6 +6861,14 @@ class GoogleAppsCardV1SelectionInput {
 
   GoogleAppsCardV1SelectionInput.fromJson(core.Map json_)
     : this(
+        dataSourceConfigs:
+            (json_['dataSourceConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1DataSourceConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         externalDataSource:
             json_.containsKey('externalDataSource')
                 ? GoogleAppsCardV1Action.fromJson(
@@ -6538,6 +6909,7 @@ class GoogleAppsCardV1SelectionInput {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (dataSourceConfigs != null) 'dataSourceConfigs': dataSourceConfigs!,
     if (externalDataSource != null) 'externalDataSource': externalDataSource!,
     if (hintText != null) 'hintText': hintText!,
     if (items != null) 'items': items!,
@@ -6763,6 +7135,13 @@ class GoogleAppsCardV1TextInput {
   /// Otherwise, optional.
   core.String? hintText;
 
+  /// A data source that's unique to a Google Workspace host application, such
+  /// as Gmail emails, Google Calendar events, or Google Chat messages.
+  ///
+  /// Only supported by Google Workspace Workflow, but not Google Chat apps or
+  /// Google Workspace add-ons.
+  HostAppDataSourceMarkup? hostAppDataSource;
+
   /// Suggested values that users can enter.
   ///
   /// These values appear when users click inside the text input field. As users
@@ -6832,6 +7211,7 @@ class GoogleAppsCardV1TextInput {
   GoogleAppsCardV1TextInput({
     this.autoCompleteAction,
     this.hintText,
+    this.hostAppDataSource,
     this.initialSuggestions,
     this.label,
     this.name,
@@ -6852,6 +7232,13 @@ class GoogleAppsCardV1TextInput {
                 )
                 : null,
         hintText: json_['hintText'] as core.String?,
+        hostAppDataSource:
+            json_.containsKey('hostAppDataSource')
+                ? HostAppDataSourceMarkup.fromJson(
+                  json_['hostAppDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         initialSuggestions:
             json_.containsKey('initialSuggestions')
                 ? GoogleAppsCardV1Suggestions.fromJson(
@@ -6882,6 +7269,7 @@ class GoogleAppsCardV1TextInput {
   core.Map<core.String, core.dynamic> toJson() => {
     if (autoCompleteAction != null) 'autoCompleteAction': autoCompleteAction!,
     if (hintText != null) 'hintText': hintText!,
+    if (hostAppDataSource != null) 'hostAppDataSource': hostAppDataSource!,
     if (initialSuggestions != null) 'initialSuggestions': initialSuggestions!,
     if (label != null) 'label': label!,
     if (name != null) 'name': name!,
@@ -6916,17 +7304,69 @@ class GoogleAppsCardV1TextParagraph {
   /// The text that's shown in the widget.
   core.String? text;
 
-  GoogleAppsCardV1TextParagraph({this.maxLines, this.text});
+  /// The syntax of the text.
+  ///
+  /// If not set, the text is rendered as HTML.
+  /// [Google Chat apps](https://developers.google.com/workspace/chat):
+  /// Possible string values are:
+  /// - "TEXT_SYNTAX_UNSPECIFIED" : The text is rendered as HTML if unspecified.
+  /// - "HTML" : The text is rendered as HTML. This is the default value.
+  /// - "MARKDOWN" : The text is rendered as Markdown.
+  core.String? textSyntax;
+
+  GoogleAppsCardV1TextParagraph({this.maxLines, this.text, this.textSyntax});
 
   GoogleAppsCardV1TextParagraph.fromJson(core.Map json_)
     : this(
         maxLines: json_['maxLines'] as core.int?,
         text: json_['text'] as core.String?,
+        textSyntax: json_['textSyntax'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (maxLines != null) 'maxLines': maxLines!,
     if (text != null) 'text': text!,
+    if (textSyntax != null) 'textSyntax': textSyntax!,
+  };
+}
+
+/// Represents a trigger.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1Trigger {
+  /// The unique identifier of the ActionRule.
+  core.String? actionRuleId;
+
+  GoogleAppsCardV1Trigger({this.actionRuleId});
+
+  GoogleAppsCardV1Trigger.fromJson(core.Map json_)
+    : this(actionRuleId: json_['actionRuleId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (actionRuleId != null) 'actionRuleId': actionRuleId!,
+  };
+}
+
+/// Represents an action that updates the visibility of a widget.
+///
+/// Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+class GoogleAppsCardV1UpdateVisibilityAction {
+  /// The new visibility.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : Unspecified visibility. Do not use.
+  /// - "VISIBLE" : The UI element is visible.
+  /// - "HIDDEN" : The UI element is hidden.
+  core.String? visibility;
+
+  GoogleAppsCardV1UpdateVisibilityAction({this.visibility});
+
+  GoogleAppsCardV1UpdateVisibilityAction.fromJson(core.Map json_)
+    : this(visibility: json_['visibility'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (visibility != null) 'visibility': visibility!,
   };
 }
 
@@ -7037,6 +7477,12 @@ class GoogleAppsCardV1Widget {
   /// For example, the following JSON creates a divider: ``` "divider": { } ```
   GoogleAppsCardV1Divider? divider;
 
+  /// Specifies the event actions that can be performed on the widget.
+  ///
+  /// Only supported by Google Workspace Workflow, but not Google Chat apps or
+  /// Google Workspace add-ons.
+  core.List<GoogleAppsCardV1EventAction>? eventActions;
+
   /// Displays a grid with a collection of items.
   ///
   /// A grid supports any number of columns and items. The number of rows is
@@ -7064,6 +7510,14 @@ class GoogleAppsCardV1Widget {
   /// left-to-right layouts, aligns widgets to the right. For right-to-left
   /// layouts, aligns widgets to the left.
   core.String? horizontalAlignment;
+
+  /// A unique ID assigned to the widget that's used to identify the widget to
+  /// be mutated.
+  ///
+  /// The ID has a character limit of 64 characters and should be in the format
+  /// of `[a-zA-Z0-9-]+` and. Only supported by Google Workspace Workflow, but
+  /// not Google Chat apps or Google Workspace add-ons.
+  core.String? id;
 
   /// Displays an image.
   ///
@@ -7106,6 +7560,16 @@ class GoogleAppsCardV1Widget {
   /// "textParagraph": { "text": " *bold text*" } ```
   GoogleAppsCardV1TextParagraph? textParagraph;
 
+  /// Specifies whether the widget is visible or hidden.
+  ///
+  /// The default value is `VISIBLE`. Only supported by Google Workspace
+  /// Workflow, but not Google Chat apps or Google Workspace add-ons.
+  /// Possible string values are:
+  /// - "VISIBILITY_UNSPECIFIED" : Unspecified visibility. Do not use.
+  /// - "VISIBLE" : The UI element is visible.
+  /// - "HIDDEN" : The UI element is hidden.
+  core.String? visibility;
+
   GoogleAppsCardV1Widget({
     this.buttonList,
     this.carousel,
@@ -7114,12 +7578,15 @@ class GoogleAppsCardV1Widget {
     this.dateTimePicker,
     this.decoratedText,
     this.divider,
+    this.eventActions,
     this.grid,
     this.horizontalAlignment,
+    this.id,
     this.image,
     this.selectionInput,
     this.textInput,
     this.textParagraph,
+    this.visibility,
   });
 
   GoogleAppsCardV1Widget.fromJson(core.Map json_)
@@ -7167,6 +7634,14 @@ class GoogleAppsCardV1Widget {
                   json_['divider'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        eventActions:
+            (json_['eventActions'] as core.List?)
+                ?.map(
+                  (value) => GoogleAppsCardV1EventAction.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         grid:
             json_.containsKey('grid')
                 ? GoogleAppsCardV1Grid.fromJson(
@@ -7174,6 +7649,7 @@ class GoogleAppsCardV1Widget {
                 )
                 : null,
         horizontalAlignment: json_['horizontalAlignment'] as core.String?,
+        id: json_['id'] as core.String?,
         image:
             json_.containsKey('image')
                 ? GoogleAppsCardV1Image.fromJson(
@@ -7199,6 +7675,7 @@ class GoogleAppsCardV1Widget {
                   json_['textParagraph'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        visibility: json_['visibility'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7209,13 +7686,16 @@ class GoogleAppsCardV1Widget {
     if (dateTimePicker != null) 'dateTimePicker': dateTimePicker!,
     if (decoratedText != null) 'decoratedText': decoratedText!,
     if (divider != null) 'divider': divider!,
+    if (eventActions != null) 'eventActions': eventActions!,
     if (grid != null) 'grid': grid!,
     if (horizontalAlignment != null)
       'horizontalAlignment': horizontalAlignment!,
+    if (id != null) 'id': id!,
     if (image != null) 'image': image!,
     if (selectionInput != null) 'selectionInput': selectionInput!,
     if (textInput != null) 'textInput': textInput!,
     if (textParagraph != null) 'textParagraph': textParagraph!,
+    if (visibility != null) 'visibility': visibility!,
   };
 }
 
@@ -7343,16 +7823,17 @@ class Group {
   };
 }
 
-/// For a `SelectionInput` widget that uses a multiselect menu, a data source
-/// from a Google Workspace application.
+/// A data source from a Google Workspace application.
 ///
-/// The data source populates selection items for the multiselect menu.
-/// [Google Chat apps](https://developers.google.com/workspace/chat):
+/// The data source populates available items for a widget.
 class HostAppDataSourceMarkup {
   /// A data source from Google Chat.
   ChatClientDataSourceMarkup? chatDataSource;
 
-  HostAppDataSourceMarkup({this.chatDataSource});
+  /// A data source from Google Workflow.
+  WorkflowDataSourceMarkup? workflowDataSource;
+
+  HostAppDataSourceMarkup({this.chatDataSource, this.workflowDataSource});
 
   HostAppDataSourceMarkup.fromJson(core.Map json_)
     : this(
@@ -7363,10 +7844,18 @@ class HostAppDataSourceMarkup {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        workflowDataSource:
+            json_.containsKey('workflowDataSource')
+                ? WorkflowDataSourceMarkup.fromJson(
+                  json_['workflowDataSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (chatDataSource != null) 'chatDataSource': chatDataSource!,
+    if (workflowDataSource != null) 'workflowDataSource': workflowDataSource!,
   };
 }
 
@@ -8338,10 +8827,14 @@ class Message {
   /// Optional. Immutable.
   User? privateMessageViewer;
 
-  /// Information about a message that's quoted by a Google Chat user in a
-  /// space.
+  /// Information about a message that another message quotes.
   ///
-  /// Google Chat users can quote a message to reply to it.
+  /// When you create a message, you can quote messages within the same thread,
+  /// or quote a root message to create a new root message. However, you can't
+  /// quote a message reply from a different thread. When you update a message,
+  /// you can't add or replace the `quotedMessageMetadata` field, but you can
+  /// remove it. For example usage, see
+  /// [Quote another message](https://developers.google.com/workspace/chat/create-messages#quote-a-message).
   ///
   /// Optional.
   QuotedMessageMetadata? quotedMessageMetadata;
@@ -8942,10 +9435,21 @@ class PermissionSettings {
   };
 }
 
-/// Information about a quoted message.
+/// Information about a message that another message quotes.
+///
+/// When you create a message, you can quote messages within the same thread, or
+/// quote a root message to create a new root message. However, you can't quote
+/// a message reply from a different thread. When you update a message, you
+/// can't add or replace the `quotedMessageMetadata` field, but you can remove
+/// it. For example usage, see
+/// [Quote another message](https://developers.google.com/workspace/chat/create-messages#quote-a-message).
 class QuotedMessageMetadata {
   /// The timestamp when the quoted message was created or when the quoted
   /// message was last updated.
+  ///
+  /// If the message was edited, use this field, `last_update_time`. If the
+  /// message was never edited, use `create_time`. If `last_update_time` doesn't
+  /// match the latest version of the quoted message, the request fails.
   ///
   /// Required.
   core.String? lastUpdateTime;
@@ -9494,9 +9998,8 @@ class Space {
   /// Required only when creating a space with
   /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// and `SpaceType` is `SPACE`, otherwise should not be set. In the format
-  /// `customers/{customer}`, where `customer` is the `id` from the \[Admin SDK
-  /// customer resource\](
-  /// https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
+  /// `customers/{customer}`, where `customer` is the `id` from the
+  /// [Admin SDK customer resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
   /// Private apps can also use the `customers/my_customer` alias to create the
   /// space in the same Google Workspace organization as the app. For DMs, this
   /// field isn't populated.
@@ -10654,5 +11157,39 @@ class WidgetMarkup {
     if (image != null) 'image': image!,
     if (keyValue != null) 'keyValue': keyValue!,
     if (textParagraph != null) 'textParagraph': textParagraph!,
+  };
+}
+
+/// * Only supported by Google Workspace Workflow, but not Google Chat apps or
+/// Google Workspace add-ons.
+///
+/// In a `TextInput` or `SelectionInput` widget with MULTI_SELECT type or a
+/// `DateTimePicker`, provide data source from Google.
+class WorkflowDataSourceMarkup {
+  /// Whether to include variables from the previous step in the data source.
+  core.bool? includeVariables;
+
+  /// The type of data source.
+  /// Possible string values are:
+  /// - "UNKNOWN" : Default value. Don't use.
+  /// - "USER" : Google Workspace users. The user can only view and select users
+  /// from their Google Workspace organization.
+  /// - "SPACE" : Google Chat spaces that the user is a member of.
+  /// - "USER_WITH_FREE_FORM" : Users can choose to view and select existing
+  /// members from their Google Workspace organization or manually enter an
+  /// email address or a valid domain.
+  core.String? type;
+
+  WorkflowDataSourceMarkup({this.includeVariables, this.type});
+
+  WorkflowDataSourceMarkup.fromJson(core.Map json_)
+    : this(
+        includeVariables: json_['includeVariables'] as core.bool?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (includeVariables != null) 'includeVariables': includeVariables!,
+    if (type != null) 'type': type!,
   };
 }

@@ -30,6 +30,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsSourcesResource]
 ///       - [ProjectsLocationsSourcesDatacenterConnectorsResource]
+///       - [ProjectsLocationsSourcesDiskMigrationJobsResource]
 ///       - [ProjectsLocationsSourcesMigratingVmsResource]
 ///         - [ProjectsLocationsSourcesMigratingVmsCloneJobsResource]
 ///         - [ProjectsLocationsSourcesMigratingVmsCutoverJobsResource]
@@ -139,9 +140,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -770,7 +771,7 @@ class ProjectsLocationsImageImportsImageImportJobsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Initiates the cancellation of a running clone job.
+  /// Initiates the cancellation of a running ImageImportJob.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1098,6 +1099,8 @@ class ProjectsLocationsSourcesResource {
   ProjectsLocationsSourcesDatacenterConnectorsResource
   get datacenterConnectors =>
       ProjectsLocationsSourcesDatacenterConnectorsResource(_requester);
+  ProjectsLocationsSourcesDiskMigrationJobsResource get diskMigrationJobs =>
+      ProjectsLocationsSourcesDiskMigrationJobsResource(_requester);
   ProjectsLocationsSourcesMigratingVmsResource get migratingVms =>
       ProjectsLocationsSourcesMigratingVmsResource(_requester);
   ProjectsLocationsSourcesUtilizationReportsResource get utilizationReports =>
@@ -1274,6 +1277,76 @@ class ProjectsLocationsSourcesResource {
       queryParams: queryParams_,
     );
     return FetchInventoryResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List remote source's inventory of storage resources.
+  ///
+  /// The remote source is another cloud vendor (e.g. AWS, Azure). The inventory
+  /// describes the list of existing storage resources in that source. Note that
+  /// this operation lists the resources on the remote source, as opposed to
+  /// listing the MigratingVms resources in the vmmigration service.
+  ///
+  /// Request parameters:
+  ///
+  /// [source] - Required. The name of the Source.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+$`.
+  ///
+  /// [forceRefresh] - Optional. If this flag is set to true, the source will be
+  /// queried instead of using cached results. Using this flag will make the
+  /// call slower.
+  ///
+  /// [pageSize] - Optional. The maximum number of VMs to return. The service
+  /// may return fewer than this value.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `FetchStorageInventory` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `FetchStorageInventory` must match the call that provided the page token.
+  ///
+  /// [type] - Required. The type of the storage inventory to fetch.
+  /// Possible string values are:
+  /// - "STORAGE_TYPE_UNSPECIFIED" : The type is unspecified.
+  /// - "DISKS" : The type is disks.
+  /// - "SNAPSHOTS" : The type is snapshots.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FetchStorageInventoryResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FetchStorageInventoryResponse> fetchStorageInventory(
+    core.String source, {
+    core.bool? forceRefresh,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? type,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (forceRefresh != null) 'forceRefresh': ['${forceRefresh}'],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (type != null) 'type': [type],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$source') + ':fetchStorageInventory';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FetchStorageInventoryResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1689,6 +1762,357 @@ class ProjectsLocationsSourcesDatacenterConnectorsResource {
         'v1/' +
         core.Uri.encodeFull('$datacenterConnector') +
         ':upgradeAppliance';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsSourcesDiskMigrationJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsSourcesDiskMigrationJobsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Cancels the disk migration job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DiskMigrationJob.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/diskMigrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> cancel(
+    CancelDiskMigrationJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Creates a new disk migration job in a given Source.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The DiskMigrationJob's parent.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+$`.
+  ///
+  /// [diskMigrationJobId] - Required. The DiskMigrationJob identifier. The
+  /// maximum length of this value is 63 characters. Valid characters are lower
+  /// case Latin letters, digits and hyphen. It must start with a Latin letter
+  /// and must not end with a hyphen.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request timed out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    DiskMigrationJob request,
+    core.String parent, {
+    core.String? diskMigrationJobId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (diskMigrationJobId != null)
+        'diskMigrationJobId': [diskMigrationJobId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/diskMigrationJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a single DiskMigrationJob.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DiskMigrationJob.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/diskMigrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets details of a single DiskMigrationJob.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DiskMigrationJob.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/diskMigrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DiskMigrationJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DiskMigrationJob> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DiskMigrationJob.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists DiskMigrationJobs in a given Source.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent, which owns this collection of
+  /// DiskMigrationJobs.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. The filter request (according to AIP-160).
+  ///
+  /// [orderBy] - Optional. Ordering of the result list.
+  ///
+  /// [pageSize] - Optional. The maximum number of disk migration jobs to
+  /// return. The service may return fewer than this value. If unspecified, at
+  /// most 500 disk migration jobs will be returned. The maximum value is 1000;
+  /// values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDiskMigrationJobs` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all parameters provided to `ListDiskMigrationJobs`
+  /// except `page_size` must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDiskMigrationJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDiskMigrationJobsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/diskMigrationJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDiskMigrationJobsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates the parameters of a single DiskMigrationJob.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The identifier of the DiskMigrationJob.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/diskMigrationJobs/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. A request ID to identify requests. Specify a
+  /// unique request ID so that if you must retry your request, the server will
+  /// know to ignore the request if it has already been completed. The server
+  /// will guarantee that for at least 60 minutes since the first request. For
+  /// example, consider a situation where you make an initial request and the
+  /// request timed out. If you make the request again with the same request ID,
+  /// the server can check if original operation with the same request ID was
+  /// received, and if so, will ignore the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the DiskMigrationJob resource by the update. The fields
+  /// specified in the update_mask are relative to the resource, not the full
+  /// request. A field will be overwritten if it is in the mask. If the user
+  /// does not provide a mask, then a mask equivalent to all fields that are
+  /// populated (have a non-empty value), will be implied.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    DiskMigrationJob request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Runs the disk migration job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the DiskMigrationJob.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/sources/\[^/\]+/diskMigrationJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunDiskMigrationJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
 
     final response_ = await _requester.request(
       url_,
@@ -3305,6 +3729,35 @@ class AccessKeyCredentials {
   };
 }
 
+/// AdaptationModifier a modifier to be used for configuration of the OS
+/// adaptation process.
+class AdaptationModifier {
+  /// The modifier name.
+  ///
+  /// Optional.
+  core.String? modifier;
+
+  /// The value of the modifier.
+  ///
+  /// The actual value depends on the modifier and can also be empty.
+  ///
+  /// Optional.
+  core.String? value;
+
+  AdaptationModifier({this.modifier, this.value});
+
+  AdaptationModifier.fromJson(core.Map json_)
+    : this(
+        modifier: json_['modifier'] as core.String?,
+        value: json_['value'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (modifier != null) 'modifier': modifier!,
+    if (value != null) 'value': value!,
+  };
+}
+
 /// AdaptingOSStep contains specific step details.
 typedef AdaptingOSStep = $Empty;
 
@@ -3588,6 +4041,57 @@ class AwsSourceDetails {
       'migrationResourcesUserTags': migrationResourcesUserTags!,
     if (publicIp != null) 'publicIp': publicIp!,
     if (state != null) 'state': state!,
+  };
+}
+
+/// Represents the source AWS Disk details.
+class AwsSourceDiskDetails {
+  /// Disk type.
+  ///
+  /// Optional. Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified AWS disk type. Should not be used.
+  /// - "GP2" : GP2 disk type.
+  /// - "GP3" : GP3 disk type.
+  /// - "IO1" : IO1 disk type.
+  /// - "IO2" : IO2 disk type.
+  /// - "ST1" : ST1 disk type.
+  /// - "SC1" : SC1 disk type.
+  /// - "STANDARD" : Standard disk type.
+  core.String? diskType;
+
+  /// Size in GiB.
+  ///
+  /// Output only.
+  core.String? sizeGib;
+
+  /// A map of AWS volume tags.
+  ///
+  /// Optional. Output only.
+  core.Map<core.String, core.String>? tags;
+
+  /// AWS volume ID.
+  ///
+  /// Required.
+  core.String? volumeId;
+
+  AwsSourceDiskDetails({this.diskType, this.sizeGib, this.tags, this.volumeId});
+
+  AwsSourceDiskDetails.fromJson(core.Map json_)
+    : this(
+        diskType: json_['diskType'] as core.String?,
+        sizeGib: json_['sizeGib'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        volumeId: json_['volumeId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (diskType != null) 'diskType': diskType!,
+    if (sizeGib != null) 'sizeGib': sizeGib!,
+    if (tags != null) 'tags': tags!,
+    if (volumeId != null) 'volumeId': volumeId!,
   };
 }
 
@@ -4299,6 +4803,9 @@ typedef CancelCloneJobRequest = $Empty;
 /// Request message for 'CancelCutoverJob' request.
 typedef CancelCutoverJobRequest = $Empty;
 
+/// Request message for 'CancelDiskMigrationJob' request.
+typedef CancelDiskMigrationJobRequest = $Empty;
+
 /// Request message for 'CancelImageImportJob' request.
 typedef CancelImageImportJobRequest = $Empty;
 
@@ -4527,6 +5034,67 @@ class CloneStep {
   };
 }
 
+/// Compute Engine disk target details.
+class ComputeEngineDisk {
+  /// Target Compute Engine Disk ID.
+  ///
+  /// This is the resource ID segment of the Compute Engine Disk to create. In
+  /// the resource name compute/v1/projects/{project}/zones/{zone}/disks/disk1
+  /// "disk1" is the resource ID for the disk.
+  ///
+  /// Optional.
+  core.String? diskId;
+
+  /// The disk type to use.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "COMPUTE_ENGINE_DISK_TYPE_UNSPECIFIED" : An unspecified disk type. Will
+  /// be used as STANDARD.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_STANDARD" : A Standard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_SSD" : SSD hard disk type.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_BALANCED" : An alternative to SSD persistent
+  /// disks that balance performance and cost.
+  /// - "COMPUTE_ENGINE_DISK_TYPE_HYPERDISK_BALANCED" : Hyperdisk balanced disk
+  /// type.
+  core.String? diskType;
+
+  /// Replication zones of the regional disk.
+  ///
+  /// Should be of the form: projects/{target-project}/locations/{replica-zone}
+  /// Currently only one replica zone is supported.
+  ///
+  /// Optional.
+  core.List<core.String>? replicaZones;
+
+  /// The Compute Engine zone in which to create the disk.
+  ///
+  /// Should be of the form: projects/{target-project}/locations/{zone}
+  ///
+  /// Required.
+  core.String? zone;
+
+  ComputeEngineDisk({this.diskId, this.diskType, this.replicaZones, this.zone});
+
+  ComputeEngineDisk.fromJson(core.Map json_)
+    : this(
+        diskId: json_['diskId'] as core.String?,
+        diskType: json_['diskType'] as core.String?,
+        replicaZones:
+            (json_['replicaZones'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        zone: json_['zone'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (diskId != null) 'diskId': diskId!,
+    if (diskType != null) 'diskType': diskType!,
+    if (replicaZones != null) 'replicaZones': replicaZones!,
+    if (zone != null) 'zone': zone!,
+  };
+}
+
 /// ComputeEngineDisksTargetDefaults is a collection of details for creating
 /// Persistent Disks in a target Compute Engine project.
 class ComputeEngineDisksTargetDefaults {
@@ -4646,6 +5214,11 @@ class ComputeEngineDisksTargetDetails {
 /// ComputeEngineTargetDefaults is a collection of details for creating a VM in
 /// a target Compute Engine project.
 class ComputeEngineTargetDefaults {
+  /// AdaptationModifiers are the set of modifiers used during OS adaptation.
+  ///
+  /// Optional.
+  core.List<AdaptationModifier>? adaptationModifiers;
+
   /// Additional licenses to assign to the VM.
   core.List<core.String>? additionalLicenses;
 
@@ -4774,6 +5347,7 @@ class ComputeEngineTargetDefaults {
   core.String? zone;
 
   ComputeEngineTargetDefaults({
+    this.adaptationModifiers,
     this.additionalLicenses,
     this.appliedLicense,
     this.bootConversion,
@@ -4801,6 +5375,14 @@ class ComputeEngineTargetDefaults {
 
   ComputeEngineTargetDefaults.fromJson(core.Map json_)
     : this(
+        adaptationModifiers:
+            (json_['adaptationModifiers'] as core.List?)
+                ?.map(
+                  (value) => AdaptationModifier.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         additionalLicenses:
             (json_['additionalLicenses'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -4864,6 +5446,8 @@ class ComputeEngineTargetDefaults {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (adaptationModifiers != null)
+      'adaptationModifiers': adaptationModifiers!,
     if (additionalLicenses != null) 'additionalLicenses': additionalLicenses!,
     if (appliedLicense != null) 'appliedLicense': appliedLicense!,
     if (bootConversion != null) 'bootConversion': bootConversion!,
@@ -4894,6 +5478,11 @@ class ComputeEngineTargetDefaults {
 /// ComputeEngineTargetDetails is a collection of details for creating a VM in a
 /// target Compute Engine project.
 class ComputeEngineTargetDetails {
+  /// Modifiers to be used as configuration of the OS adaptation process.
+  ///
+  /// Optional.
+  core.List<AdaptationModifier>? adaptationModifiers;
+
   /// Additional licenses to assign to the VM.
   core.List<core.String>? additionalLicenses;
 
@@ -5010,6 +5599,7 @@ class ComputeEngineTargetDetails {
   core.String? zone;
 
   ComputeEngineTargetDetails({
+    this.adaptationModifiers,
     this.additionalLicenses,
     this.appliedLicense,
     this.bootConversion,
@@ -5037,6 +5627,14 @@ class ComputeEngineTargetDetails {
 
   ComputeEngineTargetDetails.fromJson(core.Map json_)
     : this(
+        adaptationModifiers:
+            (json_['adaptationModifiers'] as core.List?)
+                ?.map(
+                  (value) => AdaptationModifier.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         additionalLicenses:
             (json_['additionalLicenses'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -5100,6 +5698,8 @@ class ComputeEngineTargetDetails {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (adaptationModifiers != null)
+      'adaptationModifiers': adaptationModifiers!,
     if (additionalLicenses != null) 'additionalLicenses': additionalLicenses!,
     if (appliedLicense != null) 'appliedLicense': appliedLicense!,
     if (bootConversion != null) 'bootConversion': bootConversion!,
@@ -5199,8 +5799,14 @@ class ComputeScheduling {
   };
 }
 
+/// CopyingSourceDiskSnapshotStep contains specific step details.
+typedef CopyingSourceDiskSnapshotStep = $Empty;
+
 /// CreatingImageStep contains specific step details.
 typedef CreatingImageStep = $Empty;
+
+/// CreatingSourceDiskSnapshotStep contains specific step details.
+typedef CreatingSourceDiskSnapshotStep = $Empty;
 
 /// CutoverForecast holds information about future CutoverJobs of a MigratingVm.
 class CutoverForecast {
@@ -5859,6 +6465,255 @@ class DiskImageTargetDetails {
   };
 }
 
+/// Describes the disk which will be migrated from the source environment.
+///
+/// The source disk has to be unattached.
+class DiskMigrationJob {
+  /// Details of the unattached AWS source disk.
+  AwsSourceDiskDetails? awsSourceDiskDetails;
+
+  /// The time the DiskMigrationJob resource was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Provides details on the errors that led to the disk migration job's state
+  /// in case of an error.
+  ///
+  /// Output only.
+  core.List<Status>? errors;
+
+  /// Identifier.
+  ///
+  /// The identifier of the DiskMigrationJob.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// State of the DiskMigrationJob.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The state is unspecified. This is not in use.
+  /// - "READY" : The initial state of the disk migration. In this state the
+  /// customers can update the target details.
+  /// - "RUNNING" : The migration is active, and it's running or scheduled to
+  /// run.
+  /// - "SUCCEEDED" : The migration completed successfully.
+  /// - "CANCELLING" : Migration cancellation was initiated.
+  /// - "CANCELLED" : The migration was cancelled.
+  /// - "FAILED" : The migration process encountered an unrecoverable error and
+  /// was aborted.
+  core.String? state;
+
+  /// The disk migration steps list representing its progress.
+  ///
+  /// Output only.
+  core.List<DiskMigrationStep>? steps;
+
+  /// Details of the target Disk in Compute Engine.
+  ///
+  /// Required.
+  DiskMigrationJobTargetDetails? targetDetails;
+
+  /// The last time the DiskMigrationJob resource was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  DiskMigrationJob({
+    this.awsSourceDiskDetails,
+    this.createTime,
+    this.errors,
+    this.name,
+    this.state,
+    this.steps,
+    this.targetDetails,
+    this.updateTime,
+  });
+
+  DiskMigrationJob.fromJson(core.Map json_)
+    : this(
+        awsSourceDiskDetails:
+            json_.containsKey('awsSourceDiskDetails')
+                ? AwsSourceDiskDetails.fromJson(
+                  json_['awsSourceDiskDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map(
+                  (value) => Status.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        state: json_['state'] as core.String?,
+        steps:
+            (json_['steps'] as core.List?)
+                ?.map(
+                  (value) => DiskMigrationStep.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        targetDetails:
+            json_.containsKey('targetDetails')
+                ? DiskMigrationJobTargetDetails.fromJson(
+                  json_['targetDetails'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (awsSourceDiskDetails != null)
+      'awsSourceDiskDetails': awsSourceDiskDetails!,
+    if (createTime != null) 'createTime': createTime!,
+    if (errors != null) 'errors': errors!,
+    if (name != null) 'name': name!,
+    if (state != null) 'state': state!,
+    if (steps != null) 'steps': steps!,
+    if (targetDetails != null) 'targetDetails': targetDetails!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Details of the target disk in Compute Engine.
+class DiskMigrationJobTargetDetails {
+  /// The encryption to apply to the disk.
+  ///
+  /// If the DiskMigrationJob parent Source resource has an encryption, this
+  /// field must be set to the same encryption key.
+  ///
+  /// Optional.
+  Encryption? encryption;
+
+  /// A map of labels to associate with the disk.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// The target disk.
+  ///
+  /// Required.
+  ComputeEngineDisk? targetDisk;
+
+  /// The name of the resource of type TargetProject which represents the
+  /// Compute Engine project in which to create the disk.
+  ///
+  /// Should be of the form:
+  /// projects/{project}/locations/global/targetProjects/{target-project}
+  ///
+  /// Required.
+  core.String? targetProject;
+
+  DiskMigrationJobTargetDetails({
+    this.encryption,
+    this.labels,
+    this.targetDisk,
+    this.targetProject,
+  });
+
+  DiskMigrationJobTargetDetails.fromJson(core.Map json_)
+    : this(
+        encryption:
+            json_.containsKey('encryption')
+                ? Encryption.fromJson(
+                  json_['encryption'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        targetDisk:
+            json_.containsKey('targetDisk')
+                ? ComputeEngineDisk.fromJson(
+                  json_['targetDisk'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        targetProject: json_['targetProject'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (encryption != null) 'encryption': encryption!,
+    if (labels != null) 'labels': labels!,
+    if (targetDisk != null) 'targetDisk': targetDisk!,
+    if (targetProject != null) 'targetProject': targetProject!,
+  };
+}
+
+/// DiskMigrationStep holds information about the disk migration step progress.
+class DiskMigrationStep {
+  /// Copying source disk snapshot step.
+  CopyingSourceDiskSnapshotStep? copyingSourceDiskSnapshot;
+
+  /// Creating source disk snapshot step.
+  CreatingSourceDiskSnapshotStep? creatingSourceDiskSnapshot;
+
+  /// The time the step has ended.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Creating target disk step.
+  ProvisioningTargetDiskStep? provisioningTargetDisk;
+
+  /// The time the step has started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  DiskMigrationStep({
+    this.copyingSourceDiskSnapshot,
+    this.creatingSourceDiskSnapshot,
+    this.endTime,
+    this.provisioningTargetDisk,
+    this.startTime,
+  });
+
+  DiskMigrationStep.fromJson(core.Map json_)
+    : this(
+        copyingSourceDiskSnapshot:
+            json_.containsKey('copyingSourceDiskSnapshot')
+                ? CopyingSourceDiskSnapshotStep.fromJson(
+                  json_['copyingSourceDiskSnapshot']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        creatingSourceDiskSnapshot:
+            json_.containsKey('creatingSourceDiskSnapshot')
+                ? CreatingSourceDiskSnapshotStep.fromJson(
+                  json_['creatingSourceDiskSnapshot']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endTime: json_['endTime'] as core.String?,
+        provisioningTargetDisk:
+            json_.containsKey('provisioningTargetDisk')
+                ? ProvisioningTargetDiskStep.fromJson(
+                  json_['provisioningTargetDisk']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (copyingSourceDiskSnapshot != null)
+      'copyingSourceDiskSnapshot': copyingSourceDiskSnapshot!,
+    if (creatingSourceDiskSnapshot != null)
+      'creatingSourceDiskSnapshot': creatingSourceDiskSnapshot!,
+    if (endTime != null) 'endTime': endTime!,
+    if (provisioningTargetDisk != null)
+      'provisioningTargetDisk': provisioningTargetDisk!,
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
 /// Details for a disk only migration.
 typedef DisksMigrationDisksTargetDefaults = $Empty;
 
@@ -6188,6 +7043,51 @@ class FetchInventoryResponse {
   };
 }
 
+/// Response message for fetchStorageInventory.
+class FetchStorageInventoryResponse {
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  /// The list of storage resources in the source.
+  core.List<SourceStorageResource>? resources;
+
+  /// The timestamp when the source was last queried (if the result is from the
+  /// cache).
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  FetchStorageInventoryResponse({
+    this.nextPageToken,
+    this.resources,
+    this.updateTime,
+  });
+
+  FetchStorageInventoryResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        resources:
+            (json_['resources'] as core.List?)
+                ?.map(
+                  (value) => SourceStorageResource.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (resources != null) 'resources': resources!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// Request message for 'FinalizeMigration' request.
 typedef FinalizeMigrationRequest = $Empty;
 
@@ -6511,6 +7411,11 @@ class ImageImportJob {
 
 /// Parameters affecting the OS adaptation process.
 class ImageImportOsAdaptationParameters {
+  /// Modifiers to be used as configuration of the OS adaptation process.
+  ///
+  /// Optional.
+  core.List<AdaptationModifier>? adaptationModifiers;
+
   /// By default the image will keep its existing boot option.
   ///
   /// Setting this property will trigger an internal process which will convert
@@ -6547,6 +7452,7 @@ class ImageImportOsAdaptationParameters {
   core.String? licenseType;
 
   ImageImportOsAdaptationParameters({
+    this.adaptationModifiers,
     this.bootConversion,
     this.generalize,
     this.licenseType,
@@ -6554,12 +7460,22 @@ class ImageImportOsAdaptationParameters {
 
   ImageImportOsAdaptationParameters.fromJson(core.Map json_)
     : this(
+        adaptationModifiers:
+            (json_['adaptationModifiers'] as core.List?)
+                ?.map(
+                  (value) => AdaptationModifier.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         bootConversion: json_['bootConversion'] as core.String?,
         generalize: json_['generalize'] as core.bool?,
         licenseType: json_['licenseType'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (adaptationModifiers != null)
+      'adaptationModifiers': adaptationModifiers!,
     if (bootConversion != null) 'bootConversion': bootConversion!,
     if (generalize != null) 'generalize': generalize!,
     if (licenseType != null) 'licenseType': licenseType!,
@@ -6791,6 +7707,55 @@ class ListDatacenterConnectorsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (datacenterConnectors != null)
       'datacenterConnectors': datacenterConnectors!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// Response message for 'ListDiskMigrationJobs' request.
+class ListDiskMigrationJobsResponse {
+  /// The list of the disk migration jobs.
+  ///
+  /// Output only.
+  core.List<DiskMigrationJob>? diskMigrationJobs;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  ///
+  /// Optional. Output only.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  ///
+  /// Output only.
+  core.List<core.String>? unreachable;
+
+  ListDiskMigrationJobsResponse({
+    this.diskMigrationJobs,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDiskMigrationJobsResponse.fromJson(core.Map json_)
+    : this(
+        diskMigrationJobs:
+            (json_['diskMigrationJobs'] as core.List?)
+                ?.map(
+                  (value) => DiskMigrationJob.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (diskMigrationJobs != null) 'diskMigrationJobs': diskMigrationJobs!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (unreachable != null) 'unreachable': unreachable!,
   };
@@ -8189,6 +9154,9 @@ typedef PostProcessingStep = $Empty;
 /// PreparingVMDisksStep contains specific step details.
 typedef PreparingVMDisksStep = $Empty;
 
+/// ProvisioningTargetDiskStep contains specific step details.
+typedef ProvisioningTargetDiskStep = $Empty;
+
 /// Request message for 'RemoveMigration' request.
 class RemoveGroupMigrationRequest {
   /// The MigratingVm to remove.
@@ -8378,6 +9346,9 @@ class ReplicationSync {
 
 /// Request message for 'ResumeMigration' request.
 typedef ResumeMigrationRequest = $Empty;
+
+/// Request message for 'RunDiskMigrationJobRequest' request.
+typedef RunDiskMigrationJobRequest = $Empty;
 
 /// A policy for scheduling replications.
 class SchedulePolicy {
@@ -8632,6 +9603,29 @@ class Source {
     if (name != null) 'name': name!,
     if (updateTime != null) 'updateTime': updateTime!,
     if (vmware != null) 'vmware': vmware!,
+  };
+}
+
+/// SourceStorageResource describes a storage resource in the source.
+class SourceStorageResource {
+  /// Source AWS volume details.
+  AwsSourceDiskDetails? awsDiskDetails;
+
+  SourceStorageResource({this.awsDiskDetails});
+
+  SourceStorageResource.fromJson(core.Map json_)
+    : this(
+        awsDiskDetails:
+            json_.containsKey('awsDiskDetails')
+                ? AwsSourceDiskDetails.fromJson(
+                  json_['awsDiskDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (awsDiskDetails != null) 'awsDiskDetails': awsDiskDetails!,
   };
 }
 

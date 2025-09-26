@@ -560,9 +560,9 @@ class BillingAccountsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -3392,9 +3392,9 @@ class FoldersLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -4529,8 +4529,10 @@ class FoldersLocationsLogScopesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent project in which to create the log scope
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// [parent] - Required. The parent resource in which to create the log scope:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
   /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -4577,8 +4579,10 @@ class FoldersLocationsLogScopesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the log scope to delete:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
-  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
   ///
@@ -4612,8 +4616,10 @@ class FoldersLocationsLogScopesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the log scope:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
-  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
   ///
@@ -5802,9 +5808,9 @@ class LocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -7706,9 +7712,9 @@ class OrganizationsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -8843,8 +8849,10 @@ class OrganizationsLocationsLogScopesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent project in which to create the log scope
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// [parent] - Required. The parent resource in which to create the log scope:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
   /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -8891,8 +8899,10 @@ class OrganizationsLocationsLogScopesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the log scope to delete:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
-  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
   ///
@@ -8926,8 +8936,10 @@ class OrganizationsLocationsLogScopesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the log scope:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
-  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
   ///
@@ -10477,9 +10489,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -11614,8 +11626,10 @@ class ProjectsLocationsLogScopesResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent project in which to create the log scope
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]" For
+  /// [parent] - Required. The parent resource in which to create the log scope:
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
   /// example:"projects/my-project/locations/global"
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -11662,8 +11676,10 @@ class ProjectsLocationsLogScopesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the log scope to delete:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
-  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
   ///
@@ -11697,8 +11713,10 @@ class ProjectsLocationsLogScopesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The resource name of the log scope:
-  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/logScopes/\[LOG_SCOPE_ID\]"
-  /// For example:"projects/my-project/locations/global/logScopes/my-log-scope"
+  /// "projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]"
+  /// "organizations/\[ORGANIZATION_ID\]/locations/\[LOCATION_ID\]"
+  /// "folders/\[FOLDER_ID\]/locations/\[LOCATION_ID\]" For
+  /// example:"projects/my-project/locations/global/logScopes/my-log-scope"
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/logScopes/\[^/\]+$`.
   ///
@@ -16093,8 +16111,9 @@ class LogScope {
   /// Output only.
   core.String? name;
 
-  /// Names of one or more parent resources: projects/\[PROJECT_ID\]May
-  /// alternatively be one or more views:
+  /// Names of one or more parent resources (organizations and folders are not
+  /// supported.): projects/\[PROJECT_ID\]May alternatively be one or more
+  /// views:
   /// projects/\[PROJECT_ID\]/locations/\[LOCATION_ID\]/buckets/\[BUCKET_ID\]/views/\[VIEW_ID\]A
   /// log scope can include a maximum of 5 projects and a maximum of 100
   /// resources in total.
@@ -17136,7 +17155,7 @@ class RecentQuery {
   /// (https://cloud.google.com/logging/docs/region-support)The QUERY_ID is a
   /// system generated alphanumeric ID.
   ///
-  /// Optional.
+  /// Output only.
   core.String? name;
 
   /// Analytics query that can be executed in Log Analytics.

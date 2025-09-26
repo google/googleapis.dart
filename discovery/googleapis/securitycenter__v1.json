@@ -42,7 +42,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250721",
+    "revision": "20250915",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "servicePath": "",
     "title": "Security Command Center API",
@@ -6065,12 +6065,16 @@
                     "enum": [
                         "DEPLOYMENT_PLATFORM_UNSPECIFIED",
                         "VERTEX_AI",
-                        "GKE"
+                        "GKE",
+                        "GCE",
+                        "FINE_TUNED_MODEL"
                     ],
                     "enumDescriptions": [
                         "Unspecified deployment platform.",
                         "Vertex AI.",
-                        "Google Kubernetes Engine."
+                        "Google Kubernetes Engine.",
+                        "Google Compute Engine.",
+                        "Fine tuned model."
                     ],
                     "type": "string"
                 },
@@ -6696,7 +6700,7 @@
             "type": "object"
         },
         "BigQueryDestination": {
-            "description": "The destination big query dataset to export findings to.",
+            "description": "The destination BigQuery dataset to export findings to.",
             "id": "BigQueryDestination",
             "properties": {
                 "dataset": {
@@ -7456,11 +7460,15 @@
                     "description": "Type of the DRD event.",
                     "enum": [
                         "EVENT_TYPE_UNSPECIFIED",
-                        "EVENT_TYPE_MAX_TTL_EXCEEDED"
+                        "EVENT_TYPE_MAX_TTL_EXCEEDED",
+                        "EVENT_TYPE_MAX_TTL_FROM_CREATION",
+                        "EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION"
                     ],
                     "enumDescriptions": [
                         "Unspecified event type.",
-                        "The maximum retention time has been exceeded."
+                        "The maximum retention time has been exceeded.",
+                        "Max TTL from the asset's creation time.",
+                        "Max TTL from the asset's last modification time."
                     ],
                     "type": "string"
                 },
@@ -7814,7 +7822,7 @@
             "properties": {
                 "bigQueryDestination": {
                     "$ref": "BigQueryDestination",
-                    "description": "Required. The destination big query dataset to export findings to."
+                    "description": "Required. The destination BigQuery dataset to export findings to."
                 },
                 "exportStartTime": {
                     "description": "Optional. Timestamp at which export was started",
@@ -9461,12 +9469,16 @@
                     "enum": [
                         "DEPLOYMENT_PLATFORM_UNSPECIFIED",
                         "VERTEX_AI",
-                        "GKE"
+                        "GKE",
+                        "GCE",
+                        "FINE_TUNED_MODEL"
                     ],
                     "enumDescriptions": [
                         "Unspecified deployment platform.",
                         "Vertex AI.",
-                        "Google Kubernetes Engine."
+                        "Google Kubernetes Engine.",
+                        "Google Compute Engine.",
+                        "Fine tuned model."
                     ],
                     "type": "string"
                 },
@@ -9823,6 +9835,11 @@
                 "createTime": {
                     "description": "Output only. The time at which the BigQuery export was created. This field is set by the server and will be ignored if provided on export on creation.",
                     "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "cryptoKeyName": {
+                    "description": "Output only. The resource name of the Cloud KMS `CryptoKey` used to protect this configuration's data, if configured during Security Command Center activation.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -10539,11 +10556,15 @@
                     "description": "Type of the DRD event.",
                     "enum": [
                         "EVENT_TYPE_UNSPECIFIED",
-                        "EVENT_TYPE_MAX_TTL_EXCEEDED"
+                        "EVENT_TYPE_MAX_TTL_EXCEEDED",
+                        "EVENT_TYPE_MAX_TTL_FROM_CREATION",
+                        "EVENT_TYPE_MAX_TTL_FROM_LAST_MODIFICATION"
                     ],
                     "enumDescriptions": [
                         "Unspecified event type.",
-                        "The maximum retention time has been exceeded."
+                        "The maximum retention time has been exceeded.",
+                        "Max TTL from the asset's creation time.",
+                        "Max TTL from the asset's last modification time."
                     ],
                     "type": "string"
                 },
@@ -10897,7 +10918,7 @@
                     "description": "Fields related to Backup and DR findings."
                 },
                 "canonicalName": {
-                    "description": "Output only. The canonical name of the finding. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}/findings/{finding_id}` + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` The prefix is the closest CRM ancestor of the resource associated with the finding.",
+                    "description": "Output only. The canonical name of the finding. The following list shows some examples: + `organizations/{organization_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `folders/{folder_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` + `projects/{project_id}/sources/{source_id}/locations/{location_id}/findings/{finding_id}` The prefix is the closest CRM ancestor of the resource associated with the finding.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -10957,6 +10978,11 @@
                 "createTime": {
                     "description": "Output only. The time at which the finding was created in Security Command Center.",
                     "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "cryptoKeyName": {
+                    "description": "Output only. The name of the Cloud KMS key used to encrypt this finding, if any.",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -11730,6 +11756,10 @@
             "description": "A resource associated with the an issue.",
             "id": "GoogleCloudSecuritycenterV2IssueResource",
             "properties": {
+                "application": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplication",
+                    "description": "The AppHub application associated with the resource, if any. Only populated for the primary resource."
+                },
                 "awsMetadata": {
                     "$ref": "GoogleCloudSecuritycenterV2IssueResourceAwsMetadata",
                     "description": "The AWS metadata of the resource associated with the issue. Only populated for AWS resources."
@@ -11768,6 +11798,17 @@
                 },
                 "type": {
                     "description": "The type of the resource associated with the issue.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceApplication": {
+            "description": "The AppHub application associated with the resource, if any.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceApplication",
+            "properties": {
+                "name": {
+                    "description": "The resource name of an Application. Format: `projects/{host-project-id}/locations/{location}/applications/{application-id}`",
                     "type": "string"
                 }
             },
@@ -12749,6 +12790,11 @@
                 "createTime": {
                     "description": "Output only. The time at which the mute config was created. This field is set by the server and will be ignored if provided on config creation.",
                     "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "cryptoKeyName": {
+                    "description": "Output only. The resource name of the Cloud KMS `CryptoKey` used to encrypt this configuration data, if CMEK was enabled during Security Command Center activation.",
                     "readOnly": true,
                     "type": "string"
                 },

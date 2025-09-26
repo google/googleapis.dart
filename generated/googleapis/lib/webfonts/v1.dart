@@ -153,6 +153,28 @@ class Axis {
   };
 }
 
+/// Metadata for a tag.
+class Tag {
+  /// The name of the tag.
+  core.String? name;
+
+  /// The weight of the tag.
+  core.double? weight;
+
+  Tag({this.name, this.weight});
+
+  Tag.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        weight: (json_['weight'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (weight != null) 'weight': weight!,
+  };
+}
+
 /// Metadata describing a family of fonts.
 class Webfont {
   /// Axis for variable fonts.
@@ -184,6 +206,9 @@ class Webfont {
   /// The scripts supported by the font.
   core.List<core.String>? subsets;
 
+  /// The tags that apply to this family.
+  core.List<Tag>? tags;
+
   /// The available variants for the font.
   core.List<core.String>? variants;
 
@@ -200,6 +225,7 @@ class Webfont {
     this.lastModified,
     this.menu,
     this.subsets,
+    this.tags,
     this.variants,
     this.version,
   });
@@ -230,6 +256,14 @@ class Webfont {
             (json_['subsets'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        tags:
+            (json_['tags'] as core.List?)
+                ?.map(
+                  (value) => Tag.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         variants:
             (json_['variants'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -247,6 +281,7 @@ class Webfont {
     if (lastModified != null) 'lastModified': lastModified!,
     if (menu != null) 'menu': menu!,
     if (subsets != null) 'subsets': subsets!,
+    if (tags != null) 'tags': tags!,
     if (variants != null) 'variants': variants!,
     if (version != null) 'version': version!,
   };

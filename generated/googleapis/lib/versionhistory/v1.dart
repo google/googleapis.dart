@@ -594,6 +594,12 @@ class Release {
   /// Whether or not the release was available for version pinning.
   core.bool? pinnable;
 
+  /// Rollout-related metadata.
+  ///
+  /// Some releases are part of one or more A/B rollouts. This field contains
+  /// the names and data describing this release's role in any rollouts.
+  core.List<RolloutData>? rolloutData;
+
   /// Timestamp interval of when the release was live.
   ///
   /// If end_time is unspecified, the release is currently live.
@@ -609,6 +615,7 @@ class Release {
     this.fractionGroup,
     this.name,
     this.pinnable,
+    this.rolloutData,
     this.serving,
     this.version,
   });
@@ -619,6 +626,14 @@ class Release {
         fractionGroup: json_['fractionGroup'] as core.String?,
         name: json_['name'] as core.String?,
         pinnable: json_['pinnable'] as core.bool?,
+        rolloutData:
+            (json_['rolloutData'] as core.List?)
+                ?.map(
+                  (value) => RolloutData.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         serving:
             json_.containsKey('serving')
                 ? Interval.fromJson(
@@ -633,8 +648,38 @@ class Release {
     if (fractionGroup != null) 'fractionGroup': fractionGroup!,
     if (name != null) 'name': name!,
     if (pinnable != null) 'pinnable': pinnable!,
+    if (rolloutData != null) 'rolloutData': rolloutData!,
     if (serving != null) 'serving': serving!,
     if (version != null) 'version': version!,
+  };
+}
+
+/// Rollout-related metadata for a release.
+class RolloutData {
+  /// The name of the rollout.
+  core.String? rolloutName;
+
+  /// Tags associated with a release's role in a rollout.
+  ///
+  /// Most rollouts will have at least one release with a "rollout" tag and
+  /// another release with a "control" tag. Some rollouts may have additional
+  /// named arms.
+  core.List<core.String>? tag;
+
+  RolloutData({this.rolloutName, this.tag});
+
+  RolloutData.fromJson(core.Map json_)
+    : this(
+        rolloutName: json_['rolloutName'] as core.String?,
+        tag:
+            (json_['tag'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (rolloutName != null) 'rolloutName': rolloutName!,
+    if (tag != null) 'tag': tag!,
   };
 }
 

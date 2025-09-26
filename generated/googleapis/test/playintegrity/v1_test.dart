@@ -306,6 +306,25 @@ void checkEnvironmentDetails(api.EnvironmentDetails o) {
   buildCounterEnvironmentDetails--;
 }
 
+core.int buildCounterPcAccountDetails = 0;
+api.PcAccountDetails buildPcAccountDetails() {
+  final o = api.PcAccountDetails();
+  buildCounterPcAccountDetails++;
+  if (buildCounterPcAccountDetails < 3) {
+    o.appLicensingVerdict = 'foo';
+  }
+  buildCounterPcAccountDetails--;
+  return o;
+}
+
+void checkPcAccountDetails(api.PcAccountDetails o) {
+  buildCounterPcAccountDetails++;
+  if (buildCounterPcAccountDetails < 3) {
+    unittest.expect(o.appLicensingVerdict!, unittest.equals('foo'));
+  }
+  buildCounterPcAccountDetails--;
+}
+
 core.List<core.String> buildUnnamed4() => ['foo', 'foo'];
 
 void checkUnnamed4(core.List<core.String> o) {
@@ -356,13 +375,34 @@ void checkPcRequestDetails(api.PcRequestDetails o) {
   buildCounterPcRequestDetails--;
 }
 
+core.int buildCounterPcTestingDetails = 0;
+api.PcTestingDetails buildPcTestingDetails() {
+  final o = api.PcTestingDetails();
+  buildCounterPcTestingDetails++;
+  if (buildCounterPcTestingDetails < 3) {
+    o.isTestingResponse = true;
+  }
+  buildCounterPcTestingDetails--;
+  return o;
+}
+
+void checkPcTestingDetails(api.PcTestingDetails o) {
+  buildCounterPcTestingDetails++;
+  if (buildCounterPcTestingDetails < 3) {
+    unittest.expect(o.isTestingResponse!, unittest.isTrue);
+  }
+  buildCounterPcTestingDetails--;
+}
+
 core.int buildCounterPcTokenPayloadExternal = 0;
 api.PcTokenPayloadExternal buildPcTokenPayloadExternal() {
   final o = api.PcTokenPayloadExternal();
   buildCounterPcTokenPayloadExternal++;
   if (buildCounterPcTokenPayloadExternal < 3) {
+    o.accountDetails = buildPcAccountDetails();
     o.deviceIntegrity = buildPcDeviceIntegrity();
     o.requestDetails = buildPcRequestDetails();
+    o.testingDetails = buildPcTestingDetails();
   }
   buildCounterPcTokenPayloadExternal--;
   return o;
@@ -371,8 +411,10 @@ api.PcTokenPayloadExternal buildPcTokenPayloadExternal() {
 void checkPcTokenPayloadExternal(api.PcTokenPayloadExternal o) {
   buildCounterPcTokenPayloadExternal++;
   if (buildCounterPcTokenPayloadExternal < 3) {
+    checkPcAccountDetails(o.accountDetails!);
     checkPcDeviceIntegrity(o.deviceIntegrity!);
     checkPcRequestDetails(o.requestDetails!);
+    checkPcTestingDetails(o.testingDetails!);
   }
   buildCounterPcTokenPayloadExternal--;
 }
@@ -684,6 +726,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-PcAccountDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPcAccountDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PcAccountDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPcAccountDetails(od);
+    });
+  });
+
   unittest.group('obj-schema-PcDeviceIntegrity', () {
     unittest.test('to-json--from-json', () async {
       final o = buildPcDeviceIntegrity();
@@ -703,6 +756,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPcRequestDetails(od);
+    });
+  });
+
+  unittest.group('obj-schema-PcTestingDetails', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPcTestingDetails();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PcTestingDetails.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPcTestingDetails(od);
     });
   });
 

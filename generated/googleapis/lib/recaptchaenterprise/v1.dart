@@ -1376,6 +1376,13 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
         .replaceAll('+', '-');
   }
 
+  /// If using an external multi-factor authentication provider, provide phone
+  /// authentication details for fraud detection purposes.
+  ///
+  /// Optional.
+  GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent?
+  phoneAuthenticationEvent;
+
   /// Reasons for the annotation that are assigned to the event.
   ///
   /// Optional.
@@ -1391,6 +1398,7 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
     this.accountId,
     this.annotation,
     this.hashedAccountId,
+    this.phoneAuthenticationEvent,
     this.reasons,
     this.transactionEvent,
   });
@@ -1401,6 +1409,13 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
         accountId: json_['accountId'] as core.String?,
         annotation: json_['annotation'] as core.String?,
         hashedAccountId: json_['hashedAccountId'] as core.String?,
+        phoneAuthenticationEvent:
+            json_.containsKey('phoneAuthenticationEvent')
+                ? GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent.fromJson(
+                  json_['phoneAuthenticationEvent']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         reasons:
             (json_['reasons'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -1418,6 +1433,8 @@ class GoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest {
     if (accountId != null) 'accountId': accountId!,
     if (annotation != null) 'annotation': annotation!,
     if (hashedAccountId != null) 'hashedAccountId': hashedAccountId!,
+    if (phoneAuthenticationEvent != null)
+      'phoneAuthenticationEvent': phoneAuthenticationEvent!,
     if (reasons != null) 'reasons': reasons!,
     if (transactionEvent != null) 'transactionEvent': transactionEvent!,
   };
@@ -3113,6 +3130,38 @@ class GoogleCloudRecaptchaenterpriseV1MigrateKeyRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (skipBillingCheck != null) 'skipBillingCheck': skipBillingCheck!,
+  };
+}
+
+/// Details on a phone authentication event
+class GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent {
+  /// The time at which the multi-factor authentication event (challenge or
+  /// verification) occurred.
+  ///
+  /// Optional.
+  core.String? eventTime;
+
+  /// Phone number in E.164 format for which a multi-factor authentication
+  /// challenge was initiated, succeeded, or failed.
+  ///
+  /// Required.
+  core.String? phoneNumber;
+
+  GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent({
+    this.eventTime,
+    this.phoneNumber,
+  });
+
+  GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent.fromJson(
+    core.Map json_,
+  ) : this(
+        eventTime: json_['eventTime'] as core.String?,
+        phoneNumber: json_['phoneNumber'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (eventTime != null) 'eventTime': eventTime!,
+    if (phoneNumber != null) 'phoneNumber': phoneNumber!,
   };
 }
 

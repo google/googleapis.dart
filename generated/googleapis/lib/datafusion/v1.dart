@@ -137,9 +137,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1548,6 +1548,7 @@ class Instance {
   /// - "AUTO_UPDATING" : Instance is being auto-updated
   /// - "AUTO_UPGRADING" : Instance is being auto-upgraded
   /// - "DISABLED" : Instance is disabled
+  /// - "ENABLING" : Instance is being enabled.
   core.String? state;
 
   /// Additional information about the current state of this Data Fusion

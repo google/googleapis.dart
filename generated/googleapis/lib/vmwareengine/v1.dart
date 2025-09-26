@@ -2316,6 +2316,54 @@ class ProjectsLocationsPrivateCloudsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Accelerates the deletion of a private cloud that is currently in soft
+  /// deletion A `PrivateCloud` resource in soft deletion has
+  /// `PrivateCloud.state` set to `SOFT_DELETED` and `PrivateCloud.expireTime`
+  /// set to the time when deletion can no longer be reversed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the private cloud in softdeletion.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> privateCloudDeletionNow(
+    AcceleratePrivateCloudDeletionRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$name') + ':privateCloudDeletionNow';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Resets credentials of the NSX appliance.
   ///
   /// [request] - The metadata request object.
@@ -5727,6 +5775,38 @@ class ProjectsLocationsVmwareEngineNetworksResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+}
+
+/// Request message for VmwareEngine.AcceleratePrivateCloudDeletion
+class AcceleratePrivateCloudDeletionRequest {
+  /// Checksum used to ensure that the user-provided value is up to date before
+  /// the server processes the request.
+  ///
+  /// The server compares provided checksum with the current checksum of the
+  /// resource. If the user-provided value is out of date, this request returns
+  /// an `ABORTED` error.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  AcceleratePrivateCloudDeletionRequest({this.etag, this.requestId});
+
+  AcceleratePrivateCloudDeletionRequest.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (etag != null) 'etag': etag!,
+    if (requestId != null) 'requestId': requestId!,
+  };
 }
 
 /// Announcement for the resources of Vmware Engine.

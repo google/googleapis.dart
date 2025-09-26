@@ -143,9 +143,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2211,6 +2211,48 @@ class ProjectsLocationsVolumesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Restore files from a backup to a volume.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The volume resource name, in the format
+  /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> restore(
+    RestoreBackupFilesRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Revert an existing volume to a specified snapshot.
   ///
   /// Warning! This operation will permanently revert all changes made after the
@@ -3894,6 +3936,150 @@ class BackupVault {
   };
 }
 
+/// Configuration of the cache volume.
+class CacheConfig {
+  /// Flag indicating whether a CIFS change notification is enabled for the
+  /// FlexCache volume.
+  ///
+  /// Optional.
+  core.bool? cifsChangeNotifyEnabled;
+
+  CacheConfig({this.cifsChangeNotifyEnabled});
+
+  CacheConfig.fromJson(core.Map json_)
+    : this(
+        cifsChangeNotifyEnabled: json_['cifsChangeNotifyEnabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cifsChangeNotifyEnabled != null)
+      'cifsChangeNotifyEnabled': cifsChangeNotifyEnabled!,
+  };
+}
+
+/// Cache Parameters for the volume.
+class CacheParameters {
+  /// Configuration of the cache volume.
+  ///
+  /// Optional.
+  CacheConfig? cacheConfig;
+
+  /// State of the cache volume indicating the peering status.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CACHE_STATE_UNSPECIFIED" : Default unspecified state.
+  /// - "PENDING_CLUSTER_PEERING" : State indicating waiting for cluster peering
+  /// to be established.
+  /// - "PENDING_SVM_PEERING" : State indicating waiting for SVM peering to be
+  /// established.
+  /// - "PEERED" : State indicating successful establishment of peering with
+  /// origin volumes's ONTAP cluster.
+  /// - "ERROR" : Terminal state wherein peering with origin volume's ONTAP
+  /// cluster has failed.
+  core.String? cacheState;
+
+  /// Copy-paste-able commands to be used on user's ONTAP to accept peering
+  /// requests.
+  ///
+  /// Output only.
+  core.String? command;
+
+  /// Field indicating whether cache volume as global file lock enabled.
+  ///
+  /// Optional.
+  core.bool? enableGlobalFileLock;
+
+  /// Temporary passphrase generated to accept cluster peering command.
+  ///
+  /// Output only.
+  core.String? passphrase;
+
+  /// Name of the origin volume's ONTAP cluster.
+  ///
+  /// Required.
+  core.String? peerClusterName;
+
+  /// List of IC LIF addresses of the origin volume's ONTAP cluster.
+  ///
+  /// Required.
+  core.List<core.String>? peerIpAddresses;
+
+  /// Name of the origin volume's SVM.
+  ///
+  /// Required.
+  core.String? peerSvmName;
+
+  /// Name of the origin volume for the cache volume.
+  ///
+  /// Required.
+  core.String? peerVolumeName;
+
+  /// Expiration time for the peering command to be executed on user's ONTAP.
+  ///
+  /// Optional.
+  core.String? peeringCommandExpiryTime;
+
+  /// Detailed description of the current cache state.
+  ///
+  /// Output only.
+  core.String? stateDetails;
+
+  CacheParameters({
+    this.cacheConfig,
+    this.cacheState,
+    this.command,
+    this.enableGlobalFileLock,
+    this.passphrase,
+    this.peerClusterName,
+    this.peerIpAddresses,
+    this.peerSvmName,
+    this.peerVolumeName,
+    this.peeringCommandExpiryTime,
+    this.stateDetails,
+  });
+
+  CacheParameters.fromJson(core.Map json_)
+    : this(
+        cacheConfig:
+            json_.containsKey('cacheConfig')
+                ? CacheConfig.fromJson(
+                  json_['cacheConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cacheState: json_['cacheState'] as core.String?,
+        command: json_['command'] as core.String?,
+        enableGlobalFileLock: json_['enableGlobalFileLock'] as core.bool?,
+        passphrase: json_['passphrase'] as core.String?,
+        peerClusterName: json_['peerClusterName'] as core.String?,
+        peerIpAddresses:
+            (json_['peerIpAddresses'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        peerSvmName: json_['peerSvmName'] as core.String?,
+        peerVolumeName: json_['peerVolumeName'] as core.String?,
+        peeringCommandExpiryTime:
+            json_['peeringCommandExpiryTime'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cacheConfig != null) 'cacheConfig': cacheConfig!,
+    if (cacheState != null) 'cacheState': cacheState!,
+    if (command != null) 'command': command!,
+    if (enableGlobalFileLock != null)
+      'enableGlobalFileLock': enableGlobalFileLock!,
+    if (passphrase != null) 'passphrase': passphrase!,
+    if (peerClusterName != null) 'peerClusterName': peerClusterName!,
+    if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
+    if (peerSvmName != null) 'peerSvmName': peerSvmName!,
+    if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
+    if (peeringCommandExpiryTime != null)
+      'peeringCommandExpiryTime': peeringCommandExpiryTime!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+  };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -4183,10 +4369,30 @@ class HybridReplicationParameters {
   /// Optional.
   core.String? description;
 
+  /// Type of the hybrid replication.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "VOLUME_HYBRID_REPLICATION_TYPE_UNSPECIFIED" : Unspecified hybrid
+  /// replication type.
+  /// - "MIGRATION" : Hybrid replication type for migration.
+  /// - "CONTINUOUS_REPLICATION" : Hybrid replication type for continuous
+  /// replication.
+  /// - "ONPREM_REPLICATION" : New field for reversible OnPrem replication, to
+  /// be used for data protection.
+  /// - "REVERSE_ONPREM_REPLICATION" : New field for reversible OnPrem
+  /// replication, to be used for data protection.
+  core.String? hybridReplicationType;
+
   /// Labels to be added to the replication as the key value pairs.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
+
+  /// Constituent volume count for large volume.
+  ///
+  /// Optional.
+  core.int? largeVolumeConstituentCount;
 
   /// Name of the user's local source cluster to be peered with the destination
   /// cluster.
@@ -4216,24 +4422,41 @@ class HybridReplicationParameters {
   /// Required.
   core.String? replication;
 
+  /// Replication Schedule for the replication created.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "HYBRID_REPLICATION_SCHEDULE_UNSPECIFIED" : Unspecified
+  /// HybridReplicationSchedule
+  /// - "EVERY_10_MINUTES" : Replication happens once every 10 minutes.
+  /// - "HOURLY" : Replication happens once every hour.
+  /// - "DAILY" : Replication happens once every day.
+  core.String? replicationSchedule;
+
   HybridReplicationParameters({
     this.clusterLocation,
     this.description,
+    this.hybridReplicationType,
     this.labels,
+    this.largeVolumeConstituentCount,
     this.peerClusterName,
     this.peerIpAddresses,
     this.peerSvmName,
     this.peerVolumeName,
     this.replication,
+    this.replicationSchedule,
   });
 
   HybridReplicationParameters.fromJson(core.Map json_)
     : this(
         clusterLocation: json_['clusterLocation'] as core.String?,
         description: json_['description'] as core.String?,
+        hybridReplicationType: json_['hybridReplicationType'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
+        largeVolumeConstituentCount:
+            json_['largeVolumeConstituentCount'] as core.int?,
         peerClusterName: json_['peerClusterName'] as core.String?,
         peerIpAddresses:
             (json_['peerIpAddresses'] as core.List?)
@@ -4242,17 +4465,24 @@ class HybridReplicationParameters {
         peerSvmName: json_['peerSvmName'] as core.String?,
         peerVolumeName: json_['peerVolumeName'] as core.String?,
         replication: json_['replication'] as core.String?,
+        replicationSchedule: json_['replicationSchedule'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (clusterLocation != null) 'clusterLocation': clusterLocation!,
     if (description != null) 'description': description!,
+    if (hybridReplicationType != null)
+      'hybridReplicationType': hybridReplicationType!,
     if (labels != null) 'labels': labels!,
+    if (largeVolumeConstituentCount != null)
+      'largeVolumeConstituentCount': largeVolumeConstituentCount!,
     if (peerClusterName != null) 'peerClusterName': peerClusterName!,
     if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
     if (peerSvmName != null) 'peerSvmName': peerSvmName!,
     if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
     if (replication != null) 'replication': replication!,
+    if (replicationSchedule != null)
+      'replicationSchedule': replicationSchedule!,
   };
 }
 
@@ -5150,7 +5380,18 @@ class Replication {
   /// - "MIGRATION" : Hybrid replication type for migration.
   /// - "CONTINUOUS_REPLICATION" : Hybrid replication type for continuous
   /// replication.
+  /// - "ONPREM_REPLICATION" : New field for reversible OnPrem replication, to
+  /// be used for data protection.
+  /// - "REVERSE_ONPREM_REPLICATION" : Hybrid replication type for incremental
+  /// Transfer in the reverse direction (GCNV is source and Onprem is
+  /// destination)
   core.String? hybridReplicationType;
+
+  /// Copy pastable snapmirror commands to be executed on onprem cluster by the
+  /// customer.
+  ///
+  /// Output only.
+  UserCommands? hybridReplicationUserCommands;
 
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
@@ -5167,6 +5408,8 @@ class Replication {
   /// - "TRANSFERRING" : Incremental replication is in progress.
   /// - "BASELINE_TRANSFERRING" : Baseline replication is in progress.
   /// - "ABORTED" : Replication is aborted.
+  /// - "EXTERNALLY_MANAGED" : Replication is being managed from Onprem ONTAP.
+  /// - "PENDING_PEERING" : Peering is yet to be established.
   core.String? mirrorState;
 
   /// Identifier.
@@ -5215,6 +5458,10 @@ class Replication {
   /// to be established.
   /// - "PENDING_SVM_PEERING" : Replication is waiting for SVM peering to be
   /// established.
+  /// - "PENDING_REMOTE_RESYNC" : Replication is waiting for Commands to be
+  /// executed on Onprem ONTAP.
+  /// - "EXTERNALLY_MANAGED_REPLICATION" : Onprem ONTAP is destination and
+  /// Replication can only be managed from Onprem.
   core.String? state;
 
   /// State details of the replication.
@@ -5236,6 +5483,7 @@ class Replication {
     this.healthy,
     this.hybridPeeringDetails,
     this.hybridReplicationType,
+    this.hybridReplicationUserCommands,
     this.labels,
     this.mirrorState,
     this.name,
@@ -5269,6 +5517,13 @@ class Replication {
                 )
                 : null,
         hybridReplicationType: json_['hybridReplicationType'] as core.String?,
+        hybridReplicationUserCommands:
+            json_.containsKey('hybridReplicationUserCommands')
+                ? UserCommands.fromJson(
+                  json_['hybridReplicationUserCommands']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -5299,6 +5554,8 @@ class Replication {
       'hybridPeeringDetails': hybridPeeringDetails!,
     if (hybridReplicationType != null)
       'hybridReplicationType': hybridReplicationType!,
+    if (hybridReplicationUserCommands != null)
+      'hybridReplicationUserCommands': hybridReplicationUserCommands!,
     if (labels != null) 'labels': labels!,
     if (mirrorState != null) 'mirrorState': mirrorState!,
     if (name != null) 'name': name!,
@@ -5309,6 +5566,49 @@ class Replication {
     if (state != null) 'state': state!,
     if (stateDetails != null) 'stateDetails': stateDetails!,
     if (transferStats != null) 'transferStats': transferStats!,
+  };
+}
+
+/// RestoreBackupFilesRequest restores files from a backup to a volume.
+class RestoreBackupFilesRequest {
+  /// The backup resource name, in the format
+  /// `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`
+  ///
+  /// Required.
+  core.String? backup;
+
+  /// List of files to be restored in the form of their absolute path as in
+  /// source volume.
+  ///
+  /// Required.
+  core.List<core.String>? fileList;
+
+  /// Absolute directory path in the destination volume.
+  ///
+  /// Optional.
+  core.String? restoreDestinationPath;
+
+  RestoreBackupFilesRequest({
+    this.backup,
+    this.fileList,
+    this.restoreDestinationPath,
+  });
+
+  RestoreBackupFilesRequest.fromJson(core.Map json_)
+    : this(
+        backup: json_['backup'] as core.String?,
+        fileList:
+            (json_['fileList'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        restoreDestinationPath: json_['restoreDestinationPath'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (backup != null) 'backup': backup!,
+    if (fileList != null) 'fileList': fileList!,
+    if (restoreDestinationPath != null)
+      'restoreDestinationPath': restoreDestinationPath!,
   };
 }
 
@@ -5380,6 +5680,14 @@ class SimpleExportPolicyRule {
   /// Comma separated list of allowed clients IP addresses
   core.String? allowedClients;
 
+  /// An integer representing the anonymous user ID.
+  ///
+  /// Range is 0 to 4294967295. Required when squash_mode is ROOT_SQUASH or
+  /// ALL_SQUASH.
+  ///
+  /// Optional.
+  core.String? anonUid;
+
   /// Whether Unix root access will be granted.
   core.String? hasRootAccess;
 
@@ -5429,9 +5737,25 @@ class SimpleExportPolicyRule {
   /// NFS V4 protocol.
   core.bool? nfsv4;
 
+  /// Defines how user identity squashing is applied for this export rule.
+  ///
+  /// This field is the preferred way to configure squashing behavior and takes
+  /// precedence over `has_root_access` if both are provided.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SQUASH_MODE_UNSPECIFIED" : Defaults to NO_ROOT_SQUASH.
+  /// - "NO_ROOT_SQUASH" : The root user (UID 0) retains full access. Other
+  /// users are unaffected.
+  /// - "ROOT_SQUASH" : The root user (UID 0) is squashed to anonymous user ID.
+  /// Other users are unaffected.
+  /// - "ALL_SQUASH" : All users are squashed to anonymous user ID.
+  core.String? squashMode;
+
   SimpleExportPolicyRule({
     this.accessType,
     this.allowedClients,
+    this.anonUid,
     this.hasRootAccess,
     this.kerberos5ReadOnly,
     this.kerberos5ReadWrite,
@@ -5441,12 +5765,14 @@ class SimpleExportPolicyRule {
     this.kerberos5pReadWrite,
     this.nfsv3,
     this.nfsv4,
+    this.squashMode,
   });
 
   SimpleExportPolicyRule.fromJson(core.Map json_)
     : this(
         accessType: json_['accessType'] as core.String?,
         allowedClients: json_['allowedClients'] as core.String?,
+        anonUid: json_['anonUid'] as core.String?,
         hasRootAccess: json_['hasRootAccess'] as core.String?,
         kerberos5ReadOnly: json_['kerberos5ReadOnly'] as core.bool?,
         kerberos5ReadWrite: json_['kerberos5ReadWrite'] as core.bool?,
@@ -5456,11 +5782,13 @@ class SimpleExportPolicyRule {
         kerberos5pReadWrite: json_['kerberos5pReadWrite'] as core.bool?,
         nfsv3: json_['nfsv3'] as core.bool?,
         nfsv4: json_['nfsv4'] as core.bool?,
+        squashMode: json_['squashMode'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (accessType != null) 'accessType': accessType!,
     if (allowedClients != null) 'allowedClients': allowedClients!,
+    if (anonUid != null) 'anonUid': anonUid!,
     if (hasRootAccess != null) 'hasRootAccess': hasRootAccess!,
     if (kerberos5ReadOnly != null) 'kerberos5ReadOnly': kerberos5ReadOnly!,
     if (kerberos5ReadWrite != null) 'kerberos5ReadWrite': kerberos5ReadWrite!,
@@ -5472,6 +5800,7 @@ class SimpleExportPolicyRule {
       'kerberos5pReadWrite': kerberos5pReadWrite!,
     if (nfsv3 != null) 'nfsv3': nfsv3!,
     if (nfsv4 != null) 'nfsv4': nfsv4!,
+    if (squashMode != null) 'squashMode': squashMode!,
   };
 }
 
@@ -5669,10 +5998,21 @@ class StoragePool {
   /// Optional.
   core.bool? allowAutoTiering;
 
+  /// Available throughput of the storage pool (in MiB/s).
+  ///
+  /// Output only.
+  core.double? availableThroughputMibps;
+
   /// Capacity in GIB of the pool
   ///
   /// Required.
   core.String? capacityGib;
+
+  /// Total cold tier data rounded down to the nearest GiB used by the storage
+  /// pool.
+  ///
+  /// Output only.
+  core.String? coldTierSizeUsedGib;
 
   /// Create time of the storage pool
   ///
@@ -5726,6 +6066,12 @@ class StoragePool {
   /// Optional.
   core.String? hotTierSizeGib;
 
+  /// Total hot tier data rounded down to the nearest GiB used by the storage
+  /// pool.
+  ///
+  /// Output only.
+  core.String? hotTierSizeUsedGib;
+
   /// Specifies the KMS config to be used for volume encryption.
   ///
   /// Optional.
@@ -5759,6 +6105,15 @@ class StoragePool {
   ///
   /// Optional.
   core.String? psaRange;
+
+  /// QoS (Quality of Service) Type of the storage pool
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "QOS_TYPE_UNSPECIFIED" : Unspecified QoS Type
+  /// - "AUTO" : QoS Type is Auto
+  /// - "MANUAL" : QoS Type is Manual
+  core.String? qosType;
 
   /// Specifies the replica zone for regional storagePool.
   ///
@@ -5834,7 +6189,9 @@ class StoragePool {
   StoragePool({
     this.activeDirectory,
     this.allowAutoTiering,
+    this.availableThroughputMibps,
     this.capacityGib,
+    this.coldTierSizeUsedGib,
     this.createTime,
     this.customPerformanceEnabled,
     this.description,
@@ -5842,12 +6199,14 @@ class StoragePool {
     this.encryptionType,
     this.globalAccessAllowed,
     this.hotTierSizeGib,
+    this.hotTierSizeUsedGib,
     this.kmsConfig,
     this.labels,
     this.ldapEnabled,
     this.name,
     this.network,
     this.psaRange,
+    this.qosType,
     this.replicaZone,
     this.satisfiesPzi,
     this.satisfiesPzs,
@@ -5865,7 +6224,10 @@ class StoragePool {
     : this(
         activeDirectory: json_['activeDirectory'] as core.String?,
         allowAutoTiering: json_['allowAutoTiering'] as core.bool?,
+        availableThroughputMibps:
+            (json_['availableThroughputMibps'] as core.num?)?.toDouble(),
         capacityGib: json_['capacityGib'] as core.String?,
+        coldTierSizeUsedGib: json_['coldTierSizeUsedGib'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         customPerformanceEnabled:
             json_['customPerformanceEnabled'] as core.bool?,
@@ -5874,6 +6236,7 @@ class StoragePool {
         encryptionType: json_['encryptionType'] as core.String?,
         globalAccessAllowed: json_['globalAccessAllowed'] as core.bool?,
         hotTierSizeGib: json_['hotTierSizeGib'] as core.String?,
+        hotTierSizeUsedGib: json_['hotTierSizeUsedGib'] as core.String?,
         kmsConfig: json_['kmsConfig'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
@@ -5882,6 +6245,7 @@ class StoragePool {
         name: json_['name'] as core.String?,
         network: json_['network'] as core.String?,
         psaRange: json_['psaRange'] as core.String?,
+        qosType: json_['qosType'] as core.String?,
         replicaZone: json_['replicaZone'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
@@ -5898,7 +6262,11 @@ class StoragePool {
   core.Map<core.String, core.dynamic> toJson() => {
     if (activeDirectory != null) 'activeDirectory': activeDirectory!,
     if (allowAutoTiering != null) 'allowAutoTiering': allowAutoTiering!,
+    if (availableThroughputMibps != null)
+      'availableThroughputMibps': availableThroughputMibps!,
     if (capacityGib != null) 'capacityGib': capacityGib!,
+    if (coldTierSizeUsedGib != null)
+      'coldTierSizeUsedGib': coldTierSizeUsedGib!,
     if (createTime != null) 'createTime': createTime!,
     if (customPerformanceEnabled != null)
       'customPerformanceEnabled': customPerformanceEnabled!,
@@ -5909,12 +6277,14 @@ class StoragePool {
     if (globalAccessAllowed != null)
       'globalAccessAllowed': globalAccessAllowed!,
     if (hotTierSizeGib != null) 'hotTierSizeGib': hotTierSizeGib!,
+    if (hotTierSizeUsedGib != null) 'hotTierSizeUsedGib': hotTierSizeUsedGib!,
     if (kmsConfig != null) 'kmsConfig': kmsConfig!,
     if (labels != null) 'labels': labels!,
     if (ldapEnabled != null) 'ldapEnabled': ldapEnabled!,
     if (name != null) 'name': name!,
     if (network != null) 'network': network!,
     if (psaRange != null) 'psaRange': psaRange!,
+    if (qosType != null) 'qosType': qosType!,
     if (replicaZone != null) 'replicaZone': replicaZone!,
     if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
@@ -6055,6 +6425,28 @@ class TransferStats {
   };
 }
 
+/// UserCommands contains the commands to be executed by the customer.
+class UserCommands {
+  /// List of commands to be executed by the customer.
+  ///
+  /// Output only.
+  core.List<core.String>? commands;
+
+  UserCommands({this.commands});
+
+  UserCommands.fromJson(core.Map json_)
+    : this(
+        commands:
+            (json_['commands'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (commands != null) 'commands': commands!,
+  };
+}
+
 /// ValidateDirectoryServiceRequest validates the directory service policy
 /// attached to the storage pool.
 class ValidateDirectoryServiceRequest {
@@ -6125,12 +6517,17 @@ class Volume {
   /// BackupConfig of the volume.
   BackupConfig? backupConfig;
 
+  /// Cache parameters for the volume.
+  ///
+  /// Optional.
+  CacheParameters? cacheParameters;
+
   /// Capacity in GIB of the volume
   ///
   /// Required.
   core.String? capacityGib;
 
-  /// Size of the volume cold tier data in GiB.
+  /// Size of the volume cold tier data rounded down to the nearest GiB.
   ///
   /// Output only.
   core.String? coldTierSizeGib;
@@ -6164,6 +6561,13 @@ class Volume {
   ///
   /// Output only.
   core.bool? hasReplication;
+
+  /// Total hot tier data rounded down to the nearest GiB used by the Volume.
+  ///
+  /// This field is only used for flex Service Level
+  ///
+  /// Output only.
+  core.String? hotTierSizeUsedGib;
 
   /// The Hybrid Replication parameters for the volume.
   ///
@@ -6329,6 +6733,11 @@ class Volume {
   /// Required.
   core.String? storagePool;
 
+  /// Throughput of the volume (in MiB/s)
+  ///
+  /// Optional.
+  core.double? throughputMibps;
+
   /// Tiering policy for the volume.
   TieringPolicy? tieringPolicy;
 
@@ -6356,6 +6765,7 @@ class Volume {
   Volume({
     this.activeDirectory,
     this.backupConfig,
+    this.cacheParameters,
     this.capacityGib,
     this.coldTierSizeGib,
     this.createTime,
@@ -6363,6 +6773,7 @@ class Volume {
     this.encryptionType,
     this.exportPolicy,
     this.hasReplication,
+    this.hotTierSizeUsedGib,
     this.hybridReplicationParameters,
     this.kerberosEnabled,
     this.kmsConfig,
@@ -6388,6 +6799,7 @@ class Volume {
     this.state,
     this.stateDetails,
     this.storagePool,
+    this.throughputMibps,
     this.tieringPolicy,
     this.unixPermissions,
     this.usedGib,
@@ -6403,6 +6815,13 @@ class Volume {
                   json_['backupConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        cacheParameters:
+            json_.containsKey('cacheParameters')
+                ? CacheParameters.fromJson(
+                  json_['cacheParameters']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         capacityGib: json_['capacityGib'] as core.String?,
         coldTierSizeGib: json_['coldTierSizeGib'] as core.String?,
         createTime: json_['createTime'] as core.String?,
@@ -6415,6 +6834,7 @@ class Volume {
                 )
                 : null,
         hasReplication: json_['hasReplication'] as core.bool?,
+        hotTierSizeUsedGib: json_['hotTierSizeUsedGib'] as core.String?,
         hybridReplicationParameters:
             json_.containsKey('hybridReplicationParameters')
                 ? HybridReplicationParameters.fromJson(
@@ -6476,6 +6896,7 @@ class Volume {
         state: json_['state'] as core.String?,
         stateDetails: json_['stateDetails'] as core.String?,
         storagePool: json_['storagePool'] as core.String?,
+        throughputMibps: (json_['throughputMibps'] as core.num?)?.toDouble(),
         tieringPolicy:
             json_.containsKey('tieringPolicy')
                 ? TieringPolicy.fromJson(
@@ -6490,6 +6911,7 @@ class Volume {
   core.Map<core.String, core.dynamic> toJson() => {
     if (activeDirectory != null) 'activeDirectory': activeDirectory!,
     if (backupConfig != null) 'backupConfig': backupConfig!,
+    if (cacheParameters != null) 'cacheParameters': cacheParameters!,
     if (capacityGib != null) 'capacityGib': capacityGib!,
     if (coldTierSizeGib != null) 'coldTierSizeGib': coldTierSizeGib!,
     if (createTime != null) 'createTime': createTime!,
@@ -6497,6 +6919,7 @@ class Volume {
     if (encryptionType != null) 'encryptionType': encryptionType!,
     if (exportPolicy != null) 'exportPolicy': exportPolicy!,
     if (hasReplication != null) 'hasReplication': hasReplication!,
+    if (hotTierSizeUsedGib != null) 'hotTierSizeUsedGib': hotTierSizeUsedGib!,
     if (hybridReplicationParameters != null)
       'hybridReplicationParameters': hybridReplicationParameters!,
     if (kerberosEnabled != null) 'kerberosEnabled': kerberosEnabled!,
@@ -6523,6 +6946,7 @@ class Volume {
     if (state != null) 'state': state!,
     if (stateDetails != null) 'stateDetails': stateDetails!,
     if (storagePool != null) 'storagePool': storagePool!,
+    if (throughputMibps != null) 'throughputMibps': throughputMibps!,
     if (tieringPolicy != null) 'tieringPolicy': tieringPolicy!,
     if (unixPermissions != null) 'unixPermissions': unixPermissions!,
     if (usedGib != null) 'usedGib': usedGib!,

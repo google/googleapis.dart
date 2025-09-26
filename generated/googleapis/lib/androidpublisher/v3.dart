@@ -6778,7 +6778,9 @@ class PurchasesSubscriptionsResource {
 
   /// Cancels a user's subscription purchase.
   ///
-  /// The subscription remains valid until its expiration time.
+  /// The subscription remains valid until its expiration time. Newer version is
+  /// available at purchases.subscriptionsv2.cancel for better client library
+  /// support.
   ///
   /// Request parameters:
   ///
@@ -7057,6 +7059,57 @@ class PurchasesSubscriptionsv2Resource {
 
   PurchasesSubscriptionsv2Resource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Cancel a subscription purchase for the user.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [packageName] - Required. The package of the application for which this
+  /// subscription was purchased (for example, 'com.some.thing').
+  ///
+  /// [token] - Required. The token provided to the user's device when the
+  /// subscription was purchased.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CancelSubscriptionPurchaseResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CancelSubscriptionPurchaseResponse> cancel(
+    CancelSubscriptionPurchaseRequest request,
+    core.String packageName,
+    core.String token, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'androidpublisher/v3/applications/' +
+        commons.escapeVariable('$packageName') +
+        '/purchases/subscriptionsv2/tokens/' +
+        commons.escapeVariable('$token') +
+        ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CancelSubscriptionPurchaseResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Get metadata about a subscription
   ///
@@ -8929,16 +8982,21 @@ class AutoRenewingPlan {
   /// signup.
   SubscriptionItemPriceChangeDetails? priceChangeDetails;
 
+  /// The information of the latest price step-up consent.
+  PriceStepUpConsentDetails? priceStepUpConsentDetails;
+
   /// The current recurring price of the auto renewing plan.
   ///
-  /// Note that the price does not take into account discounts and taxes, call
-  /// orders.get API instead if transaction details are needed.
+  /// Note that the price does not take into account discounts and does not
+  /// include taxes for tax-exclusive pricing, please call orders.get API
+  /// instead if transaction details are needed.
   Money? recurringPrice;
 
   AutoRenewingPlan({
     this.autoRenewEnabled,
     this.installmentDetails,
     this.priceChangeDetails,
+    this.priceStepUpConsentDetails,
     this.recurringPrice,
   });
 
@@ -8959,6 +9017,13 @@ class AutoRenewingPlan {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        priceStepUpConsentDetails:
+            json_.containsKey('priceStepUpConsentDetails')
+                ? PriceStepUpConsentDetails.fromJson(
+                  json_['priceStepUpConsentDetails']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         recurringPrice:
             json_.containsKey('recurringPrice')
                 ? Money.fromJson(
@@ -8972,6 +9037,8 @@ class AutoRenewingPlan {
     if (autoRenewEnabled != null) 'autoRenewEnabled': autoRenewEnabled!,
     if (installmentDetails != null) 'installmentDetails': installmentDetails!,
     if (priceChangeDetails != null) 'priceChangeDetails': priceChangeDetails!,
+    if (priceStepUpConsentDetails != null)
+      'priceStepUpConsentDetails': priceStepUpConsentDetails!,
     if (recurringPrice != null) 'recurringPrice': recurringPrice!,
   };
 }
@@ -10012,6 +10079,35 @@ class CancelOneTimeProductOfferRequest {
   };
 }
 
+/// Request for the purchases.subscriptionsv2.cancel API.
+class CancelSubscriptionPurchaseRequest {
+  /// Additional details around the subscription revocation.
+  ///
+  /// Required.
+  CancellationContext? cancellationContext;
+
+  CancelSubscriptionPurchaseRequest({this.cancellationContext});
+
+  CancelSubscriptionPurchaseRequest.fromJson(core.Map json_)
+    : this(
+        cancellationContext:
+            json_.containsKey('cancellationContext')
+                ? CancellationContext.fromJson(
+                  json_['cancellationContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cancellationContext != null)
+      'cancellationContext': cancellationContext!,
+  };
+}
+
+/// Response for the purchases.subscriptionsv2.cancel API.
+typedef CancelSubscriptionPurchaseResponse = $Empty;
+
 /// Result of the cancel survey when the subscription was canceled by the user.
 class CancelSurveyResult {
   /// The reason the user selected in the cancel survey.
@@ -10109,6 +10205,36 @@ class CanceledStateContext {
       'systemInitiatedCancellation': systemInitiatedCancellation!,
     if (userInitiatedCancellation != null)
       'userInitiatedCancellation': userInitiatedCancellation!,
+  };
+}
+
+/// Cancellation context of the purchases.subscriptionsv2.cancel API.
+class CancellationContext {
+  /// The type of cancellation for the purchased subscription.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "CANCELLATION_TYPE_UNSPECIFIED" : Cancellation type unspecified.
+  /// - "USER_REQUESTED_STOP_RENEWALS" : Cancellation requested by the user, and
+  /// the subscription can be restored. It only stops the subscription's next
+  /// renewal. For an installment subscription, users still need to finish the
+  /// commitment period. For more details on renewals and payments, see
+  /// https://developer.android.com/google/play/billing/subscriptions#installments
+  /// - "DEVELOPER_REQUESTED_STOP_PAYMENTS" : Cancellation requested by the
+  /// developer, and the subscription cannot be restored. It stops the
+  /// subscription's next payment. For an installment subscription, users will
+  /// not need to pay the next payment and finish the commitment period. For
+  /// more details on renewals and payments, see
+  /// https://developer.android.com/google/play/billing/subscriptions#installments
+  core.String? cancellationType;
+
+  CancellationContext({this.cancellationType});
+
+  CancellationContext.fromJson(core.Map json_)
+    : this(cancellationType: json_['cancellationType'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cancellationType != null) 'cancellationType': cancellationType!,
   };
 }
 
@@ -10613,6 +10739,9 @@ class DeactivateSubscriptionOfferRequest {
     if (productId != null) 'productId': productId!,
   };
 }
+
+/// Information related to deferred item replacement.
+typedef DeferredItemRemoval = $Empty;
 
 /// Information related to deferred item replacement.
 class DeferredItemReplacement {
@@ -14729,8 +14858,6 @@ class OneTimeProductPurchaseOptionRegionalPricingAndAvailabilityConfig {
   /// as AVAILABLE.
   /// - "AVAILABLE_IF_RELEASED" : The purchase option is initially unavailable,
   /// but made available via a released pre-order offer.
-  /// - "AVAILABLE_FOR_OFFERS_ONLY" : The purchase option is unavailable but
-  /// offers linked to it (i.e. Play Points offer) are available.
   core.String? availability;
 
   /// The price of the purchase option in the specified region.
@@ -15578,6 +15705,55 @@ class Price {
   core.Map<core.String, core.dynamic> toJson() => {
     if (currency != null) 'currency': currency!,
     if (priceMicros != null) 'priceMicros': priceMicros!,
+  };
+}
+
+/// Information related to a price step-up that requires user consent.
+class PriceStepUpConsentDetails {
+  /// The deadline by which the user must provide consent.
+  ///
+  /// If consent is not provided by this time, the subscription will be
+  /// canceled.
+  core.String? consentDeadlineTime;
+
+  /// The new price which requires user consent.
+  Money? newPrice;
+
+  /// The state of the price step-up consent.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CONSENT_STATE_UNSPECIFIED" : Unspecified consent state.
+  /// - "PENDING" : The user has not yet provided consent.
+  /// - "CONFIRMED" : The user has consented, and the new price is waiting to
+  /// take effect.
+  /// - "COMPLETED" : The user has consented, and the new price has taken
+  /// effect.
+  core.String? state;
+
+  PriceStepUpConsentDetails({
+    this.consentDeadlineTime,
+    this.newPrice,
+    this.state,
+  });
+
+  PriceStepUpConsentDetails.fromJson(core.Map json_)
+    : this(
+        consentDeadlineTime: json_['consentDeadlineTime'] as core.String?,
+        newPrice:
+            json_.containsKey('newPrice')
+                ? Money.fromJson(
+                  json_['newPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (consentDeadlineTime != null)
+      'consentDeadlineTime': consentDeadlineTime!,
+    if (newPrice != null) 'newPrice': newPrice!,
+    if (state != null) 'state': state!,
   };
 }
 
@@ -18280,6 +18456,9 @@ class SubscriptionPurchaseLineItem {
   /// The item is auto renewing.
   AutoRenewingPlan? autoRenewingPlan;
 
+  /// Information for deferred item removal.
+  DeferredItemRemoval? deferredItemRemoval;
+
   /// Information for deferred item replacement.
   DeferredItemReplacement? deferredItemReplacement;
 
@@ -18311,6 +18490,7 @@ class SubscriptionPurchaseLineItem {
 
   SubscriptionPurchaseLineItem({
     this.autoRenewingPlan,
+    this.deferredItemRemoval,
     this.deferredItemReplacement,
     this.expiryTime,
     this.latestSuccessfulOrderId,
@@ -18326,6 +18506,13 @@ class SubscriptionPurchaseLineItem {
             json_.containsKey('autoRenewingPlan')
                 ? AutoRenewingPlan.fromJson(
                   json_['autoRenewingPlan']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        deferredItemRemoval:
+            json_.containsKey('deferredItemRemoval')
+                ? DeferredItemRemoval.fromJson(
+                  json_['deferredItemRemoval']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -18363,6 +18550,8 @@ class SubscriptionPurchaseLineItem {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (autoRenewingPlan != null) 'autoRenewingPlan': autoRenewingPlan!,
+    if (deferredItemRemoval != null)
+      'deferredItemRemoval': deferredItemRemoval!,
     if (deferredItemReplacement != null)
       'deferredItemReplacement': deferredItemReplacement!,
     if (expiryTime != null) 'expiryTime': expiryTime!,
@@ -19281,6 +19470,9 @@ class TrackCountryAvailability {
 /// A release within a track.
 class TrackRelease {
   /// Restricts a release to a specific set of countries.
+  ///
+  /// Note this is only allowed to be set for inProgress releases in the
+  /// production track.
   CountryTargeting? countryTargeting;
 
   /// In-app update priority of the release.

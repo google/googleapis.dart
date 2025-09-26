@@ -2915,6 +2915,7 @@ class BuildProvenance {
 }
 
 typedef BuilderConfig = $Shared01;
+typedef CISAKnownExploitedVulnerabilities = $CISAKnownExploitedVulnerabilities;
 
 /// Common Vulnerability Scoring System.
 ///
@@ -3811,6 +3812,7 @@ class Envelope {
 }
 
 typedef EnvelopeSignature = $EnvelopeSignature;
+typedef ExploitPredictionScoringSystem = $ExploitPredictionScoringSystem;
 
 /// The request to generate and export SBOM.
 ///
@@ -4595,7 +4597,8 @@ class ListNotesResponse {
   /// Unordered list.
   ///
   /// Unreachable regions. Populated for requests from the global region when
-  /// `return_partial_success` is set. Format: projects//locations/
+  /// `return_partial_success` is set. Format:
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]`
   core.List<core.String>? unreachable;
 
   ListNotesResponse({this.nextPageToken, this.notes, this.unreachable});
@@ -4638,7 +4641,8 @@ class ListOccurrencesResponse {
   /// Unordered list.
   ///
   /// Unreachable regions. Populated for requests from the global region when
-  /// `return_partial_success` is set. Format: projects//locations/
+  /// `return_partial_success` is set. Format:
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]`
   core.List<core.String>? unreachable;
 
   ListOccurrencesResponse({
@@ -5892,6 +5896,39 @@ class RepoId {
 
 typedef ResourceDescriptor = $ResourceDescriptor;
 
+class Risk {
+  /// CISA maintains the authoritative source of vulnerabilities that have been
+  /// exploited in the wild.
+  CISAKnownExploitedVulnerabilities? cisaKev;
+
+  /// The Exploit Prediction Scoring System (EPSS) estimates the likelihood
+  /// (probability) that a software vulnerability will be exploited in the wild.
+  ExploitPredictionScoringSystem? epss;
+
+  Risk({this.cisaKev, this.epss});
+
+  Risk.fromJson(core.Map json_)
+    : this(
+        cisaKev:
+            json_.containsKey('cisaKev')
+                ? CISAKnownExploitedVulnerabilities.fromJson(
+                  json_['cisaKev'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        epss:
+            json_.containsKey('epss')
+                ? ExploitPredictionScoringSystem.fromJson(
+                  json_['epss'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cisaKev != null) 'cisaKev': cisaKev!,
+    if (epss != null) 'epss': epss!,
+  };
+}
+
 class RunDetails {
   ProvenanceBuilder? builder;
   core.List<ResourceDescriptor>? byproducts;
@@ -7053,6 +7090,9 @@ class VulnerabilityOccurrence {
   /// Output only.
   core.List<RelatedUrl>? relatedUrls;
 
+  /// Risk information about the vulnerability, such as CISA, EPSS, etc.
+  Risk? risk;
+
   /// The note provider assigned severity of this vulnerability.
   ///
   /// Output only.
@@ -7086,6 +7126,7 @@ class VulnerabilityOccurrence {
     this.longDescription,
     this.packageIssue,
     this.relatedUrls,
+    this.risk,
     this.severity,
     this.shortDescription,
     this.type,
@@ -7128,6 +7169,12 @@ class VulnerabilityOccurrence {
                   ),
                 )
                 .toList(),
+        risk:
+            json_.containsKey('risk')
+                ? Risk.fromJson(
+                  json_['risk'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         severity: json_['severity'] as core.String?,
         shortDescription: json_['shortDescription'] as core.String?,
         type: json_['type'] as core.String?,
@@ -7150,6 +7197,7 @@ class VulnerabilityOccurrence {
     if (longDescription != null) 'longDescription': longDescription!,
     if (packageIssue != null) 'packageIssue': packageIssue!,
     if (relatedUrls != null) 'relatedUrls': relatedUrls!,
+    if (risk != null) 'risk': risk!,
     if (severity != null) 'severity': severity!,
     if (shortDescription != null) 'shortDescription': shortDescription!,
     if (type != null) 'type': type!,
@@ -7166,7 +7214,8 @@ class VulnerabilityOccurrencesSummary {
   /// Unordered list.
   ///
   /// Unreachable regions. Populated for requests from the global region when
-  /// `return_partial_success` is set. Format: projects//locations/
+  /// `return_partial_success` is set. Format:
+  /// `projects/[PROJECT_ID]/locations/[LOCATION]`
   core.List<core.String>? unreachable;
 
   VulnerabilityOccurrencesSummary({this.counts, this.unreachable});

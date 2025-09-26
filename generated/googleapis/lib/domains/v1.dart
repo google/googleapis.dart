@@ -120,6 +120,10 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
+  ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
   /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
@@ -142,12 +146,14 @@ class ProjectsLocationsResource {
   /// this method will complete with the same error.
   async.Future<ListLocationsResponse> list(
     core.String name, {
+    core.List<core.String>? extraLocationTypes,
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (extraLocationTypes != null) 'extraLocationTypes': extraLocationTypes,
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
@@ -3097,19 +3103,20 @@ class Policy {
   };
 }
 
-/// Represents a postal address.
+/// Represents a postal address, such as for postal delivery or payments
+/// addresses.
 ///
-/// For example for postal delivery or payments addresses. Given a postal
-/// address, a postal service can deliver items to a premise, P.O. Box or
-/// similar. It is not intended to model geographical locations (roads, towns,
-/// mountains). In typical usage an address would be created by user input or
-/// from importing existing data, depending on the type of process. Advice on
-/// address input / editing: - Use an internationalization-ready address widget
-/// such as https://github.com/google/libaddressinput) - Users should not be
-/// presented with UI elements for input or editing of fields outside countries
-/// where that field is used. For more guidance on how to use this schema, see:
-/// https://support.google.com/business/answer/6397478
-typedef PostalAddress = $PostalAddress01;
+/// With a postal address, a postal service can deliver items to a premise, P.O.
+/// box, or similar. A postal address is not intended to model geographical
+/// locations like roads, towns, or mountains. In typical usage, an address
+/// would be created by user input or from importing existing data, depending on
+/// the type of process. Advice on address input or editing: - Use an
+/// internationalization-ready address widget such as
+/// https://github.com/google/libaddressinput. - Users should not be presented
+/// with UI elements for input or editing of fields outside countries where that
+/// field is used. For more guidance on how to use this schema, see:
+/// https://support.google.com/business/answer/6397478.
+typedef PostalAddress = $PostalAddress;
 
 /// Configures a RRSetRoutingPolicy such that all queries are responded with the
 /// primary_targets if they are healthy.

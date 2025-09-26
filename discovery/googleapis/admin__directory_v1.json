@@ -110,7 +110,7 @@
     "ownerName": "Google",
     "packagePath": "admin",
     "protocol": "rest",
-    "revision": "20250707",
+    "revision": "20250916",
     "rootUrl": "https://admin.googleapis.com/",
     "servicePath": "",
     "title": "Admin SDK API",
@@ -1662,7 +1662,7 @@
                             "type": "string"
                         },
                         "query": {
-                            "description": "Query string search. Should be of the form \"\". Complete documentation is at https: //developers.google.com/admin-sdk/directory/v1/guides/search-groups",
+                            "description": "Query string search. Should be of the form \"\". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-groups",
                             "location": "query",
                             "type": "string"
                         },
@@ -4301,7 +4301,7 @@
                             "type": "string"
                         },
                         "query": {
-                            "description": "Query string search. Should be of the form \"\". Complete documentation is at https: //developers.google.com/admin-sdk/directory/v1/guides/search-users",
+                            "description": "Query string search. Should be of the form \"\". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-users",
                             "location": "query",
                             "type": "string"
                         },
@@ -5839,6 +5839,23 @@
                 },
                 "osVersion": {
                     "description": "The Chrome device's operating system version.",
+                    "type": "string"
+                },
+                "osVersionCompliance": {
+                    "description": "Output only. Device policy compliance status of the OS version.",
+                    "enum": [
+                        "complianceUnspecified",
+                        "compliant",
+                        "pending",
+                        "notCompliant"
+                    ],
+                    "enumDescriptions": [
+                        "Compliance status unspecified.",
+                        "Compliance status compliant.",
+                        "Compliance status pending.",
+                        "Compliance status not compliant."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 },
                 "platformVersion": {

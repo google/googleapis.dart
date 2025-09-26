@@ -115,16 +115,14 @@ class PartnersProductsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse].
+  /// Completes with a [ListProductsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse>
-  list(
+  async.Future<ListProductsResponse> list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -145,7 +143,7 @@ class PartnersProductsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse.fromJson(
+    return ListProductsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -173,20 +171,15 @@ class PartnersPromotionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse].
+  /// Completes with a [FindEligiblePromotionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse
-  >
-  findEligible(
-    GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest
-    request,
+  async.Future<FindEligiblePromotionsResponse> findEligible(
+    FindEligiblePromotionsRequest request,
     core.String parent, {
     core.String? $fields,
   }) async {
@@ -204,7 +197,7 @@ class PartnersPromotionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse.fromJson(
+    return FindEligiblePromotionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -245,16 +238,14 @@ class PartnersPromotionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse].
+  /// Completes with a [ListPromotionsResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse>
-  list(
+  async.Future<ListPromotionsResponse> list(
     core.String parent, {
     core.String? filter,
     core.int? pageSize,
@@ -275,7 +266,7 @@ class PartnersPromotionsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse.fromJson(
+    return ListPromotionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -304,19 +295,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse].
+  /// Completes with a [CancelSubscriptionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse
-  >
-  cancel(
-    GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest request,
+  async.Future<CancelSubscriptionResponse> cancel(
+    CancelSubscriptionRequest request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -333,7 +320,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse.fromJson(
+    return CancelSubscriptionResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -360,15 +347,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudPaymentsResellerSubscriptionV1Subscription].
+  /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudPaymentsResellerSubscriptionV1Subscription> create(
-    GoogleCloudPaymentsResellerSubscriptionV1Subscription request,
+  async.Future<Subscription> create(
+    Subscription request,
     core.String parent, {
     core.String? subscriptionId,
     core.String? $fields,
@@ -387,7 +374,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+    return Subscription.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -409,19 +396,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse].
+  /// Completes with a [EntitleSubscriptionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse
-  >
-  entitle(
-    GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest request,
+  async.Future<EntitleSubscriptionResponse> entitle(
+    EntitleSubscriptionRequest request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -438,7 +421,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse.fromJson(
+    return EntitleSubscriptionResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -461,19 +444,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse].
+  /// Completes with a [ExtendSubscriptionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse
-  >
-  extend(
-    GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest request,
+  async.Future<ExtendSubscriptionResponse> extend(
+    ExtendSubscriptionRequest request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -490,7 +469,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse.fromJson(
+    return ExtendSubscriptionResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -509,14 +488,14 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudPaymentsResellerSubscriptionV1Subscription].
+  /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudPaymentsResellerSubscriptionV1Subscription> get(
+  async.Future<Subscription> get(
     core.String name, {
     core.String? $fields,
   }) async {
@@ -531,7 +510,7 @@ class PartnersSubscriptionsResource {
       'GET',
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+    return Subscription.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -559,15 +538,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a [GoogleCloudPaymentsResellerSubscriptionV1Subscription].
+  /// Completes with a [Subscription].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<GoogleCloudPaymentsResellerSubscriptionV1Subscription> provision(
-    GoogleCloudPaymentsResellerSubscriptionV1Subscription request,
+  async.Future<Subscription> provision(
+    Subscription request,
     core.String parent, {
     core.String? subscriptionId,
     core.String? $fields,
@@ -587,7 +566,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+    return Subscription.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -609,19 +588,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse].
+  /// Completes with a [ResumeSubscriptionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse
-  >
-  resume(
-    GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest request,
+  async.Future<ResumeSubscriptionResponse> resume(
+    ResumeSubscriptionRequest request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -638,7 +613,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse.fromJson(
+    return ResumeSubscriptionResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -661,19 +636,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse].
+  /// Completes with a [SuspendSubscriptionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse
-  >
-  suspend(
-    GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest request,
+  async.Future<SuspendSubscriptionResponse> suspend(
+    SuspendSubscriptionRequest request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -690,7 +661,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse.fromJson(
+    return SuspendSubscriptionResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -714,20 +685,15 @@ class PartnersSubscriptionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse].
+  /// Completes with a [UndoCancelSubscriptionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse
-  >
-  undoCancel(
-    GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest
-    request,
+  async.Future<UndoCancelSubscriptionResponse> undoCancel(
+    UndoCancelSubscriptionRequest request,
     core.String name, {
     core.String? $fields,
   }) async {
@@ -744,7 +710,7 @@ class PartnersSubscriptionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse.fromJson(
+    return UndoCancelSubscriptionResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -776,19 +742,15 @@ class PartnersUserSessionsResource {
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
-  /// Completes with a
-  /// [GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse].
+  /// Completes with a [GenerateUserSessionResponse].
   ///
   /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
   /// error.
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<
-    GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse
-  >
-  generate(
-    GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest request,
+  async.Future<GenerateUserSessionResponse> generate(
+    GenerateUserSessionRequest request,
     core.String parent, {
     core.String? $fields,
   }) async {
@@ -806,14 +768,14 @@ class PartnersUserSessionsResource {
       body: body_,
       queryParams: queryParams_,
     );
-    return GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse.fromJson(
+    return GenerateUserSessionResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
 }
 
 /// Describes the amount unit including the currency code.
-class GoogleCloudPaymentsResellerSubscriptionV1Amount {
+class Amount {
   /// Amount in micros (1_000_000 micros = 1 currency unit)
   ///
   /// Required.
@@ -827,12 +789,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Amount {
   /// Required.
   core.String? currencyCode;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Amount({
-    this.amountMicros,
-    this.currencyCode,
-  });
+  Amount({this.amountMicros, this.currencyCode});
 
-  GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(core.Map json_)
+  Amount.fromJson(core.Map json_)
     : this(
         amountMicros: json_['amountMicros'] as core.String?,
         currencyCode: json_['currencyCode'] as core.String?,
@@ -845,7 +804,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Amount {
 }
 
 /// Request to cancel a subscription.
-class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
+class CancelSubscriptionRequest {
   /// If true, Google will cancel the subscription immediately, and may or may
   /// not (based on the contract) issue a prorated refund for the remainder of
   /// the billing cycle.
@@ -880,14 +839,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
-  GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest({
-    this.cancelImmediately,
-    this.cancellationReason,
-  });
+  CancelSubscriptionRequest({this.cancelImmediately, this.cancellationReason});
 
-  GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest.fromJson(
-    core.Map json_,
-  ) : this(
+  CancelSubscriptionRequest.fromJson(core.Map json_)
+    : this(
         cancelImmediately: json_['cancelImmediately'] as core.bool?,
         cancellationReason: json_['cancellationReason'] as core.String?,
       );
@@ -899,20 +854,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionRequest {
 }
 
 /// Response that contains the cancelled subscription resource.
-class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse {
+class CancelSubscriptionResponse {
   /// The cancelled subscription resource.
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+  Subscription? subscription;
 
-  GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse({
-    this.subscription,
-  });
+  CancelSubscriptionResponse({this.subscription});
 
-  GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  CancelSubscriptionResponse.fromJson(core.Map json_)
+    : this(
         subscription:
             json_.containsKey('subscription')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                ? Subscription.fromJson(
                   json_['subscription'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -924,7 +876,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1CancelSubscriptionResponse {
 }
 
 /// Intent message for creating a Subscription resource.
-class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent {
+class CreateSubscriptionIntent {
   /// The parent resource name, which is the identifier of the partner.
   ///
   /// Required.
@@ -933,7 +885,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent {
   /// The Subscription to be created.
   ///
   /// Required.
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+  Subscription? subscription;
 
   /// Identifies the subscription resource on the Partner side.
   ///
@@ -944,19 +896,18 @@ class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent {
   /// Required.
   core.String? subscriptionId;
 
-  GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent({
+  CreateSubscriptionIntent({
     this.parent,
     this.subscription,
     this.subscriptionId,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent.fromJson(
-    core.Map json_,
-  ) : this(
+  CreateSubscriptionIntent.fromJson(core.Map json_)
+    : this(
         parent: json_['parent'] as core.String?,
         subscription:
             json_.containsKey('subscription')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                ? Subscription.fromJson(
                   json_['subscription'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -971,7 +922,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent {
 }
 
 /// Describes the length of a period of a time.
-class GoogleCloudPaymentsResellerSubscriptionV1Duration {
+class Duration {
   /// number of duration units to be included.
   core.int? count;
 
@@ -984,9 +935,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
   /// - "HOUR" : Unit of an hour. It is used for testing.
   core.String? unit;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Duration({this.count, this.unit});
+  Duration({this.count, this.unit});
 
-  GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(core.Map json_)
+  Duration.fromJson(core.Map json_)
     : this(
         count: json_['count'] as core.int?,
         unit: json_['unit'] as core.String?,
@@ -999,7 +950,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Duration {
 }
 
 /// Intent for entitling the previously provisioned subscription to an end user.
-class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent {
+class EntitleSubscriptionIntent {
   /// The name of the subscription resource that is entitled to the current end
   /// user.
   ///
@@ -1009,13 +960,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent {
   /// Required.
   core.String? name;
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent({
-    this.name,
-  });
+  EntitleSubscriptionIntent({this.name});
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent.fromJson(
-    core.Map json_,
-  ) : this(name: json_['name'] as core.String?);
+  EntitleSubscriptionIntent.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (name != null) 'name': name!,
@@ -1026,29 +974,24 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent {
 /// end user.
 ///
 /// The end user identity is inferred from the request OAuth context.
-class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest {
+class EntitleSubscriptionRequest {
   /// The line items to be entitled.
   ///
   /// If unspecified, all line items will be entitled.
   ///
   /// Optional.
-  core.List<
-    GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails
-  >?
+  core.List<EntitleSubscriptionRequestLineItemEntitlementDetails>?
   lineItemEntitlementDetails;
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest({
-    this.lineItemEntitlementDetails,
-  });
+  EntitleSubscriptionRequest({this.lineItemEntitlementDetails});
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest.fromJson(
-    core.Map json_,
-  ) : this(
+  EntitleSubscriptionRequest.fromJson(core.Map json_)
+    : this(
         lineItemEntitlementDetails:
             (json_['lineItemEntitlementDetails'] as core.List?)
                 ?.map(
                   (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
+                      EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
                         value as core.Map<core.String, core.dynamic>,
                       ),
                 )
@@ -1062,7 +1005,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest {
 }
 
 /// The details of the line item to be entitled.
-class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails {
+class EntitleSubscriptionRequestLineItemEntitlementDetails {
   /// The index of the line item to be entitled.
   ///
   /// Required.
@@ -1077,14 +1020,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineIte
   /// Optional.
   core.List<core.String>? products;
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails({
+  EntitleSubscriptionRequestLineItemEntitlementDetails({
     this.lineItemIndex,
     this.products,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(
-    core.Map json_,
-  ) : this(
+  EntitleSubscriptionRequestLineItemEntitlementDetails.fromJson(core.Map json_)
+    : this(
         lineItemIndex: json_['lineItemIndex'] as core.int?,
         products:
             (json_['products'] as core.List?)
@@ -1099,20 +1041,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineIte
 }
 
 /// Response that contains the entitled subscription resource.
-class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse {
+class EntitleSubscriptionResponse {
   /// The subscription that has user linked to it.
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+  Subscription? subscription;
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse({
-    this.subscription,
-  });
+  EntitleSubscriptionResponse({this.subscription});
 
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  EntitleSubscriptionResponse.fromJson(core.Map json_)
+    : this(
         subscription:
             json_.containsKey('subscription')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                ? Subscription.fromJson(
                   json_['subscription'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -1127,14 +1066,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionResponse {
 ///
 /// A new recurrence will be made based on the subscription schedule defined by
 /// the original product.
-class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
+class ExtendSubscriptionRequest {
   /// Specifies details of the extension.
   ///
   /// Currently, the duration of the extension must be exactly one billing cycle
   /// of the original subscription.
   ///
   /// Required.
-  GoogleCloudPaymentsResellerSubscriptionV1Extension? extension;
+  Extension? extension;
 
   /// Restricted to 36 ASCII characters.
   ///
@@ -1146,17 +1085,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
   /// Required.
   core.String? requestId;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest({
-    this.extension,
-    this.requestId,
-  });
+  ExtendSubscriptionRequest({this.extension, this.requestId});
 
-  GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest.fromJson(
-    core.Map json_,
-  ) : this(
+  ExtendSubscriptionRequest.fromJson(core.Map json_)
+    : this(
         extension:
             json_.containsKey('extension')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Extension.fromJson(
+                ? Extension.fromJson(
                   json_['extension'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -1170,7 +1105,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionRequest {
 }
 
 /// Response that contains the timestamps after the extension.
-class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
+class ExtendSubscriptionResponse {
   /// The time at which the subscription is expected to be extended, in ISO 8061
   /// format.
   ///
@@ -1194,15 +1129,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
   /// Output only.
   core.String? renewalTime;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse({
+  ExtendSubscriptionResponse({
     this.cycleEndTime,
     this.freeTrialEndTime,
     this.renewalTime,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  ExtendSubscriptionResponse.fromJson(core.Map json_)
+    : this(
         cycleEndTime: json_['cycleEndTime'] as core.String?,
         freeTrialEndTime: json_['freeTrialEndTime'] as core.String?,
         renewalTime: json_['renewalTime'] as core.String?,
@@ -1216,27 +1150,24 @@ class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse {
 }
 
 /// Describes the details of an extension request.
-class GoogleCloudPaymentsResellerSubscriptionV1Extension {
+class Extension {
   /// Specifies the period of access the subscription should grant.
   ///
   /// Required.
-  GoogleCloudPaymentsResellerSubscriptionV1Duration? duration;
+  Duration? duration;
 
   /// Identifier of the end-user in partner’s system.
   ///
   /// Required.
   core.String? partnerUserToken;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Extension({
-    this.duration,
-    this.partnerUserToken,
-  });
+  Extension({this.duration, this.partnerUserToken});
 
-  GoogleCloudPaymentsResellerSubscriptionV1Extension.fromJson(core.Map json_)
+  Extension.fromJson(core.Map json_)
     : this(
         duration:
             json_.containsKey('duration')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
+                ? Duration.fromJson(
                   json_['duration'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -1250,7 +1181,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Extension {
 }
 
 /// Request to find eligible promotions for the current user.
-class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
+class FindEligiblePromotionsRequest {
   /// Specifies the filters for the promotion results.
   ///
   /// The syntax is defined in https://google.aip.dev/160 with the following
@@ -1285,15 +1216,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
   /// Optional.
   core.String? pageToken;
 
-  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest({
-    this.filter,
-    this.pageSize,
-    this.pageToken,
-  });
+  FindEligiblePromotionsRequest({this.filter, this.pageSize, this.pageToken});
 
-  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest.fromJson(
-    core.Map json_,
-  ) : this(
+  FindEligiblePromotionsRequest.fromJson(core.Map json_)
+    : this(
         filter: json_['filter'] as core.String?,
         pageSize: json_['pageSize'] as core.int?,
         pageToken: json_['pageToken'] as core.String?,
@@ -1307,31 +1233,26 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsRequest {
 }
 
 /// Response containing the found promotions for the current user.
-class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse {
+class FindEligiblePromotionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is empty, there are no subsequent pages.
   core.String? nextPageToken;
 
   /// The promotions for the current user.
-  core.List<GoogleCloudPaymentsResellerSubscriptionV1Promotion>? promotions;
+  core.List<Promotion>? promotions;
 
-  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse({
-    this.nextPageToken,
-    this.promotions,
-  });
+  FindEligiblePromotionsResponse({this.nextPageToken, this.promotions});
 
-  GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  FindEligiblePromotionsResponse.fromJson(core.Map json_)
+    : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
         promotions:
             (json_['promotions'] as core.List?)
                 ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
+                  (value) => Promotion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
                 )
                 .toList(),
       );
@@ -1343,20 +1264,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1FindEligiblePromotionsResponse {
 }
 
 /// Details for a subscriptiin line item with finite billing cycles.
-class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails {
+class FiniteBillingCycleDetails {
   /// The number of a subscription line item billing cycles after which billing
   /// will stop automatically.
   ///
   /// Required.
   core.String? billingCycleCountLimit;
 
-  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails({
-    this.billingCycleCountLimit,
-  });
+  FiniteBillingCycleDetails({this.billingCycleCountLimit});
 
-  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails.fromJson(
-    core.Map json_,
-  ) : this(
+  FiniteBillingCycleDetails.fromJson(core.Map json_)
+    : this(
         billingCycleCountLimit: json_['billingCycleCountLimit'] as core.String?,
       );
 
@@ -1367,20 +1285,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails {
 }
 
 /// Request to generate a user session.
-class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest {
+class GenerateUserSessionRequest {
   /// The user intent to generate the user session.
-  GoogleCloudPaymentsResellerSubscriptionV1IntentPayload? intentPayload;
+  IntentPayload? intentPayload;
 
-  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest({
-    this.intentPayload,
-  });
+  GenerateUserSessionRequest({this.intentPayload});
 
-  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest.fromJson(
-    core.Map json_,
-  ) : this(
+  GenerateUserSessionRequest.fromJson(core.Map json_)
+    : this(
         intentPayload:
             json_.containsKey('intentPayload')
-                ? GoogleCloudPaymentsResellerSubscriptionV1IntentPayload.fromJson(
+                ? IntentPayload.fromJson(
                   json_['intentPayload'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -1392,22 +1307,19 @@ class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionRequest {
 }
 
 /// Response that contains the details for generated user session.
-class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse {
+class GenerateUserSessionResponse {
   /// The generated user session.
   ///
   /// The token size is proportional to the size of the intent payload.
-  GoogleCloudPaymentsResellerSubscriptionV1UserSession? userSession;
+  UserSession? userSession;
 
-  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse({
-    this.userSession,
-  });
+  GenerateUserSessionResponse({this.userSession});
 
-  GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  GenerateUserSessionResponse.fromJson(core.Map json_)
+    : this(
         userSession:
             json_.containsKey('userSession')
-                ? GoogleCloudPaymentsResellerSubscriptionV1UserSession.fromJson(
+                ? UserSession.fromJson(
                   json_['userSession'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -1419,12 +1331,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1GenerateUserSessionResponse {
 }
 
 /// Payload specific for Google Home products.
-class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload {
+class GoogleHomePayload {
   /// This identifies whether the subscription is attached to a Google Home
   /// structure.
   ///
   /// Output only.
   core.bool? attachedToGoogleStructure;
+
+  /// Structure identifier on Google side.
+  ///
+  /// Optional.
+  core.String? googleStructureId;
 
   /// This identifies the structure ID on partner side that the subscription
   /// should be applied to.
@@ -1434,28 +1351,30 @@ class GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload {
   /// Optional.
   core.String? partnerStructureId;
 
-  GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload({
+  GoogleHomePayload({
     this.attachedToGoogleStructure,
+    this.googleStructureId,
     this.partnerStructureId,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload.fromJson(
-    core.Map json_,
-  ) : this(
+  GoogleHomePayload.fromJson(core.Map json_)
+    : this(
         attachedToGoogleStructure:
             json_['attachedToGoogleStructure'] as core.bool?,
+        googleStructureId: json_['googleStructureId'] as core.String?,
         partnerStructureId: json_['partnerStructureId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (attachedToGoogleStructure != null)
       'attachedToGoogleStructure': attachedToGoogleStructure!,
+    if (googleStructureId != null) 'googleStructureId': googleStructureId!,
     if (partnerStructureId != null) 'partnerStructureId': partnerStructureId!,
   };
 }
 
 /// Payload specific to Google One products.
-class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
+class GoogleOnePayload {
   /// Campaign attributed to sales of this subscription.
   core.List<core.String>? campaigns;
 
@@ -1489,16 +1408,15 @@ class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
   /// The identifier for the partner store where the subscription was sold.
   core.String? storeId;
 
-  GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload({
+  GoogleOnePayload({
     this.campaigns,
     this.offering,
     this.salesChannel,
     this.storeId,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload.fromJson(
-    core.Map json_,
-  ) : this(
+  GoogleOnePayload.fromJson(core.Map json_)
+    : this(
         campaigns:
             (json_['campaigns'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -1516,33 +1434,30 @@ class GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload {
   };
 }
 
+/// Localized variant of a text in a particular language.
+typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;
+
 /// The payload that describes the user intent.
-class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload {
+class IntentPayload {
   /// The request to create a subscription.
-  GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent?
-  createIntent;
+  CreateSubscriptionIntent? createIntent;
 
   /// The request to entitle a subscription.
-  GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent?
-  entitleIntent;
+  EntitleSubscriptionIntent? entitleIntent;
 
-  GoogleCloudPaymentsResellerSubscriptionV1IntentPayload({
-    this.createIntent,
-    this.entitleIntent,
-  });
+  IntentPayload({this.createIntent, this.entitleIntent});
 
-  GoogleCloudPaymentsResellerSubscriptionV1IntentPayload.fromJson(
-    core.Map json_,
-  ) : this(
+  IntentPayload.fromJson(core.Map json_)
+    : this(
         createIntent:
             json_.containsKey('createIntent')
-                ? GoogleCloudPaymentsResellerSubscriptionV1CreateSubscriptionIntent.fromJson(
+                ? CreateSubscriptionIntent.fromJson(
                   json_['createIntent'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         entitleIntent:
             json_.containsKey('entitleIntent')
-                ? GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionIntent.fromJson(
+                ? EntitleSubscriptionIntent.fromJson(
                   json_['entitleIntent'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -1555,31 +1470,26 @@ class GoogleCloudPaymentsResellerSubscriptionV1IntentPayload {
 }
 
 /// Response that contains the products.
-class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
+class ListProductsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is empty, there are no subsequent pages.
   core.String? nextPageToken;
 
   /// The products for the specified partner.
-  core.List<GoogleCloudPaymentsResellerSubscriptionV1Product>? products;
+  core.List<Product>? products;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse({
-    this.nextPageToken,
-    this.products,
-  });
+  ListProductsResponse({this.nextPageToken, this.products});
 
-  GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  ListProductsResponse.fromJson(core.Map json_)
+    : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
         products:
             (json_['products'] as core.List?)
                 ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
+                  (value) => Product.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
                 )
                 .toList(),
       );
@@ -1591,31 +1501,26 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListProductsResponse {
 }
 
 /// Response that contains the promotions.
-class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse {
+class ListPromotionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
   ///
   /// If this field is empty, there are no subsequent pages.
   core.String? nextPageToken;
 
   /// The promotions for the specified partner.
-  core.List<GoogleCloudPaymentsResellerSubscriptionV1Promotion>? promotions;
+  core.List<Promotion>? promotions;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse({
-    this.nextPageToken,
-    this.promotions,
-  });
+  ListPromotionsResponse({this.nextPageToken, this.promotions});
 
-  GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  ListPromotionsResponse.fromJson(core.Map json_)
+    : this(
         nextPageToken: json_['nextPageToken'] as core.String?,
         promotions:
             (json_['promotions'] as core.List?)
                 ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
+                  (value) => Promotion.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
                 )
                 .toList(),
       );
@@ -1627,7 +1532,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ListPromotionsResponse {
 }
 
 /// Describes a location of an end user.
-class GoogleCloudPaymentsResellerSubscriptionV1Location {
+class Location {
   /// The postal code this location refers to.
   ///
   /// Ex. "94043"
@@ -1638,12 +1543,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Location {
   /// Ex. “US” Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
   core.String? regionCode;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Location({
-    this.postalCode,
-    this.regionCode,
-  });
+  Location({this.postalCode, this.regionCode});
 
-  GoogleCloudPaymentsResellerSubscriptionV1Location.fromJson(core.Map json_)
+  Location.fromJson(core.Map json_)
     : this(
         postalCode: json_['postalCode'] as core.String?,
         regionCode: json_['regionCode'] as core.String?,
@@ -1656,7 +1558,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Location {
 }
 
 /// A Product resource that defines a subscription service that can be resold.
-class GoogleCloudPaymentsResellerSubscriptionV1Product {
+class Product {
   /// Specifies the details for a bundle product.
   ///
   /// Output only.
@@ -1667,8 +1569,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   /// If unset, the line item will be charged indefinitely.
   ///
   /// Optional.
-  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails?
-  finiteBillingCycleDetails;
+  FiniteBillingCycleDetails? finiteBillingCycleDetails;
 
   /// Identifier.
   ///
@@ -1679,8 +1580,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   /// Price configs for the product in the available regions.
   ///
   /// Output only.
-  core.List<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig>?
-  priceConfigs;
+  core.List<ProductPriceConfig>? priceConfigs;
 
   /// Specifies the type of the product.
   ///
@@ -1703,15 +1603,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   /// Specifies the length of the billing cycle of the subscription.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1Duration?
-  subscriptionBillingCycleDuration;
+  Duration? subscriptionBillingCycleDuration;
 
   /// Localized human readable name of the product.
   ///
   /// Output only.
   core.List<GoogleTypeLocalizedText>? titles;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Product({
+  Product({
     this.bundleDetails,
     this.finiteBillingCycleDetails,
     this.name,
@@ -1722,7 +1621,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
     this.titles,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1Product.fromJson(core.Map json_)
+  Product.fromJson(core.Map json_)
     : this(
         bundleDetails:
             json_.containsKey('bundleDetails')
@@ -1732,7 +1631,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
                 : null,
         finiteBillingCycleDetails:
             json_.containsKey('finiteBillingCycleDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails.fromJson(
+                ? FiniteBillingCycleDetails.fromJson(
                   json_['finiteBillingCycleDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -1741,10 +1640,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
         priceConfigs:
             (json_['priceConfigs'] as core.List?)
                 ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
+                  (value) => ProductPriceConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
                 )
                 .toList(),
         productType: json_['productType'] as core.String?,
@@ -1754,7 +1652,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
                 .toList(),
         subscriptionBillingCycleDuration:
             json_.containsKey('subscriptionBillingCycleDuration')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
+                ? Duration.fromJson(
                   json_['subscriptionBillingCycleDuration']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -1783,8 +1681,44 @@ class GoogleCloudPaymentsResellerSubscriptionV1Product {
   };
 }
 
+/// Details for a bundle product.
+class ProductBundleDetails {
+  /// The individual products that are included in the bundle.
+  core.List<ProductBundleDetailsBundleElement>? bundleElements;
+
+  /// The entitlement mode of the bundle product.
+  /// Possible string values are:
+  /// - "ENTITLEMENT_MODE_UNSPECIFIED" : Unspecified. It's reserved as an
+  /// unexpected value, should not be used.
+  /// - "ENTITLEMENT_MODE_FULL" : All the bundle elements must be fully
+  /// activated in a single request.
+  /// - "ENTITLEMENT_MODE_INCREMENTAL" : The bundle elements could be
+  /// incrementally activated.
+  core.String? entitlementMode;
+
+  ProductBundleDetails({this.bundleElements, this.entitlementMode});
+
+  ProductBundleDetails.fromJson(core.Map json_)
+    : this(
+        bundleElements:
+            (json_['bundleElements'] as core.List?)
+                ?.map(
+                  (value) => ProductBundleDetailsBundleElement.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        entitlementMode: json_['entitlementMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (bundleElements != null) 'bundleElements': bundleElements!,
+    if (entitlementMode != null) 'entitlementMode': entitlementMode!,
+  };
+}
+
 /// The individual product that is included in the bundle.
-class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement {
+class ProductBundleDetailsBundleElement {
   /// Product resource name that identifies the bundle element.
   ///
   /// The format is 'partners/{partner_id}/products/{product_id}'.
@@ -1792,13 +1726,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
   /// Required. Output only.
   core.String? product;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement({
-    this.product,
-  });
+  ProductBundleDetailsBundleElement({this.product});
 
-  GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement.fromJson(
-    core.Map json_,
-  ) : this(product: json_['product'] as core.String?);
+  ProductBundleDetailsBundleElement.fromJson(core.Map json_)
+    : this(product: json_['product'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (product != null) 'product': product!,
@@ -1806,44 +1737,43 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
 }
 
 /// Specifies product specific payload.
-class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
+class ProductPayload {
   /// Payload specific to Google Home products.
-  GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload? googleHomePayload;
+  GoogleHomePayload? googleHomePayload;
 
   /// Product-specific payloads.
   ///
   /// Payload specific to Google One products.
-  GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload? googleOnePayload;
+  GoogleOnePayload? googleOnePayload;
 
   /// Payload specific to Youtube products.
-  GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload? youtubePayload;
+  YoutubePayload? youtubePayload;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ProductPayload({
+  ProductPayload({
     this.googleHomePayload,
     this.googleOnePayload,
     this.youtubePayload,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1ProductPayload.fromJson(
-    core.Map json_,
-  ) : this(
+  ProductPayload.fromJson(core.Map json_)
+    : this(
         googleHomePayload:
             json_.containsKey('googleHomePayload')
-                ? GoogleCloudPaymentsResellerSubscriptionV1GoogleHomePayload.fromJson(
+                ? GoogleHomePayload.fromJson(
                   json_['googleHomePayload']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         googleOnePayload:
             json_.containsKey('googleOnePayload')
-                ? GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload.fromJson(
+                ? GoogleOnePayload.fromJson(
                   json_['googleOnePayload']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         youtubePayload:
             json_.containsKey('youtubePayload')
-                ? GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
+                ? YoutubePayload.fromJson(
                   json_['youtubePayload']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -1858,11 +1788,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload {
 }
 
 /// Configs the prices in an available region.
-class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig {
+class ProductPriceConfig {
   /// The price in the region.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1Amount? amount;
+  Amount? amount;
 
   /// 2-letter ISO region code where the product is available in.
   ///
@@ -1871,17 +1801,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig {
   /// Output only.
   core.String? regionCode;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig({
-    this.amount,
-    this.regionCode,
-  });
+  ProductPriceConfig({this.amount, this.regionCode});
 
-  GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig.fromJson(
-    core.Map json_,
-  ) : this(
+  ProductPriceConfig.fromJson(core.Map json_)
+    : this(
         amount:
             json_.containsKey('amount')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
+                ? Amount.fromJson(
                   json_['amount'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -1896,7 +1822,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig {
 
 /// A Promotion resource that defines a promotion for a subscription that can be
 /// resold.
-class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
+class Promotion {
   /// The product ids this promotion can be applied to.
   ///
   /// Output only.
@@ -1914,14 +1840,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
   /// promotion_type is PROMOTION_TYPE_FREE_TRIAL
   ///
   /// Optional.
-  GoogleCloudPaymentsResellerSubscriptionV1Duration? freeTrialDuration;
+  Duration? freeTrialDuration;
 
   /// Specifies the introductory pricing details when the promotion_type is
   /// PROMOTION_TYPE_INTRODUCTORY_PRICING.
   ///
   /// Optional.
-  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails?
-  introductoryPricingDetails;
+  PromotionIntroductoryPricingDetails? introductoryPricingDetails;
 
   /// Identifier.
   ///
@@ -1957,7 +1882,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
   /// Output only.
   core.List<GoogleTypeLocalizedText>? titles;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Promotion({
+  Promotion({
     this.applicableProducts,
     this.endTime,
     this.freeTrialDuration,
@@ -1969,7 +1894,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
     this.titles,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1Promotion.fromJson(core.Map json_)
+  Promotion.fromJson(core.Map json_)
     : this(
         applicableProducts:
             (json_['applicableProducts'] as core.List?)
@@ -1978,14 +1903,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
         endTime: json_['endTime'] as core.String?,
         freeTrialDuration:
             json_.containsKey('freeTrialDuration')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
+                ? Duration.fromJson(
                   json_['freeTrialDuration']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         introductoryPricingDetails:
             json_.containsKey('introductoryPricingDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails.fromJson(
+                ? PromotionIntroductoryPricingDetails.fromJson(
                   json_['introductoryPricingDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2022,27 +1947,22 @@ class GoogleCloudPaymentsResellerSubscriptionV1Promotion {
 }
 
 /// The details of a introductory pricing promotion.
-class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails {
+class PromotionIntroductoryPricingDetails {
   /// Specifies the introductory pricing periods.
   ///
   /// Output only.
-  core.List<
-    GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec
-  >?
+  core.List<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>?
   introductoryPricingSpecs;
 
-  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails({
-    this.introductoryPricingSpecs,
-  });
+  PromotionIntroductoryPricingDetails({this.introductoryPricingSpecs});
 
-  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails.fromJson(
-    core.Map json_,
-  ) : this(
+  PromotionIntroductoryPricingDetails.fromJson(core.Map json_)
+    : this(
         introductoryPricingSpecs:
             (json_['introductoryPricingSpecs'] as core.List?)
                 ?.map(
                   (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
+                      PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
                         value as core.Map<core.String, core.dynamic>,
                       ),
                 )
@@ -2056,13 +1976,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
 }
 
 /// The duration of an introductory pricing promotion.
-class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
+class PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
   /// The discount amount.
   ///
   /// The value is positive.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1Amount? discountAmount;
+  Amount? discountAmount;
 
   /// The discount percentage in micros.
   ///
@@ -2083,19 +2003,19 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
   /// Output only.
   core.String? regionCode;
 
-  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec({
+  PromotionIntroductoryPricingDetailsIntroductoryPricingSpec({
     this.discountAmount,
     this.discountRatioMicros,
     this.recurrenceCount,
     this.regionCode,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
+  PromotionIntroductoryPricingDetailsIntroductoryPricingSpec.fromJson(
     core.Map json_,
   ) : this(
         discountAmount:
             json_.containsKey('discountAmount')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
+                ? Amount.fromJson(
                   json_['discountAmount']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2115,24 +2035,20 @@ class GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetai
 }
 
 /// Request to resume a suspended subscription.
-typedef GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionRequest =
-    $Empty;
+typedef ResumeSubscriptionRequest = $Empty;
 
 /// Response that contains the resumed subscription.
-class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse {
+class ResumeSubscriptionResponse {
   /// The resumed subscription resource.
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+  Subscription? subscription;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse({
-    this.subscription,
-  });
+  ResumeSubscriptionResponse({this.subscription});
 
-  GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  ResumeSubscriptionResponse.fromJson(core.Map json_)
+    : this(
         subscription:
             json_.containsKey('subscription')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                ? Subscription.fromJson(
                   json_['subscription'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -2145,7 +2061,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1ResumeSubscriptionResponse {
 
 /// A description of what time period or moment in time the product or service
 /// is being delivered over.
-class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod {
+class ServicePeriod {
   /// The end time of the service period.
   ///
   /// Time is exclusive.
@@ -2160,14 +2076,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod {
   /// Required.
   core.String? startTime;
 
-  GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod({
-    this.endTime,
-    this.startTime,
-  });
+  ServicePeriod({this.endTime, this.startTime});
 
-  GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod.fromJson(
-    core.Map json_,
-  ) : this(
+  ServicePeriod.fromJson(core.Map json_)
+    : this(
         endTime: json_['endTime'] as core.String?,
         startTime: json_['startTime'] as core.String?,
       );
@@ -2189,14 +2101,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod {
 /// has been immediately canceled. However, other services may not do the same.
 /// To fully understand the specific details, please consult the relevant
 /// contract or product policy.
-class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
+class Subscription {
   /// Describes the details of a cancelled subscription.
   ///
   /// Only applicable to subscription of state `STATE_CANCELLED`.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails?
-  cancellationDetails;
+  SubscriptionCancellationDetails? cancellationDetails;
 
   /// System generated timestamp when the subscription is created.
   ///
@@ -2229,16 +2140,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// The line items of the subscription.
   ///
   /// Required.
-  core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem>?
-  lineItems;
+  core.List<SubscriptionLineItem>? lineItems;
 
   /// Describes the details of the migrated subscription.
   ///
   /// Only populated if this subscription is migrated from another system.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails?
-  migrationDetails;
+  SubscriptionMigrationDetails? migrationDetails;
 
   /// Identifier.
   ///
@@ -2281,8 +2190,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// Specify the promotion resource name only when used as input.
   ///
   /// Optional.
-  core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>?
-  promotionSpecs;
+  core.List<SubscriptionPromotionSpec>? promotionSpecs;
 
   /// Deprecated: consider using the top-level `promotion_specs` as the input.
   ///
@@ -2324,7 +2232,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// The location that the service is provided as indicated by the partner.
   ///
   /// Required.
-  GoogleCloudPaymentsResellerSubscriptionV1Location? serviceLocation;
+  Location? serviceLocation;
 
   /// Describes the state of the subscription.
   ///
@@ -2362,10 +2270,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
   /// subscription.
   ///
   /// Optional.
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails?
-  upgradeDowngradeDetails;
+  SubscriptionUpgradeDowngradeDetails? upgradeDowngradeDetails;
 
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription({
+  Subscription({
     this.cancellationDetails,
     this.createTime,
     this.cycleEndTime,
@@ -2388,11 +2295,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
     this.upgradeDowngradeDetails,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(core.Map json_)
+  Subscription.fromJson(core.Map json_)
     : this(
         cancellationDetails:
             json_.containsKey('cancellationDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails.fromJson(
+                ? SubscriptionCancellationDetails.fromJson(
                   json_['cancellationDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2404,15 +2311,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         lineItems:
             (json_['lineItems'] as core.List?)
                 ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
+                  (value) => SubscriptionLineItem.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
                 )
                 .toList(),
         migrationDetails:
             json_.containsKey('migrationDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails.fromJson(
+                ? SubscriptionMigrationDetails.fromJson(
                   json_['migrationDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2427,10 +2333,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         promotionSpecs:
             (json_['promotionSpecs'] as core.List?)
                 ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
+                  (value) => SubscriptionPromotionSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
                 )
                 .toList(),
         promotions:
@@ -2442,7 +2347,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         renewalTime: json_['renewalTime'] as core.String?,
         serviceLocation:
             json_.containsKey('serviceLocation')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Location.fromJson(
+                ? Location.fromJson(
                   json_['serviceLocation']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2451,7 +2356,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
         updateTime: json_['updateTime'] as core.String?,
         upgradeDowngradeDetails:
             json_.containsKey('upgradeDowngradeDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails.fromJson(
+                ? SubscriptionUpgradeDowngradeDetails.fromJson(
                   json_['upgradeDowngradeDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2485,7 +2390,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1Subscription {
 }
 
 /// Describes the details of a cancelled or cancelling subscription.
-class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
+class SubscriptionCancellationDetails {
   /// The reason of the cancellation.
   ///
   /// Output only.
@@ -2510,13 +2415,10 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails({
-    this.reason,
-  });
+  SubscriptionCancellationDetails({this.reason});
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails.fromJson(
-    core.Map json_,
-  ) : this(reason: json_['reason'] as core.String?);
+  SubscriptionCancellationDetails.fromJson(core.Map json_)
+    : this(reason: json_['reason'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (reason != null) 'reason': reason!,
@@ -2524,14 +2426,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails {
 }
 
 /// Individual line item definition of a subscription.
-class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
+class SubscriptionLineItem {
   /// The price of the product/service in this line item.
   ///
   /// The amount could be the wholesale price, or it can include a cost of sale
   /// based on the contract.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1Amount? amount;
+  Amount? amount;
 
   /// The bundle details for the line item.
   ///
@@ -2551,8 +2453,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// LINE_ITEM_RECURRENCE_TYPE_PERIODIC.
   ///
   /// Optional.
-  GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails?
-  finiteBillingCycleDetails;
+  FiniteBillingCycleDetails? finiteBillingCycleDetails;
 
   /// The free trial end time will be populated after the line item is
   /// successfully processed.
@@ -2576,14 +2477,12 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// used as input in Create or Provision API, specify its resource name only.
   ///
   /// Optional.
-  core.List<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec>?
-  lineItemPromotionSpecs;
+  core.List<SubscriptionPromotionSpec>? lineItemPromotionSpecs;
 
   /// Details only set for a ONE_TIME recurrence line item.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails?
-  oneTimeRecurrenceDetails;
+  SubscriptionLineItemOneTimeRecurrenceDetails? oneTimeRecurrenceDetails;
 
   /// Product resource name that identifies one the line item The format is
   /// 'partners/{partner_id}/products/{product_id}'.
@@ -2594,7 +2493,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// Product specific payload for this line item.
   ///
   /// Optional.
-  GoogleCloudPaymentsResellerSubscriptionV1ProductPayload? productPayload;
+  ProductPayload? productPayload;
 
   /// The recurrence type of the line item.
   ///
@@ -2631,7 +2530,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   /// off-cycle.
   core.String? state;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem({
+  SubscriptionLineItem({
     this.amount,
     this.bundleDetails,
     this.description,
@@ -2646,12 +2545,11 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
     this.state,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem.fromJson(
-    core.Map json_,
-  ) : this(
+  SubscriptionLineItem.fromJson(core.Map json_)
+    : this(
         amount:
             json_.containsKey('amount')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Amount.fromJson(
+                ? Amount.fromJson(
                   json_['amount'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -2664,7 +2562,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         description: json_['description'] as core.String?,
         finiteBillingCycleDetails:
             json_.containsKey('finiteBillingCycleDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails.fromJson(
+                ? FiniteBillingCycleDetails.fromJson(
                   json_['finiteBillingCycleDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2675,15 +2573,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         lineItemPromotionSpecs:
             (json_['lineItemPromotionSpecs'] as core.List?)
                 ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
+                  (value) => SubscriptionPromotionSpec.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
                 )
                 .toList(),
         oneTimeRecurrenceDetails:
             json_.containsKey('oneTimeRecurrenceDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails.fromJson(
+                ? SubscriptionLineItemOneTimeRecurrenceDetails.fromJson(
                   json_['oneTimeRecurrenceDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2691,7 +2588,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
         product: json_['product'] as core.String?,
         productPayload:
             json_.containsKey('productPayload')
-                ? GoogleCloudPaymentsResellerSubscriptionV1ProductPayload.fromJson(
+                ? ProductPayload.fromJson(
                   json_['productPayload']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2720,8 +2617,37 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItem {
   };
 }
 
+/// The bundle details for a line item corresponding to a hard bundle.
+class SubscriptionLineItemBundleDetails {
+  /// The details for each element in the hard bundle.
+  ///
+  /// Output only.
+  core.List<SubscriptionLineItemBundleDetailsBundleElementDetails>?
+  bundleElementDetails;
+
+  SubscriptionLineItemBundleDetails({this.bundleElementDetails});
+
+  SubscriptionLineItemBundleDetails.fromJson(core.Map json_)
+    : this(
+        bundleElementDetails:
+            (json_['bundleElementDetails'] as core.List?)
+                ?.map(
+                  (value) =>
+                      SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (bundleElementDetails != null)
+      'bundleElementDetails': bundleElementDetails!,
+  };
+}
+
 /// The details for an element in the hard bundle.
-class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails {
+class SubscriptionLineItemBundleDetailsBundleElementDetails {
   /// Product resource name that identifies the bundle element.
   ///
   /// The format is 'partners/{partner_id}/products/{product_id}'.
@@ -2734,14 +2660,13 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetails
   /// Output only.
   core.String? userAccountLinkedTime;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails({
+  SubscriptionLineItemBundleDetailsBundleElementDetails({
     this.product,
     this.userAccountLinkedTime,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
-    core.Map json_,
-  ) : this(
+  SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(core.Map json_)
+    : this(
         product: json_['product'] as core.String?,
         userAccountLinkedTime: json_['userAccountLinkedTime'] as core.String?,
       );
@@ -2754,22 +2679,19 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetails
 }
 
 /// Details for a ONE_TIME recurrence line item.
-class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails {
+class SubscriptionLineItemOneTimeRecurrenceDetails {
   /// The service period of the ONE_TIME line item.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod? servicePeriod;
+  ServicePeriod? servicePeriod;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails({
-    this.servicePeriod,
-  });
+  SubscriptionLineItemOneTimeRecurrenceDetails({this.servicePeriod});
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurrenceDetails.fromJson(
-    core.Map json_,
-  ) : this(
+  SubscriptionLineItemOneTimeRecurrenceDetails.fromJson(core.Map json_)
+    : this(
         servicePeriod:
             json_.containsKey('servicePeriod')
-                ? GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod.fromJson(
+                ? ServicePeriod.fromJson(
                   json_['servicePeriod'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -2781,19 +2703,16 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemOneTimeRecurr
 }
 
 /// Describes the details of the migrated subscription.
-class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails {
+class SubscriptionMigrationDetails {
   /// The migrated subscription id in the legacy system.
   ///
   /// Output only.
   core.String? migratedSubscriptionId;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails({
-    this.migratedSubscriptionId,
-  });
+  SubscriptionMigrationDetails({this.migratedSubscriptionId});
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails.fromJson(
-    core.Map json_,
-  ) : this(
+  SubscriptionMigrationDetails.fromJson(core.Map json_)
+    : this(
         migratedSubscriptionId: json_['migratedSubscriptionId'] as core.String?,
       );
 
@@ -2804,18 +2723,17 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionMigrationDetails {
 }
 
 /// Describes the spec for one promotion.
-class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec {
+class SubscriptionPromotionSpec {
   /// The duration of the free trial if the promotion is of type FREE_TRIAL.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1Duration? freeTrialDuration;
+  Duration? freeTrialDuration;
 
   /// The details of the introductory pricing spec if the promotion is of type
   /// INTRODUCTORY_PRICING.
   ///
   /// Output only.
-  GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails?
-  introductoryPricingDetails;
+  PromotionIntroductoryPricingDetails? introductoryPricingDetails;
 
   /// Promotion resource name that identifies a promotion.
   ///
@@ -2834,26 +2752,25 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec {
   /// introductory pricing.
   core.String? type;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec({
+  SubscriptionPromotionSpec({
     this.freeTrialDuration,
     this.introductoryPricingDetails,
     this.promotion,
     this.type,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec.fromJson(
-    core.Map json_,
-  ) : this(
+  SubscriptionPromotionSpec.fromJson(core.Map json_)
+    : this(
         freeTrialDuration:
             json_.containsKey('freeTrialDuration')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Duration.fromJson(
+                ? Duration.fromJson(
                   json_['freeTrialDuration']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         introductoryPricingDetails:
             json_.containsKey('introductoryPricingDetails')
-                ? GoogleCloudPaymentsResellerSubscriptionV1PromotionIntroductoryPricingDetails.fromJson(
+                ? PromotionIntroductoryPricingDetails.fromJson(
                   json_['introductoryPricingDetails']
                       as core.Map<core.String, core.dynamic>,
                 )
@@ -2873,7 +2790,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionPromotionSpec {
 
 /// Details about the previous subscription that this new subscription
 /// upgrades/downgrades from.
-class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails {
+class SubscriptionUpgradeDowngradeDetails {
   /// Specifies the billing cycle spec for the new upgraded/downgraded
   /// subscription.
   ///
@@ -2893,19 +2810,21 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetai
 
   /// The previous subscription id to be replaced.
   ///
-  /// This is not the full resource name, use the subscription_id segment only.
+  /// The format can be one of the following: 1. `subscription_id`: the old
+  /// subscription id under the same partner_id. 2.
+  /// `partners/{partner_id}/subscriptions/{subscription_id}`. A different
+  /// partner_id is allowed. But they must be under the same partner group.
   ///
   /// Required.
   core.String? previousSubscriptionId;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails({
+  SubscriptionUpgradeDowngradeDetails({
     this.billingCycleSpec,
     this.previousSubscriptionId,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetails.fromJson(
-    core.Map json_,
-  ) : this(
+  SubscriptionUpgradeDowngradeDetails.fromJson(core.Map json_)
+    : this(
         billingCycleSpec: json_['billingCycleSpec'] as core.String?,
         previousSubscriptionId: json_['previousSubscriptionId'] as core.String?,
       );
@@ -2918,24 +2837,20 @@ class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionUpgradeDowngradeDetai
 }
 
 /// Request to suspend a subscription.
-typedef GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionRequest =
-    $Empty;
+typedef SuspendSubscriptionRequest = $Empty;
 
 /// Response that contains the suspended subscription.
-class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse {
+class SuspendSubscriptionResponse {
   /// The suspended subscription resource.
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+  Subscription? subscription;
 
-  GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse({
-    this.subscription,
-  });
+  SuspendSubscriptionResponse({this.subscription});
 
-  GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  SuspendSubscriptionResponse.fromJson(core.Map json_)
+    : this(
         subscription:
             json_.containsKey('subscription')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                ? Subscription.fromJson(
                   json_['subscription'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -2947,24 +2862,20 @@ class GoogleCloudPaymentsResellerSubscriptionV1SuspendSubscriptionResponse {
 }
 
 /// Request to revoke a cancellation request.
-typedef GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionRequest =
-    $Empty;
+typedef UndoCancelSubscriptionRequest = $Empty;
 
 /// Response that contains the updated subscription resource.
-class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
+class UndoCancelSubscriptionResponse {
   /// The updated subscription resource.
-  GoogleCloudPaymentsResellerSubscriptionV1Subscription? subscription;
+  Subscription? subscription;
 
-  GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse({
-    this.subscription,
-  });
+  UndoCancelSubscriptionResponse({this.subscription});
 
-  GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse.fromJson(
-    core.Map json_,
-  ) : this(
+  UndoCancelSubscriptionResponse.fromJson(core.Map json_)
+    : this(
         subscription:
             json_.containsKey('subscription')
-                ? GoogleCloudPaymentsResellerSubscriptionV1Subscription.fromJson(
+                ? Subscription.fromJson(
                   json_['subscription'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -2988,7 +2899,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1UndoCancelSubscriptionResponse {
 /// guaranteed by the same subscription id. Please refer to the \[Google Managed
 /// Signup\](/payments/reseller/subscription/reference/index/User.Signup.Integration/Google.Managed.Signup)
 /// documentation for additional integration details.
-class GoogleCloudPaymentsResellerSubscriptionV1UserSession {
+class UserSession {
   /// The time at which the user session expires.
   ///
   /// Output only.
@@ -3002,12 +2913,9 @@ class GoogleCloudPaymentsResellerSubscriptionV1UserSession {
   /// Output only.
   core.String? token;
 
-  GoogleCloudPaymentsResellerSubscriptionV1UserSession({
-    this.expireTime,
-    this.token,
-  });
+  UserSession({this.expireTime, this.token});
 
-  GoogleCloudPaymentsResellerSubscriptionV1UserSession.fromJson(core.Map json_)
+  UserSession.fromJson(core.Map json_)
     : this(
         expireTime: json_['expireTime'] as core.String?,
         token: json_['token'] as core.String?,
@@ -3020,7 +2928,7 @@ class GoogleCloudPaymentsResellerSubscriptionV1UserSession {
 }
 
 /// Payload specific to Youtube products.
-class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
+class YoutubePayload {
   /// The access expiration time for this line item.
   ///
   /// Output only.
@@ -3044,15 +2952,14 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
   /// opts in this Google service.
   core.String? partnerPlanType;
 
-  GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload({
+  YoutubePayload({
     this.accessEndTime,
     this.partnerEligibilityIds,
     this.partnerPlanType,
   });
 
-  GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload.fromJson(
-    core.Map json_,
-  ) : this(
+  YoutubePayload.fromJson(core.Map json_)
+    : this(
         accessEndTime: json_['accessEndTime'] as core.String?,
         partnerEligibilityIds:
             (json_['partnerEligibilityIds'] as core.List?)
@@ -3066,79 +2973,5 @@ class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload {
     if (partnerEligibilityIds != null)
       'partnerEligibilityIds': partnerEligibilityIds!,
     if (partnerPlanType != null) 'partnerPlanType': partnerPlanType!,
-  };
-}
-
-/// Localized variant of a text in a particular language.
-typedef GoogleTypeLocalizedText = $GoogleTypeLocalizedText;
-
-/// Details for a bundle product.
-class ProductBundleDetails {
-  /// The individual products that are included in the bundle.
-  core.List<
-    GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement
-  >?
-  bundleElements;
-
-  /// The entitlement mode of the bundle product.
-  /// Possible string values are:
-  /// - "ENTITLEMENT_MODE_UNSPECIFIED" : Unspecified. It's reserved as an
-  /// unexpected value, should not be used.
-  /// - "ENTITLEMENT_MODE_FULL" : All the bundle elements must be fully
-  /// activated in a single request.
-  /// - "ENTITLEMENT_MODE_INCREMENTAL" : The bundle elements could be
-  /// incrementally activated.
-  core.String? entitlementMode;
-
-  ProductBundleDetails({this.bundleElements, this.entitlementMode});
-
-  ProductBundleDetails.fromJson(core.Map json_)
-    : this(
-        bundleElements:
-            (json_['bundleElements'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-        entitlementMode: json_['entitlementMode'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bundleElements != null) 'bundleElements': bundleElements!,
-    if (entitlementMode != null) 'entitlementMode': entitlementMode!,
-  };
-}
-
-/// The bundle details for a line item corresponding to a hard bundle.
-class SubscriptionLineItemBundleDetails {
-  /// The details for each element in the hard bundle.
-  ///
-  /// Output only.
-  core.List<
-    GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails
-  >?
-  bundleElementDetails;
-
-  SubscriptionLineItemBundleDetails({this.bundleElementDetails});
-
-  SubscriptionLineItemBundleDetails.fromJson(core.Map json_)
-    : this(
-        bundleElementDetails:
-            (json_['bundleElementDetails'] as core.List?)
-                ?.map(
-                  (value) =>
-                      GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails.fromJson(
-                        value as core.Map<core.String, core.dynamic>,
-                      ),
-                )
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (bundleElementDetails != null)
-      'bundleElementDetails': bundleElementDetails!,
   };
 }

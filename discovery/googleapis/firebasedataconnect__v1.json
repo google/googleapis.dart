@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250706",
+    "revision": "20250907",
     "rootUrl": "https://firebasedataconnect.googleapis.com/",
     "servicePath": "",
     "title": "Firebase Data Connect API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -486,6 +486,34 @@
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
                                 },
+                                "introspectGraphql": {
+                                    "description": "Execute introspection query against the Firebase Data Connect's generated GraphQL schema. GraphQL introspection query provides metadata such as what tables the schema have, what queries and mutations can be performed on the schema, and so on. Read more at https://graphql.org/learn/introspection. IntrospectGraphql can read schema metadata but cannot read rows from Cloud SQL instance, which can be done via ExecuteGraphqlRead.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:introspectGraphql",
+                                    "httpMethod": "POST",
+                                    "id": "firebasedataconnect.projects.locations.services.introspectGraphql",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The relative resource name of Firebase Data Connect service, in the format: ``` projects/{project}/locations/{location}/services/{service} ```",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:introspectGraphql",
+                                    "request": {
+                                        "$ref": "GraphqlRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GraphqlResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "list": {
                                     "description": "Lists Services in a given project and location.",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services",
@@ -754,6 +782,62 @@
                                             "path": "v1/{+name}",
                                             "response": {
                                                 "$ref": "Connector"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "impersonateMutation": {
+                                            "description": "Impersonate a mutation defined on a Firebase Data Connect connector. It grants the admin SDK access to mutations defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:impersonateMutation",
+                                            "httpMethod": "POST",
+                                            "id": "firebasedataconnect.projects.locations.services.connectors.impersonateMutation",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The resource name of the connector to find the predefined query/mutation, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+/connectors/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:impersonateMutation",
+                                            "request": {
+                                                "$ref": "ImpersonateRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "GraphqlResponse"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
+                                        "impersonateQuery": {
+                                            "description": "Impersonate a query defined on a Firebase Data Connect connector. It grants the admin SDK access to queries defined in the given connector. The caller can choose to impersonate a particular Firebase Auth user, or skip @auth completely.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}/connectors/{connectorsId}:impersonateQuery",
+                                            "httpMethod": "POST",
+                                            "id": "firebasedataconnect.projects.locations.services.connectors.impersonateQuery",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The resource name of the connector to find the predefined query/mutation, in the format: ``` projects/{project}/locations/{location}/services/{service}/connectors/{connector} ```",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/services/[^/]+/connectors/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:impersonateQuery",
+                                            "request": {
+                                                "$ref": "ImpersonateRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "GraphqlResponse"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -1422,6 +1506,29 @@
             },
             "type": "object"
         },
+        "ImpersonateRequest": {
+            "description": "The Impersonate request to Firebase Data Connect.",
+            "id": "ImpersonateRequest",
+            "properties": {
+                "extensions": {
+                    "$ref": "GraphqlRequestExtensions",
+                    "description": "Optional. Additional GraphQL request information."
+                },
+                "operationName": {
+                    "description": "Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name.",
+                    "type": "string"
+                },
+                "variables": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Optional. Values for GraphQL variables provided in this request.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "Impersonation": {
             "description": "Impersonation configures the Firebase Auth context to impersonate.",
             "id": "Impersonation",
@@ -1681,6 +1788,11 @@
                     "description": "Required. Name of the PostgreSQL database.",
                     "type": "string"
                 },
+                "ephemeral": {
+                    "description": "Output only. Ephemeral is true if this data connect service is served from temporary in-memory emulation of Postgres. While Cloud SQL is being provisioned, the data connect service provides the ephemeral service to help developers get started. Once the Cloud SQL is provisioned, Data Connect service will transfer its data on a best-effort basis to the Cloud SQL instance. WARNING: Ephemeral data sources will expire after 24 hour. The data will be lost if they aren't transferred to the Cloud SQL instance. WARNING: When `ephemeral=true`, mutations to the database are not guaranteed to be durably persisted, even if an OK status code is returned. All or parts of the data may be lost or reverted to earlier versions.",
+                    "readOnly": true,
+                    "type": "boolean"
+                },
                 "schemaMigration": {
                     "description": "Optional. Configure how to perform Postgresql schema migration.",
                     "enum": [
@@ -1710,6 +1822,7 @@
                     "type": "string"
                 },
                 "unlinked": {
+                    "deprecated": true,
                     "description": "No Postgres data source is linked. If set, don't allow `database` and `schema_validation` to be configured.",
                     "type": "boolean"
                 }

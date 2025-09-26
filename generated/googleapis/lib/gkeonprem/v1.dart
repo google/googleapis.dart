@@ -135,9 +135,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -8624,6 +8624,9 @@ class VmwareAdminCluster {
   /// Configuration for registry.
   VmwareAdminPrivateRegistryConfig? privateRegistryConfig;
 
+  /// Configuration for proxy.
+  VmwareAdminProxy? proxy;
+
   /// If set, there are currently changes in flight to the VMware admin cluster.
   ///
   /// Output only.
@@ -8694,6 +8697,7 @@ class VmwareAdminCluster {
     this.platformConfig,
     this.preparedSecrets,
     this.privateRegistryConfig,
+    this.proxy,
     this.reconciling,
     this.state,
     this.status,
@@ -8791,6 +8795,12 @@ class VmwareAdminCluster {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        proxy:
+            json_.containsKey('proxy')
+                ? VmwareAdminProxy.fromJson(
+                  json_['proxy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         reconciling: json_['reconciling'] as core.bool?,
         state: json_['state'] as core.String?,
         status:
@@ -8842,6 +8852,7 @@ class VmwareAdminCluster {
     if (preparedSecrets != null) 'preparedSecrets': preparedSecrets!,
     if (privateRegistryConfig != null)
       'privateRegistryConfig': privateRegistryConfig!,
+    if (proxy != null) 'proxy': proxy!,
     if (reconciling != null) 'reconciling': reconciling!,
     if (state != null) 'state': state!,
     if (status != null) 'status': status!,
@@ -9200,6 +9211,32 @@ class VmwareAdminPrivateRegistryConfig {
   core.Map<core.String, core.dynamic> toJson() => {
     if (address != null) 'address': address!,
     if (caCert != null) 'caCert': caCert!,
+  };
+}
+
+/// VmwareAdminProxy represents configuration for admin cluster proxy.
+class VmwareAdminProxy {
+  /// A comma-separated list of IP addresses, IP address ranges, host names, and
+  /// domain names that should not go through the proxy server.
+  ///
+  /// When Google Distributed Cloud sends a request to one of these addresses,
+  /// hosts, or domains, the request is sent directly.
+  core.String? noProxy;
+
+  /// The HTTP address of proxy server.
+  core.String? url;
+
+  VmwareAdminProxy({this.noProxy, this.url});
+
+  VmwareAdminProxy.fromJson(core.Map json_)
+    : this(
+        noProxy: json_['noProxy'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (noProxy != null) 'noProxy': noProxy!,
+    if (url != null) 'url': url!,
   };
 }
 

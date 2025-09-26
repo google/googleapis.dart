@@ -20,6 +20,8 @@
 ///
 /// Create an instance of [CloudOSLoginApi] to access these resources:
 ///
+/// - [ProjectsResource]
+///   - [ProjectsLocationsResource]
 /// - [UsersResource]
 ///   - [UsersProjectsResource]
 ///   - [UsersSshPublicKeysResource]
@@ -59,6 +61,7 @@ class CloudOSLoginApi {
 
   final commons.ApiRequester _requester;
 
+  ProjectsResource get projects => ProjectsResource(_requester);
   UsersResource get users => UsersResource(_requester);
 
   CloudOSLoginApi(
@@ -71,6 +74,65 @@ class CloudOSLoginApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class ProjectsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource get locations =>
+      ProjectsLocationsResource(_requester);
+
+  ProjectsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class ProjectsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Signs an SSH public key for a user to authenticate to a virtual machine on
+  /// Google Compute Engine.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent for the signing request. Format:
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SignSshPublicKeyResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SignSshPublicKeyResponse> signSshPublicKey(
+    SignSshPublicKeyRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + ':signSshPublicKey';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SignSshPublicKeyResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class UsersResource {
@@ -568,6 +630,73 @@ class PosixAccount {
     if (systemId != null) 'systemId': systemId!,
     if (uid != null) 'uid': uid!,
     if (username != null) 'username': username!,
+  };
+}
+
+/// A request message for signing an SSH public key.
+class SignSshPublicKeyRequest {
+  /// The App Engine instance to sign the SSH public key for.
+  ///
+  /// Expected format:
+  /// apps/{app}/services/{service}/versions/{version}/instances/{instance}
+  core.String? appEngineInstance;
+
+  /// The Compute instance to sign the SSH public key for.
+  ///
+  /// Expected format:
+  /// projects/{project}/zones/{zone}/instances/{numeric_instance_id}
+  core.String? computeInstance;
+
+  /// The service account for the instance.
+  ///
+  /// If the instance in question does not have a service account, this field
+  /// should be left empty. If the wrong service account is provided, this
+  /// operation will return a signed certificate that will not be accepted by
+  /// the VM.
+  ///
+  /// Optional.
+  core.String? serviceAccount;
+
+  /// The SSH public key to sign.
+  ///
+  /// Required.
+  core.String? sshPublicKey;
+
+  SignSshPublicKeyRequest({
+    this.appEngineInstance,
+    this.computeInstance,
+    this.serviceAccount,
+    this.sshPublicKey,
+  });
+
+  SignSshPublicKeyRequest.fromJson(core.Map json_)
+    : this(
+        appEngineInstance: json_['appEngineInstance'] as core.String?,
+        computeInstance: json_['computeInstance'] as core.String?,
+        serviceAccount: json_['serviceAccount'] as core.String?,
+        sshPublicKey: json_['sshPublicKey'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (appEngineInstance != null) 'appEngineInstance': appEngineInstance!,
+    if (computeInstance != null) 'computeInstance': computeInstance!,
+    if (serviceAccount != null) 'serviceAccount': serviceAccount!,
+    if (sshPublicKey != null) 'sshPublicKey': sshPublicKey!,
+  };
+}
+
+/// The response message for signing an SSH public key.
+class SignSshPublicKeyResponse {
+  /// The signed SSH public key to use in the SSH handshake.
+  core.String? signedSshPublicKey;
+
+  SignSshPublicKeyResponse({this.signedSshPublicKey});
+
+  SignSshPublicKeyResponse.fromJson(core.Map json_)
+    : this(signedSshPublicKey: json_['signedSshPublicKey'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (signedSshPublicKey != null) 'signedSshPublicKey': signedSshPublicKey!,
   };
 }
 

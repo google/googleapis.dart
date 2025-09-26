@@ -246,6 +246,7 @@ api.Instance buildInstance() {
   final o = api.Instance();
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
+    o.capacityStepSizeGb = 'foo';
     o.createTime = 'foo';
     o.customPerformanceSupported = true;
     o.deletionProtectionEnabled = true;
@@ -255,6 +256,8 @@ api.Instance buildInstance() {
     o.fileShares = buildUnnamed3();
     o.kmsKeyName = 'foo';
     o.labels = buildUnnamed4();
+    o.maxCapacityGb = 'foo';
+    o.minCapacityGb = 'foo';
     o.name = 'foo';
     o.networks = buildUnnamed5();
     o.performanceConfig = buildPerformanceConfig();
@@ -276,6 +279,7 @@ api.Instance buildInstance() {
 void checkInstance(api.Instance o) {
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
+    unittest.expect(o.capacityStepSizeGb!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.customPerformanceSupported!, unittest.isTrue);
     unittest.expect(o.deletionProtectionEnabled!, unittest.isTrue);
@@ -285,6 +289,8 @@ void checkInstance(api.Instance o) {
     checkUnnamed3(o.fileShares!);
     unittest.expect(o.kmsKeyName!, unittest.equals('foo'));
     checkUnnamed4(o.labels!);
+    unittest.expect(o.maxCapacityGb!, unittest.equals('foo'));
+    unittest.expect(o.minCapacityGb!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed5(o.networks!);
     checkPerformanceConfig(o.performanceConfig!);
@@ -567,6 +573,7 @@ api.NetworkConfig buildNetworkConfig() {
     o.ipAddresses = buildUnnamed18();
     o.modes = buildUnnamed19();
     o.network = 'foo';
+    o.pscConfig = buildPscConfig();
     o.reservedIpRange = 'foo';
   }
   buildCounterNetworkConfig--;
@@ -580,6 +587,7 @@ void checkNetworkConfig(api.NetworkConfig o) {
     checkUnnamed18(o.ipAddresses!);
     checkUnnamed19(o.modes!);
     unittest.expect(o.network!, unittest.equals('foo'));
+    checkPscConfig(o.pscConfig!);
     unittest.expect(o.reservedIpRange!, unittest.equals('foo'));
   }
   buildCounterNetworkConfig--;
@@ -602,6 +610,7 @@ api.NfsExportOptions buildNfsExportOptions() {
     o.anonGid = 'foo';
     o.anonUid = 'foo';
     o.ipRanges = buildUnnamed20();
+    o.network = 'foo';
     o.squashMode = 'foo';
   }
   buildCounterNfsExportOptions--;
@@ -615,6 +624,7 @@ void checkNfsExportOptions(api.NfsExportOptions o) {
     unittest.expect(o.anonGid!, unittest.equals('foo'));
     unittest.expect(o.anonUid!, unittest.equals('foo'));
     checkUnnamed20(o.ipRanges!);
+    unittest.expect(o.network!, unittest.equals('foo'));
     unittest.expect(o.squashMode!, unittest.equals('foo'));
   }
   buildCounterNfsExportOptions--;
@@ -766,6 +776,25 @@ void checkPromoteReplicaRequest(api.PromoteReplicaRequest o) {
     unittest.expect(o.peerInstance!, unittest.equals('foo'));
   }
   buildCounterPromoteReplicaRequest--;
+}
+
+core.int buildCounterPscConfig = 0;
+api.PscConfig buildPscConfig() {
+  final o = api.PscConfig();
+  buildCounterPscConfig++;
+  if (buildCounterPscConfig < 3) {
+    o.endpointProject = 'foo';
+  }
+  buildCounterPscConfig--;
+  return o;
+}
+
+void checkPscConfig(api.PscConfig o) {
+  buildCounterPscConfig++;
+  if (buildCounterPscConfig < 3) {
+    unittest.expect(o.endpointProject!, unittest.equals('foo'));
+  }
+  buildCounterPscConfig--;
 }
 
 core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
@@ -1198,6 +1227,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkPromoteReplicaRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-PscConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildPscConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.PscConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkPscConfig(od);
     });
   });
 

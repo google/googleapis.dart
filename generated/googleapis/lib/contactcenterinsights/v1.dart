@@ -1036,7 +1036,7 @@ class ProjectsLocationsAuthorizedViewSetsResource {
   /// AuthorizedViewSet's resource name. If no ID is specified, a
   /// server-generated ID will be used. This value should be 4-64 characters and
   /// must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See
-  /// aip.dev/122#resource-id-segments
+  /// https://google.aip.dev/122#resource-id-segments
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1302,7 +1302,8 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
   /// This ID will become the final component of the AuthorizedView's resource
   /// name. If no ID is specified, a server-generated ID will be used. This
   /// value should be 4-64 characters and must match the regular expression
-  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments
+  /// `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See
+  /// https://google.aip.dev/122#resource-id-segments
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1411,6 +1412,65 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1AuthorizedView.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets the access control policy for a resource.
+  ///
+  /// Returns an empty policy if the resource exists and does not have a policy
+  /// set.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1689,6 +1749,107 @@ class ProjectsLocationsAuthorizedViewSetsAuthorizedViewsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Sets the access control policy on the specified resource.
+  ///
+  /// Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`,
+  /// and `PERMISSION_DENIED` errors.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1Policy> setIamPolicy(
+    GoogleIamV1SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1Policy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Returns permissions that a caller has on the specified resource.
+  ///
+  /// If the resource does not exist, this will return an empty set of
+  /// permissions, not a `NOT_FOUND` error. Note: This operation is designed to
+  /// be used for building permission-aware UIs and command-line tools, not for
+  /// authorization checking. This operation may "fail open" without warning.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/authorizedViewSets/\[^/\]+/authorizedViews/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleIamV1TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleIamV1TestIamPermissionsResponse> testIamPermissions(
+    GoogleIamV1TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleIamV1TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3560,6 +3721,50 @@ class ProjectsLocationsConversationsResource {
     );
   }
 
+  /// Samples conversations based on user configuration and handles the sampled
+  /// conversations for different use cases.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the dataset.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> sample(
+    GoogleCloudContactcenterinsightsV1SampleConversationsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversations:sample';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Create a long-running conversation upload operation.
   ///
   /// This method differs from `CreateConversation` by allowing audio
@@ -4700,6 +4905,185 @@ class ProjectsLocationsDatasetsResource {
     );
   }
 
+  /// Creates a dataset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the dataset.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [datasetId] - Optional. The ID to use for the dataset.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Dataset> create(
+    GoogleCloudContactcenterinsightsV1Dataset request,
+    core.String parent, {
+    core.String? datasetId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (datasetId != null) 'datasetId': [datasetId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/datasets';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Dataset.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Delete a dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the dataset to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets a dataset.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the dataset to get.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Dataset> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Dataset.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// List datasets matching the input.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the dataset.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter to reduce results to a specific subset.
+  /// Useful for querying datasets with specific properties. Supported fields
+  /// include, for Q2 though we only support list by project: - `type` -
+  /// `description` - `project_number`
+  ///
+  /// [pageSize] - Optional. The maximum number of datasets to return in the
+  /// response. If this value is zero, the service will select a default size. A
+  /// call might return fewer objects than requested. A non-empty
+  /// `next_page_token` in the response indicates that more data is available.
+  ///
+  /// [pageToken] - Optional. The value returned by the last
+  /// `ListDatasetsResponse`; indicates that this is a continuation of a prior
+  /// `ListDatasets` call and the system should return the next page of data.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1ListDatasetsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1ListDatasetsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/datasets';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1ListDatasetsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// List all feedback labels by project number.
   ///
   /// Request parameters:
@@ -4761,6 +5145,54 @@ class ProjectsLocationsDatasetsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates a dataset.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Immutable. Identifier. Resource name of the dataset. Format:
+  /// projects/{project}/locations/{location}/datasets/{dataset}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudContactcenterinsightsV1Dataset].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudContactcenterinsightsV1Dataset> patch(
+    GoogleCloudContactcenterinsightsV1Dataset request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudContactcenterinsightsV1Dataset.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -5130,6 +5562,51 @@ class ProjectsLocationsDatasetsConversationsResource {
       queryParams: queryParams_,
     );
     return GoogleCloudContactcenterinsightsV1ListConversationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Samples conversations based on user configuration and handles the sampled
+  /// conversations for different use cases.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource of the dataset.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datasets/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> sample(
+    GoogleCloudContactcenterinsightsV1SampleConversationsRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/conversations:sample';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -6889,10 +7366,11 @@ class ProjectsLocationsQaQuestionTagsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. A filter to reduce results to a specific subset.
-  /// Supports disjunctions (OR) and conjunctions (AND). Supported fields
-  /// include the following: * `project_id` - id of the project to list tags for
-  /// * `qa_scorecard_revision_id` - id of the scorecard revision to list tags
-  /// for * `qa_question_id - id of the question to list tags for`
+  /// Supports conjunctions (ie. AND operators). Supported fields include the
+  /// following: * \`project_id\` - id of the project to list tags for *
+  /// \`qa_scorecard_id\` - id of the scorecard to list tags for *
+  /// \`revision_id\` - id of the scorecard revision to list tags for\` *
+  /// \`qa_question_id - id of the question to list tags for\`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7136,6 +7614,11 @@ class ProjectsLocationsQaScorecardsResource {
   /// continuation of a prior `ListQaScorecards` call and that the system should
   /// return the next page of data.
   ///
+  /// [qaScorecardSources] - Optional. The source of scorecards are based on how
+  /// those Scorecards were created, e.g., a customer-defined scorecard, a
+  /// predefined scorecard, etc. This field is used to retrieve Scorecards of
+  /// one or more sources.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7151,11 +7634,13 @@ class ProjectsLocationsQaScorecardsResource {
     core.String parent, {
     core.int? pageSize,
     core.String? pageToken,
+    core.List<core.String>? qaScorecardSources,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (qaScorecardSources != null) 'qaScorecardSources': qaScorecardSources,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -7432,6 +7917,11 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
   /// continuation of a prior `ListQaScorecardRevisions` call and that the
   /// system should return the next page of data.
   ///
+  /// [qaScorecardSources] - Optional. The source of scorecards are based on how
+  /// those Scorecards were created, e.g., a customer-defined scorecard, a
+  /// predefined scorecard, etc. This field is used to retrieve Scorecards
+  /// Revisions from Scorecards of one or more sources.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -7451,12 +7941,14 @@ class ProjectsLocationsQaScorecardsRevisionsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.List<core.String>? qaScorecardSources,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (qaScorecardSources != null) 'qaScorecardSources': qaScorecardSources,
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -10237,6 +10729,11 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   /// An arbitrary integer value indicating the customer's satisfaction rating.
   core.int? customerSatisfactionRating;
 
+  /// Input only.
+  ///
+  /// The feedback labels associated with the conversation.
+  core.List<GoogleCloudContactcenterinsightsV1FeedbackLabel>? feedbackLabels;
+
   /// An arbitrary string value specifying the menu path the customer took.
   core.String? menuPath;
 
@@ -10246,6 +10743,7 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   GoogleCloudContactcenterinsightsV1ConversationQualityMetadata({
     this.agentInfo,
     this.customerSatisfactionRating,
+    this.feedbackLabels,
     this.menuPath,
     this.waitDuration,
   });
@@ -10264,6 +10762,15 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
                 .toList(),
         customerSatisfactionRating:
             json_['customerSatisfactionRating'] as core.int?,
+        feedbackLabels:
+            (json_['feedbackLabels'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudContactcenterinsightsV1FeedbackLabel.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
         menuPath: json_['menuPath'] as core.String?,
         waitDuration: json_['waitDuration'] as core.String?,
       );
@@ -10272,6 +10779,7 @@ class GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
     if (agentInfo != null) 'agentInfo': agentInfo!,
     if (customerSatisfactionRating != null)
       'customerSatisfactionRating': customerSatisfactionRating!,
+    if (feedbackLabels != null) 'feedbackLabels': feedbackLabels!,
     if (menuPath != null) 'menuPath': menuPath!,
     if (waitDuration != null) 'waitDuration': waitDuration!,
   };
@@ -10623,6 +11131,79 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
   };
 }
 
+/// Dataset resource represents a collection of conversations that may be
+/// bounded (Static Dataset, e.g. golden dataset for training), or unbounded
+/// (Dynamic Dataset, e.g. live traffic, or agent training traffic)
+class GoogleCloudContactcenterinsightsV1Dataset {
+  /// Dataset create time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Dataset description.
+  core.String? description;
+
+  /// Display name for the dataaset
+  core.String? displayName;
+
+  /// Identifier.
+  ///
+  /// Resource name of the dataset. Format:
+  /// projects/{project}/locations/{location}/datasets/{dataset}
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// Option TTL for the dataset.
+  ///
+  /// Optional.
+  core.String? ttl;
+
+  /// Dataset usage type.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Default value for unspecified.
+  /// - "EVAL" : For evals only.
+  /// - "LIVE" : Dataset with new conversations coming in regularly (Insights
+  /// legacy conversations and AI trainer)
+  core.String? type;
+
+  /// Dataset update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  GoogleCloudContactcenterinsightsV1Dataset({
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.name,
+    this.ttl,
+    this.type,
+    this.updateTime,
+  });
+
+  GoogleCloudContactcenterinsightsV1Dataset.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+        type: json_['type'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (ttl != null) 'ttl': ttl!,
+    if (type != null) 'type': type!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
 /// The request to deploy an issue model.
 class GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
   /// The issue model to deploy.
@@ -10751,6 +11332,11 @@ class GoogleCloudContactcenterinsightsV1Dimension {
   /// QuestionId and not the revision-id of the scorecard this question is a
   /// part of. This allows for showing distribution of answers per question
   /// across different scorecard revisions.
+  /// - "QA_SCORECARD_ID" : The dimension is keyed by QaScorecardIds. Note that:
+  /// We only group by the ScorecardId and not the revision-id of the scorecard.
+  /// This allows for showing stats for the same scorecard across different
+  /// revisions. This metric is mostly only useful if querying the average
+  /// normalized score per scorecard.
   /// - "CONVERSATION_PROFILE_ID" : The dimension is keyed by the conversation
   /// profile ID.
   /// - "MEDIUM" : The dimension is keyed by the conversation medium.
@@ -10774,12 +11360,19 @@ class GoogleCloudContactcenterinsightsV1Dimension {
   GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata?
   qaQuestionDimensionMetadata;
 
+  /// Metadata about the QA scorecard dimension.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata?
+  qaScorecardDimensionMetadata;
+
   GoogleCloudContactcenterinsightsV1Dimension({
     this.agentDimensionMetadata,
     this.dimensionKey,
     this.issueDimensionMetadata,
     this.qaQuestionAnswerDimensionMetadata,
     this.qaQuestionDimensionMetadata,
+    this.qaScorecardDimensionMetadata,
   });
 
   GoogleCloudContactcenterinsightsV1Dimension.fromJson(core.Map json_)
@@ -10813,6 +11406,13 @@ class GoogleCloudContactcenterinsightsV1Dimension {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        qaScorecardDimensionMetadata:
+            json_.containsKey('qaScorecardDimensionMetadata')
+                ? GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata.fromJson(
+                  json_['qaScorecardDimensionMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -10825,6 +11425,8 @@ class GoogleCloudContactcenterinsightsV1Dimension {
       'qaQuestionAnswerDimensionMetadata': qaQuestionAnswerDimensionMetadata!,
     if (qaQuestionDimensionMetadata != null)
       'qaQuestionDimensionMetadata': qaQuestionDimensionMetadata!,
+    if (qaScorecardDimensionMetadata != null)
+      'qaScorecardDimensionMetadata': qaScorecardDimensionMetadata!,
   };
 }
 
@@ -10982,6 +11584,26 @@ class GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata {
     if (qaQuestionId != null) 'qaQuestionId': qaQuestionId!,
     if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
     if (questionBody != null) 'questionBody': questionBody!,
+  };
+}
+
+/// Metadata about the QA scorecard dimension.
+class GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata {
+  /// The QA scorecard ID.
+  ///
+  /// Optional.
+  core.String? qaScorecardId;
+
+  GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata({
+    this.qaScorecardId,
+  });
+
+  GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata.fromJson(
+    core.Map json_,
+  ) : this(qaScorecardId: json_['qaScorecardId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (qaScorecardId != null) 'qaScorecardId': qaScorecardId!,
   };
 }
 
@@ -11187,6 +11809,10 @@ class GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   /// - "EXPORT_V5" : Export schema version 5.
   /// - "EXPORT_V6" : Export schema version 6.
   /// - "EXPORT_V7" : Export schema version 7.
+  /// - "EXPORT_V8" : Export schema version 8.
+  /// - "EXPORT_V9" : Export schema version 9.
+  /// - "EXPORT_V10" : Export schema version 10.
+  /// - "EXPORT_V11" : Export schema version 11.
   /// - "EXPORT_VERSION_LATEST_AVAILABLE" : Export schema version latest
   /// available.
   core.String? exportSchemaVersion;
@@ -12622,6 +13248,41 @@ class GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   };
 }
 
+/// The response to list datasets.
+class GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
+  /// The datasets that match the request.
+  core.List<GoogleCloudContactcenterinsightsV1Dataset>? datasets;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  GoogleCloudContactcenterinsightsV1ListDatasetsResponse({
+    this.datasets,
+    this.nextPageToken,
+  });
+
+  GoogleCloudContactcenterinsightsV1ListDatasetsResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        datasets:
+            (json_['datasets'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudContactcenterinsightsV1Dataset.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (datasets != null) 'datasets': datasets!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// The response for listing feedback labels.
 class GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   /// The feedback labels that match the request.
@@ -13495,10 +14156,28 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   /// Output only.
   core.double? potentialScore;
 
+  /// The rationale for the answer.
+  ///
+  /// This field is only populated for answers that are generated by the LLM.
+  /// Manual edits currently do not have rationales.
+  ///
+  /// Output only.
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale?
+  rationale;
+
   /// Numerical score of the answer.
   ///
   /// Output only.
   core.double? score;
+
+  /// A value of "Skip".
+  ///
+  /// If provided, this field may only be set to `true`. If a question receives
+  /// this answer, it will be excluded from any score calculations. This would
+  /// mean that the question was not evaluated.
+  ///
+  /// Output only.
+  core.bool? skipValue;
 
   /// String value.
   core.String? strValue;
@@ -13510,7 +14189,9 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
     this.normalizedScore,
     this.numValue,
     this.potentialScore,
+    this.rationale,
     this.score,
+    this.skipValue,
     this.strValue,
   });
 
@@ -13522,7 +14203,14 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
         normalizedScore: (json_['normalizedScore'] as core.num?)?.toDouble(),
         numValue: (json_['numValue'] as core.num?)?.toDouble(),
         potentialScore: (json_['potentialScore'] as core.num?)?.toDouble(),
+        rationale:
+            json_.containsKey('rationale')
+                ? GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale.fromJson(
+                  json_['rationale'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         score: (json_['score'] as core.num?)?.toDouble(),
+        skipValue: json_['skipValue'] as core.bool?,
         strValue: json_['strValue'] as core.String?,
       );
 
@@ -13533,8 +14221,28 @@ class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
     if (normalizedScore != null) 'normalizedScore': normalizedScore!,
     if (numValue != null) 'numValue': numValue!,
     if (potentialScore != null) 'potentialScore': potentialScore!,
+    if (rationale != null) 'rationale': rationale!,
     if (score != null) 'score': score!,
+    if (skipValue != null) 'skipValue': skipValue!,
     if (strValue != null) 'strValue': strValue!,
+  };
+}
+
+/// Wrapper for the rationale for the answer.
+class GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale {
+  /// The rationale string for the answer.
+  core.String? rationale;
+
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale({
+    this.rationale,
+  });
+
+  GoogleCloudContactcenterinsightsV1QaAnswerAnswerValueQaAnswerRationale.fromJson(
+    core.Map json_,
+  ) : this(rationale: json_['rationale'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (rationale != null) 'rationale': rationale!,
   };
 }
 
@@ -13788,6 +14496,10 @@ class GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig {
   /// - "CONVERSATION_OUTCOME_ESCALATION_INITIATOR_ROLE" : A prebuilt classifier
   /// classfying the initiator of the conversation escalation. For example, if
   /// it was initiated by the customer or the agent.
+  /// - "CONVERSATION_OUTCOME_CUSTOMER_SATISFACTION" : A prebuilt classifier
+  /// classfying whether the customer is satisfied with the agent's response.
+  /// - "CONVERSATION_OUTCOME_AGENT_HELPFULNESS" : A prebuilt classifier
+  /// classfying whether the agent is helpful to the customer.
   core.String? type;
 
   GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig({
@@ -13936,6 +14648,18 @@ class GoogleCloudContactcenterinsightsV1QaScorecard {
   /// projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}
   core.String? name;
 
+  /// The source of the scorecard.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "QA_SCORECARD_SOURCE_UNSPECIFIED" : The source of the scorecard is
+  /// unspecified. Default to QA_SCORECARD_SOURCE_CUSTOMER_DEFINED.
+  /// - "QA_SCORECARD_SOURCE_CUSTOMER_DEFINED" : The scorecard is a custom
+  /// scorecard created by the user.
+  /// - "QA_SCORECARD_SOURCE_DISCOVERY_ENGINE" : The scorecard is a scorecard
+  /// created through discovery engine deployment.
+  core.String? source;
+
   /// The most recent time at which the scorecard was updated.
   ///
   /// Output only.
@@ -13947,6 +14671,7 @@ class GoogleCloudContactcenterinsightsV1QaScorecard {
     this.displayName,
     this.isDefault,
     this.name,
+    this.source,
     this.updateTime,
   });
 
@@ -13957,6 +14682,7 @@ class GoogleCloudContactcenterinsightsV1QaScorecard {
         displayName: json_['displayName'] as core.String?,
         isDefault: json_['isDefault'] as core.bool?,
         name: json_['name'] as core.String?,
+        source: json_['source'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
 
@@ -13966,6 +14692,7 @@ class GoogleCloudContactcenterinsightsV1QaScorecard {
     if (displayName != null) 'displayName': displayName!,
     if (isDefault != null) 'isDefault': isDefault!,
     if (name != null) 'name': name!,
+    if (source != null) 'source': source!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
 }
@@ -14693,6 +15420,53 @@ class GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
   };
 }
 
+/// The request to sample conversations to a dataset.
+class GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
+  /// The dataset resource to copy the sampled conversations to.
+  GoogleCloudContactcenterinsightsV1Dataset? destinationDataset;
+
+  /// The parent resource of the dataset.
+  ///
+  /// Required.
+  core.String? parent;
+
+  /// The sample rule used for sampling conversations.
+  ///
+  /// Optional.
+  GoogleCloudContactcenterinsightsV1SampleRule? sampleRule;
+
+  GoogleCloudContactcenterinsightsV1SampleConversationsRequest({
+    this.destinationDataset,
+    this.parent,
+    this.sampleRule,
+  });
+
+  GoogleCloudContactcenterinsightsV1SampleConversationsRequest.fromJson(
+    core.Map json_,
+  ) : this(
+        destinationDataset:
+            json_.containsKey('destinationDataset')
+                ? GoogleCloudContactcenterinsightsV1Dataset.fromJson(
+                  json_['destinationDataset']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        parent: json_['parent'] as core.String?,
+        sampleRule:
+            json_.containsKey('sampleRule')
+                ? GoogleCloudContactcenterinsightsV1SampleRule.fromJson(
+                  json_['sampleRule'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (destinationDataset != null) 'destinationDataset': destinationDataset!,
+    if (parent != null) 'parent': parent!,
+    if (sampleRule != null) 'sampleRule': sampleRule!,
+  };
+}
+
 /// Message for sampling conversations.
 class GoogleCloudContactcenterinsightsV1SampleRule {
   /// To specify the filter for the conversions that should apply this sample
@@ -14898,8 +15672,11 @@ class GoogleCloudContactcenterinsightsV1Settings {
   /// "ingest-conversations": Notify each time an IngestConversations LRO is
   /// complete. * "update-conversation": Notify each time a conversation is
   /// updated via UpdateConversation. * "upload-conversation": Notify when an
-  /// UploadConversation LRO is complete. Values are Pub/Sub topics. The format
-  /// of each Pub/Sub topic is: projects/{project}/topics/{topic}
+  /// UploadConversation LRO is complete. * "update-or-analyze-conversation":
+  /// Notify when an analysis for a conversation is completed or when the
+  /// conversation is updated. The message will contain the conversation with
+  /// transcript, analysis and other metadata. Values are Pub/Sub topics. The
+  /// format of each Pub/Sub topic is: projects/{project}/topics/{topic}
   core.Map<core.String, core.String>? pubsubNotificationSettings;
 
   /// Default DLP redaction resources to be applied while ingesting
@@ -15357,6 +16134,331 @@ class GoogleCloudContactcenterinsightsV1View {
   };
 }
 
+/// Specifies the audit configuration for a service.
+///
+/// The configuration determines which permission types are logged, and what
+/// identities, if any, are exempted from logging. An AuditConfig must have one
+/// or more AuditLogConfigs. If there are AuditConfigs for both `allServices`
+/// and a specific service, the union of the two AuditConfigs is used for that
+/// service: the log_types specified in each AuditConfig are enabled, and the
+/// exempted_members in each AuditLogConfig are exempted. Example Policy with
+/// multiple AuditConfigs: { "audit_configs": \[ { "service": "allServices",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ", "exempted_members": \[
+/// "user:jose@example.com" \] }, { "log_type": "DATA_WRITE" }, { "log_type":
+/// "ADMIN_READ" } \] }, { "service": "sampleservice.googleapis.com",
+/// "audit_log_configs": \[ { "log_type": "DATA_READ" }, { "log_type":
+/// "DATA_WRITE", "exempted_members": \[ "user:aliya@example.com" \] } \] } \] }
+/// For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+/// logging. It also exempts `jose@example.com` from DATA_READ logging, and
+/// `aliya@example.com` from DATA_WRITE logging.
+class GoogleIamV1AuditConfig {
+  /// The configuration for logging of each type of permission.
+  core.List<GoogleIamV1AuditLogConfig>? auditLogConfigs;
+
+  /// Specifies a service that will be enabled for audit logging.
+  ///
+  /// For example, `storage.googleapis.com`, `cloudsql.googleapis.com`.
+  /// `allServices` is a special value that covers all services.
+  core.String? service;
+
+  GoogleIamV1AuditConfig({this.auditLogConfigs, this.service});
+
+  GoogleIamV1AuditConfig.fromJson(core.Map json_)
+    : this(
+        auditLogConfigs:
+            (json_['auditLogConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV1AuditLogConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        service: json_['service'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (auditLogConfigs != null) 'auditLogConfigs': auditLogConfigs!,
+    if (service != null) 'service': service!,
+  };
+}
+
+/// Provides the configuration for logging a type of permissions.
+///
+/// Example: { "audit_log_configs": \[ { "log_type": "DATA_READ",
+/// "exempted_members": \[ "user:jose@example.com" \] }, { "log_type":
+/// "DATA_WRITE" } \] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while
+/// exempting jose@example.com from DATA_READ logging.
+typedef GoogleIamV1AuditLogConfig = $AuditLogConfig;
+
+/// Associates `members`, or principals, with a `role`.
+class GoogleIamV1Binding {
+  /// The condition that is associated with this binding.
+  ///
+  /// If the condition evaluates to `true`, then this binding applies to the
+  /// current request. If the condition evaluates to `false`, then this binding
+  /// does not apply to the current request. However, a different role binding
+  /// might grant the same role to one or more of the principals in this
+  /// binding. To learn which resources support conditions in their IAM
+  /// policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  GoogleTypeExpr? condition;
+
+  /// Specifies the principals requesting access for a Google Cloud resource.
+  ///
+  /// `members` can have the following values: * `allUsers`: A special
+  /// identifier that represents anyone who is on the internet; with or without
+  /// a Google account. * `allAuthenticatedUsers`: A special identifier that
+  /// represents anyone who is authenticated with a Google account or a service
+  /// account. Does not include identities that come from external identity
+  /// providers (IdPs) through identity federation. * `user:{emailid}`: An email
+  /// address that represents a specific Google account. For example,
+  /// `alice@example.com` . * `serviceAccount:{emailid}`: An email address that
+  /// represents a Google service account. For example,
+  /// `my-other-app@appspot.gserviceaccount.com`. *
+  /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An
+  /// identifier for a
+  /// [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts).
+  /// For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. *
+  /// `group:{emailid}`: An email address that represents a Google group. For
+  /// example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+  /// (primary) that represents all the users of that domain. For example,
+  /// `google.com` or `example.com`. *
+  /// `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workforce identity pool. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`:
+  /// All workforce identities in a group. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All workforce identities with a specific attribute value. *
+  /// `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}
+  /// / * `: All identities in a workforce identity pool. *
+  /// `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`:
+  /// A single identity in a workload identity pool. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`:
+  /// A workload identity pool group. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`:
+  /// All identities in a workload identity pool with a certain attribute. *
+  /// `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}
+  /// / * `: All identities in a workload identity pool. *
+  /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique
+  /// identifier) representing a user that has been recently deleted. For
+  /// example, `alice@example.com?uid=123456789012345678901`. If the user is
+  /// recovered, this value reverts to `user:{emailid}` and the recovered user
+  /// retains the role in the binding. *
+  /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus
+  /// unique identifier) representing a service account that has been recently
+  /// deleted. For example,
+  /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If
+  /// the service account is undeleted, this value reverts to
+  /// `serviceAccount:{emailid}` and the undeleted service account retains the
+  /// role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email
+  /// address (plus unique identifier) representing a Google group that has been
+  /// recently deleted. For example,
+  /// `admins@example.com?uid=123456789012345678901`. If the group is recovered,
+  /// this value reverts to `group:{emailid}` and the recovered group retains
+  /// the role in the binding. *
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`:
+  /// Deleted single identity in a workforce identity pool. For example,
+  /// `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`.
+  core.List<core.String>? members;
+
+  /// Role that is assigned to the list of `members`, or principals.
+  ///
+  /// For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an
+  /// overview of the IAM roles and permissions, see the
+  /// [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For
+  /// a list of the available pre-defined roles, see
+  /// [here](https://cloud.google.com/iam/docs/understanding-roles).
+  core.String? role;
+
+  GoogleIamV1Binding({this.condition, this.members, this.role});
+
+  GoogleIamV1Binding.fromJson(core.Map json_)
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? GoogleTypeExpr.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        members:
+            (json_['members'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        role: json_['role'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (condition != null) 'condition': condition!,
+    if (members != null) 'members': members!,
+    if (role != null) 'role': role!,
+  };
+}
+
+/// An Identity and Access Management (IAM) policy, which specifies access
+/// controls for Google Cloud resources.
+///
+/// A `Policy` is a collection of `bindings`. A `binding` binds one or more
+/// `members`, or principals, to a single `role`. Principals can be user
+/// accounts, service accounts, Google groups, and domains (such as G Suite). A
+/// `role` is a named list of permissions; each `role` can be an IAM predefined
+/// role or a user-created custom role. For some types of Google Cloud
+/// resources, a `binding` can also specify a `condition`, which is a logical
+/// expression that allows access to a resource only if the expression evaluates
+/// to `true`. A condition can add constraints based on attributes of the
+/// request, the resource, or both. To learn which resources support conditions
+/// in their IAM policies, see the
+/// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+/// **JSON example:** ``` { "bindings": [ { "role":
+/// "roles/resourcemanager.organizationAdmin", "members": [
+/// "user:mike@example.com", "group:admins@example.com", "domain:google.com",
+/// "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] }, { "role":
+/// "roles/resourcemanager.organizationViewer", "members": [
+/// "user:eve@example.com" ], "condition": { "title": "expirable access",
+/// "description": "Does not grant access after Sep 2020", "expression":
+/// "request.time < timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag":
+/// "BwWWja0YfJA=", "version": 3 } ``` **YAML example:** ``` bindings: -
+/// members: - user:mike@example.com - group:admins@example.com -
+/// domain:google.com - serviceAccount:my-project-id@appspot.gserviceaccount.com
+/// role: roles/resourcemanager.organizationAdmin - members: -
+/// user:eve@example.com role: roles/resourcemanager.organizationViewer
+/// condition: title: expirable access description: Does not grant access after
+/// Sep 2020 expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+/// etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its features,
+/// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+class GoogleIamV1Policy {
+  /// Specifies cloud audit logging configuration for this policy.
+  core.List<GoogleIamV1AuditConfig>? auditConfigs;
+
+  /// Associates a list of `members`, or principals, with a `role`.
+  ///
+  /// Optionally, may specify a `condition` that determines how and when the
+  /// `bindings` are applied. Each of the `bindings` must contain at least one
+  /// principal. The `bindings` in a `Policy` can refer to up to 1,500
+  /// principals; up to 250 of these principals can be Google groups. Each
+  /// occurrence of a principal counts towards these limits. For example, if the
+  /// `bindings` grant 50 different roles to `user:alice@example.com`, and not
+  /// to any other principal, then you can add another 1,450 principals to the
+  /// `bindings` in the `Policy`.
+  core.List<GoogleIamV1Binding>? bindings;
+
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a policy from overwriting each other.
+  ///
+  /// It is strongly suggested that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform policy updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `getIamPolicy`, and
+  /// systems are expected to put that etag in the request to `setIamPolicy` to
+  /// ensure that their change will be applied to the same version of the
+  /// policy. **Important:** If you use IAM Conditions, you must include the
+  /// `etag` field whenever you call `setIamPolicy`. If you omit this field,
+  /// then IAM allows you to overwrite a version `3` policy with a version `1`
+  /// policy, and all of the conditions in the version `3` policy are lost.
+  core.String? etag;
+  core.List<core.int> get etagAsBytes => convert.base64.decode(etag!);
+
+  set etagAsBytes(core.List<core.int> bytes_) {
+    etag = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// Specifies the format of the policy.
+  ///
+  /// Valid values are `0`, `1`, and `3`. Requests that specify an invalid value
+  /// are rejected. Any operation that affects conditional role bindings must
+  /// specify version `3`. This requirement applies to the following operations:
+  /// * Getting a policy that includes a conditional role binding * Adding a
+  /// conditional role binding to a policy * Changing a conditional role binding
+  /// in a policy * Removing any role binding, with or without a condition, from
+  /// a policy that includes conditions **Important:** If you use IAM
+  /// Conditions, you must include the `etag` field whenever you call
+  /// `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a
+  /// version `3` policy with a version `1` policy, and all of the conditions in
+  /// the version `3` policy are lost. If a policy does not include any
+  /// conditions, operations on that policy may specify any valid version or
+  /// leave the field unset. To learn which resources support conditions in
+  /// their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  core.int? version;
+
+  GoogleIamV1Policy({
+    this.auditConfigs,
+    this.bindings,
+    this.etag,
+    this.version,
+  });
+
+  GoogleIamV1Policy.fromJson(core.Map json_)
+    : this(
+        auditConfigs:
+            (json_['auditConfigs'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV1AuditConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bindings:
+            (json_['bindings'] as core.List?)
+                ?.map(
+                  (value) => GoogleIamV1Binding.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        etag: json_['etag'] as core.String?,
+        version: json_['version'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (auditConfigs != null) 'auditConfigs': auditConfigs!,
+    if (bindings != null) 'bindings': bindings!,
+    if (etag != null) 'etag': etag!,
+    if (version != null) 'version': version!,
+  };
+}
+
+/// Request message for `SetIamPolicy` method.
+class GoogleIamV1SetIamPolicyRequest {
+  /// REQUIRED: The complete policy to be applied to the `resource`.
+  ///
+  /// The size of the policy is limited to a few 10s of KB. An empty policy is a
+  /// valid policy but certain Google Cloud services (such as Projects) might
+  /// reject them.
+  GoogleIamV1Policy? policy;
+
+  /// OPTIONAL: A FieldMask specifying which fields of the policy to modify.
+  ///
+  /// Only the fields in the mask will be modified. If no mask is provided, the
+  /// following default mask is used: `paths: "bindings, etag"`
+  core.String? updateMask;
+
+  GoogleIamV1SetIamPolicyRequest({this.policy, this.updateMask});
+
+  GoogleIamV1SetIamPolicyRequest.fromJson(core.Map json_)
+    : this(
+        policy:
+            json_.containsKey('policy')
+                ? GoogleIamV1Policy.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateMask: json_['updateMask'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (policy != null) 'policy': policy!,
+    if (updateMask != null) 'updateMask': updateMask!,
+  };
+}
+
+/// Request message for `TestIamPermissions` method.
+typedef GoogleIamV1TestIamPermissionsRequest = $TestIamPermissionsRequest00;
+
+/// Response message for `TestIamPermissions` method.
+typedef GoogleIamV1TestIamPermissionsResponse = $PermissionsResponse;
+
 /// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
   /// The standard List next-page token.
@@ -15485,3 +16587,23 @@ typedef GoogleProtobufEmpty = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef GoogleRpcStatus = $Status00;
+
+/// Represents a textual expression in the Common Expression Language (CEL)
+/// syntax.
+///
+/// CEL is a C-like expression language. The syntax and semantics of CEL are
+/// documented at https://github.com/google/cel-spec. Example (Comparison):
+/// title: "Summary size limit" description: "Determines if a summary is less
+/// than 100 chars" expression: "document.summary.size() \< 100" Example
+/// (Equality): title: "Requestor is owner" description: "Determines if
+/// requestor is the document owner" expression: "document.owner ==
+/// request.auth.claims.email" Example (Logic): title: "Public documents"
+/// description: "Determine whether the document should be publicly visible"
+/// expression: "document.type != 'private' && document.type != 'internal'"
+/// Example (Data Manipulation): title: "Notification string" description:
+/// "Create a notification string with a timestamp." expression: "'New message
+/// received at ' + string(document.create_time)" The exact variables and
+/// functions that may be referenced within an expression are determined by the
+/// service that evaluates it. See the service documentation for additional
+/// information.
+typedef GoogleTypeExpr = $Expr;

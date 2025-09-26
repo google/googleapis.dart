@@ -161,9 +161,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -8187,10 +8187,22 @@ class GoogleCloudDialogflowCxV3Action {
   /// Optional.
   GoogleCloudDialogflowCxV3FlowInvocation? flowInvocation;
 
+  /// Action performed on behalf of the agent by transitioning to a target CX
+  /// flow.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3FlowTransition? flowTransition;
+
   /// Action performed on behalf of the agent by invoking a child playbook.
   ///
   /// Optional.
   GoogleCloudDialogflowCxV3PlaybookInvocation? playbookInvocation;
+
+  /// Action performed on behalf of the agent by transitioning to a target
+  /// playbook.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3PlaybookTransition? playbookTransition;
 
   /// Action performed on behalf of the agent by calling a plugin tool.
   ///
@@ -8205,7 +8217,9 @@ class GoogleCloudDialogflowCxV3Action {
   GoogleCloudDialogflowCxV3Action({
     this.agentUtterance,
     this.flowInvocation,
+    this.flowTransition,
     this.playbookInvocation,
+    this.playbookTransition,
     this.toolUse,
     this.userUtterance,
   });
@@ -8226,10 +8240,24 @@ class GoogleCloudDialogflowCxV3Action {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        flowTransition:
+            json_.containsKey('flowTransition')
+                ? GoogleCloudDialogflowCxV3FlowTransition.fromJson(
+                  json_['flowTransition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         playbookInvocation:
             json_.containsKey('playbookInvocation')
                 ? GoogleCloudDialogflowCxV3PlaybookInvocation.fromJson(
                   json_['playbookInvocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        playbookTransition:
+            json_.containsKey('playbookTransition')
+                ? GoogleCloudDialogflowCxV3PlaybookTransition.fromJson(
+                  json_['playbookTransition']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -8250,7 +8278,9 @@ class GoogleCloudDialogflowCxV3Action {
   core.Map<core.String, core.dynamic> toJson() => {
     if (agentUtterance != null) 'agentUtterance': agentUtterance!,
     if (flowInvocation != null) 'flowInvocation': flowInvocation!,
+    if (flowTransition != null) 'flowTransition': flowTransition!,
     if (playbookInvocation != null) 'playbookInvocation': playbookInvocation!,
+    if (playbookTransition != null) 'playbookTransition': playbookTransition!,
     if (toolUse != null) 'toolUse': toolUse!,
     if (userUtterance != null) 'userUtterance': userUtterance!,
   };
@@ -12041,6 +12071,12 @@ class GoogleCloudDialogflowCxV3Flow {
   /// being ignored.
   core.List<GoogleCloudDialogflowCxV3EventHandler>? eventHandlers;
 
+  /// Defined structured input parameters for this flow.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3ParameterDefinition>?
+  inputParameterDefinitions;
+
   /// Knowledge connector configuration.
   ///
   /// Optional.
@@ -12064,6 +12100,12 @@ class GoogleCloudDialogflowCxV3Flow {
 
   /// NLU related settings of the flow.
   GoogleCloudDialogflowCxV3NluSettings? nluSettings;
+
+  /// Defined structured output parameters for this flow.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3ParameterDefinition>?
+  outputParameterDefinitions;
 
   /// A flow's transition route group serve two purposes: * They are responsible
   /// for matching the user's first utterances in the flow.
@@ -12094,11 +12136,13 @@ class GoogleCloudDialogflowCxV3Flow {
     this.description,
     this.displayName,
     this.eventHandlers,
+    this.inputParameterDefinitions,
     this.knowledgeConnectorSettings,
     this.locked,
     this.multiLanguageSettings,
     this.name,
     this.nluSettings,
+    this.outputParameterDefinitions,
     this.transitionRouteGroups,
     this.transitionRoutes,
   });
@@ -12120,6 +12164,15 @@ class GoogleCloudDialogflowCxV3Flow {
                   (value) => GoogleCloudDialogflowCxV3EventHandler.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
+                )
+                .toList(),
+        inputParameterDefinitions:
+            (json_['inputParameterDefinitions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowCxV3ParameterDefinition.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
                 )
                 .toList(),
         knowledgeConnectorSettings:
@@ -12144,6 +12197,15 @@ class GoogleCloudDialogflowCxV3Flow {
                   json_['nluSettings'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        outputParameterDefinitions:
+            (json_['outputParameterDefinitions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowCxV3ParameterDefinition.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
         transitionRouteGroups:
             (json_['transitionRouteGroups'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -12163,6 +12225,8 @@ class GoogleCloudDialogflowCxV3Flow {
     if (description != null) 'description': description!,
     if (displayName != null) 'displayName': displayName!,
     if (eventHandlers != null) 'eventHandlers': eventHandlers!,
+    if (inputParameterDefinitions != null)
+      'inputParameterDefinitions': inputParameterDefinitions!,
     if (knowledgeConnectorSettings != null)
       'knowledgeConnectorSettings': knowledgeConnectorSettings!,
     if (locked != null) 'locked': locked!,
@@ -12170,6 +12234,8 @@ class GoogleCloudDialogflowCxV3Flow {
       'multiLanguageSettings': multiLanguageSettings!,
     if (name != null) 'name': name!,
     if (nluSettings != null) 'nluSettings': nluSettings!,
+    if (outputParameterDefinitions != null)
+      'outputParameterDefinitions': outputParameterDefinitions!,
     if (transitionRouteGroups != null)
       'transitionRouteGroups': transitionRouteGroups!,
     if (transitionRoutes != null) 'transitionRoutes': transitionRoutes!,
@@ -12296,6 +12362,36 @@ class GoogleCloudDialogflowCxV3FlowMultiLanguageSettings {
       'enableMultiLanguageDetection': enableMultiLanguageDetection!,
     if (supportedResponseLanguageCodes != null)
       'supportedResponseLanguageCodes': supportedResponseLanguageCodes!,
+  };
+}
+
+/// Stores metadata of the transition to a target CX flow.
+///
+/// Flow transition actions exit the caller playbook and enter the child flow.
+class GoogleCloudDialogflowCxV3FlowTransition {
+  /// The display name of the flow.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The unique identifier of the flow.
+  ///
+  /// Format: `projects//locations//agents/`.
+  ///
+  /// Required.
+  core.String? flow;
+
+  GoogleCloudDialogflowCxV3FlowTransition({this.displayName, this.flow});
+
+  GoogleCloudDialogflowCxV3FlowTransition.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        flow: json_['flow'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (flow != null) 'flow': flow!,
   };
 }
 
@@ -13794,6 +13890,39 @@ class GoogleCloudDialogflowCxV3ImportTestCasesRequest {
   core.Map<core.String, core.dynamic> toJson() => {
     if (content != null) 'content': content!,
     if (gcsUri != null) 'gcsUri': gcsUri!,
+  };
+}
+
+/// A type schema object that's specified inline.
+class GoogleCloudDialogflowCxV3InlineSchema {
+  /// Schema of the elements if this is an ARRAY type.
+  GoogleCloudDialogflowCxV3TypeSchema? items;
+
+  /// Data type of the schema.
+  /// Possible string values are:
+  /// - "DATA_TYPE_UNSPECIFIED" : Not specified.
+  /// - "STRING" : Represents any string value.
+  /// - "NUMBER" : Represents any number value.
+  /// - "BOOLEAN" : Represents a boolean value.
+  /// - "ARRAY" : Represents a repeated value.
+  core.String? type;
+
+  GoogleCloudDialogflowCxV3InlineSchema({this.items, this.type});
+
+  GoogleCloudDialogflowCxV3InlineSchema.fromJson(core.Map json_)
+    : this(
+        items:
+            json_.containsKey('items')
+                ? GoogleCloudDialogflowCxV3TypeSchema.fromJson(
+                  json_['items'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (items != null) 'items': items!,
+    if (type != null) 'type': type!,
   };
 }
 
@@ -15787,6 +15916,69 @@ class GoogleCloudDialogflowCxV3Page {
   };
 }
 
+/// Defines the properties of a parameter.
+///
+/// Used to define parameters used in the agent and the input / output
+/// parameters for each fulfillment.
+class GoogleCloudDialogflowCxV3ParameterDefinition {
+  /// Human-readable description of the parameter.
+  ///
+  /// Limited to 300 characters.
+  core.String? description;
+
+  /// Name of parameter.
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Type of parameter.
+  /// Possible string values are:
+  /// - "PARAMETER_TYPE_UNSPECIFIED" : Not specified. No validation will be
+  /// performed.
+  /// - "STRING" : Represents any string value.
+  /// - "NUMBER" : Represents any number value.
+  /// - "BOOLEAN" : Represents a boolean value.
+  /// - "NULL" : Represents a null value.
+  /// - "OBJECT" : Represents any object value.
+  /// - "LIST" : Represents a repeated value.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? type;
+
+  /// Type schema of parameter.
+  ///
+  /// Optional.
+  GoogleCloudDialogflowCxV3TypeSchema? typeSchema;
+
+  GoogleCloudDialogflowCxV3ParameterDefinition({
+    this.description,
+    this.name,
+    this.type,
+    this.typeSchema,
+  });
+
+  GoogleCloudDialogflowCxV3ParameterDefinition.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        name: json_['name'] as core.String?,
+        type: json_['type'] as core.String?,
+        typeSchema:
+            json_.containsKey('typeSchema')
+                ? GoogleCloudDialogflowCxV3TypeSchema.fromJson(
+                  json_['typeSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (description != null) 'description': description!,
+    if (name != null) 'name': name!,
+    if (type != null) 'type': type!,
+    if (typeSchema != null) 'typeSchema': typeSchema!,
+  };
+}
+
 /// Text input which can be used for prompt or banned phrases.
 class GoogleCloudDialogflowCxV3Phrase {
   /// Text input which can be used for prompt or banned phrases.
@@ -15836,6 +16028,12 @@ class GoogleCloudDialogflowCxV3Playbook {
   /// Optional.
   core.List<GoogleCloudDialogflowCxV3Handler>? handlers;
 
+  /// Defined structured input parameters for this playbook.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3ParameterDefinition>?
+  inputParameterDefinitions;
+
   /// Instruction to accomplish target goal.
   GoogleCloudDialogflowCxV3PlaybookInstruction? instruction;
 
@@ -15848,6 +16046,21 @@ class GoogleCloudDialogflowCxV3Playbook {
   ///
   /// Format: `projects//locations//agents//playbooks/`.
   core.String? name;
+
+  /// Defined structured output parameters for this playbook.
+  ///
+  /// Optional.
+  core.List<GoogleCloudDialogflowCxV3ParameterDefinition>?
+  outputParameterDefinitions;
+
+  /// Type of the playbook.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PLAYBOOK_TYPE_UNSPECIFIED" : Unspecified type. Default to TASK.
+  /// - "TASK" : Task playbook.
+  /// - "ROUTINE" : Routine playbook.
+  core.String? playbookType;
 
   /// The resource name of flows referenced by the current playbook in the
   /// instructions.
@@ -15885,9 +16098,12 @@ class GoogleCloudDialogflowCxV3Playbook {
     this.displayName,
     this.goal,
     this.handlers,
+    this.inputParameterDefinitions,
     this.instruction,
     this.llmModelSettings,
     this.name,
+    this.outputParameterDefinitions,
+    this.playbookType,
     this.referencedFlows,
     this.referencedPlaybooks,
     this.referencedTools,
@@ -15908,6 +16124,15 @@ class GoogleCloudDialogflowCxV3Playbook {
                   ),
                 )
                 .toList(),
+        inputParameterDefinitions:
+            (json_['inputParameterDefinitions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowCxV3ParameterDefinition.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
         instruction:
             json_.containsKey('instruction')
                 ? GoogleCloudDialogflowCxV3PlaybookInstruction.fromJson(
@@ -15922,6 +16147,16 @@ class GoogleCloudDialogflowCxV3Playbook {
                 )
                 : null,
         name: json_['name'] as core.String?,
+        outputParameterDefinitions:
+            (json_['outputParameterDefinitions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowCxV3ParameterDefinition.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        playbookType: json_['playbookType'] as core.String?,
         referencedFlows:
             (json_['referencedFlows'] as core.List?)
                 ?.map((value) => value as core.String)
@@ -15943,9 +16178,14 @@ class GoogleCloudDialogflowCxV3Playbook {
     if (displayName != null) 'displayName': displayName!,
     if (goal != null) 'goal': goal!,
     if (handlers != null) 'handlers': handlers!,
+    if (inputParameterDefinitions != null)
+      'inputParameterDefinitions': inputParameterDefinitions!,
     if (instruction != null) 'instruction': instruction!,
     if (llmModelSettings != null) 'llmModelSettings': llmModelSettings!,
     if (name != null) 'name': name!,
+    if (outputParameterDefinitions != null)
+      'outputParameterDefinitions': outputParameterDefinitions!,
+    if (playbookType != null) 'playbookType': playbookType!,
     if (referencedFlows != null) 'referencedFlows': referencedFlows!,
     if (referencedPlaybooks != null)
       'referencedPlaybooks': referencedPlaybooks!,
@@ -16216,6 +16456,40 @@ class GoogleCloudDialogflowCxV3PlaybookStep {
   core.Map<core.String, core.dynamic> toJson() => {
     if (steps != null) 'steps': steps!,
     if (text != null) 'text': text!,
+  };
+}
+
+/// Stores metadata of the transition to another target playbook.
+///
+/// Playbook transition actions exit the caller playbook and enter the target
+/// playbook.
+class GoogleCloudDialogflowCxV3PlaybookTransition {
+  /// The display name of the playbook.
+  ///
+  /// Output only.
+  core.String? displayName;
+
+  /// The unique identifier of the playbook.
+  ///
+  /// Format: `projects//locations//agents//playbooks/`.
+  ///
+  /// Required.
+  core.String? playbook;
+
+  GoogleCloudDialogflowCxV3PlaybookTransition({
+    this.displayName,
+    this.playbook,
+  });
+
+  GoogleCloudDialogflowCxV3PlaybookTransition.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        playbook: json_['playbook'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (playbook != null) 'playbook': playbook!,
   };
 }
 
@@ -18047,6 +18321,10 @@ class GoogleCloudDialogflowCxV3SecuritySettings {
 /// Settings for exporting audio.
 class GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings {
   /// Filename pattern for exported audio.
+  ///
+  /// {conversation} and {timestamp} are placeholders that will be replaced with
+  /// the conversation ID and epoch micros of the conversation. For example,
+  /// "{conversation}/recording_{timestamp}.mulaw".
   core.String? audioExportPattern;
 
   /// File format for exported audio file.
@@ -19910,6 +20188,67 @@ class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition {
   core.Map<core.String, core.dynamic> toJson() => {
     if (covered != null) 'covered': covered!,
     if (transitionRoute != null) 'transitionRoute': transitionRoute!,
+  };
+}
+
+/// Encapsulates different type schema variations: either a reference to an a
+/// schema that's already defined by a tool, or an inline definition.
+class GoogleCloudDialogflowCxV3TypeSchema {
+  /// Set if this is an inline schema definition.
+  GoogleCloudDialogflowCxV3InlineSchema? inlineSchema;
+
+  /// Set if this is a schema reference.
+  GoogleCloudDialogflowCxV3TypeSchemaSchemaReference? schemaReference;
+
+  GoogleCloudDialogflowCxV3TypeSchema({
+    this.inlineSchema,
+    this.schemaReference,
+  });
+
+  GoogleCloudDialogflowCxV3TypeSchema.fromJson(core.Map json_)
+    : this(
+        inlineSchema:
+            json_.containsKey('inlineSchema')
+                ? GoogleCloudDialogflowCxV3InlineSchema.fromJson(
+                  json_['inlineSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        schemaReference:
+            json_.containsKey('schemaReference')
+                ? GoogleCloudDialogflowCxV3TypeSchemaSchemaReference.fromJson(
+                  json_['schemaReference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (inlineSchema != null) 'inlineSchema': inlineSchema!,
+    if (schemaReference != null) 'schemaReference': schemaReference!,
+  };
+}
+
+/// A reference to the schema of an existing tool.
+class GoogleCloudDialogflowCxV3TypeSchemaSchemaReference {
+  /// The name of the schema.
+  core.String? schema;
+
+  /// The tool that contains this schema definition.
+  ///
+  /// Format: `projects//locations//agents//tools/`.
+  core.String? tool;
+
+  GoogleCloudDialogflowCxV3TypeSchemaSchemaReference({this.schema, this.tool});
+
+  GoogleCloudDialogflowCxV3TypeSchemaSchemaReference.fromJson(core.Map json_)
+    : this(
+        schema: json_['schema'] as core.String?,
+        tool: json_['tool'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (schema != null) 'schema': schema!,
+    if (tool != null) 'tool': tool!,
   };
 }
 

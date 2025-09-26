@@ -1477,6 +1477,7 @@ api.ChromeOsDevice buildChromeOsDevice() {
     o.orgUnitPath = 'foo';
     o.osUpdateStatus = buildOsUpdateStatus();
     o.osVersion = 'foo';
+    o.osVersionCompliance = 'foo';
     o.platformVersion = 'foo';
     o.recentUsers = buildUnnamed34();
     o.screenshotFiles = buildUnnamed35();
@@ -1543,6 +1544,7 @@ void checkChromeOsDevice(api.ChromeOsDevice o) {
     unittest.expect(o.orgUnitPath!, unittest.equals('foo'));
     checkOsUpdateStatus(o.osUpdateStatus!);
     unittest.expect(o.osVersion!, unittest.equals('foo'));
+    unittest.expect(o.osVersionCompliance!, unittest.equals('foo'));
     unittest.expect(o.platformVersion!, unittest.equals('foo'));
     checkUnnamed34(o.recentUsers!);
     checkUnnamed35(o.screenshotFiles!);

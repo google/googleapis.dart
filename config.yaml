@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 14.1.0-wip
+    version: 15.0.0
     repository: https://github.com/google/googleapis.dart/tree/master/generated/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -76,12 +76,14 @@ packages:
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
     - cloudbuild:v2
     - cloudchannel:v1
+    - cloudcommerceprocurement:v1
     - cloudcontrolspartner:v1
     - clouddeploy:v1
     - cloudfunctions:v1 # https://cloud.google.com/functions/docs/
     - cloudfunctions:v2
     - cloudidentity:v1 # https://cloud.google.com/identity/
     - cloudkms:v1 # https://cloud.google.com/kms/docs/
+    - cloudlocationfinder:v1
     - cloudprofiler:v2 # https://cloud.google.com/profiler/
     - cloudresourcemanager:v1 # https://cloud.google.com/resource-manager/
     - cloudresourcemanager:v2 # https://cloud.google.com/resource-manager/
@@ -118,6 +120,7 @@ packages:
     - developerconnect:v1
     - dfareporting:v3.5
     - dfareporting:v4
+    - dfareporting:v5
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
     - dialogflow:v3 # https://cloud.google.com/dialogflow-enterprise/
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
@@ -191,6 +194,18 @@ packages:
     - manufacturers:v1 # https://developers.google.com/manufacturers/
     - meet:v2
     - memcache:v1
+    - merchantapi:accounts_v1
+    - merchantapi:conversions_v1
+    - merchantapi:datasources_v1
+    - merchantapi:inventories_v1
+    - merchantapi:issueresolution_v1
+    - merchantapi:lfp_v1
+    - merchantapi:notifications_v1
+    - merchantapi:ordertracking_v1
+    - merchantapi:products_v1
+    - merchantapi:promotions_v1
+    - merchantapi:quota_v1
+    - merchantapi:reports_v1
     - metastore:v1
     - migrationcenter:v1
     - ml:v1 # https://cloud.google.com/ml-engine/
@@ -333,7 +348,6 @@ packages:
     - firebasedatabase:v1beta
     - firebasestorage:v1beta
     - gkehub:v2alpha
-    - lifesciences:v2beta
     - prod_tt_sasportal:v1alpha1
     - recommendationengine:v1beta1
     - sasportal:v1alpha1
@@ -365,7 +379,6 @@ skipped_apis:
 - beyondcorp:v1alpha
 - billingbudgets:v1beta1 # v1 included
 - binaryauthorization:v1beta1 # v1 included
-- blogger:v2 # v3 included
 - checks:v1alpha
 - cloudasset:v1beta1
 - cloudasset:v1p1beta1 # v1 included

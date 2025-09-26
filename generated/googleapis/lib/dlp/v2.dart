@@ -8476,6 +8476,10 @@ class GooglePrivacyDlpV2Action {
   GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog?
   publishFindingsToCloudDataCatalog;
 
+  /// Publish findings as an aspect to Dataplex Universal Catalog.
+  GooglePrivacyDlpV2PublishFindingsToDataplexCatalog?
+  publishFindingsToDataplexCatalog;
+
   /// Publish summary to Cloud Security Command Center (Alpha).
   GooglePrivacyDlpV2PublishSummaryToCscc? publishSummaryToCscc;
 
@@ -8490,6 +8494,7 @@ class GooglePrivacyDlpV2Action {
     this.jobNotificationEmails,
     this.pubSub,
     this.publishFindingsToCloudDataCatalog,
+    this.publishFindingsToDataplexCatalog,
     this.publishSummaryToCscc,
     this.publishToStackdriver,
     this.saveFindings,
@@ -8523,6 +8528,13 @@ class GooglePrivacyDlpV2Action {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        publishFindingsToDataplexCatalog:
+            json_.containsKey('publishFindingsToDataplexCatalog')
+                ? GooglePrivacyDlpV2PublishFindingsToDataplexCatalog.fromJson(
+                  json_['publishFindingsToDataplexCatalog']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         publishSummaryToCscc:
             json_.containsKey('publishSummaryToCscc')
                 ? GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
@@ -8552,6 +8564,8 @@ class GooglePrivacyDlpV2Action {
     if (pubSub != null) 'pubSub': pubSub!,
     if (publishFindingsToCloudDataCatalog != null)
       'publishFindingsToCloudDataCatalog': publishFindingsToCloudDataCatalog!,
+    if (publishFindingsToDataplexCatalog != null)
+      'publishFindingsToDataplexCatalog': publishFindingsToDataplexCatalog!,
     if (publishSummaryToCscc != null)
       'publishSummaryToCscc': publishSummaryToCscc!,
     if (publishToStackdriver != null)
@@ -11621,8 +11635,8 @@ class GooglePrivacyDlpV2DataProfileAction {
   /// analytics\](https://cloud.google.com/chronicle/docs/detection/usecase-dlp-high-risk-user-download).
   GooglePrivacyDlpV2PublishToChronicle? publishToChronicle;
 
-  /// Publishes a portion of each profile to Dataplex Catalog with the aspect
-  /// type Sensitive Data Protection Profile.
+  /// Publishes a portion of each profile to Dataplex Universal Catalog with the
+  /// aspect type Sensitive Data Protection Profile.
   GooglePrivacyDlpV2PublishToDataplexCatalog? publishToDataplexCatalog;
 
   /// Publishes findings to Security Command Center for each data profile.
@@ -15151,7 +15165,24 @@ class GooglePrivacyDlpV2FileStoreCollection {
   /// Optional.
   GooglePrivacyDlpV2FileStoreRegexes? includeRegexes;
 
-  GooglePrivacyDlpV2FileStoreCollection({this.includeRegexes});
+  /// To be included in the collection, a resource must meet all of the
+  /// following requirements: - If tag filters are provided, match all provided
+  /// tag filters.
+  ///
+  /// - If one or more patterns are specified, match at least one pattern. For a
+  /// resource to match the tag filters, the resource must have all of the
+  /// provided tags attached. Tags refer to Resource Manager tags bound to the
+  /// resource or its ancestors. See
+  /// https://cloud.google.com/sensitive-data-protection/docs/profile-project-cloud-storage#manage-schedules
+  /// to learn more.
+  ///
+  /// Optional.
+  GooglePrivacyDlpV2TagFilters? includeTags;
+
+  GooglePrivacyDlpV2FileStoreCollection({
+    this.includeRegexes,
+    this.includeTags,
+  });
 
   GooglePrivacyDlpV2FileStoreCollection.fromJson(core.Map json_)
     : this(
@@ -15162,10 +15193,17 @@ class GooglePrivacyDlpV2FileStoreCollection {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        includeTags:
+            json_.containsKey('includeTags')
+                ? GooglePrivacyDlpV2TagFilters.fromJson(
+                  json_['includeTags'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (includeRegexes != null) 'includeRegexes': includeRegexes!,
+    if (includeTags != null) 'includeTags': includeTags!,
   };
 }
 
@@ -16530,6 +16568,11 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// A sample that is a true positive for this infoType.
   core.String? example;
 
+  /// Locations at which this feature can be used.
+  ///
+  /// May change over time.
+  GooglePrivacyDlpV2LocationSupport? locationSupport;
+
   /// Internal name of the infoType.
   core.String? name;
 
@@ -16556,6 +16599,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     this.description,
     this.displayName,
     this.example,
+    this.locationSupport,
     this.name,
     this.sensitivityScore,
     this.specificInfoTypes,
@@ -16576,6 +16620,13 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         example: json_['example'] as core.String?,
+        locationSupport:
+            json_.containsKey('locationSupport')
+                ? GooglePrivacyDlpV2LocationSupport.fromJson(
+                  json_['locationSupport']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         sensitivityScore:
             json_.containsKey('sensitivityScore')
@@ -16607,6 +16658,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     if (description != null) 'description': description!,
     if (displayName != null) 'displayName': displayName!,
     if (example != null) 'example': example!,
+    if (locationSupport != null) 'locationSupport': locationSupport!,
     if (name != null) 'name': name!,
     if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
     if (specificInfoTypes != null) 'specificInfoTypes': specificInfoTypes!,
@@ -18674,6 +18726,45 @@ class GooglePrivacyDlpV2Location {
   };
 }
 
+/// Locations at which a feature can be used.
+class GooglePrivacyDlpV2LocationSupport {
+  /// Specific locations where the feature may be used.
+  ///
+  /// Examples: us-central1, us, asia, global If scope is ANY_LOCATION, no
+  /// regions will be listed.
+  core.List<core.String>? locations;
+
+  /// The current scope for location on this feature.
+  ///
+  /// This may expand over time.
+  /// Possible string values are:
+  /// - "REGIONALIZATION_SCOPE_UNSPECIFIED" : Invalid.
+  /// - "REGIONAL" : Feature may be used with one or more regions. See locations
+  /// for details.
+  /// - "ANY_LOCATION" : Feature may be used anywhere. Default value.
+  core.String? regionalizationScope;
+
+  GooglePrivacyDlpV2LocationSupport({
+    this.locations,
+    this.regionalizationScope,
+  });
+
+  GooglePrivacyDlpV2LocationSupport.fromJson(core.Map json_)
+    : this(
+        locations:
+            (json_['locations'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        regionalizationScope: json_['regionalizationScope'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (locations != null) 'locations': locations!,
+    if (regionalizationScope != null)
+      'regionalizationScope': regionalizationScope!,
+  };
+}
+
 /// Job trigger option for hybrid jobs.
 ///
 /// Jobs must be manually created and finished.
@@ -19123,6 +19214,17 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// - "ALL_COLUMNS" : Schema containing all columns.
   core.String? outputSchema;
 
+  /// Store findings in an existing Cloud Storage bucket.
+  ///
+  /// Files will be generated with the job ID and file part number as the
+  /// filename, and will contain findings in textproto format as
+  /// SaveToGcsFindingsOutput. The file name will use the naming convention -,
+  /// for example: my-job-id-2. Supported for Inspect jobs. The bucket must not
+  /// be the same as the bucket being inspected. If storing findings to Cloud
+  /// Storage, the output schema field should not be set. If set, it will be
+  /// ignored.
+  GooglePrivacyDlpV2CloudStoragePath? storagePath;
+
   /// Store findings in an existing table or a new table in an existing dataset.
   ///
   /// If table_id is not set a new one will be generated for you with the
@@ -19137,11 +19239,21 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// the same table.
   GooglePrivacyDlpV2BigQueryTable? table;
 
-  GooglePrivacyDlpV2OutputStorageConfig({this.outputSchema, this.table});
+  GooglePrivacyDlpV2OutputStorageConfig({
+    this.outputSchema,
+    this.storagePath,
+    this.table,
+  });
 
   GooglePrivacyDlpV2OutputStorageConfig.fromJson(core.Map json_)
     : this(
         outputSchema: json_['outputSchema'] as core.String?,
+        storagePath:
+            json_.containsKey('storagePath')
+                ? GooglePrivacyDlpV2CloudStoragePath.fromJson(
+                  json_['storagePath'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         table:
             json_.containsKey('table')
                 ? GooglePrivacyDlpV2BigQueryTable.fromJson(
@@ -19152,6 +19264,7 @@ class GooglePrivacyDlpV2OutputStorageConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (outputSchema != null) 'outputSchema': outputSchema!,
+    if (storagePath != null) 'storagePath': storagePath!,
     if (table != null) 'table': table!,
   };
 }
@@ -19811,6 +19924,20 @@ class GooglePrivacyDlpV2PubSubNotification {
 /// Inspect
 typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 
+/// Publish findings of a DlpJob to Dataplex Universal Catalog as a
+/// `sensitive-data-protection-job-result` aspect.
+///
+/// To learn more about aspects, see
+/// [Send inspection results to Dataplex Universal Catalog as aspects](https://cloud.google.com/sensitive-data-protection/docs/add-aspects-inspection-job).
+/// Aspects are persisted in Dataplex Universal Catalog storage and are governed
+/// by service-specific policies for Dataplex Universal Catalog. For more
+/// information, see
+/// [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only
+/// a single instance of this action can be specified. This action is allowed
+/// only if all resources being scanned are BigQuery tables. Compatible with:
+/// Inspect
+typedef GooglePrivacyDlpV2PublishFindingsToDataplexCatalog = $Empty;
+
 /// Publish the result summary of a DlpJob to
 /// [Security Command Center](https://cloud.google.com/security-command-center).
 ///
@@ -19825,14 +19952,14 @@ typedef GooglePrivacyDlpV2PublishSummaryToCscc = $Empty;
 /// Message expressing intention to publish to Google Security Operations.
 typedef GooglePrivacyDlpV2PublishToChronicle = $Empty;
 
-/// Create Dataplex Catalog aspects for profiled resources with the aspect type
-/// Sensitive Data Protection Profile.
+/// Create Dataplex Universal Catalog aspects for profiled resources with the
+/// aspect type Sensitive Data Protection Profile.
 ///
 /// To learn more about aspects, see
 /// https://cloud.google.com/sensitive-data-protection/docs/add-aspects.
 class GooglePrivacyDlpV2PublishToDataplexCatalog {
-  /// Whether creating a Dataplex Catalog aspect for a profiled resource should
-  /// lower the risk of the profile for that resource.
+  /// Whether creating a Dataplex Universal Catalog aspect for a profiled
+  /// resource should lower the risk of the profile for that resource.
   ///
   /// This also lowers the data risk of resources at the lower levels of the
   /// resource hierarchy. For example, reducing the data risk of a table data
@@ -21945,8 +22072,9 @@ class GooglePrivacyDlpV2Tag {
   /// The namespaced name for the tag value to attach to Google Cloud resources.
   ///
   /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for
-  /// example, "123456/environment/prod". This is only set for Google Cloud
-  /// resources.
+  /// example, "123456/environment/prod" for an organization parent, or
+  /// "my-project/environment/prod" for a project parent. This is only set for
+  /// Google Cloud resources.
   core.String? namespacedTagValue;
 
   /// The value of a tag key-value pair.
@@ -22004,6 +22132,63 @@ class GooglePrivacyDlpV2TagCondition {
   core.Map<core.String, core.dynamic> toJson() => {
     if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
     if (tag != null) 'tag': tag!,
+  };
+}
+
+/// A single tag to filter against.
+class GooglePrivacyDlpV2TagFilter {
+  /// The namespaced name for the tag key.
+  ///
+  /// Must be in the format `{parent_id}/{tag_key_short_name}`, for example,
+  /// "123456/sensitive" for an organization parent, or "my-project/sensitive"
+  /// for a project parent.
+  core.String? namespacedTagKey;
+
+  /// The namespaced name for the tag value.
+  ///
+  /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for
+  /// example, "123456/environment/prod" for an organization parent, or
+  /// "my-project/environment/prod" for a project parent.
+  core.String? namespacedTagValue;
+
+  GooglePrivacyDlpV2TagFilter({this.namespacedTagKey, this.namespacedTagValue});
+
+  GooglePrivacyDlpV2TagFilter.fromJson(core.Map json_)
+    : this(
+        namespacedTagKey: json_['namespacedTagKey'] as core.String?,
+        namespacedTagValue: json_['namespacedTagValue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (namespacedTagKey != null) 'namespacedTagKey': namespacedTagKey!,
+    if (namespacedTagValue != null) 'namespacedTagValue': namespacedTagValue!,
+  };
+}
+
+/// Tags to match against for filtering.
+class GooglePrivacyDlpV2TagFilters {
+  /// A resource must match ALL of the specified tag filters to be included in
+  /// the collection.
+  ///
+  /// Required.
+  core.List<GooglePrivacyDlpV2TagFilter>? tagFilters;
+
+  GooglePrivacyDlpV2TagFilters({this.tagFilters});
+
+  GooglePrivacyDlpV2TagFilters.fromJson(core.Map json_)
+    : this(
+        tagFilters:
+            (json_['tagFilters'] as core.List?)
+                ?.map(
+                  (value) => GooglePrivacyDlpV2TagFilter.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (tagFilters != null) 'tagFilters': tagFilters!,
   };
 }
 
@@ -22076,7 +22261,8 @@ class GooglePrivacyDlpV2TagValue {
   /// The namespaced name for the tag value to attach to resources.
   ///
   /// Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for
-  /// example, "123456/environment/prod".
+  /// example, "123456/environment/prod" for an organization parent, or
+  /// "my-project/environment/prod" for a project parent.
   core.String? namespacedValue;
 
   GooglePrivacyDlpV2TagValue({this.namespacedValue});

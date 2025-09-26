@@ -55,6 +55,7 @@ api.Api buildApi() {
   final o = api.Api();
   buildCounterApi++;
   if (buildCounterApi < 3) {
+    o.edition = 'foo';
     o.methods = buildUnnamed0();
     o.mixins = buildUnnamed1();
     o.name = 'foo';
@@ -70,6 +71,7 @@ api.Api buildApi() {
 void checkApi(api.Api o) {
   buildCounterApi++;
   if (buildCounterApi < 3) {
+    unittest.expect(o.edition!, unittest.equals('foo'));
     checkUnnamed0(o.methods!);
     checkUnnamed1(o.mixins!);
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -679,6 +681,7 @@ api.Method buildMethod() {
   final o = api.Method();
   buildCounterMethod++;
   if (buildCounterMethod < 3) {
+    o.edition = 'foo';
     o.name = 'foo';
     o.options = buildUnnamed18();
     o.requestStreaming = true;
@@ -694,6 +697,7 @@ api.Method buildMethod() {
 void checkMethod(api.Method o) {
   buildCounterMethod++;
   if (buildCounterMethod < 3) {
+    unittest.expect(o.edition!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed18(o.options!);
     unittest.expect(o.requestStreaming!, unittest.isTrue);

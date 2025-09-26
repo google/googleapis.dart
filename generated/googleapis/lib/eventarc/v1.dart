@@ -185,9 +185,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3850,6 +3850,8 @@ class Channel {
   ///
   /// It must match the pattern `projects / * /locations / * /keyRings / *
   /// /cryptoKeys / * `.
+  ///
+  /// Optional.
   core.String? cryptoKeyName;
 
   /// Resource labels.
@@ -4598,6 +4600,19 @@ class GoogleApiSource {
   /// projects/{project}/locations/{location}/googleApiSources/{google_api_source}
   core.String? name;
 
+  /// Config to enable subscribing to events from all projects in the
+  /// GoogleApiSource's org.
+  ///
+  /// Optional.
+  OrganizationSubscription? organizationSubscription;
+
+  /// Config to enable subscribing to all events from a list of projects.
+  ///
+  /// All the projects must be in the same org as the GoogleApiSource.
+  ///
+  /// Optional.
+  ProjectSubscriptions? projectSubscriptions;
+
   /// Server assigned unique identifier for the channel.
   ///
   /// The value is a UUID4 string and guaranteed to remain unchanged until the
@@ -4621,6 +4636,8 @@ class GoogleApiSource {
     this.labels,
     this.loggingConfig,
     this.name,
+    this.organizationSubscription,
+    this.projectSubscriptions,
     this.uid,
     this.updateTime,
   });
@@ -4645,6 +4662,20 @@ class GoogleApiSource {
                 )
                 : null,
         name: json_['name'] as core.String?,
+        organizationSubscription:
+            json_.containsKey('organizationSubscription')
+                ? OrganizationSubscription.fromJson(
+                  json_['organizationSubscription']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        projectSubscriptions:
+            json_.containsKey('projectSubscriptions')
+                ? ProjectSubscriptions.fromJson(
+                  json_['projectSubscriptions']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
@@ -4659,6 +4690,10 @@ class GoogleApiSource {
     if (labels != null) 'labels': labels!,
     if (loggingConfig != null) 'loggingConfig': loggingConfig!,
     if (name != null) 'name': name!,
+    if (organizationSubscription != null)
+      'organizationSubscription': organizationSubscription!,
+    if (projectSubscriptions != null)
+      'projectSubscriptions': projectSubscriptions!,
     if (uid != null) 'uid': uid!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
@@ -4730,9 +4765,9 @@ class GoogleCloudEventarcV1PipelineDestination {
   /// An authentication config used to authenticate message requests, such that
   /// destinations can verify the source.
   ///
-  /// For example, this can be used with private GCP destinations that require
-  /// GCP credentials to access like Cloud Run. This field is optional and
-  /// should be set only by users interested in authenticated push
+  /// For example, this can be used with private Google Cloud destinations that
+  /// require Google Cloud credentials for access like Cloud Run. This field is
+  /// optional and should be set only by users interested in authenticated push.
   ///
   /// Optional.
   GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig?
@@ -4848,8 +4883,8 @@ class GoogleCloudEventarcV1PipelineDestination {
 
 /// Represents a config used to authenticate message requests.
 class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig {
-  /// This authenticate method will apply Google OIDC tokens signed by a GCP
-  /// service account to the requests.
+  /// This authenticate method will apply Google OIDC tokens signed by a Google
+  /// Cloud service account to the requests.
   ///
   /// Optional.
   GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken?
@@ -4941,7 +4976,7 @@ class GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken {
 }
 
 /// Represents a config used to authenticate with a Google OIDC token using a
-/// GCP service account.
+/// Google Cloud service account.
 ///
 /// Use this authentication method to invoke your Cloud Run and Cloud Functions
 /// destinations or HTTP endpoints that support Google OIDC.
@@ -6074,6 +6109,23 @@ class NetworkConfig {
   };
 }
 
+/// Config to enabled subscribing to events from other projects in the org.
+class OrganizationSubscription {
+  /// Enable org level subscription.
+  ///
+  /// Required.
+  core.bool? enabled;
+
+  OrganizationSubscription({this.enabled});
+
+  OrganizationSubscription.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+  };
+}
+
 /// A representation of the Pipeline resource.
 class Pipeline {
   /// User-defined annotations.
@@ -6396,6 +6448,33 @@ class Policy {
     if (bindings != null) 'bindings': bindings!,
     if (etag != null) 'etag': etag!,
     if (version != null) 'version': version!,
+  };
+}
+
+/// Config to enable subscribing to all events from a list of projects.
+class ProjectSubscriptions {
+  /// A list of projects to receive events from.
+  ///
+  /// All the projects must be in the same org. The listed projects should have
+  /// the format project/{identifier} where identifier can be either the project
+  /// id for project number. A single list may contain both formats. At most 100
+  /// projects can be listed.
+  ///
+  /// Required.
+  core.List<core.String>? list;
+
+  ProjectSubscriptions({this.list});
+
+  ProjectSubscriptions.fromJson(core.Map json_)
+    : this(
+        list:
+            (json_['list'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (list != null) 'list': list!,
   };
 }
 

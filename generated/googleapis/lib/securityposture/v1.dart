@@ -1195,9 +1195,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1733,8 +1733,8 @@ class GoogleCloudSecuritypostureV1PolicyRule {
   ///
   /// Passes parameter values when policy enforcement is enabled. Ensure that
   /// parameter value types match those defined in the constraint definition.
-  /// For example: { "allowedLocations" : \["us-east1", "us-west1"\], "allowAll"
-  /// : true }
+  /// For example: ``` { "allowedLocations": ["us-east1", "us-west1"],
+  /// "allowAll": true } ```
   ///
   /// Optional.
   ///
@@ -3014,17 +3014,14 @@ class ResourceSelector {
   };
 }
 
-/// Set multiple resource types for one policy, for example: resourceTypes:
+/// Set multiple resource types for one policy, for example: ``` resourceTypes:
 /// included: - compute.googleapis.com/Instance - compute.googleapis.com/Disk
-/// Constraint definition contains an empty resource type in order to support
-/// multiple resource types in the policy.
+/// ``` Constraint definition contains an empty resource type in order to
+/// support multiple resource types in the policy.
 ///
-/// Only supports managed constraints. Method type is `GOVERN_TAGS`. Refer
-/// go/multi-resource-support-force-tags-gmc to get more details.
+/// Only supports managed constraints. Method type is `GOVERN_TAGS`.
 class ResourceTypes {
   /// The resource types we currently support.
-  ///
-  /// cloud/orgpolicy/customconstraintconfig/prod/resource_types.prototext
   ///
   /// Optional.
   core.List<core.String>? included;

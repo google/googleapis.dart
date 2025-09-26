@@ -245,6 +245,11 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://dlp.eu.rep.googleapis.com/",
             "location": "eu"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://dlp.in.rep.googleapis.com/",
+            "location": "in"
         }
     ],
     "icons": {
@@ -257,7 +262,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250727",
+    "revision": "20250921",
     "rootUrl": "https://dlp.googleapis.com/",
     "servicePath": "",
     "title": "Sensitive Data Protection (DLP)",
@@ -5143,6 +5148,10 @@
                     "$ref": "GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog",
                     "description": "Publish findings to Cloud Datahub."
                 },
+                "publishFindingsToDataplexCatalog": {
+                    "$ref": "GooglePrivacyDlpV2PublishFindingsToDataplexCatalog",
+                    "description": "Publish findings as an aspect to Dataplex Universal Catalog."
+                },
                 "publishSummaryToCscc": {
                     "$ref": "GooglePrivacyDlpV2PublishSummaryToCscc",
                     "description": "Publish summary to Cloud Security Command Center (Alpha)."
@@ -6754,7 +6763,7 @@
                 },
                 "publishToDataplexCatalog": {
                     "$ref": "GooglePrivacyDlpV2PublishToDataplexCatalog",
-                    "description": "Publishes a portion of each profile to Dataplex Catalog with the aspect type Sensitive Data Protection Profile."
+                    "description": "Publishes a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile."
                 },
                 "publishToScc": {
                     "$ref": "GooglePrivacyDlpV2PublishToSecurityCommandCenter",
@@ -8654,6 +8663,10 @@
                 "includeRegexes": {
                     "$ref": "GooglePrivacyDlpV2FileStoreRegexes",
                     "description": "Optional. A collection of regular expressions to match a file store against."
+                },
+                "includeTags": {
+                    "$ref": "GooglePrivacyDlpV2TagFilters",
+                    "description": "Optional. To be included in the collection, a resource must meet all of the following requirements: - If tag filters are provided, match all provided tag filters. - If one or more patterns are specified, match at least one pattern. For a resource to match the tag filters, the resource must have all of the provided tags attached. Tags refer to Resource Manager tags bound to the resource or its ancestors. See https://cloud.google.com/sensitive-data-protection/docs/profile-project-cloud-storage#manage-schedules to learn more."
                 }
             },
             "type": "object"
@@ -9428,6 +9441,10 @@
                 "example": {
                     "description": "A sample that is a true positive for this infoType.",
                     "type": "string"
+                },
+                "locationSupport": {
+                    "$ref": "GooglePrivacyDlpV2LocationSupport",
+                    "description": "Locations at which this feature can be used. May change over time."
                 },
                 "name": {
                     "description": "Internal name of the infoType.",
@@ -10536,6 +10553,34 @@
             },
             "type": "object"
         },
+        "GooglePrivacyDlpV2LocationSupport": {
+            "description": "Locations at which a feature can be used.",
+            "id": "GooglePrivacyDlpV2LocationSupport",
+            "properties": {
+                "locations": {
+                    "description": "Specific locations where the feature may be used. Examples: us-central1, us, asia, global If scope is ANY_LOCATION, no regions will be listed.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "regionalizationScope": {
+                    "description": "The current scope for location on this feature. This may expand over time.",
+                    "enum": [
+                        "REGIONALIZATION_SCOPE_UNSPECIFIED",
+                        "REGIONAL",
+                        "ANY_LOCATION"
+                    ],
+                    "enumDescriptions": [
+                        "Invalid.",
+                        "Feature may be used with one or more regions. See locations for details.",
+                        "Feature may be used anywhere. Default value."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GooglePrivacyDlpV2Manual": {
             "description": "Job trigger option for hybrid jobs. Jobs must be manually created and finished.",
             "id": "GooglePrivacyDlpV2Manual",
@@ -10764,6 +10809,10 @@
                         "Schema containing all columns."
                     ],
                     "type": "string"
+                },
+                "storagePath": {
+                    "$ref": "GooglePrivacyDlpV2CloudStoragePath",
+                    "description": "Store findings in an existing Cloud Storage bucket. Files will be generated with the job ID and file part number as the filename, and will contain findings in textproto format as SaveToGcsFindingsOutput. The file name will use the naming convention -, for example: my-job-id-2. Supported for Inspect jobs. The bucket must not be the same as the bucket being inspected. If storing findings to Cloud Storage, the output schema field should not be set. If set, it will be ignored."
                 },
                 "table": {
                     "$ref": "GooglePrivacyDlpV2BigQueryTable",
@@ -11101,6 +11150,12 @@
             "properties": {},
             "type": "object"
         },
+        "GooglePrivacyDlpV2PublishFindingsToDataplexCatalog": {
+            "description": "Publish findings of a DlpJob to Dataplex Universal Catalog as a `sensitive-data-protection-job-result` aspect. To learn more about aspects, see [Send inspection results to Dataplex Universal Catalog as aspects](https://cloud.google.com/sensitive-data-protection/docs/add-aspects-inspection-job). Aspects are persisted in Dataplex Universal Catalog storage and are governed by service-specific policies for Dataplex Universal Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect",
+            "id": "GooglePrivacyDlpV2PublishFindingsToDataplexCatalog",
+            "properties": {},
+            "type": "object"
+        },
         "GooglePrivacyDlpV2PublishSummaryToCscc": {
             "description": "Publish the result summary of a DlpJob to [Security Command Center](https://cloud.google.com/security-command-center). This action is available for only projects that belong to an organization. This action publishes the count of finding instances and their infoTypes. The summary of findings are persisted in Security Command Center and are governed by [service-specific policies for Security Command Center](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. Compatible with: Inspect",
             "id": "GooglePrivacyDlpV2PublishSummaryToCscc",
@@ -11114,11 +11169,11 @@
             "type": "object"
         },
         "GooglePrivacyDlpV2PublishToDataplexCatalog": {
-            "description": "Create Dataplex Catalog aspects for profiled resources with the aspect type Sensitive Data Protection Profile. To learn more about aspects, see https://cloud.google.com/sensitive-data-protection/docs/add-aspects.",
+            "description": "Create Dataplex Universal Catalog aspects for profiled resources with the aspect type Sensitive Data Protection Profile. To learn more about aspects, see https://cloud.google.com/sensitive-data-protection/docs/add-aspects.",
             "id": "GooglePrivacyDlpV2PublishToDataplexCatalog",
             "properties": {
                 "lowerDataRiskToLow": {
-                    "description": "Whether creating a Dataplex Catalog aspect for a profiled resource should lower the risk of the profile for that resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.",
+                    "description": "Whether creating a Dataplex Universal Catalog aspect for a profiled resource should lower the risk of the profile for that resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles.",
                     "type": "boolean"
                 }
             },
@@ -12238,7 +12293,7 @@
                     "type": "string"
                 },
                 "namespacedTagValue": {
-                    "description": "The namespaced name for the tag value to attach to Google Cloud resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, \"123456/environment/prod\". This is only set for Google Cloud resources.",
+                    "description": "The namespaced name for the tag value to attach to Google Cloud resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, \"123456/environment/prod\" for an organization parent, or \"my-project/environment/prod\" for a project parent. This is only set for Google Cloud resources.",
                     "type": "string"
                 },
                 "value": {
@@ -12259,6 +12314,35 @@
                 "tag": {
                     "$ref": "GooglePrivacyDlpV2TagValue",
                     "description": "The tag value to attach to resources."
+                }
+            },
+            "type": "object"
+        },
+        "GooglePrivacyDlpV2TagFilter": {
+            "description": "A single tag to filter against.",
+            "id": "GooglePrivacyDlpV2TagFilter",
+            "properties": {
+                "namespacedTagKey": {
+                    "description": "The namespaced name for the tag key. Must be in the format `{parent_id}/{tag_key_short_name}`, for example, \"123456/sensitive\" for an organization parent, or \"my-project/sensitive\" for a project parent.",
+                    "type": "string"
+                },
+                "namespacedTagValue": {
+                    "description": "The namespaced name for the tag value. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, \"123456/environment/prod\" for an organization parent, or \"my-project/environment/prod\" for a project parent.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GooglePrivacyDlpV2TagFilters": {
+            "description": "Tags to match against for filtering.",
+            "id": "GooglePrivacyDlpV2TagFilters",
+            "properties": {
+                "tagFilters": {
+                    "description": "Required. A resource must match ALL of the specified tag filters to be included in the collection.",
+                    "items": {
+                        "$ref": "GooglePrivacyDlpV2TagFilter"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -12303,7 +12387,7 @@
             "id": "GooglePrivacyDlpV2TagValue",
             "properties": {
                 "namespacedValue": {
-                    "description": "The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, \"123456/environment/prod\".",
+                    "description": "The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, \"123456/environment/prod\" for an organization parent, or \"my-project/environment/prod\" for a project parent.",
                     "type": "string"
                 }
             },
@@ -13051,6 +13135,42 @@
                     "description": "Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Proto2BridgeMessageSet": {
+            "deprecated": true,
+            "description": "This is proto2's version of MessageSet. DEPRECATED: DO NOT USE FOR NEW FIELDS. If you are using editions or proto2, please make your own extendable messages for your use case. If you are using proto3, please use `Any` instead. MessageSet was the implementation of extensions for proto1. When proto2 was introduced, extensions were implemented as a first-class feature. This schema for MessageSet was meant to be a \"bridge\" solution to migrate MessageSet-bearing messages from proto1 to proto2. This schema has been open-sourced only to facilitate the migration of Google products with MessageSet-bearing messages to open-source environments.",
+            "id": "Proto2BridgeMessageSet",
+            "properties": {},
+            "type": "object"
+        },
+        "UtilStatusProto": {
+            "description": "Wire-format for a Status object",
+            "id": "UtilStatusProto",
+            "properties": {
+                "canonicalCode": {
+                    "description": "copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 canonical_code = 6;",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "code": {
+                    "description": "Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 code = 1;",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "description": "Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3;",
+                    "type": "string"
+                },
+                "messageSet": {
+                    "$ref": "Proto2BridgeMessageSet",
+                    "description": "message_set associates an arbitrary proto message with the status. copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional proto2.bridge.MessageSet message_set = 5;"
+                },
+                "space": {
+                    "description": "copybara:strip_begin(b/383363683) Space to which this status belongs copybara:strip_end_and_replace optional string space = 2; // Space to which this status belongs",
+                    "type": "string"
                 }
             },
             "type": "object"

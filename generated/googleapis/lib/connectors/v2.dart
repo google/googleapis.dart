@@ -28,6 +28,7 @@
 ///       - [ProjectsLocationsConnectionsActionsResource]
 ///       - [ProjectsLocationsConnectionsEntityTypesResource]
 ///         - [ProjectsLocationsConnectionsEntityTypesEntitiesResource]
+///       - [ProjectsLocationsConnectionsToolsResource]
 library;
 
 import 'dart:async' as async;
@@ -92,6 +93,8 @@ class ProjectsLocationsConnectionsResource {
       ProjectsLocationsConnectionsActionsResource(_requester);
   ProjectsLocationsConnectionsEntityTypesResource get entityTypes =>
       ProjectsLocationsConnectionsEntityTypesResource(_requester);
+  ProjectsLocationsConnectionsToolsResource get tools =>
+      ProjectsLocationsConnectionsToolsResource(_requester);
 
   ProjectsLocationsConnectionsResource(commons.ApiRequester client)
     : _requester = client;
@@ -495,6 +498,9 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
+  /// [contextMetadata] - Context metadata for request could be used to fetch
+  /// customization of entity type schema.
+  ///
   /// [view] - Specifies view for entity type schema.
   /// Possible string values are:
   /// - "ENTITY_TYPE_SCHEMA_VIEW_UNSPECIFIED" : VIEW_UNSPECIFIED. The unset
@@ -515,10 +521,12 @@ class ProjectsLocationsConnectionsEntityTypesResource {
   /// this method will complete with the same error.
   async.Future<EntityType> get(
     core.String name, {
+    core.String? contextMetadata,
     core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (contextMetadata != null) 'contextMetadata': [contextMetadata],
       if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
@@ -952,6 +960,104 @@ class ProjectsLocationsConnectionsEntityTypesEntitiesResource {
   }
 }
 
+class ProjectsLocationsConnectionsToolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConnectionsToolsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Executes a specific tool.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Resource name of the Tool. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}/tools/{tool}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecuteToolResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecuteToolResponse> execute(
+    ExecuteToolRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name') + ':execute';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecuteToolResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all available tools.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Resource name of the Connection. Format:
+  /// projects/{project}/locations/{location}/connections/{connection}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/connections/\[^/\]+$`.
+  ///
+  /// [pageSize] - Page size.
+  ///
+  /// [pageToken] - Page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListToolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListToolsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListToolsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 /// AccessCredentials includes the OAuth access token, and the other fields
 /// returned along with it.
 class AccessCredentials {
@@ -995,6 +1101,12 @@ class Action {
   /// List containing input parameter metadata.
   core.List<InputParameter>? inputParameters;
 
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Name of the action.
   core.String? name;
 
@@ -1009,6 +1121,7 @@ class Action {
     this.displayName,
     this.inputJsonSchema,
     this.inputParameters,
+    this.metadata,
     this.name,
     this.resultJsonSchema,
     this.resultMetadata,
@@ -1033,6 +1146,13 @@ class Action {
                   ),
                 )
                 .toList(),
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         name: json_['name'] as core.String?,
         resultJsonSchema:
             json_.containsKey('resultJsonSchema')
@@ -1056,6 +1176,7 @@ class Action {
     if (displayName != null) 'displayName': displayName!,
     if (inputJsonSchema != null) 'inputJsonSchema': inputJsonSchema!,
     if (inputParameters != null) 'inputParameters': inputParameters!,
+    if (metadata != null) 'metadata': metadata!,
     if (name != null) 'name': name!,
     if (resultJsonSchema != null) 'resultJsonSchema': resultJsonSchema!,
     if (resultMetadata != null) 'resultMetadata': resultMetadata!,
@@ -1126,6 +1247,12 @@ class CheckStatusResponse {
   /// populated to specify the reason why it's not in ACTIVE state.
   core.String? description;
 
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// State of the connector.
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : State unspecified.
@@ -1141,16 +1268,24 @@ class CheckStatusResponse {
   /// auth configuration not present, invalid auth credentials, etc.
   core.String? state;
 
-  CheckStatusResponse({this.description, this.state});
+  CheckStatusResponse({this.description, this.metadata, this.state});
 
   CheckStatusResponse.fromJson(core.Map json_)
     : this(
         description: json_['description'] as core.String?,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         state: json_['state'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (description != null) 'description': description!,
+    if (metadata != null) 'metadata': metadata!,
     if (state != null) 'state': state!,
   };
 }
@@ -1174,6 +1309,12 @@ class Entity {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? fields;
 
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Resource name of the Entity.
   ///
   /// Format:
@@ -1182,7 +1323,7 @@ class Entity {
   /// Output only.
   core.String? name;
 
-  Entity({this.fields, this.name});
+  Entity({this.fields, this.metadata, this.name});
 
   Entity.fromJson(core.Map json_)
     : this(
@@ -1190,11 +1331,19 @@ class Entity {
             json_.containsKey('fields')
                 ? json_['fields'] as core.Map<core.String, core.dynamic>
                 : null,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         name: json_['name'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (fields != null) 'fields': fields!,
+    if (metadata != null) 'metadata': metadata!,
     if (name != null) 'name': name!,
   };
 }
@@ -1202,20 +1351,36 @@ class Entity {
 /// EntityType message contains metadata information about a single entity type
 /// present in the external system.
 class EntityType {
+  core.String? defaultSortBy;
+
   /// List containing metadata information about each field of the entity type.
   core.List<Field>? fields;
 
   /// JsonSchema representation of this entity's schema
   JsonSchema? jsonSchema;
 
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// The name of the entity type.
   core.String? name;
   core.List<core.String>? operations;
 
-  EntityType({this.fields, this.jsonSchema, this.name, this.operations});
+  EntityType({
+    this.defaultSortBy,
+    this.fields,
+    this.jsonSchema,
+    this.metadata,
+    this.name,
+    this.operations,
+  });
 
   EntityType.fromJson(core.Map json_)
     : this(
+        defaultSortBy: json_['defaultSortBy'] as core.String?,
         fields:
             (json_['fields'] as core.List?)
                 ?.map(
@@ -1230,6 +1395,13 @@ class EntityType {
                   json_['jsonSchema'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         name: json_['name'] as core.String?,
         operations:
             (json_['operations'] as core.List?)
@@ -1238,8 +1410,10 @@ class EntityType {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (defaultSortBy != null) 'defaultSortBy': defaultSortBy!,
     if (fields != null) 'fields': fields!,
     if (jsonSchema != null) 'jsonSchema': jsonSchema!,
+    if (metadata != null) 'metadata': metadata!,
     if (name != null) 'name': name!,
     if (operations != null) 'operations': operations!,
   };
@@ -1278,7 +1452,13 @@ class ExchangeAuthCodeRequest {
 class ExchangeAuthCodeResponse {
   AccessCredentials? accessCredentials;
 
-  ExchangeAuthCodeResponse({this.accessCredentials});
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
+  ExchangeAuthCodeResponse({this.accessCredentials, this.metadata});
 
   ExchangeAuthCodeResponse.fromJson(core.Map json_)
     : this(
@@ -1289,10 +1469,18 @@ class ExchangeAuthCodeResponse {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (accessCredentials != null) 'accessCredentials': accessCredentials!,
+    if (metadata != null) 'metadata': metadata!,
   };
 }
 
@@ -1323,6 +1511,12 @@ class ExecuteActionRequest {
 
 /// Response message for ActionService.ExecuteAction
 class ExecuteActionResponse {
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// In the case of successful invocation of the specified action, the results
   /// Struct contains values based on the response of the action invoked.
   ///
@@ -1335,10 +1529,17 @@ class ExecuteActionResponse {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.List<core.Map<core.String, core.Object?>>? results;
 
-  ExecuteActionResponse({this.results});
+  ExecuteActionResponse({this.metadata, this.results});
 
   ExecuteActionResponse.fromJson(core.Map json_)
     : this(
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         results:
             (json_['results'] as core.List?)
                 ?.map((value) => value as core.Map<core.String, core.dynamic>)
@@ -1346,6 +1547,7 @@ class ExecuteActionResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (metadata != null) 'metadata': metadata!,
     if (results != null) 'results': results!,
   };
 }
@@ -1402,6 +1604,52 @@ class ExecuteSqlQueryResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (results != null) 'results': results!,
+  };
+}
+
+/// Request message for ConnectorAgentService.ExecuteTool
+class ExecuteToolRequest {
+  /// Input parameters for the tool.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+
+  ExecuteToolRequest({this.parameters});
+
+  ExecuteToolRequest.fromJson(core.Map json_)
+    : this(
+        parameters:
+            json_.containsKey('parameters')
+                ? json_['parameters'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (parameters != null) 'parameters': parameters!,
+  };
+}
+
+/// Response message for ConnectorAgentService.ExecuteTool
+class ExecuteToolResponse {
+  /// Output from the tool execution.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? result;
+
+  ExecuteToolResponse({this.result});
+
+  ExecuteToolResponse.fromJson(core.Map json_)
+    : this(
+        result:
+            json_.containsKey('result')
+                ? json_['result'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (result != null) 'result': result!,
   };
 }
 
@@ -1828,6 +2076,12 @@ class ListActionsResponse {
   /// List of action metadata.
   core.List<Action>? actions;
 
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Next page token if more actions available.
   core.String? nextPageToken;
 
@@ -1838,6 +2092,7 @@ class ListActionsResponse {
 
   ListActionsResponse({
     this.actions,
+    this.metadata,
     this.nextPageToken,
     this.unsupportedActionNames,
   });
@@ -1852,6 +2107,13 @@ class ListActionsResponse {
                   ),
                 )
                 .toList(),
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         nextPageToken: json_['nextPageToken'] as core.String?,
         unsupportedActionNames:
             (json_['unsupportedActionNames'] as core.List?)
@@ -1861,6 +2123,7 @@ class ListActionsResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (actions != null) 'actions': actions!,
+    if (metadata != null) 'metadata': metadata!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (unsupportedActionNames != null)
       'unsupportedActionNames': unsupportedActionNames!,
@@ -1872,10 +2135,16 @@ class ListEntitiesResponse {
   /// List containing entity rows.
   core.List<Entity>? entities;
 
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Next page token if more records are available.
   core.String? nextPageToken;
 
-  ListEntitiesResponse({this.entities, this.nextPageToken});
+  ListEntitiesResponse({this.entities, this.metadata, this.nextPageToken});
 
   ListEntitiesResponse.fromJson(core.Map json_)
     : this(
@@ -1887,17 +2156,31 @@ class ListEntitiesResponse {
                   ),
                 )
                 .toList(),
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         nextPageToken: json_['nextPageToken'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (entities != null) 'entities': entities!,
+    if (metadata != null) 'metadata': metadata!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
   };
 }
 
 /// Response message for EntityService.ListEntityTypes
 class ListEntityTypesResponse {
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Next page token if more entity types available.
   core.String? nextPageToken;
 
@@ -1910,6 +2193,7 @@ class ListEntityTypesResponse {
   core.List<core.String>? unsupportedTypeNames;
 
   ListEntityTypesResponse({
+    this.metadata,
     this.nextPageToken,
     this.types,
     this.unsupportedTypeNames,
@@ -1917,6 +2201,13 @@ class ListEntityTypesResponse {
 
   ListEntityTypesResponse.fromJson(core.Map json_)
     : this(
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         nextPageToken: json_['nextPageToken'] as core.String?,
         types:
             (json_['types'] as core.List?)
@@ -1933,10 +2224,40 @@ class ListEntityTypesResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (metadata != null) 'metadata': metadata!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (types != null) 'types': types!,
     if (unsupportedTypeNames != null)
       'unsupportedTypeNames': unsupportedTypeNames!,
+  };
+}
+
+/// Response message for ConnectorAgentService.ListTools
+class ListToolsResponse {
+  /// Next page token.
+  core.String? nextPageToken;
+
+  /// List of available tools.
+  core.List<Tool>? tools;
+
+  ListToolsResponse({this.nextPageToken, this.tools});
+
+  ListToolsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tools:
+            (json_['tools'] as core.List?)
+                ?.map(
+                  (value) => Tool.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tools != null) 'tools': tools!,
   };
 }
 
@@ -2100,7 +2421,13 @@ class RefreshAccessTokenRequest {
 class RefreshAccessTokenResponse {
   AccessCredentials? accessCredentials;
 
-  RefreshAccessTokenResponse({this.accessCredentials});
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
+  RefreshAccessTokenResponse({this.accessCredentials, this.metadata});
 
   RefreshAccessTokenResponse.fromJson(core.Map json_)
     : this(
@@ -2111,10 +2438,18 @@ class RefreshAccessTokenResponse {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (accessCredentials != null) 'accessCredentials': accessCredentials!,
+    if (metadata != null) 'metadata': metadata!,
   };
 }
 
@@ -2223,18 +2558,150 @@ class ResultMetadata {
   };
 }
 
+/// Message representing a single tool.
+class Tool {
+  /// Annotations for the tool.
+  ToolAnnotations? annotations;
+
+  /// List of tool names that this tool depends on.
+  core.List<core.String>? dependsOn;
+
+  /// Description of the tool.
+  core.String? description;
+
+  /// JSON schema for the input parameters of the tool.
+  JsonSchema? inputSchema;
+
+  /// Name of the tool.
+  core.String? name;
+
+  /// JSON schema for the output of the tool.
+  JsonSchema? outputSchema;
+
+  Tool({
+    this.annotations,
+    this.dependsOn,
+    this.description,
+    this.inputSchema,
+    this.name,
+    this.outputSchema,
+  });
+
+  Tool.fromJson(core.Map json_)
+    : this(
+        annotations:
+            json_.containsKey('annotations')
+                ? ToolAnnotations.fromJson(
+                  json_['annotations'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dependsOn:
+            (json_['dependsOn'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        description: json_['description'] as core.String?,
+        inputSchema:
+            json_.containsKey('inputSchema')
+                ? JsonSchema.fromJson(
+                  json_['inputSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        outputSchema:
+            json_.containsKey('outputSchema')
+                ? JsonSchema.fromJson(
+                  json_['outputSchema'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (annotations != null) 'annotations': annotations!,
+    if (dependsOn != null) 'dependsOn': dependsOn!,
+    if (description != null) 'description': description!,
+    if (inputSchema != null) 'inputSchema': inputSchema!,
+    if (name != null) 'name': name!,
+    if (outputSchema != null) 'outputSchema': outputSchema!,
+  };
+}
+
+/// ToolAnnotations holds annotations for a tool.
+class ToolAnnotations {
+  /// If true, the tool may perform destructive updates to its environment.
+  ///
+  /// If false, the tool performs only additive updates. (This property is
+  /// meaningful only when `read_only_hint == false`)
+  core.bool? destructiveHint;
+
+  /// If true, calling the tool repeatedly with the same arguments will have no
+  /// additional effect on the environment.
+  ///
+  /// (This property is meaningful only when `read_only_hint == false`)
+  core.bool? idempotentHint;
+
+  /// If true, this tool may interact with an "open world" of external entities.
+  ///
+  /// If false, the tool's domain of interaction is closed. For example, the
+  /// world of a web search tool is open, whereas that of a memory tool is not.
+  core.bool? openWorldHint;
+
+  /// If true, the tool does not modify its environment.
+  core.bool? readOnlyHint;
+
+  /// A human-readable title for the tool.
+  core.String? title;
+
+  ToolAnnotations({
+    this.destructiveHint,
+    this.idempotentHint,
+    this.openWorldHint,
+    this.readOnlyHint,
+    this.title,
+  });
+
+  ToolAnnotations.fromJson(core.Map json_)
+    : this(
+        destructiveHint: json_['destructiveHint'] as core.bool?,
+        idempotentHint: json_['idempotentHint'] as core.bool?,
+        openWorldHint: json_['openWorldHint'] as core.bool?,
+        readOnlyHint: json_['readOnlyHint'] as core.bool?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (destructiveHint != null) 'destructiveHint': destructiveHint!,
+    if (idempotentHint != null) 'idempotentHint': idempotentHint!,
+    if (openWorldHint != null) 'openWorldHint': openWorldHint!,
+    if (readOnlyHint != null) 'readOnlyHint': readOnlyHint!,
+    if (title != null) 'title': title!,
+  };
+}
+
 /// Response message for EntityService.UpdateEntitiesWithConditions
 class UpdateEntitiesWithConditionsResponse {
+  /// Metadata like service latency, etc.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Map<core.String, core.Object?>>? metadata;
+
   /// Response returned by the external system.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? response;
 
-  UpdateEntitiesWithConditionsResponse({this.response});
+  UpdateEntitiesWithConditionsResponse({this.metadata, this.response});
 
   UpdateEntitiesWithConditionsResponse.fromJson(core.Map json_)
     : this(
+        metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                value as core.Map<core.String, core.dynamic>,
+              ),
+            ),
         response:
             json_.containsKey('response')
                 ? json_['response'] as core.Map<core.String, core.dynamic>
@@ -2242,6 +2709,7 @@ class UpdateEntitiesWithConditionsResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (metadata != null) 'metadata': metadata!,
     if (response != null) 'response': response!,
   };
 }

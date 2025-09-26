@@ -195,6 +195,8 @@ buildGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest() {
     o.accountId = 'foo';
     o.annotation = 'foo';
     o.hashedAccountId = 'foo';
+    o.phoneAuthenticationEvent =
+        buildGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent();
     o.reasons = buildUnnamed3();
     o.transactionEvent =
         buildGoogleCloudRecaptchaenterpriseV1TransactionEvent();
@@ -212,6 +214,9 @@ void checkGoogleCloudRecaptchaenterpriseV1AnnotateAssessmentRequest(
     unittest.expect(o.accountId!, unittest.equals('foo'));
     unittest.expect(o.annotation!, unittest.equals('foo'));
     unittest.expect(o.hashedAccountId!, unittest.equals('foo'));
+    checkGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent(
+      o.phoneAuthenticationEvent!,
+    );
     checkUnnamed3(o.reasons!);
     checkGoogleCloudRecaptchaenterpriseV1TransactionEvent(o.transactionEvent!);
   }
@@ -1425,6 +1430,33 @@ void checkGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest(
     unittest.expect(o.skipBillingCheck!, unittest.isTrue);
   }
   buildCounterGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest--;
+}
+
+core.int buildCounterGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent =
+    0;
+api.GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent
+buildGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent() {
+  final o = api.GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent();
+  buildCounterGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent <
+      3) {
+    o.eventTime = 'foo';
+    o.phoneNumber = 'foo';
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent--;
+  return o;
+}
+
+void checkGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent(
+  api.GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent o,
+) {
+  buildCounterGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent++;
+  if (buildCounterGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent <
+      3) {
+    unittest.expect(o.eventTime!, unittest.equals('foo'));
+    unittest.expect(o.phoneNumber!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent--;
 }
 
 core.int buildCounterGoogleCloudRecaptchaenterpriseV1PhoneFraudAssessment = 0;
@@ -3127,6 +3159,22 @@ void main() {
           oJson as core.Map<core.String, core.dynamic>,
         );
         checkGoogleCloudRecaptchaenterpriseV1MigrateKeyRequest(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o =
+            buildGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api
+            .GoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleCloudRecaptchaenterpriseV1PhoneAuthenticationEvent(od);
       });
     },
   );

@@ -1057,6 +1057,7 @@ api.FirewallEndpoint buildFirewallEndpoint() {
     o.billingProjectId = 'foo';
     o.createTime = 'foo';
     o.description = 'foo';
+    o.endpointSettings = buildFirewallEndpointEndpointSettings();
     o.labels = buildUnnamed30();
     o.name = 'foo';
     o.reconciling = true;
@@ -1077,6 +1078,7 @@ void checkFirewallEndpoint(api.FirewallEndpoint o) {
     unittest.expect(o.billingProjectId!, unittest.equals('foo'));
     unittest.expect(o.createTime!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
+    checkFirewallEndpointEndpointSettings(o.endpointSettings!);
     checkUnnamed30(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.reconciling!, unittest.isTrue);
@@ -1155,6 +1157,23 @@ void checkFirewallEndpointAssociationReference(
     unittest.expect(o.network!, unittest.equals('foo'));
   }
   buildCounterFirewallEndpointAssociationReference--;
+}
+
+core.int buildCounterFirewallEndpointEndpointSettings = 0;
+api.FirewallEndpointEndpointSettings buildFirewallEndpointEndpointSettings() {
+  final o = api.FirewallEndpointEndpointSettings();
+  buildCounterFirewallEndpointEndpointSettings++;
+  if (buildCounterFirewallEndpointEndpointSettings < 3) {}
+  buildCounterFirewallEndpointEndpointSettings--;
+  return o;
+}
+
+void checkFirewallEndpointEndpointSettings(
+  api.FirewallEndpointEndpointSettings o,
+) {
+  buildCounterFirewallEndpointEndpointSettings++;
+  if (buildCounterFirewallEndpointEndpointSettings < 3) {}
+  buildCounterFirewallEndpointEndpointSettings--;
 }
 
 core.int buildCounterGatewaySecurityPolicy = 0;
@@ -4397,6 +4416,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFirewallEndpointAssociationReference(od);
+    });
+  });
+
+  unittest.group('obj-schema-FirewallEndpointEndpointSettings', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFirewallEndpointEndpointSettings();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FirewallEndpointEndpointSettings.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFirewallEndpointEndpointSettings(od);
     });
   });
 

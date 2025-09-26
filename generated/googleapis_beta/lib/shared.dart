@@ -965,8 +965,6 @@ class $DimensionValue {
 /// - gkehub:v2alpha : CancelOperationRequest
 /// - gkehub:v2alpha : Empty
 /// - gkehub:v2alpha : RBACRoleBindingActuationSpec
-/// - lifesciences:v2beta : CancelOperationRequest
-/// - lifesciences:v2beta : Empty
 /// - prod_tt_sasportal:v1alpha1 : SasPortalEmpty
 /// - prod_tt_sasportal:v1alpha1 : SasPortalGenerateSecretRequest
 /// - prod_tt_sasportal:v1alpha1 : SasPortalValidateInstallerResponse
@@ -1205,7 +1203,6 @@ class $KeyEventDefaultValue {
 ///
 /// - datastream:v1alpha1 : Location
 /// - gkehub:v2alpha : Location
-/// - lifesciences:v2beta : Location
 class $Location {
   /// The friendly name for this location, typically a nearby city name.
   ///
@@ -2556,7 +2553,6 @@ class $Shared {
 /// - datastream:v1alpha1 : Status
 /// - firebase:v1beta1 : Status
 /// - gkehub:v2alpha : GoogleRpcStatus
-/// - lifesciences:v2beta : Status
 /// - prod_tt_sasportal:v1alpha1 : SasPortalStatus
 /// - recommendationengine:v1beta1 : GoogleRpcStatus
 /// - sasportal:v1alpha1 : SasPortalStatus

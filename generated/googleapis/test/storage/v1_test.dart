@@ -1245,6 +1245,8 @@ api.BulkRestoreObjectsRequest buildBulkRestoreObjectsRequest() {
   if (buildCounterBulkRestoreObjectsRequest < 3) {
     o.allowOverwrite = true;
     o.copySourceAcl = true;
+    o.createdAfterTime = core.DateTime.parse('2002-02-27T14:01:02Z');
+    o.createdBeforeTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.matchGlobs = buildUnnamed19();
     o.softDeletedAfterTime = core.DateTime.parse('2002-02-27T14:01:02Z');
     o.softDeletedBeforeTime = core.DateTime.parse('2002-02-27T14:01:02Z');
@@ -1258,6 +1260,14 @@ void checkBulkRestoreObjectsRequest(api.BulkRestoreObjectsRequest o) {
   if (buildCounterBulkRestoreObjectsRequest < 3) {
     unittest.expect(o.allowOverwrite!, unittest.isTrue);
     unittest.expect(o.copySourceAcl!, unittest.isTrue);
+    unittest.expect(
+      o.createdAfterTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
+    unittest.expect(
+      o.createdBeforeTime!,
+      unittest.equals(core.DateTime.parse('2002-02-27T14:01:02Z')),
+    );
     checkUnnamed19(o.matchGlobs!);
     unittest.expect(
       o.softDeletedAfterTime!,

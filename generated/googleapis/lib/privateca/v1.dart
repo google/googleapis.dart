@@ -132,9 +132,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2825,6 +2825,12 @@ class CaOptions {
 /// CertificateAuthority resources and to rotate CA certificates in and out of
 /// the trust anchor.
 class CaPool {
+  /// When EncryptionSpec is provided, the Subject, SubjectAltNames, and the
+  /// PEM-encoded certificate fields will be encrypted at rest.
+  ///
+  /// Optional.
+  EncryptionSpec? encryptionSpec;
+
   /// The IssuancePolicy to control how Certificates will be issued from this
   /// CaPool.
   ///
@@ -2858,6 +2864,7 @@ class CaPool {
   core.String? tier;
 
   CaPool({
+    this.encryptionSpec,
     this.issuancePolicy,
     this.labels,
     this.name,
@@ -2867,6 +2874,13 @@ class CaPool {
 
   CaPool.fromJson(core.Map json_)
     : this(
+        encryptionSpec:
+            json_.containsKey('encryptionSpec')
+                ? EncryptionSpec.fromJson(
+                  json_['encryptionSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         issuancePolicy:
             json_.containsKey('issuancePolicy')
                 ? IssuancePolicy.fromJson(
@@ -2889,6 +2903,7 @@ class CaPool {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (encryptionSpec != null) 'encryptionSpec': encryptionSpec!,
     if (issuancePolicy != null) 'issuancePolicy': issuancePolicy!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
@@ -4037,6 +4052,22 @@ typedef Empty = $Empty;
 
 /// Request message for CertificateAuthorityService.EnableCertificateAuthority.
 typedef EnableCertificateAuthorityRequest = $Request03;
+
+/// The configuration used for encrypting data at rest.
+class EncryptionSpec {
+  /// The resource name for a Cloud KMS key in the format `projects / *
+  /// /locations / * /keyRings / * /cryptoKeys / * `.
+  core.String? cloudKmsKey;
+
+  EncryptionSpec({this.cloudKmsKey});
+
+  EncryptionSpec.fromJson(core.Map json_)
+    : this(cloudKmsKey: json_['cloudKmsKey'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cloudKmsKey != null) 'cloudKmsKey': cloudKmsKey!,
+  };
+}
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

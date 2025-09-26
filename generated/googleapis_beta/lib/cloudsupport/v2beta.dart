@@ -671,6 +671,53 @@ class CasesAttachmentsResource {
 
   CasesAttachmentsResource(commons.ApiRequester client) : _requester = client;
 
+  /// Retrieve an attachment associated with a support case.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB"
+  /// curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)"
+  /// \ "https://cloudsupport.googleapis.com/v2/$attachment" ``` Python:
+  /// ```python import googleapiclient.discovery api_version = "v2beta"
+  /// supportApiService = googleapiclient.discovery.build(
+  /// serviceName="cloudsupport", version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = ( supportApiService.cases() .attachments()
+  /// .get(name="projects/some-project/cases/43595344/attachments/0684M00000P3h1fQAB")
+  /// ) print(request.execute()) ```
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the attachment to get.
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/cases/\[^/\]+/attachments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Attachment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Attachment> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Attachment.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// List all the attachments associated with a support case.
   ///
   /// EXAMPLES: cURL: ```shell case="projects/some-project/cases/23598314" curl
@@ -789,6 +836,51 @@ class CasesCommentsResource {
       url_,
       'POST',
       body: body_,
+      queryParams: queryParams_,
+    );
+    return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieve a comment.
+  ///
+  /// EXAMPLES: cURL: ```shell
+  /// comment="projects/some-project/cases/43595344/comments/234567890" curl \
+  /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+  /// "https://cloudsupport.googleapis.com/v2/$comment" ``` Python: ```python
+  /// import googleapiclient.discovery api_version = "v2beta" supportApiService
+  /// = googleapiclient.discovery.build( serviceName="cloudsupport",
+  /// version=api_version,
+  /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}",
+  /// ) request = supportApiService.cases().comments().get(
+  /// name="projects/some-project/cases/43595344/comments/234567890", )
+  /// print(request.execute()) ```
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the comment to retrieve.
+  /// Value must have pattern
+  /// `^\[^/\]+/\[^/\]+/cases/\[^/\]+/comments/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Comment].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Comment> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2beta/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
       queryParams: queryParams_,
     );
     return Comment.fromJson(response_ as core.Map<core.String, core.dynamic>);

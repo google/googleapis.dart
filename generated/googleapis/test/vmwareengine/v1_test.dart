@@ -26,6 +26,30 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAcceleratePrivateCloudDeletionRequest = 0;
+api.AcceleratePrivateCloudDeletionRequest
+buildAcceleratePrivateCloudDeletionRequest() {
+  final o = api.AcceleratePrivateCloudDeletionRequest();
+  buildCounterAcceleratePrivateCloudDeletionRequest++;
+  if (buildCounterAcceleratePrivateCloudDeletionRequest < 3) {
+    o.etag = 'foo';
+    o.requestId = 'foo';
+  }
+  buildCounterAcceleratePrivateCloudDeletionRequest--;
+  return o;
+}
+
+void checkAcceleratePrivateCloudDeletionRequest(
+  api.AcceleratePrivateCloudDeletionRequest o,
+) {
+  buildCounterAcceleratePrivateCloudDeletionRequest++;
+  if (buildCounterAcceleratePrivateCloudDeletionRequest < 3) {
+    unittest.expect(o.etag!, unittest.equals('foo'));
+    unittest.expect(o.requestId!, unittest.equals('foo'));
+  }
+  buildCounterAcceleratePrivateCloudDeletionRequest--;
+}
+
 core.Map<core.String, core.String> buildUnnamed0() => {'x': 'foo', 'y': 'foo'};
 
 void checkUnnamed0(core.Map<core.String, core.String> o) {
@@ -2811,6 +2835,17 @@ void checkUnnamed67(core.List<core.String> o) {
 }
 
 void main() {
+  unittest.group('obj-schema-AcceleratePrivateCloudDeletionRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAcceleratePrivateCloudDeletionRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AcceleratePrivateCloudDeletionRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAcceleratePrivateCloudDeletionRequest(od);
+    });
+  });
+
   unittest.group('obj-schema-Announcement', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAnnouncement();
@@ -6165,6 +6200,69 @@ void main() {
         arg_name,
         requestId: arg_requestId,
         updateMask: arg_updateMask,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--privateCloudDeletionNow', () async {
+      final mock = HttpServerMock();
+      final res = api.VMwareEngineApi(mock).projects.locations.privateClouds;
+      final arg_request = buildAcceleratePrivateCloudDeletionRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.AcceleratePrivateCloudDeletionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkAcceleratePrivateCloudDeletionRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.privateCloudDeletionNow(
+        arg_request,
+        arg_name,
         $fields: arg_$fields,
       );
       checkOperation(response as api.Operation);

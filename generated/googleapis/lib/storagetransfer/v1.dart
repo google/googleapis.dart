@@ -2669,18 +2669,28 @@ class TransferOptions {
 /// Configuration for running a transfer.
 class TransferSpec {
   /// An AWS S3 compatible data source.
+  ///
+  /// Optional.
   AwsS3CompatibleData? awsS3CompatibleDataSource;
 
   /// An AWS S3 data source.
+  ///
+  /// Optional.
   AwsS3Data? awsS3DataSource;
 
   /// An Azure Blob Storage data source.
+  ///
+  /// Optional.
   AzureBlobStorageData? azureBlobStorageDataSource;
 
   /// A Cloud Storage data sink.
+  ///
+  /// Optional.
   GcsData? gcsDataSink;
 
   /// A Cloud Storage data source.
+  ///
+  /// Optional.
   GcsData? gcsDataSource;
 
   /// For transfers between file systems, specifies a Cloud Storage bucket to be
@@ -2692,9 +2702,13 @@ class TransferSpec {
   GcsData? gcsIntermediateDataLocation;
 
   /// An HDFS cluster data source.
+  ///
+  /// Optional.
   HdfsData? hdfsDataSource;
 
   /// An HTTP URL data source.
+  ///
+  /// Optional.
   HttpData? httpDataSource;
 
   /// Only objects that satisfy these object conditions are included in the set
@@ -2705,9 +2719,13 @@ class TransferSpec {
   ObjectConditions? objectConditions;
 
   /// A POSIX Filesystem data sink.
+  ///
+  /// Optional.
   PosixFilesystem? posixDataSink;
 
   /// A POSIX Filesystem data source.
+  ///
+  /// Optional.
   PosixFilesystem? posixDataSource;
 
   /// Specifies the agent pool name associated with the posix data sink.

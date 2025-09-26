@@ -251,6 +251,7 @@ api.CaPool buildCaPool() {
   final o = api.CaPool();
   buildCounterCaPool++;
   if (buildCounterCaPool < 3) {
+    o.encryptionSpec = buildEncryptionSpec();
     o.issuancePolicy = buildIssuancePolicy();
     o.labels = buildUnnamed4();
     o.name = 'foo';
@@ -264,6 +265,7 @@ api.CaPool buildCaPool() {
 void checkCaPool(api.CaPool o) {
   buildCounterCaPool++;
   if (buildCounterCaPool < 3) {
+    checkEncryptionSpec(o.encryptionSpec!);
     checkIssuancePolicy(o.issuancePolicy!);
     checkUnnamed4(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -812,6 +814,25 @@ void checkEnableCertificateAuthorityRequest(
     unittest.expect(o.requestId!, unittest.equals('foo'));
   }
   buildCounterEnableCertificateAuthorityRequest--;
+}
+
+core.int buildCounterEncryptionSpec = 0;
+api.EncryptionSpec buildEncryptionSpec() {
+  final o = api.EncryptionSpec();
+  buildCounterEncryptionSpec++;
+  if (buildCounterEncryptionSpec < 3) {
+    o.cloudKmsKey = 'foo';
+  }
+  buildCounterEncryptionSpec--;
+  return o;
+}
+
+void checkEncryptionSpec(api.EncryptionSpec o) {
+  buildCounterEncryptionSpec++;
+  if (buildCounterEncryptionSpec < 3) {
+    unittest.expect(o.cloudKmsKey!, unittest.equals('foo'));
+  }
+  buildCounterEncryptionSpec--;
 }
 
 core.int buildCounterExpr = 0;
@@ -2626,6 +2647,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkEnableCertificateAuthorityRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-EncryptionSpec', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEncryptionSpec();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EncryptionSpec.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEncryptionSpec(od);
     });
   });
 

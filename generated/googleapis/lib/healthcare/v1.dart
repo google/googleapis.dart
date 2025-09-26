@@ -149,9 +149,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -7153,9 +7153,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// resources. For a search query that will match a large number of resources,
   /// you can avoiding using the special synchronous index by including an
   /// additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
-  /// you want to keep the default sorting order. Note: The special synchronous
-  /// identifier index are currently disabled for DocumentReference and
-  /// DocumentManifest searches. For samples and detailed information, see
+  /// you want to keep the default sorting order. For samples and detailed
+  /// information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -7264,9 +7263,8 @@ class ProjectsLocationsDatasetsFhirStoresFhirResource {
   /// resources. For a search query that will match a large number of resources,
   /// you can avoiding using the special synchronous index by including an
   /// additional `_sort` parameter in your query. Use `_sort=-_lastUpdated` if
-  /// you want to keep the default sorting order. Note: The special synchronous
-  /// identifier index are currently disabled for DocumentReference and
-  /// DocumentManifest searches. For samples and detailed information, see
+  /// you want to keep the default sorting order. For samples and detailed
+  /// information, see
   /// [Searching for FHIR resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search)
   /// and
   /// [Advanced FHIR search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
@@ -8755,8 +8753,9 @@ class AccessDeterminationLogConfig {
   /// enforcement leading to the decision * Enforcement version at the time the
   /// applicable consents were applied * The Consent resource name * The
   /// timestamp of the Consent resource used for enforcement * Policy type
-  /// (`PATIENT` or `ADMIN`) Note that this mode adds some overhead to CRUD
-  /// operations.
+  /// (`PATIENT` or `ADMIN`) Due to the limited space for logging, this mode is
+  /// the same as `MINIMUM` for methods that return multiple resources (such as
+  /// FHIR Search).
   core.String? logLevel;
 
   AccessDeterminationLogConfig({this.logLevel});

@@ -32,6 +32,7 @@
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsResourceBackupConfigsResource]
 ///     - [ProjectsLocationsServiceConfigResource]
+///     - [ProjectsLocationsTrialResource]
 library;
 
 import 'dart:async' as async;
@@ -97,6 +98,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsResourceBackupConfigsResource(_requester);
   ProjectsLocationsServiceConfigResource get serviceConfig =>
       ProjectsLocationsServiceConfigResource(_requester);
+  ProjectsLocationsTrialResource get trial =>
+      ProjectsLocationsTrialResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
@@ -132,6 +135,40 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the Trial state for a given project
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The project for which trial details need to be
+  /// retrieved. Format: projects/{project}/locations/{location} Supported
+  /// Locations are - us, eu and asia.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/trial$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Trial].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Trial> getTrial(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Trial.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -139,9 +176,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
+  /// don't use this unsupported field which is primarily intended for internal
+  /// usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3055,6 +3092,55 @@ class ProjectsLocationsServiceConfigResource {
   }
 }
 
+class ProjectsLocationsTrialResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsTrialResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Subscribes to a trial for a project
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The project where this trial will be created. Format:
+  /// projects/{project}/locations/{location} Supported Locations are - us, eu
+  /// and asia.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Trial].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Trial> subscribe(
+    SubscribeTrialRequest request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/trial:subscribe';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Trial.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 /// request message for AbandonBackup.
 class AbandonBackupRequest {
   /// An optional request ID to identify requests.
@@ -3336,6 +3422,75 @@ class AllocationAffinity {
   };
 }
 
+/// AlloyDBClusterDataSourceProperties represents the properties of a AlloyDB
+/// cluster resource that are stored in the DataSource.
+///
+/// .
+class AlloyDBClusterDataSourceProperties {
+  /// Name of the AlloyDB cluster backed up by the datasource.
+  ///
+  /// Output only.
+  core.String? name;
+
+  AlloyDBClusterDataSourceProperties({this.name});
+
+  AlloyDBClusterDataSourceProperties.fromJson(core.Map json_)
+    : this(name: json_['name'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+  };
+}
+
+/// AlloyDbClusterBackupProperties represents AlloyDB cluster backup properties.
+///
+/// .
+class AlloyDbClusterBackupProperties {
+  /// The chain id of this backup.
+  ///
+  /// Backups belonging to the same chain are sharing the same chain id. This
+  /// property is calculated and maintained by BackupDR.
+  ///
+  /// Output only.
+  core.String? chainId;
+
+  /// The PostgreSQL major version of the AlloyDB cluster when the backup was
+  /// taken.
+  ///
+  /// Output only.
+  core.String? databaseVersion;
+
+  /// An optional text description for the backup.
+  core.String? description;
+
+  /// Storage usage of this particular backup
+  ///
+  /// Output only.
+  core.String? storedBytes;
+
+  AlloyDbClusterBackupProperties({
+    this.chainId,
+    this.databaseVersion,
+    this.description,
+    this.storedBytes,
+  });
+
+  AlloyDbClusterBackupProperties.fromJson(core.Map json_)
+    : this(
+        chainId: json_['chainId'] as core.String?,
+        databaseVersion: json_['databaseVersion'] as core.String?,
+        description: json_['description'] as core.String?,
+        storedBytes: json_['storedBytes'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (chainId != null) 'chainId': chainId!,
+    if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+    if (description != null) 'description': description!,
+    if (storedBytes != null) 'storedBytes': storedBytes!,
+  };
+}
+
 /// An instance-attached disk resource.
 class AttachedDisk {
   /// Specifies whether the disk will be auto-deleted when the instance is
@@ -3605,6 +3760,11 @@ typedef AuditLogConfig = $AuditLogConfig;
 
 /// Message describing a Backup object.
 class Backup {
+  /// AlloyDB specific backup properties.
+  ///
+  /// Output only.
+  AlloyDbClusterBackupProperties? alloyDbBackupProperties;
+
   /// Backup Appliance specific backup properties.
   ///
   /// Output only.
@@ -3731,6 +3891,7 @@ class Backup {
   core.String? updateTime;
 
   Backup({
+    this.alloyDbBackupProperties,
     this.backupApplianceBackupProperties,
     this.backupApplianceLocks,
     this.backupType,
@@ -3756,6 +3917,13 @@ class Backup {
 
   Backup.fromJson(core.Map json_)
     : this(
+        alloyDbBackupProperties:
+            json_.containsKey('alloyDbBackupProperties')
+                ? AlloyDbClusterBackupProperties.fromJson(
+                  json_['alloyDbBackupProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         backupApplianceBackupProperties:
             json_.containsKey('backupApplianceBackupProperties')
                 ? BackupApplianceBackupProperties.fromJson(
@@ -3827,6 +3995,8 @@ class Backup {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (alloyDbBackupProperties != null)
+      'alloyDbBackupProperties': alloyDbBackupProperties!,
     if (backupApplianceBackupProperties != null)
       'backupApplianceBackupProperties': backupApplianceBackupProperties!,
     if (backupApplianceLocks != null)
@@ -4857,7 +5027,9 @@ class BackupRule {
   /// It is defined in “days”. The value should be greater than or equal to
   /// minimum enforced retention of the backup vault. Minimum value is 1 and
   /// maximum value is 36159 for custom retention on-demand backup. Minimum and
-  /// maximum values are workload specific for all other rules.
+  /// maximum values are workload specific for all other rules. Note: Longer
+  /// retention can lead to higher storage costs post introductory trial. We
+  /// recommend starting with a short duration of 3 days or less.
   ///
   /// Required.
   core.int? backupRetentionDays;
@@ -4939,7 +5111,10 @@ class BackupVault {
   /// The default and minimum enforced retention for each backup within the
   /// backup vault.
   ///
-  /// The enforced retention for each backup can be extended.
+  /// The enforced retention for each backup can be extended. Note: Longer
+  /// minimum enforced retention period impacts potential storage costs post
+  /// introductory trial. We recommend starting with a short duration of 3 days
+  /// or less.
   ///
   /// Required.
   core.String? backupMinimumEnforcedRetentionDuration;
@@ -6270,6 +6445,15 @@ class DataSourceBackupConfigInfo {
 /// This name is easeier to understand than GcpResourceDataSource or
 /// GcpDataSourceResource
 class DataSourceGcpResource {
+  /// AlloyDBClusterDataSourceProperties has a subset of AlloyDB cluster
+  /// properties that are useful at the Datasource level.
+  ///
+  /// Currently none of its child properties are auditable. If new auditable
+  /// properties are added, the AUDIT annotation should be added.
+  ///
+  /// Output only.
+  AlloyDBClusterDataSourceProperties? alloyDbClusterDatasourceProperties;
+
   /// CloudSqlInstanceDataSourceProperties has a subset of Cloud SQL Instance
   /// properties that are useful at the Datasource level.
   ///
@@ -6298,6 +6482,7 @@ class DataSourceGcpResource {
   core.String? type;
 
   DataSourceGcpResource({
+    this.alloyDbClusterDatasourceProperties,
     this.cloudSqlInstanceDatasourceProperties,
     this.computeInstanceDatasourceProperties,
     this.diskDatasourceProperties,
@@ -6308,6 +6493,13 @@ class DataSourceGcpResource {
 
   DataSourceGcpResource.fromJson(core.Map json_)
     : this(
+        alloyDbClusterDatasourceProperties:
+            json_.containsKey('alloyDbClusterDatasourceProperties')
+                ? AlloyDBClusterDataSourceProperties.fromJson(
+                  json_['alloyDbClusterDatasourceProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         cloudSqlInstanceDatasourceProperties:
             json_.containsKey('cloudSqlInstanceDatasourceProperties')
                 ? CloudSqlInstanceDataSourceProperties.fromJson(
@@ -6335,6 +6527,8 @@ class DataSourceGcpResource {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (alloyDbClusterDatasourceProperties != null)
+      'alloyDbClusterDatasourceProperties': alloyDbClusterDatasourceProperties!,
     if (cloudSqlInstanceDatasourceProperties != null)
       'cloudSqlInstanceDatasourceProperties':
           cloudSqlInstanceDatasourceProperties!,
@@ -6506,6 +6700,9 @@ class DataSourceReference {
 
 /// DiskBackupProperties represents the properties of a Disk backup.
 class DiskBackupProperties {
+  /// The access mode of the source disk.
+  core.String? accessMode;
+
   /// The architecture of the source disk.
   ///
   /// Valid values are ARM64 or X86_64.
@@ -6518,14 +6715,29 @@ class DiskBackupProperties {
   /// A description of the source disk.
   core.String? description;
 
+  /// Indicates whether the source disk is using confidential compute mode.
+  core.bool? enableConfidentialCompute;
+
   /// A list of guest OS features that are applicable to this backup.
   core.List<GuestOsFeature>? guestOsFeature;
+
+  /// The labels of the source disk.
+  core.Map<core.String, core.String>? labels;
 
   /// A list of publicly available licenses that are applicable to this backup.
   ///
   /// This is applicable if the original image had licenses attached, e.g.
   /// Windows image.
   core.List<core.String>? licenses;
+
+  /// The physical block size of the source disk.
+  core.String? physicalBlockSizeBytes;
+
+  /// The number of IOPS provisioned for the source disk.
+  core.String? provisionedIops;
+
+  /// The number of throughput provisioned for the source disk.
+  core.String? provisionedThroughput;
 
   /// Region and zone are mutually exclusive fields.
   ///
@@ -6541,6 +6753,9 @@ class DiskBackupProperties {
   /// The source disk used to create this backup.
   core.String? sourceDisk;
 
+  /// The storage pool of the source disk.
+  core.String? storagePool;
+
   /// The URL of the type of the disk.
   core.String? type;
 
@@ -6548,22 +6763,32 @@ class DiskBackupProperties {
   core.String? zone;
 
   DiskBackupProperties({
+    this.accessMode,
     this.architecture,
     this.description,
+    this.enableConfidentialCompute,
     this.guestOsFeature,
+    this.labels,
     this.licenses,
+    this.physicalBlockSizeBytes,
+    this.provisionedIops,
+    this.provisionedThroughput,
     this.region,
     this.replicaZones,
     this.sizeGb,
     this.sourceDisk,
+    this.storagePool,
     this.type,
     this.zone,
   });
 
   DiskBackupProperties.fromJson(core.Map json_)
     : this(
+        accessMode: json_['accessMode'] as core.String?,
         architecture: json_['architecture'] as core.String?,
         description: json_['description'] as core.String?,
+        enableConfidentialCompute:
+            json_['enableConfidentialCompute'] as core.bool?,
         guestOsFeature:
             (json_['guestOsFeature'] as core.List?)
                 ?.map(
@@ -6572,10 +6797,16 @@ class DiskBackupProperties {
                   ),
                 )
                 .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         licenses:
             (json_['licenses'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        physicalBlockSizeBytes: json_['physicalBlockSizeBytes'] as core.String?,
+        provisionedIops: json_['provisionedIops'] as core.String?,
+        provisionedThroughput: json_['provisionedThroughput'] as core.String?,
         region: json_['region'] as core.String?,
         replicaZones:
             (json_['replicaZones'] as core.List?)
@@ -6583,19 +6814,30 @@ class DiskBackupProperties {
                 .toList(),
         sizeGb: json_['sizeGb'] as core.String?,
         sourceDisk: json_['sourceDisk'] as core.String?,
+        storagePool: json_['storagePool'] as core.String?,
         type: json_['type'] as core.String?,
         zone: json_['zone'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (accessMode != null) 'accessMode': accessMode!,
     if (architecture != null) 'architecture': architecture!,
     if (description != null) 'description': description!,
+    if (enableConfidentialCompute != null)
+      'enableConfidentialCompute': enableConfidentialCompute!,
     if (guestOsFeature != null) 'guestOsFeature': guestOsFeature!,
+    if (labels != null) 'labels': labels!,
     if (licenses != null) 'licenses': licenses!,
+    if (physicalBlockSizeBytes != null)
+      'physicalBlockSizeBytes': physicalBlockSizeBytes!,
+    if (provisionedIops != null) 'provisionedIops': provisionedIops!,
+    if (provisionedThroughput != null)
+      'provisionedThroughput': provisionedThroughput!,
     if (region != null) 'region': region!,
     if (replicaZones != null) 'replicaZones': replicaZones!,
     if (sizeGb != null) 'sizeGb': sizeGb!,
     if (sourceDisk != null) 'sourceDisk': sourceDisk!,
+    if (storagePool != null) 'storagePool': storagePool!,
     if (type != null) 'type': type!,
     if (zone != null) 'zone': zone!,
   };
@@ -8868,6 +9110,8 @@ class ResourceBackupConfig {
   /// - "RESOURCE_TYPE_UNSPECIFIED" : Resource type not set.
   /// - "CLOUD_SQL_INSTANCE" : Cloud SQL instance.
   /// - "COMPUTE_ENGINE_VM" : Compute Engine VM.
+  /// - "COMPUTE_ENGINE_DISK" : Compute Engine Disk.
+  /// - "COMPUTE_ENGINE_REGIONAL_DISK" : Compute Engine Regional Disk.
   core.String? targetResourceType;
 
   /// The unique identifier of the resource backup config.
@@ -9543,6 +9787,9 @@ class StandardSchedule {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
+/// Request message for subscribing to a trial.
+typedef SubscribeTrialRequest = $Empty;
+
 /// A set of instance tags.
 class Tags {
   /// An array of tags.
@@ -9572,6 +9819,66 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
+
+/// Represents a Trial for a project.
+class Trial {
+  /// The reason for ending the trial.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "END_REASON_UNSPECIFIED" : End reason not set.
+  /// - "MOVE_TO_PAID" : Trial is deliberately ended by the user to transition
+  /// to paid usage.
+  /// - "DISCONTINUED" : Trial is discontinued before expiration.
+  core.String? endReason;
+
+  /// The time when the trial will expire.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Identifier.
+  ///
+  /// The resource name of the trial. Format:
+  /// projects/{project}/locations/{location}/trial
+  core.String? name;
+
+  /// The time when the trial was subscribed.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// The state of the trial.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : State not set.
+  /// - "SUBSCRIBED" : Trial is subscribed.
+  /// - "UNSUBSCRIBED" : Trial is unsubscribed before expiration.
+  /// - "EXPIRED" : Trial is expired post 30 days of subscription.
+  /// - "ELIGIBLE" : Trial is eligible for enablement.
+  /// - "NOT_ELIGIBLE" : Trial is not eligible for enablement.
+  core.String? state;
+
+  Trial({this.endReason, this.endTime, this.name, this.startTime, this.state});
+
+  Trial.fromJson(core.Map json_)
+    : this(
+        endReason: json_['endReason'] as core.String?,
+        endTime: json_['endTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endReason != null) 'endReason': endReason!,
+    if (endTime != null) 'endTime': endTime!,
+    if (name != null) 'name': name!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+  };
+}
 
 /// Request message for triggering a backup.
 class TriggerBackupRequest {

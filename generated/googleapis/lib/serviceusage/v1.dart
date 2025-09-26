@@ -557,8 +557,15 @@ class ServicesResource {
 /// interface as opposed to simply a description of methods and bindings. They
 /// are also sometimes simply referred to as "APIs" in other contexts, such as
 /// the name of this message itself. See
-/// https://cloud.google.com/apis/design/glossary for detailed terminology.
+/// https://cloud.google.com/apis/design/glossary for detailed terminology. New
+/// usages of this message as an alternative to ServiceDescriptorProto are
+/// strongly discouraged. This message does not reliability preserve all
+/// information necessary to model the schema and preserve semantics. Instead
+/// make use of FileDescriptorSet which preserves the necessary information.
 class Api {
+  /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+  core.String? edition;
+
   /// The methods of this interface, in unspecified order.
   core.List<Method>? methods;
 
@@ -604,6 +611,7 @@ class Api {
   core.String? version;
 
   Api({
+    this.edition,
     this.methods,
     this.mixins,
     this.name,
@@ -615,6 +623,7 @@ class Api {
 
   Api.fromJson(core.Map json_)
     : this(
+        edition: json_['edition'] as core.String?,
         methods:
             (json_['methods'] as core.List?)
                 ?.map(
@@ -651,6 +660,7 @@ class Api {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (edition != null) 'edition': edition!,
     if (methods != null) 'methods': methods!,
     if (mixins != null) 'mixins': mixins!,
     if (name != null) 'name': name!,
@@ -1384,7 +1394,21 @@ class ListServicesResponse {
 }
 
 /// Method represents a method of an API interface.
+///
+/// New usages of this message as an alternative to MethodDescriptorProto are
+/// strongly discouraged. This message does not reliability preserve all
+/// information necessary to model the schema and preserve semantics. Instead
+/// make use of FileDescriptorSet which preserves the necessary information.
 class Method {
+  /// The source edition string, only valid when syntax is SYNTAX_EDITIONS.
+  ///
+  /// This field should be ignored, instead the edition should be inherited from
+  /// Api. This is similar to Field and EnumValue.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  core.String? edition;
+
   /// The simple name of this method.
   core.String? name;
 
@@ -1404,13 +1428,20 @@ class Method {
   core.String? responseTypeUrl;
 
   /// The source syntax of this method.
+  ///
+  /// This field should be ignored, instead the syntax should be inherited from
+  /// Api. This is similar to Field and EnumValue.
   /// Possible string values are:
   /// - "SYNTAX_PROTO2" : Syntax `proto2`.
   /// - "SYNTAX_PROTO3" : Syntax `proto3`.
   /// - "SYNTAX_EDITIONS" : Syntax `editions`.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.String? syntax;
 
   Method({
+    this.edition,
     this.name,
     this.options,
     this.requestStreaming,
@@ -1422,6 +1453,7 @@ class Method {
 
   Method.fromJson(core.Map json_)
     : this(
+        edition: json_['edition'] as core.String?,
         name: json_['name'] as core.String?,
         options:
             (json_['options'] as core.List?)
@@ -1439,6 +1471,7 @@ class Method {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (edition != null) 'edition': edition!,
     if (name != null) 'name': name!,
     if (options != null) 'options': options!,
     if (requestStreaming != null) 'requestStreaming': requestStreaming!,
@@ -1789,6 +1822,10 @@ class Operation {
 
 /// A protocol buffer option, which can be attached to a message, field,
 /// enumeration, etc.
+///
+/// New usages of this message as an alternative to FileOptions, MessageOptions,
+/// FieldOptions, EnumOptions, EnumValueOptions, ServiceOptions, or
+/// MethodOptions are strongly discouraged.
 typedef Option = $Option;
 
 /// Represents a documentation page.

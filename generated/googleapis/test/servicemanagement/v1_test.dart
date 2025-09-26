@@ -74,6 +74,7 @@ api.Api buildApi() {
   final o = api.Api();
   buildCounterApi++;
   if (buildCounterApi < 3) {
+    o.edition = 'foo';
     o.methods = buildUnnamed0();
     o.mixins = buildUnnamed1();
     o.name = 'foo';
@@ -89,6 +90,7 @@ api.Api buildApi() {
 void checkApi(api.Api o) {
   buildCounterApi++;
   if (buildCounterApi < 3) {
+    unittest.expect(o.edition!, unittest.equals('foo'));
     checkUnnamed0(o.methods!);
     checkUnnamed1(o.mixins!);
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -2070,6 +2072,7 @@ api.Method buildMethod() {
   final o = api.Method();
   buildCounterMethod++;
   if (buildCounterMethod < 3) {
+    o.edition = 'foo';
     o.name = 'foo';
     o.options = buildUnnamed57();
     o.requestStreaming = true;
@@ -2085,6 +2088,7 @@ api.Method buildMethod() {
 void checkMethod(api.Method o) {
   buildCounterMethod++;
   if (buildCounterMethod < 3) {
+    unittest.expect(o.edition!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed57(o.options!);
     unittest.expect(o.requestStreaming!, unittest.isTrue);
@@ -2618,6 +2622,7 @@ api.PhpSettings buildPhpSettings() {
   buildCounterPhpSettings++;
   if (buildCounterPhpSettings < 3) {
     o.common = buildCommonLanguageSettings();
+    o.libraryPackage = 'foo';
   }
   buildCounterPhpSettings--;
   return o;
@@ -2627,6 +2632,7 @@ void checkPhpSettings(api.PhpSettings o) {
   buildCounterPhpSettings++;
   if (buildCounterPhpSettings < 3) {
     checkCommonLanguageSettings(o.common!);
+    unittest.expect(o.libraryPackage!, unittest.equals('foo'));
   }
   buildCounterPhpSettings--;
 }
@@ -2865,7 +2871,6 @@ api.Rollout buildRollout() {
     o.serviceName = 'foo';
     o.status = 'foo';
     o.trafficPercentStrategy = buildTrafficPercentStrategy();
-    o.universe = 'foo';
   }
   buildCounterRollout--;
   return o;
@@ -2881,7 +2886,6 @@ void checkRollout(api.Rollout o) {
     unittest.expect(o.serviceName!, unittest.equals('foo'));
     unittest.expect(o.status!, unittest.equals('foo'));
     checkTrafficPercentStrategy(o.trafficPercentStrategy!);
-    unittest.expect(o.universe!, unittest.equals('foo'));
   }
   buildCounterRollout--;
 }

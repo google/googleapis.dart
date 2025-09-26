@@ -2064,6 +2064,8 @@ buildGoogleCloudRunV2SubmitBuildRequest() {
     o.buildpackBuild = buildGoogleCloudRunV2BuildpacksBuild();
     o.dockerBuild = buildGoogleCloudRunV2DockerBuild();
     o.imageUri = 'foo';
+    o.machineType = 'foo';
+    o.releaseTrack = 'foo';
     o.serviceAccount = 'foo';
     o.storageSource = buildGoogleCloudRunV2StorageSource();
     o.tags = buildUnnamed49();
@@ -2081,6 +2083,8 @@ void checkGoogleCloudRunV2SubmitBuildRequest(
     checkGoogleCloudRunV2BuildpacksBuild(o.buildpackBuild!);
     checkGoogleCloudRunV2DockerBuild(o.dockerBuild!);
     unittest.expect(o.imageUri!, unittest.equals('foo'));
+    unittest.expect(o.machineType!, unittest.equals('foo'));
+    unittest.expect(o.releaseTrack!, unittest.equals('foo'));
     unittest.expect(o.serviceAccount!, unittest.equals('foo'));
     checkGoogleCloudRunV2StorageSource(o.storageSource!);
     checkUnnamed49(o.tags!);
@@ -2466,6 +2470,7 @@ api.GoogleCloudRunV2VolumeMount buildGoogleCloudRunV2VolumeMount() {
   if (buildCounterGoogleCloudRunV2VolumeMount < 3) {
     o.mountPath = 'foo';
     o.name = 'foo';
+    o.subPath = 'foo';
   }
   buildCounterGoogleCloudRunV2VolumeMount--;
   return o;
@@ -2476,6 +2481,7 @@ void checkGoogleCloudRunV2VolumeMount(api.GoogleCloudRunV2VolumeMount o) {
   if (buildCounterGoogleCloudRunV2VolumeMount < 3) {
     unittest.expect(o.mountPath!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.subPath!, unittest.equals('foo'));
   }
   buildCounterGoogleCloudRunV2VolumeMount--;
 }
