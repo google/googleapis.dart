@@ -6071,7 +6071,7 @@ class AbuseReport {
   };
 }
 
-typedef AbuseType = $Shared01;
+typedef AbuseType = $Shared03;
 
 /// Rights management policy for YouTube resources.
 class AccessPolicy {
@@ -11201,18 +11201,7 @@ class InvideoTiming {
   };
 }
 
-class LanguageTag {
-  core.String? value;
-
-  LanguageTag({this.value});
-
-  LanguageTag.fromJson(core.Map json_)
-    : this(value: json_['value'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (value != null) 'value': value!,
-  };
-}
+typedef LanguageTag = $Shared20;
 
 class LevelDetails {
   /// The name that should be used when referring to this level.

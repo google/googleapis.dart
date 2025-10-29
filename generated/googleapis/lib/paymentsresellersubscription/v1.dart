@@ -24,6 +24,7 @@
 ///   - [PartnersProductsResource]
 ///   - [PartnersPromotionsResource]
 ///   - [PartnersSubscriptionsResource]
+///     - [PartnersSubscriptionsLineItemsResource]
 ///   - [PartnersUserSessionsResource]
 library;
 
@@ -83,7 +84,7 @@ class PartnersProductsResource {
   /// Currently, it doesn't support **YouTube** products.
   ///
   /// Retrieves the products that can be resold by the partner. It should be
-  /// autenticated with a service account.
+  /// authenticated with a service account.
   ///
   /// Request parameters:
   ///
@@ -154,7 +155,7 @@ class PartnersPromotionsResource {
 
   PartnersPromotionsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Currently, it is only enabeld for **YouTube**.
+  /// Currently, it is only enabled for **YouTube**.
   ///
   /// Finds eligible promotions for the current user. The API requires user
   /// authorization via OAuth. The bare minimum oauth scope `openid` is
@@ -205,7 +206,7 @@ class PartnersPromotionsResource {
   /// Currently, it doesn't support **YouTube** promotions.
   ///
   /// Retrieves the promotions, such as free trial, that can be used by the
-  /// partner. It should be autenticated with a service account.
+  /// partner. It should be authenticated with a service account.
   ///
   /// Request parameters:
   ///
@@ -227,7 +228,7 @@ class PartnersPromotionsResource {
   ///
   /// [pageSize] - Optional. The maximum number of promotions to return. The
   /// service may return fewer than this value. If unspecified, at most 50
-  /// products will be returned. The maximum value is 1000; values above 1000
+  /// promotions will be returned. The maximum value is 1000; values above 1000
   /// will be coerced to 1000.
   ///
   /// [pageToken] - Optional. A page token, received from a previous
@@ -274,6 +275,9 @@ class PartnersPromotionsResource {
 
 class PartnersSubscriptionsResource {
   final commons.ApiRequester _requester;
+
+  PartnersSubscriptionsLineItemsResource get lineItems =>
+      PartnersSubscriptionsLineItemsResource(_requester);
 
   PartnersSubscriptionsResource(commons.ApiRequester client)
     : _requester = client;
@@ -341,8 +345,8 @@ class PartnersSubscriptionsResource {
   ///
   /// [subscriptionId] - Required. Identifies the subscription resource on the
   /// Partner side. The value is restricted to 63 ASCII characters at the
-  /// maximum. If a subscription was previously created with the same
-  /// subscription_id, we will directly return that one.
+  /// maximum. If a subscription with the same ID already exists, the creation
+  /// fails with an `ALREADY_EXISTS` error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -530,10 +534,21 @@ class PartnersSubscriptionsResource {
   /// the partner. It will have the format of "partners/{partner_id}".
   /// Value must have pattern `^partners/\[^/\]+$`.
   ///
+  /// [cycleOptions_initialCycleDuration_count] - number of duration units to be
+  /// included.
+  ///
+  /// [cycleOptions_initialCycleDuration_unit] - The unit used for the duration
+  /// Possible string values are:
+  /// - "UNIT_UNSPECIFIED" : Default value, reserved as an invalid or an
+  /// unexpected value.
+  /// - "MONTH" : Unit of a calendar month.
+  /// - "DAY" : Unit of a day.
+  /// - "HOUR" : Unit of an hour. It is used for testing.
+  ///
   /// [subscriptionId] - Required. Identifies the subscription resource on the
   /// Partner side. The value is restricted to 63 ASCII characters at the
-  /// maximum. If a subscription was previously created with the same
-  /// subscription_id, we will directly return that one.
+  /// maximum. If a subscription with the same ID already exists, the creation
+  /// fails with an `ALREADY_EXISTS` error.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -548,11 +563,21 @@ class PartnersSubscriptionsResource {
   async.Future<Subscription> provision(
     Subscription request,
     core.String parent, {
+    core.int? cycleOptions_initialCycleDuration_count,
+    core.String? cycleOptions_initialCycleDuration_unit,
     core.String? subscriptionId,
     core.String? $fields,
   }) async {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (cycleOptions_initialCycleDuration_count != null)
+        'cycleOptions.initialCycleDuration.count': [
+          '${cycleOptions_initialCycleDuration_count}',
+        ],
+      if (cycleOptions_initialCycleDuration_unit != null)
+        'cycleOptions.initialCycleDuration.unit': [
+          cycleOptions_initialCycleDuration_unit,
+        ],
       if (subscriptionId != null) 'subscriptionId': [subscriptionId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -716,6 +741,65 @@ class PartnersSubscriptionsResource {
   }
 }
 
+class PartnersSubscriptionsLineItemsResource {
+  final commons.ApiRequester _requester;
+
+  PartnersSubscriptionsLineItemsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Updates a line item of a subscription.
+  ///
+  /// It should be authenticated with a service account.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. Resource name of the line item. Format:
+  /// partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}
+  /// Value must have pattern
+  /// `^partners/\[^/\]+/subscriptions/\[^/\]+/lineItems/\[^/\]+$`.
+  ///
+  /// [updateMask] - Required. The list of fields to update. Only a limited set
+  /// of fields can be updated. The allowed fields are the following: -
+  /// `product_payload.googleHomePayload.googleStructureId`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SubscriptionLineItem].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SubscriptionLineItem> patch(
+    SubscriptionLineItem request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SubscriptionLineItem.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class PartnersUserSessionsResource {
   final commons.ApiRequester _requester;
 
@@ -809,7 +893,7 @@ class CancelSubscriptionRequest {
   /// not (based on the contract) issue a prorated refund for the remainder of
   /// the billing cycle.
   ///
-  /// Otherwise, Google defers the cancelation at renewal_time, and will not
+  /// Otherwise, Google defers the cancellation at renewal_time, and will not
   /// issue a refund. - YouTube subscriptions must use this option currently.
   /// However, the user will still have access to the subscription until the end
   /// of the billing cycle.
@@ -821,9 +905,9 @@ class CancelSubscriptionRequest {
   /// Possible string values are:
   /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified. Should not be
   /// used.
-  /// - "CANCELLATION_REASON_FRAUD" : Fraudualant transaction.
+  /// - "CANCELLATION_REASON_FRAUD" : Fraudulent transaction.
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
-  /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.
+  /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidental purchase.
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
   /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : Used for notification only, do
   /// not use in Cancel API. User account closed.
@@ -836,6 +920,8 @@ class CancelSubscriptionRequest {
   /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Used for notification only, do not
   /// use in Cancel API. The subscription is cancelled by Google automatically
   /// since it is no longer valid.
+  /// - "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH" : Cancellation due to a
+  /// billing system switch.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? cancellationReason;
 
@@ -877,6 +963,11 @@ class CancelSubscriptionResponse {
 
 /// Intent message for creating a Subscription resource.
 class CreateSubscriptionIntent {
+  /// The cycle options for the subscription.
+  ///
+  /// Optional.
+  CycleOptions? cycleOptions;
+
   /// The parent resource name, which is the identifier of the partner.
   ///
   /// Required.
@@ -897,6 +988,7 @@ class CreateSubscriptionIntent {
   core.String? subscriptionId;
 
   CreateSubscriptionIntent({
+    this.cycleOptions,
     this.parent,
     this.subscription,
     this.subscriptionId,
@@ -904,6 +996,12 @@ class CreateSubscriptionIntent {
 
   CreateSubscriptionIntent.fromJson(core.Map json_)
     : this(
+        cycleOptions:
+            json_.containsKey('cycleOptions')
+                ? CycleOptions.fromJson(
+                  json_['cycleOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         parent: json_['parent'] as core.String?,
         subscription:
             json_.containsKey('subscription')
@@ -915,9 +1013,42 @@ class CreateSubscriptionIntent {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (cycleOptions != null) 'cycleOptions': cycleOptions!,
     if (parent != null) 'parent': parent!,
     if (subscription != null) 'subscription': subscription!,
     if (subscriptionId != null) 'subscriptionId': subscriptionId!,
+  };
+}
+
+/// The cycle options when starting and resuming a subscription.
+class CycleOptions {
+  /// The duration of the initial cycle.
+  ///
+  /// Only `DAY` is supported. If set, Google will start the subscription with
+  /// this initial cycle duration starting at the request time (see available
+  /// methods below). A prorated charge will be applied. This option is
+  /// available to the following methods: - partners.subscriptions.provision -
+  /// partners.subscriptions.resume - partners.userSessions.generate
+  ///
+  /// Optional.
+  Duration? initialCycleDuration;
+
+  CycleOptions({this.initialCycleDuration});
+
+  CycleOptions.fromJson(core.Map json_)
+    : this(
+        initialCycleDuration:
+            json_.containsKey('initialCycleDuration')
+                ? Duration.fromJson(
+                  json_['initialCycleDuration']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (initialCycleDuration != null)
+      'initialCycleDuration': initialCycleDuration!,
   };
 }
 
@@ -1201,17 +1332,17 @@ class FindEligiblePromotionsRequest {
   /// The maximum number of promotions to return.
   ///
   /// The service may return fewer than this value. If unspecified, at most 50
-  /// products will be returned. The maximum value is 1000; values above 1000
+  /// promotions will be returned. The maximum value is 1000; values above 1000
   /// will be coerced to 1000.
   ///
   /// Optional.
   core.int? pageSize;
 
-  /// A page token, received from a previous `ListPromotions` call.
+  /// A page token, received from a previous `FindEligiblePromotions` call.
   ///
   /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListPromotions` must match the call that provided
-  /// the page token.
+  /// parameters provided to `FindEligiblePromotions` must match the call that
+  /// provided the page token.
   ///
   /// Optional.
   core.String? pageToken;
@@ -1263,12 +1394,10 @@ class FindEligiblePromotionsResponse {
   };
 }
 
-/// Details for a subscriptiin line item with finite billing cycles.
+/// Details for a subscription line item with finite billing cycles.
 class FiniteBillingCycleDetails {
   /// The number of a subscription line item billing cycles after which billing
   /// will stop automatically.
-  ///
-  /// Required.
   core.String? billingCycleCountLimit;
 
   FiniteBillingCycleDetails({this.billingCycleCountLimit});
@@ -1445,7 +1574,12 @@ class IntentPayload {
   /// The request to entitle a subscription.
   EntitleSubscriptionIntent? entitleIntent;
 
-  IntentPayload({this.createIntent, this.entitleIntent});
+  /// The additional features for the intent.
+  ///
+  /// Optional.
+  IntentPayloadIntentOptions? intentOptions;
+
+  IntentPayload({this.createIntent, this.entitleIntent, this.intentOptions});
 
   IntentPayload.fromJson(core.Map json_)
     : this(
@@ -1461,11 +1595,39 @@ class IntentPayload {
                   json_['entitleIntent'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        intentOptions:
+            json_.containsKey('intentOptions')
+                ? IntentPayloadIntentOptions.fromJson(
+                  json_['intentOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (createIntent != null) 'createIntent': createIntent!,
     if (entitleIntent != null) 'entitleIntent': entitleIntent!,
+    if (intentOptions != null) 'intentOptions': intentOptions!,
+  };
+}
+
+/// The options for the intent.
+class IntentPayloadIntentOptions {
+  /// If true, Google may use a different product and promotion id from the ones
+  /// in the `create_intent` based on the user's eligibility.
+  ///
+  /// Only applicable for certain YouTube free trial offers.
+  ///
+  /// Optional.
+  core.bool? enableOfferOverride;
+
+  IntentPayloadIntentOptions({this.enableOfferOverride});
+
+  IntentPayloadIntentOptions.fromJson(core.Map json_)
+    : this(enableOfferOverride: json_['enableOfferOverride'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enableOfferOverride != null)
+      'enableOfferOverride': enableOfferOverride!,
   };
 }
 
@@ -1595,7 +1757,7 @@ class Product {
 
   /// 2-letter ISO region code where the product is available in.
   ///
-  /// Ex. "US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
+  /// Ex. "US" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1
   ///
   /// Output only.
   core.List<core.String>? regionCodes;
@@ -1866,7 +2028,7 @@ class Promotion {
 
   /// 2-letter ISO region code where the promotion is available in.
   ///
-  /// Ex. "US" Please refers to: https://en.wikipedia.org/wiki/ISO_3166-1
+  /// Ex. "US" Please refer to: https://en.wikipedia.org/wiki/ISO_3166-1
   ///
   /// Output only.
   core.List<core.String>? regionCodes;
@@ -2035,7 +2197,43 @@ class PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
 }
 
 /// Request to resume a suspended subscription.
-typedef ResumeSubscriptionRequest = $Empty;
+class ResumeSubscriptionRequest {
+  /// The cycle options for the subscription.
+  ///
+  /// Optional.
+  CycleOptions? cycleOptions;
+
+  /// The mode to resume the subscription.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RESUME_MODE_UNSPECIFIED" : Reserved for invalid or unexpected value. Do
+  /// not use.
+  /// - "RESUME_MODE_CYCLE_OPTIONS" : Resume the subscription using the input
+  /// from `cycle_options`.
+  /// - "RESUME_MODE_RESTORE_EXISTING_BILLING_SCHEDULE" : Resume the
+  /// subscription with the existing billing schedule. The subscription's next
+  /// renewal time must still be in the future for this mode to be applicable.
+  core.String? resumeMode;
+
+  ResumeSubscriptionRequest({this.cycleOptions, this.resumeMode});
+
+  ResumeSubscriptionRequest.fromJson(core.Map json_)
+    : this(
+        cycleOptions:
+            json_.containsKey('cycleOptions')
+                ? CycleOptions.fromJson(
+                  json_['cycleOptions'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resumeMode: json_['resumeMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cycleOptions != null) 'cycleOptions': cycleOptions!,
+    if (resumeMode != null) 'resumeMode': resumeMode!,
+  };
+}
 
 /// Response that contains the resumed subscription.
 class ResumeSubscriptionResponse {
@@ -2173,6 +2371,7 @@ class Subscription {
   /// - "PROCESSING_STATE_UNSPECIFIED" : The processing state is unspecified.
   /// - "PROCESSING_STATE_CANCELLING" : The subscription is being cancelled.
   /// - "PROCESSING_STATE_RECURRING" : The subscription is recurring.
+  /// - "PROCESSING_STATE_RESUMING" : The subscription is being resumed.
   core.String? processingState;
 
   /// Deprecated: consider using `line_items` as the input.
@@ -2397,9 +2596,9 @@ class SubscriptionCancellationDetails {
   /// Possible string values are:
   /// - "CANCELLATION_REASON_UNSPECIFIED" : Reason is unspecified. Should not be
   /// used.
-  /// - "CANCELLATION_REASON_FRAUD" : Fraudualant transaction.
+  /// - "CANCELLATION_REASON_FRAUD" : Fraudulent transaction.
   /// - "CANCELLATION_REASON_REMORSE" : Buyer's remorse.
-  /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidential purchase.
+  /// - "CANCELLATION_REASON_ACCIDENTAL_PURCHASE" : Accidental purchase.
   /// - "CANCELLATION_REASON_PAST_DUE" : Payment is past due.
   /// - "CANCELLATION_REASON_ACCOUNT_CLOSED" : Used for notification only, do
   /// not use in Cancel API. User account closed.
@@ -2412,6 +2611,8 @@ class SubscriptionCancellationDetails {
   /// - "CANCELLATION_REASON_SYSTEM_CANCEL" : Used for notification only, do not
   /// use in Cancel API. The subscription is cancelled by Google automatically
   /// since it is no longer valid.
+  /// - "CANCELLATION_REASON_BILLING_SYSTEM_SWITCH" : Cancellation due to a
+  /// billing system switch.
   /// - "CANCELLATION_REASON_OTHER" : Other reason.
   core.String? reason;
 
@@ -2479,13 +2680,21 @@ class SubscriptionLineItem {
   /// Optional.
   core.List<SubscriptionPromotionSpec>? lineItemPromotionSpecs;
 
+  /// Identifier.
+  ///
+  /// Resource name of the line item. Format:
+  /// partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}
+  core.String? name;
+
   /// Details only set for a ONE_TIME recurrence line item.
   ///
   /// Output only.
   SubscriptionLineItemOneTimeRecurrenceDetails? oneTimeRecurrenceDetails;
 
-  /// Product resource name that identifies one the line item The format is
-  /// 'partners/{partner_id}/products/{product_id}'.
+  /// Product resource name that identifies the product associated with this
+  /// line item.
+  ///
+  /// The format is 'partners/{partner_id}/products/{product_id}'.
   ///
   /// Required.
   core.String? product;
@@ -2538,6 +2747,7 @@ class SubscriptionLineItem {
     this.lineItemFreeTrialEndTime,
     this.lineItemIndex,
     this.lineItemPromotionSpecs,
+    this.name,
     this.oneTimeRecurrenceDetails,
     this.product,
     this.productPayload,
@@ -2578,6 +2788,7 @@ class SubscriptionLineItem {
                   ),
                 )
                 .toList(),
+        name: json_['name'] as core.String?,
         oneTimeRecurrenceDetails:
             json_.containsKey('oneTimeRecurrenceDetails')
                 ? SubscriptionLineItemOneTimeRecurrenceDetails.fromJson(
@@ -2608,6 +2819,7 @@ class SubscriptionLineItem {
     if (lineItemIndex != null) 'lineItemIndex': lineItemIndex!,
     if (lineItemPromotionSpecs != null)
       'lineItemPromotionSpecs': lineItemPromotionSpecs!,
+    if (name != null) 'name': name!,
     if (oneTimeRecurrenceDetails != null)
       'oneTimeRecurrenceDetails': oneTimeRecurrenceDetails!,
     if (product != null) 'product': product!,
@@ -2803,9 +3015,9 @@ class SubscriptionUpgradeDowngradeDetails {
   /// new subscription will be prorated.
   /// - "BILLING_CYCLE_SPEC_START_IMMEDIATELY" : The billing cycle of the new
   /// subscription starts immediately.
-  /// - "BILLING_CYCLE_SPEC_DEFERRED_TO_NEXT_RECURRENCE" : The billing cycle
-  /// starts at the end of the previous subscription's billing cycle and aligns
-  /// with the previous subscription's billing cycle.
+  /// - "BILLING_CYCLE_SPEC_DEFERRED_TO_NEXT_RECURRENCE" : The new subscription
+  /// will have the same `renewalTime` as the previous subscription, while the
+  /// previous subscription is scheduled for cancellation at that same time.
   core.String? billingCycleSpec;
 
   /// The previous subscription id to be replaced.

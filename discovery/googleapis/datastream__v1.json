@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250827",
+    "revision": "20260114",
     "rootUrl": "https://datastream.googleapis.com/",
     "servicePath": "",
     "title": "Datastream API",
@@ -130,13 +130,13 @@
                                     "type": "string"
                                 },
                                 "pageSize": {
-                                    "description": "Maximum number of Ips to return, will likely not be specified.",
+                                    "description": "Optional. Maximum number of Ips to return, will likely not be specified.",
                                     "format": "int32",
                                     "location": "query",
                                     "type": "integer"
                                 },
                                 "pageToken": {
-                                    "description": "A page token, received from a previous `ListStaticIps` call. will likely not be specified.",
+                                    "description": "Optional. A page token, received from a previous `ListStaticIps` call. will likely not be specified.",
                                     "location": "query",
                                     "type": "string"
                                 }
@@ -366,23 +366,23 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Filter request.",
+                                            "description": "Optional. Filter request.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
-                                            "description": "Order by fields for the result.",
+                                            "description": "Optional. Order by fields for the result.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                            "description": "Optional. Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "Page token received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token.",
+                                            "description": "Optional. Page token received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -564,6 +564,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -696,12 +701,12 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Filter request.",
+                                            "description": "Optional. Filter request.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
-                                            "description": "Order by fields for the result.",
+                                            "description": "Optional. Order by fields for the result.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -712,7 +717,7 @@
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must match the call that provided the page token.",
+                                            "description": "Optional. Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must match the call that provided the page token.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -839,23 +844,23 @@
                                             ],
                                             "parameters": {
                                                 "filter": {
-                                                    "description": "Filter request.",
+                                                    "description": "Optional. Filter request.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
                                                 "orderBy": {
-                                                    "description": "Order by fields for the result.",
+                                                    "description": "Optional. Order by fields for the result.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
                                                 "pageSize": {
-                                                    "description": "Maximum number of Routes to return. The service may return fewer than this value. If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                                    "description": "Optional. Maximum number of Routes to return. The service may return fewer than this value. If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                                     "format": "int32",
                                                     "location": "query",
                                                     "type": "integer"
                                                 },
                                                 "pageToken": {
-                                                    "description": "Page token received from a previous `ListRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRoutes` must match the call that provided the page token.",
+                                                    "description": "Optional. Page token received from a previous `ListRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRoutes` must match the call that provided the page token.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -994,23 +999,23 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Filter request.",
+                                            "description": "Optional. Filter request.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "orderBy": {
-                                            "description": "Order by fields for the result.",
+                                            "description": "Optional. Order by fields for the result.",
                                             "location": "query",
                                             "type": "string"
                                         },
                                         "pageSize": {
-                                            "description": "Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                            "description": "Optional. Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                             "format": "int32",
                                             "location": "query",
                                             "type": "integer"
                                         },
                                         "pageToken": {
-                                            "description": "Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreams` must match the call that provided the page token.",
+                                            "description": "Optional. Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreams` must match the call that provided the page token.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -1146,13 +1151,13 @@
                                             ],
                                             "parameters": {
                                                 "pageSize": {
-                                                    "description": "Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000.",
+                                                    "description": "Optional. Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000.",
                                                     "format": "int32",
                                                     "location": "query",
                                                     "type": "integer"
                                                 },
                                                 "pageToken": {
-                                                    "description": "Page token received from a previous `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreamObjectsRequest` must match the call that provided the page token.",
+                                                    "description": "Optional. Page token received from a previous `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreamObjectsRequest` must match the call that provided the page token.",
                                                     "location": "query",
                                                     "type": "string"
                                                 },
@@ -1302,6 +1307,10 @@
                     "$ref": "SalesforceOrg",
                     "description": "Salesforce data source objects to avoid backfilling"
                 },
+                "spannerExcludedObjects": {
+                    "$ref": "SpannerDatabase",
+                    "description": "Spanner data source objects to avoid backfilling."
+                },
                 "sqlServerExcludedObjects": {
                     "$ref": "SqlServerRdbms",
                     "description": "SQLServer data source objects to avoid backfilling"
@@ -1387,6 +1396,20 @@
             "properties": {},
             "type": "object"
         },
+        "BigQueryClustering": {
+            "description": "BigQuery clustering configuration.",
+            "id": "BigQueryClustering",
+            "properties": {
+                "columns": {
+                    "description": "Required. Column names to set as clustering columns.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "BigQueryDestinationConfig": {
             "description": "BigQuery destination configuration",
             "id": "BigQueryDestinationConfig",
@@ -1419,8 +1442,31 @@
             },
             "type": "object"
         },
+        "BigQueryPartitioning": {
+            "description": "BigQuery partitioning configuration.",
+            "id": "BigQueryPartitioning",
+            "properties": {
+                "ingestionTimePartition": {
+                    "$ref": "IngestionTimePartition",
+                    "description": "Ingestion time partitioning."
+                },
+                "integerRangePartition": {
+                    "$ref": "IntegerRangePartition",
+                    "description": "Integer range partitioning."
+                },
+                "requirePartitionFilter": {
+                    "description": "Optional. If true, queries over the table require a partition filter.",
+                    "type": "boolean"
+                },
+                "timeUnitPartition": {
+                    "$ref": "TimeUnitPartition",
+                    "description": "Time unit column partitioning."
+                }
+            },
+            "type": "object"
+        },
         "BigQueryProfile": {
-            "description": "BigQuery warehouse profile.",
+            "description": "Profile for connecting to a BigQuery destination.",
             "id": "BigQueryProfile",
             "properties": {},
             "type": "object"
@@ -1520,7 +1566,7 @@
             "properties": {
                 "bigqueryProfile": {
                     "$ref": "BigQueryProfile",
-                    "description": "BigQuery Connection Profile configuration."
+                    "description": "Profile for connecting to a BigQuery destination."
                 },
                 "createTime": {
                     "description": "Output only. The create time of the resource.",
@@ -1538,7 +1584,7 @@
                 },
                 "gcsProfile": {
                     "$ref": "GcsProfile",
-                    "description": "Cloud Storage ConnectionProfile configuration."
+                    "description": "Profile for connecting to a Cloud Storage destination."
                 },
                 "labels": {
                     "additionalProperties": {
@@ -1549,11 +1595,11 @@
                 },
                 "mongodbProfile": {
                     "$ref": "MongodbProfile",
-                    "description": "MongoDB Connection Profile configuration."
+                    "description": "Profile for connecting to a MongoDB source."
                 },
                 "mysqlProfile": {
                     "$ref": "MysqlProfile",
-                    "description": "MySQL ConnectionProfile configuration."
+                    "description": "Profile for connecting to a MySQL source."
                 },
                 "name": {
                     "description": "Output only. Identifier. The resource's name.",
@@ -1562,11 +1608,11 @@
                 },
                 "oracleProfile": {
                     "$ref": "OracleProfile",
-                    "description": "Oracle ConnectionProfile configuration."
+                    "description": "Profile for connecting to an Oracle source."
                 },
                 "postgresqlProfile": {
                     "$ref": "PostgresqlProfile",
-                    "description": "PostgreSQL Connection Profile configuration."
+                    "description": "Profile for connecting to a PostgreSQL source."
                 },
                 "privateConnectivity": {
                     "$ref": "PrivateConnectivity",
@@ -1574,7 +1620,7 @@
                 },
                 "salesforceProfile": {
                     "$ref": "SalesforceProfile",
-                    "description": "Salesforce Connection Profile configuration."
+                    "description": "Profile for connecting to a Salesforce source."
                 },
                 "satisfiesPzi": {
                     "description": "Output only. Reserved for future use.",
@@ -1586,9 +1632,13 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "spannerProfile": {
+                    "$ref": "SpannerProfile",
+                    "description": "Profile for connecting to a Spanner source."
+                },
                 "sqlServerProfile": {
                     "$ref": "SqlServerProfile",
-                    "description": "SQLServer Connection Profile configuration."
+                    "description": "Profile for connecting to a SQLServer source."
                 },
                 "staticServiceIpConnectivity": {
                     "$ref": "StaticServiceIpConnectivity",
@@ -1599,6 +1649,21 @@
                     "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CustomizationRule": {
+            "description": "A customization rule to apply to a set of objects.",
+            "id": "CustomizationRule",
+            "properties": {
+                "bigqueryClustering": {
+                    "$ref": "BigQueryClustering",
+                    "description": "BigQuery clustering rule."
+                },
+                "bigqueryPartitioning": {
+                    "$ref": "BigQueryPartitioning",
+                    "description": "BigQuery partitioning rule."
                 }
             },
             "type": "object"
@@ -1647,44 +1712,48 @@
             "properties": {
                 "connectionProfile": {
                     "$ref": "ConnectionProfile",
-                    "description": "An ad-hoc connection profile configuration."
+                    "description": "Optional. An ad-hoc connection profile configuration."
                 },
                 "connectionProfileName": {
-                    "description": "A reference to an existing connection profile.",
+                    "description": "Optional. A reference to an existing connection profile.",
                     "type": "string"
                 },
                 "fullHierarchy": {
-                    "description": "Whether to retrieve the full hierarchy of data objects (TRUE) or only the current level (FALSE).",
+                    "description": "Optional. Whether to retrieve the full hierarchy of data objects (TRUE) or only the current level (FALSE).",
                     "type": "boolean"
                 },
                 "hierarchyDepth": {
-                    "description": "The number of hierarchy levels below the current level to be retrieved.",
+                    "description": "Optional. The number of hierarchy levels below the current level to be retrieved.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "mongodbCluster": {
                     "$ref": "MongodbCluster",
-                    "description": "MongoDB cluster to enrich with child data objects and metadata."
+                    "description": "Optional. MongoDB cluster to enrich with child data objects and metadata."
                 },
                 "mysqlRdbms": {
                     "$ref": "MysqlRdbms",
-                    "description": "MySQL RDBMS to enrich with child data objects and metadata."
+                    "description": "Optional. MySQL RDBMS to enrich with child data objects and metadata."
                 },
                 "oracleRdbms": {
                     "$ref": "OracleRdbms",
-                    "description": "Oracle RDBMS to enrich with child data objects and metadata."
+                    "description": "Optional. Oracle RDBMS to enrich with child data objects and metadata."
                 },
                 "postgresqlRdbms": {
                     "$ref": "PostgresqlRdbms",
-                    "description": "PostgreSQL RDBMS to enrich with child data objects and metadata."
+                    "description": "Optional. PostgreSQL RDBMS to enrich with child data objects and metadata."
                 },
                 "salesforceOrg": {
                     "$ref": "SalesforceOrg",
-                    "description": "Salesforce organization to enrich with child data objects and metadata."
+                    "description": "Optional. Salesforce organization to enrich with child data objects and metadata."
+                },
+                "spannerDatabase": {
+                    "$ref": "SpannerDatabase",
+                    "description": "Optional. Spanner database to enrich with child data objects and metadata."
                 },
                 "sqlServerRdbms": {
                     "$ref": "SqlServerRdbms",
-                    "description": "SQLServer RDBMS to enrich with child data objects and metadata."
+                    "description": "Optional. SQLServer RDBMS to enrich with child data objects and metadata."
                 }
             },
             "type": "object"
@@ -1712,6 +1781,10 @@
                 "salesforceOrg": {
                     "$ref": "SalesforceOrg",
                     "description": "Enriched Salesforce organization."
+                },
+                "spannerDatabase": {
+                    "$ref": "SpannerDatabase",
+                    "description": "Enriched Spanner database."
                 },
                 "sqlServerRdbms": {
                     "$ref": "SqlServerRdbms",
@@ -1779,6 +1852,17 @@
                 },
                 "reason": {
                     "description": "A title that explains the reason for the error.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EventFilter": {
+            "description": "Represents a filter for included data on a stream object.",
+            "id": "EventFilter",
+            "properties": {
+                "sqlWhereClause": {
+                    "description": "An SQL-query Where clause selecting which data should be included, not including the \"WHERE\" keyword. e.g., `t.key1 = 'value1' AND t.key2 = 'value2'`",
                     "type": "string"
                 }
             },
@@ -1860,7 +1944,7 @@
             "type": "object"
         },
         "GcsProfile": {
-            "description": "Cloud Storage bucket profile.",
+            "description": "Profile for connecting to a Cloud Storage destination.",
             "id": "GcsProfile",
             "properties": {
                 "bucket": {
@@ -1868,7 +1952,7 @@
                     "type": "string"
                 },
                 "rootPath": {
-                    "description": "The root path inside the Cloud Storage bucket.",
+                    "description": "Optional. The root path inside the Cloud Storage bucket.",
                     "type": "string"
                 }
             },
@@ -1892,6 +1976,57 @@
                     "description": "Optional. Port for the connection.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "IngestionTimePartition": {
+            "description": "Ingestion time partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time",
+            "id": "IngestionTimePartition",
+            "properties": {
+                "partitioningTimeGranularity": {
+                    "description": "Optional. Partition granularity",
+                    "enum": [
+                        "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED",
+                        "PARTITIONING_TIME_GRANULARITY_HOUR",
+                        "PARTITIONING_TIME_GRANULARITY_DAY",
+                        "PARTITIONING_TIME_GRANULARITY_MONTH",
+                        "PARTITIONING_TIME_GRANULARITY_YEAR"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified partitioing interval.",
+                        "Hourly partitioning.",
+                        "Daily partitioning.",
+                        "Monthly partitioning.",
+                        "Yearly partitioning."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IntegerRangePartition": {
+            "description": "Integer range partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#integer_range",
+            "id": "IntegerRangePartition",
+            "properties": {
+                "column": {
+                    "description": "Required. The partitioning column.",
+                    "type": "string"
+                },
+                "end": {
+                    "description": "Required. The ending value for range partitioning (exclusive).",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "interval": {
+                    "description": "Required. The interval of each range within the partition.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "start": {
+                    "description": "Required. The starting value for range partitioning (inclusive).",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1986,6 +2121,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -2162,7 +2304,7 @@
             "id": "MongodbChangeStreamPosition",
             "properties": {
                 "startTime": {
-                    "description": "Required. The timestamp (in epoch seconds) to start change stream from.",
+                    "description": "Required. The timestamp to start change stream from.",
                     "format": "google-datetime",
                     "type": "string"
                 }
@@ -2188,7 +2330,7 @@
             "id": "MongodbCollection",
             "properties": {
                 "collection": {
-                    "description": "Collection name.",
+                    "description": "The collection name.",
                     "type": "string"
                 },
                 "fields": {
@@ -2213,7 +2355,7 @@
                     "type": "array"
                 },
                 "database": {
-                    "description": "Database name.",
+                    "description": "The database name.",
                     "type": "string"
                 }
             },
@@ -2224,7 +2366,7 @@
             "id": "MongodbField",
             "properties": {
                 "field": {
-                    "description": "Field name.",
+                    "description": "The field name.",
                     "type": "string"
                 }
             },
@@ -2246,9 +2388,16 @@
             "type": "object"
         },
         "MongodbProfile": {
-            "description": "MongoDB profile.",
+            "description": "Profile for connecting to a MongoDB source.",
             "id": "MongodbProfile",
             "properties": {
+                "additionalOptions": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Specifies additional options for the MongoDB connection. The options should be sent as key-value pairs, for example: `additional_options = {\"serverSelectionTimeoutMS\": \"10000\", \"directConnection\": \"true\"}`. Keys are case-sensitive and should match the official MongoDB connection string options: https://www.mongodb.com/docs/manual/reference/connection-string-options/ The server will not modify the values provided by the user.",
+                    "type": "object"
+                },
                 "hostAddresses": {
                     "description": "Required. List of host addresses for a MongoDB cluster. For SRV connection format, this list must contain exactly one DNS host without a port. For Standard connection format, this list must contain all the required hosts in the cluster with their respective ports.",
                     "items": {
@@ -2288,16 +2437,30 @@
             "type": "object"
         },
         "MongodbSourceConfig": {
-            "description": "MongoDB source configuration.",
+            "description": "Configuration for syncing data from a MongoDB source.",
             "id": "MongodbSourceConfig",
             "properties": {
                 "excludeObjects": {
                     "$ref": "MongodbCluster",
-                    "description": "MongoDB collections to exclude from the stream."
+                    "description": "The MongoDB collections to exclude from the stream."
                 },
                 "includeObjects": {
                     "$ref": "MongodbCluster",
-                    "description": "MongoDB collections to include in the stream."
+                    "description": "The MongoDB collections to include in the stream."
+                },
+                "jsonMode": {
+                    "description": "Optional. MongoDB JSON mode to use for the stream.",
+                    "enum": [
+                        "MONGODB_JSON_MODE_UNSPECIFIED",
+                        "STRICT",
+                        "CANONICAL"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified JSON mode.",
+                        "Strict JSON mode.",
+                        "Canonical JSON mode."
+                    ],
+                    "type": "string"
                 },
                 "maxConcurrentBackfillTasks": {
                     "description": "Optional. Maximum number of concurrent backfill tasks. The number should be non-negative and less than or equal to 50. If not set (or set to 0), the system's default value is used",
@@ -2360,7 +2523,7 @@
                     "type": "string"
                 },
                 "column": {
-                    "description": "Column name.",
+                    "description": "The column name.",
                     "type": "string"
                 },
                 "dataType": {
@@ -2403,7 +2566,7 @@
             "id": "MysqlDatabase",
             "properties": {
                 "database": {
-                    "description": "Database name.",
+                    "description": "The database name.",
                     "type": "string"
                 },
                 "mysqlTables": {
@@ -2459,7 +2622,7 @@
             "type": "object"
         },
         "MysqlProfile": {
-            "description": "MySQL database profile.",
+            "description": "Profile for connecting to a MySQL source.",
             "id": "MysqlProfile",
             "properties": {
                 "hostname": {
@@ -2505,7 +2668,7 @@
             "type": "object"
         },
         "MysqlSourceConfig": {
-            "description": "MySQL source configuration",
+            "description": "Configuration for syncing data from a MySQL source.",
             "id": "MysqlSourceConfig",
             "properties": {
                 "binaryLogPosition": {
@@ -2514,7 +2677,7 @@
                 },
                 "excludeObjects": {
                     "$ref": "MysqlRdbms",
-                    "description": "MySQL objects to exclude from the stream."
+                    "description": "The MySQL objects to exclude from the stream."
                 },
                 "gtid": {
                     "$ref": "Gtid",
@@ -2522,7 +2685,7 @@
                 },
                 "includeObjects": {
                     "$ref": "MysqlRdbms",
-                    "description": "MySQL objects to retrieve from the source."
+                    "description": "The MySQL objects to retrieve from the source."
                 },
                 "maxConcurrentBackfillTasks": {
                     "description": "Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.",
@@ -2583,7 +2746,7 @@
                     "type": "array"
                 },
                 "table": {
-                    "description": "Table name.",
+                    "description": "The table name.",
                     "type": "string"
                 }
             },
@@ -2610,6 +2773,17 @@
                 "secretManagerStoredClientSecret": {
                     "description": "Optional. A reference to a Secret Manager resource name storing the Salesforce OAuth2 client_secret. Mutually exclusive with the `client_secret` field.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ObjectFilter": {
+            "description": "Object filter to apply the rules to.",
+            "id": "ObjectFilter",
+            "properties": {
+                "sourceObjectIdentifier": {
+                    "$ref": "SourceObjectIdentifier",
+                    "description": "Specific source object identifier."
                 }
             },
             "type": "object"
@@ -2752,7 +2926,7 @@
             "id": "OracleColumn",
             "properties": {
                 "column": {
-                    "description": "Column name.",
+                    "description": "The column name.",
                     "type": "string"
                 },
                 "dataType": {
@@ -2810,7 +2984,7 @@
             "type": "object"
         },
         "OracleProfile": {
-            "description": "Oracle database profile.",
+            "description": "Profile for connecting to an Oracle source.",
             "id": "OracleProfile",
             "properties": {
                 "connectionAttributes": {
@@ -2882,7 +3056,7 @@
                     "type": "array"
                 },
                 "schema": {
-                    "description": "Schema name.",
+                    "description": "The schema name.",
                     "type": "string"
                 }
             },
@@ -2901,7 +3075,7 @@
             "type": "object"
         },
         "OracleSourceConfig": {
-            "description": "Oracle data source configuration",
+            "description": "Configuration for syncing data from an Oracle source.",
             "id": "OracleSourceConfig",
             "properties": {
                 "binaryLogParser": {
@@ -2914,11 +3088,11 @@
                 },
                 "excludeObjects": {
                     "$ref": "OracleRdbms",
-                    "description": "Oracle objects to exclude from the stream."
+                    "description": "The Oracle objects to exclude from the stream."
                 },
                 "includeObjects": {
                     "$ref": "OracleRdbms",
-                    "description": "Oracle objects to include in the stream."
+                    "description": "The Oracle objects to include in the stream."
                 },
                 "logMiner": {
                     "$ref": "LogMiner",
@@ -2973,7 +3147,7 @@
                     "type": "array"
                 },
                 "table": {
-                    "description": "Table name.",
+                    "description": "The table name.",
                     "type": "string"
                 }
             },
@@ -2984,7 +3158,7 @@
             "id": "PostgresqlColumn",
             "properties": {
                 "column": {
-                    "description": "Column name.",
+                    "description": "The column name.",
                     "type": "string"
                 },
                 "dataType": {
@@ -3038,7 +3212,7 @@
             "type": "object"
         },
         "PostgresqlProfile": {
-            "description": "PostgreSQL database profile.",
+            "description": "Profile for connecting to a PostgreSQL source.",
             "id": "PostgresqlProfile",
             "properties": {
                 "database": {
@@ -3099,23 +3273,23 @@
                     "type": "array"
                 },
                 "schema": {
-                    "description": "Schema name.",
+                    "description": "The schema name.",
                     "type": "string"
                 }
             },
             "type": "object"
         },
         "PostgresqlSourceConfig": {
-            "description": "PostgreSQL data source configuration",
+            "description": "Configuration for syncing data from a PostgreSQL source.",
             "id": "PostgresqlSourceConfig",
             "properties": {
                 "excludeObjects": {
                     "$ref": "PostgresqlRdbms",
-                    "description": "PostgreSQL objects to exclude from the stream."
+                    "description": "The PostgreSQL objects to exclude from the stream."
                 },
                 "includeObjects": {
                     "$ref": "PostgresqlRdbms",
-                    "description": "PostgreSQL objects to include in the stream."
+                    "description": "The PostgreSQL objects to include in the stream."
                 },
                 "maxConcurrentBackfillTasks": {
                     "description": "Maximum number of concurrent backfill tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.",
@@ -3160,7 +3334,7 @@
                     "type": "array"
                 },
                 "table": {
-                    "description": "Table name.",
+                    "description": "The table name.",
                     "type": "string"
                 }
             },
@@ -3311,6 +3485,24 @@
             },
             "type": "object"
         },
+        "RuleSet": {
+            "description": "A set of rules to apply to a set of objects.",
+            "id": "RuleSet",
+            "properties": {
+                "customizationRules": {
+                    "description": "Required. List of customization rules to apply.",
+                    "items": {
+                        "$ref": "CustomizationRule"
+                    },
+                    "type": "array"
+                },
+                "objectFilter": {
+                    "$ref": "ObjectFilter",
+                    "description": "Required. Object filter to apply the customization rules to."
+                }
+            },
+            "type": "object"
+        },
         "RunStreamRequest": {
             "description": "Request message for running a stream.",
             "id": "RunStreamRequest",
@@ -3335,7 +3527,7 @@
                     "type": "string"
                 },
                 "name": {
-                    "description": "Field name.",
+                    "description": "The field name.",
                     "type": "string"
                 },
                 "nillable": {
@@ -3357,7 +3549,7 @@
                     "type": "array"
                 },
                 "objectName": {
-                    "description": "Object name.",
+                    "description": "The object name.",
                     "type": "string"
                 }
             },
@@ -3389,7 +3581,7 @@
             "type": "object"
         },
         "SalesforceProfile": {
-            "description": "Salesforce profile",
+            "description": "Profile for connecting to a Salesforce source.",
             "id": "SalesforceProfile",
             "properties": {
                 "domain": {
@@ -3408,19 +3600,19 @@
             "type": "object"
         },
         "SalesforceSourceConfig": {
-            "description": "Salesforce source configuration",
+            "description": "Configuration for syncing data from a Salesforce source.",
             "id": "SalesforceSourceConfig",
             "properties": {
                 "excludeObjects": {
                     "$ref": "SalesforceOrg",
-                    "description": "Salesforce objects to exclude from the stream."
+                    "description": "The Salesforce objects to exclude from the stream."
                 },
                 "includeObjects": {
                     "$ref": "SalesforceOrg",
-                    "description": "Salesforce objects to retrieve from the source."
+                    "description": "The Salesforce objects to retrieve from the source."
                 },
                 "pollingInterval": {
-                    "description": "Required. Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.",
+                    "description": "Required. Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be from `5 minutes` to `24 hours`, inclusive.",
                     "format": "google-duration",
                     "type": "string"
                 }
@@ -3504,6 +3696,10 @@
                     "description": "Required. Source connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`",
                     "type": "string"
                 },
+                "spannerSourceConfig": {
+                    "$ref": "SpannerSourceConfig",
+                    "description": "Spanner data source configuration."
+                },
                 "sqlServerSourceConfig": {
                     "$ref": "SqlServerSourceConfig",
                     "description": "SQLServer data source configuration."
@@ -3550,9 +3746,170 @@
                     "$ref": "SalesforceObjectIdentifier",
                     "description": "Salesforce data source object identifier."
                 },
+                "spannerIdentifier": {
+                    "$ref": "SpannerObjectIdentifier",
+                    "description": "Spanner data source object identifier."
+                },
                 "sqlServerIdentifier": {
                     "$ref": "SqlServerObjectIdentifier",
                     "description": "SQLServer data source object identifier."
+                }
+            },
+            "type": "object"
+        },
+        "SpannerColumn": {
+            "description": "Spanner column.",
+            "id": "SpannerColumn",
+            "properties": {
+                "column": {
+                    "description": "Required. The column name.",
+                    "type": "string"
+                },
+                "dataType": {
+                    "description": "Optional. Spanner data type.",
+                    "type": "string"
+                },
+                "isPrimaryKey": {
+                    "description": "Optional. Whether or not the column is a primary key.",
+                    "type": "boolean"
+                },
+                "ordinalPosition": {
+                    "description": "Optional. The ordinal position of the column in the table.",
+                    "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SpannerDatabase": {
+            "description": "Spanner database structure.",
+            "id": "SpannerDatabase",
+            "properties": {
+                "schemas": {
+                    "description": "Optional. Spanner schemas in the database.",
+                    "items": {
+                        "$ref": "SpannerSchema"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SpannerObjectIdentifier": {
+            "description": "Spanner data source object identifier.",
+            "id": "SpannerObjectIdentifier",
+            "properties": {
+                "schema": {
+                    "description": "Optional. The schema name.",
+                    "type": "string"
+                },
+                "table": {
+                    "description": "Required. The table name.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SpannerProfile": {
+            "description": "Profile for connecting to a Spanner source.",
+            "id": "SpannerProfile",
+            "properties": {
+                "database": {
+                    "description": "Required. Immutable. Cloud Spanner database resource. This field is immutable. Must be in the format: projects/{project}/instances/{instance}/databases/{database_id}.",
+                    "type": "string"
+                },
+                "host": {
+                    "description": "Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (https://spanner.googleapis.com). Must be in the format: https://spanner.{region}.rep.googleapis.com.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SpannerSchema": {
+            "description": "Spanner schema.",
+            "id": "SpannerSchema",
+            "properties": {
+                "schema": {
+                    "description": "Required. The schema name.",
+                    "type": "string"
+                },
+                "tables": {
+                    "description": "Optional. Spanner tables in the schema.",
+                    "items": {
+                        "$ref": "SpannerTable"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "SpannerSourceConfig": {
+            "description": "Configuration for syncing data from a Spanner source.",
+            "id": "SpannerSourceConfig",
+            "properties": {
+                "backfillDataBoostEnabled": {
+                    "description": "Optional. Whether to use Data Boost for Spanner backfills. Defaults to false if not set.",
+                    "type": "boolean"
+                },
+                "changeStreamName": {
+                    "description": "Required. Immutable. The change stream name to use for the stream.",
+                    "type": "string"
+                },
+                "excludeObjects": {
+                    "$ref": "SpannerDatabase",
+                    "description": "Optional. The Spanner objects to avoid retrieving. If some objects are both included and excluded, an error will be thrown."
+                },
+                "fgacRole": {
+                    "description": "Optional. The FGAC role to use for the stream.",
+                    "type": "string"
+                },
+                "includeObjects": {
+                    "$ref": "SpannerDatabase",
+                    "description": "Optional. The Spanner objects to retrieve from the data source. If some objects are both included and excluded, an error will be thrown."
+                },
+                "maxConcurrentBackfillTasks": {
+                    "description": "Optional. Maximum number of concurrent backfill tasks.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "maxConcurrentCdcTasks": {
+                    "description": "Optional. Maximum number of concurrent CDC tasks.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "spannerRpcPriority": {
+                    "description": "Optional. The RPC priority to use for the stream.",
+                    "enum": [
+                        "SPANNER_RPC_PRIORITY_UNSPECIFIED",
+                        "LOW",
+                        "MEDIUM",
+                        "HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified RPC priority.",
+                        "Low RPC priority.",
+                        "Medium RPC priority.",
+                        "High RPC priority."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SpannerTable": {
+            "description": "Spanner table.",
+            "id": "SpannerTable",
+            "properties": {
+                "columns": {
+                    "description": "Optional. Spanner columns in the table.",
+                    "items": {
+                        "$ref": "SpannerColumn"
+                    },
+                    "type": "array"
+                },
+                "table": {
+                    "description": "Required. The table name.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -3595,7 +3952,7 @@
             "id": "SqlServerColumn",
             "properties": {
                 "column": {
-                    "description": "Column name.",
+                    "description": "The column name.",
                     "type": "string"
                 },
                 "dataType": {
@@ -3660,7 +4017,7 @@
             "type": "object"
         },
         "SqlServerProfile": {
-            "description": "SQLServer database profile.",
+            "description": "Profile for connecting to a SQLServer source.",
             "id": "SqlServerProfile",
             "properties": {
                 "database": {
@@ -3714,7 +4071,7 @@
             "id": "SqlServerSchema",
             "properties": {
                 "schema": {
-                    "description": "Schema name.",
+                    "description": "The schema name.",
                     "type": "string"
                 },
                 "tables": {
@@ -3728,7 +4085,7 @@
             "type": "object"
         },
         "SqlServerSourceConfig": {
-            "description": "SQLServer data source configuration",
+            "description": "Configuration for syncing data from a SQLServer source.",
             "id": "SqlServerSourceConfig",
             "properties": {
                 "changeTables": {
@@ -3737,11 +4094,11 @@
                 },
                 "excludeObjects": {
                     "$ref": "SqlServerRdbms",
-                    "description": "SQLServer objects to exclude from the stream."
+                    "description": "The SQLServer objects to exclude from the stream."
                 },
                 "includeObjects": {
                     "$ref": "SqlServerRdbms",
-                    "description": "SQLServer objects to include in the stream."
+                    "description": "The SQLServer objects to include in the stream."
                 },
                 "maxConcurrentBackfillTasks": {
                     "description": "Max concurrent backfill tasks.",
@@ -3791,7 +4148,7 @@
                     "type": "array"
                 },
                 "table": {
-                    "description": "Table name.",
+                    "description": "The table name.",
                     "type": "string"
                 }
             },
@@ -3814,7 +4171,8 @@
             "id": "StandardConnectionFormat",
             "properties": {
                 "directConnection": {
-                    "description": "Optional. Specifies whether the client connects directly to the host[:port] in the connection URI.",
+                    "deprecated": true,
+                    "description": "Optional. Deprecated: Use the `additional_options` map to specify the `directConnection` parameter instead. For example: `additional_options = {\"directConnection\": \"true\"}`. Specifies whether the client connects directly to the host[:port] in the connection URI.",
                     "type": "boolean"
                 }
             },
@@ -3823,7 +4181,12 @@
         "StartBackfillJobRequest": {
             "description": "Request for manually initiating a backfill job for a specific stream object.",
             "id": "StartBackfillJobRequest",
-            "properties": {},
+            "properties": {
+                "eventFilter": {
+                    "$ref": "EventFilter",
+                    "description": "Optional. Optional event filter. If not set, or empty, the backfill will be performed on the entire object. This is currently used for partial backfill and only supported for SQL Server sources."
+                }
+            },
             "type": "object"
         },
         "StartBackfillJobResponse": {
@@ -3943,6 +4306,13 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "ruleSets": {
+                    "description": "Optional. Rule sets to apply to the stream.",
+                    "items": {
+                        "$ref": "RuleSet"
+                    },
+                    "type": "array"
+                },
                 "satisfiesPzi": {
                     "description": "Output only. Reserved for future use.",
                     "readOnly": true,
@@ -4012,6 +4382,14 @@
                     "readOnly": true,
                     "type": "string"
                 },
+                "customizationRules": {
+                    "description": "Output only. The customization rules for the object. These rules are derived from the parent Stream's `rule_sets` and represent the intended configuration for the object.",
+                    "items": {
+                        "$ref": "CustomizationRule"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "displayName": {
                     "description": "Required. Display name.",
                     "type": "string"
@@ -4037,6 +4415,35 @@
                     "description": "Output only. The last update time of the object.",
                     "format": "google-datetime",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TimeUnitPartition": {
+            "description": "Time unit column partitioning. see https://cloud.google.com/bigquery/docs/partitioned-tables#date_timestamp_partitioned_tables",
+            "id": "TimeUnitPartition",
+            "properties": {
+                "column": {
+                    "description": "Required. The partitioning column.",
+                    "type": "string"
+                },
+                "partitioningTimeGranularity": {
+                    "description": "Optional. Partition granularity.",
+                    "enum": [
+                        "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED",
+                        "PARTITIONING_TIME_GRANULARITY_HOUR",
+                        "PARTITIONING_TIME_GRANULARITY_DAY",
+                        "PARTITIONING_TIME_GRANULARITY_MONTH",
+                        "PARTITIONING_TIME_GRANULARITY_YEAR"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified partitioing interval.",
+                        "Hourly partitioning.",
+                        "Daily partitioning.",
+                        "Monthly partitioning.",
+                        "Yearly partitioning."
+                    ],
                     "type": "string"
                 }
             },

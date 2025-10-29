@@ -204,6 +204,14 @@ class OperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -219,12 +227,15 @@ class OperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -344,6 +355,58 @@ class UsersEnvironmentsResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Generates an access token for the user's environment.
+  ///
+  /// Request parameters:
+  ///
+  /// [environment] - Required. The environment to generate the access token
+  /// for.
+  /// Value must have pattern `^users/\[^/\]+/environments/\[^/\]+$`.
+  ///
+  /// [expireTime] - Desired expiration time of the access token. This value
+  /// must be at most 24 hours in the future. If a value is not specified, the
+  /// token's expiration time will be set to a default value of 1 hour in the
+  /// future.
+  ///
+  /// [ttl] - Desired lifetime duration of the access token. This value must be
+  /// at most 24 hours. If a value is not specified, the token's lifetime will
+  /// be set to a default value of 1 hour.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GenerateAccessTokenResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GenerateAccessTokenResponse> generateAccessToken(
+    core.String environment, {
+    core.String? expireTime,
+    core.String? ttl,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (expireTime != null) 'expireTime': [expireTime],
+      if (ttl != null) 'ttl': [ttl],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$environment') + ':generateAccessToken';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GenerateAccessTokenResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Gets an environment.
@@ -664,6 +727,21 @@ class Environment {
   };
 }
 
+/// Response message for GenerateAccessToken.
+class GenerateAccessTokenResponse {
+  /// The access token.
+  core.String? accessToken;
+
+  GenerateAccessTokenResponse({this.accessToken});
+
+  GenerateAccessTokenResponse.fromJson(core.Map json_)
+    : this(accessToken: json_['accessToken'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accessToken != null) 'accessToken': accessToken!,
+  };
+}
+
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -672,7 +750,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -685,11 +775,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

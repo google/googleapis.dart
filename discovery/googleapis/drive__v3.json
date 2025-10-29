@@ -51,7 +51,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250910",
+    "revision": "20260128",
     "rootUrl": "https://www.googleapis.com/",
     "servicePath": "drive/v3/",
     "title": "Google Drive API",
@@ -265,6 +265,86 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/drive",
                         "https://www.googleapis.com/auth/drive.file"
+                    ]
+                }
+            }
+        },
+        "approvals": {
+            "methods": {
+                "get": {
+                    "description": "Gets an Approval by ID.",
+                    "flatPath": "files/{fileId}/approvals/{approvalId}",
+                    "httpMethod": "GET",
+                    "id": "drive.approvals.get",
+                    "parameterOrder": [
+                        "fileId",
+                        "approvalId"
+                    ],
+                    "parameters": {
+                        "approvalId": {
+                            "description": "Required. The ID of the Approval.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "fileId": {
+                            "description": "Required. The ID of the file the Approval is on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals/{approvalId}",
+                    "response": {
+                        "$ref": "Approval"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.appdata",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata",
+                        "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.readonly"
+                    ]
+                },
+                "list": {
+                    "description": "Lists the Approvals on a file.",
+                    "flatPath": "files/{fileId}/approvals",
+                    "httpMethod": "GET",
+                    "id": "drive.approvals.list",
+                    "parameterOrder": [
+                        "fileId"
+                    ],
+                    "parameters": {
+                        "fileId": {
+                            "description": "Required. The ID of the file the Approval is on.",
+                            "location": "path",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of Approvals to return. When not set, at most 100 Approvals will be returned.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of nextPageToken from a previous response.",
+                            "location": "query",
+                            "type": "string"
+                        }
+                    },
+                    "path": "files/{fileId}/approvals",
+                    "response": {
+                        "$ref": "ApprovalList"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/drive",
+                        "https://www.googleapis.com/auth/drive.appdata",
+                        "https://www.googleapis.com/auth/drive.file",
+                        "https://www.googleapis.com/auth/drive.metadata",
+                        "https://www.googleapis.com/auth/drive.metadata.readonly",
+                        "https://www.googleapis.com/auth/drive.readonly"
                     ]
                 }
             }
@@ -1465,7 +1545,7 @@
                     "parameterOrder": [],
                     "parameters": {
                         "corpora": {
-                            "description": "Bodies of items (files or documents) to which the query applies. Supported bodies are: * `user` * `domain` * `drive` * `allDrives` Prefer `user` or `drive` to `allDrives` for efficiency. By default, corpora is set to `user`. However, this can change depending on the filter set through the `q` parameter. For more information, see [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).",
+                            "description": "Specifies a collection of items (files or documents) to which the query applies. Supported items include: * `user` * `domain` * `drive` * `allDrives` Prefer `user` or `drive` to `allDrives` for efficiency. By default, corpora is set to `user`. However, this can change depending on the filter set through the `q` parameter. For more information, see [File organization](https://developers.google.com/workspace/drive/api/guides/about-files#file-organization).",
                             "location": "query",
                             "type": "string"
                         },
@@ -1512,7 +1592,7 @@
                             "type": "boolean"
                         },
                         "orderBy": {
-                            "description": "A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. * `folder`: The folder ID. This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The last time the file was modified by the user. * `modifiedTime`: The last time the file was modified by anyone. * `name`: The name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The name of the file. This field is sorted using natural sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file. * `recency`: The most recent timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with the user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The last time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.",
+                            "description": "A comma-separated list of sort keys. Valid keys are: * `createdTime`: When the file was created. Avoid using this key for queries on large item collections as it might result in timeouts or other issues. For time-related sorting on large item collections, use `modifiedTime` instead. * `folder`: The folder ID. This field is sorted using alphabetical ordering. * `modifiedByMeTime`: The last time the file was modified by the user. * `modifiedTime`: The last time the file was modified by anyone. * `name`: The name of the file. This field is sorted using alphabetical ordering, so 1, 12, 2, 22. * `name_natural`: The name of the file. This field is sorted using natural sort ordering, so 1, 2, 12, 22. * `quotaBytesUsed`: The number of storage quota bytes used by the file. * `recency`: The most recent timestamp from the file's date-time fields. * `sharedWithMeTime`: When the file was shared with the user, if applicable. * `starred`: Whether the user has starred the file. * `viewedByMeTime`: The last time the file was viewed by the user. Each key sorts ascending by default, but can be reversed with the `desc` modifier. Example usage: `?orderBy=folder,modifiedTime desc,name`.",
                             "location": "query",
                             "type": "string"
                         },
@@ -1854,7 +1934,7 @@
         "permissions": {
             "methods": {
                 "create": {
-                    "description": "Creates a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
+                    "description": "Creates a permission for a file or shared drive. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions",
                     "httpMethod": "POST",
                     "id": "drive.permissions.create",
@@ -1888,7 +1968,7 @@
                         },
                         "moveToNewOwnersRoot": {
                             "default": "false",
-                            "description": "This parameter will only take effect if the item is not in a shared drive and the request is attempting to transfer the ownership of the item. If set to `true`, the item will be moved to the new owner's My Drive root folder and all prior parents removed. If set to `false`, parents are not changed.",
+                            "description": "This parameter only takes effect if the item isn't in a shared drive and the request is attempting to transfer the ownership of the item. If set to `true`, the item is moved to the new owner's My Drive root folder and all prior parents removed. If set to `false`, parents aren't changed.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -1912,13 +1992,13 @@
                         },
                         "transferOwnership": {
                             "default": "false",
-                            "description": "Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This parameter is required as an acknowledgement of the side effect.",
+                            "description": "Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This parameter is required as an acknowledgement of the side effect. For more information, see [Transfer file ownership](https://developers.google.com/workspace/drive/api/guides/transfer-file).",
                             "location": "query",
                             "type": "boolean"
                         },
                         "useDomainAdminAccess": {
                             "default": "false",
-                            "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs.",
+                            "description": "Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1936,7 +2016,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a permission. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
+                    "description": "Deletes a permission. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "DELETE",
                     "id": "drive.permissions.delete",
@@ -1978,7 +2058,7 @@
                         },
                         "useDomainAdminAccess": {
                             "default": "false",
-                            "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs.",
+                            "description": "Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -1990,7 +2070,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Gets a permission by ID.",
+                    "description": "Gets a permission by ID. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "GET",
                     "id": "drive.permissions.get",
@@ -2026,7 +2106,7 @@
                         },
                         "useDomainAdminAccess": {
                             "default": "false",
-                            "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs.",
+                            "description": "Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -2046,7 +2126,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists a file's or shared drive's permissions.",
+                    "description": "Lists a file's or shared drive's permissions. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing).",
                     "flatPath": "files/{fileId}/permissions",
                     "httpMethod": "GET",
                     "id": "drive.permissions.list",
@@ -2061,7 +2141,7 @@
                             "type": "string"
                         },
                         "includePermissionsForView": {
-                            "description": "Specifies which additional view's permissions to include in the response. Only 'published' is supported.",
+                            "description": "Specifies which additional view's permissions to include in the response. Only `published` is supported.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2074,7 +2154,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from the previous response.",
                             "location": "query",
                             "type": "string"
                         },
@@ -2093,7 +2173,7 @@
                         },
                         "useDomainAdminAccess": {
                             "default": "false",
-                            "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs.",
+                            "description": "Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -2113,7 +2193,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a permission with patch semantics. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
+                    "description": "Updates a permission with patch semantics. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). **Warning:** Concurrent permissions operations on the same file aren't supported; only the last update is applied.",
                     "flatPath": "files/{fileId}/permissions/{permissionId}",
                     "httpMethod": "PATCH",
                     "id": "drive.permissions.update",
@@ -2161,13 +2241,13 @@
                         },
                         "transferOwnership": {
                             "default": "false",
-                            "description": "Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This parameter is required as an acknowledgement of the side effect.",
+                            "description": "Whether to transfer ownership to the specified user and downgrade the current owner to a writer. This parameter is required as an acknowledgement of the side effect. For more information, see [Transfer file ownership](https://developers.google.com//workspace/drive/api/guides/transfer-file).",
                             "location": "query",
                             "type": "boolean"
                         },
                         "useDomainAdminAccess": {
                             "default": "false",
-                            "description": "Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs.",
+                            "description": "Issue the request as a domain administrator. If set to `true`, and if the following additional conditions are met, the requester is granted access: 1. The file ID parameter refers to a shared drive. 2. The requester is an administrator of the domain to which the shared drive belongs. For more information, see [Manage shared drives as domain administrators](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives#manage-administrators).",
                             "location": "query",
                             "type": "boolean"
                         }
@@ -2189,7 +2269,7 @@
         "replies": {
             "methods": {
                 "create": {
-                    "description": "Creates a reply to a comment.",
+                    "description": "Creates a reply to a comment. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).",
                     "flatPath": "files/{fileId}/comments/{commentId}/replies",
                     "httpMethod": "POST",
                     "id": "drive.replies.create",
@@ -2224,7 +2304,7 @@
                     ]
                 },
                 "delete": {
-                    "description": "Deletes a reply.",
+                    "description": "Deletes a reply. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).",
                     "flatPath": "files/{fileId}/comments/{commentId}/replies/{replyId}",
                     "httpMethod": "DELETE",
                     "id": "drive.replies.delete",
@@ -2260,7 +2340,7 @@
                     ]
                 },
                 "get": {
-                    "description": "Gets a reply by ID.",
+                    "description": "Gets a reply by ID. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).",
                     "flatPath": "files/{fileId}/comments/{commentId}/replies/{replyId}",
                     "httpMethod": "GET",
                     "id": "drive.replies.get",
@@ -2284,7 +2364,7 @@
                         },
                         "includeDeleted": {
                             "default": "false",
-                            "description": "Whether to return deleted replies. Deleted replies will not include their original content.",
+                            "description": "Whether to return deleted replies. Deleted replies don't include their original content.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -2307,7 +2387,7 @@
                     ]
                 },
                 "list": {
-                    "description": "Lists a comment's replies.",
+                    "description": "Lists a comment's replies. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).",
                     "flatPath": "files/{fileId}/comments/{commentId}/replies",
                     "httpMethod": "GET",
                     "id": "drive.replies.list",
@@ -2330,7 +2410,7 @@
                         },
                         "includeDeleted": {
                             "default": "false",
-                            "description": "Whether to include deleted replies. Deleted replies will not include their original content.",
+                            "description": "Whether to include deleted replies. Deleted replies don't include their original content.",
                             "location": "query",
                             "type": "boolean"
                         },
@@ -2344,7 +2424,7 @@
                             "type": "integer"
                         },
                         "pageToken": {
-                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.",
+                            "description": "The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from the previous response.",
                             "location": "query",
                             "type": "string"
                         }
@@ -2361,7 +2441,7 @@
                     ]
                 },
                 "update": {
-                    "description": "Updates a reply with patch semantics.",
+                    "description": "Updates a reply with patch semantics. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).",
                     "flatPath": "files/{fileId}/comments/{commentId}/replies/{replyId}",
                     "httpMethod": "PATCH",
                     "id": "drive.replies.update",
@@ -2483,7 +2563,7 @@
                     "useMediaDownloadService": true
                 },
                 "list": {
-                    "description": "Lists a file's revisions. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).",
+                    "description": "Lists a file's revisions. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions). **Important:** The list of revisions returned by this method might be incomplete for files with a large revision history, including frequently edited Google Docs, Sheets, and Slides. Older revisions might be omitted from the response, meaning the first revision returned may not be the oldest existing revision. The revision history visible in the Workspace editor user interface might be more complete than the list returned by the API.",
                     "flatPath": "files/{fileId}/revisions",
                     "httpMethod": "GET",
                     "id": "drive.revisions.list",
@@ -3088,6 +3168,100 @@
             },
             "type": "object"
         },
+        "Approval": {
+            "description": "Metadata for an approval. An approval is a review/approve process for a Drive item.",
+            "id": "Approval",
+            "properties": {
+                "approvalId": {
+                    "description": "The Approval ID.",
+                    "type": "string"
+                },
+                "completeTime": {
+                    "description": "Output only. The time time the approval was completed.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "createTime": {
+                    "description": "Output only. The time the approval was created.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "dueTime": {
+                    "description": "The time that the approval is due.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "initiator": {
+                    "$ref": "User",
+                    "description": "The user that requested the Approval."
+                },
+                "kind": {
+                    "description": "This is always drive#approval.",
+                    "type": "string"
+                },
+                "modifyTime": {
+                    "description": "Output only. The most recent time the approval was modified.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "reviewerResponses": {
+                    "description": "The responses made on the Approval by reviewers.",
+                    "items": {
+                        "$ref": "ReviewerResponse"
+                    },
+                    "type": "array"
+                },
+                "status": {
+                    "description": "Output only. The status of the approval at the time this resource was requested.",
+                    "enum": [
+                        "STATUS_UNSPECIFIED",
+                        "IN_PROGRESS",
+                        "APPROVED",
+                        "CANCELLED",
+                        "DECLINED"
+                    ],
+                    "enumDescriptions": [
+                        "Approval status has not been set or was set to an invalid value.",
+                        "The approval process has started and not finished.",
+                        "The approval process is finished and the target was approved.",
+                        "The approval process was cancelled before it finished.",
+                        "The approval process is finished and the target was declined."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "targetFileId": {
+                    "description": "Target file id of the approval.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ApprovalList": {
+            "description": "The response of an Approvals list request.",
+            "id": "ApprovalList",
+            "properties": {
+                "items": {
+                    "description": "The list of Approvals. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+                    "items": {
+                        "$ref": "Approval"
+                    },
+                    "type": "array"
+                },
+                "kind": {
+                    "description": "This is always drive#approvalList",
+                    "type": "string"
+                },
+                "nextPageToken": {
+                    "description": "The page token for the next page of Approvals. This will be absent if the end of the Approvals list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Change": {
             "description": "A change to a file or shared drive.",
             "id": "Change",
@@ -3231,6 +3405,11 @@
                     "description": "A region of the document represented as a JSON string. For details on defining anchor properties, refer to [Manage comments and replies](https://developers.google.com/workspace/drive/api/v3/manage-comments).",
                     "type": "string"
                 },
+                "assigneeEmailAddress": {
+                    "description": "Output only. The email address of the user assigned to this comment. If no user is assigned, the field is unset.",
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "author": {
                     "$ref": "User",
                     "description": "Output only. The author of the comment. The author's email address and permission ID will not be populated."
@@ -3266,6 +3445,14 @@
                     "default": "drive#comment",
                     "description": "Output only. Identifies what kind of resource this is. Value: the fixed string `\"drive#comment\"`.",
                     "type": "string"
+                },
+                "mentionedEmailAddresses": {
+                    "description": "Output only. A list of email addresses for users mentioned in this comment. If no users are mentioned, the list is empty.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
                 },
                 "modifiedTime": {
                     "description": "The last time the comment or any of its replies was modified (RFC 3339 date-time).",
@@ -4608,7 +4795,7 @@
             "type": "object"
         },
         "Permission": {
-            "description": "A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder hierarchy. By default, permissions requests only return a subset of fields. Permission kind, ID, type, and role are always returned. To retrieve specific fields, see https://developers.google.com/workspace/drive/api/guides/fields-parameter. Some resource methods (such as `permissions.update`) require a `permissionId`. Use the `permissions.list` method to retrieve the ID for a file, folder, or shared drive.",
+            "description": "A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder hierarchy. For more information, see [Share files, folders, and drives](https://developers.google.com/workspace/drive/api/guides/manage-sharing). By default, permission requests only return a subset of fields. Permission `kind`, `ID`, `type`, and `role` are always returned. To retrieve specific fields, see [Return specific fields](https://developers.google.com/workspace/drive/api/guides/fields-parameter). Some resource methods (such as `permissions.update`) require a `permissionId`. Use the `permissions.list` method to retrieve the ID for a file, folder, or shared drive.",
             "id": "Permission",
             "properties": {
                 "allowFileDiscovery": {
@@ -4616,11 +4803,11 @@
                     "type": "boolean"
                 },
                 "deleted": {
-                    "description": "Output only. Whether the account associated with this permission has been deleted. This field only pertains to user and group permissions.",
+                    "description": "Output only. Whether the account associated with this permission has been deleted. This field only pertains to permissions of type `user` or `group`.",
                     "type": "boolean"
                 },
                 "displayName": {
-                    "description": "Output only. The \"pretty\" name of the value of the permission. The following is a list of examples for each type of permission: * `user` - User's full name, as defined for their Google account, such as \"Joe Smith.\" * `group` - Name of the Google Group, such as \"The Company Administrators.\" * `domain` - String domain name, such as \"thecompany.com.\" * `anyone` - No `displayName` is present.",
+                    "description": "Output only. The \"pretty\" name of the value of the permission. The following is a list of examples for each type of permission: * `user` - User's full name, as defined for their Google Account, such as \"Dana A.\" * `group` - Name of the Google Group, such as \"The Company Administrators.\" * `domain` - String domain name, such as \"cymbalgroup.com.\" * `anyone` - No `displayName` is present.",
                     "type": "string"
                 },
                 "domain": {
@@ -4637,11 +4824,11 @@
                     "type": "string"
                 },
                 "id": {
-                    "description": "Output only. The ID of this permission. This is a unique identifier for the grantee, and is published in User resources as `permissionId`. IDs should be treated as opaque values.",
+                    "description": "Output only. The ID of this permission. This is a unique identifier for the grantee, and is published in the [User resource](https://developers.google.com/workspace/drive/api/reference/rest/v3/User) as `permissionId`. IDs should be treated as opaque values.",
                     "type": "string"
                 },
                 "inheritedPermissionsDisabled": {
-                    "description": "When true, only organizers, owners, and users with permissions added directly on the item can access it.",
+                    "description": "When `true`, only organizers, owners, and users with permissions added directly on the item can access it.",
                     "type": "boolean"
                 },
                 "kind": {
@@ -4650,11 +4837,11 @@
                     "type": "string"
                 },
                 "pendingOwner": {
-                    "description": "Whether the account associated with this permission is a pending owner. Only populated for `user` type permissions for files that are not in a shared drive.",
+                    "description": "Whether the account associated with this permission is a pending owner. Only populated for permissions of type `user` for files that aren't in a shared drive.",
                     "type": "boolean"
                 },
                 "permissionDetails": {
-                    "description": "Output only. Details of whether the permissions on this item are inherited or directly on this item.",
+                    "description": "Output only. Details of whether the permissions on this item are inherited or are directly on this item.",
                     "items": {
                         "properties": {
                             "inherited": {
@@ -4666,11 +4853,11 @@
                                 "type": "string"
                             },
                             "permissionType": {
-                                "description": "Output only. The permission type for this user. While new values may be added in future, the following are currently possible: * `file` * `member`",
+                                "description": "Output only. The permission type for this user. Supported values include: * `file` * `member`",
                                 "type": "string"
                             },
                             "role": {
-                                "description": "Output only. The primary role for this user. While new values may be added in the future, the following are currently possible: * `owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader`",
+                                "description": "Output only. The primary role for this user. Supported values include: * `owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader` For more information, see [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).",
                                 "type": "string"
                             }
                         },
@@ -4689,7 +4876,7 @@
                             "drive.permissions.create"
                         ]
                     },
-                    "description": "The role granted by this permission. While new values may be supported in the future, the following are currently allowed: * `owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader`",
+                    "description": "The role granted by this permission. Supported values include: * `owner` * `organizer` * `fileOrganizer` * `writer` * `commenter` * `reader` For more information, see [Roles and permissions](https://developers.google.com/workspace/drive/api/guides/ref-roles).",
                     "type": "string"
                 },
                 "teamDrivePermissionDetails": {
@@ -4729,11 +4916,11 @@
                             "drive.permissions.create"
                         ]
                     },
-                    "description": "The type of the grantee. Valid values are: * `user` * `group` * `domain` * `anyone` When creating a permission, if `type` is `user` or `group`, you must provide an `emailAddress` for the user or group. When `type` is `domain`, you must provide a `domain`. There isn't extra information required for an `anyone` type.",
+                    "description": "The type of the grantee. Supported values include: * `user` * `group` * `domain` * `anyone` When creating a permission, if `type` is `user` or `group`, you must provide an `emailAddress` for the user or group. If `type` is `domain`, you must provide a `domain`. If `type` is `anyone`, no extra information is required.",
                     "type": "string"
                 },
                 "view": {
-                    "description": "Indicates the view for this permission. Only populated for permissions that belong to a view. published and metadata are the only supported values. - published: The permission's role is published_reader. - metadata: The item is only visible to the metadata view because the item has limited access and the scope has at least read access to the parent. Note: The metadata view is currently only supported on folders. ",
+                    "description": "Indicates the view for this permission. Only populated for permissions that belong to a view. The only supported values are `published` and `metadata`: * `published`: The permission's role is `publishedReader`. * `metadata`: The item is only visible to the `metadata` view because the item has limited access and the scope has at least read access to the parent. The `metadata` view is only supported on folders. For more information, see [Views](https://developers.google.com/workspace/drive/api/guides/ref-roles#views).",
                     "type": "string"
                 }
             },
@@ -4753,7 +4940,7 @@
                     "type": "string"
                 },
                 "permissions": {
-                    "description": "The list of permissions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+                    "description": "The list of permissions. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "Permission"
                     },
@@ -4767,12 +4954,17 @@
             "id": "Reply",
             "properties": {
                 "action": {
-                    "description": "The action the reply performed to the parent comment. Valid values are: * `resolve` * `reopen`",
+                    "description": "The action the reply performed to the parent comment. The supported values are: * `resolve` * `reopen`",
+                    "type": "string"
+                },
+                "assigneeEmailAddress": {
+                    "description": "Output only. The email address of the user assigned to this comment. If no user is assigned, the field is unset.",
+                    "readOnly": true,
                     "type": "string"
                 },
                 "author": {
                     "$ref": "User",
-                    "description": "Output only. The author of the reply. The author's email address and permission ID will not be populated."
+                    "description": "Output only. The author of the reply. The author's email address and permission ID won't be populated."
                 },
                 "content": {
                     "annotations": {
@@ -4780,7 +4972,7 @@
                             "drive.replies.update"
                         ]
                     },
-                    "description": "The plain text content of the reply. This field is used for setting the content, while `htmlContent` should be displayed. This is required on creates if no `action` is specified.",
+                    "description": "The plain text content of the reply. This field is used for setting the content, while `htmlContent` should be displayed. This field is required by the `create` method if no `action` value is specified.",
                     "type": "string"
                 },
                 "createdTime": {
@@ -4805,6 +4997,14 @@
                     "description": "Output only. Identifies what kind of resource this is. Value: the fixed string `\"drive#reply\"`.",
                     "type": "string"
                 },
+                "mentionedEmailAddresses": {
+                    "description": "Output only. A list of email addresses for users mentioned in this comment. If no users are mentioned, the list is empty.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "modifiedTime": {
                     "description": "The last time the reply was modified (RFC 3339 date-time).",
                     "format": "date-time",
@@ -4827,7 +5027,7 @@
                     "type": "string"
                 },
                 "replies": {
-                    "description": "The list of replies. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched.",
+                    "description": "The list of replies. If `nextPageToken` is populated, then this list may be incomplete and an additional page of results should be fetched.",
                     "items": {
                         "$ref": "Reply"
                     },
@@ -4868,6 +5068,37 @@
                 "view": {
                     "description": "Optional. Indicates the view for this access proposal. This should only be set when the proposal belongs to a view. Only `published` is supported.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ReviewerResponse": {
+            "description": "A response on an Approval made by a specific Reviewer.",
+            "id": "ReviewerResponse",
+            "properties": {
+                "kind": {
+                    "description": "This is always drive#reviewerResponse.",
+                    "type": "string"
+                },
+                "response": {
+                    "description": "A Reviewer’s Response for the Approval.",
+                    "enum": [
+                        "RESPONSE_UNSPECIFIED",
+                        "NO_RESPONSE",
+                        "APPROVED",
+                        "DECLINED"
+                    ],
+                    "enumDescriptions": [
+                        "Response was set to an unrecognized value.",
+                        "The reviewer has not yet responded",
+                        "The Reviewer has approved the item.",
+                        "The Reviewer has declined the item."
+                    ],
+                    "type": "string"
+                },
+                "reviewer": {
+                    "$ref": "User",
+                    "description": "The user that is responsible for this response."
                 }
             },
             "type": "object"

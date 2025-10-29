@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250710",
+    "revision": "20251121",
     "rootUrl": "https://notebooks.googleapis.com/",
     "servicePath": "",
     "title": "Notebooks API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -503,7 +503,7 @@
                                     ],
                                     "parameters": {
                                         "name": {
-                                            "description": "Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
+                                            "description": "Output only. Identifier. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
                                             "location": "path",
                                             "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
                                             "required": true,
@@ -953,6 +953,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v2/{+name}/operations",
@@ -993,9 +998,11 @@
                         "NVIDIA_L4",
                         "NVIDIA_H100_80GB",
                         "NVIDIA_H100_MEGA_80GB",
+                        "NVIDIA_H200_141GB",
                         "NVIDIA_TESLA_T4_VWS",
                         "NVIDIA_TESLA_P100_VWS",
-                        "NVIDIA_TESLA_P4_VWS"
+                        "NVIDIA_TESLA_P4_VWS",
+                        "NVIDIA_B200"
                     ],
                     "enumDescriptions": [
                         "Accelerator type is not specified.",
@@ -1008,9 +1015,11 @@
                         "Accelerator type is Nvidia Tesla L4.",
                         "Accelerator type is Nvidia Tesla H100 - 80GB.",
                         "Accelerator type is Nvidia Tesla H100 - MEGA 80GB.",
+                        "Accelerator type is Nvidia Tesla H200 - 141GB.",
                         "Accelerator type is NVIDIA Tesla T4 Virtual Workstations.",
                         "Accelerator type is NVIDIA Tesla P100 Virtual Workstations.",
-                        "Accelerator type is NVIDIA Tesla P4 Virtual Workstations."
+                        "Accelerator type is NVIDIA Tesla P4 Virtual Workstations.",
+                        "Accelerator type is NVIDIA B200."
                     ],
                     "type": "string"
                 }
@@ -1080,14 +1089,16 @@
                         "PD_STANDARD",
                         "PD_SSD",
                         "PD_BALANCED",
-                        "PD_EXTREME"
+                        "PD_EXTREME",
+                        "HYPERDISK_BALANCED"
                     ],
                     "enumDescriptions": [
                         "Disk type not set.",
                         "Standard persistent disk type.",
                         "SSD persistent disk type.",
                         "Balanced persistent disk type.",
-                        "Extreme persistent disk type."
+                        "Extreme persistent disk type.",
+                        "Hyperdisk Balanced persistent disk type."
                     ],
                     "type": "string"
                 },
@@ -1256,20 +1267,29 @@
                         "PD_STANDARD",
                         "PD_SSD",
                         "PD_BALANCED",
-                        "PD_EXTREME"
+                        "PD_EXTREME",
+                        "HYPERDISK_BALANCED"
                     ],
                     "enumDescriptions": [
                         "Disk type not set.",
                         "Standard persistent disk type.",
                         "SSD persistent disk type.",
                         "Balanced persistent disk type.",
-                        "Extreme persistent disk type."
+                        "Extreme persistent disk type.",
+                        "Hyperdisk Balanced persistent disk type."
                     ],
                     "type": "string"
                 },
                 "kmsKey": {
                     "description": "Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.",
                     "type": "string"
+                },
+                "resourcePolicies": {
+                    "description": "Optional. The resource policies to apply to the data disk.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1453,6 +1473,11 @@
                 "gpuDriverConfig": {
                     "$ref": "GPUDriverConfig",
                     "description": "Optional. Configuration for GPU drivers."
+                },
+                "instanceId": {
+                    "description": "Output only. The unique ID of the Compute Engine instance resource.",
+                    "readOnly": true,
+                    "type": "string"
                 },
                 "machineType": {
                     "description": "Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource",
@@ -1639,7 +1664,7 @@
                     "type": "object"
                 },
                 "name": {
-                    "description": "Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
+                    "description": "Output only. Identifier. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1766,6 +1791,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }

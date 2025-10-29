@@ -384,9 +384,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2945,6 +2945,16 @@ class TransferConfig {
   /// Output only.
   Status? error;
 
+  /// The classification of the destination table.
+  /// Possible string values are:
+  /// - "MANAGED_TABLE_TYPE_UNSPECIFIED" : Type unspecified. This defaults to
+  /// `NATIVE` table.
+  /// - "NATIVE" : The managed table is a native BigQuery table. This is the
+  /// default value.
+  /// - "BIGLAKE" : The managed table is a BigQuery table for Apache Iceberg
+  /// (formerly BigLake managed tables), with a BigLake configuration.
+  core.String? managedTableType;
+
   /// Identifier.
   ///
   /// The resource name of the transfer config. Transfer config names have the
@@ -3042,6 +3052,7 @@ class TransferConfig {
     this.emailPreferences,
     this.encryptionConfiguration,
     this.error,
+    this.managedTableType,
     this.name,
     this.nextRunTime,
     this.notificationPubsubTopic,
@@ -3083,6 +3094,7 @@ class TransferConfig {
                   json_['error'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        managedTableType: json_['managedTableType'] as core.String?,
         name: json_['name'] as core.String?,
         nextRunTime: json_['nextRunTime'] as core.String?,
         notificationPubsubTopic:
@@ -3130,6 +3142,7 @@ class TransferConfig {
     if (encryptionConfiguration != null)
       'encryptionConfiguration': encryptionConfiguration!,
     if (error != null) 'error': error!,
+    if (managedTableType != null) 'managedTableType': managedTableType!,
     if (name != null) 'name': name!,
     if (nextRunTime != null) 'nextRunTime': nextRunTime!,
     if (notificationPubsubTopic != null)

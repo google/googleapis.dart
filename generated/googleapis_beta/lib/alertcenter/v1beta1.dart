@@ -45,7 +45,8 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// Note: The current version of this API (v1beta1) is available to all Google
 /// Workspace customers.
 class AlertCenterApi {
-  /// See and delete your domain's G Suite alerts, and send alert feedback
+  /// See and delete your domain's Google Workspace alerts, and send alert
+  /// feedback
   static const appsAlertsScope = 'https://www.googleapis.com/auth/apps.alerts';
 
   final commons.ApiRequester _requester;

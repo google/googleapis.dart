@@ -1478,6 +1478,50 @@ class ProjectsDatabasesDocumentsResource {
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Executes a pipeline query.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [database] - Required. Database identifier, in the form
+  /// `projects/{project}/databases/{database}`.
+  /// Value must have pattern `^projects/\[^/\]+/databases/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ExecutePipelineResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ExecutePipelineResponse> executePipeline(
+    ExecutePipelineRequest request,
+    core.String database, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$database') + '/documents:executePipeline';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return ExecutePipelineResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Gets a single document.
   ///
   /// Request parameters:
@@ -2230,6 +2274,14 @@ class ProjectsDatabasesOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2245,12 +2297,15 @@ class ProjectsDatabasesOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2623,9 +2678,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -3540,6 +3595,155 @@ class DocumentTransform {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// The request for Firestore.ExecutePipeline.
+class ExecutePipelineRequest {
+  /// Execute the pipeline in a new transaction.
+  ///
+  /// The identifier of the newly created transaction will be returned in the
+  /// first response on the stream. This defaults to a read-only transaction.
+  TransactionOptions? newTransaction;
+
+  /// Execute the pipeline in a snapshot transaction at the given time.
+  ///
+  /// This must be a microsecond precision timestamp within the past one hour,
+  /// or if Point-in-Time Recovery is enabled, can additionally be a whole
+  /// minute timestamp within the past 7 days.
+  core.String? readTime;
+
+  /// A pipelined operation.
+  StructuredPipeline? structuredPipeline;
+
+  /// Run the query within an already active transaction.
+  ///
+  /// The value here is the opaque transaction ID to execute the query in.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ExecutePipelineRequest({
+    this.newTransaction,
+    this.readTime,
+    this.structuredPipeline,
+    this.transaction,
+  });
+
+  ExecutePipelineRequest.fromJson(core.Map json_)
+    : this(
+        newTransaction:
+            json_.containsKey('newTransaction')
+                ? TransactionOptions.fromJson(
+                  json_['newTransaction']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        readTime: json_['readTime'] as core.String?,
+        structuredPipeline:
+            json_.containsKey('structuredPipeline')
+                ? StructuredPipeline.fromJson(
+                  json_['structuredPipeline']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        transaction: json_['transaction'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (newTransaction != null) 'newTransaction': newTransaction!,
+    if (readTime != null) 'readTime': readTime!,
+    if (structuredPipeline != null) 'structuredPipeline': structuredPipeline!,
+    if (transaction != null) 'transaction': transaction!,
+  };
+}
+
+/// The response for Firestore.Execute.
+class ExecutePipelineResponse {
+  /// The time at which the results are valid.
+  ///
+  /// This is a (not strictly) monotonically increasing value across multiple
+  /// responses in the same stream. The API guarantees that all previously
+  /// returned results are still valid at the latest `execution_time`. This
+  /// allows the API consumer to treat the query if it ran at the latest
+  /// `execution_time` returned. If the query returns no results, a response
+  /// with `execution_time` and no `results` will be sent, and this represents
+  /// the time at which the operation was run.
+  core.String? executionTime;
+
+  /// Query explain stats.
+  ///
+  /// This is present on the **last** response if the request configured explain
+  /// to run in 'analyze' or 'explain' mode in the pipeline options. If the
+  /// query does not return any results, a response with `explain_stats` and no
+  /// `results` will still be sent.
+  ExplainStats? explainStats;
+
+  /// An ordered batch of results returned executing a pipeline.
+  ///
+  /// The batch size is variable, and can even be zero for when only a partial
+  /// progress message is returned. The fields present in the returned documents
+  /// are only those that were explicitly requested in the pipeline, this
+  /// includes those like `__name__` and `__update_time__`. This is explicitly a
+  /// divergence from `Firestore.RunQuery` / `Firestore.GetDocument` RPCs which
+  /// always return such fields even when they are not specified in the `mask`.
+  core.List<Document>? results;
+
+  /// Newly created transaction identifier.
+  ///
+  /// This field is only specified as part of the first response from the
+  /// server, alongside the `results` field when the original request specified
+  /// ExecuteRequest.new_transaction.
+  core.String? transaction;
+  core.List<core.int> get transactionAsBytes =>
+      convert.base64.decode(transaction!);
+
+  set transactionAsBytes(core.List<core.int> bytes_) {
+    transaction = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  ExecutePipelineResponse({
+    this.executionTime,
+    this.explainStats,
+    this.results,
+    this.transaction,
+  });
+
+  ExecutePipelineResponse.fromJson(core.Map json_)
+    : this(
+        executionTime: json_['executionTime'] as core.String?,
+        explainStats:
+            json_.containsKey('explainStats')
+                ? ExplainStats.fromJson(
+                  json_['explainStats'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        results:
+            (json_['results'] as core.List?)
+                ?.map(
+                  (value) => Document.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        transaction: json_['transaction'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (executionTime != null) 'executionTime': executionTime!,
+    if (explainStats != null) 'explainStats': explainStats!,
+    if (results != null) 'results': results!,
+    if (transaction != null) 'transaction': transaction!,
+  };
+}
+
 /// Execution statistics for the query.
 typedef ExecutionStats = $ExecutionStats;
 
@@ -3580,6 +3784,35 @@ class ExplainMetrics {
 
 /// Explain options for the query.
 typedef ExplainOptions = $ExplainOptions;
+
+/// Pipeline explain stats.
+///
+/// Depending on the explain options in the original request, this can contain
+/// the optimized plan and / or execution stats.
+class ExplainStats {
+  /// The format depends on the `output_format` options in the request.
+  ///
+  /// Currently there are two supported options: `TEXT` and `JSON`. Both supply
+  /// a `google.protobuf.StringValue`.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  ExplainStats({this.data});
+
+  ExplainStats.fromJson(core.Map json_)
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (data != null) 'data': data!,
+  };
+}
 
 /// A filter on a specific field.
 class FieldFilter {
@@ -3950,6 +4183,59 @@ class FindNearest {
     if (limit != null) 'limit': limit!,
     if (queryVector != null) 'queryVector': queryVector!,
     if (vectorField != null) 'vectorField': vectorField!,
+  };
+}
+
+/// Represents an unevaluated scalar expression.
+///
+/// For example, the expression `like(user_name, "%alice%")` is represented as:
+/// ``` name: "like" args { field_reference: "user_name" } args { string_value:
+/// "%alice%" } ```
+class Function_ {
+  /// Ordered list of arguments the given function expects.
+  ///
+  /// Optional.
+  core.List<Value>? args;
+
+  /// The name of the function to evaluate.
+  ///
+  /// **Requires:** * must be in snake case (lower case with underscore
+  /// separator).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Optional named arguments that certain functions may support.
+  ///
+  /// Optional.
+  core.Map<core.String, Value>? options;
+
+  Function_({this.args, this.name, this.options});
+
+  Function_.fromJson(core.Map json_)
+    : this(
+        args:
+            (json_['args'] as core.List?)
+                ?.map(
+                  (value) => Value.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        options: (json_['options'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Value.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (args != null) 'args': args!,
+    if (name != null) 'name': name!,
+    if (options != null) 'options': options!,
   };
 }
 
@@ -4364,17 +4650,23 @@ class GoogleFirestoreAdminV1Database {
   GoogleFirestoreAdminV1CmekConfig? cmekConfig;
 
   /// The concurrency control mode to use for this database.
+  ///
+  /// If unspecified in a CreateDatabase request, this will default based on the
+  /// database edition: Optimistic for Enterprise and Pessimistic for all other
+  /// databases.
   /// Possible string values are:
   /// - "CONCURRENCY_MODE_UNSPECIFIED" : Not used.
   /// - "OPTIMISTIC" : Use optimistic concurrency control by default. This mode
-  /// is available for Cloud Firestore databases.
+  /// is available for Cloud Firestore databases. This is the default setting
+  /// for Cloud Firestore Enterprise Edition databases.
   /// - "PESSIMISTIC" : Use pessimistic concurrency control by default. This
   /// mode is available for Cloud Firestore databases. This is the default
-  /// setting for Cloud Firestore.
+  /// setting for Cloud Firestore Standard Edition databases.
   /// - "OPTIMISTIC_WITH_ENTITY_GROUPS" : Use optimistic concurrency control
-  /// with entity groups by default. This is the only available mode for Cloud
-  /// Datastore. This mode is also available for Cloud Firestore with Datastore
-  /// Mode but is not recommended.
+  /// with entity groups by default. This mode is enabled for some databases
+  /// that were automatically upgraded from Cloud Datastore to Cloud Firestore
+  /// with Datastore Mode. It is not recommended for any new databases, and not
+  /// supported for Firestore Native databases.
   core.String? concurrencyMode;
 
   /// The timestamp at which this database was created.
@@ -4426,6 +4718,21 @@ class GoogleFirestoreAdminV1Database {
   /// has an up-to-date value before proceeding.
   core.String? etag;
 
+  /// The Firestore API data access mode to use for this database.
+  ///
+  /// If not set on write: - the default value is DATA_ACCESS_MODE_DISABLED for
+  /// Enterprise Edition. - the default value is DATA_ACCESS_MODE_ENABLED for
+  /// Standard Edition.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATA_ACCESS_MODE_UNSPECIFIED" : Not Used.
+  /// - "DATA_ACCESS_MODE_ENABLED" : Accessing the database through the API is
+  /// allowed.
+  /// - "DATA_ACCESS_MODE_DISABLED" : Accessing the database through the API is
+  /// disallowed.
+  core.String? firestoreDataAccessMode;
+
   /// Background: Free tier is the ability of a Firestore database to use a
   /// small amount of resources every day without being charged.
   ///
@@ -4456,6 +4763,21 @@ class GoogleFirestoreAdminV1Database {
   /// https://cloud.google.com/firestore/docs/locations.
   core.String? locationId;
 
+  /// The MongoDB compatible API data access mode to use for this database.
+  ///
+  /// If not set on write, the default value is DATA_ACCESS_MODE_ENABLED for
+  /// Enterprise Edition. The value is always DATA_ACCESS_MODE_DISABLED for
+  /// Standard Edition.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DATA_ACCESS_MODE_UNSPECIFIED" : Not Used.
+  /// - "DATA_ACCESS_MODE_ENABLED" : Accessing the database through the API is
+  /// allowed.
+  /// - "DATA_ACCESS_MODE_DISABLED" : Accessing the database through the API is
+  /// disallowed.
+  core.String? mongodbCompatibleDataAccessMode;
+
   /// The resource name of the Database.
   ///
   /// Format: `projects/{project}/databases/{database}`
@@ -4479,6 +4801,19 @@ class GoogleFirestoreAdminV1Database {
   ///
   /// Output only.
   core.String? previousId;
+
+  /// The default Realtime Updates mode to use for this database.
+  ///
+  /// Immutable.
+  /// Possible string values are:
+  /// - "REALTIME_UPDATES_MODE_UNSPECIFIED" : The Realtime Updates feature is
+  /// not specified.
+  /// - "REALTIME_UPDATES_MODE_ENABLED" : The Realtime Updates feature is
+  /// enabled by default. This could potentially degrade write performance for
+  /// the database.
+  /// - "REALTIME_UPDATES_MODE_DISABLED" : The Realtime Updates feature is
+  /// disabled by default.
+  core.String? realtimeUpdatesMode;
 
   /// Information about the provenance of this database.
   ///
@@ -4537,12 +4872,15 @@ class GoogleFirestoreAdminV1Database {
     this.deleteTime,
     this.earliestVersionTime,
     this.etag,
+    this.firestoreDataAccessMode,
     this.freeTier,
     this.keyPrefix,
     this.locationId,
+    this.mongodbCompatibleDataAccessMode,
     this.name,
     this.pointInTimeRecoveryEnablement,
     this.previousId,
+    this.realtimeUpdatesMode,
     this.sourceInfo,
     this.tags,
     this.type,
@@ -4568,13 +4906,18 @@ class GoogleFirestoreAdminV1Database {
         deleteTime: json_['deleteTime'] as core.String?,
         earliestVersionTime: json_['earliestVersionTime'] as core.String?,
         etag: json_['etag'] as core.String?,
+        firestoreDataAccessMode:
+            json_['firestoreDataAccessMode'] as core.String?,
         freeTier: json_['freeTier'] as core.bool?,
         keyPrefix: json_['keyPrefix'] as core.String?,
         locationId: json_['locationId'] as core.String?,
+        mongodbCompatibleDataAccessMode:
+            json_['mongodbCompatibleDataAccessMode'] as core.String?,
         name: json_['name'] as core.String?,
         pointInTimeRecoveryEnablement:
             json_['pointInTimeRecoveryEnablement'] as core.String?,
         previousId: json_['previousId'] as core.String?,
+        realtimeUpdatesMode: json_['realtimeUpdatesMode'] as core.String?,
         sourceInfo:
             json_.containsKey('sourceInfo')
                 ? GoogleFirestoreAdminV1SourceInfo.fromJson(
@@ -4603,13 +4946,19 @@ class GoogleFirestoreAdminV1Database {
     if (earliestVersionTime != null)
       'earliestVersionTime': earliestVersionTime!,
     if (etag != null) 'etag': etag!,
+    if (firestoreDataAccessMode != null)
+      'firestoreDataAccessMode': firestoreDataAccessMode!,
     if (freeTier != null) 'freeTier': freeTier!,
     if (keyPrefix != null) 'keyPrefix': keyPrefix!,
     if (locationId != null) 'locationId': locationId!,
+    if (mongodbCompatibleDataAccessMode != null)
+      'mongodbCompatibleDataAccessMode': mongodbCompatibleDataAccessMode!,
     if (name != null) 'name': name!,
     if (pointInTimeRecoveryEnablement != null)
       'pointInTimeRecoveryEnablement': pointInTimeRecoveryEnablement!,
     if (previousId != null) 'previousId': previousId!,
+    if (realtimeUpdatesMode != null)
+      'realtimeUpdatesMode': realtimeUpdatesMode!,
     if (sourceInfo != null) 'sourceInfo': sourceInfo!,
     if (tags != null) 'tags': tags!,
     if (type != null) 'type': type!,
@@ -4629,7 +4978,7 @@ typedef GoogleFirestoreAdminV1EnableUserCredsRequest = $Empty;
 /// Encryption configuration for a new database being created from another
 /// source.
 ///
-/// The source could be a Backup .
+/// The source could be a Backup or a PitrSnapshot.
 class GoogleFirestoreAdminV1EncryptionConfig {
   /// Use Customer Managed Encryption Keys (CMEK) for encryption.
   GoogleFirestoreAdminV1CustomerManagedEncryptionOptions?
@@ -4684,10 +5033,10 @@ class GoogleFirestoreAdminV1EncryptionConfig {
 
 /// The request for FirestoreAdmin.ExportDocuments.
 class GoogleFirestoreAdminV1ExportDocumentsRequest {
-  /// Which collection IDs to export.
+  /// IDs of the collection groups to export.
   ///
-  /// Unspecified means all collections. Each collection ID in this list must be
-  /// unique.
+  /// Unspecified means all collection groups. Each collection group in this
+  /// list must be unique.
   core.List<core.String>? collectionIds;
 
   /// An empty list represents all namespaces.
@@ -4824,10 +5173,10 @@ typedef GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions = $Empty;
 
 /// The request for FirestoreAdmin.ImportDocuments.
 class GoogleFirestoreAdminV1ImportDocumentsRequest {
-  /// Which collection IDs to import.
+  /// IDs of the collection groups to import.
   ///
-  /// Unspecified means all collections included in the import. Each collection
-  /// ID in this list must be unique.
+  /// Unspecified means all collection groups that were included in the export.
+  /// Each collection group in this list must be unique.
   core.List<core.String>? collectionIds;
 
   /// Location of the exported files.
@@ -5754,9 +6103,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -5770,11 +6128,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -6165,6 +6528,32 @@ class PartitionQueryResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (partitions != null) 'partitions': partitions!,
+  };
+}
+
+/// A Firestore query represented as an ordered list of operations / stages.
+class Pipeline {
+  /// Ordered list of stages to evaluate.
+  ///
+  /// Required.
+  core.List<Stage>? stages;
+
+  Pipeline({this.stages});
+
+  Pipeline.fromJson(core.Map json_)
+    : this(
+        stages:
+            (json_['stages'] as core.List?)
+                ?.map(
+                  (value) => Stage.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (stages != null) 'stages': stages!,
   };
 }
 
@@ -6627,6 +7016,62 @@ class RunQueryResponseElement {
 /// The response for Firestore.RunQuery.
 typedef RunQueryResponse = core.List<RunQueryResponseElement>;
 
+/// A single operation within a pipeline.
+///
+/// A stage is made up of a unique name, and a list of arguments. The exact
+/// number of arguments & types is dependent on the stage type. To give an
+/// example, the stage `filter(state = "MD")` would be encoded as: ``` name:
+/// "filter" args { function_value { name: "eq" args { field_reference_value:
+/// "state" } args { string_value: "MD" } } } ``` See public documentation for
+/// the full list.
+class Stage {
+  /// Ordered list of arguments the given stage expects.
+  ///
+  /// Optional.
+  core.List<Value>? args;
+
+  /// The name of the stage to evaluate.
+  ///
+  /// **Requires:** * must be in snake case (lower case with underscore
+  /// separator).
+  ///
+  /// Required.
+  core.String? name;
+
+  /// Optional named arguments that certain functions may support.
+  ///
+  /// Optional.
+  core.Map<core.String, Value>? options;
+
+  Stage({this.args, this.name, this.options});
+
+  Stage.fromJson(core.Map json_)
+    : this(
+        args:
+            (json_['args'] as core.List?)
+                ?.map(
+                  (value) => Value.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+        options: (json_['options'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Value.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
+            ),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (args != null) 'args': args!,
+    if (name != null) 'name': name!,
+    if (options != null) 'options': options!,
+  };
+}
+
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
 ///
@@ -6673,6 +7118,49 @@ class StructuredAggregationQuery {
   core.Map<core.String, core.dynamic> toJson() => {
     if (aggregations != null) 'aggregations': aggregations!,
     if (structuredQuery != null) 'structuredQuery': structuredQuery!,
+  };
+}
+
+/// A Firestore query represented as an ordered list of operations / stages.
+///
+/// This is considered the top-level function which plans and executes a query.
+/// It is logically equivalent to `query(stages, options)`, but prevents the
+/// client from having to build a function wrapper.
+class StructuredPipeline {
+  /// Optional query-level arguments.
+  ///
+  ///
+  ///
+  /// Optional.
+  core.Map<core.String, Value>? options;
+
+  /// The pipeline query to execute.
+  ///
+  /// Required.
+  Pipeline? pipeline;
+
+  StructuredPipeline({this.options, this.pipeline});
+
+  StructuredPipeline.fromJson(core.Map json_)
+    : this(
+        options: (json_['options'] as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                Value.fromJson(value as core.Map<core.String, core.dynamic>),
+              ),
+            ),
+        pipeline:
+            json_.containsKey('pipeline')
+                ? Pipeline.fromJson(
+                  json_['pipeline'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (options != null) 'options': options!,
+    if (pipeline != null) 'pipeline': pipeline!,
   };
 }
 
@@ -6968,6 +7456,19 @@ class Value {
   /// A double value.
   core.double? doubleValue;
 
+  /// Value which references a field.
+  ///
+  /// This is considered relative (vs absolute) since it only refers to a field
+  /// and not a field within a particular document. **Requires:** * Must follow
+  /// field reference limitations. * Not allowed to be used when writing
+  /// documents.
+  core.String? fieldReferenceValue;
+
+  /// A value that represents an unevaluated expression.
+  ///
+  /// **Requires:** * Not allowed to be used when writing documents.
+  Function_? functionValue;
+
   /// A geo point value representing a point on the surface of Earth.
   LatLng? geoPointValue;
 
@@ -6981,6 +7482,11 @@ class Value {
   /// Possible string values are:
   /// - "NULL_VALUE" : Null value.
   core.String? nullValue;
+
+  /// A value that represents an unevaluated pipeline.
+  ///
+  /// **Requires:** * Not allowed to be used when writing documents.
+  Pipeline? pipelineValue;
 
   /// A reference to a document.
   ///
@@ -7006,10 +7512,13 @@ class Value {
     this.booleanValue,
     this.bytesValue,
     this.doubleValue,
+    this.fieldReferenceValue,
+    this.functionValue,
     this.geoPointValue,
     this.integerValue,
     this.mapValue,
     this.nullValue,
+    this.pipelineValue,
     this.referenceValue,
     this.stringValue,
     this.timestampValue,
@@ -7026,6 +7535,13 @@ class Value {
         booleanValue: json_['booleanValue'] as core.bool?,
         bytesValue: json_['bytesValue'] as core.String?,
         doubleValue: (json_['doubleValue'] as core.num?)?.toDouble(),
+        fieldReferenceValue: json_['fieldReferenceValue'] as core.String?,
+        functionValue:
+            json_.containsKey('functionValue')
+                ? Function_.fromJson(
+                  json_['functionValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         geoPointValue:
             json_.containsKey('geoPointValue')
                 ? LatLng.fromJson(
@@ -7040,6 +7556,12 @@ class Value {
                 )
                 : null,
         nullValue: json_.containsKey('nullValue') ? 'NULL_VALUE' : null,
+        pipelineValue:
+            json_.containsKey('pipelineValue')
+                ? Pipeline.fromJson(
+                  json_['pipelineValue'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         referenceValue: json_['referenceValue'] as core.String?,
         stringValue: json_['stringValue'] as core.String?,
         timestampValue: json_['timestampValue'] as core.String?,
@@ -7050,10 +7572,14 @@ class Value {
     if (booleanValue != null) 'booleanValue': booleanValue!,
     if (bytesValue != null) 'bytesValue': bytesValue!,
     if (doubleValue != null) 'doubleValue': doubleValue!,
+    if (fieldReferenceValue != null)
+      'fieldReferenceValue': fieldReferenceValue!,
+    if (functionValue != null) 'functionValue': functionValue!,
     if (geoPointValue != null) 'geoPointValue': geoPointValue!,
     if (integerValue != null) 'integerValue': integerValue!,
     if (mapValue != null) 'mapValue': mapValue!,
     if (nullValue != null) 'nullValue': nullValue!,
+    if (pipelineValue != null) 'pipelineValue': pipelineValue!,
     if (referenceValue != null) 'referenceValue': referenceValue!,
     if (stringValue != null) 'stringValue': stringValue!,
     if (timestampValue != null) 'timestampValue': timestampValue!,

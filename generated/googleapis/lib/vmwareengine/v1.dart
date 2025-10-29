@@ -25,6 +25,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAnnouncementsResource]
+///     - [ProjectsLocationsDatastoresResource]
 ///     - [ProjectsLocationsDnsBindPermissionResource]
 ///     - [ProjectsLocationsNetworkPeeringsResource]
 ///       - [ProjectsLocationsNetworkPeeringsPeeringRoutesResource]
@@ -97,6 +98,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsAnnouncementsResource get announcements =>
       ProjectsLocationsAnnouncementsResource(_requester);
+  ProjectsLocationsDatastoresResource get datastores =>
+      ProjectsLocationsDatastoresResource(_requester);
   ProjectsLocationsDnsBindPermissionResource get dnsBindPermission =>
       ProjectsLocationsDnsBindPermissionResource(_requester);
   ProjectsLocationsNetworkPeeringsResource get networkPeerings =>
@@ -201,9 +204,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -376,6 +379,314 @@ class ProjectsLocationsAnnouncementsResource {
     return ListAnnouncementsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class ProjectsLocationsDatastoresResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDatastoresResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new `Datastore` resource in a given project and location.
+  ///
+  /// Datastores are regional resources
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location to create the new
+  /// datastore in. Resource names are schemeless URIs that follow the
+  /// conventions in https://cloud.google.com/apis/design/resource_names. For
+  /// example: `projects/my-project/locations/us-central1`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [datastoreId] - Required. The user-provided identifier of the datastore to
+  /// be created. This identifier must be unique among each `Datastore` within
+  /// the parent and becomes the final token in the name URI. The identifier
+  /// must meet the following requirements: * Only contains 1-63 alphanumeric
+  /// characters and hyphens * Begins with an alphabetical character * Ends with
+  /// a non-hyphen character * Not formatted as a UUID * Complies with
+  /// [RFC 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+  ///
+  /// [requestId] - Optional. The request ID must be a valid UUID with the
+  /// exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    Datastore request,
+    core.String parent, {
+    core.String? datastoreId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (datastoreId != null) 'datastoreId': [datastoreId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/datastores';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a `Datastore` resource.
+  ///
+  /// You can only delete a Datastore after all resources that refer to it are
+  /// deleted. For example, multiple clusters of the same private cloud or
+  /// different private clouds can refer to the same datastore.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Datastore to be deleted.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/datastore/my-datastore`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datastores/\[^/\]+$`.
+  ///
+  /// [etag] - Optional. Checksum used to ensure that the user-provided value is
+  /// up to date before the server processes the request. The server compares
+  /// provided checksum with the current checksum of the resource. If the
+  /// user-provided value is out of date, this request returns an `ABORTED`
+  /// error.
+  ///
+  /// [requestId] - Optional. The request ID must be a valid UUID with the
+  /// exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Retrieves a `Datastore` resource by its resource name.
+  ///
+  /// The resource contains details of the Datastore, such as its description,
+  /// subnets, type, and more.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the Datastore to retrieve.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/datastores/my-datastore`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datastores/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Datastore].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Datastore> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Datastore.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists `Datastore` resources in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The resource name of the location to query for
+  /// Datastores. Resource names are schemeless URIs that follow the conventions
+  /// in https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. A filter expression that matches resources returned
+  /// in the response. The expression must specify the field name, a comparison
+  /// operator, and the value that you want to use for filtering. The value must
+  /// be a string, a number, or a boolean. The comparison operator must be `=`,
+  /// `!=`, `>`, or `<`. For example, if you are filtering a list of datastores,
+  /// you can exclude the ones named `example-datastore` by specifying `name !=
+  /// "example-datastore"`. To filter on multiple expressions, provide each
+  /// separate expression within parentheses. For example: ``` (name =
+  /// "example-datastore") (createTime > "2021-04-12T08:15:10.40Z") ``` By
+  /// default, each expression is an `AND` expression. However, you can include
+  /// `AND` and `OR` expressions explicitly. For example: ``` (name =
+  /// "example-datastore-1") AND (createTime > "2021-04-12T08:15:10.40Z") OR
+  /// (name = "example-datastore-2") ```
+  ///
+  /// [orderBy] - Optional. Sorts list results by a certain order. By default,
+  /// returned results are ordered by `name` in ascending order. You can also
+  /// sort results in descending order based on the `name` value using
+  /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in one
+  /// page. The maximum value is coerced to 1000. The default value of this
+  /// field is 500.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDatastores` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListDatastores` must match
+  /// the call that provided the page token.
+  ///
+  /// [requestId] - Optional. The request ID must be a valid UUID with the
+  /// exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDatastoresResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDatastoresResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/datastores';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDatastoresResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Modifies a Datastore resource.
+  ///
+  /// Only the following fields can be updated: `description`. Only fields
+  /// specified in `updateMask` are applied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Output only. Identifier. The resource name of this datastore.
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/datastores/datastore`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/datastores/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. The request ID must be a valid UUID with the
+  /// exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Datastore resource by the update. The fields specified
+  /// in the `update_mask` are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten. Only the following
+  /// fields can be updated: `description`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Datastore request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1823,6 +2134,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1838,12 +2157,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3065,6 +3387,50 @@ class ProjectsLocationsPrivateCloudsClustersResource {
     );
   }
 
+  /// Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the cluster to mount the
+  /// datastore. Resource names are schemeless URIs that follow the conventions
+  /// in https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> mountDatastore(
+    MountDatastoreRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':mountDatastore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Modifies a `Cluster` resource.
   ///
   /// Only fields specified in `updateMask` are applied. During operation
@@ -3231,6 +3597,50 @@ class ProjectsLocationsPrivateCloudsClustersResource {
     return TestIamPermissionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Mounts a `Datastore` on a cluster resource Datastores are zonal resources
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the cluster to unmount the
+  /// datastore. Resource names are schemeless URIs that follow the conventions
+  /// in https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/privateClouds/\[^/\]+/clusters/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> unmountDatastore(
+    UnmountDatastoreRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':unmountDatastore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -6269,6 +6679,11 @@ class Cluster {
   /// Output only.
   core.String? createTime;
 
+  /// Configuration of a mounted datastore.
+  ///
+  /// Output only.
+  core.List<DatastoreMountConfig>? datastoreMountConfig;
+
   /// True if the cluster is a management cluster; false otherwise.
   ///
   /// There can only be one management cluster in a private cloud and it has to
@@ -6328,6 +6743,7 @@ class Cluster {
   Cluster({
     this.autoscalingSettings,
     this.createTime,
+    this.datastoreMountConfig,
     this.management,
     this.name,
     this.nodeTypeConfigs,
@@ -6347,6 +6763,14 @@ class Cluster {
                 )
                 : null,
         createTime: json_['createTime'] as core.String?,
+        datastoreMountConfig:
+            (json_['datastoreMountConfig'] as core.List?)
+                ?.map(
+                  (value) => DatastoreMountConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         management: json_['management'] as core.bool?,
         name: json_['name'] as core.String?,
         nodeTypeConfigs: (json_['nodeTypeConfigs']
@@ -6375,6 +6799,8 @@ class Cluster {
     if (autoscalingSettings != null)
       'autoscalingSettings': autoscalingSettings!,
     if (createTime != null) 'createTime': createTime!,
+    if (datastoreMountConfig != null)
+      'datastoreMountConfig': datastoreMountConfig!,
     if (management != null) 'management': management!,
     if (name != null) 'name': name!,
     if (nodeTypeConfigs != null) 'nodeTypeConfigs': nodeTypeConfigs!,
@@ -6477,6 +6903,276 @@ class Credentials {
   core.Map<core.String, core.dynamic> toJson() => {
     if (password != null) 'password': password!,
     if (username != null) 'username': username!,
+  };
+}
+
+/// Represents a datastore resource.
+class Datastore {
+  /// Clusters to which the datastore is attached.
+  ///
+  /// Output only.
+  core.List<core.String>? clusters;
+
+  /// Creation time of this resource.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// User-provided description for this datastore
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// Checksum that may be sent on update and delete requests to ensure that the
+  /// user-provided value is up to date before the server processes a request.
+  ///
+  /// The server computes checksums based on the value of other fields in the
+  /// request.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Identifier.
+  ///
+  /// The resource name of this datastore. Resource names are schemeless URIs
+  /// that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/datastores/datastore`
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Settings for the NFS datastore.
+  ///
+  /// Required.
+  NfsDatastore? nfsDatastore;
+
+  /// The state of the Datastore.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The default value. This value should never be
+  /// used.
+  /// - "CREATING" : The NFS volume is being created.
+  /// - "ACTIVE" : The NFS volume is active.
+  /// - "UPDATING" : The NFS volume is being updated.
+  /// - "DELETING" : The NFS volume is being deleted.
+  core.String? state;
+
+  /// System-generated unique identifier for the resource.
+  ///
+  /// Output only.
+  core.String? uid;
+
+  /// Last update time of this resource.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  Datastore({
+    this.clusters,
+    this.createTime,
+    this.description,
+    this.etag,
+    this.name,
+    this.nfsDatastore,
+    this.state,
+    this.uid,
+    this.updateTime,
+  });
+
+  Datastore.fromJson(core.Map json_)
+    : this(
+        clusters:
+            (json_['clusters'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        name: json_['name'] as core.String?,
+        nfsDatastore:
+            json_.containsKey('nfsDatastore')
+                ? NfsDatastore.fromJson(
+                  json_['nfsDatastore'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        uid: json_['uid'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clusters != null) 'clusters': clusters!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (etag != null) 'etag': etag!,
+    if (name != null) 'name': name!,
+    if (nfsDatastore != null) 'nfsDatastore': nfsDatastore!,
+    if (state != null) 'state': state!,
+    if (uid != null) 'uid': uid!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// The Datastore Mount configuration
+class DatastoreMountConfig {
+  /// NFS is accessed by hosts in read mode Optional.
+  ///
+  /// Default value used will be READ_WRITE
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "ACCESS_MODE_UNSPECIFIED" : The default value. This value should never
+  /// be used.
+  /// - "READ_ONLY" : NFS is accessed by hosts in read mode
+  /// - "READ_WRITE" : NFS is accessed by hosts in read and write mode
+  core.String? accessMode;
+
+  /// The resource name of the datastore to unmount.
+  ///
+  /// The datastore requested to be mounted should be in same region/zone as the
+  /// cluster. Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/datastores/my-datastore`
+  ///
+  /// Required.
+  core.String? datastore;
+
+  /// The network configuration for the datastore.
+  ///
+  /// Required.
+  DatastoreNetwork? datastoreNetwork;
+
+  /// File share name.
+  ///
+  /// Output only.
+  core.String? fileShare;
+
+  /// The NFS protocol supported by the NFS volume.
+  ///
+  /// Default value used will be NFS_V3
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "NFS_VERSION_UNSPECIFIED" : The default value. This value should never
+  /// be used.
+  /// - "NFS_V3" : NFS 3
+  core.String? nfsVersion;
+
+  /// ONLY required when NFS 4.1 version is used
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SECURITY_TYPE_UNSPECIFIED" : The default value. This value should never
+  /// be used.
+  core.String? securityType;
+
+  /// Server IP addresses of the NFS volume.
+  ///
+  /// For NFS 3, you can only provide a single server IP address or DNS names.
+  ///
+  /// Output only.
+  core.List<core.String>? servers;
+
+  DatastoreMountConfig({
+    this.accessMode,
+    this.datastore,
+    this.datastoreNetwork,
+    this.fileShare,
+    this.nfsVersion,
+    this.securityType,
+    this.servers,
+  });
+
+  DatastoreMountConfig.fromJson(core.Map json_)
+    : this(
+        accessMode: json_['accessMode'] as core.String?,
+        datastore: json_['datastore'] as core.String?,
+        datastoreNetwork:
+            json_.containsKey('datastoreNetwork')
+                ? DatastoreNetwork.fromJson(
+                  json_['datastoreNetwork']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fileShare: json_['fileShare'] as core.String?,
+        nfsVersion: json_['nfsVersion'] as core.String?,
+        securityType: json_['securityType'] as core.String?,
+        servers:
+            (json_['servers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accessMode != null) 'accessMode': accessMode!,
+    if (datastore != null) 'datastore': datastore!,
+    if (datastoreNetwork != null) 'datastoreNetwork': datastoreNetwork!,
+    if (fileShare != null) 'fileShare': fileShare!,
+    if (nfsVersion != null) 'nfsVersion': nfsVersion!,
+    if (securityType != null) 'securityType': securityType!,
+    if (servers != null) 'servers': servers!,
+  };
+}
+
+/// The network configuration for the datastore.
+class DatastoreNetwork {
+  /// The number of connections of the NFS volume.
+  ///
+  /// Spported from vsphere 8.0u1
+  ///
+  /// Optional.
+  core.int? connectionCount;
+
+  /// The Maximal Transmission Unit (MTU) of the datastore.
+  ///
+  /// System sets default MTU size. It prefers the VPC peering MTU, falling back
+  /// to the VEN MTU if no peering MTU is found. when detected, and falling back
+  /// to the VEN MTU otherwise.
+  ///
+  /// Optional.
+  core.int? mtu;
+
+  /// The resource name of the network peering, used to access the file share by
+  /// clients on private cloud.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. e.g.
+  /// projects/my-project/locations/us-central1/networkPeerings/my-network-peering
+  ///
+  /// Output only.
+  core.String? networkPeering;
+
+  /// The resource name of the subnet Resource names are schemeless URIs that
+  /// follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names.
+  ///
+  /// e.g. projects/my-project/locations/us-central1/subnets/my-subnet
+  ///
+  /// Required.
+  core.String? subnet;
+
+  DatastoreNetwork({
+    this.connectionCount,
+    this.mtu,
+    this.networkPeering,
+    this.subnet,
+  });
+
+  DatastoreNetwork.fromJson(core.Map json_)
+    : this(
+        connectionCount: json_['connectionCount'] as core.int?,
+        mtu: json_['mtu'] as core.int?,
+        networkPeering: json_['networkPeering'] as core.String?,
+        subnet: json_['subnet'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (connectionCount != null) 'connectionCount': connectionCount!,
+    if (mtu != null) 'mtu': mtu!,
+    if (networkPeering != null) 'networkPeering': networkPeering!,
+    if (subnet != null) 'subnet': subnet!,
   };
 }
 
@@ -6935,6 +7631,34 @@ class ForwardingRule {
   };
 }
 
+/// Google service file service configuration
+class GoogleFileService {
+  /// Google filestore instance resource name e.g.
+  /// projects/my-project/locations/me-west1-b/instances/my-instance
+  core.String? filestoreInstance;
+
+  /// Google netapp volume resource name e.g.
+  /// projects/my-project/locations/me-west1-b/volumes/my-volume
+  core.String? netappVolume;
+
+  GoogleFileService({this.filestoreInstance, this.netappVolume});
+
+  GoogleFileService.fromJson(core.Map json_)
+    : this(
+        filestoreInstance: json_['filestoreInstance'] as core.String?,
+        netappVolume: json_['netappVolume'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (filestoreInstance != null) 'filestoreInstance': filestoreInstance!,
+    if (netappVolume != null) 'netappVolume': netappVolume!,
+  };
+}
+
+/// Volume message captures user inputs for creation of file services managed by
+/// GCVE
+typedef GoogleVmwareFileService = $Empty;
+
 /// Request message for VmwareEngine.GrantDnsBindPermission
 class GrantDnsBindPermissionRequest {
   /// The consumer provided user/service account which needs to be granted
@@ -7212,6 +7936,49 @@ class ListClustersResponse {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (clusters != null) 'clusters': clusters!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// Response message for VmwareEngine.ListDatastores
+class ListDatastoresResponse {
+  /// A list of Datastores.
+  core.List<Datastore>? datastores;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  /// Unreachable resources.
+  core.List<core.String>? unreachable;
+
+  ListDatastoresResponse({
+    this.datastores,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListDatastoresResponse.fromJson(core.Map json_)
+    : this(
+        datastores:
+            (json_['datastores'] as core.List?)
+                ?.map(
+                  (value) => Datastore.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (datastores != null) 'datastores': datastores!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (unreachable != null) 'unreachable': unreachable!,
   };
@@ -7634,7 +8401,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -7647,11 +8426,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -8187,6 +8971,56 @@ class ManagementDnsZoneBinding {
   };
 }
 
+/// Mount Datastore Request message
+class MountDatastoreRequest {
+  /// The datastore mount configuration.
+  ///
+  /// Required.
+  DatastoreMountConfig? datastoreMountConfig;
+
+  /// If set to true, the colocation requirement will be ignored.
+  ///
+  /// If set to false, the colocation requirement will be enforced. If not set,
+  /// the colocation requirement will be enforced. Colocation requirement is the
+  /// requirement that the cluster must be in the same region/zone of
+  /// datastore(regional/zonal datastore).
+  ///
+  /// Optional.
+  core.bool? ignoreColocation;
+
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  MountDatastoreRequest({
+    this.datastoreMountConfig,
+    this.ignoreColocation,
+    this.requestId,
+  });
+
+  MountDatastoreRequest.fromJson(core.Map json_)
+    : this(
+        datastoreMountConfig:
+            json_.containsKey('datastoreMountConfig')
+                ? DatastoreMountConfig.fromJson(
+                  json_['datastoreMountConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ignoreColocation: json_['ignoreColocation'] as core.bool?,
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (datastoreMountConfig != null)
+      'datastoreMountConfig': datastoreMountConfig!,
+    if (ignoreColocation != null) 'ignoreColocation': ignoreColocation!,
+    if (requestId != null) 'requestId': requestId!,
+  };
+}
+
 /// Network configuration in the consumer project with which the peering has to
 /// be done.
 class NetworkConfig {
@@ -8649,6 +9483,57 @@ class NetworkService {
   };
 }
 
+/// The NFS datastore configuration.
+class NfsDatastore {
+  /// Google service file service configuration
+  GoogleFileService? googleFileService;
+
+  /// GCVE file service configuration
+  GoogleVmwareFileService? googleVmwareFileService;
+
+  /// Third party file service configuration
+  ThirdPartyFileService? thirdPartyFileService;
+
+  NfsDatastore({
+    this.googleFileService,
+    this.googleVmwareFileService,
+    this.thirdPartyFileService,
+  });
+
+  NfsDatastore.fromJson(core.Map json_)
+    : this(
+        googleFileService:
+            json_.containsKey('googleFileService')
+                ? GoogleFileService.fromJson(
+                  json_['googleFileService']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        googleVmwareFileService:
+            json_.containsKey('googleVmwareFileService')
+                ? GoogleVmwareFileService.fromJson(
+                  json_['googleVmwareFileService']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        thirdPartyFileService:
+            json_.containsKey('thirdPartyFileService')
+                ? ThirdPartyFileService.fromJson(
+                  json_['thirdPartyFileService']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (googleFileService != null) 'googleFileService': googleFileService!,
+    if (googleVmwareFileService != null)
+      'googleVmwareFileService': googleVmwareFileService!,
+    if (thirdPartyFileService != null)
+      'thirdPartyFileService': thirdPartyFileService!,
+  };
+}
+
 /// Node in a cluster.
 class Node {
   /// Customized number of cores
@@ -8890,7 +9775,7 @@ class NodeTypeConfig {
 }
 
 /// Details about a NSX Manager appliance.
-typedef Nsx = $Shared13;
+typedef Nsx = $Shared22;
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -9952,6 +10837,46 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
 
+/// Third party file service configuration
+class ThirdPartyFileService {
+  /// Required Mount Folder name
+  ///
+  /// Required.
+  core.String? fileShare;
+
+  /// Required to identify vpc peering used for NFS access network name of NFS's
+  /// vpc e.g. projects/project-id/global/networks/my-network_id
+  ///
+  /// Required.
+  core.String? network;
+
+  /// Server IP addresses of the NFS file service.
+  ///
+  /// NFS v3, provide a single IP address or DNS name. Multiple servers can be
+  /// supported in future when NFS 4.1 protocol support is enabled.
+  ///
+  /// Required.
+  core.List<core.String>? servers;
+
+  ThirdPartyFileService({this.fileShare, this.network, this.servers});
+
+  ThirdPartyFileService.fromJson(core.Map json_)
+    : this(
+        fileShare: json_['fileShare'] as core.String?,
+        network: json_['network'] as core.String?,
+        servers:
+            (json_['servers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fileShare != null) 'fileShare': fileShare!,
+    if (network != null) 'network': network!,
+    if (servers != null) 'servers': servers!,
+  };
+}
+
 /// Thresholds define the utilization of resources triggering scale-out and
 /// scale-in operations.
 class Thresholds {
@@ -10049,6 +10974,37 @@ class UndeletePrivateCloudRequest {
     : this(requestId: json_['requestId'] as core.String?);
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (requestId != null) 'requestId': requestId!,
+  };
+}
+
+/// Unmount Datastore Request messag
+class UnmountDatastoreRequest {
+  /// The resource name of the datastore to unmount.
+  ///
+  /// Resource names are schemeless URIs that follow the conventions in
+  /// https://cloud.google.com/apis/design/resource_names. For example:
+  /// `projects/my-project/locations/us-central1/datastores/my-datastore`
+  ///
+  /// Required.
+  core.String? datastore;
+
+  /// The request ID must be a valid UUID with the exception that zero UUID is
+  /// not supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// Optional.
+  core.String? requestId;
+
+  UnmountDatastoreRequest({this.datastore, this.requestId});
+
+  UnmountDatastoreRequest.fromJson(core.Map json_)
+    : this(
+        datastore: json_['datastore'] as core.String?,
+        requestId: json_['requestId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (datastore != null) 'datastore': datastore!,
     if (requestId != null) 'requestId': requestId!,
   };
 }
@@ -10237,7 +11193,7 @@ class Upgrade {
 }
 
 /// Details about a vCenter Server management appliance.
-typedef Vcenter = $Shared13;
+typedef Vcenter = $Shared22;
 
 /// VMware Engine network resource that provides connectivity for VMware Engine
 /// private clouds.

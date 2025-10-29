@@ -20,7 +20,7 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(
   return apis;
 }
 
-void writeDiscoveryDocuments(String outputDir, Iterable<RestDescription> apis) {
+void writeDiscoveryDocuments(String outputDir, List<RestDescription> apis) {
   final directory = Directory(outputDir);
   if (directory.existsSync()) {
     print('Deleting directory $outputDir.');
@@ -33,8 +33,8 @@ void writeDiscoveryDocuments(String outputDir, Iterable<RestDescription> apis) {
     final file = File(name);
     const encoder = JsonEncoder.withIndent('    ');
     file.writeAsStringSync('${encoder.convert(description.toJsonSorted())}\n');
-    print('Wrote: $name');
   }
+  print('Wrote ${apis.length} APIs to $outputDir.');
 }
 
 List<RestDescription> loadDiscoveryDocuments(String directory) =>

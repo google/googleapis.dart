@@ -21,8 +21,11 @@
 ///
 /// Create an instance of [WorkspaceEventsApi] to access these resources:
 ///
+/// - [MessageResource]
 /// - [OperationsResource]
 /// - [SubscriptionsResource]
+/// - [TasksResource]
+///   - [TasksPushNotificationConfigsResource]
 library;
 
 import 'dart:async' as async;
@@ -45,6 +48,11 @@ class WorkspaceEventsApi {
   /// members from conversations and spaces
   static const chatAppMembershipsScope =
       'https://www.googleapis.com/auth/chat.app.memberships';
+
+  /// On their own behalf, apps in Google Chat can see all messages and their
+  /// associated reactions and message content
+  static const chatAppMessagesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.messages.readonly';
 
   /// On their own behalf, apps in Google Chat can create conversations and
   /// spaces and see or update their metadata (including history settings and
@@ -121,8 +129,10 @@ class WorkspaceEventsApi {
 
   final commons.ApiRequester _requester;
 
+  MessageResource get message => MessageResource(_requester);
   OperationsResource get operations => OperationsResource(_requester);
   SubscriptionsResource get subscriptions => SubscriptionsResource(_requester);
+  TasksResource get tasks => TasksResource(_requester);
 
   WorkspaceEventsApi(
     http.Client client, {
@@ -134,6 +144,51 @@ class WorkspaceEventsApi {
          servicePath,
          requestHeaders,
        );
+}
+
+class MessageResource {
+  final commons.ApiRequester _requester;
+
+  MessageResource(commons.ApiRequester client) : _requester = client;
+
+  /// SendStreamingMessage is a streaming call that will return a stream of task
+  /// update events until the Task is in an interrupted or terminal state.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StreamResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StreamResponse> stream(
+    SendMessageRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v1/message:stream';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StreamResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class OperationsResource {
@@ -531,6 +586,533 @@ class SubscriptionsResource {
   }
 }
 
+class TasksResource {
+  final commons.ApiRequester _requester;
+
+  TasksPushNotificationConfigsResource get pushNotificationConfigs =>
+      TasksPushNotificationConfigsResource(_requester);
+
+  TasksResource(commons.ApiRequester client) : _requester = client;
+
+  /// Cancel a task from the agent.
+  ///
+  /// If supported one should expect no more task updates for the task.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the task to cancel. Format: tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> cancel(
+    CancelTaskRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get the current state of a task from the agent.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the task. Format: tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [historyLength] - The number of most recent messages from the task's
+  /// history to retrieve.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Task].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Task> get(
+    core.String name, {
+    core.int? historyLength,
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (historyLength != null) 'historyLength': ['${historyLength}'],
+      if (tenant != null) 'tenant': [tenant],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Task.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// TaskSubscription is a streaming call that will return a stream of task
+  /// update events.
+  ///
+  /// This attaches the stream to an existing in process task. If the task is
+  /// complete the stream will return the completed task (like GetTask) and
+  /// close the stream.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the task to subscribe to. Format:
+  /// tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StreamResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StreamResponse> subscribe(
+    core.String name, {
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (tenant != null) 'tenant': [tenant],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':subscribe';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return StreamResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class TasksPushNotificationConfigsResource {
+  final commons.ApiRequester _requester;
+
+  TasksPushNotificationConfigsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Set a push notification config for a task.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent task resource for this config. Format:
+  /// tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+/pushNotificationConfigs$`.
+  ///
+  /// [configId] - Required. The ID for the new config.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TaskPushNotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TaskPushNotificationConfig> create(
+    TaskPushNotificationConfig request,
+    core.String parent, {
+    core.String? configId,
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (configId != null) 'configId': [configId],
+      if (tenant != null) 'tenant': [tenant],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TaskPushNotificationConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Delete a push notification config for a task.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the config to delete. Format:
+  /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+  /// Value must have pattern `^tasks/\[^/\]+/pushNotificationConfigs/\[^/\]+$`.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String name, {
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (tenant != null) 'tenant': [tenant],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get a push notification config for a task.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The resource name of the config to retrieve. Format:
+  /// tasks/{task_id}/pushNotificationConfigs/{config_id}
+  /// Value must have pattern `^tasks/\[^/\]+/pushNotificationConfigs/\[^/\]+$`.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TaskPushNotificationConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TaskPushNotificationConfig> get(
+    core.String name, {
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (tenant != null) 'tenant': [tenant],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return TaskPushNotificationConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Get a list of push notifications configured for a task.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - The parent task resource. Format: tasks/{task_id}
+  /// Value must have pattern `^tasks/\[^/\]+$`.
+  ///
+  /// [pageSize] - For AIP-158 these fields are present. Usually not
+  /// used/needed. The maximum number of configurations to return. If
+  /// unspecified, all configs will be returned.
+  ///
+  /// [pageToken] - A page token received from a previous
+  /// ListTaskPushNotificationConfigRequest call. Provide this to retrieve the
+  /// subsequent page. When paginating, all other parameters provided to
+  /// `ListTaskPushNotificationConfigRequest` must match the call that provided
+  /// the page token.
+  ///
+  /// [tenant] - Optional tenant, provided as a path parameter. Experimental,
+  /// might still change for 1.0 release.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListTaskPushNotificationConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListTaskPushNotificationConfigResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? tenant,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (tenant != null) 'tenant': [tenant],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/pushNotificationConfigs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListTaskPushNotificationConfigResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+/// Artifacts are the container for task completed results.
+///
+/// These are similar to Messages but are intended to be the product of a task,
+/// as opposed to point-to-point communication.
+class Artifact {
+  /// Unique identifier (e.g. UUID) for the artifact.
+  ///
+  /// It must be at least unique within a task.
+  core.String? artifactId;
+
+  /// A human readable description of the artifact, optional.
+  core.String? description;
+
+  /// The URIs of extensions that are present or contributed to this Artifact.
+  core.List<core.String>? extensions;
+
+  /// Optional metadata included with the artifact.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// A human readable name for the artifact.
+  core.String? name;
+
+  /// The content of the artifact.
+  core.List<Part>? parts;
+
+  Artifact({
+    this.artifactId,
+    this.description,
+    this.extensions,
+    this.metadata,
+    this.name,
+    this.parts,
+  });
+
+  Artifact.fromJson(core.Map json_)
+    : this(
+        artifactId: json_['artifactId'] as core.String?,
+        description: json_['description'] as core.String?,
+        extensions:
+            (json_['extensions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        name: json_['name'] as core.String?,
+        parts:
+            (json_['parts'] as core.List?)
+                ?.map(
+                  (value) => Part.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactId != null) 'artifactId': artifactId!,
+    if (description != null) 'description': description!,
+    if (extensions != null) 'extensions': extensions!,
+    if (metadata != null) 'metadata': metadata!,
+    if (name != null) 'name': name!,
+    if (parts != null) 'parts': parts!,
+  };
+}
+
+/// Defines authentication details, used for push notifications.
+class AuthenticationInfo {
+  /// Optional credentials
+  core.String? credentials;
+
+  /// Supported authentication schemes - e.g. Basic, Bearer, etc
+  core.List<core.String>? schemes;
+
+  AuthenticationInfo({this.credentials, this.schemes});
+
+  AuthenticationInfo.fromJson(core.Map json_)
+    : this(
+        credentials: json_['credentials'] as core.String?,
+        schemes:
+            (json_['schemes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (credentials != null) 'credentials': credentials!,
+    if (schemes != null) 'schemes': schemes!,
+  };
+}
+
+class CancelTaskRequest {
+  /// Optional tenant, provided as a path parameter.
+  ///
+  /// Experimental, might still change for 1.0 release.
+  core.String? tenant;
+
+  CancelTaskRequest({this.tenant});
+
+  CancelTaskRequest.fromJson(core.Map json_)
+    : this(tenant: json_['tenant'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (tenant != null) 'tenant': tenant!,
+  };
+}
+
+/// DataPart represents a structured blob.
+///
+/// This is most commonly a JSON payload.
+class DataPart {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? data;
+
+  DataPart({this.data});
+
+  DataPart.fromJson(core.Map json_)
+    : this(
+        data:
+            json_.containsKey('data')
+                ? json_['data'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (data != null) 'data': data!,
+  };
+}
+
+/// A generic empty message that you can re-use to avoid defining duplicated
+/// empty messages in your APIs.
+///
+/// A typical example is to use it as the request or the response type of an API
+/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
+/// (google.protobuf.Empty); }
+typedef Empty = $Empty;
+
+/// FilePart represents the different ways files can be provided.
+///
+/// If files are small, directly feeding the bytes is supported via
+/// file_with_bytes. If the file is large, the agent should read the content as
+/// appropriate directly from the file_with_uri source.
+class FilePart {
+  core.String? fileWithBytes;
+  core.List<core.int> get fileWithBytesAsBytes =>
+      convert.base64.decode(fileWithBytes!);
+
+  set fileWithBytesAsBytes(core.List<core.int> bytes_) {
+    fileWithBytes = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  core.String? fileWithUri;
+  core.String? mimeType;
+  core.String? name;
+
+  FilePart({this.fileWithBytes, this.fileWithUri, this.mimeType, this.name});
+
+  FilePart.fromJson(core.Map json_)
+    : this(
+        fileWithBytes: json_['fileWithBytes'] as core.String?,
+        fileWithUri: json_['fileWithUri'] as core.String?,
+        mimeType: json_['mimeType'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fileWithBytes != null) 'fileWithBytes': fileWithBytes!,
+    if (fileWithUri != null) 'fileWithUri': fileWithUri!,
+    if (mimeType != null) 'mimeType': mimeType!,
+    if (name != null) 'name': name!,
+  };
+}
+
 /// The response message for SubscriptionsService.ListSubscriptions.
 class ListSubscriptionsResponse {
   /// A token, which can be sent as `page_token` to retrieve the next page.
@@ -559,6 +1141,129 @@ class ListSubscriptionsResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (subscriptions != null) 'subscriptions': subscriptions!,
+  };
+}
+
+class ListTaskPushNotificationConfigResponse {
+  /// The list of push notification configurations.
+  core.List<TaskPushNotificationConfig>? configs;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListTaskPushNotificationConfigResponse({this.configs, this.nextPageToken});
+
+  ListTaskPushNotificationConfigResponse.fromJson(core.Map json_)
+    : this(
+        configs:
+            (json_['configs'] as core.List?)
+                ?.map(
+                  (value) => TaskPushNotificationConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (configs != null) 'configs': configs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// Message is one unit of communication between client and server.
+///
+/// It is associated with a context and optionally a task. Since the server is
+/// responsible for the context definition, it must always provide a context_id
+/// in its messages. The client can optionally provide the context_id if it
+/// knows the context to associate the message to. Similarly for task_id, except
+/// the server decides if a task is created and whether to include the task_id.
+class Message {
+  /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Content is the container
+  /// of the message content.
+  core.List<Part>? content;
+
+  /// The context id of the message.
+  ///
+  /// This is optional and if set, the message will be associated with the given
+  /// context.
+  core.String? contextId;
+
+  /// The URIs of extensions that are present or contributed to this Message.
+  core.List<core.String>? extensions;
+
+  /// The unique identifier (e.g. UUID)of the message.
+  ///
+  /// This is required and created by the message creator.
+  core.String? messageId;
+
+  /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED Any optional metadata to
+  /// provide along with the message.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// A role for the message.
+  /// Possible string values are:
+  /// - "ROLE_UNSPECIFIED"
+  /// - "ROLE_USER" : USER role refers to communication from the client to the
+  /// server.
+  /// - "ROLE_AGENT" : AGENT role refers to communication from the server to the
+  /// client.
+  core.String? role;
+
+  /// The task id of the message.
+  ///
+  /// This is optional and if set, the message will be associated with the given
+  /// task.
+  core.String? taskId;
+
+  Message({
+    this.content,
+    this.contextId,
+    this.extensions,
+    this.messageId,
+    this.metadata,
+    this.role,
+    this.taskId,
+  });
+
+  Message.fromJson(core.Map json_)
+    : this(
+        content:
+            (json_['content'] as core.List?)
+                ?.map(
+                  (value) => Part.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        contextId: json_['contextId'] as core.String?,
+        extensions:
+            (json_['extensions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        messageId: json_['messageId'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        role: json_['role'] as core.String?,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (content != null) 'content': content!,
+    if (contextId != null) 'contextId': contextId!,
+    if (extensions != null) 'extensions': extensions!,
+    if (messageId != null) 'messageId': messageId!,
+    if (metadata != null) 'metadata': metadata!,
+    if (role != null) 'role': role!,
+    if (taskId != null) 'taskId': taskId!,
   };
 }
 
@@ -664,6 +1369,52 @@ class Operation {
   };
 }
 
+/// Part represents a container for a section of communication content.
+///
+/// Parts can be purely textual, some sort of file (image, video, etc) or a
+/// structured data blob (i.e. JSON).
+class Part {
+  DataPart? data;
+  FilePart? file;
+
+  /// Optional metadata associated with this part.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+  core.String? text;
+
+  Part({this.data, this.file, this.metadata, this.text});
+
+  Part.fromJson(core.Map json_)
+    : this(
+        data:
+            json_.containsKey('data')
+                ? DataPart.fromJson(
+                  json_['data'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        file:
+            json_.containsKey('file')
+                ? FilePart.fromJson(
+                  json_['file'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (data != null) 'data': data!,
+    if (file != null) 'file': file!,
+    if (metadata != null) 'metadata': metadata!,
+    if (text != null) 'text': text!,
+  };
+}
+
 /// Options about what data to include in the event payload.
 ///
 /// Only supported for Google Chat and Google Drive events.
@@ -705,8 +1456,156 @@ class PayloadOptions {
   };
 }
 
+/// Configuration for setting up push notifications for task updates.
+class PushNotificationConfig {
+  /// Information about the authentication to sent with the notification
+  AuthenticationInfo? authentication;
+
+  /// A unique identifier (e.g. UUID) for this push notification.
+  core.String? id;
+
+  /// Token unique for this task/session
+  core.String? token;
+
+  /// Url to send the notification too
+  core.String? url;
+
+  PushNotificationConfig({this.authentication, this.id, this.token, this.url});
+
+  PushNotificationConfig.fromJson(core.Map json_)
+    : this(
+        authentication:
+            json_.containsKey('authentication')
+                ? AuthenticationInfo.fromJson(
+                  json_['authentication']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        id: json_['id'] as core.String?,
+        token: json_['token'] as core.String?,
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (authentication != null) 'authentication': authentication!,
+    if (id != null) 'id': id!,
+    if (token != null) 'token': token!,
+    if (url != null) 'url': url!,
+  };
+}
+
 /// The request message for SubscriptionsService.ReactivateSubscription.
 typedef ReactivateSubscriptionRequest = $Empty;
+
+/// Configuration of a send message request.
+class SendMessageConfiguration {
+  /// The output modes that the agent is expected to respond with.
+  core.List<core.String>? acceptedOutputModes;
+
+  /// If true, the message will be blocking until the task is completed.
+  ///
+  /// If false, the message will be non-blocking and the task will be returned
+  /// immediately. It is the caller's responsibility to check for any task
+  /// updates.
+  core.bool? blocking;
+
+  /// The maximum number of messages to include in the history.
+  ///
+  /// if 0, the history will be unlimited.
+  core.int? historyLength;
+
+  /// A configuration of a webhook that can be used to receive updates
+  PushNotificationConfig? pushNotification;
+
+  SendMessageConfiguration({
+    this.acceptedOutputModes,
+    this.blocking,
+    this.historyLength,
+    this.pushNotification,
+  });
+
+  SendMessageConfiguration.fromJson(core.Map json_)
+    : this(
+        acceptedOutputModes:
+            (json_['acceptedOutputModes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        blocking: json_['blocking'] as core.bool?,
+        historyLength: json_['historyLength'] as core.int?,
+        pushNotification:
+            json_.containsKey('pushNotification')
+                ? PushNotificationConfig.fromJson(
+                  json_['pushNotification']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (acceptedOutputModes != null)
+      'acceptedOutputModes': acceptedOutputModes!,
+    if (blocking != null) 'blocking': blocking!,
+    if (historyLength != null) 'historyLength': historyLength!,
+    if (pushNotification != null) 'pushNotification': pushNotification!,
+  };
+}
+
+/// /////////// Request Messages ///////////
+class SendMessageRequest {
+  /// Configuration for the send request.
+  SendMessageConfiguration? configuration;
+
+  /// The message to send to the agent.
+  ///
+  /// Required.
+  Message? message;
+
+  /// Optional metadata for the request.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// Optional tenant, provided as a path parameter.
+  ///
+  /// Experimental, might still change for 1.0 release.
+  core.String? tenant;
+
+  SendMessageRequest({
+    this.configuration,
+    this.message,
+    this.metadata,
+    this.tenant,
+  });
+
+  SendMessageRequest.fromJson(core.Map json_)
+    : this(
+        configuration:
+            json_.containsKey('configuration')
+                ? SendMessageConfiguration.fromJson(
+                  json_['configuration'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        tenant: json_['tenant'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (configuration != null) 'configuration': configuration!,
+    if (message != null) 'message': message!,
+    if (metadata != null) 'metadata': metadata!,
+    if (tenant != null) 'tenant': tenant!,
+  };
+}
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -716,6 +1615,65 @@ typedef ReactivateSubscriptionRequest = $Empty;
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// The stream response for a message.
+///
+/// The stream should be one of the following sequences: If the response is a
+/// message, the stream should contain one, and only one, message and then close
+/// If the response is a task lifecycle, the first response should be a Task
+/// object followed by zero or more TaskStatusUpdateEvents and
+/// TaskArtifactUpdateEvents. The stream should complete when the Task if in an
+/// interrupted or terminal state. A stream that ends before these conditions
+/// are met are
+class StreamResponse {
+  TaskArtifactUpdateEvent? artifactUpdate;
+  Message? message;
+  TaskStatusUpdateEvent? statusUpdate;
+  Task? task;
+
+  StreamResponse({
+    this.artifactUpdate,
+    this.message,
+    this.statusUpdate,
+    this.task,
+  });
+
+  StreamResponse.fromJson(core.Map json_)
+    : this(
+        artifactUpdate:
+            json_.containsKey('artifactUpdate')
+                ? TaskArtifactUpdateEvent.fromJson(
+                  json_['artifactUpdate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        statusUpdate:
+            json_.containsKey('statusUpdate')
+                ? TaskStatusUpdateEvent.fromJson(
+                  json_['statusUpdate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        task:
+            json_.containsKey('task')
+                ? Task.fromJson(
+                  json_['task'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactUpdate != null) 'artifactUpdate': artifactUpdate!,
+    if (message != null) 'message': message!,
+    if (statusUpdate != null) 'statusUpdate': statusUpdate!,
+    if (task != null) 'task': task!,
+  };
+}
 
 /// A subscription to receive events about a Google Workspace resource.
 ///
@@ -932,5 +1890,291 @@ class Subscription {
     if (ttl != null) 'ttl': ttl!,
     if (uid != null) 'uid': uid!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Task is the core unit of action for A2A.
+///
+/// It has a current status and when results are created for the task they are
+/// stored in the artifact. If there are multiple turns for a task, these are
+/// stored in history.
+class Task {
+  /// A set of output artifacts for a Task.
+  core.List<Artifact>? artifacts;
+
+  /// Unique identifier (e.g. UUID) for the contextual collection of
+  /// interactions (tasks and messages).
+  ///
+  /// Created by the A2A server.
+  core.String? contextId;
+
+  /// protolint:disable REPEATED_FIELD_NAMES_PLURALIZED The history of
+  /// interactions from a task.
+  core.List<Message>? history;
+
+  /// Unique identifier (e.g. UUID) for the task, generated by the server for a
+  /// new task.
+  core.String? id;
+
+  /// protolint:enable REPEATED_FIELD_NAMES_PLURALIZED A key/value object to
+  /// store custom metadata about a task.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The current status of a Task, including state and a message.
+  TaskStatus? status;
+
+  Task({
+    this.artifacts,
+    this.contextId,
+    this.history,
+    this.id,
+    this.metadata,
+    this.status,
+  });
+
+  Task.fromJson(core.Map json_)
+    : this(
+        artifacts:
+            (json_['artifacts'] as core.List?)
+                ?.map(
+                  (value) => Artifact.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        contextId: json_['contextId'] as core.String?,
+        history:
+            (json_['history'] as core.List?)
+                ?.map(
+                  (value) => Message.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        id: json_['id'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        status:
+            json_.containsKey('status')
+                ? TaskStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (artifacts != null) 'artifacts': artifacts!,
+    if (contextId != null) 'contextId': contextId!,
+    if (history != null) 'history': history!,
+    if (id != null) 'id': id!,
+    if (metadata != null) 'metadata': metadata!,
+    if (status != null) 'status': status!,
+  };
+}
+
+/// TaskArtifactUpdateEvent represents a task delta where an artifact has been
+/// generated.
+class TaskArtifactUpdateEvent {
+  /// Whether this should be appended to a prior one produced
+  core.bool? append;
+
+  /// The artifact itself
+  Artifact? artifact;
+
+  /// The id of the context that this task belongs too
+  core.String? contextId;
+
+  /// Whether this represents the last part of an artifact
+  core.bool? lastChunk;
+
+  /// Optional metadata associated with the artifact update.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The id of the task for this artifact
+  core.String? taskId;
+
+  TaskArtifactUpdateEvent({
+    this.append,
+    this.artifact,
+    this.contextId,
+    this.lastChunk,
+    this.metadata,
+    this.taskId,
+  });
+
+  TaskArtifactUpdateEvent.fromJson(core.Map json_)
+    : this(
+        append: json_['append'] as core.bool?,
+        artifact:
+            json_.containsKey('artifact')
+                ? Artifact.fromJson(
+                  json_['artifact'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        contextId: json_['contextId'] as core.String?,
+        lastChunk: json_['lastChunk'] as core.bool?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (append != null) 'append': append!,
+    if (artifact != null) 'artifact': artifact!,
+    if (contextId != null) 'contextId': contextId!,
+    if (lastChunk != null) 'lastChunk': lastChunk!,
+    if (metadata != null) 'metadata': metadata!,
+    if (taskId != null) 'taskId': taskId!,
+  };
+}
+
+class TaskPushNotificationConfig {
+  /// The resource name of the config.
+  ///
+  /// Format: tasks/{task_id}/pushNotificationConfigs/{config_id}
+  core.String? name;
+
+  /// The push notification configuration details.
+  PushNotificationConfig? pushNotificationConfig;
+
+  TaskPushNotificationConfig({this.name, this.pushNotificationConfig});
+
+  TaskPushNotificationConfig.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        pushNotificationConfig:
+            json_.containsKey('pushNotificationConfig')
+                ? PushNotificationConfig.fromJson(
+                  json_['pushNotificationConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (pushNotificationConfig != null)
+      'pushNotificationConfig': pushNotificationConfig!,
+  };
+}
+
+/// A container for the status of a task
+class TaskStatus {
+  /// A message associated with the status.
+  Message? message;
+
+  /// The current state of this task
+  /// Possible string values are:
+  /// - "TASK_STATE_UNSPECIFIED"
+  /// - "TASK_STATE_SUBMITTED" : Represents the status that acknowledges a task
+  /// is created
+  /// - "TASK_STATE_WORKING" : Represents the status that a task is actively
+  /// being processed
+  /// - "TASK_STATE_COMPLETED" : Represents the status a task is finished. This
+  /// is a terminal state
+  /// - "TASK_STATE_FAILED" : Represents the status a task is done but failed.
+  /// This is a terminal state
+  /// - "TASK_STATE_CANCELLED" : Represents the status a task was cancelled
+  /// before it finished. This is a terminal state.
+  /// - "TASK_STATE_INPUT_REQUIRED" : Represents the status that the task
+  /// requires information to complete. This is an interrupted state.
+  /// - "TASK_STATE_REJECTED" : Represents the status that the agent has decided
+  /// to not perform the task. This may be done during initial task creation or
+  /// later once an agent has determined it can't or won't proceed. This is a
+  /// terminal state.
+  /// - "TASK_STATE_AUTH_REQUIRED" : Represents the state that some
+  /// authentication is needed from the upstream client. Authentication is
+  /// expected to come out-of-band thus this is not an interrupted or terminal
+  /// state.
+  core.String? state;
+
+  /// Timestamp when the status was recorded.
+  ///
+  /// Example: "2023-10-27T10:00:00Z"
+  core.String? timestamp;
+
+  TaskStatus({this.message, this.state, this.timestamp});
+
+  TaskStatus.fromJson(core.Map json_)
+    : this(
+        message:
+            json_.containsKey('message')
+                ? Message.fromJson(
+                  json_['message'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (message != null) 'message': message!,
+    if (state != null) 'state': state!,
+    if (timestamp != null) 'timestamp': timestamp!,
+  };
+}
+
+/// TaskStatusUpdateEvent is a delta even on a task indicating that a task has
+/// changed.
+class TaskStatusUpdateEvent {
+  /// The id of the context that the task belongs to
+  core.String? contextId;
+
+  /// Whether this is the last status update expected for this task.
+  core.bool? final_;
+
+  /// Optional metadata to associate with the task update.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? metadata;
+
+  /// The new status of the task.
+  TaskStatus? status;
+
+  /// The id of the task that is changed
+  core.String? taskId;
+
+  TaskStatusUpdateEvent({
+    this.contextId,
+    this.final_,
+    this.metadata,
+    this.status,
+    this.taskId,
+  });
+
+  TaskStatusUpdateEvent.fromJson(core.Map json_)
+    : this(
+        contextId: json_['contextId'] as core.String?,
+        final_: json_['final'] as core.bool?,
+        metadata:
+            json_.containsKey('metadata')
+                ? json_['metadata'] as core.Map<core.String, core.dynamic>
+                : null,
+        status:
+            json_.containsKey('status')
+                ? TaskStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        taskId: json_['taskId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (contextId != null) 'contextId': contextId!,
+    if (final_ != null) 'final': final_!,
+    if (metadata != null) 'metadata': metadata!,
+    if (status != null) 'status': status!,
+    if (taskId != null) 'taskId': taskId!,
   };
 }

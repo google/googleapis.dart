@@ -21,6 +21,7 @@
 /// Create an instance of [MerchantApi] to access these resources:
 ///
 /// - [AccountsResource]
+///   - [AccountsLimitsResource]
 ///   - [AccountsQuotasResource]
 library;
 
@@ -59,9 +60,111 @@ class MerchantApi {
 class AccountsResource {
   final commons.ApiRequester _requester;
 
+  AccountsLimitsResource get limits => AccountsLimitsResource(_requester);
   AccountsQuotasResource get quotas => AccountsQuotasResource(_requester);
 
   AccountsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class AccountsLimitsResource {
+  final commons.ApiRequester _requester;
+
+  AccountsLimitsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Retrieves an account limit.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the limit to retrieve. Format:
+  /// `accounts/{account}/limits/{limit}` For example:
+  /// `accounts/123/limits/products~ADS_NON_EEA`
+  /// Value must have pattern `^accounts/\[^/\]+/limits/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AccountLimit].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AccountLimit> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'quota/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AccountLimit.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists the limits of an account.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent account. Format: `accounts/{account}`
+  /// Value must have pattern `^accounts/\[^/\]+$`.
+  ///
+  /// [filter] - Required. A filter on the limit `type` is required, for
+  /// example, `type = "products"`.
+  ///
+  /// [pageSize] - Optional. The maximum number of limits to return. The service
+  /// may return fewer than this value. If unspecified, at most 100 limits will
+  /// be returned. The maximum value is 100; values above 100 will be coerced to
+  /// 100.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListAccountLimits` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListAccountLimits` must
+  /// match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAccountLimitsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAccountLimitsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'quota/v1/' + core.Uri.encodeFull('$parent') + '/limits';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAccountLimitsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class AccountsQuotasResource {
@@ -119,6 +222,68 @@ class AccountsQuotasResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+}
+
+/// A limit of a certain type that is applied to an account.
+class AccountLimit {
+  /// Identifier.
+  ///
+  /// The limit part of the name will be a combination of the type and the
+  /// scope. For example: `accounts/123/limits/products~ADS_NON_EEA` Format:
+  /// `accounts/{account}/limits/{limit}`
+  core.String? name;
+
+  /// The limit for products.
+  ProductLimit? products;
+
+  AccountLimit({this.name, this.products});
+
+  AccountLimit.fromJson(core.Map json_)
+    : this(
+        name: json_['name'] as core.String?,
+        products:
+            json_.containsKey('products')
+                ? ProductLimit.fromJson(
+                  json_['products'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (name != null) 'name': name!,
+    if (products != null) 'products': products!,
+  };
+}
+
+/// Response message for the `ListAccountLimits` method.
+class ListAccountLimitsResponse {
+  /// The limits for the given account.
+  core.List<AccountLimit>? accountLimits;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListAccountLimitsResponse({this.accountLimits, this.nextPageToken});
+
+  ListAccountLimitsResponse.fromJson(core.Map json_)
+    : this(
+        accountLimits:
+            (json_['accountLimits'] as core.List?)
+                ?.map(
+                  (value) => AccountLimit.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (accountLimits != null) 'accountLimits': accountLimits!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
 }
 
 /// Response message for the ListMethodGroups method.
@@ -192,6 +357,37 @@ class MethodDetails {
     if (path != null) 'path': path!,
     if (subapi != null) 'subapi': subapi!,
     if (version != null) 'version': version!,
+  };
+}
+
+/// The limit for products.
+class ProductLimit {
+  /// The maximum number of products that are allowed in the account in the
+  /// given scope.
+  ///
+  /// Required.
+  core.String? limit;
+
+  /// The scope of the product limit.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "SCOPE_UNSPECIFIED" : Default value. Should not be used.
+  /// - "ADS_NON_EEA" : Limit for products in non-EEA countries.
+  /// - "ADS_EEA" : Limit for products in EEA countries.
+  core.String? scope;
+
+  ProductLimit({this.limit, this.scope});
+
+  ProductLimit.fromJson(core.Map json_)
+    : this(
+        limit: json_['limit'] as core.String?,
+        scope: json_['scope'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (limit != null) 'limit': limit!,
+    if (scope != null) 'scope': scope!,
   };
 }
 

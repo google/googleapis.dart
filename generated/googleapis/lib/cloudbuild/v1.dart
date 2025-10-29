@@ -296,8 +296,9 @@ class ProjectsBuildsResource {
 
   /// Approves or rejects a pending build.
   ///
-  /// If approved, the returned LRO will be analogous to the LRO returned from a
-  /// CreateBuild call. If rejected, the returned LRO will be immediately done.
+  /// If approved, the returned long-running operation (LRO) will be analogous
+  /// to the LRO returned from a CreateBuild call. If rejected, the returned LRO
+  /// will be immediately done.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1343,8 +1344,9 @@ class ProjectsLocationsBuildsResource {
 
   /// Approves or rejects a pending build.
   ///
-  /// If approved, the returned LRO will be analogous to the LRO returned from a
-  /// CreateBuild call. If rejected, the returned LRO will be immediately done.
+  /// If approved, the returned long-running operation (LRO) will be analogous
+  /// to the LRO returned from a CreateBuild call. If rejected, the returned LRO
+  /// will be immediately done.
   ///
   /// [request] - The metadata request object.
   ///
@@ -5412,6 +5414,11 @@ class BuildTrigger {
 
 /// An image built by the pipeline.
 class BuiltImage {
+  /// Path to the artifact in Artifact Registry.
+  ///
+  /// Output only.
+  core.String? artifactRegistryPackage;
+
   /// Docker Registry 2.0 digest.
   core.String? digest;
 
@@ -5424,10 +5431,17 @@ class BuiltImage {
   /// Output only.
   TimeSpan? pushTiming;
 
-  BuiltImage({this.digest, this.name, this.pushTiming});
+  BuiltImage({
+    this.artifactRegistryPackage,
+    this.digest,
+    this.name,
+    this.pushTiming,
+  });
 
   BuiltImage.fromJson(core.Map json_)
     : this(
+        artifactRegistryPackage:
+            json_['artifactRegistryPackage'] as core.String?,
         digest: json_['digest'] as core.String?,
         name: json_['name'] as core.String?,
         pushTiming:
@@ -5439,6 +5453,8 @@ class BuiltImage {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactRegistryPackage != null)
+      'artifactRegistryPackage': artifactRegistryPackage!,
     if (digest != null) 'digest': digest!,
     if (name != null) 'name': name!,
     if (pushTiming != null) 'pushTiming': pushTiming!,
@@ -5597,7 +5613,7 @@ class CreateGitLabConnectedRepositoryRequest {
 class DefaultServiceAccount {
   /// Identifier.
   ///
-  /// Format: \`projects/{project}/locations/{location}/defaultServiceAccount
+  /// Format: `projects/{project}/locations/{location}/defaultServiceAccount`.
   core.String? name;
 
   /// The email address of the service account identity that will be used for a
@@ -5658,39 +5674,7 @@ class Dependency {
 }
 
 /// This config defines the location of a source through Developer Connect.
-class DeveloperConnectConfig {
-  /// Directory, relative to the source root, in which to run the build.
-  ///
-  /// Required.
-  core.String? dir;
-
-  /// The Developer Connect Git repository link, formatted as `projects / *
-  /// /locations / * /connections / * /gitRepositoryLink / * `.
-  ///
-  /// Required.
-  core.String? gitRepositoryLink;
-
-  /// The revision to fetch from the Git repository such as a branch, a tag, a
-  /// commit SHA, or any Git ref.
-  ///
-  /// Required.
-  core.String? revision;
-
-  DeveloperConnectConfig({this.dir, this.gitRepositoryLink, this.revision});
-
-  DeveloperConnectConfig.fromJson(core.Map json_)
-    : this(
-        dir: json_['dir'] as core.String?,
-        gitRepositoryLink: json_['gitRepositoryLink'] as core.String?,
-        revision: json_['revision'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dir != null) 'dir': dir!,
-    if (gitRepositoryLink != null) 'gitRepositoryLink': gitRepositoryLink!,
-    if (revision != null) 'revision': revision!,
-  };
-}
+typedef DeveloperConnectConfig = $DeveloperConnectConfig;
 
 /// The configuration of a trigger that creates a build whenever an event from
 /// the DeveloperConnect API is received.
@@ -7200,6 +7184,15 @@ class MavenArtifact {
   /// Registry.
   core.String? artifactId;
 
+  /// Path to a folder containing the files to upload to Artifact Registry.
+  ///
+  /// This can be either an absolute path, e.g. `/workspace/my-app/target/`, or
+  /// a relative path from /workspace, e.g. `my-app/target/`. This field is
+  /// mutually exclusive with the `path` field.
+  ///
+  /// Optional.
+  core.String? deployFolder;
+
   /// Maven `groupId` value used when uploading the artifact to Artifact
   /// Registry.
   core.String? groupId;
@@ -7226,6 +7219,7 @@ class MavenArtifact {
 
   MavenArtifact({
     this.artifactId,
+    this.deployFolder,
     this.groupId,
     this.path,
     this.repository,
@@ -7235,6 +7229,7 @@ class MavenArtifact {
   MavenArtifact.fromJson(core.Map json_)
     : this(
         artifactId: json_['artifactId'] as core.String?,
+        deployFolder: json_['deployFolder'] as core.String?,
         groupId: json_['groupId'] as core.String?,
         path: json_['path'] as core.String?,
         repository: json_['repository'] as core.String?,
@@ -7243,6 +7238,7 @@ class MavenArtifact {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (artifactId != null) 'artifactId': artifactId!,
+    if (deployFolder != null) 'deployFolder': deployFolder!,
     if (groupId != null) 'groupId': groupId!,
     if (path != null) 'path': path!,
     if (repository != null) 'repository': repository!,
@@ -8573,6 +8569,11 @@ class TimeSpan {
 /// A Go module artifact uploaded to Artifact Registry using the GoModule
 /// directive.
 class UploadedGoModule {
+  /// Path to the artifact in Artifact Registry.
+  ///
+  /// Output only.
+  core.String? artifactRegistryPackage;
+
   /// Hash types and values of the Go Module Artifact.
   FileHashes? fileHashes;
 
@@ -8584,10 +8585,17 @@ class UploadedGoModule {
   /// URI of the uploaded artifact.
   core.String? uri;
 
-  UploadedGoModule({this.fileHashes, this.pushTiming, this.uri});
+  UploadedGoModule({
+    this.artifactRegistryPackage,
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
 
   UploadedGoModule.fromJson(core.Map json_)
     : this(
+        artifactRegistryPackage:
+            json_['artifactRegistryPackage'] as core.String?,
         fileHashes:
             json_.containsKey('fileHashes')
                 ? FileHashes.fromJson(
@@ -8604,6 +8612,8 @@ class UploadedGoModule {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactRegistryPackage != null)
+      'artifactRegistryPackage': artifactRegistryPackage!,
     if (fileHashes != null) 'fileHashes': fileHashes!,
     if (pushTiming != null) 'pushTiming': pushTiming!,
     if (uri != null) 'uri': uri!,
@@ -8612,6 +8622,11 @@ class UploadedGoModule {
 
 /// A Maven artifact uploaded using the MavenArtifact directive.
 class UploadedMavenArtifact {
+  /// Path to the artifact in Artifact Registry.
+  ///
+  /// Output only.
+  core.String? artifactRegistryPackage;
+
   /// Hash types and values of the Maven Artifact.
   FileHashes? fileHashes;
 
@@ -8623,10 +8638,17 @@ class UploadedMavenArtifact {
   /// URI of the uploaded artifact.
   core.String? uri;
 
-  UploadedMavenArtifact({this.fileHashes, this.pushTiming, this.uri});
+  UploadedMavenArtifact({
+    this.artifactRegistryPackage,
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
 
   UploadedMavenArtifact.fromJson(core.Map json_)
     : this(
+        artifactRegistryPackage:
+            json_['artifactRegistryPackage'] as core.String?,
         fileHashes:
             json_.containsKey('fileHashes')
                 ? FileHashes.fromJson(
@@ -8643,6 +8665,8 @@ class UploadedMavenArtifact {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactRegistryPackage != null)
+      'artifactRegistryPackage': artifactRegistryPackage!,
     if (fileHashes != null) 'fileHashes': fileHashes!,
     if (pushTiming != null) 'pushTiming': pushTiming!,
     if (uri != null) 'uri': uri!,
@@ -8651,6 +8675,11 @@ class UploadedMavenArtifact {
 
 /// An npm package uploaded to Artifact Registry using the NpmPackage directive.
 class UploadedNpmPackage {
+  /// Path to the artifact in Artifact Registry.
+  ///
+  /// Output only.
+  core.String? artifactRegistryPackage;
+
   /// Hash types and values of the npm package.
   FileHashes? fileHashes;
 
@@ -8662,10 +8691,17 @@ class UploadedNpmPackage {
   /// URI of the uploaded npm package.
   core.String? uri;
 
-  UploadedNpmPackage({this.fileHashes, this.pushTiming, this.uri});
+  UploadedNpmPackage({
+    this.artifactRegistryPackage,
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
 
   UploadedNpmPackage.fromJson(core.Map json_)
     : this(
+        artifactRegistryPackage:
+            json_['artifactRegistryPackage'] as core.String?,
         fileHashes:
             json_.containsKey('fileHashes')
                 ? FileHashes.fromJson(
@@ -8682,6 +8718,8 @@ class UploadedNpmPackage {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactRegistryPackage != null)
+      'artifactRegistryPackage': artifactRegistryPackage!,
     if (fileHashes != null) 'fileHashes': fileHashes!,
     if (pushTiming != null) 'pushTiming': pushTiming!,
     if (uri != null) 'uri': uri!,
@@ -8690,6 +8728,11 @@ class UploadedNpmPackage {
 
 /// Artifact uploaded using the PythonPackage directive.
 class UploadedPythonPackage {
+  /// Path to the artifact in Artifact Registry.
+  ///
+  /// Output only.
+  core.String? artifactRegistryPackage;
+
   /// Hash types and values of the Python Artifact.
   FileHashes? fileHashes;
 
@@ -8701,10 +8744,17 @@ class UploadedPythonPackage {
   /// URI of the uploaded artifact.
   core.String? uri;
 
-  UploadedPythonPackage({this.fileHashes, this.pushTiming, this.uri});
+  UploadedPythonPackage({
+    this.artifactRegistryPackage,
+    this.fileHashes,
+    this.pushTiming,
+    this.uri,
+  });
 
   UploadedPythonPackage.fromJson(core.Map json_)
     : this(
+        artifactRegistryPackage:
+            json_['artifactRegistryPackage'] as core.String?,
         fileHashes:
             json_.containsKey('fileHashes')
                 ? FileHashes.fromJson(
@@ -8721,6 +8771,8 @@ class UploadedPythonPackage {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactRegistryPackage != null)
+      'artifactRegistryPackage': artifactRegistryPackage!,
     if (fileHashes != null) 'fileHashes': fileHashes!,
     if (pushTiming != null) 'pushTiming': pushTiming!,
     if (uri != null) 'uri': uri!,

@@ -127,9 +127,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1531,6 +1531,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1546,12 +1554,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2034,6 +2045,12 @@ class Cluster {
   /// Optional.
   AutomatedBackupConfig? automatedBackupConfig;
 
+  /// This field is used to determine the available maintenance versions for the
+  /// self service update.
+  ///
+  /// Output only.
+  core.List<core.String>? availableMaintenanceVersions;
+
   /// The backup collection full resource name.
   ///
   /// Example:
@@ -2070,6 +2087,11 @@ class Cluster {
   /// Output only.
   core.List<DiscoveryEndpoint>? discoveryEndpoints;
 
+  /// This field represents the actual maintenance version of the cluster.
+  ///
+  /// Output only.
+  core.String? effectiveMaintenanceVersion;
+
   /// Encryption information of the data at rest of the cluster.
   ///
   /// Output only.
@@ -2102,6 +2124,15 @@ class Cluster {
   ///
   /// Output only.
   ClusterMaintenanceSchedule? maintenanceSchedule;
+
+  /// This field can be used to trigger self service update to indicate the
+  /// desired maintenance version.
+  ///
+  /// The input to this field can be determined by the
+  /// available_maintenance_versions field.
+  ///
+  /// Optional.
+  core.String? maintenanceVersion;
 
   /// Backups generated and managed by memorystore service.
   ///
@@ -2255,18 +2286,21 @@ class Cluster {
     this.asyncClusterEndpointsDeletionEnabled,
     this.authorizationMode,
     this.automatedBackupConfig,
+    this.availableMaintenanceVersions,
     this.backupCollection,
     this.clusterEndpoints,
     this.createTime,
     this.crossClusterReplicationConfig,
     this.deletionProtectionEnabled,
     this.discoveryEndpoints,
+    this.effectiveMaintenanceVersion,
     this.encryptionInfo,
     this.gcsSource,
     this.kmsKey,
     this.labels,
     this.maintenancePolicy,
     this.maintenanceSchedule,
+    this.maintenanceVersion,
     this.managedBackupSource,
     this.name,
     this.nodeType,
@@ -2304,6 +2338,10 @@ class Cluster {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        availableMaintenanceVersions:
+            (json_['availableMaintenanceVersions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
         backupCollection: json_['backupCollection'] as core.String?,
         clusterEndpoints:
             (json_['clusterEndpoints'] as core.List?)
@@ -2331,6 +2369,8 @@ class Cluster {
                   ),
                 )
                 .toList(),
+        effectiveMaintenanceVersion:
+            json_['effectiveMaintenanceVersion'] as core.String?,
         encryptionInfo:
             json_.containsKey('encryptionInfo')
                 ? EncryptionInfo.fromJson(
@@ -2362,6 +2402,7 @@ class Cluster {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        maintenanceVersion: json_['maintenanceVersion'] as core.String?,
         managedBackupSource:
             json_.containsKey('managedBackupSource')
                 ? ManagedBackupSource.fromJson(
@@ -2441,6 +2482,8 @@ class Cluster {
     if (authorizationMode != null) 'authorizationMode': authorizationMode!,
     if (automatedBackupConfig != null)
       'automatedBackupConfig': automatedBackupConfig!,
+    if (availableMaintenanceVersions != null)
+      'availableMaintenanceVersions': availableMaintenanceVersions!,
     if (backupCollection != null) 'backupCollection': backupCollection!,
     if (clusterEndpoints != null) 'clusterEndpoints': clusterEndpoints!,
     if (createTime != null) 'createTime': createTime!,
@@ -2449,6 +2492,8 @@ class Cluster {
     if (deletionProtectionEnabled != null)
       'deletionProtectionEnabled': deletionProtectionEnabled!,
     if (discoveryEndpoints != null) 'discoveryEndpoints': discoveryEndpoints!,
+    if (effectiveMaintenanceVersion != null)
+      'effectiveMaintenanceVersion': effectiveMaintenanceVersion!,
     if (encryptionInfo != null) 'encryptionInfo': encryptionInfo!,
     if (gcsSource != null) 'gcsSource': gcsSource!,
     if (kmsKey != null) 'kmsKey': kmsKey!,
@@ -2456,6 +2501,7 @@ class Cluster {
     if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
     if (maintenanceSchedule != null)
       'maintenanceSchedule': maintenanceSchedule!,
+    if (maintenanceVersion != null) 'maintenanceVersion': maintenanceVersion!,
     if (managedBackupSource != null)
       'managedBackupSource': managedBackupSource!,
     if (name != null) 'name': name!,
@@ -3861,7 +3907,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -3874,11 +3932,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

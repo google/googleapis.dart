@@ -1186,6 +1186,8 @@ api.GoogleMapsPlacesV1Place buildGoogleMapsPlacesV1Place() {
     o.liveMusic = true;
     o.location = buildGoogleTypeLatLng();
     o.menuForChildren = true;
+    o.movedPlace = 'foo';
+    o.movedPlaceId = 'foo';
     o.name = 'foo';
     o.nationalPhoneNumber = 'foo';
     o.neighborhoodSummary = buildGoogleMapsPlacesV1PlaceNeighborhoodSummary();
@@ -1269,6 +1271,8 @@ void checkGoogleMapsPlacesV1Place(api.GoogleMapsPlacesV1Place o) {
     unittest.expect(o.liveMusic!, unittest.isTrue);
     checkGoogleTypeLatLng(o.location!);
     unittest.expect(o.menuForChildren!, unittest.isTrue);
+    unittest.expect(o.movedPlace!, unittest.equals('foo'));
+    unittest.expect(o.movedPlaceId!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nationalPhoneNumber!, unittest.equals('foo'));
     checkGoogleMapsPlacesV1PlaceNeighborhoodSummary(o.neighborhoodSummary!);

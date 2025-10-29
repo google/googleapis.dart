@@ -42,7 +42,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250915",
+    "revision": "20260123",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "servicePath": "",
     "title": "Security Command Center API",
@@ -1773,6 +1773,7 @@
                     ]
                 },
                 "updateOrganizationSettings": {
+                    "deprecated": true,
                     "description": "Updates an organization's settings.",
                     "flatPath": "v1/organizations/{organizationsId}/organizationSettings",
                     "httpMethod": "PATCH",
@@ -3010,6 +3011,11 @@
                                     "description": "The standard list page token.",
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "returnPartialSuccess": {
+                                    "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                    "location": "query",
+                                    "type": "boolean"
                                 }
                             },
                             "path": "v1/{+name}",
@@ -6044,6 +6050,43 @@
             },
             "type": "object"
         },
+        "AdcApplication": {
+            "description": "Represents an ADC application associated with the finding.",
+            "id": "AdcApplication",
+            "properties": {
+                "attributes": {
+                    "$ref": "GoogleCloudSecuritycenterV1ResourceApplicationAttributes",
+                    "description": "Consumer provided attributes for the AppHub application."
+                },
+                "name": {
+                    "description": "The resource name of an ADC Application. Format: projects/{project}/locations/{location}/spaces/{space}/applications/{application}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AdcApplicationTemplateRevision": {
+            "description": "Represents an ADC template associated with the finding.",
+            "id": "AdcApplicationTemplateRevision",
+            "properties": {
+                "name": {
+                    "description": "The resource name of an ADC Application Template Revision. Format: projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AdcSharedTemplateRevision": {
+            "description": "Represents an ADC shared template associated with the finding.",
+            "id": "AdcSharedTemplateRevision",
+            "properties": {
+                "name": {
+                    "description": "The resource name of an ADC Shared Template Revision. Format: projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "AffectedResources": {
             "description": "Details about resources affected by this finding.",
             "id": "AffectedResources",
@@ -6101,6 +6144,10 @@
                 "publisher": {
                     "description": "The publisher of the model, for example, “google” or “nvidia”.",
                     "type": "string"
+                },
+                "usageCategory": {
+                    "description": "The purpose of the model, for example, \"Inteference\" or \"Training\".",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -6129,6 +6176,51 @@
                 },
                 "fullUri": {
                     "description": "The full URI with payload that can be used to reproduce the vulnerability. For example, `http://example.com?p=aMmYgI6H`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ArtifactGuardPolicies": {
+            "description": "Represents the result of evaluating artifact guard policies.",
+            "id": "ArtifactGuardPolicies",
+            "properties": {
+                "failingPolicies": {
+                    "description": "A list of failing policies.",
+                    "items": {
+                        "$ref": "ArtifactGuardPolicy"
+                    },
+                    "type": "array"
+                },
+                "resourceId": {
+                    "description": "The ID of the resource that has policies configured for it.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ArtifactGuardPolicy": {
+            "description": "Represents an artifact guard policy.",
+            "id": "ArtifactGuardPolicy",
+            "properties": {
+                "failureReason": {
+                    "description": "The reason for the policy failure, for example, \"severity=HIGH AND max_vuln_count=2\".",
+                    "type": "string"
+                },
+                "policyId": {
+                    "description": "The ID of the failing policy, for example, \"organizations/3392779/locations/global/policies/prod-policy\".",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the policy evaluation.",
+                    "enum": [
+                        "ARTIFACT_GUARD_POLICY_TYPE_UNSPECIFIED",
+                        "VULNERABILITY"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Vulnerability type."
+                    ],
                     "type": "string"
                 }
             },
@@ -6849,6 +6941,13 @@
                 "dataProfile": {
                     "description": "Name of the data profile, for example, `projects/123/locations/europe/tableProfiles/8383929`.",
                     "type": "string"
+                },
+                "infoTypes": {
+                    "description": "Type of information detected by SDP. Info type includes name, version and sensitivity of the detected information type.",
+                    "items": {
+                        "$ref": "InfoType"
+                    },
+                    "type": "array"
                 },
                 "parentType": {
                     "description": "The resource hierarchy level at which the data profile was generated.",
@@ -7873,6 +7972,20 @@
                     "$ref": "DiskPath",
                     "description": "Path of the file in terms of underlying disk/partition identifiers."
                 },
+                "fileLoadState": {
+                    "description": "The load state of the file.",
+                    "enum": [
+                        "FILE_LOAD_STATE_UNSPECIFIED",
+                        "LOADED_BY_PROCESS",
+                        "NOT_LOADED_BY_PROCESS"
+                    ],
+                    "enumDescriptions": [
+                        "The file state is unspecified.",
+                        "The file is being used by an active process at the time of scanning.",
+                        "The file is not being used by any active process at the time of scanning."
+                    ],
+                    "type": "string"
+                },
                 "hashedSize": {
                     "description": "The length in bytes of the file prefix that was hashed. If hashed_size == size, any hashes reported represent the entire file.",
                     "format": "int64",
@@ -7951,6 +8064,10 @@
                 "application": {
                     "$ref": "Application",
                     "description": "Represents an application associated with the finding."
+                },
+                "artifactGuardPolicies": {
+                    "$ref": "ArtifactGuardPolicies",
+                    "description": "ArtifactGuardPolicies associated with the finding."
                 },
                 "attackExposure": {
                     "$ref": "AttackExposure",
@@ -8244,6 +8361,10 @@
                     "description": "For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string. This field is immutable after creation time.",
                     "type": "string"
                 },
+                "secret": {
+                    "$ref": "Secret",
+                    "description": "Secret associated with the finding."
+                },
                 "securityMarks": {
                     "$ref": "SecurityMarks",
                     "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
@@ -8334,14 +8455,16 @@
                             "SECURITY_BENCHMARKS",
                             "ASSURED_WORKLOADS",
                             "DATA_SECURITY",
-                            "GOOGLE_BEST_PRACTICES"
+                            "GOOGLE_BEST_PRACTICES",
+                            "CUSTOM_FRAMEWORK"
                         ],
                         "enumDescriptions": [
                             "Default value. This value is unused.",
                             "Security Benchmarks framework",
                             "Assured Workloads framework",
                             "Data Security framework",
-                            "Google Best Practices framework"
+                            "Google Best Practices framework",
+                            "A user-created framework"
                         ],
                         "type": "string"
                     },
@@ -8793,6 +8916,22 @@
             "description": "Information related to the Google Cloud resource.",
             "id": "GoogleCloudSecuritycenterV1Resource",
             "properties": {
+                "adcApplication": {
+                    "$ref": "AdcApplication",
+                    "description": "The ADC application associated with the finding."
+                },
+                "adcApplicationTemplate": {
+                    "$ref": "AdcApplicationTemplateRevision",
+                    "description": "The ADC template associated with the finding."
+                },
+                "adcSharedTemplate": {
+                    "$ref": "AdcSharedTemplateRevision",
+                    "description": "The ADC shared template associated with the finding."
+                },
+                "application": {
+                    "$ref": "GoogleCloudSecuritycenterV1ResourceApplication",
+                    "description": "The App Hub application this resource belongs to."
+                },
                 "awsMetadata": {
                     "$ref": "AwsMetadata",
                     "description": "The AWS metadata associated with the finding."
@@ -8871,6 +9010,118 @@
                 },
                 "type": {
                     "description": "The full resource type of the resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV1ResourceApplication": {
+            "description": "The App Hub Application associated with the finding's resource.",
+            "id": "GoogleCloudSecuritycenterV1ResourceApplication",
+            "properties": {
+                "attributes": {
+                    "$ref": "GoogleCloudSecuritycenterV1ResourceApplicationAttributes",
+                    "description": "Consumer provided attributes for the application"
+                },
+                "name": {
+                    "description": "The resource name of an Application. Format: `projects/{host-project-id}/locations/{location}/applications/{application-id}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV1ResourceApplicationAttributes": {
+            "description": "Consumer provided attributes for the application",
+            "id": "GoogleCloudSecuritycenterV1ResourceApplicationAttributes",
+            "properties": {
+                "businessOwners": {
+                    "description": "Business team that ensures user needs are met and value is delivered",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                },
+                "criticality": {
+                    "$ref": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality",
+                    "description": "User-defined criticality information."
+                },
+                "developerOwners": {
+                    "description": "Developer team that owns development and coding.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                },
+                "environment": {
+                    "$ref": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment",
+                    "description": "User-defined environment information."
+                },
+                "operatorOwners": {
+                    "description": "Operator team that ensures runtime and operations.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo": {
+            "description": "Contact information of stakeholders.",
+            "id": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesContactInfo",
+            "properties": {
+                "email": {
+                    "description": "Email address of the contacts.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality": {
+            "description": "Criticality of the Application, Service, or Workload",
+            "id": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesCriticality",
+            "properties": {
+                "type": {
+                    "description": "Criticality Type.",
+                    "enum": [
+                        "CRITICALITY_TYPE_UNSPECIFIED",
+                        "MISSION_CRITICAL",
+                        "HIGH",
+                        "MEDIUM",
+                        "LOW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified type.",
+                        "Mission critical service, application or workload.",
+                        "High impact.",
+                        "Medium impact.",
+                        "Low impact."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment": {
+            "description": "Environment of the Application, Service, or Workload",
+            "id": "GoogleCloudSecuritycenterV1ResourceApplicationAttributesEnvironment",
+            "properties": {
+                "type": {
+                    "description": "Environment Type.",
+                    "enum": [
+                        "ENVIRONMENT_TYPE_UNSPECIFIED",
+                        "PRODUCTION",
+                        "STAGING",
+                        "TEST",
+                        "DEVELOPMENT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified type.",
+                        "Production environment.",
+                        "Staging environment.",
+                        "Test environment.",
+                        "Development environment."
+                    ],
                     "type": "string"
                 }
             },
@@ -9448,6 +9699,43 @@
             },
             "type": "object"
         },
+        "GoogleCloudSecuritycenterV2AdcApplication": {
+            "description": "Represents an ADC application associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2AdcApplication",
+            "properties": {
+                "attributes": {
+                    "$ref": "GoogleCloudSecuritycenterV2ResourceApplicationAttributes",
+                    "description": "Consumer provided attributes for the AppHub application."
+                },
+                "name": {
+                    "description": "The resource name of an ADC Application. Format: projects/{project}/locations/{location}/spaces/{space}/applications/{application}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision": {
+            "description": "Represents an ADC template associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision",
+            "properties": {
+                "name": {
+                    "description": "The resource name of an ADC Application Template Revision. Format: projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2AdcSharedTemplateRevision": {
+            "description": "Represents an ADC shared template associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2AdcSharedTemplateRevision",
+            "properties": {
+                "name": {
+                    "description": "The resource name of an ADC Shared Template Revision. Format: projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudSecuritycenterV2AffectedResources": {
             "description": "Details about resources affected by this finding.",
             "id": "GoogleCloudSecuritycenterV2AffectedResources",
@@ -9505,6 +9793,10 @@
                 "publisher": {
                     "description": "The publisher of the model, for example, “google” or “nvidia”.",
                     "type": "string"
+                },
+                "usageCategory": {
+                    "description": "The purpose of the model, for example, \"Inteference\" or \"Training\".",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -9533,6 +9825,51 @@
                 },
                 "fullUri": {
                     "description": "The full URI with payload that could be used to reproduce the vulnerability. For example, `http://example.com?p=aMmYgI6H`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2ArtifactGuardPolicies": {
+            "description": "Represents the result of evaluating artifact guard policies.",
+            "id": "GoogleCloudSecuritycenterV2ArtifactGuardPolicies",
+            "properties": {
+                "failingPolicies": {
+                    "description": "A list of failing policies.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2ArtifactGuardPolicy"
+                    },
+                    "type": "array"
+                },
+                "resourceId": {
+                    "description": "The ID of the resource that has policies configured for it.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2ArtifactGuardPolicy": {
+            "description": "Represents an artifact guard policy.",
+            "id": "GoogleCloudSecuritycenterV2ArtifactGuardPolicy",
+            "properties": {
+                "failureReason": {
+                    "description": "The reason for the policy failure, for example, \"severity=HIGH AND max_vuln_count=2\".",
+                    "type": "string"
+                },
+                "policyId": {
+                    "description": "The ID of the failing policy, for example, \"organizations/3392779/locations/global/policies/prod-policy\".",
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The type of the policy evaluation.",
+                    "enum": [
+                        "ARTIFACT_GUARD_POLICY_TYPE_UNSPECIFIED",
+                        "VULNERABILITY"
+                    ],
+                    "enumDescriptions": [
+                        "Default value. This value is unused.",
+                        "Vulnerability type."
+                    ],
                     "type": "string"
                 }
             },
@@ -9997,6 +10334,13 @@
                 "dataProfile": {
                     "description": "Name of the data profile, for example, `projects/123/locations/europe/tableProfiles/8383929`.",
                     "type": "string"
+                },
+                "infoTypes": {
+                    "description": "Type of information detected by SDP. Info type includes name, version and sensitivity of the detected information type.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2InfoType"
+                    },
+                    "type": "array"
                 },
                 "parentType": {
                     "description": "The resource hierarchy level at which the data profile was generated.",
@@ -10830,6 +11174,20 @@
                     "$ref": "GoogleCloudSecuritycenterV2DiskPath",
                     "description": "Path of the file in terms of underlying disk/partition identifiers."
                 },
+                "fileLoadState": {
+                    "description": "The load state of the file.",
+                    "enum": [
+                        "FILE_LOAD_STATE_UNSPECIFIED",
+                        "LOADED_BY_PROCESS",
+                        "NOT_LOADED_BY_PROCESS"
+                    ],
+                    "enumDescriptions": [
+                        "The file state is unspecified.",
+                        "The file is being used by an active process at the time of scanning.",
+                        "The file is not being used by any active process at the time of scanning."
+                    ],
+                    "type": "string"
+                },
                 "hashedSize": {
                     "description": "The length in bytes of the file prefix that was hashed. If hashed_size == size, any hashes reported represent the entire file.",
                     "format": "int64",
@@ -10908,6 +11266,10 @@
                 "application": {
                     "$ref": "GoogleCloudSecuritycenterV2Application",
                     "description": "Represents an application associated with the finding."
+                },
+                "artifactGuardPolicies": {
+                    "$ref": "GoogleCloudSecuritycenterV2ArtifactGuardPolicies",
+                    "description": "ArtifactGuardPolicies associated with the finding."
                 },
                 "attackExposure": {
                     "$ref": "GoogleCloudSecuritycenterV2AttackExposure",
@@ -11208,6 +11570,10 @@
                     "description": "Immutable. For findings on Google Cloud resources, the full resource name of the Google Cloud resource this finding is for. See: https://cloud.google.com/apis/design/resource_names#full_resource_name When the finding is for a non-Google Cloud resource, the resourceName can be a customer or partner defined string.",
                     "type": "string"
                 },
+                "secret": {
+                    "$ref": "GoogleCloudSecuritycenterV2Secret",
+                    "description": "Secret associated with the finding."
+                },
                 "securityMarks": {
                     "$ref": "GoogleCloudSecuritycenterV2SecurityMarks",
                     "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
@@ -11299,14 +11665,16 @@
                             "SECURITY_BENCHMARKS",
                             "ASSURED_WORKLOADS",
                             "DATA_SECURITY",
-                            "GOOGLE_BEST_PRACTICES"
+                            "GOOGLE_BEST_PRACTICES",
+                            "CUSTOM_FRAMEWORK"
                         ],
                         "enumDescriptions": [
                             "Default value. This value is unused.",
                             "Security Benchmarks framework",
                             "Assured Workloads framework",
                             "Data Security framework",
-                            "Google Best Practices framework"
+                            "Google Best Practices framework",
+                            "A user-created framework"
                         ],
                         "type": "string"
                     },
@@ -11440,6 +11808,25 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2InfoType": {
+            "description": "Type of information detected by the API.",
+            "id": "GoogleCloudSecuritycenterV2InfoType",
+            "properties": {
+                "name": {
+                    "description": "Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.",
+                    "type": "string"
+                },
+                "sensitivityScore": {
+                    "$ref": "GoogleCloudSecuritycenterV2SensitivityScore",
+                    "description": "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+                },
+                "version": {
+                    "description": "Optional version name for this InfoType.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -11756,6 +12143,18 @@
             "description": "A resource associated with the an issue.",
             "id": "GoogleCloudSecuritycenterV2IssueResource",
             "properties": {
+                "adcApplication": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceAdcApplication",
+                    "description": "The ADC application associated with the finding."
+                },
+                "adcApplicationTemplate": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision",
+                    "description": "The ADC template associated with the finding."
+                },
+                "adcSharedTemplate": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision",
+                    "description": "The ADC shared template associated with the finding."
+                },
                 "application": {
                     "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplication",
                     "description": "The AppHub application associated with the resource, if any. Only populated for the primary resource."
@@ -11803,12 +12202,150 @@
             },
             "type": "object"
         },
+        "GoogleCloudSecuritycenterV2IssueResourceAdcApplication": {
+            "description": "Represents an ADC application associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceAdcApplication",
+            "properties": {
+                "attributes": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes",
+                    "description": "Consumer provided attributes for the AppHub application."
+                },
+                "name": {
+                    "description": "The resource name of an ADC Application. Format: projects/{project}/locations/{location}/spaces/{space}/applications/{application}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision": {
+            "description": "Represents an ADC template associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceAdcApplicationTemplateRevision",
+            "properties": {
+                "name": {
+                    "description": "The resource name of an ADC Application Template Revision. Format: projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision": {
+            "description": "Represents an ADC shared template associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceAdcSharedTemplateRevision",
+            "properties": {
+                "name": {
+                    "description": "The resource name of an ADC Shared Template Revision. Format: projects/{project}/locations/{location}/spaces/{space}/applicationTemplates/{application_template}/revisions/{revision}",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudSecuritycenterV2IssueResourceApplication": {
             "description": "The AppHub application associated with the resource, if any.",
             "id": "GoogleCloudSecuritycenterV2IssueResourceApplication",
             "properties": {
+                "attributes": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes",
+                    "description": "Consumer provided attributes for the application"
+                },
                 "name": {
                     "description": "The resource name of an Application. Format: `projects/{host-project-id}/locations/{location}/applications/{application-id}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes": {
+            "description": "Consumer provided attributes for the application",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributes",
+            "properties": {
+                "businessOwners": {
+                    "description": "Business team that ensures user needs are met and value is delivered",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                },
+                "criticality": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality",
+                    "description": "User-defined criticality information."
+                },
+                "developerOwners": {
+                    "description": "Developer team that owns development and coding.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                },
+                "environment": {
+                    "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment",
+                    "description": "User-defined environment information."
+                },
+                "operatorOwners": {
+                    "description": "Operator team that ensures runtime and operations.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo": {
+            "description": "Contact information of stakeholders.",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesContactInfo",
+            "properties": {
+                "email": {
+                    "description": "Email address of the contacts.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality": {
+            "description": "Criticality of the Application, Service, or Workload",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesCriticality",
+            "properties": {
+                "type": {
+                    "description": "Criticality Type.",
+                    "enum": [
+                        "CRITICALITY_TYPE_UNSPECIFIED",
+                        "MISSION_CRITICAL",
+                        "HIGH",
+                        "MEDIUM",
+                        "LOW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified type.",
+                        "Mission critical service, application or workload.",
+                        "High impact.",
+                        "Medium impact.",
+                        "Low impact."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment": {
+            "description": "Environment of the Application, Service, or Workload",
+            "id": "GoogleCloudSecuritycenterV2IssueResourceApplicationAttributesEnvironment",
+            "properties": {
+                "type": {
+                    "description": "Environment Type.",
+                    "enum": [
+                        "ENVIRONMENT_TYPE_UNSPECIFIED",
+                        "PRODUCTION",
+                        "STAGING",
+                        "TEST",
+                        "DEVELOPMENT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified type.",
+                        "Production environment.",
+                        "Staging environment.",
+                        "Test environment.",
+                        "Development environment."
+                    ],
                     "type": "string"
                 }
             },
@@ -12241,6 +12778,7 @@
                             "COMPROMISE_SOFTWARE_DEPENDENCIES_AND_DEVELOPMENT_TOOLS",
                             "EXPLOITATION_FOR_CLIENT_EXECUTION",
                             "USER_EXECUTION",
+                            "EXPLOITATION_FOR_CREDENTIAL_ACCESS",
                             "LINUX_AND_MAC_FILE_AND_DIRECTORY_PERMISSIONS_MODIFICATION",
                             "DOMAIN_POLICY_MODIFICATION",
                             "DATA_DESTRUCTION",
@@ -12381,6 +12919,7 @@
                             "T1195.001",
                             "T1203",
                             "T1204",
+                            "T1212",
                             "T1222.002",
                             "T1484",
                             "T1485",
@@ -12566,6 +13105,7 @@
                             "COMPROMISE_SOFTWARE_DEPENDENCIES_AND_DEVELOPMENT_TOOLS",
                             "EXPLOITATION_FOR_CLIENT_EXECUTION",
                             "USER_EXECUTION",
+                            "EXPLOITATION_FOR_CREDENTIAL_ACCESS",
                             "LINUX_AND_MAC_FILE_AND_DIRECTORY_PERMISSIONS_MODIFICATION",
                             "DOMAIN_POLICY_MODIFICATION",
                             "DATA_DESTRUCTION",
@@ -12706,6 +13246,7 @@
                             "T1195.001",
                             "T1203",
                             "T1204",
+                            "T1212",
                             "T1222.002",
                             "T1484",
                             "T1485",
@@ -13226,6 +13767,22 @@
             "description": "Information related to the Google Cloud resource.",
             "id": "GoogleCloudSecuritycenterV2Resource",
             "properties": {
+                "adcApplication": {
+                    "$ref": "GoogleCloudSecuritycenterV2AdcApplication",
+                    "description": "The ADC application associated with the finding."
+                },
+                "adcApplicationTemplate": {
+                    "$ref": "GoogleCloudSecuritycenterV2AdcApplicationTemplateRevision",
+                    "description": "The ADC template associated with the finding."
+                },
+                "adcSharedTemplate": {
+                    "$ref": "GoogleCloudSecuritycenterV2AdcSharedTemplateRevision",
+                    "description": "The ADC shared template associated with the finding."
+                },
+                "application": {
+                    "$ref": "GoogleCloudSecuritycenterV2ResourceApplication",
+                    "description": "The App Hub application this resource belongs to."
+                },
                 "awsMetadata": {
                     "$ref": "GoogleCloudSecuritycenterV2AwsMetadata",
                     "description": "The AWS metadata associated with the finding."
@@ -13280,6 +13837,118 @@
                 },
                 "type": {
                     "description": "The full resource type of the resource.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2ResourceApplication": {
+            "description": "The App Hub Application associated with the finding's resource.",
+            "id": "GoogleCloudSecuritycenterV2ResourceApplication",
+            "properties": {
+                "attributes": {
+                    "$ref": "GoogleCloudSecuritycenterV2ResourceApplicationAttributes",
+                    "description": "Consumer provided attributes for the application"
+                },
+                "name": {
+                    "description": "The resource name of an Application. Format: `projects/{host-project-id}/locations/{location}/applications/{application-id}`",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2ResourceApplicationAttributes": {
+            "description": "Consumer provided attributes for the application",
+            "id": "GoogleCloudSecuritycenterV2ResourceApplicationAttributes",
+            "properties": {
+                "businessOwners": {
+                    "description": "Business team that ensures user needs are met and value is delivered",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                },
+                "criticality": {
+                    "$ref": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality",
+                    "description": "User-defined criticality information."
+                },
+                "developerOwners": {
+                    "description": "Developer team that owns development and coding.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                },
+                "environment": {
+                    "$ref": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment",
+                    "description": "User-defined environment information."
+                },
+                "operatorOwners": {
+                    "description": "Operator team that ensures runtime and operations.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo": {
+            "description": "Contact information of stakeholders.",
+            "id": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesContactInfo",
+            "properties": {
+                "email": {
+                    "description": "Email address of the contacts.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality": {
+            "description": "Criticality of the Application, Service, or Workload",
+            "id": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesCriticality",
+            "properties": {
+                "type": {
+                    "description": "Criticality Type.",
+                    "enum": [
+                        "CRITICALITY_TYPE_UNSPECIFIED",
+                        "MISSION_CRITICAL",
+                        "HIGH",
+                        "MEDIUM",
+                        "LOW"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified type.",
+                        "Mission critical service, application or workload.",
+                        "High impact.",
+                        "Medium impact.",
+                        "Low impact."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment": {
+            "description": "Environment of the Application, Service, or Workload",
+            "id": "GoogleCloudSecuritycenterV2ResourceApplicationAttributesEnvironment",
+            "properties": {
+                "type": {
+                    "description": "Environment Type.",
+                    "enum": [
+                        "ENVIRONMENT_TYPE_UNSPECIFIED",
+                        "PRODUCTION",
+                        "STAGING",
+                        "TEST",
+                        "DEVELOPMENT"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified type.",
+                        "Production environment.",
+                        "Staging environment.",
+                        "Test environment.",
+                        "Development environment."
+                    ],
                     "type": "string"
                 }
             },
@@ -13458,6 +14127,81 @@
             },
             "type": "object"
         },
+        "GoogleCloudSecuritycenterV2Secret": {
+            "description": "Details about a secret or credential associated with the finding.",
+            "id": "GoogleCloudSecuritycenterV2Secret",
+            "properties": {
+                "environmentVariable": {
+                    "$ref": "GoogleCloudSecuritycenterV2SecretEnvironmentVariable",
+                    "description": "The environment variable containing the secret."
+                },
+                "filePath": {
+                    "$ref": "GoogleCloudSecuritycenterV2SecretFilePath",
+                    "description": "The file containing the secret."
+                },
+                "status": {
+                    "$ref": "GoogleCloudSecuritycenterV2SecretStatus",
+                    "description": "The status of the secret."
+                },
+                "type": {
+                    "description": "The type of secret, for example, GCP_API_KEY.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2SecretEnvironmentVariable": {
+            "description": "Environment variable containing the secret.",
+            "id": "GoogleCloudSecuritycenterV2SecretEnvironmentVariable",
+            "properties": {
+                "key": {
+                    "description": "Environment variable name as a JSON encoded string. Note that value is not included since the value contains the secret data, which is sensitive core content.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2SecretFilePath": {
+            "description": "File path containing the secret.",
+            "id": "GoogleCloudSecuritycenterV2SecretFilePath",
+            "properties": {
+                "path": {
+                    "description": "Path to the file.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2SecretStatus": {
+            "description": "The status of the secret.",
+            "id": "GoogleCloudSecuritycenterV2SecretStatus",
+            "properties": {
+                "lastUpdatedTime": {
+                    "description": "Time that the secret was found.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "validity": {
+                    "description": "The validity of the secret.",
+                    "enum": [
+                        "SECRET_VALIDITY_UNSPECIFIED",
+                        "SECRET_VALIDITY_UNSUPPORTED",
+                        "SECRET_VALIDITY_FAILED",
+                        "SECRET_VALIDITY_INVALID",
+                        "SECRET_VALIDITY_VALID"
+                    ],
+                    "enumDescriptions": [
+                        "Default value; no validation was attempted.",
+                        "There is no mechanism to validate the secret.",
+                        "Validation is supported but the validation failed.",
+                        "The secret is confirmed to be invalid.",
+                        "The secret is confirmed to be valid."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudSecuritycenterV2SecurityBulletin": {
             "description": "SecurityBulletin are notifications of vulnerabilities of Google products.",
             "id": "GoogleCloudSecuritycenterV2SecurityBulletin",
@@ -13598,6 +14342,31 @@
                         "Medium resource value",
                         "Low resource value",
                         "No resource value, e.g. ignore these resources"
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudSecuritycenterV2SensitivityScore": {
+            "description": "Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.",
+            "id": "GoogleCloudSecuritycenterV2SensitivityScore",
+            "properties": {
+                "score": {
+                    "description": "The sensitivity score applied to the resource.",
+                    "enum": [
+                        "SENSITIVITY_SCORE_LEVEL_UNSPECIFIED",
+                        "SENSITIVITY_LOW",
+                        "SENSITIVITY_UNKNOWN",
+                        "SENSITIVITY_MODERATE",
+                        "SENSITIVITY_HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "Unused.",
+                        "No sensitive information detected. The resource isn't publicly accessible.",
+                        "Unable to determine sensitivity.",
+                        "Medium risk. Contains personally identifiable information (PII), potentially sensitive data, or fields with free-text data that are at a higher risk of having intermittent sensitive data. Consider limiting access.",
+                        "High risk. Sensitive personally identifiable information (SPII) can be present. Exfiltration of data can lead to user data loss. Re-identification of users might be possible. Consider limiting usage and or removing SPII."
                     ],
                     "type": "string"
                 }
@@ -14041,6 +14810,25 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "InfoType": {
+            "description": "Type of information detected by the API.",
+            "id": "InfoType",
+            "properties": {
+                "name": {
+                    "description": "Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.",
+                    "type": "string"
+                },
+                "sensitivityScore": {
+                    "$ref": "SensitivityScore",
+                    "description": "Optional custom sensitivity for this InfoType. This only applies to data profiling."
+                },
+                "version": {
+                    "description": "Optional version name for this InfoType.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -14559,6 +15347,13 @@
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -14802,6 +15597,7 @@
                             "COMPROMISE_SOFTWARE_DEPENDENCIES_AND_DEVELOPMENT_TOOLS",
                             "EXPLOITATION_FOR_CLIENT_EXECUTION",
                             "USER_EXECUTION",
+                            "EXPLOITATION_FOR_CREDENTIAL_ACCESS",
                             "LINUX_AND_MAC_FILE_AND_DIRECTORY_PERMISSIONS_MODIFICATION",
                             "DOMAIN_POLICY_MODIFICATION",
                             "DATA_DESTRUCTION",
@@ -14942,6 +15738,7 @@
                             "T1195.001",
                             "T1203",
                             "T1204",
+                            "T1212",
                             "T1222.002",
                             "T1484",
                             "T1485",
@@ -15127,6 +15924,7 @@
                             "COMPROMISE_SOFTWARE_DEPENDENCIES_AND_DEVELOPMENT_TOOLS",
                             "EXPLOITATION_FOR_CLIENT_EXECUTION",
                             "USER_EXECUTION",
+                            "EXPLOITATION_FOR_CREDENTIAL_ACCESS",
                             "LINUX_AND_MAC_FILE_AND_DIRECTORY_PERMISSIONS_MODIFICATION",
                             "DOMAIN_POLICY_MODIFICATION",
                             "DATA_DESTRUCTION",
@@ -15267,6 +16065,7 @@
                             "T1195.001",
                             "T1203",
                             "T1204",
+                            "T1212",
                             "T1222.002",
                             "T1484",
                             "T1485",
@@ -15857,6 +16656,22 @@
             "description": "Information related to the Google Cloud resource that is associated with this finding.",
             "id": "Resource",
             "properties": {
+                "adcApplication": {
+                    "$ref": "AdcApplication",
+                    "description": "The ADC application associated with the finding."
+                },
+                "adcApplicationTemplate": {
+                    "$ref": "AdcApplicationTemplateRevision",
+                    "description": "The ADC template associated with the finding."
+                },
+                "adcSharedTemplate": {
+                    "$ref": "AdcSharedTemplateRevision",
+                    "description": "The ADC shared template associated with the finding."
+                },
+                "application": {
+                    "$ref": "GoogleCloudSecuritycenterV1ResourceApplication",
+                    "description": "The App Hub application this resource belongs to."
+                },
                 "awsMetadata": {
                     "$ref": "AwsMetadata",
                     "description": "The AWS metadata associated with the finding."
@@ -16042,6 +16857,81 @@
             "properties": {},
             "type": "object"
         },
+        "Secret": {
+            "description": "Details about a secret or credential associated with the finding.",
+            "id": "Secret",
+            "properties": {
+                "environmentVariable": {
+                    "$ref": "SecretEnvironmentVariable",
+                    "description": "The environment variable containing the secret."
+                },
+                "filePath": {
+                    "$ref": "SecretFilePath",
+                    "description": "The file containing the secret."
+                },
+                "status": {
+                    "$ref": "SecretStatus",
+                    "description": "The status of the secret."
+                },
+                "type": {
+                    "description": "The type of secret, for example, GCP_API_KEY.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SecretEnvironmentVariable": {
+            "description": "Environment variable containing the secret.",
+            "id": "SecretEnvironmentVariable",
+            "properties": {
+                "key": {
+                    "description": "Environment variable name as a JSON encoded string. Note that value is not included since the value contains the secret data, which is sensitive core content.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SecretFilePath": {
+            "description": "File path containing the secret.",
+            "id": "SecretFilePath",
+            "properties": {
+                "path": {
+                    "description": "Path to the file.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SecretStatus": {
+            "description": "The status of the secret.",
+            "id": "SecretStatus",
+            "properties": {
+                "lastUpdatedTime": {
+                    "description": "Time that the secret was found.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "validity": {
+                    "description": "The validity of the secret.",
+                    "enum": [
+                        "SECRET_VALIDITY_UNSPECIFIED",
+                        "SECRET_VALIDITY_UNSUPPORTED",
+                        "SECRET_VALIDITY_FAILED",
+                        "SECRET_VALIDITY_INVALID",
+                        "SECRET_VALIDITY_VALID"
+                    ],
+                    "enumDescriptions": [
+                        "Default value; no validation was attempted.",
+                        "There is no mechanism to validate the secret.",
+                        "Validation is supported but the validation failed.",
+                        "The secret is confirmed to be invalid.",
+                        "The secret is confirmed to be valid."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "SecurityBulletin": {
             "description": "SecurityBulletin are notifications of vulnerabilities of Google products.",
             "id": "SecurityBulletin",
@@ -16189,6 +17079,31 @@
                 },
                 "revisionId": {
                     "description": "The version of the posture, for example, `c7cfa2a8`.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SensitivityScore": {
+            "description": "Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.",
+            "id": "SensitivityScore",
+            "properties": {
+                "score": {
+                    "description": "The sensitivity score applied to the resource.",
+                    "enum": [
+                        "SENSITIVITY_SCORE_LEVEL_UNSPECIFIED",
+                        "SENSITIVITY_LOW",
+                        "SENSITIVITY_UNKNOWN",
+                        "SENSITIVITY_MODERATE",
+                        "SENSITIVITY_HIGH"
+                    ],
+                    "enumDescriptions": [
+                        "Unused.",
+                        "No sensitive information detected. The resource isn't publicly accessible.",
+                        "Unable to determine sensitivity.",
+                        "Medium risk. Contains personally identifiable information (PII), potentially sensitive data, or fields with free-text data that are at a higher risk of having intermittent sensitive data. Consider limiting access.",
+                        "High risk. Sensitive personally identifiable information (SPII) can be present. Exfiltration of data can lead to user data loss. Re-identification of users might be possible. Consider limiting usage and or removing SPII."
+                    ],
                     "type": "string"
                 }
             },

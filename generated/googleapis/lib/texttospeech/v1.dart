@@ -277,6 +277,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -292,12 +300,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -410,22 +421,46 @@ class VoicesResource {
 
 /// Used for advanced voice options.
 class AdvancedVoiceOptions {
+  /// If true, textnorm will be applied to text input.
+  ///
+  /// This feature is enabled by default. Only applies for Gemini TTS.
+  ///
+  /// Optional.
+  core.bool? enableTextnorm;
+
   /// Only for Journey voices.
   ///
   /// If false, the synthesis is context aware and has a higher latency.
   core.bool? lowLatencyJourneySynthesis;
 
-  AdvancedVoiceOptions({this.lowLatencyJourneySynthesis});
+  /// Input only.
+  ///
+  /// If true, relaxes safety filters for Gemini TTS. Only supported for
+  /// accounts linked to Invoiced (Offline) Cloud billing accounts. Otherwise,
+  /// will return result google.rpc.Code.INVALID_ARGUMENT.
+  ///
+  /// Optional.
+  core.bool? relaxSafetyFilters;
+
+  AdvancedVoiceOptions({
+    this.enableTextnorm,
+    this.lowLatencyJourneySynthesis,
+    this.relaxSafetyFilters,
+  });
 
   AdvancedVoiceOptions.fromJson(core.Map json_)
     : this(
+        enableTextnorm: json_['enableTextnorm'] as core.bool?,
         lowLatencyJourneySynthesis:
             json_['lowLatencyJourneySynthesis'] as core.bool?,
+        relaxSafetyFilters: json_['relaxSafetyFilters'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (enableTextnorm != null) 'enableTextnorm': enableTextnorm!,
     if (lowLatencyJourneySynthesis != null)
       'lowLatencyJourneySynthesis': lowLatencyJourneySynthesis!,
+    if (relaxSafetyFilters != null) 'relaxSafetyFilters': relaxSafetyFilters!,
   };
 }
 
@@ -679,7 +714,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -692,11 +739,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -747,6 +799,71 @@ class MultiSpeakerMarkup {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (turns != null) 'turns': turns!,
+  };
+}
+
+/// Configuration for a multi-speaker text-to-speech setup.
+///
+/// Enables the use of up to two distinct voices in a single synthesis request.
+class MultiSpeakerVoiceConfig {
+  /// A list of configurations for the voices of the speakers.
+  ///
+  /// Exactly two speaker voice configurations must be provided.
+  ///
+  /// Required.
+  core.List<MultispeakerPrebuiltVoice>? speakerVoiceConfigs;
+
+  MultiSpeakerVoiceConfig({this.speakerVoiceConfigs});
+
+  MultiSpeakerVoiceConfig.fromJson(core.Map json_)
+    : this(
+        speakerVoiceConfigs:
+            (json_['speakerVoiceConfigs'] as core.List?)
+                ?.map(
+                  (value) => MultispeakerPrebuiltVoice.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (speakerVoiceConfigs != null)
+      'speakerVoiceConfigs': speakerVoiceConfigs!,
+  };
+}
+
+/// Configuration for a single speaker in a Gemini TTS multi-speaker setup.
+///
+/// Enables dialogue between two speakers.
+class MultispeakerPrebuiltVoice {
+  /// The speaker alias of the voice.
+  ///
+  /// This is the user-chosen speaker name that is used in the multispeaker text
+  /// input, such as "Speaker1".
+  ///
+  /// Required.
+  core.String? speakerAlias;
+
+  /// The speaker ID of the voice.
+  ///
+  /// See https://cloud.google.com/text-to-speech/docs/gemini-tts#voice_options
+  /// for available values.
+  ///
+  /// Required.
+  core.String? speakerId;
+
+  MultispeakerPrebuiltVoice({this.speakerAlias, this.speakerId});
+
+  MultispeakerPrebuiltVoice.fromJson(core.Map json_)
+    : this(
+        speakerAlias: json_['speakerAlias'] as core.String?,
+        speakerId: json_['speakerId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (speakerAlias != null) 'speakerAlias': speakerAlias!,
+    if (speakerId != null) 'speakerId': speakerId!,
   };
 }
 
@@ -850,7 +967,7 @@ class SynthesisInput {
   /// Optional.
   CustomPronunciations? customPronunciations;
 
-  /// Markup for HD voices specifically.
+  /// Markup for Chirp 3: HD voices specifically.
   ///
   /// This field may not be used with any other voices.
   core.String? markup;
@@ -987,6 +1104,8 @@ class SynthesizeLongAudioRequest {
 /// The top-level message sent by the client for the `SynthesizeSpeech` method.
 class SynthesizeSpeechRequest {
   /// Advanced voice options.
+  ///
+  /// Optional.
   AdvancedVoiceOptions? advancedVoiceOptions;
 
   /// The configuration of the synthesized audio.
@@ -1209,6 +1328,13 @@ class VoiceSelectionParams {
   /// Optional.
   core.String? modelName;
 
+  /// The configuration for a Gemini multi-speaker text-to-speech setup.
+  ///
+  /// Enables the use of two distinct voices in a single synthesis request.
+  ///
+  /// Optional.
+  MultiSpeakerVoiceConfig? multiSpeakerVoiceConfig;
+
   /// The name of the voice.
   ///
   /// If both the name and the gender are not set, the service will choose a
@@ -1245,6 +1371,7 @@ class VoiceSelectionParams {
     this.customVoice,
     this.languageCode,
     this.modelName,
+    this.multiSpeakerVoiceConfig,
     this.name,
     this.ssmlGender,
     this.voiceClone,
@@ -1260,6 +1387,13 @@ class VoiceSelectionParams {
                 : null,
         languageCode: json_['languageCode'] as core.String?,
         modelName: json_['modelName'] as core.String?,
+        multiSpeakerVoiceConfig:
+            json_.containsKey('multiSpeakerVoiceConfig')
+                ? MultiSpeakerVoiceConfig.fromJson(
+                  json_['multiSpeakerVoiceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         ssmlGender: json_['ssmlGender'] as core.String?,
         voiceClone:
@@ -1274,6 +1408,8 @@ class VoiceSelectionParams {
     if (customVoice != null) 'customVoice': customVoice!,
     if (languageCode != null) 'languageCode': languageCode!,
     if (modelName != null) 'modelName': modelName!,
+    if (multiSpeakerVoiceConfig != null)
+      'multiSpeakerVoiceConfig': multiSpeakerVoiceConfig!,
     if (name != null) 'name': name!,
     if (ssmlGender != null) 'ssmlGender': ssmlGender!,
     if (voiceClone != null) 'voiceClone': voiceClone!,

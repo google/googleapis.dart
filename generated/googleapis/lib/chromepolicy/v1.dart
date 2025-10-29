@@ -2957,15 +2957,4 @@ class Proto2FileDescriptorProto {
 }
 
 /// Describes a oneof.
-class Proto2OneofDescriptorProto {
-  core.String? name;
-
-  Proto2OneofDescriptorProto({this.name});
-
-  Proto2OneofDescriptorProto.fromJson(core.Map json_)
-    : this(name: json_['name'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-  };
-}
+typedef Proto2OneofDescriptorProto = $Shared10;

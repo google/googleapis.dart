@@ -204,6 +204,14 @@ class OperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -219,12 +227,15 @@ class OperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -951,7 +962,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -964,11 +987,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -1358,6 +1386,15 @@ class TenantProjectPolicy {
 
 /// Resource constituting the TenancyUnit.
 class TenantResource {
+  /// The newly created regional resource name of the tenant project that has
+  /// been migrated from a global service.
+  ///
+  /// This field is only set for migrated tenant projects. Format:
+  /// `services//{collection_id}/{RESOURCE_ID}/locations/{LOCATION}/tenantProjects/{TENANT_ID}`.
+  ///
+  /// Output only.
+  core.String? migratedTenantProject;
+
   /// @OutputOnly Identifier of the tenant resource.
   ///
   /// For cloud projects, it is in the form 'projects/{number}'. For example
@@ -1379,16 +1416,24 @@ class TenantResource {
   /// Unique per single tenancy unit.
   core.String? tag;
 
-  TenantResource({this.resource, this.status, this.tag});
+  TenantResource({
+    this.migratedTenantProject,
+    this.resource,
+    this.status,
+    this.tag,
+  });
 
   TenantResource.fromJson(core.Map json_)
     : this(
+        migratedTenantProject: json_['migratedTenantProject'] as core.String?,
         resource: json_['resource'] as core.String?,
         status: json_['status'] as core.String?,
         tag: json_['tag'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (migratedTenantProject != null)
+      'migratedTenantProject': migratedTenantProject!,
     if (resource != null) 'resource': resource!,
     if (status != null) 'status': status!,
     if (tag != null) 'tag': tag!,

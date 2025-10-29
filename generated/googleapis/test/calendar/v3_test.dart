@@ -114,7 +114,9 @@ api.Calendar buildCalendar() {
   final o = api.Calendar();
   buildCounterCalendar++;
   if (buildCounterCalendar < 3) {
+    o.autoAcceptInvitations = true;
     o.conferenceProperties = buildConferenceProperties();
+    o.dataOwner = 'foo';
     o.description = 'foo';
     o.etag = 'foo';
     o.id = 'foo';
@@ -130,7 +132,9 @@ api.Calendar buildCalendar() {
 void checkCalendar(api.Calendar o) {
   buildCounterCalendar++;
   if (buildCounterCalendar < 3) {
+    unittest.expect(o.autoAcceptInvitations!, unittest.isTrue);
     checkConferenceProperties(o.conferenceProperties!);
+    unittest.expect(o.dataOwner!, unittest.equals('foo'));
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.id!, unittest.equals('foo'));
@@ -230,9 +234,11 @@ api.CalendarListEntry buildCalendarListEntry() {
   buildCounterCalendarListEntry++;
   if (buildCounterCalendarListEntry < 3) {
     o.accessRole = 'foo';
+    o.autoAcceptInvitations = true;
     o.backgroundColor = 'foo';
     o.colorId = 'foo';
     o.conferenceProperties = buildConferenceProperties();
+    o.dataOwner = 'foo';
     o.defaultReminders = buildUnnamed2();
     o.deleted = true;
     o.description = 'foo';
@@ -257,9 +263,11 @@ void checkCalendarListEntry(api.CalendarListEntry o) {
   buildCounterCalendarListEntry++;
   if (buildCounterCalendarListEntry < 3) {
     unittest.expect(o.accessRole!, unittest.equals('foo'));
+    unittest.expect(o.autoAcceptInvitations!, unittest.isTrue);
     unittest.expect(o.backgroundColor!, unittest.equals('foo'));
     unittest.expect(o.colorId!, unittest.equals('foo'));
     checkConferenceProperties(o.conferenceProperties!);
+    unittest.expect(o.dataOwner!, unittest.equals('foo'));
     checkUnnamed2(o.defaultReminders!);
     unittest.expect(o.deleted!, unittest.isTrue);
     unittest.expect(o.description!, unittest.equals('foo'));

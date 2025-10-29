@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250808",
+    "revision": "20260202",
     "rootUrl": "https://merchantapi.googleapis.com/",
     "servicePath": "",
     "title": "Merchant API",
@@ -1303,10 +1303,10 @@
                     ],
                     "enumDescriptions": [
                         "Not specified.",
-                        "Product is not eligible or is disapproved for all reporting contexts.",
-                        "Product's status is pending in all reporting contexts.",
-                        "Product is eligible for some (but not all) reporting contexts.",
-                        "Product is eligible for all reporting contexts."
+                        "Product is not eligible or is disapproved for all reporting contexts and countries.",
+                        "Product's status is pending in all reporting contexts and countries.",
+                        "Product is eligible for some (but not all) reporting contexts and countries.",
+                        "Product is eligible for all reporting contexts and countries."
                     ],
                     "type": "string"
                 },
@@ -1369,7 +1369,7 @@
                     "type": "string"
                 },
                 "clickPotentialRank": {
-                    "description": "Rank of the product based on its click potential. A product with `click_potential_rank` 1 has the highest click potential among the merchant's products that fulfill the search query conditions.",
+                    "description": "Normalized click potential of the product. Values range from 1 to 1000, where 1 is the highest click potential and 1000 is the theoretical lowest.",
                     "format": "int64",
                     "type": "string"
                 },

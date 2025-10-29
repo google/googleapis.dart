@@ -35,6 +35,8 @@
 ///   - [CoursesPostsResource]
 ///     - [CoursesPostsAddOnAttachmentsResource]
 ///       - [CoursesPostsAddOnAttachmentsStudentSubmissionsResource]
+///   - [CoursesStudentGroupsResource]
+///     - [CoursesStudentGroupsStudentGroupMembersResource]
 ///   - [CoursesStudentsResource]
 ///   - [CoursesTeachersResource]
 ///   - [CoursesTopicsResource]
@@ -191,6 +193,8 @@ class CoursesResource {
   CoursesCourseWorkMaterialsResource get courseWorkMaterials =>
       CoursesCourseWorkMaterialsResource(_requester);
   CoursesPostsResource get posts => CoursesPostsResource(_requester);
+  CoursesStudentGroupsResource get studentGroups =>
+      CoursesStudentGroupsResource(_requester);
   CoursesStudentsResource get students => CoursesStudentsResource(_requester);
   CoursesTeachersResource get teachers => CoursesTeachersResource(_requester);
   CoursesTopicsResource get topics => CoursesTopicsResource(_requester);
@@ -449,12 +453,12 @@ class CoursesResource {
   ///
   /// [updateMask] - Mask that identifies which fields on the course to update.
   /// This field is required to do an update. The update will fail if invalid
-  /// fields are specified. The following fields are valid: * `name` * `section`
-  /// * `descriptionHeading` * `description` * `room` * `courseState` *
-  /// `ownerId` Note: patches to ownerId are treated as being effective
-  /// immediately, but in practice it may take some time for the ownership
-  /// transfer of all affected resources to complete. When set in a query
-  /// parameter, this field should be specified as `updateMask=,,...`
+  /// fields are specified. The following fields are valid: * `courseState` *
+  /// `description` * `descriptionHeading` * `name` * `ownerId` * `room` *
+  /// `section` * `subject` Note: patches to ownerId are treated as being
+  /// effective immediately, but in practice it may take some time for the
+  /// ownership transfer of all affected resources to complete. When set in a
+  /// query parameter, this field should be specified as `updateMask=,,...`
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2953,7 +2957,7 @@ class CoursesCourseWorkStudentSubmissionsResource {
   /// Returns a list of student submissions that the requester is permitted to
   /// view, factoring in the OAuth scopes of the request.
   ///
-  /// `-` may be specified as the `course_work_id` to include student
+  /// A hyphen (`-`) may be specified as the `course_work_id` to include student
   /// submissions for multiple course work items. Course students may only view
   /// their own work. Course teachers and domain administrators may view all
   /// student submissions. This method returns the following error codes: *
@@ -4689,6 +4693,405 @@ class CoursesPostsAddOnAttachmentsStudentSubmissionsResource {
       queryParams: queryParams_,
     );
     return AddOnAttachmentStudentSubmission.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class CoursesStudentGroupsResource {
+  final commons.ApiRequester _requester;
+
+  CoursesStudentGroupsStudentGroupMembersResource get studentGroupMembers =>
+      CoursesStudentGroupsStudentGroupMembersResource(_requester);
+
+  CoursesStudentGroupsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a student group for a course.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to create the student group or for
+  /// access errors. * `NOT_FOUND` if the course does not exist or the
+  /// requesting user doesn't have access to the course. * `FAILED_PRECONDITION`
+  /// if creating the student group would exceed the maximum number of student
+  /// groups per course.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StudentGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudentGroup> create(
+    StudentGroup request,
+    core.String courseId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/studentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StudentGroup.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a student group.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to delete the requested student group
+  /// or for access errors. * `NOT_FOUND` if the student group does not exist or
+  /// the user does not have access to the student group.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course containing the student
+  /// group to delete.
+  ///
+  /// [id] - Required. The identifier of the student group to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String courseId,
+    core.String id, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/studentGroups/' +
+        commons.escapeVariable('$id');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of groups in a course.
+  ///
+  /// This method returns the following error codes: * `NOT_FOUND` if the course
+  /// does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course.
+  ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the server may assign a maximum, which is currently set to
+  /// 75 items. The server may return fewer than the specified number of
+  /// results.
+  ///
+  /// [pageToken] - nextPageToken value returned from a previous list call,
+  /// indicating that the subsequent page of results should be returned. The
+  /// list request must be otherwise identical to the one that resulted in this
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListStudentGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListStudentGroupsResponse> list(
+    core.String courseId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' + commons.escapeVariable('$courseId') + '/studentGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListStudentGroupsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates one or more fields in a student group.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to modify the requested student group
+  /// or for access errors. * `NOT_FOUND` if the student group does not exist or
+  /// the user does not have access to the student group. * `INVALID_ARGUMENT`
+  /// if invalid fields are specified in the update mask or if no update mask is
+  /// supplied.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. Identifier of the course.
+  ///
+  /// [id] - Required. Identifier of the student group.
+  ///
+  /// [updateMask] - Required. Mask that identifies which fields on the student
+  /// group to update. This field is required to do an update. The update fails
+  /// if invalid fields are specified. The following fields can be specified by
+  /// teachers: * `title`
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StudentGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudentGroup> patch(
+    StudentGroup request,
+    core.String courseId,
+    core.String id, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/studentGroups/' +
+        commons.escapeVariable('$id');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StudentGroup.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class CoursesStudentGroupsStudentGroupMembersResource {
+  final commons.ApiRequester _requester;
+
+  CoursesStudentGroupsStudentGroupMembersResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a student group member for a student group.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to create the student group or member
+  /// for access errors. * `NOT_FOUND` if the student group does not exist or
+  /// the user does not have access to the student group. * `ALREADY_EXISTS` if
+  /// the student group member already exists. * `FAILED_PRECONDITION` if
+  /// attempting to add a member to a student group that has reached its member
+  /// limit.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course.
+  ///
+  /// [studentGroupId] - Required. The identifier of the student group.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StudentGroupMember].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StudentGroupMember> create(
+    StudentGroupMember request,
+    core.String courseId,
+    core.String studentGroupId, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/studentGroups/' +
+        commons.escapeVariable('$studentGroupId') +
+        '/studentGroupMembers';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return StudentGroupMember.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a student group member.
+  ///
+  /// This method returns the following error codes: * `PERMISSION_DENIED` if
+  /// the requesting user is not permitted to delete the requested student group
+  /// member or for access errors. * `NOT_FOUND` if the student group member
+  /// does not exist or the user does not have access to the student group.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course containing the
+  /// relevant student group.
+  ///
+  /// [studentGroupId] - Required. The identifier of the student group
+  /// containing the student group member to delete.
+  ///
+  /// [userId] - Required. The identifier of the student group member to delete.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(
+    core.String courseId,
+    core.String studentGroupId,
+    core.String userId, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/studentGroups/' +
+        commons.escapeVariable('$studentGroupId') +
+        '/studentGroupMembers/' +
+        commons.escapeVariable('$userId');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of students in a group.
+  ///
+  /// This method returns the following error codes: * `NOT_FOUND` if the course
+  /// or student group does not exist.
+  ///
+  /// Request parameters:
+  ///
+  /// [courseId] - Required. The identifier of the course.
+  ///
+  /// [studentGroupId] - Required. The identifier of the student group.
+  ///
+  /// [pageSize] - Maximum number of items to return. Zero or unspecified
+  /// indicates that the server may assign a maximum. The server may return
+  /// fewer than the specified number of results.
+  ///
+  /// [pageToken] - nextPageToken value returned from a previous list call,
+  /// indicating that the subsequent page of results should be returned. The
+  /// list request must be otherwise identical to the one that resulted in this
+  /// token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListStudentGroupMembersResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListStudentGroupMembersResponse> list(
+    core.String courseId,
+    core.String studentGroupId, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/courses/' +
+        commons.escapeVariable('$courseId') +
+        '/studentGroups/' +
+        commons.escapeVariable('$studentGroupId') +
+        '/studentGroupMembers';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListStudentGroupMembersResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -6958,7 +7361,7 @@ class Course {
   /// The gradebook settings that specify how a student's overall grade for the
   /// course will be calculated and who it will be displayed to.
   ///
-  /// Read-only
+  /// Read-only.
   GradebookSettings? gradebookSettings;
 
   /// Whether or not guardian notifications are enabled for this course.
@@ -7002,6 +7405,11 @@ class Course {
   /// and no longer than 2800 characters.
   core.String? section;
 
+  /// The subject of the course.
+  ///
+  /// Optional.
+  core.String? subject;
+
   /// Information about a Drive Folder that is shared with all teachers of the
   /// course.
   ///
@@ -7038,6 +7446,7 @@ class Course {
     this.ownerId,
     this.room,
     this.section,
+    this.subject,
     this.teacherFolder,
     this.teacherGroupEmail,
     this.updateTime,
@@ -7074,6 +7483,7 @@ class Course {
         ownerId: json_['ownerId'] as core.String?,
         room: json_['room'] as core.String?,
         section: json_['section'] as core.String?,
+        subject: json_['subject'] as core.String?,
         teacherFolder:
             json_.containsKey('teacherFolder')
                 ? DriveFolder.fromJson(
@@ -7101,6 +7511,7 @@ class Course {
     if (ownerId != null) 'ownerId': ownerId!,
     if (room != null) 'room': room!,
     if (section != null) 'section': section!,
+    if (subject != null) 'subject': subject!,
     if (teacherFolder != null) 'teacherFolder': teacherFolder!,
     if (teacherGroupEmail != null) 'teacherGroupEmail': teacherGroupEmail!,
     if (updateTime != null) 'updateTime': updateTime!,
@@ -7969,13 +8380,9 @@ class GeminiGem {
   core.String? id;
 
   /// Title of the Gem.
-  ///
-  /// Read-only.
   core.String? title;
 
   /// URL that can be used to access the Gem.
-  ///
-  /// Read-only.
   core.String? url;
 
   GeminiGem({this.id, this.title, this.url});
@@ -8839,6 +9246,72 @@ class ListRubricsResponse {
   };
 }
 
+/// Response when listing students in a group.
+class ListStudentGroupMembersResponse {
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
+  core.String? nextPageToken;
+
+  /// The student group members.
+  core.List<StudentGroupMember>? studentGroupMembers;
+
+  ListStudentGroupMembersResponse({
+    this.nextPageToken,
+    this.studentGroupMembers,
+  });
+
+  ListStudentGroupMembersResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        studentGroupMembers:
+            (json_['studentGroupMembers'] as core.List?)
+                ?.map(
+                  (value) => StudentGroupMember.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (studentGroupMembers != null)
+      'studentGroupMembers': studentGroupMembers!,
+  };
+}
+
+/// Response when listing student groups.
+class ListStudentGroupsResponse {
+  /// Token identifying the next page of results to return.
+  ///
+  /// If empty, no further results are available.
+  core.String? nextPageToken;
+
+  /// The student groups.
+  core.List<StudentGroup>? studentGroups;
+
+  ListStudentGroupsResponse({this.nextPageToken, this.studentGroups});
+
+  ListStudentGroupsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        studentGroups:
+            (json_['studentGroups'] as core.List?)
+                ?.map(
+                  (value) => StudentGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (studentGroups != null) 'studentGroups': studentGroups!,
+  };
+}
+
 /// Response when listing student submissions.
 class ListStudentSubmissionsResponse {
   /// Token identifying the next page of results to return.
@@ -9267,13 +9740,9 @@ class NotebookLmNotebook {
   core.String? id;
 
   /// Title of the Notebook.
-  ///
-  /// Read-only.
   core.String? title;
 
   /// URL that can be used to access the Notebook.
-  ///
-  /// Read-only.
   core.String? url;
 
   NotebookLmNotebook({this.id, this.title, this.url});
@@ -9638,6 +10107,60 @@ class StudentContext {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (submissionId != null) 'submissionId': submissionId!,
+  };
+}
+
+/// A student group in a course.
+class StudentGroup {
+  /// The identifier of the course.
+  core.String? courseId;
+
+  /// The identifier of the student group.
+  core.String? id;
+
+  /// The title of the student group.
+  core.String? title;
+
+  StudentGroup({this.courseId, this.id, this.title});
+
+  StudentGroup.fromJson(core.Map json_)
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        id: json_['id'] as core.String?,
+        title: json_['title'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (courseId != null) 'courseId': courseId!,
+    if (id != null) 'id': id!,
+    if (title != null) 'title': title!,
+  };
+}
+
+/// A student member in a student group.
+class StudentGroupMember {
+  /// The identifier of the course.
+  core.String? courseId;
+
+  /// The identifier of the student group.
+  core.String? studentGroupId;
+
+  /// Identifier of the student.
+  core.String? userId;
+
+  StudentGroupMember({this.courseId, this.studentGroupId, this.userId});
+
+  StudentGroupMember.fromJson(core.Map json_)
+    : this(
+        courseId: json_['courseId'] as core.String?,
+        studentGroupId: json_['studentGroupId'] as core.String?,
+        userId: json_['userId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (courseId != null) 'courseId': courseId!,
+    if (studentGroupId != null) 'studentGroupId': studentGroupId!,
+    if (userId != null) 'userId': userId!,
   };
 }
 

@@ -49,6 +49,49 @@ void checkAutomatedDiscounts(api.AutomatedDiscounts o) {
   buildCounterAutomatedDiscounts--;
 }
 
+core.int buildCounterCarrierShipping = 0;
+api.CarrierShipping buildCarrierShipping() {
+  final o = api.CarrierShipping();
+  buildCounterCarrierShipping++;
+  if (buildCounterCarrierShipping < 3) {
+    o.carrierPrice = 'foo';
+    o.carrierPriceFlatAdjustment = buildPrice();
+    o.carrierPricePercentageAdjustment = 42.0;
+    o.carrierTransitTime = 'foo';
+    o.country = 'foo';
+    o.fixedMaxTransitTime = 'foo';
+    o.fixedMinTransitTime = 'foo';
+    o.flatPrice = buildPrice();
+    o.maxHandlingTime = 'foo';
+    o.minHandlingTime = 'foo';
+    o.originPostalCode = 'foo';
+    o.postalCode = 'foo';
+    o.region = 'foo';
+  }
+  buildCounterCarrierShipping--;
+  return o;
+}
+
+void checkCarrierShipping(api.CarrierShipping o) {
+  buildCounterCarrierShipping++;
+  if (buildCounterCarrierShipping < 3) {
+    unittest.expect(o.carrierPrice!, unittest.equals('foo'));
+    checkPrice(o.carrierPriceFlatAdjustment!);
+    unittest.expect(o.carrierPricePercentageAdjustment!, unittest.equals(42.0));
+    unittest.expect(o.carrierTransitTime!, unittest.equals('foo'));
+    unittest.expect(o.country!, unittest.equals('foo'));
+    unittest.expect(o.fixedMaxTransitTime!, unittest.equals('foo'));
+    unittest.expect(o.fixedMinTransitTime!, unittest.equals('foo'));
+    checkPrice(o.flatPrice!);
+    unittest.expect(o.maxHandlingTime!, unittest.equals('foo'));
+    unittest.expect(o.minHandlingTime!, unittest.equals('foo'));
+    unittest.expect(o.originPostalCode!, unittest.equals('foo'));
+    unittest.expect(o.postalCode!, unittest.equals('foo'));
+    unittest.expect(o.region!, unittest.equals('foo'));
+  }
+  buildCounterCarrierShipping--;
+}
+
 core.List<core.double> buildUnnamed0() => [42.0, 42.0];
 
 void checkUnnamed0(core.List<core.double> o) {
@@ -225,6 +268,31 @@ void checkFreeShippingThreshold(api.FreeShippingThreshold o) {
     checkPrice(o.priceThreshold!);
   }
   buildCounterFreeShippingThreshold--;
+}
+
+core.int buildCounterHandlingCutoffTime = 0;
+api.HandlingCutoffTime buildHandlingCutoffTime() {
+  final o = api.HandlingCutoffTime();
+  buildCounterHandlingCutoffTime++;
+  if (buildCounterHandlingCutoffTime < 3) {
+    o.country = 'foo';
+    o.cutoffTime = 'foo';
+    o.cutoffTimezone = 'foo';
+    o.disableDeliveryAfterCutoff = true;
+  }
+  buildCounterHandlingCutoffTime--;
+  return o;
+}
+
+void checkHandlingCutoffTime(api.HandlingCutoffTime o) {
+  buildCounterHandlingCutoffTime++;
+  if (buildCounterHandlingCutoffTime < 3) {
+    unittest.expect(o.country!, unittest.equals('foo'));
+    unittest.expect(o.cutoffTime!, unittest.equals('foo'));
+    unittest.expect(o.cutoffTimezone!, unittest.equals('foo'));
+    unittest.expect(o.disableDeliveryAfterCutoff!, unittest.isTrue);
+  }
+  buildCounterHandlingCutoffTime--;
 }
 
 core.int buildCounterInterval = 0;
@@ -461,34 +529,37 @@ void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.ProductCertification> buildUnnamed12() => [
+core.List<api.CarrierShipping> buildUnnamed12() => [
+  buildCarrierShipping(),
+  buildCarrierShipping(),
+];
+
+void checkUnnamed12(core.List<api.CarrierShipping> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkCarrierShipping(o[0]);
+  checkCarrierShipping(o[1]);
+}
+
+core.List<api.ProductCertification> buildUnnamed13() => [
   buildProductCertification(),
   buildProductCertification(),
 ];
 
-void checkUnnamed12(core.List<api.ProductCertification> o) {
+void checkUnnamed13(core.List<api.ProductCertification> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductCertification(o[0]);
   checkProductCertification(o[1]);
 }
 
-core.List<api.CloudExportAdditionalProperties> buildUnnamed13() => [
+core.List<api.CloudExportAdditionalProperties> buildUnnamed14() => [
   buildCloudExportAdditionalProperties(),
   buildCloudExportAdditionalProperties(),
 ];
 
-void checkUnnamed13(core.List<api.CloudExportAdditionalProperties> o) {
+void checkUnnamed14(core.List<api.CloudExportAdditionalProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCloudExportAdditionalProperties(o[0]);
   checkCloudExportAdditionalProperties(o[1]);
-}
-
-core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
-
-void checkUnnamed14(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed15() => ['foo', 'foo'];
@@ -499,23 +570,23 @@ void checkUnnamed15(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.FreeShippingThreshold> buildUnnamed16() => [
+core.List<core.String> buildUnnamed16() => ['foo', 'foo'];
+
+void checkUnnamed16(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.FreeShippingThreshold> buildUnnamed17() => [
   buildFreeShippingThreshold(),
   buildFreeShippingThreshold(),
 ];
 
-void checkUnnamed16(core.List<api.FreeShippingThreshold> o) {
+void checkUnnamed17(core.List<api.FreeShippingThreshold> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFreeShippingThreshold(o[0]);
   checkFreeShippingThreshold(o[1]);
-}
-
-core.List<core.String> buildUnnamed17() => ['foo', 'foo'];
-
-void checkUnnamed17(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed18() => ['foo', 'foo'];
@@ -526,50 +597,53 @@ void checkUnnamed18(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed19() => ['foo', 'foo'];
+core.List<api.HandlingCutoffTime> buildUnnamed19() => [
+  buildHandlingCutoffTime(),
+  buildHandlingCutoffTime(),
+];
 
-void checkUnnamed19(core.List<core.String> o) {
+void checkUnnamed19(core.List<api.HandlingCutoffTime> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkHandlingCutoffTime(o[0]);
+  checkHandlingCutoffTime(o[1]);
+}
+
+core.List<core.String> buildUnnamed20() => ['foo', 'foo'];
+
+void checkUnnamed20(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.LoyaltyProgram> buildUnnamed20() => [
+core.List<core.String> buildUnnamed21() => ['foo', 'foo'];
+
+void checkUnnamed21(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.LoyaltyProgram> buildUnnamed22() => [
   buildLoyaltyProgram(),
   buildLoyaltyProgram(),
 ];
 
-void checkUnnamed20(core.List<api.LoyaltyProgram> o) {
+void checkUnnamed22(core.List<api.LoyaltyProgram> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkLoyaltyProgram(o[0]);
   checkLoyaltyProgram(o[1]);
 }
 
-core.List<api.ProductDetail> buildUnnamed21() => [
+core.List<api.ProductDetail> buildUnnamed23() => [
   buildProductDetail(),
   buildProductDetail(),
 ];
 
-void checkUnnamed21(core.List<api.ProductDetail> o) {
+void checkUnnamed23(core.List<api.ProductDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductDetail(o[0]);
   checkProductDetail(o[1]);
-}
-
-core.List<core.String> buildUnnamed22() => ['foo', 'foo'];
-
-void checkUnnamed22(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
-core.List<core.String> buildUnnamed23() => ['foo', 'foo'];
-
-void checkUnnamed23(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed24() => ['foo', 'foo'];
@@ -580,12 +654,12 @@ void checkUnnamed24(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.Shipping> buildUnnamed25() => [buildShipping(), buildShipping()];
+core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
 
-void checkUnnamed25(core.List<api.Shipping> o) {
+void checkUnnamed25(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShipping(o[0]);
-  checkShipping(o[1]);
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.List<core.String> buildUnnamed26() => ['foo', 'foo'];
@@ -596,20 +670,58 @@ void checkUnnamed26(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed27() => ['foo', 'foo'];
+core.List<api.Shipping> buildUnnamed27() => [buildShipping(), buildShipping()];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed27(core.List<api.Shipping> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkShipping(o[0]);
+  checkShipping(o[1]);
+}
+
+core.List<api.ShippingBusinessDaysConfig> buildUnnamed28() => [
+  buildShippingBusinessDaysConfig(),
+  buildShippingBusinessDaysConfig(),
+];
+
+void checkUnnamed28(core.List<api.ShippingBusinessDaysConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkShippingBusinessDaysConfig(o[0]);
+  checkShippingBusinessDaysConfig(o[1]);
+}
+
+core.List<api.ShippingBusinessDaysConfig> buildUnnamed29() => [
+  buildShippingBusinessDaysConfig(),
+  buildShippingBusinessDaysConfig(),
+];
+
+void checkUnnamed29(core.List<api.ShippingBusinessDaysConfig> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkShippingBusinessDaysConfig(o[0]);
+  checkShippingBusinessDaysConfig(o[1]);
+}
+
+core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
+
+void checkUnnamed30(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.ProductSustainabilityIncentive> buildUnnamed28() => [
+core.List<core.String> buildUnnamed31() => ['foo', 'foo'];
+
+void checkUnnamed31(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.ProductSustainabilityIncentive> buildUnnamed32() => [
   buildProductSustainabilityIncentive(),
   buildProductSustainabilityIncentive(),
 ];
 
-void checkUnnamed28(core.List<api.ProductSustainabilityIncentive> o) {
+void checkUnnamed32(core.List<api.ProductSustainabilityIncentive> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkProductSustainabilityIncentive(o[0]);
   checkProductSustainabilityIncentive(o[1]);
@@ -631,8 +743,9 @@ api.ProductAttributes buildProductAttributes() {
     o.availabilityDate = 'foo';
     o.brand = 'foo';
     o.canonicalLink = 'foo';
-    o.certifications = buildUnnamed12();
-    o.cloudExportAdditionalProperties = buildUnnamed13();
+    o.carrierShipping = buildUnnamed12();
+    o.certifications = buildUnnamed13();
+    o.cloudExportAdditionalProperties = buildUnnamed14();
     o.color = 'foo';
     o.condition = 'foo';
     o.costOfGoodsSold = buildPrice();
@@ -645,28 +758,29 @@ api.ProductAttributes buildProductAttributes() {
     o.disclosureDate = 'foo';
     o.displayAdsId = 'foo';
     o.displayAdsLink = 'foo';
-    o.displayAdsSimilarIds = buildUnnamed14();
+    o.displayAdsSimilarIds = buildUnnamed15();
     o.displayAdsTitle = 'foo';
     o.displayAdsValue = 42.0;
     o.energyEfficiencyClass = 'foo';
-    o.excludedDestinations = buildUnnamed15();
+    o.excludedDestinations = buildUnnamed16();
     o.expirationDate = 'foo';
     o.externalSellerId = 'foo';
-    o.freeShippingThreshold = buildUnnamed16();
+    o.freeShippingThreshold = buildUnnamed17();
     o.gender = 'foo';
     o.googleProductCategory = 'foo';
-    o.gtins = buildUnnamed17();
+    o.gtins = buildUnnamed18();
+    o.handlingCutoffTimes = buildUnnamed19();
     o.identifierExists = true;
     o.imageLink = 'foo';
-    o.includedDestinations = buildUnnamed18();
+    o.includedDestinations = buildUnnamed20();
     o.installment = buildProductInstallment();
     o.isBundle = true;
     o.itemGroupId = 'foo';
-    o.lifestyleImageLinks = buildUnnamed19();
+    o.lifestyleImageLinks = buildUnnamed21();
     o.link = 'foo';
     o.linkTemplate = 'foo';
     o.loyaltyPoints = buildLoyaltyPoints();
-    o.loyaltyPrograms = buildUnnamed20();
+    o.loyaltyPrograms = buildUnnamed22();
     o.material = 'foo';
     o.maxEnergyEfficiencyClass = 'foo';
     o.maxHandlingTime = 'foo';
@@ -682,31 +796,33 @@ api.ProductAttributes buildProductAttributes() {
     o.pickupMethod = 'foo';
     o.pickupSla = 'foo';
     o.price = buildPrice();
-    o.productDetails = buildUnnamed21();
+    o.productDetails = buildUnnamed23();
     o.productHeight = buildProductDimension();
-    o.productHighlights = buildUnnamed22();
+    o.productHighlights = buildUnnamed24();
     o.productLength = buildProductDimension();
-    o.productTypes = buildUnnamed23();
+    o.productTypes = buildUnnamed25();
     o.productWeight = buildProductWeight();
     o.productWidth = buildProductDimension();
-    o.promotionIds = buildUnnamed24();
+    o.promotionIds = buildUnnamed26();
     o.salePrice = buildPrice();
     o.salePriceEffectiveDate = buildInterval();
     o.sellOnGoogleQuantity = 'foo';
-    o.shipping = buildUnnamed25();
+    o.shipping = buildUnnamed27();
+    o.shippingHandlingBusinessDays = buildUnnamed28();
     o.shippingHeight = buildShippingDimension();
     o.shippingLabel = 'foo';
     o.shippingLength = buildShippingDimension();
+    o.shippingTransitBusinessDays = buildUnnamed29();
     o.shippingWeight = buildShippingWeight();
     o.shippingWidth = buildShippingDimension();
-    o.shoppingAdsExcludedCountries = buildUnnamed26();
+    o.shoppingAdsExcludedCountries = buildUnnamed30();
     o.size = 'foo';
     o.sizeSystem = 'foo';
-    o.sizeTypes = buildUnnamed27();
+    o.sizeTypes = buildUnnamed31();
     o.structuredDescription = buildStructuredDescription();
     o.structuredTitle = buildStructuredTitle();
     o.subscriptionCost = buildSubscriptionCost();
-    o.sustainabilityIncentives = buildUnnamed28();
+    o.sustainabilityIncentives = buildUnnamed32();
     o.title = 'foo';
     o.transitTimeLabel = 'foo';
     o.unitPricingBaseMeasure = buildUnitPricingBaseMeasure();
@@ -731,8 +847,9 @@ void checkProductAttributes(api.ProductAttributes o) {
     unittest.expect(o.availabilityDate!, unittest.equals('foo'));
     unittest.expect(o.brand!, unittest.equals('foo'));
     unittest.expect(o.canonicalLink!, unittest.equals('foo'));
-    checkUnnamed12(o.certifications!);
-    checkUnnamed13(o.cloudExportAdditionalProperties!);
+    checkUnnamed12(o.carrierShipping!);
+    checkUnnamed13(o.certifications!);
+    checkUnnamed14(o.cloudExportAdditionalProperties!);
     unittest.expect(o.color!, unittest.equals('foo'));
     unittest.expect(o.condition!, unittest.equals('foo'));
     checkPrice(o.costOfGoodsSold!);
@@ -745,28 +862,29 @@ void checkProductAttributes(api.ProductAttributes o) {
     unittest.expect(o.disclosureDate!, unittest.equals('foo'));
     unittest.expect(o.displayAdsId!, unittest.equals('foo'));
     unittest.expect(o.displayAdsLink!, unittest.equals('foo'));
-    checkUnnamed14(o.displayAdsSimilarIds!);
+    checkUnnamed15(o.displayAdsSimilarIds!);
     unittest.expect(o.displayAdsTitle!, unittest.equals('foo'));
     unittest.expect(o.displayAdsValue!, unittest.equals(42.0));
     unittest.expect(o.energyEfficiencyClass!, unittest.equals('foo'));
-    checkUnnamed15(o.excludedDestinations!);
+    checkUnnamed16(o.excludedDestinations!);
     unittest.expect(o.expirationDate!, unittest.equals('foo'));
     unittest.expect(o.externalSellerId!, unittest.equals('foo'));
-    checkUnnamed16(o.freeShippingThreshold!);
+    checkUnnamed17(o.freeShippingThreshold!);
     unittest.expect(o.gender!, unittest.equals('foo'));
     unittest.expect(o.googleProductCategory!, unittest.equals('foo'));
-    checkUnnamed17(o.gtins!);
+    checkUnnamed18(o.gtins!);
+    checkUnnamed19(o.handlingCutoffTimes!);
     unittest.expect(o.identifierExists!, unittest.isTrue);
     unittest.expect(o.imageLink!, unittest.equals('foo'));
-    checkUnnamed18(o.includedDestinations!);
+    checkUnnamed20(o.includedDestinations!);
     checkProductInstallment(o.installment!);
     unittest.expect(o.isBundle!, unittest.isTrue);
     unittest.expect(o.itemGroupId!, unittest.equals('foo'));
-    checkUnnamed19(o.lifestyleImageLinks!);
+    checkUnnamed21(o.lifestyleImageLinks!);
     unittest.expect(o.link!, unittest.equals('foo'));
     unittest.expect(o.linkTemplate!, unittest.equals('foo'));
     checkLoyaltyPoints(o.loyaltyPoints!);
-    checkUnnamed20(o.loyaltyPrograms!);
+    checkUnnamed22(o.loyaltyPrograms!);
     unittest.expect(o.material!, unittest.equals('foo'));
     unittest.expect(o.maxEnergyEfficiencyClass!, unittest.equals('foo'));
     unittest.expect(o.maxHandlingTime!, unittest.equals('foo'));
@@ -782,31 +900,33 @@ void checkProductAttributes(api.ProductAttributes o) {
     unittest.expect(o.pickupMethod!, unittest.equals('foo'));
     unittest.expect(o.pickupSla!, unittest.equals('foo'));
     checkPrice(o.price!);
-    checkUnnamed21(o.productDetails!);
+    checkUnnamed23(o.productDetails!);
     checkProductDimension(o.productHeight!);
-    checkUnnamed22(o.productHighlights!);
+    checkUnnamed24(o.productHighlights!);
     checkProductDimension(o.productLength!);
-    checkUnnamed23(o.productTypes!);
+    checkUnnamed25(o.productTypes!);
     checkProductWeight(o.productWeight!);
     checkProductDimension(o.productWidth!);
-    checkUnnamed24(o.promotionIds!);
+    checkUnnamed26(o.promotionIds!);
     checkPrice(o.salePrice!);
     checkInterval(o.salePriceEffectiveDate!);
     unittest.expect(o.sellOnGoogleQuantity!, unittest.equals('foo'));
-    checkUnnamed25(o.shipping!);
+    checkUnnamed27(o.shipping!);
+    checkUnnamed28(o.shippingHandlingBusinessDays!);
     checkShippingDimension(o.shippingHeight!);
     unittest.expect(o.shippingLabel!, unittest.equals('foo'));
     checkShippingDimension(o.shippingLength!);
+    checkUnnamed29(o.shippingTransitBusinessDays!);
     checkShippingWeight(o.shippingWeight!);
     checkShippingDimension(o.shippingWidth!);
-    checkUnnamed26(o.shoppingAdsExcludedCountries!);
+    checkUnnamed30(o.shoppingAdsExcludedCountries!);
     unittest.expect(o.size!, unittest.equals('foo'));
     unittest.expect(o.sizeSystem!, unittest.equals('foo'));
-    checkUnnamed27(o.sizeTypes!);
+    checkUnnamed31(o.sizeTypes!);
     checkStructuredDescription(o.structuredDescription!);
     checkStructuredTitle(o.structuredTitle!);
     checkSubscriptionCost(o.subscriptionCost!);
-    checkUnnamed28(o.sustainabilityIncentives!);
+    checkUnnamed32(o.sustainabilityIncentives!);
     unittest.expect(o.title!, unittest.equals('foo'));
     unittest.expect(o.transitTimeLabel!, unittest.equals('foo'));
     checkUnitPricingBaseMeasure(o.unitPricingBaseMeasure!);
@@ -885,12 +1005,12 @@ void checkProductDimension(api.ProductDimension o) {
   buildCounterProductDimension--;
 }
 
-core.List<api.CustomAttribute> buildUnnamed29() => [
+core.List<api.CustomAttribute> buildUnnamed33() => [
   buildCustomAttribute(),
   buildCustomAttribute(),
 ];
 
-void checkUnnamed29(core.List<api.CustomAttribute> o) {
+void checkUnnamed33(core.List<api.CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCustomAttribute(o[0]);
   checkCustomAttribute(o[1]);
@@ -902,7 +1022,7 @@ api.ProductInput buildProductInput() {
   buildCounterProductInput++;
   if (buildCounterProductInput < 3) {
     o.contentLanguage = 'foo';
-    o.customAttributes = buildUnnamed29();
+    o.customAttributes = buildUnnamed33();
     o.feedLabel = 'foo';
     o.legacyLocal = true;
     o.name = 'foo';
@@ -919,7 +1039,7 @@ void checkProductInput(api.ProductInput o) {
   buildCounterProductInput++;
   if (buildCounterProductInput < 3) {
     unittest.expect(o.contentLanguage!, unittest.equals('foo'));
-    checkUnnamed29(o.customAttributes!);
+    checkUnnamed33(o.customAttributes!);
     unittest.expect(o.feedLabel!, unittest.equals('foo'));
     unittest.expect(o.legacyLocal!, unittest.isTrue);
     unittest.expect(o.name!, unittest.equals('foo'));
@@ -956,23 +1076,23 @@ void checkProductInstallment(api.ProductInstallment o) {
   buildCounterProductInstallment--;
 }
 
-core.List<api.DestinationStatus> buildUnnamed30() => [
+core.List<api.DestinationStatus> buildUnnamed34() => [
   buildDestinationStatus(),
   buildDestinationStatus(),
 ];
 
-void checkUnnamed30(core.List<api.DestinationStatus> o) {
+void checkUnnamed34(core.List<api.DestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkDestinationStatus(o[0]);
   checkDestinationStatus(o[1]);
 }
 
-core.List<api.ItemLevelIssue> buildUnnamed31() => [
+core.List<api.ItemLevelIssue> buildUnnamed35() => [
   buildItemLevelIssue(),
   buildItemLevelIssue(),
 ];
 
-void checkUnnamed31(core.List<api.ItemLevelIssue> o) {
+void checkUnnamed35(core.List<api.ItemLevelIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkItemLevelIssue(o[0]);
   checkItemLevelIssue(o[1]);
@@ -984,9 +1104,9 @@ api.ProductStatus buildProductStatus() {
   buildCounterProductStatus++;
   if (buildCounterProductStatus < 3) {
     o.creationDate = 'foo';
-    o.destinationStatuses = buildUnnamed30();
+    o.destinationStatuses = buildUnnamed34();
     o.googleExpirationDate = 'foo';
-    o.itemLevelIssues = buildUnnamed31();
+    o.itemLevelIssues = buildUnnamed35();
     o.lastUpdateDate = 'foo';
   }
   buildCounterProductStatus--;
@@ -997,9 +1117,9 @@ void checkProductStatus(api.ProductStatus o) {
   buildCounterProductStatus++;
   if (buildCounterProductStatus < 3) {
     unittest.expect(o.creationDate!, unittest.equals('foo'));
-    checkUnnamed30(o.destinationStatuses!);
+    checkUnnamed34(o.destinationStatuses!);
     unittest.expect(o.googleExpirationDate!, unittest.equals('foo'));
-    checkUnnamed31(o.itemLevelIssues!);
+    checkUnnamed35(o.itemLevelIssues!);
     unittest.expect(o.lastUpdateDate!, unittest.equals('foo'));
   }
   buildCounterProductStatus--;
@@ -1055,6 +1175,8 @@ api.Shipping buildShipping() {
   buildCounterShipping++;
   if (buildCounterShipping < 3) {
     o.country = 'foo';
+    o.handlingCutoffTime = 'foo';
+    o.handlingCutoffTimezone = 'foo';
     o.locationGroupName = 'foo';
     o.locationId = 'foo';
     o.maxHandlingTime = 'foo';
@@ -1074,6 +1196,8 @@ void checkShipping(api.Shipping o) {
   buildCounterShipping++;
   if (buildCounterShipping < 3) {
     unittest.expect(o.country!, unittest.equals('foo'));
+    unittest.expect(o.handlingCutoffTime!, unittest.equals('foo'));
+    unittest.expect(o.handlingCutoffTimezone!, unittest.equals('foo'));
     unittest.expect(o.locationGroupName!, unittest.equals('foo'));
     unittest.expect(o.locationId!, unittest.equals('foo'));
     unittest.expect(o.maxHandlingTime!, unittest.equals('foo'));
@@ -1086,6 +1210,27 @@ void checkShipping(api.Shipping o) {
     unittest.expect(o.service!, unittest.equals('foo'));
   }
   buildCounterShipping--;
+}
+
+core.int buildCounterShippingBusinessDaysConfig = 0;
+api.ShippingBusinessDaysConfig buildShippingBusinessDaysConfig() {
+  final o = api.ShippingBusinessDaysConfig();
+  buildCounterShippingBusinessDaysConfig++;
+  if (buildCounterShippingBusinessDaysConfig < 3) {
+    o.businessDays = 'foo';
+    o.country = 'foo';
+  }
+  buildCounterShippingBusinessDaysConfig--;
+  return o;
+}
+
+void checkShippingBusinessDaysConfig(api.ShippingBusinessDaysConfig o) {
+  buildCounterShippingBusinessDaysConfig++;
+  if (buildCounterShippingBusinessDaysConfig < 3) {
+    unittest.expect(o.businessDays!, unittest.equals('foo'));
+    unittest.expect(o.country!, unittest.equals('foo'));
+  }
+  buildCounterShippingBusinessDaysConfig--;
 }
 
 core.int buildCounterShippingDimension = 0;
@@ -1249,6 +1394,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-CarrierShipping', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildCarrierShipping();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.CarrierShipping.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkCarrierShipping(od);
+    });
+  });
+
   unittest.group('obj-schema-CloudExportAdditionalProperties', () {
     unittest.test('to-json--from-json', () async {
       final o = buildCloudExportAdditionalProperties();
@@ -1301,6 +1457,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkFreeShippingThreshold(od);
+    });
+  });
+
+  unittest.group('obj-schema-HandlingCutoffTime', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildHandlingCutoffTime();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.HandlingCutoffTime.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkHandlingCutoffTime(od);
     });
   });
 
@@ -1488,6 +1655,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkShipping(od);
+    });
+  });
+
+  unittest.group('obj-schema-ShippingBusinessDaysConfig', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildShippingBusinessDaysConfig();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ShippingBusinessDaysConfig.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkShippingBusinessDaysConfig(od);
     });
   });
 

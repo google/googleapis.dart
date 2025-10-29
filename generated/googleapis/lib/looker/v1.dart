@@ -119,9 +119,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -564,6 +564,48 @@ class ProjectsLocationsInstancesResource {
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Undeletes Looker instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Format:
+  /// projects/{project}/locations/{location}/instances/{instance}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> undelete(
+    UndeleteInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':undelete';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class ProjectsLocationsInstancesBackupsResource {
@@ -886,6 +928,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -901,12 +951,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -946,6 +999,50 @@ class AdminSettings {
 
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
+
+/// Controlled egress configuration.
+class ControlledEgressConfig {
+  /// List of fully qualified domain names to be added to the allowlist for
+  /// outbound traffic.
+  ///
+  /// Optional.
+  core.List<core.String>? egressFqdns;
+
+  /// Whether marketplace is enabled.
+  ///
+  /// Optional.
+  core.bool? marketplaceEnabled;
+
+  /// The list of IP addresses used by Secure Web Proxy for outbound traffic.
+  ///
+  /// Output only.
+  core.List<core.String>? webProxyIps;
+
+  ControlledEgressConfig({
+    this.egressFqdns,
+    this.marketplaceEnabled,
+    this.webProxyIps,
+  });
+
+  ControlledEgressConfig.fromJson(core.Map json_)
+    : this(
+        egressFqdns:
+            (json_['egressFqdns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        marketplaceEnabled: json_['marketplaceEnabled'] as core.bool?,
+        webProxyIps:
+            (json_['webProxyIps'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (egressFqdns != null) 'egressFqdns': egressFqdns!,
+    if (marketplaceEnabled != null) 'marketplaceEnabled': marketplaceEnabled!,
+    if (webProxyIps != null) 'webProxyIps': webProxyIps!,
+  };
+}
 
 /// Custom domain information.
 class CustomDomain {
@@ -1159,6 +1256,11 @@ class Instance {
   /// Looker Instance Admin settings.
   AdminSettings? adminSettings;
 
+  /// Indicates whether catalog integration is enabled for the Looker instance.
+  ///
+  /// Optional.
+  core.bool? catalogIntegrationEnabled;
+
   /// Storage class of the instance.
   ///
   /// Optional.
@@ -1174,6 +1276,16 @@ class Instance {
   /// consumer network may be in a different GCP project than the consumer
   /// project that is hosting the Looker Instance.
   core.String? consumerNetwork;
+
+  /// Controlled egress configuration.
+  ///
+  /// Optional.
+  ControlledEgressConfig? controlledEgressConfig;
+
+  /// Whether controlled egress is enabled on the Looker instance.
+  ///
+  /// Optional.
+  core.bool? controlledEgressEnabled;
 
   /// The time when the Looker instance provisioning was first requested.
   ///
@@ -1250,6 +1362,11 @@ class Instance {
   /// Looker instance OAuth login settings.
   OAuthConfig? oauthConfig;
 
+  /// Configuration for periodic export.
+  ///
+  /// Optional.
+  PeriodicExportConfig? periodicExportConfig;
+
   /// Platform edition.
   /// Possible string values are:
   /// - "PLATFORM_EDITION_UNSPECIFIED" : Platform edition is unspecified.
@@ -1303,6 +1420,18 @@ class Instance {
   /// Output only.
   core.bool? satisfiesPzs;
 
+  /// The reason for the instance being in a soft-deleted state.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "SOFT_DELETE_REASON_UNSPECIFIED" : Soft delete reason is unspecified.
+  /// This is the default value.
+  /// - "BILLING_ACCOUNT_ISSUE" : Instance is soft deleted due to billing
+  /// account issues.
+  /// - "TRIAL_EXPIRED" : Instance is soft deleted due to trial expiration.
+  /// - "CUSTOMER_REQUEST" : Instance is soft deleted by the customer.
+  core.String? softDeleteReason;
+
   /// The state of the instance.
   ///
   /// Output only.
@@ -1318,6 +1447,11 @@ class Instance {
   /// - "IMPORTING" : Instance is importing data.
   core.String? state;
 
+  /// The time when the Looker instance was suspended (soft deleted).
+  ///
+  /// Output only.
+  core.String? suspendedTime;
+
   /// The time when the Looker instance was last updated.
   ///
   /// Output only.
@@ -1330,8 +1464,11 @@ class Instance {
 
   Instance({
     this.adminSettings,
+    this.catalogIntegrationEnabled,
     this.classType,
     this.consumerNetwork,
+    this.controlledEgressConfig,
+    this.controlledEgressEnabled,
     this.createTime,
     this.customDomain,
     this.denyMaintenancePeriod,
@@ -1349,6 +1486,7 @@ class Instance {
     this.maintenanceWindow,
     this.name,
     this.oauthConfig,
+    this.periodicExportConfig,
     this.platformEdition,
     this.privateIpEnabled,
     this.pscConfig,
@@ -1357,7 +1495,9 @@ class Instance {
     this.reservedRange,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.softDeleteReason,
     this.state,
+    this.suspendedTime,
     this.updateTime,
     this.userMetadata,
   });
@@ -1370,8 +1510,18 @@ class Instance {
                   json_['adminSettings'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        catalogIntegrationEnabled:
+            json_['catalogIntegrationEnabled'] as core.bool?,
         classType: json_['classType'] as core.String?,
         consumerNetwork: json_['consumerNetwork'] as core.String?,
+        controlledEgressConfig:
+            json_.containsKey('controlledEgressConfig')
+                ? ControlledEgressConfig.fromJson(
+                  json_['controlledEgressConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        controlledEgressEnabled: json_['controlledEgressEnabled'] as core.bool?,
         createTime: json_['createTime'] as core.String?,
         customDomain:
             json_.containsKey('customDomain')
@@ -1429,6 +1579,13 @@ class Instance {
                   json_['oauthConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        periodicExportConfig:
+            json_.containsKey('periodicExportConfig')
+                ? PeriodicExportConfig.fromJson(
+                  json_['periodicExportConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         platformEdition: json_['platformEdition'] as core.String?,
         privateIpEnabled: json_['privateIpEnabled'] as core.bool?,
         pscConfig:
@@ -1442,7 +1599,9 @@ class Instance {
         reservedRange: json_['reservedRange'] as core.String?,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        softDeleteReason: json_['softDeleteReason'] as core.String?,
         state: json_['state'] as core.String?,
+        suspendedTime: json_['suspendedTime'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
         userMetadata:
             json_.containsKey('userMetadata')
@@ -1454,8 +1613,14 @@ class Instance {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (adminSettings != null) 'adminSettings': adminSettings!,
+    if (catalogIntegrationEnabled != null)
+      'catalogIntegrationEnabled': catalogIntegrationEnabled!,
     if (classType != null) 'classType': classType!,
     if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
+    if (controlledEgressConfig != null)
+      'controlledEgressConfig': controlledEgressConfig!,
+    if (controlledEgressEnabled != null)
+      'controlledEgressEnabled': controlledEgressEnabled!,
     if (createTime != null) 'createTime': createTime!,
     if (customDomain != null) 'customDomain': customDomain!,
     if (denyMaintenancePeriod != null)
@@ -1477,6 +1642,8 @@ class Instance {
     if (maintenanceWindow != null) 'maintenanceWindow': maintenanceWindow!,
     if (name != null) 'name': name!,
     if (oauthConfig != null) 'oauthConfig': oauthConfig!,
+    if (periodicExportConfig != null)
+      'periodicExportConfig': periodicExportConfig!,
     if (platformEdition != null) 'platformEdition': platformEdition!,
     if (privateIpEnabled != null) 'privateIpEnabled': privateIpEnabled!,
     if (pscConfig != null) 'pscConfig': pscConfig!,
@@ -1485,7 +1652,9 @@ class Instance {
     if (reservedRange != null) 'reservedRange': reservedRange!,
     if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (softDeleteReason != null) 'softDeleteReason': softDeleteReason!,
     if (state != null) 'state': state!,
+    if (suspendedTime != null) 'suspendedTime': suspendedTime!,
     if (updateTime != null) 'updateTime': updateTime!,
     if (userMetadata != null) 'userMetadata': userMetadata!,
   };
@@ -1679,7 +1848,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -1692,11 +1873,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -1869,6 +2055,49 @@ class Operation {
   };
 }
 
+/// Configuration for periodic export.
+class PeriodicExportConfig {
+  /// Cloud Storage bucket URI for periodic export.
+  ///
+  /// Format: gs://{bucket_name}
+  ///
+  /// Required.
+  core.String? gcsUri;
+
+  /// Name of the CMEK key in KMS.
+  ///
+  /// Format:
+  /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}
+  ///
+  /// Required.
+  core.String? kmsKey;
+
+  /// Time in UTC to start the periodic export job.
+  ///
+  /// Required.
+  TimeOfDay? startTime;
+
+  PeriodicExportConfig({this.gcsUri, this.kmsKey, this.startTime});
+
+  PeriodicExportConfig.fromJson(core.Map json_)
+    : this(
+        gcsUri: json_['gcsUri'] as core.String?,
+        kmsKey: json_['kmsKey'] as core.String?,
+        startTime:
+            json_.containsKey('startTime')
+                ? TimeOfDay.fromJson(
+                  json_['startTime'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (gcsUri != null) 'gcsUri': gcsUri!,
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
 /// Information for Private Service Connect (PSC) setup for a Looker instance.
 class PscConfig {
   /// List of VPCs that are allowed ingress into looker.
@@ -2033,6 +2262,9 @@ typedef Status = $Status00;
 /// elsewhere. An API may choose to allow leap seconds. Related types are
 /// google.type.Date and `google.protobuf.Timestamp`.
 typedef TimeOfDay = $TimeOfDay;
+
+/// Request options for undeleting an instance.
+typedef UndeleteInstanceRequest = $Empty;
 
 /// Metadata about users for a Looker instance.
 class UserMetadata {

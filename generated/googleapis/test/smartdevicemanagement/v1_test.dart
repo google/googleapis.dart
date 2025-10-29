@@ -69,6 +69,7 @@ api.GoogleHomeEnterpriseSdmV1Device buildGoogleHomeEnterpriseSdmV1Device() {
   final o = api.GoogleHomeEnterpriseSdmV1Device();
   buildCounterGoogleHomeEnterpriseSdmV1Device++;
   if (buildCounterGoogleHomeEnterpriseSdmV1Device < 3) {
+    o.ghpName = 'foo';
     o.name = 'foo';
     o.parentRelations = buildUnnamed0();
     o.traits = buildUnnamed1();
@@ -83,6 +84,7 @@ void checkGoogleHomeEnterpriseSdmV1Device(
 ) {
   buildCounterGoogleHomeEnterpriseSdmV1Device++;
   if (buildCounterGoogleHomeEnterpriseSdmV1Device < 3) {
+    unittest.expect(o.ghpName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed0(o.parentRelations!);
     checkUnnamed1(o.traits!);
@@ -297,6 +299,7 @@ buildGoogleHomeEnterpriseSdmV1ParentRelation() {
   buildCounterGoogleHomeEnterpriseSdmV1ParentRelation++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ParentRelation < 3) {
     o.displayName = 'foo';
+    o.ghpParent = 'foo';
     o.parent = 'foo';
   }
   buildCounterGoogleHomeEnterpriseSdmV1ParentRelation--;
@@ -309,6 +312,7 @@ void checkGoogleHomeEnterpriseSdmV1ParentRelation(
   buildCounterGoogleHomeEnterpriseSdmV1ParentRelation++;
   if (buildCounterGoogleHomeEnterpriseSdmV1ParentRelation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
+    unittest.expect(o.ghpParent!, unittest.equals('foo'));
     unittest.expect(o.parent!, unittest.equals('foo'));
   }
   buildCounterGoogleHomeEnterpriseSdmV1ParentRelation--;
@@ -395,6 +399,7 @@ buildGoogleHomeEnterpriseSdmV1Structure() {
   final o = api.GoogleHomeEnterpriseSdmV1Structure();
   buildCounterGoogleHomeEnterpriseSdmV1Structure++;
   if (buildCounterGoogleHomeEnterpriseSdmV1Structure < 3) {
+    o.ghpName = 'foo';
     o.name = 'foo';
     o.traits = buildUnnamed8();
   }
@@ -407,6 +412,7 @@ void checkGoogleHomeEnterpriseSdmV1Structure(
 ) {
   buildCounterGoogleHomeEnterpriseSdmV1Structure++;
   if (buildCounterGoogleHomeEnterpriseSdmV1Structure < 3) {
+    unittest.expect(o.ghpName!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     checkUnnamed8(o.traits!);
   }

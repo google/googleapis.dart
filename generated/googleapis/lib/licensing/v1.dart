@@ -41,7 +41,7 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 /// The Google Enterprise License Manager API lets you manage Google Workspace
 /// and related licenses for all users of a customer that you manage.
 class LicensingApi {
-  /// View and manage G Suite licenses for your domain
+  /// View and manage Google Workspace licenses for your domain
   static const appsLicensingScope =
       'https://www.googleapis.com/auth/apps.licensing';
 

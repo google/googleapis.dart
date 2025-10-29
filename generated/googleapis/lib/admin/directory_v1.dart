@@ -2358,9 +2358,9 @@ class GroupsResource {
   ///
   /// [pageToken] - Token to specify next page in the list
   ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at
-  /// https://developers.google.com/workspace/admin/directory/v1/guides/search-groups
+  /// [query] - Query string search. Contains one or more search clauses, each
+  /// with a field, operator, and value. For complete documentation, go to
+  /// [Search for groups](https://developers.google.com/workspace/admin/directory/v1/guides/search-groups).
   ///
   /// [sortOrder] - Whether to return results in ascending or descending order.
   /// Only of use when orderBy is also used
@@ -4075,16 +4075,16 @@ class ResourcesCalendarsResource {
   ///
   /// [pageToken] - Token to specify the next page in the list.
   ///
-  /// [query] - String query used to filter results. Should be of the form
-  /// "field operator value" where field can be any of supported fields and
-  /// operators can be any of supported operations. Operators include '=' for
-  /// exact match, '!=' for mismatch and ':' for prefix match or HAS match where
-  /// applicable. For prefix match, the value should always be followed by a *.
-  /// Logical operators NOT and AND are supported (in this order of precedence).
-  /// Supported fields include `generatedResourceName`, `name`, `buildingId`,
-  /// `floor_name`, `capacity`, `featureInstances.feature.name`,
-  /// `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH
-  /// AND featureInstances.feature.name:Phone`.
+  /// [query] - String query used to filter results. Contains one or more search
+  /// clauses, each with a field, operator, and value. A field can be any of
+  /// supported fields and operators can be any of supported operations.
+  /// Operators include '=' for exact match, '!=' for mismatch and ':' for
+  /// prefix match or HAS match where applicable. For prefix match, the value
+  /// should always be followed by a *. Logical operators NOT and AND are
+  /// supported (in this order of precedence). Supported fields include
+  /// `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`,
+  /// `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For
+  /// example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5496,6 +5496,46 @@ class UsersResource {
 
   UsersResource(commons.ApiRequester client) : _requester = client;
 
+  /// Create a guest user with access to a
+  /// [subset of Workspace capabilities](https://support.google.com/a/answer/16558545?hl=en).
+  ///
+  /// This feature is currently in Alpha. Please reach out to support if you are
+  /// interested in trying this feature.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [User].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<User> createGuest(
+    DirectoryUsersCreateGuestRequest request, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'admin/directory/v1/users:createGuest';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Deletes a user.
   ///
   /// Request parameters:
@@ -6030,9 +6070,9 @@ class UsersResource {
   /// customFieldMask.
   /// - "full" : Include all fields associated with this user.
   ///
-  /// [query] - Query string search. Should be of the form "". Complete
-  /// documentation is at
-  /// https://developers.google.com/workspace/admin/directory/v1/guides/search-users
+  /// [query] - Query string search. Contains one or more search clauses, each
+  /// with a field, operator, and value. For complete documentation, go to
+  /// [Search for users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users).
   ///
   /// [showDeleted] - If set to true, retrieves the list of deleted users.
   /// (Default: false)
@@ -7162,6 +7202,33 @@ class BatchDeletePrintersResponse {
   };
 }
 
+/// Information about a device's Bluetooth adapter.
+class BluetoothAdapterInfo {
+  /// The MAC address of the adapter.
+  ///
+  /// Output only.
+  core.String? address;
+
+  /// The number of devices connected to this adapter.
+  ///
+  /// Output only.
+  core.int? numConnectedDevices;
+
+  BluetoothAdapterInfo({this.address, this.numConnectedDevices});
+
+  BluetoothAdapterInfo.fromJson(core.Map json_)
+    : this(
+        address: json_['address'] as core.String?,
+        numConnectedDevices: json_['numConnectedDevices'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (address != null) 'address': address!,
+    if (numConnectedDevices != null)
+      'numConnectedDevices': numConnectedDevices!,
+  };
+}
+
 /// Public API: Resources.buildings
 class Building {
   /// The postal address of the building.
@@ -8227,6 +8294,11 @@ class ChromeOsDevice {
   /// Output only.
   core.List<BacklightInfo>? backlightInfo;
 
+  /// Information about Bluetooth adapters of the device.
+  ///
+  /// Output only.
+  core.List<BluetoothAdapterInfo>? bluetoothAdapterInfo;
+
   /// The boot mode for the device.
   ///
   /// The possible values are: * `Verified`: The device is running a valid
@@ -8512,6 +8584,7 @@ class ChromeOsDevice {
     this.autoUpdateExpiration,
     this.autoUpdateThrough,
     this.backlightInfo,
+    this.bluetoothAdapterInfo,
     this.bootMode,
     this.chromeOsType,
     this.cpuInfo,
@@ -8579,6 +8652,14 @@ class ChromeOsDevice {
             (json_['backlightInfo'] as core.List?)
                 ?.map(
                   (value) => BacklightInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        bluetoothAdapterInfo:
+            (json_['bluetoothAdapterInfo'] as core.List?)
+                ?.map(
+                  (value) => BluetoothAdapterInfo.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
                 )
@@ -8733,6 +8814,8 @@ class ChromeOsDevice {
       'autoUpdateExpiration': autoUpdateExpiration!,
     if (autoUpdateThrough != null) 'autoUpdateThrough': autoUpdateThrough!,
     if (backlightInfo != null) 'backlightInfo': backlightInfo!,
+    if (bluetoothAdapterInfo != null)
+      'bluetoothAdapterInfo': bluetoothAdapterInfo!,
     if (bootMode != null) 'bootMode': bootMode!,
     if (chromeOsType != null) 'chromeOsType': chromeOsType!,
     if (cpuInfo != null) 'cpuInfo': cpuInfo!,
@@ -9395,6 +9478,32 @@ class DirectoryChromeosdevicesIssueCommandResponse {
   };
 }
 
+/// Directory users guest creation request message.
+class DirectoryUsersCreateGuestRequest {
+  /// Immutable ID of the Google Workspace account.
+  ///
+  /// Optional.
+  core.String? customer;
+
+  /// External email of the guest user being created.
+  ///
+  /// Immutable.
+  core.String? primaryGuestEmail;
+
+  DirectoryUsersCreateGuestRequest({this.customer, this.primaryGuestEmail});
+
+  DirectoryUsersCreateGuestRequest.fromJson(core.Map json_)
+    : this(
+        customer: json_['customer'] as core.String?,
+        primaryGuestEmail: json_['primaryGuestEmail'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (customer != null) 'customer': customer!,
+    if (primaryGuestEmail != null) 'primaryGuestEmail': primaryGuestEmail!,
+  };
+}
+
 class DomainAlias {
   /// The creation time of the domain alias.
   ///
@@ -9970,6 +10079,23 @@ class Groups {
     if (groups != null) 'groups': groups!,
     if (kind != null) 'kind': kind!,
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
+/// Account info specific to Guest users.
+class GuestAccountInfo {
+  /// The guest's external email.
+  ///
+  /// Immutable.
+  core.String? primaryGuestEmail;
+
+  GuestAccountInfo({this.primaryGuestEmail});
+
+  GuestAccountInfo.fromJson(core.Map json_)
+    : this(primaryGuestEmail: json_['primaryGuestEmail'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (primaryGuestEmail != null) 'primaryGuestEmail': primaryGuestEmail!,
   };
 }
 
@@ -11997,6 +12123,11 @@ class User {
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? gender;
 
+  /// Additional guest-related metadata fields
+  ///
+  /// Immutable.
+  GuestAccountInfo? guestAccountInfo;
+
   /// Stores the hash format of the `password` property.
   ///
   /// The following `hashFunction` values are allowed: * `MD5` - Accepts simple
@@ -12068,6 +12199,11 @@ class User {
   ///
   /// Output only.
   core.bool? isEnrolledIn2Sv;
+
+  /// Indicates if the inserted user is a guest.
+  ///
+  /// Immutable.
+  core.bool? isGuestUser;
 
   /// Indicates if the user's Google mailbox is created.
   ///
@@ -12245,6 +12381,7 @@ class User {
     this.etag,
     this.externalIds,
     this.gender,
+    this.guestAccountInfo,
     this.hashFunction,
     this.id,
     this.ims,
@@ -12254,6 +12391,7 @@ class User {
     this.isDelegatedAdmin,
     this.isEnforcedIn2Sv,
     this.isEnrolledIn2Sv,
+    this.isGuestUser,
     this.isMailboxSetup,
     this.keywords,
     this.kind,
@@ -12312,6 +12450,13 @@ class User {
         etag: json_['etag'] as core.String?,
         externalIds: json_['externalIds'],
         gender: json_['gender'],
+        guestAccountInfo:
+            json_.containsKey('guestAccountInfo')
+                ? GuestAccountInfo.fromJson(
+                  json_['guestAccountInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         hashFunction: json_['hashFunction'] as core.String?,
         id: json_['id'] as core.String?,
         ims: json_['ims'],
@@ -12322,6 +12467,7 @@ class User {
         isDelegatedAdmin: json_['isDelegatedAdmin'] as core.bool?,
         isEnforcedIn2Sv: json_['isEnforcedIn2Sv'] as core.bool?,
         isEnrolledIn2Sv: json_['isEnrolledIn2Sv'] as core.bool?,
+        isGuestUser: json_['isGuestUser'] as core.bool?,
         isMailboxSetup: json_['isMailboxSetup'] as core.bool?,
         keywords: json_['keywords'],
         kind: json_['kind'] as core.String?,
@@ -12376,6 +12522,7 @@ class User {
     if (etag != null) 'etag': etag!,
     if (externalIds != null) 'externalIds': externalIds!,
     if (gender != null) 'gender': gender!,
+    if (guestAccountInfo != null) 'guestAccountInfo': guestAccountInfo!,
     if (hashFunction != null) 'hashFunction': hashFunction!,
     if (id != null) 'id': id!,
     if (ims != null) 'ims': ims!,
@@ -12386,6 +12533,7 @@ class User {
     if (isDelegatedAdmin != null) 'isDelegatedAdmin': isDelegatedAdmin!,
     if (isEnforcedIn2Sv != null) 'isEnforcedIn2Sv': isEnforcedIn2Sv!,
     if (isEnrolledIn2Sv != null) 'isEnrolledIn2Sv': isEnrolledIn2Sv!,
+    if (isGuestUser != null) 'isGuestUser': isGuestUser!,
     if (isMailboxSetup != null) 'isMailboxSetup': isMailboxSetup!,
     if (keywords != null) 'keywords': keywords!,
     if (kind != null) 'kind': kind!,

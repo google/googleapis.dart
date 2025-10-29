@@ -23,6 +23,7 @@
 ///
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsAutomatedDnsRecordsResource]
 ///     - [ProjectsLocationsGlobalResource]
 ///       - [ProjectsLocationsGlobalHubsResource]
 ///         - [ProjectsLocationsGlobalHubsGroupsResource]
@@ -35,13 +36,11 @@
 ///     - [ProjectsLocationsMulticloudDataTransferSupportedServicesResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRegionalEndpointsResource]
-///     - [ProjectsLocationsRemoteTransportProfilesResource]
 ///     - [ProjectsLocationsServiceClassesResource]
 ///     - [ProjectsLocationsServiceConnectionMapsResource]
 ///     - [ProjectsLocationsServiceConnectionPoliciesResource]
 ///     - [ProjectsLocationsServiceConnectionTokensResource]
 ///     - [ProjectsLocationsSpokesResource]
-///     - [ProjectsLocationsTransportsResource]
 library;
 
 import 'dart:async' as async;
@@ -92,6 +91,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsAutomatedDnsRecordsResource get automatedDnsRecords =>
+      ProjectsLocationsAutomatedDnsRecordsResource(_requester);
   ProjectsLocationsGlobalResource get global =>
       ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsInternalRangesResource get internalRanges =>
@@ -108,9 +109,6 @@ class ProjectsLocationsResource {
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsRegionalEndpointsResource get regionalEndpoints =>
       ProjectsLocationsRegionalEndpointsResource(_requester);
-  ProjectsLocationsRemoteTransportProfilesResource
-  get remoteTransportProfiles =>
-      ProjectsLocationsRemoteTransportProfilesResource(_requester);
   ProjectsLocationsServiceClassesResource get serviceClasses =>
       ProjectsLocationsServiceClassesResource(_requester);
   ProjectsLocationsServiceConnectionMapsResource get serviceConnectionMaps =>
@@ -123,10 +121,61 @@ class ProjectsLocationsResource {
       ProjectsLocationsServiceConnectionTokensResource(_requester);
   ProjectsLocationsSpokesResource get spokes =>
       ProjectsLocationsSpokesResource(_requester);
-  ProjectsLocationsTransportsResource get transports =>
-      ProjectsLocationsTransportsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
+
+  /// CheckConsumerConfig validates the consumer network and project for
+  /// potential PSC connection creation.
+  ///
+  /// This method performs several checks, including: - Validating the existence
+  /// and permissions of the service class. - Ensuring the consumer network
+  /// exists and is accessible. - Verifying XPN relationships if applicable. -
+  /// Checking for compatible IP versions between the consumer network and the
+  /// requested version. This method performs a dynamic IAM check for the
+  /// `networkconnectivity.serviceClasses.use` permission on the service class
+  /// resource in the Prepare phase.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [location] - Required. The location resource path. Example: -
+  /// projects/{project}/locations/{location}
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CheckConsumerConfigResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CheckConsumerConfigResponse> checkConsumerConfig(
+    CheckConsumerConfigRequest request,
+    core.String location, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$location') + ':checkConsumerConfig';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return CheckConsumerConfigResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// Gets information about a location.
   ///
@@ -167,9 +216,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -215,6 +264,252 @@ class ProjectsLocationsResource {
       queryParams: queryParams_,
     );
     return ListLocationsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsAutomatedDnsRecordsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAutomatedDnsRecordsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new AutomatedDnsRecord in a given project and location.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name of the AutomatedDnsRecord.
+  /// ex. projects/123/locations/us-east1
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [automatedDnsRecordId] - Optional. Resource ID (i.e. 'foo' in
+  /// '\[...\]/projects/p/locations/l/automatedDnsRecords/foo') See
+  /// https://google.aip.dev/122#resource-id-segments Unique per location. If
+  /// one is not provided, one will be generated.
+  ///
+  /// [insertMode] - Optional. The insert mode when creating AutomatedDnsRecord.
+  /// Possible string values are:
+  /// - "INSERT_MODE_UNSPECIFIED" : An invalid insert mode as the default case.
+  /// - "FAIL_IF_EXISTS" : Fail the request if the record already exists in
+  /// cloud DNS.
+  /// - "OVERWRITE" : Overwrite the existing record in cloud DNS.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> create(
+    AutomatedDnsRecord request,
+    core.String parent, {
+    core.String? automatedDnsRecordId,
+    core.String? insertMode,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (automatedDnsRecordId != null)
+        'automatedDnsRecordId': [automatedDnsRecordId],
+      if (insertMode != null) 'insertMode': [insertMode],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/automatedDnsRecords';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Deletes a single AutomatedDnsRecord.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the AutomatedDnsRecord to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/automatedDnsRecords/\[^/\]+$`.
+  ///
+  /// [deleteMode] - Optional. Delete mode when deleting AutomatedDnsRecord. If
+  /// set to DEPROGRAM, the record will be deprogrammed in Cloud DNS. If set to
+  /// SKIP_DEPROGRAMMING, the record will not be deprogrammed in Cloud DNS.
+  /// Possible string values are:
+  /// - "DELETE_MODE_UNSPECIFIED" : An invalid delete mode as the default case.
+  /// - "DEPROGRAM" : Deprogram the record in Cloud DNS.
+  /// - "SKIP_DEPROGRAMMING" : Skip deprogramming the record in Cloud DNS.
+  ///
+  /// [etag] - Optional. The etag is computed by the server, and may be sent on
+  /// update and delete requests to ensure the client has an up-to-date value
+  /// before proceeding.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleLongrunningOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleLongrunningOperation> delete(
+    core.String name, {
+    core.String? deleteMode,
+    core.String? etag,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (deleteMode != null) 'deleteMode': [deleteMode],
+      if (etag != null) 'etag': [etag],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleLongrunningOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Gets details of a single AutomatedDnsRecord.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the AutomatedDnsRecord to get. Format:
+  /// projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/automatedDnsRecords/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AutomatedDnsRecord].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AutomatedDnsRecord> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AutomatedDnsRecord.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists AutomatedDnsRecords in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource's name. ex.
+  /// projects/123/locations/us-east1
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - A filter expression that filters the results listed in the
+  /// response.
+  ///
+  /// [orderBy] - Sort the results by a certain order.
+  ///
+  /// [pageSize] - The maximum number of results per page that should be
+  /// returned.
+  ///
+  /// [pageToken] - The page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAutomatedDnsRecordsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAutomatedDnsRecordsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$parent') + '/automatedDnsRecords';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAutomatedDnsRecordsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -3178,6 +3473,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3193,12 +3496,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3425,107 +3731,6 @@ class ProjectsLocationsRegionalEndpointsResource {
       queryParams: queryParams_,
     );
     return ListRegionalEndpointsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsRemoteTransportProfilesResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsRemoteTransportProfilesResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Gets details of a single RemoteTransportProfile.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/remoteTransportProfiles/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [RemoteTransportProfile].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<RemoteTransportProfile> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return RemoteTransportProfile.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Lists RemoteTransportProfiles in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListRemoteTransportProfilesRequest.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filtering results.
-  ///
-  /// [orderBy] - Optional. Hint for how to order the results.
-  ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListRemoteTransportProfilesResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListRemoteTransportProfilesResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$parent') + '/remoteTransportProfiles';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListRemoteTransportProfilesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4437,7 +4642,7 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
   async.Future<GoogleLongrunningOperation> create(
     ServiceConnectionPolicy request,
     core.String parent, {
-    core.String? autoSubnetworkConfig_allocRangeSpace,
+    core.List<core.String>? autoSubnetworkConfig_allocRangeSpace,
     core.String? autoSubnetworkConfig_ipStack,
     core.int? autoSubnetworkConfig_prefixLength,
     core.String? requestId,
@@ -4448,9 +4653,8 @@ class ProjectsLocationsServiceConnectionPoliciesResource {
     final body_ = convert.json.encode(request);
     final queryParams_ = <core.String, core.List<core.String>>{
       if (autoSubnetworkConfig_allocRangeSpace != null)
-        'autoSubnetworkConfig.allocRangeSpace': [
-          autoSubnetworkConfig_allocRangeSpace,
-        ],
+        'autoSubnetworkConfig.allocRangeSpace':
+            autoSubnetworkConfig_allocRangeSpace,
       if (autoSubnetworkConfig_ipStack != null)
         'autoSubnetworkConfig.ipStack': [autoSubnetworkConfig_ipStack],
       if (autoSubnetworkConfig_prefixLength != null)
@@ -5513,279 +5717,6 @@ class ProjectsLocationsSpokesResource {
   }
 }
 
-class ProjectsLocationsTransportsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsTransportsResource(commons.ApiRequester client)
-    : _requester = client;
-
-  /// Creates a new Transport in a given project and location.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Value for parent.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [transportId] - Required. Id of the requesting object
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> create(
-    Transport request,
-    core.String parent, {
-    core.String? requestId,
-    core.String? transportId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (transportId != null) 'transportId': [transportId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transports';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Deletes a single Transport.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes after the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> delete(
-    core.String name, {
-    core.String? requestId,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Gets details of a single Transport.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Transport].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Transport> get(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return Transport.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists Transports in a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListTransportsRequest.
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [filter] - Optional. Filtering results.
-  ///
-  /// [orderBy] - Optional. Hint for how to order the results.
-  ///
-  /// [pageSize] - Optional. Requested page size. Server may return fewer items
-  /// than requested. If unspecified, server will pick an appropriate default.
-  ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListTransportsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListTransportsResponse> list(
-    core.String parent, {
-    core.String? filter,
-    core.String? orderBy,
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (filter != null) 'filter': [filter],
-      if (orderBy != null) 'orderBy': [orderBy],
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/transports';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListTransportsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Updates the parameters of a single Transport.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Identifier. Name of the resource, see google.aip.dev/122 for
-  /// resource naming.
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/transports/\[^/\]+$`.
-  ///
-  /// [requestId] - Optional. An optional request ID to identify requests.
-  /// Specify a unique request ID so that if you must retry your request, the
-  /// server will know to ignore the request if it has already been completed.
-  /// The server will guarantee that for at least 60 minutes since the first
-  /// request. For example, consider a situation where you make an initial
-  /// request and the request times out. If you make the request again with the
-  /// same request ID, the server can check if original operation with the same
-  /// request ID was received, and if so, will ignore the second request. This
-  /// prevents clients from accidentally creating duplicate commitments. The
-  /// request ID must be a valid UUID with the exception that zero UUID is not
-  /// supported (00000000-0000-0000-0000-000000000000).
-  ///
-  /// [updateMask] - Optional. Field mask is used to specify the fields to be
-  /// overwritten in the Transport resource by the update. The fields specified
-  /// in the update_mask are relative to the resource, not the full request. A
-  /// field will be overwritten if it is in the mask. If the user does not
-  /// provide a mask then all fields present in the request will be overwritten.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [GoogleLongrunningOperation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<GoogleLongrunningOperation> patch(
-    Transport request,
-    core.String name, {
-    core.String? requestId,
-    core.String? updateMask,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (requestId != null) 'requestId': [requestId],
-      if (updateMask != null) 'updateMask': [updateMask],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'PATCH',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return GoogleLongrunningOperation.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
 /// The request for HubService.AcceptHubSpoke.
 class AcceptHubSpokeRequest {
   /// A request ID to identify requests.
@@ -6015,6 +5946,14 @@ class AutoAccept {
 
 /// Information for the automatically created subnetwork and its associated IR.
 class AutoCreatedSubnetworkInfo {
+  /// Indicates whether the subnetwork is delinked from the Service Connection
+  /// Policy.
+  ///
+  /// Only set if the subnetwork mode is AUTO_CREATED during creation.
+  ///
+  /// Output only.
+  core.bool? delinked;
+
   /// URI of the automatically created Internal Range.
   ///
   /// Only set if the subnetwork mode is AUTO_CREATED during creation.
@@ -6044,6 +5983,7 @@ class AutoCreatedSubnetworkInfo {
   core.String? subnetworkRef;
 
   AutoCreatedSubnetworkInfo({
+    this.delinked,
     this.internalRange,
     this.internalRangeRef,
     this.subnetwork,
@@ -6052,6 +5992,7 @@ class AutoCreatedSubnetworkInfo {
 
   AutoCreatedSubnetworkInfo.fromJson(core.Map json_)
     : this(
+        delinked: json_['delinked'] as core.bool?,
         internalRange: json_['internalRange'] as core.String?,
         internalRangeRef: json_['internalRangeRef'] as core.String?,
         subnetwork: json_['subnetwork'] as core.String?,
@@ -6059,10 +6000,291 @@ class AutoCreatedSubnetworkInfo {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (delinked != null) 'delinked': delinked!,
     if (internalRange != null) 'internalRange': internalRange!,
     if (internalRangeRef != null) 'internalRangeRef': internalRangeRef!,
     if (subnetwork != null) 'subnetwork': subnetwork!,
     if (subnetworkRef != null) 'subnetworkRef': subnetworkRef!,
+  };
+}
+
+/// The specification for automatically creating a DNS record.
+class AutomatedDnsCreationSpec {
+  /// The DNS suffix to use for the DNS record.
+  ///
+  /// Must end with a dot. This should be a valid DNS domain name as per RFC
+  /// 1035. Each label (between dots) can contain letters, digits, and hyphens,
+  /// and must not start or end with a hyphen. Example:
+  /// "my-service.example.com.", "internal."
+  ///
+  /// Required.
+  core.String? dnsSuffix;
+
+  /// The hostname (the first label of the FQDN) to use for the DNS record.
+  ///
+  /// This should be a valid DNS label as per RFC 1035. Generally, this means
+  /// the hostname can contain letters, digits, and hyphens, and must not start
+  /// or end with a hyphen. Example: "my-instance", "db-1"
+  ///
+  /// Required.
+  core.String? hostname;
+
+  /// The Time To Live for the DNS record, in seconds.
+  ///
+  /// If not provided, a default of 30 seconds will be used.
+  ///
+  /// Optional.
+  core.String? ttl;
+
+  AutomatedDnsCreationSpec({this.dnsSuffix, this.hostname, this.ttl});
+
+  AutomatedDnsCreationSpec.fromJson(core.Map json_)
+    : this(
+        dnsSuffix: json_['dnsSuffix'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dnsSuffix != null) 'dnsSuffix': dnsSuffix!,
+    if (hostname != null) 'hostname': hostname!,
+    if (ttl != null) 'ttl': ttl!,
+  };
+}
+
+/// Represents a DNS record managed by the AutomatedDnsRecord API.
+class AutomatedDnsRecord {
+  /// The full resource path of the consumer network this AutomatedDnsRecord is
+  /// visible to.
+  ///
+  /// Example: "projects/{projectNumOrId}/global/networks/{networkName}".
+  ///
+  /// Required. Immutable.
+  core.String? consumerNetwork;
+
+  /// The timestamp of when the record was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The creation mode of the AutomatedDnsRecord.
+  ///
+  /// This field is immutable.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "CREATION_MODE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "CONSUMER_API" : The record was created through the AutomatedDnsRecord
+  /// CCFE consumer API.
+  /// - "SERVICE_CONNECTION_MAP" : The record was created by a
+  /// ServiceConnectionMap. Its lifecycle is managed by that
+  /// ServiceConnectionMap.
+  core.String? creationMode;
+
+  /// The current settings for this record as identified by (`hostname`,
+  /// `dns_suffix`, `type`) in Cloud DNS.
+  ///
+  /// The `current_config` field reflects the actual settings of the DNS record
+  /// in Cloud DNS based on the `hostname`, `dns_suffix`, and `type`. *
+  /// **Absence:** If `current_config` is unset, it means a DNS record with the
+  /// specified `hostname`, `dns_suffix`, and `type` does not currently exist in
+  /// Cloud DNS. This could be because the `AutomatedDnsRecord` has never been
+  /// successfully programmed, has been deleted, or there was an error during
+  /// provisioning. * **Presence:** If `current_config` is present: * It can be
+  /// different from the `original_config`. This can happen due to several
+  /// reasons: * Out-of-band changes: A consumer might have directly modified
+  /// the DNS record in Cloud DNS. * `OVERWRITE` operations from other
+  /// `AutomatedDnsRecord` resources: Another `AutomatedDnsRecord` with the same
+  /// identifying attributes (`hostname`, `dns_suffix`, `type`) but a different
+  /// configuration might have overwritten the record using `insert_mode:
+  /// OVERWRITE`. Therefore, the presence of `current_config` indicates that a
+  /// corresponding DNS record exists, but its values (TTL and RRData) might not
+  /// always align with the `original_config` of the AutomatedDnsRecord.
+  ///
+  /// Output only.
+  Config? currentConfig;
+
+  /// A human-readable description of the record.
+  core.String? description;
+
+  /// The dns suffix for this record to use in longest-suffix matching.
+  ///
+  /// Requires a trailing dot. Example: "example.com."
+  ///
+  /// Required. Immutable.
+  core.String? dnsSuffix;
+
+  /// DnsZone is the DNS zone managed by automation.
+  ///
+  /// Format: projects/{project}/managedZones/{managedZone}
+  ///
+  /// Output only.
+  core.String? dnsZone;
+
+  /// The etag is computed by the server, and may be sent on update and delete
+  /// requests to ensure the client has an up-to-date value before proceeding.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// The FQDN created by combining the hostname and dns suffix.
+  ///
+  /// Should include a trailing dot.
+  ///
+  /// Output only.
+  core.String? fqdn;
+
+  /// The hostname for the DNS record.
+  ///
+  /// This value will be prepended to the `dns_suffix` to create the full domain
+  /// name (FQDN) for the record. For example, if `hostname` is "corp.db" and
+  /// `dns_suffix` is "example.com.", the resulting record will be
+  /// "corp.db.example.com.". Should not include a trailing dot.
+  ///
+  /// Required. Immutable.
+  core.String? hostname;
+
+  /// User-defined labels.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The name of an AutomatedDnsRecord. Format:
+  /// projects/{project}/locations/{location}/automatedDnsRecords/{automated_dns_record}
+  /// See: https://google.aip.dev/122#fields-representing-resource-names
+  ///
+  /// Immutable.
+  core.String? name;
+
+  /// The configuration settings used to create this DNS record.
+  ///
+  /// These settings define the desired state of the record as specified by the
+  /// producer.
+  ///
+  /// Required. Immutable.
+  Config? originalConfig;
+
+  /// The identifier of a supported record type.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "RECORD_TYPE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "A" : Represents an A record.
+  /// - "AAAA" : Represents an AAAA record.
+  /// - "TXT" : Represents a TXT record.
+  /// - "CNAME" : Represents a CNAME record.
+  core.String? recordType;
+
+  /// The service class identifier which authorizes this AutomatedDnsRecord.
+  ///
+  /// Any API calls targeting this AutomatedDnsRecord must have
+  /// `networkconnectivity.serviceclasses.use` IAM permission for the provided
+  /// service class.
+  ///
+  /// Required. Immutable.
+  core.String? serviceClass;
+
+  /// The current operational state of this AutomatedDnsRecord as managed by
+  /// Service Connectivity Automation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PROGRAMMED" : The AutomatedDnsRecord has been successfully programmed.
+  /// - "FAILED_DEPROGRAMMING" : A non-recoverable error occurred while
+  /// attempting to deprogram the DNS record from Cloud DNS during deletion.
+  /// - "CREATING" : The AutomatedDnsRecord is being created.
+  /// - "DELETING" : The AutomatedDnsRecord is being deleted.
+  core.String? state;
+
+  /// A human-readable message providing more context about the current state,
+  /// such as an error description if the state is `FAILED_DEPROGRAMMING`.
+  ///
+  /// Output only.
+  core.String? stateDetails;
+
+  /// The timestamp of when the record was updated.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AutomatedDnsRecord({
+    this.consumerNetwork,
+    this.createTime,
+    this.creationMode,
+    this.currentConfig,
+    this.description,
+    this.dnsSuffix,
+    this.dnsZone,
+    this.etag,
+    this.fqdn,
+    this.hostname,
+    this.labels,
+    this.name,
+    this.originalConfig,
+    this.recordType,
+    this.serviceClass,
+    this.state,
+    this.stateDetails,
+    this.updateTime,
+  });
+
+  AutomatedDnsRecord.fromJson(core.Map json_)
+    : this(
+        consumerNetwork: json_['consumerNetwork'] as core.String?,
+        createTime: json_['createTime'] as core.String?,
+        creationMode: json_['creationMode'] as core.String?,
+        currentConfig:
+            json_.containsKey('currentConfig')
+                ? Config.fromJson(
+                  json_['currentConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        description: json_['description'] as core.String?,
+        dnsSuffix: json_['dnsSuffix'] as core.String?,
+        dnsZone: json_['dnsZone'] as core.String?,
+        etag: json_['etag'] as core.String?,
+        fqdn: json_['fqdn'] as core.String?,
+        hostname: json_['hostname'] as core.String?,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        originalConfig:
+            json_.containsKey('originalConfig')
+                ? Config.fromJson(
+                  json_['originalConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        recordType: json_['recordType'] as core.String?,
+        serviceClass: json_['serviceClass'] as core.String?,
+        state: json_['state'] as core.String?,
+        stateDetails: json_['stateDetails'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
+    if (createTime != null) 'createTime': createTime!,
+    if (creationMode != null) 'creationMode': creationMode!,
+    if (currentConfig != null) 'currentConfig': currentConfig!,
+    if (description != null) 'description': description!,
+    if (dnsSuffix != null) 'dnsSuffix': dnsSuffix!,
+    if (dnsZone != null) 'dnsZone': dnsZone!,
+    if (etag != null) 'etag': etag!,
+    if (fqdn != null) 'fqdn': fqdn!,
+    if (hostname != null) 'hostname': hostname!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (originalConfig != null) 'originalConfig': originalConfig!,
+    if (recordType != null) 'recordType': recordType!,
+    if (serviceClass != null) 'serviceClass': serviceClass!,
+    if (state != null) 'state': state!,
+    if (stateDetails != null) 'stateDetails': stateDetails!,
+    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -6170,6 +6392,114 @@ class Binding {
   };
 }
 
+/// Request for CheckConsumerConfig.
+class CheckConsumerConfigRequest {
+  /// Full resource name of the consumer network.
+  ///
+  /// Example: - projects/{project}/global/networks/{network}.
+  ///
+  /// Required.
+  core.String? consumerNetwork;
+
+  /// The project number or ID where the PSC endpoint is to be created.
+  core.String? endpointProject;
+
+  /// The requested IP Version
+  /// Possible string values are:
+  /// - "IP_VERSION_UNSPECIFIED" : Default value. We will use IPv4 or IPv6
+  /// depending on the IP version of first available subnetwork.
+  /// - "IPV4" : Will use IPv4 only.
+  /// - "IPV6" : Will use IPv6 only.
+  core.String? requestedIpVersion;
+
+  /// The service class identifier of the producer.
+  ///
+  /// Required.
+  core.String? serviceClass;
+
+  CheckConsumerConfigRequest({
+    this.consumerNetwork,
+    this.endpointProject,
+    this.requestedIpVersion,
+    this.serviceClass,
+  });
+
+  CheckConsumerConfigRequest.fromJson(core.Map json_)
+    : this(
+        consumerNetwork: json_['consumerNetwork'] as core.String?,
+        endpointProject: json_['endpointProject'] as core.String?,
+        requestedIpVersion: json_['requestedIpVersion'] as core.String?,
+        serviceClass: json_['serviceClass'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (consumerNetwork != null) 'consumerNetwork': consumerNetwork!,
+    if (endpointProject != null) 'endpointProject': endpointProject!,
+    if (requestedIpVersion != null) 'requestedIpVersion': requestedIpVersion!,
+    if (serviceClass != null) 'serviceClass': serviceClass!,
+  };
+}
+
+/// Response for CheckConsumerConfig.
+class CheckConsumerConfigResponse {
+  /// List of validation errors.
+  ///
+  /// If the list is empty, the consumer config is valid.
+  core.List<core.String>? errors;
+
+  CheckConsumerConfigResponse({this.errors});
+
+  CheckConsumerConfigResponse.fromJson(core.Map json_)
+    : this(
+        errors:
+            (json_['errors'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (errors != null) 'errors': errors!,
+  };
+}
+
+/// Defines the configuration of a DNS record.
+class Config {
+  /// The list of resource record data strings.
+  ///
+  /// The content and format of these strings depend on the
+  /// AutomatedDnsRecord.type. For many common record types, this list may
+  /// contain multiple strings. As defined in RFC 1035 (section 5) and RFC 1034
+  /// (section 3.6.1) -- see examples. Examples: A record: \["192.0.2.1"\] or
+  /// \["192.0.2.1", "192.0.2.2"\] TXT record: \["This is a text record"\] CNAME
+  /// record: \["target.example.com."\] AAAA record: \["::1"\] or
+  /// \["2001:0db8:85a3:0000:0000:8a2e:0370:7334",
+  /// "2001:0db8:85a3:0000:0000:8a2e:0370:7335"\]
+  ///
+  /// Required.
+  core.List<core.String>? rrdatas;
+
+  /// Number of seconds that this DNS record can be cached by resolvers.
+  ///
+  /// Required.
+  core.String? ttl;
+
+  Config({this.rrdatas, this.ttl});
+
+  Config.fromJson(core.Map json_)
+    : this(
+        rrdatas:
+            (json_['rrdatas'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        ttl: json_['ttl'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (rrdatas != null) 'rrdatas': rrdatas!,
+    if (ttl != null) 'ttl': ttl!,
+  };
+}
+
 /// Allow the producer to specify which consumers can connect to it.
 class ConsumerPscConfig {
   /// The project ID or project number of the consumer project.
@@ -6222,10 +6552,10 @@ class ConsumerPscConfig {
 
   /// A map to store mapping between customer vip and target service attachment.
   ///
-  /// Only service attachment with producer specified ip addresses are stored
-  /// here.
+  /// This field can be used to specify a static IP address for a PSC
+  /// connection.
   ///
-  /// Output only.
+  /// Optional.
   core.Map<core.String, core.String>? serviceAttachmentIpAddressMap;
 
   /// Overall state of PSC Connections management for this consumer psc config.
@@ -6295,6 +6625,11 @@ class ConsumerPscConfig {
 
 /// PSC connection details on consumer side.
 class ConsumerPscConnection {
+  /// The status of DNS automation for this PSC connection.
+  ///
+  /// Output only.
+  DnsAutomationStatus? dnsAutomationStatus;
+
   /// The most recent error during operating this connection.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
@@ -6396,6 +6731,7 @@ class ConsumerPscConnection {
   core.String? state;
 
   ConsumerPscConnection({
+    this.dnsAutomationStatus,
     this.error,
     this.errorInfo,
     this.errorType,
@@ -6415,6 +6751,13 @@ class ConsumerPscConnection {
 
   ConsumerPscConnection.fromJson(core.Map json_)
     : this(
+        dnsAutomationStatus:
+            json_.containsKey('dnsAutomationStatus')
+                ? DnsAutomationStatus.fromJson(
+                  json_['dnsAutomationStatus']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         error:
             json_.containsKey('error')
                 ? GoogleRpcStatus.fromJson(
@@ -6445,6 +6788,8 @@ class ConsumerPscConnection {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (dnsAutomationStatus != null)
+      'dnsAutomationStatus': dnsAutomationStatus!,
     if (error != null) 'error': error!,
     if (errorInfo != null) 'errorInfo': errorInfo!,
     if (errorType != null) 'errorType': errorType!,
@@ -6635,6 +6980,51 @@ class DestinationEndpoint {
   };
 }
 
+/// The status of DNS automation for a PSC connection.
+class DnsAutomationStatus {
+  /// The error details if the state is CREATE_FAILED or DELETE_FAILED.
+  ///
+  /// Output only.
+  GoogleRpcStatus? error;
+
+  /// The fully qualified domain name of the DNS record.
+  ///
+  /// Output only.
+  core.String? fqdn;
+
+  /// The current state of DNS automation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "PENDING_CREATE" : DNS record creation is pending.
+  /// - "ACTIVE" : DNS record is active.
+  /// - "PENDING_DELETE" : DNS record deletion is pending.
+  /// - "CREATE_FAILED" : DNS record creation failed.
+  /// - "DELETE_FAILED" : DNS record deletion failed.
+  core.String? state;
+
+  DnsAutomationStatus({this.error, this.fqdn, this.state});
+
+  DnsAutomationStatus.fromJson(core.Map json_)
+    : this(
+        error:
+            json_.containsKey('error')
+                ? GoogleRpcStatus.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fqdn: json_['fqdn'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (error != null) 'error': error!,
+    if (fqdn != null) 'fqdn': fqdn!,
+    if (state != null) 'state': state!,
+  };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -6735,9 +7125,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -6751,11 +7150,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -7298,6 +7702,8 @@ class InternalRange {
   AllocationOptions? allocationOptions;
 
   /// Time when the internal range was created.
+  ///
+  /// Output only.
   core.String? createTime;
 
   /// A description of this resource.
@@ -7412,6 +7818,8 @@ class InternalRange {
   core.List<core.String>? targetCidrRange;
 
   /// Time when the internal range was updated.
+  ///
+  /// Output only.
   core.String? updateTime;
 
   /// The type of usage set for this InternalRange.
@@ -7622,13 +8030,13 @@ class LinkedProducerVpcNetwork {
   /// Output only.
   core.String? producerNetwork;
 
-  /// The proposed exclude export IP ranges waiting for hub administration's
+  /// The proposed exclude export IP ranges waiting for hub administrator's
   /// approval.
   ///
   /// Output only.
   core.List<core.String>? proposedExcludeExportRanges;
 
-  /// The proposed include export IP ranges waiting for hub administration's
+  /// The proposed include export IP ranges waiting for hub administrator's
   /// approval.
   ///
   /// Output only.
@@ -7778,13 +8186,13 @@ class LinkedVpcNetwork {
   /// Output only.
   core.List<core.String>? producerVpcSpokes;
 
-  /// The proposed exclude export IP ranges waiting for hub administration's
+  /// The proposed exclude export IP ranges waiting for hub administrator's
   /// approval.
   ///
   /// Output only.
   core.List<core.String>? proposedExcludeExportRanges;
 
-  /// The proposed include export IP ranges waiting for hub administration's
+  /// The proposed include export IP ranges waiting for hub administrator's
   /// approval.
   ///
   /// Output only.
@@ -7899,6 +8307,51 @@ class LinkedVpnTunnels {
       'siteToSiteDataTransfer': siteToSiteDataTransfer!,
     if (uris != null) 'uris': uris!,
     if (vpcNetwork != null) 'vpcNetwork': vpcNetwork!,
+  };
+}
+
+/// Response for ListAutomatedDnsRecords.
+class ListAutomatedDnsRecordsResponse {
+  /// AutomatedDnsRecords to be returned.
+  core.List<AutomatedDnsRecord>? automatedDnsRecords;
+
+  /// The next pagination token in the List response.
+  ///
+  /// It should be used as page_token for the following request. An empty value
+  /// means no more result.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListAutomatedDnsRecordsResponse({
+    this.automatedDnsRecords,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListAutomatedDnsRecordsResponse.fromJson(core.Map json_)
+    : this(
+        automatedDnsRecords:
+            (json_['automatedDnsRecords'] as core.List?)
+                ?.map(
+                  (value) => AutomatedDnsRecord.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (automatedDnsRecords != null)
+      'automatedDnsRecords': automatedDnsRecords!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -8305,50 +8758,6 @@ class ListRegionalEndpointsResponse {
   };
 }
 
-/// Message for response to listing RemoteTransportProfiles
-class ListRemoteTransportProfilesResponse {
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  /// The list of RemoteTransportProfiles.
-  core.List<RemoteTransportProfile>? remoteTransportProfiles;
-
-  /// Unordered list.
-  ///
-  /// Locations that could not be reached.
-  core.List<core.String>? unreachable;
-
-  ListRemoteTransportProfilesResponse({
-    this.nextPageToken,
-    this.remoteTransportProfiles,
-    this.unreachable,
-  });
-
-  ListRemoteTransportProfilesResponse.fromJson(core.Map json_)
-    : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
-        remoteTransportProfiles:
-            (json_['remoteTransportProfiles'] as core.List?)
-                ?.map(
-                  (value) => RemoteTransportProfile.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (remoteTransportProfiles != null)
-      'remoteTransportProfiles': remoteTransportProfiles!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
-}
-
 /// Response for HubService.ListRouteTables method.
 class ListRouteTablesResponse {
   /// The token for the next page of the response.
@@ -8648,49 +9057,6 @@ class ListSpokesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (spokes != null) 'spokes': spokes!,
-    if (unreachable != null) 'unreachable': unreachable!,
-  };
-}
-
-/// Message for response to listing Transports.
-class ListTransportsResponse {
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  /// The list of Transport.
-  core.List<Transport>? transports;
-
-  /// Unordered list.
-  ///
-  /// Locations that could not be reached.
-  core.List<core.String>? unreachable;
-
-  ListTransportsResponse({
-    this.nextPageToken,
-    this.transports,
-    this.unreachable,
-  });
-
-  ListTransportsResponse.fromJson(core.Map json_)
-    : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
-        transports:
-            (json_['transports'] as core.List?)
-                ?.map(
-                  (value) => Transport.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        unreachable:
-            (json_['unreachable'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (transports != null) 'transports': transports!,
     if (unreachable != null) 'unreachable': unreachable!,
   };
 }
@@ -9195,6 +9561,8 @@ class PolicyBasedRoute {
   /// User-defined labels.
   core.Map<core.String, core.String>? labels;
 
+  /// Identifier.
+  ///
   /// A unique name of the resource in the form of
   /// `projects/{project_number}/locations/global/PolicyBasedRoutes/{policy_based_route_id}`
   ///
@@ -9344,18 +9712,35 @@ class PolicyBasedRoute {
 
 /// The PSC configurations on producer side.
 class ProducerPscConfig {
+  /// The specification for automatically creating a DNS record for this PSC
+  /// connection.
+  ///
+  /// Optional.
+  AutomatedDnsCreationSpec? automatedDnsCreationSpec;
+
   /// The resource path of a service attachment.
   ///
   /// Example:
   /// projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
   core.String? serviceAttachmentUri;
 
-  ProducerPscConfig({this.serviceAttachmentUri});
+  ProducerPscConfig({this.automatedDnsCreationSpec, this.serviceAttachmentUri});
 
   ProducerPscConfig.fromJson(core.Map json_)
-    : this(serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?);
+    : this(
+        automatedDnsCreationSpec:
+            json_.containsKey('automatedDnsCreationSpec')
+                ? AutomatedDnsCreationSpec.fromJson(
+                  json_['automatedDnsCreationSpec']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceAttachmentUri: json_['serviceAttachmentUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (automatedDnsCreationSpec != null)
+      'automatedDnsCreationSpec': automatedDnsCreationSpec!,
     if (serviceAttachmentUri != null)
       'serviceAttachmentUri': serviceAttachmentUri!,
   };
@@ -9782,6 +10167,8 @@ class RegionalEndpoint {
   /// The name of the VPC network for this private regional endpoint.
   ///
   /// Format: `projects/{project}/global/networks/{network}`
+  ///
+  /// Optional.
   core.String? network;
 
   /// The resource reference of the PSC Forwarding Rule created on behalf of the
@@ -9796,6 +10183,8 @@ class RegionalEndpoint {
   /// The name of the subnetwork from which the IP address will be allocated.
   ///
   /// Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
+  ///
+  /// Optional.
   core.String? subnetwork;
 
   /// The service endpoint this private regional endpoint connects to.
@@ -9959,148 +10348,6 @@ class RejectSpokeUpdateRequest {
     if (requestId != null) 'requestId': requestId!,
     if (spokeEtag != null) 'spokeEtag': spokeEtag!,
     if (spokeUri != null) 'spokeUri': spokeUri!,
-  };
-}
-
-/// Message describing RemoteTransportProfile object.
-class RemoteTransportProfile {
-  /// Create time stamp.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Description of the profile.
-  ///
-  /// Output only.
-  core.String? description;
-
-  /// Type of provisioning flows supported by this profile.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "KEY_PROVISIONING_FLOW_UNSPECIFIED" : Unspecified key provisioning flow.
-  /// - "INPUT_ONLY" : The activationKey field on the Transport must be included
-  /// in a create or patch request to establish connectivity.
-  /// - "OUTPUT_ONLY" : The generatedActivationKey field is populated and must
-  /// be read from the resource and passed into the other provider.
-  /// - "INPUT_OR_OUTPUT" : Both activation key fields are allowed for
-  /// establishing connectivity. If a key is input, the generated key is still
-  /// present after provisioning is finished.
-  core.String? flow;
-
-  /// Labels as key value pairs.
-  ///
-  /// Output only.
-  core.Map<core.String, core.String>? labels;
-
-  /// Identifier.
-  ///
-  /// Name of the resource in the format of $provider-$site.
-  core.String? name;
-
-  /// Order state for this profile.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "CLOSED" : Not enough capacity for customers to order.
-  /// - "OPEN" : Enough capacity to fulfill an order.
-  core.String? orderState;
-
-  /// Name of the provider on the other end of this profile.
-  ///
-  /// E.g. “Amazon Web Services” or “Microsoft Azure”.
-  ///
-  /// Output only.
-  core.String? provider;
-
-  /// If the profile is a Cloud Service Provider with compute resources, this is
-  /// populated with the region where connectivity is being established.
-  ///
-  /// If the profile provides facility-level selection, this is an identity of
-  /// the facility any connections on this profile are going through.
-  ///
-  /// Output only.
-  core.String? providerSite;
-
-  /// GCP Region where this profile is available.
-  ///
-  /// Output only.
-  core.String? region;
-
-  /// Availability class that will be configured for this particular
-  /// RemoteTransportProfile.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "SERVICE_LEVEL_AVAILABILITY_UNSPECIFIED" : Unspecified service level
-  /// availability.
-  /// - "HIGH" : This represents a 99.9% service level on the availability of
-  /// the configured connectivity.
-  /// - "MAXIMUM" : This represents a 99.99% service level on the availability
-  /// of the configured connectivity.
-  core.String? sla;
-
-  /// List of bandwidth enum values that are supported by this profile.
-  ///
-  /// Output only.
-  core.List<core.String>? supportedBandwidths;
-
-  /// Update time stamp.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  RemoteTransportProfile({
-    this.createTime,
-    this.description,
-    this.flow,
-    this.labels,
-    this.name,
-    this.orderState,
-    this.provider,
-    this.providerSite,
-    this.region,
-    this.sla,
-    this.supportedBandwidths,
-    this.updateTime,
-  });
-
-  RemoteTransportProfile.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        flow: json_['flow'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        name: json_['name'] as core.String?,
-        orderState: json_['orderState'] as core.String?,
-        provider: json_['provider'] as core.String?,
-        providerSite: json_['providerSite'] as core.String?,
-        region: json_['region'] as core.String?,
-        sla: json_['sla'] as core.String?,
-        supportedBandwidths:
-            (json_['supportedBandwidths'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (flow != null) 'flow': flow!,
-    if (labels != null) 'labels': labels!,
-    if (name != null) 'name': name!,
-    if (orderState != null) 'orderState': orderState!,
-    if (provider != null) 'provider': provider!,
-    if (providerSite != null) 'providerSite': providerSite!,
-    if (region != null) 'region': region!,
-    if (sla != null) 'sla': sla!,
-    if (supportedBandwidths != null)
-      'supportedBandwidths': supportedBandwidths!,
-    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -11023,7 +11270,7 @@ class Spoke {
   /// Optional.
   core.String? etag;
 
-  /// The list of fields waiting for hub administration's approval.
+  /// The list of fields waiting for hub administrator's approval.
   ///
   /// Optional.
   core.List<core.String>? fieldPathsPendingUpdate;
@@ -11462,7 +11709,7 @@ class StateMetadata {
   };
 }
 
-/// The reason a spoke is inactive.
+/// The reason for the current state of the spoke.
 class StateReason {
   /// The code associated with this reason.
   /// Possible string values are:
@@ -11533,209 +11780,6 @@ typedef TestIamPermissionsRequest = $TestIamPermissionsRequest00;
 
 /// Response message for `TestIamPermissions` method.
 typedef TestIamPermissionsResponse = $PermissionsResponse;
-
-/// Message describing Transport object.
-class Transport {
-  /// Administrative state of the underlying connectivity.
-  ///
-  /// If set to true (default), connectivity should be available between your
-  /// environments. If set to false, the connectivity over these links is
-  /// disabled. Disabling your Transport does not affect billing, and retains
-  /// the underlying network bandwidth associated with the connectivity.
-  ///
-  /// Optional.
-  core.bool? adminEnabled;
-
-  /// \[Preview only\] List of IP Prefixes that will be advertised to the remote
-  /// provider.
-  ///
-  /// Both IPv4 and IPv6 addresses are supported.
-  ///
-  /// Optional.
-  core.String? advertisedRoutes;
-
-  /// Bandwidth of the Transport.
-  ///
-  /// This must be one of the supported bandwidths for the remote profile.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "BANDWIDTH_UNSPECIFIED" : Unspecified bandwidth.
-  /// - "BPS_50M" : 50 Megabits per second.
-  /// - "BPS_100M" : 100 Megabits per second.
-  /// - "BPS_200M" : 200 Megabits per second.
-  /// - "BPS_300M" : 300 Megabits per second.
-  /// - "BPS_400M" : 400 Megabits per second.
-  /// - "BPS_500M" : 500 Megabits per second.
-  /// - "BPS_1G" : 1 Gigabit per second.
-  /// - "BPS_2G" : 2 Gigabits per second.
-  /// - "BPS_5G" : 5 Gigabits per second.
-  /// - "BPS_10G" : 10 Gigabits per second.
-  core.String? bandwidth;
-
-  /// Create time stamp.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Description of the Transport.
-  ///
-  /// Optional.
-  core.String? description;
-
-  /// Google-generated activation key.
-  ///
-  /// This is only output if the selected profile supports an OUTPUT key flow.
-  /// Inputting this to the provider is only valid while the resource is in a
-  /// PENDING_KEY state. Once the provider has accepted the key, the resource
-  /// will move to the CONFIGURING state.
-  ///
-  /// Output only.
-  core.String? generatedActivationKey;
-
-  /// Labels as key value pairs.
-  ///
-  /// Optional.
-  core.Map<core.String, core.String>? labels;
-
-  /// The maximum transmission unit (MTU) of a packet that can be sent over this
-  /// transport.
-  ///
-  /// Output only.
-  core.int? mtuLimit;
-
-  /// Identifier.
-  ///
-  /// Name of the resource, see google.aip.dev/122 for resource naming.
-  core.String? name;
-
-  /// \[Preview only\] Resource URL of the Network that will be peered with this
-  /// Transport.
-  ///
-  /// This field must be provided during resource creation and cannot be
-  /// changed.
-  ///
-  /// Required.
-  core.String? network;
-
-  /// Key used for establishing a connection with the remote transport.
-  ///
-  /// This key can only be provided if the profile supports an INPUT key flow
-  /// and the resource is in the PENDING_KEY state.
-  ///
-  /// Optional.
-  core.String? providedActivationKey;
-
-  /// GCP Region where this Transport is located.
-  ///
-  /// Required.
-  core.String? region;
-
-  /// Resource URL of the remoteTransportProfile that this Transport is
-  /// connecting to.
-  ///
-  /// Format:
-  /// projects/{project}/locations/{location}/remoteTransportProfiles/{remote_transport_profile}
-  ///
-  /// Required.
-  core.String? remoteProfile;
-
-  /// IP version stack for the established connectivity.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "STACK_TYPE_UNSPECIFIED" : Unspecified stack type.
-  /// - "IPV4_ONLY" : Only IPv4 is supported. (default)
-  /// - "IPV4_IPV6" : Both IPv4 and IPv6 are supported.
-  core.String? stackType;
-
-  /// State of the underlying connectivity.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Unspecified state.
-  /// - "CREATING" : The resource exists locally and is being created /
-  /// associated with the resource on the remote provider’s end of the
-  /// underlying connectivity.
-  /// - "PENDING_CONFIG" : The Transport exists on both sides of the connection,
-  /// and is waiting for configuration to finalize and be verified as
-  /// operational.
-  /// - "PENDING_KEY" : The Transport was created in GCP. Depending on the
-  /// profile’s key provisioning flow, this is either waiting for an activation
-  /// key to be input (the key will be validated that it uses remote resources
-  /// that match the Transport), or for the generated key to be input to the
-  /// provider for finalizing. The configured bandwidth is not yet guaranteed.
-  /// - "ACTIVE" : The Transport is configured and the underlying connectivity
-  /// is considered operational.
-  core.String? state;
-
-  /// Update time stamp.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  Transport({
-    this.adminEnabled,
-    this.advertisedRoutes,
-    this.bandwidth,
-    this.createTime,
-    this.description,
-    this.generatedActivationKey,
-    this.labels,
-    this.mtuLimit,
-    this.name,
-    this.network,
-    this.providedActivationKey,
-    this.region,
-    this.remoteProfile,
-    this.stackType,
-    this.state,
-    this.updateTime,
-  });
-
-  Transport.fromJson(core.Map json_)
-    : this(
-        adminEnabled: json_['adminEnabled'] as core.bool?,
-        advertisedRoutes: json_['advertisedRoutes'] as core.String?,
-        bandwidth: json_['bandwidth'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        description: json_['description'] as core.String?,
-        generatedActivationKey: json_['generatedActivationKey'] as core.String?,
-        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
-          (key, value) => core.MapEntry(key, value as core.String),
-        ),
-        mtuLimit: json_['mtuLimit'] as core.int?,
-        name: json_['name'] as core.String?,
-        network: json_['network'] as core.String?,
-        providedActivationKey: json_['providedActivationKey'] as core.String?,
-        region: json_['region'] as core.String?,
-        remoteProfile: json_['remoteProfile'] as core.String?,
-        stackType: json_['stackType'] as core.String?,
-        state: json_['state'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adminEnabled != null) 'adminEnabled': adminEnabled!,
-    if (advertisedRoutes != null) 'advertisedRoutes': advertisedRoutes!,
-    if (bandwidth != null) 'bandwidth': bandwidth!,
-    if (createTime != null) 'createTime': createTime!,
-    if (description != null) 'description': description!,
-    if (generatedActivationKey != null)
-      'generatedActivationKey': generatedActivationKey!,
-    if (labels != null) 'labels': labels!,
-    if (mtuLimit != null) 'mtuLimit': mtuLimit!,
-    if (name != null) 'name': name!,
-    if (network != null) 'network': network!,
-    if (providedActivationKey != null)
-      'providedActivationKey': providedActivationKey!,
-    if (region != null) 'region': region!,
-    if (remoteProfile != null) 'remoteProfile': remoteProfile!,
-    if (stackType != null) 'stackType': stackType!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
 
 /// VM instances that this policy-based route applies to.
 class VirtualMachine {

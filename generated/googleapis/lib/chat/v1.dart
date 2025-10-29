@@ -17,7 +17,7 @@
 /// The Google Chat API lets you build Chat apps to integrate your services with
 /// Google Chat and manage Chat resources such as spaces, members, and messages.
 ///
-/// For more information, see <https://developers.google.com/hangouts/chat>
+/// For more information, see <https://developers.google.com/workspace/chat>
 ///
 /// Create an instance of [HangoutsChatApi] to access these resources:
 ///
@@ -92,6 +92,11 @@ class HangoutsChatApi {
   /// members from conversations and spaces
   static const chatAppMembershipsScope =
       'https://www.googleapis.com/auth/chat.app.memberships';
+
+  /// On their own behalf, apps in Google Chat can see all messages and their
+  /// associated reactions and message content
+  static const chatAppMessagesReadonlyScope =
+      'https://www.googleapis.com/auth/chat.app.messages.readonly';
 
   /// On their own behalf, apps in Google Chat can create conversations and
   /// spaces and see or update their metadata (including history settings and
@@ -1034,19 +1039,22 @@ class SpacesResource {
   ///
   /// [updateMask] - Required. The updated field paths, comma separated if there
   /// are multiple. You can update the following fields for a space:
-  /// `space_details`: Updates the space's description. Supports up to 150
-  /// characters. `display_name`: Only supports updating the display name for
-  /// spaces where `spaceType` field is `SPACE`. If you receive the error
-  /// message `ALREADY_EXISTS`, try a different value. An existing space within
-  /// the Google Workspace organization might already use this display name.
-  /// `space_type`: Only supports changing a `GROUP_CHAT` space type to `SPACE`.
-  /// Include `display_name` together with `space_type` in the update mask and
-  /// ensure that the specified space has a non-empty display name and the
-  /// `SPACE` space type. Including the `space_type` mask and the `SPACE` type
-  /// in the specified space when updating the display name is optional if the
-  /// existing space already has the `SPACE` type. Trying to update the space
-  /// type in other ways results in an invalid argument error. `space_type` is
-  /// not supported with `useAdminAccess`. `space_history_state`: Updates
+  /// `space_details`: Updates the space's description and guidelines. You must
+  /// pass both description and guidelines in the update request as
+  /// `SpaceDetails`. If you only want to update one of the fields, pass the
+  /// existing value for the other field. `display_name`: Only supports updating
+  /// the display name for spaces where `spaceType` field is `SPACE`. If you
+  /// receive the error message `ALREADY_EXISTS`, try a different value. An
+  /// existing space within the Google Workspace organization might already use
+  /// this display name. `space_type`: Only supports changing a `GROUP_CHAT`
+  /// space type to `SPACE`. Include `display_name` together with `space_type`
+  /// in the update mask and ensure that the specified space has a non-empty
+  /// display name and the `SPACE` space type. Including the `space_type` mask
+  /// and the `SPACE` type in the specified space when updating the display name
+  /// is optional if the existing space already has the `SPACE` type. Trying to
+  /// update the space type in other ways results in an invalid argument error.
+  /// `space_type` is not supported with `useAdminAccess`.
+  /// `space_history_state`: Updates
   /// [space history settings](https://support.google.com/chat/answer/7664687)
   /// by turning history on or off for the space. Only supported if history
   /// settings are enabled for the Google Workspace organization. To update the
@@ -1069,8 +1077,7 @@ class SpacesResource {
   /// [permission settings](https://support.google.com/chat/answer/13340792) of
   /// a space. When updating permission settings, you can only specify
   /// `permissionSettings` field masks; you cannot update other field masks at
-  /// the same time. `permissionSettings` is not supported with
-  /// `useAdminAccess`. The supported field masks include: -
+  /// the same time. The supported field masks include: -
   /// `permission_settings.manageMembersAndGroups` -
   /// `permission_settings.modifySpaceDetails` -
   /// `permission_settings.toggleHistory` -
@@ -2579,11 +2586,22 @@ class SpacesSpaceEventsResource {
   /// example, if you request an event about a new message but the message was
   /// later updated, the server returns the updated `Message` resource in the
   /// event payload. Note: The `permissionSettings` field is not returned in the
-  /// Space object of the Space event data for this request. Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// Space object of the Space event data for this request. Supports the
+  /// following types of
+  /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize)
   /// with an
   /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes)
   /// appropriate for reading the requested data: -
+  /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
+  /// [Developer Preview](https://developers.google.com/workspace/preview) with
+  /// one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.app.spaces` -
+  /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.app.memberships` -
+  /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
   /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
   /// `https://www.googleapis.com/auth/chat.spaces` -
   /// `https://www.googleapis.com/auth/chat.messages.readonly` -
@@ -2592,7 +2610,7 @@ class SpacesSpaceEventsResource {
   /// `https://www.googleapis.com/auth/chat.messages.reactions` -
   /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
   /// `https://www.googleapis.com/auth/chat.memberships` To get an event, the
-  /// authenticated user must be a member of the space. For an example, see
+  /// authenticated caller must be a member of the space. For an example, see
   /// [Get details about an event from a Google Chat space](https://developers.google.com/workspace/chat/get-space-event).
   ///
   /// Request parameters:
@@ -2636,11 +2654,21 @@ class SpacesSpaceEventsResource {
   /// list events about new space members, the server returns `Membership`
   /// resources that contain the latest membership details. If new members were
   /// removed during the requested period, the event payload contains an empty
-  /// `Membership` resource. Requires
-  /// [user authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// `Membership` resource. Supports the following types of
+  /// [authentication](https://developers.google.com/workspace/chat/authenticate-authorize)
   /// with an
   /// [authorization scope](https://developers.google.com/workspace/chat/authenticate-authorize#chat-api-scopes)
   /// appropriate for reading the requested data: -
+  /// [App authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
+  /// with
+  /// [administrator approval](https://support.google.com/a?p=chat-app-auth) in
+  /// [Developer Preview](https://developers.google.com/workspace/preview) with
+  /// one of the following authorization scopes: -
+  /// `https://www.googleapis.com/auth/chat.app.spaces` -
+  /// `https://www.googleapis.com/auth/chat.app.messages.readonly` -
+  /// `https://www.googleapis.com/auth/chat.app.memberships` -
+  /// [User authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-user)
+  /// with one of the following authorization scopes: -
   /// `https://www.googleapis.com/auth/chat.spaces.readonly` -
   /// `https://www.googleapis.com/auth/chat.spaces` -
   /// `https://www.googleapis.com/auth/chat.messages.readonly` -
@@ -2649,7 +2677,7 @@ class SpacesSpaceEventsResource {
   /// `https://www.googleapis.com/auth/chat.messages.reactions` -
   /// `https://www.googleapis.com/auth/chat.memberships.readonly` -
   /// `https://www.googleapis.com/auth/chat.memberships` To list events, the
-  /// authenticated user must be a member of the space. For an example, see
+  /// authenticated caller must be a member of the space. For an example, see
   /// [List events from a Google Chat space](https://developers.google.com/workspace/chat/list-space-events).
   ///
   /// Request parameters:
@@ -3467,10 +3495,10 @@ class Attachment {
   /// Output only.
   DriveDataRef? driveDataRef;
 
-  /// Resource name of the attachment, in the form
-  /// `spaces/{space}/messages/{message}/attachments/{attachment}`.
+  /// Identifier.
   ///
-  /// Optional.
+  /// Resource name of the attachment. Format:
+  /// `spaces/{space}/messages/{message}/attachments/{attachment}`.
   core.String? name;
 
   /// The source of the attachment.
@@ -4068,7 +4096,7 @@ class DeletionMetadata {
   /// Possible string values are:
   /// - "DELETION_TYPE_UNSPECIFIED" : This value is unused.
   /// - "CREATOR" : User deleted their own message.
-  /// - "SPACE_OWNER" : A space manager deleted the message.
+  /// - "SPACE_OWNER" : An owner or manager deleted the message.
   /// - "ADMIN" : A Google Workspace administrator deleted the message.
   /// Administrators can delete any message in the space, including messages
   /// sent by any space member or Chat app.
@@ -4305,6 +4333,39 @@ class FormAction {
   core.Map<core.String, core.dynamic> toJson() => {
     if (actionMethodName != null) 'actionMethodName': actionMethodName!,
     if (parameters != null) 'parameters': parameters!,
+  };
+}
+
+/// Metadata about the source space from which a message was forwarded.
+class ForwardedMetadata {
+  /// The resource name of the source space.
+  ///
+  /// Format: spaces/{space}
+  ///
+  /// Output only.
+  core.String? space;
+
+  /// The display name of the source space or DM at the time of forwarding.
+  ///
+  /// For `SPACE`, this is the space name. For `DIRECT_MESSAGE`, this is the
+  /// other participant's name (e.g., "User A"). For `GROUP_CHAT`, this is a
+  /// generated name based on members' first names, limited to 5 including the
+  /// creator (e.g., "User A, User B").
+  ///
+  /// Output only.
+  core.String? spaceDisplayName;
+
+  ForwardedMetadata({this.space, this.spaceDisplayName});
+
+  ForwardedMetadata.fromJson(core.Map json_)
+    : this(
+        space: json_['space'] as core.String?,
+        spaceDisplayName: json_['spaceDisplayName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (space != null) 'space': space!,
+    if (spaceDisplayName != null) 'spaceDisplayName': spaceDisplayName!,
   };
 }
 
@@ -4708,8 +4769,8 @@ class GoogleAppsCardV1Card {
 
   /// The expression data for the card.
   ///
-  /// Only supported by Google Workspace Workflow, but not Google Chat apps or
-  /// Google Workspace add-ons.
+  /// Available for Google Workspace add-ons that extend Google Workspace
+  /// Studio. Unavailable for Google Chat apps.
   core.List<GoogleAppsCardV1ExpressionData>? expressionData;
 
   /// The fixed footer shown at the bottom of this card.
@@ -5358,8 +5419,8 @@ class GoogleAppsCardV1Columns {
 
 /// Represents an action that is not specific to a widget.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Workspace add-ons that extend Google Workspace Studio.
+/// Unavailable for Google Chat apps.
 class GoogleAppsCardV1CommonWidgetAction {
   /// The action to update the visibility of a widget.
   GoogleAppsCardV1UpdateVisibilityAction? updateVisibilityAction;
@@ -5385,8 +5446,8 @@ class GoogleAppsCardV1CommonWidgetAction {
 
 /// Represents a condition that can be used to trigger an action.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Workspace add-ons that extend Google Workspace Studio.
+/// Unavailable for Google Chat apps.
 class GoogleAppsCardV1Condition {
   /// The unique identifier of the ActionRule.
   core.String? actionRuleId;
@@ -5417,8 +5478,8 @@ class GoogleAppsCardV1Condition {
 
 /// A configuration object that helps configure the data sources for a widget.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Chat apps and Google Workspace add-ons that extend
+/// Google Workspace Studio.
 class GoogleAppsCardV1DataSourceConfig {
   /// The data is from a Google Workspace application.
   GoogleAppsCardV1PlatformDataSource? platformDataSource;
@@ -5470,8 +5531,8 @@ class GoogleAppsCardV1DateTimePicker {
   /// A data source that's unique to a Google Workspace host application, such
   /// as Gmail emails, Google Calendar events, or Google Chat messages.
   ///
-  /// Only supported by Google Workspace Workflows, but not Google Chat API or
-  /// Google Workspace Add-ons.
+  /// Available for Google Workspace add-ons that extend Google Workspace
+  /// Studio. Unavailable for Google Chat apps.
   HostAppDataSourceMarkup? hostAppDataSource;
 
   /// The text that prompts users to input a date, a time, or a date and time.
@@ -5768,8 +5829,8 @@ typedef GoogleAppsCardV1Divider = $Empty;
 
 /// Represents an actionthat can be performed on an ui element.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Workspace add-ons that extend Google Workspace Studio.
+/// Unavailable for Google Chat apps.
 class GoogleAppsCardV1EventAction {
   /// The unique identifier of the ActionRule.
   core.String? actionRuleId;
@@ -5816,8 +5877,8 @@ class GoogleAppsCardV1EventAction {
 
 /// Represents the data that is used to evaluate an expression.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Workspace add-ons that extend Google Workspace Studio.
+/// Unavailable for Google Chat apps.
 class GoogleAppsCardV1ExpressionData {
   /// The list of conditions that are determined by the expression evaluation
   /// result.
@@ -5871,8 +5932,8 @@ class GoogleAppsCardV1ExpressionData {
 
 /// Represents a condition that is evaluated using CEL.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Workspace add-ons that extend Google Workspace Studio.
+/// Unavailable for Google Chat apps.
 class GoogleAppsCardV1ExpressionDataCondition {
   /// The type of the condition.
   /// Possible string values are:
@@ -6476,6 +6537,8 @@ class GoogleAppsCardV1OpenLink {
   core.String? openAs;
 
   /// The URL to open.
+  ///
+  /// HTTP URLs are converted to HTTPS.
   core.String? url;
 
   GoogleAppsCardV1OpenLink({this.onClose, this.openAs, this.url});
@@ -6666,8 +6729,8 @@ class GoogleAppsCardV1Section {
   /// be mutated.
   ///
   /// The ID has a character limit of 64 characters and should be in the format
-  /// of `[a-zA-Z0-9-]+`. Only supported by Google Workspace Workflow, but not
-  /// Google Chat apps or Google Workspace add-ons.
+  /// of `[a-zA-Z0-9-]+`. Available for Google Workspace add-ons that extend
+  /// Google Workspace Studio. Unavailable for Google Chat apps.
   core.String? id;
 
   /// The number of uncollapsible widgets which remain visible even when a
@@ -6750,8 +6813,13 @@ class GoogleAppsCardV1SelectionInput {
   /// This field provides more fine-grained control over the data source. If
   /// specified, the `multi_select_max_selected_items` field,
   /// `multi_select_min_query_length` field, `external_data_source` field and
-  /// `platform_data_source` field are ignored. Only supported by Google
-  /// Workspace Workflow, but not Google Chat apps or Google Workspace add-ons.
+  /// `platform_data_source` field are ignored. Available for Google Workspace
+  /// add-ons that extend Google Workspace Studio. Available for the `Dropdown
+  /// widget` in Google Chat apps as part of the
+  /// [Developer Preview Program](https://developers.google.com/workspace/preview).
+  /// For the `Dropdown` widget in Google Chat apps, only one `DataSourceConfig`
+  /// is supported. If multiple `DataSourceConfig`s are set, only the first one
+  /// is used.
   ///
   /// Optional.
   core.List<GoogleAppsCardV1DataSourceConfig>? dataSourceConfigs;
@@ -6762,8 +6830,8 @@ class GoogleAppsCardV1SelectionInput {
   /// Text that appears below the selection input field meant to assist users by
   /// prompting them to enter a certain value.
   ///
-  /// This text is always visible. Only supported by Google Workspace Workflows,
-  /// but not Google Chat API or Google Workspace Add-ons.
+  /// This text is always visible. Available for Google Workspace add-ons that
+  /// extend Google Workspace Studio. Unavailable for Google Chat apps.
   ///
   /// Optional.
   core.String? hintText;
@@ -6828,6 +6896,22 @@ class GoogleAppsCardV1SelectionInput {
   /// button.
   /// - "SWITCH" : A set of switches. Users can turn on one or more switches.
   /// - "DROPDOWN" : A dropdown menu. Users can select one item from the menu.
+  /// For Google Chat apps, as part of the
+  /// [Developer Preview Program](https://developers.google.com/workspace/preview),
+  /// you can populate items using a dynamic data source and autosuggest items
+  /// as users type in the menu. For example, users can start typing the name of
+  /// a Google Chat space and the widget autosuggests the space. To dynamically
+  /// populate items for a dropdown menu, use one of the following types of data
+  /// sources: * Google Workspace data: Items are populated using data from
+  /// Google Workspace, such as Google Workspace users or Google Chat spaces. *
+  /// External data: Items are populated from an external data source outside of
+  /// Google Workspace. For examples of how to implement dropdown menus for Chat
+  /// apps, see
+  /// [Add a dropdown menu](https://developers.google.com/workspace/chat/design-interactive-card-dialog#dropdown-menu)
+  /// and \[Dynamically populate drop-down
+  /// menus\](https://developers.google.com/workspace/chat/design-interactive-card-dialog#dynamic-dropdown-menu).
+  /// \[Google Workspace add-ons and Chat
+  /// apps\](https://developers.google.com/workspace/extend):
   /// - "MULTI_SELECT" : A menu with a text box. Users can type and select one
   /// or more items. For Google Workspace add-ons, you must populate items using
   /// a static array of `SelectionItem` objects. For Google Chat apps, you can
@@ -7138,8 +7222,8 @@ class GoogleAppsCardV1TextInput {
   /// A data source that's unique to a Google Workspace host application, such
   /// as Gmail emails, Google Calendar events, or Google Chat messages.
   ///
-  /// Only supported by Google Workspace Workflow, but not Google Chat apps or
-  /// Google Workspace add-ons.
+  /// Available for Google Workspace add-ons that extend Google Workspace
+  /// Studio. Unavailable for Google Chat apps.
   HostAppDataSourceMarkup? hostAppDataSource;
 
   /// Suggested values that users can enter.
@@ -7332,8 +7416,8 @@ class GoogleAppsCardV1TextParagraph {
 
 /// Represents a trigger.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Workspace add-ons that extend Google Workspace Studio.
+/// Unavailable for Google Chat apps.
 class GoogleAppsCardV1Trigger {
   /// The unique identifier of the ActionRule.
   core.String? actionRuleId;
@@ -7350,8 +7434,8 @@ class GoogleAppsCardV1Trigger {
 
 /// Represents an action that updates the visibility of a widget.
 ///
-/// Only supported by Google Workspace Workflow, but not Google Chat apps or
-/// Google Workspace add-ons.
+/// Available for Google Workspace add-ons that extend Google Workspace Studio.
+/// Unavailable for Google Chat apps.
 class GoogleAppsCardV1UpdateVisibilityAction {
   /// The new visibility.
   /// Possible string values are:
@@ -7479,8 +7563,8 @@ class GoogleAppsCardV1Widget {
 
   /// Specifies the event actions that can be performed on the widget.
   ///
-  /// Only supported by Google Workspace Workflow, but not Google Chat apps or
-  /// Google Workspace add-ons.
+  /// Available for Google Workspace add-ons that extend Google Workspace
+  /// Studio. Unavailable for Google Chat apps.
   core.List<GoogleAppsCardV1EventAction>? eventActions;
 
   /// Displays a grid with a collection of items.
@@ -7515,8 +7599,8 @@ class GoogleAppsCardV1Widget {
   /// be mutated.
   ///
   /// The ID has a character limit of 64 characters and should be in the format
-  /// of `[a-zA-Z0-9-]+` and. Only supported by Google Workspace Workflow, but
-  /// not Google Chat apps or Google Workspace add-ons.
+  /// of `[a-zA-Z0-9-]+`. Available for Google Workspace add-ons that extend
+  /// Google Workspace Studio. Unavailable for Google Chat apps.
   core.String? id;
 
   /// Displays an image.
@@ -7562,8 +7646,8 @@ class GoogleAppsCardV1Widget {
 
   /// Specifies whether the widget is visible or hidden.
   ///
-  /// The default value is `VISIBLE`. Only supported by Google Workspace
-  /// Workflow, but not Google Chat apps or Google Workspace add-ons.
+  /// The default value is `VISIBLE`. Available for Google Workspace add-ons
+  /// that extend Google Workspace Studio. Unavailable for Google Chat apps.
   /// Possible string values are:
   /// - "VISIBILITY_UNSPECIFIED" : Unspecified visibility. Do not use.
   /// - "VISIBLE" : The UI element is visible.
@@ -8409,12 +8493,31 @@ class Membership {
   /// - "MEMBERSHIP_ROLE_UNSPECIFIED" : Default value. For users: they aren't a
   /// member of the space, but can be invited. For Google Groups: they're always
   /// assigned this role (other enum values might be used in the future).
-  /// - "ROLE_MEMBER" : A member of the space. The user has basic permissions,
-  /// like sending messages to the space. In 1:1 and unnamed group
-  /// conversations, everyone has this role.
-  /// - "ROLE_MANAGER" : A space manager. The user has all basic permissions
-  /// plus administrative permissions that let them manage the space, like
-  /// adding or removing members. Only supported in SpaceType.SPACE.
+  /// - "ROLE_MEMBER" : A member of the space. In the Chat UI, this role is
+  /// called Member. The user has basic permissions, like sending messages to
+  /// the space. Managers and owners can grant members additional permissions in
+  /// a space, including: - Add or remove members. - Modify space details. -
+  /// Turn history on or off. - Mention everyone in the space with `@all`. -
+  /// Manage Chat apps and webhooks installed in the space. In direct messages
+  /// and unnamed group conversations, everyone has this role.
+  /// - "ROLE_MANAGER" : A space owner. In the Chat UI, this role is called
+  /// Owner. The user has the complete set of space permissions to manage the
+  /// space, including: - Change the role of other members in the space to
+  /// member, manager, or owner. - Delete the space. Only supported in
+  /// SpaceType.SPACE (named spaces). To learn more, see
+  /// [Learn more about your role as a space owner or manager](https://support.google.com/chat/answer/11833441).
+  /// - "ROLE_ASSISTANT_MANAGER" : A space manager. In the Chat UI, this role is
+  /// called Manager. The user has all basic permissions of `ROLE_MEMBER`, and
+  /// can be granted a subset of administrative permissions by an owner. By
+  /// default, managers have all the permissions of an owner except for the
+  /// ability to: - Delete the space. - Make another space member an owner. -
+  /// Change an owner's role. By default, managers permissions include but
+  /// aren't limited to: - Make another member a manager. - Delete messages in
+  /// the space. - Manage space permissions. - Receive notifications for
+  /// requests to join the space if the manager has the "manage members"
+  /// permission in the space settings. - Make a space discoverable. Only
+  /// supported in SpaceType.SPACE (named spaces). To learn more, see
+  /// [Manage space settings](https://support.google.com/chat/answer/13340792).
   core.String? role;
 
   /// State of the membership.
@@ -8776,8 +8879,8 @@ class Message {
   /// `<{url}|{rendered_text}>` where the first string is the URL and the second
   /// is the rendered text—for example, ``. * Custom emoji using the format
   /// `:{emoji_name}:`—for example, `:smile:`. This doesn't apply to Unicode
-  /// emoji, such as `U+1F600` for a grinning face emoji. For more information,
-  /// see
+  /// emoji, such as `U+1F600` for a grinning face emoji. * Bullet list items
+  /// using asterisks (`*`)—for example, `* item`. For more information, see
   /// [View text formatting sent in a message](https://developers.google.com/workspace/chat/format-messages#view_text_formatting_sent_in_a_message)
   ///
   /// Output only.
@@ -8819,8 +8922,6 @@ class Message {
   /// [app authentication](https://developers.google.com/workspace/chat/authenticate-authorize-chat-app)
   /// and omit the following: *
   /// [Attachments](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages.attachments)
-  /// *
-  /// [Accessory widgets](https://developers.google.com/workspace/chat/api/reference/rest/v1/spaces.messages#Message.AccessoryWidget)
   /// For details, see
   /// [Send a message privately](https://developers.google.com/workspace/chat/create-messages#private).
   ///
@@ -9192,8 +9293,8 @@ class MessageCreatedEventData {
 class MessageDeletedEventData {
   /// The deleted message.
   ///
-  /// Only the `name`, `createTime`, `deleteTime`, and `deletionMetadata` fields
-  /// are populated.
+  /// Only the `name`, `createTime`, and `deletionMetadata` fields are
+  /// populated.
   Message? message;
 
   MessageDeletedEventData({this.message});
@@ -9285,25 +9386,38 @@ class OpenLink {
 
 /// Represents a space permission setting.
 class PermissionSetting {
-  /// Whether spaces managers have this permission.
+  /// Whether space managers `ROLE_ASSISTANT_MANAGER`) have this permission.
+  ///
+  /// Optional.
+  core.bool? assistantManagersAllowed;
+
+  /// Whether space owners (`ROLE_MANAGER`) have this permission.
   ///
   /// Optional.
   core.bool? managersAllowed;
 
-  /// Whether non-manager members have this permission.
+  /// Whether basic space members (`ROLE_MEMBER`) have this permission.
   ///
   /// Optional.
   core.bool? membersAllowed;
 
-  PermissionSetting({this.managersAllowed, this.membersAllowed});
+  PermissionSetting({
+    this.assistantManagersAllowed,
+    this.managersAllowed,
+    this.membersAllowed,
+  });
 
   PermissionSetting.fromJson(core.Map json_)
     : this(
+        assistantManagersAllowed:
+            json_['assistantManagersAllowed'] as core.bool?,
         managersAllowed: json_['managersAllowed'] as core.bool?,
         membersAllowed: json_['membersAllowed'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (assistantManagersAllowed != null)
+      'assistantManagersAllowed': assistantManagersAllowed!,
     if (managersAllowed != null) 'managersAllowed': managersAllowed!,
     if (membersAllowed != null) 'membersAllowed': membersAllowed!,
   };
@@ -9444,6 +9558,13 @@ class PermissionSettings {
 /// it. For example usage, see
 /// [Quote another message](https://developers.google.com/workspace/chat/create-messages#quote-a-message).
 class QuotedMessageMetadata {
+  /// Metadata about the source space of the quoted message.
+  ///
+  /// Populated only for FORWARD quote type.
+  ///
+  /// Output only.
+  ForwardedMetadata? forwardedMetadata;
+
   /// The timestamp when the quoted message was created or when the quoted
   /// message was last updated.
   ///
@@ -9461,17 +9582,139 @@ class QuotedMessageMetadata {
   /// Required.
   core.String? name;
 
-  QuotedMessageMetadata({this.lastUpdateTime, this.name});
+  /// Specifies the quote type.
+  ///
+  /// If not set, defaults to REPLY in the message read/write path for backward
+  /// compatibility.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "QUOTE_TYPE_UNSPECIFIED" : Reserved. This value is unused.
+  /// - "REPLY" : If quote_type is `REPLY`, you can do the following: * If
+  /// you're replying in a thread, you can quote another message in that thread.
+  /// * If you're creating a root message, you can quote another root message in
+  /// that space. You can't quote a message reply from a different thread.
+  core.String? quoteType;
+
+  /// A snapshot of the quoted message's content.
+  ///
+  /// Output only.
+  QuotedMessageSnapshot? quotedMessageSnapshot;
+
+  QuotedMessageMetadata({
+    this.forwardedMetadata,
+    this.lastUpdateTime,
+    this.name,
+    this.quoteType,
+    this.quotedMessageSnapshot,
+  });
 
   QuotedMessageMetadata.fromJson(core.Map json_)
     : this(
+        forwardedMetadata:
+            json_.containsKey('forwardedMetadata')
+                ? ForwardedMetadata.fromJson(
+                  json_['forwardedMetadata']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         lastUpdateTime: json_['lastUpdateTime'] as core.String?,
         name: json_['name'] as core.String?,
+        quoteType: json_['quoteType'] as core.String?,
+        quotedMessageSnapshot:
+            json_.containsKey('quotedMessageSnapshot')
+                ? QuotedMessageSnapshot.fromJson(
+                  json_['quotedMessageSnapshot']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (forwardedMetadata != null) 'forwardedMetadata': forwardedMetadata!,
     if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
     if (name != null) 'name': name!,
+    if (quoteType != null) 'quoteType': quoteType!,
+    if (quotedMessageSnapshot != null)
+      'quotedMessageSnapshot': quotedMessageSnapshot!,
+  };
+}
+
+/// Provides a snapshot of the content of the quoted message at the time of
+/// quoting or forwarding
+class QuotedMessageSnapshot {
+  /// Annotations parsed from the text body of the quoted message.
+  ///
+  /// Populated only for FORWARD quote type.
+  ///
+  /// Output only.
+  core.List<Annotation>? annotations;
+
+  /// Attachments that were part of the quoted message.
+  ///
+  /// These are copies of the quoted message's attachment metadata. Populated
+  /// only for FORWARD quote type.
+  ///
+  /// Output only.
+  core.List<Attachment>? attachments;
+
+  /// Contains the quoted message `text` with markups added to support rich
+  /// formatting like hyperlinks,custom emojis, markup, etc.
+  ///
+  /// Populated only for FORWARD quote type.
+  ///
+  /// Output only.
+  core.String? formattedText;
+
+  /// The quoted message's author name.
+  ///
+  /// Populated for both REPLY & FORWARD quote types.
+  ///
+  /// Output only.
+  core.String? sender;
+
+  /// Snapshot of the quoted message's text content.
+  ///
+  /// Output only.
+  core.String? text;
+
+  QuotedMessageSnapshot({
+    this.annotations,
+    this.attachments,
+    this.formattedText,
+    this.sender,
+    this.text,
+  });
+
+  QuotedMessageSnapshot.fromJson(core.Map json_)
+    : this(
+        annotations:
+            (json_['annotations'] as core.List?)
+                ?.map(
+                  (value) => Annotation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        attachments:
+            (json_['attachments'] as core.List?)
+                ?.map(
+                  (value) => Attachment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        formattedText: json_['formattedText'] as core.String?,
+        sender: json_['sender'] as core.String?,
+        text: json_['text'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (annotations != null) 'annotations': annotations!,
+    if (attachments != null) 'attachments': attachments!,
+    if (formattedText != null) 'formattedText': formattedText!,
+    if (sender != null) 'sender': sender!,
+    if (text != null) 'text': text!,
   };
 }
 
@@ -9643,6 +9886,9 @@ class RichLinkMetadata {
   /// - "DRIVE_FILE" : A Google Drive rich link type.
   /// - "CHAT_SPACE" : A Chat space rich link type. For example, a space smart
   /// chip.
+  /// - "GMAIL_MESSAGE" : A Gmail message rich link type. Specifically, a Gmail
+  /// chip from [Share to Chat](https://support.google.com/chat?p=chat_gmail).
+  /// The API only supports reading messages with GMAIL_MESSAGE rich links.
   /// - "MEET_SPACE" : A Meet message rich link type. For example, a Meet chip.
   /// - "CALENDAR_EVENT" : A Calendar message rich link type. For example, a
   /// Calendar chip.
@@ -10001,8 +10247,9 @@ class Space {
   /// `customers/{customer}`, where `customer` is the `id` from the
   /// [Admin SDK customer resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers).
   /// Private apps can also use the `customers/my_customer` alias to create the
-  /// space in the same Google Workspace organization as the app. For DMs, this
-  /// field isn't populated.
+  /// space in the same Google Workspace organization as the app. This field
+  /// isn't populated for direct messages (DMs) or when the space is created by
+  /// non-Google Workspace users.
   ///
   /// Optional. Immutable.
   core.String? customer;
@@ -10138,13 +10385,15 @@ class Space {
   /// Output only.
   /// Possible string values are:
   /// - "SPACE_THREADING_STATE_UNSPECIFIED" : Reserved.
-  /// - "THREADED_MESSAGES" : Named spaces that support message threads. When
-  /// users respond to a message, they can reply in-thread, which keeps their
-  /// response in the context of the original message.
+  /// - "THREADED_MESSAGES" : Spaces that support message threads. When users
+  /// respond to a message, they can reply in-thread, which keeps their response
+  /// in the context of the original message.
   /// - "GROUPED_MESSAGES" : Named spaces where the conversation is organized by
   /// topic. Topics and their replies are grouped together.
-  /// - "UNTHREADED_MESSAGES" : Direct messages (DMs) between two people and
-  /// group conversations between 3 or more people.
+  /// - "UNTHREADED_MESSAGES" : Spaces that don't support message threading.
+  /// This space threading state is only used for special cases including: *
+  /// Continuous meeting chat where threading is intentionally turned off. *
+  /// Legacy group conversations that were created prior to 2022.
   core.String? spaceThreadingState;
 
   /// The type of space.
@@ -10852,18 +11101,7 @@ class TextButton {
 /// [Formatting text in Google Chat apps](https://developers.google.com/workspace/chat/format-messages#card-formatting)
 /// and \[Formatting text in Google Workspace
 /// Add-ons\](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-class TextParagraph {
-  core.String? text;
-
-  TextParagraph({this.text});
-
-  TextParagraph.fromJson(core.Map json_)
-    : this(text: json_['text'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
-}
+typedef TextParagraph = $Shared02;
 
 /// A thread in a Google Chat space.
 ///

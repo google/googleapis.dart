@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250910",
+    "revision": "20260121",
     "rootUrl": "https://workloadmanager.googleapis.com/",
     "servicePath": "",
     "title": "Workload Manager API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -189,6 +189,31 @@
                     "resources": {
                         "discoveredprofiles": {
                             "methods": {
+                                "get": {
+                                    "description": "Gets details of a discovered workload profile.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredprofiles/{discoveredprofilesId}",
+                                    "httpMethod": "GET",
+                                    "id": "workloadmanager.projects.locations.discoveredprofiles.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Name of the resource",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/discoveredprofiles/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "response": {
+                                        "$ref": "WorkloadProfile"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
                                 "list": {
                                     "description": "List discovered workload profiles",
                                     "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredprofiles",
@@ -229,6 +254,37 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                }
+                            },
+                            "resources": {
+                                "health": {
+                                    "methods": {
+                                        "get": {
+                                            "description": "Get the health of a discovered workload profile.",
+                                            "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/discoveredprofiles/{discoveredprofilesId}/health/{healthId}",
+                                            "httpMethod": "GET",
+                                            "id": "workloadmanager.projects.locations.discoveredprofiles.health.get",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. The resource name",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/discoveredprofiles/[^/]+/health/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}",
+                                            "response": {
+                                                "$ref": "WorkloadProfileHealth"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        }
+                                    }
                                 }
                             }
                         },
@@ -373,6 +429,45 @@
                                     "path": "v1/{+parent}/evaluations",
                                     "response": {
                                         "$ref": "ListEvaluationsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates the parameters of a single Evaluation.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/evaluations/{evaluationsId}",
+                                    "httpMethod": "PATCH",
+                                    "id": "workloadmanager.projects.locations.evaluations.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "name of resource names have the form 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/evaluations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "requestId": {
+                                            "description": "Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "Required. Field mask is used to specify the fields to be overwritten in the Evaluation resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "Evaluation"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -790,6 +885,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -1312,6 +1412,67 @@
             },
             "type": "object"
         },
+        "ComponentHealth": {
+            "description": "HealthCondition contains the detailed health check of each component.",
+            "id": "ComponentHealth",
+            "properties": {
+                "component": {
+                    "description": "The component of a workload.",
+                    "type": "string"
+                },
+                "componentHealthChecks": {
+                    "description": "The detailed health checks of the component.",
+                    "items": {
+                        "$ref": "HealthCheck"
+                    },
+                    "type": "array"
+                },
+                "componentHealthType": {
+                    "description": "Output only. The type of the component health.",
+                    "enum": [
+                        "TYPE_UNSPECIFIED",
+                        "TYPE_REQUIRED",
+                        "TYPE_OPTIONAL",
+                        "TYPE_SPECIAL"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified",
+                        "required",
+                        "optional",
+                        "special"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The health state of the component.",
+                    "enum": [
+                        "HEALTH_STATE_UNSPECIFIED",
+                        "HEALTHY",
+                        "UNHEALTHY",
+                        "CRITICAL",
+                        "UNSUPPORTED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Healthy workload.",
+                        "Unhealthy workload.",
+                        "Has critical issues.",
+                        "Unsupported."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "subComponentsHealth": {
+                    "description": "Sub component health.",
+                    "items": {
+                        "$ref": "ComponentHealth"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "DatabaseProperties": {
             "description": "Database Properties.",
             "id": "DatabaseProperties",
@@ -1322,7 +1483,7 @@
                     "readOnly": true
                 },
                 "databaseType": {
-                    "description": "Output only. Type of the database. HANA, DB2, etc.",
+                    "description": "Output only. Type of the database. `HANA`, `DB2`, etc.",
                     "enum": [
                         "DATABASE_TYPE_UNSPECIFIED",
                         "HANA",
@@ -1623,7 +1784,7 @@
             "id": "ExternalDataSources",
             "properties": {
                 "assetType": {
-                    "description": "Required. The asset type of the external data source this can be one of go/cai-asset-types to override the default asset type or it can be a custom type defined by the user custom type must match the asset type in the rule",
+                    "description": "Required. The asset type of the external data source. This can be a supported Cloud Asset Inventory asset type (see https://cloud.google.com/asset-inventory/docs/supported-asset-types) to override the default asset type, or it can be a custom type defined by the user.",
                     "type": "string"
                 },
                 "name": {
@@ -1659,6 +1820,54 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "HealthCheck": {
+            "description": "HealthCheck contains the detailed health check of a component based on asource.",
+            "id": "HealthCheck",
+            "properties": {
+                "message": {
+                    "description": "Output only. The message of the health check.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "metric": {
+                    "description": "Output only. The health check source metric name.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "resource": {
+                    "$ref": "CloudResource",
+                    "description": "Output only. The resource the check performs on.",
+                    "readOnly": true
+                },
+                "source": {
+                    "description": "Output only. The source of the health check.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The state of the health check.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "PASSED",
+                        "FAILED",
+                        "DEGRADED",
+                        "SKIPPED",
+                        "UNSUPPORTED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified",
+                        "passed",
+                        "failed",
+                        "degraded",
+                        "skipped",
+                        "unsupported"
+                    ],
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1767,6 +1976,43 @@
                 "upcomingMaintenanceEvent": {
                     "$ref": "UpcomingMaintenanceEvent",
                     "description": "Optional. the next maintenance event on VM"
+                }
+            },
+            "type": "object"
+        },
+        "InvalidRule": {
+            "description": "Message represent an rule that failed to be validated.",
+            "id": "InvalidRule",
+            "properties": {
+                "displayName": {
+                    "description": "display name of the invalid rule",
+                    "type": "string"
+                },
+                "gcsUri": {
+                    "description": "cloud storage destination of the invalid rule",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "name of the invalid rule",
+                    "type": "string"
+                },
+                "valiadtionError": {
+                    "description": "The error message of valdating rule formats.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InvalidRulesWrapper": {
+            "description": "Message wrappes a list of invalid rules.",
+            "id": "InvalidRulesWrapper",
+            "properties": {
+                "invalidRules": {
+                    "description": "The invalid rules that failed to be validated.",
+                    "items": {
+                        "$ref": "InvalidRule"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1898,6 +2144,13 @@
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -1906,9 +2159,9 @@
             "description": "Mesesage of response of list rules",
             "id": "ListRulesResponse",
             "properties": {
-                "nextPageToken": {
-                    "description": "A token identifying a page of results the server should return.",
-                    "type": "string"
+                "invalidRulesWrapper": {
+                    "$ref": "InvalidRulesWrapper",
+                    "description": "A wrapper of the invalid rules that failed to be validated."
                 },
                 "rules": {
                     "description": "all rules in response",
@@ -1987,7 +2240,20 @@
         "OpenShiftValidation": {
             "description": "A presentation of OpenShift workload insight. The schema of OpenShift workloads validation related data.",
             "id": "OpenShiftValidation",
-            "properties": {},
+            "properties": {
+                "clusterId": {
+                    "description": "Required. The OpenShift cluster ID (e.g. 8371bb05-7cac-4d38-82c0-0f58c4f6f936).",
+                    "type": "string"
+                },
+                "validationDetails": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
+                    },
+                    "description": "Required. The validation details of the OpenShift cluster in JSON format.",
+                    "type": "object"
+                }
+            },
             "type": "object"
         },
         "Operation": {
@@ -2070,7 +2336,7 @@
             "type": "object"
         },
         "Product": {
-            "description": "Product contains the details of a product.",
+            "description": "Contains the details of a product.",
             "id": "Product",
             "properties": {
                 "name": {
@@ -2170,6 +2436,10 @@
             "description": "Message represent a rule",
             "id": "Rule",
             "properties": {
+                "assetType": {
+                    "description": "The CAI asset type of the rule is evaluating, for joined asset types, it will be the corresponding primary asset types.",
+                    "type": "string"
+                },
                 "description": {
                     "description": "descrite rule in plain language",
                     "type": "string"
@@ -2277,6 +2547,26 @@
             },
             "type": "object"
         },
+        "RuleOutput": {
+            "description": "The rule output of the violation.",
+            "id": "RuleOutput",
+            "properties": {
+                "details": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Output only. Violation details generated by rule.",
+                    "readOnly": true,
+                    "type": "object"
+                },
+                "message": {
+                    "description": "Output only. The message generated by rule.",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "RunEvaluationRequest": {
             "description": "Message for creating a Execution",
             "id": "RunEvaluationRequest",
@@ -2306,7 +2596,7 @@
                     "readOnly": true
                 },
                 "haHosts": {
-                    "description": "A list of host URIs that are part of the HA configuration if present. An empty list indicates the component is not configured for HA.",
+                    "description": "List of host URIs that are part of the HA configuration if present. An empty list indicates the component is not configured for HA.",
                     "items": {
                         "type": "string"
                     },
@@ -2983,11 +3273,11 @@
             "properties": {
                 "application": {
                     "$ref": "SapComponent",
-                    "description": "Output only. the acsc componment",
+                    "description": "Output only. application component",
                     "readOnly": true
                 },
                 "architecture": {
-                    "description": "Output only. the architecture",
+                    "description": "Output only. The architecture.",
                     "enum": [
                         "ARCHITECTURE_UNSPECIFIED",
                         "INVALID",
@@ -3011,7 +3301,7 @@
                 },
                 "database": {
                     "$ref": "SapComponent",
-                    "description": "Output only. the database componment",
+                    "description": "Output only. database component",
                     "readOnly": true
                 },
                 "metadata": {
@@ -3023,7 +3313,7 @@
                     "type": "object"
                 },
                 "products": {
-                    "description": "Output only. the products on this workload.",
+                    "description": "Output only. The products on this workload.",
                     "items": {
                         "$ref": "Product"
                     },
@@ -3300,7 +3590,7 @@
                     "type": "string"
                 },
                 "onHostMaintenance": {
-                    "description": "Optional. Instance maintenance behavior. Could be \"MIGRATE\" or \"TERMINATE\".",
+                    "description": "Optional. Instance maintenance behavior. Could be `MIGRATE` or `TERMINATE`.",
                     "type": "string"
                 },
                 "startTime": {
@@ -3330,6 +3620,14 @@
                     "description": "Details of the violation.",
                     "type": "object"
                 },
+                "ruleOutput": {
+                    "description": "Output only. The rule output of the violation.",
+                    "items": {
+                        "$ref": "RuleOutput"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "serviceAccount": {
                     "description": "The service account associated with the resource.",
                     "type": "string"
@@ -3338,7 +3636,7 @@
             "type": "object"
         },
         "WorkloadProfile": {
-            "description": "workload resource",
+            "description": "Workload resource.",
             "id": "WorkloadProfile",
             "properties": {
                 "labels": {
@@ -3371,6 +3669,44 @@
                         "unspecified workload type",
                         "running sap workload s4/hana"
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "WorkloadProfileHealth": {
+            "description": "WorkloadProfileHealth contains the detailed health check of workload.",
+            "id": "WorkloadProfileHealth",
+            "properties": {
+                "checkTime": {
+                    "description": "The time when the health check was performed.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "componentsHealth": {
+                    "description": "The detailed condition reports of each component.",
+                    "items": {
+                        "$ref": "ComponentHealth"
+                    },
+                    "type": "array"
+                },
+                "state": {
+                    "description": "Output only. The health state of the workload.",
+                    "enum": [
+                        "HEALTH_STATE_UNSPECIFIED",
+                        "HEALTHY",
+                        "UNHEALTHY",
+                        "CRITICAL",
+                        "UNSUPPORTED"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified.",
+                        "Healthy workload.",
+                        "Unhealthy workload.",
+                        "Has critical issues.",
+                        "Unsupported."
+                    ],
+                    "readOnly": true,
                     "type": "string"
                 }
             },

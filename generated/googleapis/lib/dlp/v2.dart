@@ -926,20 +926,22 @@ class OrganizationsLocationsColumnDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `table_data_profile_name` - The name of the
-  /// related table data profile. - `project_id` - The Google Cloud project ID.
-  /// (REQUIRED) - `dataset_id` - The BigQuery dataset ID. (REQUIRED) -
-  /// `table_id` - The BigQuery table ID. (REQUIRED) - `field_id` - The ID of
-  /// the BigQuery field. - `info_type` - The infotype detected in the resource.
-  /// - `sensitivity_level` - HIGH|MEDIUM|LOW - `data_risk_level`: How much risk
-  /// is associated with this data. - `status_code` - an RPC status code as
-  /// defined in
+  /// * Supported fields: - `table_data_profile_name`: The name of the related
+  /// table data profile - `project_id`: The Google Cloud project ID (REQUIRED)
+  /// - `dataset_id`: The BigQuery dataset ID (REQUIRED) - `table_id`: The
+  /// BigQuery table ID (REQUIRED) - `field_id`: The ID of the BigQuery field -
+  /// `info_type`: The infotype detected in the resource - `sensitivity_level`:
+  /// HIGH|MEDIUM|LOW - `data_risk_level`: How much risk is associated with this
+  /// data - `status_code`: An RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` for project_id, dataset_id, and table_id. Other
-  /// filters also support `!=`. Examples: * project_id = 12345 AND status_code
-  /// = 1 * project_id = 12345 AND sensitivity_level = HIGH * project_id = 12345
-  /// AND info_type = STREET_ADDRESS The length of this field should be no more
-  /// than 500 characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` for project_id, dataset_id, and table_id. Other
+  /// filters also support `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345
+  /// AND sensitivity_level = HIGH * project_id = 12345 AND info_type =
+  /// STREET_ADDRESS * profile_last_generated \< "2025-01-01T00:00:00.000Z" The
+  /// length of this field should be no more than 500 characters.
   ///
   /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
@@ -1139,7 +1141,7 @@ class OrganizationsLocationsConnectionsResource {
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Supported field/value: `state` -
-  /// MISSING|AVAILABLE|ERROR
+  /// MISSING|AVAILABLE|ERROR The syntax is based on https://google.aip.dev/160.
   ///
   /// [pageSize] - Optional. Number of results per page, max 1000.
   ///
@@ -1237,7 +1239,7 @@ class OrganizationsLocationsConnectionsResource {
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Supported field/value: - `state` -
-  /// MISSING|AVAILABLE|ERROR
+  /// MISSING|AVAILABLE|ERROR The syntax is based on https://google.aip.dev/160.
   ///
   /// [pageSize] - Optional. Number of results per page, max 1000.
   ///
@@ -1849,12 +1851,12 @@ class OrganizationsLocationsDlpJobsResource {
   /// Supported fields for risk analysis jobs: - `state` -
   /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time
   /// the job finished. - 'start_time` - Corresponds to the time the job
-  /// finished. * The operator must be `=` or `!=`. Examples: *
-  /// inspected_storage = cloud_storage AND state = done * inspected_storage =
-  /// cloud_storage OR inspected_storage = bigquery * inspected_storage =
-  /// cloud_storage AND (state = done OR state = canceled) * end_time \>
-  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
-  /// than 500 characters.
+  /// finished. * The operator must be `=` or `!=`. The syntax is based on
+  /// https://google.aip.dev/160. Examples: * inspected_storage = cloud_storage
+  /// AND state = done * inspected_storage = cloud_storage OR inspected_storage
+  /// = bigquery * inspected_storage = cloud_storage AND (state = done OR state
+  /// = canceled) * end_time \> \"2017-12-12T00:00:00+00:00\" The length of this
+  /// field should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -2019,20 +2021,23 @@ class OrganizationsLocationsFileStoreDataProfilesResource {
   /// expressions are made up of one or more restrictions. * Restrictions can be
   /// combined by `AND` or `OR` logical operators. A sequence of restrictions
   /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-  /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud
-  /// project ID. - `account_id` - The AWS account ID. - `file_store_path` - The
-  /// path like "gs://bucket". - `data_source_type` - The profile's data source
-  /// type, like "google/storage/bucket". - `data_storage_location` - The
-  /// location where the file store's data is stored, like "us-central1". -
-  /// `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` -
-  /// HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED -
-  /// `status_code` - an RPC status code as defined in
+  /// {value}`. * Supported fields: - `project_id`: The Google Cloud project ID
+  /// - `account_id`: The AWS account ID - `file_store_path`: The path like
+  /// "gs://bucket" - `data_source_type`: The profile's data source type, like
+  /// "google/storage/bucket" - `data_storage_location`: The location where the
+  /// file store's data is stored, like "us-central1" - `sensitivity_level`:
+  /// HIGH|MODERATE|LOW - `data_risk_level`: HIGH|MODERATE|LOW -
+  /// `resource_visibility`: PUBLIC|RESTRICTED - `status_code`: an RPC status
+  /// code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
-  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
-  /// `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path =
-  /// "gs://mybucket"` The length of this field should be no more than 500
-  /// characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` or `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345
+  /// AND sensitivity_level = HIGH` * `project_id = 12345 AND
+  /// resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` *
+  /// `profile_last_generated < "2025-01-01T00:00:00.000Z"` The length of this
+  /// field should be no more than 500 characters.
   ///
   /// [orderBy] - Optional. Comma-separated list of fields to order by, followed
   /// by `asc` or `desc` postfix. This list is case insensitive. The default
@@ -2619,12 +2624,13 @@ class OrganizationsLocationsJobTriggersResource {
   /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
   /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
   /// 'error_count' - Number of errors that have occurred while running. * The
-  /// operator must be \`=\` or \`!=\` for status and inspected_storage.
-  /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
-  /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
-  /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-  /// * last_run_time \> \"2017-12-12T00:00:00+00:00\" The length of this field
-  /// should be no more than 500 characters.
+  /// operator must be \`=\` or \`!=\` for status and inspected_storage. The
+  /// syntax is based on https://google.aip.dev/160. Examples: *
+  /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage
+  /// = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+  /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time \>
+  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
+  /// than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -2798,23 +2804,27 @@ class OrganizationsLocationsProjectDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `sensitivity_level` - HIGH|MODERATE|LOW -
-  /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code
-  /// as defined in
+  /// * Supported fields: - `project_id`: the Google Cloud project ID -
+  /// `sensitivity_level`: HIGH|MODERATE|LOW - `data_risk_level`:
+  /// HIGH|MODERATE|LOW - `status_code`: an RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
-  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` The
-  /// length of this field should be no more than 500 characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` or `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345
+  /// AND sensitivity_level = HIGH` * `profile_last_generated <
+  /// "2025-01-01T00:00:00.000Z"` The length of this field should be no more
+  /// than 500 characters.
   ///
   /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id` *
-  /// `sensitivity_level desc` Supported fields are: - `project_id`: Google
-  /// Cloud project ID - `sensitivity_level`: How sensitive the data in a
-  /// project is, at most. - `data_risk_level`: How much risk is associated with
-  /// this data. - `profile_last_generated`: When the profile was last updated
-  /// in epoch seconds.
+  /// `sensitivity_level desc` Supported fields: - `project_id`: Google Cloud
+  /// project ID - `sensitivity_level`: How sensitive the data in a project is,
+  /// at most - `data_risk_level`: How much risk is associated with this data -
+  /// `profile_last_generated`: Date and time (in epoch seconds) the profile was
+  /// last generated
   ///
   /// [pageSize] - Size of the page. This value can be limited by the server. If
   /// zero, server returns a page of max size 100.
@@ -3241,16 +3251,20 @@ class OrganizationsLocationsTableDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `project_id` - The Google Cloud project ID. -
-  /// `dataset_id` - The BigQuery dataset ID. - `table_id` - The ID of the
-  /// BigQuery table. - `sensitivity_level` - HIGH|MODERATE|LOW -
-  /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
-  /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
+  /// * Supported fields: - `project_id`: The Google Cloud project ID -
+  /// `dataset_id`: The BigQuery dataset ID - `table_id`: The ID of the BigQuery
+  /// table - `sensitivity_level`: HIGH|MODERATE|LOW - `data_risk_level`:
+  /// HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED -
+  /// `status_code`: an RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
-  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
-  /// `project_id = 12345 AND resource_visibility = PUBLIC` The length of this
-  /// field should be no more than 500 characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` or `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345
+  /// AND sensitivity_level = HIGH` * `project_id = 12345 AND
+  /// resource_visibility = PUBLIC` * `profile_last_generated <
+  /// "2025-01-01T00:00:00.000Z"` The length of this field should be no more
+  /// than 500 characters.
   ///
   /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
@@ -4307,12 +4321,12 @@ class ProjectsDlpJobsResource {
   /// Supported fields for risk analysis jobs: - `state` -
   /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time
   /// the job finished. - 'start_time` - Corresponds to the time the job
-  /// finished. * The operator must be `=` or `!=`. Examples: *
-  /// inspected_storage = cloud_storage AND state = done * inspected_storage =
-  /// cloud_storage OR inspected_storage = bigquery * inspected_storage =
-  /// cloud_storage AND (state = done OR state = canceled) * end_time \>
-  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
-  /// than 500 characters.
+  /// finished. * The operator must be `=` or `!=`. The syntax is based on
+  /// https://google.aip.dev/160. Examples: * inspected_storage = cloud_storage
+  /// AND state = done * inspected_storage = cloud_storage OR inspected_storage
+  /// = bigquery * inspected_storage = cloud_storage AND (state = done OR state
+  /// = canceled) * end_time \> \"2017-12-12T00:00:00+00:00\" The length of this
+  /// field should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -4946,12 +4960,13 @@ class ProjectsJobTriggersResource {
   /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
   /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
   /// 'error_count' - Number of errors that have occurred while running. * The
-  /// operator must be \`=\` or \`!=\` for status and inspected_storage.
-  /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
-  /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
-  /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-  /// * last_run_time \> \"2017-12-12T00:00:00+00:00\" The length of this field
-  /// should be no more than 500 characters.
+  /// operator must be \`=\` or \`!=\` for status and inspected_storage. The
+  /// syntax is based on https://google.aip.dev/160. Examples: *
+  /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage
+  /// = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+  /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time \>
+  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
+  /// than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -5161,20 +5176,22 @@ class ProjectsLocationsColumnDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `table_data_profile_name` - The name of the
-  /// related table data profile. - `project_id` - The Google Cloud project ID.
-  /// (REQUIRED) - `dataset_id` - The BigQuery dataset ID. (REQUIRED) -
-  /// `table_id` - The BigQuery table ID. (REQUIRED) - `field_id` - The ID of
-  /// the BigQuery field. - `info_type` - The infotype detected in the resource.
-  /// - `sensitivity_level` - HIGH|MEDIUM|LOW - `data_risk_level`: How much risk
-  /// is associated with this data. - `status_code` - an RPC status code as
-  /// defined in
+  /// * Supported fields: - `table_data_profile_name`: The name of the related
+  /// table data profile - `project_id`: The Google Cloud project ID (REQUIRED)
+  /// - `dataset_id`: The BigQuery dataset ID (REQUIRED) - `table_id`: The
+  /// BigQuery table ID (REQUIRED) - `field_id`: The ID of the BigQuery field -
+  /// `info_type`: The infotype detected in the resource - `sensitivity_level`:
+  /// HIGH|MEDIUM|LOW - `data_risk_level`: How much risk is associated with this
+  /// data - `status_code`: An RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` for project_id, dataset_id, and table_id. Other
-  /// filters also support `!=`. Examples: * project_id = 12345 AND status_code
-  /// = 1 * project_id = 12345 AND sensitivity_level = HIGH * project_id = 12345
-  /// AND info_type = STREET_ADDRESS The length of this field should be no more
-  /// than 500 characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` for project_id, dataset_id, and table_id. Other
+  /// filters also support `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * project_id = 12345 AND status_code = 1 * project_id = 12345
+  /// AND sensitivity_level = HIGH * project_id = 12345 AND info_type =
+  /// STREET_ADDRESS * profile_last_generated \< "2025-01-01T00:00:00.000Z" The
+  /// length of this field should be no more than 500 characters.
   ///
   /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
@@ -5374,7 +5391,7 @@ class ProjectsLocationsConnectionsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Supported field/value: `state` -
-  /// MISSING|AVAILABLE|ERROR
+  /// MISSING|AVAILABLE|ERROR The syntax is based on https://google.aip.dev/160.
   ///
   /// [pageSize] - Optional. Number of results per page, max 1000.
   ///
@@ -5472,7 +5489,7 @@ class ProjectsLocationsConnectionsResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [filter] - Optional. Supported field/value: - `state` -
-  /// MISSING|AVAILABLE|ERROR
+  /// MISSING|AVAILABLE|ERROR The syntax is based on https://google.aip.dev/160.
   ///
   /// [pageSize] - Optional. Number of results per page, max 1000.
   ///
@@ -6556,12 +6573,12 @@ class ProjectsLocationsDlpJobsResource {
   /// Supported fields for risk analysis jobs: - `state` -
   /// RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to the time
   /// the job finished. - 'start_time` - Corresponds to the time the job
-  /// finished. * The operator must be `=` or `!=`. Examples: *
-  /// inspected_storage = cloud_storage AND state = done * inspected_storage =
-  /// cloud_storage OR inspected_storage = bigquery * inspected_storage =
-  /// cloud_storage AND (state = done OR state = canceled) * end_time \>
-  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
-  /// than 500 characters.
+  /// finished. * The operator must be `=` or `!=`. The syntax is based on
+  /// https://google.aip.dev/160. Examples: * inspected_storage = cloud_storage
+  /// AND state = done * inspected_storage = cloud_storage OR inspected_storage
+  /// = bigquery * inspected_storage = cloud_storage AND (state = done OR state
+  /// = canceled) * end_time \> \"2017-12-12T00:00:00+00:00\" The length of this
+  /// field should be no more than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -6725,20 +6742,23 @@ class ProjectsLocationsFileStoreDataProfilesResource {
   /// expressions are made up of one or more restrictions. * Restrictions can be
   /// combined by `AND` or `OR` logical operators. A sequence of restrictions
   /// implicitly uses `AND`. * A restriction has the form of `{field} {operator}
-  /// {value}`. * Supported fields/values: - `project_id` - The Google Cloud
-  /// project ID. - `account_id` - The AWS account ID. - `file_store_path` - The
-  /// path like "gs://bucket". - `data_source_type` - The profile's data source
-  /// type, like "google/storage/bucket". - `data_storage_location` - The
-  /// location where the file store's data is stored, like "us-central1". -
-  /// `sensitivity_level` - HIGH|MODERATE|LOW - `data_risk_level` -
-  /// HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED -
-  /// `status_code` - an RPC status code as defined in
+  /// {value}`. * Supported fields: - `project_id`: The Google Cloud project ID
+  /// - `account_id`: The AWS account ID - `file_store_path`: The path like
+  /// "gs://bucket" - `data_source_type`: The profile's data source type, like
+  /// "google/storage/bucket" - `data_storage_location`: The location where the
+  /// file store's data is stored, like "us-central1" - `sensitivity_level`:
+  /// HIGH|MODERATE|LOW - `data_risk_level`: HIGH|MODERATE|LOW -
+  /// `resource_visibility`: PUBLIC|RESTRICTED - `status_code`: an RPC status
+  /// code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
-  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
-  /// `project_id = 12345 AND resource_visibility = PUBLIC` * `file_store_path =
-  /// "gs://mybucket"` The length of this field should be no more than 500
-  /// characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` or `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345
+  /// AND sensitivity_level = HIGH` * `project_id = 12345 AND
+  /// resource_visibility = PUBLIC` * `file_store_path = "gs://mybucket"` *
+  /// `profile_last_generated < "2025-01-01T00:00:00.000Z"` The length of this
+  /// field should be no more than 500 characters.
   ///
   /// [orderBy] - Optional. Comma-separated list of fields to order by, followed
   /// by `asc` or `desc` postfix. This list is case insensitive. The default
@@ -7486,12 +7506,13 @@ class ProjectsLocationsJobTriggersResource {
   /// DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time\` - RFC 3339 formatted
   /// timestamp, surrounded by quotation marks. Nanoseconds are ignored. -
   /// 'error_count' - Number of errors that have occurred while running. * The
-  /// operator must be \`=\` or \`!=\` for status and inspected_storage.
-  /// Examples: * inspected_storage = cloud_storage AND status = HEALTHY *
-  /// inspected_storage = cloud_storage OR inspected_storage = bigquery *
-  /// inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY)
-  /// * last_run_time \> \"2017-12-12T00:00:00+00:00\" The length of this field
-  /// should be no more than 500 characters.
+  /// operator must be \`=\` or \`!=\` for status and inspected_storage. The
+  /// syntax is based on https://google.aip.dev/160. Examples: *
+  /// inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage
+  /// = cloud_storage OR inspected_storage = bigquery * inspected_storage =
+  /// cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time \>
+  /// \"2017-12-12T00:00:00+00:00\" The length of this field should be no more
+  /// than 500 characters.
   ///
   /// [locationId] - Deprecated. This field has no effect.
   ///
@@ -7665,23 +7686,27 @@ class ProjectsLocationsProjectDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `sensitivity_level` - HIGH|MODERATE|LOW -
-  /// `data_risk_level` - HIGH|MODERATE|LOW - `status_code` - an RPC status code
-  /// as defined in
+  /// * Supported fields: - `project_id`: the Google Cloud project ID -
+  /// `sensitivity_level`: HIGH|MODERATE|LOW - `data_risk_level`:
+  /// HIGH|MODERATE|LOW - `status_code`: an RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
-  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` The
-  /// length of this field should be no more than 500 characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` or `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345
+  /// AND sensitivity_level = HIGH` * `profile_last_generated <
+  /// "2025-01-01T00:00:00.000Z"` The length of this field should be no more
+  /// than 500 characters.
   ///
   /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
   /// order is ascending. Redundant space characters are insignificant. Only one
   /// order field at a time is allowed. Examples: * `project_id` *
-  /// `sensitivity_level desc` Supported fields are: - `project_id`: Google
-  /// Cloud project ID - `sensitivity_level`: How sensitive the data in a
-  /// project is, at most. - `data_risk_level`: How much risk is associated with
-  /// this data. - `profile_last_generated`: When the profile was last updated
-  /// in epoch seconds.
+  /// `sensitivity_level desc` Supported fields: - `project_id`: Google Cloud
+  /// project ID - `sensitivity_level`: How sensitive the data in a project is,
+  /// at most - `data_risk_level`: How much risk is associated with this data -
+  /// `profile_last_generated`: Date and time (in epoch seconds) the profile was
+  /// last generated
   ///
   /// [pageSize] - Size of the page. This value can be limited by the server. If
   /// zero, server returns a page of max size 100.
@@ -8108,16 +8133,20 @@ class ProjectsLocationsTableDataProfilesResource {
   /// made up of one or more restrictions. * Restrictions can be combined by
   /// `AND` or `OR` logical operators. A sequence of restrictions implicitly
   /// uses `AND`. * A restriction has the form of `{field} {operator} {value}`.
-  /// * Supported fields/values: - `project_id` - The Google Cloud project ID. -
-  /// `dataset_id` - The BigQuery dataset ID. - `table_id` - The ID of the
-  /// BigQuery table. - `sensitivity_level` - HIGH|MODERATE|LOW -
-  /// `data_risk_level` - HIGH|MODERATE|LOW - `resource_visibility`:
-  /// PUBLIC|RESTRICTED - `status_code` - an RPC status code as defined in
+  /// * Supported fields: - `project_id`: The Google Cloud project ID -
+  /// `dataset_id`: The BigQuery dataset ID - `table_id`: The ID of the BigQuery
+  /// table - `sensitivity_level`: HIGH|MODERATE|LOW - `data_risk_level`:
+  /// HIGH|MODERATE|LOW - `resource_visibility`: PUBLIC|RESTRICTED -
+  /// `status_code`: an RPC status code as defined in
   /// https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto
-  /// * The operator must be `=` or `!=`. Examples: * `project_id = 12345 AND
-  /// status_code = 1` * `project_id = 12345 AND sensitivity_level = HIGH` *
-  /// `project_id = 12345 AND resource_visibility = PUBLIC` The length of this
-  /// field should be no more than 500 characters.
+  /// - `profile_last_generated`: Date and time the profile was last generated *
+  /// The operator must be `=` or `!=`. The `profile_last_generated` filter also
+  /// supports `<` and `>`. The syntax is based on https://google.aip.dev/160.
+  /// Examples: * `project_id = 12345 AND status_code = 1` * `project_id = 12345
+  /// AND sensitivity_level = HIGH` * `project_id = 12345 AND
+  /// resource_visibility = PUBLIC` * `profile_last_generated <
+  /// "2025-01-01T00:00:00.000Z"` The length of this field should be no more
+  /// than 500 characters.
   ///
   /// [orderBy] - Comma-separated list of fields to order by, followed by `asc`
   /// or `desc` postfix. This list is case insensitive. The default sorting
@@ -8472,7 +8501,13 @@ class GooglePrivacyDlpV2Action {
   /// Publish a notification to a Pub/Sub topic.
   GooglePrivacyDlpV2PublishToPubSub? pubSub;
 
-  /// Publish findings to Cloud Datahub.
+  /// Deprecated because Data Catalog is being turned down.
+  ///
+  /// Use publish_findings_to_dataplex_catalog to publish findings to Dataplex
+  /// Universal Catalog.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog?
   publishFindingsToCloudDataCatalog;
 
@@ -8599,6 +8634,224 @@ class GooglePrivacyDlpV2ActionDetails {
 
 /// Request message for ActivateJobTrigger.
 typedef GooglePrivacyDlpV2ActivateJobTriggerRequest = $Empty;
+
+/// AdjustmentRule condition for image findings.
+///
+/// This rule is silently ignored if the content being inspected is not an
+/// image.
+class GooglePrivacyDlpV2AdjustByImageFindings {
+  /// Specifies the required spatial relationship between the bounding boxes of
+  /// the target finding and the context infoType findings.
+  GooglePrivacyDlpV2ImageContainmentType? imageContainmentType;
+
+  /// A list of image-supported infoTypes—excluding
+  /// [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to
+  /// be used as context for the adjustment rule.
+  ///
+  /// Sensitive Data Protection adjusts the likelihood of an image finding if
+  /// its bounding box has the specified spatial relationship (defined by
+  /// `image_containment_type`) with a finding of an infoType in this list. For
+  /// example, you can create a rule to adjust the likelihood of a `US_PASSPORT`
+  /// finding if it is enclosed by a finding of `OBJECT_TYPE/PERSON/PASSPORT`.
+  /// To configure this, set `US_PASSPORT` in `InspectionRuleSet.info_types`.
+  /// Add an `adjustment_rule` with an `adjust_by_image_findings.info_types`
+  /// that contains `OBJECT_TYPE/PERSON/PASSPORT` and `image_containment_type`
+  /// set to `encloses`. In this case, the likelihood of the `US_PASSPORT`
+  /// finding is adjusted, but the likelihood of the
+  /// `OBJECT_TYPE/PERSON/PASSPORT` finding is not.
+  core.List<GooglePrivacyDlpV2InfoType>? infoTypes;
+
+  /// Minimum likelihood of the `adjust_by_image_findings.info_types` finding.
+  ///
+  /// If the likelihood is lower than this value, Sensitive Data Protection
+  /// doesn't adjust the likelihood of the `InspectionRuleSet.info_types`
+  /// finding.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
+  core.String? minLikelihood;
+
+  GooglePrivacyDlpV2AdjustByImageFindings({
+    this.imageContainmentType,
+    this.infoTypes,
+    this.minLikelihood,
+  });
+
+  GooglePrivacyDlpV2AdjustByImageFindings.fromJson(core.Map json_)
+    : this(
+        imageContainmentType:
+            json_.containsKey('imageContainmentType')
+                ? GooglePrivacyDlpV2ImageContainmentType.fromJson(
+                  json_['imageContainmentType']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        infoTypes:
+            (json_['infoTypes'] as core.List?)
+                ?.map(
+                  (value) => GooglePrivacyDlpV2InfoType.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        minLikelihood: json_['minLikelihood'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (imageContainmentType != null)
+      'imageContainmentType': imageContainmentType!,
+    if (infoTypes != null) 'infoTypes': infoTypes!,
+    if (minLikelihood != null) 'minLikelihood': minLikelihood!,
+  };
+}
+
+/// AdjustmentRule condition for matching infoTypes.
+class GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
+  /// Sensitive Data Protection adjusts the likelihood of a finding if that
+  /// finding also matches one of these infoTypes.
+  ///
+  /// For example, you can create a rule to adjust the likelihood of a
+  /// `PHONE_NUMBER` finding if the string is found within a document that is
+  /// classified as `DOCUMENT_TYPE/HR/RESUME`. To configure this, set
+  /// `PHONE_NUMBER` in `InspectionRuleSet.info_types`. Add an `adjustment_rule`
+  /// with an `adjust_by_matching_info_types.info_types` that contains
+  /// `DOCUMENT_TYPE/HR/RESUME`. In this case, the likelihood of the
+  /// `PHONE_NUMBER` finding is adjusted, but the likelihood of the
+  /// `DOCUMENT_TYPE/HR/RESUME` finding is not.
+  core.List<GooglePrivacyDlpV2InfoType>? infoTypes;
+
+  /// How the adjustment rule is applied.
+  ///
+  /// Only MATCHING_TYPE_PARTIAL_MATCH is supported: - Partial match: adjusts
+  /// the findings of infoTypes specified in the inspection rule when they have
+  /// a nonempty intersection with a finding of an infoType specified in this
+  /// adjustment rule.
+  /// Possible string values are:
+  /// - "MATCHING_TYPE_UNSPECIFIED" : Invalid.
+  /// - "MATCHING_TYPE_FULL_MATCH" : Full match. - Dictionary: join of
+  /// Dictionary results matched the complete finding quote - Regex: all regex
+  /// matches fill a finding quote from start to end - Exclude infoType:
+  /// completely inside affecting infoTypes findings
+  /// - "MATCHING_TYPE_PARTIAL_MATCH" : Partial match. - Dictionary: at least
+  /// one of the tokens in the finding matches - Regex: substring of the finding
+  /// matches - Exclude infoType: intersects with affecting infoTypes findings
+  /// - "MATCHING_TYPE_INVERSE_MATCH" : Inverse match. - Dictionary: no tokens
+  /// in the finding match the dictionary - Regex: finding doesn't match the
+  /// regex - Exclude infoType: no intersection with affecting infoTypes
+  /// findings
+  /// - "MATCHING_TYPE_RULE_SPECIFIC" : Rule-specific match. The matching logic
+  /// is based on the specific rule being used. This is required for rules where
+  /// the matching behavior is not a simple string comparison (e.g., image
+  /// containment). This matching type can only be used with the
+  /// `ExcludeByImageFindings` rule. - Exclude by image findings: The matching
+  /// logic is defined within `ExcludeByImageFindings` based on spatial
+  /// relationships between bounding boxes.
+  core.String? matchingType;
+
+  /// Minimum likelihood of the `adjust_by_matching_info_types.info_types`
+  /// finding.
+  ///
+  /// If the likelihood is lower than this value, Sensitive Data Protection
+  /// doesn't adjust the likelihood of the `InspectionRuleSet.info_types`
+  /// finding.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "LIKELIHOOD_UNSPECIFIED" : Default value; same as POSSIBLE.
+  /// - "VERY_UNLIKELY" : Highest chance of a false positive.
+  /// - "UNLIKELY" : High chance of a false positive.
+  /// - "POSSIBLE" : Some matching signals. The default value.
+  /// - "LIKELY" : Low chance of a false positive.
+  /// - "VERY_LIKELY" : Confidence level is high. Lowest chance of a false
+  /// positive.
+  core.String? minLikelihood;
+
+  GooglePrivacyDlpV2AdjustByMatchingInfoTypes({
+    this.infoTypes,
+    this.matchingType,
+    this.minLikelihood,
+  });
+
+  GooglePrivacyDlpV2AdjustByMatchingInfoTypes.fromJson(core.Map json_)
+    : this(
+        infoTypes:
+            (json_['infoTypes'] as core.List?)
+                ?.map(
+                  (value) => GooglePrivacyDlpV2InfoType.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        matchingType: json_['matchingType'] as core.String?,
+        minLikelihood: json_['minLikelihood'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (infoTypes != null) 'infoTypes': infoTypes!,
+    if (matchingType != null) 'matchingType': matchingType!,
+    if (minLikelihood != null) 'minLikelihood': minLikelihood!,
+  };
+}
+
+/// Rule that specifies conditions when a certain infoType's finding details
+/// should be adjusted.
+class GooglePrivacyDlpV2AdjustmentRule {
+  /// AdjustmentRule condition for image findings.
+  GooglePrivacyDlpV2AdjustByImageFindings? adjustByImageFindings;
+
+  /// Set of infoTypes for which findings would affect this rule.
+  GooglePrivacyDlpV2AdjustByMatchingInfoTypes? adjustByMatchingInfoTypes;
+
+  /// Likelihood adjustment to apply to the infoType.
+  GooglePrivacyDlpV2LikelihoodAdjustment? likelihoodAdjustment;
+
+  GooglePrivacyDlpV2AdjustmentRule({
+    this.adjustByImageFindings,
+    this.adjustByMatchingInfoTypes,
+    this.likelihoodAdjustment,
+  });
+
+  GooglePrivacyDlpV2AdjustmentRule.fromJson(core.Map json_)
+    : this(
+        adjustByImageFindings:
+            json_.containsKey('adjustByImageFindings')
+                ? GooglePrivacyDlpV2AdjustByImageFindings.fromJson(
+                  json_['adjustByImageFindings']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        adjustByMatchingInfoTypes:
+            json_.containsKey('adjustByMatchingInfoTypes')
+                ? GooglePrivacyDlpV2AdjustByMatchingInfoTypes.fromJson(
+                  json_['adjustByMatchingInfoTypes']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        likelihoodAdjustment:
+            json_.containsKey('likelihoodAdjustment')
+                ? GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(
+                  json_['likelihoodAdjustment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (adjustByImageFindings != null)
+      'adjustByImageFindings': adjustByImageFindings!,
+    if (adjustByMatchingInfoTypes != null)
+      'adjustByMatchingInfoTypes': adjustByMatchingInfoTypes!,
+    if (likelihoodAdjustment != null)
+      'likelihoodAdjustment': likelihoodAdjustment!,
+  };
+}
 
 /// Apply transformation to all findings.
 typedef GooglePrivacyDlpV2AllInfoTypes = $Empty;
@@ -11535,9 +11788,7 @@ class GooglePrivacyDlpV2CustomInfoType {
   /// profiling.
   GooglePrivacyDlpV2SensitivityScore? sensitivityScore;
 
-  /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`.
-  ///
-  /// Not currently supported in `InspectContent`.
+  /// Loads an existing `StoredInfoType` resource.
   GooglePrivacyDlpV2StoredType? storedType;
 
   /// Message for detecting output from deidentification transformations that
@@ -11942,12 +12193,10 @@ class GooglePrivacyDlpV2DataRiskLevel {
 
 /// Message used to identify the type of resource being profiled.
 class GooglePrivacyDlpV2DataSourceType {
-  /// An identifying string to the type of resource being profiled.
+  /// A string that identifies the type of resource being profiled.
   ///
   /// Current values: * google/bigquery/table * google/project *
   /// google/sql/table * google/gcs/bucket
-  ///
-  /// Output only.
   core.String? dataSource;
 
   GooglePrivacyDlpV2DataSourceType({this.dataSource});
@@ -14539,6 +14788,9 @@ class GooglePrivacyDlpV2Domain {
   };
 }
 
+/// Defines a condition where one bounding box encloses another.
+typedef GooglePrivacyDlpV2Encloses = $Empty;
+
 /// An entity in a dataset is a field or set of fields that correspond to a
 /// single person.
 ///
@@ -14651,6 +14903,62 @@ class GooglePrivacyDlpV2ExcludeByHotword {
   };
 }
 
+/// The rule to exclude image findings based on spatial relationships with other
+/// image findings.
+///
+/// For example, exclude an image finding if it overlaps with another image
+/// finding. This rule is silently ignored if the content being inspected is not
+/// an image.
+class GooglePrivacyDlpV2ExcludeByImageFindings {
+  /// Specifies the required spatial relationship between the bounding boxes of
+  /// the target finding and the context infoType findings.
+  GooglePrivacyDlpV2ImageContainmentType? imageContainmentType;
+
+  /// A list of image-supported infoTypes—excluding
+  /// [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to
+  /// be used as context for the exclusion rule.
+  ///
+  /// A finding is excluded if its bounding box has the specified spatial
+  /// relationship (defined by `image_containment_type`) with a finding of an
+  /// infoType in this list. For example, if `InspectionRuleSet.info_types`
+  /// includes `OBJECT_TYPE/PERSON` and this `exclusion_rule` specifies
+  /// `info_types` as `OBJECT_TYPE/PERSON/PASSPORT` with
+  /// `image_containment_type` set to `encloses`, then `OBJECT_TYPE/PERSON`
+  /// findings will be excluded if they are fully contained within the bounding
+  /// box of an `OBJECT_TYPE/PERSON/PASSPORT` finding.
+  core.List<GooglePrivacyDlpV2InfoType>? infoTypes;
+
+  GooglePrivacyDlpV2ExcludeByImageFindings({
+    this.imageContainmentType,
+    this.infoTypes,
+  });
+
+  GooglePrivacyDlpV2ExcludeByImageFindings.fromJson(core.Map json_)
+    : this(
+        imageContainmentType:
+            json_.containsKey('imageContainmentType')
+                ? GooglePrivacyDlpV2ImageContainmentType.fromJson(
+                  json_['imageContainmentType']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        infoTypes:
+            (json_['infoTypes'] as core.List?)
+                ?.map(
+                  (value) => GooglePrivacyDlpV2InfoType.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (imageContainmentType != null)
+      'imageContainmentType': imageContainmentType!,
+    if (infoTypes != null) 'infoTypes': infoTypes!,
+  };
+}
+
 /// List of excluded infoTypes.
 class GooglePrivacyDlpV2ExcludeInfoTypes {
   /// InfoType list in ExclusionRule rule drops a finding when it overlaps or
@@ -14694,6 +15002,12 @@ class GooglePrivacyDlpV2ExclusionRule {
   /// For tabular data, the context includes the column name.
   GooglePrivacyDlpV2ExcludeByHotword? excludeByHotword;
 
+  /// Exclude findings based on image containment rules.
+  ///
+  /// For example, exclude an image finding if it overlaps with another image
+  /// finding.
+  GooglePrivacyDlpV2ExcludeByImageFindings? excludeByImageFindings;
+
   /// Set of infoTypes for which findings would affect this rule.
   GooglePrivacyDlpV2ExcludeInfoTypes? excludeInfoTypes;
 
@@ -14701,16 +15015,23 @@ class GooglePrivacyDlpV2ExclusionRule {
   /// Possible string values are:
   /// - "MATCHING_TYPE_UNSPECIFIED" : Invalid.
   /// - "MATCHING_TYPE_FULL_MATCH" : Full match. - Dictionary: join of
-  /// Dictionary results matched complete finding quote - Regex: all regex
-  /// matches fill a finding quote start to end - Exclude info type: completely
-  /// inside affecting info types findings
+  /// Dictionary results matched the complete finding quote - Regex: all regex
+  /// matches fill a finding quote from start to end - Exclude infoType:
+  /// completely inside affecting infoTypes findings
   /// - "MATCHING_TYPE_PARTIAL_MATCH" : Partial match. - Dictionary: at least
   /// one of the tokens in the finding matches - Regex: substring of the finding
-  /// matches - Exclude info type: intersects with affecting info types findings
+  /// matches - Exclude infoType: intersects with affecting infoTypes findings
   /// - "MATCHING_TYPE_INVERSE_MATCH" : Inverse match. - Dictionary: no tokens
   /// in the finding match the dictionary - Regex: finding doesn't match the
-  /// regex - Exclude info type: no intersection with affecting info types
+  /// regex - Exclude infoType: no intersection with affecting infoTypes
   /// findings
+  /// - "MATCHING_TYPE_RULE_SPECIFIC" : Rule-specific match. The matching logic
+  /// is based on the specific rule being used. This is required for rules where
+  /// the matching behavior is not a simple string comparison (e.g., image
+  /// containment). This matching type can only be used with the
+  /// `ExcludeByImageFindings` rule. - Exclude by image findings: The matching
+  /// logic is defined within `ExcludeByImageFindings` based on spatial
+  /// relationships between bounding boxes.
   core.String? matchingType;
 
   /// Regular expression which defines the rule.
@@ -14719,6 +15040,7 @@ class GooglePrivacyDlpV2ExclusionRule {
   GooglePrivacyDlpV2ExclusionRule({
     this.dictionary,
     this.excludeByHotword,
+    this.excludeByImageFindings,
     this.excludeInfoTypes,
     this.matchingType,
     this.regex,
@@ -14736,6 +15058,13 @@ class GooglePrivacyDlpV2ExclusionRule {
             json_.containsKey('excludeByHotword')
                 ? GooglePrivacyDlpV2ExcludeByHotword.fromJson(
                   json_['excludeByHotword']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        excludeByImageFindings:
+            json_.containsKey('excludeByImageFindings')
+                ? GooglePrivacyDlpV2ExcludeByImageFindings.fromJson(
+                  json_['excludeByImageFindings']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -14758,6 +15087,8 @@ class GooglePrivacyDlpV2ExclusionRule {
   core.Map<core.String, core.dynamic> toJson() => {
     if (dictionary != null) 'dictionary': dictionary!,
     if (excludeByHotword != null) 'excludeByHotword': excludeByHotword!,
+    if (excludeByImageFindings != null)
+      'excludeByImageFindings': excludeByImageFindings!,
     if (excludeInfoTypes != null) 'excludeInfoTypes': excludeInfoTypes!,
     if (matchingType != null) 'matchingType': matchingType!,
     if (regex != null) 'regex': regex!,
@@ -15172,9 +15503,8 @@ class GooglePrivacyDlpV2FileStoreCollection {
   /// - If one or more patterns are specified, match at least one pattern. For a
   /// resource to match the tag filters, the resource must have all of the
   /// provided tags attached. Tags refer to Resource Manager tags bound to the
-  /// resource or its ancestors. See
-  /// https://cloud.google.com/sensitive-data-protection/docs/profile-project-cloud-storage#manage-schedules
-  /// to learn more.
+  /// resource or its ancestors. For more information, see
+  /// [Manage schedules](https://cloud.google.com/sensitive-data-protection/docs/profile-project-cloud-storage#manage-schedules).
   ///
   /// Optional.
   GooglePrivacyDlpV2TagFilters? includeTags;
@@ -15868,6 +16198,9 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
   };
 }
 
+/// Defines a condition where one bounding box is fully inside another.
+typedef GooglePrivacyDlpV2FullyInside = $Empty;
+
 /// Processing occurs in the global region.
 typedef GooglePrivacyDlpV2GlobalProcessing = $Empty;
 
@@ -16190,6 +16523,55 @@ class GooglePrivacyDlpV2HybridOptions {
     if (requiredFindingLabelKeys != null)
       'requiredFindingLabelKeys': requiredFindingLabelKeys!,
     if (tableOptions != null) 'tableOptions': tableOptions!,
+  };
+}
+
+/// Specifies the relationship between bounding boxes for image findings.
+class GooglePrivacyDlpV2ImageContainmentType {
+  /// The context finding's bounding box must fully contain the target finding's
+  /// bounding box.
+  GooglePrivacyDlpV2Encloses? encloses;
+
+  /// The context finding's bounding box must be fully inside the target
+  /// finding's bounding box.
+  GooglePrivacyDlpV2FullyInside? fullyInside;
+
+  /// The context finding's bounding box and the target finding's bounding box
+  /// must have a non-zero intersection.
+  GooglePrivacyDlpV2Overlap? overlaps;
+
+  GooglePrivacyDlpV2ImageContainmentType({
+    this.encloses,
+    this.fullyInside,
+    this.overlaps,
+  });
+
+  GooglePrivacyDlpV2ImageContainmentType.fromJson(core.Map json_)
+    : this(
+        encloses:
+            json_.containsKey('encloses')
+                ? GooglePrivacyDlpV2Encloses.fromJson(
+                  json_['encloses'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fullyInside:
+            json_.containsKey('fullyInside')
+                ? GooglePrivacyDlpV2FullyInside.fromJson(
+                  json_['fullyInside'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        overlaps:
+            json_.containsKey('overlaps')
+                ? GooglePrivacyDlpV2Overlap.fromJson(
+                  json_['overlaps'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (encloses != null) 'encloses': encloses!,
+    if (fullyInside != null) 'fullyInside': fullyInside!,
+    if (overlaps != null) 'overlaps': overlaps!,
   };
 }
 
@@ -16568,6 +16950,14 @@ class GooglePrivacyDlpV2InfoTypeDescription {
   /// A sample that is a true positive for this infoType.
   core.String? example;
 
+  /// The launch status of the infoType.
+  /// Possible string values are:
+  /// - "INFO_TYPE_LAUNCH_STATUS_UNSPECIFIED" : Unspecified.
+  /// - "GENERAL_AVAILABILITY" : InfoType is generally available.
+  /// - "PUBLIC_PREVIEW" : InfoType is in public preview.
+  /// - "PRIVATE_PREVIEW" : InfoType is in private preview.
+  core.String? launchStatus;
+
   /// Locations at which this feature can be used.
   ///
   /// May change over time.
@@ -16599,6 +16989,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     this.description,
     this.displayName,
     this.example,
+    this.launchStatus,
     this.locationSupport,
     this.name,
     this.sensitivityScore,
@@ -16620,6 +17011,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         example: json_['example'] as core.String?,
+        launchStatus: json_['launchStatus'] as core.String?,
         locationSupport:
             json_.containsKey('locationSupport')
                 ? GooglePrivacyDlpV2LocationSupport.fromJson(
@@ -16658,6 +17050,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     if (description != null) 'description': description!,
     if (displayName != null) 'displayName': displayName!,
     if (example != null) 'example': example!,
+    if (launchStatus != null) 'launchStatus': launchStatus!,
     if (locationSupport != null) 'locationSupport': locationSupport!,
     if (name != null) 'name': name!,
     if (sensitivityScore != null) 'sensitivityScore': sensitivityScore!,
@@ -17317,16 +17710,30 @@ class GooglePrivacyDlpV2InspectTemplate {
 /// A single inspection rule to be applied to infoTypes, specified in
 /// `InspectionRuleSet`.
 class GooglePrivacyDlpV2InspectionRule {
+  /// Adjustment rule.
+  GooglePrivacyDlpV2AdjustmentRule? adjustmentRule;
+
   /// Exclusion rule.
   GooglePrivacyDlpV2ExclusionRule? exclusionRule;
 
   /// Hotword-based detection rule.
   GooglePrivacyDlpV2HotwordRule? hotwordRule;
 
-  GooglePrivacyDlpV2InspectionRule({this.exclusionRule, this.hotwordRule});
+  GooglePrivacyDlpV2InspectionRule({
+    this.adjustmentRule,
+    this.exclusionRule,
+    this.hotwordRule,
+  });
 
   GooglePrivacyDlpV2InspectionRule.fromJson(core.Map json_)
     : this(
+        adjustmentRule:
+            json_.containsKey('adjustmentRule')
+                ? GooglePrivacyDlpV2AdjustmentRule.fromJson(
+                  json_['adjustmentRule']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         exclusionRule:
             json_.containsKey('exclusionRule')
                 ? GooglePrivacyDlpV2ExclusionRule.fromJson(
@@ -17342,6 +17749,7 @@ class GooglePrivacyDlpV2InspectionRule {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (adjustmentRule != null) 'adjustmentRule': adjustmentRule!,
     if (exclusionRule != null) 'exclusionRule': exclusionRule!,
     if (hotwordRule != null) 'hotwordRule': hotwordRule!,
   };
@@ -19217,12 +19625,12 @@ class GooglePrivacyDlpV2OutputStorageConfig {
   /// Store findings in an existing Cloud Storage bucket.
   ///
   /// Files will be generated with the job ID and file part number as the
-  /// filename, and will contain findings in textproto format as
-  /// SaveToGcsFindingsOutput. The file name will use the naming convention -,
-  /// for example: my-job-id-2. Supported for Inspect jobs. The bucket must not
-  /// be the same as the bucket being inspected. If storing findings to Cloud
-  /// Storage, the output schema field should not be set. If set, it will be
-  /// ignored.
+  /// filename and will contain findings in textproto format as
+  /// SaveToGcsFindingsOutput. The filename will follow the naming convention
+  /// `-`. Example: `my-job-id-2`. Supported for Inspect jobs. The bucket must
+  /// not be the same as the bucket being inspected. If storing findings to
+  /// Cloud Storage, the output schema field should not be set. If set, it will
+  /// be ignored.
   GooglePrivacyDlpV2CloudStoragePath? storagePath;
 
   /// Store findings in an existing table or a new table in an existing dataset.
@@ -19268,6 +19676,9 @@ class GooglePrivacyDlpV2OutputStorageConfig {
     if (table != null) 'table': table!,
   };
 }
+
+/// Defines a condition for overlapping bounding boxes.
+typedef GooglePrivacyDlpV2Overlap = $Empty;
 
 /// Datastore partition ID.
 ///
@@ -19927,10 +20338,10 @@ typedef GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog = $Empty;
 /// Publish findings of a DlpJob to Dataplex Universal Catalog as a
 /// `sensitive-data-protection-job-result` aspect.
 ///
-/// To learn more about aspects, see
+/// For more information, see
 /// [Send inspection results to Dataplex Universal Catalog as aspects](https://cloud.google.com/sensitive-data-protection/docs/add-aspects-inspection-job).
-/// Aspects are persisted in Dataplex Universal Catalog storage and are governed
-/// by service-specific policies for Dataplex Universal Catalog. For more
+/// Aspects are stored in Dataplex Universal Catalog storage and are governed by
+/// service-specific policies for Dataplex Universal Catalog. For more
 /// information, see
 /// [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only
 /// a single instance of this action can be specified. This action is allowed
@@ -20374,6 +20785,14 @@ class GooglePrivacyDlpV2RedactImageRequest {
   /// The content must be PNG, JPEG, SVG or BMP.
   GooglePrivacyDlpV2ByteContentItem? byteItem;
 
+  /// The full resource name of the de-identification template to use.
+  ///
+  /// Settings in the main `image_redaction_configs` field override the
+  /// corresponding settings in this de-identification template. The request
+  /// fails if the type of the template's deidentify_config is not
+  /// image_transformations.
+  core.String? deidentifyTemplate;
+
   /// The configuration for specifying what content to redact from images.
   core.List<GooglePrivacyDlpV2ImageRedactionConfig>? imageRedactionConfigs;
 
@@ -20384,6 +20803,16 @@ class GooglePrivacyDlpV2RedactImageRequest {
   /// Configuration for the inspector.
   GooglePrivacyDlpV2InspectConfig? inspectConfig;
 
+  /// The full resource name of the inspection template to use.
+  ///
+  /// Settings in the main `inspect_config` field override the corresponding
+  /// settings in this inspection template. The merge behavior is as follows: -
+  /// Singular field: The main field's value replaces the value of the
+  /// corresponding field in the template. - Repeated fields: The field values
+  /// are appended to the list defined in the template. - Sub-messages and
+  /// groups: The fields are recursively merged.
+  core.String? inspectTemplate;
+
   /// This field has no effect.
   ///
   /// Deprecated.
@@ -20391,9 +20820,11 @@ class GooglePrivacyDlpV2RedactImageRequest {
 
   GooglePrivacyDlpV2RedactImageRequest({
     this.byteItem,
+    this.deidentifyTemplate,
     this.imageRedactionConfigs,
     this.includeFindings,
     this.inspectConfig,
+    this.inspectTemplate,
     this.locationId,
   });
 
@@ -20405,6 +20836,7 @@ class GooglePrivacyDlpV2RedactImageRequest {
                   json_['byteItem'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        deidentifyTemplate: json_['deidentifyTemplate'] as core.String?,
         imageRedactionConfigs:
             (json_['imageRedactionConfigs'] as core.List?)
                 ?.map(
@@ -20420,15 +20852,18 @@ class GooglePrivacyDlpV2RedactImageRequest {
                   json_['inspectConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        inspectTemplate: json_['inspectTemplate'] as core.String?,
         locationId: json_['locationId'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (byteItem != null) 'byteItem': byteItem!,
+    if (deidentifyTemplate != null) 'deidentifyTemplate': deidentifyTemplate!,
     if (imageRedactionConfigs != null)
       'imageRedactionConfigs': imageRedactionConfigs!,
     if (includeFindings != null) 'includeFindings': includeFindings!,
     if (inspectConfig != null) 'inspectConfig': inspectConfig!,
+    if (inspectTemplate != null) 'inspectTemplate': inspectTemplate!,
     if (locationId != null) 'locationId': locationId!,
   };
 }
@@ -23265,12 +23700,15 @@ class GooglePrivacyDlpV2VertexDatasetRegexes {
   };
 }
 
-/// Identifies a single Vertex AI dataset.
+/// Identifies a single Vertex AI resource.
+///
+/// Only datasets are supported.
 class GooglePrivacyDlpV2VertexDatasetResourceReference {
-  /// The name of the dataset resource.
+  /// The name of the Vertex AI resource.
   ///
   /// If set within a project-level configuration, the specified resource must
-  /// be within the project.
+  /// be within the project. Examples: *
+  /// `projects/{project}/locations/{location}/datasets/{dataset}`
   ///
   /// Required.
   core.String? datasetResourceName;

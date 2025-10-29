@@ -132,14 +132,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1484,6 +1490,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1499,12 +1513,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1906,6 +1923,7 @@ class Build {
   /// may not be serving traffic - see `Backend.traffic` for the current state,
   /// or `Backend.traffic_statuses` for the desired state.
   /// - "FAILED" : The build has failed.
+  /// - "SKIPPED" : The build was skipped.
   core.String? state;
 
   /// System-assigned, unique identifier.
@@ -2165,7 +2183,22 @@ class CodebaseSource {
 
 /// Additional configuration of the backend for this build.
 class Config {
-  /// Environment variables for this build.
+  /// \[OUTPUT_ONLY\] This field represents all environment variables employed
+  /// during both the build and runtime.
+  ///
+  /// This list reflects the result of merging variables from all sources
+  /// (Backend.override_env, Build.Config.env, YAML, defaults, system). Each
+  /// variable includes its `origin`
+  ///
+  /// Output only.
+  core.List<EnvironmentVariable>? effectiveEnv;
+
+  /// Supplied environment variables for a specific build.
+  ///
+  /// Provided at Build creation time and immutable afterwards. This field is
+  /// only applicable for Builds using a build image - (e.g., ContainerSource or
+  /// ArchiveSource with locally_build_source) Attempts to set this for other
+  /// build types will result in an error
   ///
   /// Optional.
   core.List<EnvironmentVariable>? env;
@@ -2176,10 +2209,18 @@ class Config {
   /// Optional.
   RunConfig? runConfig;
 
-  Config({this.env, this.runConfig});
+  Config({this.effectiveEnv, this.env, this.runConfig});
 
   Config.fromJson(core.Map json_)
     : this(
+        effectiveEnv:
+            (json_['effectiveEnv'] as core.List?)
+                ?.map(
+                  (value) => EnvironmentVariable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         env:
             (json_['env'] as core.List?)
                 ?.map(
@@ -2197,6 +2238,7 @@ class Config {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (effectiveEnv != null) 'effectiveEnv': effectiveEnv!,
     if (env != null) 'env': env!,
     if (runConfig != null) 'runConfig': runConfig!,
   };
@@ -2751,6 +2793,28 @@ class EnvironmentVariable {
   /// Optional.
   core.List<core.String>? availability;
 
+  /// The high-level origin category of the environment variable.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ORIGIN_UNSPECIFIED" : Source is unspecified.
+  /// - "BACKEND_OVERRIDES" : Variable was set on the backend resource (e.g. via
+  /// API or Console). Represents variables from `Backend.override_env`
+  /// - "BUILD_CONFIG" : Variable was provided specifically for the build upon
+  /// creation via the `Build.Config.env` field. Only used for pre-built images.
+  /// - "APPHOSTING_YAML" : Variable is defined in apphosting.yaml file.
+  /// - "FIREBASE_SYSTEM" : Variable is defined provided by the firebase
+  /// platform.
+  core.String? origin;
+
+  /// Specific detail about the source.
+  ///
+  /// For APPHOSTING_YAML origins, this will contain the exact filename, such as
+  /// "apphosting.yaml" or "apphosting.staging.yaml".
+  ///
+  /// Output only.
+  core.String? originFileName;
+
   /// A fully qualified secret version.
   ///
   /// The value of the secret will be accessed once while building the
@@ -2776,6 +2840,8 @@ class EnvironmentVariable {
 
   EnvironmentVariable({
     this.availability,
+    this.origin,
+    this.originFileName,
     this.secret,
     this.value,
     this.variable,
@@ -2787,6 +2853,8 @@ class EnvironmentVariable {
             (json_['availability'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
+        origin: json_['origin'] as core.String?,
+        originFileName: json_['originFileName'] as core.String?,
         secret: json_['secret'] as core.String?,
         value: json_['value'] as core.String?,
         variable: json_['variable'] as core.String?,
@@ -2794,6 +2862,8 @@ class EnvironmentVariable {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (availability != null) 'availability': availability!,
+    if (origin != null) 'origin': origin!,
+    if (originFileName != null) 'originFileName': originFileName!,
     if (secret != null) 'secret': secret!,
     if (value != null) 'value': value!,
     if (variable != null) 'variable': variable!,
@@ -3002,7 +3072,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -3015,11 +3097,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3161,6 +3248,39 @@ class Operation {
   };
 }
 
+/// A file path pattern to match against.
+class Path {
+  /// The pattern to match against.
+  ///
+  /// Optional.
+  core.String? pattern;
+
+  /// The type of pattern to match against.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PATTERN_TYPE_UNSPECIFIED" : The pattern type is unspecified - this is
+  /// an invalid value.
+  /// - "RE2" : RE2 - regular expression
+  /// (https://github.com/google/re2/wiki/Syntax).
+  /// - "GLOB" : The pattern is a glob.
+  /// - "PREFIX" : The pattern is a prefix.
+  core.String? type;
+
+  Path({this.pattern, this.type});
+
+  Path.fromJson(core.Map json_)
+    : this(
+        pattern: json_['pattern'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (pattern != null) 'pattern': pattern!,
+    if (type != null) 'type': type!,
+  };
+}
+
 /// Specifies redirect behavior for a domain.
 class Redirect {
   /// The status code to use in a redirect response.
@@ -3272,6 +3392,7 @@ class Rollout {
   /// - "SUCCEEDED" : The rollout has completed.
   /// - "FAILED" : The rollout has failed. See error for more information.
   /// - "CANCELLED" : The rollout has been cancelled.
+  /// - "SKIPPED" : The rollout has been skipped.
   core.String? state;
 
   /// System-assigned, unique identifier.
@@ -3364,19 +3485,63 @@ class RolloutPolicy {
   /// Output only.
   core.String? disabledTime;
 
-  RolloutPolicy({this.codebaseBranch, this.disabled, this.disabledTime});
+  /// A list of file paths patterns to exclude from triggering a rollout.
+  ///
+  /// Patterns in this list take precedence over required_paths. **Note**: All
+  /// paths must be in the ignored_paths in order for the rollout to be skipped.
+  /// Limited to 100 paths. Example: ignored_paths: { pattern: "foo/bar/excluded
+  /// / * ” type: GLOB }
+  ///
+  /// Optional.
+  core.List<Path>? ignoredPaths;
+
+  /// A list of file paths patterns that trigger a build and rollout if at least
+  /// one of the changed files in the commit are present in this list.
+  ///
+  /// This field is optional; the rollout policy will default to triggering on
+  /// all paths if not populated. Limited to 100 paths. Example:
+  /// “required_paths: { pattern: "foo/bar / * ” type: GLOB }
+  ///
+  /// Optional.
+  core.List<Path>? requiredPaths;
+
+  RolloutPolicy({
+    this.codebaseBranch,
+    this.disabled,
+    this.disabledTime,
+    this.ignoredPaths,
+    this.requiredPaths,
+  });
 
   RolloutPolicy.fromJson(core.Map json_)
     : this(
         codebaseBranch: json_['codebaseBranch'] as core.String?,
         disabled: json_['disabled'] as core.bool?,
         disabledTime: json_['disabledTime'] as core.String?,
+        ignoredPaths:
+            (json_['ignoredPaths'] as core.List?)
+                ?.map(
+                  (value) => Path.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        requiredPaths:
+            (json_['requiredPaths'] as core.List?)
+                ?.map(
+                  (value) => Path.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (codebaseBranch != null) 'codebaseBranch': codebaseBranch!,
     if (disabled != null) 'disabled': disabled!,
     if (disabledTime != null) 'disabledTime': disabledTime!,
+    if (ignoredPaths != null) 'ignoredPaths': ignoredPaths!,
+    if (requiredPaths != null) 'requiredPaths': requiredPaths!,
   };
 }
 

@@ -154,9 +154,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -346,6 +346,15 @@ class ProjectsLocationsBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backups/\[^/\]+$`.
   ///
+  /// [view] - Optional. The view of the backup to return.
+  /// Possible string values are:
+  /// - "BACKUP_VIEW_UNSPECIFIED" : Value unspecified, equivalent to BASIC.
+  /// - "BACKUP_VIEW_BASIC" : Responses include all fields that aren't
+  /// explicitly gated behind another view.
+  /// - "BACKUP_VIEW_CLUSTER_DELETED" : Response include all the field from
+  /// BASIC plus the field cluster_deleted, which specifies if the cluster
+  /// corresponding to this backup is deleted.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -356,8 +365,13 @@ class ProjectsLocationsBackupsResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Backup> get(core.String name, {core.String? $fields}) async {
+  async.Future<Backup> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -388,6 +402,15 @@ class ProjectsLocationsBackupsResource {
   /// [pageToken] - A token identifying a page of results the server should
   /// return.
   ///
+  /// [view] - Optional. The view of the backup to return.
+  /// Possible string values are:
+  /// - "BACKUP_VIEW_UNSPECIFIED" : Value unspecified, equivalent to BASIC.
+  /// - "BACKUP_VIEW_BASIC" : Responses include all fields that aren't
+  /// explicitly gated behind another view.
+  /// - "BACKUP_VIEW_CLUSTER_DELETED" : Response include all the field from
+  /// BASIC plus the field cluster_deleted, which specifies if the cluster
+  /// corresponding to this backup is deleted.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -404,6 +427,7 @@ class ProjectsLocationsBackupsResource {
     core.String? orderBy,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
@@ -411,6 +435,7 @@ class ProjectsLocationsBackupsResource {
       if (orderBy != null) 'orderBy': [orderBy],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2234,6 +2259,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2249,12 +2282,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2741,6 +2777,180 @@ class Backup {
   };
 }
 
+/// Message describing a BackupDrBackupSource.
+class BackupDrBackupSource {
+  /// The name of the backup resource with the format: *
+  /// projects/{project}/locations/{location}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}
+  ///
+  /// Required.
+  core.String? backup;
+
+  BackupDrBackupSource({this.backup});
+
+  BackupDrBackupSource.fromJson(core.Map json_)
+    : this(backup: json_['backup'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (backup != null) 'backup': backup!,
+  };
+}
+
+/// Information about a single window when BackupDR was enabled for this
+/// cluster.
+class BackupDrEnabledWindow {
+  /// Whether automated backup was previously enabled prior to enabling BackupDR
+  /// protection for this cluster.
+  core.bool? automatedBackupPreviouslyEnabled;
+
+  /// The BackupPlanAssociation resource that was used to enable BackupDR
+  /// protection for this cluster.
+  core.String? backupPlanAssociation;
+
+  /// The retention set for the continuous backup that was previously enabled
+  /// prior to enabling BackupDR protection for this cluster.
+  core.int? continuousBackupPreviousRecoveryWindowDays;
+
+  /// Whether continuous backup was previously enabled prior to enabling
+  /// BackupDR protection for this cluster.
+  core.bool? continuousBackupPreviouslyEnabled;
+
+  /// The time when continuous backup was previously enabled prior to enabling
+  /// BackupDR protection for this cluster.
+  core.String? continuousBackupPreviouslyEnabledTime;
+
+  /// The DataSource resource that represents the cluster in BackupDR.
+  core.String? dataSource;
+
+  /// Time when the BackupDR protection for this cluster was disabled.
+  ///
+  /// This field will be empty if this BackupDR window is the `current_window`.
+  core.String? disabledTime;
+
+  /// Time when the BackupDR protection for this cluster was enabled.
+  core.String? enabledTime;
+
+  /// The retention period for logs generated by BackupDR for this cluster.
+  core.String? logRetentionPeriod;
+
+  BackupDrEnabledWindow({
+    this.automatedBackupPreviouslyEnabled,
+    this.backupPlanAssociation,
+    this.continuousBackupPreviousRecoveryWindowDays,
+    this.continuousBackupPreviouslyEnabled,
+    this.continuousBackupPreviouslyEnabledTime,
+    this.dataSource,
+    this.disabledTime,
+    this.enabledTime,
+    this.logRetentionPeriod,
+  });
+
+  BackupDrEnabledWindow.fromJson(core.Map json_)
+    : this(
+        automatedBackupPreviouslyEnabled:
+            json_['automatedBackupPreviouslyEnabled'] as core.bool?,
+        backupPlanAssociation: json_['backupPlanAssociation'] as core.String?,
+        continuousBackupPreviousRecoveryWindowDays:
+            json_['continuousBackupPreviousRecoveryWindowDays'] as core.int?,
+        continuousBackupPreviouslyEnabled:
+            json_['continuousBackupPreviouslyEnabled'] as core.bool?,
+        continuousBackupPreviouslyEnabledTime:
+            json_['continuousBackupPreviouslyEnabledTime'] as core.String?,
+        dataSource: json_['dataSource'] as core.String?,
+        disabledTime: json_['disabledTime'] as core.String?,
+        enabledTime: json_['enabledTime'] as core.String?,
+        logRetentionPeriod: json_['logRetentionPeriod'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (automatedBackupPreviouslyEnabled != null)
+      'automatedBackupPreviouslyEnabled': automatedBackupPreviouslyEnabled!,
+    if (backupPlanAssociation != null)
+      'backupPlanAssociation': backupPlanAssociation!,
+    if (continuousBackupPreviousRecoveryWindowDays != null)
+      'continuousBackupPreviousRecoveryWindowDays':
+          continuousBackupPreviousRecoveryWindowDays!,
+    if (continuousBackupPreviouslyEnabled != null)
+      'continuousBackupPreviouslyEnabled': continuousBackupPreviouslyEnabled!,
+    if (continuousBackupPreviouslyEnabledTime != null)
+      'continuousBackupPreviouslyEnabledTime':
+          continuousBackupPreviouslyEnabledTime!,
+    if (dataSource != null) 'dataSource': dataSource!,
+    if (disabledTime != null) 'disabledTime': disabledTime!,
+    if (enabledTime != null) 'enabledTime': enabledTime!,
+    if (logRetentionPeriod != null) 'logRetentionPeriod': logRetentionPeriod!,
+  };
+}
+
+/// Information about BackupDR protection for this cluster.
+class BackupDrInfo {
+  /// The current BackupDR configuration for this cluster.
+  ///
+  /// If BackupDR protection is not enabled for this cluster, this field will be
+  /// empty.
+  BackupDrEnabledWindow? currentWindow;
+
+  /// Windows during which BackupDR was enabled for this cluster, along with
+  /// associated configuration for that window.
+  ///
+  /// These are used to determine points-in-time for which restores can be
+  /// performed. The windows are ordered with the most recent window last.
+  /// Windows are mutally exclusive. Windows which closed more than 1 year ago
+  /// will be removed from this list.
+  core.List<BackupDrEnabledWindow>? previousWindows;
+
+  BackupDrInfo({this.currentWindow, this.previousWindows});
+
+  BackupDrInfo.fromJson(core.Map json_)
+    : this(
+        currentWindow:
+            json_.containsKey('currentWindow')
+                ? BackupDrEnabledWindow.fromJson(
+                  json_['currentWindow'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        previousWindows:
+            (json_['previousWindows'] as core.List?)
+                ?.map(
+                  (value) => BackupDrEnabledWindow.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (currentWindow != null) 'currentWindow': currentWindow!,
+    if (previousWindows != null) 'previousWindows': previousWindows!,
+  };
+}
+
+/// Message describing a BackupDrPitrSource.
+class BackupDrPitrSource {
+  /// The name of the backup resource with the format: *
+  /// projects/{project}/locations/{location}/backupVaults/{backupvault_id}/dataSources/{datasource_id}
+  ///
+  /// Required.
+  core.String? dataSource;
+
+  /// The point in time to restore to.
+  ///
+  /// Required.
+  core.String? pointInTime;
+
+  BackupDrPitrSource({this.dataSource, this.pointInTime});
+
+  BackupDrPitrSource.fromJson(core.Map json_)
+    : this(
+        dataSource: json_['dataSource'] as core.String?,
+        pointInTime: json_['pointInTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dataSource != null) 'dataSource': dataSource!,
+    if (pointInTime != null) 'pointInTime': pointInTime!,
+  };
+}
+
 /// Message describing a BackupSource.
 class BackupSource {
   /// The name of the backup resource with the format: *
@@ -2864,6 +3074,16 @@ class Cluster {
   /// Output only.
   BackupSource? backupSource;
 
+  /// Cluster created from a BackupDR backup.
+  ///
+  /// Output only.
+  BackupDrBackupSource? backupdrBackupSource;
+
+  /// Output only information about BackupDR protection for this cluster.
+  ///
+  /// Output only.
+  BackupDrInfo? backupdrInfo;
+
   /// Cluster created from CloudSQL snapshot.
   ///
   /// Output only.
@@ -2915,6 +3135,11 @@ class Cluster {
   /// - "POSTGRES_17" : The database version is Postgres 17.
   core.String? databaseVersion;
 
+  /// Configuration for Dataplex integration.
+  ///
+  /// Optional.
+  DataplexConfig? dataplexConfig;
+
   /// Delete time stamp
   ///
   /// Output only.
@@ -2960,6 +3185,19 @@ class Cluster {
   ///
   /// Optional.
   MaintenanceUpdatePolicy? maintenanceUpdatePolicy;
+
+  /// Input only.
+  ///
+  /// Policy to use to automatically select the maintenance version to which to
+  /// update the cluster's instances.
+  /// Possible string values are:
+  /// - "MAINTENANCE_VERSION_SELECTION_POLICY_UNSPECIFIED" : The maintenance
+  /// version selection policy is not specified.
+  /// - "MAINTENANCE_VERSION_SELECTION_POLICY_LATEST" : Use the latest available
+  /// maintenance version.
+  /// - "MAINTENANCE_VERSION_SELECTION_POLICY_DEFAULT" : Use the current default
+  /// maintenance version.
+  core.String? maintenanceVersionSelectionPolicy;
 
   /// Cluster created via DMS migration.
   ///
@@ -3046,6 +3284,9 @@ class Cluster {
   /// performs maintenance and upgrades on customer clusters. Updates on the
   /// cluster are not allowed while the cluster is in this state.
   /// - "PROMOTING" : The cluster is being promoted.
+  /// - "SWITCHOVER" : The cluster has entered switchover state. All updates on
+  /// cluster and its associated instances are restricted while the cluster is
+  /// in this state.
   core.String? state;
 
   /// Subscription type of the cluster.
@@ -3088,12 +3329,15 @@ class Cluster {
     this.annotations,
     this.automatedBackupPolicy,
     this.backupSource,
+    this.backupdrBackupSource,
+    this.backupdrInfo,
     this.cloudsqlBackupRunSource,
     this.clusterType,
     this.continuousBackupConfig,
     this.continuousBackupInfo,
     this.createTime,
     this.databaseVersion,
+    this.dataplexConfig,
     this.deleteTime,
     this.displayName,
     this.encryptionConfig,
@@ -3103,6 +3347,7 @@ class Cluster {
     this.labels,
     this.maintenanceSchedule,
     this.maintenanceUpdatePolicy,
+    this.maintenanceVersionSelectionPolicy,
     this.migrationSource,
     this.name,
     this.network,
@@ -3139,6 +3384,19 @@ class Cluster {
                   json_['backupSource'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        backupdrBackupSource:
+            json_.containsKey('backupdrBackupSource')
+                ? BackupDrBackupSource.fromJson(
+                  json_['backupdrBackupSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backupdrInfo:
+            json_.containsKey('backupdrInfo')
+                ? BackupDrInfo.fromJson(
+                  json_['backupdrInfo'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         cloudsqlBackupRunSource:
             json_.containsKey('cloudsqlBackupRunSource')
                 ? CloudSQLBackupRunSource.fromJson(
@@ -3163,6 +3421,13 @@ class Cluster {
                 : null,
         createTime: json_['createTime'] as core.String?,
         databaseVersion: json_['databaseVersion'] as core.String?,
+        dataplexConfig:
+            json_.containsKey('dataplexConfig')
+                ? DataplexConfig.fromJson(
+                  json_['dataplexConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         deleteTime: json_['deleteTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         encryptionConfig:
@@ -3203,6 +3468,8 @@ class Cluster {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        maintenanceVersionSelectionPolicy:
+            json_['maintenanceVersionSelectionPolicy'] as core.String?,
         migrationSource:
             json_.containsKey('migrationSource')
                 ? MigrationSource.fromJson(
@@ -3265,6 +3532,9 @@ class Cluster {
     if (automatedBackupPolicy != null)
       'automatedBackupPolicy': automatedBackupPolicy!,
     if (backupSource != null) 'backupSource': backupSource!,
+    if (backupdrBackupSource != null)
+      'backupdrBackupSource': backupdrBackupSource!,
+    if (backupdrInfo != null) 'backupdrInfo': backupdrInfo!,
     if (cloudsqlBackupRunSource != null)
       'cloudsqlBackupRunSource': cloudsqlBackupRunSource!,
     if (clusterType != null) 'clusterType': clusterType!,
@@ -3274,6 +3544,7 @@ class Cluster {
       'continuousBackupInfo': continuousBackupInfo!,
     if (createTime != null) 'createTime': createTime!,
     if (databaseVersion != null) 'databaseVersion': databaseVersion!,
+    if (dataplexConfig != null) 'dataplexConfig': dataplexConfig!,
     if (deleteTime != null) 'deleteTime': deleteTime!,
     if (displayName != null) 'displayName': displayName!,
     if (encryptionConfig != null) 'encryptionConfig': encryptionConfig!,
@@ -3285,6 +3556,8 @@ class Cluster {
       'maintenanceSchedule': maintenanceSchedule!,
     if (maintenanceUpdatePolicy != null)
       'maintenanceUpdatePolicy': maintenanceUpdatePolicy!,
+    if (maintenanceVersionSelectionPolicy != null)
+      'maintenanceVersionSelectionPolicy': maintenanceVersionSelectionPolicy!,
     if (migrationSource != null) 'migrationSource': migrationSource!,
     if (name != null) 'name': name!,
     if (network != null) 'network': network!,
@@ -3660,6 +3933,25 @@ class CsvImportOptions {
     if (fieldDelimiter != null) 'fieldDelimiter': fieldDelimiter!,
     if (quoteCharacter != null) 'quoteCharacter': quoteCharacter!,
     if (table != null) 'table': table!,
+  };
+}
+
+/// Configuration for Dataplex integration.
+class DataplexConfig {
+  /// Dataplex is enabled by default for resources such as clusters and
+  /// instances.
+  ///
+  /// This flag controls the integration of AlloyDB PG resources (like
+  /// databases, schemas, and tables) with Dataplex."
+  core.bool? enabled;
+
+  DataplexConfig({this.enabled});
+
+  DataplexConfig.fromJson(core.Map json_)
+    : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
   };
 }
 
@@ -4085,6 +4377,26 @@ class Instance {
   /// Output only.
   core.String? createTime;
 
+  /// Controls whether the Data API is enabled for this instance.
+  ///
+  /// When enabled, this allows authorized users to connect to the instance from
+  /// the public internet using the `executeSql` API, even for private IP
+  /// instances. If this is not specified, the data API is enabled by default
+  /// for Google internal services like AlloyDB Studio. Disable it explicitly to
+  /// disallow Google internal services as well.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "DEFAULT_DATA_API_ENABLED_FOR_GOOGLE_CLOUD_SERVICES" :
+  /// DEFAULT_DATA_API_ENABLED_FOR_GOOGLE_CLOUD_SERVICES is a default value that
+  /// allows Google internal services like AlloyDB Studio to access the
+  /// instance.
+  /// - "DISABLED" : Data API access is disabled for this instance.
+  /// - "ENABLED" : Data API access is enabled for this instance. For private IP
+  /// instances, this allows authorized users to access the instance from the
+  /// public internet using the ExecuteSql API.
+  core.String? dataApiAccess;
+
   /// Database flags.
   ///
   /// Set at the instance level. They are copied from the primary instance on
@@ -4150,6 +4462,15 @@ class Instance {
 
   /// Configurations for the machines that host the underlying database engine.
   MachineConfig? machineConfig;
+
+  /// Maintenance version of the instance, for example:
+  /// POSTGRES_15.2025_07_15.04_00.
+  ///
+  /// Output only. Update this field via the parent cluster's
+  /// maintenance_version field(s).
+  ///
+  /// Output only.
+  core.String? maintenanceVersionName;
 
   /// The name of the instance resource with the format: *
   /// projects/{project}/locations/{region}/clusters/{cluster_id}/instances/{instance_id}
@@ -4235,11 +4556,13 @@ class Instance {
   /// during an operation on the instance. Note: Instances in this state would
   /// tried to be auto-repaired. And Customers should be able to restart, update
   /// or delete these instances.
-  /// - "BOOTSTRAPPING" : Index 7 is used in the producer apis for ROLLED_BACK
-  /// state. Keeping that index unused in case that state also needs to exposed
-  /// via consumer apis in future. The instance has been configured to sync data
-  /// from some other source.
+  /// - "BOOTSTRAPPING" : The instance has been configured to sync data from
+  /// some other source.
   /// - "PROMOTING" : The instance is being promoted.
+  /// - "SWITCHOVER" : The instance has entered switchover state. All updates on
+  /// instance are restricted while the instance is in this state.
+  /// - "STOPPING" : The instance is being stopped.
+  /// - "STARTING" : The instance is being started.
   core.String? state;
 
   /// The system-generated UID of the resource.
@@ -4267,6 +4590,7 @@ class Instance {
     this.clientConnectionConfig,
     this.connectionPoolConfig,
     this.createTime,
+    this.dataApiAccess,
     this.databaseFlags,
     this.deleteTime,
     this.displayName,
@@ -4276,6 +4600,7 @@ class Instance {
     this.ipAddress,
     this.labels,
     this.machineConfig,
+    this.maintenanceVersionName,
     this.name,
     this.networkConfig,
     this.nodes,
@@ -4315,6 +4640,7 @@ class Instance {
                 )
                 : null,
         createTime: json_['createTime'] as core.String?,
+        dataApiAccess: json_['dataApiAccess'] as core.String?,
         databaseFlags: (json_['databaseFlags']
                 as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -4333,6 +4659,7 @@ class Instance {
                   json_['machineConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        maintenanceVersionName: json_['maintenanceVersionName'] as core.String?,
         name: json_['name'] as core.String?,
         networkConfig:
             json_.containsKey('networkConfig')
@@ -4403,6 +4730,7 @@ class Instance {
     if (connectionPoolConfig != null)
       'connectionPoolConfig': connectionPoolConfig!,
     if (createTime != null) 'createTime': createTime!,
+    if (dataApiAccess != null) 'dataApiAccess': dataApiAccess!,
     if (databaseFlags != null) 'databaseFlags': databaseFlags!,
     if (deleteTime != null) 'deleteTime': deleteTime!,
     if (displayName != null) 'displayName': displayName!,
@@ -4412,6 +4740,8 @@ class Instance {
     if (ipAddress != null) 'ipAddress': ipAddress!,
     if (labels != null) 'labels': labels!,
     if (machineConfig != null) 'machineConfig': machineConfig!,
+    if (maintenanceVersionName != null)
+      'maintenanceVersionName': maintenanceVersionName!,
     if (name != null) 'name': name!,
     if (networkConfig != null) 'networkConfig': networkConfig!,
     if (nodes != null) 'nodes': nodes!,
@@ -4651,7 +4981,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -4664,11 +5006,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -5625,6 +5972,12 @@ class RestoreClusterRequest {
   /// Backup source.
   BackupSource? backupSource;
 
+  /// BackupDR backup source.
+  BackupDrBackupSource? backupdrBackupSource;
+
+  /// BackupDR source used for point in time recovery.
+  BackupDrPitrSource? backupdrPitrSource;
+
   /// The resource being created
   ///
   /// Required.
@@ -5666,6 +6019,8 @@ class RestoreClusterRequest {
 
   RestoreClusterRequest({
     this.backupSource,
+    this.backupdrBackupSource,
+    this.backupdrPitrSource,
     this.cluster,
     this.clusterId,
     this.continuousBackupSource,
@@ -5679,6 +6034,20 @@ class RestoreClusterRequest {
             json_.containsKey('backupSource')
                 ? BackupSource.fromJson(
                   json_['backupSource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backupdrBackupSource:
+            json_.containsKey('backupdrBackupSource')
+                ? BackupDrBackupSource.fromJson(
+                  json_['backupdrBackupSource']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        backupdrPitrSource:
+            json_.containsKey('backupdrPitrSource')
+                ? BackupDrPitrSource.fromJson(
+                  json_['backupdrPitrSource']
+                      as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         cluster:
@@ -5701,6 +6070,9 @@ class RestoreClusterRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (backupSource != null) 'backupSource': backupSource!,
+    if (backupdrBackupSource != null)
+      'backupdrBackupSource': backupdrBackupSource!,
+    if (backupdrPitrSource != null) 'backupdrPitrSource': backupdrPitrSource!,
     if (cluster != null) 'cluster': cluster!,
     if (clusterId != null) 'clusterId': clusterId!,
     if (continuousBackupSource != null)

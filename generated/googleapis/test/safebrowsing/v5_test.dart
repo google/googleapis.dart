@@ -420,12 +420,39 @@ void checkGoogleSecuritySafebrowsingV5SearchHashesResponse(
   buildCounterGoogleSecuritySafebrowsingV5SearchHashesResponse--;
 }
 
-core.List<core.String> buildUnnamed7() => ['foo', 'foo'];
+core.List<api.GoogleSecuritySafebrowsingV5ThreatUrl> buildUnnamed7() => [
+  buildGoogleSecuritySafebrowsingV5ThreatUrl(),
+  buildGoogleSecuritySafebrowsingV5ThreatUrl(),
+];
 
-void checkUnnamed7(core.List<core.String> o) {
+void checkUnnamed7(core.List<api.GoogleSecuritySafebrowsingV5ThreatUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
+  checkGoogleSecuritySafebrowsingV5ThreatUrl(o[0]);
+  checkGoogleSecuritySafebrowsingV5ThreatUrl(o[1]);
+}
+
+core.int buildCounterGoogleSecuritySafebrowsingV5SearchUrlsResponse = 0;
+api.GoogleSecuritySafebrowsingV5SearchUrlsResponse
+buildGoogleSecuritySafebrowsingV5SearchUrlsResponse() {
+  final o = api.GoogleSecuritySafebrowsingV5SearchUrlsResponse();
+  buildCounterGoogleSecuritySafebrowsingV5SearchUrlsResponse++;
+  if (buildCounterGoogleSecuritySafebrowsingV5SearchUrlsResponse < 3) {
+    o.cacheDuration = 'foo';
+    o.threats = buildUnnamed7();
+  }
+  buildCounterGoogleSecuritySafebrowsingV5SearchUrlsResponse--;
+  return o;
+}
+
+void checkGoogleSecuritySafebrowsingV5SearchUrlsResponse(
+  api.GoogleSecuritySafebrowsingV5SearchUrlsResponse o,
+) {
+  buildCounterGoogleSecuritySafebrowsingV5SearchUrlsResponse++;
+  if (buildCounterGoogleSecuritySafebrowsingV5SearchUrlsResponse < 3) {
+    unittest.expect(o.cacheDuration!, unittest.equals('foo'));
+    checkUnnamed7(o.threats!);
+  }
+  buildCounterGoogleSecuritySafebrowsingV5SearchUrlsResponse--;
 }
 
 core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
@@ -436,9 +463,57 @@ void checkUnnamed8(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.int buildCounterGoogleSecuritySafebrowsingV5ThreatUrl = 0;
+api.GoogleSecuritySafebrowsingV5ThreatUrl
+buildGoogleSecuritySafebrowsingV5ThreatUrl() {
+  final o = api.GoogleSecuritySafebrowsingV5ThreatUrl();
+  buildCounterGoogleSecuritySafebrowsingV5ThreatUrl++;
+  if (buildCounterGoogleSecuritySafebrowsingV5ThreatUrl < 3) {
+    o.threatTypes = buildUnnamed8();
+    o.url = 'foo';
+  }
+  buildCounterGoogleSecuritySafebrowsingV5ThreatUrl--;
+  return o;
+}
+
+void checkGoogleSecuritySafebrowsingV5ThreatUrl(
+  api.GoogleSecuritySafebrowsingV5ThreatUrl o,
+) {
+  buildCounterGoogleSecuritySafebrowsingV5ThreatUrl++;
+  if (buildCounterGoogleSecuritySafebrowsingV5ThreatUrl < 3) {
+    checkUnnamed8(o.threatTypes!);
+    unittest.expect(o.url!, unittest.equals('foo'));
+  }
+  buildCounterGoogleSecuritySafebrowsingV5ThreatUrl--;
+}
+
 core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
 
 void checkUnnamed9(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
+
+void checkUnnamed10(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed11() => ['foo', 'foo'];
+
+void checkUnnamed11(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
+
+void checkUnnamed12(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -598,6 +673,31 @@ void main() {
     },
   );
 
+  unittest.group(
+    'obj-schema-GoogleSecuritySafebrowsingV5SearchUrlsResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildGoogleSecuritySafebrowsingV5SearchUrlsResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.GoogleSecuritySafebrowsingV5SearchUrlsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkGoogleSecuritySafebrowsingV5SearchUrlsResponse(od);
+      });
+    },
+  );
+
+  unittest.group('obj-schema-GoogleSecuritySafebrowsingV5ThreatUrl', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleSecuritySafebrowsingV5ThreatUrl();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleSecuritySafebrowsingV5ThreatUrl.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleSecuritySafebrowsingV5ThreatUrl(od);
+    });
+  });
+
   unittest.group('resource-HashListResource', () {
     unittest.test('method--get', () async {
       final mock = HttpServerMock();
@@ -687,10 +787,10 @@ void main() {
     unittest.test('method--batchGet', () async {
       final mock = HttpServerMock();
       final res = api.SafebrowsingApi(mock).hashLists;
-      final arg_names = buildUnnamed7();
+      final arg_names = buildUnnamed9();
       final arg_sizeConstraints_maxDatabaseEntries = 42;
       final arg_sizeConstraints_maxUpdateEntries = 42;
-      final arg_version = buildUnnamed8();
+      final arg_version = buildUnnamed10();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -836,7 +936,7 @@ void main() {
     unittest.test('method--search', () async {
       final mock = HttpServerMock();
       final res = api.SafebrowsingApi(mock).hashes;
-      final arg_hashPrefixes = buildUnnamed9();
+      final arg_hashPrefixes = buildUnnamed11();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -893,6 +993,65 @@ void main() {
       );
       checkGoogleSecuritySafebrowsingV5SearchHashesResponse(
         response as api.GoogleSecuritySafebrowsingV5SearchHashesResponse,
+      );
+    });
+  });
+
+  unittest.group('resource-UrlsResource', () {
+    unittest.test('method--search', () async {
+      final mock = HttpServerMock();
+      final res = api.SafebrowsingApi(mock).urls;
+      final arg_urls = buildUnnamed12();
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 14),
+            unittest.equals('v5/urls:search'),
+          );
+          pathOffset += 14;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(queryMap['urls']!, unittest.equals(arg_urls));
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleSecuritySafebrowsingV5SearchUrlsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.search(urls: arg_urls, $fields: arg_$fields);
+      checkGoogleSecuritySafebrowsingV5SearchUrlsResponse(
+        response as api.GoogleSecuritySafebrowsingV5SearchUrlsResponse,
       );
     });
   });

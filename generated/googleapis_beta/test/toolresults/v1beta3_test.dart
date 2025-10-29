@@ -2031,7 +2031,7 @@ api.TestIssue buildTestIssue() {
     o.severity = 'foo';
     o.stackTrace = buildStackTrace();
     o.type = 'foo';
-    o.warning = buildAny();
+    o.warningMigration = buildAny();
   }
   buildCounterTestIssue--;
   return o;
@@ -2045,7 +2045,7 @@ void checkTestIssue(api.TestIssue o) {
     unittest.expect(o.severity!, unittest.equals('foo'));
     checkStackTrace(o.stackTrace!);
     unittest.expect(o.type!, unittest.equals('foo'));
-    checkAny(o.warning!);
+    checkAny(o.warningMigration!);
   }
   buildCounterTestIssue--;
 }

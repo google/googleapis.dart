@@ -4864,41 +4864,8 @@ class GeolayerdataCommon {
   };
 }
 
-class GeolayerdataGeoViewportHi {
-  core.double? latitude;
-  core.double? longitude;
-
-  GeolayerdataGeoViewportHi({this.latitude, this.longitude});
-
-  GeolayerdataGeoViewportHi.fromJson(core.Map json_)
-    : this(
-        latitude: (json_['latitude'] as core.num?)?.toDouble(),
-        longitude: (json_['longitude'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latitude != null) 'latitude': latitude!,
-    if (longitude != null) 'longitude': longitude!,
-  };
-}
-
-class GeolayerdataGeoViewportLo {
-  core.double? latitude;
-  core.double? longitude;
-
-  GeolayerdataGeoViewportLo({this.latitude, this.longitude});
-
-  GeolayerdataGeoViewportLo.fromJson(core.Map json_)
-    : this(
-        latitude: (json_['latitude'] as core.num?)?.toDouble(),
-        longitude: (json_['longitude'] as core.num?)?.toDouble(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (latitude != null) 'latitude': latitude!,
-    if (longitude != null) 'longitude': longitude!,
-  };
-}
+typedef GeolayerdataGeoViewportHi = $GoogleTypeLatLng;
+typedef GeolayerdataGeoViewportLo = $GoogleTypeLatLng;
 
 /// The viewport for showing this location.
 ///

@@ -47,11 +47,11 @@ export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
 ///
 /// It also provides audit and usage reports of domain.
 class ReportsApi {
-  /// View audit reports for your G Suite domain
+  /// View audit reports for your Google Workspace domain
   static const adminReportsAuditReadonlyScope =
       'https://www.googleapis.com/auth/admin.reports.audit.readonly';
 
-  /// View usage reports for your G Suite domain
+  /// View usage reports for your Google Workspace domain
   static const adminReportsUsageReadonlyScope =
       'https://www.googleapis.com/auth/admin.reports.usage.readonly';
 
@@ -103,7 +103,7 @@ class ActivitiesResource {
   /// [applicationName] - Application name for which the events are to be
   /// retrieved.
   /// Value must have pattern
-  /// `(access_transparency)|(admin)|(calendar)|(chat)|(chrome)|(classroom)|(context_aware_access)|(data_studio)|(drive)|(gcp)|(gmail)|(gplus)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(login)|(meet)|(mobile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)`.
+  /// `(access_evaluation)|(access_transparency)|(admin)|(admin_data_action)|(assignments)|(calendar)|(chat)|(chrome)|(classroom)|(cloud_search)|(contacts)|(context_aware_access)|(data_studio)|(data_migration)|(directory_sync)|(drive)|(gcp)|(gmail)|(gplus)|(graduation)|(groups)|(groups_enterprise)|(jamboard)|(keep)|(ldap)|(login)|(meet)|(meet_hardware)|(mobile)|(profile)|(rules)|(saml)|(token)|(user_accounts)|(vault)|(gemini_in_workspace_apps)|(tasks)|(takeout)`.
   /// Possible string values are:
   /// - "access_transparency" : The Google Workspace Access Transparency
   /// activity reports return information about different types of Access
@@ -165,6 +165,33 @@ class ActivitiesResource {
   /// - "classroom" : The Classroom activity reports return information about
   /// different types of
   /// [Classroom activity events](https://developers.google.com/workspace/admin/reports/v1/appendix/activity/classroom).
+  /// - "assignments" : The assignments application's activity reports return
+  /// information about various types of assignments activity events.
+  /// - "cloud_search" : The Cloud Search application's activity reports return
+  /// information about various types of cloud_search activity events.
+  /// - "tasks" : The Tasks application's activity reports return information
+  /// about various types of Tasks activity events.
+  /// - "data_migration" : The Data Migration application's activity reports
+  /// return information about various types of data migration activity events.
+  /// - "meet_hardware" : The Meet Hardware application's activity reports
+  /// return information about various types of Meet Hardware activity events.
+  /// - "directory_sync" : The Directory Sync application's activity reports
+  /// return information about various types of Directory Sync activity events.
+  /// - "ldap" : The ldap application's activity reports return information
+  /// about various types of ldap activity events.
+  /// - "profile" : The Profile application's activity reports return
+  /// information about various types of Profile activity events.
+  /// - "access_evaluation" : The Access Evaluation activity reports return
+  /// information about various types of Access Evaluation activity events.
+  /// - "admin_data_action" : The Admin Data Action application's activity
+  /// reports return information about various types of Admin Data Action
+  /// activity events.
+  /// - "contacts" : The Contacts application's activity reports return
+  /// information about various types of Contacts activity events.
+  /// - "takeout" : The Takeout application's activity reports return
+  /// information about various types of Takeout activity events.
+  /// - "graduation" : The Graduation application's activity reports return
+  /// information about various types of Graduation activity events.
   ///
   /// [actorIpAddress] - The Internet Protocol (IP) Address of host where the
   /// event was performed. This is an additional way to filter a report's
@@ -267,6 +294,50 @@ class ActivitiesResource {
   /// getting the next page of the report, enter the `nextPageToken` value in
   /// the `pageToken` query string.
   ///
+  /// [resourceDetailsFilter] - Optional. The `resourceDetailsFilter` query
+  /// string is an AND separated list composed of \[Resource
+  /// Details\](#resourcedetails) fields manipulated by relational operators.
+  /// Resource Details Filters are in the form
+  /// `{resourceDetails.field1}{relational operator}{field1 value} AND
+  /// {resourceDetails.field2}{relational operator}{field2 value}...` All the
+  /// inner fields are traversed using the `.` operator, as shown in the
+  /// following example: ``` resourceDetails.id = "resourceId" AND
+  /// resourceDetails.appliedLabels.id = "appliedLabelId" AND
+  /// resourceDetails.appliedLabels.fieldValue.id = "fieldValueId" ```
+  /// `resourceDetailsFilter` query supports these relational operators: *
+  /// `=`—'equal to'. * `!=`—'not equal to'. * `:`—'exists'. This is used for
+  /// filtering on repeated fields. \[`FieldValue`\](#fieldvalue) types that are
+  /// repeated in nature uses `exists` operator for filtering. The following
+  /// \[`FieldValue`\](#fieldvalue) types are repeated: *
+  /// \[`TextListValue`\](#textlistvalue) *
+  /// \[`SelectionListValue`\](#selectionlistvalue) *
+  /// \[`UserListValue`\](#userlistvalue) For example, in the following filter,
+  /// \[`SelectionListValue`\](#selectionlistvalue), is a repeated field. The
+  /// filter checks whether \[`SelectionListValue`\](#selectionlistvalue)
+  /// contains `selection_id`: ``` resourceDetails.id = "resourceId" AND
+  /// resourceDetails.appliedLabels.id = "appliedLabelId" AND
+  /// resourceDetails.appliedLabels.fieldValue.id = "fieldValueId" AND
+  /// resourceDetails.appliedLabels.fieldValue.type = "SELECTION_LIST_VALUE" AND
+  /// resourceDetails.appliedLabels.fieldValue.selectionListValue.id: "id" ```
+  /// **Usage** ``` GET...&resourceDetailsFilter=resourceDetails.id =
+  /// "resourceId" AND resourceDetails.appliedLabels.id = "appliedLabelId"
+  /// GET...&resourceDetailsFilter=resourceDetails.id=%22resourceId%22%20AND%20resourceDetails.appliedLabels.id=%22appliedLabelId%22
+  /// ``` **Note the following**: * You must URL encode the query string before
+  /// sending the request. * The API supports a maximum of 5 fields separated by
+  /// the AND operator. - When filtering on deeper levels (e.g.,
+  /// \[`AppliedLabel`\](#appliedlabel), \[`FieldValue`\](#fieldvalue)), the IDs
+  /// of all preceding levels in the hierarchy must be included in the filter.
+  /// For example: Filtering on \[`FieldValue`\](#fieldvalue) requires
+  /// \[`AppliedLabel`\](#appliedlabel) ID and resourceDetails ID to be present.
+  /// *Sample Query*: ``` resourceDetails.id = "resourceId" AND
+  /// resourceDetails.appliedLabels.id = "appliedLabelId" AND
+  /// resourceDetails.appliedLabels.fieldValue.id = "fieldValueId" ``` *
+  /// Filtering on inner \[`FieldValue`\](#fieldvalue) types like
+  /// `longTextValue` and `textValue` requires
+  /// `resourceDetails.appliedLabels.fieldValue.type` to be present. * Only
+  /// Filtering on a single \[`AppliedLabel`\](#appliedlabel) id and
+  /// \[`FieldValue`\](#fieldvalue) id is supported.
+  ///
   /// [startTime] - Sets the beginning of the range of time shown in the report.
   /// The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z.
   /// The report returns all activities from `startTime` until `endTime`. The
@@ -299,6 +370,7 @@ class ActivitiesResource {
     core.int? maxResults,
     core.String? orgUnitID,
     core.String? pageToken,
+    core.String? resourceDetailsFilter,
     core.String? startTime,
     core.String? $fields,
   }) async {
@@ -312,6 +384,8 @@ class ActivitiesResource {
       if (maxResults != null) 'maxResults': ['${maxResults}'],
       if (orgUnitID != null) 'orgUnitID': [orgUnitID],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (resourceDetailsFilter != null)
+        'resourceDetailsFilter': [resourceDetailsFilter],
       if (startTime != null) 'startTime': [startTime],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1804,7 +1878,7 @@ class FieldValueSelectionValue {
 }
 
 /// Setting a text list value.
-typedef FieldValueTextListValue = $Shared05;
+typedef FieldValueTextListValue = $Shared09;
 
 /// Setting a user list value by selecting multiple users.
 class FieldValueUserListValue {

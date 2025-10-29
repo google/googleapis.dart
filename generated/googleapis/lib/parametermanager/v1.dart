@@ -126,9 +126,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -347,8 +347,10 @@ class ProjectsLocationsParametersResource {
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListParameters` call. Provide this to retrieve the subsequent page. When
+  /// paginating, all other parameters provided to `ListParameters` must match
+  /// the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -589,7 +591,7 @@ class ProjectsLocationsParametersVersionsResource {
   /// returned.
   /// Possible string values are:
   /// - "VIEW_UNSPECIFIED" : The default / unset value. The API will default to
-  /// the FULL view..
+  /// the FULL view.
   /// - "BASIC" : Include only the metadata for the resource.
   /// - "FULL" : Include metadata & other relevant payload data as well. This is
   /// the default view.
@@ -642,8 +644,10 @@ class ProjectsLocationsParametersVersionsResource {
   /// [pageSize] - Optional. Requested page size. Server may return fewer items
   /// than requested. If unspecified, server will pick an appropriate default.
   ///
-  /// [pageToken] - Optional. A token identifying a page of results the server
-  /// should return.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListParameterVersions` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListParameterVersions` must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

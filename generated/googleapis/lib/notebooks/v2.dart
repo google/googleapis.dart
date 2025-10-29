@@ -120,9 +120,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. A list of extra location types that
-  /// should be used as conditions for controlling the visibility of the
-  /// locations.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -633,7 +633,8 @@ class ProjectsLocationsInstancesResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The name of this notebook instance. Format:
+  /// [name] - Output only. Identifier. The name of this notebook instance.
+  /// Format:
   /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
@@ -1323,6 +1324,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1338,12 +1347,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1388,12 +1400,14 @@ class AcceleratorConfig {
   /// - "NVIDIA_H100_80GB" : Accelerator type is Nvidia Tesla H100 - 80GB.
   /// - "NVIDIA_H100_MEGA_80GB" : Accelerator type is Nvidia Tesla H100 - MEGA
   /// 80GB.
+  /// - "NVIDIA_H200_141GB" : Accelerator type is Nvidia Tesla H200 - 141GB.
   /// - "NVIDIA_TESLA_T4_VWS" : Accelerator type is NVIDIA Tesla T4 Virtual
   /// Workstations.
   /// - "NVIDIA_TESLA_P100_VWS" : Accelerator type is NVIDIA Tesla P100 Virtual
   /// Workstations.
   /// - "NVIDIA_TESLA_P4_VWS" : Accelerator type is NVIDIA Tesla P4 Virtual
   /// Workstations.
+  /// - "NVIDIA_B200" : Accelerator type is NVIDIA B200.
   core.String? type;
 
   AcceleratorConfig({this.coreCount, this.type});
@@ -1564,6 +1578,7 @@ class BootDisk {
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
   /// - "PD_EXTREME" : Extreme persistent disk type.
+  /// - "HYPERDISK_BALANCED" : Hyperdisk Balanced persistent disk type.
   core.String? diskType;
 
   /// Input only.
@@ -1656,7 +1671,7 @@ class CheckAuthorizationResponse {
 }
 
 /// Response for checking if a notebook instance is upgradeable.
-typedef CheckInstanceUpgradabilityResponse = $Response;
+typedef CheckInstanceUpgradabilityResponse = $Response01;
 
 /// A set of Confidential Instance options.
 class ConfidentialInstanceConfig {
@@ -1812,6 +1827,7 @@ class DataDisk {
   /// - "PD_SSD" : SSD persistent disk type.
   /// - "PD_BALANCED" : Balanced persistent disk type.
   /// - "PD_EXTREME" : Extreme persistent disk type.
+  /// - "HYPERDISK_BALANCED" : Hyperdisk Balanced persistent disk type.
   core.String? diskType;
 
   /// Input only.
@@ -1824,7 +1840,18 @@ class DataDisk {
   /// Optional.
   core.String? kmsKey;
 
-  DataDisk({this.diskEncryption, this.diskSizeGb, this.diskType, this.kmsKey});
+  /// The resource policies to apply to the data disk.
+  ///
+  /// Optional.
+  core.List<core.String>? resourcePolicies;
+
+  DataDisk({
+    this.diskEncryption,
+    this.diskSizeGb,
+    this.diskType,
+    this.kmsKey,
+    this.resourcePolicies,
+  });
 
   DataDisk.fromJson(core.Map json_)
     : this(
@@ -1832,6 +1859,10 @@ class DataDisk {
         diskSizeGb: json_['diskSizeGb'] as core.String?,
         diskType: json_['diskType'] as core.String?,
         kmsKey: json_['kmsKey'] as core.String?,
+        resourcePolicies:
+            (json_['resourcePolicies'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1839,6 +1870,7 @@ class DataDisk {
     if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
     if (diskType != null) 'diskType': diskType!,
     if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (resourcePolicies != null) 'resourcePolicies': resourcePolicies!,
   };
 }
 
@@ -2119,6 +2151,11 @@ class GceSetup {
   /// Optional.
   GPUDriverConfig? gpuDriverConfig;
 
+  /// The unique ID of the Compute Engine instance resource.
+  ///
+  /// Output only.
+  core.String? instanceId;
+
   /// The machine type of the VM instance.
   ///
   /// https://cloud.google.com/compute/docs/machine-resource
@@ -2185,6 +2222,7 @@ class GceSetup {
     this.disablePublicIp,
     this.enableIpForwarding,
     this.gpuDriverConfig,
+    this.instanceId,
     this.machineType,
     this.metadata,
     this.minCpuPlatform,
@@ -2243,6 +2281,7 @@ class GceSetup {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        instanceId: json_['instanceId'] as core.String?,
         machineType: json_['machineType'] as core.String?,
         metadata: (json_['metadata'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -2299,6 +2338,7 @@ class GceSetup {
     if (disablePublicIp != null) 'disablePublicIp': disablePublicIp!,
     if (enableIpForwarding != null) 'enableIpForwarding': enableIpForwarding!,
     if (gpuDriverConfig != null) 'gpuDriverConfig': gpuDriverConfig!,
+    if (instanceId != null) 'instanceId': instanceId!,
     if (machineType != null) 'machineType': machineType!,
     if (metadata != null) 'metadata': metadata!,
     if (minCpuPlatform != null) 'minCpuPlatform': minCpuPlatform!,
@@ -2490,9 +2530,9 @@ class Instance {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// The name of this notebook instance.
+  /// Identifier.
   ///
-  /// Format:
+  /// The name of this notebook instance. Format:
   /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
   ///
   /// Output only.
@@ -2719,7 +2759,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2732,11 +2784,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3464,7 +3521,7 @@ class UpgradeHistoryEntry {
 typedef UpgradeInstanceRequest = $Empty;
 
 /// Request for upgrading a notebook instance from within the VM
-typedef UpgradeInstanceSystemRequest = $Request12;
+typedef UpgradeInstanceSystemRequest = $Request11;
 
 /// Definition of a custom Compute Engine virtual machine image for starting a
 /// notebook instance with the environment installed directly on the VM.

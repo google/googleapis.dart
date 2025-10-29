@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250906",
+    "revision": "20260119",
     "rootUrl": "https://looker.googleapis.com/",
     "servicePath": "",
     "title": "Looker (Google Cloud core) API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -458,6 +458,34 @@
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
                                     ]
+                                },
+                                "undelete": {
+                                    "description": "Undeletes Looker instance.",
+                                    "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/instances/{instancesId}:undelete",
+                                    "httpMethod": "POST",
+                                    "id": "looker.projects.locations.instances.undelete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Format: projects/{project}/locations/{location}/instances/{instance}",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:undelete",
+                                    "request": {
+                                        "$ref": "UndeleteInstanceRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Operation"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
                                 }
                             },
                             "resources": {
@@ -697,6 +725,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -733,6 +766,32 @@
             "description": "The request message for Operations.CancelOperation.",
             "id": "CancelOperationRequest",
             "properties": {},
+            "type": "object"
+        },
+        "ControlledEgressConfig": {
+            "description": "Controlled egress configuration.",
+            "id": "ControlledEgressConfig",
+            "properties": {
+                "egressFqdns": {
+                    "description": "Optional. List of fully qualified domain names to be added to the allowlist for outbound traffic.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                "marketplaceEnabled": {
+                    "description": "Optional. Whether marketplace is enabled.",
+                    "type": "boolean"
+                },
+                "webProxyIps": {
+                    "description": "Output only. The list of IP addresses used by Secure Web Proxy for outbound traffic.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                }
+            },
             "type": "object"
         },
         "CustomDomain": {
@@ -954,6 +1013,10 @@
                     "$ref": "AdminSettings",
                     "description": "Looker Instance Admin settings."
                 },
+                "catalogIntegrationEnabled": {
+                    "description": "Optional. Indicates whether catalog integration is enabled for the Looker instance.",
+                    "type": "boolean"
+                },
                 "classType": {
                     "description": "Optional. Storage class of the instance.",
                     "enum": [
@@ -971,6 +1034,14 @@
                 "consumerNetwork": {
                     "description": "Network name in the consumer project. Format: `projects/{project}/global/networks/{network}`. Note that the consumer network may be in a different GCP project than the consumer project that is hosting the Looker Instance.",
                     "type": "string"
+                },
+                "controlledEgressConfig": {
+                    "$ref": "ControlledEgressConfig",
+                    "description": "Optional. Controlled egress configuration."
+                },
+                "controlledEgressEnabled": {
+                    "description": "Optional. Whether controlled egress is enabled on the Looker instance.",
+                    "type": "boolean"
                 },
                 "createTime": {
                     "description": "Output only. The time when the Looker instance provisioning was first requested.",
@@ -1050,6 +1121,10 @@
                     "$ref": "OAuthConfig",
                     "description": "Looker instance OAuth login settings."
                 },
+                "periodicExportConfig": {
+                    "$ref": "PeriodicExportConfig",
+                    "description": "Optional. Configuration for periodic export."
+                },
                 "platformEdition": {
                     "description": "Platform edition.",
                     "enum": [
@@ -1112,6 +1187,23 @@
                     "readOnly": true,
                     "type": "boolean"
                 },
+                "softDeleteReason": {
+                    "description": "Output only. The reason for the instance being in a soft-deleted state.",
+                    "enum": [
+                        "SOFT_DELETE_REASON_UNSPECIFIED",
+                        "BILLING_ACCOUNT_ISSUE",
+                        "TRIAL_EXPIRED",
+                        "CUSTOMER_REQUEST"
+                    ],
+                    "enumDescriptions": [
+                        "Soft delete reason is unspecified. This is the default value.",
+                        "Instance is soft deleted due to billing account issues.",
+                        "Instance is soft deleted due to trial expiration.",
+                        "Instance is soft deleted by the customer."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
                 "state": {
                     "description": "Output only. The state of the instance.",
                     "enum": [
@@ -1136,6 +1228,12 @@
                         "Instance is being exported.",
                         "Instance is importing data."
                     ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "suspendedTime": {
+                    "description": "Output only. The time when the Looker instance was suspended (soft deleted).",
+                    "format": "google-datetime",
                     "readOnly": true,
                     "type": "string"
                 },
@@ -1279,6 +1377,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "Operation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }
@@ -1458,6 +1563,25 @@
             },
             "type": "object"
         },
+        "PeriodicExportConfig": {
+            "description": "Configuration for periodic export.",
+            "id": "PeriodicExportConfig",
+            "properties": {
+                "gcsUri": {
+                    "description": "Required. Cloud Storage bucket URI for periodic export. Format: gs://{bucket_name}",
+                    "type": "string"
+                },
+                "kmsKey": {
+                    "description": "Required. Name of the CMEK key in KMS. Format: projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}",
+                    "type": "string"
+                },
+                "startTime": {
+                    "$ref": "TimeOfDay",
+                    "description": "Required. Time in UTC to start the periodic export job."
+                }
+            },
+            "type": "object"
+        },
         "PscConfig": {
             "description": "Information for Private Service Connect (PSC) setup for a Looker instance.",
             "id": "PscConfig",
@@ -1601,6 +1725,12 @@
                     "type": "integer"
                 }
             },
+            "type": "object"
+        },
+        "UndeleteInstanceRequest": {
+            "description": "Request options for undeleting an instance.",
+            "id": "UndeleteInstanceRequest",
+            "properties": {},
             "type": "object"
         },
         "UserMetadata": {

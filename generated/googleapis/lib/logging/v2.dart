@@ -560,9 +560,9 @@ class BillingAccountsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^billingAccounts/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -1646,6 +1646,14 @@ class BillingAccountsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1661,12 +1669,15 @@ class BillingAccountsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3392,9 +3403,9 @@ class FoldersLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^folders/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -4859,6 +4870,14 @@ class FoldersLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -4874,12 +4893,15 @@ class FoldersLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5808,9 +5830,9 @@ class LocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^\[^/\]+/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -6962,6 +6984,14 @@ class LocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -6977,12 +7007,15 @@ class LocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -7712,9 +7745,9 @@ class OrganizationsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -9179,6 +9212,14 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -9194,12 +9235,15 @@ class OrganizationsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -10489,9 +10533,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like "displayName=tokyo", and is
@@ -11956,6 +12000,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to true, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field.This can only be true when
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
+  /// will result in an UNIMPLEMENTED error if set unless explicitly documented
+  /// otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -11971,12 +12023,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -14666,14 +14721,14 @@ class ListLogEntriesRequest {
   /// A filter that chooses which log entries to return.
   ///
   /// For more information, see Logging query language
-  /// (https://cloud.google.com/logging/docs/view/logging-query-language).Only
+  /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language).Only
   /// log entries that match the filter are returned. An empty filter matches
   /// all log entries in the resources listed in resource_names. Referencing a
   /// parent resource that is not listed in resource_names will cause the filter
   /// to return no results. The maximum length of a filter is 20,000
   /// characters.To make queries faster, you can make the filter more selective
   /// by using restrictions on indexed fields
-  /// (https://cloud.google.com/logging/docs/view/logging-query-language#indexed-fields)
+  /// (https://{$universe.dns_names.final_documentation_domain}/logging/docs/view/logging-query-language#indexed-fields)
   /// as well as limit the time range of the query by adding range restrictions
   /// on the timestamp field.
   ///
@@ -14967,7 +15022,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// ListOperationsRequest.return_partial_success and reads across collections.
+  /// For example, when attempting to list all resources across all supported
+  /// locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -14980,11 +15047,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -15332,10 +15404,18 @@ class LogEntry {
   /// AppHub application metadata associated with the destination application.
   ///
   /// This is only populated if the log represented "edge"-like data (such as
-  /// for VPC flow logs) with a source and destination.
+  /// for VPC flow logs) with a destination.
   ///
   /// Output only.
   AppHub? apphubDestination;
+
+  /// AppHub application metadata associated with the source application.
+  ///
+  /// This is only populated if the log represented "edge"-like data (such as
+  /// for VPC flow logs) with a source.
+  ///
+  /// Output only.
+  AppHub? apphubSource;
 
   /// The Error Reporting (https://cloud.google.com/error-reporting) error
   /// groups associated with this LogEntry.
@@ -15380,12 +15460,12 @@ class LogEntry {
   ///
   /// The labels can be user-defined or system-defined.User-defined labels are
   /// arbitrary key, value pairs that you can use to classify
-  /// logs.System-defined labels are defined by GCP services for platform logs.
-  /// They have two components - a service namespace component and the attribute
-  /// name. For example: compute.googleapis.com/resource_name.Cloud Logging
-  /// truncates label keys that exceed 512 B and label values that exceed 64 KB
-  /// upon their associated log entry being written. The truncation is indicated
-  /// by an ellipsis at the end of the character string.
+  /// logs.System-defined labels are defined by cloud services for platform
+  /// logs. They have two components - a service namespace component and the
+  /// attribute name. For example: compute.googleapis.com/resource_name.Cloud
+  /// Logging truncates label keys that exceed 512 B and label values that
+  /// exceed 64 KB upon their associated log entry being written. The truncation
+  /// is indicated by an ellipsis at the end of the character string.
   ///
   /// Optional.
   core.Map<core.String, core.String>? labels;
@@ -15476,27 +15556,25 @@ class LogEntry {
   /// Optional.
   LogEntrySourceLocation? sourceLocation;
 
-  /// The ID of the Cloud Trace (https://cloud.google.com/trace) span associated
-  /// with the current operation in which the log is being written.
+  /// The ID of the Cloud Trace (https://docs.cloud.google.com/trace/docs) span
+  /// associated with the current operation in which the log is being written.A
+  /// Span
+  /// (https://docs.cloud.google.com/trace/docs/reference/v2/rest/v2/projects.traces/batchWrite#Span)
+  /// represents a single operation within a trace.
   ///
-  /// For example, if a span has the REST resource name of
-  /// "projects/some-project/traces/some-trace/spans/some-span-id", then the
-  /// span_id field is "some-span-id".A Span
-  /// (https://cloud.google.com/trace/docs/reference/v2/rest/v2/projects.traces/batchWrite#Span)
-  /// represents a single operation within a trace. Whereas a trace may involve
-  /// multiple different microservices running on multiple different machines, a
-  /// span generally corresponds to a single logical operation being performed
-  /// in a single instance of a microservice on one specific machine. Spans are
-  /// the nodes within the tree that is a trace.Applications that are
-  /// instrumented for tracing (https://cloud.google.com/trace/docs/setup) will
-  /// generally assign a new, unique span ID on each incoming request. It is
-  /// also common to create and record additional spans corresponding to
-  /// internal processing elements as well as issuing requests to
-  /// dependencies.The span ID is expected to be a 16-character, hexadecimal
-  /// encoding of an 8-byte array and should not be zero. It should be unique
-  /// within the trace and should, ideally, be generated in a manner that is
-  /// uniformly random.Example values: 000000000000004a 7a2190356c3fc94b
-  /// 0000f00300090021 d39223e101960076
+  /// Whereas a trace may involve multiple different microservices running on
+  /// multiple different machines, a span generally corresponds to a single
+  /// logical operation being performed in a single instance of a microservice
+  /// on one specific machine. Spans are the nodes within the tree that is a
+  /// trace.Applications that are instrumented for tracing
+  /// (https://docs.cloud.google.com/trace/docs/setup) will generally assign a
+  /// new, unique span ID on each incoming request. It is also common to create
+  /// and record additional spans corresponding to internal processing elements
+  /// as well as issuing requests to dependencies.The span ID is expected to be
+  /// a 16-character, hexadecimal encoding of an 8-byte array and should not be
+  /// zero. It should be unique within the trace and should, ideally, be
+  /// generated in a manner that is uniformly random.Example values:
+  /// 000000000000004a 7a2190356c3fc94b 0000f00300090021 d39223e101960076
   ///
   /// Optional.
   core.String? spanId;
@@ -15525,15 +15603,18 @@ class LogEntry {
   /// Optional.
   core.String? timestamp;
 
-  /// The REST resource name of the trace being written to Cloud Trace
-  /// (https://cloud.google.com/trace) in association with this log entry.
+  /// The trace ID being written to Cloud Trace
+  /// (https://docs.cloud.google.com/trace/docs) in association with this log
+  /// entry.
   ///
   /// For example, if your trace data is stored in the Cloud project
   /// "my-trace-project" and if the service that is creating the log entry
   /// receives a trace header that includes the trace ID "12345", then the
-  /// service should use "projects/my-trace-project/traces/12345".The trace
-  /// field provides the link between logs and traces. By using this field, you
-  /// can navigate from a log entry to a trace.
+  /// service should use "12345".The REST resource name of the trace is also
+  /// supported, but using this format is not recommended. An example trace REST
+  /// resource name is similar to "projects/my-trace-project/traces/12345".The
+  /// trace field provides the link between logs and traces. By using this
+  /// field, you can navigate from a log entry to a trace.
   ///
   /// Optional.
   core.String? trace;
@@ -15552,6 +15633,7 @@ class LogEntry {
   LogEntry({
     this.apphub,
     this.apphubDestination,
+    this.apphubSource,
     this.errorGroups,
     this.httpRequest,
     this.insertId,
@@ -15586,6 +15668,12 @@ class LogEntry {
                 ? AppHub.fromJson(
                   json_['apphubDestination']
                       as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        apphubSource:
+            json_.containsKey('apphubSource')
+                ? AppHub.fromJson(
+                  json_['apphubSource'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         errorGroups:
@@ -15658,6 +15746,7 @@ class LogEntry {
   core.Map<core.String, core.dynamic> toJson() => {
     if (apphub != null) 'apphub': apphub!,
     if (apphubDestination != null) 'apphubDestination': apphubDestination!,
+    if (apphubSource != null) 'apphubSource': apphubSource!,
     if (errorGroups != null) 'errorGroups': errorGroups!,
     if (httpRequest != null) 'httpRequest': httpRequest!,
     if (insertId != null) 'insertId': insertId!,

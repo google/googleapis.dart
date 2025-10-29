@@ -126,9 +126,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -663,6 +663,52 @@ class ProjectsLocationsInstancesResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Pause the standby instance (replica).
+  ///
+  /// WARNING: This operation makes the standby instance's NFS filesystem
+  /// writable. Any data written to the standby instance while paused will be
+  /// lost when the replica is resumed or promoted.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the instance, in the format
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> pauseReplica(
+    PauseReplicaRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':pauseReplica';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
   /// Promote the standby instance (replica).
   ///
   /// [request] - The metadata request object.
@@ -741,6 +787,51 @@ class ProjectsLocationsInstancesResource {
     };
 
     final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':restore';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Resume the standby instance (replica).
+  ///
+  /// WARNING: Any data written to the standby instance while paused will be
+  /// lost when the replica is resumed.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the instance, in the format
+  /// `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> resumeReplica(
+    ResumeReplicaRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':resumeReplica';
 
     final response_ = await _requester.request(
       url_,
@@ -1178,6 +1269,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1193,12 +1292,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1411,6 +1513,28 @@ class Backup {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// Directory Services configuration for Kerberos-based authentication.
+class DirectoryServicesConfig {
+  /// Configuration for LDAP servers.
+  LdapConfig? ldap;
+
+  DirectoryServicesConfig({this.ldap});
+
+  DirectoryServicesConfig.fromJson(core.Map json_)
+    : this(
+        ldap:
+            json_.containsKey('ldap')
+                ? LdapConfig.fromJson(
+                  json_['ldap'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (ldap != null) 'ldap': ldap!,
+  };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1445,11 +1569,18 @@ class FileShareConfig {
   /// that this file share has been restored from.
   core.String? sourceBackup;
 
+  /// The resource name of the BackupDR backup, in the format
+  /// `projects/{project_id}/locations/{location_id}/backupVaults/{backupvault_id}/dataSources/{datasource_id}/backups/{backup_id}`,
+  /// TODO (b/443690479) - Remove visibility restrictions once the feature is
+  /// ready
+  core.String? sourceBackupdrBackup;
+
   FileShareConfig({
     this.capacityGb,
     this.name,
     this.nfsExportOptions,
     this.sourceBackup,
+    this.sourceBackupdrBackup,
   });
 
   FileShareConfig.fromJson(core.Map json_)
@@ -1465,6 +1596,7 @@ class FileShareConfig {
                 )
                 .toList(),
         sourceBackup: json_['sourceBackup'] as core.String?,
+        sourceBackupdrBackup: json_['sourceBackupdrBackup'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1472,6 +1604,8 @@ class FileShareConfig {
     if (name != null) 'name': name!,
     if (nfsExportOptions != null) 'nfsExportOptions': nfsExportOptions!,
     if (sourceBackup != null) 'sourceBackup': sourceBackup!,
+    if (sourceBackupdrBackup != null)
+      'sourceBackupdrBackup': sourceBackupdrBackup!,
   };
 }
 
@@ -1513,7 +1647,8 @@ class IOPSPerTB {
 
 /// A Filestore instance.
 class Instance {
-  /// The increase/decrease capacity step size in GB.
+  /// The incremental increase or decrease in capacity, designated in some
+  /// number of GB.
   ///
   /// Output only.
   core.String? capacityStepSizeGb;
@@ -1544,6 +1679,13 @@ class Instance {
   /// The description of the instance (2048 characters or less).
   core.String? description;
 
+  /// Directory Services configuration for Kerberos-based authentication.
+  ///
+  /// Should only be set if protocol is "NFS_V4_1".
+  ///
+  /// Optional.
+  DirectoryServicesConfig? directoryServices;
+
   /// Server-specified ETag for the instance resource to prevent simultaneous
   /// updates from overwriting each other.
   core.String? etag;
@@ -1559,12 +1701,12 @@ class Instance {
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
 
-  /// The max capacity of the instance in GB.
+  /// The maximum capacity of the instance in GB.
   ///
   /// Output only.
   core.String? maxCapacityGb;
 
-  /// The min capacity of the instance in GB.
+  /// The minimum capacity of the instance in GB.
   ///
   /// Output only.
   core.String? minCapacityGb;
@@ -1693,6 +1835,7 @@ class Instance {
     this.deletionProtectionEnabled,
     this.deletionProtectionReason,
     this.description,
+    this.directoryServices,
     this.etag,
     this.fileShares,
     this.kmsKeyName,
@@ -1725,6 +1868,13 @@ class Instance {
         deletionProtectionReason:
             json_['deletionProtectionReason'] as core.String?,
         description: json_['description'] as core.String?,
+        directoryServices:
+            json_.containsKey('directoryServices')
+                ? DirectoryServicesConfig.fromJson(
+                  json_['directoryServices']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         etag: json_['etag'] as core.String?,
         fileShares:
             (json_['fileShares'] as core.List?)
@@ -1794,6 +1944,7 @@ class Instance {
     if (deletionProtectionReason != null)
       'deletionProtectionReason': deletionProtectionReason!,
     if (description != null) 'description': description!,
+    if (directoryServices != null) 'directoryServices': directoryServices!,
     if (etag != null) 'etag': etag!,
     if (fileShares != null) 'fileShares': fileShares!,
     if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
@@ -1813,6 +1964,62 @@ class Instance {
     if (suspensionReasons != null) 'suspensionReasons': suspensionReasons!,
     if (tags != null) 'tags': tags!,
     if (tier != null) 'tier': tier!,
+  };
+}
+
+/// LdapConfig contains all the parameters for connecting to LDAP servers.
+class LdapConfig {
+  /// The LDAP domain name in the format of `my-domain.com`.
+  ///
+  /// Required.
+  core.String? domain;
+
+  /// The groups Organizational Unit (OU) is optional.
+  ///
+  /// This parameter is a hint to allow faster lookup in the LDAP namespace. In
+  /// case that this parameter is not provided, Filestore instance will query
+  /// the whole LDAP namespace.
+  ///
+  /// Optional.
+  core.String? groupsOu;
+
+  /// The servers names are used for specifying the LDAP servers names.
+  ///
+  /// The LDAP servers names can come with two formats: 1. DNS name, for
+  /// example: `ldap.example1.com`, `ldap.example2.com`. 2. IP address, for
+  /// example: `10.0.0.1`, `10.0.0.2`, `10.0.0.3`. All servers names must be in
+  /// the same format: either all DNS names or all IP addresses.
+  ///
+  /// Required.
+  core.List<core.String>? servers;
+
+  /// The users Organizational Unit (OU) is optional.
+  ///
+  /// This parameter is a hint to allow faster lookup in the LDAP namespace. In
+  /// case that this parameter is not provided, Filestore instance will query
+  /// the whole LDAP namespace.
+  ///
+  /// Optional.
+  core.String? usersOu;
+
+  LdapConfig({this.domain, this.groupsOu, this.servers, this.usersOu});
+
+  LdapConfig.fromJson(core.Map json_)
+    : this(
+        domain: json_['domain'] as core.String?,
+        groupsOu: json_['groupsOu'] as core.String?,
+        servers:
+            (json_['servers'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        usersOu: json_['usersOu'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (domain != null) 'domain': domain!,
+    if (groupsOu != null) 'groupsOu': groupsOu!,
+    if (servers != null) 'servers': servers!,
+    if (usersOu != null) 'usersOu': usersOu!,
   };
 }
 
@@ -1947,7 +2154,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -1960,11 +2179,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -2037,8 +2261,6 @@ class NetworkConfig {
 
   /// Internet protocol versions for which the instance has IP addresses
   /// assigned.
-  ///
-  /// For this version, only MODE_IPV4 is supported.
   core.List<core.String>? modes;
 
   /// The name of the Google Compute Engine
@@ -2275,6 +2497,9 @@ class Operation {
   };
 }
 
+/// PauseReplicaRequest pauses a Filestore standby instance (replica).
+typedef PauseReplicaRequest = $Empty;
+
 /// Used for setting the performance configuration.
 ///
 /// If the user doesn't specify PerformanceConfig, automatically provision the
@@ -2333,27 +2558,27 @@ class PerformanceConfig {
 /// The enforced performance limits, calculated from the instance's performance
 /// configuration.
 class PerformanceLimits {
-  /// The max IOPS.
+  /// The maximum IOPS.
   ///
   /// Output only.
   core.String? maxIops;
 
-  /// The max read IOPS.
+  /// The maximum read IOPS.
   ///
   /// Output only.
   core.String? maxReadIops;
 
-  /// The max read throughput in bytes per second.
+  /// The maximum read throughput in bytes per second.
   ///
   /// Output only.
   core.String? maxReadThroughputBps;
 
-  /// The max write IOPS.
+  /// The maximum write IOPS.
   ///
   /// Output only.
   core.String? maxWriteIops;
 
-  /// The max write throughput in bytes per second.
+  /// The maximum write throughput in bytes per second.
   ///
   /// Output only.
   core.String? maxWriteThroughputBps;
@@ -2437,7 +2662,10 @@ class ReplicaConfig {
   /// Output only.
   core.String? lastActiveSyncTime;
 
-  /// The peer instance.
+  /// The name of the source instance for the replica, in the format
+  /// `projects/{project}/locations/{location}/instances/{instance}`.
+  ///
+  /// This field is required when creating a replica.
   ///
   /// Optional.
   core.String? peerInstance;
@@ -2498,7 +2726,9 @@ class ReplicaConfig {
   };
 }
 
-/// Replication specifications.
+/// The configuration used to replicate an instance.
+///
+/// Optional.
 class Replication {
   /// Replication configuration for the replica instance associated with this
   /// instance.
@@ -2509,6 +2739,8 @@ class Replication {
   core.List<ReplicaConfig>? replicas;
 
   /// The replication role.
+  ///
+  /// When creating a new replica, this field must be set to `STANDBY`.
   ///
   /// Optional.
   /// Possible string values are:
@@ -2566,6 +2798,9 @@ class RestoreInstanceRequest {
     if (sourceBackup != null) 'sourceBackup': sourceBackup!,
   };
 }
+
+/// ResumeReplicaRequest resumes a Filestore standby instance (replica).
+typedef ResumeReplicaRequest = $Empty;
 
 /// RevertInstanceRequest reverts the given instance's file share to the
 /// specified snapshot.

@@ -449,6 +449,28 @@ void checkExpr(api.Expr o) {
   buildCounterExpr--;
 }
 
+core.int buildCounterFirewallPolicyRuleOperationMetadata = 0;
+api.FirewallPolicyRuleOperationMetadata
+buildFirewallPolicyRuleOperationMetadata() {
+  final o = api.FirewallPolicyRuleOperationMetadata();
+  buildCounterFirewallPolicyRuleOperationMetadata++;
+  if (buildCounterFirewallPolicyRuleOperationMetadata < 3) {
+    o.allocatedPriority = 42;
+  }
+  buildCounterFirewallPolicyRuleOperationMetadata--;
+  return o;
+}
+
+void checkFirewallPolicyRuleOperationMetadata(
+  api.FirewallPolicyRuleOperationMetadata o,
+) {
+  buildCounterFirewallPolicyRuleOperationMetadata++;
+  if (buildCounterFirewallPolicyRuleOperationMetadata < 3) {
+    unittest.expect(o.allocatedPriority!, unittest.equals(42));
+  }
+  buildCounterFirewallPolicyRuleOperationMetadata--;
+}
+
 core.List<api.Binding> buildUnnamed8() => [buildBinding(), buildBinding()];
 
 void checkUnnamed8(core.List<api.Binding> o) {
@@ -865,6 +887,8 @@ api.Operation buildOperation() {
     o.description = 'foo';
     o.endTime = 'foo';
     o.error = buildOperationError();
+    o.firewallPolicyRuleOperationMetadata =
+        buildFirewallPolicyRuleOperationMetadata();
     o.httpErrorMessage = 'foo';
     o.httpErrorStatusCode = 42;
     o.id = 'foo';
@@ -904,6 +928,9 @@ void checkOperation(api.Operation o) {
     unittest.expect(o.description!, unittest.equals('foo'));
     unittest.expect(o.endTime!, unittest.equals('foo'));
     checkOperationError(o.error!);
+    checkFirewallPolicyRuleOperationMetadata(
+      o.firewallPolicyRuleOperationMetadata!,
+    );
     unittest.expect(o.httpErrorMessage!, unittest.equals('foo'));
     unittest.expect(o.httpErrorStatusCode!, unittest.equals(42));
     unittest.expect(o.id!, unittest.equals('foo'));
@@ -1896,6 +1923,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkExpr(od);
+    });
+  });
+
+  unittest.group('obj-schema-FirewallPolicyRuleOperationMetadata', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildFirewallPolicyRuleOperationMetadata();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.FirewallPolicyRuleOperationMetadata.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkFirewallPolicyRuleOperationMetadata(od);
     });
   });
 

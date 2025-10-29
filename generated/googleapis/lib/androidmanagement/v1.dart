@@ -789,8 +789,8 @@ class EnterprisesDevicesOperationsResource {
   /// [returnPartialSuccess] - When set to true, operations that are reachable
   /// are returned as normal, and those that are unreachable are returned in the
   /// ListOperationsResponse.unreachable field.This can only be true when
-  /// reading across collections e.g. when parent is set to
-  /// "projects/example/locations/-".This field is not by default supported and
+  /// reading across collections. For example, when parent is set to
+  /// "projects/example/locations/-".This field is not supported by default and
   /// will result in an UNIMPLEMENTED error if set unless explicitly documented
   /// otherwise in service or product specific documentation.
   ///
@@ -1913,7 +1913,9 @@ class AdvancedSecurityOverrides {
   /// (https://source.android.com/docs/security/test/memory-safety/arm-mte) on
   /// the device.
   ///
-  /// The device needs to be rebooted to apply changes to the MTE policy.
+  /// The device needs to be rebooted to apply changes to the MTE policy. On
+  /// Android 15 and above, a NonComplianceDetail with PENDING is reported if
+  /// the policy change is pending a device reboot.
   ///
   /// Optional.
   /// Possible string values are:
@@ -2932,14 +2934,18 @@ class ApplicationPolicy {
   /// minimumVersionCode, accessibleTrackIds, autoUpdateMode, installConstraint
   /// and installPriority cannot be set for the app. The app isn't available in
   /// the Play Store. The app installed on the device has applicationSource set
-  /// to CUSTOM. The signing key certificate fingerprint of the app on the
-  /// device must match one of the entries in ApplicationPolicy.signingKeyCerts
-  /// . Otherwise, a NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is
-  /// reported. Changing the installType to and from CUSTOM uninstalls the
-  /// existing app if its signing key certificate fingerprint doesn't match the
-  /// one from the new app source. Removing the app from applications doesn't
-  /// uninstall the existing app if it conforms to playStoreMode. See also
-  /// customAppConfig. This is different from the Google Play Custom App
+  /// to CUSTOM. When the current installType is CUSTOM, the signing key
+  /// certificate fingerprint of the existing custom app on the device must
+  /// match one of the entries in ApplicationPolicy.signingKeyCerts . Otherwise,
+  /// a NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is reported. Changing
+  /// the installType from CUSTOM to another value must match the playstore
+  /// version of the application signing key certificate fingerprint. Otherwise
+  /// a NonComplianceDetail with APP_SIGNING_CERT_MISMATCH is reported. Changing
+  /// the installType to CUSTOM uninstalls the existing app if its signing key
+  /// certificate fingerprint of the installed app doesn't match the one from
+  /// the ApplicationPolicy.signingKeyCerts . Removing the app from applications
+  /// doesn't uninstall the existing app if it conforms to playStoreMode. See
+  /// also customAppConfig. This is different from the Google Play Custom App
   /// Publishing
   /// (https://developers.google.com/android/work/play/custom-app-api/get-started)
   /// feature.
@@ -2961,7 +2967,8 @@ class ApplicationPolicy {
   /// match the key field of the ManagedProperty. The field value must be
   /// compatible with the type of the ManagedProperty: *type* *JSON value* BOOL
   /// true or false STRING string INTEGER number CHOICE string MULTISELECT array
-  /// of strings HIDDEN string BUNDLE_ARRAY array of objects
+  /// of strings HIDDEN string BUNDLE_ARRAY array of objects Note: string values
+  /// cannot be longer than 65535 characters.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -3751,7 +3758,11 @@ class Command {
   /// The type of the command.
   /// Possible string values are:
   /// - "COMMAND_TYPE_UNSPECIFIED" : This value is disallowed.
-  /// - "LOCK" : Lock the device, as if the lock screen timeout had expired.
+  /// - "LOCK" : Lock the device, as if the lock screen timeout had expired. For
+  /// a work profile, if there is a separate work profile lock, this only locks
+  /// the work profile, with one exception: on work profiles on an
+  /// organization-owned device running Android 8, 9, or 10, this locks the
+  /// entire device.
   /// - "RESET_PASSWORD" : Reset the user's password.
   /// - "REBOOT" : Reboot the device. Only supported on fully managed devices
   /// running Android 7.0 (API level 24) or higher.
@@ -4383,6 +4394,313 @@ class CustomAppConfig {
 /// google.type.TimeOfDay google.type.DateTime google.protobuf.Timestamp
 typedef Date = $Date;
 
+/// Information about the application to be set as the default.
+class DefaultApplication {
+  /// The package name that should be set as the default application.
+  ///
+  /// The policy is rejected if the package name is invalid.
+  ///
+  /// Required.
+  core.String? packageName;
+
+  DefaultApplication({this.packageName});
+
+  DefaultApplication.fromJson(core.Map json_)
+    : this(packageName: json_['packageName'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (packageName != null) 'packageName': packageName!,
+  };
+}
+
+/// Additional context for non-compliance related to default application
+/// settings.
+class DefaultApplicationContext {
+  /// The scope of non-compliant default application setting.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEFAULT_APPLICATION_SCOPE_UNSPECIFIED" : Unspecified. This value must
+  /// not be used.
+  /// - "SCOPE_FULLY_MANAGED" : Sets the application as the default on fully
+  /// managed devices.
+  /// - "SCOPE_WORK_PROFILE" : Sets the application as the work profile
+  /// default.Only supported for DEFAULT_BROWSER, DEFAULT_CALL_REDIRECTION,
+  /// DEFAULT_CALL_SCREENING, DEFAULT_DIALER and DEFAULT_WALLET.
+  /// - "SCOPE_PERSONAL_PROFILE" : Sets the application as the personal profile
+  /// default on company-owned devices with a work profile. Only pre-installed
+  /// system apps can be set as the default.Only supported for DEFAULT_BROWSER,
+  /// DEFAULT_DIALER, DEFAULT_SMS and DEFAULT_WALLET.
+  core.String? defaultApplicationScope;
+
+  DefaultApplicationContext({this.defaultApplicationScope});
+
+  DefaultApplicationContext.fromJson(core.Map json_)
+    : this(
+        defaultApplicationScope:
+            json_['defaultApplicationScope'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (defaultApplicationScope != null)
+      'defaultApplicationScope': defaultApplicationScope!,
+  };
+}
+
+/// The default application information for a specific DefaultApplicationType.
+class DefaultApplicationInfo {
+  /// Details on the default application setting attempts, in the same order as
+  /// listed in defaultApplications.
+  ///
+  /// Output only.
+  core.List<DefaultApplicationSettingAttempt>?
+  defaultApplicationSettingAttempts;
+
+  /// The default application type.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "DEFAULT_APPLICATION_TYPE_UNSPECIFIED" : Unspecified. This value must
+  /// not be used.
+  /// - "DEFAULT_ASSISTANT" : The assistant app type. This app type is only
+  /// allowed to be set for SCOPE_FULLY_MANAGED.Supported on fully managed
+  /// devices on Android 16 and above. A NonComplianceDetail with
+  /// MANAGEMENT_MODE is reported for other management modes. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 16.
+  /// - "DEFAULT_BROWSER" : The browser app type.Supported on Android 16 and
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 16.
+  /// - "DEFAULT_CALL_REDIRECTION" : The call redirection app type. This app
+  /// type cannot be set for SCOPE_PERSONAL_PROFILE.Supported on Android 16 and
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 16.
+  /// - "DEFAULT_CALL_SCREENING" : The call screening app type. This app type
+  /// cannot be set for SCOPE_PERSONAL_PROFILE.Supported on Android 16 and
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 16.
+  /// - "DEFAULT_DIALER" : The dialer app type.Supported on fully managed
+  /// devices on Android 14 and 15. A NonComplianceDetail with MANAGEMENT_MODE
+  /// is reported for other management modes. A NonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 14.Supported on
+  /// all management modes on Android 16 and above.
+  /// - "DEFAULT_HOME" : The home app type. This app type is only allowed to be
+  /// set for SCOPE_FULLY_MANAGED.Supported on fully managed devices on Android
+  /// 16 and above. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+  /// other management modes. A NonComplianceDetail with API_LEVEL is reported
+  /// if the Android version is less than 16.
+  /// - "DEFAULT_SMS" : The SMS app type. This app type cannot be set for
+  /// SCOPE_WORK_PROFILE.Supported on company-owned devices on Android 16 and
+  /// above. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+  /// personally-owned devices. A NonComplianceDetail with API_LEVEL is reported
+  /// if the Android version is less than 16.
+  /// - "DEFAULT_WALLET" : The wallet app type. The default application of this
+  /// type applies across profiles.On a company-owned device with a work
+  /// profile, admins can set the scope to SCOPE_PERSONAL_PROFILE to set a
+  /// personal profile pre-installed system app as the default, or to
+  /// SCOPE_WORK_PROFILE to set a work profile app as the default. It is not
+  /// allowed to specify both scopes at the same time.Due to a known issue, the
+  /// user may be able to change the default wallet even when this is set on a
+  /// fully managed device.Supported on company-owned devices on Android 16 and
+  /// above. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+  /// personally-owned devices. A NonComplianceDetail with API_LEVEL is reported
+  /// if the Android version is less than 16.
+  core.String? defaultApplicationType;
+
+  /// The package name of the current default application.
+  ///
+  /// Output only.
+  core.String? packageName;
+
+  DefaultApplicationInfo({
+    this.defaultApplicationSettingAttempts,
+    this.defaultApplicationType,
+    this.packageName,
+  });
+
+  DefaultApplicationInfo.fromJson(core.Map json_)
+    : this(
+        defaultApplicationSettingAttempts:
+            (json_['defaultApplicationSettingAttempts'] as core.List?)
+                ?.map(
+                  (value) => DefaultApplicationSettingAttempt.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        defaultApplicationType: json_['defaultApplicationType'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (defaultApplicationSettingAttempts != null)
+      'defaultApplicationSettingAttempts': defaultApplicationSettingAttempts!,
+    if (defaultApplicationType != null)
+      'defaultApplicationType': defaultApplicationType!,
+    if (packageName != null) 'packageName': packageName!,
+  };
+}
+
+/// The default application setting for a DefaultApplicationType.
+class DefaultApplicationSetting {
+  /// The scopes to which the policy should be applied.
+  ///
+  /// This list must not be empty or contain duplicates.A NonComplianceDetail
+  /// with MANAGEMENT_MODE reason and
+  /// DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported
+  /// if none of the specified scopes can be applied to the management mode
+  /// (e.g. a fully managed device receives a policy with only
+  /// SCOPE_PERSONAL_PROFILE in the list).
+  ///
+  /// Required.
+  core.List<core.String>? defaultApplicationScopes;
+
+  /// The app type to set the default application.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "DEFAULT_APPLICATION_TYPE_UNSPECIFIED" : Unspecified. This value must
+  /// not be used.
+  /// - "DEFAULT_ASSISTANT" : The assistant app type. This app type is only
+  /// allowed to be set for SCOPE_FULLY_MANAGED.Supported on fully managed
+  /// devices on Android 16 and above. A NonComplianceDetail with
+  /// MANAGEMENT_MODE is reported for other management modes. A
+  /// NonComplianceDetail with API_LEVEL is reported if the Android version is
+  /// less than 16.
+  /// - "DEFAULT_BROWSER" : The browser app type.Supported on Android 16 and
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 16.
+  /// - "DEFAULT_CALL_REDIRECTION" : The call redirection app type. This app
+  /// type cannot be set for SCOPE_PERSONAL_PROFILE.Supported on Android 16 and
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 16.
+  /// - "DEFAULT_CALL_SCREENING" : The call screening app type. This app type
+  /// cannot be set for SCOPE_PERSONAL_PROFILE.Supported on Android 16 and
+  /// above. A NonComplianceDetail with API_LEVEL is reported if the Android
+  /// version is less than 16.
+  /// - "DEFAULT_DIALER" : The dialer app type.Supported on fully managed
+  /// devices on Android 14 and 15. A NonComplianceDetail with MANAGEMENT_MODE
+  /// is reported for other management modes. A NonComplianceDetail with
+  /// API_LEVEL is reported if the Android version is less than 14.Supported on
+  /// all management modes on Android 16 and above.
+  /// - "DEFAULT_HOME" : The home app type. This app type is only allowed to be
+  /// set for SCOPE_FULLY_MANAGED.Supported on fully managed devices on Android
+  /// 16 and above. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+  /// other management modes. A NonComplianceDetail with API_LEVEL is reported
+  /// if the Android version is less than 16.
+  /// - "DEFAULT_SMS" : The SMS app type. This app type cannot be set for
+  /// SCOPE_WORK_PROFILE.Supported on company-owned devices on Android 16 and
+  /// above. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+  /// personally-owned devices. A NonComplianceDetail with API_LEVEL is reported
+  /// if the Android version is less than 16.
+  /// - "DEFAULT_WALLET" : The wallet app type. The default application of this
+  /// type applies across profiles.On a company-owned device with a work
+  /// profile, admins can set the scope to SCOPE_PERSONAL_PROFILE to set a
+  /// personal profile pre-installed system app as the default, or to
+  /// SCOPE_WORK_PROFILE to set a work profile app as the default. It is not
+  /// allowed to specify both scopes at the same time.Due to a known issue, the
+  /// user may be able to change the default wallet even when this is set on a
+  /// fully managed device.Supported on company-owned devices on Android 16 and
+  /// above. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+  /// personally-owned devices. A NonComplianceDetail with API_LEVEL is reported
+  /// if the Android version is less than 16.
+  core.String? defaultApplicationType;
+
+  /// The list of applications that can be set as the default app for a given
+  /// type.
+  ///
+  /// This list must not be empty or contain duplicates. The first app in the
+  /// list that is installed and qualified for the defaultApplicationType (e.g.
+  /// SMS app for DEFAULT_SMS) is set as the default app. The signing key
+  /// certificate fingerprint of the app on the device must also match one of
+  /// the signing key certificate fingerprints obtained from Play Store or one
+  /// of the entries in ApplicationPolicy.signingKeyCerts in order to be set as
+  /// the default.If the defaultApplicationScopes contains SCOPE_FULLY_MANAGED
+  /// or SCOPE_WORK_PROFILE, the app must have an entry in applications with
+  /// installType set to a value other than BLOCKED.A NonComplianceDetail with
+  /// APP_NOT_INSTALLED reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE
+  /// specific reason is reported if none of the apps in the list are installed.
+  /// A NonComplianceDetail with INVALID_VALUE reason and
+  /// DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE specific reason is reported
+  /// if at least one app is installed but the policy fails to apply due to
+  /// other reasons (e.g. the app is not of the right type).When applying to
+  /// SCOPE_PERSONAL_PROFILE on a company-owned device with a work profile, only
+  /// pre-installed system apps can be set as the default. A NonComplianceDetail
+  /// with INVALID_VALUE reason and DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE
+  /// specific reason is reported if the policy fails to apply to the personal
+  /// profile.
+  ///
+  /// Required.
+  core.List<DefaultApplication>? defaultApplications;
+
+  DefaultApplicationSetting({
+    this.defaultApplicationScopes,
+    this.defaultApplicationType,
+    this.defaultApplications,
+  });
+
+  DefaultApplicationSetting.fromJson(core.Map json_)
+    : this(
+        defaultApplicationScopes:
+            (json_['defaultApplicationScopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        defaultApplicationType: json_['defaultApplicationType'] as core.String?,
+        defaultApplications:
+            (json_['defaultApplications'] as core.List?)
+                ?.map(
+                  (value) => DefaultApplication.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (defaultApplicationScopes != null)
+      'defaultApplicationScopes': defaultApplicationScopes!,
+    if (defaultApplicationType != null)
+      'defaultApplicationType': defaultApplicationType!,
+    if (defaultApplications != null)
+      'defaultApplications': defaultApplications!,
+  };
+}
+
+/// Details on a default application setting attempt.
+class DefaultApplicationSettingAttempt {
+  /// The outcome of setting the app as the default.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ATTEMPT_OUTCOME_UNSPECIFIED" : Attempt outcome is unspecified. This is
+  /// not used.
+  /// - "SUCCESS" : App is successfully set as the default.
+  /// - "APP_NOT_INSTALLED" : Attempt failed as the app is not installed.
+  /// - "APP_SIGNING_CERT_MISMATCH" : Attempt failed as the signing key
+  /// certificate fingerprint of the app from Play Store or from
+  /// ApplicationPolicy.signingKeyCerts does not match the one on the device.
+  /// - "OTHER_FAILURE" : Attempt failed due to other reasons.
+  core.String? attemptOutcome;
+
+  /// The package name of the attempted application.
+  ///
+  /// Output only.
+  core.String? packageName;
+
+  DefaultApplicationSettingAttempt({this.attemptOutcome, this.packageName});
+
+  DefaultApplicationSettingAttempt.fromJson(core.Map json_)
+    : this(
+        attemptOutcome: json_['attemptOutcome'] as core.String?,
+        packageName: json_['packageName'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (attemptOutcome != null) 'attemptOutcome': attemptOutcome!,
+    if (packageName != null) 'packageName': packageName!,
+  };
+}
+
 /// A device owned by an enterprise.
 ///
 /// Unless otherwise noted, all fields are read-only and can't be modified by
@@ -4445,6 +4763,20 @@ class Device {
   /// available if statusReportingSettings.commonCriteriaModeEnabled is true in
   /// the device's policy the device is company-owned.
   CommonCriteriaModeInfo? commonCriteriaModeInfo;
+
+  /// The default application information for the DefaultApplicationType.
+  ///
+  /// This information is only available if
+  /// defaultApplicationInfoReportingEnabled is true in the device's policy.
+  /// Available on Android 16 and above.All app types are reported on fully
+  /// managed devices. DEFAULT_BROWSER, DEFAULT_CALL_REDIRECTION,
+  /// DEFAULT_CALL_SCREENING and DEFAULT_DIALER types are reported for the work
+  /// profiles on company-owned devices with a work profile and personally-owned
+  /// devices. DEFAULT_WALLET is also reported for company-owned devices with a
+  /// work profile, but will only include work profile information.
+  ///
+  /// Output only.
+  core.List<DefaultApplicationInfo>? defaultApplicationInfo;
 
   /// Device settings information.
   ///
@@ -4630,6 +4962,7 @@ class Device {
     this.appliedPolicyVersion,
     this.appliedState,
     this.commonCriteriaModeInfo,
+    this.defaultApplicationInfo,
     this.deviceSettings,
     this.disabledReason,
     this.displays,
@@ -4690,6 +5023,14 @@ class Device {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        defaultApplicationInfo:
+            (json_['defaultApplicationInfo'] as core.List?)
+                ?.map(
+                  (value) => DefaultApplicationInfo.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         deviceSettings:
             json_.containsKey('deviceSettings')
                 ? DeviceSettings.fromJson(
@@ -4822,6 +5163,8 @@ class Device {
     if (appliedState != null) 'appliedState': appliedState!,
     if (commonCriteriaModeInfo != null)
       'commonCriteriaModeInfo': commonCriteriaModeInfo!,
+    if (defaultApplicationInfo != null)
+      'defaultApplicationInfo': defaultApplicationInfo!,
     if (deviceSettings != null) 'deviceSettings': deviceSettings!,
     if (disabledReason != null) 'disabledReason': disabledReason!,
     if (displays != null) 'displays': displays!,
@@ -5120,6 +5463,19 @@ class DeviceRadioState {
   /// with API_LEVEL is reported if the Android version is less than 14.
   core.String? ultraWidebandState;
 
+  /// Controls whether the user is allowed to add eSIM profiles.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "USER_INITIATED_ADD_ESIM_SETTINGS_UNSPECIFIED" : Unspecified. Defaults
+  /// to USER_INITIATED_ADD_ESIM_ALLOWED.
+  /// - "USER_INITIATED_ADD_ESIM_ALLOWED" : The user is allowed to add eSIM
+  /// profiles.
+  /// - "USER_INITIATED_ADD_ESIM_DISALLOWED" : Supported only on company-owned
+  /// devices. A NonComplianceDetail with MANAGEMENT_MODE is reported for
+  /// personally-owned devices.
+  core.String? userInitiatedAddEsimSettings;
+
   /// Controls current state of Wi-Fi and if user can change its state.
   /// Possible string values are:
   /// - "WIFI_STATE_UNSPECIFIED" : Unspecified. Defaults to
@@ -5138,6 +5494,7 @@ class DeviceRadioState {
     this.cellularTwoGState,
     this.minimumWifiSecurityLevel,
     this.ultraWidebandState,
+    this.userInitiatedAddEsimSettings,
     this.wifiState,
   });
 
@@ -5148,6 +5505,8 @@ class DeviceRadioState {
         minimumWifiSecurityLevel:
             json_['minimumWifiSecurityLevel'] as core.String?,
         ultraWidebandState: json_['ultraWidebandState'] as core.String?,
+        userInitiatedAddEsimSettings:
+            json_['userInitiatedAddEsimSettings'] as core.String?,
         wifiState: json_['wifiState'] as core.String?,
       );
 
@@ -5157,6 +5516,8 @@ class DeviceRadioState {
     if (minimumWifiSecurityLevel != null)
       'minimumWifiSecurityLevel': minimumWifiSecurityLevel!,
     if (ultraWidebandState != null) 'ultraWidebandState': ultraWidebandState!,
+    if (userInitiatedAddEsimSettings != null)
+      'userInitiatedAddEsimSettings': userInitiatedAddEsimSettings!,
     if (wifiState != null) 'wifiState': wifiState!,
   };
 }
@@ -6865,8 +7226,9 @@ class ListOperationsResponse {
   /// Unordered list.
   ///
   /// Unreachable resources. Populated when the request sets
-  /// ListOperationsRequest.return_partial_success and reads across collections
-  /// e.g. when attempting to list all resources across all supported locations.
+  /// ListOperationsRequest.return_partial_success and reads across collections.
+  /// For example, when attempting to list all resources across all supported
+  /// locations.
   core.List<core.String>? unreachable;
 
   ListOperationsResponse({
@@ -7570,6 +7932,21 @@ class NonComplianceDetail {
   /// anymore. nonComplianceReason is set to USER_ACTION.
   /// - "NEW_ACCOUNT_NOT_IN_ENTERPRISE" : Work account added by the user is not
   /// part of the enterprise. nonComplianceReason is set to USER_ACTION.
+  /// - "DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES" : The default
+  /// application setting is applied to the scopes that are not supported by the
+  /// management mode, even if the management mode itself is supported for the
+  /// app type (e.g., a policy with DEFAULT_BROWSER app type and
+  /// SCOPE_PERSONAL_PROFILE list sent to a fully managed device results in the
+  /// scopes being inapplicable for the management mode). If the management mode
+  /// is not supported for the app type, a NonComplianceDetail with
+  /// MANAGEMENT_MODE is reported, without a
+  /// specificNonComplianceReason.nonComplianceReason is set to MANAGEMENT_MODE.
+  /// - "DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE" : The default application
+  /// setting failed to apply for a specific scope. defaultApplicationContext is
+  /// set. nonComplianceReason is set to INVALID_VALUE or APP_NOT_INSTALLED.
+  /// - "PRIVATE_DNS_HOST_NOT_SERVING" : The specified host for private DNS is a
+  /// valid hostname but was found to not be a private DNS server.
+  /// nonComplianceReason is set to INVALID_VALUE.
   core.String? specificNonComplianceReason;
 
   NonComplianceDetail({
@@ -8590,6 +8967,18 @@ class Policy {
   )
   core.bool? debuggingFeaturesAllowed;
 
+  /// The default application setting for supported types.
+  ///
+  /// If the default application is successfully set for at least one app type
+  /// on a profile, users are prevented from changing any default applications
+  /// on that profile.Only one DefaultApplicationSetting is allowed for each
+  /// DefaultApplicationType.See Default application settings
+  /// (https://developers.google.com/android/management/default-application-settings)
+  /// guide for more details.
+  ///
+  /// Optional.
+  core.List<DefaultApplicationSetting>? defaultApplicationSettings;
+
   /// The default permission policy for runtime permission requests.
   /// Possible string values are:
   /// - "PERMISSION_POLICY_UNSPECIFIED" : Policy not specified. If no policy is
@@ -8954,7 +9343,7 @@ class Policy {
 
   /// Whether changing the user icon is disabled.
   ///
-  /// The setting has effect only on fully managed devices.
+  /// This applies only on devices running Android 7 and above.
   core.bool? setUserIconDisabled;
 
   /// Whether changing the wallpaper is disabled.
@@ -8966,9 +9355,6 @@ class Policy {
   core.List<SetupAction>? setupActions;
 
   /// Whether location sharing is disabled.
-  ///
-  /// share_location_disabled is supported for both fully managed devices and
-  /// personally owned work profiles.
   core.bool? shareLocationDisabled;
 
   /// A message displayed to the user in the settings screen wherever
@@ -9137,6 +9523,7 @@ class Policy {
     this.crossProfilePolicies,
     this.dataRoamingDisabled,
     this.debuggingFeaturesAllowed,
+    this.defaultApplicationSettings,
     this.defaultPermissionPolicy,
     this.deviceConnectivityManagement,
     this.deviceOwnerLockScreenInfo,
@@ -9290,6 +9677,14 @@ class Policy {
         dataRoamingDisabled: json_['dataRoamingDisabled'] as core.bool?,
         debuggingFeaturesAllowed:
             json_['debuggingFeaturesAllowed'] as core.bool?,
+        defaultApplicationSettings:
+            (json_['defaultApplicationSettings'] as core.List?)
+                ?.map(
+                  (value) => DefaultApplicationSetting.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         defaultPermissionPolicy:
             json_['defaultPermissionPolicy'] as core.String?,
         deviceConnectivityManagement:
@@ -9573,6 +9968,8 @@ class Policy {
       'dataRoamingDisabled': dataRoamingDisabled!,
     if (debuggingFeaturesAllowed != null)
       'debuggingFeaturesAllowed': debuggingFeaturesAllowed!,
+    if (defaultApplicationSettings != null)
+      'defaultApplicationSettings': defaultApplicationSettings!,
     if (defaultPermissionPolicy != null)
       'defaultPermissionPolicy': defaultPermissionPolicy!,
     if (deviceConnectivityManagement != null)
@@ -10742,6 +11139,14 @@ class SoftwareInfo {
 
 /// Additional context for SpecificNonComplianceReason.
 class SpecificNonComplianceContext {
+  /// Additional context for non-compliance related to default application
+  /// settings.
+  ///
+  /// See DEFAULT_APPLICATION_SETTING_FAILED_FOR_SCOPE.
+  ///
+  /// Output only.
+  DefaultApplicationContext? defaultApplicationContext;
+
   /// Additional context for non-compliance related to Wi-Fi configuration.
   ///
   /// See ONC_WIFI_INVALID_VALUE and ONC_WIFI_API_LEVEL
@@ -10754,12 +11159,20 @@ class SpecificNonComplianceContext {
   PasswordPoliciesContext? passwordPoliciesContext;
 
   SpecificNonComplianceContext({
+    this.defaultApplicationContext,
     this.oncWifiContext,
     this.passwordPoliciesContext,
   });
 
   SpecificNonComplianceContext.fromJson(core.Map json_)
     : this(
+        defaultApplicationContext:
+            json_.containsKey('defaultApplicationContext')
+                ? DefaultApplicationContext.fromJson(
+                  json_['defaultApplicationContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         oncWifiContext:
             json_.containsKey('oncWifiContext')
                 ? OncWifiContext.fromJson(
@@ -10777,6 +11190,8 @@ class SpecificNonComplianceContext {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (defaultApplicationContext != null)
+      'defaultApplicationContext': defaultApplicationContext!,
     if (oncWifiContext != null) 'oncWifiContext': oncWifiContext!,
     if (passwordPoliciesContext != null)
       'passwordPoliciesContext': passwordPoliciesContext!,
@@ -10904,6 +11319,11 @@ class StatusReportingSettings {
   /// This is supported only on company-owned devices.
   core.bool? commonCriteriaModeEnabled;
 
+  /// Whether defaultApplicationInfo reporting is enabled.
+  ///
+  /// Optional.
+  core.bool? defaultApplicationInfoReportingEnabled;
+
   /// Whether device settings reporting is enabled.
   core.bool? deviceSettingsEnabled;
 
@@ -10941,6 +11361,7 @@ class StatusReportingSettings {
     this.applicationReportingSettings,
     this.applicationReportsEnabled,
     this.commonCriteriaModeEnabled,
+    this.defaultApplicationInfoReportingEnabled,
     this.deviceSettingsEnabled,
     this.displayInfoEnabled,
     this.hardwareStatusEnabled,
@@ -10964,6 +11385,8 @@ class StatusReportingSettings {
             json_['applicationReportsEnabled'] as core.bool?,
         commonCriteriaModeEnabled:
             json_['commonCriteriaModeEnabled'] as core.bool?,
+        defaultApplicationInfoReportingEnabled:
+            json_['defaultApplicationInfoReportingEnabled'] as core.bool?,
         deviceSettingsEnabled: json_['deviceSettingsEnabled'] as core.bool?,
         displayInfoEnabled: json_['displayInfoEnabled'] as core.bool?,
         hardwareStatusEnabled: json_['hardwareStatusEnabled'] as core.bool?,
@@ -10982,6 +11405,9 @@ class StatusReportingSettings {
       'applicationReportsEnabled': applicationReportsEnabled!,
     if (commonCriteriaModeEnabled != null)
       'commonCriteriaModeEnabled': commonCriteriaModeEnabled!,
+    if (defaultApplicationInfoReportingEnabled != null)
+      'defaultApplicationInfoReportingEnabled':
+          defaultApplicationInfoReportingEnabled!,
     if (deviceSettingsEnabled != null)
       'deviceSettingsEnabled': deviceSettingsEnabled!,
     if (displayInfoEnabled != null) 'displayInfoEnabled': displayInfoEnabled!,
@@ -11032,6 +11458,13 @@ class StopLostModeStatus {
 /// (https://developer.android.com/work/dpc/system-updates#mainline) for further
 /// details.
 class SystemUpdate {
+  /// If this is greater than zero, then this is the number of days after a
+  /// pending update becoming available that a device can remain compliant,
+  /// without taking the update.
+  ///
+  /// Has no effect otherwise.
+  core.int? allowedDaysWithoutUpdate;
+
   /// If the type is WINDOWED, the end of the maintenance window, measured as
   /// the number of minutes after midnight in device's local time.
   ///
@@ -11072,6 +11505,7 @@ class SystemUpdate {
   core.String? type;
 
   SystemUpdate({
+    this.allowedDaysWithoutUpdate,
     this.endMinutes,
     this.freezePeriods,
     this.startMinutes,
@@ -11080,6 +11514,8 @@ class SystemUpdate {
 
   SystemUpdate.fromJson(core.Map json_)
     : this(
+        allowedDaysWithoutUpdate:
+            json_['allowedDaysWithoutUpdate'] as core.int?,
         endMinutes: json_['endMinutes'] as core.int?,
         freezePeriods:
             (json_['freezePeriods'] as core.List?)
@@ -11094,6 +11530,8 @@ class SystemUpdate {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (allowedDaysWithoutUpdate != null)
+      'allowedDaysWithoutUpdate': allowedDaysWithoutUpdate!,
     if (endMinutes != null) 'endMinutes': endMinutes!,
     if (freezePeriods != null) 'freezePeriods': freezePeriods!,
     if (startMinutes != null) 'startMinutes': startMinutes!,

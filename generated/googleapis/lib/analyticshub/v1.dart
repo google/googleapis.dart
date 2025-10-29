@@ -1746,6 +1746,61 @@ class ProjectsLocationsSubscriptionsResource {
   }
 }
 
+/// Configuration for making inference requests against Vertex AI models.
+class AIInference {
+  /// An endpoint to a Vertex AI model of the form
+  /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+  /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+  ///
+  /// Vertex AI API requests will be sent to this endpoint.
+  ///
+  /// Required.
+  core.String? endpoint;
+
+  /// The service account to use to make prediction requests against endpoints.
+  ///
+  /// The resource creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub \[service
+  /// agent\]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// Requests and responses can be any arbitrary JSON object.
+  ///
+  /// Optional.
+  UnstructuredInference? unstructuredInference;
+
+  AIInference({
+    this.endpoint,
+    this.serviceAccountEmail,
+    this.unstructuredInference,
+  });
+
+  AIInference.fromJson(core.Map json_)
+    : this(
+        endpoint: json_['endpoint'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        unstructuredInference:
+            json_.containsKey('unstructuredInference')
+                ? UnstructuredInference.fromJson(
+                  json_['unstructuredInference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endpoint != null) 'endpoint': endpoint!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (unstructuredInference != null)
+      'unstructuredInference': unstructuredInference!,
+  };
+}
+
 /// Message for approving a QueryTemplate.
 typedef ApproveQueryTemplateRequest = $Empty;
 
@@ -2940,9 +2995,10 @@ class GooglePubsubV1Subscription {
   /// Optional.
   core.List<MessageTransform>? messageTransforms;
 
-  /// Name of the subscription.
+  /// Identifier.
   ///
-  /// Format is `projects/{project}/subscriptions/{sub}`.
+  /// Name of the subscription. Format is
+  /// `projects/{project}/subscriptions/{sub}`.
   ///
   /// Required.
   core.String? name;
@@ -2976,6 +3032,14 @@ class GooglePubsubV1Subscription {
   /// Optional.
   RetryPolicy? retryPolicy;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   GooglePubsubV1Subscription({
     this.ackDeadlineSeconds,
     this.bigqueryConfig,
@@ -2993,6 +3057,7 @@ class GooglePubsubV1Subscription {
     this.pushConfig,
     this.retainAckedMessages,
     this.retryPolicy,
+    this.tags,
   });
 
   GooglePubsubV1Subscription.fromJson(core.Map json_)
@@ -3058,6 +3123,9 @@ class GooglePubsubV1Subscription {
                   json_['retryPolicy'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3081,6 +3149,7 @@ class GooglePubsubV1Subscription {
     if (retainAckedMessages != null)
       'retainAckedMessages': retainAckedMessages!,
     if (retryPolicy != null) 'retryPolicy': retryPolicy!,
+    if (tags != null) 'tags': tags!,
   };
 }
 
@@ -3493,6 +3562,12 @@ class Listing {
   /// dataexchange.listings.subscribe permission can subscribe to this listing.
   core.String? state;
 
+  /// If set, stored procedure configuration will be propagated and enforced on
+  /// the linked dataset.
+  ///
+  /// Optional.
+  StoredProcedureConfig? storedProcedureConfig;
+
   Listing({
     this.allowOnlyMetadataSharing,
     this.bigqueryDataset,
@@ -3513,6 +3588,7 @@ class Listing {
     this.resourceType,
     this.restrictedExportConfig,
     this.state,
+    this.storedProcedureConfig,
   });
 
   Listing.fromJson(core.Map json_)
@@ -3574,6 +3650,13 @@ class Listing {
                 )
                 : null,
         state: json_['state'] as core.String?,
+        storedProcedureConfig:
+            json_.containsKey('storedProcedureConfig')
+                ? StoredProcedureConfig.fromJson(
+                  json_['storedProcedureConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -3599,11 +3682,21 @@ class Listing {
     if (restrictedExportConfig != null)
       'restrictedExportConfig': restrictedExportConfig!,
     if (state != null) 'state': state!,
+    if (storedProcedureConfig != null)
+      'storedProcedureConfig': storedProcedureConfig!,
   };
 }
 
 /// All supported message transforms types.
 class MessageTransform {
+  /// AI Inference.
+  ///
+  /// Specifies the Vertex AI endpoint that inference requests built from the
+  /// Pub/Sub message data and provided parameters will be sent to.
+  ///
+  /// Optional.
+  AIInference? aiInference;
+
   /// If true, the transform is disabled and will not be applied to messages.
   ///
   /// Defaults to `false`.
@@ -3627,10 +3720,21 @@ class MessageTransform {
   /// Optional.
   JavaScriptUDF? javascriptUdf;
 
-  MessageTransform({this.disabled, this.enabled, this.javascriptUdf});
+  MessageTransform({
+    this.aiInference,
+    this.disabled,
+    this.enabled,
+    this.javascriptUdf,
+  });
 
   MessageTransform.fromJson(core.Map json_)
     : this(
+        aiInference:
+            json_.containsKey('aiInference')
+                ? AIInference.fromJson(
+                  json_['aiInference'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         disabled: json_['disabled'] as core.bool?,
         enabled: json_['enabled'] as core.bool?,
         javascriptUdf:
@@ -3642,6 +3746,7 @@ class MessageTransform {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (aiInference != null) 'aiInference': aiInference!,
     if (disabled != null) 'disabled': disabled!,
     if (enabled != null) 'enabled': enabled!,
     if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
@@ -4446,6 +4551,37 @@ class SharingEnvironmentConfig {
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
 
+/// Stored procedure configuration, used to configure stored procedure sharing
+/// on linked dataset.
+class StoredProcedureConfig {
+  /// Types of stored procedure supported to share.
+  ///
+  /// Output only.
+  core.List<core.String>? allowedStoredProcedureTypes;
+
+  /// If true, enable sharing of stored procedure.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  StoredProcedureConfig({this.allowedStoredProcedureTypes, this.enabled});
+
+  StoredProcedureConfig.fromJson(core.Map json_)
+    : this(
+        allowedStoredProcedureTypes:
+            (json_['allowedStoredProcedureTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        enabled: json_['enabled'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (allowedStoredProcedureTypes != null)
+      'allowedStoredProcedureTypes': allowedStoredProcedureTypes!,
+    if (enabled != null) 'enabled': enabled!,
+  };
+}
+
 /// Message for submitting a QueryTemplate.
 typedef SubmitQueryTemplateRequest = $Empty;
 
@@ -4775,3 +4911,6 @@ typedef TestIamPermissionsResponse = $PermissionsResponse;
 /// Message payloads will be written to files as raw text, separated by a
 /// newline.
 typedef TextConfig = $Empty;
+
+/// Configuration for making inferences using arbitrary JSON payloads.
+typedef UnstructuredInference = $UnstructuredInference;

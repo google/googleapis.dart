@@ -68,6 +68,11 @@
         },
         {
             "description": "Regional Endpoint",
+            "endpointUrl": "https://cloudbuild.asia-southeast3.rep.googleapis.com/",
+            "location": "asia-southeast3"
+        },
+        {
+            "description": "Regional Endpoint",
             "endpointUrl": "https://cloudbuild.australia-southeast1.rep.googleapis.com/",
             "location": "australia-southeast1"
         },
@@ -140,6 +145,11 @@
             "description": "Regional Endpoint",
             "endpointUrl": "https://cloudbuild.europe-west9.rep.googleapis.com/",
             "location": "europe-west9"
+        },
+        {
+            "description": "Regional Endpoint",
+            "endpointUrl": "https://cloudbuild.europe-west15.rep.googleapis.com/",
+            "location": "europe-west15"
         },
         {
             "description": "Regional Endpoint",
@@ -252,7 +262,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250903",
+    "revision": "20260126",
     "rootUrl": "https://cloudbuild.googleapis.com/",
     "servicePath": "",
     "title": "Cloud Build API",
@@ -366,7 +376,7 @@
                             ]
                         },
                         "list": {
-                            "description": "Lists information about the supported locations for this service.",
+                            "description": "Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.",
                             "flatPath": "v2/projects/{projectsId}/locations",
                             "httpMethod": "GET",
                             "id": "cloudbuild.projects.locations.list",
@@ -375,7 +385,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"

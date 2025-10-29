@@ -415,6 +415,8 @@ class DefaultBucket {
   /// Immutable.
   core.String? location;
 
+  /// Identifier.
+  ///
   /// Resource name of the default bucket.
   core.String? name;
 

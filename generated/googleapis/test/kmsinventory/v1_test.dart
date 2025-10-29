@@ -141,6 +141,17 @@ void checkUnnamed5(core.Map<core.String, core.String> o) {
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
+core.List<api.GoogleCloudKmsInventoryV1Warning> buildUnnamed6() => [
+  buildGoogleCloudKmsInventoryV1Warning(),
+  buildGoogleCloudKmsInventoryV1Warning(),
+];
+
+void checkUnnamed6(core.List<api.GoogleCloudKmsInventoryV1Warning> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkGoogleCloudKmsInventoryV1Warning(o[0]);
+  checkGoogleCloudKmsInventoryV1Warning(o[1]);
+}
+
 core.int buildCounterGoogleCloudKmsInventoryV1ProtectedResourcesSummary = 0;
 api.GoogleCloudKmsInventoryV1ProtectedResourcesSummary
 buildGoogleCloudKmsInventoryV1ProtectedResourcesSummary() {
@@ -153,6 +164,7 @@ buildGoogleCloudKmsInventoryV1ProtectedResourcesSummary() {
     o.projectCount = 42;
     o.resourceCount = 'foo';
     o.resourceTypes = buildUnnamed5();
+    o.warnings = buildUnnamed6();
   }
   buildCounterGoogleCloudKmsInventoryV1ProtectedResourcesSummary--;
   return o;
@@ -169,16 +181,17 @@ void checkGoogleCloudKmsInventoryV1ProtectedResourcesSummary(
     unittest.expect(o.projectCount!, unittest.equals(42));
     unittest.expect(o.resourceCount!, unittest.equals('foo'));
     checkUnnamed5(o.resourceTypes!);
+    checkUnnamed6(o.warnings!);
   }
   buildCounterGoogleCloudKmsInventoryV1ProtectedResourcesSummary--;
 }
 
-core.List<api.GoogleCloudKmsInventoryV1ProtectedResource> buildUnnamed6() => [
+core.List<api.GoogleCloudKmsInventoryV1ProtectedResource> buildUnnamed7() => [
   buildGoogleCloudKmsInventoryV1ProtectedResource(),
   buildGoogleCloudKmsInventoryV1ProtectedResource(),
 ];
 
-void checkUnnamed6(
+void checkUnnamed7(
   core.List<api.GoogleCloudKmsInventoryV1ProtectedResource> o,
 ) {
   unittest.expect(o, unittest.hasLength(2));
@@ -195,7 +208,7 @@ buildGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse() {
   if (buildCounterGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse <
       3) {
     o.nextPageToken = 'foo';
-    o.protectedResources = buildUnnamed6();
+    o.protectedResources = buildUnnamed7();
   }
   buildCounterGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse--;
   return o;
@@ -208,14 +221,37 @@ void checkGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse(
   if (buildCounterGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse <
       3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
-    checkUnnamed6(o.protectedResources!);
+    checkUnnamed7(o.protectedResources!);
   }
   buildCounterGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed7() => {'x': 'foo', 'y': 'foo'};
+core.int buildCounterGoogleCloudKmsInventoryV1Warning = 0;
+api.GoogleCloudKmsInventoryV1Warning buildGoogleCloudKmsInventoryV1Warning() {
+  final o = api.GoogleCloudKmsInventoryV1Warning();
+  buildCounterGoogleCloudKmsInventoryV1Warning++;
+  if (buildCounterGoogleCloudKmsInventoryV1Warning < 3) {
+    o.displayMessage = 'foo';
+    o.warningCode = 'foo';
+  }
+  buildCounterGoogleCloudKmsInventoryV1Warning--;
+  return o;
+}
 
-void checkUnnamed7(core.Map<core.String, core.String> o) {
+void checkGoogleCloudKmsInventoryV1Warning(
+  api.GoogleCloudKmsInventoryV1Warning o,
+) {
+  buildCounterGoogleCloudKmsInventoryV1Warning++;
+  if (buildCounterGoogleCloudKmsInventoryV1Warning < 3) {
+    unittest.expect(o.displayMessage!, unittest.equals('foo'));
+    unittest.expect(o.warningCode!, unittest.equals('foo'));
+  }
+  buildCounterGoogleCloudKmsInventoryV1Warning--;
+}
+
+core.Map<core.String, core.String> buildUnnamed8() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed8(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -232,7 +268,7 @@ api.GoogleCloudKmsV1CryptoKey buildGoogleCloudKmsV1CryptoKey() {
     o.importOnly = true;
     o.keyAccessJustificationsPolicy =
         buildGoogleCloudKmsV1KeyAccessJustificationsPolicy();
-    o.labels = buildUnnamed7();
+    o.labels = buildUnnamed8();
     o.name = 'foo';
     o.nextRotationTime = 'foo';
     o.primary = buildGoogleCloudKmsV1CryptoKeyVersion();
@@ -254,7 +290,7 @@ void checkGoogleCloudKmsV1CryptoKey(api.GoogleCloudKmsV1CryptoKey o) {
     checkGoogleCloudKmsV1KeyAccessJustificationsPolicy(
       o.keyAccessJustificationsPolicy!,
     );
-    checkUnnamed7(o.labels!);
+    checkUnnamed8(o.labels!);
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.nextRotationTime!, unittest.equals('foo'));
     checkGoogleCloudKmsV1CryptoKeyVersion(o.primary!);
@@ -370,9 +406,9 @@ void checkGoogleCloudKmsV1ExternalProtectionLevelOptions(
   buildCounterGoogleCloudKmsV1ExternalProtectionLevelOptions--;
 }
 
-core.List<core.String> buildUnnamed8() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
 
-void checkUnnamed8(core.List<core.String> o) {
+void checkUnnamed9(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -384,7 +420,7 @@ buildGoogleCloudKmsV1KeyAccessJustificationsPolicy() {
   final o = api.GoogleCloudKmsV1KeyAccessJustificationsPolicy();
   buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy++;
   if (buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy < 3) {
-    o.allowedAccessReasons = buildUnnamed8();
+    o.allowedAccessReasons = buildUnnamed9();
   }
   buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy--;
   return o;
@@ -395,7 +431,7 @@ void checkGoogleCloudKmsV1KeyAccessJustificationsPolicy(
 ) {
   buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy++;
   if (buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy < 3) {
-    checkUnnamed8(o.allowedAccessReasons!);
+    checkUnnamed9(o.allowedAccessReasons!);
   }
   buildCounterGoogleCloudKmsV1KeyAccessJustificationsPolicy--;
 }
@@ -429,14 +465,6 @@ void checkGoogleCloudKmsV1KeyOperationAttestation(
   buildCounterGoogleCloudKmsV1KeyOperationAttestation--;
 }
 
-core.List<core.String> buildUnnamed9() => ['foo', 'foo'];
-
-void checkUnnamed9(core.List<core.String> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  unittest.expect(o[0], unittest.equals('foo'));
-  unittest.expect(o[1], unittest.equals('foo'));
-}
-
 core.List<core.String> buildUnnamed10() => ['foo', 'foo'];
 
 void checkUnnamed10(core.List<core.String> o) {
@@ -453,6 +481,14 @@ void checkUnnamed11(core.List<core.String> o) {
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
+core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
+
+void checkUnnamed12(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains =
     0;
 api.GoogleCloudKmsV1KeyOperationAttestationCertificateChains
@@ -461,9 +497,9 @@ buildGoogleCloudKmsV1KeyOperationAttestationCertificateChains() {
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains++;
   if (buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains <
       3) {
-    o.caviumCerts = buildUnnamed9();
-    o.googleCardCerts = buildUnnamed10();
-    o.googlePartitionCerts = buildUnnamed11();
+    o.caviumCerts = buildUnnamed10();
+    o.googleCardCerts = buildUnnamed11();
+    o.googlePartitionCerts = buildUnnamed12();
   }
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains--;
   return o;
@@ -475,16 +511,24 @@ void checkGoogleCloudKmsV1KeyOperationAttestationCertificateChains(
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains++;
   if (buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains <
       3) {
-    checkUnnamed9(o.caviumCerts!);
-    checkUnnamed10(o.googleCardCerts!);
-    checkUnnamed11(o.googlePartitionCerts!);
+    checkUnnamed10(o.caviumCerts!);
+    checkUnnamed11(o.googleCardCerts!);
+    checkUnnamed12(o.googlePartitionCerts!);
   }
   buildCounterGoogleCloudKmsV1KeyOperationAttestationCertificateChains--;
 }
 
-core.List<core.String> buildUnnamed12() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed13() => ['foo', 'foo'];
 
-void checkUnnamed12(core.List<core.String> o) {
+void checkUnnamed13(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<core.String> buildUnnamed14() => ['foo', 'foo'];
+
+void checkUnnamed14(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -546,6 +590,17 @@ void main() {
       });
     },
   );
+
+  unittest.group('obj-schema-GoogleCloudKmsInventoryV1Warning', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildGoogleCloudKmsInventoryV1Warning();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.GoogleCloudKmsInventoryV1Warning.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkGoogleCloudKmsInventoryV1Warning(od);
+    });
+  });
 
   unittest.group('obj-schema-GoogleCloudKmsV1CryptoKey', () {
     unittest.test('to-json--from-json', () async {
@@ -643,7 +698,7 @@ void main() {
       final arg_cryptoKey = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
-      final arg_resourceTypes = buildUnnamed12();
+      final arg_resourceTypes = buildUnnamed13();
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -802,6 +857,7 @@ void main() {
       final res =
           api.KmsinventoryApi(mock).projects.locations.keyRings.cryptoKeys;
       final arg_name = 'foo';
+      final arg_fallbackScope = 'foo';
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -837,6 +893,10 @@ void main() {
             }
           }
           unittest.expect(
+            queryMap['fallbackScope']!.first,
+            unittest.equals(arg_fallbackScope),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -851,10 +911,98 @@ void main() {
       );
       final response = await res.getProtectedResourcesSummary(
         arg_name,
+        fallbackScope: arg_fallbackScope,
         $fields: arg_$fields,
       );
       checkGoogleCloudKmsInventoryV1ProtectedResourcesSummary(
         response as api.GoogleCloudKmsInventoryV1ProtectedResourcesSummary,
+      );
+    });
+  });
+
+  unittest.group('resource-ProjectsProtectedResourcesResource', () {
+    unittest.test('method--search', () async {
+      final mock = HttpServerMock();
+      final res = api.KmsinventoryApi(mock).projects.protectedResources;
+      final arg_scope = 'foo';
+      final arg_cryptoKey = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_resourceTypes = buildUnnamed14();
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['cryptoKey']!.first,
+            unittest.equals(arg_cryptoKey),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['resourceTypes']!,
+            unittest.equals(arg_resourceTypes),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.search(
+        arg_scope,
+        cryptoKey: arg_cryptoKey,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        resourceTypes: arg_resourceTypes,
+        $fields: arg_$fields,
+      );
+      checkGoogleCloudKmsInventoryV1SearchProtectedResourcesResponse(
+        response
+            as api.GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse,
       );
     });
   });

@@ -95,11 +95,11 @@ class ProjectsLocationsResource {
   /// should be returned. Must be in the format `projects / * /locations / * `.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of Ips to return, will likely not be
+  /// [pageSize] - Optional. Maximum number of Ips to return, will likely not be
   /// specified.
   ///
-  /// [pageToken] - A page token, received from a previous `ListStaticIps` call.
-  /// will likely not be specified.
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListStaticIps` call. will likely not be specified.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -447,18 +447,18 @@ class ProjectsLocationsConnectionProfilesResource {
   /// profiles.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter request.
+  /// [filter] - Optional. Filter request.
   ///
-  /// [orderBy] - Order by fields for the result.
+  /// [orderBy] - Optional. Order by fields for the result.
   ///
-  /// [pageSize] - Maximum number of connection profiles to return. If
+  /// [pageSize] - Optional. Maximum number of connection profiles to return. If
   /// unspecified, at most 50 connection profiles will be returned. The maximum
   /// value is 1000; values above 1000 will be coerced to 1000.
   ///
-  /// [pageToken] - Page token received from a previous `ListConnectionProfiles`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListConnectionProfiles` must match the call
-  /// that provided the page token.
+  /// [pageToken] - Optional. Page token received from a previous
+  /// `ListConnectionProfiles` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListConnectionProfiles` must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -715,6 +715,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -730,12 +738,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -935,19 +946,19 @@ class ProjectsLocationsPrivateConnectionsResource {
   /// connectivity configurations.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter request.
+  /// [filter] - Optional. Filter request.
   ///
-  /// [orderBy] - Order by fields for the result.
+  /// [orderBy] - Optional. Order by fields for the result.
   ///
   /// [pageSize] - Maximum number of private connectivity configurations to
   /// return. If unspecified, at most 50 private connectivity configurations
   /// that will be returned. The maximum value is 1000; values above 1000 will
   /// be coerced to 1000.
   ///
-  /// [pageToken] - Page token received from a previous `ListPrivateConnections`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListPrivateConnections` must match the call
-  /// that provided the page token.
+  /// [pageToken] - Optional. Page token received from a previous
+  /// `ListPrivateConnections` call. Provide this to retrieve the subsequent
+  /// page. When paginating, all other parameters provided to
+  /// `ListPrivateConnections` must match the call that provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1146,18 +1157,19 @@ class ProjectsLocationsPrivateConnectionsRoutesResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/privateConnections/\[^/\]+$`.
   ///
-  /// [filter] - Filter request.
+  /// [filter] - Optional. Filter request.
   ///
-  /// [orderBy] - Order by fields for the result.
+  /// [orderBy] - Optional. Order by fields for the result.
   ///
-  /// [pageSize] - Maximum number of Routes to return. The service may return
-  /// fewer than this value. If unspecified, at most 50 Routes will be returned.
-  /// The maximum value is 1000; values above 1000 will be coerced to 1000.
+  /// [pageSize] - Optional. Maximum number of Routes to return. The service may
+  /// return fewer than this value. If unspecified, at most 50 Routes will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
   ///
-  /// [pageToken] - Page token received from a previous `ListRoutes` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListRoutes` must match the call that provided the
-  /// page token.
+  /// [pageToken] - Optional. Page token received from a previous `ListRoutes`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListRoutes` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1364,18 +1376,18 @@ class ProjectsLocationsStreamsResource {
   /// [parent] - Required. The parent that owns the collection of streams.
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Filter request.
+  /// [filter] - Optional. Filter request.
   ///
-  /// [orderBy] - Order by fields for the result.
+  /// [orderBy] - Optional. Order by fields for the result.
   ///
-  /// [pageSize] - Maximum number of streams to return. If unspecified, at most
-  /// 50 streams will be returned. The maximum value is 1000; values above 1000
-  /// will be coerced to 1000.
+  /// [pageSize] - Optional. Maximum number of streams to return. If
+  /// unspecified, at most 50 streams will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
   ///
-  /// [pageToken] - Page token received from a previous `ListStreams` call.
-  /// Provide this to retrieve the subsequent page. When paginating, all other
-  /// parameters provided to `ListStreams` must match the call that provided the
-  /// page token.
+  /// [pageToken] - Optional. Page token received from a previous `ListStreams`
+  /// call. Provide this to retrieve the subsequent page. When paginating, all
+  /// other parameters provided to `ListStreams` must match the call that
+  /// provided the page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1584,10 +1596,10 @@ class ProjectsLocationsStreamsObjectsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/streams/\[^/\]+$`.
   ///
-  /// [pageSize] - Maximum number of objects to return. Default is 50. The
-  /// maximum value is 1000; values above 1000 will be coerced to 1000.
+  /// [pageSize] - Optional. Maximum number of objects to return. Default is 50.
+  /// The maximum value is 1000; values above 1000 will be coerced to 1000.
   ///
-  /// [pageToken] - Page token received from a previous
+  /// [pageToken] - Optional. Page token received from a previous
   /// `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent
   /// page. When paginating, all other parameters provided to
   /// `ListStreamObjectsRequest` must match the call that provided the page
@@ -1787,6 +1799,9 @@ class BackfillAllStrategy {
   /// Salesforce data source objects to avoid backfilling
   SalesforceOrg? salesforceExcludedObjects;
 
+  /// Spanner data source objects to avoid backfilling.
+  SpannerDatabase? spannerExcludedObjects;
+
   /// SQLServer data source objects to avoid backfilling
   SqlServerRdbms? sqlServerExcludedObjects;
 
@@ -1796,6 +1811,7 @@ class BackfillAllStrategy {
     this.oracleExcludedObjects,
     this.postgresqlExcludedObjects,
     this.salesforceExcludedObjects,
+    this.spannerExcludedObjects,
     this.sqlServerExcludedObjects,
   });
 
@@ -1836,6 +1852,13 @@ class BackfillAllStrategy {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        spannerExcludedObjects:
+            json_.containsKey('spannerExcludedObjects')
+                ? SpannerDatabase.fromJson(
+                  json_['spannerExcludedObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sqlServerExcludedObjects:
             json_.containsKey('sqlServerExcludedObjects')
                 ? SqlServerRdbms.fromJson(
@@ -1856,6 +1879,8 @@ class BackfillAllStrategy {
       'postgresqlExcludedObjects': postgresqlExcludedObjects!,
     if (salesforceExcludedObjects != null)
       'salesforceExcludedObjects': salesforceExcludedObjects!,
+    if (spannerExcludedObjects != null)
+      'spannerExcludedObjects': spannerExcludedObjects!,
     if (sqlServerExcludedObjects != null)
       'sqlServerExcludedObjects': sqlServerExcludedObjects!,
   };
@@ -1947,6 +1972,28 @@ typedef BackfillNoneStrategy = $Empty;
 /// Server certificates will be trusted by default.
 typedef BasicEncryption = $Empty;
 
+/// BigQuery clustering configuration.
+class BigQueryClustering {
+  /// Column names to set as clustering columns.
+  ///
+  /// Required.
+  core.List<core.String>? columns;
+
+  BigQueryClustering({this.columns});
+
+  BigQueryClustering.fromJson(core.Map json_)
+    : this(
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (columns != null) 'columns': columns!,
+  };
+}
+
 /// BigQuery destination configuration
 class BigQueryDestinationConfig {
   /// Append only mode
@@ -2032,7 +2079,67 @@ class BigQueryDestinationConfig {
   };
 }
 
-/// BigQuery warehouse profile.
+/// BigQuery partitioning configuration.
+class BigQueryPartitioning {
+  /// Ingestion time partitioning.
+  IngestionTimePartition? ingestionTimePartition;
+
+  /// Integer range partitioning.
+  IntegerRangePartition? integerRangePartition;
+
+  /// If true, queries over the table require a partition filter.
+  ///
+  /// Optional.
+  core.bool? requirePartitionFilter;
+
+  /// Time unit column partitioning.
+  TimeUnitPartition? timeUnitPartition;
+
+  BigQueryPartitioning({
+    this.ingestionTimePartition,
+    this.integerRangePartition,
+    this.requirePartitionFilter,
+    this.timeUnitPartition,
+  });
+
+  BigQueryPartitioning.fromJson(core.Map json_)
+    : this(
+        ingestionTimePartition:
+            json_.containsKey('ingestionTimePartition')
+                ? IngestionTimePartition.fromJson(
+                  json_['ingestionTimePartition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        integerRangePartition:
+            json_.containsKey('integerRangePartition')
+                ? IntegerRangePartition.fromJson(
+                  json_['integerRangePartition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        requirePartitionFilter: json_['requirePartitionFilter'] as core.bool?,
+        timeUnitPartition:
+            json_.containsKey('timeUnitPartition')
+                ? TimeUnitPartition.fromJson(
+                  json_['timeUnitPartition']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (ingestionTimePartition != null)
+      'ingestionTimePartition': ingestionTimePartition!,
+    if (integerRangePartition != null)
+      'integerRangePartition': integerRangePartition!,
+    if (requirePartitionFilter != null)
+      'requirePartitionFilter': requirePartitionFilter!,
+    if (timeUnitPartition != null) 'timeUnitPartition': timeUnitPartition!,
+  };
+}
+
+/// Profile for connecting to a BigQuery destination.
 typedef BigQueryProfile = $Empty;
 
 /// Configuration to use Binary Log Parser CDC technique.
@@ -2196,7 +2303,7 @@ class CdcStrategy {
 /// A set of reusable connection configurations to be used as a source or
 /// destination for a stream.
 class ConnectionProfile {
-  /// BigQuery Connection Profile configuration.
+  /// Profile for connecting to a BigQuery destination.
   BigQueryProfile? bigqueryProfile;
 
   /// The create time of the resource.
@@ -2212,16 +2319,16 @@ class ConnectionProfile {
   /// Forward SSH tunnel connectivity.
   ForwardSshTunnelConnectivity? forwardSshConnectivity;
 
-  /// Cloud Storage ConnectionProfile configuration.
+  /// Profile for connecting to a Cloud Storage destination.
   GcsProfile? gcsProfile;
 
   /// Labels.
   core.Map<core.String, core.String>? labels;
 
-  /// MongoDB Connection Profile configuration.
+  /// Profile for connecting to a MongoDB source.
   MongodbProfile? mongodbProfile;
 
-  /// MySQL ConnectionProfile configuration.
+  /// Profile for connecting to a MySQL source.
   MysqlProfile? mysqlProfile;
 
   /// Identifier.
@@ -2231,16 +2338,16 @@ class ConnectionProfile {
   /// Output only.
   core.String? name;
 
-  /// Oracle ConnectionProfile configuration.
+  /// Profile for connecting to an Oracle source.
   OracleProfile? oracleProfile;
 
-  /// PostgreSQL Connection Profile configuration.
+  /// Profile for connecting to a PostgreSQL source.
   PostgresqlProfile? postgresqlProfile;
 
   /// Private connectivity.
   PrivateConnectivity? privateConnectivity;
 
-  /// Salesforce Connection Profile configuration.
+  /// Profile for connecting to a Salesforce source.
   SalesforceProfile? salesforceProfile;
 
   /// Reserved for future use.
@@ -2253,7 +2360,10 @@ class ConnectionProfile {
   /// Output only.
   core.bool? satisfiesPzs;
 
-  /// SQLServer Connection Profile configuration.
+  /// Profile for connecting to a Spanner source.
+  SpannerProfile? spannerProfile;
+
+  /// Profile for connecting to a SQLServer source.
   SqlServerProfile? sqlServerProfile;
 
   /// Static Service IP connectivity.
@@ -2280,6 +2390,7 @@ class ConnectionProfile {
     this.salesforceProfile,
     this.satisfiesPzi,
     this.satisfiesPzs,
+    this.spannerProfile,
     this.sqlServerProfile,
     this.staticServiceIpConnectivity,
     this.updateTime,
@@ -2355,6 +2466,13 @@ class ConnectionProfile {
                 : null,
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        spannerProfile:
+            json_.containsKey('spannerProfile')
+                ? SpannerProfile.fromJson(
+                  json_['spannerProfile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sqlServerProfile:
             json_.containsKey('sqlServerProfile')
                 ? SqlServerProfile.fromJson(
@@ -2390,10 +2508,46 @@ class ConnectionProfile {
     if (salesforceProfile != null) 'salesforceProfile': salesforceProfile!,
     if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (spannerProfile != null) 'spannerProfile': spannerProfile!,
     if (sqlServerProfile != null) 'sqlServerProfile': sqlServerProfile!,
     if (staticServiceIpConnectivity != null)
       'staticServiceIpConnectivity': staticServiceIpConnectivity!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// A customization rule to apply to a set of objects.
+class CustomizationRule {
+  /// BigQuery clustering rule.
+  BigQueryClustering? bigqueryClustering;
+
+  /// BigQuery partitioning rule.
+  BigQueryPartitioning? bigqueryPartitioning;
+
+  CustomizationRule({this.bigqueryClustering, this.bigqueryPartitioning});
+
+  CustomizationRule.fromJson(core.Map json_)
+    : this(
+        bigqueryClustering:
+            json_.containsKey('bigqueryClustering')
+                ? BigQueryClustering.fromJson(
+                  json_['bigqueryClustering']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bigqueryPartitioning:
+            json_.containsKey('bigqueryPartitioning')
+                ? BigQueryPartitioning.fromJson(
+                  json_['bigqueryPartitioning']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (bigqueryClustering != null) 'bigqueryClustering': bigqueryClustering!,
+    if (bigqueryPartitioning != null)
+      'bigqueryPartitioning': bigqueryPartitioning!,
   };
 }
 
@@ -2494,34 +2648,59 @@ class DestinationConfig {
 /// Request message for 'discover' ConnectionProfile request.
 class DiscoverConnectionProfileRequest {
   /// An ad-hoc connection profile configuration.
+  ///
+  /// Optional.
   ConnectionProfile? connectionProfile;
 
   /// A reference to an existing connection profile.
+  ///
+  /// Optional.
   core.String? connectionProfileName;
 
   /// Whether to retrieve the full hierarchy of data objects (TRUE) or only the
   /// current level (FALSE).
+  ///
+  /// Optional.
   core.bool? fullHierarchy;
 
   /// The number of hierarchy levels below the current level to be retrieved.
+  ///
+  /// Optional.
   core.int? hierarchyDepth;
 
   /// MongoDB cluster to enrich with child data objects and metadata.
+  ///
+  /// Optional.
   MongodbCluster? mongodbCluster;
 
   /// MySQL RDBMS to enrich with child data objects and metadata.
+  ///
+  /// Optional.
   MysqlRdbms? mysqlRdbms;
 
   /// Oracle RDBMS to enrich with child data objects and metadata.
+  ///
+  /// Optional.
   OracleRdbms? oracleRdbms;
 
   /// PostgreSQL RDBMS to enrich with child data objects and metadata.
+  ///
+  /// Optional.
   PostgresqlRdbms? postgresqlRdbms;
 
   /// Salesforce organization to enrich with child data objects and metadata.
+  ///
+  /// Optional.
   SalesforceOrg? salesforceOrg;
 
+  /// Spanner database to enrich with child data objects and metadata.
+  ///
+  /// Optional.
+  SpannerDatabase? spannerDatabase;
+
   /// SQLServer RDBMS to enrich with child data objects and metadata.
+  ///
+  /// Optional.
   SqlServerRdbms? sqlServerRdbms;
 
   DiscoverConnectionProfileRequest({
@@ -2534,6 +2713,7 @@ class DiscoverConnectionProfileRequest {
     this.oracleRdbms,
     this.postgresqlRdbms,
     this.salesforceOrg,
+    this.spannerDatabase,
     this.sqlServerRdbms,
   });
 
@@ -2581,6 +2761,13 @@ class DiscoverConnectionProfileRequest {
                   json_['salesforceOrg'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        spannerDatabase:
+            json_.containsKey('spannerDatabase')
+                ? SpannerDatabase.fromJson(
+                  json_['spannerDatabase']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sqlServerRdbms:
             json_.containsKey('sqlServerRdbms')
                 ? SqlServerRdbms.fromJson(
@@ -2601,6 +2788,7 @@ class DiscoverConnectionProfileRequest {
     if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
     if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
     if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
+    if (spannerDatabase != null) 'spannerDatabase': spannerDatabase!,
     if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
   };
 }
@@ -2622,6 +2810,9 @@ class DiscoverConnectionProfileResponse {
   /// Enriched Salesforce organization.
   SalesforceOrg? salesforceOrg;
 
+  /// Enriched Spanner database.
+  SpannerDatabase? spannerDatabase;
+
   /// Enriched SQLServer RDBMS object.
   SqlServerRdbms? sqlServerRdbms;
 
@@ -2631,6 +2822,7 @@ class DiscoverConnectionProfileResponse {
     this.oracleRdbms,
     this.postgresqlRdbms,
     this.salesforceOrg,
+    this.spannerDatabase,
     this.sqlServerRdbms,
   });
 
@@ -2668,6 +2860,13 @@ class DiscoverConnectionProfileResponse {
                   json_['salesforceOrg'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        spannerDatabase:
+            json_.containsKey('spannerDatabase')
+                ? SpannerDatabase.fromJson(
+                  json_['spannerDatabase']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sqlServerRdbms:
             json_.containsKey('sqlServerRdbms')
                 ? SqlServerRdbms.fromJson(
@@ -2683,6 +2882,7 @@ class DiscoverConnectionProfileResponse {
     if (oracleRdbms != null) 'oracleRdbms': oracleRdbms!,
     if (postgresqlRdbms != null) 'postgresqlRdbms': postgresqlRdbms!,
     if (salesforceOrg != null) 'salesforceOrg': salesforceOrg!,
+    if (spannerDatabase != null) 'spannerDatabase': spannerDatabase!,
     if (sqlServerRdbms != null) 'sqlServerRdbms': sqlServerRdbms!,
   };
 }
@@ -2793,6 +2993,24 @@ class Error {
   };
 }
 
+/// Represents a filter for included data on a stream object.
+class EventFilter {
+  /// An SQL-query Where clause selecting which data should be included, not
+  /// including the "WHERE" keyword.
+  ///
+  /// e.g., `t.key1 = 'value1' AND t.key2 = 'value2'`
+  core.String? sqlWhereClause;
+
+  EventFilter({this.sqlWhereClause});
+
+  EventFilter.fromJson(core.Map json_)
+    : this(sqlWhereClause: json_['sqlWhereClause'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (sqlWhereClause != null) 'sqlWhereClause': sqlWhereClause!,
+  };
+}
+
 /// Response message for a 'FetchStaticIps' response.
 class FetchStaticIpsResponse {
   /// A token that can be sent as `page_token` to retrieve the next page.
@@ -2882,7 +3100,7 @@ class GcsDestinationConfig {
   };
 }
 
-/// Cloud Storage bucket profile.
+/// Profile for connecting to a Cloud Storage destination.
 class GcsProfile {
   /// The Cloud Storage bucket name.
   ///
@@ -2890,6 +3108,8 @@ class GcsProfile {
   core.String? bucket;
 
   /// The root path inside the Cloud Storage bucket.
+  ///
+  /// Optional.
   core.String? rootPath;
 
   GcsProfile({this.bucket, this.rootPath});
@@ -2933,6 +3153,78 @@ class HostAddress {
   core.Map<core.String, core.dynamic> toJson() => {
     if (hostname != null) 'hostname': hostname!,
     if (port != null) 'port': port!,
+  };
+}
+
+/// Ingestion time partitioning.
+///
+/// see https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time
+class IngestionTimePartition {
+  /// Partition granularity
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED" : Unspecified partitioing
+  /// interval.
+  /// - "PARTITIONING_TIME_GRANULARITY_HOUR" : Hourly partitioning.
+  /// - "PARTITIONING_TIME_GRANULARITY_DAY" : Daily partitioning.
+  /// - "PARTITIONING_TIME_GRANULARITY_MONTH" : Monthly partitioning.
+  /// - "PARTITIONING_TIME_GRANULARITY_YEAR" : Yearly partitioning.
+  core.String? partitioningTimeGranularity;
+
+  IngestionTimePartition({this.partitioningTimeGranularity});
+
+  IngestionTimePartition.fromJson(core.Map json_)
+    : this(
+        partitioningTimeGranularity:
+            json_['partitioningTimeGranularity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (partitioningTimeGranularity != null)
+      'partitioningTimeGranularity': partitioningTimeGranularity!,
+  };
+}
+
+/// Integer range partitioning.
+///
+/// see https://cloud.google.com/bigquery/docs/partitioned-tables#integer_range
+class IntegerRangePartition {
+  /// The partitioning column.
+  ///
+  /// Required.
+  core.String? column;
+
+  /// The ending value for range partitioning (exclusive).
+  ///
+  /// Required.
+  core.String? end;
+
+  /// The interval of each range within the partition.
+  ///
+  /// Required.
+  core.String? interval;
+
+  /// The starting value for range partitioning (inclusive).
+  ///
+  /// Required.
+  core.String? start;
+
+  IntegerRangePartition({this.column, this.end, this.interval, this.start});
+
+  IntegerRangePartition.fromJson(core.Map json_)
+    : this(
+        column: json_['column'] as core.String?,
+        end: json_['end'] as core.String?,
+        interval: json_['interval'] as core.String?,
+        start: json_['start'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (column != null) 'column': column!,
+    if (end != null) 'end': end!,
+    if (interval != null) 'interval': interval!,
+    if (start != null) 'start': start!,
   };
 }
 
@@ -3046,7 +3338,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -3059,11 +3363,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3259,7 +3568,7 @@ typedef Merge = $Empty;
 
 /// MongoDB change stream position
 class MongodbChangeStreamPosition {
-  /// The timestamp (in epoch seconds) to start change stream from.
+  /// The timestamp to start change stream from.
   ///
   /// Required.
   core.String? startTime;
@@ -3300,7 +3609,7 @@ class MongodbCluster {
 
 /// MongoDB Collection.
 class MongodbCollection {
-  /// Collection name.
+  /// The collection name.
   core.String? collection;
 
   /// Fields in the collection.
@@ -3332,7 +3641,7 @@ class MongodbDatabase {
   /// Collections in the database.
   core.List<MongodbCollection>? collections;
 
-  /// Database name.
+  /// The database name.
   core.String? database;
 
   MongodbDatabase({this.collections, this.database});
@@ -3358,7 +3667,7 @@ class MongodbDatabase {
 
 /// MongoDB Field.
 class MongodbField {
-  /// Field name.
+  /// The field name.
   core.String? field;
 
   MongodbField({this.field});
@@ -3397,8 +3706,20 @@ class MongodbObjectIdentifier {
   };
 }
 
-/// MongoDB profile.
+/// Profile for connecting to a MongoDB source.
 class MongodbProfile {
+  /// Specifies additional options for the MongoDB connection.
+  ///
+  /// The options should be sent as key-value pairs, for example:
+  /// `additional_options = {"serverSelectionTimeoutMS": "10000",
+  /// "directConnection": "true"}`. Keys are case-sensitive and should match the
+  /// official MongoDB connection string options:
+  /// https://www.mongodb.com/docs/manual/reference/connection-string-options/
+  /// The server will not modify the values provided by the user.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? additionalOptions;
+
   /// List of host addresses for a MongoDB cluster.
   ///
   /// For SRV connection format, this list must contain exactly one DNS host
@@ -3449,6 +3770,7 @@ class MongodbProfile {
   core.String? username;
 
   MongodbProfile({
+    this.additionalOptions,
     this.hostAddresses,
     this.password,
     this.replicaSet,
@@ -3461,6 +3783,9 @@ class MongodbProfile {
 
   MongodbProfile.fromJson(core.Map json_)
     : this(
+        additionalOptions: (json_['additionalOptions']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
         hostAddresses:
             (json_['hostAddresses'] as core.List?)
                 ?.map(
@@ -3497,6 +3822,7 @@ class MongodbProfile {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (additionalOptions != null) 'additionalOptions': additionalOptions!,
     if (hostAddresses != null) 'hostAddresses': hostAddresses!,
     if (password != null) 'password': password!,
     if (replicaSet != null) 'replicaSet': replicaSet!,
@@ -3511,13 +3837,22 @@ class MongodbProfile {
   };
 }
 
-/// MongoDB source configuration.
+/// Configuration for syncing data from a MongoDB source.
 class MongodbSourceConfig {
-  /// MongoDB collections to exclude from the stream.
+  /// The MongoDB collections to exclude from the stream.
   MongodbCluster? excludeObjects;
 
-  /// MongoDB collections to include in the stream.
+  /// The MongoDB collections to include in the stream.
   MongodbCluster? includeObjects;
+
+  /// MongoDB JSON mode to use for the stream.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "MONGODB_JSON_MODE_UNSPECIFIED" : Unspecified JSON mode.
+  /// - "STRICT" : Strict JSON mode.
+  /// - "CANONICAL" : Canonical JSON mode.
+  core.String? jsonMode;
 
   /// Maximum number of concurrent backfill tasks.
   ///
@@ -3530,6 +3865,7 @@ class MongodbSourceConfig {
   MongodbSourceConfig({
     this.excludeObjects,
     this.includeObjects,
+    this.jsonMode,
     this.maxConcurrentBackfillTasks,
   });
 
@@ -3549,6 +3885,7 @@ class MongodbSourceConfig {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        jsonMode: json_['jsonMode'] as core.String?,
         maxConcurrentBackfillTasks:
             json_['maxConcurrentBackfillTasks'] as core.int?,
       );
@@ -3556,6 +3893,7 @@ class MongodbSourceConfig {
   core.Map<core.String, core.dynamic> toJson() => {
     if (excludeObjects != null) 'excludeObjects': excludeObjects!,
     if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (jsonMode != null) 'jsonMode': jsonMode!,
     if (maxConcurrentBackfillTasks != null)
       'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
   };
@@ -3658,7 +3996,7 @@ class MysqlColumn {
   /// Column collation.
   core.String? collation;
 
-  /// Column name.
+  /// The column name.
   core.String? column;
 
   /// The MySQL data type.
@@ -3725,7 +4063,7 @@ class MysqlColumn {
 
 /// MySQL database.
 class MysqlDatabase {
-  /// Database name.
+  /// The database name.
   core.String? database;
 
   /// Tables in the database.
@@ -3823,7 +4161,7 @@ class MysqlObjectIdentifier {
   };
 }
 
-/// MySQL database profile.
+/// Profile for connecting to a MySQL source.
 class MysqlProfile {
   /// Hostname for the MySQL connection.
   ///
@@ -3917,18 +4255,18 @@ class MysqlRdbms {
   };
 }
 
-/// MySQL source configuration
+/// Configuration for syncing data from a MySQL source.
 class MysqlSourceConfig {
   /// Use Binary log position based replication.
   BinaryLogPosition? binaryLogPosition;
 
-  /// MySQL objects to exclude from the stream.
+  /// The MySQL objects to exclude from the stream.
   MysqlRdbms? excludeObjects;
 
   /// Use GTID based replication.
   Gtid? gtid;
 
-  /// MySQL objects to retrieve from the source.
+  /// The MySQL objects to retrieve from the source.
   MysqlRdbms? includeObjects;
 
   /// Maximum number of concurrent backfill tasks.
@@ -4077,7 +4415,7 @@ class MysqlTable {
   /// everything.
   core.List<MysqlColumn>? mysqlColumns;
 
-  /// Table name.
+  /// The table name.
   core.String? table;
 
   MysqlTable({this.mysqlColumns, this.table});
@@ -4146,6 +4484,30 @@ class Oauth2ClientCredentials {
     if (clientSecret != null) 'clientSecret': clientSecret!,
     if (secretManagerStoredClientSecret != null)
       'secretManagerStoredClientSecret': secretManagerStoredClientSecret!,
+  };
+}
+
+/// Object filter to apply the rules to.
+class ObjectFilter {
+  /// Specific source object identifier.
+  SourceObjectIdentifier? sourceObjectIdentifier;
+
+  ObjectFilter({this.sourceObjectIdentifier});
+
+  ObjectFilter.fromJson(core.Map json_)
+    : this(
+        sourceObjectIdentifier:
+            json_.containsKey('sourceObjectIdentifier')
+                ? SourceObjectIdentifier.fromJson(
+                  json_['sourceObjectIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (sourceObjectIdentifier != null)
+      'sourceObjectIdentifier': sourceObjectIdentifier!,
   };
 }
 
@@ -4321,7 +4683,7 @@ typedef OracleAsmLogFileAccess = $Empty;
 
 /// Oracle Column.
 class OracleColumn {
-  /// Column name.
+  /// The column name.
   core.String? column;
 
   /// The Oracle data type.
@@ -4389,7 +4751,7 @@ class OracleColumn {
 /// Oracle data source object identifier.
 typedef OracleObjectIdentifier = $ObjectIdentifier;
 
-/// Oracle database profile.
+/// Profile for connecting to an Oracle source.
 class OracleProfile {
   /// Connection string attributes
   core.Map<core.String, core.String>? connectionAttributes;
@@ -4521,7 +4883,7 @@ class OracleSchema {
   /// Tables in the schema.
   core.List<OracleTable>? oracleTables;
 
-  /// Schema name.
+  /// The schema name.
   core.String? schema;
 
   OracleSchema({this.oracleTables, this.schema});
@@ -4562,7 +4924,7 @@ class OracleScnPosition {
   };
 }
 
-/// Oracle data source configuration
+/// Configuration for syncing data from an Oracle source.
 class OracleSourceConfig {
   /// Use Binary Log Parser.
   BinaryLogParser? binaryLogParser;
@@ -4570,10 +4932,10 @@ class OracleSourceConfig {
   /// Drop large object values.
   DropLargeObjects? dropLargeObjects;
 
-  /// Oracle objects to exclude from the stream.
+  /// The Oracle objects to exclude from the stream.
   OracleRdbms? excludeObjects;
 
-  /// Oracle objects to include in the stream.
+  /// The Oracle objects to include in the stream.
   OracleRdbms? includeObjects;
 
   /// Use LogMiner.
@@ -4720,7 +5082,7 @@ class OracleTable {
   /// everything.
   core.List<OracleColumn>? oracleColumns;
 
-  /// Table name.
+  /// The table name.
   core.String? table;
 
   OracleTable({this.oracleColumns, this.table});
@@ -4746,7 +5108,7 @@ class OracleTable {
 
 /// PostgreSQL Column.
 class PostgresqlColumn {
-  /// Column name.
+  /// The column name.
   core.String? column;
 
   /// The PostgreSQL data type.
@@ -4808,7 +5170,7 @@ class PostgresqlColumn {
 /// PostgreSQL data source object identifier.
 typedef PostgresqlObjectIdentifier = $ObjectIdentifier;
 
-/// PostgreSQL database profile.
+/// Profile for connecting to a PostgreSQL source.
 class PostgresqlProfile {
   /// Database for the PostgreSQL connection.
   ///
@@ -4921,7 +5283,7 @@ class PostgresqlSchema {
   /// Tables in the schema.
   core.List<PostgresqlTable>? postgresqlTables;
 
-  /// Schema name.
+  /// The schema name.
   core.String? schema;
 
   PostgresqlSchema({this.postgresqlTables, this.schema});
@@ -4945,12 +5307,12 @@ class PostgresqlSchema {
   };
 }
 
-/// PostgreSQL data source configuration
+/// Configuration for syncing data from a PostgreSQL source.
 class PostgresqlSourceConfig {
-  /// PostgreSQL objects to exclude from the stream.
+  /// The PostgreSQL objects to exclude from the stream.
   PostgresqlRdbms? excludeObjects;
 
-  /// PostgreSQL objects to include in the stream.
+  /// The PostgreSQL objects to include in the stream.
   PostgresqlRdbms? includeObjects;
 
   /// Maximum number of concurrent backfill tasks.
@@ -5060,7 +5422,7 @@ class PostgresqlTable {
   /// everything.
   core.List<PostgresqlColumn>? postgresqlColumns;
 
-  /// Table name.
+  /// The table name.
   core.String? table;
 
   PostgresqlTable({this.postgresqlColumns, this.table});
@@ -5322,6 +5684,44 @@ class Route {
   };
 }
 
+/// A set of rules to apply to a set of objects.
+class RuleSet {
+  /// List of customization rules to apply.
+  ///
+  /// Required.
+  core.List<CustomizationRule>? customizationRules;
+
+  /// Object filter to apply the customization rules to.
+  ///
+  /// Required.
+  ObjectFilter? objectFilter;
+
+  RuleSet({this.customizationRules, this.objectFilter});
+
+  RuleSet.fromJson(core.Map json_)
+    : this(
+        customizationRules:
+            (json_['customizationRules'] as core.List?)
+                ?.map(
+                  (value) => CustomizationRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        objectFilter:
+            json_.containsKey('objectFilter')
+                ? ObjectFilter.fromJson(
+                  json_['objectFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (customizationRules != null) 'customizationRules': customizationRules!,
+    if (objectFilter != null) 'objectFilter': objectFilter!,
+  };
+}
+
 /// Request message for running a stream.
 class RunStreamRequest {
   /// The CDC strategy of the stream.
@@ -5360,7 +5760,7 @@ class SalesforceField {
   /// The data type.
   core.String? dataType;
 
-  /// Field name.
+  /// The field name.
   core.String? name;
 
   /// Indicates whether the field can accept nil values.
@@ -5390,7 +5790,7 @@ class SalesforceObject {
   /// unspecified as part of exclude objects, excludes nothing.
   core.List<SalesforceField>? fields;
 
-  /// Object name.
+  /// The object name.
   core.String? objectName;
 
   SalesforceObject({this.fields, this.objectName});
@@ -5455,7 +5855,7 @@ class SalesforceOrg {
   };
 }
 
-/// Salesforce profile
+/// Profile for connecting to a Salesforce source.
 class SalesforceProfile {
   /// Domain endpoint for the Salesforce connection.
   ///
@@ -5501,18 +5901,18 @@ class SalesforceProfile {
   };
 }
 
-/// Salesforce source configuration
+/// Configuration for syncing data from a Salesforce source.
 class SalesforceSourceConfig {
-  /// Salesforce objects to exclude from the stream.
+  /// The Salesforce objects to exclude from the stream.
   SalesforceOrg? excludeObjects;
 
-  /// Salesforce objects to retrieve from the source.
+  /// The Salesforce objects to retrieve from the source.
   SalesforceOrg? includeObjects;
 
   /// Salesforce objects polling interval.
   ///
   /// The interval at which new changes will be polled for each object. The
-  /// duration must be between 5 minutes and 24 hours.
+  /// duration must be from `5 minutes` to `24 hours`, inclusive.
   ///
   /// Required.
   core.String? pollingInterval;
@@ -5696,6 +6096,9 @@ class SourceConfig {
   /// Required.
   core.String? sourceConnectionProfile;
 
+  /// Spanner data source configuration.
+  SpannerSourceConfig? spannerSourceConfig;
+
   /// SQLServer data source configuration.
   SqlServerSourceConfig? sqlServerSourceConfig;
 
@@ -5706,6 +6109,7 @@ class SourceConfig {
     this.postgresqlSourceConfig,
     this.salesforceSourceConfig,
     this.sourceConnectionProfile,
+    this.spannerSourceConfig,
     this.sqlServerSourceConfig,
   });
 
@@ -5748,6 +6152,13 @@ class SourceConfig {
                 : null,
         sourceConnectionProfile:
             json_['sourceConnectionProfile'] as core.String?,
+        spannerSourceConfig:
+            json_.containsKey('spannerSourceConfig')
+                ? SpannerSourceConfig.fromJson(
+                  json_['spannerSourceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sqlServerSourceConfig:
             json_.containsKey('sqlServerSourceConfig')
                 ? SqlServerSourceConfig.fromJson(
@@ -5768,6 +6179,8 @@ class SourceConfig {
       'salesforceSourceConfig': salesforceSourceConfig!,
     if (sourceConnectionProfile != null)
       'sourceConnectionProfile': sourceConnectionProfile!,
+    if (spannerSourceConfig != null)
+      'spannerSourceConfig': spannerSourceConfig!,
     if (sqlServerSourceConfig != null)
       'sqlServerSourceConfig': sqlServerSourceConfig!,
   };
@@ -5823,6 +6236,9 @@ class SourceObjectIdentifier {
   /// Salesforce data source object identifier.
   SalesforceObjectIdentifier? salesforceIdentifier;
 
+  /// Spanner data source object identifier.
+  SpannerObjectIdentifier? spannerIdentifier;
+
   /// SQLServer data source object identifier.
   SqlServerObjectIdentifier? sqlServerIdentifier;
 
@@ -5832,6 +6248,7 @@ class SourceObjectIdentifier {
     this.oracleIdentifier,
     this.postgresqlIdentifier,
     this.salesforceIdentifier,
+    this.spannerIdentifier,
     this.sqlServerIdentifier,
   });
 
@@ -5872,6 +6289,13 @@ class SourceObjectIdentifier {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        spannerIdentifier:
+            json_.containsKey('spannerIdentifier')
+                ? SpannerObjectIdentifier.fromJson(
+                  json_['spannerIdentifier']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         sqlServerIdentifier:
             json_.containsKey('sqlServerIdentifier')
                 ? SqlServerObjectIdentifier.fromJson(
@@ -5889,8 +6313,309 @@ class SourceObjectIdentifier {
       'postgresqlIdentifier': postgresqlIdentifier!,
     if (salesforceIdentifier != null)
       'salesforceIdentifier': salesforceIdentifier!,
+    if (spannerIdentifier != null) 'spannerIdentifier': spannerIdentifier!,
     if (sqlServerIdentifier != null)
       'sqlServerIdentifier': sqlServerIdentifier!,
+  };
+}
+
+/// Spanner column.
+class SpannerColumn {
+  /// The column name.
+  ///
+  /// Required.
+  core.String? column;
+
+  /// Spanner data type.
+  ///
+  /// Optional.
+  core.String? dataType;
+
+  /// Whether or not the column is a primary key.
+  ///
+  /// Optional.
+  core.bool? isPrimaryKey;
+
+  /// The ordinal position of the column in the table.
+  ///
+  /// Optional.
+  core.String? ordinalPosition;
+
+  SpannerColumn({
+    this.column,
+    this.dataType,
+    this.isPrimaryKey,
+    this.ordinalPosition,
+  });
+
+  SpannerColumn.fromJson(core.Map json_)
+    : this(
+        column: json_['column'] as core.String?,
+        dataType: json_['dataType'] as core.String?,
+        isPrimaryKey: json_['isPrimaryKey'] as core.bool?,
+        ordinalPosition: json_['ordinalPosition'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (column != null) 'column': column!,
+    if (dataType != null) 'dataType': dataType!,
+    if (isPrimaryKey != null) 'isPrimaryKey': isPrimaryKey!,
+    if (ordinalPosition != null) 'ordinalPosition': ordinalPosition!,
+  };
+}
+
+/// Spanner database structure.
+class SpannerDatabase {
+  /// Spanner schemas in the database.
+  ///
+  /// Optional.
+  core.List<SpannerSchema>? schemas;
+
+  SpannerDatabase({this.schemas});
+
+  SpannerDatabase.fromJson(core.Map json_)
+    : this(
+        schemas:
+            (json_['schemas'] as core.List?)
+                ?.map(
+                  (value) => SpannerSchema.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (schemas != null) 'schemas': schemas!,
+  };
+}
+
+/// Spanner data source object identifier.
+class SpannerObjectIdentifier {
+  /// The schema name.
+  ///
+  /// Optional.
+  core.String? schema;
+
+  /// The table name.
+  ///
+  /// Required.
+  core.String? table;
+
+  SpannerObjectIdentifier({this.schema, this.table});
+
+  SpannerObjectIdentifier.fromJson(core.Map json_)
+    : this(
+        schema: json_['schema'] as core.String?,
+        table: json_['table'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (schema != null) 'schema': schema!,
+    if (table != null) 'table': table!,
+  };
+}
+
+/// Profile for connecting to a Spanner source.
+class SpannerProfile {
+  /// Cloud Spanner database resource.
+  ///
+  /// This field is immutable. Must be in the format:
+  /// projects/{project}/instances/{instance}/databases/{database_id}.
+  ///
+  /// Required. Immutable.
+  core.String? database;
+
+  /// The Spanner endpoint to connect to.
+  ///
+  /// Defaults to the global endpoint (https://spanner.googleapis.com). Must be
+  /// in the format: https://spanner.{region}.rep.googleapis.com.
+  ///
+  /// Optional.
+  core.String? host;
+
+  SpannerProfile({this.database, this.host});
+
+  SpannerProfile.fromJson(core.Map json_)
+    : this(
+        database: json_['database'] as core.String?,
+        host: json_['host'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (database != null) 'database': database!,
+    if (host != null) 'host': host!,
+  };
+}
+
+/// Spanner schema.
+class SpannerSchema {
+  /// The schema name.
+  ///
+  /// Required.
+  core.String? schema;
+
+  /// Spanner tables in the schema.
+  ///
+  /// Optional.
+  core.List<SpannerTable>? tables;
+
+  SpannerSchema({this.schema, this.tables});
+
+  SpannerSchema.fromJson(core.Map json_)
+    : this(
+        schema: json_['schema'] as core.String?,
+        tables:
+            (json_['tables'] as core.List?)
+                ?.map(
+                  (value) => SpannerTable.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (schema != null) 'schema': schema!,
+    if (tables != null) 'tables': tables!,
+  };
+}
+
+/// Configuration for syncing data from a Spanner source.
+class SpannerSourceConfig {
+  /// Whether to use Data Boost for Spanner backfills.
+  ///
+  /// Defaults to false if not set.
+  ///
+  /// Optional.
+  core.bool? backfillDataBoostEnabled;
+
+  /// The change stream name to use for the stream.
+  ///
+  /// Required. Immutable.
+  core.String? changeStreamName;
+
+  /// The Spanner objects to avoid retrieving.
+  ///
+  /// If some objects are both included and excluded, an error will be thrown.
+  ///
+  /// Optional.
+  SpannerDatabase? excludeObjects;
+
+  /// The FGAC role to use for the stream.
+  ///
+  /// Optional.
+  core.String? fgacRole;
+
+  /// The Spanner objects to retrieve from the data source.
+  ///
+  /// If some objects are both included and excluded, an error will be thrown.
+  ///
+  /// Optional.
+  SpannerDatabase? includeObjects;
+
+  /// Maximum number of concurrent backfill tasks.
+  ///
+  /// Optional.
+  core.int? maxConcurrentBackfillTasks;
+
+  /// Maximum number of concurrent CDC tasks.
+  ///
+  /// Optional.
+  core.int? maxConcurrentCdcTasks;
+
+  /// The RPC priority to use for the stream.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "SPANNER_RPC_PRIORITY_UNSPECIFIED" : Unspecified RPC priority.
+  /// - "LOW" : Low RPC priority.
+  /// - "MEDIUM" : Medium RPC priority.
+  /// - "HIGH" : High RPC priority.
+  core.String? spannerRpcPriority;
+
+  SpannerSourceConfig({
+    this.backfillDataBoostEnabled,
+    this.changeStreamName,
+    this.excludeObjects,
+    this.fgacRole,
+    this.includeObjects,
+    this.maxConcurrentBackfillTasks,
+    this.maxConcurrentCdcTasks,
+    this.spannerRpcPriority,
+  });
+
+  SpannerSourceConfig.fromJson(core.Map json_)
+    : this(
+        backfillDataBoostEnabled:
+            json_['backfillDataBoostEnabled'] as core.bool?,
+        changeStreamName: json_['changeStreamName'] as core.String?,
+        excludeObjects:
+            json_.containsKey('excludeObjects')
+                ? SpannerDatabase.fromJson(
+                  json_['excludeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fgacRole: json_['fgacRole'] as core.String?,
+        includeObjects:
+            json_.containsKey('includeObjects')
+                ? SpannerDatabase.fromJson(
+                  json_['includeObjects']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxConcurrentBackfillTasks:
+            json_['maxConcurrentBackfillTasks'] as core.int?,
+        maxConcurrentCdcTasks: json_['maxConcurrentCdcTasks'] as core.int?,
+        spannerRpcPriority: json_['spannerRpcPriority'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (backfillDataBoostEnabled != null)
+      'backfillDataBoostEnabled': backfillDataBoostEnabled!,
+    if (changeStreamName != null) 'changeStreamName': changeStreamName!,
+    if (excludeObjects != null) 'excludeObjects': excludeObjects!,
+    if (fgacRole != null) 'fgacRole': fgacRole!,
+    if (includeObjects != null) 'includeObjects': includeObjects!,
+    if (maxConcurrentBackfillTasks != null)
+      'maxConcurrentBackfillTasks': maxConcurrentBackfillTasks!,
+    if (maxConcurrentCdcTasks != null)
+      'maxConcurrentCdcTasks': maxConcurrentCdcTasks!,
+    if (spannerRpcPriority != null) 'spannerRpcPriority': spannerRpcPriority!,
+  };
+}
+
+/// Spanner table.
+class SpannerTable {
+  /// Spanner columns in the table.
+  ///
+  /// Optional.
+  core.List<SpannerColumn>? columns;
+
+  /// The table name.
+  ///
+  /// Required.
+  core.String? table;
+
+  SpannerTable({this.columns, this.table});
+
+  SpannerTable.fromJson(core.Map json_)
+    : this(
+        columns:
+            (json_['columns'] as core.List?)
+                ?.map(
+                  (value) => SpannerColumn.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        table: json_['table'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (columns != null) 'columns': columns!,
+    if (table != null) 'table': table!,
   };
 }
 
@@ -5974,7 +6699,7 @@ typedef SqlServerChangeTables = $Empty;
 
 /// SQLServer Column.
 class SqlServerColumn {
-  /// Column name.
+  /// The column name.
   core.String? column;
 
   /// The SQLServer data type.
@@ -6053,7 +6778,7 @@ class SqlServerLsnPosition {
 /// SQLServer data source object identifier.
 typedef SqlServerObjectIdentifier = $ObjectIdentifier;
 
-/// SQLServer database profile.
+/// Profile for connecting to a SQLServer source.
 class SqlServerProfile {
   /// Database for the SQLServer connection.
   ///
@@ -6158,7 +6883,7 @@ class SqlServerRdbms {
 
 /// SQLServer schema.
 class SqlServerSchema {
-  /// Schema name.
+  /// The schema name.
   core.String? schema;
 
   /// Tables in the schema.
@@ -6185,15 +6910,15 @@ class SqlServerSchema {
   };
 }
 
-/// SQLServer data source configuration
+/// Configuration for syncing data from a SQLServer source.
 class SqlServerSourceConfig {
   /// CDC reader reads from change tables.
   SqlServerChangeTables? changeTables;
 
-  /// SQLServer objects to exclude from the stream.
+  /// The SQLServer objects to exclude from the stream.
   SqlServerRdbms? excludeObjects;
 
-  /// SQLServer objects to include in the stream.
+  /// The SQLServer objects to include in the stream.
   SqlServerRdbms? includeObjects;
 
   /// Max concurrent backfill tasks.
@@ -6326,7 +7051,7 @@ class SqlServerTable {
   /// everything.
   core.List<SqlServerColumn>? columns;
 
-  /// Table name.
+  /// The table name.
   core.String? table;
 
   SqlServerTable({this.columns, this.table});
@@ -6358,10 +7083,17 @@ typedef SrvConnectionFormat = $Empty;
 
 /// Standard connection format.
 class StandardConnectionFormat {
+  /// Deprecated: Use the `additional_options` map to specify the
+  /// `directConnection` parameter instead.
+  ///
+  /// For example: `additional_options = {"directConnection": "true"}`.
   /// Specifies whether the client connects directly to the host\[:port\] in the
   /// connection URI.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? directConnection;
 
   StandardConnectionFormat({this.directConnection});
@@ -6375,7 +7107,32 @@ class StandardConnectionFormat {
 }
 
 /// Request for manually initiating a backfill job for a specific stream object.
-typedef StartBackfillJobRequest = $Empty;
+class StartBackfillJobRequest {
+  /// Optional event filter.
+  ///
+  /// If not set, or empty, the backfill will be performed on the entire object.
+  /// This is currently used for partial backfill and only supported for SQL
+  /// Server sources.
+  ///
+  /// Optional.
+  EventFilter? eventFilter;
+
+  StartBackfillJobRequest({this.eventFilter});
+
+  StartBackfillJobRequest.fromJson(core.Map json_)
+    : this(
+        eventFilter:
+            json_.containsKey('eventFilter')
+                ? EventFilter.fromJson(
+                  json_['eventFilter'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (eventFilter != null) 'eventFilter': eventFilter!,
+  };
+}
 
 /// Response for manually initiating a backfill job for a specific stream
 /// object.
@@ -6499,6 +7256,11 @@ class Stream {
   /// Output only.
   core.String? name;
 
+  /// Rule sets to apply to the stream.
+  ///
+  /// Optional.
+  core.List<RuleSet>? ruleSets;
+
   /// Reserved for future use.
   ///
   /// Output only.
@@ -6547,6 +7309,7 @@ class Stream {
     this.labels,
     this.lastRecoveryTime,
     this.name,
+    this.ruleSets,
     this.satisfiesPzi,
     this.satisfiesPzs,
     this.sourceConfig,
@@ -6592,6 +7355,14 @@ class Stream {
         ),
         lastRecoveryTime: json_['lastRecoveryTime'] as core.String?,
         name: json_['name'] as core.String?,
+        ruleSets:
+            (json_['ruleSets'] as core.List?)
+                ?.map(
+                  (value) => RuleSet.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
         satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         sourceConfig:
@@ -6616,6 +7387,7 @@ class Stream {
     if (labels != null) 'labels': labels!,
     if (lastRecoveryTime != null) 'lastRecoveryTime': lastRecoveryTime!,
     if (name != null) 'name': name!,
+    if (ruleSets != null) 'ruleSets': ruleSets!,
     if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
     if (sourceConfig != null) 'sourceConfig': sourceConfig!,
@@ -6636,6 +7408,14 @@ class StreamObject {
   ///
   /// Output only.
   core.String? createTime;
+
+  /// The customization rules for the object.
+  ///
+  /// These rules are derived from the parent Stream's `rule_sets` and represent
+  /// the intended configuration for the object.
+  ///
+  /// Output only.
+  core.List<CustomizationRule>? customizationRules;
 
   /// Display name.
   ///
@@ -6665,6 +7445,7 @@ class StreamObject {
   StreamObject({
     this.backfillJob,
     this.createTime,
+    this.customizationRules,
     this.displayName,
     this.errors,
     this.name,
@@ -6681,6 +7462,14 @@ class StreamObject {
                 )
                 : null,
         createTime: json_['createTime'] as core.String?,
+        customizationRules:
+            (json_['customizationRules'] as core.List?)
+                ?.map(
+                  (value) => CustomizationRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         displayName: json_['displayName'] as core.String?,
         errors:
             (json_['errors'] as core.List?)
@@ -6703,11 +7492,50 @@ class StreamObject {
   core.Map<core.String, core.dynamic> toJson() => {
     if (backfillJob != null) 'backfillJob': backfillJob!,
     if (createTime != null) 'createTime': createTime!,
+    if (customizationRules != null) 'customizationRules': customizationRules!,
     if (displayName != null) 'displayName': displayName!,
     if (errors != null) 'errors': errors!,
     if (name != null) 'name': name!,
     if (sourceObject != null) 'sourceObject': sourceObject!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Time unit column partitioning.
+///
+/// see
+/// https://cloud.google.com/bigquery/docs/partitioned-tables#date_timestamp_partitioned_tables
+class TimeUnitPartition {
+  /// The partitioning column.
+  ///
+  /// Required.
+  core.String? column;
+
+  /// Partition granularity.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PARTITIONING_TIME_GRANULARITY_UNSPECIFIED" : Unspecified partitioing
+  /// interval.
+  /// - "PARTITIONING_TIME_GRANULARITY_HOUR" : Hourly partitioning.
+  /// - "PARTITIONING_TIME_GRANULARITY_DAY" : Daily partitioning.
+  /// - "PARTITIONING_TIME_GRANULARITY_MONTH" : Monthly partitioning.
+  /// - "PARTITIONING_TIME_GRANULARITY_YEAR" : Yearly partitioning.
+  core.String? partitioningTimeGranularity;
+
+  TimeUnitPartition({this.column, this.partitioningTimeGranularity});
+
+  TimeUnitPartition.fromJson(core.Map json_)
+    : this(
+        column: json_['column'] as core.String?,
+        partitioningTimeGranularity:
+            json_['partitioningTimeGranularity'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (column != null) 'column': column!,
+    if (partitioningTimeGranularity != null)
+      'partitioningTimeGranularity': partitioningTimeGranularity!,
   };
 }
 

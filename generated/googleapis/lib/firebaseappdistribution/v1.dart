@@ -90,7 +90,7 @@ class MediaResource {
   /// Request parameters:
   ///
   /// [app] - Required. The name of the app resource. Format:
-  /// `projects/{project_number}/apps/{app_id}`
+  /// `projects/{project_number}/apps/{app}`
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -160,7 +160,7 @@ class ProjectsAppsResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the `AabInfo` resource to retrieve. Format:
-  /// `projects/{project_number}/apps/{app_id}/aabInfo`
+  /// `projects/{project_number}/apps/{app}/aabInfo`
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+/aabInfo$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -214,7 +214,7 @@ class ProjectsAppsReleasesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the app resource, which is the parent of
-  /// the release resources. Format: `projects/{project_number}/apps/{app_id}`
+  /// the release resources. Format: `projects/{project_number}/apps/{app}`
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -264,7 +264,7 @@ class ProjectsAppsReleasesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the release resource to distribute. Format:
-  /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+  /// `projects/{project_number}/apps/{app}/releases/{release}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/apps/\[^/\]+/releases/\[^/\]+$`.
   ///
@@ -306,7 +306,7 @@ class ProjectsAppsReleasesResource {
   /// Request parameters:
   ///
   /// [name] - Required. The name of the release resource to retrieve. Format:
-  /// projects/{project_number}/apps/{app_id}/releases/{release_id}
+  /// projects/{project_number}/apps/{app}/releases/{release}
   /// Value must have pattern
   /// `^projects/\[^/\]+/apps/\[^/\]+/releases/\[^/\]+$`.
   ///
@@ -347,7 +347,7 @@ class ProjectsAppsReleasesResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The name of the app resource, which is the parent of
-  /// the release resources. Format: `projects/{project_number}/apps/{app_id}`
+  /// the release resources. Format: `projects/{project_number}/apps/{app}`
   /// Value must have pattern `^projects/\[^/\]+/apps/\[^/\]+$`.
   ///
   /// [filter] - Optional. The expression to filter releases listed in the
@@ -419,7 +419,7 @@ class ProjectsAppsReleasesResource {
   /// Request parameters:
   ///
   /// [name] - The name of the release resource. Format:
-  /// `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+  /// `projects/{project_number}/apps/{app}/releases/{release}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/apps/\[^/\]+/releases/\[^/\]+$`.
   ///
@@ -761,9 +761,9 @@ class ProjectsAppsReleasesOperationsResource {
   ///
   /// [returnPartialSuccess] - When set to `true`, operations that are reachable
   /// are returned as normal, and those that are unreachable are returned in the
-  /// \[ListOperationsResponse.unreachable\] field. This can only be `true` when
-  /// reading across collections e.g. when `parent` is set to
-  /// `"projects/example/locations/-"`. This field is not by default supported
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
   /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
   /// documented otherwise in service or product specific documentation.
   ///
@@ -2275,7 +2275,7 @@ class GoogleFirebaseAppdistroV1BatchAddTestersResponse {
 class GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
   /// The names of the release resources to delete.
   ///
-  /// Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}` A
+  /// Format: `projects/{project_number}/apps/{app}/releases/{release}` A
   /// maximum of 100 releases can be deleted per request.
   ///
   /// Required.
@@ -2741,7 +2741,7 @@ class GoogleFirebaseAppdistroV1Release {
 
   /// The name of the release resource.
   ///
-  /// Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+  /// Format: `projects/{project_number}/apps/{app}/releases/{release}`
   core.String? name;
 
   /// Notes of the release.
@@ -2937,7 +2937,7 @@ class GoogleLongrunningListOperationsResponse {
   ///
   /// Unreachable resources. Populated when the request sets
   /// `ListOperationsRequest.return_partial_success` and reads across
-  /// collections e.g. when attempting to list all resources across all
+  /// collections. For example, when attempting to list all resources across all
   /// supported locations.
   core.List<core.String>? unreachable;
 

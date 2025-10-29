@@ -1,3 +1,14 @@
+## 16.0.0-wip
+
+### APIs
+- `appsmarket` - new
+- `bigquerydatapolicy` - added `v2`
+- `chromewebstore` - new
+- `dataform` - new
+- `datamanager` - new
+- `hypercomputecluster` - new
+- `policytroubleshooter` - added `v3`
+
 ## 15.0.0
 
 - Require `sdk: ^3.7.0`

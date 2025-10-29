@@ -778,8 +778,6 @@ class V2Key {
   ///
   /// This may be sent on update and delete requests to ensure the client has an
   /// up-to-date value before proceeding. See https://google.aip.dev/154.
-  ///
-  /// Output only.
   core.String? etag;
 
   /// An encrypted and signed value held by this key.

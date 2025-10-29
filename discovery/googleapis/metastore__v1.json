@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250911",
+    "revision": "20260122",
     "rootUrl": "https://metastore.googleapis.com/",
     "servicePath": "",
     "title": "Dataproc Metastore API",
@@ -148,7 +148,7 @@
                             ],
                             "parameters": {
                                 "extraLocationTypes": {
-                                    "description": "Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.",
+                                    "description": "Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.",
                                     "location": "query",
                                     "repeated": true,
                                     "type": "string"
@@ -567,6 +567,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to \"projects/example/locations/-\".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v1/{+name}/operations",
@@ -2069,7 +2074,8 @@
             "type": "object"
         },
         "CustomRegionMetadata": {
-            "description": "Metadata about a custom region. This is only populated if the region is a custom region. For single/multi regions, it will be empty.",
+            "deprecated": true,
+            "description": "Deprecated: Use a single region service instead. Metadata about a custom region. This is only populated if the region is a custom region. For single/multi regions, it will be empty.",
             "id": "CustomRegionMetadata",
             "properties": {
                 "optionalReadOnlyRegions": {
@@ -2581,6 +2587,13 @@
                         "$ref": "Operation"
                     },
                     "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -2649,7 +2662,8 @@
             "id": "LocationMetadata",
             "properties": {
                 "customRegionMetadata": {
-                    "description": "Possible configurations supported if the current region is a custom region.",
+                    "deprecated": true,
+                    "description": "Deprecated: Use a single region service instead. Possible configurations supported if the current region is a custom region.",
                     "items": {
                         "$ref": "CustomRegionMetadata"
                     },
@@ -2657,7 +2671,8 @@
                 },
                 "multiRegionMetadata": {
                     "$ref": "MultiRegionMetadata",
-                    "description": "The multi-region metadata if the current region is a multi-region."
+                    "deprecated": true,
+                    "description": "Deprecated: Use a single region service instead. The multi-region metadata if the current region is a multi-region."
                 },
                 "supportedHiveMetastoreVersions": {
                     "description": "The versions of Hive Metastore that can be used when creating a new metastore service in this location. The server guarantees that exactly one HiveMetastoreVersion in the list will set is_default.",
@@ -2961,7 +2976,8 @@
             "type": "object"
         },
         "MultiRegionMetadata": {
-            "description": "The metadata for the multi-region that includes the constituent regions. The metadata is only populated if the region is multi-region. For single region or custom dual region, it will be empty.",
+            "deprecated": true,
+            "description": "Deprecated: Use a single region service instead. The metadata for the multi-region that includes the constituent regions. The metadata is only populated if the region is multi-region. For single region or custom dual region, it will be empty.",
             "id": "MultiRegionMetadata",
             "properties": {
                 "constituentRegions": {

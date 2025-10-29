@@ -1759,11 +1759,13 @@ class ProductView {
   /// Possible string values are:
   /// - "AGGREGATED_REPORTING_CONTEXT_STATUS_UNSPECIFIED" : Not specified.
   /// - "NOT_ELIGIBLE_OR_DISAPPROVED" : Product is not eligible or is
-  /// disapproved for all reporting contexts.
-  /// - "PENDING" : Product's status is pending in all reporting contexts.
+  /// disapproved for all reporting contexts and countries.
+  /// - "PENDING" : Product's status is pending in all reporting contexts and
+  /// countries.
   /// - "ELIGIBLE_LIMITED" : Product is eligible for some (but not all)
-  /// reporting contexts.
-  /// - "ELIGIBLE" : Product is eligible for all reporting contexts.
+  /// reporting contexts and countries.
+  /// - "ELIGIBLE" : Product is eligible for all reporting contexts and
+  /// countries.
   core.String? aggregatedReportingContextStatus;
 
   /// [Availability](https://support.google.com/merchants/answer/6324448) of the
@@ -1814,10 +1816,10 @@ class ProductView {
   /// performing products of the merchant.
   core.String? clickPotential;
 
-  /// Rank of the product based on its click potential.
+  /// Normalized click potential of the product.
   ///
-  /// A product with `click_potential_rank` 1 has the highest click potential
-  /// among the merchant's products that fulfill the search query conditions.
+  /// Values range from 1 to 1000, where 1 is the highest click potential and
+  /// 1000 is the theoretical lowest.
   core.String? clickPotentialRank;
 
   /// [Condition](https://support.google.com/merchants/answer/6324469) of the

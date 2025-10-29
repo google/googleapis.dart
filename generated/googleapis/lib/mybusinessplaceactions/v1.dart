@@ -501,6 +501,8 @@ class PlaceActionLink {
   /// - "FOOD_TAKEOUT" : The action type is ordering food for takeout.
   /// - "SHOP_ONLINE" : The action type is shopping, that can be delivery and/or
   /// pickup.
+  /// - "SOLOPRENEUR_APPOINTMENT" : The action type is booking an appointment
+  /// with a Solopneuer partner.
   core.String? placeActionType;
 
   /// Specifies the provider type.
@@ -581,6 +583,8 @@ class PlaceActionTypeMetadata {
   /// - "FOOD_TAKEOUT" : The action type is ordering food for takeout.
   /// - "SHOP_ONLINE" : The action type is shopping, that can be delivery and/or
   /// pickup.
+  /// - "SOLOPRENEUR_APPOINTMENT" : The action type is booking an appointment
+  /// with a Solopneuer partner.
   core.String? placeActionType;
 
   PlaceActionTypeMetadata({this.displayName, this.placeActionType});

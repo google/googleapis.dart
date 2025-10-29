@@ -3872,9 +3872,11 @@ class BigtableColumn {
   ///
   /// Acceptable encoding values are: TEXT - indicates values are alphanumeric
   /// text strings. BINARY - indicates values are encoded using HBase
-  /// Bytes.toBytes family of functions. 'encoding' can also be set at the
-  /// column family level. However, the setting at this level takes precedence
-  /// if 'encoding' is set at both levels.
+  /// Bytes.toBytes family of functions. PROTO_BINARY - indicates values are
+  /// encoded using serialized proto messages. This can only be used in
+  /// combination with JSON type. 'encoding' can also be set at the column
+  /// family level. However, the setting at this level takes precedence if
+  /// 'encoding' is set at both levels.
   ///
   /// Optional.
   core.String? encoding;
@@ -3895,6 +3897,12 @@ class BigtableColumn {
   ///
   /// Optional.
   core.bool? onlyReadLatest;
+
+  /// Protobuf-specific configurations, only takes effect when the encoding is
+  /// PROTO_BINARY.
+  ///
+  /// Optional.
+  BigtableProtoConfig? protoConfig;
 
   /// Qualifier of the column.
   ///
@@ -3937,6 +3945,7 @@ class BigtableColumn {
     this.encoding,
     this.fieldName,
     this.onlyReadLatest,
+    this.protoConfig,
     this.qualifierEncoded,
     this.qualifierString,
     this.type,
@@ -3947,6 +3956,12 @@ class BigtableColumn {
         encoding: json_['encoding'] as core.String?,
         fieldName: json_['fieldName'] as core.String?,
         onlyReadLatest: json_['onlyReadLatest'] as core.bool?,
+        protoConfig:
+            json_.containsKey('protoConfig')
+                ? BigtableProtoConfig.fromJson(
+                  json_['protoConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         qualifierEncoded: json_['qualifierEncoded'] as core.String?,
         qualifierString: json_['qualifierString'] as core.String?,
         type: json_['type'] as core.String?,
@@ -3956,6 +3971,7 @@ class BigtableColumn {
     if (encoding != null) 'encoding': encoding!,
     if (fieldName != null) 'fieldName': fieldName!,
     if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest!,
+    if (protoConfig != null) 'protoConfig': protoConfig!,
     if (qualifierEncoded != null) 'qualifierEncoded': qualifierEncoded!,
     if (qualifierString != null) 'qualifierString': qualifierString!,
     if (type != null) 'type': type!,
@@ -3978,9 +3994,10 @@ class BigtableColumnFamily {
   ///
   /// Acceptable encoding values are: TEXT - indicates values are alphanumeric
   /// text strings. BINARY - indicates values are encoded using HBase
-  /// Bytes.toBytes family of functions. This can be overridden for a specific
-  /// column by listing that column in 'columns' and specifying an encoding for
-  /// it.
+  /// Bytes.toBytes family of functions. PROTO_BINARY - indicates values are
+  /// encoded using serialized proto messages. This can only be used in
+  /// combination with JSON type. This can be overridden for a specific column
+  /// by listing that column in 'columns' and specifying an encoding for it.
   ///
   /// Optional.
   core.String? encoding;
@@ -3996,6 +4013,12 @@ class BigtableColumnFamily {
   ///
   /// Optional.
   core.bool? onlyReadLatest;
+
+  /// Protobuf-specific configurations, only takes effect when the encoding is
+  /// PROTO_BINARY.
+  ///
+  /// Optional.
+  BigtableProtoConfig? protoConfig;
 
   /// The type to convert the value in cells of this column family.
   ///
@@ -4013,6 +4036,7 @@ class BigtableColumnFamily {
     this.encoding,
     this.familyId,
     this.onlyReadLatest,
+    this.protoConfig,
     this.type,
   });
 
@@ -4029,6 +4053,12 @@ class BigtableColumnFamily {
         encoding: json_['encoding'] as core.String?,
         familyId: json_['familyId'] as core.String?,
         onlyReadLatest: json_['onlyReadLatest'] as core.bool?,
+        protoConfig:
+            json_.containsKey('protoConfig')
+                ? BigtableProtoConfig.fromJson(
+                  json_['protoConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         type: json_['type'] as core.String?,
       );
 
@@ -4037,6 +4067,7 @@ class BigtableColumnFamily {
     if (encoding != null) 'encoding': encoding!,
     if (familyId != null) 'familyId': familyId!,
     if (onlyReadLatest != null) 'onlyReadLatest': onlyReadLatest!,
+    if (protoConfig != null) 'protoConfig': protoConfig!,
     if (type != null) 'type': type!,
   };
 }
@@ -4114,6 +4145,41 @@ class BigtableOptions {
     if (outputColumnFamiliesAsJson != null)
       'outputColumnFamiliesAsJson': outputColumnFamiliesAsJson!,
     if (readRowkeyAsString != null) 'readRowkeyAsString': readRowkeyAsString!,
+  };
+}
+
+/// Information related to a Bigtable protobuf column.
+class BigtableProtoConfig {
+  /// The fully qualified proto message name of the protobuf.
+  ///
+  /// In the format of "foo.bar.Message".
+  ///
+  /// Optional.
+  core.String? protoMessageName;
+
+  /// The ID of the Bigtable SchemaBundle resource associated with this
+  /// protobuf.
+  ///
+  /// The ID should be referred to within the parent table, e.g., `foo` rather
+  /// than
+  /// `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/foo`.
+  /// See
+  /// [more details on Bigtable SchemaBundles](https://docs.cloud.google.com/bigtable/docs/create-manage-protobuf-schemas).
+  ///
+  /// Optional.
+  core.String? schemaBundleId;
+
+  BigtableProtoConfig({this.protoMessageName, this.schemaBundleId});
+
+  BigtableProtoConfig.fromJson(core.Map json_)
+    : this(
+        protoMessageName: json_['protoMessageName'] as core.String?,
+        schemaBundleId: json_['schemaBundleId'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (protoMessageName != null) 'protoMessageName': protoMessageName!,
+    if (schemaBundleId != null) 'schemaBundleId': schemaBundleId!,
   };
 }
 
@@ -7083,6 +7149,21 @@ class ExternalDataConfiguration {
   /// Optional.
   core.String? timestampFormat;
 
+  /// Precisions (maximum number of total digits in base 10) for seconds of
+  /// TIMESTAMP types that are allowed to the destination table for
+  /// autodetection mode.
+  ///
+  /// Available for the formats: CSV. For the CSV Format, Possible values
+  /// include: Not Specified, \[\], or \[6\]: timestamp(6) for all auto detected
+  /// TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto detected TIMESTAMP
+  /// columns that have less than 6 digits of subseconds. timestamp(12) for all
+  /// auto detected TIMESTAMP columns that have more than 6 digits of
+  /// subseconds. \[12\]: timestamp(12) for all auto detected TIMESTAMP columns.
+  /// The order of the elements in this array is ignored. Inputs that have
+  /// higher precision than the highest target precision in this array will be
+  /// truncated.
+  core.List<core.int>? timestampTargetPrecision;
+
   ExternalDataConfiguration({
     this.autodetect,
     this.avroOptions,
@@ -7110,6 +7191,7 @@ class ExternalDataConfiguration {
     this.timeFormat,
     this.timeZone,
     this.timestampFormat,
+    this.timestampTargetPrecision,
   });
 
   ExternalDataConfiguration.fromJson(core.Map json_)
@@ -7190,6 +7272,10 @@ class ExternalDataConfiguration {
         timeFormat: json_['timeFormat'] as core.String?,
         timeZone: json_['timeZone'] as core.String?,
         timestampFormat: json_['timestampFormat'] as core.String?,
+        timestampTargetPrecision:
+            (json_['timestampTargetPrecision'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -7223,6 +7309,8 @@ class ExternalDataConfiguration {
     if (timeFormat != null) 'timeFormat': timeFormat!,
     if (timeZone != null) 'timeZone': timeZone!,
     if (timestampFormat != null) 'timestampFormat': timestampFormat!,
+    if (timestampTargetPrecision != null)
+      'timestampTargetPrecision': timestampTargetPrecision!,
   };
 }
 
@@ -8253,19 +8341,28 @@ class HparamTuningTrial {
 /// Populated as part of JobStatistics2. This feature is not yet available.
 class IncrementalResultStats {
   /// Reason why incremental query results are/were not written by the query.
+  ///
+  /// Output only.
   /// Possible string values are:
   /// - "DISABLED_REASON_UNSPECIFIED" : Disabled reason not specified.
-  /// - "OTHER" : Some other reason.
+  /// - "OTHER" : Incremental results are/were disabled for reasons not covered
+  /// by the other enum values, e.g. runtime issues.
+  /// - "UNSUPPORTED_OPERATOR" : Query includes an operation that is not
+  /// supported.
   core.String? disabledReason;
 
   /// The time at which the result table's contents were modified.
   ///
   /// May be absent if no results have been written or the query has completed.
+  ///
+  /// Output only.
   core.String? resultSetLastModifyTime;
 
   /// The time at which the result table's contents were completely replaced.
   ///
   /// May be absent if no results have been written or the query has completed.
+  ///
+  /// Output only.
   core.String? resultSetLastReplaceTime;
 
   IncrementalResultStats({
@@ -8297,6 +8394,9 @@ class IndexPruningStats {
   /// The base table reference.
   TableReference? baseTable;
 
+  /// The index id.
+  core.String? indexId;
+
   /// The number of parallel inputs after index pruning.
   core.String? postIndexPruningParallelInputCount;
 
@@ -8305,6 +8405,7 @@ class IndexPruningStats {
 
   IndexPruningStats({
     this.baseTable,
+    this.indexId,
     this.postIndexPruningParallelInputCount,
     this.preIndexPruningParallelInputCount,
   });
@@ -8317,6 +8418,7 @@ class IndexPruningStats {
                   json_['baseTable'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        indexId: json_['indexId'] as core.String?,
         postIndexPruningParallelInputCount:
             json_['postIndexPruningParallelInputCount'] as core.String?,
         preIndexPruningParallelInputCount:
@@ -8325,6 +8427,7 @@ class IndexPruningStats {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (baseTable != null) 'baseTable': baseTable!,
+    if (indexId != null) 'indexId': indexId!,
     if (postIndexPruningParallelInputCount != null)
       'postIndexPruningParallelInputCount': postIndexPruningParallelInputCount!,
     if (preIndexPruningParallelInputCount != null)
@@ -8852,11 +8955,13 @@ class JobConfiguration {
   /// \[Pick one\] Configures a load job.
   JobConfigurationLoad? load;
 
-  /// INTERNAL: DO NOT USE.
+  /// A target limit on the rate of slot consumption by this job.
   ///
-  /// The maximum rate of slot consumption to allow for this job. If set, the
-  /// number of slots used to execute the job will be throttled to try and keep
-  /// its slot consumption below the requested rate.
+  /// If set to a value \> 0, BigQuery will attempt to limit the rate of slot
+  /// consumption by this job to keep it below the configured limit, even if the
+  /// job is eligible for more slots based on fair scheduling. The unused slots
+  /// will be available for other jobs and queries to use. Note: This feature is
+  /// not yet generally available.
   ///
   /// Optional.
   core.int? maxSlots;
@@ -9487,6 +9592,21 @@ class JobConfigurationLoad {
   /// Optional.
   core.String? timestampFormat;
 
+  /// Precisions (maximum number of total digits in base 10) for seconds of
+  /// TIMESTAMP types that are allowed to the destination table for
+  /// autodetection mode.
+  ///
+  /// Available for the formats: CSV. For the CSV Format, Possible values
+  /// include: Not Specified, \[\], or \[6\]: timestamp(6) for all auto detected
+  /// TIMESTAMP columns \[6, 12\]: timestamp(6) for all auto detected TIMESTAMP
+  /// columns that have less than 6 digits of subseconds. timestamp(12) for all
+  /// auto detected TIMESTAMP columns that have more than 6 digits of
+  /// subseconds. \[12\]: timestamp(12) for all auto detected TIMESTAMP columns.
+  /// The order of the elements in this array is ignored. Inputs that have
+  /// higher precision than the highest target precision in this array will be
+  /// truncated.
+  core.List<core.int>? timestampTargetPrecision;
+
   /// If sourceFormat is set to "AVRO", indicates whether to interpret logical
   /// types as the corresponding BigQuery data type (for example, TIMESTAMP),
   /// instead of using the raw type (for example, INTEGER).
@@ -9554,6 +9674,7 @@ class JobConfigurationLoad {
     this.timePartitioning,
     this.timeZone,
     this.timestampFormat,
+    this.timestampTargetPrecision,
     this.useAvroLogicalTypes,
     this.writeDisposition,
   });
@@ -9677,6 +9798,10 @@ class JobConfigurationLoad {
                 : null,
         timeZone: json_['timeZone'] as core.String?,
         timestampFormat: json_['timestampFormat'] as core.String?,
+        timestampTargetPrecision:
+            (json_['timestampTargetPrecision'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
         useAvroLogicalTypes: json_['useAvroLogicalTypes'] as core.bool?,
         writeDisposition: json_['writeDisposition'] as core.String?,
       );
@@ -9734,6 +9859,8 @@ class JobConfigurationLoad {
     if (timePartitioning != null) 'timePartitioning': timePartitioning!,
     if (timeZone != null) 'timeZone': timeZone!,
     if (timestampFormat != null) 'timestampFormat': timestampFormat!,
+    if (timestampTargetPrecision != null)
+      'timestampTargetPrecision': timestampTargetPrecision!,
     if (useAvroLogicalTypes != null)
       'useAvroLogicalTypes': useAvroLogicalTypes!,
     if (writeDisposition != null) 'writeDisposition': writeDisposition!,
@@ -9918,9 +10045,9 @@ class JobConfigurationQuery {
 
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
   ///
-  /// The default value is true. If set to false, the query will use BigQuery's
-  /// GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When
-  /// useLegacySql is set to false, the value of flattenResults is ignored;
+  /// The default value is true. If set to false, the query uses BigQuery's
+  /// [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql).
+  /// When useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
   ///
   /// Optional.
@@ -10617,6 +10744,16 @@ class JobStatistics {
   /// Output only.
   core.List<core.String>? quotaDeferments;
 
+  /// The reservation group path of the reservation assigned to this job.
+  ///
+  /// This field has a limit of 10 nested reservation groups. This is to
+  /// maintain consistency between reservatins info schema and jobs info schema.
+  /// The first reservation group is the root reservation group and the last is
+  /// the leaf or lowest level reservation group.
+  ///
+  /// Output only.
+  core.List<core.String>? reservationGroupPath;
+
   /// Job resource usage breakdown by reservation.
   ///
   /// This field reported misleading information and will no longer be
@@ -10697,6 +10834,7 @@ class JobStatistics {
     this.parentJobId,
     this.query,
     this.quotaDeferments,
+    this.reservationGroupPath,
     this.reservationUsage,
     this.reservationId,
     this.rowLevelSecurityStatistics,
@@ -10751,6 +10889,10 @@ class JobStatistics {
                 : null,
         quotaDeferments:
             (json_['quotaDeferments'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        reservationGroupPath:
+            (json_['reservationGroupPath'] as core.List?)
                 ?.map((value) => value as core.String)
                 .toList(),
         reservationUsage:
@@ -10810,6 +10952,8 @@ class JobStatistics {
     if (parentJobId != null) 'parentJobId': parentJobId!,
     if (query != null) 'query': query!,
     if (quotaDeferments != null) 'quotaDeferments': quotaDeferments!,
+    if (reservationGroupPath != null)
+      'reservationGroupPath': reservationGroupPath!,
     if (reservationUsage != null) 'reservationUsage': reservationUsage!,
     if (reservationId != null) 'reservation_id': reservationId!,
     if (rowLevelSecurityStatistics != null)
@@ -13868,11 +14012,13 @@ class QueryRequest {
   /// Optional.
   core.int? maxResults;
 
-  /// INTERNAL: DO NOT USE.
+  /// A target limit on the rate of slot consumption by this query.
   ///
-  /// The maximum rate of slot consumption to allow for this job. If set, the
-  /// number of slots used to execute the job will be throttled to try and keep
-  /// its slot consumption below the requested rate. This limit is best effort.
+  /// If set to a value \> 0, BigQuery will attempt to limit the rate of slot
+  /// consumption by this query to keep it below the configured limit, even if
+  /// the query is eligible for more slots based on fair scheduling. The unused
+  /// slots will be available for other jobs and queries to use. Note: This
+  /// feature is not yet generally available.
   ///
   /// Optional.
   core.int? maxSlots;
@@ -13960,9 +14106,9 @@ class QueryRequest {
 
   /// Specifies whether to use BigQuery's legacy SQL dialect for this query.
   ///
-  /// The default value is true. If set to false, the query will use BigQuery's
-  /// GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ When
-  /// useLegacySql is set to false, the value of flattenResults is ignored;
+  /// The default value is true. If set to false, the query uses BigQuery's
+  /// [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql).
+  /// When useLegacySql is set to false, the value of flattenResults is ignored;
   /// query will be run as if flattenResults is false.
   core.bool? useLegacySql;
 
@@ -19705,10 +19851,10 @@ class ViewDefinition {
 
   /// Specifies whether to use BigQuery's legacy SQL for this view.
   ///
-  /// The default value is true. If set to false, the view will use BigQuery's
-  /// GoogleSQL: https://cloud.google.com/bigquery/sql-reference/ Queries and
-  /// views that reference this view must use the same flag value. A wrapper is
-  /// used here because the default value is True.
+  /// The default value is true. If set to false, the view uses BigQuery's
+  /// [GoogleSQL](https://docs.cloud.google.com/bigquery/docs/introduction-sql).
+  /// Queries and views that reference this view must use the same flag value. A
+  /// wrapper is used here because the default value is True.
   core.bool? useLegacySql;
 
   /// Describes user-defined function resources used in the query.

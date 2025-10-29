@@ -18,8 +18,15 @@
 ///
 /// Create an instance of [DatalineageApi] to access these resources:
 ///
+/// - [FoldersResource]
+///   - [FoldersLocationsResource]
+///     - [FoldersLocationsConfigResource]
+/// - [OrganizationsResource]
+///   - [OrganizationsLocationsResource]
+///     - [OrganizationsLocationsConfigResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
+///     - [ProjectsLocationsConfigResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsProcessesResource]
 ///       - [ProjectsLocationsProcessesRunsResource]
@@ -47,6 +54,8 @@ class DatalineageApi {
 
   final commons.ApiRequester _requester;
 
+  FoldersResource get folders => FoldersResource(_requester);
+  OrganizationsResource get organizations => OrganizationsResource(_requester);
   ProjectsResource get projects => ProjectsResource(_requester);
 
   DatalineageApi(
@@ -61,6 +70,233 @@ class DatalineageApi {
        );
 }
 
+class FoldersResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsResource get locations =>
+      FoldersLocationsResource(_requester);
+
+  FoldersResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsConfigResource get config =>
+      FoldersLocationsConfigResource(_requester);
+
+  FoldersLocationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class FoldersLocationsConfigResource {
+  final commons.ApiRequester _requester;
+
+  FoldersLocationsConfigResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get the Config for a given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. REQUIRED: The resource name of the config to be
+  /// fetched. Format: `organizations/{organization_id}/locations/global/config`
+  /// `folders/{folder_id}/locations/global/config`
+  /// `projects/{project_id}/locations/global/config`
+  /// `projects/{project_number}/locations/global/config`
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogLineageConfigmanagementV1Config].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogLineageConfigmanagementV1Config> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update the Config for a given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the config. Format:
+  /// `organizations/{organization_id}/locations/global/config`
+  /// `folders/{folder_id}/locations/global/config`
+  /// `projects/{project_id}/locations/global/config`
+  /// `projects/{project_number}/locations/global/config`
+  /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogLineageConfigmanagementV1Config].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogLineageConfigmanagementV1Config> patch(
+    GoogleCloudDatacatalogLineageConfigmanagementV1Config request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class OrganizationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsResource get locations =>
+      OrganizationsLocationsResource(_requester);
+
+  OrganizationsResource(commons.ApiRequester client) : _requester = client;
+}
+
+class OrganizationsLocationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsConfigResource get config =>
+      OrganizationsLocationsConfigResource(_requester);
+
+  OrganizationsLocationsResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class OrganizationsLocationsConfigResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsConfigResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get the Config for a given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. REQUIRED: The resource name of the config to be
+  /// fetched. Format: `organizations/{organization_id}/locations/global/config`
+  /// `folders/{folder_id}/locations/global/config`
+  /// `projects/{project_id}/locations/global/config`
+  /// `projects/{project_number}/locations/global/config`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogLineageConfigmanagementV1Config].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogLineageConfigmanagementV1Config> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update the Config for a given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the config. Format:
+  /// `organizations/{organization_id}/locations/global/config`
+  /// `folders/{folder_id}/locations/global/config`
+  /// `projects/{project_id}/locations/global/config`
+  /// `projects/{project_number}/locations/global/config`
+  /// Value must have pattern
+  /// `^organizations/\[^/\]+/locations/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogLineageConfigmanagementV1Config].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogLineageConfigmanagementV1Config> patch(
+    GoogleCloudDatacatalogLineageConfigmanagementV1Config request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsResource {
   final commons.ApiRequester _requester;
 
@@ -73,6 +309,8 @@ class ProjectsResource {
 class ProjectsLocationsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsConfigResource get config =>
+      ProjectsLocationsConfigResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
       ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsProcessesResource get processes =>
@@ -237,6 +475,100 @@ class ProjectsLocationsResource {
   }
 }
 
+class ProjectsLocationsConfigResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsConfigResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get the Config for a given resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. REQUIRED: The resource name of the config to be
+  /// fetched. Format: `organizations/{organization_id}/locations/global/config`
+  /// `folders/{folder_id}/locations/global/config`
+  /// `projects/{project_id}/locations/global/config`
+  /// `projects/{project_number}/locations/global/config`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogLineageConfigmanagementV1Config].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogLineageConfigmanagementV1Config> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Update the Config for a given resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the config. Format:
+  /// `organizations/{organization_id}/locations/global/config`
+  /// `folders/{folder_id}/locations/global/config`
+  /// `projects/{project_id}/locations/global/config`
+  /// `projects/{project_number}/locations/global/config`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/config$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDatacatalogLineageConfigmanagementV1Config].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDatacatalogLineageConfigmanagementV1Config> patch(
+    GoogleCloudDatacatalogLineageConfigmanagementV1Config request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -393,6 +725,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -408,12 +748,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1129,6 +1472,200 @@ class ProjectsLocationsProcessesRunsLineageEventsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+}
+
+/// Configuration for Data Lineage.
+///
+/// Defines different configuration options for Lineage customers to control
+/// behaviour of lineage systems.
+class GoogleCloudDatacatalogLineageConfigmanagementV1Config {
+  /// `etag` is used for optimistic concurrency control as a way to help prevent
+  /// simultaneous updates of a config from overwriting each other.
+  ///
+  /// It is required that systems make use of the `etag` in the
+  /// read-modify-write cycle to perform config updates in order to avoid race
+  /// conditions: An `etag` is returned in the response to `GetConfig`, and
+  /// systems are expected to put that etag in the request to `UpdateConfig` to
+  /// ensure that their change will be applied to the same version of the
+  /// config. If an `etag` is not provided in the call to `UpdateConfig`, then
+  /// the existing config, if any, will be overwritten.
+  ///
+  /// Optional.
+  core.String? etag;
+
+  /// Ingestion rule for Data Lineage ingestion.
+  ///
+  /// Optional.
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion? ingestion;
+
+  /// Identifier.
+  ///
+  /// The resource name of the config. Format:
+  /// `organizations/{organization_id}/locations/global/config`
+  /// `folders/{folder_id}/locations/global/config`
+  /// `projects/{project_id}/locations/global/config`
+  /// `projects/{project_number}/locations/global/config`
+  core.String? name;
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1Config({
+    this.etag,
+    this.ingestion,
+    this.name,
+  });
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1Config.fromJson(core.Map json_)
+    : this(
+        etag: json_['etag'] as core.String?,
+        ingestion:
+            json_.containsKey('ingestion')
+                ? GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion.fromJson(
+                  json_['ingestion'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (etag != null) 'etag': etag!,
+    if (ingestion != null) 'ingestion': ingestion!,
+    if (name != null) 'name': name!,
+  };
+}
+
+/// Defines how Lineage should be ingested for a given resource.
+class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion {
+  /// List of rules for Data Lineage ingestion.
+  ///
+  /// Optional.
+  core.List<
+    GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule
+  >?
+  rules;
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion({this.rules});
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion.fromJson(
+    core.Map json_,
+  ) : this(
+        rules:
+            (json_['rules'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (rules != null) 'rules': rules!,
+  };
+}
+
+/// Ingestion rule for Data Lineage ingestion.
+class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule {
+  /// Integration selector of the rule.
+  ///
+  /// The rule is only applied to the Integration selected by the selector.
+  ///
+  /// Required.
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector?
+  integrationSelector;
+
+  /// Lineage enablement configuration.
+  ///
+  /// Defines configurations for the ingestion of lineage for the resource and
+  /// its children. If unspecified, the ingestion will be enabled only if it was
+  /// configured in the resource's parent.
+  ///
+  /// Required.
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement?
+  lineageEnablement;
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule({
+    this.integrationSelector,
+    this.lineageEnablement,
+  });
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule.fromJson(
+    core.Map json_,
+  ) : this(
+        integrationSelector:
+            json_.containsKey('integrationSelector')
+                ? GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector.fromJson(
+                  json_['integrationSelector']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        lineageEnablement:
+            json_.containsKey('lineageEnablement')
+                ? GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement.fromJson(
+                  json_['lineageEnablement']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (integrationSelector != null)
+      'integrationSelector': integrationSelector!,
+    if (lineageEnablement != null) 'lineageEnablement': lineageEnablement!,
+  };
+}
+
+/// Integration selector of the rule.
+///
+/// The rule is only applied to the Integration selected by the selector.
+class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector {
+  /// Integration to which the rule applies.
+  ///
+  /// This field can be used to specify the integration against which the
+  /// ingestion rule should be applied.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "INTEGRATION_UNSPECIFIED" : Integration is Unspecified
+  /// - "DATAPROC" : Dataproc
+  core.String? integration;
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector({
+    this.integration,
+  });
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector.fromJson(
+    core.Map json_,
+  ) : this(integration: json_['integration'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (integration != null) 'integration': integration!,
+  };
+}
+
+/// Lineage enablement configuration.
+///
+/// Defines configurations for the ingestion of lineage for the resource and its
+/// children.
+class GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement {
+  /// If true, ingestion of lineage should be enabled.
+  ///
+  /// If false, it should be disabled. If unspecified, the system default value
+  /// is used.
+  ///
+  /// Optional.
+  core.bool? enabled;
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement({
+    this.enabled,
+  });
+
+  GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement.fromJson(
+    core.Map json_,
+  ) : this(enabled: json_['enabled'] as core.bool?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enabled != null) 'enabled': enabled!,
+  };
 }
 
 /// Request message for BatchSearchLinkProcesses.
@@ -1930,9 +2467,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -1946,11 +2492,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 

@@ -133,6 +133,12 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
@@ -768,6 +774,44 @@ class ProjectsLocationsBackupPlansResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns tags directly bound to a GCP resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the service resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetTagsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetTagsResponse> getTags(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getTags';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetTagsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists BackupPlans in a given location.
   ///
   /// Request parameters:
@@ -836,8 +880,8 @@ class ProjectsLocationsBackupPlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The full name of the BackupPlan resource. Format:
-  /// `projects / * /locations / * /backupPlans / * `
+  /// [name] - Output only. Identifier. The full name of the BackupPlan
+  /// resource. Format: `projects / * /locations / * /backupPlans / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
   ///
@@ -931,6 +975,49 @@ class ProjectsLocationsBackupPlansResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates tags directly bound to a GCP resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the service resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SetTagsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SetTagsResponse> setTags(
+    SetTagsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setTags';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SetTagsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -1304,8 +1391,8 @@ class ProjectsLocationsBackupPlansBackupsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The fully qualified name of the Backup. `projects /
-  /// * /locations / * /backupPlans / * /backups / * `
+  /// [name] - Output only. Identifier. The fully qualified name of the Backup.
+  /// `projects / * /locations / * /backupPlans / * /backups / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/backupPlans/\[^/\]+/backups/\[^/\]+$`.
   ///
@@ -1868,6 +1955,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1883,12 +1978,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2488,6 +2586,44 @@ class ProjectsLocationsRestorePlansResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Returns tags directly bound to a GCP resource.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the service resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GetTagsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GetTagsResponse> getTags(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':getTags';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GetTagsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists RestorePlans in a given location.
   ///
   /// Request parameters:
@@ -2556,8 +2692,8 @@ class ProjectsLocationsRestorePlansResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The full name of the RestorePlan resource. Format:
-  /// `projects / * /locations / * /restorePlans / * `.
+  /// [name] - Output only. Identifier. The full name of the RestorePlan
+  /// resource. Format: `projects / * /locations / * /restorePlans / * `.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
   ///
@@ -2650,6 +2786,49 @@ class ProjectsLocationsRestorePlansResource {
       queryParams: queryParams_,
     );
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Updates tags directly bound to a GCP resource.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The full resource name of the service resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SetTagsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SetTagsResponse> setTags(
+    SetTagsRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':setTags';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return SetTagsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -2977,8 +3156,8 @@ class ProjectsLocationsRestorePlansRestoresResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The full name of the Restore resource. Format:
-  /// `projects / * /locations / * /restorePlans / * /restores / * `
+  /// [name] - Output only. Identifier. The full name of the Restore resource.
+  /// Format: `projects / * /locations / * /restorePlans / * /restores / * `
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/restorePlans/\[^/\]+/restores/\[^/\]+$`.
   ///
@@ -3549,9 +3728,10 @@ class Backup {
   /// Output only.
   core.bool? manual;
 
-  /// The fully qualified name of the Backup.
+  /// Identifier.
   ///
-  /// `projects / * /locations / * /backupPlans / * /backups / * `
+  /// The fully qualified name of the Backup. `projects / * /locations / *
+  /// /backupPlans / * /backups / * `
   ///
   /// Output only.
   core.String? name;
@@ -4204,9 +4384,10 @@ class BackupPlan {
   /// Output only.
   core.String? lastSuccessfulBackupTime;
 
-  /// The full name of the BackupPlan resource.
+  /// Identifier.
   ///
-  /// Format: `projects / * /locations / * /backupPlans / * `
+  /// The full name of the BackupPlan resource. Format: `projects / * /locations
+  /// / * /backupPlans / * `
   ///
   /// Output only.
   core.String? name;
@@ -4922,7 +5103,7 @@ class ExclusionWindow {
 
   /// Specifies the start time of the window using time of the day in UTC.
   ///
-  /// Required.
+  /// Optional.
   TimeOfDay? startTime;
 
   ExclusionWindow({
@@ -5058,6 +5239,9 @@ class GetBackupIndexDownloadUrlResponse {
   };
 }
 
+/// Response message for GetTags.
+typedef GetTagsResponse = $TagsResponse;
+
 /// The request message for Operations.CancelOperation.
 typedef GoogleLongrunningCancelOperationRequest = $Empty;
 
@@ -5069,9 +5253,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -5085,11 +5278,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -6146,9 +6344,10 @@ class Restore {
   /// A set of custom labels supplied by user.
   core.Map<core.String, core.String>? labels;
 
-  /// The full name of the Restore resource.
+  /// Identifier.
   ///
-  /// Format: `projects / * /locations / * /restorePlans / * /restores / * `
+  /// The full name of the Restore resource. Format: `projects / * /locations /
+  /// * /restorePlans / * /restores / * `
   ///
   /// Output only.
   core.String? name;
@@ -6788,9 +6987,10 @@ class RestorePlan {
   /// Optional.
   core.Map<core.String, core.String>? labels;
 
-  /// The full name of the RestorePlan resource.
+  /// Identifier.
   ///
-  /// Format: `projects / * /locations / * /restorePlans / * `.
+  /// The full name of the RestorePlan resource. Format: `projects / *
+  /// /locations / * /restorePlans / * `.
   ///
   /// Output only.
   core.String? name;
@@ -7238,6 +7438,12 @@ class SetIamPolicyRequest {
     if (updateMask != null) 'updateMask': updateMask!,
   };
 }
+
+/// Request message for SetTags.
+typedef SetTagsRequest = $SetTagsRequest;
+
+/// Response message for SetTags.
+typedef SetTagsResponse = $TagsResponse;
 
 /// A transformation rule to be applied against Kubernetes resources as they are
 /// selected for restoration from a Backup.

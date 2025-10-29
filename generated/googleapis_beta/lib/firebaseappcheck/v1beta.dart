@@ -3852,6 +3852,26 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /// Required.
   core.String? customToken;
 
+  /// When `limited_use` is set to `true`, this field specifies the desired
+  /// `jti` claim (Section 4.1.7 of RFC 7519) in the returned App Check token.
+  ///
+  /// *Limited use* App Check tokens with the same `jti` will be counted as the
+  /// same token for the purposes of replay protection. An error is returned if
+  /// this field is specified without setting `limited_use` to `true`. The size
+  /// of this field is limited to 500 bytes. If specified, its length must be at
+  /// least 16 bytes. If this field is omitted or is empty and `limited_use` is
+  /// set to `true`, a randomly generated `jti` claim with length between 16 and
+  /// 500 bytes (inclusive) will be used in the returned App Check token.
+  /// Leaving this field empty is only recommended if your custom attestation
+  /// provider itself is not vulnerable to replay attacks. When `limited_use` is
+  /// set to `false`, neither the presence nor the contents of the `jti` claim
+  /// in the returned App Check token is specified. To ensure that the returned
+  /// App Check token is eligible for limited use functionality, set
+  /// `limited_use` to `true`.
+  ///
+  /// Optional.
+  core.String? jti;
+
   /// Specifies whether this attestation is for use in a *limited use* (`true`)
   /// or *session based* (`false`) context.
   ///
@@ -3861,6 +3881,7 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
 
   GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest({
     this.customToken,
+    this.jti,
     this.limitedUse,
   });
 
@@ -3868,11 +3889,13 @@ class GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
     core.Map json_,
   ) : this(
         customToken: json_['customToken'] as core.String?,
+        jti: json_['jti'] as core.String?,
         limitedUse: json_['limitedUse'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (customToken != null) 'customToken': customToken!,
+    if (jti != null) 'jti': jti!,
     if (limitedUse != null) 'limitedUse': limitedUse!,
   };
 }

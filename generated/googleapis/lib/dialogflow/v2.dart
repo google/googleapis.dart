@@ -85,6 +85,7 @@
 ///     - [ProjectsLocationsSipTrunksResource]
 ///     - [ProjectsLocationsStatelessSuggestionResource]
 ///     - [ProjectsLocationsSuggestionsResource]
+///     - [ProjectsLocationsToolsResource]
 ///   - [ProjectsOperationsResource]
 ///   - [ProjectsSuggestionsResource]
 library;
@@ -156,12 +157,9 @@ class ProjectsResource {
 
   ProjectsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to delete is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -194,12 +192,9 @@ class ProjectsResource {
     );
   }
 
-  /// Retrieves the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to fetch is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -232,20 +227,14 @@ class ProjectsResource {
     );
   }
 
-  /// Creates/updates the specified agent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project of this agent. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -301,21 +290,11 @@ class ProjectsAgentResource {
 
   ProjectsAgentResource(commons.ApiRequester client) : _requester = client;
 
-  /// Exports the specified agent to a ZIP file.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: ExportAgentResponse
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to export is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -351,12 +330,9 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Retrieves the fulfillment.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the fulfillment. Format:
-  /// `projects//agent/fulfillment`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/fulfillment$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -389,22 +365,12 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Gets agent validation result.
-  ///
-  /// Agent validation is performed during training time and is updated
-  /// automatically when training is completed.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent is associated with.
-  /// Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [languageCode] - Optional. The language for which you want a validation
-  /// result. If not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// are supported. Note: languages must be enabled in the agent before they
-  /// can be used.
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -439,32 +405,11 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Imports the specified agent from a ZIP file.
-  ///
-  /// Uploads new intents and entity types without deleting the existing ones.
-  /// Intents and entity types with the same name are replaced with the new
-  /// versions from ImportAgentRequest. After the import, the imported draft
-  /// agent will be trained automatically (unless disabled in agent settings).
-  /// However, once the import is done, training may not be completed yet.
-  /// Please call TrainAgent and wait for the operation it returns in order to
-  /// train explicitly. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// The operation only tracks when importing is complete, not when it is done
-  /// training. Note: You should always train an agent prior to sending it
-  /// queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to import is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -500,31 +445,11 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Restores the specified agent from a ZIP file.
-  ///
-  /// Replaces the current agent version with a new one. All the intents and
-  /// entity types in the older version are deleted. After the restore, the
-  /// restored draft agent will be trained automatically (unless disabled in
-  /// agent settings). However, once the restore is done, training may not be
-  /// completed yet. Please call TrainAgent and wait for the operation it
-  /// returns in order to train explicitly. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// The operation only tracks when restoring is complete, not when it is done
-  /// training. Note: You should always train an agent prior to sending it
-  /// queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to restore is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -560,24 +485,14 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Returns the list of agents.
-  ///
-  /// Since there is at most one conversational agent per project, this method
-  /// is useful primarily for listing all agents across projects the caller has
-  /// access to. One can achieve that with a wildcard project collection id "-".
-  /// Refer to \[List
-  /// Sub-Collections\](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list agents from. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -613,25 +528,11 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Trains the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to train is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -667,20 +568,14 @@ class ProjectsAgentResource {
     );
   }
 
-  /// Updates the fulfillment.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of the fulfillment. Supported
-  /// formats: - `projects//agent/fulfillment` -
-  /// `projects//locations//agent/fulfillment` This field is not used for
-  /// Fulfillment in an Environment.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/fulfillment$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated. If
-  /// the mask is not present, all fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -727,25 +622,11 @@ class ProjectsAgentEntityTypesResource {
   ProjectsAgentEntityTypesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes entity types in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to delete all entities types
-  /// for. Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -782,23 +663,11 @@ class ProjectsAgentEntityTypesResource {
     );
   }
 
-  /// Updates/Creates multiple entity types in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: BatchUpdateEntityTypesResponse Note: You should always train
-  /// an agent prior to sending it queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to update or create entity
-  /// types in. Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -835,24 +704,14 @@ class ProjectsAgentEntityTypesResource {
     );
   }
 
-  /// Creates an entity type in the specified agent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create a entity type for. Format:
-  /// `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -889,16 +748,9 @@ class ProjectsAgentEntityTypesResource {
     );
   }
 
-  /// Deletes the specified entity type.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type to delete. Format:
-  /// `projects//agent/entityTypes/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -931,18 +783,12 @@ class ProjectsAgentEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified entity type.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type. Format:
-  /// `projects//agent/entityTypes/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -976,24 +822,16 @@ class ProjectsAgentEntityTypesResource {
     );
   }
 
-  /// Returns the list of all entity types in the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all entity types from. Format:
-  /// `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1031,27 +869,16 @@ class ProjectsAgentEntityTypesResource {
     );
   }
 
-  /// Updates the specified entity type.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique identifier of the entity type. Required for
-  /// EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes
-  /// methods. Format: `projects//agent/entityTypes/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1097,25 +924,11 @@ class ProjectsAgentEntityTypesEntitiesResource {
   ProjectsAgentEntityTypesEntitiesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates multiple new entities in the specified entity type.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the entity type to create entities in.
-  /// Format: `projects//agent/entityTypes/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1152,25 +965,11 @@ class ProjectsAgentEntityTypesEntitiesResource {
     );
   }
 
-  /// Deletes entities in the specified entity type.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the entity type to delete entries for.
-  /// Format: `projects//agent/entityTypes/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1207,26 +1006,11 @@ class ProjectsAgentEntityTypesEntitiesResource {
     );
   }
 
-  /// Updates or creates multiple entities in the specified entity type.
-  ///
-  /// This method does not affect entities in the entity type that aren't
-  /// explicitly specified in the request. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the entity type to update or create
-  /// entities in. Format: `projects//agent/entityTypes/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1275,17 +1059,14 @@ class ProjectsAgentEnvironmentsResource {
   ProjectsAgentEnvironmentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates an agent environment.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create an environment for. Supported
-  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [environmentId] - Required. The unique id of the new environment.
+  /// [environmentId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1322,14 +1103,9 @@ class ProjectsAgentEnvironmentsResource {
     );
   }
 
-  /// Deletes the specified agent environment.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the environment to delete. / Format: -
-  /// `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1362,14 +1138,9 @@ class ProjectsAgentEnvironmentsResource {
     );
   }
 
-  /// Retrieves the specified agent environment.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the environment. Supported formats: -
-  /// `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1402,21 +1173,14 @@ class ProjectsAgentEnvironmentsResource {
     );
   }
 
-  /// Gets the history of the specified environment.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the environment to retrieve history for.
-  /// Supported formats: - `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1452,19 +1216,14 @@ class ProjectsAgentEnvironmentsResource {
     );
   }
 
-  /// Returns the list of all non-default environments of the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all environments from. Format: -
-  /// `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1500,36 +1259,16 @@ class ProjectsAgentEnvironmentsResource {
     );
   }
 
-  /// Updates the specified agent environment.
-  ///
-  /// This method allows you to deploy new agent versions into the environment.
-  /// When an environment is pointed to a new agent version by setting
-  /// `environment.agent_version`, the environment is temporarily set to the
-  /// `LOADING` state. During that time, the environment continues serving the
-  /// previous version of the agent. After the new agent version is done
-  /// loading, the environment is set back to the `RUNNING` state. You can use
-  /// "-" as Environment ID in environment name to update an agent version in
-  /// the default environment. WARNING: this will negate all recent changes to
-  /// the draft agent and can't be undone. You may want to save the draft agent
-  /// to a version before calling this method.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The unique identifier of this agent environment.
-  /// Supported formats: - `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
-  /// [allowLoadToDraftAndDiscardChanges] - Optional. This field is used to
-  /// prevent accidental overwrite of the default environment, which is an
-  /// operation that cannot be undone. To confirm that the caller desires this
-  /// overwrite, this field must be explicitly set to true when updating the
-  /// default environment (environment ID = `-`).
+  /// [allowLoadToDraftAndDiscardChanges] - null
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1578,35 +1317,21 @@ class ProjectsAgentEnvironmentsIntentsResource {
   ProjectsAgentEnvironmentsIntentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Returns the list of all intents in the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all intents from. Format:
-  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
-  /// specify the environment to list intents for. Format:
-  /// `projects//agent/environments/` or
-  /// `projects//locations//agent/environments/`. Note: training phrases of the
-  /// intents will not be returned for non-draft environment.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1668,15 +1393,9 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
   ProjectsAgentEnvironmentsUsersSessionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes all active contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -1710,36 +1429,11 @@ class ProjectsAgentEnvironmentsUsersSessionsResource {
     );
   }
 
-  /// Processes a natural language query and returns structured, actionable data
-  /// as a result.
-  ///
-  /// This method is not idempotent, because it may cause contexts and session
-  /// entity types to be updated, which in turn might affect results of future
-  /// queries. If you might use
-  /// [Agent Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI
-  /// products now or in the future, consider using AnalyzeContent instead of
-  /// `DetectIntent`. `AnalyzeContent` has additional functionality for Agent
-  /// Assist and other CCAI products. Note: Always use agent versions for
-  /// production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [session] - Required. The name of the session this query is sent to.
-  /// Format: `projects//agent/sessions/`, or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment (`Environment ID`
-  /// might be referred to as environment name at some places). If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the
-  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
-  /// Note: Always use agent versions for production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  /// [session] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -1784,19 +1478,11 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a context.
-  ///
-  /// If the specified context already exists, overrides the context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a context for. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -1833,15 +1519,9 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Deletes the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context to delete. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -1875,15 +1555,9 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Retrieves the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -1917,23 +1591,15 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Returns the list of all contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all contexts from. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1969,26 +1635,15 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Updates the specified context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of the context. Format:
-  /// `projects//agent/sessions//contexts/`, or
-  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
-  /// ID` is always converted to lowercase, may only contain characters in
-  /// `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user. The following context names are
-  /// reserved for internal use by Dialogflow. You should not use these contexts
-  /// or create contexts with these names: * `__system_counters__` *
-  /// `*_id_dialog_context` * `*_dialog_params_size`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2033,22 +1688,11 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a session entity type.
-  ///
-  /// If the specified session entity type already exists, overrides the session
-  /// entity type. This method doesn't work with Google Assistant integration.
-  /// Contact Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a session entity type for.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -2085,19 +1729,9 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Deletes the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type to delete. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -2131,19 +1765,9 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the session entity type. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -2177,27 +1801,15 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Returns the list of all session entity types in the specified session.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all session entity types from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2233,27 +1845,15 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Updates the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of this session entity type.
-  /// Format: `projects//agent/sessions//entityTypes/`, or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user. `` must be the
-  /// display name of an existing entity type in the same agent that will be
-  /// overridden or supplemented.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2297,25 +1897,11 @@ class ProjectsAgentIntentsResource {
   ProjectsAgentIntentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes intents in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to delete all entities types
-  /// for. Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2352,23 +1938,11 @@ class ProjectsAgentIntentsResource {
     );
   }
 
-  /// Updates/Creates multiple intents in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: BatchUpdateIntentsResponse Note: You should always train an
-  /// agent prior to sending it queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to update or create intents in.
-  /// Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2405,31 +1979,19 @@ class ProjectsAgentIntentsResource {
     );
   }
 
-  /// Creates an intent in the specified agent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create a intent for. Format:
-  /// `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2468,17 +2030,9 @@ class ProjectsAgentIntentsResource {
     );
   }
 
-  /// Deletes the specified intent and its direct or indirect followup intents.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the intent to delete. If this intent has
-  /// direct or indirect followup intents, we also delete them. Format:
-  /// `projects//agent/intents/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2511,25 +2065,17 @@ class ProjectsAgentIntentsResource {
     );
   }
 
-  /// Retrieves the specified intent.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the intent. Format:
-  /// `projects//agent/intents/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2565,35 +2111,21 @@ class ProjectsAgentIntentsResource {
     );
   }
 
-  /// Returns the list of all intents in the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all intents from. Format:
-  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
-  /// specify the environment to list intents for. Format:
-  /// `projects//agent/environments/` or
-  /// `projects//locations//agent/environments/`. Note: training phrases of the
-  /// intents will not be returned for non-draft environment.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2633,34 +2165,21 @@ class ProjectsAgentIntentsResource {
     );
   }
 
-  /// Updates the specified intent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The unique identifier of this intent. Required for
-  /// Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Format:
-  /// `projects//agent/intents/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2711,14 +2230,11 @@ class ProjectsAgentKnowledgeBasesResource {
   ProjectsAgentKnowledgeBasesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a knowledge base.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to create a knowledge base for. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2754,16 +2270,12 @@ class ProjectsAgentKnowledgeBasesResource {
     );
   }
 
-  /// Deletes the specified knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the knowledge base to delete. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
-  /// [force] - Optional. Force deletes the knowledge base. When set to true,
-  /// any documents in the knowledge base are also deleted.
+  /// [force] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2797,12 +2309,9 @@ class ProjectsAgentKnowledgeBasesResource {
     );
   }
 
-  /// Retrieves the specified knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the knowledge base to retrieve. Format
-  /// `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2835,33 +2344,16 @@ class ProjectsAgentKnowledgeBasesResource {
     );
   }
 
-  /// Returns the list of all knowledge bases of the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list of knowledge bases for. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [filter] - The filter expression used to filter knowledge bases returned
-  /// by the list method. The expression has the following syntax: \[AND \] ...
-  /// The following fields and operators are supported: * display_name with
-  /// has(:) operator * language_code with equals(=) operator Examples: *
-  /// 'language_code=en-us' matches knowledge bases with en-us language code. *
-  /// 'display_name:articles' matches knowledge bases whose display name
-  /// contains "articles". * 'display_name:"Best Articles"' matches knowledge
-  /// bases whose display name contains "Best Articles". * 'language_code=en-gb
-  /// AND display_name=articles' matches all knowledge bases whose display name
-  /// contains "articles" and whose language code is "en-gb". Note: An empty
-  /// filter string (i.e. "") is a no-op and will result in no filtering. For
-  /// more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 10 and at most 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2899,19 +2391,14 @@ class ProjectsAgentKnowledgeBasesResource {
     );
   }
 
-  /// Updates the specified knowledge base.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The knowledge base resource name. The name must be empty when
-  /// creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
-  /// `display_name` can be updated, an InvalidArgument will be returned for
-  /// attempting to update other fields.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2955,19 +2442,11 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
   ProjectsAgentKnowledgeBasesDocumentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to create a document for. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3003,18 +2482,9 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Deletes the specified document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to delete. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -3048,12 +2518,9 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Retrieves the specified document.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to retrieve. Format
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -3087,30 +2554,16 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Returns the list of all documents of the knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to list all documents for. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression used to filter documents returned by the
-  /// list method. The expression has the following syntax: \[AND \] ... The
-  /// following fields and operators are supported: * knowledge_types with
-  /// has(:) operator * display_name with has(:) operator * state with equals(=)
-  /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
-  /// knowledge type. * "display_name:customer" matches documents whose display
-  /// name contains "customer". * "state=ACTIVE" matches documents with ACTIVE
-  /// state. * "knowledge_types:FAQ AND state=ACTIVE" matches all active FAQ
-  /// documents. For more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 10 and at most 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3148,26 +2601,15 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Updates the specified document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The document resource name. The name must be empty when
-  /// creating a document. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
-  /// `display_name` can be updated, an InvalidArgument will be returned for
-  /// attempting to update other fields.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3204,25 +2646,11 @@ class ProjectsAgentKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Reloads the specified document from its specified source, content_uri or
-  /// content.
-  ///
-  /// The previously loaded content of the document will be deleted. Note: Even
-  /// when the content of the document has not changed, there still may be side
-  /// effects because of internal implementation changes. This method is a
-  /// \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The
-  /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-  /// `projects.knowledgeBases.documents`.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to reload. Format:
-  /// `projects//locations//knowledgeBases//documents/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -3271,15 +2699,9 @@ class ProjectsAgentSessionsResource {
   ProjectsAgentSessionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes all active contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3312,36 +2734,11 @@ class ProjectsAgentSessionsResource {
     );
   }
 
-  /// Processes a natural language query and returns structured, actionable data
-  /// as a result.
-  ///
-  /// This method is not idempotent, because it may cause contexts and session
-  /// entity types to be updated, which in turn might affect results of future
-  /// queries. If you might use
-  /// [Agent Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI
-  /// products now or in the future, consider using AnalyzeContent instead of
-  /// `DetectIntent`. `AnalyzeContent` has additional functionality for Agent
-  /// Assist and other CCAI products. Note: Always use agent versions for
-  /// production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [session] - Required. The name of the session this query is sent to.
-  /// Format: `projects//agent/sessions/`, or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment (`Environment ID`
-  /// might be referred to as environment name at some places). If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the
-  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
-  /// Note: Always use agent versions for production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  /// [session] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3384,19 +2781,11 @@ class ProjectsAgentSessionsContextsResource {
   ProjectsAgentSessionsContextsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a context.
-  ///
-  /// If the specified context already exists, overrides the context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a context for. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3432,15 +2821,9 @@ class ProjectsAgentSessionsContextsResource {
     );
   }
 
-  /// Deletes the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context to delete. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -3474,15 +2857,9 @@ class ProjectsAgentSessionsContextsResource {
     );
   }
 
-  /// Retrieves the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -3516,22 +2893,14 @@ class ProjectsAgentSessionsContextsResource {
     );
   }
 
-  /// Returns the list of all contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all contexts from. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3567,26 +2936,15 @@ class ProjectsAgentSessionsContextsResource {
     );
   }
 
-  /// Updates the specified context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of the context. Format:
-  /// `projects//agent/sessions//contexts/`, or
-  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
-  /// ID` is always converted to lowercase, may only contain characters in
-  /// `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user. The following context names are
-  /// reserved for internal use by Dialogflow. You should not use these contexts
-  /// or create contexts with these names: * `__system_counters__` *
-  /// `*_id_dialog_context` * `*_dialog_params_size`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3630,22 +2988,11 @@ class ProjectsAgentSessionsEntityTypesResource {
   ProjectsAgentSessionsEntityTypesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a session entity type.
-  ///
-  /// If the specified session entity type already exists, overrides the session
-  /// entity type. This method doesn't work with Google Assistant integration.
-  /// Contact Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a session entity type for.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3681,19 +3028,9 @@ class ProjectsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Deletes the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type to delete. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -3727,19 +3064,9 @@ class ProjectsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the session entity type. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -3773,26 +3100,14 @@ class ProjectsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Returns the list of all session entity types in the specified session.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all session entity types from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3828,27 +3143,15 @@ class ProjectsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Updates the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of this session entity type.
-  /// Format: `projects//agent/sessions//entityTypes/`, or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user. `` must be the
-  /// display name of an existing entity type in the same agent that will be
-  /// overridden or supplemented.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -3892,16 +3195,11 @@ class ProjectsAgentVersionsResource {
   ProjectsAgentVersionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates an agent version.
-  ///
-  /// The new version points to the agent instance in the "default" environment.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create a version for. Supported formats:
-  /// - `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3937,12 +3235,9 @@ class ProjectsAgentVersionsResource {
     );
   }
 
-  /// Delete the specified agent version.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the version to delete. Supported formats: -
-  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3975,12 +3270,9 @@ class ProjectsAgentVersionsResource {
     );
   }
 
-  /// Retrieves the specified agent version.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the version. Supported formats: -
-  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/versions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4013,19 +3305,14 @@ class ProjectsAgentVersionsResource {
     );
   }
 
-  /// Returns the list of all versions of the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all versions from. Supported
-  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/agent$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4061,22 +3348,14 @@ class ProjectsAgentVersionsResource {
     );
   }
 
-  /// Updates the specified agent version.
-  ///
-  /// Note that this method does not allow you to update the state of the agent
-  /// the given version points to. It allows you to update only mutable
-  /// properties of the version resource.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The unique identifier of this agent version.
-  /// Supported formats: - `projects//agent/versions/` -
-  /// `projects//locations//agent/versions/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/agent/versions/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4120,31 +3399,16 @@ class ProjectsAnswerRecordsResource {
   ProjectsAnswerRecordsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Returns the list of all answer records in the specified project in reverse
-  /// chronological order.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list all answer records for in reverse
-  /// chronological order. Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filters to restrict results to specific answer
-  /// records. The expression has the following syntax: \[AND \] ... The
-  /// following fields and operators are supported: * conversation_id with
-  /// equals(=) operator Examples: * `conversation_id=bar` matches answer
-  /// records in the `projects/foo/locations/global/conversations/bar`
-  /// conversation (assuming the parent is `projects/foo/locations/global`). For
-  /// more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - Optional. The maximum number of records to return in a single
-  /// page. The server may return fewer records than this. If unspecified, we
-  /// use 10. The maximum is 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The ListAnswerRecordsResponse.next_page_token
-  /// value returned from a previous list request used to continue listing on
-  /// the next page.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4182,17 +3446,14 @@ class ProjectsAnswerRecordsResource {
     );
   }
 
-  /// Updates the specified answer record.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique identifier of this answer record. Format:
-  /// `projects//locations//answerRecords/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/answerRecords/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4236,12 +3497,9 @@ class ProjectsConversationDatasetsResource {
   ProjectsConversationDatasetsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Retrieves the specified conversation dataset.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation dataset to retrieve. Format:
-  /// `projects//locations//conversationDatasets/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationDatasets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4274,21 +3532,11 @@ class ProjectsConversationDatasetsResource {
     );
   }
 
-  /// Import data into the specified conversation dataset.
-  ///
-  /// Note that it is not allowed to import data to a conversation dataset that
-  /// already has data in it. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: ImportConversationDataOperationMetadata - `response`:
-  /// ImportConversationDataOperationResponse
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Dataset resource name. Format:
-  /// `projects//locations//conversationDatasets/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationDatasets/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4325,20 +3573,14 @@ class ProjectsConversationDatasetsResource {
     );
   }
 
-  /// Returns the list of all conversation datasets in the specified project and
-  /// location.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project and location name to list all
-  /// conversation datasets for. Format: `projects//locations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of conversation datasets to return
-  /// in a single page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4386,20 +3628,11 @@ class ProjectsConversationModelsResource {
   ProjectsConversationModelsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a model.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: CreateConversationModelOperationMetadata - `response`:
-  /// ConversationModel
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project to create conversation model for. Format:
-  /// `projects/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4435,18 +3668,9 @@ class ProjectsConversationModelsResource {
     );
   }
 
-  /// Deletes a model.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: DeleteConversationModelOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to delete. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4479,23 +3703,11 @@ class ProjectsConversationModelsResource {
     );
   }
 
-  /// Deploys a model.
-  ///
-  /// If a model is already deployed, deploying it has no effect. A model can
-  /// only serve prediction requests after it gets deployed. For article
-  /// suggestion, custom model will not be used unless it is deployed. This
-  /// method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: DeployConversationModelOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to deploy. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4531,12 +3743,9 @@ class ProjectsConversationModelsResource {
     );
   }
 
-  /// Gets conversation model.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to retrieve. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4569,19 +3778,14 @@ class ProjectsConversationModelsResource {
     );
   }
 
-  /// Lists conversation models.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list all conversation models for.
-  /// Format: `projects/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of conversation models to return in
-  /// a single page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4617,23 +3821,11 @@ class ProjectsConversationModelsResource {
     );
   }
 
-  /// Undeploys a model.
-  ///
-  /// If the model is not deployed this method has no effect. If the model is
-  /// currently being used: - For article suggestion, article suggestion will
-  /// fallback to the default model if model is undeployed. This method is a
-  /// \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: UndeployConversationModelOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to undeploy. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4676,12 +3868,9 @@ class ProjectsConversationModelsEvaluationsResource {
   ProjectsConversationModelsEvaluationsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Gets an evaluation of conversation model.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model evaluation resource name.
-  /// Format: `projects//conversationModels//evaluations/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversationModels/\[^/\]+/evaluations/\[^/\]+$`.
   ///
@@ -4715,19 +3904,14 @@ class ProjectsConversationModelsEvaluationsResource {
     );
   }
 
-  /// Lists evaluations of a conversation model.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The conversation model resource name. Format:
-  /// `projects//conversationModels/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of evaluations to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -4772,22 +3956,11 @@ class ProjectsConversationProfilesResource {
   ProjectsConversationProfilesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Clears a suggestion feature from a conversation profile for the given
-  /// participant role.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: ClearSuggestionFeatureConfigOperationMetadata - `response`:
-  /// ConversationProfile
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversationProfile] - Required. The Conversation Profile to add or
-  /// update the suggestion feature config. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [conversationProfile] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4826,18 +3999,11 @@ class ProjectsConversationProfilesResource {
     );
   }
 
-  /// Creates a conversation profile in the specified project.
-  ///
-  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
-  /// populated in the response. You can retrieve them via
-  /// GetConversationProfile API.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to create a conversation profile for.
-  /// Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4874,12 +4040,9 @@ class ProjectsConversationProfilesResource {
     );
   }
 
-  /// Deletes the specified conversation profile.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the conversation profile to delete. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4912,12 +4075,9 @@ class ProjectsConversationProfilesResource {
     );
   }
 
-  /// Retrieves the specified conversation profile.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the conversation profile. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -4950,19 +4110,14 @@ class ProjectsConversationProfilesResource {
     );
   }
 
-  /// Returns the list of all conversation profiles in the specified project.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list all conversation profiles from.
-  /// Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5000,21 +4155,14 @@ class ProjectsConversationProfilesResource {
     );
   }
 
-  /// Updates the specified conversation profile.
-  ///
-  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
-  /// populated in the response. You can retrieve them via
-  /// GetConversationProfile API.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique identifier of this conversation profile. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields to update.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5051,27 +4199,11 @@ class ProjectsConversationProfilesResource {
     );
   }
 
-  /// Adds or updates a suggestion feature in a conversation profile.
-  ///
-  /// If the conversation profile contains the type of suggestion feature for
-  /// the participant role, it will update it. Otherwise it will insert the
-  /// suggestion feature. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: SetSuggestionFeatureConfigOperationMetadata - `response`:
-  /// ConversationProfile If a long running operation to add or update
-  /// suggestion feature config for the same conversation profile, participant
-  /// role and suggestion feature type exists, please cancel the existing long
-  /// running operation before sending such request, otherwise the request will
-  /// be rejected.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversationProfile] - Required. The Conversation Profile to add or
-  /// update the suggestion feature config. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [conversationProfile] - null
   /// Value must have pattern `^projects/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5124,16 +4256,11 @@ class ProjectsConversationsResource {
   ProjectsConversationsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Completes the specified conversation.
-  ///
-  /// Finished conversations are purged from the database after 30 days.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource identifier of the conversation to close.
-  /// Format: `projects//locations//conversations/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5169,35 +4296,14 @@ class ProjectsConversationsResource {
     );
   }
 
-  /// Creates a new conversation.
-  ///
-  /// Conversations are auto-completed after 24 hours. Conversation Lifecycle:
-  /// There are two stages during a conversation: Automated Agent Stage and
-  /// Assist Stage. For Automated Agent Stage, there will be a dialogflow agent
-  /// responding to user queries. For Assist Stage, there's no dialogflow agent
-  /// responding to user queries. But we will provide suggestions which are
-  /// generated from conversation. If Conversation.conversation_profile is
-  /// configured for a dialogflow agent, conversation will start from `Automated
-  /// Agent Stage`, otherwise, it will start from `Assist Stage`. And during
-  /// `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is
-  /// triggered, conversation will transfer to Assist Stage.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource identifier of the project creating the
-  /// conversation. Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [conversationId] - Optional. Identifier of the conversation. Generally
-  /// it's auto generated by Google. Only set it if you cannot wait for the
-  /// response to return a auto-generated one to you. The conversation ID must
-  /// be compliant with the regression formula `a-zA-Z*` with the characters
-  /// length in range of \[3,64\]. If the field is provided, the caller is
-  /// responsible for 1. the uniqueness of the ID, otherwise the request will be
-  /// rejected. 2. the consistency for whether to use custom ID or not under a
-  /// project to better ensure uniqueness.
+  /// [conversationId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5234,12 +4340,9 @@ class ProjectsConversationsResource {
     );
   }
 
-  /// Retrieves the specific conversation.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the conversation. Format:
-  /// `projects//locations//conversations/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5272,25 +4375,16 @@ class ProjectsConversationsResource {
     );
   }
 
-  /// Returns the list of all conversations in the specified project.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project from which to list all conversation.
-  /// Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - Optional. A filter expression that filters conversations listed
-  /// in the response. Only `lifecycle_state` can be filtered on in this way.
-  /// For example, the following expression only returns `COMPLETED`
-  /// conversations: `lifecycle_state = "COMPLETED"` For more information about
-  /// filtering, see [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5335,31 +4429,16 @@ class ProjectsConversationsMessagesResource {
   ProjectsConversationsMessagesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists messages that belong to a given conversation.
-  ///
-  /// `messages` are ordered by `create_time` in descending order. To fetch
-  /// updates without duplication, send request with filter
-  /// `create_time_epoch_microseconds > [first item's create_time of previous
-  /// request]` and empty page_token.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the conversation to list messages for.
-  /// Format: `projects//locations//conversations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter on message fields. Currently predicates on
-  /// `create_time` and `create_time_epoch_microseconds` are supported.
-  /// `create_time` only support milliseconds accuracy. E.g.,
-  /// `create_time_epoch_microseconds > 1551790877964485` or `create_time >
-  /// 2017-01-15T01:30:15.01Z`. For more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5407,19 +4486,11 @@ class ProjectsConversationsParticipantsResource {
   ProjectsConversationsParticipantsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Adds a text (chat, for example), or audio (phone recording, for example)
-  /// message from a participant into the conversation.
-  ///
-  /// Note: Always use agent versions for production traffic sent to virtual
-  /// agents. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [participant] - Required. The name of the participant this text comes
-  /// from. Format: `projects//locations//conversations//participants/`.
+  /// [participant] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -5457,14 +4528,11 @@ class ProjectsConversationsParticipantsResource {
     );
   }
 
-  /// Creates a new participant in a conversation.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource identifier of the conversation adding the
-  /// participant. Format: `projects//locations//conversations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5500,12 +4568,9 @@ class ProjectsConversationsParticipantsResource {
     );
   }
 
-  /// Retrieves a conversation participant.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the participant. Format:
-  /// `projects//locations//conversations//participants/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -5539,19 +4604,14 @@ class ProjectsConversationsParticipantsResource {
     );
   }
 
-  /// Returns the list of all participants in the specified conversation.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The conversation to list all participants from.
-  /// Format: `projects//locations//conversations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5587,18 +4647,15 @@ class ProjectsConversationsParticipantsResource {
     );
   }
 
-  /// Updates the specified participant.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The unique identifier of this participant. Format:
-  /// `projects//locations//conversations//participants/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to specify which fields to update.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -5643,15 +4700,11 @@ class ProjectsConversationsParticipantsSuggestionsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets suggested articles for a participant based on specific historical
-  /// messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestion for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -5689,15 +4742,11 @@ class ProjectsConversationsParticipantsSuggestionsResource {
     );
   }
 
-  /// Gets suggested faq answers for a participant based on specific historical
-  /// messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestion for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -5738,14 +4787,11 @@ class ProjectsConversationsParticipantsSuggestionsResource {
     );
   }
 
-  /// Gets knowledge assist suggestions based on historical messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestions for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -5786,15 +4832,11 @@ class ProjectsConversationsParticipantsSuggestionsResource {
     );
   }
 
-  /// Gets smart replies for a participant based on specific historical
-  /// messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestion for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -5842,19 +4884,11 @@ class ProjectsConversationsSuggestionsResource {
   ProjectsConversationsSuggestionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Generates all the suggestions using generators configured in the
-  /// conversation profile.
-  ///
-  /// A generator is used only if its trigger event is matched.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversation] - Required. The conversation for which the suggestions are
-  /// generated. Format: `projects//locations//conversations/`. The conversation
-  /// must be created with a conversation profile which has generators
-  /// configured in it to be able to get suggestions.
+  /// [conversation] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5891,15 +4925,11 @@ class ProjectsConversationsSuggestionsResource {
     );
   }
 
-  /// Get answers for the given query based on knowledge documents.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversation] - Optional. The conversation (between human agent and end
-  /// user) where the search request is triggered. Format:
-  /// `projects//locations//conversations/`.
+  /// [conversation] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5938,17 +4968,11 @@ class ProjectsConversationsSuggestionsResource {
     );
   }
 
-  /// Suggests summary for a conversation based on specific historical messages.
-  ///
-  /// The range of the messages to be used for summary can be specified in the
-  /// request.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversation] - Required. The conversation to fetch suggestion for.
-  /// Format: `projects//locations//conversations/`.
+  /// [conversation] - null
   /// Value must have pattern `^projects/\[^/\]+/conversations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -5995,24 +5019,14 @@ class ProjectsGeneratorsResource {
 
   ProjectsGeneratorsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Creates a generator.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project/location to create generator for. Format:
-  /// `projects//locations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [generatorId] - Optional. The ID to use for the generator, which will
-  /// become the final component of the generator's resource name. The generator
-  /// ID must be compliant with the regression formula `a-zA-Z*` with the
-  /// characters length in range of \[3,64\]. If the field is not provided, an
-  /// Id will be auto-generated. If the field is provided, the caller is
-  /// responsible for 1. the uniqueness of the ID, otherwise the request will be
-  /// rejected. 2. the consistency for whether to use custom ID or not under a
-  /// project to better ensure uniqueness.
+  /// [generatorId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6049,19 +5063,14 @@ class ProjectsGeneratorsResource {
     );
   }
 
-  /// Lists generators.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project/location to list generators for. Format:
-  /// `projects//locations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of conversation models to return in
-  /// a single page. Default to 10.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6107,14 +5116,11 @@ class ProjectsKnowledgeBasesResource {
   ProjectsKnowledgeBasesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a knowledge base.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to create a knowledge base for. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6150,16 +5156,12 @@ class ProjectsKnowledgeBasesResource {
     );
   }
 
-  /// Deletes the specified knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the knowledge base to delete. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
-  /// [force] - Optional. Force deletes the knowledge base. When set to true,
-  /// any documents in the knowledge base are also deleted.
+  /// [force] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6193,12 +5195,9 @@ class ProjectsKnowledgeBasesResource {
     );
   }
 
-  /// Retrieves the specified knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the knowledge base to retrieve. Format
-  /// `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6231,33 +5230,16 @@ class ProjectsKnowledgeBasesResource {
     );
   }
 
-  /// Returns the list of all knowledge bases of the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list of knowledge bases for. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression used to filter knowledge bases returned
-  /// by the list method. The expression has the following syntax: \[AND \] ...
-  /// The following fields and operators are supported: * display_name with
-  /// has(:) operator * language_code with equals(=) operator Examples: *
-  /// 'language_code=en-us' matches knowledge bases with en-us language code. *
-  /// 'display_name:articles' matches knowledge bases whose display name
-  /// contains "articles". * 'display_name:"Best Articles"' matches knowledge
-  /// bases whose display name contains "Best Articles". * 'language_code=en-gb
-  /// AND display_name=articles' matches all knowledge bases whose display name
-  /// contains "articles" and whose language code is "en-gb". Note: An empty
-  /// filter string (i.e. "") is a no-op and will result in no filtering. For
-  /// more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 10 and at most 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6295,19 +5277,14 @@ class ProjectsKnowledgeBasesResource {
     );
   }
 
-  /// Updates the specified knowledge base.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The knowledge base resource name. The name must be empty when
-  /// creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
-  /// `display_name` can be updated, an InvalidArgument will be returned for
-  /// attempting to update other fields.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6351,19 +5328,11 @@ class ProjectsKnowledgeBasesDocumentsResource {
   ProjectsKnowledgeBasesDocumentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to create a document for. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6399,18 +5368,9 @@ class ProjectsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Deletes the specified document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to delete. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -6444,20 +5404,11 @@ class ProjectsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Exports a smart messaging candidate document into the specified
-  /// destination.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to export. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -6494,12 +5445,9 @@ class ProjectsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Retrieves the specified document.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to retrieve. Format
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -6533,22 +5481,11 @@ class ProjectsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Creates documents by importing data from external sources.
-  ///
-  /// Dialogflow supports up to 350 documents in each request. If you try to
-  /// import more, Dialogflow will return an error. This method is a
-  /// \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`:
-  /// ImportDocumentsResponse
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to import documents into. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6584,30 +5521,16 @@ class ProjectsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Returns the list of all documents of the knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to list all documents for. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression used to filter documents returned by the
-  /// list method. The expression has the following syntax: \[AND \] ... The
-  /// following fields and operators are supported: * knowledge_types with
-  /// has(:) operator * display_name with has(:) operator * state with equals(=)
-  /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
-  /// knowledge type. * "display_name:customer" matches documents whose display
-  /// name contains "customer". * "state=ACTIVE" matches documents with ACTIVE
-  /// state. * "knowledge_types:FAQ AND state=ACTIVE" matches all active FAQ
-  /// documents. For more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 10 and at most 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6645,26 +5568,15 @@ class ProjectsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Updates the specified document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The document resource name. The name must be empty when
-  /// creating a document. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
-  /// `display_name` can be updated, an InvalidArgument will be returned for
-  /// attempting to update other fields.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6701,25 +5613,11 @@ class ProjectsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Reloads the specified document from its specified source, content_uri or
-  /// content.
-  ///
-  /// The previously loaded content of the document will be deleted. Note: Even
-  /// when the content of the document has not changed, there still may be side
-  /// effects because of internal implementation changes. This method is a
-  /// \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The
-  /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-  /// `projects.knowledgeBases.documents`.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to reload. Format:
-  /// `projects//locations//knowledgeBases//documents/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -6786,15 +5684,14 @@ class ProjectsLocationsResource {
       ProjectsLocationsStatelessSuggestionResource(_requester);
   ProjectsLocationsSuggestionsResource get suggestions =>
       ProjectsLocationsSuggestionsResource(_requester);
+  ProjectsLocationsToolsResource get tools =>
+      ProjectsLocationsToolsResource(_requester);
 
   ProjectsLocationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Deletes the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to delete is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6827,11 +5724,9 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Gets information about a location.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Resource name for the location.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6864,12 +5759,9 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Retrieves the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to fetch is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -6902,11 +5794,9 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Gets location-level encryption key specification.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the encryption spec resource to get.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/encryptionSpec$`.
   ///
@@ -6940,26 +5830,18 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Lists information about the supported locations for this service.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The resource that owns the locations collection, if applicable.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - null
   ///
-  /// [filter] - A filter to narrow down results to a preferred subset. The
-  /// filtering language accepts strings like `"displayName=tokyo"`, and is
-  /// documented in more detail in \[AIP-160\](https://google.aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of results to return. If not set, the
-  /// service selects a default.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - A page token received from the `next_page_token` field in
-  /// the response. Send that page token to receive the subsequent page.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -6999,20 +5881,14 @@ class ProjectsLocationsResource {
     );
   }
 
-  /// Creates/updates the specified agent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project of this agent. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7067,21 +5943,11 @@ class ProjectsLocationsAgentResource {
   ProjectsLocationsAgentResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Exports the specified agent to a ZIP file.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: ExportAgentResponse
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to export is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7117,12 +5983,9 @@ class ProjectsLocationsAgentResource {
     );
   }
 
-  /// Retrieves the fulfillment.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the fulfillment. Format:
-  /// `projects//agent/fulfillment`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/fulfillment$`.
   ///
@@ -7156,22 +6019,12 @@ class ProjectsLocationsAgentResource {
     );
   }
 
-  /// Gets agent validation result.
-  ///
-  /// Agent validation is performed during training time and is updated
-  /// automatically when training is completed.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent is associated with.
-  /// Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [languageCode] - Optional. The language for which you want a validation
-  /// result. If not specified, the agent's default language is used.
-  /// [Many languages](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// are supported. Note: languages must be enabled in the agent before they
-  /// can be used.
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7206,32 +6059,11 @@ class ProjectsLocationsAgentResource {
     );
   }
 
-  /// Imports the specified agent from a ZIP file.
-  ///
-  /// Uploads new intents and entity types without deleting the existing ones.
-  /// Intents and entity types with the same name are replaced with the new
-  /// versions from ImportAgentRequest. After the import, the imported draft
-  /// agent will be trained automatically (unless disabled in agent settings).
-  /// However, once the import is done, training may not be completed yet.
-  /// Please call TrainAgent and wait for the operation it returns in order to
-  /// train explicitly. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// The operation only tracks when importing is complete, not when it is done
-  /// training. Note: You should always train an agent prior to sending it
-  /// queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to import is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7267,31 +6099,11 @@ class ProjectsLocationsAgentResource {
     );
   }
 
-  /// Restores the specified agent from a ZIP file.
-  ///
-  /// Replaces the current agent version with a new one. All the intents and
-  /// entity types in the older version are deleted. After the restore, the
-  /// restored draft agent will be trained automatically (unless disabled in
-  /// agent settings). However, once the restore is done, training may not be
-  /// completed yet. Please call TrainAgent and wait for the operation it
-  /// returns in order to train explicitly. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// The operation only tracks when restoring is complete, not when it is done
-  /// training. Note: You should always train an agent prior to sending it
-  /// queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to restore is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7327,24 +6139,14 @@ class ProjectsLocationsAgentResource {
     );
   }
 
-  /// Returns the list of agents.
-  ///
-  /// Since there is at most one conversational agent per project, this method
-  /// is useful primarily for listing all agents across projects the caller has
-  /// access to. One can achieve that with a wildcard project collection id "-".
-  /// Refer to \[List
-  /// Sub-Collections\](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list agents from. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7380,25 +6182,11 @@ class ProjectsLocationsAgentResource {
     );
   }
 
-  /// Trains the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project that the agent to train is associated
-  /// with. Format: `projects/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7434,21 +6222,15 @@ class ProjectsLocationsAgentResource {
     );
   }
 
-  /// Updates the fulfillment.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of the fulfillment. Supported
-  /// formats: - `projects//agent/fulfillment` -
-  /// `projects//locations//agent/fulfillment` This field is not used for
-  /// Fulfillment in an Environment.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/fulfillment$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated. If
-  /// the mask is not present, all fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7495,25 +6277,11 @@ class ProjectsLocationsAgentEntityTypesResource {
   ProjectsLocationsAgentEntityTypesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes entity types in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to delete all entities types
-  /// for. Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7550,23 +6318,11 @@ class ProjectsLocationsAgentEntityTypesResource {
     );
   }
 
-  /// Updates/Creates multiple entity types in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: BatchUpdateEntityTypesResponse Note: You should always train
-  /// an agent prior to sending it queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to update or create entity
-  /// types in. Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -7603,24 +6359,14 @@ class ProjectsLocationsAgentEntityTypesResource {
     );
   }
 
-  /// Creates an entity type in the specified agent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create a entity type for. Format:
-  /// `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7657,16 +6403,9 @@ class ProjectsLocationsAgentEntityTypesResource {
     );
   }
 
-  /// Deletes the specified entity type.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type to delete. Format:
-  /// `projects//agent/entityTypes/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
@@ -7700,19 +6439,13 @@ class ProjectsLocationsAgentEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified entity type.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type. Format:
-  /// `projects//agent/entityTypes/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7746,24 +6479,16 @@ class ProjectsLocationsAgentEntityTypesResource {
     );
   }
 
-  /// Returns the list of all entity types in the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all entity types from. Format:
-  /// `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7801,28 +6526,17 @@ class ProjectsLocationsAgentEntityTypesResource {
     );
   }
 
-  /// Updates the specified entity type.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique identifier of the entity type. Required for
-  /// EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes
-  /// methods. Format: `projects//agent/entityTypes/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -7868,25 +6582,11 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
   ProjectsLocationsAgentEntityTypesEntitiesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates multiple new entities in the specified entity type.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the entity type to create entities in.
-  /// Format: `projects//agent/entityTypes/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
@@ -7924,25 +6624,11 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
     );
   }
 
-  /// Deletes entities in the specified entity type.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the entity type to delete entries for.
-  /// Format: `projects//agent/entityTypes/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
@@ -7980,26 +6666,11 @@ class ProjectsLocationsAgentEntityTypesEntitiesResource {
     );
   }
 
-  /// Updates or creates multiple entities in the specified entity type.
-  ///
-  /// This method does not affect entities in the entity type that aren't
-  /// explicitly specified in the request. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the entity type to update or create
-  /// entities in. Format: `projects//agent/entityTypes/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/entityTypes/\[^/\]+$`.
   ///
@@ -8049,17 +6720,14 @@ class ProjectsLocationsAgentEnvironmentsResource {
   ProjectsLocationsAgentEnvironmentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates an agent environment.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create an environment for. Supported
-  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
-  /// [environmentId] - Required. The unique id of the new environment.
+  /// [environmentId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8096,14 +6764,9 @@ class ProjectsLocationsAgentEnvironmentsResource {
     );
   }
 
-  /// Deletes the specified agent environment.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the environment to delete. / Format: -
-  /// `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
@@ -8137,14 +6800,9 @@ class ProjectsLocationsAgentEnvironmentsResource {
     );
   }
 
-  /// Retrieves the specified agent environment.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the environment. Supported formats: -
-  /// `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
@@ -8178,22 +6836,15 @@ class ProjectsLocationsAgentEnvironmentsResource {
     );
   }
 
-  /// Gets the history of the specified environment.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the environment to retrieve history for.
-  /// Supported formats: - `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8229,19 +6880,14 @@ class ProjectsLocationsAgentEnvironmentsResource {
     );
   }
 
-  /// Returns the list of all non-default environments of the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all environments from. Format: -
-  /// `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8277,37 +6923,17 @@ class ProjectsLocationsAgentEnvironmentsResource {
     );
   }
 
-  /// Updates the specified agent environment.
-  ///
-  /// This method allows you to deploy new agent versions into the environment.
-  /// When an environment is pointed to a new agent version by setting
-  /// `environment.agent_version`, the environment is temporarily set to the
-  /// `LOADING` state. During that time, the environment continues serving the
-  /// previous version of the agent. After the new agent version is done
-  /// loading, the environment is set back to the `RUNNING` state. You can use
-  /// "-" as Environment ID in environment name to update an agent version in
-  /// the default environment. WARNING: this will negate all recent changes to
-  /// the draft agent and can't be undone. You may want to save the draft agent
-  /// to a version before calling this method.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The unique identifier of this agent environment.
-  /// Supported formats: - `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
-  /// [allowLoadToDraftAndDiscardChanges] - Optional. This field is used to
-  /// prevent accidental overwrite of the default environment, which is an
-  /// operation that cannot be undone. To confirm that the caller desires this
-  /// overwrite, this field must be explicitly set to true when updating the
-  /// default environment (environment ID = `-`).
+  /// [allowLoadToDraftAndDiscardChanges] - null
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8356,36 +6982,22 @@ class ProjectsLocationsAgentEnvironmentsIntentsResource {
   ProjectsLocationsAgentEnvironmentsIntentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Returns the list of all intents in the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all intents from. Format:
-  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
-  /// specify the environment to list intents for. Format:
-  /// `projects//agent/environments/` or
-  /// `projects//locations//agent/environments/`. Note: training phrases of the
-  /// intents will not be returned for non-draft environment.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8454,15 +7066,9 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Deletes all active contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -8496,36 +7102,11 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsResource {
     );
   }
 
-  /// Processes a natural language query and returns structured, actionable data
-  /// as a result.
-  ///
-  /// This method is not idempotent, because it may cause contexts and session
-  /// entity types to be updated, which in turn might affect results of future
-  /// queries. If you might use
-  /// [Agent Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI
-  /// products now or in the future, consider using AnalyzeContent instead of
-  /// `DetectIntent`. `AnalyzeContent` has additional functionality for Agent
-  /// Assist and other CCAI products. Note: Always use agent versions for
-  /// production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [session] - Required. The name of the session this query is sent to.
-  /// Format: `projects//agent/sessions/`, or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment (`Environment ID`
-  /// might be referred to as environment name at some places). If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the
-  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
-  /// Note: Always use agent versions for production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  /// [session] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -8570,19 +7151,11 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a context.
-  ///
-  /// If the specified context already exists, overrides the context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a context for. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -8619,15 +7192,9 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Deletes the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context to delete. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -8661,15 +7228,9 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Retrieves the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -8703,23 +7264,15 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Returns the list of all contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all contexts from. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8755,26 +7308,15 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsContextsResource {
     );
   }
 
-  /// Updates the specified context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of the context. Format:
-  /// `projects//agent/sessions//contexts/`, or
-  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
-  /// ID` is always converted to lowercase, may only contain characters in
-  /// `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user. The following context names are
-  /// reserved for internal use by Dialogflow. You should not use these contexts
-  /// or create contexts with these names: * `__system_counters__` *
-  /// `*_id_dialog_context` * `*_dialog_params_size`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -8819,22 +7361,11 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates a session entity type.
-  ///
-  /// If the specified session entity type already exists, overrides the session
-  /// entity type. This method doesn't work with Google Assistant integration.
-  /// Contact Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a session entity type for.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
@@ -8871,19 +7402,9 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Deletes the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type to delete. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -8917,19 +7438,9 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the session entity type. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -8963,27 +7474,15 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Returns the list of all session entity types in the specified session.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all session entity types from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9019,27 +7518,15 @@ class ProjectsLocationsAgentEnvironmentsUsersSessionsEntityTypesResource {
     );
   }
 
-  /// Updates the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of this session entity type.
-  /// Format: `projects//agent/sessions//entityTypes/`, or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user. `` must be the
-  /// display name of an existing entity type in the same agent that will be
-  /// overridden or supplemented.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/environments/\[^/\]+/users/\[^/\]+/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9083,25 +7570,11 @@ class ProjectsLocationsAgentIntentsResource {
   ProjectsLocationsAgentIntentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes intents in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to delete all entities types
-  /// for. Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -9138,23 +7611,11 @@ class ProjectsLocationsAgentIntentsResource {
     );
   }
 
-  /// Updates/Creates multiple intents in the specified agent.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: An empty
-  /// [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct)
-  /// - `response`: BatchUpdateIntentsResponse Note: You should always train an
-  /// agent prior to sending it queries. See the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the agent to update or create intents in.
-  /// Format: `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -9191,31 +7652,19 @@ class ProjectsLocationsAgentIntentsResource {
     );
   }
 
-  /// Creates an intent in the specified agent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create a intent for. Format:
-  /// `projects//agent`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9254,17 +7703,9 @@ class ProjectsLocationsAgentIntentsResource {
     );
   }
 
-  /// Deletes the specified intent and its direct or indirect followup intents.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the intent to delete. If this intent has
-  /// direct or indirect followup intents, we also delete them. Format:
-  /// `projects//agent/intents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
@@ -9298,26 +7739,18 @@ class ProjectsLocationsAgentIntentsResource {
     );
   }
 
-  /// Retrieves the specified intent.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the intent. Format:
-  /// `projects//agent/intents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9353,35 +7786,21 @@ class ProjectsLocationsAgentIntentsResource {
     );
   }
 
-  /// Returns the list of all intents in the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all intents from. Format:
-  /// `projects//agent` or `projects//locations//agent`. Alternatively, you can
-  /// specify the environment to list intents for. Format:
-  /// `projects//agent/environments/` or
-  /// `projects//locations//agent/environments/`. Note: training phrases of the
-  /// intents will not be returned for non-draft environment.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9421,35 +7840,22 @@ class ProjectsLocationsAgentIntentsResource {
     );
   }
 
-  /// Updates the specified intent.
-  ///
-  /// Note: You should always train an agent prior to sending it queries. See
-  /// the
-  /// [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The unique identifier of this intent. Required for
-  /// Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Format:
-  /// `projects//agent/intents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/intents/\[^/\]+$`.
   ///
-  /// [intentView] - Optional. The resource view to apply to the returned
-  /// intent.
+  /// [intentView] - null
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   ///
-  /// [languageCode] - Optional. The language used to access language-specific
-  /// data. If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
+  /// [languageCode] - null
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9502,15 +7908,9 @@ class ProjectsLocationsAgentSessionsResource {
   ProjectsLocationsAgentSessionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Deletes all active contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the session to delete all contexts from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -9544,36 +7944,11 @@ class ProjectsLocationsAgentSessionsResource {
     );
   }
 
-  /// Processes a natural language query and returns structured, actionable data
-  /// as a result.
-  ///
-  /// This method is not idempotent, because it may cause contexts and session
-  /// entity types to be updated, which in turn might affect results of future
-  /// queries. If you might use
-  /// [Agent Assist](https://cloud.google.com/dialogflow/docs/#aa) or other CCAI
-  /// products now or in the future, consider using AnalyzeContent instead of
-  /// `DetectIntent`. `AnalyzeContent` has additional functionality for Agent
-  /// Assist and other CCAI products. Note: Always use agent versions for
-  /// production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [session] - Required. The name of the session this query is sent to.
-  /// Format: `projects//agent/sessions/`, or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment (`Environment ID`
-  /// might be referred to as environment name at some places). If `User ID` is
-  /// not specified, we are using "-". It's up to the API caller to choose an
-  /// appropriate `Session ID` and `User Id`. They can be a random number or
-  /// some type of user and session identifiers (preferably hashed). The length
-  /// of the `Session ID` and `User ID` must not exceed 36 characters. For more
-  /// information, see the
-  /// [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview).
-  /// Note: Always use agent versions for production traffic. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
+  /// [session] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -9617,19 +7992,11 @@ class ProjectsLocationsAgentSessionsContextsResource {
   ProjectsLocationsAgentSessionsContextsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a context.
-  ///
-  /// If the specified context already exists, overrides the context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a context for. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -9666,15 +8033,9 @@ class ProjectsLocationsAgentSessionsContextsResource {
     );
   }
 
-  /// Deletes the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context to delete. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -9708,15 +8069,9 @@ class ProjectsLocationsAgentSessionsContextsResource {
     );
   }
 
-  /// Retrieves the specified context.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the context. Format:
-  /// `projects//agent/sessions//contexts/` or
-  /// `projects//agent/environments//users//sessions//contexts/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
@@ -9750,23 +8105,15 @@ class ProjectsLocationsAgentSessionsContextsResource {
     );
   }
 
-  /// Returns the list of all contexts in the specified session.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all contexts from. Format:
-  /// `projects//agent/sessions/` or
-  /// `projects//agent/environments//users//sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9802,26 +8149,15 @@ class ProjectsLocationsAgentSessionsContextsResource {
     );
   }
 
-  /// Updates the specified context.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of the context. Format:
-  /// `projects//agent/sessions//contexts/`, or
-  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
-  /// ID` is always converted to lowercase, may only contain characters in
-  /// `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user. The following context names are
-  /// reserved for internal use by Dialogflow. You should not use these contexts
-  /// or create contexts with these names: * `__system_counters__` *
-  /// `*_id_dialog_context` * `*_dialog_params_size`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/contexts/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -9865,22 +8201,11 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
   ProjectsLocationsAgentSessionsEntityTypesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a session entity type.
-  ///
-  /// If the specified session entity type already exists, overrides the session
-  /// entity type. This method doesn't work with Google Assistant integration.
-  /// Contact Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to create a session entity type for.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
@@ -9917,19 +8242,9 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Deletes the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the entity type to delete. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -9963,19 +8278,9 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Retrieves the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the session entity type. Format:
-  /// `projects//agent/sessions//entityTypes/` or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
@@ -10009,27 +8314,15 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Returns the list of all session entity types in the specified session.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The session to list all session entity types from.
-  /// Format: `projects//agent/sessions/` or
-  /// `projects//agent/environments//users// sessions/`. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10065,27 +8358,15 @@ class ProjectsLocationsAgentSessionsEntityTypesResource {
     );
   }
 
-  /// Updates the specified session entity type.
-  ///
-  /// This method doesn't work with Google Assistant integration. Contact
-  /// Dialogflow support if you need to use session entities with Google
-  /// Assistant integration.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The unique identifier of this session entity type.
-  /// Format: `projects//agent/sessions//entityTypes/`, or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user. `` must be the
-  /// display name of an existing entity type in the same agent that will be
-  /// overridden or supplemented.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/sessions/\[^/\]+/entityTypes/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10129,16 +8410,11 @@ class ProjectsLocationsAgentVersionsResource {
   ProjectsLocationsAgentVersionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates an agent version.
-  ///
-  /// The new version points to the agent instance in the "default" environment.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to create a version for. Supported formats:
-  /// - `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10174,12 +8450,9 @@ class ProjectsLocationsAgentVersionsResource {
     );
   }
 
-  /// Delete the specified agent version.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the version to delete. Supported formats: -
-  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/versions/\[^/\]+$`.
   ///
@@ -10213,12 +8486,9 @@ class ProjectsLocationsAgentVersionsResource {
     );
   }
 
-  /// Retrieves the specified agent version.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the version. Supported formats: -
-  /// `projects//agent/versions/` - `projects//locations//agent/versions/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/versions/\[^/\]+$`.
   ///
@@ -10252,19 +8522,14 @@ class ProjectsLocationsAgentVersionsResource {
     );
   }
 
-  /// Returns the list of all versions of the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The agent to list all versions from. Supported
-  /// formats: - `projects//agent` - `projects//locations//agent`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/agent$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10300,23 +8565,15 @@ class ProjectsLocationsAgentVersionsResource {
     );
   }
 
-  /// Updates the specified agent version.
-  ///
-  /// Note that this method does not allow you to update the state of the agent
-  /// the given version points to. It allows you to update only mutable
-  /// properties of the version resource.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. The unique identifier of this agent version.
-  /// Supported formats: - `projects//agent/versions/` -
-  /// `projects//locations//agent/versions/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/agent/versions/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10360,31 +8617,16 @@ class ProjectsLocationsAnswerRecordsResource {
   ProjectsLocationsAnswerRecordsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Returns the list of all answer records in the specified project in reverse
-  /// chronological order.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list all answer records for in reverse
-  /// chronological order. Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filters to restrict results to specific answer
-  /// records. The expression has the following syntax: \[AND \] ... The
-  /// following fields and operators are supported: * conversation_id with
-  /// equals(=) operator Examples: * `conversation_id=bar` matches answer
-  /// records in the `projects/foo/locations/global/conversations/bar`
-  /// conversation (assuming the parent is `projects/foo/locations/global`). For
-  /// more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - Optional. The maximum number of records to return in a single
-  /// page. The server may return fewer records than this. If unspecified, we
-  /// use 10. The maximum is 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The ListAnswerRecordsResponse.next_page_token
-  /// value returned from a previous list request used to continue listing on
-  /// the next page.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10422,18 +8664,15 @@ class ProjectsLocationsAnswerRecordsResource {
     );
   }
 
-  /// Updates the specified answer record.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique identifier of this answer record. Format:
-  /// `projects//locations//answerRecords/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/answerRecords/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields get updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10477,20 +8716,11 @@ class ProjectsLocationsConversationDatasetsResource {
   ProjectsLocationsConversationDatasetsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new conversation dataset.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: CreateConversationDatasetOperationMetadata - `response`:
-  /// ConversationDataset
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to create conversation dataset for.
-  /// Format: `projects//locations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10527,18 +8757,9 @@ class ProjectsLocationsConversationDatasetsResource {
     );
   }
 
-  /// Deletes the specified conversation dataset.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: DeleteConversationDatasetOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation dataset to delete. Format:
-  /// `projects//locations//conversationDatasets/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationDatasets/\[^/\]+$`.
   ///
@@ -10572,12 +8793,9 @@ class ProjectsLocationsConversationDatasetsResource {
     );
   }
 
-  /// Retrieves the specified conversation dataset.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation dataset to retrieve. Format:
-  /// `projects//locations//conversationDatasets/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationDatasets/\[^/\]+$`.
   ///
@@ -10611,21 +8829,11 @@ class ProjectsLocationsConversationDatasetsResource {
     );
   }
 
-  /// Import data into the specified conversation dataset.
-  ///
-  /// Note that it is not allowed to import data to a conversation dataset that
-  /// already has data in it. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: ImportConversationDataOperationMetadata - `response`:
-  /// ImportConversationDataOperationResponse
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Dataset resource name. Format:
-  /// `projects//locations//conversationDatasets/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationDatasets/\[^/\]+$`.
   ///
@@ -10663,20 +8871,14 @@ class ProjectsLocationsConversationDatasetsResource {
     );
   }
 
-  /// Returns the list of all conversation datasets in the specified project and
-  /// location.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project and location name to list all
-  /// conversation datasets for. Format: `projects//locations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of conversation datasets to return
-  /// in a single page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10724,20 +8926,11 @@ class ProjectsLocationsConversationModelsResource {
   ProjectsLocationsConversationModelsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a model.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: CreateConversationModelOperationMetadata - `response`:
-  /// ConversationModel
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - The project to create conversation model for. Format:
-  /// `projects/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -10773,18 +8966,9 @@ class ProjectsLocationsConversationModelsResource {
     );
   }
 
-  /// Deletes a model.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: DeleteConversationModelOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to delete. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
@@ -10818,23 +9002,11 @@ class ProjectsLocationsConversationModelsResource {
     );
   }
 
-  /// Deploys a model.
-  ///
-  /// If a model is already deployed, deploying it has no effect. A model can
-  /// only serve prediction requests after it gets deployed. For article
-  /// suggestion, custom model will not be used unless it is deployed. This
-  /// method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: DeployConversationModelOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to deploy. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
@@ -10871,12 +9043,9 @@ class ProjectsLocationsConversationModelsResource {
     );
   }
 
-  /// Gets conversation model.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to retrieve. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
@@ -10910,19 +9079,14 @@ class ProjectsLocationsConversationModelsResource {
     );
   }
 
-  /// Lists conversation models.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list all conversation models for.
-  /// Format: `projects/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of conversation models to return in
-  /// a single page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -10958,23 +9122,11 @@ class ProjectsLocationsConversationModelsResource {
     );
   }
 
-  /// Undeploys a model.
-  ///
-  /// If the model is not deployed this method has no effect. If the model is
-  /// currently being used: - For article suggestion, article suggestion will
-  /// fallback to the default model if model is undeployed. This method is a
-  /// \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: UndeployConversationModelOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model to undeploy. Format:
-  /// `projects//conversationModels/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
@@ -11019,14 +9171,11 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Creates evaluation of a conversation model.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The conversation model resource name. Format:
-  /// `projects//locations//conversationModels/`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
@@ -11063,12 +9212,9 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
     );
   }
 
-  /// Gets an evaluation of conversation model.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The conversation model evaluation resource name.
-  /// Format: `projects//conversationModels//evaluations/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationModels/\[^/\]+/evaluations/\[^/\]+$`.
   ///
@@ -11102,20 +9248,15 @@ class ProjectsLocationsConversationModelsEvaluationsResource {
     );
   }
 
-  /// Lists evaluations of a conversation model.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The conversation model resource name. Format:
-  /// `projects//conversationModels/`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationModels/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of evaluations to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11160,22 +9301,11 @@ class ProjectsLocationsConversationProfilesResource {
   ProjectsLocationsConversationProfilesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Clears a suggestion feature from a conversation profile for the given
-  /// participant role.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: ClearSuggestionFeatureConfigOperationMetadata - `response`:
-  /// ConversationProfile
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversationProfile] - Required. The Conversation Profile to add or
-  /// update the suggestion feature config. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [conversationProfile] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
@@ -11215,18 +9345,11 @@ class ProjectsLocationsConversationProfilesResource {
     );
   }
 
-  /// Creates a conversation profile in the specified project.
-  ///
-  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
-  /// populated in the response. You can retrieve them via
-  /// GetConversationProfile API.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to create a conversation profile for.
-  /// Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -11263,12 +9386,9 @@ class ProjectsLocationsConversationProfilesResource {
     );
   }
 
-  /// Deletes the specified conversation profile.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the conversation profile to delete. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
@@ -11302,12 +9422,9 @@ class ProjectsLocationsConversationProfilesResource {
     );
   }
 
-  /// Retrieves the specified conversation profile.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The resource name of the conversation profile. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
@@ -11341,19 +9458,14 @@ class ProjectsLocationsConversationProfilesResource {
     );
   }
 
-  /// Returns the list of all conversation profiles in the specified project.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list all conversation profiles from.
-  /// Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11391,22 +9503,15 @@ class ProjectsLocationsConversationProfilesResource {
     );
   }
 
-  /// Updates the specified conversation profile.
-  ///
-  /// ConversationProfile.create_time and ConversationProfile.update_time aren't
-  /// populated in the response. You can retrieve them via
-  /// GetConversationProfile API.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The unique identifier of this conversation profile. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to control which fields to update.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11443,27 +9548,11 @@ class ProjectsLocationsConversationProfilesResource {
     );
   }
 
-  /// Adds or updates a suggestion feature in a conversation profile.
-  ///
-  /// If the conversation profile contains the type of suggestion feature for
-  /// the participant role, it will update it. Otherwise it will insert the
-  /// suggestion feature. This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: SetSuggestionFeatureConfigOperationMetadata - `response`:
-  /// ConversationProfile If a long running operation to add or update
-  /// suggestion feature config for the same conversation profile, participant
-  /// role and suggestion feature type exists, please cancel the existing long
-  /// running operation before sending such request, otherwise the request will
-  /// be rejected.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversationProfile] - Required. The Conversation Profile to add or
-  /// update the suggestion feature config. Format:
-  /// `projects//locations//conversationProfiles/`.
+  /// [conversationProfile] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversationProfiles/\[^/\]+$`.
   ///
@@ -11517,16 +9606,11 @@ class ProjectsLocationsConversationsResource {
   ProjectsLocationsConversationsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Completes the specified conversation.
-  ///
-  /// Finished conversations are purged from the database after 30 days.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. Resource identifier of the conversation to close.
-  /// Format: `projects//locations//conversations/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
@@ -11563,35 +9647,14 @@ class ProjectsLocationsConversationsResource {
     );
   }
 
-  /// Creates a new conversation.
-  ///
-  /// Conversations are auto-completed after 24 hours. Conversation Lifecycle:
-  /// There are two stages during a conversation: Automated Agent Stage and
-  /// Assist Stage. For Automated Agent Stage, there will be a dialogflow agent
-  /// responding to user queries. For Assist Stage, there's no dialogflow agent
-  /// responding to user queries. But we will provide suggestions which are
-  /// generated from conversation. If Conversation.conversation_profile is
-  /// configured for a dialogflow agent, conversation will start from `Automated
-  /// Agent Stage`, otherwise, it will start from `Assist Stage`. And during
-  /// `Automated Agent Stage`, once an Intent with Intent.live_agent_handoff is
-  /// triggered, conversation will transfer to Assist Stage.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource identifier of the project creating the
-  /// conversation. Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [conversationId] - Optional. Identifier of the conversation. Generally
-  /// it's auto generated by Google. Only set it if you cannot wait for the
-  /// response to return a auto-generated one to you. The conversation ID must
-  /// be compliant with the regression formula `a-zA-Z*` with the characters
-  /// length in range of \[3,64\]. If the field is provided, the caller is
-  /// responsible for 1. the uniqueness of the ID, otherwise the request will be
-  /// rejected. 2. the consistency for whether to use custom ID or not under a
-  /// project to better ensure uniqueness.
+  /// [conversationId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11628,12 +9691,9 @@ class ProjectsLocationsConversationsResource {
     );
   }
 
-  /// Retrieves the specific conversation.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the conversation. Format:
-  /// `projects//locations//conversations/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
@@ -11667,17 +9727,11 @@ class ProjectsLocationsConversationsResource {
     );
   }
 
-  /// Data ingestion API.
-  ///
-  /// Ingests context references for an existing conversation.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversation] - Required. Resource identifier of the conversation to
-  /// ingest context information for. Format:
-  /// `projects//locations//conversations/`.
+  /// [conversation] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
@@ -11718,25 +9772,16 @@ class ProjectsLocationsConversationsResource {
     );
   }
 
-  /// Returns the list of all conversations in the specified project.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project from which to list all conversation.
-  /// Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. A filter expression that filters conversations listed
-  /// in the response. Only `lifecycle_state` can be filtered on in this way.
-  /// For example, the following expression only returns `COMPLETED`
-  /// conversations: `lifecycle_state = "COMPLETED"` For more information about
-  /// filtering, see [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11781,32 +9826,17 @@ class ProjectsLocationsConversationsMessagesResource {
   ProjectsLocationsConversationsMessagesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Lists messages that belong to a given conversation.
-  ///
-  /// `messages` are ordered by `create_time` in descending order. To fetch
-  /// updates without duplication, send request with filter
-  /// `create_time_epoch_microseconds > [first item's create_time of previous
-  /// request]` and empty page_token.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the conversation to list messages for.
-  /// Format: `projects//locations//conversations/`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
-  /// [filter] - Optional. Filter on message fields. Currently predicates on
-  /// `create_time` and `create_time_epoch_microseconds` are supported.
-  /// `create_time` only support milliseconds accuracy. E.g.,
-  /// `create_time_epoch_microseconds > 1551790877964485` or `create_time >
-  /// 2017-01-15T01:30:15.01Z`. For more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -11856,19 +9886,11 @@ class ProjectsLocationsConversationsParticipantsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Adds a text (chat, for example), or audio (phone recording, for example)
-  /// message from a participant into the conversation.
-  ///
-  /// Note: Always use agent versions for production traffic sent to virtual
-  /// agents. See
-  /// [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions).
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [participant] - Required. The name of the participant this text comes
-  /// from. Format: `projects//locations//conversations//participants/`.
+  /// [participant] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -11906,14 +9928,11 @@ class ProjectsLocationsConversationsParticipantsResource {
     );
   }
 
-  /// Creates a new participant in a conversation.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. Resource identifier of the conversation adding the
-  /// participant. Format: `projects//locations//conversations/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
@@ -11950,12 +9969,9 @@ class ProjectsLocationsConversationsParticipantsResource {
     );
   }
 
-  /// Retrieves a conversation participant.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the participant. Format:
-  /// `projects//locations//conversations//participants/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -11989,20 +10005,15 @@ class ProjectsLocationsConversationsParticipantsResource {
     );
   }
 
-  /// Returns the list of all participants in the specified conversation.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The conversation to list all participants from.
-  /// Format: `projects//locations//conversations/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12038,18 +10049,15 @@ class ProjectsLocationsConversationsParticipantsResource {
     );
   }
 
-  /// Updates the specified participant.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The unique identifier of this participant. Format:
-  /// `projects//locations//conversations//participants/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The mask to specify which fields to update.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12094,15 +10102,11 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
     commons.ApiRequester client,
   ) : _requester = client;
 
-  /// Gets suggested articles for a participant based on specific historical
-  /// messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestion for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -12140,15 +10144,11 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
     );
   }
 
-  /// Gets suggested faq answers for a participant based on specific historical
-  /// messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestion for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -12189,14 +10189,11 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
     );
   }
 
-  /// Gets knowledge assist suggestions based on historical messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestions for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -12237,15 +10234,11 @@ class ProjectsLocationsConversationsParticipantsSuggestionsResource {
     );
   }
 
-  /// Gets smart replies for a participant based on specific historical
-  /// messages.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the participant to fetch suggestion for.
-  /// Format: `projects//locations//conversations//participants/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+/participants/\[^/\]+$`.
   ///
@@ -12293,19 +10286,11 @@ class ProjectsLocationsConversationsSuggestionsResource {
   ProjectsLocationsConversationsSuggestionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Generates all the suggestions using generators configured in the
-  /// conversation profile.
-  ///
-  /// A generator is used only if its trigger event is matched.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversation] - Required. The conversation for which the suggestions are
-  /// generated. Format: `projects//locations//conversations/`. The conversation
-  /// must be created with a conversation profile which has generators
-  /// configured in it to be able to get suggestions.
+  /// [conversation] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
@@ -12343,15 +10328,11 @@ class ProjectsLocationsConversationsSuggestionsResource {
     );
   }
 
-  /// Get answers for the given query based on knowledge documents.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversation] - Optional. The conversation (between human agent and end
-  /// user) where the search request is triggered. Format:
-  /// `projects//locations//conversations/`.
+  /// [conversation] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
@@ -12391,17 +10372,11 @@ class ProjectsLocationsConversationsSuggestionsResource {
     );
   }
 
-  /// Suggests summary for a conversation based on specific historical messages.
-  ///
-  /// The range of the messages to be used for summary can be specified in the
-  /// request.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [conversation] - Required. The conversation to fetch suggestion for.
-  /// Format: `projects//locations//conversations/`.
+  /// [conversation] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/conversations/\[^/\]+$`.
   ///
@@ -12450,19 +10425,11 @@ class ProjectsLocationsEncryptionSpecResource {
   ProjectsLocationsEncryptionSpecResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Initializes a location-level encryption key specification.
-  ///
-  /// An error will be thrown if the location has resources already created
-  /// before the initialization. Once the encryption specification is
-  /// initialized at a location, it is immutable and all newly created resources
-  /// under the location will be encrypted with the existing specification.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Immutable. The resource name of the encryption key specification
-  /// resource. Format: projects/{project}/locations/{location}/encryptionSpec
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/encryptionSpec$`.
   ///
@@ -12509,24 +10476,14 @@ class ProjectsLocationsGeneratorsResource {
   ProjectsLocationsGeneratorsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a generator.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project/location to create generator for. Format:
-  /// `projects//locations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [generatorId] - Optional. The ID to use for the generator, which will
-  /// become the final component of the generator's resource name. The generator
-  /// ID must be compliant with the regression formula `a-zA-Z*` with the
-  /// characters length in range of \[3,64\]. If the field is not provided, an
-  /// Id will be auto-generated. If the field is provided, the caller is
-  /// responsible for 1. the uniqueness of the ID, otherwise the request will be
-  /// rejected. 2. the consistency for whether to use custom ID or not under a
-  /// project to better ensure uniqueness.
+  /// [generatorId] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12563,12 +10520,9 @@ class ProjectsLocationsGeneratorsResource {
     );
   }
 
-  /// Deletes a generator.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The generator resource name to delete. Format:
-  /// `projects//locations//generators/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
   ///
@@ -12602,12 +10556,9 @@ class ProjectsLocationsGeneratorsResource {
     );
   }
 
-  /// Retrieves a generator.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The generator resource name to retrieve. Format:
-  /// `projects//locations//generators/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
   ///
@@ -12641,19 +10592,14 @@ class ProjectsLocationsGeneratorsResource {
     );
   }
 
-  /// Lists generators.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project/location to list generators for. Format:
-  /// `projects//locations/`
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of conversation models to return in
-  /// a single page. Default to 10.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12689,18 +10635,15 @@ class ProjectsLocationsGeneratorsResource {
     );
   }
 
-  /// Updates a generator.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Output only. Identifier. The resource name of the generator.
-  /// Format: `projects//locations//generators/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The list of fields to update.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12744,14 +10687,11 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
   ProjectsLocationsGeneratorsEvaluationsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates evaluation of a generator.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The generator resource name. Format:
-  /// `projects//locations//generators/`
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
   ///
@@ -12788,12 +10728,9 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
     );
   }
 
-  /// Deletes an evaluation of generator.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The generator evaluation resource name. Format:
-  /// `projects//locations//generators// evaluations/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+/evaluations/\[^/\]+$`.
   ///
@@ -12827,12 +10764,9 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
     );
   }
 
-  /// Gets an evaluation of generator.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The generator evaluation resource name. Format:
-  /// `projects//locations//generators//evaluations/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+/evaluations/\[^/\]+$`.
   ///
@@ -12866,21 +10800,15 @@ class ProjectsLocationsGeneratorsEvaluationsResource {
     );
   }
 
-  /// Lists evaluations of generator.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The generator resource name. Format:
-  /// `projects//locations//generators/` Wildcard value `-` is supported on
-  /// generator_id to list evaluations across all generators under same project.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/generators/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. Maximum number of evaluations to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -12927,14 +10855,11 @@ class ProjectsLocationsKnowledgeBasesResource {
   ProjectsLocationsKnowledgeBasesResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a knowledge base.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to create a knowledge base for. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -12970,17 +10895,13 @@ class ProjectsLocationsKnowledgeBasesResource {
     );
   }
 
-  /// Deletes the specified knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the knowledge base to delete. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
-  /// [force] - Optional. Force deletes the knowledge base. When set to true,
-  /// any documents in the knowledge base are also deleted.
+  /// [force] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13014,12 +10935,9 @@ class ProjectsLocationsKnowledgeBasesResource {
     );
   }
 
-  /// Retrieves the specified knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the knowledge base to retrieve. Format
-  /// `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
@@ -13053,33 +10971,16 @@ class ProjectsLocationsKnowledgeBasesResource {
     );
   }
 
-  /// Returns the list of all knowledge bases of the specified agent.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The project to list of knowledge bases for. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression used to filter knowledge bases returned
-  /// by the list method. The expression has the following syntax: \[AND \] ...
-  /// The following fields and operators are supported: * display_name with
-  /// has(:) operator * language_code with equals(=) operator Examples: *
-  /// 'language_code=en-us' matches knowledge bases with en-us language code. *
-  /// 'display_name:articles' matches knowledge bases whose display name
-  /// contains "articles". * 'display_name:"Best Articles"' matches knowledge
-  /// bases whose display name contains "Best Articles". * 'language_code=en-gb
-  /// AND display_name=articles' matches all knowledge bases whose display name
-  /// contains "articles" and whose language code is "en-gb". Note: An empty
-  /// filter string (i.e. "") is a no-op and will result in no filtering. For
-  /// more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 10 and at most 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13117,20 +11018,15 @@ class ProjectsLocationsKnowledgeBasesResource {
     );
   }
 
-  /// Updates the specified knowledge base.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - The knowledge base resource name. The name must be empty when
-  /// creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
-  /// `display_name` can be updated, an InvalidArgument will be returned for
-  /// attempting to update other fields.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13174,19 +11070,11 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
   ProjectsLocationsKnowledgeBasesDocumentsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a new document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to create a document for. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
@@ -13223,18 +11111,9 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Deletes the specified document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: An
-  /// [Empty message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#empty)
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to delete. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -13268,20 +11147,11 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Exports a smart messaging candidate document into the specified
-  /// destination.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to export. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -13318,12 +11188,9 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Retrieves the specified document.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to retrieve. Format
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -13357,22 +11224,11 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Creates documents by importing data from external sources.
-  ///
-  /// Dialogflow supports up to 350 documents in each request. If you try to
-  /// import more, Dialogflow will return an error. This method is a
-  /// \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`:
-  /// ImportDocumentsResponse
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to import documents into. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
@@ -13409,31 +11265,17 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Returns the list of all documents of the knowledge base.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The knowledge base to list all documents for. Format:
-  /// `projects//locations//knowledgeBases/`.
+  /// [parent] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+$`.
   ///
-  /// [filter] - The filter expression used to filter documents returned by the
-  /// list method. The expression has the following syntax: \[AND \] ... The
-  /// following fields and operators are supported: * knowledge_types with
-  /// has(:) operator * display_name with has(:) operator * state with equals(=)
-  /// operator Examples: * "knowledge_types:FAQ" matches documents with FAQ
-  /// knowledge type. * "display_name:customer" matches documents whose display
-  /// name contains "customer". * "state=ACTIVE" matches documents with ACTIVE
-  /// state. * "knowledge_types:FAQ AND state=ACTIVE" matches all active FAQ
-  /// documents. For more information about filtering, see
-  /// [API Filtering](https://aip.dev/160).
+  /// [filter] - null
   ///
-  /// [pageSize] - The maximum number of items to return in a single page. By
-  /// default 10 and at most 100.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The next_page_token value returned from a previous list
-  /// request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13471,26 +11313,15 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Updates the specified document.
-  ///
-  /// This method is a \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Optional. The document resource name. The name must be empty when
-  /// creating a document. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. Not specified means `update all`. Currently, only
-  /// `display_name` can be updated, an InvalidArgument will be returned for
-  /// attempting to update other fields.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13527,25 +11358,11 @@ class ProjectsLocationsKnowledgeBasesDocumentsResource {
     );
   }
 
-  /// Reloads the specified document from its specified source, content_uri or
-  /// content.
-  ///
-  /// The previously loaded content of the document will be deleted. Note: Even
-  /// when the content of the document has not changed, there still may be side
-  /// effects because of internal implementation changes. This method is a
-  /// \[long-running
-  /// operation\](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation).
-  /// The returned `Operation` type has the following method-specific fields: -
-  /// `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The
-  /// `projects.agent.knowledgeBases.documents` resource is deprecated; only use
-  /// `projects.knowledgeBases.documents`.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the document to reload. Format:
-  /// `projects//locations//knowledgeBases//documents/`
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/knowledgeBases/\[^/\]+/documents/\[^/\]+$`.
   ///
@@ -13589,20 +11406,9 @@ class ProjectsLocationsOperationsResource {
   ProjectsLocationsOperationsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
-  /// to `Code.CANCELLED`.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource to be cancelled.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
@@ -13636,14 +11442,9 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
   ///
@@ -13677,20 +11478,18 @@ class ProjectsLocationsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation's parent resource.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - null
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - null
+  ///
+  /// [returnPartialSuccess] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13707,12 +11506,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -13735,14 +11537,11 @@ class ProjectsLocationsSipTrunksResource {
   ProjectsLocationsSipTrunksResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Creates a SipTrunk for a specified location.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The location to create a SIP trunk for. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -13778,12 +11577,9 @@ class ProjectsLocationsSipTrunksResource {
     );
   }
 
-  /// Deletes a specified SipTrunk.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the SIP trunk to delete. Format:
-  /// `projects//locations//sipTrunks/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/sipTrunks/\[^/\]+$`.
   ///
@@ -13817,12 +11613,9 @@ class ProjectsLocationsSipTrunksResource {
     );
   }
 
-  /// Retrieves the specified SipTrunk.
-  ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the SIP trunk to delete. Format:
-  /// `projects//locations//sipTrunks/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/sipTrunks/\[^/\]+$`.
   ///
@@ -13856,19 +11649,14 @@ class ProjectsLocationsSipTrunksResource {
     );
   }
 
-  /// Returns a list of SipTrunks in the specified location.
-  ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The location to list SIP trunks from. Format:
-  /// `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
-  /// [pageSize] - Optional. The maximum number of items to return in a single
-  /// page. By default 100 and at most 1000.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - Optional. The next_page_token value returned from a previous
-  /// list request.
+  /// [pageToken] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13904,19 +11692,15 @@ class ProjectsLocationsSipTrunksResource {
     );
   }
 
-  /// Updates the specified SipTrunk.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The unique identifier of the SIP trunk. Format:
-  /// `projects//locations//sipTrunks/`.
+  /// [name] - null
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/sipTrunks/\[^/\]+$`.
   ///
-  /// [updateMask] - Optional. The mask to control which fields get updated. If
-  /// the mask is not present, all fields will be updated.
+  /// [updateMask] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -13960,15 +11744,11 @@ class ProjectsLocationsStatelessSuggestionResource {
   ProjectsLocationsStatelessSuggestionResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Generates and returns a suggestion for a conversation that does not have a
-  /// resource created for it.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource to charge for the Suggestion's
-  /// generation. Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14016,15 +11796,11 @@ class ProjectsLocationsSuggestionsResource {
   ProjectsLocationsSuggestionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Generates and returns a summary for a conversation that does not have a
-  /// resource created for it.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource to charge for the Summary's
-  /// generation. Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14065,14 +11841,11 @@ class ProjectsLocationsSuggestionsResource {
     );
   }
 
-  /// Get answers for the given query based on knowledge documents.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource contains the conversation profile
-  /// Format: 'projects/' or `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14110,25 +11883,225 @@ class ProjectsLocationsSuggestionsResource {
   }
 }
 
+class ProjectsLocationsToolsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsToolsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - null
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [toolId] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Tool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Tool> create(
+    GoogleCloudDialogflowV2Tool request,
+    core.String parent, {
+    core.String? toolId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (toolId != null) 'toolId': [toolId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2Tool.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleProtobufEmpty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleProtobufEmpty> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return GoogleProtobufEmpty.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Tool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Tool> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2Tool.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Request parameters:
+  ///
+  /// [parent] - null
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - null
+  ///
+  /// [pageToken] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2ListToolsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2ListToolsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$parent') + '/tools';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2ListToolsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - null
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/tools/\[^/\]+$`.
+  ///
+  /// [updateMask] - null
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleCloudDialogflowV2Tool].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleCloudDialogflowV2Tool> patch(
+    GoogleCloudDialogflowV2Tool request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v2/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return GoogleCloudDialogflowV2Tool.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsOperationsResource {
   final commons.ApiRequester _requester;
 
   ProjectsOperationsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Starts asynchronous cancellation on a long-running operation.
-  ///
-  /// The server makes a best effort to cancel the operation, but success is not
-  /// guaranteed. If the server doesn't support this method, it returns
-  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
-  /// or other methods to check whether the cancellation succeeded or whether
-  /// the operation completed despite cancellation. On successful cancellation,
-  /// the operation is not deleted; instead, it becomes an operation with an
-  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
-  /// to `Code.CANCELLED`.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource to be cancelled.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14161,14 +12134,9 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Gets the latest state of a long-running operation.
-  ///
-  /// Clients can use this method to poll the operation result at intervals as
-  /// recommended by the API service.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation resource.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14201,20 +12169,18 @@ class ProjectsOperationsResource {
     );
   }
 
-  /// Lists operations that match the specified filter in the request.
-  ///
-  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-  ///
   /// Request parameters:
   ///
-  /// [name] - The name of the operation's parent resource.
+  /// [name] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [filter] - The standard list filter.
+  /// [filter] - null
   ///
-  /// [pageSize] - The standard list page size.
+  /// [pageSize] - null
   ///
-  /// [pageToken] - The standard list page token.
+  /// [pageToken] - null
+  ///
+  /// [returnPartialSuccess] - null
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -14231,12 +12197,15 @@ class ProjectsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -14259,15 +12228,11 @@ class ProjectsSuggestionsResource {
   ProjectsSuggestionsResource(commons.ApiRequester client)
     : _requester = client;
 
-  /// Generates and returns a summary for a conversation that does not have a
-  /// resource created for it.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource to charge for the Summary's
-  /// generation. Format: `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14308,14 +12273,11 @@ class ProjectsSuggestionsResource {
     );
   }
 
-  /// Get answers for the given query based on knowledge documents.
-  ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The parent resource contains the conversation profile
-  /// Format: 'projects/' or `projects//locations/`.
+  /// [parent] - null
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -14353,127 +12315,40 @@ class ProjectsSuggestionsResource {
   }
 }
 
-/// A Dialogflow agent is a virtual agent that handles conversations with your
-/// end-users.
-///
-/// It is a natural language understanding module that understands the nuances
-/// of human language. Dialogflow translates end-user text or audio during a
-/// conversation to structured data that your apps and services can understand.
-/// You design and build a Dialogflow agent to handle the types of conversations
-/// required for your system. For more information about agents, see the
-/// [Agent guide](https://cloud.google.com/dialogflow/docs/agents-overview).
 class GoogleCloudDialogflowV2Agent {
-  /// API version displayed in Dialogflow console.
   ///
-  /// If not specified, V2 API is assumed. Clients are free to query different
-  /// service endpoints for different API versions. However, bots connectors and
-  /// webhook calls will follow the specified API version.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "API_VERSION_UNSPECIFIED" : Not specified.
-  /// - "API_VERSION_V1" : Legacy V1 API.
-  /// - "API_VERSION_V2" : V2 API.
-  /// - "API_VERSION_V2_BETA_1" : V2beta1 API.
+  /// - "API_VERSION_UNSPECIFIED"
+  /// - "API_VERSION_V1"
+  /// - "API_VERSION_V2"
+  /// - "API_VERSION_V2_BETA_1"
   core.String? apiVersion;
-
-  /// The URI of the agent's avatar.
-  ///
-  /// Avatars are used throughout the Dialogflow console and in the self-hosted
-  /// [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo)
-  /// integration.
-  ///
-  /// Optional.
   core.String? avatarUri;
-
-  /// To filter out false positive results and still get variety in matched
-  /// natural language inputs for your agent, you can tune the machine learning
-  /// classification threshold.
-  ///
-  /// If the returned score value is less than the threshold value, then a
-  /// fallback intent will be triggered or, if there are no fallback intents
-  /// defined, no intent will be triggered. The score values range from 0.0
-  /// (completely uncertain) to 1.0 (completely certain). If set to 0.0, the
-  /// default of 0.3 is used.
-  ///
-  /// Optional.
   core.double? classificationThreshold;
-
-  /// The default language of the agent as a language tag.
-  ///
-  /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// for a list of the currently supported language codes. This field cannot be
-  /// set by the `Update` method.
-  ///
-  /// Required.
   core.String? defaultLanguageCode;
-
-  /// The description of this agent.
-  ///
-  /// The maximum length is 500 characters. If exceeded, the request is
-  /// rejected.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// The name of this agent.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// Determines whether this agent should log conversation queries.
-  ///
-  /// Optional.
   core.bool? enableLogging;
 
-  /// Determines how intents are detected from user queries.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "MATCH_MODE_UNSPECIFIED" : Not specified.
-  /// - "MATCH_MODE_HYBRID" : Best for agents with a small number of examples in
-  /// intents and/or wide use of templates syntax and composite entities.
-  /// - "MATCH_MODE_ML_ONLY" : Can be used for agents with a large number of
-  /// examples in intents, especially the ones using @sys.any or very large
-  /// custom entities.
+  /// - "MATCH_MODE_UNSPECIFIED"
+  /// - "MATCH_MODE_HYBRID"
+  /// - "MATCH_MODE_ML_ONLY"
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? matchMode;
-
-  /// The project of this agent.
-  ///
-  /// Format: `projects/`.
-  ///
-  /// Required.
   core.String? parent;
-
-  /// The list of all languages supported by this agent (except for the
-  /// `default_language_code`).
-  ///
-  /// Optional.
   core.List<core.String>? supportedLanguageCodes;
 
-  /// The agent tier.
   ///
-  /// If not specified, TIER_STANDARD is assumed.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "TIER_UNSPECIFIED" : Not specified. This value should never be used.
-  /// - "TIER_STANDARD" : Trial Edition, previously known as Standard Edition.
-  /// - "TIER_ENTERPRISE" : Essentials Edition, previously known as Enterprise
-  /// Essential Edition.
-  /// - "TIER_ENTERPRISE_PLUS" : Essentials Edition (same as TIER_ENTERPRISE),
-  /// previously known as Enterprise Plus Edition.
+  /// - "TIER_UNSPECIFIED"
+  /// - "TIER_STANDARD"
+  /// - "TIER_ENTERPRISE"
+  /// - "TIER_ENTERPRISE_PLUS"
   core.String? tier;
-
-  /// The time zone of this agent from the
-  /// [time zone database](https://www.iana.org/time-zones), e.g.,
-  /// America/New_York, Europe/Paris.
-  ///
-  /// Required.
   core.String? timeZone;
 
   GoogleCloudDialogflowV2Agent({
@@ -14530,63 +12405,31 @@ class GoogleCloudDialogflowV2Agent {
   };
 }
 
-/// Detail feedback of Agent Assist result.
 class GoogleCloudDialogflowV2AgentAssistantFeedback {
-  /// Whether or not the suggested answer is relevant.
   ///
-  /// For example: * Query: "Can I change my mailing address?" * Suggested
-  /// document says: "Items must be returned/exchanged within 60 days of the
-  /// purchase date." * answer_relevance: AnswerRelevance.IRRELEVANT
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "ANSWER_RELEVANCE_UNSPECIFIED" : Answer relevance unspecified.
-  /// - "IRRELEVANT" : Answer is irrelevant to query.
-  /// - "RELEVANT" : Answer is relevant to query.
+  /// - "ANSWER_RELEVANCE_UNSPECIFIED"
+  /// - "IRRELEVANT"
+  /// - "RELEVANT"
   core.String? answerRelevance;
 
-  /// Whether or not the information in the document is correct.
   ///
-  /// For example: * Query: "Can I return the package in 2 days once received?"
-  /// * Suggested document says: "Items must be returned/exchanged within 60
-  /// days of the purchase date." * Ground truth: "No return or exchange is
-  /// allowed." * document_correctness: INCORRECT
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "DOCUMENT_CORRECTNESS_UNSPECIFIED" : Document correctness unspecified.
-  /// - "INCORRECT" : Information in document is incorrect.
-  /// - "CORRECT" : Information in document is correct.
+  /// - "DOCUMENT_CORRECTNESS_UNSPECIFIED"
+  /// - "INCORRECT"
+  /// - "CORRECT"
   core.String? documentCorrectness;
 
-  /// Whether or not the suggested document is efficient.
   ///
-  /// For example, if the document is poorly written, hard to understand, hard
-  /// to use or too long to find useful information, document_efficiency is
-  /// DocumentEfficiency.INEFFICIENT.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "DOCUMENT_EFFICIENCY_UNSPECIFIED" : Document efficiency unspecified.
-  /// - "INEFFICIENT" : Document is inefficient.
-  /// - "EFFICIENT" : Document is efficient.
+  /// - "DOCUMENT_EFFICIENCY_UNSPECIFIED"
+  /// - "INEFFICIENT"
+  /// - "EFFICIENT"
   core.String? documentEfficiency;
-
-  /// Feedback for knowledge assist.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback?
   knowledgeAssistFeedback;
-
-  /// Feedback for knowledge search.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback?
   knowledgeSearchFeedback;
-
-  /// Feedback for conversation summarization.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback?
   summarizationFeedback;
 
@@ -14641,90 +12484,15 @@ class GoogleCloudDialogflowV2AgentAssistantFeedback {
   };
 }
 
-/// Feedback for knowledge assist.
-class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback {
-  /// Whether the suggested answer was copied by the human agent.
-  ///
-  /// If the value is set to be true, AnswerFeedback.clicked will be updated to
-  /// be true.
-  core.bool? answerCopied;
+typedef GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback =
+    $Feedback;
+typedef GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback =
+    $Feedback;
 
-  /// The URIs clicked by the human agent.
-  ///
-  /// The value is appended for each UpdateAnswerRecordRequest. If the value is
-  /// not empty, AnswerFeedback.clicked will be updated to be true.
-  core.List<core.String>? clickedUris;
-
-  GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback({
-    this.answerCopied,
-    this.clickedUris,
-  });
-
-  GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeAssistFeedback.fromJson(
-    core.Map json_,
-  ) : this(
-        answerCopied: json_['answerCopied'] as core.bool?,
-        clickedUris:
-            (json_['clickedUris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerCopied != null) 'answerCopied': answerCopied!,
-    if (clickedUris != null) 'clickedUris': clickedUris!,
-  };
-}
-
-/// Feedback for knowledge search.
-class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback {
-  /// Whether the answer was copied by the human agent or not.
-  ///
-  /// If the value is set to be true, AnswerFeedback.clicked will be updated to
-  /// be true.
-  core.bool? answerCopied;
-
-  /// The URIs clicked by the human agent.
-  ///
-  /// The value is appended for each UpdateAnswerRecordRequest. If the value is
-  /// not empty, AnswerFeedback.clicked will be updated to be true.
-  core.List<core.String>? clickedUris;
-
-  GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback({
-    this.answerCopied,
-    this.clickedUris,
-  });
-
-  GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback.fromJson(
-    core.Map json_,
-  ) : this(
-        answerCopied: json_['answerCopied'] as core.bool?,
-        clickedUris:
-            (json_['clickedUris'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (answerCopied != null) 'answerCopied': answerCopied!,
-    if (clickedUris != null) 'clickedUris': clickedUris!,
-  };
-}
-
-/// Feedback for conversation summarization.
 class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
-  /// Timestamp when composing of the summary starts.
   core.String? startTime;
-
-  /// Timestamp when the summary was submitted.
   core.String? submitTime;
-
-  /// Text of actual submitted summary.
   core.String? summaryText;
-
-  /// Actual text sections of submitted summary.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? textSections;
 
   GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback({
@@ -14753,26 +12521,10 @@ class GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback {
   };
 }
 
-/// Represents a record of a human agent assist answer.
 class GoogleCloudDialogflowV2AgentAssistantRecord {
-  /// The article suggestion answer.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2ArticleAnswer? articleSuggestionAnswer;
-
-  /// Dialogflow assist answer.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2DialogflowAssistAnswer? dialogflowAssistAnswer;
-
-  /// The FAQ answer.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2FaqAnswer? faqAnswer;
-
-  /// The generator suggestion.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2GeneratorSuggestion? generatorSuggestion;
 
   GoogleCloudDialogflowV2AgentAssistantRecord({
@@ -14824,48 +12576,391 @@ class GoogleCloudDialogflowV2AgentAssistantRecord {
   };
 }
 
-/// The request message for Participants.AnalyzeContent.
-class GoogleCloudDialogflowV2AnalyzeContentRequest {
-  /// Parameters for a human assist query.
-  GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
+class GoogleCloudDialogflowV2AgentCoachingContext {
+  core.List<GoogleCloudDialogflowV2AgentCoachingInstruction>? instructions;
+  core.String? outputLanguageCode;
+  core.String? overarchingGuidance;
+  core.String? version;
 
-  /// The natural language speech audio to be processed.
+  GoogleCloudDialogflowV2AgentCoachingContext({
+    this.instructions,
+    this.outputLanguageCode,
+    this.overarchingGuidance,
+    this.version,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingContext.fromJson(core.Map json_)
+    : this(
+        instructions:
+            (json_['instructions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2AgentCoachingInstruction.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        outputLanguageCode: json_['outputLanguageCode'] as core.String?,
+        overarchingGuidance: json_['overarchingGuidance'] as core.String?,
+        version: json_['version'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (instructions != null) 'instructions': instructions!,
+    if (outputLanguageCode != null) 'outputLanguageCode': outputLanguageCode!,
+    if (overarchingGuidance != null)
+      'overarchingGuidance': overarchingGuidance!,
+    if (version != null) 'version': version!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingInstruction {
+  core.String? agentAction;
+  core.String? condition;
+  core.String? displayDetails;
+  core.String? displayName;
+  GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult?
+  duplicateCheckResult;
+  core.String? systemAction;
+
+  ///
+  /// Possible string values are:
+  /// - "TRIGGER_EVENT_UNSPECIFIED"
+  /// - "END_OF_UTTERANCE"
+  /// - "MANUAL_CALL"
+  /// - "CUSTOMER_MESSAGE"
+  /// - "AGENT_MESSAGE"
+  /// - "TOOL_CALL_COMPLETION"
+  core.String? triggeringEvent;
+
+  GoogleCloudDialogflowV2AgentCoachingInstruction({
+    this.agentAction,
+    this.condition,
+    this.displayDetails,
+    this.displayName,
+    this.duplicateCheckResult,
+    this.systemAction,
+    this.triggeringEvent,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingInstruction.fromJson(core.Map json_)
+    : this(
+        agentAction: json_['agentAction'] as core.String?,
+        condition: json_['condition'] as core.String?,
+        displayDetails: json_['displayDetails'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        duplicateCheckResult:
+            json_.containsKey('duplicateCheckResult')
+                ? GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult.fromJson(
+                  json_['duplicateCheckResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        systemAction: json_['systemAction'] as core.String?,
+        triggeringEvent: json_['triggeringEvent'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (agentAction != null) 'agentAction': agentAction!,
+    if (condition != null) 'condition': condition!,
+    if (displayDetails != null) 'displayDetails': displayDetails!,
+    if (displayName != null) 'displayName': displayName!,
+    if (duplicateCheckResult != null)
+      'duplicateCheckResult': duplicateCheckResult!,
+    if (systemAction != null) 'systemAction': systemAction!,
+    if (triggeringEvent != null) 'triggeringEvent': triggeringEvent!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult {
+  core.List<
+    GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion
+  >?
+  duplicateSuggestions;
+
+  GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult({
+    this.duplicateSuggestions,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResult.fromJson(
+    core.Map json_,
+  ) : this(
+        duplicateSuggestions:
+            (json_['duplicateSuggestions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (duplicateSuggestions != null)
+      'duplicateSuggestions': duplicateSuggestions!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion {
+  core.String? answerRecord;
+  core.double? similarityScore;
+  core.int? suggestionIndex;
+
+  GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion({
+    this.answerRecord,
+    this.similarityScore,
+    this.suggestionIndex,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingInstructionDuplicateCheckResultDuplicateSuggestion.fromJson(
+    core.Map json_,
+  ) : this(
+        answerRecord: json_['answerRecord'] as core.String?,
+        similarityScore: (json_['similarityScore'] as core.num?)?.toDouble(),
+        suggestionIndex: json_['suggestionIndex'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (answerRecord != null) 'answerRecord': answerRecord!,
+    if (similarityScore != null) 'similarityScore': similarityScore!,
+    if (suggestionIndex != null) 'suggestionIndex': suggestionIndex!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingSuggestion {
+  core.List<
+    GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion
+  >?
+  agentActionSuggestions;
+  core.List<GoogleCloudDialogflowV2AgentCoachingInstruction>?
+  applicableInstructions;
+  core.List<GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse>?
+  sampleResponses;
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestion({
+    this.agentActionSuggestions,
+    this.applicableInstructions,
+    this.sampleResponses,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestion.fromJson(core.Map json_)
+    : this(
+        agentActionSuggestions:
+            (json_['agentActionSuggestions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        applicableInstructions:
+            (json_['applicableInstructions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2AgentCoachingInstruction.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        sampleResponses:
+            (json_['sampleResponses'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (agentActionSuggestions != null)
+      'agentActionSuggestions': agentActionSuggestions!,
+    if (applicableInstructions != null)
+      'applicableInstructions': applicableInstructions!,
+    if (sampleResponses != null) 'sampleResponses': sampleResponses!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion {
+  core.String? agentAction;
+  GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult?
+  duplicateCheckResult;
+  GoogleCloudDialogflowV2AgentCoachingSuggestionSources? sources;
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion({
+    this.agentAction,
+    this.duplicateCheckResult,
+    this.sources,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionAgentActionSuggestion.fromJson(
+    core.Map json_,
+  ) : this(
+        agentAction: json_['agentAction'] as core.String?,
+        duplicateCheckResult:
+            json_.containsKey('duplicateCheckResult')
+                ? GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
+                  json_['duplicateCheckResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sources:
+            json_.containsKey('sources')
+                ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
+                  json_['sources'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (agentAction != null) 'agentAction': agentAction!,
+    if (duplicateCheckResult != null)
+      'duplicateCheckResult': duplicateCheckResult!,
+    if (sources != null) 'sources': sources!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult {
+  core.List<
+    GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion
+  >?
+  duplicateSuggestions;
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult({
+    this.duplicateSuggestions,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
+    core.Map json_,
+  ) : this(
+        duplicateSuggestions:
+            (json_['duplicateSuggestions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (duplicateSuggestions != null)
+      'duplicateSuggestions': duplicateSuggestions!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion {
+  core.String? answerRecord;
+  core.double? similarityScore;
+  GoogleCloudDialogflowV2AgentCoachingSuggestionSources? sources;
+  core.int? suggestionIndex;
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion({
+    this.answerRecord,
+    this.similarityScore,
+    this.sources,
+    this.suggestionIndex,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResultDuplicateSuggestion.fromJson(
+    core.Map json_,
+  ) : this(
+        answerRecord: json_['answerRecord'] as core.String?,
+        similarityScore: (json_['similarityScore'] as core.num?)?.toDouble(),
+        sources:
+            json_.containsKey('sources')
+                ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
+                  json_['sources'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        suggestionIndex: json_['suggestionIndex'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (answerRecord != null) 'answerRecord': answerRecord!,
+    if (similarityScore != null) 'similarityScore': similarityScore!,
+    if (sources != null) 'sources': sources!,
+    if (suggestionIndex != null) 'suggestionIndex': suggestionIndex!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse {
+  GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult?
+  duplicateCheckResult;
+  core.String? responseText;
+  GoogleCloudDialogflowV2AgentCoachingSuggestionSources? sources;
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse({
+    this.duplicateCheckResult,
+    this.responseText,
+    this.sources,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionSampleResponse.fromJson(
+    core.Map json_,
+  ) : this(
+        duplicateCheckResult:
+            json_.containsKey('duplicateCheckResult')
+                ? GoogleCloudDialogflowV2AgentCoachingSuggestionDuplicateCheckResult.fromJson(
+                  json_['duplicateCheckResult']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        responseText: json_['responseText'] as core.String?,
+        sources:
+            json_.containsKey('sources')
+                ? GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(
+                  json_['sources'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (duplicateCheckResult != null)
+      'duplicateCheckResult': duplicateCheckResult!,
+    if (responseText != null) 'responseText': responseText!,
+    if (sources != null) 'sources': sources!,
+  };
+}
+
+class GoogleCloudDialogflowV2AgentCoachingSuggestionSources {
+  core.List<core.int>? instructionIndexes;
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionSources({
+    this.instructionIndexes,
+  });
+
+  GoogleCloudDialogflowV2AgentCoachingSuggestionSources.fromJson(core.Map json_)
+    : this(
+        instructionIndexes:
+            (json_['instructionIndexes'] as core.List?)
+                ?.map((value) => value as core.int)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (instructionIndexes != null) 'instructionIndexes': instructionIndexes!,
+  };
+}
+
+class GoogleCloudDialogflowV2AnalyzeContentRequest {
+  GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
   GoogleCloudDialogflowV2AudioInput? audioInput;
 
-  /// Additional parameters to be put into Dialogflow CX session parameters.
   ///
-  /// To remove a parameter from the session, clients should explicitly set the
-  /// parameter value to null. Note: this field should only be used if you are
-  /// connecting to a Dialogflow CX agent.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? cxParameters;
-
-  /// An input event to send to Dialogflow.
   GoogleCloudDialogflowV2EventInput? eventInput;
-
-  /// Parameters for a Dialogflow virtual-agent query.
   GoogleCloudDialogflowV2QueryParameters? queryParams;
-
-  /// Speech synthesis configuration.
-  ///
-  /// The speech synthesis settings for a virtual agent that may be configured
-  /// for the associated conversation profile are not used when calling
-  /// AnalyzeContent. If this configuration is not supplied, speech synthesis is
-  /// disabled.
   GoogleCloudDialogflowV2OutputAudioConfig? replyAudioConfig;
-
-  /// A unique identifier for this request.
-  ///
-  /// Restricted to 36 ASCII characters. A random UUID is recommended. This
-  /// request is only idempotent if a `request_id` is provided.
   core.String? requestId;
-
-  /// An input representing the selection of a suggestion.
   GoogleCloudDialogflowV2SuggestionInput? suggestionInput;
-
-  /// The natural language text to be processed.
   GoogleCloudDialogflowV2TextInput? textInput;
 
   GoogleCloudDialogflowV2AnalyzeContentRequest({
@@ -14947,58 +13042,14 @@ class GoogleCloudDialogflowV2AnalyzeContentRequest {
   };
 }
 
-/// The response message for Participants.AnalyzeContent.
 class GoogleCloudDialogflowV2AnalyzeContentResponse {
-  /// Only set if a Dialogflow automated agent has responded.
-  ///
-  /// Note that in AutomatedAgentReply.DetectIntentResponse,
-  /// Sessions.DetectIntentResponse.output_audio and
-  /// Sessions.DetectIntentResponse.output_audio_config are always empty, use
-  /// reply_audio instead.
   GoogleCloudDialogflowV2AutomatedAgentReply? automatedAgentReply;
-
-  /// Indicates the parameters of DTMF.
   GoogleCloudDialogflowV2DtmfParameters? dtmfParameters;
-
-  /// The suggestions for end user.
-  ///
-  /// The order is the same as
-  /// HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
-  /// HumanAgentAssistantConfig.end_user_suggestion_config. Same as
-  /// human_agent_suggestion_results, any failure of Agent Assist features will
-  /// not lead to the overall failure of an AnalyzeContent API call. Instead,
-  /// the features will fail silently with the error field set in the
-  /// corresponding SuggestionResult.
   core.List<GoogleCloudDialogflowV2SuggestionResult>? endUserSuggestionResults;
-
-  /// The suggestions for most recent human agent.
-  ///
-  /// The order is the same as
-  /// HumanAgentAssistantConfig.SuggestionConfig.feature_configs of
-  /// HumanAgentAssistantConfig.human_agent_suggestion_config. Note that any
-  /// failure of Agent Assist features will not lead to the overall failure of
-  /// an AnalyzeContent API call. Instead, the features will fail silently with
-  /// the error field set in the corresponding SuggestionResult.
   core.List<GoogleCloudDialogflowV2SuggestionResult>?
   humanAgentSuggestionResults;
-
-  /// Message analyzed by CCAI.
   GoogleCloudDialogflowV2Message? message;
-
-  /// The audio data bytes encoded as specified in the request.
-  ///
-  /// This field is set if: - `reply_audio_config` was specified in the request,
-  /// or - The automated agent responded with audio to play to the user. In such
-  /// case, `reply_audio.config` contains settings used to synthesize the
-  /// speech. In some scenarios, multiple output audio fields may be present in
-  /// the response structure. In these cases, only the top-most-level audio
-  /// output has content.
   GoogleCloudDialogflowV2OutputAudio? replyAudio;
-
-  /// The output text content.
-  ///
-  /// This field is set if the automated agent responded with text to show to
-  /// the user.
   core.String? replyText;
 
   GoogleCloudDialogflowV2AnalyzeContentResponse({
@@ -15072,31 +13123,14 @@ class GoogleCloudDialogflowV2AnalyzeContentResponse {
   };
 }
 
-/// Represents a part of a message possibly annotated with an entity.
-///
-/// The part can be an entity or purely a part of the message between two
-/// entities or message start/end.
 class GoogleCloudDialogflowV2AnnotatedMessagePart {
-  /// The
-  /// [Dialogflow system entity type](https://cloud.google.com/dialogflow/docs/reference/system-entities)
-  /// of this message part.
-  ///
-  /// If this is empty, Dialogflow could not annotate the phrase part with a
-  /// system entity.
   core.String? entityType;
 
-  /// The
-  /// [Dialogflow system entity formatted value ](https://cloud.google.com/dialogflow/docs/reference/system-entities)
-  /// of this message part.
   ///
-  /// For example for a system entity of type `@sys.unit-currency`, this may
-  /// contain: { "amount": 5, "currency": "USD" }
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Object? formattedValue;
-
-  /// A part of a message possibly annotated with an entity.
   core.String? text;
 
   GoogleCloudDialogflowV2AnnotatedMessagePart({
@@ -15119,37 +13153,19 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
   };
 }
 
-/// Represents feedback the customer has about the quality & correctness of a
-/// certain answer in a conversation.
 class GoogleCloudDialogflowV2AnswerFeedback {
-  /// Detail feedback of agent assist suggestions.
   GoogleCloudDialogflowV2AgentAssistantFeedback? agentAssistantDetailFeedback;
-
-  /// Time when the answer/item was clicked.
   core.String? clickTime;
-
-  /// Indicates whether the answer/item was clicked by the human agent or not.
-  ///
-  /// Default to false. For knowledge search and knowledge assist, the answer
-  /// record is considered to be clicked if the answer was copied or any URI was
-  /// clicked.
   core.bool? clicked;
 
-  /// The correctness level of the specific answer.
-  /// Possible string values are:
-  /// - "CORRECTNESS_LEVEL_UNSPECIFIED" : Correctness level unspecified.
-  /// - "NOT_CORRECT" : Answer is totally wrong.
-  /// - "PARTIALLY_CORRECT" : Answer is partially correct.
-  /// - "FULLY_CORRECT" : Answer is fully correct.
-  core.String? correctnessLevel;
-
-  /// Time when the answer/item was displayed.
-  core.String? displayTime;
-
-  /// Indicates whether the answer/item was displayed to the human agent in the
-  /// agent desktop UI.
   ///
-  /// Default to false.
+  /// Possible string values are:
+  /// - "CORRECTNESS_LEVEL_UNSPECIFIED"
+  /// - "NOT_CORRECT"
+  /// - "PARTIALLY_CORRECT"
+  /// - "FULLY_CORRECT"
+  core.String? correctnessLevel;
+  core.String? displayTime;
   core.bool? displayed;
 
   GoogleCloudDialogflowV2AnswerFeedback({
@@ -15188,38 +13204,9 @@ class GoogleCloudDialogflowV2AnswerFeedback {
   };
 }
 
-/// Answer records are records to manage answer history and feedbacks for
-/// Dialogflow.
-///
-/// Currently, answer record includes: - human agent assistant article
-/// suggestion - human agent assistant faq article It doesn't include: -
-/// `DetectIntent` intent matching - `DetectIntent` knowledge Answer records are
-/// not related to the conversation history in the Dialogflow Console. A Record
-/// is generated even when the end-user disables conversation history in the
-/// console. Records are created when there's a human agent assistant suggestion
-/// generated. A typical workflow for customers provide feedback to an answer
-/// is: 1. For human agent assistant, customers get suggestion via
-/// ListSuggestions API. Together with the answers, AnswerRecord.name are
-/// returned to the customers. 2. The customer uses the AnswerRecord.name to
-/// call the AnswerRecords.UpdateAnswerRecord method to send feedback about a
-/// specific answer that they believe is wrong.
 class GoogleCloudDialogflowV2AnswerRecord {
-  /// The record for human agent assistant.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2AgentAssistantRecord? agentAssistantRecord;
-
-  /// The AnswerFeedback for this record.
-  ///
-  /// You can set this with AnswerRecords.UpdateAnswerRecord in order to give us
-  /// feedback about this answer.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2AnswerFeedback? answerFeedback;
-
-  /// The unique identifier of this answer record.
-  ///
-  /// Format: `projects//locations//answerRecords/`.
   core.String? name;
 
   GoogleCloudDialogflowV2AnswerRecord({
@@ -15255,30 +13242,12 @@ class GoogleCloudDialogflowV2AnswerRecord {
   };
 }
 
-/// Represents article answer.
 class GoogleCloudDialogflowV2ArticleAnswer {
-  /// The name of answer record, in the format of
-  /// "projects//locations//answerRecords/"
   core.String? answerRecord;
-
-  /// Article match confidence.
-  ///
-  /// The system's confidence score that this article is a good match for this
-  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
-  /// (completely certain).
   core.double? confidence;
-
-  /// A map that contains metadata about the answer and the document from which
-  /// it originates.
   core.Map<core.String, core.String>? metadata;
-
-  /// Article snippets.
   core.List<core.String>? snippets;
-
-  /// The article title.
   core.String? title;
-
-  /// The article URI.
   core.String? uri;
 
   GoogleCloudDialogflowV2ArticleAnswer({
@@ -15314,44 +13283,9 @@ class GoogleCloudDialogflowV2ArticleAnswer {
   };
 }
 
-/// Metadata for article suggestion models.
-class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
-  /// Type of the article suggestion model.
-  ///
-  /// If not provided, model_type is used.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "MODEL_TYPE_UNSPECIFIED" : ModelType unspecified.
-  /// - "SMART_REPLY_DUAL_ENCODER_MODEL" : ModelType smart reply dual encoder
-  /// model.
-  /// - "SMART_REPLY_BERT_MODEL" : ModelType smart reply bert model.
-  core.String? trainingModelType;
+typedef GoogleCloudDialogflowV2ArticleSuggestionModelMetadata = $ModelMetadata;
 
-  GoogleCloudDialogflowV2ArticleSuggestionModelMetadata({
-    this.trainingModelType,
-  });
-
-  GoogleCloudDialogflowV2ArticleSuggestionModelMetadata.fromJson(core.Map json_)
-    : this(trainingModelType: json_['trainingModelType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trainingModelType != null) 'trainingModelType': trainingModelType!,
-  };
-}
-
-/// Represents the parameters of human assist query.
 class GoogleCloudDialogflowV2AssistQueryParameters {
-  /// Key-value filters on the metadata of documents returned by article
-  /// suggestion.
-  ///
-  /// If specified, article suggestion only returns suggested documents that
-  /// match all filters in their Document.metadata. Multiple values for a
-  /// metadata key should be concatenated by comma. For example, filters to
-  /// match all documents that have 'US' or 'CA' in their market metadata values
-  /// and 'agent' in their user metadata values will be ```
-  /// documents_metadata_filters { key: "market" value: "US,CA" }
-  /// documents_metadata_filters { key: "user" value: "agent" } ```
   core.Map<core.String, core.String>? documentsMetadataFilters;
 
   GoogleCloudDialogflowV2AssistQueryParameters({this.documentsMetadataFilters});
@@ -15369,15 +13303,7 @@ class GoogleCloudDialogflowV2AssistQueryParameters {
   };
 }
 
-/// Represents the natural language speech audio to be processed.
 class GoogleCloudDialogflowV2AudioInput {
-  /// The natural language speech audio to be processed.
-  ///
-  /// A single request can contain up to 2 minutes of speech audio data. The
-  /// transcribed text cannot contain more than 256 bytes for virtual agent
-  /// interactions.
-  ///
-  /// Required.
   core.String? audio;
   core.List<core.int> get audioAsBytes => convert.base64.decode(audio!);
 
@@ -15388,9 +13314,6 @@ class GoogleCloudDialogflowV2AudioInput {
         .replaceAll('+', '-');
   }
 
-  /// Instructs the speech recognizer how to process the speech audio.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2InputAudioConfig? config;
 
   GoogleCloudDialogflowV2AudioInput({this.audio, this.config});
@@ -15412,30 +13335,8 @@ class GoogleCloudDialogflowV2AudioInput {
   };
 }
 
-/// Defines the Automated Agent to connect to a conversation.
 class GoogleCloudDialogflowV2AutomatedAgentConfig {
-  /// ID of the Dialogflow agent environment to use.
-  ///
-  /// This project needs to either be the same project as the conversation or
-  /// you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the
-  /// `Dialogflow API Service Agent` role in this project. - For ES agents, use
-  /// format: `projects//locations//agent/environments/`. If environment is not
-  /// specified, the default `draft` environment is used. Refer to
-  /// \[DetectIntentRequest\](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest)
-  /// for more details. - For CX agents, use format
-  /// `projects//locations//agents//environments/`. If environment is not
-  /// specified, the default `draft` environment is used.
-  ///
-  /// Required.
   core.String? agent;
-
-  /// Configure lifetime of the Dialogflow session.
-  ///
-  /// By default, a Dialogflow CX session remains active and its data is stored
-  /// for 30 minutes after the last request is sent for the session. This value
-  /// should be no longer than 1 day.
-  ///
-  /// Optional.
   core.String? sessionTtl;
 
   GoogleCloudDialogflowV2AutomatedAgentConfig({this.agent, this.sessionTtl});
@@ -15452,31 +13353,16 @@ class GoogleCloudDialogflowV2AutomatedAgentConfig {
   };
 }
 
-/// Represents a response from an automated agent.
 class GoogleCloudDialogflowV2AutomatedAgentReply {
-  /// Indicates whether the partial automated agent reply is interruptible when
-  /// a later reply message arrives.
-  ///
-  /// e.g. if the agent specified some music as partial response, it can be
-  /// cancelled.
   core.bool? allowCancellation;
 
-  /// AutomatedAgentReply type.
-  /// Possible string values are:
-  /// - "AUTOMATED_AGENT_REPLY_TYPE_UNSPECIFIED" : Not specified. This should
-  /// never happen.
-  /// - "PARTIAL" : Partial reply. e.g. Aggregated responses in a `Fulfillment`
-  /// that enables `return_partial_response` can be returned as partial reply.
-  /// WARNING: partial reply is not eligible for barge-in.
-  /// - "FINAL" : Final reply.
-  core.String? automatedAgentReplyType;
-
-  /// The unique identifier of the current Dialogflow CX conversation page.
   ///
-  /// Format: `projects//locations//agents//flows//pages/`.
+  /// Possible string values are:
+  /// - "AUTOMATED_AGENT_REPLY_TYPE_UNSPECIFIED"
+  /// - "PARTIAL"
+  /// - "FINAL"
+  core.String? automatedAgentReplyType;
   core.String? cxCurrentPage;
-
-  /// Response of the Dialogflow Sessions.DetectIntent call.
   GoogleCloudDialogflowV2DetectIntentResponse? detectIntentResponse;
 
   GoogleCloudDialogflowV2AutomatedAgentReply({
@@ -15511,20 +13397,8 @@ class GoogleCloudDialogflowV2AutomatedAgentReply {
   };
 }
 
-/// The request message for EntityTypes.BatchCreateEntities.
 class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
-  /// The entities to create.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity>? entities;
-
-  /// The language used to access language-specific data.
-  ///
-  /// If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
-  ///
-  /// Optional.
   core.String? languageCode;
 
   GoogleCloudDialogflowV2BatchCreateEntitiesRequest({
@@ -15551,23 +13425,8 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
   };
 }
 
-/// The request message for EntityTypes.BatchDeleteEntities.
 class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
-  /// The reference `values` of the entities to delete.
-  ///
-  /// Note that these are not fully-qualified names, i.e. they don't start with
-  /// `projects/`.
-  ///
-  /// Required.
   core.List<core.String>? entityValues;
-
-  /// The language used to access language-specific data.
-  ///
-  /// If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
-  ///
-  /// Optional.
   core.String? languageCode;
 
   GoogleCloudDialogflowV2BatchDeleteEntitiesRequest({
@@ -15590,13 +13449,7 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
   };
 }
 
-/// The request message for EntityTypes.BatchDeleteEntityTypes.
 class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
-  /// The names entity types to delete.
-  ///
-  /// All names must point to the same agent as `parent`.
-  ///
-  /// Required.
   core.List<core.String>? entityTypeNames;
 
   GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest({this.entityTypeNames});
@@ -15614,13 +13467,7 @@ class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
   };
 }
 
-/// The request message for Intents.BatchDeleteIntents.
 class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
-  /// The collection of intents to delete.
-  ///
-  /// Only intent `name` must be filled in.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2Intent>? intents;
 
   GoogleCloudDialogflowV2BatchDeleteIntentsRequest({this.intents});
@@ -15642,25 +13489,9 @@ class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
   };
 }
 
-/// The request message for EntityTypes.BatchUpdateEntities.
 class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
-  /// The entities to update or create.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity>? entities;
-
-  /// The language used to access language-specific data.
-  ///
-  /// If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
-  ///
-  /// Optional.
   core.String? languageCode;
-
-  /// The mask to control which fields get updated.
-  ///
-  /// Optional.
   core.String? updateMask;
 
   GoogleCloudDialogflowV2BatchUpdateEntitiesRequest({
@@ -15690,30 +13521,10 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
   };
 }
 
-/// The request message for EntityTypes.BatchUpdateEntityTypes.
 class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
-  /// The collection of entity types to update or create.
   GoogleCloudDialogflowV2EntityTypeBatch? entityTypeBatchInline;
-
-  /// The URI to a Google Cloud Storage file containing entity types to update
-  /// or create.
-  ///
-  /// The file format can either be a serialized proto (of EntityBatch type) or
-  /// a JSON object. Note: The URI must start with "gs://".
   core.String? entityTypeBatchUri;
-
-  /// The language used to access language-specific data.
-  ///
-  /// If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
-  ///
-  /// Optional.
   core.String? languageCode;
-
-  /// The mask to control which fields get updated.
-  ///
-  /// Optional.
   core.String? updateMask;
 
   GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest({
@@ -15747,37 +13558,15 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
 }
 
 class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
-  /// The collection of intents to update or create.
   GoogleCloudDialogflowV2IntentBatch? intentBatchInline;
-
-  /// The URI to a Google Cloud Storage file containing intents to update or
-  /// create.
-  ///
-  /// The file format can either be a serialized proto (of IntentBatch type) or
-  /// JSON object. Note: The URI must start with "gs://".
   core.String? intentBatchUri;
 
-  /// The resource view to apply to the returned intent.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "INTENT_VIEW_UNSPECIFIED" : Training phrases field is not populated in
-  /// the response.
-  /// - "INTENT_VIEW_FULL" : All fields are populated.
+  /// - "INTENT_VIEW_UNSPECIFIED"
+  /// - "INTENT_VIEW_FULL"
   core.String? intentView;
-
-  /// The language used to access language-specific data.
-  ///
-  /// If not specified, the agent's default language is used. For more
-  /// information, see
-  /// [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity).
-  ///
-  /// Optional.
   core.String? languageCode;
-
-  /// The mask to control which fields get updated.
-  ///
-  /// Optional.
   core.String? updateMask;
 
   GoogleCloudDialogflowV2BatchUpdateIntentsRequest({
@@ -15812,36 +13601,24 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
   };
 }
 
-/// The request message for ConversationProfiles.ClearSuggestionFeatureConfig.
 class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
-  /// The participant role to remove the suggestion feature config.
   ///
-  /// Only HUMAN_AGENT or END_USER can be used.
-  ///
-  /// Required.
   /// Possible string values are:
-  /// - "ROLE_UNSPECIFIED" : Participant role not set.
-  /// - "HUMAN_AGENT" : Participant is a human agent.
-  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
-  /// Dialogflow agent.
-  /// - "END_USER" : Participant is an end user that has called or chatted with
-  /// Dialogflow services.
+  /// - "ROLE_UNSPECIFIED"
+  /// - "HUMAN_AGENT"
+  /// - "AUTOMATED_AGENT"
+  /// - "END_USER"
   core.String? participantRole;
 
-  /// The type of the suggestion feature to remove.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified feature type.
-  /// - "ARTICLE_SUGGESTION" : Run article suggestion model for chat.
-  /// - "FAQ" : Run FAQ model for chat.
-  /// - "SMART_REPLY" : Run smart reply model for chat.
-  /// - "CONVERSATION_SUMMARIZATION" : Run conversation summarization model for
-  /// chat.
-  /// - "KNOWLEDGE_SEARCH" : Run knowledge search with text input from agent or
-  /// text generated query.
-  /// - "KNOWLEDGE_ASSIST" : Run knowledge assist with automatic query
-  /// generation.
+  /// - "TYPE_UNSPECIFIED"
+  /// - "ARTICLE_SUGGESTION"
+  /// - "FAQ"
+  /// - "SMART_REPLY"
+  /// - "CONVERSATION_SUMMARIZATION"
+  /// - "KNOWLEDGE_SEARCH"
+  /// - "KNOWLEDGE_ASSIST"
   core.String? suggestionFeatureType;
 
   GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest({
@@ -15863,37 +13640,20 @@ class GoogleCloudDialogflowV2ClearSuggestionFeatureConfigRequest {
   };
 }
 
-/// The request message for Conversations.CompleteConversation.
 typedef GoogleCloudDialogflowV2CompleteConversationRequest = $Empty;
 
-/// Represents a connection for SIP Trunk.
 class GoogleCloudDialogflowV2Connection {
-  /// The unique identifier of the SIP Trunk connection.
-  ///
-  /// Output only.
   core.String? connectionId;
-
-  /// The error details for the connection.
-  ///
-  /// Only populated when authentication errors occur.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2ConnectionErrorDetails? errorDetails;
 
-  /// State of the connection.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : SIP Trunk connection state is Not specified.
-  /// - "CONNECTED" : SIP Trunk connection is connected.
-  /// - "DISCONNECTED" : SIP Trunk connection is disconnected.
-  /// - "AUTHENTICATION_FAILED" : SIP Trunk connection has authentication error.
-  /// - "KEEPALIVE" : SIP Trunk connection is keepalive.
+  /// - "STATE_UNSPECIFIED"
+  /// - "CONNECTED"
+  /// - "DISCONNECTED"
+  /// - "AUTHENTICATION_FAILED"
+  /// - "KEEPALIVE"
   core.String? state;
-
-  /// When the connection status changed.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudDialogflowV2Connection({
@@ -15924,26 +13684,19 @@ class GoogleCloudDialogflowV2Connection {
   };
 }
 
-/// The error details of Sip Trunk connection authentication.
 class GoogleCloudDialogflowV2ConnectionErrorDetails {
-  /// The status of the certificate authentication.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "CERTIFICATE_STATE_UNSPECIFIED" : Certificate state is not specified.
-  /// - "CERTIFICATE_VALID" : Certificate is valid.
-  /// - "CERTIFICATE_INVALID" : Catch all for any error not specified.
-  /// - "CERTIFICATE_EXPIRED" : Certificate leaf node has expired.
-  /// - "CERTIFICATE_HOSTNAME_NOT_FOUND" : There is no hostname defined to
-  /// authenticate in SipTrunkingServer.
-  /// - "CERTIFICATE_UNAUTHENTICATED" : No path found from the leaf certificate
-  /// to any root.
-  /// - "CERTIFICATE_TRUST_STORE_NOT_FOUND" : Trust store does not exist.
-  /// - "CERTIFICATE_HOSTNAME_INVALID_FORMAT" : Hostname has invalid format.
-  /// - "CERTIFICATE_QUOTA_EXCEEDED" : Certificate has exhausted its quota.
+  /// - "CERTIFICATE_STATE_UNSPECIFIED"
+  /// - "CERTIFICATE_VALID"
+  /// - "CERTIFICATE_INVALID"
+  /// - "CERTIFICATE_EXPIRED"
+  /// - "CERTIFICATE_HOSTNAME_NOT_FOUND"
+  /// - "CERTIFICATE_UNAUTHENTICATED"
+  /// - "CERTIFICATE_TRUST_STORE_NOT_FOUND"
+  /// - "CERTIFICATE_HOSTNAME_INVALID_FORMAT"
+  /// - "CERTIFICATE_QUOTA_EXCEEDED"
   core.String? certificateState;
-
-  /// The error message provided from SIP trunking auth service
   core.String? errorMessage;
 
   GoogleCloudDialogflowV2ConnectionErrorDetails({
@@ -15963,58 +13716,11 @@ class GoogleCloudDialogflowV2ConnectionErrorDetails {
   };
 }
 
-/// Dialogflow contexts are similar to natural language context.
-///
-/// If a person says to you "they are orange", you need context in order to
-/// understand what "they" is referring to. Similarly, for Dialogflow to handle
-/// an end-user expression like that, it needs to be provided with context in
-/// order to correctly match an intent. Using contexts, you can control the flow
-/// of a conversation. You can configure contexts for an intent by setting input
-/// and output contexts, which are identified by string names. When an intent is
-/// matched, any configured output contexts for that intent become active. While
-/// any contexts are active, Dialogflow is more likely to match intents that are
-/// configured with input contexts that correspond to the currently active
-/// contexts. For more information about context, see the
-/// [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
 class GoogleCloudDialogflowV2Context {
-  /// The number of conversational query requests after which the context
-  /// expires.
-  ///
-  /// The default is `0`. If set to `0`, the context expires immediately.
-  /// Contexts expire automatically after 20 minutes if there are no matching
-  /// queries.
-  ///
-  /// Optional.
   core.int? lifespanCount;
-
-  /// The unique identifier of the context.
-  ///
-  /// Format: `projects//agent/sessions//contexts/`, or
-  /// `projects//agent/environments//users//sessions//contexts/`. The `Context
-  /// ID` is always converted to lowercase, may only contain characters in
-  /// `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is
-  /// not specified, we assume default 'draft' environment. If `User ID` is not
-  /// specified, we assume default '-' user. The following context names are
-  /// reserved for internal use by Dialogflow. You should not use these contexts
-  /// or create contexts with these names: * `__system_counters__` *
-  /// `*_id_dialog_context` * `*_dialog_params_size`
-  ///
-  /// Required.
   core.String? name;
 
-  /// The collection of parameters associated with this context.
   ///
-  /// Depending on your protocol or client library language, this is a map,
-  /// associative array, symbol table, dictionary, or JSON object composed of a
-  /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey
-  /// value: parameter name * MapValue type: If parameter's entity type is a
-  /// composite entity then use map, otherwise, depending on the parameter value
-  /// type, it could be one of string, number, boolean, null, list or map. *
-  /// MapValue value: If parameter's entity type is a composite entity then use
-  /// map from composite entity property names to property values, otherwise,
-  /// use parameter value.
-  ///
-  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -16043,84 +13749,28 @@ class GoogleCloudDialogflowV2Context {
   };
 }
 
-/// Represents a conversation.
-///
-/// A conversation is an interaction between an agent, including live agents and
-/// Dialogflow agents, and a support customer. Conversations can include phone
-/// calls and text-based chat sessions.
 class GoogleCloudDialogflowV2Conversation {
-  /// The Conversation Profile to be used to configure this Conversation.
-  ///
-  /// This field cannot be updated. Format:
-  /// `projects//locations//conversationProfiles/`.
-  ///
-  /// Required.
   core.String? conversationProfile;
 
-  /// The stage of a conversation.
   ///
-  /// It indicates whether the virtual agent or a human agent is handling the
-  /// conversation. If the conversation is created with the conversation profile
-  /// that has Dialogflow config set, defaults to
-  /// ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to
-  /// ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with
-  /// the conversation profile that has Dialogflow config set but explicitly
-  /// sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips
-  /// ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to
-  /// ConversationStage.HUMAN_ASSIST_STAGE.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "CONVERSATION_STAGE_UNSPECIFIED" : Unknown. Should never be used after a
-  /// conversation is successfully created.
-  /// - "VIRTUAL_AGENT_STAGE" : The conversation should return virtual agent
-  /// responses into the conversation.
-  /// - "HUMAN_ASSIST_STAGE" : The conversation should not provide responses,
-  /// just listen and provide suggestions.
+  /// - "CONVERSATION_STAGE_UNSPECIFIED"
+  /// - "VIRTUAL_AGENT_STAGE"
+  /// - "HUMAN_ASSIST_STAGE"
   core.String? conversationStage;
-
-  /// The time the conversation was finished.
-  ///
-  /// Output only.
   core.String? endTime;
-
-  /// The context reference updates provided by external systems.
-  ///
-  /// Output only.
   core.Map<core.String, GoogleCloudDialogflowV2ConversationContextReference>?
   ingestedContextReferences;
 
-  /// The current state of the Conversation.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "LIFECYCLE_STATE_UNSPECIFIED" : Unknown.
-  /// - "IN_PROGRESS" : Conversation is currently open for media analysis.
-  /// - "COMPLETED" : Conversation has been completed.
+  /// - "LIFECYCLE_STATE_UNSPECIFIED"
+  /// - "IN_PROGRESS"
+  /// - "COMPLETED"
   core.String? lifecycleState;
-
-  /// Identifier.
-  ///
-  /// The unique identifier of this conversation. Format:
-  /// `projects//locations//conversations/`.
-  ///
-  /// Output only.
   core.String? name;
-
-  /// It will not be empty if the conversation is to be connected over
-  /// telephony.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2ConversationPhoneNumber? phoneNumber;
-
-  /// The time the conversation was started.
-  ///
-  /// Output only.
   core.String? startTime;
-
-  /// The telephony connection information.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo?
   telephonyConnectionInfo;
 
@@ -16185,11 +13835,7 @@ class GoogleCloudDialogflowV2Conversation {
   };
 }
 
-/// Context of the conversation, including transcripts.
 class GoogleCloudDialogflowV2ConversationContext {
-  /// List of message transcripts in the conversation.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2MessageEntry>? messageEntries;
 
   GoogleCloudDialogflowV2ConversationContext({this.messageEntries});
@@ -16211,31 +13857,17 @@ class GoogleCloudDialogflowV2ConversationContext {
   };
 }
 
-/// Represents a section of ingested context information.
 class GoogleCloudDialogflowV2ConversationContextReference {
-  /// The list of content updates for a context reference.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2ConversationContextReferenceContextContent>?
   contextContents;
-
-  /// The time the context reference was first created.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The language of the information ingested, defaults to "en-US" if not set.
-  ///
-  /// Optional.
   core.String? languageCode;
 
-  /// The mode in which context reference contents are updated.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "UPDATE_MODE_UNSPECIFIED" : Unspecified update mode.
-  /// - "APPEND" : Context content updates are applied in append mode.
-  /// - "OVERWRITE" : Context content updates are applied in overwrite mode.
+  /// - "UPDATE_MODE_UNSPECIFIED"
+  /// - "APPEND"
+  /// - "OVERWRITE"
   core.String? updateMode;
 
   GoogleCloudDialogflowV2ConversationContextReference({
@@ -16269,29 +13901,20 @@ class GoogleCloudDialogflowV2ConversationContextReference {
   };
 }
 
-/// Contents ingested.
 class GoogleCloudDialogflowV2ConversationContextReferenceContextContent {
-  /// The information ingested in a single request.
-  ///
-  /// Required.
+  core.String? answerRecord;
   core.String? content;
 
-  /// The format of the ingested string.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "CONTENT_FORMAT_UNSPECIFIED" : Unspecified content format.
-  /// - "JSON" : Content was provided in JSON format.
-  /// - "PLAIN_TEXT" : Content was provided as plain text.
+  /// - "CONTENT_FORMAT_UNSPECIFIED"
+  /// - "JSON"
+  /// - "PLAIN_TEXT"
   core.String? contentFormat;
-
-  /// The time when this information was incorporated into the relevant context
-  /// reference.
-  ///
-  /// Output only.
   core.String? ingestionTime;
 
   GoogleCloudDialogflowV2ConversationContextReferenceContextContent({
+    this.answerRecord,
     this.content,
     this.contentFormat,
     this.ingestionTime,
@@ -16300,74 +13923,29 @@ class GoogleCloudDialogflowV2ConversationContextReferenceContextContent {
   GoogleCloudDialogflowV2ConversationContextReferenceContextContent.fromJson(
     core.Map json_,
   ) : this(
+        answerRecord: json_['answerRecord'] as core.String?,
         content: json_['content'] as core.String?,
         contentFormat: json_['contentFormat'] as core.String?,
         ingestionTime: json_['ingestionTime'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (answerRecord != null) 'answerRecord': answerRecord!,
     if (content != null) 'content': content!,
     if (contentFormat != null) 'contentFormat': contentFormat!,
     if (ingestionTime != null) 'ingestionTime': ingestionTime!,
   };
 }
 
-/// Represents a conversation dataset that a user imports raw data into.
-///
-/// The data inside ConversationDataset can not be changed after
-/// ImportConversationData finishes (and calling ImportConversationData on a
-/// dataset that already has data is not allowed).
 class GoogleCloudDialogflowV2ConversationDataset {
-  /// The number of conversations this conversation dataset contains.
-  ///
-  /// Output only.
   core.String? conversationCount;
-
-  /// Metadata set during conversation data import.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2ConversationInfo? conversationInfo;
-
-  /// Creation time of this dataset.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The description of the dataset.
-  ///
-  /// Maximum of 10000 bytes.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// The display name of the dataset.
-  ///
-  /// Maximum of 64 bytes.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// Input configurations set during conversation data import.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2InputConfig? inputConfig;
-
-  /// ConversationDataset resource name.
-  ///
-  /// Format: `projects//locations//conversationDatasets/`
-  ///
-  /// Output only.
   core.String? name;
-
-  /// A read only boolean field reflecting Zone Isolation status of the dataset.
-  ///
-  /// Output only.
   core.bool? satisfiesPzi;
-
-  /// A read only boolean field reflecting Zone Separation status of the
-  /// dataset.
-  ///
-  /// Output only.
   core.bool? satisfiesPzs;
 
   GoogleCloudDialogflowV2ConversationDataset({
@@ -16419,93 +13997,31 @@ class GoogleCloudDialogflowV2ConversationDataset {
   };
 }
 
-/// Represents metadata of a conversation.
-class GoogleCloudDialogflowV2ConversationInfo {
-  /// The language code of the conversation data within this dataset.
-  ///
-  /// See https://cloud.google.com/apis/design/standard_fields for more
-  /// information. Supports all UTF-8 languages.
-  ///
-  /// Optional.
-  core.String? languageCode;
+typedef GoogleCloudDialogflowV2ConversationInfo = $Shared07;
 
-  GoogleCloudDialogflowV2ConversationInfo({this.languageCode});
-
-  GoogleCloudDialogflowV2ConversationInfo.fromJson(core.Map json_)
-    : this(languageCode: json_['languageCode'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-  };
-}
-
-/// Represents a conversation model.
 class GoogleCloudDialogflowV2ConversationModel {
-  /// Metadata for article suggestion models.
   GoogleCloudDialogflowV2ArticleSuggestionModelMetadata?
   articleSuggestionModelMetadata;
-
-  /// Creation time of this model.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// Datasets used to create model.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2InputDataset>? datasets;
-
-  /// The display name of the model.
-  ///
-  /// At most 64 bytes long.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// Language code for the conversation model.
-  ///
-  /// If not specified, the language is en-US. Language at ConversationModel
-  /// should be set for all non en-us languages. This should be a
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
-  /// Example: "en-US".
   core.String? languageCode;
-
-  /// ConversationModel resource name.
-  ///
-  /// Format: `projects//conversationModels/`
   core.String? name;
-
-  /// A read only boolean field reflecting Zone Isolation status of the model.
-  ///
-  /// Output only.
   core.bool? satisfiesPzi;
-
-  /// A read only boolean field reflecting Zone Separation status of the model.
-  ///
-  /// Output only.
   core.bool? satisfiesPzs;
-
-  /// Metadata for smart reply models.
   GoogleCloudDialogflowV2SmartReplyModelMetadata? smartReplyModelMetadata;
 
-  /// State of the model.
   ///
-  /// A model can only serve prediction requests after it gets deployed.
-  ///
-  /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Should not be used, an un-set enum has this value
-  /// by default.
-  /// - "CREATING" : Model being created.
-  /// - "UNDEPLOYED" : Model is not deployed but ready to deploy.
-  /// - "DEPLOYING" : Model is deploying.
-  /// - "DEPLOYED" : Model is deployed and ready to use.
-  /// - "UNDEPLOYING" : Model is undeploying.
-  /// - "DELETING" : Model is deleting.
-  /// - "FAILED" : Model is in error state. Not ready to deploy and use.
-  /// - "PENDING" : Model is being created but the training has not started, The
-  /// model may remain in this state until there is enough capacity to start
-  /// training.
+  /// - "STATE_UNSPECIFIED"
+  /// - "CREATING"
+  /// - "UNDEPLOYED"
+  /// - "DEPLOYING"
+  /// - "DEPLOYED"
+  /// - "UNDEPLOYING"
+  /// - "DELETING"
+  /// - "FAILED"
+  /// - "PENDING"
   core.String? state;
 
   GoogleCloudDialogflowV2ConversationModel({
@@ -16570,51 +14086,12 @@ class GoogleCloudDialogflowV2ConversationModel {
   };
 }
 
-/// Represents evaluation result of a conversation model.
 class GoogleCloudDialogflowV2ConversationModelEvaluation {
-  /// Creation time of this model.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The display name of the model evaluation.
-  ///
-  /// At most 64 bytes long.
-  ///
-  /// Optional.
   core.String? displayName;
-
-  /// The configuration of the evaluation task.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2EvaluationConfig? evaluationConfig;
-
-  /// The resource name of the evaluation.
-  ///
-  /// Format: `projects//conversationModels//evaluations/`
   core.String? name;
-
-  /// Human eval template in csv format.
-  ///
-  /// It takes real-world conversations provided through input dataset,
-  /// generates example suggestions for customer to verify quality of the model.
-  /// For Smart Reply, the generated csv file contains columns of Context,
-  /// (Suggestions,Q1,Q2)*3, Actual reply. Context contains at most 10 latest
-  /// messages in the conversation prior to the current suggestion. Q1: "Would
-  /// you send it as the next message of agent?" Evaluated based on whether the
-  /// suggest is appropriate to be sent by agent in current context. Q2: "Does
-  /// the suggestion move the conversation closer to resolution?" Evaluated
-  /// based on whether the suggestion provide solutions, or answers customer's
-  /// question or collect information from customer to resolve the customer's
-  /// issue. Actual reply column contains the actual agent reply sent in the
-  /// context.
-  ///
-  /// Output only.
   core.String? rawHumanEvalTemplateCsv;
-
-  /// Only available when model is for smart reply.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2SmartReplyMetrics? smartReplyMetrics;
 
   GoogleCloudDialogflowV2ConversationModelEvaluation({
@@ -16660,18 +14137,8 @@ class GoogleCloudDialogflowV2ConversationModelEvaluation {
   };
 }
 
-/// Represents a phone number for telephony integration.
-///
-/// It allows for connecting a particular conversation over telephony.
 class GoogleCloudDialogflowV2ConversationPhoneNumber {
-  /// Desired country code for the phone number.
-  ///
-  /// Output only.
   core.int? countryCode;
-
-  /// The phone number to connect to this conversation.
-  ///
-  /// Output only.
   core.String? phoneNumber;
 
   GoogleCloudDialogflowV2ConversationPhoneNumber({
@@ -16691,90 +14158,23 @@ class GoogleCloudDialogflowV2ConversationPhoneNumber {
   };
 }
 
-/// Defines the services to connect to incoming Dialogflow conversations.
 class GoogleCloudDialogflowV2ConversationProfile {
-  /// Configuration for an automated agent to use with this profile.
   GoogleCloudDialogflowV2AutomatedAgentConfig? automatedAgentConfig;
-
-  /// Create time of the conversation profile.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// Human readable name for this profile.
-  ///
-  /// Max length 1024 bytes.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// Configuration for agent assistance to use with this profile.
   GoogleCloudDialogflowV2HumanAgentAssistantConfig? humanAgentAssistantConfig;
-
-  /// Configuration for connecting to a live agent.
-  ///
-  /// Currently, this feature is not general available, please contact Google to
-  /// get access.
   GoogleCloudDialogflowV2HumanAgentHandoffConfig? humanAgentHandoffConfig;
-
-  /// Language code for the conversation profile.
-  ///
-  /// If not specified, the language is en-US. Language at ConversationProfile
-  /// should be set for all non en-US languages. This should be a
-  /// \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag.
-  /// Example: "en-US".
   core.String? languageCode;
-
-  /// Configuration for logging conversation lifecycle events.
   GoogleCloudDialogflowV2LoggingConfig? loggingConfig;
-
-  /// The unique identifier of this conversation profile.
-  ///
-  /// Format: `projects//locations//conversationProfiles/`.
   core.String? name;
-
-  /// Configuration for publishing new message events.
-  ///
-  /// Event will be sent in format of ConversationEvent
   GoogleCloudDialogflowV2NotificationConfig? newMessageEventNotificationConfig;
-
-  /// Configuration for publishing transcription intermediate results.
-  ///
-  /// Event will be sent in format of ConversationEvent. If configured, the
-  /// following information will be populated as ConversationEvent Pub/Sub
-  /// message attributes: - "participant_id" - "participant_role" - "message_id"
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2NotificationConfig?
   newRecognitionResultNotificationConfig;
-
-  /// Configuration for publishing conversation lifecycle events.
   GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
-
-  /// Name of the CX SecuritySettings reference for the agent.
-  ///
-  /// Format: `projects//locations//securitySettings/`.
   core.String? securitySettings;
-
-  /// Settings for speech transcription.
   GoogleCloudDialogflowV2SpeechToTextConfig? sttConfig;
-
-  /// The time zone of this conversational profile from the
-  /// [time zone database](https://www.iana.org/time-zones), e.g.,
-  /// America/New_York, Europe/Paris.
-  ///
-  /// Defaults to America/New_York.
   core.String? timeZone;
-
-  /// Configuration for Text-to-Speech synthesization.
-  ///
-  /// Used by Phone Gateway to specify synthesization options. If agent defines
-  /// synthesization options as well, agent settings overrides the option here.
   GoogleCloudDialogflowV2SynthesizeSpeechConfig? ttsConfig;
-
-  /// Update time of the conversation profile.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudDialogflowV2ConversationProfile({
@@ -16893,33 +14293,13 @@ class GoogleCloudDialogflowV2ConversationProfile {
   };
 }
 
-/// The information about phone calls connected via phone gateway to the
-/// conversation.
 class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo {
-  /// The number dialed to connect this call in E.164 format.
-  ///
-  /// Output only.
   core.String? dialedNumber;
-
-  /// The mime content from the initial SIP INVITE.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent
   >?
   extraMimeContents;
-
-  /// SDP of the call.
-  ///
-  /// It's initially the SDP answer to the incoming call, but maybe later
-  /// updated for the purpose of making the link active, etc.
-  ///
-  /// Optional.
   core.String? sdp;
-
-  /// The SIP headers from the initial SIP INVITE.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader
   >?
@@ -16965,11 +14345,7 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfo {
   };
 }
 
-/// The mime content from the initial SIP INVITE.
 class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
-  /// The content payload.
-  ///
-  /// Optional.
   core.String? content;
   core.List<core.int> get contentAsBytes => convert.base64.decode(content!);
 
@@ -16980,9 +14356,6 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
         .replaceAll('+', '-');
   }
 
-  /// The mime type of the content.
-  ///
-  /// Optional.
   core.String? mimeType;
 
   GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent({
@@ -17003,41 +14376,10 @@ class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoMimeContent {
   };
 }
 
-/// The SIP headers from the initial SIP INVITE.
-class GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader {
-  /// The name of the header.
-  ///
-  /// Optional.
-  core.String? name;
+typedef GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader =
+    $Shared06;
 
-  /// The value of the header.
-  ///
-  /// Optional.
-  core.String? value;
-
-  GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader({
-    this.name,
-    this.value,
-  });
-
-  GoogleCloudDialogflowV2ConversationTelephonyConnectionInfoSipHeader.fromJson(
-    core.Map json_,
-  ) : this(
-        name: json_['name'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (value != null) 'value': value!,
-  };
-}
-
-/// The request message for ConversationModels.CreateConversationModelEvaluation
 class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
-  /// The conversation model evaluation to be created.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2ConversationModelEvaluation?
   conversationModelEvaluation;
 
@@ -17063,26 +14405,14 @@ class GoogleCloudDialogflowV2CreateConversationModelEvaluationRequest {
   };
 }
 
-/// Pronunciation customization for a phrase.
 class GoogleCloudDialogflowV2CustomPronunciationParams {
-  /// The phonetic encoding of the phrase.
+  ///
   /// Possible string values are:
-  /// - "PHONETIC_ENCODING_UNSPECIFIED" : Not specified.
-  /// - "PHONETIC_ENCODING_IPA" : IPA, such as apple -\> ˈæpəl.
-  /// https://en.wikipedia.org/wiki/International_Phonetic_Alphabet
-  /// - "PHONETIC_ENCODING_X_SAMPA" : X-SAMPA, such as apple -\> "{p@l".
-  /// https://en.wikipedia.org/wiki/X-SAMPA
+  /// - "PHONETIC_ENCODING_UNSPECIFIED"
+  /// - "PHONETIC_ENCODING_IPA"
+  /// - "PHONETIC_ENCODING_X_SAMPA"
   core.String? phoneticEncoding;
-
-  /// The phrase to which the customization is applied.
-  ///
-  /// The phrase can be multiple words, such as proper nouns, but shouldn't span
-  /// the length of the sentence.
   core.String? phrase;
-
-  /// The pronunciation of the phrase.
-  ///
-  /// This must be in the phonetic encoding specified above.
   core.String? pronunciation;
 
   GoogleCloudDialogflowV2CustomPronunciationParams({
@@ -17105,15 +14435,9 @@ class GoogleCloudDialogflowV2CustomPronunciationParams {
   };
 }
 
-/// The request message for ConversationModels.DeployConversationModel
 typedef GoogleCloudDialogflowV2DeployConversationModelRequest = $Empty;
 
-/// The request to detect user's intent.
 class GoogleCloudDialogflowV2DetectIntentRequest {
-  /// The natural language speech audio to be processed.
-  ///
-  /// This field should be populated iff `query_input` is set to an input audio
-  /// config. A single request can contain up to 1 minute of speech audio data.
   core.String? inputAudio;
   core.List<core.int> get inputAudioAsBytes =>
       convert.base64.decode(inputAudio!);
@@ -17125,30 +14449,9 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
         .replaceAll('+', '-');
   }
 
-  /// Instructs the speech synthesizer how to generate the output audio.
-  ///
-  /// If this field is not set and agent-level speech synthesizer is not
-  /// configured, no output audio is generated.
   GoogleCloudDialogflowV2OutputAudioConfig? outputAudioConfig;
-
-  /// Mask for output_audio_config indicating which settings in this
-  /// request-level config should override speech synthesizer settings defined
-  /// at agent-level.
-  ///
-  /// If unspecified or empty, output_audio_config replaces the agent-level
-  /// config in its entirety.
   core.String? outputAudioConfigMask;
-
-  /// The input specification.
-  ///
-  /// It can be set to: 1. an audio config which instructs the speech recognizer
-  /// how to process the speech audio, 2. a conversational query in the form of
-  /// text, or 3. an event that specifies which intent to trigger.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2QueryInput? queryInput;
-
-  /// The parameters of this query.
   GoogleCloudDialogflowV2QueryParameters? queryParams;
 
   GoogleCloudDialogflowV2DetectIntentRequest({
@@ -17194,17 +14497,7 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
   };
 }
 
-/// The message returned from the DetectIntent method.
 class GoogleCloudDialogflowV2DetectIntentResponse {
-  /// The audio data bytes encoded as specified in the request.
-  ///
-  /// Note: The output audio is generated based on the values of default
-  /// platform text responses found in the `query_result.fulfillment_messages`
-  /// field. If multiple default text responses exist, they will be concatenated
-  /// when generating audio. If no default platform text responses exist, the
-  /// generated audio content will be empty. In some scenarios, multiple output
-  /// audio fields may be present in the response structure. In these cases,
-  /// only the top-most-level audio output has content.
   core.String? outputAudio;
   core.List<core.int> get outputAudioAsBytes =>
       convert.base64.decode(outputAudio!);
@@ -17216,21 +14509,9 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
         .replaceAll('+', '-');
   }
 
-  /// The config used by the speech synthesizer to generate the output audio.
   GoogleCloudDialogflowV2OutputAudioConfig? outputAudioConfig;
-
-  /// The selected results of the conversational query or event processing.
-  ///
-  /// See `alternative_query_results` for additional potential results.
   GoogleCloudDialogflowV2QueryResult? queryResult;
-
-  /// The unique identifier of the response.
-  ///
-  /// It can be used to locate a response in the training example set or for
-  /// reporting issues.
   core.String? responseId;
-
-  /// Specifies the status of the webhook request.
   GoogleRpcStatus? webhookStatus;
 
   GoogleCloudDialogflowV2DetectIntentResponse({
@@ -17275,16 +14556,9 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
   };
 }
 
-/// Represents a Dialogflow assist answer.
 class GoogleCloudDialogflowV2DialogflowAssistAnswer {
-  /// The name of answer record, in the format of
-  /// "projects//locations//answerRecords/"
   core.String? answerRecord;
-
-  /// An intent suggestion generated from conversation.
   GoogleCloudDialogflowV2IntentSuggestion? intentSuggestion;
-
-  /// Result from v2 agent.
   GoogleCloudDialogflowV2QueryResult? queryResult;
 
   GoogleCloudDialogflowV2DialogflowAssistAnswer({
@@ -17318,85 +14592,15 @@ class GoogleCloudDialogflowV2DialogflowAssistAnswer {
   };
 }
 
-/// A knowledge document to be used by a KnowledgeBase.
-///
-/// For more information, see the
-/// [knowledge base guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases).
-/// Note: The `projects.agent.knowledgeBases.documents` resource is deprecated;
-/// only use `projects.knowledgeBases.documents`.
 class GoogleCloudDialogflowV2Document {
-  /// The URI where the file content is located.
-  ///
-  /// For documents stored in Google Cloud Storage, these URIs must have the
-  /// form `gs:///`. NOTE: External URLs must correspond to public webpages,
-  /// i.e., they must be indexed by Google Search. In particular, URLs for
-  /// showing documents in Google Cloud Storage (i.e. the URL in your browser)
-  /// are not supported. Instead use the `gs://` format URI described above.
   core.String? contentUri;
-
-  /// The display name of the document.
-  ///
-  /// The name must be 1024 bytes or less; otherwise, the creation request
-  /// fails.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// If true, we try to automatically reload the document every day (at a time
-  /// picked by the system).
-  ///
-  /// If false or unspecified, we don't try to automatically reload the
-  /// document. Currently you can only enable automatic reload for documents
-  /// sourced from a public url, see `source` field for the source types. Reload
-  /// status can be tracked in `latest_reload_status`. If a reload fails, we
-  /// will keep the document unchanged. If a reload fails with internal errors,
-  /// the system will try to reload the document on the next day. If a reload
-  /// fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will
-  /// not try to reload the document anymore. You need to manually reload the
-  /// document successfully by calling `ReloadDocument` and clear the errors.
-  ///
-  /// Optional.
   core.bool? enableAutoReload;
-
-  /// The knowledge type of document content.
-  ///
-  /// Required.
   core.List<core.String>? knowledgeTypes;
-
-  /// The time and status of the latest reload.
-  ///
-  /// This reload may have been triggered automatically or manually and may not
-  /// have succeeded.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2DocumentReloadStatus? latestReloadStatus;
-
-  /// Metadata for the document.
-  ///
-  /// The metadata supports arbitrary key-value pairs. Suggested use cases
-  /// include storing a document's title, an external URL distinct from the
-  /// document's content_uri, etc. The max size of a `key` or a `value` of the
-  /// metadata is 1024 bytes.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? metadata;
-
-  /// The MIME type of this document.
-  ///
-  /// Required.
   core.String? mimeType;
-
-  /// The document resource name.
-  ///
-  /// The name must be empty when creating a document. Format:
-  /// `projects//locations//knowledgeBases//documents/`.
-  ///
-  /// Optional.
   core.String? name;
-
-  /// The raw content of the document.
-  ///
-  /// This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
   core.String? rawContent;
   core.List<core.int> get rawContentAsBytes =>
       convert.base64.decode(rawContent!);
@@ -17408,16 +14612,14 @@ class GoogleCloudDialogflowV2Document {
         .replaceAll('+', '-');
   }
 
-  /// The current state of the document.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The document state is unspecified.
-  /// - "CREATING" : The document creation is in progress.
-  /// - "ACTIVE" : The document is active and ready to use.
-  /// - "UPDATING" : The document updation is in progress.
-  /// - "RELOADING" : The document is reloading.
-  /// - "DELETING" : The document deletion is in progress.
+  /// - "STATE_UNSPECIFIED"
+  /// - "CREATING"
+  /// - "ACTIVE"
+  /// - "UPDATING"
+  /// - "RELOADING"
+  /// - "DELETING"
   core.String? state;
 
   GoogleCloudDialogflowV2Document({
@@ -17471,15 +14673,8 @@ class GoogleCloudDialogflowV2Document {
   };
 }
 
-/// The status of a reload attempt.
 class GoogleCloudDialogflowV2DocumentReloadStatus {
-  /// The status of a reload attempt or the initial load.
   GoogleRpcStatus? status;
-
-  /// The time of a reload attempt.
-  ///
-  /// This reload may have been triggered automatically or manually and may not
-  /// have succeeded.
   core.String? time;
 
   GoogleCloudDialogflowV2DocumentReloadStatus({this.status, this.time});
@@ -17501,9 +14696,7 @@ class GoogleCloudDialogflowV2DocumentReloadStatus {
   };
 }
 
-/// The message in the response that indicates the parameters of DTMF.
 class GoogleCloudDialogflowV2DtmfParameters {
-  /// Indicates whether DTMF input can be handled in the next request.
   core.bool? acceptsDtmfInput;
 
   GoogleCloudDialogflowV2DtmfParameters({this.acceptsDtmfInput});
@@ -17516,25 +14709,8 @@ class GoogleCloudDialogflowV2DtmfParameters {
   };
 }
 
-/// A customer-managed encryption key specification that can be applied to all
-/// created resources (e.g. Conversation).
 class GoogleCloudDialogflowV2EncryptionSpec {
-  /// The name of customer-managed encryption key that is used to secure a
-  /// resource and its sub-resources.
-  ///
-  /// If empty, the resource is secured by the default Google encryption key.
-  /// Only the key in the same location as this resource is allowed to be used
-  /// for encryption. Format:
-  /// `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}`
-  ///
-  /// Required.
   core.String? kmsKey;
-
-  /// The resource name of the encryption key specification resource.
-  ///
-  /// Format: projects/{project}/locations/{location}/encryptionSpec
-  ///
-  /// Immutable.
   core.String? name;
 
   GoogleCloudDialogflowV2EncryptionSpec({this.kmsKey, this.name});
@@ -17551,61 +14727,23 @@ class GoogleCloudDialogflowV2EncryptionSpec {
   };
 }
 
-/// Each intent parameter has a type, called the entity type, which dictates
-/// exactly how data from an end-user expression is extracted.
-///
-/// Dialogflow provides predefined system entities that can match many common
-/// types of data. For example, there are system entities for matching dates,
-/// times, colors, email addresses, and so on. You can also create your own
-/// custom entities for matching custom data. For example, you could define a
-/// vegetable entity that can match the types of vegetables available for
-/// purchase with a grocery store agent. For more information, see the
-/// [Entity guide](https://cloud.google.com/dialogflow/docs/entities-overview).
 class GoogleCloudDialogflowV2EntityType {
-  /// Indicates whether the entity type can be automatically expanded.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "AUTO_EXPANSION_MODE_UNSPECIFIED" : Auto expansion disabled for the
-  /// entity.
-  /// - "AUTO_EXPANSION_MODE_DEFAULT" : Allows an agent to recognize values that
-  /// have not been explicitly listed in the entity.
+  /// - "AUTO_EXPANSION_MODE_UNSPECIFIED"
+  /// - "AUTO_EXPANSION_MODE_DEFAULT"
   core.String? autoExpansionMode;
-
-  /// The name of the entity type.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// Enables fuzzy entity extraction during classification.
-  ///
-  /// Optional.
   core.bool? enableFuzzyExtraction;
-
-  /// The collection of entity entries associated with the entity type.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity>? entities;
 
-  /// Indicates the kind of entity type.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "KIND_UNSPECIFIED" : Not specified. This value should be never used.
-  /// - "KIND_MAP" : Map entity types allow mapping of a group of synonyms to a
-  /// reference value.
-  /// - "KIND_LIST" : List entity types contain a set of entries that do not map
-  /// to reference values. However, list entity types can contain references to
-  /// other entity types (with or without aliases).
-  /// - "KIND_REGEXP" : Regexp entity types allow to specify regular expressions
-  /// in entries values.
+  /// - "KIND_UNSPECIFIED"
+  /// - "KIND_MAP"
+  /// - "KIND_LIST"
+  /// - "KIND_REGEXP"
   core.String? kind;
-
-  /// The unique identifier of the entity type.
-  ///
-  /// Required for EntityTypes.UpdateEntityType and
-  /// EntityTypes.BatchUpdateEntityTypes methods. Format:
-  /// `projects//agent/entityTypes/`.
   core.String? name;
 
   GoogleCloudDialogflowV2EntityType({
@@ -17645,9 +14783,7 @@ class GoogleCloudDialogflowV2EntityType {
   };
 }
 
-/// This message is a wrapper around a collection of entity types.
 class GoogleCloudDialogflowV2EntityTypeBatch {
-  /// A collection of entity types.
   core.List<GoogleCloudDialogflowV2EntityType>? entityTypes;
 
   GoogleCloudDialogflowV2EntityTypeBatch({this.entityTypes});
@@ -17669,110 +14805,22 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
   };
 }
 
-/// An **entity entry** for an associated entity type.
-class GoogleCloudDialogflowV2EntityTypeEntity {
-  /// A collection of value synonyms.
-  ///
-  /// For example, if the entity type is *vegetable*, and `value` is
-  /// *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity
-  /// types: * This collection must contain exactly one synonym equal to
-  /// `value`.
-  ///
-  /// Required.
-  core.List<core.String>? synonyms;
+typedef GoogleCloudDialogflowV2EntityTypeEntity = $EntityTypeEntity;
 
-  /// The primary value associated with this entity entry.
-  ///
-  /// For example, if the entity type is *vegetable*, the value could be
-  /// *scallions*. For `KIND_MAP` entity types: * A reference value to be used
-  /// in place of synonyms. For `KIND_LIST` entity types: * A string that can
-  /// contain references to other entity types (with or without aliases).
-  ///
-  /// Required.
-  core.String? value;
-
-  GoogleCloudDialogflowV2EntityTypeEntity({this.synonyms, this.value});
-
-  GoogleCloudDialogflowV2EntityTypeEntity.fromJson(core.Map json_)
-    : this(
-        synonyms:
-            (json_['synonyms'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (synonyms != null) 'synonyms': synonyms!,
-    if (value != null) 'value': value!,
-  };
-}
-
-/// You can create multiple versions of your agent and publish them to separate
-/// environments.
-///
-/// When you edit an agent, you are editing the draft agent. At any point, you
-/// can save the draft agent as an agent version, which is an immutable snapshot
-/// of your agent. When you save the draft agent, it is published to the default
-/// environment. When you create agent versions, you can publish them to custom
-/// environments. You can create a variety of custom environments for: - testing
-/// - development - production - etc. For more information, see the
-/// [versions and environments guide](https://cloud.google.com/dialogflow/docs/agents-versions).
 class GoogleCloudDialogflowV2Environment {
-  /// The agent version loaded into this environment.
-  ///
-  /// Supported formats: - `projects//agent/versions/` -
-  /// `projects//locations//agent/versions/`
-  ///
-  /// Optional.
   core.String? agentVersion;
-
-  /// The developer-provided description for this environment.
-  ///
-  /// The maximum length is 500 characters. If exceeded, the request is
-  /// rejected.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// The fulfillment settings to use for this environment.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2Fulfillment? fulfillment;
-
-  /// The unique identifier of this agent environment.
-  ///
-  /// Supported formats: - `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
-  ///
-  /// Output only.
   core.String? name;
 
-  /// The state of this environment.
   ///
-  /// This field is read-only, i.e., it cannot be set by create and update
-  /// methods.
-  ///
-  /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Not specified. This value is not used.
-  /// - "STOPPED" : Stopped.
-  /// - "LOADING" : Loading.
-  /// - "RUNNING" : Running.
+  /// - "STATE_UNSPECIFIED"
+  /// - "STOPPED"
+  /// - "LOADING"
+  /// - "RUNNING"
   core.String? state;
-
-  /// Text to speech settings for this environment.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2TextToSpeechSettings? textToSpeechSettings;
-
-  /// The last update time of this environment.
-  ///
-  /// This field is read-only, i.e., it cannot be set by create and update
-  /// methods.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudDialogflowV2Environment({
@@ -17819,29 +14867,9 @@ class GoogleCloudDialogflowV2Environment {
   };
 }
 
-/// The response message for Environments.GetEnvironmentHistory.
 class GoogleCloudDialogflowV2EnvironmentHistory {
-  /// The list of agent environments.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2EnvironmentHistoryEntry>? entries;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
-  ///
-  /// Output only.
   core.String? nextPageToken;
-
-  /// The name of the environment this history is for.
-  ///
-  /// Supported formats: - `projects//agent/environments/` -
-  /// `projects//locations//agent/environments/` The environment ID for the
-  /// default environment is `-`.
-  ///
-  /// Output only.
   core.String? parent;
 
   GoogleCloudDialogflowV2EnvironmentHistory({
@@ -17872,15 +14900,9 @@ class GoogleCloudDialogflowV2EnvironmentHistory {
   };
 }
 
-/// Represents an environment history entry.
 class GoogleCloudDialogflowV2EnvironmentHistoryEntry {
-  /// The agent version loaded into this environment history entry.
   core.String? agentVersion;
-
-  /// The creation time of this environment history entry.
   core.String? createTime;
-
-  /// The developer-provided description for this environment history entry.
   core.String? description;
 
   GoogleCloudDialogflowV2EnvironmentHistoryEntry({
@@ -17903,17 +14925,9 @@ class GoogleCloudDialogflowV2EnvironmentHistoryEntry {
   };
 }
 
-/// The configuration for model evaluation.
 class GoogleCloudDialogflowV2EvaluationConfig {
-  /// Datasets used for evaluation.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2InputDataset>? datasets;
-
-  /// Configuration for smart compose model evaluation.
   GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig? smartComposeConfig;
-
-  /// Configuration for smart reply model evaluation.
   GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig? smartReplyConfig;
 
   GoogleCloudDialogflowV2EvaluationConfig({
@@ -17955,92 +14969,11 @@ class GoogleCloudDialogflowV2EvaluationConfig {
   };
 }
 
-/// Smart compose specific configuration for evaluation job.
-class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
-  /// The allowlist document resource name.
-  ///
-  /// Format: `projects//knowledgeBases//documents/`. Only used for smart
-  /// compose model.
-  core.String? allowlistDocument;
+typedef GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig = $Config;
+typedef GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig = $Config;
 
-  /// The model to be evaluated can return multiple results with confidence
-  /// score on each query.
-  ///
-  /// These results will be sorted by the descending order of the scores and we
-  /// only keep the first max_result_count results as the final results to
-  /// evaluate.
-  ///
-  /// Required.
-  core.int? maxResultCount;
-
-  GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig({
-    this.allowlistDocument,
-    this.maxResultCount,
-  });
-
-  GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        allowlistDocument: json_['allowlistDocument'] as core.String?,
-        maxResultCount: json_['maxResultCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistDocument != null) 'allowlistDocument': allowlistDocument!,
-    if (maxResultCount != null) 'maxResultCount': maxResultCount!,
-  };
-}
-
-/// Smart reply specific configuration for evaluation job.
-class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig {
-  /// The allowlist document resource name.
-  ///
-  /// Format: `projects//knowledgeBases//documents/`. Only used for smart reply
-  /// model.
-  core.String? allowlistDocument;
-
-  /// The model to be evaluated can return multiple results with confidence
-  /// score on each query.
-  ///
-  /// These results will be sorted by the descending order of the scores and we
-  /// only keep the first max_result_count results as the final results to
-  /// evaluate.
-  ///
-  /// Required.
-  core.int? maxResultCount;
-
-  GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig({
-    this.allowlistDocument,
-    this.maxResultCount,
-  });
-
-  GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfig.fromJson(
-    core.Map json_,
-  ) : this(
-        allowlistDocument: json_['allowlistDocument'] as core.String?,
-        maxResultCount: json_['maxResultCount'] as core.int?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (allowlistDocument != null) 'allowlistDocument': allowlistDocument!,
-    if (maxResultCount != null) 'maxResultCount': maxResultCount!,
-  };
-}
-
-/// A common evalaution pipeline status.
 class GoogleCloudDialogflowV2EvaluationStatus {
-  /// If the value is `false`, it means the evaluation is still in progress.
-  ///
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
-  ///
-  /// Output only.
   core.bool? done;
-
-  /// The error result of the evaluation in case of failure in evaluation
-  /// pipeline.
-  ///
-  /// Output only.
   GoogleRpcStatus? pipelineStatus;
 
   GoogleCloudDialogflowV2EvaluationStatus({this.done, this.pipelineStatus});
@@ -18063,42 +14996,11 @@ class GoogleCloudDialogflowV2EvaluationStatus {
   };
 }
 
-/// Events allow for matching intents by event name instead of the natural
-/// language input.
-///
-/// For instance, input `` can trigger a personalized welcome response. The
-/// parameter `name` may be used by the agent in the response: `"Hello
-/// #welcome_event.name! What can I do for you today?"`.
 class GoogleCloudDialogflowV2EventInput {
-  /// The language of this query.
-  ///
-  /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// for a list of the currently supported language codes. Note that queries in
-  /// the same session do not necessarily need to specify the same language.
-  /// This field is ignored when used in the context of a
-  /// WebhookResponse.followup_event_input field, because the language was
-  /// already defined in the originating detect intent request.
-  ///
-  /// Required.
   core.String? languageCode;
-
-  /// The unique identifier of the event.
-  ///
-  /// Required.
   core.String? name;
 
-  /// The collection of parameters associated with the event.
   ///
-  /// Depending on your protocol or client library language, this is a map,
-  /// associative array, symbol table, dictionary, or JSON object composed of a
-  /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey
-  /// value: parameter name * MapValue type: If parameter's entity type is a
-  /// composite entity then use map, otherwise, depending on the parameter value
-  /// type, it could be one of string, number, boolean, null, list or map. *
-  /// MapValue value: If parameter's entity type is a composite entity then use
-  /// map from composite entity property names to property values, otherwise,
-  /// use parameter value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -18127,19 +15029,7 @@ class GoogleCloudDialogflowV2EventInput {
   };
 }
 
-/// The request message for Agents.ExportAgent.
 class GoogleCloudDialogflowV2ExportAgentRequest {
-  /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to
-  /// export the agent to.
-  ///
-  /// The format of this URI must be `gs:///`. If left unspecified, the
-  /// serialized agent is returned inline. Dialogflow performs a write operation
-  /// for the Cloud Storage object on the caller's behalf, so your request
-  /// authentication must have write permissions for the object. For more
-  /// information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  ///
-  /// Required.
   core.String? agentUri;
 
   GoogleCloudDialogflowV2ExportAgentRequest({this.agentUri});
@@ -18152,17 +15042,9 @@ class GoogleCloudDialogflowV2ExportAgentRequest {
   };
 }
 
-/// Request message for Documents.ExportDocument.
 class GoogleCloudDialogflowV2ExportDocumentRequest {
-  /// When enabled, export the full content of the document including empirical
-  /// probability.
   core.bool? exportFullContent;
-
-  /// Cloud Storage file path to export the document.
   GoogleCloudDialogflowV2GcsDestination? gcsDestination;
-
-  /// When enabled, export the smart messaging allowlist document for partial
-  /// update.
   core.bool? smartMessagingPartialUpdate;
 
   GoogleCloudDialogflowV2ExportDocumentRequest({
@@ -18193,30 +15075,12 @@ class GoogleCloudDialogflowV2ExportDocumentRequest {
   };
 }
 
-/// Represents answer from "frequently asked questions".
 class GoogleCloudDialogflowV2FaqAnswer {
-  /// The piece of text from the `source` knowledge base document.
   core.String? answer;
-
-  /// The name of answer record, in the format of
-  /// "projects//locations//answerRecords/"
   core.String? answerRecord;
-
-  /// The system's confidence score that this Knowledge answer is a good match
-  /// for this conversational query, range from 0.0 (completely uncertain) to
-  /// 1.0 (completely certain).
   core.double? confidence;
-
-  /// A map that contains metadata about the answer and the document from which
-  /// it originates.
   core.Map<core.String, core.String>? metadata;
-
-  /// The corresponding FAQ question.
   core.String? question;
-
-  /// Indicates which Knowledge Document this answer was extracted from.
-  ///
-  /// Format: `projects//locations//agent/knowledgeBases//documents/`.
   core.String? source;
 
   GoogleCloudDialogflowV2FaqAnswer({
@@ -18249,29 +15113,10 @@ class GoogleCloudDialogflowV2FaqAnswer {
   };
 }
 
-/// Providing examples in the generator (i.e. building a few-shot generator)
-/// helps convey the desired format of the LLM response.
 class GoogleCloudDialogflowV2FewShotExample {
-  /// Conversation transcripts.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2ConversationContext? conversationContext;
-
-  /// Key is the placeholder field name in input, value is the value of the
-  /// placeholder.
-  ///
-  /// E.g. instruction contains "@price", and ingested data has \<"price",
-  /// "10"\>
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? extraInfo;
-
-  /// Example output of the model.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2GeneratorSuggestion? output;
-
-  /// Summarization sections.
   GoogleCloudDialogflowV2SummarizationSectionList? summarizationSectionList;
 
   GoogleCloudDialogflowV2FewShotExample({
@@ -18317,28 +15162,9 @@ class GoogleCloudDialogflowV2FewShotExample {
   };
 }
 
-/// Free form generator context that customer can configure.
-class GoogleCloudDialogflowV2FreeFormContext {
-  /// Free form text input to LLM.
-  ///
-  /// Optional.
-  core.String? text;
+typedef GoogleCloudDialogflowV2FreeFormContext = $Shared02;
 
-  GoogleCloudDialogflowV2FreeFormContext({this.text});
-
-  GoogleCloudDialogflowV2FreeFormContext.fromJson(core.Map json_)
-    : this(text: json_['text'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
-}
-
-/// Suggestion generated using free form generator.
 class GoogleCloudDialogflowV2FreeFormSuggestion {
-  /// Free form suggestion.
-  ///
-  /// Required.
   core.String? response;
 
   GoogleCloudDialogflowV2FreeFormSuggestion({this.response});
@@ -18351,43 +15177,11 @@ class GoogleCloudDialogflowV2FreeFormSuggestion {
   };
 }
 
-/// By default, your agent responds to a matched intent with a static response.
-///
-/// As an alternative, you can provide a more dynamic response by using
-/// fulfillment. When you enable fulfillment for an intent, Dialogflow responds
-/// to that intent by calling a service that you define. For example, if an
-/// end-user wants to schedule a haircut on Friday, your service can check your
-/// database and respond to the end-user with availability information for
-/// Friday. For more information, see the
-/// [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
 class GoogleCloudDialogflowV2Fulfillment {
-  /// The human-readable name of the fulfillment, unique within the agent.
-  ///
-  /// This field is not used for Fulfillment in an Environment.
-  ///
-  /// Optional.
   core.String? displayName;
-
-  /// Whether fulfillment is enabled.
-  ///
-  /// Optional.
   core.bool? enabled;
-
-  /// The field defines whether the fulfillment is enabled for certain features.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2FulfillmentFeature>? features;
-
-  /// Configuration for a generic web service.
   GoogleCloudDialogflowV2FulfillmentGenericWebService? genericWebService;
-
-  /// The unique identifier of the fulfillment.
-  ///
-  /// Supported formats: - `projects//agent/fulfillment` -
-  /// `projects//locations//agent/fulfillment` This field is not used for
-  /// Fulfillment in an Environment.
-  ///
-  /// Required.
   core.String? name;
 
   GoogleCloudDialogflowV2Fulfillment({
@@ -18429,12 +15223,11 @@ class GoogleCloudDialogflowV2Fulfillment {
   };
 }
 
-/// Whether fulfillment is enabled for the specific feature.
 class GoogleCloudDialogflowV2FulfillmentFeature {
-  /// The type of the feature that enabled for fulfillment.
+  ///
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Feature type not specified.
-  /// - "SMALLTALK" : Fulfillment is enabled for SmallTalk.
+  /// - "TYPE_UNSPECIFIED"
+  /// - "SMALLTALK"
   core.String? type;
 
   GoogleCloudDialogflowV2FulfillmentFeature({this.type});
@@ -18447,45 +15240,14 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
   };
 }
 
-/// Represents configuration for a generic web service.
-///
-/// Dialogflow supports two mechanisms for authentications: - Basic
-/// authentication with username and password. - Authentication with additional
-/// authentication headers. More information could be found at:
-/// https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 class GoogleCloudDialogflowV2FulfillmentGenericWebService {
-  /// Indicates if generic web service is created through Cloud Functions
-  /// integration.
-  ///
-  /// Defaults to false. is_cloud_function is deprecated. Cloud functions can be
-  /// configured by its uri as a regular web service now.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.bool? isCloudFunction;
-
-  /// The password for HTTP Basic authentication.
-  ///
-  /// Optional.
   core.String? password;
-
-  /// The HTTP request headers to send together with fulfillment requests.
-  ///
-  /// Optional.
   core.Map<core.String, core.String>? requestHeaders;
-
-  /// The fulfillment URI for receiving POST requests.
-  ///
-  /// It must use https protocol.
-  ///
-  /// Required.
   core.String? uri;
-
-  /// The user name for HTTP Basic authentication.
-  ///
-  /// Optional.
   core.String? username;
 
   GoogleCloudDialogflowV2FulfillmentGenericWebService({
@@ -18516,33 +15278,9 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
   };
 }
 
-/// Google Cloud Storage location for the output.
-class GoogleCloudDialogflowV2GcsDestination {
-  /// The Google Cloud Storage URIs for the output.
-  ///
-  /// A URI is of the form: `gs://bucket/object-prefix-or-name` Whether a prefix
-  /// or name is used depends on the use case. The requesting user must have
-  /// "write-permission" to the bucket.
-  core.String? uri;
+typedef GoogleCloudDialogflowV2GcsDestination = $Shared08;
 
-  GoogleCloudDialogflowV2GcsDestination({this.uri});
-
-  GoogleCloudDialogflowV2GcsDestination.fromJson(core.Map json_)
-    : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
-
-/// Google Cloud Storage location for the inputs.
 class GoogleCloudDialogflowV2GcsSources {
-  /// Google Cloud Storage URIs for the inputs.
-  ///
-  /// A URI is of the form: `gs://bucket/object-prefix-or-name` Whether a prefix
-  /// or name is used depends on the use case.
-  ///
-  /// Required.
   core.List<core.String>? uris;
 
   GoogleCloudDialogflowV2GcsSources({this.uris});
@@ -18560,50 +15298,13 @@ class GoogleCloudDialogflowV2GcsSources {
   };
 }
 
-/// The request message for Conversations.GenerateStatelessSuggestion.
 class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
-  /// A section of ingested context information.
-  ///
-  /// The key is the name of the context reference and the value contains the
-  /// contents of the context reference. The key is used to incorporate ingested
-  /// context references to enhance the generator.
-  ///
-  /// Optional.
   core.Map<core.String, GoogleCloudDialogflowV2ConversationContextReference>?
   contextReferences;
-
-  /// Context of the conversation, including transcripts.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2ConversationContext? conversationContext;
-
-  /// Uncreated generator.
-  ///
-  /// It should be a complete generator that includes all information about the
-  /// generator.
   GoogleCloudDialogflowV2Generator? generator;
-
-  /// The resource name of the existing created generator.
-  ///
-  /// Format: `projects//locations//generators/`
   core.String? generatorName;
-
-  /// Name of the CX SecuritySettings which is used to redact generated
-  /// response.
-  ///
-  /// If this field is empty, try to fetch v2 security_settings, which is a
-  /// project level setting. If this field is empty and no v2 security_settings
-  /// set up in this project, no redaction will be done. Format:
-  /// `projects//locations//securitySettings/`.
-  ///
-  /// Optional.
   core.String? securitySettings;
-
-  /// A list of trigger events.
-  ///
-  /// Generator will be triggered only if it's trigger event is included here.
-  ///
-  /// Optional.
   core.List<core.String>? triggerEvents;
 
   GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest({
@@ -18660,11 +15361,7 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionRequest {
   };
 }
 
-/// The response message for Conversations.GenerateStatelessSuggestion.
 class GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse {
-  /// Generated suggestion for a conversation.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2GeneratorSuggestion? generatorSuggestion;
 
   GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse({
@@ -18689,37 +15386,10 @@ class GoogleCloudDialogflowV2GenerateStatelessSuggestionResponse {
   };
 }
 
-/// The request message for Conversations.GenerateStatelessSummary.
 class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest {
-  /// A ConversationProfile containing information required for Summary
-  /// generation.
-  ///
-  /// Required fields: {language_code, security_settings} Optional fields:
-  /// {agent_assistant_config}
-  ///
-  /// Required.
   GoogleCloudDialogflowV2ConversationProfile? conversationProfile;
-
-  /// The name of the latest conversation message used as context for generating
-  /// a Summary.
-  ///
-  /// If empty, the latest message of the conversation will be used. The format
-  /// is specific to the user and the names of the messages provided.
-  ///
-  /// Optional.
   core.String? latestMessage;
-
-  /// Max number of messages prior to and including \[latest_message\] to use as
-  /// context when compiling the suggestion.
-  ///
-  /// By default 500 and at most 1000.
-  ///
-  /// Optional.
   core.int? maxContextSize;
-
-  /// The conversation to suggest a summary for.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation?
   statelessConversation;
 
@@ -18761,17 +15431,7 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryRequest {
   };
 }
 
-/// The minimum amount of information required to generate a Summary without
-/// having a Conversation resource created.
 class GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation {
-  /// The messages that the Summary will be generated from.
-  ///
-  /// It is expected that this message content is already redacted and does not
-  /// contain any PII. Required fields: {content, language_code, participant,
-  /// participant_role} Optional fields: {send_time} If send_time is not
-  /// provided, then the messages must be provided in chronological order.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2Message>? messages;
 
   GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation({
@@ -18796,23 +15456,9 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryRequestMinimalConversation 
   };
 }
 
-/// The response message for Conversations.GenerateStatelessSummary.
 class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse {
-  /// Number of messages prior to and including latest_message used to compile
-  /// the suggestion.
-  ///
-  /// It may be smaller than the
-  /// GenerateStatelessSummaryRequest.max_context_size field in the request if
-  /// there weren't that many messages in the conversation.
   core.int? contextSize;
-
-  /// The name of the latest conversation message used as context for compiling
-  /// suggestion.
-  ///
-  /// The format is specific to the user and the names of the messages provided.
   core.String? latestMessage;
-
-  /// Generated summary.
   GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary? summary;
 
   GoogleCloudDialogflowV2GenerateStatelessSummaryResponse({
@@ -18841,20 +15487,9 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryResponse {
   };
 }
 
-/// Generated summary for a conversation.
 class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary {
-  /// The baseline model version used to generate this summary.
-  ///
-  /// It is empty if a baseline model was not used to generate this summary.
   core.String? baselineModelVersion;
-
-  /// The summary content that is concatenated into one string.
   core.String? text;
-
-  /// The summary content that is divided into sections.
-  ///
-  /// The key is the section's name and the value is the section's content.
-  /// There is no specific format for the key or value.
   core.Map<core.String, core.String>? textSections;
 
   GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary({
@@ -18881,22 +15516,8 @@ class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary {
   };
 }
 
-/// The request message for Conversations.GenerateSuggestions.
 class GoogleCloudDialogflowV2GenerateSuggestionsRequest {
-  /// The name of the latest conversation message for which the request is
-  /// triggered.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
-  ///
-  /// Optional.
   core.String? latestMessage;
-
-  /// A list of trigger events.
-  ///
-  /// Only generators configured in the conversation_profile whose trigger_event
-  /// is listed here will be triggered.
-  ///
-  /// Optional.
   core.List<core.String>? triggerEvents;
 
   GoogleCloudDialogflowV2GenerateSuggestionsRequest({
@@ -18919,18 +15540,11 @@ class GoogleCloudDialogflowV2GenerateSuggestionsRequest {
   };
 }
 
-/// The response message for Conversations.GenerateSuggestions.
 class GoogleCloudDialogflowV2GenerateSuggestionsResponse {
-  /// The answers generated for the conversation based on context.
   core.List<
     GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer
   >?
   generatorSuggestionAnswers;
-
-  /// The name of the latest conversation message used as context for compiling
-  /// suggestion.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2GenerateSuggestionsResponse({
@@ -18959,19 +15573,9 @@ class GoogleCloudDialogflowV2GenerateSuggestionsResponse {
   };
 }
 
-/// A GeneratorSuggestion answer.
 class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer {
-  /// Answer record that uniquely identifies the suggestion.
-  ///
-  /// This can be used to provide suggestion feedback.
   core.String? answerRecord;
-
-  /// Suggestion details.
   GoogleCloudDialogflowV2GeneratorSuggestion? generatorSuggestion;
-
-  /// The name of the generator used to generate this suggestion.
-  ///
-  /// Format: `projects//locations//generators/`.
   core.String? sourceGenerator;
 
   GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswer({
@@ -19002,81 +15606,37 @@ class GoogleCloudDialogflowV2GenerateSuggestionsResponseGeneratorSuggestionAnswe
   };
 }
 
-/// LLM generator.
 class GoogleCloudDialogflowV2Generator {
-  /// Creation time of this generator.
-  ///
-  /// Output only.
+  GoogleCloudDialogflowV2AgentCoachingContext? agentCoachingContext;
   core.String? createTime;
-
-  /// Human readable description of the generator.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// Input of free from generator to LLM.
   GoogleCloudDialogflowV2FreeFormContext? freeFormContext;
-
-  /// Inference parameters for this generator.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2InferenceParameter? inferenceParameter;
-
-  /// Identifier.
-  ///
-  /// The resource name of the generator. Format:
-  /// `projects//locations//generators/`
-  ///
-  /// Output only.
   core.String? name;
-
-  /// The published Large Language Model name.
-  ///
-  /// * To use the latest model version, specify the model name without version
-  /// number. Example: `text-bison` * To use a stable model version, specify the
-  /// version number as well. Example: `text-bison@002`.
-  ///
-  /// Optional.
   core.String? publishedModel;
-
-  /// Input of prebuilt Summarization feature.
+  GoogleCloudDialogflowV2SuggestionDedupingConfig? suggestionDedupingConfig;
   GoogleCloudDialogflowV2SummarizationContext? summarizationContext;
-
-  /// Resource names of the tools that the generator can choose from.
-  ///
-  /// Format: `projects//locations//tools/`.
-  ///
-  /// Optional.
   core.List<core.String>? tools;
 
-  /// The trigger event of the generator.
   ///
-  /// It defines when the generator is triggered in a conversation.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "TRIGGER_EVENT_UNSPECIFIED" : Default value for TriggerEvent.
-  /// - "END_OF_UTTERANCE" : Triggers when each chat message or voice utterance
-  /// ends.
-  /// - "MANUAL_CALL" : Triggers on the conversation manually by API calls, such
-  /// as Conversations.GenerateStatelessSuggestion and
-  /// Conversations.GenerateSuggestions.
-  /// - "CUSTOMER_MESSAGE" : Triggers after each customer message only.
-  /// - "AGENT_MESSAGE" : Triggers after each agent message only.
+  /// - "TRIGGER_EVENT_UNSPECIFIED"
+  /// - "END_OF_UTTERANCE"
+  /// - "MANUAL_CALL"
+  /// - "CUSTOMER_MESSAGE"
+  /// - "AGENT_MESSAGE"
   core.String? triggerEvent;
-
-  /// Update time of this generator.
-  ///
-  /// Output only.
   core.String? updateTime;
 
   GoogleCloudDialogflowV2Generator({
+    this.agentCoachingContext,
     this.createTime,
     this.description,
     this.freeFormContext,
     this.inferenceParameter,
     this.name,
     this.publishedModel,
+    this.suggestionDedupingConfig,
     this.summarizationContext,
     this.tools,
     this.triggerEvent,
@@ -19085,6 +15645,13 @@ class GoogleCloudDialogflowV2Generator {
 
   GoogleCloudDialogflowV2Generator.fromJson(core.Map json_)
     : this(
+        agentCoachingContext:
+            json_.containsKey('agentCoachingContext')
+                ? GoogleCloudDialogflowV2AgentCoachingContext.fromJson(
+                  json_['agentCoachingContext']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         freeFormContext:
@@ -19103,6 +15670,13 @@ class GoogleCloudDialogflowV2Generator {
                 : null,
         name: json_['name'] as core.String?,
         publishedModel: json_['publishedModel'] as core.String?,
+        suggestionDedupingConfig:
+            json_.containsKey('suggestionDedupingConfig')
+                ? GoogleCloudDialogflowV2SuggestionDedupingConfig.fromJson(
+                  json_['suggestionDedupingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         summarizationContext:
             json_.containsKey('summarizationContext')
                 ? GoogleCloudDialogflowV2SummarizationContext.fromJson(
@@ -19119,12 +15693,16 @@ class GoogleCloudDialogflowV2Generator {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (agentCoachingContext != null)
+      'agentCoachingContext': agentCoachingContext!,
     if (createTime != null) 'createTime': createTime!,
     if (description != null) 'description': description!,
     if (freeFormContext != null) 'freeFormContext': freeFormContext!,
     if (inferenceParameter != null) 'inferenceParameter': inferenceParameter!,
     if (name != null) 'name': name!,
     if (publishedModel != null) 'publishedModel': publishedModel!,
+    if (suggestionDedupingConfig != null)
+      'suggestionDedupingConfig': suggestionDedupingConfig!,
     if (summarizationContext != null)
       'summarizationContext': summarizationContext!,
     if (tools != null) 'tools': tools!,
@@ -19133,58 +15711,16 @@ class GoogleCloudDialogflowV2Generator {
   };
 }
 
-/// Represents evaluation result of a generator.
 class GoogleCloudDialogflowV2GeneratorEvaluation {
-  /// Completion time of this generator evaluation.
-  ///
-  /// Output only.
   core.String? completeTime;
-
-  /// Creation time of this generator evaluation.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The display name of the generator evaluation.
-  ///
-  /// At most 64 bytes long.
-  ///
-  /// Optional.
   core.String? displayName;
-
-  /// The result status of the evaluation pipeline.
-  ///
-  /// Provides the status information including if the evaluation is still in
-  /// progress, completed or failed with certain error and user actionable
-  /// message.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2EvaluationStatus? evaluationStatus;
-
-  /// The configuration of the evaluation task.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2GeneratorEvaluationConfig? generatorEvaluationConfig;
-
-  /// The initial generator that was used when creating this evaluation.
-  ///
-  /// This is a copy of the generator read from storage when creating the
-  /// evaluation.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2Generator? initialGenerator;
-
-  /// Identifier.
-  ///
-  /// The resource name of the evaluation. Format:
-  /// `projects//locations//generators// evaluations/`
-  ///
-  /// Output only.
   core.String? name;
-
-  /// Only available when the summarization generator is provided.
-  ///
-  /// Output only.
+  core.bool? satisfiesPzi;
+  core.bool? satisfiesPzs;
   GoogleCloudDialogflowV2SummarizationEvaluationMetrics? summarizationMetrics;
 
   GoogleCloudDialogflowV2GeneratorEvaluation({
@@ -19195,6 +15731,8 @@ class GoogleCloudDialogflowV2GeneratorEvaluation {
     this.generatorEvaluationConfig,
     this.initialGenerator,
     this.name,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
     this.summarizationMetrics,
   });
 
@@ -19225,6 +15763,8 @@ class GoogleCloudDialogflowV2GeneratorEvaluation {
                 )
                 : null,
         name: json_['name'] as core.String?,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
         summarizationMetrics:
             json_.containsKey('summarizationMetrics')
                 ? GoogleCloudDialogflowV2SummarizationEvaluationMetrics.fromJson(
@@ -19243,29 +15783,17 @@ class GoogleCloudDialogflowV2GeneratorEvaluation {
       'generatorEvaluationConfig': generatorEvaluationConfig!,
     if (initialGenerator != null) 'initialGenerator': initialGenerator!,
     if (name != null) 'name': name!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
     if (summarizationMetrics != null)
       'summarizationMetrics': summarizationMetrics!,
   };
 }
 
-/// Generator evaluation input config.
 class GoogleCloudDialogflowV2GeneratorEvaluationConfig {
-  /// The config/source of input data.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig?
   inputDataConfig;
-
-  /// The output Cloud Storage bucket path to store eval files, e.g.
-  /// per_summary_accuracy_score report.
-  ///
-  /// This path is provided by customer and files stored in it are visible to
-  /// customer, no internal data should be stored in this path.
-  ///
-  /// Required.
   core.String? outputGcsBucketPath;
-
-  /// Evaluation configs for summarization generator.
   GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig?
   summarizationConfig;
 
@@ -19303,21 +15831,8 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfig {
   };
 }
 
-/// The distinctive configs for Agent Assist conversations as the conversation
-/// source.
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig {
-  /// The end of the time range for conversations to be evaluated.
-  ///
-  /// Only conversations ended at or before this timestamp will be sampled.
-  ///
-  /// Required.
   core.String? endTime;
-
-  /// The start of the time range for conversations to be evaluated.
-  ///
-  /// Only conversations created at or after this timestamp will be sampled.
-  ///
-  /// Required.
   core.String? startTime;
 
   GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig({
@@ -19338,96 +15853,44 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig
   };
 }
 
-/// The distinctive configs for dataset as the conversation source.
-class GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig {
-  /// The identifier of the dataset to be evaluated.
-  ///
-  /// Format: `projects//locations//datasets/`.
-  ///
-  /// Required.
-  core.String? dataset;
+typedef GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig =
+    $Shared17;
 
-  GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig({
-    this.dataset,
-  });
-
-  GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig.fromJson(
-    core.Map json_,
-  ) : this(dataset: json_['dataset'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataset != null) 'dataset': dataset!,
-  };
-}
-
-/// Input data config details
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
-  /// The distinctive configs for Agent Assist conversations as the conversation
-  /// source.
   GoogleCloudDialogflowV2GeneratorEvaluationConfigAgentAssistInputDataConfig?
   agentAssistInputDataConfig;
-
-  /// The distinctive configs for dataset as the conversation source.
   GoogleCloudDialogflowV2GeneratorEvaluationConfigDatasetInputDataConfig?
   datasetInputDataConfig;
-
-  /// The end timestamp to fetch conversation data.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? endTime;
 
-  /// The source type of input data.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "INPUT_DATA_SOURCE_TYPE_UNSPECIFIED" : Unspecified InputDataSourceType.
-  /// Should not be used.
-  /// - "AGENT_ASSIST_CONVERSATIONS" : Fetch data from Agent Assist storage. If
-  /// this source type is chosen, input_data_config.start_time and
-  /// input_data_config.end_timestamp must be provided.
-  /// - "INSIGHTS_CONVERSATIONS" : Fetch data from Insights storage. If this
-  /// source type is chosen, input_data_config.start_time and
-  /// input_data_config.end_timestamp must be provided.
+  /// - "INPUT_DATA_SOURCE_TYPE_UNSPECIFIED"
+  /// - "AGENT_ASSIST_CONVERSATIONS"
+  /// - "INSIGHTS_CONVERSATIONS"
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? inputDataSourceType;
-
-  /// Whether the summary generation is allowed when the pre-existing qualified
-  /// summaries are insufficient to cover the sample size.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.bool? isSummaryGenerationAllowed;
-
-  /// Desired number of conversation-summary pairs to be evaluated.
-  ///
-  /// Optional.
   core.int? sampleSize;
-
-  /// The start timestamp to fetch conversation data.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? startTime;
 
-  /// Option to control whether summaries are generated during evaluation.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "SUMMARY_GENERATION_OPTION_UNSPECIFIED" : Default option will not be
-  /// used
-  /// - "ALWAYS_GENERATE" : Always Generate summary for all conversations.
-  /// - "GENERATE_IF_MISSING" : Gnerate only missing summaries.
-  /// - "DO_NOT_GENERATE" : Do not generate new summaries. Only use existing
-  /// summaries found.
+  /// - "SUMMARY_GENERATION_OPTION_UNSPECIFIED"
+  /// - "ALWAYS_GENERATE"
+  /// - "GENERATE_IF_MISSING"
+  /// - "DO_NOT_GENERATE"
   core.String? summaryGenerationOption;
 
   GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig({
@@ -19485,47 +15948,23 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigInputDataConfig {
   };
 }
 
-/// Evaluation configs for summarization generator.
 class GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig {
-  /// Version for summarization accuracy.
-  ///
-  /// This will determine the prompt and model used at backend.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? accuracyEvaluationVersion;
-
-  /// Version for summarization completeness.
-  ///
-  /// This will determine the prompt and model used at backend.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.String? completenessEvaluationVersion;
-
-  /// Enable accuracy evaluation.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.bool? enableAccuracyEvaluation;
-
-  /// Enable completeness evaluation.
-  ///
-  /// Optional.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.bool? enableCompletenessEvaluation;
-
-  /// Version for summarization evaluation.
-  ///
-  /// Output only.
   core.String? evaluatorVersion;
 
   GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig({
@@ -19563,25 +16002,15 @@ class GoogleCloudDialogflowV2GeneratorEvaluationConfigSummarizationConfig {
   };
 }
 
-/// Suggestion generated using a Generator.
 class GoogleCloudDialogflowV2GeneratorSuggestion {
-  /// Free form suggestion.
-  ///
-  /// Optional.
+  GoogleCloudDialogflowV2AgentCoachingSuggestion? agentCoachingSuggestion;
   GoogleCloudDialogflowV2FreeFormSuggestion? freeFormSuggestion;
-
-  /// Suggested summary.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2SummarySuggestion? summarySuggestion;
-
-  /// List of request and response for tool calls executed.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo>?
   toolCallInfo;
 
   GoogleCloudDialogflowV2GeneratorSuggestion({
+    this.agentCoachingSuggestion,
     this.freeFormSuggestion,
     this.summarySuggestion,
     this.toolCallInfo,
@@ -19589,6 +16018,13 @@ class GoogleCloudDialogflowV2GeneratorSuggestion {
 
   GoogleCloudDialogflowV2GeneratorSuggestion.fromJson(core.Map json_)
     : this(
+        agentCoachingSuggestion:
+            json_.containsKey('agentCoachingSuggestion')
+                ? GoogleCloudDialogflowV2AgentCoachingSuggestion.fromJson(
+                  json_['agentCoachingSuggestion']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         freeFormSuggestion:
             json_.containsKey('freeFormSuggestion')
                 ? GoogleCloudDialogflowV2FreeFormSuggestion.fromJson(
@@ -19615,22 +16051,16 @@ class GoogleCloudDialogflowV2GeneratorSuggestion {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (agentCoachingSuggestion != null)
+      'agentCoachingSuggestion': agentCoachingSuggestion!,
     if (freeFormSuggestion != null) 'freeFormSuggestion': freeFormSuggestion!,
     if (summarySuggestion != null) 'summarySuggestion': summarySuggestion!,
     if (toolCallInfo != null) 'toolCallInfo': toolCallInfo!,
   };
 }
 
-/// Request and response for a tool call.
 class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
-  /// Request for a tool call.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2ToolCall? toolCall;
-
-  /// Response for a tool call.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2ToolCallResult? toolCallResult;
 
   GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo({
@@ -19662,24 +16092,13 @@ class GoogleCloudDialogflowV2GeneratorSuggestionToolCallInfo {
   };
 }
 
-/// Defines the Human Agent Assist to connect to a conversation.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
-  /// Configuration for agent assistance of end user participant.
-  ///
-  /// Currently, this feature is not general available, please contact Google to
-  /// get access.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig?
   endUserSuggestionConfig;
-
-  /// Configuration for agent assistance of human agent participant.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig?
   humanAgentSuggestionConfig;
-
-  /// Configuration for message analysis.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig?
   messageAnalysisConfig;
-
-  /// Pub/Sub topic on which to publish new agent assistant events.
   GoogleCloudDialogflowV2NotificationConfig? notificationConfig;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfig({
@@ -19732,21 +16151,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfig {
   };
 }
 
-/// Custom conversation models used in agent assist feature.
-///
-/// Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY,
-/// CONVERSATION_SUMMARIZATION.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
-  /// Version of current baseline model.
-  ///
-  /// It will be ignored if model is set. Valid versions are: - Article
-  /// Suggestion baseline model: - 0.9 - 1.0 (default) - Summarization baseline
-  /// model: - 1.0
   core.String? baselineModelVersion;
-
-  /// Conversation model resource name.
-  ///
-  /// Format: `projects//conversationModels/`.
   core.String? model;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig({
@@ -19768,10 +16174,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig {
   };
 }
 
-/// Config to process conversation.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig {
-  /// Number of recent non-small-talk sentences to use as context for article
-  /// and FAQ suggestion
   core.int? recentSentencesCount;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig({
@@ -19788,35 +16191,15 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig 
   };
 }
 
-/// Configuration for analyses to run on each conversation message.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
-  /// Enable entity extraction in conversation messages on
-  /// [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
-  ///
-  /// If unspecified, defaults to false. Currently, this feature is not general
-  /// available, please contact Google to get access.
   core.bool? enableEntityExtraction;
-
-  /// Enable sentiment analysis in conversation messages on
-  /// [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages).
-  ///
-  /// If unspecified, defaults to false. Sentiment analysis inspects user input
-  /// and identifies the prevailing subjective opinion, especially to determine
-  /// a user's attitude as positive, negative, or neutral:
-  /// https://cloud.google.com/natural-language/docs/basics#sentiment_analysis
-  /// For Participants.StreamingAnalyzeContent method, result will be in
-  /// StreamingAnalyzeContentResponse.message.SentimentAnalysisResult. For
-  /// Participants.AnalyzeContent method, result will be in
-  /// AnalyzeContentResponse.message.SentimentAnalysisResult For
-  /// Conversations.ListMessages method, result will be in
-  /// ListMessagesResponse.messages.SentimentAnalysisResult If Pub/Sub
-  /// notification is configured, result will be in
-  /// ConversationEvent.new_message_payload.SentimentAnalysisResult.
   core.bool? enableSentimentAnalysis;
+  core.bool? enableSentimentAnalysisV3;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig({
     this.enableEntityExtraction,
     this.enableSentimentAnalysis,
+    this.enableSentimentAnalysisV3,
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig.fromJson(
@@ -19824,6 +16207,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
   ) : this(
         enableEntityExtraction: json_['enableEntityExtraction'] as core.bool?,
         enableSentimentAnalysis: json_['enableSentimentAnalysis'] as core.bool?,
+        enableSentimentAnalysisV3:
+            json_['enableSentimentAnalysisV3'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -19831,53 +16216,31 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfig {
       'enableEntityExtraction': enableEntityExtraction!,
     if (enableSentimentAnalysis != null)
       'enableSentimentAnalysis': enableSentimentAnalysis!,
+    if (enableSentimentAnalysisV3 != null)
+      'enableSentimentAnalysisV3': enableSentimentAnalysisV3!,
   };
 }
 
-/// Detail human agent assistant config.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
-  /// When disable_high_latency_features_sync_delivery is true and using the
-  /// AnalyzeContent API, we will not deliver the responses from high latency
-  /// features in the API response.
-  ///
-  /// The human_agent_assistant_config.notification_config must be configured
-  /// and enable_event_based_suggestion must be set to true to receive the
-  /// responses from high latency features in Pub/Sub. High latency feature(s):
-  /// KNOWLEDGE_ASSIST
-  ///
-  /// Optional.
   core.bool? disableHighLatencyFeaturesSyncDelivery;
-
-  /// Configuration of different suggestion features.
-  ///
-  /// One feature can have only one config.
+  core.bool? enableAsyncToolCall;
   core.List<
     GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig
   >?
   featureConfigs;
-
-  /// List of various generator resource names used in the conversation profile.
-  ///
-  /// Optional.
   core.List<core.String>? generators;
-
-  /// If `group_suggestion_responses` is false, and there are multiple
-  /// `feature_configs` in `event based suggestion` or StreamingAnalyzeContent,
-  /// we will try to deliver suggestions to customers as soon as we get new
-  /// suggestion.
-  ///
-  /// Different type of suggestions based on the same context will be in
-  /// separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If
-  /// `group_suggestion_responses` set to true. All the suggestions to the same
-  /// participant based on the same context will be grouped into a single
-  /// Pub/Sub event or StreamingAnalyzeContentResponse.
   core.bool? groupSuggestionResponses;
+  core.bool? skipEmptyEventBasedSuggestion;
+  core.bool? useUnredactedConversationData;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig({
     this.disableHighLatencyFeaturesSyncDelivery,
+    this.enableAsyncToolCall,
     this.featureConfigs,
     this.generators,
     this.groupSuggestionResponses,
+    this.skipEmptyEventBasedSuggestion,
+    this.useUnredactedConversationData,
   });
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig.fromJson(
@@ -19885,6 +16248,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
   ) : this(
         disableHighLatencyFeaturesSyncDelivery:
             json_['disableHighLatencyFeaturesSyncDelivery'] as core.bool?,
+        enableAsyncToolCall: json_['enableAsyncToolCall'] as core.bool?,
         featureConfigs:
             (json_['featureConfigs'] as core.List?)
                 ?.map(
@@ -19900,75 +16264,44 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfig {
                 .toList(),
         groupSuggestionResponses:
             json_['groupSuggestionResponses'] as core.bool?,
+        skipEmptyEventBasedSuggestion:
+            json_['skipEmptyEventBasedSuggestion'] as core.bool?,
+        useUnredactedConversationData:
+            json_['useUnredactedConversationData'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (disableHighLatencyFeaturesSyncDelivery != null)
       'disableHighLatencyFeaturesSyncDelivery':
           disableHighLatencyFeaturesSyncDelivery!,
+    if (enableAsyncToolCall != null)
+      'enableAsyncToolCall': enableAsyncToolCall!,
     if (featureConfigs != null) 'featureConfigs': featureConfigs!,
     if (generators != null) 'generators': generators!,
     if (groupSuggestionResponses != null)
       'groupSuggestionResponses': groupSuggestionResponses!,
+    if (skipEmptyEventBasedSuggestion != null)
+      'skipEmptyEventBasedSuggestion': skipEmptyEventBasedSuggestion!,
+    if (useUnredactedConversationData != null)
+      'useUnredactedConversationData': useUnredactedConversationData!,
   };
 }
 
-/// Config for suggestion features.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
-  /// Configs of custom conversation model.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig?
   conversationModelConfig;
-
-  /// Configs for processing conversation.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig?
   conversationProcessConfig;
-
-  /// Disable the logging of search queries sent by human agents.
-  ///
-  /// It can prevent those queries from being stored at answer records.
-  /// Supported features: KNOWLEDGE_SEARCH.
-  ///
-  /// Optional.
   core.bool? disableAgentQueryLogging;
-
-  /// Enable including conversation context during query answer generation.
-  ///
-  /// Supported features: KNOWLEDGE_SEARCH.
-  ///
-  /// Optional.
   core.bool? enableConversationAugmentedQuery;
-
-  /// Automatically iterates all participants and tries to compile suggestions.
-  ///
-  /// Supported features: ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST,
-  /// KNOWLEDGE_ASSIST.
   core.bool? enableEventBasedSuggestion;
-
-  /// Enable query suggestion only.
-  ///
-  /// Supported features: KNOWLEDGE_ASSIST
-  ///
-  /// Optional.
   core.bool? enableQuerySuggestionOnly;
-
-  /// Enable query suggestion even if we can't find its answer.
-  ///
-  /// By default, queries are suggested only if we find its answer. Supported
-  /// features: KNOWLEDGE_ASSIST
-  ///
-  /// Optional.
   core.bool? enableQuerySuggestionWhenNoAnswer;
-
-  /// Configs of query.
+  core.bool? enableResponseDebugInfo;
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig?
   queryConfig;
-
-  /// The suggestion feature.
+  GoogleCloudDialogflowV2RaiSettings? raiSettings;
   GoogleCloudDialogflowV2SuggestionFeature? suggestionFeature;
-
-  /// Settings of suggestion trigger.
-  ///
-  /// Currently, only ARTICLE_SUGGESTION and FAQ will use this field.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings?
   suggestionTriggerSettings;
 
@@ -19980,7 +16313,9 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
     this.enableEventBasedSuggestion,
     this.enableQuerySuggestionOnly,
     this.enableQuerySuggestionWhenNoAnswer,
+    this.enableResponseDebugInfo,
     this.queryConfig,
+    this.raiSettings,
     this.suggestionFeature,
     this.suggestionTriggerSettings,
   });
@@ -20012,10 +16347,17 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
             json_['enableQuerySuggestionOnly'] as core.bool?,
         enableQuerySuggestionWhenNoAnswer:
             json_['enableQuerySuggestionWhenNoAnswer'] as core.bool?,
+        enableResponseDebugInfo: json_['enableResponseDebugInfo'] as core.bool?,
         queryConfig:
             json_.containsKey('queryConfig')
                 ? GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig.fromJson(
                   json_['queryConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        raiSettings:
+            json_.containsKey('raiSettings')
+                ? GoogleCloudDialogflowV2RaiSettings.fromJson(
+                  json_['raiSettings'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         suggestionFeature:
@@ -20049,72 +16391,28 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig {
       'enableQuerySuggestionOnly': enableQuerySuggestionOnly!,
     if (enableQuerySuggestionWhenNoAnswer != null)
       'enableQuerySuggestionWhenNoAnswer': enableQuerySuggestionWhenNoAnswer!,
+    if (enableResponseDebugInfo != null)
+      'enableResponseDebugInfo': enableResponseDebugInfo!,
     if (queryConfig != null) 'queryConfig': queryConfig!,
+    if (raiSettings != null) 'raiSettings': raiSettings!,
     if (suggestionFeature != null) 'suggestionFeature': suggestionFeature!,
     if (suggestionTriggerSettings != null)
       'suggestionTriggerSettings': suggestionTriggerSettings!,
   };
 }
 
-/// Config for suggestion query.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
-  /// Confidence threshold of query result.
-  ///
-  /// Agent Assist gives each suggestion a score in the range \[0.0, 1.0\],
-  /// based on the relevance between the suggestion and the current conversation
-  /// context. A score of 0.0 has no relevance, while a score of 1.0 has high
-  /// relevance. Only suggestions with a score greater than or equal to the
-  /// value of this field are included in the results. For a baseline model (the
-  /// default), the recommended value is in the range \[0.05, 0.1\]. For a
-  /// custom model, there is no recommended value. Tune this value by starting
-  /// from a very low value and slowly increasing until you have desired
-  /// results. If this field is not set, it defaults to 0.0, which means that
-  /// all suggestions are returned. Supported features: ARTICLE_SUGGESTION, FAQ,
-  /// SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST,
-  /// ENTITY_EXTRACTION.
   core.double? confidenceThreshold;
-
-  /// Determines how recent conversation context is filtered when generating
-  /// suggestions.
-  ///
-  /// If unspecified, no messages will be dropped.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings?
   contextFilterSettings;
-
-  /// The number of recent messages to include in the context.
-  ///
-  /// Supported features: KNOWLEDGE_ASSIST.
-  ///
-  /// Optional.
   core.int? contextSize;
-
-  /// Query from Dialogflow agent.
-  ///
-  /// It is used by DIALOGFLOW_ASSIST.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource?
   dialogflowQuerySource;
-
-  /// Query from knowledge base document.
-  ///
-  /// It is used by: SMART_REPLY, SMART_COMPOSE.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource?
   documentQuerySource;
-
-  /// Query from knowledgebase.
-  ///
-  /// It is used by: ARTICLE_SUGGESTION, FAQ.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource?
   knowledgeBaseQuerySource;
-
-  /// Maximum number of results to return.
-  ///
-  /// Currently, if unset, defaults to 10. And the max number is 20.
   core.int? maxResults;
-
-  /// The customized sections chosen to return when requesting a summary of a
-  /// conversation.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections?
   sections;
 
@@ -20189,17 +16487,9 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfig {
   };
 }
 
-/// Settings that determine how to filter recent conversation context when
-/// generating suggestions.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings {
-  /// If set to true, the last message from virtual agent (hand off message) and
-  /// the message before it (trigger message of hand off) are dropped.
   core.bool? dropHandoffMessages;
-
-  /// If set to true, all messages from ivr stage are dropped.
   core.bool? dropIvrMessages;
-
-  /// If set to true, all messages from virtual agent are dropped.
   core.bool? dropVirtualAgentMessages;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettings({
@@ -20226,22 +16516,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigConte
   };
 }
 
-/// Dialogflow source setting.
-///
-/// Supported feature: DIALOGFLOW_ASSIST.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource {
-  /// The name of a Dialogflow virtual agent used for end user side intent
-  /// detection and suggestion.
-  ///
-  /// Format: `projects//locations//agent`. When multiple agents are allowed in
-  /// the same Dialogflow project.
-  ///
-  /// Required.
   core.String? agent;
-
-  /// The Dialogflow assist configuration for human agent.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig?
   humanAgentSideConfig;
 
@@ -20270,14 +16546,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
   };
 }
 
-/// The configuration used for human agent side Dialogflow assist suggestion.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig {
-  /// The name of a dialogflow virtual agent used for intent detection and
-  /// suggestion triggered by human agent.
-  ///
-  /// Format: `projects//locations//agent`.
-  ///
-  /// Optional.
   core.String? agent;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig({
@@ -20293,16 +16562,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialo
   };
 }
 
-/// Document source settings.
-///
-/// Supported features: SMART_REPLY, SMART_COMPOSE.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource {
-  /// Knowledge documents to query from.
-  ///
-  /// Format: `projects//locations//knowledgeBases//documents/`. Currently, at
-  /// most 5 documents are supported.
-  ///
-  /// Required.
   core.List<core.String>? documents;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource({
@@ -20323,16 +16583,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocum
   };
 }
 
-/// Knowledge base source settings.
-///
-/// Supported features: ARTICLE_SUGGESTION, FAQ.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource {
-  /// Knowledge bases to query.
-  ///
-  /// Format: `projects//locations//knowledgeBases/`. Currently, at most 5
-  /// knowledge bases are supported.
-  ///
-  /// Required.
   core.List<core.String>? knowledgeBases;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource({
@@ -20353,17 +16604,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
   };
 }
 
-/// Custom sections to return when requesting a summary of a conversation.
-///
-/// This is only supported when `baseline_model_version` == '2.0'. Supported
-/// features: CONVERSATION_SUMMARIZATION, CONVERSATION_SUMMARIZATION_VOICE.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections {
-  /// The selected sections chosen to return when requesting a summary of a
-  /// conversation.
-  ///
-  /// A duplicate selected section will be treated as a single selected section.
-  /// If section types are not provided, the default will be {SITUATION, ACTION,
-  /// RESULT}.
   core.List<core.String>? sectionTypes;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSections({
@@ -20384,12 +16625,8 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigSecti
   };
 }
 
-/// Settings of suggestion trigger.
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings {
-  /// Do not trigger if last utterance is small talk.
   core.bool? noSmalltalk;
-
-  /// Only trigger suggestion if participant role of last utterance is END_USER.
   core.bool? onlyEndUser;
 
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings({
@@ -20410,17 +16647,9 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettings 
   };
 }
 
-/// Defines the hand off to a live agent, typically on which external agent
-/// service provider to connect to a conversation.
-///
-/// Currently, this feature is not general available, please contact Google to
-/// get access.
 class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
-  /// Uses [LivePerson](https://www.liveperson.com).
   GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig?
   livePersonConfig;
-
-  /// Uses Salesforce Live Agent.
   GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig?
   salesforceLiveAgentConfig;
 
@@ -20454,13 +16683,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
   };
 }
 
-/// Configuration specific to [LivePerson](https://www.liveperson.com).
 class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
-  /// Account number of the LivePerson account to connect.
-  ///
-  /// This is the account number you input at the login page.
-  ///
-  /// Required.
   core.String? accountNumber;
 
   GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig({
@@ -20476,31 +16699,10 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig {
   };
 }
 
-/// Configuration specific to Salesforce Live Agent.
 class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
-  /// Live Agent chat button ID.
-  ///
-  /// Required.
   core.String? buttonId;
-
-  /// Live Agent deployment ID.
-  ///
-  /// Required.
   core.String? deploymentId;
-
-  /// Domain of the Live Agent endpoint for this agent.
-  ///
-  /// You can find the endpoint URL in the `Live Agent settings` page. For
-  /// example if URL has the form
-  /// https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in
-  /// d.la4-c2-phx.salesforceliveagent.com.
-  ///
-  /// Required.
   core.String? endpointDomain;
-
-  /// The organization ID of the Salesforce account.
-  ///
-  /// Required.
   core.String? organizationId;
 
   GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig({
@@ -20527,48 +16729,9 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig {
   };
 }
 
-/// The request message for Agents.ImportAgent.
-class GoogleCloudDialogflowV2ImportAgentRequest {
-  /// Zip compressed raw byte content for agent.
-  core.String? agentContent;
-  core.List<core.int> get agentContentAsBytes =>
-      convert.base64.decode(agentContent!);
+typedef GoogleCloudDialogflowV2ImportAgentRequest = $AgentRequest;
 
-  set agentContentAsBytes(core.List<core.int> bytes_) {
-    agentContent = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The URI to a Google Cloud Storage file containing the agent to import.
-  ///
-  /// Note: The URI must start with "gs://". Dialogflow performs a read
-  /// operation for the Cloud Storage object on the caller's behalf, so your
-  /// request authentication must have read permissions for the object. For more
-  /// information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  core.String? agentUri;
-
-  GoogleCloudDialogflowV2ImportAgentRequest({this.agentContent, this.agentUri});
-
-  GoogleCloudDialogflowV2ImportAgentRequest.fromJson(core.Map json_)
-    : this(
-        agentContent: json_['agentContent'] as core.String?,
-        agentUri: json_['agentUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentContent != null) 'agentContent': agentContent!,
-    if (agentUri != null) 'agentUri': agentUri!,
-  };
-}
-
-/// The request message for ConversationDatasets.ImportConversationData.
 class GoogleCloudDialogflowV2ImportConversationDataRequest {
-  /// Configuration describing where to import data from.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2InputConfig? inputConfig;
 
   GoogleCloudDialogflowV2ImportConversationDataRequest({this.inputConfig});
@@ -20588,24 +16751,9 @@ class GoogleCloudDialogflowV2ImportConversationDataRequest {
   };
 }
 
-/// The template used for importing documents.
 class GoogleCloudDialogflowV2ImportDocumentTemplate {
-  /// The knowledge type of document content.
-  ///
-  /// Required.
   core.List<core.String>? knowledgeTypes;
-
-  /// Metadata for the document.
-  ///
-  /// The metadata supports arbitrary key-value pairs. Suggested use cases
-  /// include storing a document's title, an external URL distinct from the
-  /// document's content_uri, etc. The max size of a `key` or a `value` of the
-  /// metadata is 1024 bytes.
   core.Map<core.String, core.String>? metadata;
-
-  /// The MIME type of the document.
-  ///
-  /// Required.
   core.String? mimeType;
 
   GoogleCloudDialogflowV2ImportDocumentTemplate({
@@ -20632,24 +16780,9 @@ class GoogleCloudDialogflowV2ImportDocumentTemplate {
   };
 }
 
-/// Request message for Documents.ImportDocuments.
 class GoogleCloudDialogflowV2ImportDocumentsRequest {
-  /// Document template used for importing all the documents.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2ImportDocumentTemplate? documentTemplate;
-
-  /// The Google Cloud Storage location for the documents.
-  ///
-  /// The path can include a wildcard. These URIs may have the forms `gs:///`.
-  /// `gs:/// / * .`.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2GcsSources? gcsSource;
-
-  /// Whether to import custom metadata from Google Cloud Storage.
-  ///
-  /// Only valid when the document source is Google Cloud Storage URI.
   core.bool? importGcsCustomMetadata;
 
   GoogleCloudDialogflowV2ImportDocumentsRequest({
@@ -20684,48 +16817,10 @@ class GoogleCloudDialogflowV2ImportDocumentsRequest {
   };
 }
 
-/// The parameters of inference.
 class GoogleCloudDialogflowV2InferenceParameter {
-  /// Maximum number of the output tokens for the generator.
-  ///
-  /// Optional.
   core.int? maxOutputTokens;
-
-  /// Controls the randomness of LLM predictions.
-  ///
-  /// Low temperature = less random. High temperature = more random. If unset
-  /// (or 0), uses a default value of 0.
-  ///
-  /// Optional.
   core.double? temperature;
-
-  /// Top-k changes how the model selects tokens for output.
-  ///
-  /// A top-k of 1 means the selected token is the most probable among all
-  /// tokens in the model's vocabulary (also called greedy decoding), while a
-  /// top-k of 3 means that the next token is selected from among the 3 most
-  /// probable tokens (using temperature). For each token selection step, the
-  /// top K tokens with the highest probabilities are sampled. Then tokens are
-  /// further filtered based on topP with the final token selected using
-  /// temperature sampling. Specify a lower value for less random responses and
-  /// a higher value for more random responses. Acceptable value is \[1, 40\],
-  /// default to 40.
-  ///
-  /// Optional.
   core.int? topK;
-
-  /// Top-p changes how the model selects tokens for output.
-  ///
-  /// Tokens are selected from most K (see topK parameter) probable to least
-  /// until the sum of their probabilities equals the top-p value. For example,
-  /// if tokens A, B, and C have a probability of 0.3, 0.2, and 0.1 and the
-  /// top-p value is 0.5, then the model will select either A or B as the next
-  /// token (using temperature) and doesn't consider C. The default top-p value
-  /// is 0.95. Specify a lower value for less random responses and a higher
-  /// value for more random responses. Acceptable value is \[0.0, 1.0\], default
-  /// to 0.95.
-  ///
-  /// Optional.
   core.double? topP;
 
   GoogleCloudDialogflowV2InferenceParameter({
@@ -20751,15 +16846,7 @@ class GoogleCloudDialogflowV2InferenceParameter {
   };
 }
 
-/// The request message for ConversationsService.IngestContextReferences.
 class GoogleCloudDialogflowV2IngestContextReferencesRequest {
-  /// The context references to ingest.
-  ///
-  /// The key is the name of the context reference and the value contains the
-  /// contents of the context reference. The key is used to incorporate ingested
-  /// context references to enhance the generator.
-  ///
-  /// Required.
   core.Map<core.String, GoogleCloudDialogflowV2ConversationContextReference>?
   contextReferences;
 
@@ -20786,9 +16873,7 @@ class GoogleCloudDialogflowV2IngestContextReferencesRequest {
   };
 }
 
-/// The response message for ConversationsService.IngestContextReferences.
 class GoogleCloudDialogflowV2IngestContextReferencesResponse {
-  /// All context references ingested.
   core.Map<core.String, GoogleCloudDialogflowV2ConversationContextReference>?
   ingestedContextReferences;
 
@@ -20817,16 +16902,79 @@ class GoogleCloudDialogflowV2IngestContextReferencesResponse {
   };
 }
 
-/// The request to initialize a location-level encryption specification.
+class GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo {
+  core.bool? contextReferenceRetrieved;
+  core.List<
+    GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo
+  >?
+  ingestedParametersDebugInfo;
+  core.bool? projectNotAllowlisted;
+
+  GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo({
+    this.contextReferenceRetrieved,
+    this.ingestedParametersDebugInfo,
+    this.projectNotAllowlisted,
+  });
+
+  GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
+    core.Map json_,
+  ) : this(
+        contextReferenceRetrieved:
+            json_['contextReferenceRetrieved'] as core.bool?,
+        ingestedParametersDebugInfo:
+            (json_['ingestedParametersDebugInfo'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        projectNotAllowlisted: json_['projectNotAllowlisted'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (contextReferenceRetrieved != null)
+      'contextReferenceRetrieved': contextReferenceRetrieved!,
+    if (ingestedParametersDebugInfo != null)
+      'ingestedParametersDebugInfo': ingestedParametersDebugInfo!,
+    if (projectNotAllowlisted != null)
+      'projectNotAllowlisted': projectNotAllowlisted!,
+  };
+}
+
+class GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo {
+  ///
+  /// Possible string values are:
+  /// - "INGESTION_STATUS_UNSPECIFIED"
+  /// - "INGESTION_STATUS_SUCCEEDED"
+  /// - "INGESTION_STATUS_CONTEXT_NOT_AVAILABLE"
+  /// - "INGESTION_STATUS_PARSE_FAILED"
+  /// - "INGESTION_STATUS_INVALID_ENTRY"
+  /// - "INGESTION_STATUS_INVALID_FORMAT"
+  /// - "INGESTION_STATUS_LANGUAGE_MISMATCH"
+  core.String? ingestionStatus;
+  core.String? parameter;
+
+  GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo({
+    this.ingestionStatus,
+    this.parameter,
+  });
+
+  GoogleCloudDialogflowV2IngestedContextReferenceDebugInfoIngestedParameterDebugInfo.fromJson(
+    core.Map json_,
+  ) : this(
+        ingestionStatus: json_['ingestionStatus'] as core.String?,
+        parameter: json_['parameter'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (ingestionStatus != null) 'ingestionStatus': ingestionStatus!,
+    if (parameter != null) 'parameter': parameter!,
+  };
+}
+
 class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
-  /// The encryption spec used for CMEK encryption.
-  ///
-  /// It is required that the kms key is in the same region as the endpoint. The
-  /// same key will be used for all provisioned resources, if encryption is
-  /// available. If the kms_key_name is left empty, no encryption will be
-  /// enforced.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2EncryptionSpec? encryptionSpec;
 
   GoogleCloudDialogflowV2InitializeEncryptionSpecRequest({this.encryptionSpec});
@@ -20848,155 +16996,40 @@ class GoogleCloudDialogflowV2InitializeEncryptionSpecRequest {
   };
 }
 
-/// Instructs the speech recognizer how to process the audio content.
 class GoogleCloudDialogflowV2InputAudioConfig {
-  /// Audio encoding of the audio content to process.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified.
-  /// - "AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed little-endian
-  /// samples (Linear PCM).
-  /// - "AUDIO_ENCODING_FLAC" :
-  /// \[`FLAC`\](https://xiph.org/flac/documentation.html) (Free Lossless Audio
-  /// Codec) is the recommended encoding because it is lossless (therefore
-  /// recognition is not compromised) and requires only about half the bandwidth
-  /// of `LINEAR16`. `FLAC` stream encoding supports 16-bit and 24-bit samples,
-  /// however, not all fields in `STREAMINFO` are supported.
-  /// - "AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio samples
-  /// using G.711 PCMU/mu-law.
-  /// - "AUDIO_ENCODING_AMR" : Adaptive Multi-Rate Narrowband codec.
-  /// `sample_rate_hertz` must be 8000.
-  /// - "AUDIO_ENCODING_AMR_WB" : Adaptive Multi-Rate Wideband codec.
-  /// `sample_rate_hertz` must be 16000.
-  /// - "AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio frames in Ogg container
-  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be
-  /// 16000.
-  /// - "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE" : Although the use of lossy
-  /// encodings is not recommended, if a very low bitrate encoding is required,
-  /// `OGG_OPUS` is highly preferred over Speex encoding. The
-  /// [Speex](https://speex.org/) encoding supported by Dialogflow API has a
-  /// header byte in each block, as in MIME type
-  /// `audio/x-speex-with-header-byte`. It is a variant of the RTP Speex
-  /// encoding defined in [RFC 5574](https://tools.ietf.org/html/rfc5574). The
-  /// stream is a sequence of blocks, one block per RTP packet. Each block
-  /// starts with a byte containing the length of the block, in bytes, followed
-  /// by one or more frames of Speex data, padded to an integral number of bytes
-  /// (octets) as specified in RFC 5574. In other words, each RTP header is
-  /// replaced with a single byte containing the block length. Only Speex
-  /// wideband is supported. `sample_rate_hertz` must be 16000.
-  /// - "AUDIO_ENCODING_ALAW" : 8-bit samples that compand 13-bit audio samples
-  /// using G.711 PCMU/a-law.
+  /// - "AUDIO_ENCODING_UNSPECIFIED"
+  /// - "AUDIO_ENCODING_LINEAR_16"
+  /// - "AUDIO_ENCODING_FLAC"
+  /// - "AUDIO_ENCODING_MULAW"
+  /// - "AUDIO_ENCODING_AMR"
+  /// - "AUDIO_ENCODING_AMR_WB"
+  /// - "AUDIO_ENCODING_OGG_OPUS"
+  /// - "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE"
+  /// - "AUDIO_ENCODING_ALAW"
   core.String? audioEncoding;
-
-  /// Only used in Participants.AnalyzeContent and
-  /// Participants.StreamingAnalyzeContent.
-  ///
-  /// If `false` and recognition doesn't return any result, trigger
-  /// `NO_SPEECH_RECOGNIZED` event to Dialogflow agent.
   core.bool? disableNoSpeechRecognizedEvent;
-
-  /// Enable automatic punctuation option at the speech backend.
   core.bool? enableAutomaticPunctuation;
-
-  /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
-  /// with information about the recognized speech words, e.g. start and end
-  /// time offsets.
-  ///
-  /// If false or unspecified, Speech doesn't return any word-level information.
   core.bool? enableWordInfo;
-
-  /// The language of the supplied audio.
-  ///
-  /// Dialogflow does not do translations. See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// for a list of the currently supported language codes. Note that queries in
-  /// the same session do not necessarily need to specify the same language. If
-  /// not set, the language is inferred from the ConversationProfile.stt_config.
-  ///
-  /// Required.
   core.String? languageCode;
-
-  /// Which Speech model to select for the given request.
-  ///
-  /// For more information, see
-  /// [Speech models](https://cloud.google.com/dialogflow/es/docs/speech-models).
-  ///
-  /// Optional.
   core.String? model;
 
-  /// Which variant of the Speech model to use.
+  ///
   /// Possible string values are:
-  /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED" : No model variant specified. In this
-  /// case Dialogflow defaults to USE_BEST_AVAILABLE.
-  /// - "USE_BEST_AVAILABLE" : Use the best available variant of the Speech
-  /// model that the caller is eligible for. Please see the
-  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
-  /// for how to make your project eligible for enhanced models.
-  /// - "USE_STANDARD" : Use standard model variant even if an enhanced model is
-  /// available. See the
-  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
-  /// for details about enhanced models.
-  /// - "USE_ENHANCED" : Use an enhanced model variant: * If an enhanced variant
-  /// does not exist for the given model and request language, Dialogflow falls
-  /// back to the standard variant. The
-  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
-  /// describes which models have enhanced variants. * If the API caller isn't
-  /// eligible for enhanced models, Dialogflow returns an error. Please see the
-  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
-  /// for how to make your project eligible.
+  /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED"
+  /// - "USE_BEST_AVAILABLE"
+  /// - "USE_STANDARD"
+  /// - "USE_ENHANCED"
   core.String? modelVariant;
-
-  /// If `true`, the request will opt out for STT conformer model migration.
-  ///
-  /// This field will be deprecated once force migration takes place in June
-  /// 2024. Please refer to
-  /// [Dialogflow ES Speech model migration](https://cloud.google.com/dialogflow/es/docs/speech-model-migration).
   core.bool? optOutConformerModelMigration;
-
-  /// A list of strings containing words and phrases that the speech recognizer
-  /// should recognize with higher likelihood.
-  ///
-  /// See
-  /// [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
-  /// for more details. This field is deprecated. Please use
-  /// \[`speech_contexts`\]() instead. If you specify both \[`phrase_hints`\]()
-  /// and \[`speech_contexts`\](), Dialogflow will treat the
-  /// \[`phrase_hints`\]() as a single additional \[`SpeechContext`\]().
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.List<core.String>? phraseHints;
-
-  /// A collection of phrase set resources to use for speech adaptation.
   core.List<core.String>? phraseSets;
-
-  /// Sample rate (in Hertz) of the audio content sent in the query.
-  ///
-  /// Refer to
-  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics)
-  /// for more details.
-  ///
-  /// Required.
   core.int? sampleRateHertz;
-
-  /// If `false` (default), recognition does not cease until the client closes
-  /// the stream.
-  ///
-  /// If `true`, the recognizer will detect a single spoken utterance in input
-  /// audio. Recognition ceases when it detects the audio's voice has stopped or
-  /// paused. In this case, once a detected intent is received, the client
-  /// should close the stream and start a new request with a new stream as
-  /// needed. Note: This setting is relevant only for streaming methods. Note:
-  /// When specified, InputAudioConfig.single_utterance takes precedence over
-  /// StreamingDetectIntentRequest.single_utterance.
   core.bool? singleUtterance;
-
-  /// Context information to assist speech recognition.
-  ///
-  /// See
-  /// [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints)
-  /// for more details.
   core.List<GoogleCloudDialogflowV2SpeechContext>? speechContexts;
 
   GoogleCloudDialogflowV2InputAudioConfig({
@@ -21068,13 +17101,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
   };
 }
 
-/// Represents the configuration of importing a set of conversation files in
-/// Google Cloud Storage.
 class GoogleCloudDialogflowV2InputConfig {
-  /// The Cloud Storage URI has the form gs:////agent*.json.
-  ///
-  /// Wildcards are allowed and will be expanded into all matched JSON files,
-  /// which will be read as one conversation per file.
   GoogleCloudDialogflowV2GcsSources? gcsSource;
 
   GoogleCloudDialogflowV2InputConfig({this.gcsSource});
@@ -21094,191 +17121,35 @@ class GoogleCloudDialogflowV2InputConfig {
   };
 }
 
-/// InputDataset used to create model or do evaluation.
-///
-/// NextID:5
-class GoogleCloudDialogflowV2InputDataset {
-  /// ConversationDataset resource name.
-  ///
-  /// Format: `projects//locations//conversationDatasets/`
-  ///
-  /// Required.
-  core.String? dataset;
+typedef GoogleCloudDialogflowV2InputDataset = $Shared17;
 
-  GoogleCloudDialogflowV2InputDataset({this.dataset});
-
-  GoogleCloudDialogflowV2InputDataset.fromJson(core.Map json_)
-    : this(dataset: json_['dataset'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataset != null) 'dataset': dataset!,
-  };
-}
-
-/// An intent categorizes an end-user's intention for one conversation turn.
-///
-/// For each agent, you define many intents, where your combined intents can
-/// handle a complete conversation. When an end-user writes or says something,
-/// referred to as an end-user expression or end-user input, Dialogflow matches
-/// the end-user input to the best intent in your agent. Matching an intent is
-/// also known as intent classification. For more information, see the
-/// [intent guide](https://cloud.google.com/dialogflow/docs/intents-overview).
 class GoogleCloudDialogflowV2Intent {
-  /// The name of the action associated with the intent.
-  ///
-  /// Note: The action name must not contain whitespaces.
-  ///
-  /// Optional.
   core.String? action;
-
-  /// The list of platforms for which the first responses will be copied from
-  /// the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
-  ///
-  /// Optional.
   core.List<core.String>? defaultResponsePlatforms;
-
-  /// The name of this intent.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// Indicates that this intent ends an interaction.
-  ///
-  /// Some integrations (e.g., Actions on Google or Dialogflow phone gateway)
-  /// use this information to close interaction with an end user. Default is
-  /// false.
-  ///
-  /// Optional.
   core.bool? endInteraction;
-
-  /// The collection of event names that trigger the intent.
-  ///
-  /// If the collection of input contexts is not empty, all of the contexts must
-  /// be present in the active user session for an event to trigger this intent.
-  /// Event names are limited to 150 characters.
-  ///
-  /// Optional.
   core.List<core.String>? events;
-
-  /// Read-only.
-  ///
-  /// Information about all followup intents that have this intent as a direct
-  /// or indirect parent. We populate this field only in the output.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2IntentFollowupIntentInfo>?
   followupIntentInfo;
-
-  /// The list of context names required for this intent to be triggered.
-  ///
-  /// Format: `projects//agent/sessions/-/contexts/`.
-  ///
-  /// Optional.
   core.List<core.String>? inputContextNames;
-
-  /// Indicates whether this is a fallback intent.
-  ///
-  /// Optional.
   core.bool? isFallback;
-
-  /// Indicates that a live agent should be brought in to handle the interaction
-  /// with the user.
-  ///
-  /// In most cases, when you set this flag to true, you would also want to set
-  /// end_interaction to true as well. Default is false.
-  ///
-  /// Optional.
   core.bool? liveAgentHandoff;
-
-  /// The collection of rich messages corresponding to the `Response` field in
-  /// the Dialogflow console.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessage>? messages;
-
-  /// Indicates whether Machine Learning is disabled for the intent.
-  ///
-  /// Note: If `ml_disabled` setting is set to true, then this intent is not
-  /// taken into account during inference in `ML ONLY` match mode. Also,
-  /// auto-markup in the UI is turned off.
-  ///
-  /// Optional.
   core.bool? mlDisabled;
-
-  /// The unique identifier of this intent.
-  ///
-  /// Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods.
-  /// Format: `projects//agent/intents/`.
-  ///
-  /// Optional.
   core.String? name;
-
-  /// The collection of contexts that are activated when the intent is matched.
-  ///
-  /// Context messages in this collection should not set the parameters field.
-  /// Setting the `lifespan_count` to 0 will reset the context when the intent
-  /// is matched. Format: `projects//agent/sessions/-/contexts/`.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2Context>? outputContexts;
-
-  /// The collection of parameters associated with the intent.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentParameter>? parameters;
-
-  /// Read-only after creation.
-  ///
-  /// The unique identifier of the parent intent in the chain of followup
-  /// intents. You can set this field when creating an intent, for example with
-  /// CreateIntent or BatchUpdateIntents, in order to make this intent a
-  /// followup intent. It identifies the parent followup intent. Format:
-  /// `projects//agent/intents/`.
   core.String? parentFollowupIntentName;
-
-  /// The priority of this intent.
-  ///
-  /// Higher numbers represent higher priorities. - If the supplied value is
-  /// unspecified or 0, the service translates the value to 500,000, which
-  /// corresponds to the `Normal` priority in the console. - If the supplied
-  /// value is negative, the intent is ignored in runtime detect intent
-  /// requests.
-  ///
-  /// Optional.
   core.int? priority;
-
-  /// Indicates whether to delete all contexts in the current session when this
-  /// intent is matched.
-  ///
-  /// Optional.
   core.bool? resetContexts;
-
-  /// Read-only.
-  ///
-  /// The unique identifier of the root intent in the chain of followup intents.
-  /// It identifies the correct followup intents chain for this intent. We
-  /// populate this field only in the output. Format:
-  /// `projects//agent/intents/`.
-  ///
-  /// Output only.
   core.String? rootFollowupIntentName;
-
-  /// The collection of examples that the agent is trained on.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentTrainingPhrase>? trainingPhrases;
 
-  /// Indicates whether webhooks are enabled for the intent.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "WEBHOOK_STATE_UNSPECIFIED" : Webhook is disabled in the agent and in
-  /// the intent.
-  /// - "WEBHOOK_STATE_ENABLED" : Webhook is enabled in the agent and in the
-  /// intent.
-  /// - "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING" : Webhook is enabled in the
-  /// agent and in the intent. Also, each slot filling prompt is forwarded to
-  /// the webhook.
+  /// - "WEBHOOK_STATE_UNSPECIFIED"
+  /// - "WEBHOOK_STATE_ENABLED"
+  /// - "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING"
   core.String? webhookState;
 
   GoogleCloudDialogflowV2Intent({
@@ -21402,9 +17273,7 @@ class GoogleCloudDialogflowV2Intent {
   };
 }
 
-/// This message is a wrapper around a collection of intents.
 class GoogleCloudDialogflowV2IntentBatch {
-  /// A collection of intents.
   core.List<GoogleCloudDialogflowV2Intent>? intents;
 
   GoogleCloudDialogflowV2IntentBatch({this.intents});
@@ -21426,16 +17295,8 @@ class GoogleCloudDialogflowV2IntentBatch {
   };
 }
 
-/// Represents a single followup intent in the chain.
 class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
-  /// The unique identifier of the followup intent.
-  ///
-  /// Format: `projects//agent/intents/`.
   core.String? followupIntentName;
-
-  /// The unique identifier of the followup intent's parent.
-  ///
-  /// Format: `projects//agent/intents/`.
   core.String? parentFollowupIntentName;
 
   GoogleCloudDialogflowV2IntentFollowupIntentInfo({
@@ -21457,72 +17318,39 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
   };
 }
 
-/// A rich response message.
-///
-/// Corresponds to the intent `Response` field in the Dialogflow console. For
-/// more information, see
-/// [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
 class GoogleCloudDialogflowV2IntentMessage {
-  /// The basic card response for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageBasicCard? basicCard;
-
-  /// Browse carousel card for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard? browseCarouselCard;
-
-  /// The card response.
   GoogleCloudDialogflowV2IntentMessageCard? card;
-
-  /// The carousel card response for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageCarouselSelect? carouselSelect;
-
-  /// The image response.
   GoogleCloudDialogflowV2IntentMessageImage? image;
-
-  /// The link out suggestion chip for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion? linkOutSuggestion;
-
-  /// The list card response for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageListSelect? listSelect;
-
-  /// The media content card for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageMediaContent? mediaContent;
 
-  /// A custom platform-specific response.
+  ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? payload;
 
-  /// The platform that this message is intended for.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "PLATFORM_UNSPECIFIED" : Default platform.
-  /// - "FACEBOOK" : Facebook.
-  /// - "SLACK" : Slack.
-  /// - "TELEGRAM" : Telegram.
-  /// - "KIK" : Kik.
-  /// - "SKYPE" : Skype.
-  /// - "LINE" : Line.
-  /// - "VIBER" : Viber.
-  /// - "ACTIONS_ON_GOOGLE" : Google Assistant See
-  /// [Dialogflow webhook format](https://developers.google.com/assistant/actions/build/json/dialogflow-webhook-json)
-  /// - "GOOGLE_HANGOUTS" : Google Hangouts.
+  /// - "PLATFORM_UNSPECIFIED"
+  /// - "FACEBOOK"
+  /// - "SLACK"
+  /// - "TELEGRAM"
+  /// - "KIK"
+  /// - "SKYPE"
+  /// - "LINE"
+  /// - "VIBER"
+  /// - "ACTIONS_ON_GOOGLE"
+  /// - "GOOGLE_HANGOUTS"
   core.String? platform;
-
-  /// The quick replies response.
   GoogleCloudDialogflowV2IntentMessageQuickReplies? quickReplies;
-
-  /// The voice and text-only responses for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageSimpleResponses? simpleResponses;
-
-  /// The suggestion chips for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageSuggestions? suggestions;
-
-  /// Table card for Actions on Google.
   GoogleCloudDialogflowV2IntentMessageTableCard? tableCard;
-
-  /// The text response.
   GoogleCloudDialogflowV2IntentMessageText? text;
 
   GoogleCloudDialogflowV2IntentMessage({
@@ -21653,33 +17481,11 @@ class GoogleCloudDialogflowV2IntentMessage {
   };
 }
 
-/// The basic card message.
-///
-/// Useful for displaying information.
 class GoogleCloudDialogflowV2IntentMessageBasicCard {
-  /// The collection of card buttons.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageBasicCardButton>? buttons;
-
-  /// Required, unless image is present.
-  ///
-  /// The body text of the card.
   core.String? formattedText;
-
-  /// The image for the card.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage? image;
-
-  /// The subtitle of the card.
-  ///
-  /// Optional.
   core.String? subtitle;
-
-  /// The title of the card.
-  ///
-  /// Optional.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageBasicCard({
@@ -21721,17 +17527,9 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
   };
 }
 
-/// The button object that appears at the bottom of a card.
 class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
-  /// Action to take when a user taps on the button.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction?
   openUriAction;
-
-  /// The title of the button.
-  ///
-  /// Required.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageBasicCardButton({
@@ -21756,55 +17554,18 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
   };
 }
 
-/// Opens the given URI.
-class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
-  /// The HTTP or HTTPS scheme URI.
-  ///
-  /// Required.
-  core.String? uri;
+typedef GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction =
+    $Shared08;
 
-  GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction({this.uri});
-
-  GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromJson(
-    core.Map json_,
-  ) : this(uri: json_['uri'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (uri != null) 'uri': uri!,
-  };
-}
-
-/// Browse Carousel Card for Actions on Google.
-///
-/// https://developers.google.com/actions/assistant/responses#browsing_carousel
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
-  /// Settings for displaying the image.
   ///
-  /// Applies to every image in items.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED" : Fill the gaps between the image
-  /// and the image container with gray bars.
-  /// - "GRAY" : Fill the gaps between the image and the image container with
-  /// gray bars.
-  /// - "WHITE" : Fill the gaps between the image and the image container with
-  /// white bars.
-  /// - "CROPPED" : Image is scaled such that the image width and height match
-  /// or exceed the container dimensions. This may crop the top and bottom of
-  /// the image if the scaled image height is greater than the container height,
-  /// or crop the left and right of the image if the scaled image width is
-  /// greater than the container width. This is similar to "Zoom Mode" on a
-  /// widescreen TV when playing a 4:3 video.
-  /// - "BLURRED_BACKGROUND" : Pad the gaps between image and image frame with a
-  /// blurred copy of the same image.
+  /// - "IMAGE_DISPLAY_OPTIONS_UNSPECIFIED"
+  /// - "GRAY"
+  /// - "WHITE"
+  /// - "CROPPED"
+  /// - "BLURRED_BACKGROUND"
   core.String? imageDisplayOptions;
-
-  /// List of items in the Browse Carousel Card.
-  ///
-  /// Minimum of two items, maximum of ten.
-  ///
-  /// Required.
   core.List<
     GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
   >?
@@ -21837,38 +17598,12 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   };
 }
 
-/// Browsing carousel tile
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
-  /// Description of the carousel item.
-  ///
-  /// Maximum of four lines of text.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// Text that appears at the bottom of the Browse Carousel Card.
-  ///
-  /// Maximum of one line of text.
-  ///
-  /// Optional.
   core.String? footer;
-
-  /// Hero image for the carousel item.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage? image;
-
-  /// Action to present to the user.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction?
   openUriAction;
-
-  /// Title of the carousel item.
-  ///
-  /// Maximum of two lines of text.
-  ///
-  /// Required.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem({
@@ -21908,23 +17643,14 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   };
 }
 
-/// Actions on Google action to open a given url.
 class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
-  /// URL
-  ///
-  /// Required.
   core.String? url;
 
-  /// Specifies the type of viewer that is used when opening the URL.
   ///
-  /// Defaults to opening via web browser.
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "URL_TYPE_HINT_UNSPECIFIED" : Unspecified
-  /// - "AMP_ACTION" : Url would be an amp action
-  /// - "AMP_CONTENT" : URL that points directly to AMP content, or to a
-  /// canonical URL which refers to AMP content via .
+  /// - "URL_TYPE_HINT_UNSPECIFIED"
+  /// - "AMP_ACTION"
+  /// - "AMP_CONTENT"
   core.String? urlTypeHint;
 
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction({
@@ -21945,26 +17671,10 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   };
 }
 
-/// The card response message.
 class GoogleCloudDialogflowV2IntentMessageCard {
-  /// The collection of card buttons.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageCardButton>? buttons;
-
-  /// The public URI to an image file for the card.
-  ///
-  /// Optional.
   core.String? imageUri;
-
-  /// The subtitle of the card.
-  ///
-  /// Optional.
   core.String? subtitle;
-
-  /// The title of the card.
-  ///
-  /// Optional.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageCard({
@@ -21998,16 +17708,8 @@ class GoogleCloudDialogflowV2IntentMessageCard {
   };
 }
 
-/// Contains information about a button.
 class GoogleCloudDialogflowV2IntentMessageCardButton {
-  /// The text to send back to the Dialogflow API or a URI to open.
-  ///
-  /// Optional.
   core.String? postback;
-
-  /// The text to show on the button.
-  ///
-  /// Optional.
   core.String? text;
 
   GoogleCloudDialogflowV2IntentMessageCardButton({this.postback, this.text});
@@ -22024,11 +17726,7 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
   };
 }
 
-/// The card for presenting a carousel of options to select from.
 class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
-  /// Carousel items.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>? items;
 
   GoogleCloudDialogflowV2IntentMessageCarouselSelect({this.items});
@@ -22051,26 +17749,10 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
   };
 }
 
-/// An item in the carousel.
 class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
-  /// The body text of the card.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// The image to display.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage? image;
-
-  /// Additional info about the option item.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo? info;
-
-  /// Title of the carousel item.
-  ///
-  /// Required.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageCarouselSelectItem({
@@ -22107,22 +17789,15 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
   };
 }
 
-/// Column properties for TableCard.
 class GoogleCloudDialogflowV2IntentMessageColumnProperties {
-  /// Column heading.
-  ///
-  /// Required.
   core.String? header;
 
-  /// Defines text alignment for all cells in this column.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED" : Text is aligned to the leading edge
-  /// of the column.
-  /// - "LEADING" : Text is aligned to the leading edge of the column.
-  /// - "CENTER" : Text is centered in the column.
-  /// - "TRAILING" : Text is aligned to the trailing edge of the column.
+  /// - "HORIZONTAL_ALIGNMENT_UNSPECIFIED"
+  /// - "LEADING"
+  /// - "CENTER"
+  /// - "TRAILING"
   core.String? horizontalAlignment;
 
   GoogleCloudDialogflowV2IntentMessageColumnProperties({
@@ -22143,17 +17818,8 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
   };
 }
 
-/// The image response message.
 class GoogleCloudDialogflowV2IntentMessageImage {
-  /// A text description of the image to be used for accessibility, e.g., screen
-  /// readers.
-  ///
-  /// Optional.
   core.String? accessibilityText;
-
-  /// The public URI to an image file.
-  ///
-  /// Optional.
   core.String? imageUri;
 
   GoogleCloudDialogflowV2IntentMessageImage({
@@ -22173,17 +17839,8 @@ class GoogleCloudDialogflowV2IntentMessageImage {
   };
 }
 
-/// The suggestion chip message that allows the user to jump out to the app or
-/// website associated with this agent.
 class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
-  /// The name of the app or site this chip is linking to.
-  ///
-  /// Required.
   core.String? destinationName;
-
-  /// The URI of the app or site to open when the user taps the suggestion chip.
-  ///
-  /// Required.
   core.String? uri;
 
   GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion({
@@ -22203,21 +17860,9 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
   };
 }
 
-/// The card for presenting a list of options to select from.
 class GoogleCloudDialogflowV2IntentMessageListSelect {
-  /// List items.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageListSelectItem>? items;
-
-  /// Subtitle of the list.
-  ///
-  /// Optional.
   core.String? subtitle;
-
-  /// The overall title of the list.
-  ///
-  /// Optional.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageListSelect({
@@ -22248,26 +17893,10 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
   };
 }
 
-/// An item in the list.
 class GoogleCloudDialogflowV2IntentMessageListSelectItem {
-  /// The main text describing the item.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// The image to display.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage? image;
-
-  /// Additional information about this option.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo? info;
-
-  /// The title of the list item.
-  ///
-  /// Required.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageListSelectItem({
@@ -22303,22 +17932,16 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
   };
 }
 
-/// The media content card for Actions on Google.
 class GoogleCloudDialogflowV2IntentMessageMediaContent {
-  /// List of media objects.
-  ///
-  /// Required.
   core.List<
     GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
   >?
   mediaObjects;
 
-  /// What type of media is the content (ie "audio").
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "RESPONSE_MEDIA_TYPE_UNSPECIFIED" : Unspecified.
-  /// - "AUDIO" : Response media type is audio.
+  /// - "RESPONSE_MEDIA_TYPE_UNSPECIFIED"
+  /// - "AUDIO"
   core.String? mediaType;
 
   GoogleCloudDialogflowV2IntentMessageMediaContent({
@@ -22346,31 +17969,11 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
   };
 }
 
-/// Response media object for media content card.
 class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
-  /// Url where the media is stored.
-  ///
-  /// Required.
   core.String? contentUrl;
-
-  /// Description of media card.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// Icon to display above media content.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage? icon;
-
-  /// Image to display above media content.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage? largeImage;
-
-  /// Name of media card.
-  ///
-  /// Required.
   core.String? name;
 
   GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject({
@@ -22410,16 +18013,8 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   };
 }
 
-/// The quick replies response message.
 class GoogleCloudDialogflowV2IntentMessageQuickReplies {
-  /// The collection of quick replies.
-  ///
-  /// Optional.
   core.List<core.String>? quickReplies;
-
-  /// The title of the collection of quick replies.
-  ///
-  /// Optional.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageQuickReplies({
@@ -22442,17 +18037,8 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
   };
 }
 
-/// Additional info about the select item for when it is triggered in a dialog.
 class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
-  /// A unique key that will be sent back to the agent if this response is
-  /// given.
-  ///
-  /// Required.
   core.String? key;
-
-  /// A list of synonyms that can also be used to trigger this item in dialog.
-  ///
-  /// Optional.
   core.List<core.String>? synonyms;
 
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo({this.key, this.synonyms});
@@ -22472,22 +18058,9 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
   };
 }
 
-/// The simple response message containing speech or text.
 class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
-  /// The text to display.
-  ///
-  /// Optional.
   core.String? displayText;
-
-  /// One of text_to_speech or ssml must be provided.
-  ///
-  /// Structured spoken response to the user in the SSML format. Mutually
-  /// exclusive with text_to_speech.
   core.String? ssml;
-
-  /// One of text_to_speech or ssml must be provided.
-  ///
-  /// The plain text of the speech output. Mutually exclusive with ssml.
   core.String? textToSpeech;
 
   GoogleCloudDialogflowV2IntentMessageSimpleResponse({
@@ -22510,15 +18083,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
   };
 }
 
-/// The collection of simple response candidates.
-///
-/// This message in `QueryResult.fulfillment_messages` and
-/// `WebhookResponse.fulfillment_messages` should contain only one
-/// `SimpleResponse`.
 class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
-  /// The list of simple responses.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageSimpleResponse>?
   simpleResponses;
 
@@ -22542,12 +18107,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
   };
 }
 
-/// The suggestion chip message that the user can tap to quickly post a reply to
-/// the conversation.
 class GoogleCloudDialogflowV2IntentMessageSuggestion {
-  /// The text shown the in the suggestion chip.
-  ///
-  /// Required.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageSuggestion({this.title});
@@ -22560,11 +18120,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
   };
 }
 
-/// The collection of suggestions.
 class GoogleCloudDialogflowV2IntentMessageSuggestions {
-  /// The list of suggested replies.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2IntentMessageSuggestion>? suggestions;
 
   GoogleCloudDialogflowV2IntentMessageSuggestions({this.suggestions});
@@ -22587,37 +18143,13 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
   };
 }
 
-/// Table card for Actions on Google.
 class GoogleCloudDialogflowV2IntentMessageTableCard {
-  /// List of buttons for the card.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageBasicCardButton>? buttons;
-
-  /// Display properties for the columns in this table.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageColumnProperties>?
   columnProperties;
-
-  /// Image which should be displayed on the card.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2IntentMessageImage? image;
-
-  /// Rows in this table of data.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageTableCardRow>? rows;
-
-  /// Subtitle to the title.
-  ///
-  /// Optional.
   core.String? subtitle;
-
-  /// Title of the card.
-  ///
-  /// Required.
   core.String? title;
 
   GoogleCloudDialogflowV2IntentMessageTableCard({
@@ -22678,33 +18210,10 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
   };
 }
 
-/// Cell of TableCardRow.
-class GoogleCloudDialogflowV2IntentMessageTableCardCell {
-  /// Text in this cell.
-  ///
-  /// Required.
-  core.String? text;
+typedef GoogleCloudDialogflowV2IntentMessageTableCardCell = $Shared02;
 
-  GoogleCloudDialogflowV2IntentMessageTableCardCell({this.text});
-
-  GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(core.Map json_)
-    : this(text: json_['text'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (text != null) 'text': text!,
-  };
-}
-
-/// Row of TableCard.
 class GoogleCloudDialogflowV2IntentMessageTableCardRow {
-  /// List of cells that make up this row.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2IntentMessageTableCardCell>? cells;
-
-  /// Whether to add a visual divider after this row.
-  ///
-  /// Optional.
   core.bool? dividerAfter;
 
   GoogleCloudDialogflowV2IntentMessageTableCardRow({
@@ -22732,11 +18241,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
   };
 }
 
-/// The text response message.
 class GoogleCloudDialogflowV2IntentMessageText {
-  /// The collection of the agent's responses.
-  ///
-  /// Optional.
   core.List<core.String>? text;
 
   GoogleCloudDialogflowV2IntentMessageText({this.text});
@@ -22754,59 +18259,14 @@ class GoogleCloudDialogflowV2IntentMessageText {
   };
 }
 
-/// Represents intent parameters.
 class GoogleCloudDialogflowV2IntentParameter {
-  /// The default value to use when the `value` yields an empty result.
-  ///
-  /// Default values can be extracted from contexts by using the following
-  /// syntax: `#context_name.parameter_name`.
-  ///
-  /// Optional.
   core.String? defaultValue;
-
-  /// The name of the parameter.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// The name of the entity type, prefixed with `@`, that describes values of
-  /// the parameter.
-  ///
-  /// If the parameter is required, this must be provided.
-  ///
-  /// Optional.
   core.String? entityTypeDisplayName;
-
-  /// Indicates whether the parameter represents a list of values.
-  ///
-  /// Optional.
   core.bool? isList;
-
-  /// Indicates whether the parameter is required.
-  ///
-  /// That is, whether the intent cannot be completed without collecting the
-  /// parameter value.
-  ///
-  /// Optional.
   core.bool? mandatory;
-
-  /// The unique identifier of this parameter.
   core.String? name;
-
-  /// The collection of prompts that the agent can present to the user in order
-  /// to collect a value for the parameter.
-  ///
-  /// Optional.
   core.List<core.String>? prompts;
-
-  /// The definition of the parameter value.
-  ///
-  /// It can be: - a constant string, - a parameter value defined as
-  /// `$parameter_name`, - an original parameter value defined as
-  /// `$parameter_name.original`, - a parameter value from some context defined
-  /// as `#context_name.parameter_name`.
-  ///
-  /// Optional.
   core.String? value;
 
   GoogleCloudDialogflowV2IntentParameter({
@@ -22848,20 +18308,9 @@ class GoogleCloudDialogflowV2IntentParameter {
   };
 }
 
-/// Represents an intent suggestion.
 class GoogleCloudDialogflowV2IntentSuggestion {
-  /// Human readable description for better understanding an intent like its
-  /// scope, content, result etc.
-  ///
-  /// Maximum character limit: 140 characters.
   core.String? description;
-
-  /// The display name of the intent.
   core.String? displayName;
-
-  /// The unique identifier of this intent.
-  ///
-  /// Format: `projects//locations//agent/intents/`.
   core.String? intentV2;
 
   GoogleCloudDialogflowV2IntentSuggestion({
@@ -22884,50 +18333,16 @@ class GoogleCloudDialogflowV2IntentSuggestion {
   };
 }
 
-/// Represents an example that the agent is trained on.
 class GoogleCloudDialogflowV2IntentTrainingPhrase {
-  /// The unique identifier of this training phrase.
-  ///
-  /// Output only.
   core.String? name;
-
-  /// The ordered list of training phrase parts.
-  ///
-  /// The parts are concatenated in order to form the training phrase. Note: The
-  /// API does not automatically annotate training phrases like the Dialogflow
-  /// Console does. Note: Do not forget to include whitespace at part
-  /// boundaries, so the training phrase is well formatted when the parts are
-  /// concatenated. If the training phrase does not need to be annotated with
-  /// parameters, you just need a single part with only the Part.text field set.
-  /// If you want to annotate the training phrase, you must create multiple
-  /// parts, where the fields of each part are populated in one of two ways: -
-  /// `Part.text` is set to a part of the phrase that has no parameters. -
-  /// `Part.text` is set to a part of the phrase that you want to annotate, and
-  /// the `entity_type`, `alias`, and `user_defined` fields are all set.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2IntentTrainingPhrasePart>? parts;
-
-  /// Indicates how many times this example was added to the intent.
-  ///
-  /// Each time a developer adds an existing sample by editing an intent or
-  /// training, this counter is increased.
-  ///
-  /// Optional.
   core.int? timesAddedCount;
 
-  /// The type of the training phrase.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Not specified. This value should never be used.
-  /// - "EXAMPLE" : Examples do not contain @-prefixed entity type names, but
-  /// example parts can be annotated with entity types.
-  /// - "TEMPLATE" : Templates are not annotated with entity types, but they can
-  /// contain @-prefixed entity type names as substrings. Template mode has been
-  /// deprecated. Example mode is the only supported way to create new training
-  /// phrases. If you have existing training phrases that you've created in
-  /// template mode, those will continue to work.
+  /// - "TYPE_UNSPECIFIED"
+  /// - "EXAMPLE"
+  /// - "TEMPLATE"
   core.String? type;
 
   GoogleCloudDialogflowV2IntentTrainingPhrase({
@@ -22961,35 +18376,10 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
   };
 }
 
-/// Represents a part of a training phrase.
 class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
-  /// The parameter name for the value extracted from the annotated part of the
-  /// example.
-  ///
-  /// This field is required for annotated parts of the training phrase.
-  ///
-  /// Optional.
   core.String? alias;
-
-  /// The entity type name prefixed with `@`.
-  ///
-  /// This field is required for annotated parts of the training phrase.
-  ///
-  /// Optional.
   core.String? entityType;
-
-  /// The text for this part.
-  ///
-  /// Required.
   core.String? text;
-
-  /// Indicates whether the text was manually annotated.
-  ///
-  /// This field is set to true when the Dialogflow Console is used to manually
-  /// annotate the part. When creating an annotated part with the API, you must
-  /// set this to true.
-  ///
-  /// Optional.
   core.bool? userDefined;
 
   GoogleCloudDialogflowV2IntentTrainingPhrasePart({
@@ -23015,27 +18405,16 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
   };
 }
 
-/// Represents a Knowledge Assist answer.
 class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
-  /// The name of the answer record.
-  ///
-  /// Format: `projects//locations//answer Records/`.
   core.String? answerRecord;
-
-  /// The query suggested based on the context.
-  ///
-  /// Suggestion is made only if it is different from the previous suggestion.
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfo? knowledgeAssistDebugInfo;
   GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery? suggestedQuery;
-
-  /// The answer generated for the suggested query.
-  ///
-  /// Whether or not an answer is generated depends on how confident we are
-  /// about the generated query.
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer?
   suggestedQueryAnswer;
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswer({
     this.answerRecord,
+    this.knowledgeAssistDebugInfo,
     this.suggestedQuery,
     this.suggestedQueryAnswer,
   });
@@ -23043,6 +18422,13 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
   GoogleCloudDialogflowV2KnowledgeAssistAnswer.fromJson(core.Map json_)
     : this(
         answerRecord: json_['answerRecord'] as core.String?,
+        knowledgeAssistDebugInfo:
+            json_.containsKey('knowledgeAssistDebugInfo')
+                ? GoogleCloudDialogflowV2KnowledgeAssistDebugInfo.fromJson(
+                  json_['knowledgeAssistDebugInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         suggestedQuery:
             json_.containsKey('suggestedQuery')
                 ? GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery.fromJson(
@@ -23061,24 +18447,18 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswer {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (answerRecord != null) 'answerRecord': answerRecord!,
+    if (knowledgeAssistDebugInfo != null)
+      'knowledgeAssistDebugInfo': knowledgeAssistDebugInfo!,
     if (suggestedQuery != null) 'suggestedQuery': suggestedQuery!,
     if (suggestedQueryAnswer != null)
       'suggestedQueryAnswer': suggestedQueryAnswer!,
   };
 }
 
-/// Represents an answer from Knowledge.
-///
-/// Currently supports FAQ and Generative answers.
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
-  /// The piece of text from the `source` that answers this suggested query.
   core.String? answerText;
-
-  /// Populated if the prediction came from FAQ.
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource?
   faqSource;
-
-  /// Populated if the prediction was Generative.
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource?
   generativeSource;
 
@@ -23114,9 +18494,7 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswer {
   };
 }
 
-/// Details about source of FAQ answer.
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
-  /// The corresponding FAQ question.
   core.String? question;
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource({
@@ -23132,10 +18510,7 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerFaqSource {
   };
 }
 
-/// Details about source of Generative answer.
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSource {
-  /// All snippets used for this Generative Prediction, with their source URI
-  /// and data.
   core.List<
     GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet
   >?
@@ -23164,21 +18539,14 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   };
 }
 
-/// Snippet Source for a Generative Prediction.
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet {
-  /// Metadata of the document.
+  ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
-
-  /// Text taken from that URI.
   core.String? text;
-
-  /// Title of the document.
   core.String? title;
-
-  /// URI the data is sourced from.
   core.String? uri;
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourceSnippet({
@@ -23208,9 +18576,7 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerKnowledgeAnswerGenerativeSourc
   };
 }
 
-/// Represents a suggested query.
 class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
-  /// Suggested query text.
   core.String? queryText;
 
   GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery({this.queryText});
@@ -23224,36 +18590,218 @@ class GoogleCloudDialogflowV2KnowledgeAssistAnswerSuggestedQuery {
   };
 }
 
-/// A knowledge base represents a collection of knowledge documents that you
-/// provide to Dialogflow.
-///
-/// Your knowledge documents contain information that may be useful during
-/// conversations with end-users. Some Dialogflow features use knowledge bases
-/// when looking for a response to an end-user input. For more information, see
-/// the
-/// [knowledge base guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases).
-/// Note: The `projects.agent.knowledgeBases` resource is deprecated; only use
-/// `projects.knowledgeBases`.
+class GoogleCloudDialogflowV2KnowledgeAssistDebugInfo {
+  ///
+  /// Possible string values are:
+  /// - "DATASTORE_RESPONSE_REASON_UNSPECIFIED"
+  /// - "NONE"
+  /// - "SEARCH_OUT_OF_QUOTA"
+  /// - "SEARCH_EMPTY_RESULTS"
+  /// - "ANSWER_GENERATION_GEN_AI_DISABLED"
+  /// - "ANSWER_GENERATION_OUT_OF_QUOTA"
+  /// - "ANSWER_GENERATION_ERROR"
+  /// - "ANSWER_GENERATION_NOT_ENOUGH_INFO"
+  /// - "ANSWER_GENERATION_RAI_FAILED"
+  /// - "ANSWER_GENERATION_NOT_GROUNDED"
+  core.String? datastoreResponseReason;
+  GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo?
+  ingestedContextReferenceDebugInfo;
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior?
+  knowledgeAssistBehavior;
+
+  ///
+  /// Possible string values are:
+  /// - "QUERY_CATEGORIZATION_FAILURE_REASON_UNSPECIFIED"
+  /// - "QUERY_CATEGORIZATION_INVALID_CONFIG"
+  /// - "QUERY_CATEGORIZATION_RESULT_NOT_FOUND"
+  /// - "QUERY_CATEGORIZATION_FAILED"
+  core.String? queryCategorizationFailureReason;
+
+  ///
+  /// Possible string values are:
+  /// - "QUERY_GENERATION_FAILURE_REASON_UNSPECIFIED"
+  /// - "QUERY_GENERATION_OUT_OF_QUOTA"
+  /// - "QUERY_GENERATION_FAILED"
+  /// - "QUERY_GENERATION_NO_QUERY_GENERATED"
+  /// - "QUERY_GENERATION_RAI_FAILED"
+  /// - "NOT_IN_ALLOWLIST"
+  /// - "QUERY_GENERATION_QUERY_REDACTED"
+  /// - "QUERY_GENERATION_LLM_RESPONSE_PARSE_FAILED"
+  /// - "QUERY_GENERATION_EMPTY_CONVERSATION"
+  /// - "QUERY_GENERATION_EMPTY_LAST_MESSAGE"
+  /// - "QUERY_GENERATION_TRIGGERING_EVENT_CONDITION_NOT_MET"
+  core.String? queryGenerationFailureReason;
+  GoogleCloudDialogflowV2ServiceLatency? serviceLatency;
+
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfo({
+    this.datastoreResponseReason,
+    this.ingestedContextReferenceDebugInfo,
+    this.knowledgeAssistBehavior,
+    this.queryCategorizationFailureReason,
+    this.queryGenerationFailureReason,
+    this.serviceLatency,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfo.fromJson(core.Map json_)
+    : this(
+        datastoreResponseReason:
+            json_['datastoreResponseReason'] as core.String?,
+        ingestedContextReferenceDebugInfo:
+            json_.containsKey('ingestedContextReferenceDebugInfo')
+                ? GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
+                  json_['ingestedContextReferenceDebugInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        knowledgeAssistBehavior:
+            json_.containsKey('knowledgeAssistBehavior')
+                ? GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior.fromJson(
+                  json_['knowledgeAssistBehavior']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        queryCategorizationFailureReason:
+            json_['queryCategorizationFailureReason'] as core.String?,
+        queryGenerationFailureReason:
+            json_['queryGenerationFailureReason'] as core.String?,
+        serviceLatency:
+            json_.containsKey('serviceLatency')
+                ? GoogleCloudDialogflowV2ServiceLatency.fromJson(
+                  json_['serviceLatency']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (datastoreResponseReason != null)
+      'datastoreResponseReason': datastoreResponseReason!,
+    if (ingestedContextReferenceDebugInfo != null)
+      'ingestedContextReferenceDebugInfo': ingestedContextReferenceDebugInfo!,
+    if (knowledgeAssistBehavior != null)
+      'knowledgeAssistBehavior': knowledgeAssistBehavior!,
+    if (queryCategorizationFailureReason != null)
+      'queryCategorizationFailureReason': queryCategorizationFailureReason!,
+    if (queryGenerationFailureReason != null)
+      'queryGenerationFailureReason': queryGenerationFailureReason!,
+    if (serviceLatency != null) 'serviceLatency': serviceLatency!,
+  };
+}
+
+class GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior {
+  core.bool? answerGenerationRewriterOn;
+  core.int? appendedSearchContextCount;
+  core.bool? conversationTranscriptHasMixedLanguages;
+  core.bool? disableSyncDelivery;
+  core.bool? endUserMetadataIncluded;
+  core.bool? invalidItemsQuerySuggestionSkipped;
+  core.bool? multipleQueriesGenerated;
+  core.bool? previousQueriesIncluded;
+  core.bool? primaryQueryRedactedAndReplaced;
+  core.bool? queryContainedSearchContext;
+  core.bool? queryGenerationAgentLanguageMismatch;
+  core.bool? queryGenerationEndUserLanguageMismatch;
+  core.bool? returnQueryOnly;
+  core.bool? thirdPartyConnectorAllowed;
+  core.bool? useCustomSafetyFilterLevel;
+  core.bool? usePubsubDelivery;
+  core.bool? useTranslatedMessage;
+
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior({
+    this.answerGenerationRewriterOn,
+    this.appendedSearchContextCount,
+    this.conversationTranscriptHasMixedLanguages,
+    this.disableSyncDelivery,
+    this.endUserMetadataIncluded,
+    this.invalidItemsQuerySuggestionSkipped,
+    this.multipleQueriesGenerated,
+    this.previousQueriesIncluded,
+    this.primaryQueryRedactedAndReplaced,
+    this.queryContainedSearchContext,
+    this.queryGenerationAgentLanguageMismatch,
+    this.queryGenerationEndUserLanguageMismatch,
+    this.returnQueryOnly,
+    this.thirdPartyConnectorAllowed,
+    this.useCustomSafetyFilterLevel,
+    this.usePubsubDelivery,
+    this.useTranslatedMessage,
+  });
+
+  GoogleCloudDialogflowV2KnowledgeAssistDebugInfoKnowledgeAssistBehavior.fromJson(
+    core.Map json_,
+  ) : this(
+        answerGenerationRewriterOn:
+            json_['answerGenerationRewriterOn'] as core.bool?,
+        appendedSearchContextCount:
+            json_['appendedSearchContextCount'] as core.int?,
+        conversationTranscriptHasMixedLanguages:
+            json_['conversationTranscriptHasMixedLanguages'] as core.bool?,
+        disableSyncDelivery: json_['disableSyncDelivery'] as core.bool?,
+        endUserMetadataIncluded: json_['endUserMetadataIncluded'] as core.bool?,
+        invalidItemsQuerySuggestionSkipped:
+            json_['invalidItemsQuerySuggestionSkipped'] as core.bool?,
+        multipleQueriesGenerated:
+            json_['multipleQueriesGenerated'] as core.bool?,
+        previousQueriesIncluded: json_['previousQueriesIncluded'] as core.bool?,
+        primaryQueryRedactedAndReplaced:
+            json_['primaryQueryRedactedAndReplaced'] as core.bool?,
+        queryContainedSearchContext:
+            json_['queryContainedSearchContext'] as core.bool?,
+        queryGenerationAgentLanguageMismatch:
+            json_['queryGenerationAgentLanguageMismatch'] as core.bool?,
+        queryGenerationEndUserLanguageMismatch:
+            json_['queryGenerationEndUserLanguageMismatch'] as core.bool?,
+        returnQueryOnly: json_['returnQueryOnly'] as core.bool?,
+        thirdPartyConnectorAllowed:
+            json_['thirdPartyConnectorAllowed'] as core.bool?,
+        useCustomSafetyFilterLevel:
+            json_['useCustomSafetyFilterLevel'] as core.bool?,
+        usePubsubDelivery: json_['usePubsubDelivery'] as core.bool?,
+        useTranslatedMessage: json_['useTranslatedMessage'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (answerGenerationRewriterOn != null)
+      'answerGenerationRewriterOn': answerGenerationRewriterOn!,
+    if (appendedSearchContextCount != null)
+      'appendedSearchContextCount': appendedSearchContextCount!,
+    if (conversationTranscriptHasMixedLanguages != null)
+      'conversationTranscriptHasMixedLanguages':
+          conversationTranscriptHasMixedLanguages!,
+    if (disableSyncDelivery != null)
+      'disableSyncDelivery': disableSyncDelivery!,
+    if (endUserMetadataIncluded != null)
+      'endUserMetadataIncluded': endUserMetadataIncluded!,
+    if (invalidItemsQuerySuggestionSkipped != null)
+      'invalidItemsQuerySuggestionSkipped': invalidItemsQuerySuggestionSkipped!,
+    if (multipleQueriesGenerated != null)
+      'multipleQueriesGenerated': multipleQueriesGenerated!,
+    if (previousQueriesIncluded != null)
+      'previousQueriesIncluded': previousQueriesIncluded!,
+    if (primaryQueryRedactedAndReplaced != null)
+      'primaryQueryRedactedAndReplaced': primaryQueryRedactedAndReplaced!,
+    if (queryContainedSearchContext != null)
+      'queryContainedSearchContext': queryContainedSearchContext!,
+    if (queryGenerationAgentLanguageMismatch != null)
+      'queryGenerationAgentLanguageMismatch':
+          queryGenerationAgentLanguageMismatch!,
+    if (queryGenerationEndUserLanguageMismatch != null)
+      'queryGenerationEndUserLanguageMismatch':
+          queryGenerationEndUserLanguageMismatch!,
+    if (returnQueryOnly != null) 'returnQueryOnly': returnQueryOnly!,
+    if (thirdPartyConnectorAllowed != null)
+      'thirdPartyConnectorAllowed': thirdPartyConnectorAllowed!,
+    if (useCustomSafetyFilterLevel != null)
+      'useCustomSafetyFilterLevel': useCustomSafetyFilterLevel!,
+    if (usePubsubDelivery != null) 'usePubsubDelivery': usePubsubDelivery!,
+    if (useTranslatedMessage != null)
+      'useTranslatedMessage': useTranslatedMessage!,
+  };
+}
+
 class GoogleCloudDialogflowV2KnowledgeBase {
-  /// The display name of the knowledge base.
-  ///
-  /// The name must be 1024 bytes or less; otherwise, the creation request
-  /// fails.
-  ///
-  /// Required.
   core.String? displayName;
-
-  /// Language which represents the KnowledgeBase.
-  ///
-  /// When the KnowledgeBase is created/updated, expect this to be present for
-  /// non en-us languages. When unspecified, the default language code en-us
-  /// applies.
   core.String? languageCode;
-
-  /// The knowledge base resource name.
-  ///
-  /// The name must be empty when creating a knowledge base. Format:
-  /// `projects//locations//knowledgeBases/`.
   core.String? name;
 
   GoogleCloudDialogflowV2KnowledgeBase({
@@ -23276,16 +18824,8 @@ class GoogleCloudDialogflowV2KnowledgeBase {
   };
 }
 
-/// Response message for AnswerRecords.ListAnswerRecords.
 class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
-  /// The list of answer records.
   core.List<GoogleCloudDialogflowV2AnswerRecord>? answerRecords;
-
-  /// A token to retrieve next page of results.
-  ///
-  /// Or empty if there are no more results. Pass this value in the
-  /// ListAnswerRecordsRequest.page_token field in the subsequent call to
-  /// `ListAnswerRecords` method to retrieve the next page of results.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListAnswerRecordsResponse({
@@ -23312,16 +18852,8 @@ class GoogleCloudDialogflowV2ListAnswerRecordsResponse {
   };
 }
 
-/// The response message for Contexts.ListContexts.
 class GoogleCloudDialogflowV2ListContextsResponse {
-  /// The list of contexts.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
   core.List<GoogleCloudDialogflowV2Context>? contexts;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListContextsResponse({
@@ -23348,13 +18880,8 @@ class GoogleCloudDialogflowV2ListContextsResponse {
   };
 }
 
-/// The response message for ConversationDatasets.ListConversationDatasets.
 class GoogleCloudDialogflowV2ListConversationDatasetsResponse {
-  /// The list of datasets to return.
   core.List<GoogleCloudDialogflowV2ConversationDataset>? conversationDatasets;
-
-  /// The token to use to retrieve the next page of results, or empty if there
-  /// are no more results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListConversationDatasetsResponse({
@@ -23384,14 +18911,9 @@ class GoogleCloudDialogflowV2ListConversationDatasetsResponse {
   };
 }
 
-/// The response message for ConversationModels.ListConversationModelEvaluations
 class GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse {
-  /// The list of evaluations to return.
   core.List<GoogleCloudDialogflowV2ConversationModelEvaluation>?
   conversationModelEvaluations;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse({
@@ -23421,13 +18943,8 @@ class GoogleCloudDialogflowV2ListConversationModelEvaluationsResponse {
   };
 }
 
-/// The response message for ConversationModels.ListConversationModels
 class GoogleCloudDialogflowV2ListConversationModelsResponse {
-  /// The list of models to return.
   core.List<GoogleCloudDialogflowV2ConversationModel>? conversationModels;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListConversationModelsResponse({
@@ -23454,16 +18971,8 @@ class GoogleCloudDialogflowV2ListConversationModelsResponse {
   };
 }
 
-/// The response message for ConversationProfiles.ListConversationProfiles.
 class GoogleCloudDialogflowV2ListConversationProfilesResponse {
-  /// The list of project conversation profiles.
-  ///
-  /// There is a maximum number of items returned based on the page_size field
-  /// in the request.
   core.List<GoogleCloudDialogflowV2ConversationProfile>? conversationProfiles;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListConversationProfilesResponse({
@@ -23493,16 +19002,8 @@ class GoogleCloudDialogflowV2ListConversationProfilesResponse {
   };
 }
 
-/// The response message for Conversations.ListConversations.
 class GoogleCloudDialogflowV2ListConversationsResponse {
-  /// The list of conversations.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
   core.List<GoogleCloudDialogflowV2Conversation>? conversations;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListConversationsResponse({
@@ -23529,13 +19030,8 @@ class GoogleCloudDialogflowV2ListConversationsResponse {
   };
 }
 
-/// Response message for Documents.ListDocuments.
 class GoogleCloudDialogflowV2ListDocumentsResponse {
-  /// The list of documents.
   core.List<GoogleCloudDialogflowV2Document>? documents;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListDocumentsResponse({
@@ -23562,16 +19058,8 @@ class GoogleCloudDialogflowV2ListDocumentsResponse {
   };
 }
 
-/// The response message for EntityTypes.ListEntityTypes.
 class GoogleCloudDialogflowV2ListEntityTypesResponse {
-  /// The list of agent entity types.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
   core.List<GoogleCloudDialogflowV2EntityType>? entityTypes;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListEntityTypesResponse({
@@ -23598,16 +19086,8 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
   };
 }
 
-/// The response message for Environments.ListEnvironments.
 class GoogleCloudDialogflowV2ListEnvironmentsResponse {
-  /// The list of agent environments.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
   core.List<GoogleCloudDialogflowV2Environment>? environments;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListEnvironmentsResponse({
@@ -23634,13 +19114,8 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
   };
 }
 
-/// Response of ListGeneratorEvaluations.
 class GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse {
-  /// The list of evaluations to return.
   core.List<GoogleCloudDialogflowV2GeneratorEvaluation>? generatorEvaluations;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse({
@@ -23670,13 +19145,8 @@ class GoogleCloudDialogflowV2ListGeneratorEvaluationsResponse {
   };
 }
 
-/// Response of ListGenerators.
 class GoogleCloudDialogflowV2ListGeneratorsResponse {
-  /// List of generators retrieved.
   core.List<GoogleCloudDialogflowV2Generator>? generators;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListGeneratorsResponse({
@@ -23703,16 +19173,8 @@ class GoogleCloudDialogflowV2ListGeneratorsResponse {
   };
 }
 
-/// The response message for Intents.ListIntents.
 class GoogleCloudDialogflowV2ListIntentsResponse {
-  /// The list of agent intents.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
   core.List<GoogleCloudDialogflowV2Intent>? intents;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListIntentsResponse({
@@ -23739,13 +19201,8 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
   };
 }
 
-/// Response message for KnowledgeBases.ListKnowledgeBases.
 class GoogleCloudDialogflowV2ListKnowledgeBasesResponse {
-  /// The list of knowledge bases.
   core.List<GoogleCloudDialogflowV2KnowledgeBase>? knowledgeBases;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListKnowledgeBasesResponse({
@@ -23772,17 +19229,8 @@ class GoogleCloudDialogflowV2ListKnowledgeBasesResponse {
   };
 }
 
-/// The response message for Conversations.ListMessages.
 class GoogleCloudDialogflowV2ListMessagesResponse {
-  /// The list of messages.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request. `messages` is sorted by `create_time` in descending
-  /// order.
   core.List<GoogleCloudDialogflowV2Message>? messages;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2ListMessagesResponse({
@@ -23809,16 +19257,8 @@ class GoogleCloudDialogflowV2ListMessagesResponse {
   };
 }
 
-/// The response message for Participants.ListParticipants.
 class GoogleCloudDialogflowV2ListParticipantsResponse {
-  /// Token to retrieve the next page of results or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
-
-  /// The list of participants.
-  ///
-  /// There is a maximum number of items returned based on the page_size field
-  /// in the request.
   core.List<GoogleCloudDialogflowV2Participant>? participants;
 
   GoogleCloudDialogflowV2ListParticipantsResponse({
@@ -23845,16 +19285,8 @@ class GoogleCloudDialogflowV2ListParticipantsResponse {
   };
 }
 
-/// The response message for SessionEntityTypes.ListSessionEntityTypes.
 class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
-
-  /// The list of session entity types.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
   core.List<GoogleCloudDialogflowV2SessionEntityType>? sessionEntityTypes;
 
   GoogleCloudDialogflowV2ListSessionEntityTypesResponse({
@@ -23881,13 +19313,8 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
   };
 }
 
-/// The response message for SipTrunks.ListSipTrunks.
 class GoogleCloudDialogflowV2ListSipTrunksResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
-
-  /// The list of SIP trunks.
   core.List<GoogleCloudDialogflowV2SipTrunk>? sipTrunks;
 
   GoogleCloudDialogflowV2ListSipTrunksResponse({
@@ -23914,16 +19341,33 @@ class GoogleCloudDialogflowV2ListSipTrunksResponse {
   };
 }
 
-/// The response message for Versions.ListVersions.
-class GoogleCloudDialogflowV2ListVersionsResponse {
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
+class GoogleCloudDialogflowV2ListToolsResponse {
   core.String? nextPageToken;
+  core.List<GoogleCloudDialogflowV2Tool>? tools;
 
-  /// The list of agent versions.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
+  GoogleCloudDialogflowV2ListToolsResponse({this.nextPageToken, this.tools});
+
+  GoogleCloudDialogflowV2ListToolsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        tools:
+            (json_['tools'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudDialogflowV2Tool.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (tools != null) 'tools': tools!,
+  };
+}
+
+class GoogleCloudDialogflowV2ListVersionsResponse {
+  core.String? nextPageToken;
   core.List<GoogleCloudDialogflowV2Version>? versions;
 
   GoogleCloudDialogflowV2ListVersionsResponse({
@@ -23950,11 +19394,7 @@ class GoogleCloudDialogflowV2ListVersionsResponse {
   };
 }
 
-/// Defines logging behavior for conversation lifecycle events.
 class GoogleCloudDialogflowV2LoggingConfig {
-  /// Whether to log conversation events like CONVERSATION_STARTED to
-  /// Stackdriver in the conversation project as JSON format ConversationEvent
-  /// protos.
   core.bool? enableStackdriverLogging;
 
   GoogleCloudDialogflowV2LoggingConfig({this.enableStackdriverLogging});
@@ -23971,65 +19411,22 @@ class GoogleCloudDialogflowV2LoggingConfig {
   };
 }
 
-/// Represents a message posted into a conversation.
 class GoogleCloudDialogflowV2Message {
-  /// The message content.
-  ///
-  /// Required.
   core.String? content;
-
-  /// The time when the message was created in Contact Center AI.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The message language.
-  ///
-  /// This should be a \[BCP-47\](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
-  /// language tag. Example: "en-US".
-  ///
-  /// Optional.
   core.String? languageCode;
-
-  /// The annotation for the message.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2MessageAnnotation? messageAnnotation;
-
-  /// The unique identifier of the message.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
-  ///
-  /// Optional.
   core.String? name;
-
-  /// The participant that sends this message.
-  ///
-  /// Output only.
   core.String? participant;
 
-  /// The role of the participant.
   ///
-  /// Output only.
   /// Possible string values are:
-  /// - "ROLE_UNSPECIFIED" : Participant role not set.
-  /// - "HUMAN_AGENT" : Participant is a human agent.
-  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
-  /// Dialogflow agent.
-  /// - "END_USER" : Participant is an end user that has called or chatted with
-  /// Dialogflow services.
+  /// - "ROLE_UNSPECIFIED"
+  /// - "HUMAN_AGENT"
+  /// - "AUTOMATED_AGENT"
+  /// - "END_USER"
   core.String? participantRole;
-
-  /// The time when the message was sent.
-  ///
-  /// For voice messages, this is the time when an utterance started.
-  ///
-  /// Optional.
   core.String? sendTime;
-
-  /// The sentiment analysis result for the message.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2SentimentAnalysisResult? sentimentAnalysis;
 
   GoogleCloudDialogflowV2Message({
@@ -24082,16 +19479,8 @@ class GoogleCloudDialogflowV2Message {
   };
 }
 
-/// Represents the result of annotation for the message.
 class GoogleCloudDialogflowV2MessageAnnotation {
-  /// Indicates whether the text message contains entities.
   core.bool? containEntities;
-
-  /// The collection of annotated message parts ordered by their position in the
-  /// message.
-  ///
-  /// You can recover the annotated message by concatenating
-  /// \[AnnotatedMessagePart.text\].
   core.List<GoogleCloudDialogflowV2AnnotatedMessagePart>? parts;
 
   GoogleCloudDialogflowV2MessageAnnotation({this.containEntities, this.parts});
@@ -24116,37 +19505,17 @@ class GoogleCloudDialogflowV2MessageAnnotation {
   };
 }
 
-/// Represents a message entry of a conversation.
 class GoogleCloudDialogflowV2MessageEntry {
-  /// Create time of the message entry.
-  ///
-  /// Optional.
   core.String? createTime;
-
-  /// The language of the text.
-  ///
-  /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// for a list of the currently supported language codes.
-  ///
-  /// Optional.
   core.String? languageCode;
 
-  /// Participant role of the message.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "ROLE_UNSPECIFIED" : Participant role not set.
-  /// - "HUMAN_AGENT" : Participant is a human agent.
-  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
-  /// Dialogflow agent.
-  /// - "END_USER" : Participant is an end user that has called or chatted with
-  /// Dialogflow services.
+  /// - "ROLE_UNSPECIFIED"
+  /// - "HUMAN_AGENT"
+  /// - "AUTOMATED_AGENT"
+  /// - "END_USER"
   core.String? role;
-
-  /// Transcript content of the message.
-  ///
-  /// Optional.
   core.String? text;
 
   GoogleCloudDialogflowV2MessageEntry({
@@ -24172,24 +19541,13 @@ class GoogleCloudDialogflowV2MessageEntry {
   };
 }
 
-/// Defines notification behavior.
 class GoogleCloudDialogflowV2NotificationConfig {
-  /// Format of message.
-  /// Possible string values are:
-  /// - "MESSAGE_FORMAT_UNSPECIFIED" : If it is unspecified, PROTO will be used.
-  /// - "PROTO" : Pub/Sub message will be serialized proto.
-  /// - "JSON" : Pub/Sub message will be json.
-  core.String? messageFormat;
-
-  /// Name of the Pub/Sub topic to publish conversation events like
-  /// CONVERSATION_STARTED as serialized ConversationEvent protos.
   ///
-  /// For telephony integration to receive notification, make sure either this
-  /// topic is in the same project as the conversation or you grant
-  /// `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow
-  /// Service Agent` role in the topic project. For chat integration to receive
-  /// notification, make sure API caller has been granted the `Dialogflow
-  /// Service Agent` role for the topic. Format: `projects//locations//topics/`.
+  /// Possible string values are:
+  /// - "MESSAGE_FORMAT_UNSPECIFIED"
+  /// - "PROTO"
+  /// - "JSON"
+  core.String? messageFormat;
   core.String? topic;
 
   GoogleCloudDialogflowV2NotificationConfig({this.messageFormat, this.topic});
@@ -24206,9 +19564,7 @@ class GoogleCloudDialogflowV2NotificationConfig {
   };
 }
 
-/// Represents the natural language speech audio to be played to the end user.
 class GoogleCloudDialogflowV2OutputAudio {
-  /// The natural language speech audio.
   core.String? audio;
   core.List<core.int> get audioAsBytes => convert.base64.decode(audio!);
 
@@ -24219,7 +19575,6 @@ class GoogleCloudDialogflowV2OutputAudio {
         .replaceAll('+', '-');
   }
 
-  /// Instructs the speech synthesizer how to generate the speech audio.
   GoogleCloudDialogflowV2OutputAudioConfig? config;
 
   GoogleCloudDialogflowV2OutputAudio({this.audio, this.config});
@@ -24241,42 +19596,18 @@ class GoogleCloudDialogflowV2OutputAudio {
   };
 }
 
-/// Instructs the speech synthesizer on how to generate the output audio
-/// content.
-///
-/// If this audio config is supplied in a request, it overrides all existing
-/// text-to-speech settings applied to the agent.
 class GoogleCloudDialogflowV2OutputAudioConfig {
-  /// Audio encoding of the synthesized audio content.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" : Not specified.
-  /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed
-  /// little-endian samples (Linear PCM). Audio content returned as LINEAR16
-  /// also contains a WAV header.
-  /// - "OUTPUT_AUDIO_ENCODING_MP3" : MP3 audio at 32kbps.
-  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS" : MP3 audio at 64kbps.
-  /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio wrapped in an ogg
-  /// container. The result will be a file which can be played natively on
-  /// Android, and in browsers (at least Chrome and Firefox). The quality of the
-  /// encoding is considerably higher than MP3 while using approximately the
-  /// same bitrate.
-  /// - "OUTPUT_AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio
-  /// samples using G.711 PCMU/mu-law.
-  /// - "OUTPUT_AUDIO_ENCODING_ALAW" : 8-bit samples that compand 13-bit audio
-  /// samples using G.711 PCMU/a-law.
+  /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED"
+  /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16"
+  /// - "OUTPUT_AUDIO_ENCODING_MP3"
+  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS"
+  /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS"
+  /// - "OUTPUT_AUDIO_ENCODING_MULAW"
+  /// - "OUTPUT_AUDIO_ENCODING_ALAW"
   core.String? audioEncoding;
-
-  /// The synthesis sample rate (in hertz) for this audio.
-  ///
-  /// If not provided, then the synthesizer will use the default sample rate
-  /// based on the audio encoding. If this is different from the voice's natural
-  /// sample rate, then the synthesizer will honor this request by converting to
-  /// the desired sample rate (which might result in worse audio quality).
   core.int? sampleRateHertz;
-
-  /// Configuration of how speech should be synthesized.
   GoogleCloudDialogflowV2SynthesizeSpeechConfig? synthesizeSpeechConfig;
 
   GoogleCloudDialogflowV2OutputAudioConfig({
@@ -24306,72 +19637,31 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
   };
 }
 
-/// Represents a conversation participant (human agent, virtual agent,
-/// end-user).
 class GoogleCloudDialogflowV2Participant {
-  /// Key-value filters on the metadata of documents returned by article
-  /// suggestion.
   ///
-  /// If specified, article suggestion only returns suggested documents that
-  /// match all filters in their Document.metadata. Multiple values for a
-  /// metadata key should be concatenated by comma. For example, filters to
-  /// match all documents that have 'US' or 'CA' in their market metadata values
-  /// and 'agent' in their user metadata values will be ```
-  /// documents_metadata_filters { key: "market" value: "US,CA" }
-  /// documents_metadata_filters { key: "user" value: "agent" } ```
-  ///
-  /// Optional.
+  /// Possible string values are:
+  /// - "AGENT_DESKTOP_SOURCE_UNSPECIFIED"
+  /// - "LIVE_PERSON"
+  /// - "GENESYS_CLOUD"
+  /// - "TWILIO"
+  /// - "SALESFORCE"
+  /// - "OTHER"
+  core.String? agentDesktopSource;
   core.Map<core.String, core.String>? documentsMetadataFilters;
-
-  /// The unique identifier of this participant.
-  ///
-  /// Format: `projects//locations//conversations//participants/`.
-  ///
-  /// Optional.
   core.String? name;
-
-  /// Obfuscated user id that should be associated with the created participant.
-  ///
-  /// You can specify a user id as follows: 1. If you set this field in
-  /// CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the
-  /// obfuscated user id with the participant. 2. If you set this field in
-  /// AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update
-  /// Participant.obfuscated_external_user_id. Dialogflow returns an error if
-  /// you try to add a user id for a non-END_USER participant. Dialogflow uses
-  /// this user id for billing and measurement purposes. For example, Dialogflow
-  /// determines whether a user in one conversation returned in a later
-  /// conversation. Note: * Please never pass raw user ids to Dialogflow. Always
-  /// obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded
-  /// string, e.g., a hex digest of a hash function like SHA-512. * The length
-  /// of the user id must be \<= 256 characters.
-  ///
-  /// Optional.
   core.String? obfuscatedExternalUserId;
 
-  /// The role this participant plays in the conversation.
   ///
-  /// This field must be set during participant creation and is then immutable.
-  ///
-  /// Immutable.
   /// Possible string values are:
-  /// - "ROLE_UNSPECIFIED" : Participant role not set.
-  /// - "HUMAN_AGENT" : Participant is a human agent.
-  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
-  /// Dialogflow agent.
-  /// - "END_USER" : Participant is an end user that has called or chatted with
-  /// Dialogflow services.
+  /// - "ROLE_UNSPECIFIED"
+  /// - "HUMAN_AGENT"
+  /// - "AUTOMATED_AGENT"
+  /// - "END_USER"
   core.String? role;
-
-  /// Label applied to streams representing this participant in SIPREC XML
-  /// metadata and SDP.
-  ///
-  /// This is used to assign transcriptions from that media stream to this
-  /// participant. This field can be updated.
-  ///
-  /// Optional.
   core.String? sipRecordingMediaLabel;
 
   GoogleCloudDialogflowV2Participant({
+    this.agentDesktopSource,
     this.documentsMetadataFilters,
     this.name,
     this.obfuscatedExternalUserId,
@@ -24381,6 +19671,7 @@ class GoogleCloudDialogflowV2Participant {
 
   GoogleCloudDialogflowV2Participant.fromJson(core.Map json_)
     : this(
+        agentDesktopSource: json_['agentDesktopSource'] as core.String?,
         documentsMetadataFilters: (json_['documentsMetadataFilters']
                 as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
@@ -24392,6 +19683,7 @@ class GoogleCloudDialogflowV2Participant {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (agentDesktopSource != null) 'agentDesktopSource': agentDesktopSource!,
     if (documentsMetadataFilters != null)
       'documentsMetadataFilters': documentsMetadataFilters!,
     if (name != null) 'name': name!,
@@ -24403,21 +19695,9 @@ class GoogleCloudDialogflowV2Participant {
   };
 }
 
-/// Represents the query input.
-///
-/// It can contain either: 1. An audio config which instructs the speech
-/// recognizer how to process the speech audio. 2. A conversational query in the
-/// form of text. 3. An event that specifies which intent to trigger.
 class GoogleCloudDialogflowV2QueryInput {
-  /// Instructs the speech recognizer how to process the speech audio.
   GoogleCloudDialogflowV2InputAudioConfig? audioConfig;
-
-  /// The event to be processed.
   GoogleCloudDialogflowV2EventInput? event;
-
-  /// The natural language text to be processed.
-  ///
-  /// Text length must not exceed 256 character for virtual agent interactions.
   GoogleCloudDialogflowV2TextInput? text;
 
   GoogleCloudDialogflowV2QueryInput({this.audioConfig, this.event, this.text});
@@ -24451,64 +19731,21 @@ class GoogleCloudDialogflowV2QueryInput {
   };
 }
 
-/// Represents the parameters of the conversational query.
 class GoogleCloudDialogflowV2QueryParameters {
-  /// The collection of contexts to be activated before this query is executed.
   core.List<GoogleCloudDialogflowV2Context>? contexts;
-
-  /// The geo location of this conversational query.
   GoogleTypeLatLng? geoLocation;
 
-  /// This field can be used to pass custom data to your webhook.
   ///
-  /// Arbitrary JSON objects are supported. If supplied, the value is used to
-  /// populate the `WebhookRequest.original_detect_intent_request.payload` field
-  /// sent to your webhook.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? payload;
-
-  /// The platform of the virtual agent response messages.
-  ///
-  /// If not empty, only emits messages from this platform in the response.
-  /// Valid values are the enum names of platform.
   core.String? platform;
-
-  /// Specifies whether to delete all contexts in the current session before the
-  /// new ones are activated.
   core.bool? resetContexts;
-
-  /// Configures the type of sentiment analysis to perform.
-  ///
-  /// If not provided, sentiment analysis is not performed.
   GoogleCloudDialogflowV2SentimentAnalysisRequestConfig?
   sentimentAnalysisRequestConfig;
-
-  /// Additional session entity types to replace or extend developer entity
-  /// types with.
-  ///
-  /// The entity synonyms apply to all languages and persist for the session of
-  /// this query.
   core.List<GoogleCloudDialogflowV2SessionEntityType>? sessionEntityTypes;
-
-  /// The time zone of this conversational query from the
-  /// [time zone database](https://www.iana.org/time-zones), e.g.,
-  /// America/New_York, Europe/Paris.
-  ///
-  /// If not provided, the time zone specified in agent settings is used.
   core.String? timeZone;
-
-  /// This field can be used to pass HTTP headers for a webhook call.
-  ///
-  /// These headers will be sent to webhook along with the headers that have
-  /// been configured through the Dialogflow web console. The headers defined
-  /// within this field will overwrite the headers configured through the
-  /// Dialogflow console if there is a conflict. Header names are
-  /// case-insensitive. Google's specified headers are not allowed. Including:
-  /// "Host", "Content-Length", "Connection", "From", "User-Agent",
-  /// "Accept-Encoding", "If-Modified-Since", "If-None-Match",
-  /// "X-Forwarded-For", etc.
   core.Map<core.String, core.String>? webhookHeaders;
 
   GoogleCloudDialogflowV2QueryParameters({
@@ -24580,122 +19817,37 @@ class GoogleCloudDialogflowV2QueryParameters {
   };
 }
 
-/// Represents the result of conversational query or event processing.
 class GoogleCloudDialogflowV2QueryResult {
-  /// The action name from the matched intent.
   core.String? action;
-
-  /// This field is set to: - `false` if the matched intent has required
-  /// parameters and not all of the required parameter values have been
-  /// collected.
-  ///
-  /// - `true` if all required parameter values have been collected, or if the
-  /// matched intent doesn't contain any required parameters.
   core.bool? allRequiredParamsPresent;
-
-  /// Indicates whether the conversational query triggers a cancellation for
-  /// slot filling.
-  ///
-  /// For more information, see the
-  /// [cancel slot filling documentation](https://cloud.google.com/dialogflow/es/docs/intents-actions-parameters#cancel).
   core.bool? cancelsSlotFilling;
 
-  /// Free-form diagnostic information for the associated detect intent request.
   ///
-  /// The fields of this data can change without notice, so you should not write
-  /// code that depends on its structure. The data may contain: - webhook call
-  /// latency - webhook errors
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? diagnosticInfo;
-
-  /// The collection of rich messages to present to the user.
   core.List<GoogleCloudDialogflowV2IntentMessage>? fulfillmentMessages;
-
-  /// The text to be pronounced to the user or shown on the screen.
-  ///
-  /// Note: This is a legacy field, `fulfillment_messages` should be preferred.
   core.String? fulfillmentText;
-
-  /// The intent that matched the conversational query.
-  ///
-  /// Some, not all fields are filled in this message, including but not limited
-  /// to: `name`, `display_name`, `end_interaction` and `is_fallback`.
   GoogleCloudDialogflowV2Intent? intent;
-
-  /// The intent detection confidence.
-  ///
-  /// Values range from 0.0 (completely uncertain) to 1.0 (completely certain).
-  /// This value is for informational purpose only and is only used to help
-  /// match the best intent within the classification threshold. This value may
-  /// change for the same end-user expression at any time due to a model
-  /// retraining or change in implementation. If there are `multiple
-  /// knowledge_answers` messages, this value is set to the greatest
-  /// `knowledgeAnswers.match_confidence` value in the list.
   core.double? intentDetectionConfidence;
-
-  /// The language that was triggered during intent detection.
-  ///
-  /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// for a list of the currently supported language codes.
   core.String? languageCode;
-
-  /// The collection of output contexts.
-  ///
-  /// If applicable, `output_contexts.parameters` contains entries with name
-  /// `.original` containing the original parameter values before the query.
   core.List<GoogleCloudDialogflowV2Context>? outputContexts;
 
-  /// The collection of extracted parameters.
   ///
-  /// Depending on your protocol or client library language, this is a map,
-  /// associative array, symbol table, dictionary, or JSON object composed of a
-  /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey
-  /// value: parameter name * MapValue type: If parameter's entity type is a
-  /// composite entity then use map, otherwise, depending on the parameter value
-  /// type, it could be one of string, number, boolean, null, list or map. *
-  /// MapValue value: If parameter's entity type is a composite entity then use
-  /// map from composite entity property names to property values, otherwise,
-  /// use parameter value.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? parameters;
-
-  /// The original conversational query text: - If natural language text was
-  /// provided as input, `query_text` contains a copy of the input.
-  ///
-  /// - If natural language speech audio was provided as input, `query_text`
-  /// contains the speech recognition result. If speech recognizer produced
-  /// multiple alternatives, a particular one is picked. - If automatic spell
-  /// correction is enabled, `query_text` will contain the corrected user input.
   core.String? queryText;
-
-  /// The sentiment analysis result, which depends on the
-  /// `sentiment_analysis_request_config` specified in the request.
   GoogleCloudDialogflowV2SentimentAnalysisResult? sentimentAnalysisResult;
-
-  /// The Speech recognition confidence between 0.0 and 1.0.
-  ///
-  /// A higher number indicates an estimated greater likelihood that the
-  /// recognized words are correct. The default of 0.0 is a sentinel value
-  /// indicating that confidence was not set. This field is not guaranteed to be
-  /// accurate or set. In particular this field isn't set for
-  /// StreamingDetectIntent since the streaming endpoint has separate confidence
-  /// estimates per portion of the audio in StreamingRecognitionResult.
   core.double? speechRecognitionConfidence;
 
-  /// If the query was fulfilled by a webhook call, this field is set to the
-  /// value of the `payload` field returned in the webhook response.
+  ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? webhookPayload;
-
-  /// If the query was fulfilled by a webhook call, this field is set to the
-  /// value of the `source` field returned in the webhook response.
   core.String? webhookSource;
 
   GoogleCloudDialogflowV2QueryResult({
@@ -24799,27 +19951,69 @@ class GoogleCloudDialogflowV2QueryResult {
   };
 }
 
-/// Request message for Documents.ReloadDocument.
+class GoogleCloudDialogflowV2RaiSettings {
+  core.List<GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig>?
+  raiCategoryConfigs;
+
+  GoogleCloudDialogflowV2RaiSettings({this.raiCategoryConfigs});
+
+  GoogleCloudDialogflowV2RaiSettings.fromJson(core.Map json_)
+    : this(
+        raiCategoryConfigs:
+            (json_['raiCategoryConfigs'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (raiCategoryConfigs != null) 'raiCategoryConfigs': raiCategoryConfigs!,
+  };
+}
+
+class GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig {
+  ///
+  /// Possible string values are:
+  /// - "RAI_CATEGORY_UNSPECIFIED"
+  /// - "DANGEROUS_CONTENT"
+  /// - "SEXUALLY_EXPLICIT"
+  /// - "HARASSMENT"
+  /// - "HATE_SPEECH"
+  core.String? category;
+
+  ///
+  /// Possible string values are:
+  /// - "SENSITIVITY_LEVEL_UNSPECIFIED"
+  /// - "BLOCK_MOST"
+  /// - "BLOCK_SOME"
+  /// - "BLOCK_FEW"
+  /// - "BLOCK_NONE"
+  core.String? sensitivityLevel;
+
+  GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig({
+    this.category,
+    this.sensitivityLevel,
+  });
+
+  GoogleCloudDialogflowV2RaiSettingsRaiCategoryConfig.fromJson(core.Map json_)
+    : this(
+        category: json_['category'] as core.String?,
+        sensitivityLevel: json_['sensitivityLevel'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (category != null) 'category': category!,
+    if (sensitivityLevel != null) 'sensitivityLevel': sensitivityLevel!,
+  };
+}
+
 class GoogleCloudDialogflowV2ReloadDocumentRequest {
-  /// The path of gcs source file for reloading document content.
-  ///
-  /// For now, only gcs uri is supported. For documents stored in Google Cloud
-  /// Storage, these URIs must have the form `gs:///`.
-  ///
-  /// Optional.
   core.String? contentUri;
-
-  /// Whether to import custom metadata from Google Cloud Storage.
-  ///
-  /// Only valid when the document source is Google Cloud Storage URI.
-  ///
-  /// Optional.
   core.bool? importGcsCustomMetadata;
-
-  /// When enabled, the reload request is to apply partial update to the smart
-  /// messaging allowlist.
-  ///
-  /// Optional.
   core.bool? smartMessagingPartialUpdate;
 
   GoogleCloudDialogflowV2ReloadDocumentRequest({
@@ -24845,56 +20039,10 @@ class GoogleCloudDialogflowV2ReloadDocumentRequest {
   };
 }
 
-/// The request message for Agents.RestoreAgent.
-class GoogleCloudDialogflowV2RestoreAgentRequest {
-  /// Zip compressed raw byte content for agent.
-  core.String? agentContent;
-  core.List<core.int> get agentContentAsBytes =>
-      convert.base64.decode(agentContent!);
+typedef GoogleCloudDialogflowV2RestoreAgentRequest = $AgentRequest;
 
-  set agentContentAsBytes(core.List<core.int> bytes_) {
-    agentContent = convert.base64
-        .encode(bytes_)
-        .replaceAll('/', '_')
-        .replaceAll('+', '-');
-  }
-
-  /// The URI to a Google Cloud Storage file containing the agent to restore.
-  ///
-  /// Note: The URI must start with "gs://". Dialogflow performs a read
-  /// operation for the Cloud Storage object on the caller's behalf, so your
-  /// request authentication must have read permissions for the object. For more
-  /// information, see
-  /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
-  core.String? agentUri;
-
-  GoogleCloudDialogflowV2RestoreAgentRequest({
-    this.agentContent,
-    this.agentUri,
-  });
-
-  GoogleCloudDialogflowV2RestoreAgentRequest.fromJson(core.Map json_)
-    : this(
-        agentContent: json_['agentContent'] as core.String?,
-        agentUri: json_['agentUri'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (agentContent != null) 'agentContent': agentContent!,
-    if (agentUri != null) 'agentUri': agentUri!,
-  };
-}
-
-/// The response message for Agents.SearchAgents.
 class GoogleCloudDialogflowV2SearchAgentsResponse {
-  /// The list of agents.
-  ///
-  /// There will be a maximum number of items returned based on the page_size
-  /// field in the request.
   core.List<GoogleCloudDialogflowV2Agent>? agents;
-
-  /// Token to retrieve the next page of results, or empty if there are no more
-  /// results in the list.
   core.String? nextPageToken;
 
   GoogleCloudDialogflowV2SearchAgentsResponse({
@@ -24921,27 +20069,18 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
   };
 }
 
-/// Represents a SearchKnowledge answer.
 class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
-  /// The piece of text from the knowledge base documents that answers the
-  /// search query
   core.String? answer;
-
-  /// The name of the answer record.
-  ///
-  /// Format: `projects//locations//answer Records/`
   core.String? answerRecord;
-
-  /// All sources used to generate the answer.
   core.List<GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource>?
   answerSources;
 
-  /// The type of the answer.
+  ///
   /// Possible string values are:
-  /// - "ANSWER_TYPE_UNSPECIFIED" : The answer has a unspecified type.
-  /// - "FAQ" : The answer is from FAQ documents.
-  /// - "GENERATIVE" : The answer is from generative model.
-  /// - "INTENT" : The answer is from intent matching.
+  /// - "ANSWER_TYPE_UNSPECIFIED"
+  /// - "FAQ"
+  /// - "GENERATIVE"
+  /// - "INTENT"
   core.String? answerType;
 
   GoogleCloudDialogflowV2SearchKnowledgeAnswer({
@@ -24975,21 +20114,14 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswer {
   };
 }
 
-/// The sources of the answers.
 class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
-  /// Metadata associated with the article.
+  ///
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
-
-  /// The relevant snippet of the article.
   core.String? snippet;
-
-  /// The title of the article.
   core.String? title;
-
-  /// The URI of the article.
   core.String? uri;
 
   GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource({
@@ -25019,86 +20151,123 @@ class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource {
   };
 }
 
-/// The request message for Conversations.SearchKnowledge.
-class GoogleCloudDialogflowV2SearchKnowledgeRequest {
-  /// The conversation (between human agent and end user) where the search
-  /// request is triggered.
+class GoogleCloudDialogflowV2SearchKnowledgeDebugInfo {
   ///
-  /// Format: `projects//locations//conversations/`.
-  ///
-  /// Optional.
-  core.String? conversation;
+  /// Possible string values are:
+  /// - "DATASTORE_RESPONSE_REASON_UNSPECIFIED"
+  /// - "NONE"
+  /// - "SEARCH_OUT_OF_QUOTA"
+  /// - "SEARCH_EMPTY_RESULTS"
+  /// - "ANSWER_GENERATION_GEN_AI_DISABLED"
+  /// - "ANSWER_GENERATION_OUT_OF_QUOTA"
+  /// - "ANSWER_GENERATION_ERROR"
+  /// - "ANSWER_GENERATION_NOT_ENOUGH_INFO"
+  /// - "ANSWER_GENERATION_RAI_FAILED"
+  /// - "ANSWER_GENERATION_NOT_GROUNDED"
+  core.String? datastoreResponseReason;
+  GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo?
+  ingestedContextReferenceDebugInfo;
+  GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior?
+  searchKnowledgeBehavior;
+  GoogleCloudDialogflowV2ServiceLatency? serviceLatency;
 
-  /// The conversation profile used to configure the search.
-  ///
-  /// Format: `projects//locations//conversationProfiles/`.
-  ///
-  /// Required.
+  GoogleCloudDialogflowV2SearchKnowledgeDebugInfo({
+    this.datastoreResponseReason,
+    this.ingestedContextReferenceDebugInfo,
+    this.searchKnowledgeBehavior,
+    this.serviceLatency,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeDebugInfo.fromJson(core.Map json_)
+    : this(
+        datastoreResponseReason:
+            json_['datastoreResponseReason'] as core.String?,
+        ingestedContextReferenceDebugInfo:
+            json_.containsKey('ingestedContextReferenceDebugInfo')
+                ? GoogleCloudDialogflowV2IngestedContextReferenceDebugInfo.fromJson(
+                  json_['ingestedContextReferenceDebugInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        searchKnowledgeBehavior:
+            json_.containsKey('searchKnowledgeBehavior')
+                ? GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior.fromJson(
+                  json_['searchKnowledgeBehavior']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceLatency:
+            json_.containsKey('serviceLatency')
+                ? GoogleCloudDialogflowV2ServiceLatency.fromJson(
+                  json_['serviceLatency']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (datastoreResponseReason != null)
+      'datastoreResponseReason': datastoreResponseReason!,
+    if (ingestedContextReferenceDebugInfo != null)
+      'ingestedContextReferenceDebugInfo': ingestedContextReferenceDebugInfo!,
+    if (searchKnowledgeBehavior != null)
+      'searchKnowledgeBehavior': searchKnowledgeBehavior!,
+    if (serviceLatency != null) 'serviceLatency': serviceLatency!,
+  };
+}
+
+class GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior {
+  core.bool? answerGenerationRewriterOn;
+  core.bool? endUserMetadataIncluded;
+  core.bool? thirdPartyConnectorAllowed;
+
+  GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior({
+    this.answerGenerationRewriterOn,
+    this.endUserMetadataIncluded,
+    this.thirdPartyConnectorAllowed,
+  });
+
+  GoogleCloudDialogflowV2SearchKnowledgeDebugInfoSearchKnowledgeBehavior.fromJson(
+    core.Map json_,
+  ) : this(
+        answerGenerationRewriterOn:
+            json_['answerGenerationRewriterOn'] as core.bool?,
+        endUserMetadataIncluded: json_['endUserMetadataIncluded'] as core.bool?,
+        thirdPartyConnectorAllowed:
+            json_['thirdPartyConnectorAllowed'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (answerGenerationRewriterOn != null)
+      'answerGenerationRewriterOn': answerGenerationRewriterOn!,
+    if (endUserMetadataIncluded != null)
+      'endUserMetadataIncluded': endUserMetadataIncluded!,
+    if (thirdPartyConnectorAllowed != null)
+      'thirdPartyConnectorAllowed': thirdPartyConnectorAllowed!,
+  };
+}
+
+class GoogleCloudDialogflowV2SearchKnowledgeRequest {
+  core.String? conversation;
   core.String? conversationProfile;
 
-  /// Information about the end-user to improve the relevance and accuracy of
-  /// generative answers.
   ///
-  /// This will be interpreted and used by a language model, so, for good
-  /// results, the data should be self-descriptive, and in a simple structure.
-  /// Example: ```json { "subscription plan": "Business Premium Plus", "devices
-  /// owned": [ {"model": "Google Pixel 7"}, {"model": "Google Pixel Tablet"} ]
-  /// } ```
-  ///
-  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? endUserMetadata;
-
-  /// Whether to search the query exactly without query rewrite.
-  ///
-  /// Optional.
   core.bool? exactSearch;
-
-  /// The name of the latest conversation message when the request is triggered.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
-  ///
-  /// Optional.
   core.String? latestMessage;
-
-  /// The parent resource contains the conversation profile Format: 'projects/'
-  /// or `projects//locations/`.
-  ///
-  /// Required.
   core.String? parent;
-
-  /// The natural language text query for knowledge search.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2TextInput? query;
 
-  /// The source of the query in the request.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "QUERY_SOURCE_UNSPECIFIED" : Unknown query source.
-  /// - "AGENT_QUERY" : The query is from agents.
-  /// - "SUGGESTED_QUERY" : The query is a suggested query from
-  /// Participants.SuggestKnowledgeAssist.
+  /// - "QUERY_SOURCE_UNSPECIFIED"
+  /// - "AGENT_QUERY"
+  /// - "SUGGESTED_QUERY"
   core.String? querySource;
-
-  /// Configuration specific to search queries with data stores.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig? searchConfig;
-
-  /// The ID of the search session.
-  ///
-  /// The session_id can be combined with Dialogflow V3 Agent ID retrieved from
-  /// conversation profile or on its own to identify a search session. The
-  /// search history of the same session will impact the search result. It's up
-  /// to the API caller to choose an appropriate `Session ID`. It can be a
-  /// random number or some type of session identifiers (preferably hashed). The
-  /// length must not exceed 36 characters.
-  ///
-  /// Required.
   core.String? sessionId;
 
   GoogleCloudDialogflowV2SearchKnowledgeRequest({
@@ -25157,28 +20326,11 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequest {
   };
 }
 
-/// Configuration specific to search queries with data stores.
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig {
-  /// Boost specifications for data stores.
-  ///
-  /// Maps from datastore name to their boost configuration. Do not specify more
-  /// than one BoostSpecs for each datastore name. If multiple BoostSpecs are
-  /// provided for the same datastore name, the behavior is undefined.
-  ///
-  /// Optional.
   core.List<
     GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs
   >?
   boostSpecs;
-
-  /// Filter specification for data store queries.
-  ///
-  /// TMaps from datastore name to the filter expression for that datastore. Do
-  /// not specify more than one FilterSpecs for each datastore name. If multiple
-  /// FilterSpecs are provided for the same datastore name, the behavior is
-  /// undefined.
-  ///
-  /// Optional.
   core.List<
     GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs
   >?
@@ -25218,20 +20370,8 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfig {
   };
 }
 
-/// Boost specifications for data stores.
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs {
-  /// Data Stores where the boosting configuration is applied.
-  ///
-  /// The full names of the referenced data stores. Formats:
-  /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
-  /// `projects/{project}/locations/{location}/dataStores/{data_store}`
-  ///
-  /// Optional.
   core.List<core.String>? dataStores;
-
-  /// A list of boosting specifications.
-  ///
-  /// Optional.
   core.List<
     GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec
   >?
@@ -25266,19 +20406,7 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecs {
   };
 }
 
-/// Boost specification to boost certain documents.
-///
-/// A copy of google.cloud.discoveryengine.v1main.BoostSpec, field documentation
-/// is available at
-/// https://cloud.google.com/generative-ai-app-builder/docs/reference/rest/v1alpha/BoostSpec
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpec {
-  /// Condition boost specifications.
-  ///
-  /// If a document matches multiple conditions in the specifications, boost
-  /// scores from these specifications are all applied and combined in a
-  /// non-linear way. Maximum number of specifications is 20.
-  ///
-  /// Optional.
   core.List<
     GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec
   >?
@@ -25308,40 +20436,10 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   };
 }
 
-/// Boost applies to documents which match a condition.
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec {
-  /// Strength of the condition boost, which should be in \[-1, 1\].
-  ///
-  /// Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the
-  /// document a big promotion. However, it does not necessarily mean that the
-  /// boosted document will be the top result at all times, nor that other
-  /// documents will be excluded. Results could still be shown even when none of
-  /// them matches the condition. And results that are significantly more
-  /// relevant to the search query can still trump your heavily favored but
-  /// irrelevant documents. Setting to -1.0 gives the document a big demotion.
-  /// However, results that are deeply relevant might still be shown. The
-  /// document will have an upstream battle to get a fairly high ranking, but it
-  /// is not blocked out completely. Setting to 0.0 means no boost applied. The
-  /// boosting condition is ignored.
-  ///
-  /// Optional.
   core.double? boost;
-
-  /// Complex specification for custom ranking based on customer defined
-  /// attribute value.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec?
   boostControlSpec;
-
-  /// An expression which specifies a boost condition.
-  ///
-  /// The syntax and supported fields are the same as a filter expression.
-  /// Examples: * To boost documents with document ID "doc_1" or "doc_2", and
-  /// color "Red" or "Blue": * (id: ANY("doc_1", "doc_2")) AND (color:
-  /// ANY("Red","Blue"))
-  ///
-  /// Optional.
   core.String? condition;
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpec({
@@ -25371,58 +20469,23 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   };
 }
 
-/// Specification for custom ranking based on customer specified attribute
-/// value.
-///
-/// It provides more controls for customized ranking than the simple (condition,
-/// boost) combination above.
 class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec {
-  /// The attribute type to be used to determine the boost amount.
   ///
-  /// The attribute value can be derived from the field value of the specified
-  /// field_name. In the case of numerical it is straightforward i.e.
-  /// attribute_value = numerical_field_value. In the case of freshness however,
-  /// attribute_value = (time.now() - datetime_field_value).
-  ///
-  /// Optional.
   /// Possible string values are:
-  /// - "ATTRIBUTE_TYPE_UNSPECIFIED" : Unspecified AttributeType.
-  /// - "NUMERICAL" : The value of the numerical field will be used to
-  /// dynamically update the boost amount. In this case, the attribute_value
-  /// (the x value) of the control point will be the actual value of the
-  /// numerical field for which the boost_amount is specified.
-  /// - "FRESHNESS" : For the freshness use case the attribute value will be the
-  /// duration between the current time and the date in the datetime field
-  /// specified. The value must be formatted as an XSD `dayTimeDuration` value
-  /// (a restricted subset of an ISO 8601 duration value). The pattern for this
-  /// is: `nDnM]`. E.g. `5D`, `3DT12H30M`, `T24H`.
+  /// - "ATTRIBUTE_TYPE_UNSPECIFIED"
+  /// - "NUMERICAL"
+  /// - "FRESHNESS"
   core.String? attributeType;
-
-  /// The control points used to define the curve.
-  ///
-  /// The monotonic function (defined through the interpolation_type above)
-  /// passes through the control points listed here.
-  ///
-  /// Optional.
   core.List<
     GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint
   >?
   controlPoints;
-
-  /// The name of the field whose value will be used to determine the boost
-  /// amount.
-  ///
-  /// Optional.
   core.String? fieldName;
 
-  /// The interpolation type to be applied to connect the control points listed
-  /// below.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "INTERPOLATION_TYPE_UNSPECIFIED" : Interpolation type is unspecified. In
-  /// this case, it defaults to Linear.
-  /// - "LINEAR" : Piecewise linear interpolation will be applied.
+  /// - "INTERPOLATION_TYPE_UNSPECIFIED"
+  /// - "LINEAR"
   core.String? interpolationType;
 
   GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpec({
@@ -25457,65 +20520,20 @@ class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSp
   };
 }
 
-/// The control points used to define the curve.
-///
-/// The curve defined through these control points can only be monotonically
-/// increasing or decreasing(constant values are acceptable).
 typedef GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigBoostSpecsBoostSpecConditionBoostSpecBoostControlSpecControlPoint =
     $BoostSpecConditionBoostSpecBoostControlSpecControlPoint;
+typedef GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs =
+    $FilterSpecs;
 
-/// Filter specification for data store queries.
-class GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs {
-  /// The data store where the filter configuration is applied.
-  ///
-  /// Full resource name of data store, such as
-  /// projects/{project}/locations/{location}/collections/{collectionId}/
-  /// dataStores/{dataStoreId}.
-  ///
-  /// Optional.
-  core.List<core.String>? dataStores;
-
-  /// The filter expression to be applied.
-  ///
-  /// Expression syntax is documented at
-  /// https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata#filter-expression-syntax
-  ///
-  /// Optional.
-  core.String? filter;
-
-  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs({
-    this.dataStores,
-    this.filter,
-  });
-
-  GoogleCloudDialogflowV2SearchKnowledgeRequestSearchConfigFilterSpecs.fromJson(
-    core.Map json_,
-  ) : this(
-        dataStores:
-            (json_['dataStores'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        filter: json_['filter'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (dataStores != null) 'dataStores': dataStores!,
-    if (filter != null) 'filter': filter!,
-  };
-}
-
-/// The response message for Conversations.SearchKnowledge.
 class GoogleCloudDialogflowV2SearchKnowledgeResponse {
-  /// Most relevant snippets extracted from articles in the given knowledge
-  /// base, ordered by confidence.
   core.List<GoogleCloudDialogflowV2SearchKnowledgeAnswer>? answers;
-
-  /// The rewritten query used to search knowledge.
   core.String? rewrittenQuery;
+  GoogleCloudDialogflowV2SearchKnowledgeDebugInfo? searchKnowledgeDebugInfo;
 
   GoogleCloudDialogflowV2SearchKnowledgeResponse({
     this.answers,
     this.rewrittenQuery,
+    this.searchKnowledgeDebugInfo,
   });
 
   GoogleCloudDialogflowV2SearchKnowledgeResponse.fromJson(core.Map json_)
@@ -25530,27 +20548,26 @@ class GoogleCloudDialogflowV2SearchKnowledgeResponse {
                 )
                 .toList(),
         rewrittenQuery: json_['rewrittenQuery'] as core.String?,
+        searchKnowledgeDebugInfo:
+            json_.containsKey('searchKnowledgeDebugInfo')
+                ? GoogleCloudDialogflowV2SearchKnowledgeDebugInfo.fromJson(
+                  json_['searchKnowledgeDebugInfo']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (answers != null) 'answers': answers!,
     if (rewrittenQuery != null) 'rewrittenQuery': rewrittenQuery!,
+    if (searchKnowledgeDebugInfo != null)
+      'searchKnowledgeDebugInfo': searchKnowledgeDebugInfo!,
   };
 }
 
-/// The sentiment, such as positive/negative feeling or association, for a unit
-/// of analysis, such as the query text.
-///
-/// See:
-/// https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values
-/// for how to interpret the result.
-typedef GoogleCloudDialogflowV2Sentiment = $Shared12;
+typedef GoogleCloudDialogflowV2Sentiment = $Shared18;
 
-/// Configures the types of sentiment analysis to perform.
 class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
-  /// Instructs the service to perform sentiment analysis on `query_text`.
-  ///
-  /// If not provided, sentiment analysis is not performed on `query_text`.
   core.bool? analyzeQueryTextSentiment;
 
   GoogleCloudDialogflowV2SentimentAnalysisRequestConfig({
@@ -25569,17 +20586,7 @@ class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
   };
 }
 
-/// The result of sentiment analysis.
-///
-/// Sentiment analysis inspects user input and identifies the prevailing
-/// subjective opinion, especially to determine a user's attitude as positive,
-/// negative, or neutral. For DetectIntent, it needs to be configured in
-/// DetectIntentRequest.query_params. For StreamingDetectIntent, it needs to be
-/// configured in StreamingDetectIntentRequest.query_params. And for
-/// Participants.AnalyzeContent and Participants.StreamingAnalyzeContent, it
-/// needs to be configured in ConversationProfile.human_agent_assistant_config
 class GoogleCloudDialogflowV2SentimentAnalysisResult {
-  /// The sentiment analysis result for `query_text`.
   GoogleCloudDialogflowV2Sentiment? queryTextSentiment;
 
   GoogleCloudDialogflowV2SentimentAnalysisResult({this.queryTextSentiment});
@@ -25600,50 +20607,70 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
   };
 }
 
-/// A session represents a conversation between a Dialogflow agent and an
-/// end-user.
-///
-/// You can create special entities, called session entities, during a session.
-/// Session entities can extend or replace custom entity types and only exist
-/// during the session that they were created for. All session data, including
-/// session entities, is stored by Dialogflow for 20 minutes. For more
-/// information, see the
-/// [session entity guide](https://cloud.google.com/dialogflow/docs/entities-session).
+class GoogleCloudDialogflowV2ServiceLatency {
+  core.List<GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency>?
+  internalServiceLatencies;
+
+  GoogleCloudDialogflowV2ServiceLatency({this.internalServiceLatencies});
+
+  GoogleCloudDialogflowV2ServiceLatency.fromJson(core.Map json_)
+    : this(
+        internalServiceLatencies:
+            (json_['internalServiceLatencies'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (internalServiceLatencies != null)
+      'internalServiceLatencies': internalServiceLatencies!,
+  };
+}
+
+class GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency {
+  core.String? completeTime;
+  core.double? latencyMs;
+  core.String? startTime;
+  core.String? step;
+
+  GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency({
+    this.completeTime,
+    this.latencyMs,
+    this.startTime,
+    this.step,
+  });
+
+  GoogleCloudDialogflowV2ServiceLatencyInternalServiceLatency.fromJson(
+    core.Map json_,
+  ) : this(
+        completeTime: json_['completeTime'] as core.String?,
+        latencyMs: (json_['latencyMs'] as core.num?)?.toDouble(),
+        startTime: json_['startTime'] as core.String?,
+        step: json_['step'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (completeTime != null) 'completeTime': completeTime!,
+    if (latencyMs != null) 'latencyMs': latencyMs!,
+    if (startTime != null) 'startTime': startTime!,
+    if (step != null) 'step': step!,
+  };
+}
+
 class GoogleCloudDialogflowV2SessionEntityType {
-  /// The collection of entities associated with this session entity type.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2EntityTypeEntity>? entities;
 
-  /// Indicates whether the additional data should override or supplement the
-  /// custom entity type definition.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "ENTITY_OVERRIDE_MODE_UNSPECIFIED" : Not specified. This value should be
-  /// never used.
-  /// - "ENTITY_OVERRIDE_MODE_OVERRIDE" : The collection of session entities
-  /// overrides the collection of entities in the corresponding custom entity
-  /// type.
-  /// - "ENTITY_OVERRIDE_MODE_SUPPLEMENT" : The collection of session entities
-  /// extends the collection of entities in the corresponding custom entity
-  /// type. Note: Even in this override mode calls to `ListSessionEntityTypes`,
-  /// `GetSessionEntityType`, `CreateSessionEntityType` and
-  /// `UpdateSessionEntityType` only return the additional entities added in
-  /// this session entity type. If you want to get the supplemented list, please
-  /// call EntityTypes.GetEntityType on the custom entity type and merge.
+  /// - "ENTITY_OVERRIDE_MODE_UNSPECIFIED"
+  /// - "ENTITY_OVERRIDE_MODE_OVERRIDE"
+  /// - "ENTITY_OVERRIDE_MODE_SUPPLEMENT"
   core.String? entityOverrideMode;
-
-  /// The unique identifier of this session entity type.
-  ///
-  /// Format: `projects//agent/sessions//entityTypes/`, or
-  /// `projects//agent/environments//users//sessions//entityTypes/`. If
-  /// `Environment ID` is not specified, we assume default 'draft' environment.
-  /// If `User ID` is not specified, we assume default '-' user. `` must be the
-  /// display name of an existing entity type in the same agent that will be
-  /// overridden or supplemented.
-  ///
-  /// Required.
   core.String? name;
 
   GoogleCloudDialogflowV2SessionEntityType({
@@ -25673,25 +20700,14 @@ class GoogleCloudDialogflowV2SessionEntityType {
   };
 }
 
-/// The request message for ConversationProfiles.SetSuggestionFeatureConfig.
 class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
-  /// The participant role to add or update the suggestion feature config.
   ///
-  /// Only HUMAN_AGENT or END_USER can be used.
-  ///
-  /// Required.
   /// Possible string values are:
-  /// - "ROLE_UNSPECIFIED" : Participant role not set.
-  /// - "HUMAN_AGENT" : Participant is a human agent.
-  /// - "AUTOMATED_AGENT" : Participant is an automated agent, such as a
-  /// Dialogflow agent.
-  /// - "END_USER" : Participant is an end user that has called or chatted with
-  /// Dialogflow services.
+  /// - "ROLE_UNSPECIFIED"
+  /// - "HUMAN_AGENT"
+  /// - "AUTOMATED_AGENT"
+  /// - "END_USER"
   core.String? participantRole;
-
-  /// The suggestion feature config to add or update.
-  ///
-  /// Required.
   GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfig?
   suggestionFeatureConfig;
 
@@ -25720,29 +20736,10 @@ class GoogleCloudDialogflowV2SetSuggestionFeatureConfigRequest {
   };
 }
 
-/// SipTrunk is the resource that represents a SIP trunk to connect to Google
-/// Telephony platform SIP trunking service.
 class GoogleCloudDialogflowV2SipTrunk {
-  /// Connections of the SIP trunk.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2Connection>? connections;
-
-  /// Human readable alias for this trunk.
-  ///
-  /// Optional.
   core.String? displayName;
-
-  /// The expected hostnames in the peer certificate from partner that is used
-  /// for TLS authentication.
-  ///
-  /// Required.
   core.List<core.String>? expectedHostname;
-
-  /// Identifier.
-  ///
-  /// The unique identifier of the SIP trunk. Format:
-  /// `projects//locations//sipTrunks/`.
   core.String? name;
 
   GoogleCloudDialogflowV2SipTrunk({
@@ -25778,20 +20775,9 @@ class GoogleCloudDialogflowV2SipTrunk {
   };
 }
 
-/// Represents a smart reply answer.
 class GoogleCloudDialogflowV2SmartReplyAnswer {
-  /// The name of answer record, in the format of
-  /// "projects//locations//answerRecords/"
   core.String? answerRecord;
-
-  /// Smart reply confidence.
-  ///
-  /// The system's confidence score that this reply is a good match for this
-  /// conversation, as a value from 0.0 (completely uncertain) to 1.0
-  /// (completely certain).
   core.double? confidence;
-
-  /// The content of the reply.
   core.String? reply;
 
   GoogleCloudDialogflowV2SmartReplyAnswer({
@@ -25814,18 +20800,9 @@ class GoogleCloudDialogflowV2SmartReplyAnswer {
   };
 }
 
-/// The evaluation metrics for smart reply model.
 class GoogleCloudDialogflowV2SmartReplyMetrics {
-  /// Percentage of target participant messages in the evaluation dataset for
-  /// which similar messages have appeared at least once in the allowlist.
-  ///
-  /// Should be \[0, 1\].
   core.double? allowlistCoverage;
-
-  /// Total number of conversations used to generate this metric.
   core.String? conversationCount;
-
-  /// Metrics of top n smart replies, sorted by TopNMetric.n.
   core.List<GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics>? topNMetrics;
 
   GoogleCloudDialogflowV2SmartReplyMetrics({
@@ -25857,19 +20834,8 @@ class GoogleCloudDialogflowV2SmartReplyMetrics {
   };
 }
 
-/// Evaluation metrics when retrieving `n` smart replies with the model.
 class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics {
-  /// Number of retrieved smart replies.
-  ///
-  /// For example, when `n` is 3, this evaluation contains metrics for when
-  /// Dialogflow retrieves 3 smart replies with the model.
   core.int? n;
-
-  /// Defined as `number of queries whose top n smart replies have at least one
-  /// similar (token match similarity above the defined threshold) reply as the
-  /// real reply` divided by `number of queries with at least one smart reply`.
-  ///
-  /// Value ranges from 0.0 to 1.0 inclusive.
   core.double? recall;
 
   GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics({this.n, this.recall});
@@ -25886,54 +20852,10 @@ class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetrics {
   };
 }
 
-/// Metadata for smart reply models.
-class GoogleCloudDialogflowV2SmartReplyModelMetadata {
-  /// Type of the smart reply model.
-  ///
-  /// If not provided, model_type is used.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "MODEL_TYPE_UNSPECIFIED" : ModelType unspecified.
-  /// - "SMART_REPLY_DUAL_ENCODER_MODEL" : ModelType smart reply dual encoder
-  /// model.
-  /// - "SMART_REPLY_BERT_MODEL" : ModelType smart reply bert model.
-  core.String? trainingModelType;
+typedef GoogleCloudDialogflowV2SmartReplyModelMetadata = $ModelMetadata;
 
-  GoogleCloudDialogflowV2SmartReplyModelMetadata({this.trainingModelType});
-
-  GoogleCloudDialogflowV2SmartReplyModelMetadata.fromJson(core.Map json_)
-    : this(trainingModelType: json_['trainingModelType'] as core.String?);
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (trainingModelType != null) 'trainingModelType': trainingModelType!,
-  };
-}
-
-/// Hints for the speech recognizer to help with recognition in a specific
-/// conversation state.
 class GoogleCloudDialogflowV2SpeechContext {
-  /// Boost for this context compared to other contexts: * If the boost is
-  /// positive, Dialogflow will increase the probability that the phrases in
-  /// this context are recognized over similar sounding phrases.
-  ///
-  /// * If the boost is unspecified or non-positive, Dialogflow will not apply
-  /// any boost. Dialogflow recommends that you use boosts in the range (0, 20\]
-  /// and that you find a value that fits your use case with binary search.
-  ///
-  /// Optional.
   core.double? boost;
-
-  /// A list of strings containing words and phrases that the speech recognizer
-  /// should recognize with higher likelihood.
-  ///
-  /// This list can be used to: * improve accuracy for words and phrases you
-  /// expect the user to say, e.g. typical commands for your Dialogflow agent *
-  /// add additional words to the speech recognizer vocabulary * ... See the
-  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/quotas)
-  /// for usage limits.
-  ///
-  /// Optional.
   core.List<core.String>? phrases;
 
   GoogleCloudDialogflowV2SpeechContext({this.boost, this.phrases});
@@ -25953,122 +20875,32 @@ class GoogleCloudDialogflowV2SpeechContext {
   };
 }
 
-/// Configures speech transcription for ConversationProfile.
 class GoogleCloudDialogflowV2SpeechToTextConfig {
-  /// Audio encoding of the audio content to process.
+  ///
   /// Possible string values are:
-  /// - "AUDIO_ENCODING_UNSPECIFIED" : Not specified.
-  /// - "AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed little-endian
-  /// samples (Linear PCM).
-  /// - "AUDIO_ENCODING_FLAC" :
-  /// \[`FLAC`\](https://xiph.org/flac/documentation.html) (Free Lossless Audio
-  /// Codec) is the recommended encoding because it is lossless (therefore
-  /// recognition is not compromised) and requires only about half the bandwidth
-  /// of `LINEAR16`. `FLAC` stream encoding supports 16-bit and 24-bit samples,
-  /// however, not all fields in `STREAMINFO` are supported.
-  /// - "AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio samples
-  /// using G.711 PCMU/mu-law.
-  /// - "AUDIO_ENCODING_AMR" : Adaptive Multi-Rate Narrowband codec.
-  /// `sample_rate_hertz` must be 8000.
-  /// - "AUDIO_ENCODING_AMR_WB" : Adaptive Multi-Rate Wideband codec.
-  /// `sample_rate_hertz` must be 16000.
-  /// - "AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio frames in Ogg container
-  /// ([OggOpus](https://wiki.xiph.org/OggOpus)). `sample_rate_hertz` must be
-  /// 16000.
-  /// - "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE" : Although the use of lossy
-  /// encodings is not recommended, if a very low bitrate encoding is required,
-  /// `OGG_OPUS` is highly preferred over Speex encoding. The
-  /// [Speex](https://speex.org/) encoding supported by Dialogflow API has a
-  /// header byte in each block, as in MIME type
-  /// `audio/x-speex-with-header-byte`. It is a variant of the RTP Speex
-  /// encoding defined in [RFC 5574](https://tools.ietf.org/html/rfc5574). The
-  /// stream is a sequence of blocks, one block per RTP packet. Each block
-  /// starts with a byte containing the length of the block, in bytes, followed
-  /// by one or more frames of Speex data, padded to an integral number of bytes
-  /// (octets) as specified in RFC 5574. In other words, each RTP header is
-  /// replaced with a single byte containing the block length. Only Speex
-  /// wideband is supported. `sample_rate_hertz` must be 16000.
-  /// - "AUDIO_ENCODING_ALAW" : 8-bit samples that compand 13-bit audio samples
-  /// using G.711 PCMU/a-law.
+  /// - "AUDIO_ENCODING_UNSPECIFIED"
+  /// - "AUDIO_ENCODING_LINEAR_16"
+  /// - "AUDIO_ENCODING_FLAC"
+  /// - "AUDIO_ENCODING_MULAW"
+  /// - "AUDIO_ENCODING_AMR"
+  /// - "AUDIO_ENCODING_AMR_WB"
+  /// - "AUDIO_ENCODING_OGG_OPUS"
+  /// - "AUDIO_ENCODING_SPEEX_WITH_HEADER_BYTE"
+  /// - "AUDIO_ENCODING_ALAW"
   core.String? audioEncoding;
-
-  /// If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult
-  /// with information about the recognized speech words, e.g. start and end
-  /// time offsets.
-  ///
-  /// If false or unspecified, Speech doesn't return any word-level information.
   core.bool? enableWordInfo;
-
-  /// The language of the supplied audio.
-  ///
-  /// Dialogflow does not do translations. See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// for a list of the currently supported language codes. Note that queries in
-  /// the same session do not necessarily need to specify the same language. If
-  /// not specified, the default language configured at ConversationProfile is
-  /// used.
   core.String? languageCode;
-
-  /// Which Speech model to select.
-  ///
-  /// Select the model best suited to your domain to get best results. If a
-  /// model is not explicitly specified, then Dialogflow auto-selects a model
-  /// based on other parameters in the SpeechToTextConfig and Agent settings. If
-  /// enhanced speech model is enabled for the agent and an enhanced version of
-  /// the specified model for the language does not exist, then the speech is
-  /// recognized using the standard version of the specified model. Refer to
-  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model)
-  /// for more details. If you specify a model, the following models typically
-  /// have the best performance: - phone_call (best for Agent Assist and
-  /// telephony) - latest_short (best for Dialogflow non-telephony) -
-  /// command_and_search Leave this field unspecified to use
-  /// [Agent Speech settings](https://cloud.google.com/dialogflow/cx/docs/concept/agent#settings-speech)
-  /// for model selection.
   core.String? model;
-
-  /// List of names of Cloud Speech phrase sets that are used for transcription.
-  ///
-  /// For phrase set limitations, please refer to
-  /// [Cloud Speech API quotas and limits](https://cloud.google.com/speech-to-text/quotas#content).
   core.List<core.String>? phraseSets;
-
-  /// Sample rate (in Hertz) of the audio content sent in the query.
-  ///
-  /// Refer to
-  /// [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics)
-  /// for more details.
   core.int? sampleRateHertz;
 
-  /// The speech model used in speech to text.
   ///
-  /// `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated
-  /// as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and
-  /// StreamingAnalyzeContentRequest request. If enhanced model variant is
-  /// specified and an enhanced version of the specified model for the language
-  /// does not exist, then it would emit an error.
   /// Possible string values are:
-  /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED" : No model variant specified. In this
-  /// case Dialogflow defaults to USE_BEST_AVAILABLE.
-  /// - "USE_BEST_AVAILABLE" : Use the best available variant of the Speech
-  /// model that the caller is eligible for. Please see the
-  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
-  /// for how to make your project eligible for enhanced models.
-  /// - "USE_STANDARD" : Use standard model variant even if an enhanced model is
-  /// available. See the
-  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
-  /// for details about enhanced models.
-  /// - "USE_ENHANCED" : Use an enhanced model variant: * If an enhanced variant
-  /// does not exist for the given model and request language, Dialogflow falls
-  /// back to the standard variant. The
-  /// [Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/enhanced-models)
-  /// describes which models have enhanced variants. * If the API caller isn't
-  /// eligible for enhanced models, Dialogflow returns an error. Please see the
-  /// [Dialogflow docs](https://cloud.google.com/dialogflow/docs/data-logging)
-  /// for how to make your project eligible.
+  /// - "SPEECH_MODEL_VARIANT_UNSPECIFIED"
+  /// - "USE_BEST_AVAILABLE"
+  /// - "USE_STANDARD"
+  /// - "USE_ENHANCED"
   core.String? speechModelVariant;
-
-  /// Use timeout based endpointing, interpreting endpointer sensitivity as
-  /// seconds of timeout value.
   core.bool? useTimeoutBasedEndpointing;
 
   GoogleCloudDialogflowV2SpeechToTextConfig({
@@ -26111,25 +20943,9 @@ class GoogleCloudDialogflowV2SpeechToTextConfig {
   };
 }
 
-/// The request message for Participants.SuggestArticles.
 class GoogleCloudDialogflowV2SuggestArticlesRequest {
-  /// Parameters for a human assist query.
   GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
-
-  /// Max number of messages prior to and including latest_message to use as
-  /// context when compiling the suggestion.
-  ///
-  /// By default 20 and at most 50.
-  ///
-  /// Optional.
   core.int? contextSize;
-
-  /// The name of the latest conversation message to compile suggestion for.
-  ///
-  /// If empty, it will be the latest message of the conversation. Format:
-  /// `projects//locations//conversations//messages/`.
-  ///
-  /// Optional.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestArticlesRequest({
@@ -26158,22 +20974,9 @@ class GoogleCloudDialogflowV2SuggestArticlesRequest {
   };
 }
 
-/// The response message for Participants.SuggestArticles.
 class GoogleCloudDialogflowV2SuggestArticlesResponse {
-  /// Articles ordered by score in descending order.
   core.List<GoogleCloudDialogflowV2ArticleAnswer>? articleAnswers;
-
-  /// Number of messages prior to and including latest_message to compile the
-  /// suggestion.
-  ///
-  /// It may be smaller than the SuggestArticlesRequest.context_size field in
-  /// the request if there aren't that many messages in the conversation.
   core.int? contextSize;
-
-  /// The name of the latest conversation message used to compile suggestion
-  /// for.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestArticlesResponse({
@@ -26203,30 +21006,9 @@ class GoogleCloudDialogflowV2SuggestArticlesResponse {
   };
 }
 
-/// The request message for Conversations.SuggestConversationSummary.
 class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
-  /// Parameters for a human assist query.
-  ///
-  /// Only used for POC/demo purpose.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
-
-  /// Max number of messages prior to and including \[latest_message\] to use as
-  /// context when compiling the suggestion.
-  ///
-  /// By default 500 and at most 1000.
-  ///
-  /// Optional.
   core.int? contextSize;
-
-  /// The name of the latest conversation message used as context for compiling
-  /// suggestion.
-  ///
-  /// If empty, the latest message of the conversation will be used. Format:
-  /// `projects//locations//conversations//messages/`.
-  ///
-  /// Optional.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestConversationSummaryRequest({
@@ -26256,23 +21038,9 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryRequest {
   };
 }
 
-/// The response message for Conversations.SuggestConversationSummary.
 class GoogleCloudDialogflowV2SuggestConversationSummaryResponse {
-  /// Number of messages prior to and including latest_message used to compile
-  /// the suggestion.
-  ///
-  /// It may be smaller than the SuggestConversationSummaryRequest.context_size
-  /// field in the request if there weren't that many messages in the
-  /// conversation.
   core.int? contextSize;
-
-  /// The name of the latest conversation message used as context for compiling
-  /// suggestion.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
   core.String? latestMessage;
-
-  /// Generated summary.
   GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary? summary;
 
   GoogleCloudDialogflowV2SuggestConversationSummaryResponse({
@@ -26301,30 +21069,20 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponse {
   };
 }
 
-/// Generated summary for a conversation.
 class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
-  /// The name of the answer record.
-  ///
-  /// Format: "projects//answerRecords/"
   core.String? answerRecord;
-
-  /// The baseline model version used to generate this summary.
-  ///
-  /// It is empty if a baseline model was not used to generate this summary.
   core.String? baselineModelVersion;
-
-  /// The summary content that is concatenated into one string.
+  core.List<
+    GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection
+  >?
+  sortedTextSections;
   core.String? text;
-
-  /// The summary content that is divided into sections.
-  ///
-  /// The key is the section's name and the value is the section's content.
-  /// There is no specific format for the key or value.
   core.Map<core.String, core.String>? textSections;
 
   GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary({
     this.answerRecord,
     this.baselineModelVersion,
+    this.sortedTextSections,
     this.text,
     this.textSections,
   });
@@ -26334,6 +21092,15 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
   ) : this(
         answerRecord: json_['answerRecord'] as core.String?,
         baselineModelVersion: json_['baselineModelVersion'] as core.String?,
+        sortedTextSections:
+            (json_['sortedTextSections'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
         text: json_['text'] as core.String?,
         textSections: (json_['textSections']
                 as core.Map<core.String, core.dynamic>?)
@@ -26344,30 +21111,37 @@ class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummary {
     if (answerRecord != null) 'answerRecord': answerRecord!,
     if (baselineModelVersion != null)
       'baselineModelVersion': baselineModelVersion!,
+    if (sortedTextSections != null) 'sortedTextSections': sortedTextSections!,
     if (text != null) 'text': text!,
     if (textSections != null) 'textSections': textSections!,
   };
 }
 
-/// The request message for Participants.SuggestFaqAnswers.
+class GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection {
+  core.String? section;
+  core.String? summary;
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection({
+    this.section,
+    this.summary,
+  });
+
+  GoogleCloudDialogflowV2SuggestConversationSummaryResponseSummarySummarySection.fromJson(
+    core.Map json_,
+  ) : this(
+        section: json_['section'] as core.String?,
+        summary: json_['summary'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (section != null) 'section': section!,
+    if (summary != null) 'summary': summary!,
+  };
+}
+
 class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
-  /// Parameters for a human assist query.
   GoogleCloudDialogflowV2AssistQueryParameters? assistQueryParams;
-
-  /// Max number of messages prior to and including \[latest_message\] to use as
-  /// context when compiling the suggestion.
-  ///
-  /// By default 20 and at most 50.
-  ///
-  /// Optional.
   core.int? contextSize;
-
-  /// The name of the latest conversation message to compile suggestion for.
-  ///
-  /// If empty, it will be the latest message of the conversation. Format:
-  /// `projects//locations//conversations//messages/`.
-  ///
-  /// Optional.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestFaqAnswersRequest({
@@ -26396,22 +21170,9 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersRequest {
   };
 }
 
-/// The request message for Participants.SuggestFaqAnswers.
 class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
-  /// Number of messages prior to and including latest_message to compile the
-  /// suggestion.
-  ///
-  /// It may be smaller than the SuggestFaqAnswersRequest.context_size field in
-  /// the request if there aren't that many messages in the conversation.
   core.int? contextSize;
-
-  /// Answers extracted from FAQ documents.
   core.List<GoogleCloudDialogflowV2FaqAnswer>? faqAnswers;
-
-  /// The name of the latest conversation message used to compile suggestion
-  /// for.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestFaqAnswersResponse({
@@ -26441,31 +21202,9 @@ class GoogleCloudDialogflowV2SuggestFaqAnswersResponse {
   };
 }
 
-/// The request message for Participants.SuggestKnowledgeAssist.
 class GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest {
-  /// Max number of messages prior to and including latest_message to use as
-  /// context when compiling the suggestion.
-  ///
-  /// The context size is by default 100 and at most 100.
-  ///
-  /// Optional.
   core.int? contextSize;
-
-  /// The name of the latest conversation message to compile suggestions for.
-  ///
-  /// If empty, it will be the latest message of the conversation. Format:
-  /// `projects//locations//conversations//messages/`.
-  ///
-  /// Optional.
   core.String? latestMessage;
-
-  /// The previously suggested query for the given conversation.
-  ///
-  /// This helps identify whether the next suggestion we generate is reasonably
-  /// different from the previous one. This is useful to avoid similar
-  /// suggestions within the conversation.
-  ///
-  /// Optional.
   core.String? previousSuggestedQuery;
 
   GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest({
@@ -26489,24 +21228,9 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistRequest {
   };
 }
 
-/// The response message for Participants.SuggestKnowledgeAssist.
 class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
-  /// Number of messages prior to and including latest_message to compile the
-  /// suggestion.
-  ///
-  /// It may be smaller than the SuggestKnowledgeAssistRequest.context_size
-  /// field in the request if there are fewer messages in the conversation.
   core.int? contextSize;
-
-  /// Knowledge Assist suggestion.
-  ///
-  /// Output only.
   GoogleCloudDialogflowV2KnowledgeAssistAnswer? knowledgeAssistAnswer;
-
-  /// The name of the latest conversation message used to compile suggestion
-  /// for.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse({
@@ -26536,24 +21260,9 @@ class GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse {
   };
 }
 
-/// The request message for Participants.SuggestSmartReplies.
 class GoogleCloudDialogflowV2SuggestSmartRepliesRequest {
-  /// Max number of messages prior to and including \[latest_message\] to use as
-  /// context when compiling the suggestion.
-  ///
-  /// By default 20 and at most 50.
   core.int? contextSize;
-
-  /// The current natural language text segment to compile suggestion for.
-  ///
-  /// This provides a way for user to get follow up smart reply suggestion after
-  /// a smart reply selection, without sending a text message.
   GoogleCloudDialogflowV2TextInput? currentTextInput;
-
-  /// The name of the latest conversation message to compile suggestion for.
-  ///
-  /// If empty, it will be the latest message of the conversation. Format:
-  /// `projects//locations//conversations//messages/`.
   core.String? latestMessage;
 
   GoogleCloudDialogflowV2SuggestSmartRepliesRequest({
@@ -26582,27 +21291,9 @@ class GoogleCloudDialogflowV2SuggestSmartRepliesRequest {
   };
 }
 
-/// The response message for Participants.SuggestSmartReplies.
 class GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
-  /// Number of messages prior to and including latest_message to compile the
-  /// suggestion.
-  ///
-  /// It may be smaller than the SuggestSmartRepliesRequest.context_size field
-  /// in the request if there aren't that many messages in the conversation.
   core.int? contextSize;
-
-  /// The name of the latest conversation message used to compile suggestion
-  /// for.
-  ///
-  /// Format: `projects//locations//conversations//messages/`.
   core.String? latestMessage;
-
-  /// Multiple reply options provided by smart reply service.
-  ///
-  /// The order is based on the rank of the model prediction. The maximum number
-  /// of the returned replies is set in SmartReplyConfig.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2SmartReplyAnswer>? smartReplyAnswers;
 
   GoogleCloudDialogflowV2SuggestSmartRepliesResponse({
@@ -26632,23 +21323,39 @@ class GoogleCloudDialogflowV2SuggestSmartRepliesResponse {
   };
 }
 
-/// The type of Human Agent Assistant API suggestion to perform, and the maximum
-/// number of results to return for that type.
-///
-/// Multiple `Feature` objects can be specified in the `features` list.
+class GoogleCloudDialogflowV2SuggestionDedupingConfig {
+  core.bool? enableDeduping;
+  core.double? similarityThreshold;
+
+  GoogleCloudDialogflowV2SuggestionDedupingConfig({
+    this.enableDeduping,
+    this.similarityThreshold,
+  });
+
+  GoogleCloudDialogflowV2SuggestionDedupingConfig.fromJson(core.Map json_)
+    : this(
+        enableDeduping: json_['enableDeduping'] as core.bool?,
+        similarityThreshold:
+            (json_['similarityThreshold'] as core.num?)?.toDouble(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enableDeduping != null) 'enableDeduping': enableDeduping!,
+    if (similarityThreshold != null)
+      'similarityThreshold': similarityThreshold!,
+  };
+}
+
 class GoogleCloudDialogflowV2SuggestionFeature {
-  /// Type of Human Agent Assistant API feature to request.
+  ///
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Unspecified feature type.
-  /// - "ARTICLE_SUGGESTION" : Run article suggestion model for chat.
-  /// - "FAQ" : Run FAQ model for chat.
-  /// - "SMART_REPLY" : Run smart reply model for chat.
-  /// - "CONVERSATION_SUMMARIZATION" : Run conversation summarization model for
-  /// chat.
-  /// - "KNOWLEDGE_SEARCH" : Run knowledge search with text input from agent or
-  /// text generated query.
-  /// - "KNOWLEDGE_ASSIST" : Run knowledge assist with automatic query
-  /// generation.
+  /// - "TYPE_UNSPECIFIED"
+  /// - "ARTICLE_SUGGESTION"
+  /// - "FAQ"
+  /// - "SMART_REPLY"
+  /// - "CONVERSATION_SUMMARIZATION"
+  /// - "KNOWLEDGE_SEARCH"
+  /// - "KNOWLEDGE_ASSIST"
   core.String? type;
 
   GoogleCloudDialogflowV2SuggestionFeature({this.type});
@@ -26661,50 +21368,57 @@ class GoogleCloudDialogflowV2SuggestionFeature {
   };
 }
 
-/// Represents the selection of a suggestion.
 class GoogleCloudDialogflowV2SuggestionInput {
-  /// The ID of a suggestion selected by the human agent.
   ///
-  /// The suggestion(s) were generated in a previous call to request Dialogflow
-  /// assist. The format is: `projects//locations//answerRecords/` where is an
-  /// alphanumeric string.
-  ///
-  /// Required.
+  /// Possible string values are:
+  /// - "ACTION_UNSPECIFIED"
+  /// - "CANCEL"
+  /// - "REVISE"
+  /// - "CONFIRM"
+  core.String? action;
   core.String? answerRecord;
 
-  GoogleCloudDialogflowV2SuggestionInput({this.answerRecord});
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? parameters;
+  core.String? sendTime;
+
+  GoogleCloudDialogflowV2SuggestionInput({
+    this.action,
+    this.answerRecord,
+    this.parameters,
+    this.sendTime,
+  });
 
   GoogleCloudDialogflowV2SuggestionInput.fromJson(core.Map json_)
-    : this(answerRecord: json_['answerRecord'] as core.String?);
+    : this(
+        action: json_['action'] as core.String?,
+        answerRecord: json_['answerRecord'] as core.String?,
+        parameters:
+            json_.containsKey('parameters')
+                ? json_['parameters'] as core.Map<core.String, core.dynamic>
+                : null,
+        sendTime: json_['sendTime'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (action != null) 'action': action!,
     if (answerRecord != null) 'answerRecord': answerRecord!,
+    if (parameters != null) 'parameters': parameters!,
+    if (sendTime != null) 'sendTime': sendTime!,
   };
 }
 
-/// One response of different type of suggestion response which is used in the
-/// response of Participants.AnalyzeContent and Participants.AnalyzeContent, as
-/// well as HumanAgentAssistantEvent.
 class GoogleCloudDialogflowV2SuggestionResult {
-  /// Error status if the request failed.
   GoogleRpcStatus? error;
-
-  /// Suggestions generated using generators triggered by customer or agent
-  /// messages.
   GoogleCloudDialogflowV2GenerateSuggestionsResponse?
   generateSuggestionsResponse;
-
-  /// SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.
   GoogleCloudDialogflowV2SuggestArticlesResponse? suggestArticlesResponse;
-
-  /// SuggestFaqAnswersResponse if request is for FAQ_ANSWER.
   GoogleCloudDialogflowV2SuggestFaqAnswersResponse? suggestFaqAnswersResponse;
-
-  /// SuggestKnowledgeAssistResponse if request is for KNOWLEDGE_ASSIST.
   GoogleCloudDialogflowV2SuggestKnowledgeAssistResponse?
   suggestKnowledgeAssistResponse;
-
-  /// SuggestSmartRepliesResponse if request is for SMART_REPLY.
   GoogleCloudDialogflowV2SuggestSmartRepliesResponse?
   suggestSmartRepliesResponse;
 
@@ -26777,33 +21491,10 @@ class GoogleCloudDialogflowV2SuggestionResult {
   };
 }
 
-/// Summarization context that customer can configure.
 class GoogleCloudDialogflowV2SummarizationContext {
-  /// List of few shot examples.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2FewShotExample>? fewShotExamples;
-
-  /// The target language of the generated summary.
-  ///
-  /// The language code for conversation will be used if this field is empty.
-  /// Supported 2.0 and later versions.
-  ///
-  /// Optional.
   core.String? outputLanguageCode;
-
-  /// List of sections.
-  ///
-  /// Note it contains both predefined section sand customer defined sections.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2SummarizationSection>? summarizationSections;
-
-  /// Version of the feature.
-  ///
-  /// If not set, default to latest version. Current candidates are \["1.0"\].
-  ///
-  /// Optional.
   core.String? version;
 
   GoogleCloudDialogflowV2SummarizationContext({
@@ -26845,42 +21536,18 @@ class GoogleCloudDialogflowV2SummarizationContext {
   };
 }
 
-/// Evaluation metrics for summarization generator.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetrics {
-  /// List of conversation details.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail
   >?
   conversationDetails;
-
-  /// A list of aggregated(average) scores per metric section.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric
   >?
   overallMetrics;
-
-  /// Overall token per section.
-  ///
-  /// This is an aggregated(sum) result of input token of summary acorss all
-  /// conversations that are selected for summarization evaluation.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken>?
   overallSectionTokens;
-
-  /// User bucket uri for merged evaluation score and aggregation score csv.
-  ///
-  /// Output only.
   core.String? summarizationEvaluationMergedResultsUri;
-
-  /// A list of evaluation results per conversation(&summary), metric and
-  /// section.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult
   >?
@@ -26950,21 +21617,9 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetrics {
   };
 }
 
-/// Decomposition details for accuracy.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition {
-  /// The accuracy reasoning of the breakdown point.
-  ///
-  /// Output only.
   core.String? accuracyReasoning;
-
-  /// Whether the breakdown point is accurate or not.
-  ///
-  /// Output only.
   core.bool? isAccurate;
-
-  /// The breakdown point of the summary.
-  ///
-  /// Output only.
   core.String? point;
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition({
@@ -26988,21 +21643,9 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition
   };
 }
 
-/// Decomposition details for adherence.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition {
-  /// The adherence reasoning of the breakdown point.
-  ///
-  /// Output only.
   core.String? adherenceReasoning;
-
-  /// Whether the breakdown point is adherent or not.
-  ///
-  /// Output only.
   core.bool? isAdherent;
-
-  /// The breakdown point of the given instructions.
-  ///
-  /// Output only.
   core.String? point;
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition({
@@ -27026,24 +21669,9 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecompositio
   };
 }
 
-/// Rubric result of the adherence evaluation.
-///
-/// A rubric is ued to determine if the summary adheres to all aspects of the
-/// given instructions.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric {
-  /// A boolean that indicates whether the rubric question is addressed or not.
-  ///
-  /// Output only.
   core.bool? isAddressed;
-
-  /// The question generated from instruction that used to evaluate summary.
-  ///
-  /// Output only.
   core.String? question;
-
-  /// The reasoning of the rubric question is addressed or not.
-  ///
-  /// Output only.
   core.String? reasoning;
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric({
@@ -27067,16 +21695,8 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric {
   };
 }
 
-/// Rubric details of the completeness evaluation result.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric {
-  /// A boolean that indicates whether the rubric question is addressed or not.
-  ///
-  /// Output only.
   core.bool? isAddressed;
-
-  /// The question generated from instruction that used to evaluate summary.
-  ///
-  /// Output only.
   core.String? question;
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric({
@@ -27097,36 +21717,14 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric {
   };
 }
 
-/// Aggregated evaluation result on conversation level.
-///
-/// This conatins evaluation results of all the metrics and sections.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail {
-  /// Conversation transcript that used for summarization evaluation as a
-  /// reference.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2MessageEntry>? messageEntries;
-
-  /// List of metric details.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail
   >?
   metricDetails;
-
-  /// Conversation level token count per section.
-  ///
-  /// This is an aggregated(sum) result of input token of summary acorss all
-  /// metrics for a single conversation.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken>?
   sectionTokens;
-
-  /// Summary sections that used for summarization evaluation as a reference.
-  ///
-  /// Output only.
   core.List<GoogleCloudDialogflowV2SummarySuggestionSummarySection>?
   summarySections;
 
@@ -27185,25 +21783,9 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetail {
   };
 }
 
-/// Aggregated result on metric level.
-///
-/// This conatins the evaluation results of all the sections.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetail {
-  /// Metrics name.
-  ///
-  /// e.g. accuracy, adherence, completeness.
-  ///
-  /// Output only.
   core.String? metric;
-
-  /// Aggregated(average) score on this metric across all sections.
-  ///
-  /// Output only.
   core.double? score;
-
-  /// List of section details.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail
   >?
@@ -27238,33 +21820,13 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMet
   };
 }
 
-/// Section level result.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail {
-  /// List of evaluation result.
-  ///
-  /// The list only contains one kind of the evaluation result.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult
   >?
   evaluationResults;
-
-  /// Aggregated(average) score on this section across all evaluation results.
-  ///
-  /// Either decompositions or rubrics.
-  ///
-  /// Output only.
   core.double? score;
-
-  /// The name of the summary instruction.
-  ///
-  /// Output only.
   core.String? section;
-
-  /// Summary for this section
-  ///
-  /// Output only.
   core.String? sectionSummary;
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMetricDetailSectionDetail({
@@ -27299,13 +21861,9 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsConversationDetailMet
   };
 }
 
-/// Decomposition details
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition {
-  /// only available for accuracy metric.
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition?
   accuracyDecomposition;
-
-  /// only available for adherence metric.
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceDecomposition?
   adherenceDecomposition;
 
@@ -27341,18 +21899,11 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition {
   };
 }
 
-/// Evaluation result that contains one of accuracy, adherence or completeness
-/// evaluation result.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult {
-  /// Only available for accuracy metric.
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsAccuracyDecomposition?
   accuracyDecomposition;
-
-  /// Only available for adherence metric.
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsAdherenceRubric?
   adherenceRubric;
-
-  /// Only available for completeness metric.
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsCompletenessRubric?
   completenessRubric;
 
@@ -27396,16 +21947,7 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult {
   };
 }
 
-/// Overall performance per metric.
-///
-/// This is the aggregated score for each metric across all conversations that
-/// are selected for summarization evaluation.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric {
-  /// Metric name.
-  ///
-  /// e.g. accuracy, adherence, completeness.
-  ///
-  /// Output only.
   core.String? metric;
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric({
@@ -27421,16 +21963,8 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsOverallScoresByMetric
   };
 }
 
-/// A pair of section name and input token count of the input summary section.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken {
-  /// The name of the summary instruction.
-  ///
-  /// Output only.
   core.String? section;
-
-  /// Token count.
-  ///
-  /// Output only.
   core.String? tokenCount;
 
   GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken({
@@ -27451,48 +21985,20 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSectionToken {
   };
 }
 
-/// Evaluation result per conversation(&summary), metric and section.
 class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluationResult {
-  /// List of decompostion details
-  ///
-  /// Output only.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
   core.List<GoogleCloudDialogflowV2SummarizationEvaluationMetricsDecomposition>?
   decompositions;
-
-  /// List of evaluation results.
-  ///
-  /// Output only.
   core.List<
     GoogleCloudDialogflowV2SummarizationEvaluationMetricsEvaluationResult
   >?
   evaluationResults;
-
-  /// metric name, e.g. accuracy, completeness, adherence, etc.
-  ///
-  /// Output only.
   core.String? metric;
-
-  /// score calculated from decompositions
-  ///
-  /// Output only.
   core.double? score;
-
-  /// section/task name, e.g. action, situation, etc
-  ///
-  /// Output only.
   core.String? section;
-
-  /// Summary of this section
-  ///
-  /// Output only.
   core.String? sectionSummary;
-
-  /// conversation session id
-  ///
-  /// Output only.
   @core.Deprecated(
     'Not supported. Member documentation may have more information.',
   )
@@ -27547,44 +22053,22 @@ class GoogleCloudDialogflowV2SummarizationEvaluationMetricsSummarizationEvaluati
   };
 }
 
-/// Represents the section of summarization.
 class GoogleCloudDialogflowV2SummarizationSection {
-  /// Definition of the section, for example, "what the customer needs help with
-  /// or has question about."
-  ///
-  /// Optional.
   core.String? definition;
-
-  /// Name of the section, for example, "situation".
-  ///
-  /// Optional.
   core.String? key;
 
-  /// Type of the summarization section.
   ///
-  /// Optional.
   /// Possible string values are:
-  /// - "TYPE_UNSPECIFIED" : Undefined section type, does not return anything.
-  /// - "SITUATION" : What the customer needs help with or has question about.
-  /// Section name: "situation".
-  /// - "ACTION" : What the agent does to help the customer. Section name:
-  /// "action".
-  /// - "RESOLUTION" : Result of the customer service. A single word describing
-  /// the result of the conversation. Section name: "resolution".
-  /// - "REASON_FOR_CANCELLATION" : Reason for cancellation if the customer
-  /// requests for a cancellation. "N/A" otherwise. Section name:
-  /// "reason_for_cancellation".
-  /// - "CUSTOMER_SATISFACTION" : "Unsatisfied" or "Satisfied" depending on the
-  /// customer's feelings at the end of the conversation. Section name:
-  /// "customer_satisfaction".
-  /// - "ENTITIES" : Key entities extracted from the conversation, such as
-  /// ticket number, order number, dollar amount, etc. Section names are
-  /// prefixed by "entities/".
-  /// - "CUSTOMER_DEFINED" : Customer defined sections.
-  /// - "SITUATION_CONCISE" : Concise version of the situation section. This
-  /// type is only available if type SITUATION is not selected.
-  /// - "ACTION_CONCISE" : Concise version of the action section. This type is
-  /// only available if type ACTION is not selected.
+  /// - "TYPE_UNSPECIFIED"
+  /// - "SITUATION"
+  /// - "ACTION"
+  /// - "RESOLUTION"
+  /// - "REASON_FOR_CANCELLATION"
+  /// - "CUSTOMER_SATISFACTION"
+  /// - "ENTITIES"
+  /// - "CUSTOMER_DEFINED"
+  /// - "SITUATION_CONCISE"
+  /// - "ACTION_CONCISE"
   core.String? type;
 
   GoogleCloudDialogflowV2SummarizationSection({
@@ -27607,11 +22091,7 @@ class GoogleCloudDialogflowV2SummarizationSection {
   };
 }
 
-/// List of summarization sections.
 class GoogleCloudDialogflowV2SummarizationSectionList {
-  /// Summarization sections.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2SummarizationSection>? summarizationSections;
 
   GoogleCloudDialogflowV2SummarizationSectionList({this.summarizationSections});
@@ -27635,11 +22115,7 @@ class GoogleCloudDialogflowV2SummarizationSectionList {
   };
 }
 
-/// Suggested summary of the conversation.
 class GoogleCloudDialogflowV2SummarySuggestion {
-  /// All the parts of generated summary.
-  ///
-  /// Required.
   core.List<GoogleCloudDialogflowV2SummarySuggestionSummarySection>?
   summarySections;
 
@@ -27663,16 +22139,8 @@ class GoogleCloudDialogflowV2SummarySuggestion {
   };
 }
 
-/// A component of the generated summary.
 class GoogleCloudDialogflowV2SummarySuggestionSummarySection {
-  /// Name of the section.
-  ///
-  /// Required.
   core.String? section;
-
-  /// Summary text for the section.
-  ///
-  /// Required.
   core.String? summary;
 
   GoogleCloudDialogflowV2SummarySuggestionSummarySection({
@@ -27693,54 +22161,12 @@ class GoogleCloudDialogflowV2SummarySuggestionSummarySection {
   };
 }
 
-/// Configuration of how speech should be synthesized.
 class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
-  /// An identifier which selects 'audio effects' profiles that are applied on
-  /// (post synthesized) text to speech.
-  ///
-  /// Effects are applied on top of each other in the order they are given.
-  ///
-  /// Optional.
   core.List<core.String>? effectsProfileId;
-
-  /// Speaking pitch, in the range \[-20.0, 20.0\].
-  ///
-  /// 20 means increase 20 semitones from the original pitch. -20 means decrease
-  /// 20 semitones from the original pitch.
-  ///
-  /// Optional.
   core.double? pitch;
-
-  /// The custom pronunciations for the synthesized audio.
-  ///
-  /// Optional.
   core.List<GoogleCloudDialogflowV2CustomPronunciationParams>? pronunciations;
-
-  /// Speaking rate/speed, in the range \[0.25, 4.0\].
-  ///
-  /// 1.0 is the normal native speed supported by the specific voice. 2.0 is
-  /// twice as fast, and 0.5 is half as fast. If unset(0.0), defaults to the
-  /// native 1.0 speed. Any other values \< 0.25 or \> 4.0 will return an error.
-  ///
-  /// Optional.
   core.double? speakingRate;
-
-  /// The desired voice of the synthesized audio.
-  ///
-  /// Optional.
   GoogleCloudDialogflowV2VoiceSelectionParams? voice;
-
-  /// Volume gain (in dB) of the normal native volume supported by the specific
-  /// voice, in the range \[-96.0, 16.0\].
-  ///
-  /// If unset, or set to a value of 0.0 (dB), will play at normal native signal
-  /// amplitude. A value of -6.0 (dB) will play at approximately half the
-  /// amplitude of the normal native signal amplitude. A value of +6.0 (dB) will
-  /// play at approximately twice the amplitude of the normal native signal
-  /// amplitude. We strongly recommend not to exceed +10 (dB) as there's usually
-  /// no effective increase in loudness for any value greater than that.
-  ///
-  /// Optional.
   core.double? volumeGainDb;
 
   GoogleCloudDialogflowV2SynthesizeSpeechConfig({
@@ -27788,88 +22214,22 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
   };
 }
 
-/// Auxiliary proto messages.
-///
-/// Represents the natural language text to be processed.
-class GoogleCloudDialogflowV2TextInput {
-  /// The language of this conversational query.
-  ///
-  /// See
-  /// [Language Support](https://cloud.google.com/dialogflow/docs/reference/language)
-  /// for a list of the currently supported language codes. Note that queries in
-  /// the same session do not necessarily need to specify the same language.
-  ///
-  /// Required.
-  core.String? languageCode;
+typedef GoogleCloudDialogflowV2TextInput = $Shared19;
 
-  /// The UTF-8 encoded natural language text to be processed.
-  ///
-  /// Text length must not exceed 256 characters for virtual agent interactions.
-  ///
-  /// Required.
-  core.String? text;
-
-  GoogleCloudDialogflowV2TextInput({this.languageCode, this.text});
-
-  GoogleCloudDialogflowV2TextInput.fromJson(core.Map json_)
-    : this(
-        languageCode: json_['languageCode'] as core.String?,
-        text: json_['text'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (languageCode != null) 'languageCode': languageCode!,
-    if (text != null) 'text': text!,
-  };
-}
-
-/// Instructs the speech synthesizer on how to generate the output audio
-/// content.
 class GoogleCloudDialogflowV2TextToSpeechSettings {
-  /// Indicates whether text to speech is enabled.
-  ///
-  /// Even when this field is false, other settings in this proto are still
-  /// retained.
-  ///
-  /// Optional.
   core.bool? enableTextToSpeech;
 
-  /// Audio encoding of the synthesized audio content.
   ///
-  /// Required.
   /// Possible string values are:
-  /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED" : Not specified.
-  /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16" : Uncompressed 16-bit signed
-  /// little-endian samples (Linear PCM). Audio content returned as LINEAR16
-  /// also contains a WAV header.
-  /// - "OUTPUT_AUDIO_ENCODING_MP3" : MP3 audio at 32kbps.
-  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS" : MP3 audio at 64kbps.
-  /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS" : Opus encoded audio wrapped in an ogg
-  /// container. The result will be a file which can be played natively on
-  /// Android, and in browsers (at least Chrome and Firefox). The quality of the
-  /// encoding is considerably higher than MP3 while using approximately the
-  /// same bitrate.
-  /// - "OUTPUT_AUDIO_ENCODING_MULAW" : 8-bit samples that compand 14-bit audio
-  /// samples using G.711 PCMU/mu-law.
-  /// - "OUTPUT_AUDIO_ENCODING_ALAW" : 8-bit samples that compand 13-bit audio
-  /// samples using G.711 PCMU/a-law.
+  /// - "OUTPUT_AUDIO_ENCODING_UNSPECIFIED"
+  /// - "OUTPUT_AUDIO_ENCODING_LINEAR_16"
+  /// - "OUTPUT_AUDIO_ENCODING_MP3"
+  /// - "OUTPUT_AUDIO_ENCODING_MP3_64_KBPS"
+  /// - "OUTPUT_AUDIO_ENCODING_OGG_OPUS"
+  /// - "OUTPUT_AUDIO_ENCODING_MULAW"
+  /// - "OUTPUT_AUDIO_ENCODING_ALAW"
   core.String? outputAudioEncoding;
-
-  /// The synthesis sample rate (in hertz) for this audio.
-  ///
-  /// If not provided, then the synthesizer will use the default sample rate
-  /// based on the audio encoding. If this is different from the voice's natural
-  /// sample rate, then the synthesizer will honor this request by converting to
-  /// the desired sample rate (which might result in worse audio quality).
-  ///
-  /// Optional.
   core.int? sampleRateHertz;
-
-  /// Configuration of how speech should be synthesized, mapping from language
-  /// (https://cloud.google.com/dialogflow/docs/reference/language) to
-  /// SynthesizeSpeechConfig.
-  ///
-  /// Optional.
   core.Map<core.String, GoogleCloudDialogflowV2SynthesizeSpeechConfig>?
   synthesizeSpeechConfigs;
 
@@ -27907,81 +22267,225 @@ class GoogleCloudDialogflowV2TextToSpeechSettings {
   };
 }
 
-/// Represents a call of a specific tool's action with the specified inputs.
-class GoogleCloudDialogflowV2ToolCall {
-  /// The name of the tool's action associated with this call.
-  ///
-  /// Optional.
-  core.String? action;
+class GoogleCloudDialogflowV2Tool {
+  core.Map<core.String, core.String>? actionConfirmationRequirement;
+  GoogleCloudDialogflowV2ToolConnectorTool? connectorSpec;
+  core.String? createTime;
+  core.String? description;
+  core.String? displayName;
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
+  GoogleCloudDialogflowV2ToolExtensionTool? extensionSpec;
+  GoogleCloudDialogflowV2ToolFunctionTool? functionSpec;
+  core.String? name;
+  GoogleCloudDialogflowV2ToolOpenApiTool? openApiSpec;
+  core.bool? satisfiesPzi;
+  core.bool? satisfiesPzs;
+  core.String? toolKey;
+  core.String? updateTime;
 
-  /// Create time of the tool call.
-  ///
-  /// Output only.
+  GoogleCloudDialogflowV2Tool({
+    this.actionConfirmationRequirement,
+    this.connectorSpec,
+    this.createTime,
+    this.description,
+    this.displayName,
+    this.extensionSpec,
+    this.functionSpec,
+    this.name,
+    this.openApiSpec,
+    this.satisfiesPzi,
+    this.satisfiesPzs,
+    this.toolKey,
+    this.updateTime,
+  });
+
+  GoogleCloudDialogflowV2Tool.fromJson(core.Map json_)
+    : this(
+        actionConfirmationRequirement: (json_['actionConfirmationRequirement']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        connectorSpec:
+            json_.containsKey('connectorSpec')
+                ? GoogleCloudDialogflowV2ToolConnectorTool.fromJson(
+                  json_['connectorSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        displayName: json_['displayName'] as core.String?,
+        extensionSpec:
+            json_.containsKey('extensionSpec')
+                ? GoogleCloudDialogflowV2ToolExtensionTool.fromJson(
+                  json_['extensionSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        functionSpec:
+            json_.containsKey('functionSpec')
+                ? GoogleCloudDialogflowV2ToolFunctionTool.fromJson(
+                  json_['functionSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        openApiSpec:
+            json_.containsKey('openApiSpec')
+                ? GoogleCloudDialogflowV2ToolOpenApiTool.fromJson(
+                  json_['openApiSpec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        satisfiesPzi: json_['satisfiesPzi'] as core.bool?,
+        satisfiesPzs: json_['satisfiesPzs'] as core.bool?,
+        toolKey: json_['toolKey'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (actionConfirmationRequirement != null)
+      'actionConfirmationRequirement': actionConfirmationRequirement!,
+    if (connectorSpec != null) 'connectorSpec': connectorSpec!,
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (displayName != null) 'displayName': displayName!,
+    if (extensionSpec != null) 'extensionSpec': extensionSpec!,
+    if (functionSpec != null) 'functionSpec': functionSpec!,
+    if (name != null) 'name': name!,
+    if (openApiSpec != null) 'openApiSpec': openApiSpec!,
+    if (satisfiesPzi != null) 'satisfiesPzi': satisfiesPzi!,
+    if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
+    if (toolKey != null) 'toolKey': toolKey!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+class GoogleCloudDialogflowV2ToolAuthentication {
+  GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig? apiKeyConfig;
+  GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig? bearerTokenConfig;
+  GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig? oauthConfig;
+  GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig?
+  serviceAgentAuthConfig;
+
+  GoogleCloudDialogflowV2ToolAuthentication({
+    this.apiKeyConfig,
+    this.bearerTokenConfig,
+    this.oauthConfig,
+    this.serviceAgentAuthConfig,
+  });
+
+  GoogleCloudDialogflowV2ToolAuthentication.fromJson(core.Map json_)
+    : this(
+        apiKeyConfig:
+            json_.containsKey('apiKeyConfig')
+                ? GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig.fromJson(
+                  json_['apiKeyConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bearerTokenConfig:
+            json_.containsKey('bearerTokenConfig')
+                ? GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig.fromJson(
+                  json_['bearerTokenConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        oauthConfig:
+            json_.containsKey('oauthConfig')
+                ? GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig.fromJson(
+                  json_['oauthConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceAgentAuthConfig:
+            json_.containsKey('serviceAgentAuthConfig')
+                ? GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig.fromJson(
+                  json_['serviceAgentAuthConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apiKeyConfig != null) 'apiKeyConfig': apiKeyConfig!,
+    if (bearerTokenConfig != null) 'bearerTokenConfig': bearerTokenConfig!,
+    if (oauthConfig != null) 'oauthConfig': oauthConfig!,
+    if (serviceAgentAuthConfig != null)
+      'serviceAgentAuthConfig': serviceAgentAuthConfig!,
+  };
+}
+
+typedef GoogleCloudDialogflowV2ToolAuthenticationApiKeyConfig =
+    $ToolAuthenticationApiKeyConfig;
+typedef GoogleCloudDialogflowV2ToolAuthenticationBearerTokenConfig =
+    $ToolAuthenticationBearerTokenConfig;
+typedef GoogleCloudDialogflowV2ToolAuthenticationOAuthConfig =
+    $ToolAuthenticationOAuthConfig;
+typedef GoogleCloudDialogflowV2ToolAuthenticationServiceAgentAuthConfig =
+    $ToolAuthenticationServiceAgentAuthConfig;
+
+class GoogleCloudDialogflowV2ToolCall {
+  core.String? action;
+  core.String? answerRecord;
   core.String? createTime;
 
-  /// The action's input parameters.
   ///
-  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? inputParameters;
 
-  /// The tool associated with this call.
   ///
-  /// Format: `projects//locations//tools/`.
-  ///
-  /// Optional.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED"
+  /// - "TRIGGERED"
+  /// - "NEEDS_CONFIRMATION"
+  core.String? state;
   core.String? tool;
+  core.String? toolDisplayDetails;
+  core.String? toolDisplayName;
 
   GoogleCloudDialogflowV2ToolCall({
     this.action,
+    this.answerRecord,
     this.createTime,
     this.inputParameters,
+    this.state,
     this.tool,
+    this.toolDisplayDetails,
+    this.toolDisplayName,
   });
 
   GoogleCloudDialogflowV2ToolCall.fromJson(core.Map json_)
     : this(
         action: json_['action'] as core.String?,
+        answerRecord: json_['answerRecord'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         inputParameters:
             json_.containsKey('inputParameters')
                 ? json_['inputParameters']
                     as core.Map<core.String, core.dynamic>
                 : null,
+        state: json_['state'] as core.String?,
         tool: json_['tool'] as core.String?,
+        toolDisplayDetails: json_['toolDisplayDetails'] as core.String?,
+        toolDisplayName: json_['toolDisplayName'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (action != null) 'action': action!,
+    if (answerRecord != null) 'answerRecord': answerRecord!,
     if (createTime != null) 'createTime': createTime!,
     if (inputParameters != null) 'inputParameters': inputParameters!,
+    if (state != null) 'state': state!,
     if (tool != null) 'tool': tool!,
+    if (toolDisplayDetails != null) 'toolDisplayDetails': toolDisplayDetails!,
+    if (toolDisplayName != null) 'toolDisplayName': toolDisplayName!,
   };
 }
 
-/// The result of calling a tool's action.
 class GoogleCloudDialogflowV2ToolCallResult {
-  /// The name of the tool's action associated with this call.
-  ///
-  /// Optional.
   core.String? action;
-
-  /// Only populated if the response content is utf-8 encoded.
+  core.String? answerRecord;
   core.String? content;
-
-  /// Create time of the tool call result.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The tool call's error.
   GoogleCloudDialogflowV2ToolCallResultError? error;
-
-  /// Only populated if the response content is not utf-8 encoded.
-  ///
-  /// (by definition byte fields are base64 encoded).
   core.String? rawContent;
   core.List<core.int> get rawContentAsBytes =>
       convert.base64.decode(rawContent!);
@@ -27993,15 +22497,11 @@ class GoogleCloudDialogflowV2ToolCallResult {
         .replaceAll('+', '-');
   }
 
-  /// The tool associated with this call.
-  ///
-  /// Format: `projects//locations//tools/`.
-  ///
-  /// Optional.
   core.String? tool;
 
   GoogleCloudDialogflowV2ToolCallResult({
     this.action,
+    this.answerRecord,
     this.content,
     this.createTime,
     this.error,
@@ -28012,6 +22512,7 @@ class GoogleCloudDialogflowV2ToolCallResult {
   GoogleCloudDialogflowV2ToolCallResult.fromJson(core.Map json_)
     : this(
         action: json_['action'] as core.String?,
+        answerRecord: json_['answerRecord'] as core.String?,
         content: json_['content'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         error:
@@ -28026,6 +22527,7 @@ class GoogleCloudDialogflowV2ToolCallResult {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (action != null) 'action': action!,
+    if (answerRecord != null) 'answerRecord': answerRecord!,
     if (content != null) 'content': content!,
     if (createTime != null) 'createTime': createTime!,
     if (error != null) 'error': error!,
@@ -28034,38 +22536,246 @@ class GoogleCloudDialogflowV2ToolCallResult {
   };
 }
 
-/// An error produced by the tool call.
 typedef GoogleCloudDialogflowV2ToolCallResultError = $ToolCallResultError;
 
-/// The request message for Agents.TrainAgent.
-typedef GoogleCloudDialogflowV2TrainAgentRequest = $Empty;
+class GoogleCloudDialogflowV2ToolConnectorTool {
+  core.List<GoogleCloudDialogflowV2ToolConnectorToolAction>? actions;
+  core.String? name;
 
-/// The request message for ConversationModels.UndeployConversationModel
+  GoogleCloudDialogflowV2ToolConnectorTool({this.actions, this.name});
+
+  GoogleCloudDialogflowV2ToolConnectorTool.fromJson(core.Map json_)
+    : this(
+        actions:
+            (json_['actions'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2ToolConnectorToolAction.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (actions != null) 'actions': actions!,
+    if (name != null) 'name': name!,
+  };
+}
+
+class GoogleCloudDialogflowV2ToolConnectorToolAction {
+  core.String? connectionActionId;
+  GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation?
+  entityOperation;
+  core.List<core.String>? inputFields;
+  core.List<core.String>? outputFields;
+
+  GoogleCloudDialogflowV2ToolConnectorToolAction({
+    this.connectionActionId,
+    this.entityOperation,
+    this.inputFields,
+    this.outputFields,
+  });
+
+  GoogleCloudDialogflowV2ToolConnectorToolAction.fromJson(core.Map json_)
+    : this(
+        connectionActionId: json_['connectionActionId'] as core.String?,
+        entityOperation:
+            json_.containsKey('entityOperation')
+                ? GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation.fromJson(
+                  json_['entityOperation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        inputFields:
+            (json_['inputFields'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        outputFields:
+            (json_['outputFields'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (connectionActionId != null) 'connectionActionId': connectionActionId!,
+    if (entityOperation != null) 'entityOperation': entityOperation!,
+    if (inputFields != null) 'inputFields': inputFields!,
+    if (outputFields != null) 'outputFields': outputFields!,
+  };
+}
+
+class GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation {
+  core.String? entityId;
+
+  ///
+  /// Possible string values are:
+  /// - "OPERATION_TYPE_UNSPECIFIED"
+  /// - "LIST"
+  /// - "GET"
+  /// - "CREATE"
+  /// - "UPDATE"
+  /// - "DELETE"
+  core.String? operation;
+
+  GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation({
+    this.entityId,
+    this.operation,
+  });
+
+  GoogleCloudDialogflowV2ToolConnectorToolActionEntityOperation.fromJson(
+    core.Map json_,
+  ) : this(
+        entityId: json_['entityId'] as core.String?,
+        operation: json_['operation'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (entityId != null) 'entityId': entityId!,
+    if (operation != null) 'operation': operation!,
+  };
+}
+
+typedef GoogleCloudDialogflowV2ToolExtensionTool = $Shared10;
+
+class GoogleCloudDialogflowV2ToolFunctionTool {
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? inputSchema;
+
+  ///
+  /// Possible string values are:
+  /// - "METHOD_TYPE_UNSPECIFIED"
+  /// - "GET"
+  /// - "POST"
+  /// - "PUT"
+  /// - "DELETE"
+  /// - "PATCH"
+  core.String? methodType;
+
+  ///
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? outputSchema;
+
+  GoogleCloudDialogflowV2ToolFunctionTool({
+    this.inputSchema,
+    this.methodType,
+    this.outputSchema,
+  });
+
+  GoogleCloudDialogflowV2ToolFunctionTool.fromJson(core.Map json_)
+    : this(
+        inputSchema:
+            json_.containsKey('inputSchema')
+                ? json_['inputSchema'] as core.Map<core.String, core.dynamic>
+                : null,
+        methodType: json_['methodType'] as core.String?,
+        outputSchema:
+            json_.containsKey('outputSchema')
+                ? json_['outputSchema'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (inputSchema != null) 'inputSchema': inputSchema!,
+    if (methodType != null) 'methodType': methodType!,
+    if (outputSchema != null) 'outputSchema': outputSchema!,
+  };
+}
+
+class GoogleCloudDialogflowV2ToolOpenApiTool {
+  GoogleCloudDialogflowV2ToolAuthentication? authentication;
+  GoogleCloudDialogflowV2ToolServiceDirectoryConfig? serviceDirectoryConfig;
+  core.String? textSchema;
+  GoogleCloudDialogflowV2ToolTLSConfig? tlsConfig;
+
+  GoogleCloudDialogflowV2ToolOpenApiTool({
+    this.authentication,
+    this.serviceDirectoryConfig,
+    this.textSchema,
+    this.tlsConfig,
+  });
+
+  GoogleCloudDialogflowV2ToolOpenApiTool.fromJson(core.Map json_)
+    : this(
+        authentication:
+            json_.containsKey('authentication')
+                ? GoogleCloudDialogflowV2ToolAuthentication.fromJson(
+                  json_['authentication']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        serviceDirectoryConfig:
+            json_.containsKey('serviceDirectoryConfig')
+                ? GoogleCloudDialogflowV2ToolServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        textSchema: json_['textSchema'] as core.String?,
+        tlsConfig:
+            json_.containsKey('tlsConfig')
+                ? GoogleCloudDialogflowV2ToolTLSConfig.fromJson(
+                  json_['tlsConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (authentication != null) 'authentication': authentication!,
+    if (serviceDirectoryConfig != null)
+      'serviceDirectoryConfig': serviceDirectoryConfig!,
+    if (textSchema != null) 'textSchema': textSchema!,
+    if (tlsConfig != null) 'tlsConfig': tlsConfig!,
+  };
+}
+
+typedef GoogleCloudDialogflowV2ToolServiceDirectoryConfig =
+    $ToolServiceDirectoryConfig;
+
+class GoogleCloudDialogflowV2ToolTLSConfig {
+  core.List<GoogleCloudDialogflowV2ToolTLSConfigCACert>? caCerts;
+
+  GoogleCloudDialogflowV2ToolTLSConfig({this.caCerts});
+
+  GoogleCloudDialogflowV2ToolTLSConfig.fromJson(core.Map json_)
+    : this(
+        caCerts:
+            (json_['caCerts'] as core.List?)
+                ?.map(
+                  (value) =>
+                      GoogleCloudDialogflowV2ToolTLSConfigCACert.fromJson(
+                        value as core.Map<core.String, core.dynamic>,
+                      ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (caCerts != null) 'caCerts': caCerts!,
+  };
+}
+
+typedef GoogleCloudDialogflowV2ToolTLSConfigCACert = $ToolTLSConfigCACert;
+typedef GoogleCloudDialogflowV2TrainAgentRequest = $Empty;
 typedef GoogleCloudDialogflowV2UndeployConversationModelRequest = $Empty;
 
-/// Represents a single validation error.
 class GoogleCloudDialogflowV2ValidationError {
-  /// The names of the entries that the error is associated with.
-  ///
-  /// Format: - `projects//agent`, if the error is associated with the entire
-  /// agent. - `projects//agent/intents/`, if the error is associated with
-  /// certain intents. - `projects//agent/intents//trainingPhrases/`, if the
-  /// error is associated with certain intent training phrases. -
-  /// `projects//agent/intents//parameters/`, if the error is associated with
-  /// certain intent parameters. - `projects//agent/entities/`, if the error is
-  /// associated with certain entities.
   core.List<core.String>? entries;
-
-  /// The detailed error message.
   core.String? errorMessage;
 
-  /// The severity of the error.
+  ///
   /// Possible string values are:
-  /// - "SEVERITY_UNSPECIFIED" : Not specified. This value should never be used.
-  /// - "INFO" : The agent doesn't follow Dialogflow best practices.
-  /// - "WARNING" : The agent may not behave as expected.
-  /// - "ERROR" : The agent may experience partial failures.
-  /// - "CRITICAL" : The agent may completely fail.
+  /// - "SEVERITY_UNSPECIFIED"
+  /// - "INFO"
+  /// - "WARNING"
+  /// - "ERROR"
+  /// - "CRITICAL"
   core.String? severity;
 
   GoogleCloudDialogflowV2ValidationError({
@@ -28091,9 +22801,7 @@ class GoogleCloudDialogflowV2ValidationError {
   };
 }
 
-/// Represents the output of agent validation.
 class GoogleCloudDialogflowV2ValidationResult {
-  /// Contains all validation errors.
   core.List<GoogleCloudDialogflowV2ValidationError>? validationErrors;
 
   GoogleCloudDialogflowV2ValidationResult({this.validationErrors});
@@ -28115,57 +22823,18 @@ class GoogleCloudDialogflowV2ValidationResult {
   };
 }
 
-/// You can create multiple versions of your agent and publish them to separate
-/// environments.
-///
-/// When you edit an agent, you are editing the draft agent. At any point, you
-/// can save the draft agent as an agent version, which is an immutable snapshot
-/// of your agent. When you save the draft agent, it is published to the default
-/// environment. When you create agent versions, you can publish them to custom
-/// environments. You can create a variety of custom environments for: - testing
-/// - development - production - etc. For more information, see the
-/// [versions and environments guide](https://cloud.google.com/dialogflow/docs/agents-versions).
 class GoogleCloudDialogflowV2Version {
-  /// The creation time of this version.
-  ///
-  /// This field is read-only, i.e., it cannot be set by create and update
-  /// methods.
-  ///
-  /// Output only.
   core.String? createTime;
-
-  /// The developer-provided description of this version.
-  ///
-  /// Optional.
   core.String? description;
-
-  /// The unique identifier of this agent version.
-  ///
-  /// Supported formats: - `projects//agent/versions/` -
-  /// `projects//locations//agent/versions/`
-  ///
-  /// Output only.
   core.String? name;
 
-  /// The status of this version.
   ///
-  /// This field is read-only and cannot be set by create and update methods.
-  ///
-  /// Output only.
   /// Possible string values are:
-  /// - "VERSION_STATUS_UNSPECIFIED" : Not specified. This value is not used.
-  /// - "IN_PROGRESS" : Version is not ready to serve (e.g. training is in
-  /// progress).
-  /// - "READY" : Version is ready to serve.
-  /// - "FAILED" : Version training failed.
+  /// - "VERSION_STATUS_UNSPECIFIED"
+  /// - "IN_PROGRESS"
+  /// - "READY"
+  /// - "FAILED"
   core.String? status;
-
-  /// The sequential number of this version.
-  ///
-  /// This field is read-only which means it cannot be set by create and update
-  /// methods.
-  ///
-  /// Output only.
   core.int? versionNumber;
 
   GoogleCloudDialogflowV2Version({
@@ -28194,53 +22863,10 @@ class GoogleCloudDialogflowV2Version {
   };
 }
 
-/// Description of which voice to use for speech synthesis.
-class GoogleCloudDialogflowV2VoiceSelectionParams {
-  /// The name of the voice.
-  ///
-  /// If not set, the service will choose a voice based on the other parameters
-  /// such as language_code and ssml_gender.
-  ///
-  /// Optional.
-  core.String? name;
+typedef GoogleCloudDialogflowV2VoiceSelectionParams = $VoiceSelectionParams;
 
-  /// The preferred gender of the voice.
-  ///
-  /// If not set, the service will choose a voice based on the other parameters
-  /// such as language_code and name. Note that this is only a preference, not
-  /// requirement. If a voice of the appropriate gender is not available, the
-  /// synthesizer should substitute a voice with a different gender rather than
-  /// failing the request.
-  ///
-  /// Optional.
-  /// Possible string values are:
-  /// - "SSML_VOICE_GENDER_UNSPECIFIED" : An unspecified gender, which means
-  /// that the client doesn't care which gender the selected voice will have.
-  /// - "SSML_VOICE_GENDER_MALE" : A male voice.
-  /// - "SSML_VOICE_GENDER_FEMALE" : A female voice.
-  /// - "SSML_VOICE_GENDER_NEUTRAL" : A gender-neutral voice.
-  core.String? ssmlGender;
-
-  GoogleCloudDialogflowV2VoiceSelectionParams({this.name, this.ssmlGender});
-
-  GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(core.Map json_)
-    : this(
-        name: json_['name'] as core.String?,
-        ssmlGender: json_['ssmlGender'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (name != null) 'name': name!,
-    if (ssmlGender != null) 'ssmlGender': ssmlGender!,
-  };
-}
-
-/// The response message for Locations.ListLocations.
 class GoogleCloudLocationListLocationsResponse {
-  /// A list of locations that matches the specified filter in the request.
   core.List<GoogleCloudLocationLocation>? locations;
-
-  /// The standard List next-page token.
   core.String? nextPageToken;
 
   GoogleCloudLocationListLocationsResponse({
@@ -28267,20 +22893,17 @@ class GoogleCloudLocationListLocationsResponse {
   };
 }
 
-/// A resource that represents a Google Cloud location.
-typedef GoogleCloudLocationLocation = $Location00;
+typedef GoogleCloudLocationLocation = $GoogleCloudLocationLocation;
 
-/// The response message for Operations.ListOperations.
 class GoogleLongrunningListOperationsResponse {
-  /// The standard List next-page token.
   core.String? nextPageToken;
-
-  /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
+  core.List<core.String>? unreachable;
 
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -28294,52 +22917,31 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
-/// This resource represents a long-running operation that is the result of a
-/// network API call.
 class GoogleLongrunningOperation {
-  /// If the value is `false`, it means the operation is still in progress.
-  ///
-  /// If `true`, the operation is completed, and either `error` or `response` is
-  /// available.
   core.bool? done;
-
-  /// The error result of the operation in case of failure or cancellation.
   GoogleRpcStatus? error;
 
-  /// Service-specific metadata associated with the operation.
   ///
-  /// It typically contains progress information and common metadata such as
-  /// create time. Some services might not provide such metadata. Any method
-  /// that returns a long-running operation should document the metadata type,
-  /// if any.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
   core.Map<core.String, core.Object?>? metadata;
-
-  /// The server-assigned name, which is only unique within the same service
-  /// that originally returns it.
-  ///
-  /// If you use the default HTTP mapping, the `name` should be a resource name
-  /// ending with `operations/{unique_id}`.
   core.String? name;
 
-  /// The normal, successful response of the operation.
   ///
-  /// If the original method returns no data on success, such as `Delete`, the
-  /// response is `google.protobuf.Empty`. If the original method is standard
-  /// `Get`/`Create`/`Update`, the response should be the resource. For other
-  /// methods, the response should have the type `XxxResponse`, where `Xxx` is
-  /// the original method name. For example, if the original method name is
-  /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -28382,26 +22984,6 @@ class GoogleLongrunningOperation {
   };
 }
 
-/// A generic empty message that you can re-use to avoid defining duplicated
-/// empty messages in your APIs.
-///
-/// A typical example is to use it as the request or the response type of an API
-/// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
-/// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
-
-/// The `Status` type defines a logical error model that is suitable for
-/// different programming environments, including REST APIs and RPC APIs.
-///
-/// It is used by [gRPC](https://github.com/grpc). Each `Status` message
-/// contains three pieces of data: error code, error message, and error details.
-/// You can find out more about this error model and how to work with it in the
-/// [API Design Guide](https://cloud.google.com/apis/design/errors).
-typedef GoogleRpcStatus = $Status00;
-
-/// An object that represents a latitude/longitude pair.
-///
-/// This is expressed as a pair of doubles to represent degrees latitude and
-/// degrees longitude. Unless specified otherwise, this object must conform to
-/// the WGS84 standard. Values must be within normalized ranges.
-typedef GoogleTypeLatLng = $LatLng;
+typedef GoogleRpcStatus = $GoogleRpcStatus;
+typedef GoogleTypeLatLng = $GoogleTypeLatLng;

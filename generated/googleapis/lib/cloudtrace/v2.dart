@@ -20,7 +20,7 @@
 /// interact with the Cloud Trace API directly. If you are looking to instrument
 /// your application for Cloud Trace, we recommend using OpenTelemetry.
 ///
-/// For more information, see <https://cloud.google.com/trace>
+/// For more information, see <https://cloud.google.com/trace/>
 ///
 /// Create an instance of [CloudTraceApi] to access these resources:
 ///

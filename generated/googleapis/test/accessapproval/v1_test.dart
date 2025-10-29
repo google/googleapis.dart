@@ -58,9 +58,20 @@ void checkUnnamed0(core.List<api.EnrolledService> o) {
   checkEnrolledService(o[1]);
 }
 
-core.List<core.String> buildUnnamed1() => ['foo', 'foo'];
+core.List<api.EnrolledService> buildUnnamed1() => [
+  buildEnrolledService(),
+  buildEnrolledService(),
+];
 
-void checkUnnamed1(core.List<core.String> o) {
+void checkUnnamed1(core.List<api.EnrolledService> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkEnrolledService(o[0]);
+  checkEnrolledService(o[1]);
+}
+
+core.List<core.String> buildUnnamed2() => ['foo', 'foo'];
+
+void checkUnnamed2(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -73,13 +84,14 @@ api.AccessApprovalSettings buildAccessApprovalSettings() {
   if (buildCounterAccessApprovalSettings < 3) {
     o.activeKeyVersion = 'foo';
     o.ancestorHasActiveKeyVersion = true;
+    o.ancestorsEnrolledServices = buildUnnamed0();
     o.approvalPolicy = buildCustomerApprovalApprovalPolicy();
     o.effectiveApprovalPolicy = buildCustomerApprovalApprovalPolicy();
     o.enrolledAncestor = true;
-    o.enrolledServices = buildUnnamed0();
+    o.enrolledServices = buildUnnamed1();
     o.invalidKeyVersion = true;
     o.name = 'foo';
-    o.notificationEmails = buildUnnamed1();
+    o.notificationEmails = buildUnnamed2();
     o.notificationPubsubTopic = 'foo';
     o.preferNoBroadApprovalRequests = true;
     o.preferredRequestExpirationDays = 42;
@@ -95,13 +107,14 @@ void checkAccessApprovalSettings(api.AccessApprovalSettings o) {
   if (buildCounterAccessApprovalSettings < 3) {
     unittest.expect(o.activeKeyVersion!, unittest.equals('foo'));
     unittest.expect(o.ancestorHasActiveKeyVersion!, unittest.isTrue);
+    checkUnnamed0(o.ancestorsEnrolledServices!);
     checkCustomerApprovalApprovalPolicy(o.approvalPolicy!);
     checkCustomerApprovalApprovalPolicy(o.effectiveApprovalPolicy!);
     unittest.expect(o.enrolledAncestor!, unittest.isTrue);
-    checkUnnamed0(o.enrolledServices!);
+    checkUnnamed1(o.enrolledServices!);
     unittest.expect(o.invalidKeyVersion!, unittest.isTrue);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed1(o.notificationEmails!);
+    checkUnnamed2(o.notificationEmails!);
     unittest.expect(o.notificationPubsubTopic!, unittest.equals('foo'));
     unittest.expect(o.preferNoBroadApprovalRequests!, unittest.isTrue);
     unittest.expect(o.preferredRequestExpirationDays!, unittest.equals(42));
@@ -373,12 +386,12 @@ void checkInvalidateApprovalRequestMessage(
   buildCounterInvalidateApprovalRequestMessage--;
 }
 
-core.List<api.ApprovalRequest> buildUnnamed2() => [
+core.List<api.ApprovalRequest> buildUnnamed3() => [
   buildApprovalRequest(),
   buildApprovalRequest(),
 ];
 
-void checkUnnamed2(core.List<api.ApprovalRequest> o) {
+void checkUnnamed3(core.List<api.ApprovalRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkApprovalRequest(o[0]);
   checkApprovalRequest(o[1]);
@@ -389,7 +402,7 @@ api.ListApprovalRequestsResponse buildListApprovalRequestsResponse() {
   final o = api.ListApprovalRequestsResponse();
   buildCounterListApprovalRequestsResponse++;
   if (buildCounterListApprovalRequestsResponse < 3) {
-    o.approvalRequests = buildUnnamed2();
+    o.approvalRequests = buildUnnamed3();
     o.nextPageToken = 'foo';
   }
   buildCounterListApprovalRequestsResponse--;
@@ -399,7 +412,7 @@ api.ListApprovalRequestsResponse buildListApprovalRequestsResponse() {
 void checkListApprovalRequestsResponse(api.ListApprovalRequestsResponse o) {
   buildCounterListApprovalRequestsResponse++;
   if (buildCounterListApprovalRequestsResponse < 3) {
-    checkUnnamed2(o.approvalRequests!);
+    checkUnnamed3(o.approvalRequests!);
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
   }
   buildCounterListApprovalRequestsResponse--;

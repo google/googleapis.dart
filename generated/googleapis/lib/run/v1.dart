@@ -28,6 +28,7 @@
 ///   - [NamespacesConfigurationsResource]
 ///   - [NamespacesDomainmappingsResource]
 ///   - [NamespacesExecutionsResource]
+///   - [NamespacesInstancesResource]
 ///   - [NamespacesJobsResource]
 ///   - [NamespacesRevisionsResource]
 ///   - [NamespacesRoutesResource]
@@ -40,6 +41,7 @@
 ///     - [ProjectsLocationsAuthorizeddomainsResource]
 ///     - [ProjectsLocationsConfigurationsResource]
 ///     - [ProjectsLocationsDomainmappingsResource]
+///     - [ProjectsLocationsInstancesResource]
 ///     - [ProjectsLocationsJobsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsRevisionsResource]
@@ -101,6 +103,8 @@ class NamespacesResource {
       NamespacesDomainmappingsResource(_requester);
   NamespacesExecutionsResource get executions =>
       NamespacesExecutionsResource(_requester);
+  NamespacesInstancesResource get instances =>
+      NamespacesInstancesResource(_requester);
   NamespacesJobsResource get jobs => NamespacesJobsResource(_requester);
   NamespacesRevisionsResource get revisions =>
       NamespacesRevisionsResource(_requester);
@@ -732,6 +736,305 @@ class NamespacesExecutionsResource {
     return ListExecutionsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class NamespacesInstancesResource {
+  final commons.ApiRequester _requester;
+
+  NamespacesInstancesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Create a Instance.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The namespace in which the Instance should be
+  /// created. Replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Instance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Instance> create(
+    Instance request,
+    core.String parent, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/instances';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Delete a Instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Instance to delete. Replace {namespace}
+  /// with the project ID or number. It takes the form namespaces/{namespace}.
+  /// For example: namespaces/PROJECT_ID
+  /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [apiVersion] - Optional. Cloud Run currently ignores this parameter.
+  ///
+  /// [kind] - Optional. Cloud Run currently ignores this parameter.
+  ///
+  /// [propagationPolicy] - Optional. Specifies the propagation policy of
+  /// delete. Cloud Run currently ignores this setting, and deletes in the
+  /// background. Please see
+  /// kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/ for
+  /// more information.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Status].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Status> delete(
+    core.String name, {
+    core.String? apiVersion,
+    core.String? kind,
+    core.String? propagationPolicy,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (apiVersion != null) 'apiVersion': [apiVersion],
+      if (kind != null) 'kind': [kind],
+      if (propagationPolicy != null) 'propagationPolicy': [propagationPolicy],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Status.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Get an Instance.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Instance to retrieve. It takes the form
+  /// namespaces/{namespace}/instances/{Instance_name} and the `endpoint` must
+  /// be regional. Replace {namespace} with the project ID or number.
+  /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Instance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Instance> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// List Instances.
+  ///
+  /// Results are sorted by creation time, descending.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The namespace from which the Instances should be
+  /// listed. Replace {namespace} with the project ID or number. It takes the
+  /// form namespaces/{namespace}. For example: namespaces/PROJECT_ID
+  /// Value must have pattern `^namespaces/\[^/\]+$`.
+  ///
+  /// [continue_] - Optional. Optional encoded string to continue paging.
+  ///
+  /// [fieldSelector] - Optional. Not supported by Cloud Run.
+  ///
+  /// [includeUninitialized] - Optional. Not supported by Cloud Run.
+  ///
+  /// [labelSelector] - Optional. Allows to filter resources based on a label.
+  /// Supported operations are =, !=, exists, in, and notIn.
+  ///
+  /// [limit] - Optional. The maximum number of records that should be returned.
+  ///
+  /// [resourceVersion] - Optional. Not supported by Cloud Run.
+  ///
+  /// [watch] - Optional. Not supported by Cloud Run.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListInstancesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListInstancesResponse> list(
+    core.String parent, {
+    core.String? continue_,
+    core.String? fieldSelector,
+    core.bool? includeUninitialized,
+    core.String? labelSelector,
+    core.int? limit,
+    core.String? resourceVersion,
+    core.bool? watch,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (continue_ != null) 'continue': [continue_],
+      if (fieldSelector != null) 'fieldSelector': [fieldSelector],
+      if (includeUninitialized != null)
+        'includeUninitialized': ['${includeUninitialized}'],
+      if (labelSelector != null) 'labelSelector': [labelSelector],
+      if (limit != null) 'limit': ['${limit}'],
+      if (resourceVersion != null) 'resourceVersion': [resourceVersion],
+      if (watch != null) 'watch': ['${watch}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'apis/run.googleapis.com/v1/' +
+        core.Uri.encodeFull('$parent') +
+        '/instances';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListInstancesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Start an Instance which has been stopped.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Instance to run. Replace {namespace}
+  /// with the project ID or number. It takes the form namespaces/{namespace}.
+  /// For example: namespaces/PROJECT_ID
+  /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Instance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Instance> start(
+    StartInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name') + ':start';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Stop an Instance that is running.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the Instance to run. Replace {namespace}
+  /// with the project ID or number. It takes the form namespaces/{namespace}.
+  /// For example: namespaces/PROJECT_ID
+  /// Value must have pattern `^namespaces/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Instance].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Instance> stop(
+    StopInstanceRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'apis/run.googleapis.com/v1/' + core.Uri.encodeFull('$name') + ':stop';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Instance.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2098,6 +2401,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsConfigurationsResource(_requester);
   ProjectsLocationsDomainmappingsResource get domainmappings =>
       ProjectsLocationsDomainmappingsResource(_requester);
+  ProjectsLocationsInstancesResource get instances =>
+      ProjectsLocationsInstancesResource(_requester);
   ProjectsLocationsJobsResource get jobs =>
       ProjectsLocationsJobsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -2120,9 +2425,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -2574,6 +2879,165 @@ class ProjectsLocationsDomainmappingsResource {
   }
 }
 
+class ProjectsLocationsInstancesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInstancesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get the IAM Access Control policy currently in effect for the given
+  /// instance.
+  ///
+  /// This result does not include any inherited policies.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [options_requestedPolicyVersion] - Optional. The maximum policy version
+  /// that will be used to format the policy. Valid values are 0, 1, and 3.
+  /// Requests specifying an invalid value will be rejected. Requests for
+  /// policies with any conditional role bindings must specify version 3.
+  /// Policies with no conditional role bindings may specify any valid value or
+  /// leave the field unset. The policy in the response might use the policy
+  /// version that you specified, or it might use a lower policy version. For
+  /// example, if you specify version 3, but the policy has no conditional role
+  /// bindings, the response uses version 1. To learn which resources support
+  /// conditions in their IAM policies, see the
+  /// [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> getIamPolicy(
+    core.String resource, {
+    core.int? options_requestedPolicyVersion,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (options_requestedPolicyVersion != null)
+        'options.requestedPolicyVersion': ['${options_requestedPolicyVersion}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':getIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Sets the IAM Access control policy for the specified instance.
+  ///
+  /// Overwrites any existing policy.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy is being
+  /// specified. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Policy].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Policy> setIamPolicy(
+    SetIamPolicyRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$resource') + ':setIamPolicy';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns permissions that a caller has on the specified instance.
+  ///
+  /// There are no permissions required for making this API call.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [resource] - REQUIRED: The resource for which the policy detail is being
+  /// requested. See
+  /// [Resource names](https://cloud.google.com/apis/design/resource_names) for
+  /// the appropriate value for this field.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/instances/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [TestIamPermissionsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<TestIamPermissionsResponse> testIamPermissions(
+    TestIamPermissionsRequest request,
+    core.String resource, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' + core.Uri.encodeFull('$resource') + ':testIamPermissions';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return TestIamPermissionsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsJobsResource {
   final commons.ApiRequester _requester;
 
@@ -2838,6 +3302,14 @@ class ProjectsLocationsOperationsResource {
   /// [pageToken] - Token identifying which result to start with, which is
   /// returned by a previous list call.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2853,12 +3325,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5518,9 +5993,18 @@ class GoogleLongrunningListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<GoogleLongrunningOperation>? operations;
 
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
   GoogleLongrunningListOperationsResponse({
     this.nextPageToken,
     this.operations,
+    this.unreachable,
   });
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map json_)
@@ -5534,11 +6018,16 @@ class GoogleLongrunningListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -5712,6 +6201,147 @@ class HTTPHeader {
   };
 }
 
+/// Instance represents the configuration of a single Instance, which references
+/// a container image which is run to completion.
+class Instance {
+  /// APIVersion defines the versioned schema of this representation of an
+  /// object.
+  ///
+  /// Servers should convert recognized schemas to the latest internal value,
+  /// and may reject unrecognized values.
+  ///
+  /// Optional.
+  core.String? apiVersion;
+
+  /// Kind is a string value representing the REST resource this object
+  /// represents.
+  ///
+  /// Servers may infer this from the endpoint the client submits requests to.
+  /// Cannot be updated. In CamelCase.
+  ///
+  /// Optional.
+  core.String? kind;
+
+  /// Standard object's metadata.
+  ///
+  /// Optional.
+  ObjectMeta? metadata;
+
+  /// Specification of the desired behavior of a Instance.
+  ///
+  /// Optional.
+  InstanceSpec? spec;
+
+  /// Current status of a Instance.
+  ///
+  /// Output only.
+  InstanceStatus? status;
+
+  Instance({this.apiVersion, this.kind, this.metadata, this.spec, this.status});
+
+  Instance.fromJson(core.Map json_)
+    : this(
+        apiVersion: json_['apiVersion'] as core.String?,
+        kind: json_['kind'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? ObjectMeta.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        spec:
+            json_.containsKey('spec')
+                ? InstanceSpec.fromJson(
+                  json_['spec'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        status:
+            json_.containsKey('status')
+                ? InstanceStatus.fromJson(
+                  json_['status'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apiVersion != null) 'apiVersion': apiVersion!,
+    if (kind != null) 'kind': kind!,
+    if (metadata != null) 'metadata': metadata!,
+    if (spec != null) 'spec': spec!,
+    if (status != null) 'status': status!,
+  };
+}
+
+/// InstanceSpec describes how the Instance will look.
+class InstanceSpec {
+  /// List of containers belonging to the Instance.
+  ///
+  /// We disallow a number of fields on this Container.
+  ///
+  /// Optional.
+  core.List<Container>? containers;
+
+  /// The Node Selector configuration.
+  ///
+  /// Map of selector key to a value which matches a node.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? nodeSelector;
+
+  /// Email address of the IAM service account associated with the Instance.
+  ///
+  /// The service account represents the identity of the running container, and
+  /// determines what permissions the Instance has. If not provided, the
+  /// Instance will use the project's default service account.
+  ///
+  /// Optional.
+  core.String? serviceAccountName;
+
+  /// List of volumes that can be mounted by containers belonging to the
+  /// Instance.
+  ///
+  /// Optional.
+  core.List<Volume>? volumes;
+
+  InstanceSpec({
+    this.containers,
+    this.nodeSelector,
+    this.serviceAccountName,
+    this.volumes,
+  });
+
+  InstanceSpec.fromJson(core.Map json_)
+    : this(
+        containers:
+            (json_['containers'] as core.List?)
+                ?.map(
+                  (value) => Container.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nodeSelector: (json_['nodeSelector']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        serviceAccountName: json_['serviceAccountName'] as core.String?,
+        volumes:
+            (json_['volumes'] as core.List?)
+                ?.map(
+                  (value) => Volume.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (containers != null) 'containers': containers!,
+    if (nodeSelector != null) 'nodeSelector': nodeSelector!,
+    if (serviceAccountName != null) 'serviceAccountName': serviceAccountName!,
+    if (volumes != null) 'volumes': volumes!,
+  };
+}
+
 /// Holds a single instance split entry for the Worker.
 ///
 /// Allocations can be done to a specific Revision name, or pointing to the
@@ -5747,6 +6377,52 @@ class InstanceSplit {
     if (latestRevision != null) 'latestRevision': latestRevision!,
     if (percent != null) 'percent': percent!,
     if (revisionName != null) 'revisionName': revisionName!,
+  };
+}
+
+/// InstanceStatus represents the current state of a Instance.
+class InstanceStatus {
+  /// Conditions communicate information about ongoing/complete reconciliation
+  /// processes that bring the "spec" inline with the observed state of the
+  /// world.
+  ///
+  /// Instance-specific conditions include: * `Ready`: `True` when the Instance
+  /// is ready to be executed.
+  ///
+  /// Output only.
+  core.List<GoogleCloudRunV1Condition>? conditions;
+
+  /// URI where logs for this execution can be found in Cloud Console.
+  ///
+  /// Optional.
+  core.String? logUri;
+
+  /// The 'generation' of the Instance that was last processed by the
+  /// controller.
+  ///
+  /// Output only.
+  core.int? observedGeneration;
+
+  InstanceStatus({this.conditions, this.logUri, this.observedGeneration});
+
+  InstanceStatus.fromJson(core.Map json_)
+    : this(
+        conditions:
+            (json_['conditions'] as core.List?)
+                ?.map(
+                  (value) => GoogleCloudRunV1Condition.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        logUri: json_['logUri'] as core.String?,
+        observedGeneration: json_['observedGeneration'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (conditions != null) 'conditions': conditions!,
+    if (logUri != null) 'logUri': logUri!,
+    if (observedGeneration != null) 'observedGeneration': observedGeneration!,
   };
 }
 
@@ -6141,6 +6817,64 @@ class ListExecutionsResponse {
             (json_['items'] as core.List?)
                 ?.map(
                   (value) => Execution.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        kind: json_['kind'] as core.String?,
+        metadata:
+            json_.containsKey('metadata')
+                ? ListMeta.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apiVersion != null) 'apiVersion': apiVersion!,
+    if (items != null) 'items': items!,
+    if (kind != null) 'kind': kind!,
+    if (metadata != null) 'metadata': metadata!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
+/// ListInstancesResponse is a list of Instances resources.
+class ListInstancesResponse {
+  /// The API version for this call such as "run.googleapis.com/v1".
+  core.String? apiVersion;
+
+  /// List of Instances.
+  core.List<Instance>? items;
+
+  /// The kind of this resource, in this case "InstancesList".
+  core.String? kind;
+
+  /// Metadata associated with this Instances list.
+  ListMeta? metadata;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListInstancesResponse({
+    this.apiVersion,
+    this.items,
+    this.kind,
+    this.metadata,
+    this.unreachable,
+  });
+
+  ListInstancesResponse.fromJson(core.Map json_)
+    : this(
+        apiVersion: json_['apiVersion'] as core.String?,
+        items:
+            (json_['items'] as core.List?)
+                ?.map(
+                  (value) => Instance.fromJson(
                     value as core.Map<core.String, core.dynamic>,
                   ),
                 )
@@ -6659,12 +7393,12 @@ class ObjectMeta {
   /// `run.googleapis.com/build-base-image`: Service. *
   /// `run.googleapis.com/build-enable-automatic-updates`: Service. *
   /// `run.googleapis.com/build-environment-variables`: Service. *
-  /// `run.googleapis.com/build-function-target`: Service. *
-  /// `run.googleapis.com/build-id`: Service. *
+  /// `run.googleapis.com/build-function-target`: Service, Revision. *
+  /// `run.googleapis.com/build-id`: Service, Revision. *
   /// `run.googleapis.com/build-image-uri`: Service. *
   /// `run.googleapis.com/build-name`: Service. *
   /// `run.googleapis.com/build-service-account`: Service. *
-  /// `run.googleapis.com/build-source-location`: Service. *
+  /// `run.googleapis.com/build-source-location`: Service, Revision. *
   /// `run.googleapis.com/build-worker-pool`: Service. *
   /// `run.googleapis.com/client-name`: All resources. *
   /// `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
@@ -6681,12 +7415,13 @@ class ObjectMeta {
   /// `run.googleapis.com/health-check-disabled`: Revision. *
   /// `run.googleapis.com/ingress`: Service. *
   /// `run.googleapis.com/launch-stage`: Service, Job. *
-  /// `run.googleapis.com/minScale`: Service *
+  /// `run.googleapis.com/minScale`: Service. * `run.googleapis.com/maxScale`:
+  /// Service. * `run.googleapis.com/manualInstanceCount`: Service. *
   /// `run.googleapis.com/network-interfaces`: Revision, Execution. *
-  /// `run.googleapis.com/post-key-revocation-action-type`: Revision. *
-  /// `run.googleapis.com/secrets`: Revision, Execution. *
-  /// `run.googleapis.com/secure-session-agent`: Revision. *
-  /// `run.googleapis.com/sessionAffinity`: Revision. *
+  /// `run.googleapis.com/post-key-revocation-action-type`: Revision.
+  /// `run.googleapis.com/scalingMode`: Service. * `run.googleapis.com/secrets`:
+  /// Revision, Execution. * `run.googleapis.com/secure-session-agent`:
+  /// Revision. * `run.googleapis.com/sessionAffinity`: Revision. *
   /// `run.googleapis.com/startup-cpu-boost`: Revision. *
   /// `run.googleapis.com/vpc-access-connector`: Revision, Execution. *
   /// `run.googleapis.com/vpc-access-egress`: Revision, Execution.
@@ -7189,10 +7924,12 @@ class ResourceRecord {
 class ResourceRequirements {
   /// Limits describes the maximum amount of compute resources allowed.
   ///
-  /// Only 'cpu' and 'memory' keys are supported. * For supported 'cpu' values,
-  /// go to https://cloud.google.com/run/docs/configuring/cpu. * For supported
+  /// Only 'cpu', 'memory' and 'nvidia.com/gpu' keys are supported. * For
+  /// supported 'cpu' values, go to
+  /// https://cloud.google.com/run/docs/configuring/cpu. * For supported
   /// 'memory' values and syntax, go to
-  /// https://cloud.google.com/run/docs/configuring/memory-limits
+  /// https://cloud.google.com/run/docs/configuring/memory-limits. * The only
+  /// supported 'nvidia.com/gpu' value is '1'.
   core.Map<core.String, core.String>? limits;
 
   /// Requests describes the minimum amount of compute resources required.
@@ -7959,6 +8696,7 @@ class Service {
   /// 'autoscaling.knative.dev' are restricted, and the accepted annotations
   /// will be different depending on the resource type. The following Cloud
   /// Run-specific annotations are accepted in Service.metadata.annotations. *
+  /// `run.googleapis.com/base-images` *
   /// `run.googleapis.com/binary-authorization-breakglass` *
   /// `run.googleapis.com/binary-authorization` *
   /// `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` *
@@ -8190,6 +8928,9 @@ class SetIamPolicyRequest {
   };
 }
 
+/// Request message for starting a stopped Instance.
+typedef StartInstanceRequest = $Empty;
+
 /// Status is a return value for calls that don't return other objects.
 class Status {
   /// Suggested HTTP return code for this status, 0 if not set.
@@ -8373,6 +9114,9 @@ class StatusDetails {
     if (uid != null) 'uid': uid!,
   };
 }
+
+/// Request message for stopping a running Instance.
+typedef StopInstanceRequest = $Empty;
 
 /// TCPSocketAction describes an action based on opening a socket
 class TCPSocketAction {

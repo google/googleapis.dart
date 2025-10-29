@@ -1443,6 +1443,58 @@ class AccountsContainersWorkspacesResource {
   AccountsContainersWorkspacesResource(commons.ApiRequester client)
     : _requester = client;
 
+  /// Applies multiple entity changes to a workspace in one call.
+  ///
+  /// When creating new entities, their entity IDs must be unique and in correct
+  /// format. That is, they must start with "new_" and followed by number, e.g.
+  /// "new_1", "new_2". Example body snippet to create myNewTag under
+  /// myNewFolder is: ``` "changes": [ { "folder": { "folderId": "new_1",
+  /// "name": "myNewFolder", ... }, "changeStatus": "added" }, { "tag": {
+  /// "tagId": "new_2", "name": "myNewTag", "parentFolderId": "new_1", ... },
+  /// "changeStatus": "added" } ] ```
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [path] - GTM Workspace's API relative path.
+  /// Value must have pattern
+  /// `^accounts/\[^/\]+/containers/\[^/\]+/workspaces/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BulkUpdateWorkspaceResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BulkUpdateWorkspaceResponse> bulkUpdate(
+    ProposedChange request,
+    core.String path, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'tagmanager/v2/' + core.Uri.encodeFull('$path') + '/bulk_update';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return BulkUpdateWorkspaceResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Creates a Workspace.
   ///
   /// [request] - The metadata request object.
@@ -4975,6 +5027,31 @@ class BuiltInVariable {
   };
 }
 
+class BulkUpdateWorkspaceResponse {
+  /// The entities that were added or updated during the bulk-update.
+  ///
+  /// Does not include entities that were deleted or updated by the system.
+  core.List<Entity>? changes;
+
+  BulkUpdateWorkspaceResponse({this.changes});
+
+  BulkUpdateWorkspaceResponse.fromJson(core.Map json_)
+    : this(
+        changes:
+            (json_['changes'] as core.List?)
+                ?.map(
+                  (value) => Entity.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (changes != null) 'changes': changes!,
+  };
+}
+
 class Client {
   /// GTM Account ID.
   core.String? accountId;
@@ -7127,6 +7204,29 @@ class Parameter {
     if (map != null) 'map': map!,
     if (type != null) 'type': type!,
     if (value != null) 'value': value!,
+  };
+}
+
+class ProposedChange {
+  /// The list of workspace changes to be applied.
+  core.List<Entity>? changes;
+
+  ProposedChange({this.changes});
+
+  ProposedChange.fromJson(core.Map json_)
+    : this(
+        changes:
+            (json_['changes'] as core.List?)
+                ?.map(
+                  (value) => Entity.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (changes != null) 'changes': changes!,
   };
 }
 

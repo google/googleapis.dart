@@ -28,6 +28,7 @@
 ///     - [ProjectsLocationsConnectionsResource]
 ///       - [ProjectsLocationsConnectionsGitRepositoryLinksResource]
 ///     - [ProjectsLocationsInsightsConfigsResource]
+///       - [ProjectsLocationsInsightsConfigsDeploymentEventsResource]
 ///     - [ProjectsLocationsOperationsResource]
 library;
 
@@ -124,14 +125,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -677,6 +684,77 @@ class ProjectsLocationsAccountConnectorsUsersResource {
     return User.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Finishes OAuth flow for an account connector.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountConnector] - Required. The resource name of the AccountConnector
+  /// in the format `projects / * /locations / * /accountConnectors / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [googleOauthParams_scopes] - Required. The scopes returned by Google OAuth
+  /// flow.
+  ///
+  /// [googleOauthParams_ticket] - Required. The ticket to be used for post
+  /// processing the callback from Google OAuth flow.
+  ///
+  /// [googleOauthParams_versionInfo] - Optional. The version info returned by
+  /// Google OAuth flow.
+  ///
+  /// [oauthParams_code] - Required. The code to be used for getting the token
+  /// from SCM provider.
+  ///
+  /// [oauthParams_ticket] - Required. The ticket to be used for post processing
+  /// the callback from SCM provider.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [FinishOAuthResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<FinishOAuthResponse> finishOAuthFlow(
+    core.String accountConnector, {
+    core.List<core.String>? googleOauthParams_scopes,
+    core.String? googleOauthParams_ticket,
+    core.String? googleOauthParams_versionInfo,
+    core.String? oauthParams_code,
+    core.String? oauthParams_ticket,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (googleOauthParams_scopes != null)
+        'googleOauthParams.scopes': googleOauthParams_scopes,
+      if (googleOauthParams_ticket != null)
+        'googleOauthParams.ticket': [googleOauthParams_ticket],
+      if (googleOauthParams_versionInfo != null)
+        'googleOauthParams.versionInfo': [googleOauthParams_versionInfo],
+      if (oauthParams_code != null) 'oauthParams.code': [oauthParams_code],
+      if (oauthParams_ticket != null)
+        'oauthParams.ticket': [oauthParams_ticket],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$accountConnector') +
+        '/users:finishOAuthFlow';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return FinishOAuthResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists Users in a given project, location, and account_connector.
   ///
   /// Request parameters:
@@ -729,6 +807,48 @@ class ProjectsLocationsAccountConnectorsUsersResource {
       queryParams: queryParams_,
     );
     return ListUsersResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Starts OAuth flow for an account connector.
+  ///
+  /// Request parameters:
+  ///
+  /// [accountConnector] - Required. The resource name of the AccountConnector
+  /// in the format `projects / * /locations / * /accountConnectors / * `.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/accountConnectors/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [StartOAuthResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<StartOAuthResponse> startOAuthFlow(
+    core.String accountConnector, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ =
+        'v1/' +
+        core.Uri.encodeFull('$accountConnector') +
+        '/users:startOAuthFlow';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return StartOAuthResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1194,7 +1314,9 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
   /// Upon linking a Git Repository, Developer Connect will configure the Git
   /// Repository to send webhook events to Developer Connect. Connections that
   /// use Firebase GitHub Application will have events forwarded to the Firebase
-  /// service. All other Connections will have events forwarded to Cloud Build.
+  /// service. Connections that use Gemini Code Assist will have events
+  /// forwarded to Gemini Code Assist service. All other Connections will have
+  /// events forwarded to Cloud Build.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1755,6 +1877,10 @@ class ProjectsLocationsConnectionsGitRepositoryLinksResource {
 class ProjectsLocationsInsightsConfigsResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsInsightsConfigsDeploymentEventsResource
+  get deploymentEvents =>
+      ProjectsLocationsInsightsConfigsDeploymentEventsResource(_requester);
+
   ProjectsLocationsInsightsConfigsResource(commons.ApiRequester client)
     : _requester = client;
 
@@ -1807,7 +1933,7 @@ class ProjectsLocationsInsightsConfigsResource {
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// Delete a single Insight.
+  /// Deletes a single Insight.
   ///
   /// Request parameters:
   ///
@@ -2034,6 +2160,112 @@ class ProjectsLocationsInsightsConfigsResource {
   }
 }
 
+class ProjectsLocationsInsightsConfigsDeploymentEventsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsInsightsConfigsDeploymentEventsResource(
+    commons.ApiRequester client,
+  ) : _requester = client;
+
+  /// Gets a single Deployment Event.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the deployment event to retrieve. Format:
+  /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightsConfigs/\[^/\]+/deploymentEvents/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [DeploymentEvent].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<DeploymentEvent> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return DeploymentEvent.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists Deployment Events in a given insights config.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent insights config that owns this collection
+  /// of deployment events. Format:
+  /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/insightsConfigs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter expression that matches a subset of the
+  /// DeploymentEvents. https://google.aip.dev/160.
+  ///
+  /// [pageSize] - Optional. The maximum number of deployment events to return.
+  /// The service may return fewer than this value. If unspecified, at most 50
+  /// deployment events will be returned. The maximum value is 1000; values
+  /// above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A page token, received from a previous
+  /// `ListDeploymentEvents` call. Provide this to retrieve the subsequent page.
+  /// When paginating, all other parameters provided to `ListDeploymentEvents`
+  /// must match the call that provided the page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDeploymentEventsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDeploymentEventsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/deploymentEvents';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDeploymentEventsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
 class ProjectsLocationsOperationsResource {
   final commons.ApiRequester _requester;
 
@@ -2178,6 +2410,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2193,12 +2433,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2254,6 +2497,8 @@ class AccountConnector {
   core.String? oauthStartUri;
 
   /// Provider OAuth config.
+  ///
+  /// Optional.
   ProviderOAuthConfig? providerOauthConfig;
 
   /// The timestamp when the accountConnector was updated.
@@ -2304,6 +2549,42 @@ class AccountConnector {
     if (providerOauthConfig != null)
       'providerOauthConfig': providerOauthConfig!,
     if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// AppHubService represents the App Hub Service.
+class AppHubService {
+  /// The name of the App Hub Service.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/applications/{application}/services/{service}`.
+  ///
+  /// Required. Output only. Immutable.
+  core.String? apphubService;
+
+  /// The criticality of the App Hub Service.
+  ///
+  /// Output only.
+  core.String? criticality;
+
+  /// The environment of the App Hub Service.
+  ///
+  /// Output only.
+  core.String? environment;
+
+  AppHubService({this.apphubService, this.criticality, this.environment});
+
+  AppHubService.fromJson(core.Map json_)
+    : this(
+        apphubService: json_['apphubService'] as core.String?,
+        criticality: json_['criticality'] as core.String?,
+        environment: json_['environment'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (apphubService != null) 'apphubService': apphubService!,
+    if (criticality != null) 'criticality': criticality!,
+    if (environment != null) 'environment': environment!,
   };
 }
 
@@ -2397,6 +2678,130 @@ class ArtifactConfig {
   };
 }
 
+/// The ArtifactDeployment resource represents the deployment of the artifact
+/// within the InsightsConfig resource.
+class ArtifactDeployment {
+  /// The artifact alias in the deployment spec, with Tag/SHA.
+  ///
+  /// e.g. us-docker.pkg.dev/my-project/my-repo/image:1.0.0
+  ///
+  /// Output only.
+  core.String? artifactAlias;
+
+  /// The artifact that is deployed.
+  ///
+  /// Output only.
+  core.String? artifactReference;
+
+  /// The summary of container status of the artifact deployment.
+  ///
+  /// Format as `ContainerStatusState-Reason : restartCount` e.g.
+  /// "Waiting-ImagePullBackOff : 3"
+  ///
+  /// Output only.
+  core.String? containerStatusSummary;
+
+  /// The time at which the deployment was deployed.
+  ///
+  /// Output only.
+  core.String? deployTime;
+
+  /// Unique identifier of `ArtifactDeployment`.
+  ///
+  /// Output only.
+  core.String? id;
+
+  /// The source commits at which this artifact was built.
+  ///
+  /// Extracted from provenance.
+  ///
+  /// Output only.
+  core.List<core.String>? sourceCommitUris;
+
+  /// The time at which the deployment was undeployed, all artifacts are
+  /// considered undeployed once this time is set.
+  ///
+  /// Output only.
+  core.String? undeployTime;
+
+  ArtifactDeployment({
+    this.artifactAlias,
+    this.artifactReference,
+    this.containerStatusSummary,
+    this.deployTime,
+    this.id,
+    this.sourceCommitUris,
+    this.undeployTime,
+  });
+
+  ArtifactDeployment.fromJson(core.Map json_)
+    : this(
+        artifactAlias: json_['artifactAlias'] as core.String?,
+        artifactReference: json_['artifactReference'] as core.String?,
+        containerStatusSummary: json_['containerStatusSummary'] as core.String?,
+        deployTime: json_['deployTime'] as core.String?,
+        id: json_['id'] as core.String?,
+        sourceCommitUris:
+            (json_['sourceCommitUris'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        undeployTime: json_['undeployTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactAlias != null) 'artifactAlias': artifactAlias!,
+    if (artifactReference != null) 'artifactReference': artifactReference!,
+    if (containerStatusSummary != null)
+      'containerStatusSummary': containerStatusSummary!,
+    if (deployTime != null) 'deployTime': deployTime!,
+    if (id != null) 'id': id!,
+    if (sourceCommitUris != null) 'sourceCommitUris': sourceCommitUris!,
+    if (undeployTime != null) 'undeployTime': undeployTime!,
+  };
+}
+
+/// Basic authentication with username and password.
+class BasicAuthentication {
+  /// The password SecretManager secret version to authenticate as.
+  core.String? passwordSecretVersion;
+
+  /// The username to authenticate as.
+  ///
+  /// Required.
+  core.String? username;
+
+  BasicAuthentication({this.passwordSecretVersion, this.username});
+
+  BasicAuthentication.fromJson(core.Map json_)
+    : this(
+        passwordSecretVersion: json_['passwordSecretVersion'] as core.String?,
+        username: json_['username'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (passwordSecretVersion != null)
+      'passwordSecretVersion': passwordSecretVersion!,
+    if (username != null) 'username': username!,
+  };
+}
+
+/// Bearer token authentication with a token.
+class BearerTokenAuthentication {
+  /// The token SecretManager secret version to authenticate as.
+  ///
+  /// Optional.
+  core.String? tokenSecretVersion;
+
+  BearerTokenAuthentication({this.tokenSecretVersion});
+
+  BearerTokenAuthentication.fromJson(core.Map json_)
+    : this(tokenSecretVersion: json_['tokenSecretVersion'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (tokenSecretVersion != null) 'tokenSecretVersion': tokenSecretVersion!,
+  };
+}
+
 /// Configuration for connections to an instance of Bitbucket Cloud.
 class BitbucketCloudConfig {
   /// An access token with the minimum `repository`, `pullrequest` and `webhook`
@@ -2418,7 +2823,9 @@ class BitbucketCloudConfig {
   UserCredential? readAuthorizerCredential;
 
   /// SecretManager resource containing the webhook secret used to verify
-  /// webhook events, formatted as `projects / * /secrets / * /versions / * `.
+  /// webhook events, formatted as `projects / * /secrets / * /versions / * ` or
+  /// `projects / * /locations / * /secrets / * /versions / * ` (if regional
+  /// secrets are supported in that location).
   ///
   /// This is used to validate and create webhooks.
   ///
@@ -2513,7 +2920,9 @@ class BitbucketDataCenterConfig {
   core.String? sslCaCertificate;
 
   /// SecretManager resource containing the webhook secret used to verify
-  /// webhook events, formatted as `projects / * /secrets / * /versions / * `.
+  /// webhook events, formatted as `projects / * /secrets / * /versions / * ` or
+  /// `projects / * /locations / * /secrets / * /versions / * ` (if regional
+  /// secrets are supported in that location).
   ///
   /// This is used to validate webhooks.
   ///
@@ -2643,6 +3052,11 @@ class Connection {
   /// Configuration for connections to an instance of GitLab Enterprise.
   GitLabEnterpriseConfig? gitlabEnterpriseConfig;
 
+  /// Configuration for connections to an HTTP service provider.
+  ///
+  /// Optional.
+  GenericHTTPEndpointConfig? httpConfig;
+
   /// Installation state of the Connection.
   ///
   /// Output only.
@@ -2664,6 +3078,9 @@ class Connection {
   ///
   /// Output only.
   core.bool? reconciling;
+
+  /// Configuration for connections to an instance of Secure Source Manager.
+  SecureSourceManagerInstanceConfig? secureSourceManagerInstanceConfig;
 
   /// A system-assigned unique identifier for the Connection.
   ///
@@ -2689,10 +3106,12 @@ class Connection {
     this.githubEnterpriseConfig,
     this.gitlabConfig,
     this.gitlabEnterpriseConfig,
+    this.httpConfig,
     this.installationState,
     this.labels,
     this.name,
     this.reconciling,
+    this.secureSourceManagerInstanceConfig,
     this.uid,
     this.updateTime,
   });
@@ -2760,6 +3179,12 @@ class Connection {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        httpConfig:
+            json_.containsKey('httpConfig')
+                ? GenericHTTPEndpointConfig.fromJson(
+                  json_['httpConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         installationState:
             json_.containsKey('installationState')
                 ? InstallationState.fromJson(
@@ -2772,6 +3197,13 @@ class Connection {
         ),
         name: json_['name'] as core.String?,
         reconciling: json_['reconciling'] as core.bool?,
+        secureSourceManagerInstanceConfig:
+            json_.containsKey('secureSourceManagerInstanceConfig')
+                ? SecureSourceManagerInstanceConfig.fromJson(
+                  json_['secureSourceManagerInstanceConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         uid: json_['uid'] as core.String?,
         updateTime: json_['updateTime'] as core.String?,
       );
@@ -2794,10 +3226,13 @@ class Connection {
     if (gitlabConfig != null) 'gitlabConfig': gitlabConfig!,
     if (gitlabEnterpriseConfig != null)
       'gitlabEnterpriseConfig': gitlabEnterpriseConfig!,
+    if (httpConfig != null) 'httpConfig': httpConfig!,
     if (installationState != null) 'installationState': installationState!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
     if (reconciling != null) 'reconciling': reconciling!,
+    if (secureSourceManagerInstanceConfig != null)
+      'secureSourceManagerInstanceConfig': secureSourceManagerInstanceConfig!,
     if (uid != null) 'uid': uid!,
     if (updateTime != null) 'updateTime': updateTime!,
   };
@@ -2822,6 +3257,127 @@ class CryptoKeyConfig {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (keyReference != null) 'keyReference': keyReference!,
+  };
+}
+
+/// The DeploymentEvent resource represents the deployment of the artifact
+/// within the InsightsConfig resource.
+class DeploymentEvent {
+  /// The artifact deployments of the DeploymentEvent.
+  ///
+  /// Each artifact deployment contains the artifact uri and the runtime
+  /// configuration uri. For GKE, this would be all the containers images that
+  /// are deployed in the pod.
+  ///
+  /// Output only.
+  core.List<ArtifactDeployment>? artifactDeployments;
+
+  /// The create time of the DeploymentEvent.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// The time at which the DeploymentEvent was deployed.
+  ///
+  /// This would be the min of all ArtifactDeployment deploy_times.
+  ///
+  /// Output only.
+  core.String? deployTime;
+
+  /// Identifier.
+  ///
+  /// The name of the DeploymentEvent. This name is provided by Developer
+  /// Connect insights. Format:
+  /// projects/{project}/locations/{location}/insightsConfigs/{insights_config}/deploymentEvents/{uuid}
+  core.String? name;
+
+  /// The runtime configurations where the DeploymentEvent happened.
+  ///
+  /// Output only.
+  RuntimeConfig? runtimeConfig;
+
+  /// The runtime assigned URI of the DeploymentEvent.
+  ///
+  /// For GKE, this is the fully qualified replica set uri. e.g.
+  /// container.googleapis.com/projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/apps/replicasets/{replica-set-id}
+  /// For Cloud Run, this is the revision name.
+  ///
+  /// Output only.
+  core.String? runtimeDeploymentUri;
+
+  /// The state of the DeploymentEvent.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : No state specified.
+  /// - "STATE_ACTIVE" : The deployment is active in the runtime.
+  /// - "STATE_INACTIVE" : The deployment is not in the runtime.
+  core.String? state;
+
+  /// The time at which the DeploymentEvent was undeployed, all artifacts are
+  /// considered undeployed once this time is set.
+  ///
+  /// This would be the max of all ArtifactDeployment undeploy_times. If any
+  /// ArtifactDeployment is still active (i.e. does not have an undeploy_time),
+  /// this field will be empty.
+  ///
+  /// Output only.
+  core.String? undeployTime;
+
+  /// The update time of the DeploymentEvent.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  DeploymentEvent({
+    this.artifactDeployments,
+    this.createTime,
+    this.deployTime,
+    this.name,
+    this.runtimeConfig,
+    this.runtimeDeploymentUri,
+    this.state,
+    this.undeployTime,
+    this.updateTime,
+  });
+
+  DeploymentEvent.fromJson(core.Map json_)
+    : this(
+        artifactDeployments:
+            (json_['artifactDeployments'] as core.List?)
+                ?.map(
+                  (value) => ArtifactDeployment.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        createTime: json_['createTime'] as core.String?,
+        deployTime: json_['deployTime'] as core.String?,
+        name: json_['name'] as core.String?,
+        runtimeConfig:
+            json_.containsKey('runtimeConfig')
+                ? RuntimeConfig.fromJson(
+                  json_['runtimeConfig'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        runtimeDeploymentUri: json_['runtimeDeploymentUri'] as core.String?,
+        state: json_['state'] as core.String?,
+        undeployTime: json_['undeployTime'] as core.String?,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (artifactDeployments != null)
+      'artifactDeployments': artifactDeployments!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deployTime != null) 'deployTime': deployTime!,
+    if (name != null) 'name': name!,
+    if (runtimeConfig != null) 'runtimeConfig': runtimeConfig!,
+    if (runtimeDeploymentUri != null)
+      'runtimeDeploymentUri': runtimeDeploymentUri!,
+    if (state != null) 'state': state!,
+    if (undeployTime != null) 'undeployTime': undeployTime!,
+    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -2979,6 +3535,28 @@ typedef FetchReadWriteTokenRequest = $Empty;
 /// Message for responding to get read/write token.
 typedef FetchReadWriteTokenResponse = $TokenResponse01;
 
+/// Message for responding to finishing an OAuth flow.
+class FinishOAuthResponse {
+  /// The error resulted from exchanging OAuth tokens from the service provider.
+  ExchangeError? exchangeError;
+
+  FinishOAuthResponse({this.exchangeError});
+
+  FinishOAuthResponse.fromJson(core.Map json_)
+    : this(
+        exchangeError:
+            json_.containsKey('exchangeError')
+                ? ExchangeError.fromJson(
+                  json_['exchangeError'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (exchangeError != null) 'exchangeError': exchangeError!,
+  };
+}
+
 /// GKEWorkload represents the Google Kubernetes Engine runtime.
 class GKEWorkload {
   /// The name of the GKE cluster.
@@ -3010,6 +3588,85 @@ class GKEWorkload {
   };
 }
 
+/// Defines the configuration for connections to an HTTP service provider.
+class GenericHTTPEndpointConfig {
+  /// Basic authentication with username and password.
+  ///
+  /// Optional.
+  BasicAuthentication? basicAuthentication;
+
+  /// Bearer token authentication with a token.
+  ///
+  /// Optional.
+  BearerTokenAuthentication? bearerTokenAuthentication;
+
+  /// The service provider's https endpoint.
+  ///
+  /// Required. Immutable.
+  core.String? hostUri;
+
+  /// Configuration for using Service Directory to privately connect to a HTTP
+  /// service provider.
+  ///
+  /// This should only be set if the Http service provider is hosted on-premises
+  /// and not reachable by public internet. If this field is left empty, calls
+  /// to the HTTP service provider will be made over the public internet.
+  ///
+  /// Optional.
+  ServiceDirectoryConfig? serviceDirectoryConfig;
+
+  /// The SSL certificate to use for requests to the HTTP service provider.
+  ///
+  /// Optional.
+  core.String? sslCaCertificate;
+
+  GenericHTTPEndpointConfig({
+    this.basicAuthentication,
+    this.bearerTokenAuthentication,
+    this.hostUri,
+    this.serviceDirectoryConfig,
+    this.sslCaCertificate,
+  });
+
+  GenericHTTPEndpointConfig.fromJson(core.Map json_)
+    : this(
+        basicAuthentication:
+            json_.containsKey('basicAuthentication')
+                ? BasicAuthentication.fromJson(
+                  json_['basicAuthentication']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        bearerTokenAuthentication:
+            json_.containsKey('bearerTokenAuthentication')
+                ? BearerTokenAuthentication.fromJson(
+                  json_['bearerTokenAuthentication']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        hostUri: json_['hostUri'] as core.String?,
+        serviceDirectoryConfig:
+            json_.containsKey('serviceDirectoryConfig')
+                ? ServiceDirectoryConfig.fromJson(
+                  json_['serviceDirectoryConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        sslCaCertificate: json_['sslCaCertificate'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (basicAuthentication != null)
+      'basicAuthentication': basicAuthentication!,
+    if (bearerTokenAuthentication != null)
+      'bearerTokenAuthentication': bearerTokenAuthentication!,
+    if (hostUri != null) 'hostUri': hostUri!,
+    if (serviceDirectoryConfig != null)
+      'serviceDirectoryConfig': serviceDirectoryConfig!,
+    if (sslCaCertificate != null) 'sslCaCertificate': sslCaCertificate!,
+  };
+}
+
 /// Configuration for connections to github.com.
 class GitHubConfig {
   /// GitHub App installation id.
@@ -3033,6 +3690,7 @@ class GitHubConfig {
   /// - "GIT_HUB_APP_UNSPECIFIED" : GitHub App not specified.
   /// - "DEVELOPER_CONNECT" : The Developer Connect GitHub Application.
   /// - "FIREBASE" : The Firebase GitHub Application.
+  /// - "GEMINI_CODE_ASSIST" : The Gemini Code Assist Application.
   core.String? githubApp;
 
   /// The URI to navigate to in order to manage the installation associated with
@@ -3099,8 +3757,15 @@ class GitHubEnterpriseConfig {
   /// Output only.
   core.String? installationUri;
 
+  /// GitHub Enterprise organization in which the GitHub App is created.
+  ///
+  /// Optional. Immutable.
+  core.String? organization;
+
   /// SecretManager resource containing the private key of the GitHub App,
-  /// formatted as `projects / * /secrets / * /versions / * `.
+  /// formatted as `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * ` (if regional secrets are
+  /// supported in that location).
   ///
   /// Optional.
   core.String? privateKeySecretVersion;
@@ -3127,7 +3792,9 @@ class GitHubEnterpriseConfig {
   core.String? sslCaCertificate;
 
   /// SecretManager resource containing the webhook secret of the GitHub App,
-  /// formatted as `projects / * /secrets / * /versions / * `.
+  /// formatted as `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * ` (if regional secrets are
+  /// supported in that location).
   ///
   /// Optional.
   core.String? webhookSecretSecretVersion;
@@ -3138,6 +3805,7 @@ class GitHubEnterpriseConfig {
     this.appSlug,
     this.hostUri,
     this.installationUri,
+    this.organization,
     this.privateKeySecretVersion,
     this.serverVersion,
     this.serviceDirectoryConfig,
@@ -3152,6 +3820,7 @@ class GitHubEnterpriseConfig {
         appSlug: json_['appSlug'] as core.String?,
         hostUri: json_['hostUri'] as core.String?,
         installationUri: json_['installationUri'] as core.String?,
+        organization: json_['organization'] as core.String?,
         privateKeySecretVersion:
             json_['privateKeySecretVersion'] as core.String?,
         serverVersion: json_['serverVersion'] as core.String?,
@@ -3173,6 +3842,7 @@ class GitHubEnterpriseConfig {
     if (appSlug != null) 'appSlug': appSlug!,
     if (hostUri != null) 'hostUri': hostUri!,
     if (installationUri != null) 'installationUri': installationUri!,
+    if (organization != null) 'organization': organization!,
     if (privateKeySecretVersion != null)
       'privateKeySecretVersion': privateKeySecretVersion!,
     if (serverVersion != null) 'serverVersion': serverVersion!,
@@ -3205,7 +3875,9 @@ class GitLabConfig {
   UserCredential? readAuthorizerCredential;
 
   /// SecretManager resource containing the webhook secret of a GitLab project,
-  /// formatted as `projects / * /secrets / * /versions / * `.
+  /// formatted as `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * ` (if regional secrets are
+  /// supported in that location).
   ///
   /// This is used to validate webhooks.
   ///
@@ -3296,7 +3968,9 @@ class GitLabEnterpriseConfig {
   core.String? sslCaCertificate;
 
   /// SecretManager resource containing the webhook secret of a GitLab project,
-  /// formatted as `projects / * /secrets / * /versions / * `.
+  /// formatted as `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * ` (if regional secrets are
+  /// supported in that location).
   ///
   /// This is used to validate webhooks.
   ///
@@ -3366,13 +4040,27 @@ class GitProxyConfig {
   /// Optional.
   core.bool? enabled;
 
-  GitProxyConfig({this.enabled});
+  /// The base URI for the HTTP proxy endpoint.
+  ///
+  /// Has the format
+  /// `https://{generatedID}-c-h-{shortRegion}.developerconnect.dev` Populated
+  /// only when enabled is set to true. This endpoint is used by other Google
+  /// services that integrate with Developer Connect.
+  ///
+  /// Output only.
+  core.String? httpProxyBaseUri;
+
+  GitProxyConfig({this.enabled, this.httpProxyBaseUri});
 
   GitProxyConfig.fromJson(core.Map json_)
-    : this(enabled: json_['enabled'] as core.bool?);
+    : this(
+        enabled: json_['enabled'] as core.bool?,
+        httpProxyBaseUri: json_['httpProxyBaseUri'] as core.String?,
+      );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (enabled != null) 'enabled': enabled!,
+    if (httpProxyBaseUri != null) 'httpProxyBaseUri': httpProxyBaseUri!,
   };
 }
 
@@ -3541,6 +4229,25 @@ class GoogleArtifactRegistry {
   };
 }
 
+/// GoogleCloudRun represents the Cloud Run runtime.
+class GoogleCloudRun {
+  /// The name of the Cloud Run service.
+  ///
+  /// Format: `projects/{project}/locations/{location}/services/{service}`.
+  ///
+  /// Required. Immutable.
+  core.String? serviceUri;
+
+  GoogleCloudRun({this.serviceUri});
+
+  GoogleCloudRun.fromJson(core.Map json_)
+    : this(serviceUri: json_['serviceUri'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (serviceUri != null) 'serviceUri': serviceUri!,
+  };
+}
+
 /// Message that represents an arbitrary HTTP body.
 ///
 /// It should only be used for payload formats that can't be represented as
@@ -3564,7 +4271,7 @@ typedef HttpBody = $HttpBody;
 /// The InsightsConfig resource is the core configuration object to capture
 /// events from your Software Development Lifecycle.
 ///
-/// It acts as the central hub for managing how Developer connect understands
+/// It acts as the central hub for managing how Developer Connect understands
 /// your application, its runtime environments, and the artifacts deployed
 /// within them.
 class InsightsConfig {
@@ -3588,7 +4295,7 @@ class InsightsConfig {
   /// Optional.
   core.List<ArtifactConfig>? artifactConfigs;
 
-  /// Create timestamp
+  /// Create timestamp.
   ///
   /// Output only.
   core.String? createTime;
@@ -3612,6 +4319,11 @@ class InsightsConfig {
   /// The name of the InsightsConfig. Format:
   /// projects/{project}/locations/{location}/insightsConfigs/{insightsConfig}
   core.String? name;
+
+  /// The projects to track with the InsightsConfig.
+  ///
+  /// Optional.
+  Projects? projects;
 
   /// Reconciling (https://google.aip.dev/128#reconciliation).
   ///
@@ -3639,7 +4351,7 @@ class InsightsConfig {
   /// - "ERROR" : The InsightsConfig is in an error state.
   core.String? state;
 
-  /// Update timestamp
+  /// Update timestamp.
   ///
   /// Output only.
   core.String? updateTime;
@@ -3652,6 +4364,7 @@ class InsightsConfig {
     this.errors,
     this.labels,
     this.name,
+    this.projects,
     this.reconciling,
     this.runtimeConfigs,
     this.state,
@@ -3685,6 +4398,12 @@ class InsightsConfig {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         name: json_['name'] as core.String?,
+        projects:
+            json_.containsKey('projects')
+                ? Projects.fromJson(
+                  json_['projects'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         reconciling: json_['reconciling'] as core.bool?,
         runtimeConfigs:
             (json_['runtimeConfigs'] as core.List?)
@@ -3706,6 +4425,7 @@ class InsightsConfig {
     if (errors != null) 'errors': errors!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
+    if (projects != null) 'projects': projects!,
     if (reconciling != null) 'reconciling': reconciling!,
     if (runtimeConfigs != null) 'runtimeConfigs': runtimeConfigs!,
     if (state != null) 'state': state!,
@@ -3844,6 +4564,37 @@ class ListConnectionsResponse {
   };
 }
 
+/// Response to listing DeploymentEvents.
+class ListDeploymentEventsResponse {
+  /// The list of DeploymentEvents.
+  core.List<DeploymentEvent>? deploymentEvents;
+
+  /// A token, which can be sent as `page_token` to retrieve the next page.
+  ///
+  /// If this field is omitted, there are no subsequent pages.
+  core.String? nextPageToken;
+
+  ListDeploymentEventsResponse({this.deploymentEvents, this.nextPageToken});
+
+  ListDeploymentEventsResponse.fromJson(core.Map json_)
+    : this(
+        deploymentEvents:
+            (json_['deploymentEvents'] as core.List?)
+                ?.map(
+                  (value) => DeploymentEvent.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (deploymentEvents != null) 'deploymentEvents': deploymentEvents!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// Message for response to listing GitRepositoryLinks
 class ListGitRepositoryLinksResponse {
   /// The list of GitRepositoryLinks
@@ -3963,7 +4714,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -3976,11 +4739,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -4030,7 +4798,9 @@ class OAuthCredential {
   /// A SecretManager resource containing the OAuth token that authorizes the
   /// connection.
   ///
-  /// Format: `projects / * /secrets / * /versions / * `.
+  /// Format: `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * ` (if regional secrets are
+  /// supported in that location).
   ///
   /// Required.
   core.String? oauthTokenSecretVersion;
@@ -4253,6 +5023,30 @@ class ProcessGitLabWebhookRequest {
   };
 }
 
+/// Projects represents the projects to track with the InsightsConfig.
+class Projects {
+  /// The project IDs.
+  ///
+  /// Format: {project}
+  ///
+  /// Optional.
+  core.List<core.String>? projectIds;
+
+  Projects({this.projectIds});
+
+  Projects.fromJson(core.Map json_)
+    : this(
+        projectIds:
+            (json_['projectIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (projectIds != null) 'projectIds': projectIds!,
+  };
+}
+
 /// ProviderOAuthConfig is the OAuth config for a provider.
 class ProviderOAuthConfig {
   /// User selected scopes to apply to the Oauth config In the event of changing
@@ -4264,22 +5058,27 @@ class ProviderOAuthConfig {
 
   /// Developer Connect provided OAuth.
   ///
-  /// Immutable.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "SYSTEM_PROVIDER_UNSPECIFIED" : No system provider specified.
   /// - "GITHUB" : GitHub provider. Scopes can be found at
   /// https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
   /// - "GITLAB" : GitLab provider. Scopes can be found at
   /// https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes
-  /// - "GOOGLE" : Google provider. Recommended scopes:
+  /// - "GOOGLE" : Deprecated: This provider is no longer supported. Google
+  /// provider. Recommended scopes:
   /// "https://www.googleapis.com/auth/drive.readonly",
   /// "https://www.googleapis.com/auth/documents.readonly"
-  /// - "SENTRY" : Sentry provider. Scopes can be found at
-  /// https://docs.sentry.io/api/permissions/
-  /// - "ROVO" : Rovo provider. Must select the "rovo" scope.
-  /// - "NEW_RELIC" : New Relic provider. No scopes are allowed.
-  /// - "DATASTAX" : Datastax provider. No scopes are allowed.
-  /// - "DYNATRACE" : Dynatrace provider.
+  /// - "SENTRY" : Deprecated: This provider is no longer supported. Sentry
+  /// provider. Scopes can be found at https://docs.sentry.io/api/permissions/
+  /// - "ROVO" : Deprecated: This provider is no longer supported. Rovo
+  /// provider. Must select the "rovo" scope.
+  /// - "NEW_RELIC" : Deprecated: This provider is no longer supported. New
+  /// Relic provider. No scopes are allowed.
+  /// - "DATASTAX" : Deprecated: This provider is no longer supported. Datastax
+  /// provider. No scopes are allowed.
+  /// - "DYNATRACE" : Deprecated: This provider is no longer supported.
+  /// Dynatrace provider.
   core.String? systemProviderId;
 
   ProviderOAuthConfig({this.scopes, this.systemProviderId});
@@ -4301,6 +5100,11 @@ class ProviderOAuthConfig {
 
 /// RuntimeConfig represents the runtimes where the application is deployed.
 class RuntimeConfig {
+  /// App Hub Service.
+  ///
+  /// Output only.
+  AppHubService? appHubService;
+
   /// App Hub Workload.
   ///
   /// Output only.
@@ -4310,6 +5114,11 @@ class RuntimeConfig {
   ///
   /// Output only.
   GKEWorkload? gkeWorkload;
+
+  /// Cloud Run runtime.
+  ///
+  /// Output only.
+  GoogleCloudRun? googleCloudRun;
 
   /// The state of the Runtime.
   ///
@@ -4330,10 +5139,23 @@ class RuntimeConfig {
   /// Required. Immutable.
   core.String? uri;
 
-  RuntimeConfig({this.appHubWorkload, this.gkeWorkload, this.state, this.uri});
+  RuntimeConfig({
+    this.appHubService,
+    this.appHubWorkload,
+    this.gkeWorkload,
+    this.googleCloudRun,
+    this.state,
+    this.uri,
+  });
 
   RuntimeConfig.fromJson(core.Map json_)
     : this(
+        appHubService:
+            json_.containsKey('appHubService')
+                ? AppHubService.fromJson(
+                  json_['appHubService'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         appHubWorkload:
             json_.containsKey('appHubWorkload')
                 ? AppHubWorkload.fromJson(
@@ -4347,21 +5169,128 @@ class RuntimeConfig {
                   json_['gkeWorkload'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        googleCloudRun:
+            json_.containsKey('googleCloudRun')
+                ? GoogleCloudRun.fromJson(
+                  json_['googleCloudRun']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         state: json_['state'] as core.String?,
         uri: json_['uri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (appHubService != null) 'appHubService': appHubService!,
     if (appHubWorkload != null) 'appHubWorkload': appHubWorkload!,
     if (gkeWorkload != null) 'gkeWorkload': gkeWorkload!,
+    if (googleCloudRun != null) 'googleCloudRun': googleCloudRun!,
     if (state != null) 'state': state!,
     if (uri != null) 'uri': uri!,
+  };
+}
+
+/// Configuration for connections to SSM instance
+class SecureSourceManagerInstanceConfig {
+  /// SSM instance resource, formatted as `projects / * /locations / *
+  /// /instances / * `
+  ///
+  /// Required. Immutable.
+  core.String? instance;
+
+  SecureSourceManagerInstanceConfig({this.instance});
+
+  SecureSourceManagerInstanceConfig.fromJson(core.Map json_)
+    : this(instance: json_['instance'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (instance != null) 'instance': instance!,
   };
 }
 
 /// ServiceDirectoryConfig represents Service Directory configuration for a
 /// connection.
 typedef ServiceDirectoryConfig = $ServiceDirectoryConfig;
+
+/// Message for responding to starting an OAuth flow.
+class StartOAuthResponse {
+  /// The authorization server URL to the OAuth flow of the service provider.
+  core.String? authUri;
+
+  /// The client ID to the OAuth App of the service provider.
+  core.String? clientId;
+
+  /// Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.1
+  core.String? codeChallenge;
+
+  /// Please refer to https://datatracker.ietf.org/doc/html/rfc7636#section-4.2
+  core.String? codeChallengeMethod;
+
+  /// The list of scopes requested by the application.
+  core.List<core.String>? scopes;
+
+  /// The ID of the system provider.
+  /// Possible string values are:
+  /// - "SYSTEM_PROVIDER_UNSPECIFIED" : No system provider specified.
+  /// - "GITHUB" : GitHub provider. Scopes can be found at
+  /// https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps#available-scopes
+  /// - "GITLAB" : GitLab provider. Scopes can be found at
+  /// https://docs.gitlab.com/user/profile/personal_access_tokens/#personal-access-token-scopes
+  /// - "GOOGLE" : Deprecated: This provider is no longer supported. Google
+  /// provider. Recommended scopes:
+  /// "https://www.googleapis.com/auth/drive.readonly",
+  /// "https://www.googleapis.com/auth/documents.readonly"
+  /// - "SENTRY" : Deprecated: This provider is no longer supported. Sentry
+  /// provider. Scopes can be found at https://docs.sentry.io/api/permissions/
+  /// - "ROVO" : Deprecated: This provider is no longer supported. Rovo
+  /// provider. Must select the "rovo" scope.
+  /// - "NEW_RELIC" : Deprecated: This provider is no longer supported. New
+  /// Relic provider. No scopes are allowed.
+  /// - "DATASTAX" : Deprecated: This provider is no longer supported. Datastax
+  /// provider. No scopes are allowed.
+  /// - "DYNATRACE" : Deprecated: This provider is no longer supported.
+  /// Dynatrace provider.
+  core.String? systemProviderId;
+
+  /// The ticket to be used for post processing the callback from the service
+  /// provider.
+  core.String? ticket;
+
+  StartOAuthResponse({
+    this.authUri,
+    this.clientId,
+    this.codeChallenge,
+    this.codeChallengeMethod,
+    this.scopes,
+    this.systemProviderId,
+    this.ticket,
+  });
+
+  StartOAuthResponse.fromJson(core.Map json_)
+    : this(
+        authUri: json_['authUri'] as core.String?,
+        clientId: json_['clientId'] as core.String?,
+        codeChallenge: json_['codeChallenge'] as core.String?,
+        codeChallengeMethod: json_['codeChallengeMethod'] as core.String?,
+        scopes:
+            (json_['scopes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        systemProviderId: json_['systemProviderId'] as core.String?,
+        ticket: json_['ticket'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (authUri != null) 'authUri': authUri!,
+    if (clientId != null) 'clientId': clientId!,
+    if (codeChallenge != null) 'codeChallenge': codeChallenge!,
+    if (codeChallengeMethod != null)
+      'codeChallengeMethod': codeChallengeMethod!,
+    if (scopes != null) 'scopes': scopes!,
+    if (systemProviderId != null) 'systemProviderId': systemProviderId!,
+    if (ticket != null) 'ticket': ticket!,
+  };
+}
 
 /// The `Status` type defines a logical error model that is suitable for
 /// different programming environments, including REST APIs and RPC APIs.
@@ -4427,7 +5356,9 @@ class UserCredential {
   /// A SecretManager resource containing the user token that authorizes the
   /// Developer Connect connection.
   ///
-  /// Format: `projects / * /secrets / * /versions / * `.
+  /// Format: `projects / * /secrets / * /versions / * ` or `projects / *
+  /// /locations / * /secrets / * /versions / * ` (if regional secrets are
+  /// supported in that location).
   ///
   /// Required.
   core.String? userTokenSecretVersion;

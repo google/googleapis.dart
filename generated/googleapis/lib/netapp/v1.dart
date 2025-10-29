@@ -28,6 +28,7 @@
 ///     - [ProjectsLocationsBackupPoliciesResource]
 ///     - [ProjectsLocationsBackupVaultsResource]
 ///       - [ProjectsLocationsBackupVaultsBackupsResource]
+///     - [ProjectsLocationsHostGroupsResource]
 ///     - [ProjectsLocationsKmsConfigsResource]
 ///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsStoragePoolsResource]
@@ -93,6 +94,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsBackupPoliciesResource(_requester);
   ProjectsLocationsBackupVaultsResource get backupVaults =>
       ProjectsLocationsBackupVaultsResource(_requester);
+  ProjectsLocationsHostGroupsResource get hostGroups =>
+      ProjectsLocationsHostGroupsResource(_requester);
   ProjectsLocationsKmsConfigsResource get kmsConfigs =>
       ProjectsLocationsKmsConfigsResource(_requester);
   ProjectsLocationsOperationsResource get operations =>
@@ -138,14 +141,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1155,6 +1164,235 @@ class ProjectsLocationsBackupVaultsBackupsResource {
   }
 }
 
+class ProjectsLocationsHostGroupsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsHostGroupsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new host group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for CreateHostGroupRequest
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [hostGroupId] - Required. ID of the host group to create. Must be unique
+  /// within the parent resource. Must contain only letters, numbers, and
+  /// hyphen, with the first character a letter or underscore, the last a letter
+  /// or underscore or a number, and a 63 character maximum.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    HostGroup request,
+    core.String parent, {
+    core.String? hostGroupId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (hostGroupId != null) 'hostGroupId': [hostGroupId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/hostGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a host group.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the host group. Format:
+  /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/hostGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns details of the specified host group.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name of the host group. Format:
+  /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/hostGroups/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [HostGroup].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<HostGroup> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return HostGroup.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Returns a list of host groups in a `location`.
+  ///
+  /// Use `-` as location to list host groups across all locations.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent value for ListHostGroupsRequest
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filter to apply to the request.
+  ///
+  /// [orderBy] - Optional. Hint for how to order the results
+  ///
+  /// [pageSize] - Optional. Requested page size. Server may return fewer items
+  /// than requested. If unspecified, the server will pick an appropriate
+  /// default.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the server
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListHostGroupsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListHostGroupsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/hostGroups';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListHostGroupsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Updates an existing host group.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The resource name of the host group. Format:
+  /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/hostGroups/\[^/\]+$`.
+  ///
+  /// [updateMask] - Optional. The list of fields to update.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    HostGroup request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
 class ProjectsLocationsKmsConfigsResource {
   final commons.ApiRequester _requester;
 
@@ -1380,7 +1618,8 @@ class ProjectsLocationsKmsConfigsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. Name of the KmsConfig.
+  /// [name] - Identifier. Name of the KmsConfig. Format:
+  /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/kmsConfigs/\[^/\]+$`.
   ///
@@ -1618,6 +1857,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1633,12 +1880,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2069,6 +2319,51 @@ class ProjectsLocationsVolumesResource {
     final response_ = await _requester.request(
       url_,
       'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Establish volume peering.
+  ///
+  /// This is used to establish cluster and svm peerings between the GCNV and
+  /// OnPrem clusters.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The volume resource name, in the format
+  /// `projects/{project_id}/locations/{location}/volumes/{volume_id}`
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/volumes/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> establishPeering(
+    EstablishVolumePeeringRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':establishPeering';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
@@ -3814,7 +4109,7 @@ class BackupVault {
   /// Optional.
   core.String? backupRegion;
 
-  /// Backup retention policy defining the retenton of backups.
+  /// Backup retention policy defining the retention of backups.
   ///
   /// Optional.
   BackupRetentionPolicy? backupRetentionPolicy;
@@ -3829,6 +4124,14 @@ class BackupVault {
   /// - "IN_REGION" : BackupVault type is IN_REGION.
   /// - "CROSS_REGION" : BackupVault type is CROSS_REGION.
   core.String? backupVaultType;
+
+  /// The crypto key version used to encrypt the backup vault.
+  ///
+  /// Format:
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{crypto_key_version}`
+  ///
+  /// Output only.
+  core.String? backupsCryptoKeyVersion;
 
   /// Create time of the backup vault.
   ///
@@ -3845,6 +4148,25 @@ class BackupVault {
   ///
   /// Output only.
   core.String? destinationBackupVault;
+
+  /// Field indicating encryption state of CMEK backups.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "ENCRYPTION_STATE_UNSPECIFIED" : Encryption state not set.
+  /// - "ENCRYPTION_STATE_PENDING" : Encryption state is pending.
+  /// - "ENCRYPTION_STATE_COMPLETED" : Encryption is complete.
+  /// - "ENCRYPTION_STATE_IN_PROGRESS" : Encryption is in progress.
+  /// - "ENCRYPTION_STATE_FAILED" : Encryption has failed.
+  core.String? encryptionState;
+
+  /// Specifies the Key Management System (KMS) configuration to be used for
+  /// backup encryption.
+  ///
+  /// Format: `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
+  ///
+  /// Optional.
+  core.String? kmsConfig;
 
   /// Resource labels to represent user provided metadata.
   core.Map<core.String, core.String>? labels;
@@ -3886,9 +4208,12 @@ class BackupVault {
     this.backupRegion,
     this.backupRetentionPolicy,
     this.backupVaultType,
+    this.backupsCryptoKeyVersion,
     this.createTime,
     this.description,
     this.destinationBackupVault,
+    this.encryptionState,
+    this.kmsConfig,
     this.labels,
     this.name,
     this.sourceBackupVault,
@@ -3907,9 +4232,13 @@ class BackupVault {
                 )
                 : null,
         backupVaultType: json_['backupVaultType'] as core.String?,
+        backupsCryptoKeyVersion:
+            json_['backupsCryptoKeyVersion'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         description: json_['description'] as core.String?,
         destinationBackupVault: json_['destinationBackupVault'] as core.String?,
+        encryptionState: json_['encryptionState'] as core.String?,
+        kmsConfig: json_['kmsConfig'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -3924,10 +4253,14 @@ class BackupVault {
     if (backupRetentionPolicy != null)
       'backupRetentionPolicy': backupRetentionPolicy!,
     if (backupVaultType != null) 'backupVaultType': backupVaultType!,
+    if (backupsCryptoKeyVersion != null)
+      'backupsCryptoKeyVersion': backupsCryptoKeyVersion!,
     if (createTime != null) 'createTime': createTime!,
     if (description != null) 'description': description!,
     if (destinationBackupVault != null)
       'destinationBackupVault': destinationBackupVault!,
+    if (encryptionState != null) 'encryptionState': encryptionState!,
+    if (kmsConfig != null) 'kmsConfig': kmsConfig!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
     if (sourceBackupVault != null) 'sourceBackupVault': sourceBackupVault!,
@@ -3936,24 +4269,147 @@ class BackupVault {
   };
 }
 
+/// Block device represents the device(s) which are stored in the block volume.
+class BlockDevice {
+  /// A list of host groups that identify hosts that can mount the block volume.
+  ///
+  /// Format:
+  /// `projects/{project_id}/locations/{location}/hostGroups/{host_group_id}`
+  /// This field can be updated after the block device is created.
+  ///
+  /// Optional.
+  core.List<core.String>? hostGroups;
+
+  /// Device identifier of the block volume.
+  ///
+  /// This represents `lun_serial_number` for iSCSI volumes.
+  ///
+  /// Output only.
+  core.String? identifier;
+
+  /// User-defined name for the block device, unique within the volume.
+  ///
+  /// In case no user input is provided, name will be auto-generated in the
+  /// backend. The name must meet the following requirements: * Be between 1 and
+  /// 255 characters long. * Contain only uppercase or lowercase letters (A-Z,
+  /// a-z), numbers (0-9), and the following special characters: "-", "_", "}",
+  /// "{", ".". * Spaces are not allowed.
+  ///
+  /// Optional.
+  core.String? name;
+
+  /// The OS type of the volume.
+  ///
+  /// This field can't be changed after the block device is created.
+  ///
+  /// Required. Immutable.
+  /// Possible string values are:
+  /// - "OS_TYPE_UNSPECIFIED" : Unspecified OS Type
+  /// - "LINUX" : OS Type is Linux
+  /// - "WINDOWS" : OS Type is Windows
+  /// - "ESXI" : OS Type is VMware ESXi
+  core.String? osType;
+
+  /// The size of the block device in GiB.
+  ///
+  /// Any value provided for the `size_gib` field during volume creation is
+  /// ignored. The block device's size is system-managed and will be set to
+  /// match the parent Volume's `capacity_gib`.
+  ///
+  /// Optional.
+  core.String? sizeGib;
+
+  BlockDevice({
+    this.hostGroups,
+    this.identifier,
+    this.name,
+    this.osType,
+    this.sizeGib,
+  });
+
+  BlockDevice.fromJson(core.Map json_)
+    : this(
+        hostGroups:
+            (json_['hostGroups'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        identifier: json_['identifier'] as core.String?,
+        name: json_['name'] as core.String?,
+        osType: json_['osType'] as core.String?,
+        sizeGib: json_['sizeGib'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (hostGroups != null) 'hostGroups': hostGroups!,
+    if (identifier != null) 'identifier': identifier!,
+    if (name != null) 'name': name!,
+    if (osType != null) 'osType': osType!,
+    if (sizeGib != null) 'sizeGib': sizeGib!,
+  };
+}
+
 /// Configuration of the cache volume.
 class CacheConfig {
+  /// Pre-populate cache volume with data from the origin volume.
+  ///
+  /// Optional.
+  CachePrePopulate? cachePrePopulate;
+
+  /// State of the prepopulation job indicating how the prepopulation is
+  /// progressing.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "CACHE_PRE_POPULATE_STATE_UNSPECIFIED" : Default unspecified state.
+  /// - "NOT_NEEDED" : State representing when the most recent create or update
+  /// request did not require a prepopulation job.
+  /// - "IN_PROGRESS" : State representing when the most recent update request
+  /// requested a prepopulation job but it has not yet completed.
+  /// - "COMPLETE" : State representing when the most recent update request
+  /// requested a prepopulation job and it has completed successfully.
+  /// - "ERROR" : State representing when the most recent update request
+  /// requested a prepopulation job but the prepopulate job failed.
+  core.String? cachePrePopulateState;
+
   /// Flag indicating whether a CIFS change notification is enabled for the
   /// FlexCache volume.
   ///
   /// Optional.
   core.bool? cifsChangeNotifyEnabled;
 
-  CacheConfig({this.cifsChangeNotifyEnabled});
+  /// Flag indicating whether writeback is enabled for the FlexCache volume.
+  ///
+  /// Optional.
+  core.bool? writebackEnabled;
+
+  CacheConfig({
+    this.cachePrePopulate,
+    this.cachePrePopulateState,
+    this.cifsChangeNotifyEnabled,
+    this.writebackEnabled,
+  });
 
   CacheConfig.fromJson(core.Map json_)
     : this(
+        cachePrePopulate:
+            json_.containsKey('cachePrePopulate')
+                ? CachePrePopulate.fromJson(
+                  json_['cachePrePopulate']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        cachePrePopulateState: json_['cachePrePopulateState'] as core.String?,
         cifsChangeNotifyEnabled: json_['cifsChangeNotifyEnabled'] as core.bool?,
+        writebackEnabled: json_['writebackEnabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (cachePrePopulate != null) 'cachePrePopulate': cachePrePopulate!,
+    if (cachePrePopulateState != null)
+      'cachePrePopulateState': cachePrePopulateState!,
     if (cifsChangeNotifyEnabled != null)
       'cifsChangeNotifyEnabled': cifsChangeNotifyEnabled!,
+    if (writebackEnabled != null) 'writebackEnabled': writebackEnabled!,
   };
 }
 
@@ -3985,7 +4441,7 @@ class CacheParameters {
   /// Output only.
   core.String? command;
 
-  /// Field indicating whether cache volume as global file lock enabled.
+  /// Indicates whether the cache volume has global file lock enabled.
   ///
   /// Optional.
   core.bool? enableGlobalFileLock;
@@ -4077,6 +4533,47 @@ class CacheParameters {
     if (peeringCommandExpiryTime != null)
       'peeringCommandExpiryTime': peeringCommandExpiryTime!,
     if (stateDetails != null) 'stateDetails': stateDetails!,
+  };
+}
+
+/// Pre-populate cache volume with data from the origin volume.
+class CachePrePopulate {
+  /// List of directory-paths to be excluded for pre-population for the
+  /// FlexCache volume.
+  ///
+  /// Optional.
+  core.List<core.String>? excludePathList;
+
+  /// List of directory-paths to be pre-populated for the FlexCache volume.
+  ///
+  /// Optional.
+  core.List<core.String>? pathList;
+
+  /// Flag indicating whether the directories listed with the `path_list` need
+  /// to be recursively pre-populated.
+  ///
+  /// Optional.
+  core.bool? recursion;
+
+  CachePrePopulate({this.excludePathList, this.pathList, this.recursion});
+
+  CachePrePopulate.fromJson(core.Map json_)
+    : this(
+        excludePathList:
+            (json_['excludePathList'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        pathList:
+            (json_['pathList'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        recursion: json_['recursion'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (excludePathList != null) 'excludePathList': excludePathList!,
+    if (pathList != null) 'pathList': pathList!,
+    if (recursion != null) 'recursion': recursion!,
   };
 }
 
@@ -4175,55 +4672,11 @@ typedef EncryptVolumesRequest = $Empty;
 
 /// EstablishPeeringRequest establishes cluster and svm peerings between the
 /// source and the destination replications.
-class EstablishPeeringRequest {
-  /// Name of the user's local source cluster to be peered with the destination
-  /// cluster.
-  ///
-  /// Required.
-  core.String? peerClusterName;
+typedef EstablishPeeringRequest = $PeeringRequest;
 
-  /// List of IPv4 ip addresses to be used for peering.
-  ///
-  /// Optional.
-  core.List<core.String>? peerIpAddresses;
-
-  /// Name of the user's local source vserver svm to be peered with the
-  /// destination vserver svm.
-  ///
-  /// Required.
-  core.String? peerSvmName;
-
-  /// Name of the user's local source volume to be peered with the destination
-  /// volume.
-  ///
-  /// Required.
-  core.String? peerVolumeName;
-
-  EstablishPeeringRequest({
-    this.peerClusterName,
-    this.peerIpAddresses,
-    this.peerSvmName,
-    this.peerVolumeName,
-  });
-
-  EstablishPeeringRequest.fromJson(core.Map json_)
-    : this(
-        peerClusterName: json_['peerClusterName'] as core.String?,
-        peerIpAddresses:
-            (json_['peerIpAddresses'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        peerSvmName: json_['peerSvmName'] as core.String?,
-        peerVolumeName: json_['peerVolumeName'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (peerClusterName != null) 'peerClusterName': peerClusterName!,
-    if (peerIpAddresses != null) 'peerIpAddresses': peerIpAddresses!,
-    if (peerSvmName != null) 'peerSvmName': peerSvmName!,
-    if (peerVolumeName != null) 'peerVolumeName': peerVolumeName!,
-  };
-}
+/// EstablishVolumePeeringRequest establishes cluster and svm peerings between
+/// the source and destination clusters.
+typedef EstablishVolumePeeringRequest = $PeeringRequest;
 
 /// Defines the export policy for the volume.
 class ExportPolicy {
@@ -4258,6 +4711,109 @@ class ExportPolicy {
 /// method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns
 /// (google.protobuf.Empty); }
 typedef GoogleProtobufEmpty = $Empty;
+
+/// Host group is a collection of hosts that can be used for accessing a Block
+/// Volume.
+class HostGroup {
+  /// Create time of the host group.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Description of the host group.
+  ///
+  /// Optional.
+  core.String? description;
+
+  /// The list of hosts associated with the host group.
+  ///
+  /// Required.
+  core.List<core.String>? hosts;
+
+  /// Labels of the host group.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// The resource name of the host group. Format:
+  /// `projects/{project_number}/locations/{location_id}/hostGroups/{host_group_id}`.
+  core.String? name;
+
+  /// The OS type of the host group.
+  ///
+  /// It indicates the type of operating system used by all of the hosts in the
+  /// HostGroup. All hosts in a HostGroup must be of the same OS type. This can
+  /// be set only when creating a HostGroup.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "OS_TYPE_UNSPECIFIED" : Unspecified OS Type
+  /// - "LINUX" : OS Type is Linux
+  /// - "WINDOWS" : OS Type is Windows
+  /// - "ESXI" : OS Type is VMware ESXi
+  core.String? osType;
+
+  /// State of the host group.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified state for host group.
+  /// - "CREATING" : Host group is creating.
+  /// - "READY" : Host group is ready.
+  /// - "UPDATING" : Host group is updating.
+  /// - "DELETING" : Host group is deleting.
+  /// - "DISABLED" : Host group is disabled.
+  core.String? state;
+
+  /// Type of the host group.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified type for host group.
+  /// - "ISCSI_INITIATOR" : iSCSI initiator host group.
+  core.String? type;
+
+  HostGroup({
+    this.createTime,
+    this.description,
+    this.hosts,
+    this.labels,
+    this.name,
+    this.osType,
+    this.state,
+    this.type,
+  });
+
+  HostGroup.fromJson(core.Map json_)
+    : this(
+        createTime: json_['createTime'] as core.String?,
+        description: json_['description'] as core.String?,
+        hosts:
+            (json_['hosts'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        osType: json_['osType'] as core.String?,
+        state: json_['state'] as core.String?,
+        type: json_['type'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (createTime != null) 'createTime': createTime!,
+    if (description != null) 'description': description!,
+    if (hosts != null) 'hosts': hosts!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (osType != null) 'osType': osType!,
+    if (state != null) 'state': state!,
+    if (type != null) 'type': type!,
+  };
+}
 
 /// Make a snapshot every hour e.g. at 04:00, 05:00, 06:00.
 class HourlySchedule {
@@ -4486,17 +5042,17 @@ class HybridReplicationParameters {
   };
 }
 
-/// KmsConfig is the customer managed encryption key(CMEK) configuration.
+/// KmsConfig is the customer-managed encryption key(CMEK) configuration.
 class KmsConfig {
   /// Create time of the KmsConfig.
   ///
   /// Output only.
   core.String? createTime;
 
-  /// Customer managed crypto key resource full name.
+  /// Customer-managed crypto key resource full name.
   ///
   /// Format:
-  /// projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{key}.
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`
   ///
   /// Required.
   core.String? cryptoKeyName;
@@ -4515,7 +5071,8 @@ class KmsConfig {
 
   /// Identifier.
   ///
-  /// Name of the KmsConfig.
+  /// Name of the KmsConfig. Format:
+  /// `projects/{project}/locations/{location}/kmsConfigs/{kms_config}`
   core.String? name;
 
   /// The Service account which will have access to the customer provided
@@ -4754,6 +5311,47 @@ class ListBackupsResponse {
   };
 }
 
+/// ListHostGroupsResponse is the response to a ListHostGroupsRequest.
+class ListHostGroupsResponse {
+  /// The list of host groups.
+  core.List<HostGroup>? hostGroups;
+
+  /// A token identifying a page of results the server should return.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListHostGroupsResponse({
+    this.hostGroups,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListHostGroupsResponse.fromJson(core.Map json_)
+    : this(
+        hostGroups:
+            (json_['hostGroups'] as core.List?)
+                ?.map(
+                  (value) => HostGroup.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (hostGroups != null) 'hostGroups': hostGroups!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// ListKmsConfigsResponse is the response to a ListKmsConfigsRequest.
 class ListKmsConfigsResponse {
   /// The list of KmsConfigs
@@ -4832,7 +5430,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -4845,11 +5455,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -5119,6 +5734,7 @@ class MountOption {
   /// - "NFSV3" : NFS V3 protocol
   /// - "NFSV4" : NFS V4 protocol
   /// - "SMB" : SMB protocol
+  /// - "ISCSI" : ISCSI protocol
   core.String? protocol;
 
   MountOption({
@@ -5577,13 +6193,15 @@ class RestoreBackupFilesRequest {
   /// Required.
   core.String? backup;
 
-  /// List of files to be restored in the form of their absolute path as in
+  /// List of files to be restored, specified by their absolute path in the
   /// source volume.
   ///
   /// Required.
   core.List<core.String>? fileList;
 
   /// Absolute directory path in the destination volume.
+  ///
+  /// This is required if the `file_list` is provided.
   ///
   /// Optional.
   core.String? restoreDestinationPath;
@@ -5682,8 +6300,8 @@ class SimpleExportPolicyRule {
 
   /// An integer representing the anonymous user ID.
   ///
-  /// Range is 0 to 4294967295. Required when squash_mode is ROOT_SQUASH or
-  /// ALL_SQUASH.
+  /// Range is 0 to `4294967295`. Required when `squash_mode` is `ROOT_SQUASH`
+  /// or `ALL_SQUASH`.
   ///
   /// Optional.
   core.String? anonUid;
@@ -5744,7 +6362,7 @@ class SimpleExportPolicyRule {
   ///
   /// Optional.
   /// Possible string values are:
-  /// - "SQUASH_MODE_UNSPECIFIED" : Defaults to NO_ROOT_SQUASH.
+  /// - "SQUASH_MODE_UNSPECIFIED" : Defaults to `NO_ROOT_SQUASH`.
   /// - "NO_ROOT_SQUASH" : The root user (UID 0) retains full access. Other
   /// users are unaffected.
   /// - "ROOT_SQUASH" : The root user (UID 0) is squashed to anonymous user ID.
@@ -6171,6 +6789,22 @@ class StoragePool {
   /// Optional.
   core.String? totalThroughputMibps;
 
+  /// Type of the storage pool.
+  ///
+  /// This field is used to control whether the pool supports `FILE` based
+  /// volumes only or `UNIFIED` (both `FILE` and `BLOCK`) volumes or
+  /// `UNIFIED_LARGE_CAPACITY` (both `FILE` and `BLOCK`) volumes with large
+  /// capacity. If not specified during creation, it defaults to `FILE`.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "STORAGE_POOL_TYPE_UNSPECIFIED" : Storage pool type is not specified.
+  /// - "FILE" : Storage pool type is file.
+  /// - "UNIFIED" : Storage pool type is unified.
+  /// - "UNIFIED_LARGE_CAPACITY" : Deprecated: UNIFIED_LARGE_CAPACITY was
+  /// previously tag 3.
+  core.String? type;
+
   /// Allocated size of all volumes in GIB in the storage pool
   ///
   /// Output only.
@@ -6215,6 +6849,7 @@ class StoragePool {
     this.stateDetails,
     this.totalIops,
     this.totalThroughputMibps,
+    this.type,
     this.volumeCapacityGib,
     this.volumeCount,
     this.zone,
@@ -6254,6 +6889,7 @@ class StoragePool {
         stateDetails: json_['stateDetails'] as core.String?,
         totalIops: json_['totalIops'] as core.String?,
         totalThroughputMibps: json_['totalThroughputMibps'] as core.String?,
+        type: json_['type'] as core.String?,
         volumeCapacityGib: json_['volumeCapacityGib'] as core.String?,
         volumeCount: json_['volumeCount'] as core.int?,
         zone: json_['zone'] as core.String?,
@@ -6294,6 +6930,7 @@ class StoragePool {
     if (totalIops != null) 'totalIops': totalIops!,
     if (totalThroughputMibps != null)
       'totalThroughputMibps': totalThroughputMibps!,
+    if (type != null) 'type': type!,
     if (volumeCapacityGib != null) 'volumeCapacityGib': volumeCapacityGib!,
     if (volumeCount != null) 'volumeCount': volumeCount!,
     if (zone != null) 'zone': zone!,
@@ -6516,6 +7153,13 @@ class Volume {
 
   /// BackupConfig of the volume.
   BackupConfig? backupConfig;
+
+  /// Block devices for the volume.
+  ///
+  /// Currently, only one block device is permitted per Volume.
+  ///
+  /// Optional.
+  core.List<BlockDevice>? blockDevices;
 
   /// Cache parameters for the volume.
   ///
@@ -6765,6 +7409,7 @@ class Volume {
   Volume({
     this.activeDirectory,
     this.backupConfig,
+    this.blockDevices,
     this.cacheParameters,
     this.capacityGib,
     this.coldTierSizeGib,
@@ -6815,6 +7460,14 @@ class Volume {
                   json_['backupConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        blockDevices:
+            (json_['blockDevices'] as core.List?)
+                ?.map(
+                  (value) => BlockDevice.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         cacheParameters:
             json_.containsKey('cacheParameters')
                 ? CacheParameters.fromJson(
@@ -6911,6 +7564,7 @@ class Volume {
   core.Map<core.String, core.dynamic> toJson() => {
     if (activeDirectory != null) 'activeDirectory': activeDirectory!,
     if (backupConfig != null) 'backupConfig': backupConfig!,
+    if (blockDevices != null) 'blockDevices': blockDevices!,
     if (cacheParameters != null) 'cacheParameters': cacheParameters!,
     if (capacityGib != null) 'capacityGib': capacityGib!,
     if (coldTierSizeGib != null) 'coldTierSizeGib': coldTierSizeGib!,

@@ -113,6 +113,44 @@ class ProjectsLocationsResource {
     return Location.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
+  /// Gets the Scheduler config in the project/region.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The config name. For example:
+  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [CmekConfig].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<CmekConfig> getCmekConfig(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return CmekConfig.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
   /// Lists information about the supported locations for this service.
   ///
   /// Request parameters:
@@ -120,9 +158,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -170,6 +208,52 @@ class ProjectsLocationsResource {
     return ListLocationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Initializes or Updates the a scheduler config.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The config resource name which includes the project
+  /// and location and must end in 'cmekConfig', in the format
+  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+/cmekConfig$`.
+  ///
+  /// [updateMask] - Optional. List of fields to be updated in this request.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> updateCmekConfig(
+    CmekConfig request,
+    core.String name, {
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -356,13 +440,15 @@ class ProjectsLocationsJobsResource {
   /// output only. The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID`
   /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
-  /// (:), or periods (.). For more information, see
-  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// (:), or periods (.). For more information, see \[Identifying
+  /// projects\](/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the job's location. The list of
-  /// available locations can be obtained by calling ListLocations. For more
-  /// information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
-  /// contain only letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or
-  /// underscores (_). The maximum length is 500 characters.
+  /// available locations can be obtained by calling
+  /// \[locations.list\](/scheduler/docs/reference/rest/v1/projects.locations/list).
+  /// For more information, see \[Cloud Scheduler
+  /// locations\](/scheduler/docs/locations). * `JOB_ID` can contain only
+  /// letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or underscores (_).
+  /// The maximum length is 500 characters.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
@@ -685,6 +771,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -700,12 +794,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -913,6 +1010,38 @@ class AppEngineRouting {
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
+/// Describes the project/location configuration of Cloud Scheduler Resources.
+class CmekConfig {
+  /// Resource name of the Cloud KMS key, of the form
+  /// `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`,
+  /// that will be used to encrypt Jobs in the region.
+  ///
+  /// Setting this as blank will turn off CMEK encryption.
+  ///
+  /// Optional.
+  core.String? kmsKeyName;
+
+  /// Identifier.
+  ///
+  /// The config resource name which includes the project and location and must
+  /// end in 'cmekConfig', in the format
+  /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig\`
+  core.String? name;
+
+  CmekConfig({this.kmsKeyName, this.name});
+
+  CmekConfig.fromJson(core.Map json_)
+    : this(
+        kmsKeyName: json_['kmsKeyName'] as core.String?,
+        name: json_['name'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName!,
+    if (name != null) 'name': name!,
+  };
+}
+
 /// A generic empty message that you can re-use to avoid defining duplicated
 /// empty messages in your APIs.
 ///
@@ -1092,13 +1221,15 @@ class Job {
   /// The job name. For example:
   /// `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID`
   /// can contain letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), colons
-  /// (:), or periods (.). For more information, see
-  /// [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects)
+  /// (:), or periods (.). For more information, see \[Identifying
+  /// projects\](/resource-manager/docs/creating-managing-projects#identifying_projects)
   /// * `LOCATION_ID` is the canonical ID for the job's location. The list of
-  /// available locations can be obtained by calling ListLocations. For more
-  /// information, see https://cloud.google.com/about/locations/. * `JOB_ID` can
-  /// contain only letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or
-  /// underscores (_). The maximum length is 500 characters.
+  /// available locations can be obtained by calling
+  /// \[locations.list\](/scheduler/docs/reference/rest/v1/projects.locations/list).
+  /// For more information, see \[Cloud Scheduler
+  /// locations\](/scheduler/docs/locations). * `JOB_ID` can contain only
+  /// letters (\[A-Za-z\]), numbers (\[0-9\]), hyphens (-), or underscores (_).
+  /// The maximum length is 500 characters.
   core.String? name;
 
   /// Pub/Sub target.
@@ -1118,20 +1249,19 @@ class Job {
   /// Describes the schedule on which the job will be executed. The schedule can
   /// be either of the following types: *
   /// [Crontab](https://en.wikipedia.org/wiki/Cron#Overview) * English-like
-  /// [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules)
-  /// As a general rule, execution `n + 1` of a job will not begin until
-  /// execution `n` has finished. Cloud Scheduler will never allow two
-  /// simultaneously outstanding executions. For example, this implies that if
-  /// the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution
-  /// takes until 16:15, the `n+1`th execution will not start until `16:15`. A
-  /// scheduled start time will be delayed if the previous execution has not
-  /// ended when its scheduled time occurs. If retry_count \> 0 and a job
-  /// attempt fails, the job will be tried a total of retry_count times, with
-  /// exponential backoff, until the next scheduled start time. If retry_count
-  /// is 0, a job attempt will not be retried if it fails. Instead the Cloud
-  /// Scheduler system will wait for the next scheduled execution time. Setting
-  /// retry_count to 0 does not prevent failed jobs from running according to
-  /// schedule after the failure.
+  /// \[schedule\](/scheduler/docs/configuring/cron-job-schedules) As a general
+  /// rule, execution `n + 1` of a job will not begin until execution `n` has
+  /// finished. Cloud Scheduler will never allow two simultaneously outstanding
+  /// executions. For example, this implies that if the `n+1`th execution is
+  /// scheduled to run at 16:00 but the `n`th execution takes until 16:15, the
+  /// `n+1`th execution will not start until `16:15`. A scheduled start time
+  /// will be delayed if the previous execution has not ended when its scheduled
+  /// time occurs. If retry_count \> 0 and a job attempt fails, the job will be
+  /// tried a total of retry_count times, with exponential backoff, until the
+  /// next scheduled start time. If retry_count is 0, a job attempt will not be
+  /// retried if it fails. Instead the Cloud Scheduler system will wait for the
+  /// next scheduled execution time. Setting retry_count to 0 does not prevent
+  /// failed jobs from running according to schedule after the failure.
   core.String? schedule;
 
   /// The next time the job is scheduled.
@@ -1331,7 +1461,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -1344,11 +1486,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -1558,11 +1705,11 @@ typedef ResumeJobRequest = $Empty;
 
 /// Settings that determine the retry behavior.
 ///
-/// For more information, see
-/// [Retry jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs).
-/// By default, if a job does not complete successfully (meaning that an
-/// acknowledgement is not received from the handler, then it will be retried
-/// with exponential backoff according to the settings in RetryConfig.
+/// For more information, see \[Retry
+/// jobs\](/scheduler/docs/configuring/retry-jobs). By default, if a job does
+/// not complete successfully (meaning that an acknowledgement is not received
+/// from the handler, then it will be retried with exponential backoff according
+/// to the settings in RetryConfig.
 class RetryConfig {
   /// The maximum amount of time to wait before retrying a job after it fails.
   ///
@@ -1574,8 +1721,7 @@ class RetryConfig {
   /// A job's retry interval starts at min_backoff_duration, then doubles
   /// `max_doublings` times, then increases linearly, and finally retries at
   /// intervals of max_backoff_duration up to retry_count times. For examples,
-  /// see
-  /// [Retry jobs](https://cloud.google.com/scheduler/docs/configuring/retry-jobs#max-doublings).
+  /// see \[Retry jobs\](/scheduler/docs/configuring/retry-jobs#max-doublings).
   /// The default value of this field is 5.
   core.int? maxDoublings;
 

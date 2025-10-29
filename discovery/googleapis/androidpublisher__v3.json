@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250904",
+    "revision": "20260204",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "servicePath": "",
     "title": "Google Play Android Developer API",
@@ -5023,6 +5023,40 @@
                                 "https://www.googleapis.com/auth/androidpublisher"
                             ]
                         },
+                        "defer": {
+                            "description": "Defers the renewal of a subscription.",
+                            "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer",
+                            "httpMethod": "POST",
+                            "id": "androidpublisher.purchases.subscriptionsv2.defer",
+                            "parameterOrder": [
+                                "packageName",
+                                "token"
+                            ],
+                            "parameters": {
+                                "packageName": {
+                                    "description": "Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "token": {
+                                    "description": "Required. The token provided to the user's device when the subscription was purchased.",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}:defer",
+                            "request": {
+                                "$ref": "DeferSubscriptionPurchaseRequest"
+                            },
+                            "response": {
+                                "$ref": "DeferSubscriptionPurchaseResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/androidpublisher"
+                            ]
+                        },
                         "get": {
                             "description": "Get metadata about a subscription",
                             "flatPath": "androidpublisher/v3/applications/{packageName}/purchases/subscriptionsv2/tokens/{token}",
@@ -6144,7 +6178,7 @@
             "id": "AutoRenewingBasePlanType",
             "properties": {
                 "accountHoldDuration": {
-                    "description": "Optional. Account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. If not specified, the default value is P30D. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.",
+                    "description": "Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.",
                     "type": "string"
                 },
                 "billingPeriodDuration": {
@@ -6221,6 +6255,12 @@
             },
             "type": "object"
         },
+        "BaseDetails": {
+            "description": "Details of a base price pricing phase.",
+            "id": "BaseDetails",
+            "properties": {},
+            "type": "object"
+        },
         "BasePlan": {
             "description": "A single base plan for a subscription.",
             "id": "BasePlan",
@@ -6277,6 +6317,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "BasePriceOfferPhase": {
+            "description": "Details about base price offer phase.",
+            "id": "BasePriceOfferPhase",
+            "properties": {},
             "type": "object"
         },
         "BatchDeleteOneTimeProductOffersRequest": {
@@ -6902,6 +6948,10 @@
                 "price": {
                     "$ref": "Money",
                     "description": "The intital price to convert other regions from. Tax exclusive."
+                },
+                "productTaxCategoryCode": {
+                    "description": "Optional. Product tax category code in context. Product tax category determines the transaction tax rates applied to the product that will be factored into the price calculation. If not set, tax rates for the default product tax category will be used. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -7131,6 +7181,51 @@
                 "productId": {
                     "description": "Required. The parent subscription (ID) of the offer to deactivate.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DeferSubscriptionPurchaseRequest": {
+            "description": "Request for the v2 purchases.subscriptions.defer API.",
+            "id": "DeferSubscriptionPurchaseRequest",
+            "properties": {
+                "deferralContext": {
+                    "$ref": "DeferralContext",
+                    "description": "Required. Details about the subscription deferral."
+                }
+            },
+            "type": "object"
+        },
+        "DeferSubscriptionPurchaseResponse": {
+            "description": "Response for the v2 purchases.subscriptions.defer API.",
+            "id": "DeferSubscriptionPurchaseResponse",
+            "properties": {
+                "itemExpiryTimeDetails": {
+                    "description": "The new expiry time for each subscription items.",
+                    "items": {
+                        "$ref": "ItemExpiryTimeDetails"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "DeferralContext": {
+            "description": "Deferral context of the purchases.subscriptionsv2.defer API.",
+            "id": "DeferralContext",
+            "properties": {
+                "deferDuration": {
+                    "description": "Required. The duration by which all subscription items should be deferred.",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "Required. The API will fail if the etag does not match the latest etag for this subscription. The etag is retrieved from purchases.subscriptionsv2.get: https://developers.google.com/android-publisher/api-ref/rest/v3/purchases.subscriptionsv2/get",
+                    "type": "string"
+                },
+                "validateOnly": {
+                    "description": "If set to \"true\", the request is a dry run to validate the effect of Defer, the subscription would not be impacted.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -7636,6 +7731,64 @@
             },
             "type": "object"
         },
+        "ExternalAccountIds": {
+            "description": "User account identifier in your app.",
+            "id": "ExternalAccountIds",
+            "properties": {
+                "obfuscatedAccountId": {
+                    "description": "Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user account in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to store PII in this field will result in purchases being blocked. Google Play recommends that you use either encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is limited to 64 characters. This field can only be set for resubscription purchases. See https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedaccountid to set this field for purchases made using the standard in-app billing flow.",
+                    "type": "string"
+                },
+                "obfuscatedProfileId": {
+                    "description": "Optional. Specifies an optional obfuscated string that is uniquely associated with the purchaser's user profile in your app. If you pass this value, Google Play can use it to detect irregular activity. Do not use this field to store any Personally Identifiable Information (PII) such as emails in cleartext. Attempting to store PII in this field will result in purchases being blocked. Google Play recommends that you use either encryption or a one-way hash to generate an obfuscated identifier to send to Google Play. This identifier is limited to 64 characters. This field can only be set for resubscription purchases. See https://developer.android.com/reference/com/android/billingclient/api/BillingFlowParams.Builder#setobfuscatedprofileid to set this field for purchases made using the standard in-app billing flow.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExternalOfferDetails": {
+            "description": "Reporting details unique to the external offers program.",
+            "id": "ExternalOfferDetails",
+            "properties": {
+                "appDownloadEventExternalTransactionId": {
+                    "description": "Optional. The external transaction id associated with the app download event through an external link. Required when reporting transactions made in externally installed apps.",
+                    "type": "string"
+                },
+                "installedAppCategory": {
+                    "description": "Optional. The category of the downloaded app though this transaction. This must match the category provided in Play Console during the external app verification process. Only required for app downloads.",
+                    "enum": [
+                        "EXTERNAL_OFFER_APP_CATEGORY_UNSPECIFIED",
+                        "APP",
+                        "GAME"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified, do not use.",
+                        "The app is classified under the app category.",
+                        "The app is classified under the game category."
+                    ],
+                    "type": "string"
+                },
+                "installedAppPackage": {
+                    "description": "Optional. The package name of the app downloaded through this transaction. Required when link_type is LINK_TO_APP_DOWNLOAD.",
+                    "type": "string"
+                },
+                "linkType": {
+                    "description": "Optional. The type of content being reported by this transaction. Required when reporting app downloads or purchased digital content offers made in app installed through Google Play.",
+                    "enum": [
+                        "EXTERNAL_OFFER_LINK_TYPE_UNSPECIFIED",
+                        "LINK_TO_DIGITAL_CONTENT_OFFER",
+                        "LINK_TO_APP_DOWNLOAD"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified, do not use.",
+                        "An offer to purchase digital content.",
+                        "An app install."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ExternalSubscription": {
             "description": "Details of an external subscription.",
             "id": "ExternalSubscription",
@@ -7676,6 +7829,10 @@
                     "$ref": "Price",
                     "description": "Output only. The current tax amount. This represents the current tax amount including any refunds that may have been applied to this transaction.",
                     "readOnly": true
+                },
+                "externalOfferDetails": {
+                    "$ref": "ExternalOfferDetails",
+                    "description": "Optional. Details necessary to accurately report external offers transactions."
                 },
                 "externalTransactionId": {
                     "description": "Output only. The id of this transaction. All transaction ids under the same package name must be unique. Set when creating the external transaction.",
@@ -7842,6 +7999,18 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "FreeTrialDetails": {
+            "description": "Details of a free trial pricing phase.",
+            "id": "FreeTrialDetails",
+            "properties": {},
+            "type": "object"
+        },
+        "FreeTrialOfferPhase": {
+            "description": "Details about free trial offer phase.",
+            "id": "FreeTrialOfferPhase",
+            "properties": {},
             "type": "object"
         },
         "FullRefund": {
@@ -8498,7 +8667,7 @@
             "id": "InstallmentsBasePlanType",
             "properties": {
                 "accountHoldDuration": {
-                    "description": "Optional. Account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. If not specified, the default value is P30D. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.",
+                    "description": "Optional. Custom account hold period of the subscription, specified in ISO 8601 format. Acceptable values must be in days and between P0D and P60D. An empty field represents a recommended account hold, calculated as 60 days minus grace period. The sum of gracePeriodDuration and accountHoldDuration must be between P30D and P60D days, inclusive.",
                     "type": "string"
                 },
                 "billingPeriodDuration": {
@@ -8578,6 +8747,12 @@
             },
             "type": "object"
         },
+        "IntroductoryPriceDetails": {
+            "description": "Details of an introductory price pricing phase.",
+            "id": "IntroductoryPriceDetails",
+            "properties": {},
+            "type": "object"
+        },
         "IntroductoryPriceInfo": {
             "description": "Contains the introductory price information for a subscription.",
             "id": "IntroductoryPriceInfo",
@@ -8598,6 +8773,69 @@
                 },
                 "introductoryPricePeriod": {
                     "description": "Introductory price period, specified in ISO 8601 format. Common values are (but not limited to) \"P1W\" (one week), \"P1M\" (one month), \"P3M\" (three months), \"P6M\" (six months), and \"P1Y\" (one year).",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "IntroductoryPriceOfferPhase": {
+            "description": "Details about introductory price offer phase.",
+            "id": "IntroductoryPriceOfferPhase",
+            "properties": {},
+            "type": "object"
+        },
+        "ItemExpiryTimeDetails": {
+            "description": "Expiry time details of a subscription item.",
+            "id": "ItemExpiryTimeDetails",
+            "properties": {
+                "expiryTime": {
+                    "description": "The new expiry time for this subscription item.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The product ID of the subscription item (for example, 'premium_plan').",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ItemReplacement": {
+            "description": "Details about a subscription line item that is being replaced.",
+            "id": "ItemReplacement",
+            "properties": {
+                "basePlanId": {
+                    "description": "The base plan ID of the subscription line item being replaced.",
+                    "type": "string"
+                },
+                "offerId": {
+                    "description": "The offer ID of the subscription line item being replaced, if applicable.",
+                    "type": "string"
+                },
+                "productId": {
+                    "description": "The product ID of the subscription line item being replaced.",
+                    "type": "string"
+                },
+                "replacementMode": {
+                    "description": "The replacement mode applied during the purchase.",
+                    "enum": [
+                        "REPLACEMENT_MODE_UNSPECIFIED",
+                        "WITH_TIME_PRORATION",
+                        "CHARGE_PRORATED_PRICE",
+                        "WITHOUT_PRORATION",
+                        "CHARGE_FULL_PRICE",
+                        "DEFERRED",
+                        "KEEP_EXISTING"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified replacement mode.",
+                        "The new plan will be prorated and credited from the old plan.",
+                        "The user will be charged a prorated price for the new plan.",
+                        "The new plan will replace the old one without prorating the time.",
+                        "The user will be charged the full price for the new plan.",
+                        "The old plan will be cancelled and the new plan will be effective after the old one expires.",
+                        "The plan will remain unchanged with this replacement."
+                    ],
                     "type": "string"
                 }
             },
@@ -8630,7 +8868,7 @@
             "properties": {
                 "listingPrice": {
                     "$ref": "Money",
-                    "description": "Item's listed price on Play Store, this may or may not include tax. Excludes any discounts or promotions."
+                    "description": "Item's listed price on Play Store, this may or may not include tax. Excludes Google-funded discounts only."
                 },
                 "oneTimePurchaseDetails": {
                     "$ref": "OneTimePurchaseDetails",
@@ -8867,6 +9105,17 @@
                     "description": "Whether this in-app product is declared as a product representing a tokenized digital asset.",
                     "type": "boolean"
                 },
+                "productTaxCategoryCode": {
+                    "description": "Product tax category code to assign to the in-app product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.",
+                    "type": "string"
+                },
+                "regionalProductAgeRatingInfos": {
+                    "description": "Regional age rating information. Currently this field is only supported for region code `US`.",
+                    "items": {
+                        "$ref": "RegionalProductAgeRatingInfo"
+                    },
+                    "type": "array"
+                },
                 "taxRateInfoByRegionCode": {
                     "additionalProperties": {
                         "$ref": "RegionalTaxRateInfo"
@@ -9073,6 +9322,52 @@
                         "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "OfferPhase": {
+            "description": "Offer phase details.",
+            "id": "OfferPhase",
+            "properties": {
+                "basePrice": {
+                    "$ref": "BasePriceOfferPhase",
+                    "description": "Set when the offer phase is a base plan pricing phase."
+                },
+                "freeTrial": {
+                    "$ref": "FreeTrialOfferPhase",
+                    "description": "Set when the offer phase is a free trial."
+                },
+                "introductoryPrice": {
+                    "$ref": "IntroductoryPriceOfferPhase",
+                    "description": "Set when the offer phase is an introductory price offer phase."
+                },
+                "prorationPeriod": {
+                    "$ref": "ProrationPeriodOfferPhase",
+                    "description": "Set when the offer phase is a proration period."
+                }
+            },
+            "type": "object"
+        },
+        "OfferPhaseDetails": {
+            "description": "Details of a pricing phase for the entitlement period funded by this order.",
+            "id": "OfferPhaseDetails",
+            "properties": {
+                "baseDetails": {
+                    "$ref": "BaseDetails",
+                    "description": "The order funds a base price period."
+                },
+                "freeTrialDetails": {
+                    "$ref": "FreeTrialDetails",
+                    "description": "The order funds a free trial period."
+                },
+                "introductoryPriceDetails": {
+                    "$ref": "IntroductoryPriceDetails",
+                    "description": "The order funds an introductory pricing period."
+                },
+                "prorationPeriodDetails": {
+                    "$ref": "ProrationPeriodDetails",
+                    "description": "The order funds a proration period."
                 }
             },
             "type": "object"
@@ -9458,13 +9753,15 @@
                         "AVAILABILITY_UNSPECIFIED",
                         "AVAILABLE",
                         "NO_LONGER_AVAILABLE",
-                        "AVAILABLE_IF_RELEASED"
+                        "AVAILABLE_IF_RELEASED",
+                        "AVAILABLE_FOR_OFFERS_ONLY"
                     ],
                     "enumDescriptions": [
                         "Unspecified availability. Must not be used.",
                         "The purchase option is available to users.",
                         "The purchase option is no longer available to users. This value can only be used if the availability was previously set as AVAILABLE.",
-                        "The purchase option is initially unavailable, but made available via a released pre-order offer."
+                        "The purchase option is initially unavailable, but made available via a released pre-order offer.",
+                        "The purchase option is unavailable but offers linked to it (i.e. Play Points offer) are available."
                     ],
                     "type": "string"
                 },
@@ -9502,6 +9799,17 @@
                     "description": "Whether this one-time product is declared as a product representing a tokenized digital asset.",
                     "type": "boolean"
                 },
+                "productTaxCategoryCode": {
+                    "description": "Product tax category code to assign to the one-time product. Product tax category determines the transaction tax rates applied to the product. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.",
+                    "type": "string"
+                },
+                "regionalProductAgeRatingInfos": {
+                    "description": "Regional age rating information. Currently this field is only supported for region code `US`.",
+                    "items": {
+                        "$ref": "RegionalProductAgeRatingInfo"
+                    },
+                    "type": "array"
+                },
                 "regionalTaxConfigs": {
                     "description": "Regional tax configuration.",
                     "items": {
@@ -9519,6 +9827,10 @@
                 "offerId": {
                     "description": "The offer ID of the one-time purchase offer.",
                     "type": "string"
+                },
+                "preorderDetails": {
+                    "$ref": "PreorderDetails",
+                    "description": "The details of a pre-order purchase. Only set if it is a pre-order purchase. Note that this field will be set even after pre-order is fulfilled."
                 },
                 "purchaseOptionId": {
                     "description": "ID of the purchase option. This field is set for both purchase options and variant offers. For purchase options, this ID identifies the purchase option itself. For variant offers, this ID refers to the associated purchase option, and in conjunction with offer_id it identifies the variant offer.",
@@ -9583,6 +9895,26 @@
                 },
                 "purchaseToken": {
                     "description": "The token provided to the user's device when the subscription or item was purchased.",
+                    "type": "string"
+                },
+                "salesChannel": {
+                    "description": "The originating sales channel of the order.",
+                    "enum": [
+                        "SALES_CHANNEL_UNSPECIFIED",
+                        "IN_APP",
+                        "PC_EMULATOR",
+                        "NATIVE_PC",
+                        "PLAY_STORE",
+                        "OUTSIDE_PLAY_STORE"
+                    ],
+                    "enumDescriptions": [
+                        "Sales channel unspecified. This value is not used.",
+                        "Standard orders that initiated from in-app.",
+                        "Orders initiated from a PC emulator for in-app purchases.",
+                        "Orders initiated from a native PC app for in-app purchases.",
+                        "Orders initiated from the Google Play store.",
+                        "Orders initiated outside the Google Play store."
+                    ],
                     "type": "string"
                 },
                 "state": {
@@ -9736,6 +10068,21 @@
             },
             "type": "object"
         },
+        "OutOfAppPurchaseContext": {
+            "description": "Information specific to an out of app purchase.",
+            "id": "OutOfAppPurchaseContext",
+            "properties": {
+                "expiredExternalAccountIdentifiers": {
+                    "$ref": "ExternalAccountIdentifiers",
+                    "description": "User account identifier from the last expired subscription for this SKU."
+                },
+                "expiredPurchaseToken": {
+                    "description": "The purchase token of the last expired subscription. This purchase token must only be used to help identify the user if the link between the purchaseToken and user is stored in your database. This cannot be used to call the Google Developer API if it has been more than 60 days since expiry.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "PageInfo": {
             "description": "Information about the current page. List operations that supports paging return only one \"page\" of results. This protocol buffer message describes the page that has been returned.",
             "id": "PageInfo",
@@ -9852,6 +10199,24 @@
                 "pointsSpent": {
                     "description": "The number of Play Points applied in this order. E.g. for a 100 points for $2 coupon, this is 100. For coupon stacked with base offer, this is the total points spent across both.",
                     "format": "int64",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PreorderDetails": {
+            "description": "Details of a pre-order purchase.",
+            "id": "PreorderDetails",
+            "properties": {},
+            "type": "object"
+        },
+        "PreorderOfferDetails": {
+            "description": "Offer details information related to a preorder line item.",
+            "id": "PreorderOfferDetails",
+            "properties": {
+                "preorderReleaseTime": {
+                    "description": "The time when a preordered item is released for a preorder purchase.",
+                    "format": "google-datetime",
                     "type": "string"
                 }
             },
@@ -10002,6 +10367,10 @@
                 "offerToken": {
                     "description": "The per-transaction offer token used to make this purchase line item.",
                     "type": "string"
+                },
+                "preorderOfferDetails": {
+                    "$ref": "PreorderOfferDetails",
+                    "description": "Offer details for a preorder offer. This will only be set for preorders."
                 },
                 "purchaseOptionId": {
                     "description": "The purchase option ID.",
@@ -10166,6 +10535,52 @@
             "properties": {
                 "developerPayload": {
                     "description": "Payload to attach to the purchase.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProrationPeriodDetails": {
+            "description": "Details of a proration period. A proration period can be a period calculated during a plan change to cover existing entitlements (For more information, see [Allow users to upgrade, downgrade, or change their subscription](https://developer.android.com/google/play/billing/subscriptions#allow-users-change), or a prorated period to align add-on renewal dates with the base (For more information, see [Rules applicable for items in the purchase](https://developer.android.com/google/play/billing/subscription-with-addons#rules-base-addons)).",
+            "id": "ProrationPeriodDetails",
+            "properties": {
+                "originalOfferPhase": {
+                    "description": "Represent the original offer phase from the purchased the line item if the proration period contains any of them. For example, a proration period from CHARGE_FULL_PRICE plan change may merge the 1st offer phase of the subscription offer of the new product user purchased. In this case, the original offer phase will be set here.",
+                    "enum": [
+                        "OFFER_PHASE_UNSPECIFIED",
+                        "BASE",
+                        "INTRODUCTORY",
+                        "FREE_TRIAL"
+                    ],
+                    "enumDescriptions": [
+                        "Offer phase unspecified. This value is not used.",
+                        "The order funds a base price period.",
+                        "The order funds an introductory pricing period.",
+                        "The order funds a free trial period."
+                    ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProrationPeriodOfferPhase": {
+            "description": "Details about proration period offer phase.",
+            "id": "ProrationPeriodOfferPhase",
+            "properties": {
+                "originalOfferPhaseType": {
+                    "description": "The original offer phase type before the proration period. Only set when the proration period is updated from an existing offer phase.",
+                    "enum": [
+                        "ORIGINAL_OFFER_PHASE_TYPE_UNSPECIFIED",
+                        "BASE",
+                        "INTRODUCTORY",
+                        "FREE_TRIAL"
+                    ],
+                    "enumDescriptions": [
+                        "Unspecified original offer phase type.",
+                        "The subscription is in the base pricing phase (e.g. full price).",
+                        "The subscription is in an introductory pricing phase.",
+                        "The subscription is in a free trial."
+                    ],
                     "type": "string"
                 }
             },
@@ -10362,6 +10777,35 @@
                 },
                 "regionCode": {
                     "description": "Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. \"US\".",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RegionalProductAgeRatingInfo": {
+            "description": "Details about the age rating for a specific geographic region.",
+            "id": "RegionalProductAgeRatingInfo",
+            "properties": {
+                "productAgeRatingTier": {
+                    "description": "The age rating tier of a product for the given region.",
+                    "enum": [
+                        "PRODUCT_AGE_RATING_TIER_UNKNOWN",
+                        "PRODUCT_AGE_RATING_TIER_EVERYONE",
+                        "PRODUCT_AGE_RATING_TIER_THIRTEEN_AND_ABOVE",
+                        "PRODUCT_AGE_RATING_TIER_SIXTEEN_AND_ABOVE",
+                        "PRODUCT_AGE_RATING_TIER_EIGHTEEN_AND_ABOVE"
+                    ],
+                    "enumDescriptions": [
+                        "Unknown age rating tier.",
+                        "Age rating tier for products that are appropriate for all ages.",
+                        "Age rating tier for products that are appropriate for 13 years and above.",
+                        "Age rating tier for products that are appropriate for 16 years and above.",
+                        "Age rating tier for products that are appropriate for 18 years and above."
+                    ],
+                    "type": "string"
+                },
+                "regionCode": {
+                    "description": "Region code this configuration applies to, as defined by ISO 3166-2, e.g. \"US\".",
                     "type": "string"
                 }
             },
@@ -11062,7 +11506,7 @@
                     "type": "string"
                 },
                 "offerPhase": {
-                    "description": "The pricing phase for the billing period funded by this order.",
+                    "description": "The pricing phase for the billing period funded by this order. Deprecated. Use offer_phase_details instead.",
                     "enum": [
                         "OFFER_PHASE_UNSPECIFIED",
                         "BASE",
@@ -11076,6 +11520,10 @@
                         "The order funds a free trial period."
                     ],
                     "type": "string"
+                },
+                "offerPhaseDetails": {
+                    "$ref": "OfferPhaseDetails",
+                    "description": "The pricing phase details for the entitlement period funded by this order."
                 },
                 "servicePeriodEndTime": {
                     "description": "The end of the billing period funded by this order. This is a snapshot of the billing/service period end time at the moment the order was processed, and should be used only for accounting. To get the current end time of the subscription service period, use purchases.subscriptionsv2.get.",
@@ -11447,6 +11895,10 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
+                "itemReplacement": {
+                    "$ref": "ItemReplacement",
+                    "description": "Details of the item being replaced. This field is only populated if this item replaced another item in a previous subscription and is only available for 60 days after the purchase time."
+                },
                 "latestSuccessfulOrderId": {
                     "description": "The order id of the latest successful order associated with this item. Not present if the item is not owned by the user yet (e.g. the item being deferred replaced to).",
                     "type": "string"
@@ -11454,6 +11906,10 @@
                 "offerDetails": {
                     "$ref": "OfferDetails",
                     "description": "The offer details for this item."
+                },
+                "offerPhase": {
+                    "$ref": "OfferPhase",
+                    "description": "Current offer phase details for this item."
                 },
                 "prepaidPlan": {
                     "$ref": "PrepaidPlan",
@@ -11492,6 +11948,10 @@
                     "$ref": "CanceledStateContext",
                     "description": "Additional context around canceled subscriptions. Only present if the subscription currently has subscription_state SUBSCRIPTION_STATE_CANCELED or SUBSCRIPTION_STATE_EXPIRED."
                 },
+                "etag": {
+                    "description": "Entity tag representing the current state of the subscription. The developer will provide this etag for subscription actions. This etag is always present for auto-renewing and prepaid subscriptions.",
+                    "type": "string"
+                },
                 "externalAccountIdentifiers": {
                     "$ref": "ExternalAccountIdentifiers",
                     "description": "User account identifier in the third-party service."
@@ -11515,6 +11975,10 @@
                 "linkedPurchaseToken": {
                     "description": "The purchase token of the old subscription if this subscription is one of the following: * Re-signup of a canceled but non-lapsed subscription * Upgrade/downgrade from a previous subscription. * Convert from prepaid to auto renewing subscription. * Convert from an auto renewing subscription to prepaid. * Topup a prepaid subscription.",
                     "type": "string"
+                },
+                "outOfAppPurchaseContext": {
+                    "$ref": "OutOfAppPurchaseContext",
+                    "description": "Additional context for out of app purchases. This information is only present for re-subscription purchases (subscription purchases made after the previous subscription of the same product has expired) made through the Google Play subscriptions center. This field will be removed after you acknowledge the subscription."
                 },
                 "pausedStateContext": {
                     "$ref": "PausedStateContext",
@@ -11573,6 +12037,10 @@
                 "developerPayload": {
                     "description": "Payload to attach to the purchase.",
                     "type": "string"
+                },
+                "externalAccountIds": {
+                    "$ref": "ExternalAccountIds",
+                    "description": "Optional. User account identifier in your app."
                 }
             },
             "type": "object"
@@ -11621,6 +12089,17 @@
                 "isTokenizedDigitalAsset": {
                     "description": "Whether this subscription is declared as a product representing a tokenized digital asset.",
                     "type": "boolean"
+                },
+                "productTaxCategoryCode": {
+                    "description": "Product tax category code to assign to the subscription. Product tax category determines the transaction tax rates applied to the subscription. Refer to the [Help Center article](https://support.google.com/googleplay/android-developer/answer/16408159) for more information.",
+                    "type": "string"
+                },
+                "regionalProductAgeRatingInfos": {
+                    "description": "Regional age rating information. Currently this field is only supported for region code `US`.",
+                    "items": {
+                        "$ref": "RegionalProductAgeRatingInfo"
+                    },
+                    "type": "array"
                 },
                 "taxRateInfoByRegionCode": {
                     "additionalProperties": {
@@ -12065,11 +12544,11 @@
             "type": "object"
         },
         "TrackTargetedCountry": {
-            "description": "Representation of a single country where the contents of a track are available.",
+            "description": "Representation of a single country where the contents of a track can be made available.",
             "id": "TrackTargetedCountry",
             "properties": {
                 "countryCode": {
-                    "description": "The country to target, as a two-letter CLDR code.",
+                    "description": "The country that can be targeted, as a two-letter CLDR code.",
                     "type": "string"
                 }
             },

@@ -27,6 +27,7 @@
 /// - [HashListResource]
 /// - [HashListsResource]
 /// - [HashesResource]
+/// - [UrlsResource]
 library;
 
 import 'dart:async' as async;
@@ -53,6 +54,7 @@ class SafebrowsingApi {
   HashListResource get hashList => HashListResource(_requester);
   HashListsResource get hashLists => HashListsResource(_requester);
   HashesResource get hashes => HashesResource(_requester);
+  UrlsResource get urls => UrlsResource(_requester);
 
   SafebrowsingApi(
     http.Client client, {
@@ -71,7 +73,7 @@ class HashListResource {
 
   HashListResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get the latest contents of a hash list.
+  /// Gets the latest contents of a hash list.
   ///
   /// A hash list may either by a threat list or a non-threat list such as the
   /// Global Cache. This is a standard Get method as defined by
@@ -148,7 +150,7 @@ class HashListsResource {
 
   HashListsResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get multiple hash lists at once.
+  /// Gets multiple hash lists at once.
   ///
   /// It is very common for a client to need to get multiple hash lists. Using
   /// this method is preferred over using the regular Get method multiple times.
@@ -226,7 +228,7 @@ class HashListsResource {
     );
   }
 
-  /// List hash lists.
+  /// Lists hash lists.
   ///
   /// In the V5 API, Google will never remove a hash list that has ever been
   /// returned by this method. This enables clients to skip using this method
@@ -283,7 +285,7 @@ class HashesResource {
 
   HashesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Search for full hashes matching the specified prefixes.
+  /// Searches for full hashes matching the specified prefixes.
   ///
   /// This is a custom method as defined by https://google.aip.dev/136 (the
   /// custom method refers to this method having a custom name within Google's
@@ -325,6 +327,55 @@ class HashesResource {
       queryParams: queryParams_,
     );
     return GoogleSecuritySafebrowsingV5SearchHashesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class UrlsResource {
+  final commons.ApiRequester _requester;
+
+  UrlsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Searches for URLs matching known threats.
+  ///
+  /// Each URL and it's host-suffix and path-prefix expressions (up to a limited
+  /// depth) are checked. This means that the response may contain URLs that
+  /// were not included in the request, but are expressions of the requested
+  /// URLs.
+  ///
+  /// Request parameters:
+  ///
+  /// [urls] - Required. The URLs to be looked up. Clients MUST NOT send more
+  /// than 50 URLs.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [GoogleSecuritySafebrowsingV5SearchUrlsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<GoogleSecuritySafebrowsingV5SearchUrlsResponse> search({
+    core.List<core.String>? urls,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (urls != null) 'urls': urls,
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const url_ = 'v5/urls:search';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return GoogleSecuritySafebrowsingV5SearchUrlsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -1047,5 +1098,85 @@ class GoogleSecuritySafebrowsingV5SearchHashesResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (cacheDuration != null) 'cacheDuration': cacheDuration!,
     if (fullHashes != null) 'fullHashes': fullHashes!,
+  };
+}
+
+/// The response returned after searching threats matching the specified URLs.
+///
+/// If nothing is found, the server will return an OK status (HTTP status code
+/// 200) with the `threats` field empty, rather than returning a NOT_FOUND
+/// status (HTTP status code 404).
+class GoogleSecuritySafebrowsingV5SearchUrlsResponse {
+  /// The client-side cache duration.
+  ///
+  /// The client MUST add this duration to the current time to determine the
+  /// expiration time. The expiration time then applies to every URL queried by
+  /// the client in the request, regardless of how many URLs are returned in the
+  /// response. Even if the server returns no matches for a particular URL, this
+  /// fact MUST also be cached by the client. If and only if the field `threats`
+  /// is empty, the client MAY increase the `cache_duration` to determine a new
+  /// expiration that is later than that specified by the server. In any case,
+  /// the increased cache duration must not be longer than 24 hours. Important:
+  /// the client MUST NOT assume that the server will return the same cache
+  /// duration for all responses. The server MAY choose different cache
+  /// durations for different responses depending on the situation.
+  core.String? cacheDuration;
+
+  /// Unordered list.
+  ///
+  /// The unordered list of threat matches found. Each entry contains a URL and
+  /// the threat types that were found matching that URL. The list size can be
+  /// greater than the number of URLs in the request as the all expressions of
+  /// the URL would've been considered.
+  core.List<GoogleSecuritySafebrowsingV5ThreatUrl>? threats;
+
+  GoogleSecuritySafebrowsingV5SearchUrlsResponse({
+    this.cacheDuration,
+    this.threats,
+  });
+
+  GoogleSecuritySafebrowsingV5SearchUrlsResponse.fromJson(core.Map json_)
+    : this(
+        cacheDuration: json_['cacheDuration'] as core.String?,
+        threats:
+            (json_['threats'] as core.List?)
+                ?.map(
+                  (value) => GoogleSecuritySafebrowsingV5ThreatUrl.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (cacheDuration != null) 'cacheDuration': cacheDuration!,
+    if (threats != null) 'threats': threats!,
+  };
+}
+
+/// A URL matching one or more threats.
+class GoogleSecuritySafebrowsingV5ThreatUrl {
+  /// Unordered list.
+  ///
+  /// The unordered list of threat that the URL is classified as.
+  core.List<core.String>? threatTypes;
+
+  /// The requested URL that was matched by one or more threats.
+  core.String? url;
+
+  GoogleSecuritySafebrowsingV5ThreatUrl({this.threatTypes, this.url});
+
+  GoogleSecuritySafebrowsingV5ThreatUrl.fromJson(core.Map json_)
+    : this(
+        threatTypes:
+            (json_['threatTypes'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        url: json_['url'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (threatTypes != null) 'threatTypes': threatTypes!,
+    if (url != null) 'url': url!,
   };
 }

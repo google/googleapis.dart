@@ -30,6 +30,7 @@
 ///       - [ProjectsLocationsInstancesOsPolicyAssignmentsResource]
 ///         - [ProjectsLocationsInstancesOsPolicyAssignmentsReportsResource]
 ///       - [ProjectsLocationsInstancesVulnerabilityReportsResource]
+///     - [ProjectsLocationsOperationsResource]
 ///     - [ProjectsLocationsOsPolicyAssignmentsResource]
 ///       - [ProjectsLocationsOsPolicyAssignmentsOperationsResource]
 ///   - [ProjectsPatchDeploymentsResource]
@@ -94,6 +95,8 @@ class ProjectsLocationsResource {
       ProjectsLocationsGlobalResource(_requester);
   ProjectsLocationsInstancesResource get instances =>
       ProjectsLocationsInstancesResource(_requester);
+  ProjectsLocationsOperationsResource get operations =>
+      ProjectsLocationsOperationsResource(_requester);
   ProjectsLocationsOsPolicyAssignmentsResource get osPolicyAssignments =>
       ProjectsLocationsOsPolicyAssignmentsResource(_requester);
 
@@ -587,6 +590,198 @@ class ProjectsLocationsInstancesVulnerabilityReportsResource {
       queryParams: queryParams_,
     );
     return ListVulnerabilityReportsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Starts asynchronous cancellation on a long-running operation.
+  ///
+  /// The server makes a best effort to cancel the operation, but success is not
+  /// guaranteed. If the server doesn't support this method, it returns
+  /// `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation
+  /// or other methods to check whether the cancellation succeeded or whether
+  /// the operation completed despite cancellation. On successful cancellation,
+  /// the operation is not deleted; instead, it becomes an operation with an
+  /// Operation.error value with a google.rpc.Status.code of `1`, corresponding
+  /// to `Code.CANCELLED`.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be cancelled.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> cancel(
+    CancelOperationRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':cancel';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes a long-running operation.
+  ///
+  /// This method indicates that the client is no longer interested in the
+  /// operation result. It does not cancel the operation. If the server doesn't
+  /// support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource to be deleted.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Empty].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Empty> delete(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the latest state of a long-running operation.
+  ///
+  /// Clients can use this method to poll the operation result at intervals as
+  /// recommended by the API service.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists operations that match the specified filter in the request.
+  ///
+  /// If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - The name of the operation's parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [filter] - The standard list filter.
+  ///
+  /// [pageSize] - The standard list page size.
+  ///
+  /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListOperationsResponse> list(
+    core.String name, {
+    core.String? filter,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.bool? returnPartialSuccess,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + '/operations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListOperationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2614,6 +2809,52 @@ class ListOSPolicyAssignmentsResponse {
   };
 }
 
+/// The response message for Operations.ListOperations.
+class ListOperationsResponse {
+  /// The standard List next-page token.
+  core.String? nextPageToken;
+
+  /// A list of operations that matches the specified filter in the request.
+  core.List<Operation>? operations;
+
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
+
+  ListOperationsResponse.fromJson(core.Map json_)
+    : this(
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        operations:
+            (json_['operations'] as core.List?)
+                ?.map(
+                  (value) => Operation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
+  };
+}
+
 /// A response message for listing patch deployments.
 class ListPatchDeploymentsResponse {
   /// A pagination token that can be used to get the next page of patch
@@ -3099,7 +3340,7 @@ class OSPolicyAssignmentInstanceFilter {
 }
 
 /// VM inventory details.
-typedef OSPolicyAssignmentInstanceFilterInventory = $Shared04;
+typedef OSPolicyAssignmentInstanceFilterInventory = $Shared05;
 
 /// Message representing label set.
 ///
@@ -3451,7 +3692,7 @@ class OSPolicyAssignmentRollout {
 }
 
 /// Filtering criteria to select VMs based on inventory details.
-typedef OSPolicyInventoryFilter = $Shared04;
+typedef OSPolicyInventoryFilter = $Shared05;
 
 /// An OS policy resource is used to define the desired state configuration and
 /// provides a specific functionality like installing/removing packages,
@@ -3935,7 +4176,7 @@ class OSPolicyResourcePackageResource {
 ///
 /// - install: `apt-get update && apt-get -y install [name]` - remove: `apt-get
 /// -y remove [name]`
-typedef OSPolicyResourcePackageResourceAPT = $Shared00;
+typedef OSPolicyResourcePackageResourceAPT = $Shared01;
 
 /// A deb package file.
 ///
@@ -3975,7 +4216,7 @@ class OSPolicyResourcePackageResourceDeb {
 ///
 /// - install: `googet -noconfirm install package` - remove: `googet -noconfirm
 /// remove package`
-typedef OSPolicyResourcePackageResourceGooGet = $Shared00;
+typedef OSPolicyResourcePackageResourceGooGet = $Shared01;
 
 /// An MSI package.
 ///
@@ -4051,12 +4292,12 @@ class OSPolicyResourcePackageResourceRPM {
 /// A package managed by YUM.
 ///
 /// - install: `yum -y install package` - remove: `yum -y remove package`
-typedef OSPolicyResourcePackageResourceYUM = $Shared00;
+typedef OSPolicyResourcePackageResourceYUM = $Shared01;
 
 /// A package managed by Zypper.
 ///
 /// - install: `zypper -y install package` - remove: `zypper -y rm package`
-typedef OSPolicyResourcePackageResourceZypper = $Shared00;
+typedef OSPolicyResourcePackageResourceZypper = $Shared01;
 
 /// A resource that manages a package repository.
 class OSPolicyResourceRepositoryResource {
@@ -4270,6 +4511,22 @@ class PatchConfig {
   /// - "NEVER" : Never reboot the machine after the update completes.
   core.String? rebootConfig;
 
+  /// Enables enhanced reporting for the patch job: 1.
+  ///
+  /// Allows the patch job to skip unpatchable instances, reporting them as
+  /// `SKIPPED`. An instance can be unpatchable for two reasons: 1. The instance
+  /// runs Container-Optimized OS (COS), which cannot be patched. 2. The
+  /// instance is part of a managed instance group (MIG), and patching MIG
+  /// instances is disabled in the patch job's configuration
+  /// (PatchConfig.migInstancesAllowed is `false`). 2. Reports the patch job as
+  /// `SUCCEEDED` if it completes without errors, even if some instances were
+  /// `SKIPPED`. 3. Reports the patch job as `COMPLETED_WITH_INACTIVE_VMS` if it
+  /// completes without errors, but some instances were `INACTIVE` and were not
+  /// patched.
+  ///
+  /// Optional.
+  core.bool? skipUnpatchableVms;
+
   /// Windows update settings.
   ///
   /// Use this override the default windows patch rules.
@@ -4292,6 +4549,7 @@ class PatchConfig {
     this.postStep,
     this.preStep,
     this.rebootConfig,
+    this.skipUnpatchableVms,
     this.windowsUpdate,
     this.yum,
     this.zypper,
@@ -4325,6 +4583,7 @@ class PatchConfig {
                 )
                 : null,
         rebootConfig: json_['rebootConfig'] as core.String?,
+        skipUnpatchableVms: json_['skipUnpatchableVms'] as core.bool?,
         windowsUpdate:
             json_.containsKey('windowsUpdate')
                 ? WindowsUpdateSettings.fromJson(
@@ -4353,6 +4612,7 @@ class PatchConfig {
     if (postStep != null) 'postStep': postStep!,
     if (preStep != null) 'preStep': preStep!,
     if (rebootConfig != null) 'rebootConfig': rebootConfig!,
+    if (skipUnpatchableVms != null) 'skipUnpatchableVms': skipUnpatchableVms!,
     if (windowsUpdate != null) 'windowsUpdate': windowsUpdate!,
     if (yum != null) 'yum': yum!,
     if (zypper != null) 'zypper': zypper!,
@@ -4696,6 +4956,8 @@ class PatchJob {
   /// patch on.
   /// - "PATCHING" : Instances are being patched.
   /// - "SUCCEEDED" : Patch job completed successfully.
+  /// - "COMPLETED_WITH_INACTIVE_VMS" : The patch job completed without errors,
+  /// but some instances were inactive and therefore not patched.
   /// - "COMPLETED_WITH_ERRORS" : Patch job completed but there were errors.
   /// - "CANCELED" : The patch job was canceled.
   /// - "TIMED_OUT" : The patch job timed out.
@@ -4824,6 +5086,10 @@ class PatchJobInstanceDetails {
   /// - "NO_AGENT_DETECTED" : The service could not detect the presence of the
   /// agent. Check to ensure that the agent is installed, running, and able to
   /// communicate with the service.
+  /// - "SKIPPED" : The instance was skipped during patching due to one of two
+  /// reasons: 1. The instance runs Container-Optimized OS (COS), which cannot
+  /// be patched. 2. The patch job's configuration prohibits patching on Managed
+  /// Instance Groups (MIGs), and the instance is part of one.
   core.String? state;
 
   PatchJobInstanceDetails({
@@ -4895,6 +5161,9 @@ class PatchJobInstanceDetailsSummary {
   /// Number of instances rebooting.
   core.String? rebootingInstanceCount;
 
+  /// Number of instances that were skipped during patching.
+  core.String? skippedInstanceCount;
+
   /// Number of instances that have started.
   core.String? startedInstanceCount;
 
@@ -4919,6 +5188,7 @@ class PatchJobInstanceDetailsSummary {
     this.postPatchStepInstanceCount,
     this.prePatchStepInstanceCount,
     this.rebootingInstanceCount,
+    this.skippedInstanceCount,
     this.startedInstanceCount,
     this.succeededInstanceCount,
     this.succeededRebootRequiredInstanceCount,
@@ -4943,6 +5213,7 @@ class PatchJobInstanceDetailsSummary {
         prePatchStepInstanceCount:
             json_['prePatchStepInstanceCount'] as core.String?,
         rebootingInstanceCount: json_['rebootingInstanceCount'] as core.String?,
+        skippedInstanceCount: json_['skippedInstanceCount'] as core.String?,
         startedInstanceCount: json_['startedInstanceCount'] as core.String?,
         succeededInstanceCount: json_['succeededInstanceCount'] as core.String?,
         succeededRebootRequiredInstanceCount:
@@ -4972,6 +5243,8 @@ class PatchJobInstanceDetailsSummary {
       'prePatchStepInstanceCount': prePatchStepInstanceCount!,
     if (rebootingInstanceCount != null)
       'rebootingInstanceCount': rebootingInstanceCount!,
+    if (skippedInstanceCount != null)
+      'skippedInstanceCount': skippedInstanceCount!,
     if (startedInstanceCount != null)
       'startedInstanceCount': startedInstanceCount!,
     if (succeededInstanceCount != null)

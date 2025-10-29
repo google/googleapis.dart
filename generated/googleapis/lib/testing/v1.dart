@@ -1196,8 +1196,8 @@ class AndroidRoboTest {
   /// mode. Recommended.
   /// - "ROBO_VERSION_1" : Runs Robo in UIAutomator-only mode without app
   /// resigning
-  /// - "ROBO_VERSION_2" : Runs Robo in standard Espresso with UIAutomator
-  /// fallback
+  /// - "ROBO_VERSION_2" : Deprecated: Use ROBO_VERSION_1 instead for all use
+  /// cases. Runs Robo in standard Espresso with UIAutomator fallback
   core.String? roboMode;
 
   /// A JSON file with a sequence of actions Robo should perform as a prologue
@@ -4501,7 +4501,8 @@ class TestSetup {
 
   /// APKs to install in addition to those being directly tested.
   ///
-  /// These will be installed after the app under test. Currently capped at 100.
+  /// These will be installed after the app under test. Limited to a combined
+  /// total of 100 initial setup and additional files.
   core.List<Apk>? additionalApks;
 
   /// List of directories on the device to upload to GCS at the end of the test;
@@ -4526,7 +4527,7 @@ class TestSetup {
 
   /// Initial setup APKs to install before the app under test is installed.
   ///
-  /// Currently capped at 100.
+  /// Limited to a combined total of 100 initial setup and additional files.
   ///
   /// Optional.
   core.List<Apk>? initialSetupApks;

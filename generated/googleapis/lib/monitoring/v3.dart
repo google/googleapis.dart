@@ -26,6 +26,7 @@
 ///   - [OrganizationsTimeSeriesResource]
 /// - [ProjectsResource]
 ///   - [ProjectsAlertPoliciesResource]
+///   - [ProjectsAlertsResource]
 ///   - [ProjectsCollectdTimeSeriesResource]
 ///   - [ProjectsGroupsResource]
 ///     - [ProjectsGroupsMembersResource]
@@ -1186,6 +1187,7 @@ class ProjectsResource {
 
   ProjectsAlertPoliciesResource get alertPolicies =>
       ProjectsAlertPoliciesResource(_requester);
+  ProjectsAlertsResource get alerts => ProjectsAlertsResource(_requester);
   ProjectsCollectdTimeSeriesResource get collectdTimeSeries =>
       ProjectsCollectdTimeSeriesResource(_requester);
   ProjectsGroupsResource get groups => ProjectsGroupsResource(_requester);
@@ -1486,6 +1488,111 @@ class ProjectsAlertPoliciesResource {
       queryParams: queryParams_,
     );
     return AlertPolicy.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsAlertsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsAlertsResource(commons.ApiRequester client) : _requester = client;
+
+  /// Gets a single alert.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the alert.The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alerts/\[ALERT_ID\] The \[ALERT_ID\] is
+  /// a system-assigned unique identifier for the alert.
+  /// Value must have pattern `^projects/\[^/\]+/alerts/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Alert].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Alert> get(core.String name, {core.String? $fields}) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return Alert.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Lists the existing alerts for the metrics scope of the project.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The name of the project to list alerts for.
+  /// Value must have pattern `^projects/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. An alert is returned if there is a match on any
+  /// fields belonging to the alert or its subfields.
+  ///
+  /// [orderBy] - Optional. A comma-separated list of fields in Alert to use for
+  /// sorting. The default sort direction is ascending. To specify descending
+  /// order for a field, add a desc modifier. The following fields are
+  /// supported: open_time close_timeFor example, close_time desc, open_time
+  /// will return the alerts closed most recently, with ties broken in the order
+  /// of older alerts listed first.If the field is not set, the results are
+  /// sorted by open_time desc.
+  ///
+  /// [pageSize] - Optional. The maximum number of results to return in a single
+  /// response. If not set to a positive number, at most 50 alerts will be
+  /// returned. The maximum value is 1000; values above 1000 will be coerced to
+  /// 1000.
+  ///
+  /// [pageToken] - Optional. If non-empty, page_token must contain a value
+  /// returned as the next_page_token in a previous response to request the next
+  /// set of results.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAlertsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAlertsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v3/' + core.Uri.encodeFull('$parent') + '/alerts';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAlertsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -4709,6 +4816,114 @@ class Aggregation {
   };
 }
 
+/// An alert is the representation of a violation of an alert policy.
+///
+/// It is a read-only resource that cannot be modified by the accompanied API.
+class Alert {
+  /// The time when the alert was closed.
+  core.String? closeTime;
+
+  /// The log information associated with the alert.
+  ///
+  /// This field is only populated for log-based alerts.
+  LogMetadata? log;
+
+  /// The metadata of the monitored resource.
+  MonitoredResourceMetadata? metadata;
+
+  /// The metric type and any metric labels preserved from the incident's
+  /// generating condition.
+  Metric? metric;
+
+  /// Identifier.
+  ///
+  /// The name of the alert.The format is:
+  /// projects/\[PROJECT_ID_OR_NUMBER\]/alerts/\[ALERT_ID\] The \[ALERT_ID\] is
+  /// a system-assigned unique identifier for the alert.
+  core.String? name;
+
+  /// The time when the alert was opened.
+  core.String? openTime;
+
+  /// The snapshot of the alert policy that generated this alert.
+  PolicySnapshot? policy;
+
+  /// The monitored resource type and any monitored resource labels preserved
+  /// from the incident's generating condition.
+  MonitoredResource? resource;
+
+  /// The current state of the alert.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : The alert state is unspecified.
+  /// - "OPEN" : The alert is open.
+  /// - "CLOSED" : The alert is closed.
+  core.String? state;
+
+  Alert({
+    this.closeTime,
+    this.log,
+    this.metadata,
+    this.metric,
+    this.name,
+    this.openTime,
+    this.policy,
+    this.resource,
+    this.state,
+  });
+
+  Alert.fromJson(core.Map json_)
+    : this(
+        closeTime: json_['closeTime'] as core.String?,
+        log:
+            json_.containsKey('log')
+                ? LogMetadata.fromJson(
+                  json_['log'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metadata:
+            json_.containsKey('metadata')
+                ? MonitoredResourceMetadata.fromJson(
+                  json_['metadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        metric:
+            json_.containsKey('metric')
+                ? Metric.fromJson(
+                  json_['metric'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        openTime: json_['openTime'] as core.String?,
+        policy:
+            json_.containsKey('policy')
+                ? PolicySnapshot.fromJson(
+                  json_['policy'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        resource:
+            json_.containsKey('resource')
+                ? MonitoredResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (closeTime != null) 'closeTime': closeTime!,
+    if (log != null) 'log': log!,
+    if (metadata != null) 'metadata': metadata!,
+    if (metric != null) 'metric': metric!,
+    if (name != null) 'name': name!,
+    if (openTime != null) 'openTime': openTime!,
+    if (policy != null) 'policy': policy!,
+    if (resource != null) 'resource': resource!,
+    if (state != null) 'state': state!,
+  };
+}
+
 /// A description of the conditions under which some aspect of your system is
 /// considered to be "unhealthy" and the ways to notify people or services about
 /// this state.
@@ -7258,6 +7473,46 @@ class ListAlertPoliciesResponse {
   };
 }
 
+/// The ListAlerts response.
+class ListAlertsResponse {
+  /// The list of alerts.
+  core.List<Alert>? alerts;
+
+  /// If not empty, indicates that there may be more results that match the
+  /// request.
+  ///
+  /// Use the value in the page_token field in a subsequent request to fetch the
+  /// next set of results. The token is encrypted and only guaranteed to return
+  /// correct results for 72 hours after it is created. If empty, all results
+  /// have been returned.
+  core.String? nextPageToken;
+
+  /// The estimated total number of matching results for this query.
+  core.int? totalSize;
+
+  ListAlertsResponse({this.alerts, this.nextPageToken, this.totalSize});
+
+  ListAlertsResponse.fromJson(core.Map json_)
+    : this(
+        alerts:
+            (json_['alerts'] as core.List?)
+                ?.map(
+                  (value) => Alert.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        totalSize: json_['totalSize'] as core.int?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (alerts != null) 'alerts': alerts!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (totalSize != null) 'totalSize': totalSize!,
+  };
+}
+
 /// The ListGroupMembers response.
 class ListGroupMembersResponse {
   /// A set of monitored resources in the group.
@@ -7782,6 +8037,25 @@ class LogMatch {
   core.Map<core.String, core.dynamic> toJson() => {
     if (filter != null) 'filter': filter!,
     if (labelExtractors != null) 'labelExtractors': labelExtractors!,
+  };
+}
+
+/// Information about the log for log-based alerts.
+class LogMetadata {
+  /// The labels extracted from the log.
+  core.Map<core.String, core.String>? extractedLabels;
+
+  LogMetadata({this.extractedLabels});
+
+  LogMetadata.fromJson(core.Map json_)
+    : this(
+        extractedLabels: (json_['extractedLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (extractedLabels != null) 'extractedLabels': extractedLabels!,
   };
 }
 
@@ -9150,6 +9424,53 @@ class PointData {
   core.Map<core.String, core.dynamic> toJson() => {
     if (timeInterval != null) 'timeInterval': timeInterval!,
     if (values != null) 'values': values!,
+  };
+}
+
+/// The state of the policy at the time the alert was generated.
+class PolicySnapshot {
+  /// The display name of the alert policy.
+  core.String? displayName;
+
+  /// The name of the alert policy resource.
+  ///
+  /// In the form of
+  /// "projects/PROJECT_ID_OR_NUMBER/alertPolicies/ALERT_POLICY_ID".
+  core.String? name;
+
+  /// The severity of the alert policy.
+  /// Possible string values are:
+  /// - "SEVERITY_UNSPECIFIED" : No severity is specified. This is the default
+  /// value.
+  /// - "CRITICAL" : This is the highest severity level. Use this if the problem
+  /// could cause significant damage or downtime.
+  /// - "ERROR" : This is the medium severity level. Use this if the problem
+  /// could cause minor damage or downtime.
+  /// - "WARNING" : This is the lowest severity level. Use this if the problem
+  /// is not causing any damage or downtime, but could potentially lead to a
+  /// problem in the future.
+  core.String? severity;
+
+  /// The user labels for the alert policy.
+  core.Map<core.String, core.String>? userLabels;
+
+  PolicySnapshot({this.displayName, this.name, this.severity, this.userLabels});
+
+  PolicySnapshot.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        name: json_['name'] as core.String?,
+        severity: json_['severity'] as core.String?,
+        userLabels: (json_['userLabels']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (name != null) 'name': name!,
+    if (severity != null) 'severity': severity!,
+    if (userLabels != null) 'userLabels': userLabels!,
   };
 }
 

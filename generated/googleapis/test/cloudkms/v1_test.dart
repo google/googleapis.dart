@@ -26,6 +26,67 @@ import 'package:test/test.dart' as unittest;
 
 import '../test_shared.dart';
 
+core.int buildCounterAddQuorumMember = 0;
+api.AddQuorumMember buildAddQuorumMember() {
+  final o = api.AddQuorumMember();
+  buildCounterAddQuorumMember++;
+  if (buildCounterAddQuorumMember < 3) {
+    o.twoFactorPublicKeyPem = 'foo';
+  }
+  buildCounterAddQuorumMember--;
+  return o;
+}
+
+void checkAddQuorumMember(api.AddQuorumMember o) {
+  buildCounterAddQuorumMember++;
+  if (buildCounterAddQuorumMember < 3) {
+    unittest.expect(o.twoFactorPublicKeyPem!, unittest.equals('foo'));
+  }
+  buildCounterAddQuorumMember--;
+}
+
+core.int buildCounterApproveSingleTenantHsmInstanceProposalRequest = 0;
+api.ApproveSingleTenantHsmInstanceProposalRequest
+buildApproveSingleTenantHsmInstanceProposalRequest() {
+  final o = api.ApproveSingleTenantHsmInstanceProposalRequest();
+  buildCounterApproveSingleTenantHsmInstanceProposalRequest++;
+  if (buildCounterApproveSingleTenantHsmInstanceProposalRequest < 3) {
+    o.quorumReply = buildQuorumReply();
+    o.requiredActionQuorumReply = buildRequiredActionQuorumReply();
+  }
+  buildCounterApproveSingleTenantHsmInstanceProposalRequest--;
+  return o;
+}
+
+void checkApproveSingleTenantHsmInstanceProposalRequest(
+  api.ApproveSingleTenantHsmInstanceProposalRequest o,
+) {
+  buildCounterApproveSingleTenantHsmInstanceProposalRequest++;
+  if (buildCounterApproveSingleTenantHsmInstanceProposalRequest < 3) {
+    checkQuorumReply(o.quorumReply!);
+    checkRequiredActionQuorumReply(o.requiredActionQuorumReply!);
+  }
+  buildCounterApproveSingleTenantHsmInstanceProposalRequest--;
+}
+
+core.int buildCounterApproveSingleTenantHsmInstanceProposalResponse = 0;
+api.ApproveSingleTenantHsmInstanceProposalResponse
+buildApproveSingleTenantHsmInstanceProposalResponse() {
+  final o = api.ApproveSingleTenantHsmInstanceProposalResponse();
+  buildCounterApproveSingleTenantHsmInstanceProposalResponse++;
+  if (buildCounterApproveSingleTenantHsmInstanceProposalResponse < 3) {}
+  buildCounterApproveSingleTenantHsmInstanceProposalResponse--;
+  return o;
+}
+
+void checkApproveSingleTenantHsmInstanceProposalResponse(
+  api.ApproveSingleTenantHsmInstanceProposalResponse o,
+) {
+  buildCounterApproveSingleTenantHsmInstanceProposalResponse++;
+  if (buildCounterApproveSingleTenantHsmInstanceProposalResponse < 3) {}
+  buildCounterApproveSingleTenantHsmInstanceProposalResponse--;
+}
+
 core.int buildCounterAsymmetricDecryptRequest = 0;
 api.AsymmetricDecryptRequest buildAsymmetricDecryptRequest() {
   final o = api.AsymmetricDecryptRequest();
@@ -194,6 +255,7 @@ api.AutokeyConfig buildAutokeyConfig() {
   if (buildCounterAutokeyConfig < 3) {
     o.etag = 'foo';
     o.keyProject = 'foo';
+    o.keyProjectResolutionMode = 'foo';
     o.name = 'foo';
     o.state = 'foo';
   }
@@ -206,6 +268,7 @@ void checkAutokeyConfig(api.AutokeyConfig o) {
   if (buildCounterAutokeyConfig < 3) {
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.keyProject!, unittest.equals('foo'));
+    unittest.expect(o.keyProjectResolutionMode!, unittest.equals('foo'));
     unittest.expect(o.name!, unittest.equals('foo'));
     unittest.expect(o.state!, unittest.equals('foo'));
   }
@@ -331,6 +394,48 @@ void checkCertificateChains(api.CertificateChains o) {
     checkUnnamed6(o.googlePartitionCerts!);
   }
   buildCounterCertificateChains--;
+}
+
+core.int buildCounterChallenge = 0;
+api.Challenge buildChallenge() {
+  final o = api.Challenge();
+  buildCounterChallenge++;
+  if (buildCounterChallenge < 3) {
+    o.challenge = 'foo';
+    o.publicKeyPem = 'foo';
+  }
+  buildCounterChallenge--;
+  return o;
+}
+
+void checkChallenge(api.Challenge o) {
+  buildCounterChallenge++;
+  if (buildCounterChallenge < 3) {
+    unittest.expect(o.challenge!, unittest.equals('foo'));
+    unittest.expect(o.publicKeyPem!, unittest.equals('foo'));
+  }
+  buildCounterChallenge--;
+}
+
+core.int buildCounterChallengeReply = 0;
+api.ChallengeReply buildChallengeReply() {
+  final o = api.ChallengeReply();
+  buildCounterChallengeReply++;
+  if (buildCounterChallengeReply < 3) {
+    o.publicKeyPem = 'foo';
+    o.signedChallenge = 'foo';
+  }
+  buildCounterChallengeReply--;
+  return o;
+}
+
+void checkChallengeReply(api.ChallengeReply o) {
+  buildCounterChallengeReply++;
+  if (buildCounterChallengeReply < 3) {
+    unittest.expect(o.publicKeyPem!, unittest.equals('foo'));
+    unittest.expect(o.signedChallenge!, unittest.equals('foo'));
+  }
+  buildCounterChallengeReply--;
 }
 
 core.int buildCounterChecksummedData = 0;
@@ -577,6 +682,21 @@ void checkDecryptResponse(api.DecryptResponse o) {
   buildCounterDecryptResponse--;
 }
 
+core.int buildCounterDeleteSingleTenantHsmInstance = 0;
+api.DeleteSingleTenantHsmInstance buildDeleteSingleTenantHsmInstance() {
+  final o = api.DeleteSingleTenantHsmInstance();
+  buildCounterDeleteSingleTenantHsmInstance++;
+  if (buildCounterDeleteSingleTenantHsmInstance < 3) {}
+  buildCounterDeleteSingleTenantHsmInstance--;
+  return o;
+}
+
+void checkDeleteSingleTenantHsmInstance(api.DeleteSingleTenantHsmInstance o) {
+  buildCounterDeleteSingleTenantHsmInstance++;
+  if (buildCounterDeleteSingleTenantHsmInstance < 3) {}
+  buildCounterDeleteSingleTenantHsmInstance--;
+}
+
 core.int buildCounterDestroyCryptoKeyVersionRequest = 0;
 api.DestroyCryptoKeyVersionRequest buildDestroyCryptoKeyVersionRequest() {
   final o = api.DestroyCryptoKeyVersionRequest();
@@ -613,6 +733,21 @@ void checkDigest(api.Digest o) {
     unittest.expect(o.sha512!, unittest.equals('foo'));
   }
   buildCounterDigest--;
+}
+
+core.int buildCounterDisableSingleTenantHsmInstance = 0;
+api.DisableSingleTenantHsmInstance buildDisableSingleTenantHsmInstance() {
+  final o = api.DisableSingleTenantHsmInstance();
+  buildCounterDisableSingleTenantHsmInstance++;
+  if (buildCounterDisableSingleTenantHsmInstance < 3) {}
+  buildCounterDisableSingleTenantHsmInstance--;
+  return o;
+}
+
+void checkDisableSingleTenantHsmInstance(api.DisableSingleTenantHsmInstance o) {
+  buildCounterDisableSingleTenantHsmInstance++;
+  if (buildCounterDisableSingleTenantHsmInstance < 3) {}
+  buildCounterDisableSingleTenantHsmInstance--;
 }
 
 core.int buildCounterEkmConfig = 0;
@@ -676,6 +811,36 @@ void checkEkmConnection(api.EkmConnection o) {
   buildCounterEkmConnection--;
 }
 
+core.int buildCounterEmpty = 0;
+api.Empty buildEmpty() {
+  final o = api.Empty();
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+  return o;
+}
+
+void checkEmpty(api.Empty o) {
+  buildCounterEmpty++;
+  if (buildCounterEmpty < 3) {}
+  buildCounterEmpty--;
+}
+
+core.int buildCounterEnableSingleTenantHsmInstance = 0;
+api.EnableSingleTenantHsmInstance buildEnableSingleTenantHsmInstance() {
+  final o = api.EnableSingleTenantHsmInstance();
+  buildCounterEnableSingleTenantHsmInstance++;
+  if (buildCounterEnableSingleTenantHsmInstance < 3) {}
+  buildCounterEnableSingleTenantHsmInstance--;
+  return o;
+}
+
+void checkEnableSingleTenantHsmInstance(api.EnableSingleTenantHsmInstance o) {
+  buildCounterEnableSingleTenantHsmInstance++;
+  if (buildCounterEnableSingleTenantHsmInstance < 3) {}
+  buildCounterEnableSingleTenantHsmInstance--;
+}
+
 core.int buildCounterEncryptRequest = 0;
 api.EncryptRequest buildEncryptRequest() {
   final o = api.EncryptRequest();
@@ -734,6 +899,24 @@ void checkEncryptResponse(api.EncryptResponse o) {
     unittest.expect(o.verifiedPlaintextCrc32c!, unittest.isTrue);
   }
   buildCounterEncryptResponse--;
+}
+
+core.int buildCounterExecuteSingleTenantHsmInstanceProposalRequest = 0;
+api.ExecuteSingleTenantHsmInstanceProposalRequest
+buildExecuteSingleTenantHsmInstanceProposalRequest() {
+  final o = api.ExecuteSingleTenantHsmInstanceProposalRequest();
+  buildCounterExecuteSingleTenantHsmInstanceProposalRequest++;
+  if (buildCounterExecuteSingleTenantHsmInstanceProposalRequest < 3) {}
+  buildCounterExecuteSingleTenantHsmInstanceProposalRequest--;
+  return o;
+}
+
+void checkExecuteSingleTenantHsmInstanceProposalRequest(
+  api.ExecuteSingleTenantHsmInstanceProposalRequest o,
+) {
+  buildCounterExecuteSingleTenantHsmInstanceProposalRequest++;
+  if (buildCounterExecuteSingleTenantHsmInstanceProposalRequest < 3) {}
+  buildCounterExecuteSingleTenantHsmInstanceProposalRequest--;
 }
 
 core.int buildCounterExpr = 0;
@@ -858,6 +1041,7 @@ api.ImportJob buildImportJob() {
   if (buildCounterImportJob < 3) {
     o.attestation = buildKeyOperationAttestation();
     o.createTime = 'foo';
+    o.cryptoKeyBackend = 'foo';
     o.expireEventTime = 'foo';
     o.expireTime = 'foo';
     o.generateTime = 'foo';
@@ -876,6 +1060,7 @@ void checkImportJob(api.ImportJob o) {
   if (buildCounterImportJob < 3) {
     checkKeyOperationAttestation(o.attestation!);
     unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.cryptoKeyBackend!, unittest.equals('foo'));
     unittest.expect(o.expireEventTime!, unittest.equals('foo'));
     unittest.expect(o.expireTime!, unittest.equals('foo'));
     unittest.expect(o.generateTime!, unittest.equals('foo'));
@@ -1259,15 +1444,89 @@ void checkListLocationsResponse(api.ListLocationsResponse o) {
   buildCounterListLocationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed17() => {'x': 'foo', 'y': 'foo'};
+core.List<api.SingleTenantHsmInstanceProposal> buildUnnamed17() => [
+  buildSingleTenantHsmInstanceProposal(),
+  buildSingleTenantHsmInstanceProposal(),
+];
 
-void checkUnnamed17(core.Map<core.String, core.String> o) {
+void checkUnnamed17(core.List<api.SingleTenantHsmInstanceProposal> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSingleTenantHsmInstanceProposal(o[0]);
+  checkSingleTenantHsmInstanceProposal(o[1]);
+}
+
+core.int buildCounterListSingleTenantHsmInstanceProposalsResponse = 0;
+api.ListSingleTenantHsmInstanceProposalsResponse
+buildListSingleTenantHsmInstanceProposalsResponse() {
+  final o = api.ListSingleTenantHsmInstanceProposalsResponse();
+  buildCounterListSingleTenantHsmInstanceProposalsResponse++;
+  if (buildCounterListSingleTenantHsmInstanceProposalsResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.singleTenantHsmInstanceProposals = buildUnnamed17();
+    o.totalSize = 42;
+  }
+  buildCounterListSingleTenantHsmInstanceProposalsResponse--;
+  return o;
+}
+
+void checkListSingleTenantHsmInstanceProposalsResponse(
+  api.ListSingleTenantHsmInstanceProposalsResponse o,
+) {
+  buildCounterListSingleTenantHsmInstanceProposalsResponse++;
+  if (buildCounterListSingleTenantHsmInstanceProposalsResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed17(o.singleTenantHsmInstanceProposals!);
+    unittest.expect(o.totalSize!, unittest.equals(42));
+  }
+  buildCounterListSingleTenantHsmInstanceProposalsResponse--;
+}
+
+core.List<api.SingleTenantHsmInstance> buildUnnamed18() => [
+  buildSingleTenantHsmInstance(),
+  buildSingleTenantHsmInstance(),
+];
+
+void checkUnnamed18(core.List<api.SingleTenantHsmInstance> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkSingleTenantHsmInstance(o[0]);
+  checkSingleTenantHsmInstance(o[1]);
+}
+
+core.int buildCounterListSingleTenantHsmInstancesResponse = 0;
+api.ListSingleTenantHsmInstancesResponse
+buildListSingleTenantHsmInstancesResponse() {
+  final o = api.ListSingleTenantHsmInstancesResponse();
+  buildCounterListSingleTenantHsmInstancesResponse++;
+  if (buildCounterListSingleTenantHsmInstancesResponse < 3) {
+    o.nextPageToken = 'foo';
+    o.singleTenantHsmInstances = buildUnnamed18();
+    o.totalSize = 42;
+  }
+  buildCounterListSingleTenantHsmInstancesResponse--;
+  return o;
+}
+
+void checkListSingleTenantHsmInstancesResponse(
+  api.ListSingleTenantHsmInstancesResponse o,
+) {
+  buildCounterListSingleTenantHsmInstancesResponse++;
+  if (buildCounterListSingleTenantHsmInstancesResponse < 3) {
+    unittest.expect(o.nextPageToken!, unittest.equals('foo'));
+    checkUnnamed18(o.singleTenantHsmInstances!);
+    unittest.expect(o.totalSize!, unittest.equals(42));
+  }
+  buildCounterListSingleTenantHsmInstancesResponse--;
+}
+
+core.Map<core.String, core.String> buildUnnamed19() => {'x': 'foo', 'y': 'foo'};
+
+void checkUnnamed19(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed18() => {
+core.Map<core.String, core.Object?> buildUnnamed20() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1280,7 +1539,7 @@ core.Map<core.String, core.Object?> buildUnnamed18() => {
   },
 };
 
-void checkUnnamed18(core.Map<core.String, core.Object?> o) {
+void checkUnnamed20(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1300,9 +1559,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed17();
+    o.labels = buildUnnamed19();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed18();
+    o.metadata = buildUnnamed20();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -1313,9 +1572,9 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed17(o.labels!);
+    checkUnnamed19(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed18(o.metadata!);
+    checkUnnamed20(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -1423,7 +1682,7 @@ void checkMacVerifyResponse(api.MacVerifyResponse o) {
   buildCounterMacVerifyResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed19() => {
+core.Map<core.String, core.Object?> buildUnnamed21() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1436,7 +1695,7 @@ core.Map<core.String, core.Object?> buildUnnamed19() => {
   },
 };
 
-void checkUnnamed19(core.Map<core.String, core.Object?> o) {
+void checkUnnamed21(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']!) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -1450,7 +1709,7 @@ void checkUnnamed19(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted4['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed20() => {
+core.Map<core.String, core.Object?> buildUnnamed22() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1463,7 +1722,7 @@ core.Map<core.String, core.Object?> buildUnnamed20() => {
   },
 };
 
-void checkUnnamed20(core.Map<core.String, core.Object?> o) {
+void checkUnnamed22(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1484,9 +1743,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed19();
+    o.metadata = buildUnnamed21();
     o.name = 'foo';
-    o.response = buildUnnamed20();
+    o.response = buildUnnamed22();
   }
   buildCounterOperation--;
   return o;
@@ -1497,27 +1756,27 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed19(o.metadata!);
+    checkUnnamed21(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed20(o.response!);
+    checkUnnamed22(o.response!);
   }
   buildCounterOperation--;
 }
 
-core.List<api.AuditConfig> buildUnnamed21() => [
+core.List<api.AuditConfig> buildUnnamed23() => [
   buildAuditConfig(),
   buildAuditConfig(),
 ];
 
-void checkUnnamed21(core.List<api.AuditConfig> o) {
+void checkUnnamed23(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkAuditConfig(o[0]);
   checkAuditConfig(o[1]);
 }
 
-core.List<api.Binding> buildUnnamed22() => [buildBinding(), buildBinding()];
+core.List<api.Binding> buildUnnamed24() => [buildBinding(), buildBinding()];
 
-void checkUnnamed22(core.List<api.Binding> o) {
+void checkUnnamed24(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkBinding(o[0]);
   checkBinding(o[1]);
@@ -1528,8 +1787,8 @@ api.Policy buildPolicy() {
   final o = api.Policy();
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    o.auditConfigs = buildUnnamed21();
-    o.bindings = buildUnnamed22();
+    o.auditConfigs = buildUnnamed23();
+    o.bindings = buildUnnamed24();
     o.etag = 'foo';
     o.version = 42;
   }
@@ -1540,8 +1799,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkUnnamed21(o.auditConfigs!);
-    checkUnnamed22(o.bindings!);
+    checkUnnamed23(o.auditConfigs!);
+    checkUnnamed24(o.bindings!);
     unittest.expect(o.etag!, unittest.equals('foo'));
     unittest.expect(o.version!, unittest.equals(42));
   }
@@ -1577,6 +1836,109 @@ void checkPublicKey(api.PublicKey o) {
     unittest.expect(o.publicKeyFormat!, unittest.equals('foo'));
   }
   buildCounterPublicKey--;
+}
+
+core.List<core.String> buildUnnamed25() => ['foo', 'foo'];
+
+void checkUnnamed25(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterQuorumAuth = 0;
+api.QuorumAuth buildQuorumAuth() {
+  final o = api.QuorumAuth();
+  buildCounterQuorumAuth++;
+  if (buildCounterQuorumAuth < 3) {
+    o.requiredApproverCount = 42;
+    o.totalApproverCount = 42;
+    o.twoFactorPublicKeyPems = buildUnnamed25();
+  }
+  buildCounterQuorumAuth--;
+  return o;
+}
+
+void checkQuorumAuth(api.QuorumAuth o) {
+  buildCounterQuorumAuth++;
+  if (buildCounterQuorumAuth < 3) {
+    unittest.expect(o.requiredApproverCount!, unittest.equals(42));
+    unittest.expect(o.totalApproverCount!, unittest.equals(42));
+    checkUnnamed25(o.twoFactorPublicKeyPems!);
+  }
+  buildCounterQuorumAuth--;
+}
+
+core.List<core.String> buildUnnamed26() => ['foo', 'foo'];
+
+void checkUnnamed26(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.Challenge> buildUnnamed27() => [
+  buildChallenge(),
+  buildChallenge(),
+];
+
+void checkUnnamed27(core.List<api.Challenge> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChallenge(o[0]);
+  checkChallenge(o[1]);
+}
+
+core.int buildCounterQuorumParameters = 0;
+api.QuorumParameters buildQuorumParameters() {
+  final o = api.QuorumParameters();
+  buildCounterQuorumParameters++;
+  if (buildCounterQuorumParameters < 3) {
+    o.approvedTwoFactorPublicKeyPems = buildUnnamed26();
+    o.challenges = buildUnnamed27();
+    o.requiredApproverCount = 42;
+  }
+  buildCounterQuorumParameters--;
+  return o;
+}
+
+void checkQuorumParameters(api.QuorumParameters o) {
+  buildCounterQuorumParameters++;
+  if (buildCounterQuorumParameters < 3) {
+    checkUnnamed26(o.approvedTwoFactorPublicKeyPems!);
+    checkUnnamed27(o.challenges!);
+    unittest.expect(o.requiredApproverCount!, unittest.equals(42));
+  }
+  buildCounterQuorumParameters--;
+}
+
+core.List<api.ChallengeReply> buildUnnamed28() => [
+  buildChallengeReply(),
+  buildChallengeReply(),
+];
+
+void checkUnnamed28(core.List<api.ChallengeReply> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChallengeReply(o[0]);
+  checkChallengeReply(o[1]);
+}
+
+core.int buildCounterQuorumReply = 0;
+api.QuorumReply buildQuorumReply() {
+  final o = api.QuorumReply();
+  buildCounterQuorumReply++;
+  if (buildCounterQuorumReply < 3) {
+    o.challengeReplies = buildUnnamed28();
+  }
+  buildCounterQuorumReply--;
+  return o;
+}
+
+void checkQuorumReply(api.QuorumReply o) {
+  buildCounterQuorumReply++;
+  if (buildCounterQuorumReply < 3) {
+    checkUnnamed28(o.challengeReplies!);
+  }
+  buildCounterQuorumReply--;
 }
 
 core.int buildCounterRawDecryptRequest = 0;
@@ -1717,6 +2079,167 @@ void checkRawEncryptResponse(api.RawEncryptResponse o) {
   buildCounterRawEncryptResponse--;
 }
 
+core.int buildCounterRefreshSingleTenantHsmInstance = 0;
+api.RefreshSingleTenantHsmInstance buildRefreshSingleTenantHsmInstance() {
+  final o = api.RefreshSingleTenantHsmInstance();
+  buildCounterRefreshSingleTenantHsmInstance++;
+  if (buildCounterRefreshSingleTenantHsmInstance < 3) {}
+  buildCounterRefreshSingleTenantHsmInstance--;
+  return o;
+}
+
+void checkRefreshSingleTenantHsmInstance(api.RefreshSingleTenantHsmInstance o) {
+  buildCounterRefreshSingleTenantHsmInstance++;
+  if (buildCounterRefreshSingleTenantHsmInstance < 3) {}
+  buildCounterRefreshSingleTenantHsmInstance--;
+}
+
+core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRegisterTwoFactorAuthKeys = 0;
+api.RegisterTwoFactorAuthKeys buildRegisterTwoFactorAuthKeys() {
+  final o = api.RegisterTwoFactorAuthKeys();
+  buildCounterRegisterTwoFactorAuthKeys++;
+  if (buildCounterRegisterTwoFactorAuthKeys < 3) {
+    o.requiredApproverCount = 42;
+    o.twoFactorPublicKeyPems = buildUnnamed29();
+  }
+  buildCounterRegisterTwoFactorAuthKeys--;
+  return o;
+}
+
+void checkRegisterTwoFactorAuthKeys(api.RegisterTwoFactorAuthKeys o) {
+  buildCounterRegisterTwoFactorAuthKeys++;
+  if (buildCounterRegisterTwoFactorAuthKeys < 3) {
+    unittest.expect(o.requiredApproverCount!, unittest.equals(42));
+    checkUnnamed29(o.twoFactorPublicKeyPems!);
+  }
+  buildCounterRegisterTwoFactorAuthKeys--;
+}
+
+core.int buildCounterRemoveQuorumMember = 0;
+api.RemoveQuorumMember buildRemoveQuorumMember() {
+  final o = api.RemoveQuorumMember();
+  buildCounterRemoveQuorumMember++;
+  if (buildCounterRemoveQuorumMember < 3) {
+    o.twoFactorPublicKeyPem = 'foo';
+  }
+  buildCounterRemoveQuorumMember--;
+  return o;
+}
+
+void checkRemoveQuorumMember(api.RemoveQuorumMember o) {
+  buildCounterRemoveQuorumMember++;
+  if (buildCounterRemoveQuorumMember < 3) {
+    unittest.expect(o.twoFactorPublicKeyPem!, unittest.equals('foo'));
+  }
+  buildCounterRemoveQuorumMember--;
+}
+
+core.List<core.String> buildUnnamed30() => ['foo', 'foo'];
+
+void checkUnnamed30(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.List<api.Challenge> buildUnnamed31() => [
+  buildChallenge(),
+  buildChallenge(),
+];
+
+void checkUnnamed31(core.List<api.Challenge> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChallenge(o[0]);
+  checkChallenge(o[1]);
+}
+
+core.List<api.Challenge> buildUnnamed32() => [
+  buildChallenge(),
+  buildChallenge(),
+];
+
+void checkUnnamed32(core.List<api.Challenge> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChallenge(o[0]);
+  checkChallenge(o[1]);
+}
+
+core.int buildCounterRequiredActionQuorumParameters = 0;
+api.RequiredActionQuorumParameters buildRequiredActionQuorumParameters() {
+  final o = api.RequiredActionQuorumParameters();
+  buildCounterRequiredActionQuorumParameters++;
+  if (buildCounterRequiredActionQuorumParameters < 3) {
+    o.approvedTwoFactorPublicKeyPems = buildUnnamed30();
+    o.quorumChallenges = buildUnnamed31();
+    o.requiredApproverCount = 42;
+    o.requiredChallenges = buildUnnamed32();
+  }
+  buildCounterRequiredActionQuorumParameters--;
+  return o;
+}
+
+void checkRequiredActionQuorumParameters(api.RequiredActionQuorumParameters o) {
+  buildCounterRequiredActionQuorumParameters++;
+  if (buildCounterRequiredActionQuorumParameters < 3) {
+    checkUnnamed30(o.approvedTwoFactorPublicKeyPems!);
+    checkUnnamed31(o.quorumChallenges!);
+    unittest.expect(o.requiredApproverCount!, unittest.equals(42));
+    checkUnnamed32(o.requiredChallenges!);
+  }
+  buildCounterRequiredActionQuorumParameters--;
+}
+
+core.List<api.ChallengeReply> buildUnnamed33() => [
+  buildChallengeReply(),
+  buildChallengeReply(),
+];
+
+void checkUnnamed33(core.List<api.ChallengeReply> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChallengeReply(o[0]);
+  checkChallengeReply(o[1]);
+}
+
+core.List<api.ChallengeReply> buildUnnamed34() => [
+  buildChallengeReply(),
+  buildChallengeReply(),
+];
+
+void checkUnnamed34(core.List<api.ChallengeReply> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkChallengeReply(o[0]);
+  checkChallengeReply(o[1]);
+}
+
+core.int buildCounterRequiredActionQuorumReply = 0;
+api.RequiredActionQuorumReply buildRequiredActionQuorumReply() {
+  final o = api.RequiredActionQuorumReply();
+  buildCounterRequiredActionQuorumReply++;
+  if (buildCounterRequiredActionQuorumReply < 3) {
+    o.quorumChallengeReplies = buildUnnamed33();
+    o.requiredChallengeReplies = buildUnnamed34();
+  }
+  buildCounterRequiredActionQuorumReply--;
+  return o;
+}
+
+void checkRequiredActionQuorumReply(api.RequiredActionQuorumReply o) {
+  buildCounterRequiredActionQuorumReply++;
+  if (buildCounterRequiredActionQuorumReply < 3) {
+    checkUnnamed33(o.quorumChallengeReplies!);
+    checkUnnamed34(o.requiredChallengeReplies!);
+  }
+  buildCounterRequiredActionQuorumReply--;
+}
+
 core.int buildCounterRestoreCryptoKeyVersionRequest = 0;
 api.RestoreCryptoKeyVersionRequest buildRestoreCryptoKeyVersionRequest() {
   final o = api.RestoreCryptoKeyVersionRequest();
@@ -1732,12 +2255,12 @@ void checkRestoreCryptoKeyVersionRequest(api.RestoreCryptoKeyVersionRequest o) {
   buildCounterRestoreCryptoKeyVersionRequest--;
 }
 
-core.List<api.Certificate> buildUnnamed23() => [
+core.List<api.Certificate> buildUnnamed35() => [
   buildCertificate(),
   buildCertificate(),
 ];
 
-void checkUnnamed23(core.List<api.Certificate> o) {
+void checkUnnamed35(core.List<api.Certificate> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkCertificate(o[0]);
   checkCertificate(o[1]);
@@ -1750,7 +2273,7 @@ api.ServiceResolver buildServiceResolver() {
   if (buildCounterServiceResolver < 3) {
     o.endpointFilter = 'foo';
     o.hostname = 'foo';
-    o.serverCertificates = buildUnnamed23();
+    o.serverCertificates = buildUnnamed35();
     o.serviceDirectoryService = 'foo';
   }
   buildCounterServiceResolver--;
@@ -1762,7 +2285,7 @@ void checkServiceResolver(api.ServiceResolver o) {
   if (buildCounterServiceResolver < 3) {
     unittest.expect(o.endpointFilter!, unittest.equals('foo'));
     unittest.expect(o.hostname!, unittest.equals('foo'));
-    checkUnnamed23(o.serverCertificates!);
+    checkUnnamed35(o.serverCertificates!);
     unittest.expect(o.serviceDirectoryService!, unittest.equals('foo'));
   }
   buildCounterServiceResolver--;
@@ -1865,7 +2388,91 @@ void checkShowEffectiveKeyAccessJustificationsPolicyConfigResponse(
   buildCounterShowEffectiveKeyAccessJustificationsPolicyConfigResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed24() => {
+core.int buildCounterSingleTenantHsmInstance = 0;
+api.SingleTenantHsmInstance buildSingleTenantHsmInstance() {
+  final o = api.SingleTenantHsmInstance();
+  buildCounterSingleTenantHsmInstance++;
+  if (buildCounterSingleTenantHsmInstance < 3) {
+    o.createTime = 'foo';
+    o.deleteTime = 'foo';
+    o.disableTime = 'foo';
+    o.name = 'foo';
+    o.quorumAuth = buildQuorumAuth();
+    o.state = 'foo';
+    o.unrefreshedDurationUntilDisable = 'foo';
+  }
+  buildCounterSingleTenantHsmInstance--;
+  return o;
+}
+
+void checkSingleTenantHsmInstance(api.SingleTenantHsmInstance o) {
+  buildCounterSingleTenantHsmInstance++;
+  if (buildCounterSingleTenantHsmInstance < 3) {
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    unittest.expect(o.deleteTime!, unittest.equals('foo'));
+    unittest.expect(o.disableTime!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    checkQuorumAuth(o.quorumAuth!);
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.unrefreshedDurationUntilDisable!, unittest.equals('foo'));
+  }
+  buildCounterSingleTenantHsmInstance--;
+}
+
+core.int buildCounterSingleTenantHsmInstanceProposal = 0;
+api.SingleTenantHsmInstanceProposal buildSingleTenantHsmInstanceProposal() {
+  final o = api.SingleTenantHsmInstanceProposal();
+  buildCounterSingleTenantHsmInstanceProposal++;
+  if (buildCounterSingleTenantHsmInstanceProposal < 3) {
+    o.addQuorumMember = buildAddQuorumMember();
+    o.createTime = 'foo';
+    o.deleteSingleTenantHsmInstance = buildDeleteSingleTenantHsmInstance();
+    o.deleteTime = 'foo';
+    o.disableSingleTenantHsmInstance = buildDisableSingleTenantHsmInstance();
+    o.enableSingleTenantHsmInstance = buildEnableSingleTenantHsmInstance();
+    o.expireTime = 'foo';
+    o.failureReason = 'foo';
+    o.name = 'foo';
+    o.purgeTime = 'foo';
+    o.quorumParameters = buildQuorumParameters();
+    o.refreshSingleTenantHsmInstance = buildRefreshSingleTenantHsmInstance();
+    o.registerTwoFactorAuthKeys = buildRegisterTwoFactorAuthKeys();
+    o.removeQuorumMember = buildRemoveQuorumMember();
+    o.requiredActionQuorumParameters = buildRequiredActionQuorumParameters();
+    o.state = 'foo';
+    o.ttl = 'foo';
+  }
+  buildCounterSingleTenantHsmInstanceProposal--;
+  return o;
+}
+
+void checkSingleTenantHsmInstanceProposal(
+  api.SingleTenantHsmInstanceProposal o,
+) {
+  buildCounterSingleTenantHsmInstanceProposal++;
+  if (buildCounterSingleTenantHsmInstanceProposal < 3) {
+    checkAddQuorumMember(o.addQuorumMember!);
+    unittest.expect(o.createTime!, unittest.equals('foo'));
+    checkDeleteSingleTenantHsmInstance(o.deleteSingleTenantHsmInstance!);
+    unittest.expect(o.deleteTime!, unittest.equals('foo'));
+    checkDisableSingleTenantHsmInstance(o.disableSingleTenantHsmInstance!);
+    checkEnableSingleTenantHsmInstance(o.enableSingleTenantHsmInstance!);
+    unittest.expect(o.expireTime!, unittest.equals('foo'));
+    unittest.expect(o.failureReason!, unittest.equals('foo'));
+    unittest.expect(o.name!, unittest.equals('foo'));
+    unittest.expect(o.purgeTime!, unittest.equals('foo'));
+    checkQuorumParameters(o.quorumParameters!);
+    checkRefreshSingleTenantHsmInstance(o.refreshSingleTenantHsmInstance!);
+    checkRegisterTwoFactorAuthKeys(o.registerTwoFactorAuthKeys!);
+    checkRemoveQuorumMember(o.removeQuorumMember!);
+    checkRequiredActionQuorumParameters(o.requiredActionQuorumParameters!);
+    unittest.expect(o.state!, unittest.equals('foo'));
+    unittest.expect(o.ttl!, unittest.equals('foo'));
+  }
+  buildCounterSingleTenantHsmInstanceProposal--;
+}
+
+core.Map<core.String, core.Object?> buildUnnamed36() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1878,7 +2485,7 @@ core.Map<core.String, core.Object?> buildUnnamed24() => {
   },
 };
 
-void checkUnnamed24(core.Map<core.String, core.Object?> o) {
+void checkUnnamed36(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1892,15 +2499,15 @@ void checkUnnamed24(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed25() => [
-  buildUnnamed24(),
-  buildUnnamed24(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed37() => [
+  buildUnnamed36(),
+  buildUnnamed36(),
 ];
 
-void checkUnnamed25(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed37(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed24(o[0]);
-  checkUnnamed24(o[1]);
+  checkUnnamed36(o[0]);
+  checkUnnamed36(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1909,7 +2516,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed25();
+    o.details = buildUnnamed37();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1920,15 +2527,15 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed25(o.details!);
+    checkUnnamed37(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
 }
 
-core.List<core.String> buildUnnamed26() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed38() => ['foo', 'foo'];
 
-void checkUnnamed26(core.List<core.String> o) {
+void checkUnnamed38(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1939,7 +2546,7 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
   final o = api.TestIamPermissionsRequest();
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    o.permissions = buildUnnamed26();
+    o.permissions = buildUnnamed38();
   }
   buildCounterTestIamPermissionsRequest--;
   return o;
@@ -1948,14 +2555,14 @@ api.TestIamPermissionsRequest buildTestIamPermissionsRequest() {
 void checkTestIamPermissionsRequest(api.TestIamPermissionsRequest o) {
   buildCounterTestIamPermissionsRequest++;
   if (buildCounterTestIamPermissionsRequest < 3) {
-    checkUnnamed26(o.permissions!);
+    checkUnnamed38(o.permissions!);
   }
   buildCounterTestIamPermissionsRequest--;
 }
 
-core.List<core.String> buildUnnamed27() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed39() => ['foo', 'foo'];
 
-void checkUnnamed27(core.List<core.String> o) {
+void checkUnnamed39(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1966,7 +2573,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
   final o = api.TestIamPermissionsResponse();
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    o.permissions = buildUnnamed27();
+    o.permissions = buildUnnamed39();
   }
   buildCounterTestIamPermissionsResponse--;
   return o;
@@ -1975,7 +2582,7 @@ api.TestIamPermissionsResponse buildTestIamPermissionsResponse() {
 void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
   buildCounterTestIamPermissionsResponse++;
   if (buildCounterTestIamPermissionsResponse < 3) {
-    checkUnnamed27(o.permissions!);
+    checkUnnamed39(o.permissions!);
   }
   buildCounterTestIamPermissionsResponse--;
 }
@@ -2036,15 +2643,54 @@ void checkWrappingPublicKey(api.WrappingPublicKey o) {
   buildCounterWrappingPublicKey--;
 }
 
-core.List<core.String> buildUnnamed28() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed40() => ['foo', 'foo'];
 
-void checkUnnamed28(core.List<core.String> o) {
+void checkUnnamed40(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 void main() {
+  unittest.group('obj-schema-AddQuorumMember', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildAddQuorumMember();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.AddQuorumMember.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkAddQuorumMember(od);
+    });
+  });
+
+  unittest.group(
+    'obj-schema-ApproveSingleTenantHsmInstanceProposalRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildApproveSingleTenantHsmInstanceProposalRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.ApproveSingleTenantHsmInstanceProposalRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkApproveSingleTenantHsmInstanceProposalRequest(od);
+      });
+    },
+  );
+
+  unittest.group(
+    'obj-schema-ApproveSingleTenantHsmInstanceProposalResponse',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildApproveSingleTenantHsmInstanceProposalResponse();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.ApproveSingleTenantHsmInstanceProposalResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkApproveSingleTenantHsmInstanceProposalResponse(od);
+      });
+    },
+  );
+
   unittest.group('obj-schema-AsymmetricDecryptRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildAsymmetricDecryptRequest();
@@ -2155,6 +2801,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Challenge', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChallenge();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Challenge.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkChallenge(od);
+    });
+  });
+
+  unittest.group('obj-schema-ChallengeReply', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildChallengeReply();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ChallengeReply.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkChallengeReply(od);
+    });
+  });
+
   unittest.group('obj-schema-ChecksummedData', () {
     unittest.test('to-json--from-json', () async {
       final o = buildChecksummedData();
@@ -2243,6 +2911,17 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-DeleteSingleTenantHsmInstance', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDeleteSingleTenantHsmInstance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DeleteSingleTenantHsmInstance.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDeleteSingleTenantHsmInstance(od);
+    });
+  });
+
   unittest.group('obj-schema-DestroyCryptoKeyVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildDestroyCryptoKeyVersionRequest();
@@ -2262,6 +2941,17 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkDigest(od);
+    });
+  });
+
+  unittest.group('obj-schema-DisableSingleTenantHsmInstance', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildDisableSingleTenantHsmInstance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.DisableSingleTenantHsmInstance.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkDisableSingleTenantHsmInstance(od);
     });
   });
 
@@ -2287,6 +2977,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-Empty', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEmpty();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.Empty.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEmpty(od);
+    });
+  });
+
+  unittest.group('obj-schema-EnableSingleTenantHsmInstance', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildEnableSingleTenantHsmInstance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.EnableSingleTenantHsmInstance.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkEnableSingleTenantHsmInstance(od);
+    });
+  });
+
   unittest.group('obj-schema-EncryptRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildEncryptRequest();
@@ -2308,6 +3020,20 @@ void main() {
       checkEncryptResponse(od);
     });
   });
+
+  unittest.group(
+    'obj-schema-ExecuteSingleTenantHsmInstanceProposalRequest',
+    () {
+      unittest.test('to-json--from-json', () async {
+        final o = buildExecuteSingleTenantHsmInstanceProposalRequest();
+        final oJson = convert.jsonDecode(convert.jsonEncode(o));
+        final od = api.ExecuteSingleTenantHsmInstanceProposalRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>,
+        );
+        checkExecuteSingleTenantHsmInstanceProposalRequest(od);
+      });
+    },
+  );
 
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
@@ -2518,6 +3244,28 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-ListSingleTenantHsmInstanceProposalsResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSingleTenantHsmInstanceProposalsResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSingleTenantHsmInstanceProposalsResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListSingleTenantHsmInstanceProposalsResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-ListSingleTenantHsmInstancesResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildListSingleTenantHsmInstancesResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.ListSingleTenantHsmInstancesResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkListSingleTenantHsmInstancesResponse(od);
+    });
+  });
+
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
       final o = buildLocation();
@@ -2606,6 +3354,39 @@ void main() {
     });
   });
 
+  unittest.group('obj-schema-QuorumAuth', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuorumAuth();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QuorumAuth.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQuorumAuth(od);
+    });
+  });
+
+  unittest.group('obj-schema-QuorumParameters', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuorumParameters();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QuorumParameters.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQuorumParameters(od);
+    });
+  });
+
+  unittest.group('obj-schema-QuorumReply', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildQuorumReply();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.QuorumReply.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkQuorumReply(od);
+    });
+  });
+
   unittest.group('obj-schema-RawDecryptRequest', () {
     unittest.test('to-json--from-json', () async {
       final o = buildRawDecryptRequest();
@@ -2647,6 +3428,61 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkRawEncryptResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefreshSingleTenantHsmInstance', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefreshSingleTenantHsmInstance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefreshSingleTenantHsmInstance.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRefreshSingleTenantHsmInstance(od);
+    });
+  });
+
+  unittest.group('obj-schema-RegisterTwoFactorAuthKeys', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRegisterTwoFactorAuthKeys();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RegisterTwoFactorAuthKeys.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRegisterTwoFactorAuthKeys(od);
+    });
+  });
+
+  unittest.group('obj-schema-RemoveQuorumMember', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRemoveQuorumMember();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RemoveQuorumMember.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRemoveQuorumMember(od);
+    });
+  });
+
+  unittest.group('obj-schema-RequiredActionQuorumParameters', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRequiredActionQuorumParameters();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RequiredActionQuorumParameters.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRequiredActionQuorumParameters(od);
+    });
+  });
+
+  unittest.group('obj-schema-RequiredActionQuorumReply', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRequiredActionQuorumReply();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RequiredActionQuorumReply.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRequiredActionQuorumReply(od);
     });
   });
 
@@ -2725,6 +3561,28 @@ void main() {
       });
     },
   );
+
+  unittest.group('obj-schema-SingleTenantHsmInstance', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSingleTenantHsmInstance();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SingleTenantHsmInstance.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSingleTenantHsmInstance(od);
+    });
+  });
+
+  unittest.group('obj-schema-SingleTenantHsmInstanceProposal', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildSingleTenantHsmInstanceProposal();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.SingleTenantHsmInstanceProposal.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkSingleTenantHsmInstanceProposal(od);
+    });
+  });
 
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
@@ -3813,7 +4671,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.CloudKMSApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed28();
+      final arg_extraLocationTypes = buildUnnamed40();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -7387,6 +8245,645 @@ void main() {
       );
       final response = await res.get(arg_name, $fields: arg_$fields);
       checkOperation(response as api.Operation);
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSingleTenantHsmInstancesResource', () {
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(mock).projects.locations.singleTenantHsmInstances;
+      final arg_request = buildSingleTenantHsmInstance();
+      final arg_parent = 'foo';
+      final arg_singleTenantHsmInstanceId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SingleTenantHsmInstance.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSingleTenantHsmInstance(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['singleTenantHsmInstanceId']!.first,
+            unittest.equals(arg_singleTenantHsmInstanceId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        singleTenantHsmInstanceId: arg_singleTenantHsmInstanceId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(mock).projects.locations.singleTenantHsmInstances;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildSingleTenantHsmInstance());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSingleTenantHsmInstance(response as api.SingleTenantHsmInstance);
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(mock).projects.locations.singleTenantHsmInstances;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_showDeleted = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['showDeleted']!.first,
+            unittest.equals('$arg_showDeleted'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListSingleTenantHsmInstancesResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        showDeleted: arg_showDeleted,
+        $fields: arg_$fields,
+      );
+      checkListSingleTenantHsmInstancesResponse(
+        response as api.ListSingleTenantHsmInstancesResponse,
+      );
+    });
+  });
+
+  unittest.group('resource-ProjectsLocationsSingleTenantHsmInstancesProposalsResource', () {
+    unittest.test('method--approve', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(
+            mock,
+          ).projects.locations.singleTenantHsmInstances.proposals;
+      final arg_request = buildApproveSingleTenantHsmInstanceProposalRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .ApproveSingleTenantHsmInstanceProposalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkApproveSingleTenantHsmInstanceProposalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildApproveSingleTenantHsmInstanceProposalResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.approve(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkApproveSingleTenantHsmInstanceProposalResponse(
+        response as api.ApproveSingleTenantHsmInstanceProposalResponse,
+      );
+    });
+
+    unittest.test('method--create', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(
+            mock,
+          ).projects.locations.singleTenantHsmInstances.proposals;
+      final arg_request = buildSingleTenantHsmInstanceProposal();
+      final arg_parent = 'foo';
+      final arg_singleTenantHsmInstanceProposalId = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.SingleTenantHsmInstanceProposal.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkSingleTenantHsmInstanceProposal(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['singleTenantHsmInstanceProposalId']!.first,
+            unittest.equals(arg_singleTenantHsmInstanceProposalId),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.create(
+        arg_request,
+        arg_parent,
+        singleTenantHsmInstanceProposalId:
+            arg_singleTenantHsmInstanceProposalId,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--delete', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(
+            mock,
+          ).projects.locations.singleTenantHsmInstances.proposals;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildEmpty());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
+    });
+
+    unittest.test('method--execute', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(
+            mock,
+          ).projects.locations.singleTenantHsmInstances.proposals;
+      final arg_request = buildExecuteSingleTenantHsmInstanceProposalRequest();
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api
+              .ExecuteSingleTenantHsmInstanceProposalRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkExecuteSingleTenantHsmInstanceProposalRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildOperation());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.execute(
+        arg_request,
+        arg_name,
+        $fields: arg_$fields,
+      );
+      checkOperation(response as api.Operation);
+    });
+
+    unittest.test('method--get', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(
+            mock,
+          ).projects.locations.singleTenantHsmInstances.proposals;
+      final arg_name = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildSingleTenantHsmInstanceProposal(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSingleTenantHsmInstanceProposal(
+        response as api.SingleTenantHsmInstanceProposal,
+      );
+    });
+
+    unittest.test('method--list', () async {
+      final mock = HttpServerMock();
+      final res =
+          api.CloudKMSApi(
+            mock,
+          ).projects.locations.singleTenantHsmInstances.proposals;
+      final arg_parent = 'foo';
+      final arg_filter = 'foo';
+      final arg_orderBy = 'foo';
+      final arg_pageSize = 42;
+      final arg_pageToken = 'foo';
+      final arg_showDeleted = true;
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v1/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['filter']!.first,
+            unittest.equals(arg_filter),
+          );
+          unittest.expect(
+            queryMap['orderBy']!.first,
+            unittest.equals(arg_orderBy),
+          );
+          unittest.expect(
+            core.int.parse(queryMap['pageSize']!.first),
+            unittest.equals(arg_pageSize),
+          );
+          unittest.expect(
+            queryMap['pageToken']!.first,
+            unittest.equals(arg_pageToken),
+          );
+          unittest.expect(
+            queryMap['showDeleted']!.first,
+            unittest.equals('$arg_showDeleted'),
+          );
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(
+            buildListSingleTenantHsmInstanceProposalsResponse(),
+          );
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.list(
+        arg_parent,
+        filter: arg_filter,
+        orderBy: arg_orderBy,
+        pageSize: arg_pageSize,
+        pageToken: arg_pageToken,
+        showDeleted: arg_showDeleted,
+        $fields: arg_$fields,
+      );
+      checkListSingleTenantHsmInstanceProposalsResponse(
+        response as api.ListSingleTenantHsmInstanceProposalsResponse,
+      );
     });
   });
 }

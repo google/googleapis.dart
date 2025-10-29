@@ -1343,11 +1343,11 @@ class GoogleMapsPlacesV1ContextualContent {
   /// Justifications for the place.
   core.List<GoogleMapsPlacesV1ContextualContentJustification>? justifications;
 
-  /// Information (including references) about photos of this place, contexual
+  /// Information (including references) about photos of this place, contextual
   /// to the place query.
   core.List<GoogleMapsPlacesV1Photo>? photos;
 
-  /// List of reviews about this place, contexual to the place query.
+  /// List of reviews about this place, contextual to the place query.
   core.List<GoogleMapsPlacesV1Review>? reviews;
 
   GoogleMapsPlacesV1ContextualContent({
@@ -2029,6 +2029,21 @@ class GoogleMapsPlacesV1Place {
   /// Place has a children's menu.
   core.bool? menuForChildren;
 
+  /// If this Place is permanently closed and has moved to a new Place, this
+  /// field contains the new Place's resource name, in `places/{place_id}`
+  /// format.
+  ///
+  /// If this Place moved multiple times, this field will represent the first
+  /// moved place. This field will not be populated if this Place has not moved.
+  core.String? movedPlace;
+
+  /// If this Place is permanently closed and has moved to a new Place, this
+  /// field contains the new Place's place ID.
+  ///
+  /// If this Place moved multiple times, this field will represent the first
+  /// moved Place. This field will not be populated if this Place has not moved.
+  core.String? movedPlaceId;
+
   /// This Place's resource name, in `places/{place_id}` format.
   ///
   /// Can be used to look up the Place.
@@ -2253,6 +2268,8 @@ class GoogleMapsPlacesV1Place {
     this.liveMusic,
     this.location,
     this.menuForChildren,
+    this.movedPlace,
+    this.movedPlaceId,
     this.name,
     this.nationalPhoneNumber,
     this.neighborhoodSummary,
@@ -2427,6 +2444,8 @@ class GoogleMapsPlacesV1Place {
                 )
                 : null,
         menuForChildren: json_['menuForChildren'] as core.bool?,
+        movedPlace: json_['movedPlace'] as core.String?,
+        movedPlaceId: json_['movedPlaceId'] as core.String?,
         name: json_['name'] as core.String?,
         nationalPhoneNumber: json_['nationalPhoneNumber'] as core.String?,
         neighborhoodSummary:
@@ -2601,6 +2620,8 @@ class GoogleMapsPlacesV1Place {
     if (liveMusic != null) 'liveMusic': liveMusic!,
     if (location != null) 'location': location!,
     if (menuForChildren != null) 'menuForChildren': menuForChildren!,
+    if (movedPlace != null) 'movedPlace': movedPlace!,
+    if (movedPlaceId != null) 'movedPlaceId': movedPlaceId!,
     if (name != null) 'name': name!,
     if (nationalPhoneNumber != null)
       'nationalPhoneNumber': nationalPhoneNumber!,
@@ -2769,7 +2790,7 @@ class GoogleMapsPlacesV1PlaceAttribution {
 /// The consumer alert message for the place when we detect suspicious review
 /// activity on a business or a business violates our policies.
 class GoogleMapsPlacesV1PlaceConsumerAlert {
-  /// The details of the consumer alert message.ƒ
+  /// The details of the consumer alert message.
   GoogleMapsPlacesV1PlaceConsumerAlertDetails? details;
 
   /// The language code of the consumer alert message.
@@ -3024,7 +3045,7 @@ class GoogleMapsPlacesV1PlaceGoogleMapsLinks {
   /// travel mode `DRIVE`.
   core.String? directionsUri;
 
-  /// A link to show reviews of this place on Google Maps.
+  /// A link to show photos of this place on Google Maps.
   core.String? photosUri;
 
   /// A link to show this place.
@@ -3647,7 +3668,7 @@ class GoogleMapsPlacesV1Review {
 
   /// The date when the author visited the place.
   ///
-  /// This is trucated to the year and month of the visit.
+  /// This is truncated to the year and month of the visit.
   GoogleTypeDate? visitDate;
 
   GoogleMapsPlacesV1Review({

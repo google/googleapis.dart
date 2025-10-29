@@ -7651,7 +7651,7 @@ class EnterpriseCrmEventbusProtoCustomSuspensionRequest {
   };
 }
 
-typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared07;
+typedef EnterpriseCrmEventbusProtoDoubleArray = $Shared11;
 typedef EnterpriseCrmEventbusProtoDoubleParameterArray =
     $EventbusProtoDoubleParameterArray;
 
@@ -8232,7 +8232,7 @@ class EnterpriseCrmEventbusProtoFailurePolicy {
   };
 }
 
-typedef EnterpriseCrmEventbusProtoIntArray = $Shared08;
+typedef EnterpriseCrmEventbusProtoIntArray = $Shared12;
 typedef EnterpriseCrmEventbusProtoIntParameterArray =
     $EventbusProtoIntParameterArray;
 

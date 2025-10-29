@@ -48,11 +48,6 @@ Accesses report data in Google Analytics. Warning: Creating multiple Customer Ap
 - [Original documentation](https://developers.google.com/analytics/devguides/reporting/data/v1/)
 - [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/analyticsdata_v1beta/analyticsdata_v1beta-library.html)
 
-#### Area120 Tables API - `area120tables/v1alpha1`
-
-- [Original documentation](https://support.google.com/area120-tables/answer/10011390)
-- [Dart package details](https://pub.dev/documentation/googleapis_beta/9.1.0-wip/area120tables_v1alpha1/area120tables_v1alpha1-library.html)
-
 #### BigQuery Connection API - `bigqueryconnection/v1beta1`
 
 Allows users to manage BigQuery connections to external data sources.

@@ -2311,7 +2311,7 @@ class EmailForwarding {
 /// [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations).
 ///
 /// Request for the `ExportRegistration` method.
-typedef ExportRegistrationRequest = $Shared02;
+typedef ExportRegistrationRequest = $Shared00;
 
 /// Represents a textual expression in the Common Expression Language (CEL)
 /// syntax.

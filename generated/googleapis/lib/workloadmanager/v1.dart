@@ -25,6 +25,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsDiscoveredprofilesResource]
+///       - [ProjectsLocationsDiscoveredprofilesHealthResource]
 ///     - [ProjectsLocationsEvaluationsResource]
 ///       - [ProjectsLocationsEvaluationsExecutionsResource]
 ///         - [ProjectsLocationsEvaluationsExecutionsResultsResource]
@@ -136,9 +137,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -192,8 +193,49 @@ class ProjectsLocationsResource {
 class ProjectsLocationsDiscoveredprofilesResource {
   final commons.ApiRequester _requester;
 
+  ProjectsLocationsDiscoveredprofilesHealthResource get health =>
+      ProjectsLocationsDiscoveredprofilesHealthResource(_requester);
+
   ProjectsLocationsDiscoveredprofilesResource(commons.ApiRequester client)
     : _requester = client;
+
+  /// Gets details of a discovered workload profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveredprofiles/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadProfile].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadProfile> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadProfile.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 
   /// List discovered workload profiles
   ///
@@ -242,6 +284,51 @@ class ProjectsLocationsDiscoveredprofilesResource {
       queryParams: queryParams_,
     );
     return ListDiscoveredProfilesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsDiscoveredprofilesHealthResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsDiscoveredprofilesHealthResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Get the health of a discovered workload profile.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The resource name
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/discoveredprofiles/\[^/\]+/health/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [WorkloadProfileHealth].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<WorkloadProfileHealth> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return WorkloadProfileHealth.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -458,6 +545,69 @@ class ProjectsLocationsEvaluationsResource {
     return ListEvaluationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Updates the parameters of a single Evaluation.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - name of resource names have the form
+  /// 'projects/{project_id}/locations/{location_id}/evaluations/{evaluation_id}'
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/evaluations/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes since the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Required. Field mask is used to specify the fields to be
+  /// overwritten in the Evaluation resource by the update. The fields specified
+  /// in the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    Evaluation request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -1036,6 +1186,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1051,12 +1209,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1776,6 +1937,81 @@ class Command {
   };
 }
 
+/// HealthCondition contains the detailed health check of each component.
+class ComponentHealth {
+  /// The component of a workload.
+  core.String? component;
+
+  /// The detailed health checks of the component.
+  core.List<HealthCheck>? componentHealthChecks;
+
+  /// The type of the component health.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Unspecified
+  /// - "TYPE_REQUIRED" : required
+  /// - "TYPE_OPTIONAL" : optional
+  /// - "TYPE_SPECIAL" : special
+  core.String? componentHealthType;
+
+  /// The health state of the component.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HEALTH_STATE_UNSPECIFIED" : Unspecified.
+  /// - "HEALTHY" : Healthy workload.
+  /// - "UNHEALTHY" : Unhealthy workload.
+  /// - "CRITICAL" : Has critical issues.
+  /// - "UNSUPPORTED" : Unsupported.
+  core.String? state;
+
+  /// Sub component health.
+  core.List<ComponentHealth>? subComponentsHealth;
+
+  ComponentHealth({
+    this.component,
+    this.componentHealthChecks,
+    this.componentHealthType,
+    this.state,
+    this.subComponentsHealth,
+  });
+
+  ComponentHealth.fromJson(core.Map json_)
+    : this(
+        component: json_['component'] as core.String?,
+        componentHealthChecks:
+            (json_['componentHealthChecks'] as core.List?)
+                ?.map(
+                  (value) => HealthCheck.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        componentHealthType: json_['componentHealthType'] as core.String?,
+        state: json_['state'] as core.String?,
+        subComponentsHealth:
+            (json_['subComponentsHealth'] as core.List?)
+                ?.map(
+                  (value) => ComponentHealth.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (component != null) 'component': component!,
+    if (componentHealthChecks != null)
+      'componentHealthChecks': componentHealthChecks!,
+    if (componentHealthType != null)
+      'componentHealthType': componentHealthType!,
+    if (state != null) 'state': state!,
+    if (subComponentsHealth != null)
+      'subComponentsHealth': subComponentsHealth!,
+  };
+}
+
 /// Database Properties.
 class DatabaseProperties {
   /// Backup properties.
@@ -1785,7 +2021,7 @@ class DatabaseProperties {
 
   /// Type of the database.
   ///
-  /// HANA, DB2, etc.
+  /// `HANA`, `DB2`, etc.
   ///
   /// Output only.
   /// Possible string values are:
@@ -2214,10 +2450,12 @@ class ExecutionResult {
 
 /// Message for external data sources
 class ExternalDataSources {
-  /// The asset type of the external data source this can be one of
-  /// go/cai-asset-types to override the default asset type or it can be a
-  /// custom type defined by the user custom type must match the asset type in
-  /// the rule
+  /// The asset type of the external data source.
+  ///
+  /// This can be a supported Cloud Asset Inventory asset type (see
+  /// https://cloud.google.com/asset-inventory/docs/supported-asset-types) to
+  /// override the default asset type, or it can be a custom type defined by the
+  /// user.
   ///
   /// Required.
   core.String? assetType;
@@ -2279,6 +2517,72 @@ class GceInstanceFilter {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (serviceAccounts != null) 'serviceAccounts': serviceAccounts!,
+  };
+}
+
+/// HealthCheck contains the detailed health check of a component based on
+/// asource.
+class HealthCheck {
+  /// The message of the health check.
+  ///
+  /// Output only.
+  core.String? message;
+
+  /// The health check source metric name.
+  ///
+  /// Output only.
+  core.String? metric;
+
+  /// The resource the check performs on.
+  ///
+  /// Output only.
+  CloudResource? resource;
+
+  /// The source of the health check.
+  ///
+  /// Output only.
+  core.String? source;
+
+  /// The state of the health check.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Unspecified
+  /// - "PASSED" : passed
+  /// - "FAILED" : failed
+  /// - "DEGRADED" : degraded
+  /// - "SKIPPED" : skipped
+  /// - "UNSUPPORTED" : unsupported
+  core.String? state;
+
+  HealthCheck({
+    this.message,
+    this.metric,
+    this.resource,
+    this.source,
+    this.state,
+  });
+
+  HealthCheck.fromJson(core.Map json_)
+    : this(
+        message: json_['message'] as core.String?,
+        metric: json_['metric'] as core.String?,
+        resource:
+            json_.containsKey('resource')
+                ? CloudResource.fromJson(
+                  json_['resource'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        source: json_['source'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (message != null) 'message': message!,
+    if (metric != null) 'metric': metric!,
+    if (resource != null) 'resource': resource!,
+    if (source != null) 'source': source!,
+    if (state != null) 'state': state!,
   };
 }
 
@@ -2489,6 +2793,62 @@ class InstanceProperties {
   };
 }
 
+/// Message represent an rule that failed to be validated.
+class InvalidRule {
+  /// display name of the invalid rule
+  core.String? displayName;
+
+  /// cloud storage destination of the invalid rule
+  core.String? gcsUri;
+
+  /// name of the invalid rule
+  core.String? name;
+
+  /// The error message of valdating rule formats.
+  core.String? valiadtionError;
+
+  InvalidRule({this.displayName, this.gcsUri, this.name, this.valiadtionError});
+
+  InvalidRule.fromJson(core.Map json_)
+    : this(
+        displayName: json_['displayName'] as core.String?,
+        gcsUri: json_['gcsUri'] as core.String?,
+        name: json_['name'] as core.String?,
+        valiadtionError: json_['valiadtionError'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (displayName != null) 'displayName': displayName!,
+    if (gcsUri != null) 'gcsUri': gcsUri!,
+    if (name != null) 'name': name!,
+    if (valiadtionError != null) 'valiadtionError': valiadtionError!,
+  };
+}
+
+/// Message wrappes a list of invalid rules.
+class InvalidRulesWrapper {
+  /// The invalid rules that failed to be validated.
+  core.List<InvalidRule>? invalidRules;
+
+  InvalidRulesWrapper({this.invalidRules});
+
+  InvalidRulesWrapper.fromJson(core.Map json_)
+    : this(
+        invalidRules:
+            (json_['invalidRules'] as core.List?)
+                ?.map(
+                  (value) => InvalidRule.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (invalidRules != null) 'invalidRules': invalidRules!,
+  };
+}
+
 /// List discovered profile Response returns discovered profiles from agents
 class ListDiscoveredProfilesResponse {
   /// A token identifying a page of results the server should return
@@ -2684,7 +3044,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2697,27 +3069,38 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
 /// Mesesage of response of list rules
 class ListRulesResponse {
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
+  /// A wrapper of the invalid rules that failed to be validated.
+  InvalidRulesWrapper? invalidRulesWrapper;
 
   /// all rules in response
   core.List<Rule>? rules;
 
-  ListRulesResponse({this.nextPageToken, this.rules});
+  ListRulesResponse({this.invalidRulesWrapper, this.rules});
 
   ListRulesResponse.fromJson(core.Map json_)
     : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
+        invalidRulesWrapper:
+            json_.containsKey('invalidRulesWrapper')
+                ? InvalidRulesWrapper.fromJson(
+                  json_['invalidRulesWrapper']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         rules:
             (json_['rules'] as core.List?)
                 ?.map(
@@ -2729,7 +3112,8 @@ class ListRulesResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (invalidRulesWrapper != null)
+      'invalidRulesWrapper': invalidRulesWrapper!,
     if (rules != null) 'rules': rules!,
   };
 }
@@ -2788,7 +3172,37 @@ class Notice {
 /// A presentation of OpenShift workload insight.
 ///
 /// The schema of OpenShift workloads validation related data.
-typedef OpenShiftValidation = $Empty;
+class OpenShiftValidation {
+  /// The OpenShift cluster ID (e.g. 8371bb05-7cac-4d38-82c0-0f58c4f6f936).
+  ///
+  /// Required.
+  core.String? clusterId;
+
+  /// The validation details of the OpenShift cluster in JSON format.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? validationDetails;
+
+  OpenShiftValidation({this.clusterId, this.validationDetails});
+
+  OpenShiftValidation.fromJson(core.Map json_)
+    : this(
+        clusterId: json_['clusterId'] as core.String?,
+        validationDetails:
+            json_.containsKey('validationDetails')
+                ? json_['validationDetails']
+                    as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (clusterId != null) 'clusterId': clusterId!,
+    if (validationDetails != null) 'validationDetails': validationDetails!,
+  };
+}
 
 /// This resource represents a long-running operation that is the result of a
 /// network API call.
@@ -2864,8 +3278,8 @@ class Operation {
   };
 }
 
-/// Product contains the details of a product.
-typedef Product = $Shared14;
+/// Contains the details of a product.
+typedef Product = $Shared23;
 
 /// Message represent resource in execution result
 class Resource {
@@ -2981,6 +3395,10 @@ class ResourceStatus {
 
 /// Message represent a rule
 class Rule {
+  /// The CAI asset type of the rule is evaluating, for joined asset types, it
+  /// will be the corresponding primary asset types.
+  core.String? assetType;
+
   /// descrite rule in plain language
   core.String? description;
 
@@ -3024,6 +3442,7 @@ class Rule {
   core.String? uri;
 
   Rule({
+    this.assetType,
     this.description,
     this.displayName,
     this.errorMessage,
@@ -3040,6 +3459,7 @@ class Rule {
 
   Rule.fromJson(core.Map json_)
     : this(
+        assetType: json_['assetType'] as core.String?,
         description: json_['description'] as core.String?,
         displayName: json_['displayName'] as core.String?,
         errorMessage: json_['errorMessage'] as core.String?,
@@ -3058,6 +3478,7 @@ class Rule {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (assetType != null) 'assetType': assetType!,
     if (description != null) 'description': description!,
     if (displayName != null) 'displayName': displayName!,
     if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -3124,6 +3545,33 @@ class RuleExecutionResult {
   };
 }
 
+/// The rule output of the violation.
+class RuleOutput {
+  /// Violation details generated by rule.
+  ///
+  /// Output only.
+  core.Map<core.String, core.String>? details;
+
+  /// The message generated by rule.
+  ///
+  /// Output only.
+  core.String? message;
+
+  RuleOutput({this.details, this.message});
+
+  RuleOutput.fromJson(core.Map json_)
+    : this(
+        details: (json_['details'] as core.Map<core.String, core.dynamic>?)
+            ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        message: json_['message'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (details != null) 'details': details!,
+    if (message != null) 'message': message!,
+  };
+}
+
 /// Message for creating a Execution
 class RunEvaluationRequest {
   /// The resource being created
@@ -3181,7 +3629,7 @@ class SapComponent {
   /// Output only.
   DatabaseProperties? databaseProperties;
 
-  /// A list of host URIs that are part of the HA configuration if present.
+  /// List of host URIs that are part of the HA configuration if present.
   ///
   /// An empty list indicates the component is not configured for HA.
   core.List<core.String>? haHosts;
@@ -4156,7 +4604,7 @@ class SapDiscoveryWorkloadProperties {
 }
 
 /// A product name and version.
-typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared14;
+typedef SapDiscoveryWorkloadPropertiesProductVersion = $Shared23;
 
 /// A SAP software component name, version, and type.
 class SapDiscoveryWorkloadPropertiesSoftwareComponentProperties {
@@ -4342,12 +4790,12 @@ class SapValidationValidationDetail {
 
 /// The body of sap workload
 class SapWorkload {
-  /// the acsc componment
+  /// application component
   ///
   /// Output only.
   SapComponent? application;
 
-  /// the architecture
+  /// The architecture.
   ///
   /// Output only.
   /// Possible string values are:
@@ -4360,7 +4808,7 @@ class SapWorkload {
   /// - "STANDALONE_DATABASE_HA" : A standalone database with HA system.
   core.String? architecture;
 
-  /// the database componment
+  /// database component
   ///
   /// Output only.
   SapComponent? database;
@@ -4370,7 +4818,7 @@ class SapWorkload {
   /// Output only.
   core.Map<core.String, core.String>? metadata;
 
-  /// the products on this workload.
+  /// The products on this workload.
   ///
   /// Output only.
   core.List<Product>? products;
@@ -4755,7 +5203,7 @@ class UpcomingMaintenanceEvent {
 
   /// Instance maintenance behavior.
   ///
-  /// Could be "MIGRATE" or "TERMINATE".
+  /// Could be `MIGRATE` or `TERMINATE`.
   ///
   /// Optional.
   core.String? onHostMaintenance;
@@ -4804,27 +5252,46 @@ class ViolationDetails {
   /// Details of the violation.
   core.Map<core.String, core.String>? observed;
 
+  /// The rule output of the violation.
+  ///
+  /// Output only.
+  core.List<RuleOutput>? ruleOutput;
+
   /// The service account associated with the resource.
   core.String? serviceAccount;
 
-  ViolationDetails({this.asset, this.observed, this.serviceAccount});
+  ViolationDetails({
+    this.asset,
+    this.observed,
+    this.ruleOutput,
+    this.serviceAccount,
+  });
 
   ViolationDetails.fromJson(core.Map json_)
     : this(
         asset: json_['asset'] as core.String?,
         observed: (json_['observed'] as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
+        ruleOutput:
+            (json_['ruleOutput'] as core.List?)
+                ?.map(
+                  (value) => RuleOutput.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         serviceAccount: json_['serviceAccount'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (asset != null) 'asset': asset!,
     if (observed != null) 'observed': observed!,
+    if (ruleOutput != null) 'ruleOutput': ruleOutput!,
     if (serviceAccount != null) 'serviceAccount': serviceAccount!,
   };
 }
 
-/// workload resource
+/// Workload resource.
 class WorkloadProfile {
   /// such as name, description, version.
   ///
@@ -4885,6 +5352,48 @@ class WorkloadProfile {
     if (refreshedTime != null) 'refreshedTime': refreshedTime!,
     if (sapWorkload != null) 'sapWorkload': sapWorkload!,
     if (workloadType != null) 'workloadType': workloadType!,
+  };
+}
+
+/// WorkloadProfileHealth contains the detailed health check of workload.
+class WorkloadProfileHealth {
+  /// The time when the health check was performed.
+  core.String? checkTime;
+
+  /// The detailed condition reports of each component.
+  core.List<ComponentHealth>? componentsHealth;
+
+  /// The health state of the workload.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "HEALTH_STATE_UNSPECIFIED" : Unspecified.
+  /// - "HEALTHY" : Healthy workload.
+  /// - "UNHEALTHY" : Unhealthy workload.
+  /// - "CRITICAL" : Has critical issues.
+  /// - "UNSUPPORTED" : Unsupported.
+  core.String? state;
+
+  WorkloadProfileHealth({this.checkTime, this.componentsHealth, this.state});
+
+  WorkloadProfileHealth.fromJson(core.Map json_)
+    : this(
+        checkTime: json_['checkTime'] as core.String?,
+        componentsHealth:
+            (json_['componentsHealth'] as core.List?)
+                ?.map(
+                  (value) => ComponentHealth.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (checkTime != null) 'checkTime': checkTime!,
+    if (componentsHealth != null) 'componentsHealth': componentsHealth!,
+    if (state != null) 'state': state!,
   };
 }
 

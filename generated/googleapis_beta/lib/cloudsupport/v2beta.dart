@@ -1228,6 +1228,18 @@ class Blobstore2Info {
   core.String? blobId;
 
   /// # gdata.* are outside protos with mising documentation
+  core.String? downloadExternalReadToken;
+  core.List<core.int> get downloadExternalReadTokenAsBytes =>
+      convert.base64.decode(downloadExternalReadToken!);
+
+  set downloadExternalReadTokenAsBytes(core.List<core.int> bytes_) {
+    downloadExternalReadToken = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
+
+  /// # gdata.* are outside protos with mising documentation
   core.String? downloadReadHandle;
   core.List<core.int> get downloadReadHandleAsBytes =>
       convert.base64.decode(downloadReadHandle!);
@@ -1241,6 +1253,18 @@ class Blobstore2Info {
 
   /// # gdata.* are outside protos with mising documentation
   core.String? readToken;
+
+  /// # gdata.* are outside protos with mising documentation
+  core.String? uploadFragmentListCreationInfo;
+  core.List<core.int> get uploadFragmentListCreationInfoAsBytes =>
+      convert.base64.decode(uploadFragmentListCreationInfo!);
+
+  set uploadFragmentListCreationInfoAsBytes(core.List<core.int> bytes_) {
+    uploadFragmentListCreationInfo = convert.base64
+        .encode(bytes_)
+        .replaceAll('/', '_')
+        .replaceAll('+', '-');
+  }
 
   /// # gdata.* are outside protos with mising documentation
   core.String? uploadMetadataContainer;
@@ -1257,8 +1281,10 @@ class Blobstore2Info {
   Blobstore2Info({
     this.blobGeneration,
     this.blobId,
+    this.downloadExternalReadToken,
     this.downloadReadHandle,
     this.readToken,
+    this.uploadFragmentListCreationInfo,
     this.uploadMetadataContainer,
   });
 
@@ -1266,8 +1292,12 @@ class Blobstore2Info {
     : this(
         blobGeneration: json_['blobGeneration'] as core.String?,
         blobId: json_['blobId'] as core.String?,
+        downloadExternalReadToken:
+            json_['downloadExternalReadToken'] as core.String?,
         downloadReadHandle: json_['downloadReadHandle'] as core.String?,
         readToken: json_['readToken'] as core.String?,
+        uploadFragmentListCreationInfo:
+            json_['uploadFragmentListCreationInfo'] as core.String?,
         uploadMetadataContainer:
             json_['uploadMetadataContainer'] as core.String?,
       );
@@ -1275,8 +1305,12 @@ class Blobstore2Info {
   core.Map<core.String, core.dynamic> toJson() => {
     if (blobGeneration != null) 'blobGeneration': blobGeneration!,
     if (blobId != null) 'blobId': blobId!,
+    if (downloadExternalReadToken != null)
+      'downloadExternalReadToken': downloadExternalReadToken!,
     if (downloadReadHandle != null) 'downloadReadHandle': downloadReadHandle!,
     if (readToken != null) 'readToken': readToken!,
+    if (uploadFragmentListCreationInfo != null)
+      'uploadFragmentListCreationInfo': uploadFragmentListCreationInfo!,
     if (uploadMetadataContainer != null)
       'uploadMetadataContainer': uploadMetadataContainer!,
   };

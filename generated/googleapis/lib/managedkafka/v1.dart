@@ -148,14 +148,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -339,6 +345,17 @@ class ProjectsLocationsClustersResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
+  /// [view] - Optional. Specifies the view of the Cluster resource to be
+  /// returned. Defaults to CLUSTER_VIEW_BASIC. See the ClusterView enum for
+  /// possible values.
+  /// Possible string values are:
+  /// - "CLUSTER_VIEW_UNSPECIFIED" : The default / unset value. The API will
+  /// default to the BASIC view.
+  /// - "CLUSTER_VIEW_BASIC" : Include the basic metadata of the Cluster. This
+  /// is the default value (for both ListClusters and GetCluster).
+  /// - "CLUSTER_VIEW_FULL" : Include everything, including data fetched from
+  /// the Kafka cluster source of truth.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -349,8 +366,13 @@ class ProjectsLocationsClustersResource {
   ///
   /// If the used [http.Client] completes with an error when making a REST call,
   /// this method will complete with the same error.
-  async.Future<Cluster> get(core.String name, {core.String? $fields}) async {
+  async.Future<Cluster> get(
+    core.String name, {
+    core.String? view,
+    core.String? $fields,
+  }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -929,6 +951,9 @@ class ProjectsLocationsClustersConsumerGroupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/clusters/\[^/\]+$`.
   ///
+  /// [filter] - Optional. Filter expression for the result. Only supports
+  /// filtering by topic name as a key in the `topics` map.
+  ///
   /// [pageSize] - Optional. The maximum number of consumer groups to return.
   /// The service may return fewer than this value. If unset or zero, all
   /// consumer groups for the parent is returned.
@@ -937,6 +962,16 @@ class ProjectsLocationsClustersConsumerGroupsResource {
   /// `ListConsumerGroups` call. Provide this to retrieve the subsequent page.
   /// When paginating, all other parameters provided to `ListConsumerGroups`
   /// must match the call that provided the page token.
+  ///
+  /// [view] - Optional. Specifies the view (BASIC or FULL) of the ConsumerGroup
+  /// resource to be returned in the response. Defaults to FULL view.
+  /// Possible string values are:
+  /// - "CONSUMER_GROUP_VIEW_UNSPECIFIED" : The default / unset value. The API
+  /// will default to the FULL view.
+  /// - "CONSUMER_GROUP_VIEW_BASIC" : Include the name of the ConsumerGroup.
+  /// This hides partition and topic metadata.
+  /// - "CONSUMER_GROUP_VIEW_FULL" : Include everything, including partition and
+  /// topic metadata. This is the default value.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -950,13 +985,17 @@ class ProjectsLocationsClustersConsumerGroupsResource {
   /// this method will complete with the same error.
   async.Future<ListConsumerGroupsResponse> list(
     core.String parent, {
+    core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.String? view,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (view != null) 'view': [view],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2097,6 +2136,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2112,12 +2159,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -4787,6 +4837,39 @@ class AddAclEntryResponse {
   };
 }
 
+/// Details of a broker in the Kafka cluster.
+class BrokerDetails {
+  /// The index of the broker.
+  ///
+  /// Output only.
+  core.String? brokerIndex;
+
+  /// The node id of the broker.
+  ///
+  /// Output only.
+  core.String? nodeId;
+
+  /// The rack of the broker.
+  ///
+  /// Output only.
+  core.String? rack;
+
+  BrokerDetails({this.brokerIndex, this.nodeId, this.rack});
+
+  BrokerDetails.fromJson(core.Map json_)
+    : this(
+        brokerIndex: json_['brokerIndex'] as core.String?,
+        nodeId: json_['nodeId'] as core.String?,
+        rack: json_['rack'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (brokerIndex != null) 'brokerIndex': brokerIndex!,
+    if (nodeId != null) 'nodeId': nodeId!,
+    if (rack != null) 'rack': rack!,
+  };
+}
+
 /// The request message for Operations.CancelOperation.
 typedef CancelOperationRequest = $Empty;
 
@@ -4931,6 +5014,13 @@ class CheckCompatibilityResponse {
 
 /// An Apache Kafka cluster deployed in a location.
 class Cluster {
+  /// Only populated when FULL view is requested.
+  ///
+  /// Details of each broker in the cluster.
+  ///
+  /// Output only.
+  core.List<BrokerDetails>? brokerDetails;
+
   /// Capacity configuration for the Kafka cluster.
   ///
   /// Required.
@@ -4946,6 +5036,13 @@ class Cluster {
   ///
   /// Required.
   GcpConfig? gcpConfig;
+
+  /// Only populated when FULL view is requested.
+  ///
+  /// The Kafka version of the cluster.
+  ///
+  /// Output only.
+  core.String? kafkaVersion;
 
   /// Labels as key value pairs.
   ///
@@ -4981,6 +5078,7 @@ class Cluster {
   /// - "CREATING" : The cluster is being created.
   /// - "ACTIVE" : The cluster is active.
   /// - "DELETING" : The cluster is being deleted.
+  /// - "UPDATING" : The cluster is being updated.
   core.String? state;
 
   /// TLS configuration for the Kafka cluster.
@@ -5000,9 +5098,11 @@ class Cluster {
   core.String? updateTime;
 
   Cluster({
+    this.brokerDetails,
     this.capacityConfig,
     this.createTime,
     this.gcpConfig,
+    this.kafkaVersion,
     this.labels,
     this.name,
     this.rebalanceConfig,
@@ -5016,6 +5116,14 @@ class Cluster {
 
   Cluster.fromJson(core.Map json_)
     : this(
+        brokerDetails:
+            (json_['brokerDetails'] as core.List?)
+                ?.map(
+                  (value) => BrokerDetails.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         capacityConfig:
             json_.containsKey('capacityConfig')
                 ? CapacityConfig.fromJson(
@@ -5030,6 +5138,7 @@ class Cluster {
                   json_['gcpConfig'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        kafkaVersion: json_['kafkaVersion'] as core.String?,
         labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
           (key, value) => core.MapEntry(key, value as core.String),
         ),
@@ -5060,9 +5169,11 @@ class Cluster {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (brokerDetails != null) 'brokerDetails': brokerDetails!,
     if (capacityConfig != null) 'capacityConfig': capacityConfig!,
     if (createTime != null) 'createTime': createTime!,
     if (gcpConfig != null) 'gcpConfig': gcpConfig!,
+    if (kafkaVersion != null) 'kafkaVersion': kafkaVersion!,
     if (labels != null) 'labels': labels!,
     if (name != null) 'name': name!,
     if (rebalanceConfig != null) 'rebalanceConfig': rebalanceConfig!,
@@ -5159,7 +5270,7 @@ class ConnectCluster {
   /// Output only.
   core.bool? satisfiesPzs;
 
-  /// The current state of the cluster.
+  /// The current state of the Kafka Connect cluster.
   ///
   /// Output only.
   /// Possible string values are:
@@ -5167,6 +5278,7 @@ class ConnectCluster {
   /// - "CREATING" : The cluster is being created.
   /// - "ACTIVE" : The cluster is active.
   /// - "DELETING" : The cluster is being deleted.
+  /// - "DETACHED" : The cluster is detached.
   core.String? state;
 
   /// The time when the cluster was last updated.
@@ -5275,13 +5387,18 @@ class ConnectGcpConfig {
 /// The configuration of a Virtual Private Cloud (VPC) network that can access
 /// the Kafka Connect cluster.
 class ConnectNetworkConfig {
-  /// Additional subnets may be specified.
+  /// Deprecated: Managed Kafka Connect clusters can now reach any endpoint
+  /// accessible from the primary subnet without the need to define additional
+  /// subnets.
   ///
-  /// They may be in another region, but must be in the same VPC network. The
-  /// Connect workers can communicate with network endpoints in either the
-  /// primary or additional subnets.
+  /// Please see
+  /// https://cloud.google.com/managed-service-for-apache-kafka/docs/connect-cluster/create-connect-cluster#worker-subnet
+  /// for more information.
   ///
   /// Optional.
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.List<core.String>? additionalSubnets;
 
   /// Additional DNS domain names from the subnet's network to be made visible
@@ -5943,7 +6060,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -5956,11 +6085,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -6550,12 +6684,15 @@ typedef StopConnectorResponse = $Empty;
 
 /// Task Retry Policy is implemented on a best-effort basis.
 ///
-/// Retry delay will be exponential based on provided minimum and maximum
-/// backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. Note that the
-/// delay between consecutive task restarts may not always precisely match the
+/// The default policy retries tasks with a minimum_backoff of 60 seconds, and a
+/// maximum_backoff of 12 hours. You can disable the policy by setting the
+/// task_retry_disabled field to true. Retry delay will be exponential based on
+/// provided minimum and maximum backoffs.
+/// https://en.wikipedia.org/wiki/Exponential_backoff. Note that the delay
+/// between consecutive task restarts may not always precisely match the
 /// configured settings. This can happen when the ConnectCluster is in
 /// rebalancing state or if the ConnectCluster is unresponsive etc. The default
-/// values for minimum and maximum backoffs are 60 seconds and 30 minutes
+/// values for minimum and maximum backoffs are 60 seconds and 12 hours
 /// respectively.
 class TaskRetryPolicy {
   /// The maximum amount of time to wait before retrying a failed task.
@@ -6572,17 +6709,28 @@ class TaskRetryPolicy {
   /// Optional.
   core.String? minimumBackoff;
 
-  TaskRetryPolicy({this.maximumBackoff, this.minimumBackoff});
+  /// If true, task retry is disabled.
+  ///
+  /// Optional.
+  core.bool? taskRetryDisabled;
+
+  TaskRetryPolicy({
+    this.maximumBackoff,
+    this.minimumBackoff,
+    this.taskRetryDisabled,
+  });
 
   TaskRetryPolicy.fromJson(core.Map json_)
     : this(
         maximumBackoff: json_['maximumBackoff'] as core.String?,
         minimumBackoff: json_['minimumBackoff'] as core.String?,
+        taskRetryDisabled: json_['taskRetryDisabled'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (maximumBackoff != null) 'maximumBackoff': maximumBackoff!,
     if (minimumBackoff != null) 'minimumBackoff': minimumBackoff!,
+    if (taskRetryDisabled != null) 'taskRetryDisabled': taskRetryDisabled!,
   };
 }
 

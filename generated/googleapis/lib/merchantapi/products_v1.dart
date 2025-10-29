@@ -82,10 +82,34 @@ class AccountsProductInputsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the product input resource to delete.
-  /// Format: `accounts/{account}/productInputs/{product}` where the last
-  /// section `product` consists of: `content_language~feed_label~offer_id`
-  /// example for product name is `accounts/123/productInputs/en~US~sku123`.
+  /// [name] - Required. The name of the product input to delete. Format:
+  /// `accounts/{account}/productInputs/{productInput}` The {productInput}
+  /// segment is a unique identifier for the product. This identifier must be
+  /// unique within a merchant account and generally follows the structure:
+  /// `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+  /// local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the {productInput} segment in the URL
+  /// is automatically detected by the server, supporting two options: 1.
+  /// **Encoded Format**: The `{productInput}` segment is an unpadded base64url
+  /// encoded string (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{productInput}` segment must be the base64url
+  /// encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource
+  /// name for the product would be
+  /// `accounts/123/productInputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The
+  /// `{productInput}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{productInput}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
+  /// `accounts/123/productinputs/online~en~US~sku123`.
   /// Value must have pattern `^accounts/\[^/\]+/productInputs/\[^/\]+$`.
   ///
   /// [dataSource] - Required. The primary or supplemental data source from
@@ -192,22 +216,43 @@ class AccountsProductInputsResource {
 
   /// Updates the existing product input in your Merchant Center account.
   ///
-  /// After inserting, updating, or deleting a product input, it may take
-  /// several minutes before the processed product can be retrieved.
+  /// The name of the product input to update is taken from the `name` field
+  /// within the `ProductInput` resource. After inserting, updating, or deleting
+  /// a product input, it may take several minutes before the processed product
+  /// can be retrieved.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
-  /// [name] - Identifier. The name of the product input. Format:
-  /// `accounts/{account}/productInputs/{productinput}` where the last section
-  /// `productinput` consists of: `content_language~feed_label~offer_id` example
-  /// for product input name is `accounts/123/productInputs/en~US~sku123`. A
-  /// legacy local product input name would be
-  /// `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to the
-  /// v1beta version, the `productInput` section consists of:
-  /// `channel~content_language~feed_label~offer_id`, for example:
-  /// `accounts/123/productInputs/online~en~US~sku123`.
+  /// [name] - Identifier. The name of the product. Format:
+  /// `accounts/{account}/productInputs/{productinput}` The {productinput}
+  /// segment is a unique identifier for the product. This identifier must be
+  /// unique within a merchant account and generally follows the structure:
+  /// `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+  /// local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the {productinput} segment in the URL
+  /// is automatically detected by the server, supporting two options: 1.
+  /// **Encoded Format**: The `{productinput}` segment is an unpadded base64url
+  /// encoded string (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{productinput}` segment must be the base64url
+  /// encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource
+  /// name for the product would be
+  /// `accounts/123/productinputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The
+  /// `{productinput}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{productinput}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
+  /// `accounts/123/productinputs/online~en~US~sku123`.
   /// Value must have pattern `^accounts/\[^/\]+/productInputs/\[^/\]+$`.
   ///
   /// [dataSource] - Required. The primary or supplemental product data source
@@ -276,13 +321,32 @@ class AccountsProductsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the product to retrieve. Format:
-  /// `accounts/{account}/products/{product}` where the last section `product`
-  /// consists of: `content_language~feed_label~offer_id` example for product
-  /// name is `accounts/123/products/en~US~sku123`. A legacy local product name
-  /// would be `accounts/123/products/local~en~US~sku123`. Note: For calls to
-  /// the v1beta version, the `product` section consists of:
-  /// `channel~content_language~feed_label~offer_id`, for example:
+  /// [name] - Required. The name of the product. Format:
+  /// `accounts/{account}/products/{product}` The `{product}` segment is a
+  /// unique identifier for the product. This identifier must be unique within a
+  /// merchant account and generally follows the structure:
+  /// `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+  /// local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the `{product}` segment in the URL is
+  /// automatically detected by the server, supporting two options: 1. **Encoded
+  /// Format**: The `{product}` segment is an unpadded base64url encoded string
+  /// (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{product}` segment must be the base64url encoding
+  /// of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource name for
+  /// the product would be `accounts/123/products/ZW5-VVMtc2t1LzEyMw`. 2.
+  /// **Plain Format**: The `{product}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{product}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
   /// `accounts/123/products/online~en~US~sku123`.
   /// Value must have pattern `^accounts/\[^/\]+/products/\[^/\]+$`.
   ///
@@ -424,6 +488,300 @@ class AutomatedDiscounts {
     if (priorPrice != null) 'priorPrice': priorPrice!,
     if (priorPriceProgressive != null)
       'priorPriceProgressive': priorPriceProgressive!,
+  };
+}
+
+/// Carrier-based shipping configuration.
+///
+/// Allows for setting shipping speed or shipping cost based on a carrier's
+/// provided info.
+class CarrierShipping {
+  /// Selected carrier to calculate the shipping price from.
+  ///
+  /// Select a carrier from the
+  /// [available carriers list](https://support.google.com/merchants/answer/15449142#Supported),
+  /// for example `AUSTRALIA_POST_REGULAR`. Price will be calculated by this
+  /// selected carrier, the location expressed in originPostalCode, along with
+  /// the user location to determine the accurate shipping price. Carrier is
+  /// represented by a carrier service name or a carrier service ID. Cannot be
+  /// set together with flatPrice.
+  /// Possible string values are:
+  /// - "CARRIER_PRICE_OPTION_UNSPECIFIED" : Carrier price option is
+  /// unspecified.
+  /// - "AUSTRALIA_POST_REGULAR" : Australia Post Regular shipping service.
+  /// - "AUSTRALIA_POST_EXPRESS" : Australia Post Express shipping service.
+  /// - "AUSTRALIA_POST_REGULAR_S" : Australia Post Regular Small shipping
+  /// service.
+  /// - "AUSTRALIA_POST_REGULAR_M" : Australia Post Regular Medium shipping
+  /// service.
+  /// - "AUSTRALIA_POST_REGULAR_L" : Australia Post Regular Large shipping
+  /// service.
+  /// - "AUSTRALIA_POST_REGULAR_XL" : Australia Post Regular XL shipping
+  /// service.
+  /// - "AUSTRALIA_POST_EXPRESS_S" : Australia Post Express Small shipping
+  /// service.
+  /// - "AUSTRALIA_POST_EXPRESS_M" : Australia Post Express Medium shipping
+  /// service.
+  /// - "AUSTRALIA_POST_EXPRESS_L" : Australia Post Express Large shipping
+  /// service.
+  /// - "AUSTRALIA_POST_EXPRESS_XL" : Australia Post Express XL shipping
+  /// service.
+  /// - "TNT_ROAD_EXPRESS" : TNT Road Express shipping service.
+  /// - "TNT_OVERNIGHT_EXPRESS" : TNT Overnight Express shipping service.
+  /// - "TOLL_ROAD_DELIVERY" : Toll Road Delivery shipping service.
+  /// - "TOLL_OVERNIGHT_PRIORITY" : Toll Overnight Priority shipping service.
+  /// - "DHL_PAKET" : DHL Paket shipping service.
+  /// - "DHL_PACKCHEN" : DHL Packchen shipping service.
+  /// - "DPD_EXPRESS_12" : DPD Express 12 shipping service.
+  /// - "DPD_EXPRESS" : DPD Express shipping service.
+  /// - "DPD_CLASSIC_PARCEL" : DPD Classic Parcel shipping service.
+  /// - "HERMES_PACKCHEN" : Hermes Packchen shipping service.
+  /// - "HERMES_PAKETKLASSE_S" : Hermes Paketklasse S shipping service.
+  /// - "HERMES_PAKETKLASSE_M" : Hermes Paketklasse M shipping service.
+  /// - "HERMES_PAKETKLASSE_L" : Hermes Paketklasse L shipping service.
+  /// - "UPS_EXPRESS" : UPS Express shipping service.
+  /// - "UPS_EXPRESS_SAVER" : UPS Express Saver shipping service.
+  /// - "UPS_EXPRESS_STANDARD" : UPS Express Standard shipping service.
+  /// - "DHL_EXPRESS" : DHL Express shipping service.
+  /// - "DHL_EXPRESS_12" : DHL Express 12 shipping service.
+  /// - "DPD_NEXT_DAY" : DPD Next Day shipping service.
+  /// - "DPD_STANDARD_NEXT_DAY" : DPD Standard Next Day shipping service.
+  /// - "DPD_STANDARD_TWO_DAY" : DPD Standard Two Day shipping service.
+  /// - "RMG_1ST_CLASS_SMALL" : RMG 1st Class Small shipping service.
+  /// - "RMG_1ST_CLASS_MEDIUM" : RMG 1st Class Medium shipping service.
+  /// - "RMG_2ND_CLASS_SMALL" : RMG 2nd Class Small shipping service.
+  /// - "RMG_2ND_CLASS_MEDIUM" : RMG 2nd Class Medium shipping service.
+  /// - "TNT_EXPRESS" : TNT Express shipping service.
+  /// - "TNT_EXPRESS_10" : TNT Express 10 shipping service.
+  /// - "TNT_EXPRESS_12" : TNT Express 12 shipping service.
+  /// - "YODEL_B2C_48HR" : Yodel B2C 48HR shipping service.
+  /// - "YODEL_B2C_72HR" : Yodel B2C 72HR shipping service.
+  /// - "YODEL_B2C_PACKET" : Yodel B2C Packet shipping service.
+  /// - "FEDEX_GROUND" : FedEx Ground shipping service.
+  /// - "FEDEX_HOME_DELIVERY" : FedEx Home Delivery shipping service.
+  /// - "FEDEX_EXPRESS_SAVER" : FedEx Express Saver shipping service.
+  /// - "FEDEX_FIRST_OVERNIGHT" : FedEx First Overnight shipping service.
+  /// - "FEDEX_PRIORITY_OVERNIGHT" : FedEx Priority Overnight shipping service.
+  /// - "FEDEX_STANDARD_OVERNIGHT" : FedEx Standard Overnight shipping service.
+  /// - "FEDEX_2DAY" : FedEx 2Day shipping service.
+  /// - "UPS_STANDARD" : UPS Standard shipping service.
+  /// - "UPS_2ND_DAY_AIR" : UPS 2nd Day Air shipping service.
+  /// - "UPS_2ND_DAY_AM" : UPS 2nd Day AM shipping service.
+  /// - "UPS_3_DAY_SELECT" : UPS 3 Day Select shipping service.
+  /// - "UPS_GROUND" : UPS Ground shipping service.
+  /// - "UPS_NEXT_DAY_AIR" : UPS Next Day Air shipping service.
+  /// - "UPS_NEXT_DAY_AIR_EARLY_AM" : UPS Next Day Air Early AM shipping
+  /// service.
+  /// - "UPS_NEXT_DAY_AIR_SAVER" : UPS Next Day Air Saver shipping service.
+  /// - "USPS_PRIORITY_MAIL_EXPRESS" : USPS Priority Mail Express shipping
+  /// service.
+  /// - "USPS_MEDIA_MAIL" : USPS Media Mail shipping service.
+  /// - "USPS_GROUND_ADVANTAGE_RETAIL" : USPS Ground Advantage Retail shipping
+  /// service.
+  /// - "USPS_PRIORITY_MAIL" : USPS Priority Mail shipping service.
+  /// - "USPS_GROUND_ADVANTAGE_COMMERCIAL" : USPS Ground Advantage Commercial
+  /// shipping service.
+  core.String? carrierPrice;
+
+  /// A flat adjustment on the carrier price.
+  ///
+  /// Can be either positive or negative. Cannot be zero. Requires
+  /// `carrier_price` to be present. Cannot be set together with flatPrice and
+  /// carrierPricePercentageAdjustment.
+  Price? carrierPriceFlatAdjustment;
+
+  /// A percentual adjustment on the carrier price.
+  ///
+  /// Can be either positive or negative. Cannot be zero. Requires
+  /// `carrier_price` to be present. Cannot be set together with flatPrice and
+  /// carrierPriceFlatAdjustment.
+  core.double? carrierPricePercentageAdjustment;
+
+  /// Selected carrier to calculate the shipping speed from.
+  ///
+  /// Select a carrier from the
+  /// [available carriers list](https://support.google.com/merchants/answer/15449142#Supported),
+  /// for example `AUSTRALIA_POST_REGULAR`. Speed will be calculated by this
+  /// selected carrier, the location expressed in originPostalCode, along with
+  /// the user location to determine the accurate delivery speed. Carrier is
+  /// represented by a carrier service name or a carrier service ID. Cannot be
+  /// set together with fixedMaxTransitTime or fixedMinTransitTime.
+  /// Possible string values are:
+  /// - "CARRIER_TRANSIT_TIME_OPTION_UNSPECIFIED" : Carrier transit time option
+  /// is unspecified.
+  /// - "DHL_PAKET" : DHL Paket shipping service.
+  /// - "DHL_PACKCHEN" : DHL Packchen shipping service.
+  /// - "DHL_EXPRESSEASY" : DHL Express Easy shipping service.
+  /// - "DPD_EXPRESS" : DPD Express shipping service.
+  /// - "DPD_CLASSIC_PARCEL" : DPD Classic Parcel shipping service.
+  /// - "HERMES_HAUSTUR" : Hermes Haustur shipping service.
+  /// - "HERMES_PAKETSHOP" : Hermes Paketshop shipping service.
+  /// - "GLS_BUSINESS" : GLS Business shipping service.
+  /// - "GLS_EXPRESS" : GLS Express shipping service.
+  /// - "GLS_PRIVATE" : GLS Private shipping service.
+  /// - "COLISSIMO_DOMICILE" : Colissimo Domicile shipping service.
+  /// - "DHL_EXPRESS_12AM" : DHL Express 12 AM shipping service.
+  /// - "DHL_EXPRESS_9AM" : DHL Express 9 AM shipping service.
+  /// - "GEODIS_EXPRESS" : GEODIS Express shipping service.
+  /// - "GEODIS_PACK_30" : GEODIS Pack 30 shipping service.
+  /// - "GEODIS_SAME_DAY" : GEODIS Same Day shipping service.
+  /// - "GEODIS_TOP_24" : GEODIS Top 24 shipping service.
+  /// - "TNT_ESSENTIEL_24H" : TNT Essentiel 24H shipping service.
+  /// - "TNT_ESSENTIEL_FLEXIBILITE" : TNT Essentiel Flexibilite shipping
+  /// service.
+  /// - "FEDEX_GROUND" : FedEx Ground shipping service.
+  /// - "FEDEX_HOME_DELIVERY" : FedEx Home Delivery shipping service.
+  /// - "FEDEX_EXPRESS_SAVER" : FedEx Express Saver shipping service.
+  /// - "FEDEX_FIRST_OVERNIGHT" : FedEx First Overnight shipping service.
+  /// - "FEDEX_PRIORITY_OVERNIGHT" : FedEx Priority Overnight shipping service.
+  /// - "FEDEX_STANDARD_OVERNIGHT" : FedEx Standard Overnight shipping service.
+  /// - "FEDEX_2DAY" : FedEx 2Day shipping service.
+  /// - "UPS_2ND_DAY_AIR" : UPS 2nd Day Air shipping service.
+  /// - "UPS_2ND_DAY_AM" : UPS 2nd Day AM shipping service.
+  /// - "UPS_3_DAY_SELECT" : UPS 3 Day Select shipping service.
+  /// - "UPS_GROUND" : UPS Ground shipping service.
+  /// - "UPS_NEXT_DAY_AIR" : UPS Next Day Air shipping service.
+  /// - "UPS_NEXT_DAY_AIR_EARLY_AM" : UPS Next Day Air Early AM shipping
+  /// service.
+  /// - "UPS_NEXT_DAY_AIR_SAVER" : UPS Next Day Air Saver shipping service.
+  /// - "USPS_PRIORITY_MAIL_EXPRESS" : USPS Priority Mail Express shipping
+  /// service.
+  /// - "USPS_MEDIA_MAIL" : USPS Media Mail shipping service.
+  /// - "USPS_GROUND_ADVANTAGE_RETAIL" : USPS Ground Advantage Retail shipping
+  /// service.
+  /// - "USPS_PRIORITY_MAIL" : USPS Priority Mail shipping service.
+  /// - "USPS_GROUND_ADVANTAGE_COMMERCIAL" : USPS Ground Advantage Commercial
+  /// shipping service.
+  /// - "USPS_FIRST_CLASS_MAIL" : USPS First Class Mail shipping service.
+  core.String? carrierTransitTime;
+
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// of the country to which an item will ship.
+  core.String? country;
+
+  /// Maximum transit time (inclusive) between when the order has shipped and
+  /// when it is delivered in business days.
+  ///
+  /// 0 means that the order is delivered on the same day as it ships. Needs to
+  /// be provided together with maxHandlingTime. Cannot be set if
+  /// carrierTransitTime is present.
+  core.String? fixedMaxTransitTime;
+
+  /// Minimum transit time (inclusive) between when the order has shipped and
+  /// when it is delivered in business days.
+  ///
+  /// 0 means that the order is delivered on the same day as it ships.
+  /// fixedMinTransitTime can only be set if fixedMaxTransitTime is set. Cannot
+  /// be set if carrierTransitTime is present.
+  core.String? fixedMinTransitTime;
+
+  /// Fixed shipping price, represented as a number with currency.
+  ///
+  /// Cannot be set together with carrierPrice or its adjustments
+  /// (carrierPriceFlatAdjustment, carrierPricePercentageAdjustment).
+  Price? flatPrice;
+
+  /// Maximum handling time (inclusive) between when the order is received and
+  /// shipped in business days.
+  ///
+  /// 0 means that the order is shipped on the same day as it is received if it
+  /// happens before the cut-off time. Both maxHandlingTime and
+  /// fixedMaxTransitTime or carrierTransitTime are required if providing
+  /// shipping speeds.
+  core.String? maxHandlingTime;
+
+  /// Minimum handling time (inclusive) between when the order is received and
+  /// shipped in business days.
+  ///
+  /// 0 means that the order is shipped on the same day as it is received if it
+  /// happens before the cut-off time. minHandlingTime can only be set if
+  /// maxHandlingTime is also set.
+  core.String? minHandlingTime;
+
+  /// The source location postal code from which this offer ships.
+  ///
+  /// Represented only by a full-length postal code.
+  core.String? originPostalCode;
+
+  /// The postal code range that the shipping rate applies to, represented by a
+  /// postal code (eg.
+  ///
+  /// `94043`), a postal code prefix followed by a * wildcard (eg. `94*`), a
+  /// range between two postal codes (eg. `94043-98033`) or two postal code
+  /// prefixes of equal length (eg. `94*-98*`).
+  core.String? postalCode;
+
+  /// The geographic region to which a shipping rate applies.
+  ///
+  /// See [region](https://support.google.com/merchants/answer/6324484) for more
+  /// information.
+  core.String? region;
+
+  CarrierShipping({
+    this.carrierPrice,
+    this.carrierPriceFlatAdjustment,
+    this.carrierPricePercentageAdjustment,
+    this.carrierTransitTime,
+    this.country,
+    this.fixedMaxTransitTime,
+    this.fixedMinTransitTime,
+    this.flatPrice,
+    this.maxHandlingTime,
+    this.minHandlingTime,
+    this.originPostalCode,
+    this.postalCode,
+    this.region,
+  });
+
+  CarrierShipping.fromJson(core.Map json_)
+    : this(
+        carrierPrice: json_['carrierPrice'] as core.String?,
+        carrierPriceFlatAdjustment:
+            json_.containsKey('carrierPriceFlatAdjustment')
+                ? Price.fromJson(
+                  json_['carrierPriceFlatAdjustment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        carrierPricePercentageAdjustment:
+            (json_['carrierPricePercentageAdjustment'] as core.num?)
+                ?.toDouble(),
+        carrierTransitTime: json_['carrierTransitTime'] as core.String?,
+        country: json_['country'] as core.String?,
+        fixedMaxTransitTime: json_['fixedMaxTransitTime'] as core.String?,
+        fixedMinTransitTime: json_['fixedMinTransitTime'] as core.String?,
+        flatPrice:
+            json_.containsKey('flatPrice')
+                ? Price.fromJson(
+                  json_['flatPrice'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        maxHandlingTime: json_['maxHandlingTime'] as core.String?,
+        minHandlingTime: json_['minHandlingTime'] as core.String?,
+        originPostalCode: json_['originPostalCode'] as core.String?,
+        postalCode: json_['postalCode'] as core.String?,
+        region: json_['region'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (carrierPrice != null) 'carrierPrice': carrierPrice!,
+    if (carrierPriceFlatAdjustment != null)
+      'carrierPriceFlatAdjustment': carrierPriceFlatAdjustment!,
+    if (carrierPricePercentageAdjustment != null)
+      'carrierPricePercentageAdjustment': carrierPricePercentageAdjustment!,
+    if (carrierTransitTime != null) 'carrierTransitTime': carrierTransitTime!,
+    if (country != null) 'country': country!,
+    if (fixedMaxTransitTime != null)
+      'fixedMaxTransitTime': fixedMaxTransitTime!,
+    if (fixedMinTransitTime != null)
+      'fixedMinTransitTime': fixedMinTransitTime!,
+    if (flatPrice != null) 'flatPrice': flatPrice!,
+    if (maxHandlingTime != null) 'maxHandlingTime': maxHandlingTime!,
+    if (minHandlingTime != null) 'minHandlingTime': minHandlingTime!,
+    if (originPostalCode != null) 'originPostalCode': originPostalCode!,
+    if (postalCode != null) 'postalCode': postalCode!,
+    if (region != null) 'region': region!,
   };
 }
 
@@ -684,6 +1042,59 @@ class FreeShippingThreshold {
   core.Map<core.String, core.dynamic> toJson() => {
     if (country != null) 'country': country!,
     if (priceThreshold != null) 'priceThreshold': priceThreshold!,
+  };
+}
+
+/// Configuration for offer or offer-country level shipping handling cutoff
+/// time.
+class HandlingCutoffTime {
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// of the country to which the handling cutoff time applies.
+  core.String? country;
+
+  /// The handling cutoff time until which an order has to be placed to be
+  /// processed in the same day.
+  ///
+  /// This is a string in format of HHMM (e.g. `1530`) for 3:30 PM. If not
+  /// configured, the cutoff time will be defaulted to 8AM PST.
+  core.String? cutoffTime;
+
+  /// [Timezone identifier](https://developers.google.com/adwords/api/docs/appendix/codes-formats#timezone-ids)
+  /// For example 'Europe/Zurich'.
+  ///
+  /// If not set, the shipping destination timezone will be used.
+  core.String? cutoffTimezone;
+
+  /// This field only applies to same-day delivery.
+  ///
+  /// If true, prevents next-day delivery from being shown for this offer after
+  /// the cutoff time. This field only applies to same-day delivery offers, for
+  /// merchants who want to explicitly disable it.
+  core.bool? disableDeliveryAfterCutoff;
+
+  HandlingCutoffTime({
+    this.country,
+    this.cutoffTime,
+    this.cutoffTimezone,
+    this.disableDeliveryAfterCutoff,
+  });
+
+  HandlingCutoffTime.fromJson(core.Map json_)
+    : this(
+        country: json_['country'] as core.String?,
+        cutoffTime: json_['cutoffTime'] as core.String?,
+        cutoffTimezone: json_['cutoffTimezone'] as core.String?,
+        disableDeliveryAfterCutoff:
+            json_['disableDeliveryAfterCutoff'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (country != null) 'country': country!,
+    if (cutoffTime != null) 'cutoffTime': cutoffTime!,
+    if (cutoffTimezone != null) 'cutoffTimezone': cutoffTimezone!,
+    if (disableDeliveryAfterCutoff != null)
+      'disableDeliveryAfterCutoff': disableDeliveryAfterCutoff!,
   };
 }
 
@@ -1209,6 +1620,9 @@ class ProductAttributes {
   /// URL for the canonical version of your item's landing page.
   core.String? canonicalLink;
 
+  /// Rules for carrier-based shipping.
+  core.List<CarrierShipping>? carrierShipping;
+
   /// Product Certifications, for example for energy efficiency labeling of
   /// products recorded in the
   /// [EU EPREL](https://eprel.ec.europa.eu/screen/home) database.
@@ -1362,6 +1776,9 @@ class ProductAttributes {
   ///
   /// You can provide up to 10 GTINs.
   core.List<core.String>? gtins;
+
+  /// The handling cutoff times for shipping.
+  core.List<HandlingCutoffTime>? handlingCutoffTimes;
 
   /// Set this value to false when the item does not have unique product
   /// identifiers appropriate to its category, such as GTIN, MPN, and brand.
@@ -1592,6 +2009,11 @@ class ProductAttributes {
   /// Shipping rules.
   core.List<Shipping>? shipping;
 
+  /// The business days during which orders can be handled.
+  ///
+  /// If not provided, Monday to Friday business days will be assumed.
+  core.List<ShippingBusinessDaysConfig>? shippingHandlingBusinessDays;
+
   /// Height of the item for shipping.
   ShippingDimension? shippingHeight;
 
@@ -1601,6 +2023,11 @@ class ProductAttributes {
 
   /// Length of the item for shipping.
   ShippingDimension? shippingLength;
+
+  /// The business days during which orders are in transit.
+  ///
+  /// If not provided, Monday to Friday business days will be assumed.
+  core.List<ShippingBusinessDaysConfig>? shippingTransitBusinessDays;
 
   /// Weight of the item for shipping.
   ShippingWeight? shippingWeight;
@@ -1655,8 +2082,8 @@ class ProductAttributes {
   /// Structured title, for algorithmically (AI)-generated titles.
   StructuredTitle? structuredTitle;
 
-  /// Number of periods (months or years) and amount of payment per period for
-  /// an item with an associated subscription contract.
+  /// Number of periods (weeks, months or years) and amount of payment per
+  /// period for an item with an associated subscription contract.
   SubscriptionCost? subscriptionCost;
 
   /// The list of sustainability incentive programs.
@@ -1694,6 +2121,7 @@ class ProductAttributes {
     this.availabilityDate,
     this.brand,
     this.canonicalLink,
+    this.carrierShipping,
     this.certifications,
     this.cloudExportAdditionalProperties,
     this.color,
@@ -1719,6 +2147,7 @@ class ProductAttributes {
     this.gender,
     this.googleProductCategory,
     this.gtins,
+    this.handlingCutoffTimes,
     this.identifierExists,
     this.imageLink,
     this.includedDestinations,
@@ -1757,9 +2186,11 @@ class ProductAttributes {
     this.salePriceEffectiveDate,
     this.sellOnGoogleQuantity,
     this.shipping,
+    this.shippingHandlingBusinessDays,
     this.shippingHeight,
     this.shippingLabel,
     this.shippingLength,
+    this.shippingTransitBusinessDays,
     this.shippingWeight,
     this.shippingWidth,
     this.shoppingAdsExcludedCountries,
@@ -1802,6 +2233,14 @@ class ProductAttributes {
         availabilityDate: json_['availabilityDate'] as core.String?,
         brand: json_['brand'] as core.String?,
         canonicalLink: json_['canonicalLink'] as core.String?,
+        carrierShipping:
+            (json_['carrierShipping'] as core.List?)
+                ?.map(
+                  (value) => CarrierShipping.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         certifications:
             (json_['certifications'] as core.List?)
                 ?.map(
@@ -1862,6 +2301,14 @@ class ProductAttributes {
         gtins:
             (json_['gtins'] as core.List?)
                 ?.map((value) => value as core.String)
+                .toList(),
+        handlingCutoffTimes:
+            (json_['handlingCutoffTimes'] as core.List?)
+                ?.map(
+                  (value) => HandlingCutoffTime.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
                 .toList(),
         identifierExists: json_['identifierExists'] as core.bool?,
         imageLink: json_['imageLink'] as core.String?,
@@ -1991,6 +2438,14 @@ class ProductAttributes {
                   ),
                 )
                 .toList(),
+        shippingHandlingBusinessDays:
+            (json_['shippingHandlingBusinessDays'] as core.List?)
+                ?.map(
+                  (value) => ShippingBusinessDaysConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         shippingHeight:
             json_.containsKey('shippingHeight')
                 ? ShippingDimension.fromJson(
@@ -2006,6 +2461,14 @@ class ProductAttributes {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        shippingTransitBusinessDays:
+            (json_['shippingTransitBusinessDays'] as core.List?)
+                ?.map(
+                  (value) => ShippingBusinessDaysConfig.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         shippingWeight:
             json_.containsKey('shippingWeight')
                 ? ShippingWeight.fromJson(
@@ -2091,6 +2554,7 @@ class ProductAttributes {
     if (availabilityDate != null) 'availabilityDate': availabilityDate!,
     if (brand != null) 'brand': brand!,
     if (canonicalLink != null) 'canonicalLink': canonicalLink!,
+    if (carrierShipping != null) 'carrierShipping': carrierShipping!,
     if (certifications != null) 'certifications': certifications!,
     if (cloudExportAdditionalProperties != null)
       'cloudExportAdditionalProperties': cloudExportAdditionalProperties!,
@@ -2122,6 +2586,8 @@ class ProductAttributes {
     if (googleProductCategory != null)
       'googleProductCategory': googleProductCategory!,
     if (gtins != null) 'gtins': gtins!,
+    if (handlingCutoffTimes != null)
+      'handlingCutoffTimes': handlingCutoffTimes!,
     if (identifierExists != null) 'identifierExists': identifierExists!,
     if (imageLink != null) 'imageLink': imageLink!,
     if (includedDestinations != null)
@@ -2166,9 +2632,13 @@ class ProductAttributes {
     if (sellOnGoogleQuantity != null)
       'sellOnGoogleQuantity': sellOnGoogleQuantity!,
     if (shipping != null) 'shipping': shipping!,
+    if (shippingHandlingBusinessDays != null)
+      'shippingHandlingBusinessDays': shippingHandlingBusinessDays!,
     if (shippingHeight != null) 'shippingHeight': shippingHeight!,
     if (shippingLabel != null) 'shippingLabel': shippingLabel!,
     if (shippingLength != null) 'shippingLength': shippingLength!,
+    if (shippingTransitBusinessDays != null)
+      'shippingTransitBusinessDays': shippingTransitBusinessDays!,
     if (shippingWeight != null) 'shippingWeight': shippingWeight!,
     if (shippingWidth != null) 'shippingWidth': shippingWidth!,
     if (shoppingAdsExcludedCountries != null)
@@ -2324,15 +2794,34 @@ class ProductInput {
 
   /// Identifier.
   ///
-  /// The name of the product input. Format:
-  /// `accounts/{account}/productInputs/{productinput}` where the last section
-  /// `productinput` consists of: `content_language~feed_label~offer_id` example
-  /// for product input name is `accounts/123/productInputs/en~US~sku123`. A
-  /// legacy local product input name would be
-  /// `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to the
-  /// v1beta version, the `productInput` section consists of:
-  /// `channel~content_language~feed_label~offer_id`, for example:
-  /// `accounts/123/productInputs/online~en~US~sku123`.
+  /// The name of the product. Format:
+  /// `accounts/{account}/productInputs/{productinput}` The {productinput}
+  /// segment is a unique identifier for the product. This identifier must be
+  /// unique within a merchant account and generally follows the structure:
+  /// `content_language~feed_label~offer_id`. Example: `en~US~sku123` For legacy
+  /// local products, the structure is:
+  /// `local~content_language~feed_label~offer_id`. Example:
+  /// `local~en~US~sku123` The format of the {productinput} segment in the URL
+  /// is automatically detected by the server, supporting two options: 1.
+  /// **Encoded Format**: The `{productinput}` segment is an unpadded base64url
+  /// encoded string (RFC 4648 Section 5). The decoded string must result in the
+  /// `content_language~feed_label~offer_id` structure. This encoding MUST be
+  /// used if any part of the product identifier (like `offer_id`) contains
+  /// characters such as `/`, `%`, or `~`. * Example: To represent the product
+  /// ID `en~US~sku/123`, the `{productinput}` segment must be the base64url
+  /// encoding of this string, which is `ZW5-VVMtc2t1LzEyMw`. The full resource
+  /// name for the product would be
+  /// `accounts/123/productinputs/ZW5-VVMtc2t1LzEyMw`. 2. **Plain Format**: The
+  /// `{productinput}` segment is the tilde-separated string
+  /// `content_language~feed_label~offer_id`. This format is suitable only when
+  /// `content_language`, `feed_label`, and `offer_id` do not contain
+  /// URL-problematic characters like `/`, `%`, or `~`. We recommend using the
+  /// **Encoded Format** for all product IDs to ensure correct parsing,
+  /// especially those containing special characters. The presence of tilde
+  /// (`~`) characters in the `{productinput}` segment is used to differentiate
+  /// between the two formats. Note: For calls to the v1beta version, the plain
+  /// format is `channel~content_language~feed_label~offer_id`, for example:
+  /// `accounts/123/productinputs/online~en~US~sku123`.
   core.String? name;
 
   /// Your unique identifier for the product.
@@ -2591,6 +3080,23 @@ class Shipping {
   /// of the country to which an item will ship.
   core.String? country;
 
+  /// The handling cutoff time until which an order has to be placed to be
+  /// processed in the same day.
+  ///
+  /// This is a string in format of HHMM (e.g. `1530`) for 3:30 PM. If not
+  /// configured, the cutoff time will be defaulted to 8AM PST and
+  /// `handling_cutoff_timezone` will be ignored.
+  core.String? handlingCutoffTime;
+
+  /// [Timezone identifier](https://developers.google.com/adwords/api/docs/appendix/codes-formats#timezone-ids)
+  /// For example `Europe/Zurich`.
+  ///
+  /// This field only applies if `handling_cutoff_time` is set. If
+  /// `handling_cutoff_time` is set but this field is not set, the shipping
+  /// destination timezone will be used. If both fields are not set, the
+  /// handling cutoff time will default to 8AM PST.
+  core.String? handlingCutoffTimezone;
+
   /// The location where the shipping is applicable, represented by a location
   /// group name.
   core.String? locationGroupName;
@@ -2653,6 +3159,8 @@ class Shipping {
 
   Shipping({
     this.country,
+    this.handlingCutoffTime,
+    this.handlingCutoffTimezone,
     this.locationGroupName,
     this.locationId,
     this.maxHandlingTime,
@@ -2668,6 +3176,8 @@ class Shipping {
   Shipping.fromJson(core.Map json_)
     : this(
         country: json_['country'] as core.String?,
+        handlingCutoffTime: json_['handlingCutoffTime'] as core.String?,
+        handlingCutoffTimezone: json_['handlingCutoffTimezone'] as core.String?,
         locationGroupName: json_['locationGroupName'] as core.String?,
         locationId: json_['locationId'] as core.String?,
         maxHandlingTime: json_['maxHandlingTime'] as core.String?,
@@ -2687,6 +3197,9 @@ class Shipping {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (country != null) 'country': country!,
+    if (handlingCutoffTime != null) 'handlingCutoffTime': handlingCutoffTime!,
+    if (handlingCutoffTimezone != null)
+      'handlingCutoffTimezone': handlingCutoffTimezone!,
     if (locationGroupName != null) 'locationGroupName': locationGroupName!,
     if (locationId != null) 'locationId': locationId!,
     if (maxHandlingTime != null) 'maxHandlingTime': maxHandlingTime!,
@@ -2697,6 +3210,37 @@ class Shipping {
     if (price != null) 'price': price!,
     if (region != null) 'region': region!,
     if (service != null) 'service': service!,
+  };
+}
+
+/// The business days during which orders are on their path to fulfillment.
+///
+/// If not provided, Monday to Friday business days will be assumed.
+class ShippingBusinessDaysConfig {
+  /// Effective days of the week considered for the delivery time calculation.
+  ///
+  /// May not be empty. The more business days included the faster the delivery.
+  /// Can be set through individual days (e.g. `MTWRF`), or day ranges (e.g.
+  /// `Mon-Fri`). For more information about accepted formats, see
+  /// [Shipping handling business days](https://support.google.com/merchants/answer/16072859).
+  core.String? businessDays;
+
+  /// The
+  /// [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+  /// of the country to which an item will ship.
+  core.String? country;
+
+  ShippingBusinessDaysConfig({this.businessDays, this.country});
+
+  ShippingBusinessDaysConfig.fromJson(core.Map json_)
+    : this(
+        businessDays: json_['businessDays'] as core.String?,
+        country: json_['country'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (businessDays != null) 'businessDays': businessDays!,
+    if (country != null) 'country': country!,
   };
 }
 
@@ -2773,12 +3317,13 @@ class SubscriptionCost {
 
   /// The type of subscription period.
   ///
-  /// Supported values are: * "`month`" * "`year`"
+  /// Supported values are: * "`month`" * "`year`" * "`week`"
   /// Possible string values are:
   /// - "SUBSCRIPTION_PERIOD_UNSPECIFIED" : Indicates that the subscription
   /// period is unspecified.
   /// - "MONTH" : Indicates that the subscription period is month.
   /// - "YEAR" : Indicates that the subscription period is year.
+  /// - "WEEK" : Indicates that the subscription period is week.
   core.String? period;
 
   /// The number of subscription periods the buyer has to pay.

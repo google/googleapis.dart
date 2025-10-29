@@ -23,17 +23,14 @@
 ///
 /// - [OrganizationsResource]
 ///   - [OrganizationsLocationsResource]
-///     - [OrganizationsLocationsOperationsResource]
+///     - [OrganizationsLocationsGlobalResource]
+///       - [OrganizationsLocationsGlobalOperationsResource]
 ///     - [OrganizationsLocationsVpcFlowLogsConfigsResource]
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsGlobalResource]
 ///       - [ProjectsLocationsGlobalConnectivityTestsResource]
 ///       - [ProjectsLocationsGlobalOperationsResource]
-///     - [ProjectsLocationsNetworkMonitoringProvidersResource]
-/// - [ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource]
-///       - [ProjectsLocationsNetworkMonitoringProvidersNetworkPathsResource]
-///       - [ProjectsLocationsNetworkMonitoringProvidersWebPathsResource]
 ///     - [ProjectsLocationsVpcFlowLogsConfigsResource]
 library;
 
@@ -87,8 +84,8 @@ class OrganizationsResource {
 class OrganizationsLocationsResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsOperationsResource get operations =>
-      OrganizationsLocationsOperationsResource(_requester);
+  OrganizationsLocationsGlobalResource get global =>
+      OrganizationsLocationsGlobalResource(_requester);
   OrganizationsLocationsVpcFlowLogsConfigsResource get vpcFlowLogsConfigs =>
       OrganizationsLocationsVpcFlowLogsConfigsResource(_requester);
 
@@ -129,14 +126,20 @@ class OrganizationsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^organizations/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -187,10 +190,20 @@ class OrganizationsLocationsResource {
   }
 }
 
-class OrganizationsLocationsOperationsResource {
+class OrganizationsLocationsGlobalResource {
   final commons.ApiRequester _requester;
 
-  OrganizationsLocationsOperationsResource(commons.ApiRequester client)
+  OrganizationsLocationsGlobalOperationsResource get operations =>
+      OrganizationsLocationsGlobalOperationsResource(_requester);
+
+  OrganizationsLocationsGlobalResource(commons.ApiRequester client)
+    : _requester = client;
+}
+
+class OrganizationsLocationsGlobalOperationsResource {
+  final commons.ApiRequester _requester;
+
+  OrganizationsLocationsGlobalOperationsResource(commons.ApiRequester client)
     : _requester = client;
 
   /// Starts asynchronous cancellation on a long-running operation.
@@ -210,7 +223,7 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be cancelled.
   /// Value must have pattern
-  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  /// `^organizations/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -253,7 +266,7 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource to be deleted.
   /// Value must have pattern
-  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  /// `^organizations/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -289,7 +302,7 @@ class OrganizationsLocationsOperationsResource {
   ///
   /// [name] - The name of the operation resource.
   /// Value must have pattern
-  /// `^organizations/\[^/\]+/locations/\[^/\]+/operations/\[^/\]+$`.
+  /// `^organizations/\[^/\]+/locations/global/operations/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -323,13 +336,21 @@ class OrganizationsLocationsOperationsResource {
   /// Request parameters:
   ///
   /// [name] - The name of the operation's parent resource.
-  /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
+  /// Value must have pattern `^organizations/\[^/\]+/locations/global$`.
   ///
   /// [filter] - The standard list filter.
   ///
   /// [pageSize] - The standard list page size.
   ///
   /// [pageToken] - The standard list page token.
+  ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -346,12 +367,15 @@ class OrganizationsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -517,7 +541,7 @@ class OrganizationsLocationsVpcFlowLogsConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the VpcFlowLogsConfig, in one
-  /// of the following formats: - For project-level resourcs:
+  /// of the following formats: - For project-level resources:
   /// `projects/{project_id}/locations/global` - For organization-level
   /// resources: `organizations/{organization_id}/locations/global`
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
@@ -648,9 +672,6 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsGlobalResource get global =>
       ProjectsLocationsGlobalResource(_requester);
-  ProjectsLocationsNetworkMonitoringProvidersResource
-  get networkMonitoringProviders =>
-      ProjectsLocationsNetworkMonitoringProvidersResource(_requester);
   ProjectsLocationsVpcFlowLogsConfigsResource get vpcFlowLogsConfigs =>
       ProjectsLocationsVpcFlowLogsConfigsResource(_requester);
 
@@ -690,14 +711,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -1375,6 +1402,14 @@ class ProjectsLocationsGlobalOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -1390,12 +1425,15 @@ class ProjectsLocationsGlobalOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1407,503 +1445,6 @@ class ProjectsLocationsGlobalOperationsResource {
       queryParams: queryParams_,
     );
     return ListOperationsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsNetworkMonitoringProvidersResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource
-  get monitoringPoints =>
-      ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource(
-        _requester,
-      );
-  ProjectsLocationsNetworkMonitoringProvidersNetworkPathsResource
-  get networkPaths =>
-      ProjectsLocationsNetworkMonitoringProvidersNetworkPathsResource(
-        _requester,
-      );
-  ProjectsLocationsNetworkMonitoringProvidersWebPathsResource get webPaths =>
-      ProjectsLocationsNetworkMonitoringProvidersWebPathsResource(_requester);
-
-  ProjectsLocationsNetworkMonitoringProvidersResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
-
-  /// Creates a NetworkMonitoringProvider resource.
-  ///
-  /// [request] - The metadata request object.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for
-  /// CreateNetworkMonitoringProviderRequest. Format:
-  /// projects/{project}/locations/{location}
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [networkMonitoringProviderId] - Required. The ID to use for the
-  /// NetworkMonitoringProvider resource, which will become the final component
-  /// of the NetworkMonitoringProvider resource's name.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> create(
-    NetworkMonitoringProvider request,
-    core.String parent, {
-    core.String? networkMonitoringProviderId,
-    core.String? $fields,
-  }) async {
-    final body_ = convert.json.encode(request);
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (networkMonitoringProviderId != null)
-        'networkMonitoringProviderId': [networkMonitoringProviderId],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$parent') + '/networkMonitoringProviders';
-
-    final response_ = await _requester.request(
-      url_,
-      'POST',
-      body: body_,
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Deletes a NetworkMonitoringProvider resource and all of its child
-  /// resources.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [Operation].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<Operation> delete(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'DELETE',
-      queryParams: queryParams_,
-    );
-    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Gets the NetworkMonitoringProvider resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource. Format:
-  /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [NetworkMonitoringProvider].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<NetworkMonitoringProvider> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return NetworkMonitoringProvider.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Lists NetworkMonitoringProviders for a given project and location.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for
-  /// ListNetworkMonitoringProvidersRequest. Format:
-  /// `projects/{project}/locations/{location}`
-  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
-  ///
-  /// [pageSize] - Optional. The maximum number of monitoring points to return.
-  /// The service may return fewer than this value. If unspecified, at most 20
-  /// monitoring points will be returned. The maximum value is 1000; values
-  /// above 1000 will be coerced to 1000.
-  ///
-  /// [pageToken] - Optional. A page token, received from a previous
-  /// `ListMonitoringPoints` call. Provide this to retrieve the subsequent page.
-  /// When paginating, all other parameters provided to `ListMonitoringPoints`
-  /// must match the call that provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListNetworkMonitoringProvidersResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListNetworkMonitoringProvidersResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ =
-        'v1/' + core.Uri.encodeFull('$parent') + '/networkMonitoringProviders';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListNetworkMonitoringProvidersResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsNetworkMonitoringProvidersMonitoringPointsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
-
-  /// Gets the MonitoringPoint resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+/monitoringPoints/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [MonitoringPoint].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<MonitoringPoint> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return MonitoringPoint.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Lists MonitoringPoints for a given network monitoring provider.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListMonitoringPointsRequest. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+$`.
-  ///
-  /// [pageSize] - Optional. The maximum number of monitoring points to return.
-  /// The service may return fewer than this value. If unspecified, at most 20
-  /// monitoring points will be returned. The maximum value is 1000; values
-  /// above 1000 will be coerced to 1000.
-  ///
-  /// [pageToken] - Optional. A page token, received from a previous
-  /// `ListMonitoringPoints` call. Provide this to retrieve the subsequent page.
-  /// When paginating, all other parameters provided to `ListMonitoringPoints`
-  /// must match the call that provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListMonitoringPointsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListMonitoringPointsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/monitoringPoints';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListMonitoringPointsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsNetworkMonitoringProvidersNetworkPathsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsNetworkMonitoringProvidersNetworkPathsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
-
-  /// Gets the NetworkPath resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+/networkPaths/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [NetworkPath].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<NetworkPath> get(
-    core.String name, {
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return NetworkPath.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-
-  /// Lists NetworkPaths for a given network monitoring provider.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListNetworkPathsRequest. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+$`.
-  ///
-  /// [pageSize] - Optional. The maximum number of network paths to return. The
-  /// service may return fewer than this value. If unspecified, at most 20
-  /// network pathswill be returned. The maximum value is 1000; values above
-  /// 1000 will be coerced to 1000.
-  ///
-  /// [pageToken] - Optional. A page token, received from a previous
-  /// `ListNetworkPaths` call. Provide this to retrieve the subsequent page.
-  /// When paginating, all other parameters provided to `ListNetworkPaths` must
-  /// match the call that provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListNetworkPathsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListNetworkPathsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/networkPaths';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListNetworkPathsResponse.fromJson(
-      response_ as core.Map<core.String, core.dynamic>,
-    );
-  }
-}
-
-class ProjectsLocationsNetworkMonitoringProvidersWebPathsResource {
-  final commons.ApiRequester _requester;
-
-  ProjectsLocationsNetworkMonitoringProvidersWebPathsResource(
-    commons.ApiRequester client,
-  ) : _requester = client;
-
-  /// Gets the WebPath resource.
-  ///
-  /// Request parameters:
-  ///
-  /// [name] - Required. Name of the resource.. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+/webPaths/\[^/\]+$`.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [WebPath].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<WebPath> get(core.String name, {core.String? $fields}) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$name');
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return WebPath.fromJson(response_ as core.Map<core.String, core.dynamic>);
-  }
-
-  /// Lists WebPaths for a given network monitoring provider.
-  ///
-  /// Request parameters:
-  ///
-  /// [parent] - Required. Parent value for ListWebPathsRequest. Format:
-  /// projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
-  /// Value must have pattern
-  /// `^projects/\[^/\]+/locations/\[^/\]+/networkMonitoringProviders/\[^/\]+$`.
-  ///
-  /// [pageSize] - Optional. The maximum number of web paths to return. The
-  /// service may return fewer than this value. If unspecified, at most 20 web
-  /// paths will be returned. The maximum value is 1000; values above 1000 will
-  /// be coerced to 1000.
-  ///
-  /// [pageToken] - Optional. A page token, received from a previous
-  /// `ListWebPaths` call. Provide this to retrieve the subsequent page. When
-  /// paginating, all other parameters provided to `ListWebPaths` must match the
-  /// call that provided the page token.
-  ///
-  /// [$fields] - Selector specifying which fields to include in a partial
-  /// response.
-  ///
-  /// Completes with a [ListWebPathsResponse].
-  ///
-  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
-  /// error.
-  ///
-  /// If the used [http.Client] completes with an error when making a REST call,
-  /// this method will complete with the same error.
-  async.Future<ListWebPathsResponse> list(
-    core.String parent, {
-    core.int? pageSize,
-    core.String? pageToken,
-    core.String? $fields,
-  }) async {
-    final queryParams_ = <core.String, core.List<core.String>>{
-      if (pageSize != null) 'pageSize': ['${pageSize}'],
-      if (pageToken != null) 'pageToken': [pageToken],
-      if ($fields != null) 'fields': [$fields],
-    };
-
-    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/webPaths';
-
-    final response_ = await _requester.request(
-      url_,
-      'GET',
-      queryParams: queryParams_,
-    );
-    return ListWebPathsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -2058,7 +1599,7 @@ class ProjectsLocationsVpcFlowLogsConfigsResource {
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource of the VpcFlowLogsConfig, in one
-  /// of the following formats: - For project-level resourcs:
+  /// of the following formats: - For project-level resources:
   /// `projects/{project_id}/locations/global` - For organization-level
   /// resources: `organizations/{organization_id}/locations/global`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
@@ -2339,7 +1880,14 @@ class AbortInfo {
   /// - "PERMISSION_DENIED_NO_CLOUD_ROUTER_CONFIGS" : Aborted because user lacks
   /// permission to access Cloud Router configs required to run the test.
   /// - "NO_SOURCE_LOCATION" : Aborted because no valid source or destination
-  /// endpoint is derived from the input test request.
+  /// endpoint can be derived from the test request.
+  /// - "NO_SOURCE_GCP_NETWORK_LOCATION" : Aborted because the source IP address
+  /// is not contained within the subnet ranges of the provided VPC network.
+  /// - "NO_SOURCE_NON_GCP_NETWORK_LOCATION" : Aborted because the source IP
+  /// address is not contained within the destination ranges of the routes
+  /// towards non-GCP networks in the provided VPC network.
+  /// - "NO_SOURCE_INTERNET_LOCATION" : Aborted because the source IP address
+  /// can't be resolved as an Internet IP address.
   /// - "INVALID_ARGUMENT" : Aborted because the source or destination endpoint
   /// specified in the request is invalid. Some examples: - The request might
   /// contain malformed resource URI, project ID, or IP address. - The request
@@ -2373,6 +1921,9 @@ class AbortInfo {
   /// satisfy test input).
   /// - "SOURCE_PSC_CLOUD_SQL_UNSUPPORTED" : Aborted because tests with a
   /// PSC-based Cloud SQL instance as a source are not supported.
+  /// - "SOURCE_EXTERNAL_CLOUD_SQL_UNSUPPORTED" : Aborted because tests with the
+  /// external database as a source are not supported. In such replication
+  /// scenarios, the connection is initiated by the Cloud SQL replica instance.
   /// - "SOURCE_REDIS_CLUSTER_UNSUPPORTED" : Aborted because tests with a Redis
   /// Cluster as a source are not supported.
   /// - "SOURCE_REDIS_INSTANCE_UNSUPPORTED" : Aborted because tests with a Redis
@@ -2390,6 +1941,9 @@ class AbortInfo {
   /// reserved serverless IP ranges.
   /// - "IP_VERSION_PROTOCOL_MISMATCH" : Aborted because the used protocol is
   /// not supported for the used IP version.
+  /// - "GKE_POD_UNKNOWN_ENDPOINT_LOCATION" : Aborted because selected GKE Pod
+  /// endpoint location is unknown. This is often the case for "Pending" Pods,
+  /// which don't have assigned IP addresses yet.
   core.String? cause;
 
   /// IP address that caused the abort.
@@ -3080,6 +2634,7 @@ class DeliverInfo {
   /// for return traces.
   /// - "REDIS_INSTANCE" : Target is a Redis Instance.
   /// - "REDIS_CLUSTER" : Target is a Redis Cluster.
+  /// - "GKE_POD" : Target is a GKE Pod.
   core.String? target;
 
   DeliverInfo({
@@ -3191,7 +2746,9 @@ class DropInfo {
   /// forwarding rule type is invalid (it's not a forwarding rule of the
   /// internal passthrough load balancer).
   /// - "NO_ROUTE_FROM_INTERNET_TO_PRIVATE_IPV6_ADDRESS" : Packet is sent from
-  /// the Internet or Google service to the private IPv6 address.
+  /// the Internet to the private IPv6 address.
+  /// - "NO_ROUTE_FROM_INTERNET_TO_PRIVATE_IPV4_ADDRESS" : Packet is sent from
+  /// the Internet to the private IPv4 address.
   /// - "NO_ROUTE_FROM_EXTERNAL_IPV6_SOURCE_TO_PRIVATE_IPV6_ADDRESS" : Packet is
   /// sent from the external IPv6 source address of an instance to the private
   /// IPv6 address of an instance.
@@ -3231,6 +2788,8 @@ class DropInfo {
   /// instance that is not in a running state.
   /// - "GKE_CLUSTER_NOT_RUNNING" : Packet sent from or to a GKE cluster that is
   /// not in running state.
+  /// - "GKE_POD_NOT_RUNNING" : Packet sent from or to a GKE Pod that is not in
+  /// running state.
   /// - "CLOUD_SQL_INSTANCE_NOT_RUNNING" : Packet sent from or to a Cloud SQL
   /// instance that is not in running state.
   /// - "REDIS_INSTANCE_NOT_RUNNING" : Packet sent from or to a Redis Instance
@@ -3393,6 +2952,8 @@ class DropInfo {
   /// - "NO_MATCHING_NAT64_GATEWAY" : Packet with destination IP address within
   /// the reserved NAT64 range is dropped due to no matching NAT gateway in the
   /// subnet.
+  /// - "NO_CONFIGURED_PRIVATE_NAT64_RULE" : Packet is dropped due to matching a
+  /// Private NAT64 gateway with no rules for source IPv6 addresses.
   /// - "LOAD_BALANCER_BACKEND_IP_VERSION_MISMATCH" : Packet is dropped due to
   /// being sent to a backend of a passthrough load balancer that doesn't use
   /// the same IP version as the frontend.
@@ -3408,6 +2969,17 @@ class DropInfo {
   /// - "L2_INTERCONNECT_DESTINATION_IP_MISMATCH" : Packet is dropped due to
   /// destination IP not matching the appliance mapping IPs configured on the L2
   /// Interconnect attachment.
+  /// - "NCC_ROUTE_WITHIN_HYBRID_SUBNET_UNSUPPORTED" : Packet could be dropped
+  /// because it matches a route associated with an NCC spoke in the hybrid
+  /// subnet context, but such a configuration is not supported.
+  /// - "HYBRID_SUBNET_REGION_MISMATCH" : Packet is dropped because the region
+  /// of the hybrid subnet is different from the region of the next hop of the
+  /// route matched within this hybrid subnet.
+  /// - "HYBRID_SUBNET_NO_ROUTE" : Packet is dropped because no matching route
+  /// was found in the hybrid subnet.
+  /// - "NO_VALID_ROUTE_FROM_GOOGLE_MANAGED_NETWORK_TO_DESTINATION" : Packet is
+  /// dropped because there is no valid matching route from the network of the
+  /// Google-managed service to the destination.
   core.String? cause;
 
   /// Geolocation (region code) of the destination IP address (if relevant).
@@ -3714,6 +3286,10 @@ class Endpoint {
   /// [Google Kubernetes Engine cluster control plane](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
   core.String? gkeMasterCluster;
 
+  /// A [GKE Pod](https://cloud.google.com/kubernetes-engine/docs/concepts/pod)
+  /// URI.
+  core.String? gkePod;
+
   /// A Compute Engine instance URI.
   core.String? instance;
 
@@ -3749,19 +3325,36 @@ class Endpoint {
   core.String? loadBalancerType;
 
   /// A VPC network URI.
+  ///
+  /// For source endpoints, used according to the `network_type`. For
+  /// destination endpoints, used only when the source is an external IP address
+  /// endpoint, and the destination is an internal IP address endpoint.
   core.String? network;
 
-  /// Type of the network where the endpoint is located.
+  /// For source endpoints, type of the network where the endpoint is located.
   ///
-  /// Applicable only to source endpoint, as destination network type can be
-  /// inferred from the source.
+  /// Not relevant for destination endpoints.
   /// Possible string values are:
-  /// - "NETWORK_TYPE_UNSPECIFIED" : Default type if unspecified.
-  /// - "GCP_NETWORK" : A network hosted within Google Cloud. To receive more
-  /// detailed output, specify the URI for the source or destination network.
-  /// - "NON_GCP_NETWORK" : A network hosted outside of Google Cloud. This can
-  /// be an on-premises network, an internet resource or a network hosted by
-  /// another cloud provider.
+  /// - "NETWORK_TYPE_UNSPECIFIED" : Unspecified. The test will analyze all
+  /// possible IP address locations. This might take longer and produce
+  /// inaccurate or ambiguous results, so prefer specifying an explicit network
+  /// type. The `project_id` field should be set to the project where the GCP
+  /// endpoint is located, or where the non-GCP endpoint should be reachable
+  /// from (via routes to non-GCP networks). The project might also be inferred
+  /// from the Connectivity Test project or other projects referenced in the
+  /// request.
+  /// - "GCP_NETWORK" : A VPC network. Should be used for internal IP addresses
+  /// in VPC networks. The `network` field should be set to the URI of this
+  /// network. Only endpoints within this network will be considered.
+  /// - "NON_GCP_NETWORK" : A non-GCP network (for example, an on-premises
+  /// network or another cloud provider network). Should be used for internal IP
+  /// addresses outside of Google Cloud. The `network` field should be set to
+  /// the URI of the VPC network containing a corresponding Cloud VPN tunnel,
+  /// Cloud Interconnect VLAN attachment, or a router appliance instance. Only
+  /// endpoints reachable from the provided VPC network via the routes to
+  /// non-GCP networks will be considered.
+  /// - "INTERNET" : Internet. Should be used for internet-routable external IP
+  /// addresses or IP addresses for global Google APIs and services.
   core.String? networkType;
 
   /// The IP protocol port of the endpoint.
@@ -3769,14 +3362,10 @@ class Endpoint {
   /// Only applicable when protocol is TCP or UDP.
   core.int? port;
 
-  /// Project ID where the endpoint is located.
+  /// For source endpoints, endpoint project ID.
   ///
-  /// The project ID can be derived from the URI if you provide a endpoint or
-  /// network URI. The following are two cases where you may need to provide the
-  /// project ID: 1. Only the IP address is specified, and the IP address is
-  /// within a Google Cloud project. 2. When you are using Shared VPC and the IP
-  /// address that you provide is from the service project. In this case, the
-  /// network that the IP address resides in is defined in the host project.
+  /// Used according to the `network_type`. Not relevant for destination
+  /// endpoints.
   core.String? projectId;
 
   /// A [Redis Cluster](https://cloud.google.com/memorystore/docs/cluster) URI.
@@ -3798,6 +3387,7 @@ class Endpoint {
     this.forwardingRuleTarget,
     this.fqdn,
     this.gkeMasterCluster,
+    this.gkePod,
     this.instance,
     this.ipAddress,
     this.loadBalancerId,
@@ -3837,6 +3427,7 @@ class Endpoint {
         forwardingRuleTarget: json_['forwardingRuleTarget'] as core.String?,
         fqdn: json_['fqdn'] as core.String?,
         gkeMasterCluster: json_['gkeMasterCluster'] as core.String?,
+        gkePod: json_['gkePod'] as core.String?,
         instance: json_['instance'] as core.String?,
         ipAddress: json_['ipAddress'] as core.String?,
         loadBalancerId: json_['loadBalancerId'] as core.String?,
@@ -3859,6 +3450,7 @@ class Endpoint {
       'forwardingRuleTarget': forwardingRuleTarget!,
     if (fqdn != null) 'fqdn': fqdn!,
     if (gkeMasterCluster != null) 'gkeMasterCluster': gkeMasterCluster!,
+    if (gkePod != null) 'gkePod': gkePod!,
     if (instance != null) 'instance': instance!,
     if (ipAddress != null) 'ipAddress': ipAddress!,
     if (loadBalancerId != null) 'loadBalancerId': loadBalancerId!,
@@ -3993,12 +3585,16 @@ class FirewallInfo {
   /// that are managed by serverless VPC access to allow ingress access. They
   /// are not visible in the Google Cloud console. For details, see
   /// [VPC connector's implicit rules](https://cloud.google.com/functions/docs/networking/connecting-vpc#restrict-access).
-  /// - "NETWORK_FIREWALL_POLICY_RULE" : Global network firewall policy rule.
-  /// For details, see
-  /// [Network firewall policies](https://cloud.google.com/vpc/docs/network-firewall-policies).
-  /// - "NETWORK_REGIONAL_FIREWALL_POLICY_RULE" : Regional network firewall
+  /// - "NETWORK_FIREWALL_POLICY_RULE" : User-defined global network firewall
   /// policy rule. For details, see
+  /// [Network firewall policies](https://cloud.google.com/vpc/docs/network-firewall-policies).
+  /// - "NETWORK_REGIONAL_FIREWALL_POLICY_RULE" : User-defined regional network
+  /// firewall policy rule. For details, see
   /// [Regional network firewall policies](https://cloud.google.com/firewall/docs/regional-firewall-policies).
+  /// - "SYSTEM_NETWORK_FIREWALL_POLICY_RULE" : System-defined global network
+  /// firewall policy rule.
+  /// - "SYSTEM_REGIONAL_NETWORK_FIREWALL_POLICY_RULE" : System-defined regional
+  /// network firewall policy rule.
   /// - "UNSUPPORTED_FIREWALL_POLICY_RULE" : Firewall policy rule containing
   /// attributes not yet supported in Connectivity tests. Firewall analysis is
   /// skipped if such a rule can potentially be matched. Please see the
@@ -4290,25 +3886,39 @@ class GKEMasterInfo {
   };
 }
 
-/// The geographical location of the MonitoringPoint.
-class GeoLocation {
-  /// Country.
-  core.String? country;
+/// For display only.
+///
+/// Metadata associated with a Google Kubernetes Engine (GKE) Pod.
+class GkePodInfo {
+  /// IP address of a GKE Pod.
+  ///
+  /// If the Pod is dual-stack, this is the IP address relevant to the trace.
+  core.String? ipAddress;
 
-  /// Formatted address.
-  core.String? formattedAddress;
+  /// URI of the network containing the GKE Pod.
+  core.String? networkUri;
 
-  GeoLocation({this.country, this.formattedAddress});
+  /// URI of a GKE Pod.
+  ///
+  /// For Pods in regional Clusters, the URI format is:
+  /// `projects/{project}/locations/{location}/clusters/{cluster}/k8s/namespaces/{namespace}/pods/{pod}`
+  /// For Pods in zonal Clusters, the URI format is:
+  /// `projects/{project}/zones/{zone}/clusters/{cluster}/k8s/namespaces/{namespace}/pods/{pod}`
+  core.String? podUri;
 
-  GeoLocation.fromJson(core.Map json_)
+  GkePodInfo({this.ipAddress, this.networkUri, this.podUri});
+
+  GkePodInfo.fromJson(core.Map json_)
     : this(
-        country: json_['country'] as core.String?,
-        formattedAddress: json_['formattedAddress'] as core.String?,
+        ipAddress: json_['ipAddress'] as core.String?,
+        networkUri: json_['networkUri'] as core.String?,
+        podUri: json_['podUri'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
-    if (country != null) 'country': country!,
-    if (formattedAddress != null) 'formattedAddress': formattedAddress!,
+    if (ipAddress != null) 'ipAddress': ipAddress!,
+    if (networkUri != null) 'networkUri': networkUri!,
+    if (podUri != null) 'podUri': podUri!,
   };
 }
 
@@ -4355,87 +3965,6 @@ class GoogleServiceInfo {
   core.Map<core.String, core.dynamic> toJson() => {
     if (googleServiceType != null) 'googleServiceType': googleServiceType!,
     if (sourceIp != null) 'sourceIp': sourceIp!,
-  };
-}
-
-/// Message describing information about the host.
-class Host {
-  /// The cloud instance id of the host.
-  ///
-  /// Output only.
-  core.String? cloudInstanceId;
-
-  /// The cloud project id of the host.
-  ///
-  /// Output only.
-  core.String? cloudProjectId;
-
-  /// The cloud provider of the host.
-  ///
-  /// Output only.
-  core.String? cloudProvider;
-
-  /// The cloud region of the host.
-  ///
-  /// Output only.
-  core.String? cloudRegion;
-
-  /// The ids of cloud virtual networks of the host.
-  ///
-  /// Output only.
-  core.List<core.String>? cloudVirtualNetworkIds;
-
-  /// The id of Virtual Private Cloud (VPC) of the host.
-  ///
-  /// Output only.
-  core.String? cloudVpcId;
-
-  /// The cloud zone of the host.
-  ///
-  /// Output only.
-  core.String? cloudZone;
-
-  /// The operating system of the host.
-  ///
-  /// Output only.
-  core.String? os;
-
-  Host({
-    this.cloudInstanceId,
-    this.cloudProjectId,
-    this.cloudProvider,
-    this.cloudRegion,
-    this.cloudVirtualNetworkIds,
-    this.cloudVpcId,
-    this.cloudZone,
-    this.os,
-  });
-
-  Host.fromJson(core.Map json_)
-    : this(
-        cloudInstanceId: json_['cloudInstanceId'] as core.String?,
-        cloudProjectId: json_['cloudProjectId'] as core.String?,
-        cloudProvider: json_['cloudProvider'] as core.String?,
-        cloudRegion: json_['cloudRegion'] as core.String?,
-        cloudVirtualNetworkIds:
-            (json_['cloudVirtualNetworkIds'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        cloudVpcId: json_['cloudVpcId'] as core.String?,
-        cloudZone: json_['cloudZone'] as core.String?,
-        os: json_['os'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (cloudInstanceId != null) 'cloudInstanceId': cloudInstanceId!,
-    if (cloudProjectId != null) 'cloudProjectId': cloudProjectId!,
-    if (cloudProvider != null) 'cloudProvider': cloudProvider!,
-    if (cloudRegion != null) 'cloudRegion': cloudRegion!,
-    if (cloudVirtualNetworkIds != null)
-      'cloudVirtualNetworkIds': cloudVirtualNetworkIds!,
-    if (cloudVpcId != null) 'cloudVpcId': cloudVpcId!,
-    if (cloudZone != null) 'cloudZone': cloudZone!,
-    if (os != null) 'os': os!,
   };
 }
 
@@ -4635,6 +4164,51 @@ class InterconnectAttachmentInfo {
   };
 }
 
+/// For display only.
+///
+/// Contains information about why IP masquerading was skipped for the packet.
+class IpMasqueradingSkippedInfo {
+  /// The matched non-masquerade IP range.
+  ///
+  /// Only set if reason is DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE or
+  /// DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE.
+  core.String? nonMasqueradeRange;
+
+  /// Reason why IP masquerading was not applied.
+  /// Possible string values are:
+  /// - "REASON_UNSPECIFIED" : Unused default value.
+  /// - "DESTINATION_IP_IN_CONFIGURED_NON_MASQUERADE_RANGE" : Masquerading not
+  /// applied because destination IP is in one of configured non-masquerade
+  /// ranges.
+  /// - "DESTINATION_IP_IN_DEFAULT_NON_MASQUERADE_RANGE" : Masquerading not
+  /// applied because destination IP is in one of default non-masquerade ranges.
+  /// - "DESTINATION_ON_SAME_NODE" : Masquerading not applied because
+  /// destination is on the same Node.
+  /// - "DEFAULT_SNAT_DISABLED" : Masquerading not applied because ip-masq-agent
+  /// doesn't exist and default SNAT is disabled.
+  /// - "NO_MASQUERADING_FOR_IPV6" : Masquerading not applied because the
+  /// packet's IP version is IPv6.
+  /// - "POD_USES_NODE_NETWORK_NAMESPACE" : Masquerading not applied because the
+  /// source Pod uses the host Node's network namespace, including the Node's IP
+  /// address.
+  /// - "NO_MASQUERADING_FOR_RETURN_PACKET" : Masquerading not applied because
+  /// the packet is a return packet.
+  core.String? reason;
+
+  IpMasqueradingSkippedInfo({this.nonMasqueradeRange, this.reason});
+
+  IpMasqueradingSkippedInfo.fromJson(core.Map json_)
+    : this(
+        nonMasqueradeRange: json_['nonMasqueradeRange'] as core.String?,
+        reason: json_['reason'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (nonMasqueradeRange != null) 'nonMasqueradeRange': nonMasqueradeRange!,
+    if (reason != null) 'reason': reason!,
+  };
+}
+
 /// Describes measured latency distribution.
 class LatencyDistribution {
   /// Representative latency percentiles.
@@ -4755,97 +4329,6 @@ class ListLocationsResponse {
   };
 }
 
-/// Message for response to listing MonitoringPoints
-class ListMonitoringPointsResponse {
-  /// The list of MonitoringPoints.
-  core.List<MonitoringPoint>? monitoringPoints;
-
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  ListMonitoringPointsResponse({this.monitoringPoints, this.nextPageToken});
-
-  ListMonitoringPointsResponse.fromJson(core.Map json_)
-    : this(
-        monitoringPoints:
-            (json_['monitoringPoints'] as core.List?)
-                ?.map(
-                  (value) => MonitoringPoint.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (monitoringPoints != null) 'monitoringPoints': monitoringPoints!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
-}
-
-/// Message for response to listing NetworkMonitoringProviders
-class ListNetworkMonitoringProvidersResponse {
-  /// The list of NetworkMonitoringProvider
-  core.List<NetworkMonitoringProvider>? networkMonitoringProviders;
-
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  ListNetworkMonitoringProvidersResponse({
-    this.networkMonitoringProviders,
-    this.nextPageToken,
-  });
-
-  ListNetworkMonitoringProvidersResponse.fromJson(core.Map json_)
-    : this(
-        networkMonitoringProviders:
-            (json_['networkMonitoringProviders'] as core.List?)
-                ?.map(
-                  (value) => NetworkMonitoringProvider.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (networkMonitoringProviders != null)
-      'networkMonitoringProviders': networkMonitoringProviders!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
-}
-
-/// Message for response to listing NetworkPaths
-class ListNetworkPathsResponse {
-  /// The list of NetworkPath
-  core.List<NetworkPath>? networkPaths;
-
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  ListNetworkPathsResponse({this.networkPaths, this.nextPageToken});
-
-  ListNetworkPathsResponse.fromJson(core.Map json_)
-    : this(
-        networkPaths:
-            (json_['networkPaths'] as core.List?)
-                ?.map(
-                  (value) => NetworkPath.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        nextPageToken: json_['nextPageToken'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (networkPaths != null) 'networkPaths': networkPaths!,
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-  };
-}
-
 /// The response message for Operations.ListOperations.
 class ListOperationsResponse {
   /// The standard List next-page token.
@@ -4854,7 +4337,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -4867,11 +4362,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -4914,35 +4414,6 @@ class ListVpcFlowLogsConfigsResponse {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (unreachable != null) 'unreachable': unreachable!,
     if (vpcFlowLogsConfigs != null) 'vpcFlowLogsConfigs': vpcFlowLogsConfigs!,
-  };
-}
-
-/// Message for response to listing WebPaths
-class ListWebPathsResponse {
-  /// A token identifying a page of results the server should return.
-  core.String? nextPageToken;
-
-  /// The list of WebPath.
-  core.List<WebPath>? webPaths;
-
-  ListWebPathsResponse({this.nextPageToken, this.webPaths});
-
-  ListWebPathsResponse.fromJson(core.Map json_)
-    : this(
-        nextPageToken: json_['nextPageToken'] as core.String?,
-        webPaths:
-            (json_['webPaths'] as core.List?)
-                ?.map(
-                  (value) => WebPath.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
-    if (webPaths != null) 'webPaths': webPaths!,
   };
 }
 
@@ -5195,204 +4666,22 @@ class LoadBalancerInfo {
 /// A resource that represents a Google Cloud location.
 typedef Location = $Location00;
 
-/// Message describing MonitoringPoint resource.
-class MonitoringPoint {
-  /// Indicates if automaitic geographic location is enabled for the
-  /// MonitoringPoint.
-  ///
-  /// Output only.
-  core.bool? autoGeoLocationEnabled;
-
-  /// Connection status of the MonitoringPoint.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "CONNECTION_STATUS_UNSPECIFIED" : The default value. This value is used
-  /// if the status is omitted.
-  /// - "ONLINE" : MonitoringPoint is online.
-  /// - "OFFLINE" : MonitoringPoint is offline.
-  core.String? connectionStatus;
-
-  /// The time the MonitoringPoint was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Display name of the MonitoringPoint.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// The codes of errors detected in the MonitoringPoint.
-  ///
-  /// Output only.
-  core.List<core.String>? errors;
-
-  /// The geographical location of the MonitoringPoint.
-  ///
-  /// ;
-  ///
-  /// Output only.
-  GeoLocation? geoLocation;
-
-  /// The host information of the MonitoringPoint.
-  ///
-  /// Output only.
-  Host? host;
-
-  /// The hostname of the MonitoringPoint.
-  ///
-  /// Output only.
-  core.String? hostname;
-
-  /// Identifier.
-  ///
-  /// Name of the resource. Format:
-  /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/monitoringPoints/{monitoring_point}`
-  core.String? name;
-
-  /// The network interfaces of the MonitoringPoint.
-  ///
-  /// Output only.
-  core.List<NetworkInterface>? networkInterfaces;
-
-  /// IP address visible when MonitoringPoint connects to the provider.
-  ///
-  /// Output only.
-  core.String? originatingIp;
-
-  /// The provider tags of the MonitoringPoint.
-  ///
-  /// Output only.
-  core.List<ProviderTag>? providerTags;
-
-  /// Deployment type of the MonitoringPoint.
-  ///
-  /// Output only.
-  core.String? type;
-
-  /// The time the MonitoringPoint was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  /// Indicates if an upgrade is available for the MonitoringPoint.
-  ///
-  /// Output only.
-  core.bool? upgradeAvailable;
-
-  /// The type of upgrade available for the MonitoringPoint.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "UPGRADE_TYPE_UNSPECIFIED" : The default value. This value is used if
-  /// the upgrade type is omitted.
-  /// - "MANUAL" : Upgrades are performed manually.
-  /// - "MANAGED" : Upgrades are managed.
-  /// - "SCHEDULED" : Upgrade is scheduled.
-  /// - "AUTO" : Upgrades are performed automatically.
-  /// - "EXTERNAL" : Upgrades are performed externally.
-  core.String? upgradeType;
-
-  /// Version of the software running on the MonitoringPoint.
-  ///
-  /// Output only.
-  core.String? version;
-
-  MonitoringPoint({
-    this.autoGeoLocationEnabled,
-    this.connectionStatus,
-    this.createTime,
-    this.displayName,
-    this.errors,
-    this.geoLocation,
-    this.host,
-    this.hostname,
-    this.name,
-    this.networkInterfaces,
-    this.originatingIp,
-    this.providerTags,
-    this.type,
-    this.updateTime,
-    this.upgradeAvailable,
-    this.upgradeType,
-    this.version,
-  });
-
-  MonitoringPoint.fromJson(core.Map json_)
-    : this(
-        autoGeoLocationEnabled: json_['autoGeoLocationEnabled'] as core.bool?,
-        connectionStatus: json_['connectionStatus'] as core.String?,
-        createTime: json_['createTime'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        geoLocation:
-            json_.containsKey('geoLocation')
-                ? GeoLocation.fromJson(
-                  json_['geoLocation'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        host:
-            json_.containsKey('host')
-                ? Host.fromJson(
-                  json_['host'] as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        hostname: json_['hostname'] as core.String?,
-        name: json_['name'] as core.String?,
-        networkInterfaces:
-            (json_['networkInterfaces'] as core.List?)
-                ?.map(
-                  (value) => NetworkInterface.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        originatingIp: json_['originatingIp'] as core.String?,
-        providerTags:
-            (json_['providerTags'] as core.List?)
-                ?.map(
-                  (value) => ProviderTag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        type: json_['type'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-        upgradeAvailable: json_['upgradeAvailable'] as core.bool?,
-        upgradeType: json_['upgradeType'] as core.String?,
-        version: json_['version'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (autoGeoLocationEnabled != null)
-      'autoGeoLocationEnabled': autoGeoLocationEnabled!,
-    if (connectionStatus != null) 'connectionStatus': connectionStatus!,
-    if (createTime != null) 'createTime': createTime!,
-    if (displayName != null) 'displayName': displayName!,
-    if (errors != null) 'errors': errors!,
-    if (geoLocation != null) 'geoLocation': geoLocation!,
-    if (host != null) 'host': host!,
-    if (hostname != null) 'hostname': hostname!,
-    if (name != null) 'name': name!,
-    if (networkInterfaces != null) 'networkInterfaces': networkInterfaces!,
-    if (originatingIp != null) 'originatingIp': originatingIp!,
-    if (providerTags != null) 'providerTags': providerTags!,
-    if (type != null) 'type': type!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (upgradeAvailable != null) 'upgradeAvailable': upgradeAvailable!,
-    if (upgradeType != null) 'upgradeType': upgradeType!,
-    if (version != null) 'version': version!,
-  };
-}
-
 /// For display only.
 ///
 /// Metadata associated with NAT.
 class NatInfo {
+  /// Type of Cloud NAT gateway.
+  ///
+  /// Only valid when `type` is CLOUD_NAT.
+  /// Possible string values are:
+  /// - "CLOUD_NAT_GATEWAY_TYPE_UNSPECIFIED" : Type is unspecified.
+  /// - "PUBLIC_NAT44" : Public NAT gateway.
+  /// - "PUBLIC_NAT64" : Public NAT64 gateway.
+  /// - "PRIVATE_NAT_NCC" : Private NAT gateway for NCC.
+  /// - "PRIVATE_NAT_HYBRID" : Private NAT gateway for hybrid connectivity.
+  /// - "PRIVATE_NAT64" : Private NAT64 gateway.
+  core.String? cloudNatGatewayType;
+
   /// The name of Cloud NAT Gateway.
   ///
   /// Only valid when type is CLOUD_NAT.
@@ -5454,6 +4743,7 @@ class NatInfo {
   core.String? type;
 
   NatInfo({
+    this.cloudNatGatewayType,
     this.natGatewayName,
     this.networkUri,
     this.newDestinationIp,
@@ -5471,6 +4761,7 @@ class NatInfo {
 
   NatInfo.fromJson(core.Map json_)
     : this(
+        cloudNatGatewayType: json_['cloudNatGatewayType'] as core.String?,
         natGatewayName: json_['natGatewayName'] as core.String?,
         networkUri: json_['networkUri'] as core.String?,
         newDestinationIp: json_['newDestinationIp'] as core.String?,
@@ -5487,6 +4778,8 @@ class NatInfo {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (cloudNatGatewayType != null)
+      'cloudNatGatewayType': cloudNatGatewayType!,
     if (natGatewayName != null) 'natGatewayName': natGatewayName!,
     if (networkUri != null) 'networkUri': networkUri!,
     if (newDestinationIp != null) 'newDestinationIp': newDestinationIp!,
@@ -5545,341 +4838,6 @@ class NetworkInfo {
     if (matchedSubnetUri != null) 'matchedSubnetUri': matchedSubnetUri!,
     if (region != null) 'region': region!,
     if (uri != null) 'uri': uri!,
-  };
-}
-
-/// Message describing network interfaces.
-class NetworkInterface {
-  /// The description of the interface.
-  ///
-  /// Output only.
-  core.String? adapterDescription;
-
-  /// The IP address of the interface and subnet mask in CIDR format.
-  ///
-  /// Examples: 192.168.1.0/24, 2001:db8::/32
-  ///
-  /// Output only.
-  core.String? cidr;
-
-  /// The name of the network interface.
-  ///
-  /// Examples: eth0, eno1
-  ///
-  /// Output only.
-  core.String? interfaceName;
-
-  /// The IP address of the interface.
-  ///
-  /// Output only.
-  core.String? ipAddress;
-
-  /// The MAC address of the interface.
-  ///
-  /// Output only.
-  core.String? macAddress;
-
-  /// Speed of the interface in millions of bits per second.
-  ///
-  /// Output only.
-  core.String? speed;
-
-  /// The id of the VLAN.
-  ///
-  /// Output only.
-  core.String? vlanId;
-
-  NetworkInterface({
-    this.adapterDescription,
-    this.cidr,
-    this.interfaceName,
-    this.ipAddress,
-    this.macAddress,
-    this.speed,
-    this.vlanId,
-  });
-
-  NetworkInterface.fromJson(core.Map json_)
-    : this(
-        adapterDescription: json_['adapterDescription'] as core.String?,
-        cidr: json_['cidr'] as core.String?,
-        interfaceName: json_['interfaceName'] as core.String?,
-        ipAddress: json_['ipAddress'] as core.String?,
-        macAddress: json_['macAddress'] as core.String?,
-        speed: json_['speed'] as core.String?,
-        vlanId: json_['vlanId'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (adapterDescription != null) 'adapterDescription': adapterDescription!,
-    if (cidr != null) 'cidr': cidr!,
-    if (interfaceName != null) 'interfaceName': interfaceName!,
-    if (ipAddress != null) 'ipAddress': ipAddress!,
-    if (macAddress != null) 'macAddress': macAddress!,
-    if (speed != null) 'speed': speed!,
-    if (vlanId != null) 'vlanId': vlanId!,
-  };
-}
-
-/// Message describing NetworkMonitoringProvider resource.
-class NetworkMonitoringProvider {
-  /// The time the NetworkMonitoringProvider was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// The list of error messages detected for the NetworkMonitoringProvider.
-  ///
-  /// Output only.
-  core.List<core.String>? errors;
-
-  /// Identifier.
-  ///
-  /// Name of the resource. Format:
-  /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
-  ///
-  /// Output only.
-  core.String? name;
-
-  /// Type of the NetworkMonitoringProvider.
-  ///
-  /// Required.
-  /// Possible string values are:
-  /// - "PROVIDER_TYPE_UNSPECIFIED" : The default value. This value is used if
-  /// the type is omitted.
-  /// - "EXTERNAL" : External provider.
-  core.String? providerType;
-
-  /// Link to the provider's UI.
-  ///
-  /// Output only.
-  core.String? providerUri;
-
-  /// State of the NetworkMonitoringProvider.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : The default value. This value is used if the
-  /// status is omitted.
-  /// - "ACTIVATING" : NetworkMonitoringProvider is being activated.
-  /// - "ACTIVE" : NetworkMonitoringProvider is active.
-  /// - "SUSPENDING" : NetworkMonitoringProvider is being suspended.
-  /// - "SUSPENDED" : NetworkMonitoringProvider is suspended.
-  /// - "DELETING" : NetworkMonitoringProvider is being deleted.
-  /// - "DELETED" : NetworkMonitoringProvider is deleted.
-  core.String? state;
-
-  /// The time the NetworkMonitoringProvider was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  NetworkMonitoringProvider({
-    this.createTime,
-    this.errors,
-    this.name,
-    this.providerType,
-    this.providerUri,
-    this.state,
-    this.updateTime,
-  });
-
-  NetworkMonitoringProvider.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        errors:
-            (json_['errors'] as core.List?)
-                ?.map((value) => value as core.String)
-                .toList(),
-        name: json_['name'] as core.String?,
-        providerType: json_['providerType'] as core.String?,
-        providerUri: json_['providerUri'] as core.String?,
-        state: json_['state'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (errors != null) 'errors': errors!,
-    if (name != null) 'name': name!,
-    if (providerType != null) 'providerType': providerType!,
-    if (providerUri != null) 'providerUri': providerUri!,
-    if (state != null) 'state': state!,
-    if (updateTime != null) 'updateTime': updateTime!,
-  };
-}
-
-/// Message describing NetworkPath resource.
-class NetworkPath {
-  /// The time the NetworkPath was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// IP address or hostname of the network path destination.
-  ///
-  /// Output only.
-  core.String? destination;
-
-  /// Geographical location of the destination MonitoringPoint.
-  ///
-  /// ;
-  ///
-  /// Output only.
-  GeoLocation? destinationGeoLocation;
-
-  /// The display name of the network path.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Indicates if the network path is dual ended.
-  ///
-  /// When true, the network path is measured both: from both source to
-  /// destination, and from destination to source. When false, the network path
-  /// is measured from the source through the destination back to the source
-  /// (round trip measurement).
-  ///
-  /// Output only.
-  core.bool? dualEnded;
-
-  /// Is monitoring enabled for the network path.
-  ///
-  /// Output only.
-  core.bool? monitoringEnabled;
-
-  /// Display name of the monitoring policy.
-  ///
-  /// Output only.
-  core.String? monitoringPolicyDisplayName;
-
-  /// ID of monitoring policy.
-  ///
-  /// Output only.
-  core.String? monitoringPolicyId;
-
-  /// The monitoring status of the network path.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "MONITORING_STATUS_UNSPECIFIED" : The default value. This value is used
-  /// if the status is omitted.
-  /// - "MONITORING" : Monitoring is enabled.
-  /// - "POLICY_MISMATCH" : Policy is mismatched.
-  /// - "MONITORING_POINT_OFFLINE" : Monitoring point is offline.
-  /// - "DISABLED" : Monitoring is disabled.
-  core.String? monitoringStatus;
-
-  /// Identifier.
-  ///
-  /// Name of the resource. Format:
-  /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/networkPaths/{network_path}`
-  core.String? name;
-
-  /// The network protocol of the network path.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "NETWORK_PROTOCOL_UNSPECIFIED" : The default value. This value is used
-  /// if the network protocol is omitted.
-  /// - "ICMP" : ICMP.
-  /// - "UDP" : UDP.
-  /// - "TCP" : TCP.
-  core.String? networkProtocol;
-
-  /// The provider tags of the network path.
-  ///
-  /// Output only.
-  core.List<ProviderTag>? providerTags;
-
-  /// Link to provider's UI; link shows the NetworkPath.
-  ///
-  /// Output only.
-  core.String? providerUiUri;
-
-  /// Provider's UUID of the source MonitoringPoint.
-  ///
-  /// This id may not point to a resource in the GCP.
-  ///
-  /// Output only.
-  core.String? sourceMonitoringPointId;
-
-  /// The time the NetworkPath was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  NetworkPath({
-    this.createTime,
-    this.destination,
-    this.destinationGeoLocation,
-    this.displayName,
-    this.dualEnded,
-    this.monitoringEnabled,
-    this.monitoringPolicyDisplayName,
-    this.monitoringPolicyId,
-    this.monitoringStatus,
-    this.name,
-    this.networkProtocol,
-    this.providerTags,
-    this.providerUiUri,
-    this.sourceMonitoringPointId,
-    this.updateTime,
-  });
-
-  NetworkPath.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        destination: json_['destination'] as core.String?,
-        destinationGeoLocation:
-            json_.containsKey('destinationGeoLocation')
-                ? GeoLocation.fromJson(
-                  json_['destinationGeoLocation']
-                      as core.Map<core.String, core.dynamic>,
-                )
-                : null,
-        displayName: json_['displayName'] as core.String?,
-        dualEnded: json_['dualEnded'] as core.bool?,
-        monitoringEnabled: json_['monitoringEnabled'] as core.bool?,
-        monitoringPolicyDisplayName:
-            json_['monitoringPolicyDisplayName'] as core.String?,
-        monitoringPolicyId: json_['monitoringPolicyId'] as core.String?,
-        monitoringStatus: json_['monitoringStatus'] as core.String?,
-        name: json_['name'] as core.String?,
-        networkProtocol: json_['networkProtocol'] as core.String?,
-        providerTags:
-            (json_['providerTags'] as core.List?)
-                ?.map(
-                  (value) => ProviderTag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        providerUiUri: json_['providerUiUri'] as core.String?,
-        sourceMonitoringPointId:
-            json_['sourceMonitoringPointId'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (destination != null) 'destination': destination!,
-    if (destinationGeoLocation != null)
-      'destinationGeoLocation': destinationGeoLocation!,
-    if (displayName != null) 'displayName': displayName!,
-    if (dualEnded != null) 'dualEnded': dualEnded!,
-    if (monitoringEnabled != null) 'monitoringEnabled': monitoringEnabled!,
-    if (monitoringPolicyDisplayName != null)
-      'monitoringPolicyDisplayName': monitoringPolicyDisplayName!,
-    if (monitoringPolicyId != null) 'monitoringPolicyId': monitoringPolicyId!,
-    if (monitoringStatus != null) 'monitoringStatus': monitoringStatus!,
-    if (name != null) 'name': name!,
-    if (networkProtocol != null) 'networkProtocol': networkProtocol!,
-    if (providerTags != null) 'providerTags': providerTags!,
-    if (providerUiUri != null) 'providerUiUri': providerUiUri!,
-    if (sourceMonitoringPointId != null)
-      'sourceMonitoringPointId': sourceMonitoringPointId!,
-    if (updateTime != null) 'updateTime': updateTime!,
   };
 }
 
@@ -6207,46 +5165,6 @@ class ProbingDetails {
     if (successfulProbeCount != null)
       'successfulProbeCount': successfulProbeCount!,
     if (verifyTime != null) 'verifyTime': verifyTime!,
-  };
-}
-
-/// Message describing the provider tag.
-class ProviderTag {
-  /// The category of the provider tag.
-  ///
-  /// Output only.
-  core.String? category;
-
-  /// The resource type of the provider tag.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "RESOURCE_TYPE_UNSPECIFIED" : The default value. This value is used if
-  /// the status is omitted.
-  /// - "NETWORK_PATH" : Network path.
-  /// - "WEB_PATH" : Web path.
-  /// - "MONITORING_POLICY" : Monitoring policy.
-  /// - "MONITORING_POINT" : Monitoring point.
-  core.String? resourceType;
-
-  /// The value of the provider tag.
-  ///
-  /// Output only.
-  core.String? value;
-
-  ProviderTag({this.category, this.resourceType, this.value});
-
-  ProviderTag.fromJson(core.Map json_)
-    : this(
-        category: json_['category'] as core.String?,
-        resourceType: json_['resourceType'] as core.String?,
-        value: json_['value'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (category != null) 'category': category!,
-    if (resourceType != null) 'resourceType': resourceType!,
-    if (value != null) 'value': value!,
   };
 }
 
@@ -7085,6 +6003,9 @@ class Step {
   /// Display information of a Google Kubernetes Engine cluster master.
   GKEMasterInfo? gkeMaster;
 
+  /// Display information of a Google Kubernetes Engine Pod.
+  GkePodInfo? gkePod;
+
   /// Display information of a Google service
   GoogleServiceInfo? googleService;
 
@@ -7096,6 +6017,9 @@ class Step {
 
   /// Display information of an interconnect attachment.
   InterconnectAttachmentInfo? interconnectAttachment;
+
+  /// Display information of the reason why GKE Pod IP masquerading was skipped.
+  IpMasqueradingSkippedInfo? ipMasqueradingSkipped;
 
   /// Display information of the load balancers.
   ///
@@ -7158,6 +6082,9 @@ class Step {
   /// - "START_FROM_CLOUD_SQL_INSTANCE" : Initial state: packet originating from
   /// a Cloud SQL instance. A CloudSQLInstanceInfo is populated with starting
   /// instance information.
+  /// - "START_FROM_GKE_POD" : Initial state: packet originating from a Google
+  /// Kubernetes Engine Pod. A GkePodInfo is populated with starting Pod
+  /// information.
   /// - "START_FROM_REDIS_INSTANCE" : Initial state: packet originating from a
   /// Redis instance. A RedisInstanceInfo is populated with starting instance
   /// information.
@@ -7216,6 +6143,9 @@ class Step {
   /// connectivity.
   /// - "NAT" : Transition state: packet header translated. The `nat` field is
   /// populated with the translation information.
+  /// - "SKIP_GKE_POD_IP_MASQUERADING" : Transition state: GKE Pod IP
+  /// masquerading is skipped. The `ip_masquerading_skipped` field is populated
+  /// with the reason.
   /// - "PROXY_CONNECTION" : Transition state: original connection is terminated
   /// and a new proxied connection is initiated.
   /// - "DELIVER" : Final state: packet could be delivered.
@@ -7257,10 +6187,12 @@ class Step {
     this.forward,
     this.forwardingRule,
     this.gkeMaster,
+    this.gkePod,
     this.googleService,
     this.hybridSubnet,
     this.instance,
     this.interconnectAttachment,
+    this.ipMasqueradingSkipped,
     this.loadBalancer,
     this.loadBalancerBackendInfo,
     this.nat,
@@ -7366,6 +6298,12 @@ class Step {
                   json_['gkeMaster'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        gkePod:
+            json_.containsKey('gkePod')
+                ? GkePodInfo.fromJson(
+                  json_['gkePod'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         googleService:
             json_.containsKey('googleService')
                 ? GoogleServiceInfo.fromJson(
@@ -7388,6 +6326,13 @@ class Step {
             json_.containsKey('interconnectAttachment')
                 ? InterconnectAttachmentInfo.fromJson(
                   json_['interconnectAttachment']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        ipMasqueradingSkipped:
+            json_.containsKey('ipMasqueradingSkipped')
+                ? IpMasqueradingSkippedInfo.fromJson(
+                  json_['ipMasqueradingSkipped']
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
@@ -7499,11 +6444,14 @@ class Step {
     if (forward != null) 'forward': forward!,
     if (forwardingRule != null) 'forwardingRule': forwardingRule!,
     if (gkeMaster != null) 'gkeMaster': gkeMaster!,
+    if (gkePod != null) 'gkePod': gkePod!,
     if (googleService != null) 'googleService': googleService!,
     if (hybridSubnet != null) 'hybridSubnet': hybridSubnet!,
     if (instance != null) 'instance': instance!,
     if (interconnectAttachment != null)
       'interconnectAttachment': interconnectAttachment!,
+    if (ipMasqueradingSkipped != null)
+      'ipMasqueradingSkipped': ipMasqueradingSkipped!,
     if (loadBalancer != null) 'loadBalancer': loadBalancer!,
     if (loadBalancerBackendInfo != null)
       'loadBalancerBackendInfo': loadBalancerBackendInfo!,
@@ -7979,163 +6927,5 @@ class VpnTunnelInfo {
     if (sourceGateway != null) 'sourceGateway': sourceGateway!,
     if (sourceGatewayIp != null) 'sourceGatewayIp': sourceGatewayIp!,
     if (uri != null) 'uri': uri!,
-  };
-}
-
-/// Message describing WebPath resource.
-class WebPath {
-  /// The time the WebPath was created.
-  ///
-  /// Output only.
-  core.String? createTime;
-
-  /// Web monitoring target.
-  ///
-  /// Output only.
-  core.String? destination;
-
-  /// Display name of the WebPath.
-  ///
-  /// Output only.
-  core.String? displayName;
-
-  /// Monitoring interval.
-  ///
-  /// Output only.
-  core.String? interval;
-
-  /// Is monitoring enabled for the WebPath.
-  ///
-  /// Output only.
-  core.bool? monitoringEnabled;
-
-  /// Display name of the monitoring policy.
-  ///
-  /// Output only.
-  core.String? monitoringPolicyDisplayName;
-
-  /// ID of the monitoring policy.
-  ///
-  /// Output only.
-  core.String? monitoringPolicyId;
-
-  /// The monitoring status of the WebPath.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "MONITORING_STATUS_UNSPECIFIED" : The default value. This value is used
-  /// if the status is omitted.
-  /// - "MONITORING" : Monitoring is enabled.
-  /// - "POLICY_MISMATCH" : Policy is mismatched.
-  /// - "MONITORING_POINT_OFFLINE" : Monitoring point is offline.
-  /// - "DISABLED" : Monitoring is disabled.
-  core.String? monitoringStatus;
-
-  /// Identifier.
-  ///
-  /// Name of the resource. Format:
-  /// `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}/webPaths/{web_path}`
-  core.String? name;
-
-  /// The provider tags of the web path.
-  ///
-  /// Output only.
-  core.List<ProviderTag>? providerTags;
-
-  /// Link to provider's UI; link shows the WebPath.
-  ///
-  /// Output only.
-  core.String? providerUiUri;
-
-  /// Provider's UUID of the related NetworkPath.
-  ///
-  /// Output only.
-  core.String? relatedNetworkPathId;
-
-  /// ID of the source MonitoringPoint.
-  ///
-  /// Output only.
-  core.String? sourceMonitoringPointId;
-
-  /// The time the WebPath was updated.
-  ///
-  /// Output only.
-  core.String? updateTime;
-
-  /// The workflow type of the WebPath.
-  ///
-  /// Output only.
-  /// Possible string values are:
-  /// - "WORKFLOW_TYPE_UNSPECIFIED" : The default value. This value is used if
-  /// the status is omitted.
-  /// - "BROWSER" : Browser.
-  /// - "HTTP" : HTTP.
-  core.String? workflowType;
-
-  WebPath({
-    this.createTime,
-    this.destination,
-    this.displayName,
-    this.interval,
-    this.monitoringEnabled,
-    this.monitoringPolicyDisplayName,
-    this.monitoringPolicyId,
-    this.monitoringStatus,
-    this.name,
-    this.providerTags,
-    this.providerUiUri,
-    this.relatedNetworkPathId,
-    this.sourceMonitoringPointId,
-    this.updateTime,
-    this.workflowType,
-  });
-
-  WebPath.fromJson(core.Map json_)
-    : this(
-        createTime: json_['createTime'] as core.String?,
-        destination: json_['destination'] as core.String?,
-        displayName: json_['displayName'] as core.String?,
-        interval: json_['interval'] as core.String?,
-        monitoringEnabled: json_['monitoringEnabled'] as core.bool?,
-        monitoringPolicyDisplayName:
-            json_['monitoringPolicyDisplayName'] as core.String?,
-        monitoringPolicyId: json_['monitoringPolicyId'] as core.String?,
-        monitoringStatus: json_['monitoringStatus'] as core.String?,
-        name: json_['name'] as core.String?,
-        providerTags:
-            (json_['providerTags'] as core.List?)
-                ?.map(
-                  (value) => ProviderTag.fromJson(
-                    value as core.Map<core.String, core.dynamic>,
-                  ),
-                )
-                .toList(),
-        providerUiUri: json_['providerUiUri'] as core.String?,
-        relatedNetworkPathId: json_['relatedNetworkPathId'] as core.String?,
-        sourceMonitoringPointId:
-            json_['sourceMonitoringPointId'] as core.String?,
-        updateTime: json_['updateTime'] as core.String?,
-        workflowType: json_['workflowType'] as core.String?,
-      );
-
-  core.Map<core.String, core.dynamic> toJson() => {
-    if (createTime != null) 'createTime': createTime!,
-    if (destination != null) 'destination': destination!,
-    if (displayName != null) 'displayName': displayName!,
-    if (interval != null) 'interval': interval!,
-    if (monitoringEnabled != null) 'monitoringEnabled': monitoringEnabled!,
-    if (monitoringPolicyDisplayName != null)
-      'monitoringPolicyDisplayName': monitoringPolicyDisplayName!,
-    if (monitoringPolicyId != null) 'monitoringPolicyId': monitoringPolicyId!,
-    if (monitoringStatus != null) 'monitoringStatus': monitoringStatus!,
-    if (name != null) 'name': name!,
-    if (providerTags != null) 'providerTags': providerTags!,
-    if (providerUiUri != null) 'providerUiUri': providerUiUri!,
-    if (relatedNetworkPathId != null)
-      'relatedNetworkPathId': relatedNetworkPathId!,
-    if (sourceMonitoringPointId != null)
-      'sourceMonitoringPointId': sourceMonitoringPointId!,
-    if (updateTime != null) 'updateTime': updateTime!,
-    if (workflowType != null) 'workflowType': workflowType!,
   };
 }

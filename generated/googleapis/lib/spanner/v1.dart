@@ -69,7 +69,8 @@ class SpannerApi {
   static const spannerAdminScope =
       'https://www.googleapis.com/auth/spanner.admin';
 
-  /// View and manage the contents of your Spanner databases
+  /// See, edit, configure, and delete your Google Cloud Spanner data and see
+  /// the email address for your Google Account
   static const spannerDataScope =
       'https://www.googleapis.com/auth/spanner.data';
 
@@ -614,6 +615,14 @@ class ProjectsInstanceConfigsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -629,12 +638,15 @@ class ProjectsInstanceConfigsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -799,6 +811,14 @@ class ProjectsInstanceConfigsSsdCachesOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -814,12 +834,15 @@ class ProjectsInstanceConfigsSsdCachesOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1528,9 +1551,9 @@ class ProjectsInstancesBackupsResource {
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The name of the instance in which the backup will be
+  /// [parent] - Required. The name of the instance in which the backup is
   /// created. This must be the same instance that contains the database the
-  /// backup will be created from. The backup will be stored in the location(s)
+  /// backup is created from. The backup will be stored in the locations
   /// specified in the instance configuration of this instance. Values are of
   /// the form `projects//instances/`.
   /// Value must have pattern `^projects/\[^/\]+/instances/\[^/\]+$`.
@@ -1551,9 +1574,15 @@ class ProjectsInstancesBackupsResource {
   /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
   /// specified, `kms_key_name` must contain a valid Cloud KMS key.
   ///
-  /// [encryptionConfig_kmsKeyName] - Optional. The Cloud KMS key that will be
-  /// used to protect the backup. This field should be set only when
-  /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// [encryptionConfig_kmsKeyName] - Optional. This field is maintained for
+  /// backwards compatibility. For new callers, we recommend using
+  /// `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the
+  /// location of the KMS key matches the database instance's configuration
+  /// (location) exactly. For example, if the KMS location is in `us-central1`
+  /// or `nam3`, then the database instance must also be in `us-central1` or
+  /// `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored
+  /// database. Set this field only when encryption_type is
+  /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
   /// `projects//locations//keyRings//cryptoKeys/`.
   ///
   /// [encryptionConfig_kmsKeyNames] - Optional. Specifies the KMS configuration
@@ -1825,9 +1854,9 @@ class ProjectsInstancesBackupsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/instances/\[^/\]+/backups/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. A mask specifying which fields (e.g.
-  /// `expire_time`) in the Backup resource should be updated. This mask is
-  /// relative to the Backup resource, not to the request message. The field
+  /// [updateMask] - Required. A mask specifying which fields (for example,
+  /// `expire_time`) in the backup resource should be updated. This mask is
+  /// relative to the backup resource, not to the request message. The field
   /// mask must always be specified; this prevents any future fields from being
   /// erased accidentally by clients that do not know about them.
   ///
@@ -2107,6 +2136,14 @@ class ProjectsInstancesBackupsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2122,12 +2159,15 @@ class ProjectsInstancesBackupsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2901,7 +2941,7 @@ class ProjectsInstancesDatabasesResource {
   /// creating/altering/dropping tables, columns, indexes, etc.
   ///
   /// The returned long-running operation will have a name of the format
-  /// `/operations/` and can be used to track execution of the schema change(s).
+  /// `/operations/` and can be used to track execution of the schema changes.
   /// The metadata field type is UpdateDatabaseDdlMetadata. The operation has no
   /// response.
   ///
@@ -3587,6 +3627,14 @@ class ProjectsInstancesDatabasesOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3602,12 +3650,15 @@ class ProjectsInstancesDatabasesOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5055,6 +5106,14 @@ class ProjectsInstancesInstancePartitionsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5070,12 +5129,15 @@ class ProjectsInstancesInstancePartitionsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5228,6 +5290,14 @@ class ProjectsInstancesOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -5243,12 +5313,15 @@ class ProjectsInstancesOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -5337,6 +5410,45 @@ class ScansResource {
   }
 }
 
+/// Arguments to ack operations.
+class Ack {
+  /// By default, an attempt to ack a message that does not exist will fail with
+  /// a `NOT_FOUND` error.
+  ///
+  /// With `ignore_not_found` set to true, the ack will succeed even if the
+  /// message does not exist. This is useful for unconditionally acking a
+  /// message, even if it is missing or has already been acked.
+  core.bool? ignoreNotFound;
+
+  /// The primary key of the message to be acked.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? key;
+
+  /// The queue where the message to be acked is stored.
+  ///
+  /// Required.
+  core.String? queue;
+
+  Ack({this.ignoreNotFound, this.key, this.queue});
+
+  Ack.fromJson(core.Map json_)
+    : this(
+        ignoreNotFound: json_['ignoreNotFound'] as core.bool?,
+        key: json_.containsKey('key') ? json_['key'] as core.List : null,
+        queue: json_['queue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (ignoreNotFound != null) 'ignoreNotFound': ignoreNotFound!,
+    if (key != null) 'key': key!,
+    if (queue != null) 'queue': queue!,
+  };
+}
+
 /// Message sent by the client to the adapter.
 class AdaptMessageRequest {
   /// Opaque request state passed by the client to the server.
@@ -5382,6 +5494,14 @@ class AdaptMessageRequest {
 
 /// Message sent by the adapter to the client.
 class AdaptMessageResponse {
+  /// Indicates whether this is the last AdaptMessageResponse in the stream.
+  ///
+  /// This field may be optionally set by the server. Clients should not rely on
+  /// this field being set in all cases.
+  ///
+  /// Optional.
+  core.bool? last;
+
   /// Uninterpreted bytes from the underlying wire protocol.
   ///
   /// Optional.
@@ -5400,10 +5520,11 @@ class AdaptMessageResponse {
   /// Optional.
   core.Map<core.String, core.String>? stateUpdates;
 
-  AdaptMessageResponse({this.payload, this.stateUpdates});
+  AdaptMessageResponse({this.last, this.payload, this.stateUpdates});
 
   AdaptMessageResponse.fromJson(core.Map json_)
     : this(
+        last: json_['last'] as core.bool?,
         payload: json_['payload'] as core.String?,
         stateUpdates: (json_['stateUpdates']
                 as core.Map<core.String, core.dynamic>?)
@@ -5411,6 +5532,7 @@ class AdaptMessageResponse {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (last != null) 'last': last!,
     if (payload != null) 'payload': payload!,
     if (stateUpdates != null) 'stateUpdates': stateUpdates!,
   };
@@ -5598,9 +5720,53 @@ class AutoscalingConfigOverrides {
   /// Optional.
   core.int? autoscalingTargetHighPriorityCpuUtilizationPercent;
 
+  /// If specified, overrides the autoscaling target
+  /// `total_cpu_utilization_percent` in the top-level autoscaling configuration
+  /// for the selected replicas.
+  ///
+  /// Optional.
+  core.int? autoscalingTargetTotalCpuUtilizationPercent;
+
+  /// If true, disables high priority CPU autoscaling for the selected replicas
+  /// and ignores high_priority_cpu_utilization_percent in the top-level
+  /// autoscaling configuration.
+  ///
+  /// When setting this field to true, setting
+  /// autoscaling_target_high_priority_cpu_utilization_percent field to a
+  /// non-zero value for the same replica is not supported. If false, the
+  /// autoscaling_target_high_priority_cpu_utilization_percent field in the
+  /// replica will be used if set to a non-zero value. Otherwise, the
+  /// high_priority_cpu_utilization_percent field in the top-level autoscaling
+  /// configuration will be used. Setting both
+  /// disable_high_priority_cpu_autoscaling and disable_total_cpu_autoscaling to
+  /// true for the same replica is not supported.
+  ///
+  /// Optional.
+  core.bool? disableHighPriorityCpuAutoscaling;
+
+  /// If true, disables total CPU autoscaling for the selected replicas and
+  /// ignores total_cpu_utilization_percent in the top-level autoscaling
+  /// configuration.
+  ///
+  /// When setting this field to true, setting
+  /// autoscaling_target_total_cpu_utilization_percent field to a non-zero value
+  /// for the same replica is not supported. If false, the
+  /// autoscaling_target_total_cpu_utilization_percent field in the replica will
+  /// be used if set to a non-zero value. Otherwise, the
+  /// total_cpu_utilization_percent field in the top-level autoscaling
+  /// configuration will be used. Setting both
+  /// disable_high_priority_cpu_autoscaling and disable_total_cpu_autoscaling to
+  /// true for the same replica is not supported.
+  ///
+  /// Optional.
+  core.bool? disableTotalCpuAutoscaling;
+
   AutoscalingConfigOverrides({
     this.autoscalingLimits,
     this.autoscalingTargetHighPriorityCpuUtilizationPercent,
+    this.autoscalingTargetTotalCpuUtilizationPercent,
+    this.disableHighPriorityCpuAutoscaling,
+    this.disableTotalCpuAutoscaling,
   });
 
   AutoscalingConfigOverrides.fromJson(core.Map json_)
@@ -5615,6 +5781,12 @@ class AutoscalingConfigOverrides {
         autoscalingTargetHighPriorityCpuUtilizationPercent:
             json_['autoscalingTargetHighPriorityCpuUtilizationPercent']
                 as core.int?,
+        autoscalingTargetTotalCpuUtilizationPercent:
+            json_['autoscalingTargetTotalCpuUtilizationPercent'] as core.int?,
+        disableHighPriorityCpuAutoscaling:
+            json_['disableHighPriorityCpuAutoscaling'] as core.bool?,
+        disableTotalCpuAutoscaling:
+            json_['disableTotalCpuAutoscaling'] as core.bool?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5622,6 +5794,13 @@ class AutoscalingConfigOverrides {
     if (autoscalingTargetHighPriorityCpuUtilizationPercent != null)
       'autoscalingTargetHighPriorityCpuUtilizationPercent':
           autoscalingTargetHighPriorityCpuUtilizationPercent!,
+    if (autoscalingTargetTotalCpuUtilizationPercent != null)
+      'autoscalingTargetTotalCpuUtilizationPercent':
+          autoscalingTargetTotalCpuUtilizationPercent!,
+    if (disableHighPriorityCpuAutoscaling != null)
+      'disableHighPriorityCpuAutoscaling': disableHighPriorityCpuAutoscaling!,
+    if (disableTotalCpuAutoscaling != null)
+      'disableTotalCpuAutoscaling': disableTotalCpuAutoscaling!,
   };
 }
 
@@ -5682,9 +5861,11 @@ class AutoscalingTargets {
   /// should be trying to achieve for the instance.
   ///
   /// This number is on a scale from 0 (no utilization) to 100 (full
-  /// utilization). The valid range is \[10, 90\] inclusive.
+  /// utilization). The valid range is \[10, 90\] inclusive. If not specified or
+  /// set to 0, the autoscaler skips scaling based on high priority CPU
+  /// utilization.
   ///
-  /// Required.
+  /// Optional.
   core.int? highPriorityCpuUtilizationPercent;
 
   /// The target storage utilization percentage that the autoscaler should be
@@ -5696,9 +5877,23 @@ class AutoscalingTargets {
   /// Required.
   core.int? storageUtilizationPercent;
 
+  /// The target total CPU utilization percentage that the autoscaler should be
+  /// trying to achieve for the instance.
+  ///
+  /// This number is on a scale from 0 (no utilization) to 100 (full
+  /// utilization). The valid range is \[10, 90\] inclusive. If not specified or
+  /// set to 0, the autoscaler skips scaling based on total CPU utilization. If
+  /// both `high_priority_cpu_utilization_percent` and
+  /// `total_cpu_utilization_percent` are specified, the autoscaler provisions
+  /// the larger of the two required compute capacities to satisfy both targets.
+  ///
+  /// Optional.
+  core.int? totalCpuUtilizationPercent;
+
   AutoscalingTargets({
     this.highPriorityCpuUtilizationPercent,
     this.storageUtilizationPercent,
+    this.totalCpuUtilizationPercent,
   });
 
   AutoscalingTargets.fromJson(core.Map json_)
@@ -5707,6 +5902,8 @@ class AutoscalingTargets {
             json_['highPriorityCpuUtilizationPercent'] as core.int?,
         storageUtilizationPercent:
             json_['storageUtilizationPercent'] as core.int?,
+        totalCpuUtilizationPercent:
+            json_['totalCpuUtilizationPercent'] as core.int?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5714,6 +5911,8 @@ class AutoscalingTargets {
       'highPriorityCpuUtilizationPercent': highPriorityCpuUtilizationPercent!,
     if (storageUtilizationPercent != null)
       'storageUtilizationPercent': storageUtilizationPercent!,
+    if (totalCpuUtilizationPercent != null)
+      'totalCpuUtilizationPercent': totalCpuUtilizationPercent!,
   };
 }
 
@@ -5816,10 +6015,10 @@ class Backup {
   /// Output only.
   core.String? incrementalBackupChainId;
 
-  /// The instance partition(s) storing the backup.
+  /// The instance partition storing the backup.
   ///
-  /// This is the same as the list of the instance partition(s) that the
-  /// database had footprint in at the backup's `version_time`.
+  /// This is the same as the list of the instance partitions that the database
+  /// recorded at the backup's `version_time`.
   ///
   /// Output only.
   core.List<BackupInstancePartition>? instancePartitions;
@@ -5834,6 +6033,18 @@ class Backup {
   ///
   /// Output only.
   core.String? maxExpireTime;
+
+  /// The minimum edition required to successfully restore the backup.
+  ///
+  /// Populated only if the edition is Enterprise or Enterprise Plus.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "EDITION_UNSPECIFIED" : Edition not specified.
+  /// - "STANDARD" : Standard edition.
+  /// - "ENTERPRISE" : Enterprise edition.
+  /// - "ENTERPRISE_PLUS" : Enterprise Plus edition.
+  core.String? minimumRestorableEdition;
 
   /// Output only for the CreateBackup operation.
   ///
@@ -5918,6 +6129,7 @@ class Backup {
     this.incrementalBackupChainId,
     this.instancePartitions,
     this.maxExpireTime,
+    this.minimumRestorableEdition,
     this.name,
     this.oldestVersionTime,
     this.referencingBackups,
@@ -5965,6 +6177,8 @@ class Backup {
                 )
                 .toList(),
         maxExpireTime: json_['maxExpireTime'] as core.String?,
+        minimumRestorableEdition:
+            json_['minimumRestorableEdition'] as core.String?,
         name: json_['name'] as core.String?,
         oldestVersionTime: json_['oldestVersionTime'] as core.String?,
         referencingBackups:
@@ -5995,6 +6209,8 @@ class Backup {
       'incrementalBackupChainId': incrementalBackupChainId!,
     if (instancePartitions != null) 'instancePartitions': instancePartitions!,
     if (maxExpireTime != null) 'maxExpireTime': maxExpireTime!,
+    if (minimumRestorableEdition != null)
+      'minimumRestorableEdition': minimumRestorableEdition!,
     if (name != null) 'name': name!,
     if (oldestVersionTime != null) 'oldestVersionTime': oldestVersionTime!,
     if (referencingBackups != null) 'referencingBackups': referencingBackups!,
@@ -6195,9 +6411,10 @@ class BackupScheduleSpec {
 class BatchCreateSessionsRequest {
   /// The number of sessions to be created in this batch call.
   ///
-  /// The API can return fewer than the requested number of sessions. If a
-  /// specific number of sessions are desired, the client can make additional
-  /// calls to `BatchCreateSessions` (adjusting session_count as necessary).
+  /// At least one session is created. The API can return fewer than the
+  /// requested number of sessions. If a specific number of sessions are
+  /// desired, the client can make additional calls to `BatchCreateSessions`
+  /// (adjusting session_count as necessary).
   ///
   /// Required.
   core.int? sessionCount;
@@ -6592,6 +6809,34 @@ class ChildLink {
   };
 }
 
+/// Container for various pieces of client-owned context attached to a request.
+class ClientContext {
+  /// Map of parameter name to value for this request.
+  ///
+  /// These values will be returned by any SECURE_CONTEXT() calls invoked by
+  /// this request (e.g., by queries against Parameterized Secure Views).
+  ///
+  /// Optional.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Map<core.String, core.Object?>? secureContext;
+
+  ClientContext({this.secureContext});
+
+  ClientContext.fromJson(core.Map json_)
+    : this(
+        secureContext:
+            json_.containsKey('secureContext')
+                ? json_['secureContext'] as core.Map<core.String, core.dynamic>
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (secureContext != null) 'secureContext': secureContext!,
+  };
+}
+
 /// The request for Commit.
 class CommitRequest {
   /// The amount of latency this request is configured to incur in order to
@@ -6724,7 +6969,19 @@ class CommitResponse {
   /// You must retry the commit with the new precommit token.
   MultiplexedSessionPrecommitToken? precommitToken;
 
-  CommitResponse({this.commitStats, this.commitTimestamp, this.precommitToken});
+  /// If `TransactionOptions.isolation_level` is set to
+  /// `IsolationLevel.REPEATABLE_READ`, then the snapshot timestamp is the
+  /// timestamp at which all reads in the transaction ran.
+  ///
+  /// This timestamp is never returned.
+  core.String? snapshotTimestamp;
+
+  CommitResponse({
+    this.commitStats,
+    this.commitTimestamp,
+    this.precommitToken,
+    this.snapshotTimestamp,
+  });
 
   CommitResponse.fromJson(core.Map json_)
     : this(
@@ -6742,12 +6999,14 @@ class CommitResponse {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        snapshotTimestamp: json_['snapshotTimestamp'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (commitStats != null) 'commitStats': commitStats!,
     if (commitTimestamp != null) 'commitTimestamp': commitTimestamp!,
     if (precommitToken != null) 'precommitToken': precommitToken!,
+    if (snapshotTimestamp != null) 'snapshotTimestamp': snapshotTimestamp!,
   };
 }
 
@@ -6834,13 +7093,18 @@ class CopyBackupEncryptionConfig {
   /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
   /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
   /// specified, either `kms_key_name` or `kms_key_names` must contain valid
-  /// Cloud KMS key(s).
+  /// Cloud KMS keys.
   core.String? encryptionType;
 
-  /// The Cloud KMS key that will be used to protect the backup.
+  /// This field is maintained for backwards compatibility.
   ///
-  /// This field should be set only when encryption_type is
-  /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// For new callers, we recommend using `kms_key_names` to specify the KMS
+  /// key. Only use `kms_key_name` if the location of the KMS key matches the
+  /// database instance's configuration (location) exactly. For example, if the
+  /// KMS location is in `us-central1` or `nam3`, then the database instance
+  /// must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to
+  /// encrypt and decrypt the restored database. Set this field only when
+  /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
   /// `projects//locations//keyRings//cryptoKeys/`.
   ///
   /// Optional.
@@ -6971,10 +7235,15 @@ class CreateBackupEncryptionConfig {
   /// specified, `kms_key_name` must contain a valid Cloud KMS key.
   core.String? encryptionType;
 
-  /// The Cloud KMS key that will be used to protect the backup.
+  /// This field is maintained for backwards compatibility.
   ///
-  /// This field should be set only when encryption_type is
-  /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// For new callers, we recommend using `kms_key_names` to specify the KMS
+  /// key. Only use `kms_key_name` if the location of the KMS key matches the
+  /// database instance's configuration (location) exactly. For example, if the
+  /// KMS location is in `us-central1` or `nam3`, then the database instance
+  /// must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to
+  /// encrypt and decrypt the restored database. Set this field only when
+  /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
   /// `projects//locations//keyRings//cryptoKeys/`.
   ///
   /// Optional.
@@ -9093,11 +9362,11 @@ class InstanceEncryptionConfig {
   /// This field is maintained for backwards compatibility.
   ///
   /// For new callers, we recommend using `kms_key_names` to specify the KMS
-  /// key. `kms_key_name` should only be used if the location of the KMS key
-  /// matches the database instance’s configuration (location) exactly. E.g. The
-  /// KMS location is in us-central1 or nam3 and the database instance is also
-  /// in us-central1 or nam3. The Cloud KMS key to be used for encrypting and
-  /// decrypting the database. Values are of the form
+  /// key. Only use `kms_key_name` if the location of the KMS key matches the
+  /// database instance's configuration (location) exactly. For example, if the
+  /// KMS location is in `us-central1` or `nam3`, then the database instance
+  /// must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to
+  /// encrypt and decrypt the restored database. Values are of the form
   /// `projects//locations//keyRings//cryptoKeys/`.
   ///
   /// Optional.
@@ -9141,6 +9410,15 @@ class InstanceEncryptionConfig {
 /// An isolated set of Cloud Spanner resources that databases can define
 /// placements on.
 class InstancePartition {
+  /// The autoscaling configuration.
+  ///
+  /// Autoscaling is enabled if this field is set. When autoscaling is enabled,
+  /// fields in compute_capacity are treated as OUTPUT_ONLY fields and reflect
+  /// the current compute capacity allocated to the instance partition.
+  ///
+  /// Optional.
+  AutoscalingConfig? autoscalingConfig;
+
   /// The name of the instance partition's configuration.
   ///
   /// Values are of the form `projects//instanceConfigs/`. See also
@@ -9240,6 +9518,7 @@ class InstancePartition {
   core.String? updateTime;
 
   InstancePartition({
+    this.autoscalingConfig,
     this.config,
     this.createTime,
     this.displayName,
@@ -9255,6 +9534,13 @@ class InstancePartition {
 
   InstancePartition.fromJson(core.Map json_)
     : this(
+        autoscalingConfig:
+            json_.containsKey('autoscalingConfig')
+                ? AutoscalingConfig.fromJson(
+                  json_['autoscalingConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         config: json_['config'] as core.String?,
         createTime: json_['createTime'] as core.String?,
         displayName: json_['displayName'] as core.String?,
@@ -9275,6 +9561,7 @@ class InstancePartition {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (autoscalingConfig != null) 'autoscalingConfig': autoscalingConfig!,
     if (config != null) 'config': config!,
     if (createTime != null) 'createTime': createTime!,
     if (displayName != null) 'displayName': displayName!,
@@ -9292,7 +9579,7 @@ class InstancePartition {
 
 /// ReplicaSelection identifies replicas with common properties.
 class InstanceReplicaSelection {
-  /// Name of the location of the replicas (e.g., "us-central1").
+  /// Name of the location of the replicas (for example, "us-central1").
   ///
   /// Required.
   core.String? location;
@@ -10011,7 +10298,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -10024,11 +10323,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -10399,6 +10703,9 @@ class MultiplexedSessionPrecommitToken {
 /// Mutations can be applied to a Cloud Spanner database by sending them in a
 /// Commit call.
 class Mutation {
+  /// Ack a message from a queue.
+  Ack? ack;
+
   /// Delete rows from a table.
   ///
   /// Succeeds whether or not the named rows were present.
@@ -10429,6 +10736,9 @@ class Mutation {
   /// you replace the parent row.
   Write? replace;
 
+  /// Send a message to a queue.
+  Send? send;
+
   /// Update existing rows in a table.
   ///
   /// If any of the rows does not already exist, the transaction fails with
@@ -10436,15 +10746,23 @@ class Mutation {
   Write? update;
 
   Mutation({
+    this.ack,
     this.delete,
     this.insert,
     this.insertOrUpdate,
     this.replace,
+    this.send,
     this.update,
   });
 
   Mutation.fromJson(core.Map json_)
     : this(
+        ack:
+            json_.containsKey('ack')
+                ? Ack.fromJson(
+                  json_['ack'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         delete:
             json_.containsKey('delete')
                 ? Delete.fromJson(
@@ -10470,6 +10788,12 @@ class Mutation {
                   json_['replace'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        send:
+            json_.containsKey('send')
+                ? Send.fromJson(
+                  json_['send'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         update:
             json_.containsKey('update')
                 ? Write.fromJson(
@@ -10479,10 +10803,12 @@ class Mutation {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (ack != null) 'ack': ack!,
     if (delete != null) 'delete': delete!,
     if (insert != null) 'insert': insert!,
     if (insertOrUpdate != null) 'insertOrUpdate': insertOrUpdate!,
     if (replace != null) 'replace': replace!,
+    if (send != null) 'send': send!,
     if (update != null) 'update': update!,
   };
 }
@@ -10812,6 +11138,8 @@ class PartitionQueryRequest {
   /// used to specify the exact SQL type for some or all of the SQL query
   /// parameters. See the definition of Type for more information about SQL
   /// types.
+  ///
+  /// Optional.
   core.Map<core.String, Type>? paramTypes;
 
   /// Parameter names and values that bind to placeholders in the SQL string.
@@ -10822,6 +11150,8 @@ class PartitionQueryRequest {
   /// literal value is expected. The same parameter name can be used more than
   /// once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"` It's an
   /// error to execute a SQL statement with unbound parameters.
+  ///
+  /// Optional.
   ///
   /// The values for Object must be JSON objects. It can consist of `num`,
   /// `String`, `bool` and `null` as well as `Map` and `List` values.
@@ -11983,6 +12313,11 @@ class ReplicaSelection {
 
 /// Common request options for various APIs.
 class RequestOptions {
+  /// Optional context that may be needed for some requests.
+  ///
+  /// Optional.
+  ClientContext? clientContext;
+
   /// Priority for the request.
   /// Possible string values are:
   /// - "PRIORITY_UNSPECIFIED" : `PRIORITY_UNSPECIFIED` is equivalent to
@@ -12007,25 +12342,38 @@ class RequestOptions {
   /// A tag used for statistics collection about this transaction.
   ///
   /// Both `request_tag` and `transaction_tag` can be specified for a read or
-  /// query that belongs to a transaction. The value of transaction_tag should
-  /// be the same for all requests belonging to the same transaction. If this
-  /// request doesn't belong to any transaction, `transaction_tag` is ignored.
-  /// Legal characters for `transaction_tag` values are all printable characters
+  /// query that belongs to a transaction. To enable tagging on a transaction,
+  /// `transaction_tag` must be set to the same value for all requests belonging
+  /// to the same transaction, including BeginTransaction. If this request
+  /// doesn't belong to any transaction, `transaction_tag` is ignored. Legal
+  /// characters for `transaction_tag` values are all printable characters
   /// (ASCII 32 - 126) and the length of a `transaction_tag` is limited to 50
   /// characters. Values that exceed this limit are truncated. Any leading
   /// underscore (_) characters are removed from the string.
   core.String? transactionTag;
 
-  RequestOptions({this.priority, this.requestTag, this.transactionTag});
+  RequestOptions({
+    this.clientContext,
+    this.priority,
+    this.requestTag,
+    this.transactionTag,
+  });
 
   RequestOptions.fromJson(core.Map json_)
     : this(
+        clientContext:
+            json_.containsKey('clientContext')
+                ? ClientContext.fromJson(
+                  json_['clientContext'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         priority: json_['priority'] as core.String?,
         requestTag: json_['requestTag'] as core.String?,
         transactionTag: json_['transactionTag'] as core.String?,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (clientContext != null) 'clientContext': clientContext!,
     if (priority != null) 'priority': priority!,
     if (requestTag != null) 'requestTag': requestTag!,
     if (transactionTag != null) 'transactionTag': transactionTag!,
@@ -12046,11 +12394,15 @@ class RestoreDatabaseEncryptionConfig {
   /// specified, `kms_key_name` must must contain a valid Cloud KMS key.
   core.String? encryptionType;
 
-  /// The Cloud KMS key that will be used to encrypt/decrypt the restored
-  /// database.
+  /// This field is maintained for backwards compatibility.
   ///
-  /// This field should be set only when encryption_type is
-  /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// For new callers, we recommend using `kms_key_names` to specify the KMS
+  /// key. Only use `kms_key_name` if the location of the KMS key matches the
+  /// database instance's configuration (location) exactly. For example, if the
+  /// KMS location is in `us-central1` or `nam3`, then the database instance
+  /// must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to
+  /// encrypt and decrypt the restored database. Set this field only when
+  /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
   /// `projects//locations//keyRings//cryptoKeys/`.
   ///
   /// Optional.
@@ -12481,6 +12833,52 @@ class ScanData {
   };
 }
 
+/// Arguments to send operations.
+class Send {
+  /// The time at which Spanner will begin attempting to deliver the message.
+  ///
+  /// If `deliver_time` is not set, Spanner will deliver the message
+  /// immediately. If `deliver_time` is in the past, Spanner will replace it
+  /// with a value closer to the current time.
+  core.String? deliverTime;
+
+  /// The primary key of the message to be sent.
+  ///
+  /// Required.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.List<core.Object?>? key;
+
+  /// The payload of the message.
+  ///
+  /// The values for Object must be JSON objects. It can consist of `num`,
+  /// `String`, `bool` and `null` as well as `Map` and `List` values.
+  core.Object? payload;
+
+  /// The queue to which the message will be sent.
+  ///
+  /// Required.
+  core.String? queue;
+
+  Send({this.deliverTime, this.key, this.payload, this.queue});
+
+  Send.fromJson(core.Map json_)
+    : this(
+        deliverTime: json_['deliverTime'] as core.String?,
+        key: json_.containsKey('key') ? json_['key'] as core.List : null,
+        payload: json_['payload'],
+        queue: json_['queue'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (deliverTime != null) 'deliverTime': deliverTime!,
+    if (key != null) 'key': key!,
+    if (payload != null) 'payload': payload!,
+    if (queue != null) 'queue': queue!,
+  };
+}
+
 /// A session in the Cloud Spanner API.
 class Session {
   /// The approximate timestamp when the session is last used.
@@ -12510,11 +12908,11 @@ class Session {
 
   /// If `true`, specifies a multiplexed session.
   ///
-  /// Use a multiplexed session for multiple, concurrent read-only operations.
-  /// Don't use them for read-write transactions, partitioned reads, or
-  /// partitioned queries. Use `sessions.create` to create multiplexed sessions.
-  /// Don't use BatchCreateSessions to create a multiplexed session. You can't
-  /// delete or list multiplexed sessions.
+  /// Use a multiplexed session for multiple, concurrent operations including
+  /// any combination of read-only and read-write transactions. Use
+  /// `sessions.create` to create multiplexed sessions. Don't use
+  /// BatchCreateSessions to create a multiplexed session. You can't delete or
+  /// list multiplexed sessions.
   ///
   /// Optional.
   core.bool? multiplexed;
@@ -12617,7 +13015,7 @@ class ShortRepresentation {
 
 /// Message type for a single-region quorum.
 class SingleRegionQuorum {
-  /// The location of the serving region, e.g. "us-central1".
+  /// The location of the serving region, for example, "us-central1".
   ///
   /// The location must be one of the regions within the dual-region instance
   /// configuration of your database. The list of valid locations is available
@@ -12890,15 +13288,15 @@ class TransactionOptions {
   /// transactions actually occurred in parallel. Spanner assigns commit
   /// timestamps that reflect the order of committed transactions to implement
   /// this property. Spanner offers a stronger guarantee than serializability
-  /// called external consistency. For further details, please refer to
-  /// https://cloud.google.com/spanner/docs/true-time-external-consistency#serializability.
+  /// called external consistency. For more information, see
+  /// [TrueTime and external consistency](https://cloud.google.com/spanner/docs/true-time-external-consistency#serializability).
   /// - "REPEATABLE_READ" : All reads performed during the transaction observe a
   /// consistent snapshot of the database, and the transaction is only
   /// successfully committed in the absence of conflicts between its updates and
   /// any concurrent updates that have occurred since that snapshot.
   /// Consequently, in contrast to `SERIALIZABLE` transactions, only write-write
   /// conflicts are detected in snapshot transactions. This isolation level does
-  /// not support Read-only and Partitioned DML transactions. When
+  /// not support read-only and partitioned DML transactions. When
   /// `REPEATABLE_READ` is specified on a read-write transaction, the locking
   /// semantics default to `OPTIMISTIC`.
   core.String? isolationLevel;
@@ -13072,6 +13470,8 @@ class Type {
   /// `P[n]Y[n]M[n]DT[n]H[n]M[n[.fraction]]S` where `n` is an integer. For
   /// example, `P1Y2M3DT4H5M6.5S` represents time duration of 1 year, 2 months,
   /// 3 days, 4 hours, 5 minutes, and 6.5 seconds.
+  /// - "UUID" : Encoded as `string`, in lower-case hexa-decimal format, as
+  /// described in RFC 9562, section 4.
   core.String? code;
 
   /// If code == PROTO or code == ENUM, then `proto_type_fqn` is the fully
@@ -13151,7 +13551,7 @@ class Type {
 ///
 /// The server checks that the statements are executable (syntactically valid,
 /// name tables that exist, etc.) before enqueueing them, but they may still
-/// fail upon later execution (e.g., if a statement from another batch of
+/// fail upon later execution (for example, if a statement from another batch of
 /// statements is applied first and it conflicts in some way, or if there is
 /// some data-related problem like a `NULL` value in a column to which `NOT
 /// NULL` would be added). If a statement fails, all subsequent statements in

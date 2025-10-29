@@ -305,6 +305,7 @@ api.BatchTranslateDocumentRequest buildBatchTranslateDocumentRequest() {
     o.inputConfigs = buildUnnamed5();
     o.models = buildUnnamed6();
     o.outputConfig = buildBatchDocumentOutputConfig();
+    o.pdfNativeOnly = true;
     o.sourceLanguageCode = 'foo';
     o.targetLanguageCodes = buildUnnamed7();
   }
@@ -323,6 +324,7 @@ void checkBatchTranslateDocumentRequest(api.BatchTranslateDocumentRequest o) {
     checkUnnamed5(o.inputConfigs!);
     checkUnnamed6(o.models!);
     checkBatchDocumentOutputConfig(o.outputConfig!);
+    unittest.expect(o.pdfNativeOnly!, unittest.isTrue);
     unittest.expect(o.sourceLanguageCode!, unittest.equals('foo'));
     checkUnnamed7(o.targetLanguageCodes!);
   }
@@ -521,6 +523,7 @@ api.DetectLanguageRequest buildDetectLanguageRequest() {
   buildCounterDetectLanguageRequest++;
   if (buildCounterDetectLanguageRequest < 3) {
     o.content = 'foo';
+    o.documentInputConfig = buildDocumentInputConfig();
     o.labels = buildUnnamed14();
     o.mimeType = 'foo';
     o.model = 'foo';
@@ -533,6 +536,7 @@ void checkDetectLanguageRequest(api.DetectLanguageRequest o) {
   buildCounterDetectLanguageRequest++;
   if (buildCounterDetectLanguageRequest < 3) {
     unittest.expect(o.content!, unittest.equals('foo'));
+    checkDocumentInputConfig(o.documentInputConfig!);
     checkUnnamed14(o.labels!);
     unittest.expect(o.mimeType!, unittest.equals('foo'));
     unittest.expect(o.model!, unittest.equals('foo'));
@@ -1431,6 +1435,14 @@ void checkUnnamed28(core.List<api.Operation> o) {
   checkOperation(o[1]);
 }
 
+core.List<core.String> buildUnnamed29() => ['foo', 'foo'];
+
+void checkUnnamed29(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
 core.int buildCounterListOperationsResponse = 0;
 api.ListOperationsResponse buildListOperationsResponse() {
   final o = api.ListOperationsResponse();
@@ -1438,6 +1450,7 @@ api.ListOperationsResponse buildListOperationsResponse() {
   if (buildCounterListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
     o.operations = buildUnnamed28();
+    o.unreachable = buildUnnamed29();
   }
   buildCounterListOperationsResponse--;
   return o;
@@ -1448,19 +1461,20 @@ void checkListOperationsResponse(api.ListOperationsResponse o) {
   if (buildCounterListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken!, unittest.equals('foo'));
     checkUnnamed28(o.operations!);
+    checkUnnamed29(o.unreachable!);
   }
   buildCounterListOperationsResponse--;
 }
 
-core.Map<core.String, core.String> buildUnnamed29() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed30() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed29(core.Map<core.String, core.String> o) {
+void checkUnnamed30(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object?> buildUnnamed30() => {
+core.Map<core.String, core.Object?> buildUnnamed31() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1473,7 +1487,7 @@ core.Map<core.String, core.Object?> buildUnnamed30() => {
   },
 };
 
-void checkUnnamed30(core.Map<core.String, core.Object?> o) {
+void checkUnnamed31(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']!) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -1493,9 +1507,9 @@ api.Location buildLocation() {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     o.displayName = 'foo';
-    o.labels = buildUnnamed29();
+    o.labels = buildUnnamed30();
     o.locationId = 'foo';
-    o.metadata = buildUnnamed30();
+    o.metadata = buildUnnamed31();
     o.name = 'foo';
   }
   buildCounterLocation--;
@@ -1506,9 +1520,9 @@ void checkLocation(api.Location o) {
   buildCounterLocation++;
   if (buildCounterLocation < 3) {
     unittest.expect(o.displayName!, unittest.equals('foo'));
-    checkUnnamed29(o.labels!);
+    checkUnnamed30(o.labels!);
     unittest.expect(o.locationId!, unittest.equals('foo'));
-    checkUnnamed30(o.metadata!);
+    checkUnnamed31(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
   }
   buildCounterLocation--;
@@ -1551,33 +1565,6 @@ void checkModel(api.Model o) {
   buildCounterModel--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed31() => {
-  'x': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-  'y': {
-    'list': [1, 2, 3],
-    'bool': true,
-    'string': 'foo',
-  },
-};
-
-void checkUnnamed31(core.Map<core.String, core.Object?> o) {
-  unittest.expect(o, unittest.hasLength(2));
-  var casted3 = (o['x']!) as core.Map;
-  unittest.expect(casted3, unittest.hasLength(3));
-  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted3['bool'], unittest.equals(true));
-  unittest.expect(casted3['string'], unittest.equals('foo'));
-  var casted4 = (o['y']!) as core.Map;
-  unittest.expect(casted4, unittest.hasLength(3));
-  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
-  unittest.expect(casted4['bool'], unittest.equals(true));
-  unittest.expect(casted4['string'], unittest.equals('foo'));
-}
-
 core.Map<core.String, core.Object?> buildUnnamed32() => {
   'x': {
     'list': [1, 2, 3],
@@ -1592,6 +1579,33 @@ core.Map<core.String, core.Object?> buildUnnamed32() => {
 };
 
 void checkUnnamed32(core.Map<core.String, core.Object?> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  var casted3 = (o['x']!) as core.Map;
+  unittest.expect(casted3, unittest.hasLength(3));
+  unittest.expect(casted3['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted3['bool'], unittest.equals(true));
+  unittest.expect(casted3['string'], unittest.equals('foo'));
+  var casted4 = (o['y']!) as core.Map;
+  unittest.expect(casted4, unittest.hasLength(3));
+  unittest.expect(casted4['list'], unittest.equals([1, 2, 3]));
+  unittest.expect(casted4['bool'], unittest.equals(true));
+  unittest.expect(casted4['string'], unittest.equals('foo'));
+}
+
+core.Map<core.String, core.Object?> buildUnnamed33() => {
+  'x': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+  'y': {
+    'list': [1, 2, 3],
+    'bool': true,
+    'string': 'foo',
+  },
+};
+
+void checkUnnamed33(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']!) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -1612,9 +1626,9 @@ api.Operation buildOperation() {
   if (buildCounterOperation < 3) {
     o.done = true;
     o.error = buildStatus();
-    o.metadata = buildUnnamed31();
+    o.metadata = buildUnnamed32();
     o.name = 'foo';
-    o.response = buildUnnamed32();
+    o.response = buildUnnamed33();
   }
   buildCounterOperation--;
   return o;
@@ -1625,9 +1639,9 @@ void checkOperation(api.Operation o) {
   if (buildCounterOperation < 3) {
     unittest.expect(o.done!, unittest.isTrue);
     checkStatus(o.error!);
-    checkUnnamed31(o.metadata!);
+    checkUnnamed32(o.metadata!);
     unittest.expect(o.name!, unittest.equals('foo'));
-    checkUnnamed32(o.response!);
+    checkUnnamed33(o.response!);
   }
   buildCounterOperation--;
 }
@@ -1651,12 +1665,12 @@ void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig--;
 }
 
-core.List<api.ReferenceSentencePairList> buildUnnamed33() => [
+core.List<api.ReferenceSentencePairList> buildUnnamed34() => [
   buildReferenceSentencePairList(),
   buildReferenceSentencePairList(),
 ];
 
-void checkUnnamed33(core.List<api.ReferenceSentencePairList> o) {
+void checkUnnamed34(core.List<api.ReferenceSentencePairList> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReferenceSentencePairList(o[0]);
   checkReferenceSentencePairList(o[1]);
@@ -1667,7 +1681,7 @@ api.ReferenceSentenceConfig buildReferenceSentenceConfig() {
   final o = api.ReferenceSentenceConfig();
   buildCounterReferenceSentenceConfig++;
   if (buildCounterReferenceSentenceConfig < 3) {
-    o.referenceSentencePairLists = buildUnnamed33();
+    o.referenceSentencePairLists = buildUnnamed34();
     o.sourceLanguageCode = 'foo';
     o.targetLanguageCode = 'foo';
   }
@@ -1678,7 +1692,7 @@ api.ReferenceSentenceConfig buildReferenceSentenceConfig() {
 void checkReferenceSentenceConfig(api.ReferenceSentenceConfig o) {
   buildCounterReferenceSentenceConfig++;
   if (buildCounterReferenceSentenceConfig < 3) {
-    checkUnnamed33(o.referenceSentencePairLists!);
+    checkUnnamed34(o.referenceSentencePairLists!);
     unittest.expect(o.sourceLanguageCode!, unittest.equals('foo'));
     unittest.expect(o.targetLanguageCode!, unittest.equals('foo'));
   }
@@ -1706,12 +1720,12 @@ void checkReferenceSentencePair(api.ReferenceSentencePair o) {
   buildCounterReferenceSentencePair--;
 }
 
-core.List<api.ReferenceSentencePair> buildUnnamed34() => [
+core.List<api.ReferenceSentencePair> buildUnnamed35() => [
   buildReferenceSentencePair(),
   buildReferenceSentencePair(),
 ];
 
-void checkUnnamed34(core.List<api.ReferenceSentencePair> o) {
+void checkUnnamed35(core.List<api.ReferenceSentencePair> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkReferenceSentencePair(o[0]);
   checkReferenceSentencePair(o[1]);
@@ -1722,7 +1736,7 @@ api.ReferenceSentencePairList buildReferenceSentencePairList() {
   final o = api.ReferenceSentencePairList();
   buildCounterReferenceSentencePairList++;
   if (buildCounterReferenceSentencePairList < 3) {
-    o.referenceSentencePairs = buildUnnamed34();
+    o.referenceSentencePairs = buildUnnamed35();
   }
   buildCounterReferenceSentencePairList--;
   return o;
@@ -1731,9 +1745,91 @@ api.ReferenceSentencePairList buildReferenceSentencePairList() {
 void checkReferenceSentencePairList(api.ReferenceSentencePairList o) {
   buildCounterReferenceSentencePairList++;
   if (buildCounterReferenceSentencePairList < 3) {
-    checkUnnamed34(o.referenceSentencePairs!);
+    checkUnnamed35(o.referenceSentencePairs!);
   }
   buildCounterReferenceSentencePairList--;
+}
+
+core.List<api.RefinementEntry> buildUnnamed36() => [
+  buildRefinementEntry(),
+  buildRefinementEntry(),
+];
+
+void checkUnnamed36(core.List<api.RefinementEntry> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  checkRefinementEntry(o[0]);
+  checkRefinementEntry(o[1]);
+}
+
+core.int buildCounterRefineTextRequest = 0;
+api.RefineTextRequest buildRefineTextRequest() {
+  final o = api.RefineTextRequest();
+  buildCounterRefineTextRequest++;
+  if (buildCounterRefineTextRequest < 3) {
+    o.refinementEntries = buildUnnamed36();
+    o.sourceLanguageCode = 'foo';
+    o.targetLanguageCode = 'foo';
+  }
+  buildCounterRefineTextRequest--;
+  return o;
+}
+
+void checkRefineTextRequest(api.RefineTextRequest o) {
+  buildCounterRefineTextRequest++;
+  if (buildCounterRefineTextRequest < 3) {
+    checkUnnamed36(o.refinementEntries!);
+    unittest.expect(o.sourceLanguageCode!, unittest.equals('foo'));
+    unittest.expect(o.targetLanguageCode!, unittest.equals('foo'));
+  }
+  buildCounterRefineTextRequest--;
+}
+
+core.List<core.String> buildUnnamed37() => ['foo', 'foo'];
+
+void checkUnnamed37(core.List<core.String> o) {
+  unittest.expect(o, unittest.hasLength(2));
+  unittest.expect(o[0], unittest.equals('foo'));
+  unittest.expect(o[1], unittest.equals('foo'));
+}
+
+core.int buildCounterRefineTextResponse = 0;
+api.RefineTextResponse buildRefineTextResponse() {
+  final o = api.RefineTextResponse();
+  buildCounterRefineTextResponse++;
+  if (buildCounterRefineTextResponse < 3) {
+    o.refinedTranslations = buildUnnamed37();
+  }
+  buildCounterRefineTextResponse--;
+  return o;
+}
+
+void checkRefineTextResponse(api.RefineTextResponse o) {
+  buildCounterRefineTextResponse++;
+  if (buildCounterRefineTextResponse < 3) {
+    checkUnnamed37(o.refinedTranslations!);
+  }
+  buildCounterRefineTextResponse--;
+}
+
+core.int buildCounterRefinementEntry = 0;
+api.RefinementEntry buildRefinementEntry() {
+  final o = api.RefinementEntry();
+  buildCounterRefinementEntry++;
+  if (buildCounterRefinementEntry < 3) {
+    o.originalTranslation = 'foo';
+    o.sourceText = 'foo';
+  }
+  buildCounterRefinementEntry--;
+  return o;
+}
+
+void checkRefinementEntry(api.RefinementEntry o) {
+  buildCounterRefinementEntry++;
+  if (buildCounterRefinementEntry < 3) {
+    unittest.expect(o.originalTranslation!, unittest.equals('foo'));
+    unittest.expect(o.sourceText!, unittest.equals('foo'));
+  }
+  buildCounterRefinementEntry--;
 }
 
 core.int buildCounterRomanization = 0;
@@ -1757,9 +1853,9 @@ void checkRomanization(api.Romanization o) {
   buildCounterRomanization--;
 }
 
-core.List<core.String> buildUnnamed35() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed38() => ['foo', 'foo'];
 
-void checkUnnamed35(core.List<core.String> o) {
+void checkUnnamed38(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1770,7 +1866,7 @@ api.RomanizeTextRequest buildRomanizeTextRequest() {
   final o = api.RomanizeTextRequest();
   buildCounterRomanizeTextRequest++;
   if (buildCounterRomanizeTextRequest < 3) {
-    o.contents = buildUnnamed35();
+    o.contents = buildUnnamed38();
     o.sourceLanguageCode = 'foo';
   }
   buildCounterRomanizeTextRequest--;
@@ -1780,18 +1876,18 @@ api.RomanizeTextRequest buildRomanizeTextRequest() {
 void checkRomanizeTextRequest(api.RomanizeTextRequest o) {
   buildCounterRomanizeTextRequest++;
   if (buildCounterRomanizeTextRequest < 3) {
-    checkUnnamed35(o.contents!);
+    checkUnnamed38(o.contents!);
     unittest.expect(o.sourceLanguageCode!, unittest.equals('foo'));
   }
   buildCounterRomanizeTextRequest--;
 }
 
-core.List<api.Romanization> buildUnnamed36() => [
+core.List<api.Romanization> buildUnnamed39() => [
   buildRomanization(),
   buildRomanization(),
 ];
 
-void checkUnnamed36(core.List<api.Romanization> o) {
+void checkUnnamed39(core.List<api.Romanization> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRomanization(o[0]);
   checkRomanization(o[1]);
@@ -1802,7 +1898,7 @@ api.RomanizeTextResponse buildRomanizeTextResponse() {
   final o = api.RomanizeTextResponse();
   buildCounterRomanizeTextResponse++;
   if (buildCounterRomanizeTextResponse < 3) {
-    o.romanizations = buildUnnamed36();
+    o.romanizations = buildUnnamed39();
   }
   buildCounterRomanizeTextResponse--;
   return o;
@@ -1811,12 +1907,12 @@ api.RomanizeTextResponse buildRomanizeTextResponse() {
 void checkRomanizeTextResponse(api.RomanizeTextResponse o) {
   buildCounterRomanizeTextResponse++;
   if (buildCounterRomanizeTextResponse < 3) {
-    checkUnnamed36(o.romanizations!);
+    checkUnnamed39(o.romanizations!);
   }
   buildCounterRomanizeTextResponse--;
 }
 
-core.Map<core.String, core.Object?> buildUnnamed37() => {
+core.Map<core.String, core.Object?> buildUnnamed40() => {
   'x': {
     'list': [1, 2, 3],
     'bool': true,
@@ -1829,7 +1925,7 @@ core.Map<core.String, core.Object?> buildUnnamed37() => {
   },
 };
 
-void checkUnnamed37(core.Map<core.String, core.Object?> o) {
+void checkUnnamed40(core.Map<core.String, core.Object?> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']!) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -1843,15 +1939,15 @@ void checkUnnamed37(core.Map<core.String, core.Object?> o) {
   unittest.expect(casted8['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object?>> buildUnnamed38() => [
-  buildUnnamed37(),
-  buildUnnamed37(),
+core.List<core.Map<core.String, core.Object?>> buildUnnamed41() => [
+  buildUnnamed40(),
+  buildUnnamed40(),
 ];
 
-void checkUnnamed38(core.List<core.Map<core.String, core.Object?>> o) {
+void checkUnnamed41(core.List<core.Map<core.String, core.Object?>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed37(o[0]);
-  checkUnnamed37(o[1]);
+  checkUnnamed40(o[0]);
+  checkUnnamed40(o[1]);
 }
 
 core.int buildCounterStatus = 0;
@@ -1860,7 +1956,7 @@ api.Status buildStatus() {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed38();
+    o.details = buildUnnamed41();
     o.message = 'foo';
   }
   buildCounterStatus--;
@@ -1871,7 +1967,7 @@ void checkStatus(api.Status o) {
   buildCounterStatus++;
   if (buildCounterStatus < 3) {
     unittest.expect(o.code!, unittest.equals(42));
-    checkUnnamed38(o.details!);
+    checkUnnamed41(o.details!);
     unittest.expect(o.message!, unittest.equals('foo'));
   }
   buildCounterStatus--;
@@ -1902,12 +1998,12 @@ void checkSupportedLanguage(api.SupportedLanguage o) {
   buildCounterSupportedLanguage--;
 }
 
-core.List<api.SupportedLanguage> buildUnnamed39() => [
+core.List<api.SupportedLanguage> buildUnnamed42() => [
   buildSupportedLanguage(),
   buildSupportedLanguage(),
 ];
 
-void checkUnnamed39(core.List<api.SupportedLanguage> o) {
+void checkUnnamed42(core.List<api.SupportedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSupportedLanguage(o[0]);
   checkSupportedLanguage(o[1]);
@@ -1918,7 +2014,7 @@ api.SupportedLanguages buildSupportedLanguages() {
   final o = api.SupportedLanguages();
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    o.languages = buildUnnamed39();
+    o.languages = buildUnnamed42();
   }
   buildCounterSupportedLanguages--;
   return o;
@@ -1927,14 +2023,14 @@ api.SupportedLanguages buildSupportedLanguages() {
 void checkSupportedLanguages(api.SupportedLanguages o) {
   buildCounterSupportedLanguages++;
   if (buildCounterSupportedLanguages < 3) {
-    checkUnnamed39(o.languages!);
+    checkUnnamed42(o.languages!);
   }
   buildCounterSupportedLanguages--;
 }
 
-core.Map<core.String, core.String> buildUnnamed40() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed43() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed40(core.Map<core.String, core.String> o) {
+void checkUnnamed43(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -1952,7 +2048,7 @@ api.TranslateDocumentRequest buildTranslateDocumentRequest() {
     o.enableShadowRemovalNativePdf = true;
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
     o.isTranslateNativePdfOnly = true;
-    o.labels = buildUnnamed40();
+    o.labels = buildUnnamed43();
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
     o.targetLanguageCode = 'foo';
@@ -1971,7 +2067,7 @@ void checkTranslateDocumentRequest(api.TranslateDocumentRequest o) {
     unittest.expect(o.enableShadowRemovalNativePdf!, unittest.isTrue);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
     unittest.expect(o.isTranslateNativePdfOnly!, unittest.isTrue);
-    checkUnnamed40(o.labels!);
+    checkUnnamed43(o.labels!);
     unittest.expect(o.model!, unittest.equals('foo'));
     unittest.expect(o.sourceLanguageCode!, unittest.equals('foo'));
     unittest.expect(o.targetLanguageCode!, unittest.equals('foo'));
@@ -2027,17 +2123,17 @@ void checkTranslateTextGlossaryConfig(api.TranslateTextGlossaryConfig o) {
   buildCounterTranslateTextGlossaryConfig--;
 }
 
-core.List<core.String> buildUnnamed41() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed44() => ['foo', 'foo'];
 
-void checkUnnamed41(core.List<core.String> o) {
+void checkUnnamed44(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.String> buildUnnamed42() => {'x': 'foo', 'y': 'foo'};
+core.Map<core.String, core.String> buildUnnamed45() => {'x': 'foo', 'y': 'foo'};
 
-void checkUnnamed42(core.Map<core.String, core.String> o) {
+void checkUnnamed45(core.Map<core.String, core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o['x']!, unittest.equals('foo'));
   unittest.expect(o['y']!, unittest.equals('foo'));
@@ -2048,9 +2144,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
   final o = api.TranslateTextRequest();
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    o.contents = buildUnnamed41();
+    o.contents = buildUnnamed44();
     o.glossaryConfig = buildTranslateTextGlossaryConfig();
-    o.labels = buildUnnamed42();
+    o.labels = buildUnnamed45();
     o.mimeType = 'foo';
     o.model = 'foo';
     o.sourceLanguageCode = 'foo';
@@ -2064,9 +2160,9 @@ api.TranslateTextRequest buildTranslateTextRequest() {
 void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
-    checkUnnamed41(o.contents!);
+    checkUnnamed44(o.contents!);
     checkTranslateTextGlossaryConfig(o.glossaryConfig!);
-    checkUnnamed42(o.labels!);
+    checkUnnamed45(o.labels!);
     unittest.expect(o.mimeType!, unittest.equals('foo'));
     unittest.expect(o.model!, unittest.equals('foo'));
     unittest.expect(o.sourceLanguageCode!, unittest.equals('foo'));
@@ -2076,23 +2172,23 @@ void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest--;
 }
 
-core.List<api.Translation> buildUnnamed43() => [
+core.List<api.Translation> buildUnnamed46() => [
   buildTranslation(),
   buildTranslation(),
 ];
 
-void checkUnnamed43(core.List<api.Translation> o) {
+void checkUnnamed46(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
 }
 
-core.List<api.Translation> buildUnnamed44() => [
+core.List<api.Translation> buildUnnamed47() => [
   buildTranslation(),
   buildTranslation(),
 ];
 
-void checkUnnamed44(core.List<api.Translation> o) {
+void checkUnnamed47(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTranslation(o[0]);
   checkTranslation(o[1]);
@@ -2103,8 +2199,8 @@ api.TranslateTextResponse buildTranslateTextResponse() {
   final o = api.TranslateTextResponse();
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    o.glossaryTranslations = buildUnnamed43();
-    o.translations = buildUnnamed44();
+    o.glossaryTranslations = buildUnnamed46();
+    o.translations = buildUnnamed47();
   }
   buildCounterTranslateTextResponse--;
   return o;
@@ -2113,8 +2209,8 @@ api.TranslateTextResponse buildTranslateTextResponse() {
 void checkTranslateTextResponse(api.TranslateTextResponse o) {
   buildCounterTranslateTextResponse++;
   if (buildCounterTranslateTextResponse < 3) {
-    checkUnnamed43(o.glossaryTranslations!);
-    checkUnnamed44(o.translations!);
+    checkUnnamed46(o.glossaryTranslations!);
+    checkUnnamed47(o.translations!);
   }
   buildCounterTranslateTextResponse--;
 }
@@ -2182,9 +2278,9 @@ void checkWaitOperationRequest(api.WaitOperationRequest o) {
   buildCounterWaitOperationRequest--;
 }
 
-core.List<core.String> buildUnnamed45() => ['foo', 'foo'];
+core.List<core.String> buildUnnamed48() => ['foo', 'foo'];
 
-void checkUnnamed45(core.List<core.String> o) {
+void checkUnnamed48(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2837,6 +2933,39 @@ void main() {
         oJson as core.Map<core.String, core.dynamic>,
       );
       checkReferenceSentencePairList(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefineTextRequest', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefineTextRequest();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefineTextRequest.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRefineTextRequest(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefineTextResponse', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefineTextResponse();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefineTextResponse.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRefineTextResponse(od);
+    });
+  });
+
+  unittest.group('obj-schema-RefinementEntry', () {
+    unittest.test('to-json--from-json', () async {
+      final o = buildRefinementEntry();
+      final oJson = convert.jsonDecode(convert.jsonEncode(o));
+      final od = api.RefinementEntry.fromJson(
+        oJson as core.Map<core.String, core.dynamic>,
+      );
+      checkRefinementEntry(od);
     });
   });
 
@@ -3627,7 +3756,7 @@ void main() {
       final mock = HttpServerMock();
       final res = api.TranslateApi(mock).projects.locations;
       final arg_name = 'foo';
-      final arg_extraLocationTypes = buildUnnamed45();
+      final arg_extraLocationTypes = buildUnnamed48();
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
@@ -3701,6 +3830,69 @@ void main() {
         $fields: arg_$fields,
       );
       checkListLocationsResponse(response as api.ListLocationsResponse);
+    });
+
+    unittest.test('method--refineText', () async {
+      final mock = HttpServerMock();
+      final res = api.TranslateApi(mock).projects.locations;
+      final arg_request = buildRefineTextRequest();
+      final arg_parent = 'foo';
+      final arg_$fields = 'foo';
+      mock.register(
+        unittest.expectAsync2((http.BaseRequest req, json) {
+          final obj = api.RefineTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>,
+          );
+          checkRefineTextRequest(obj);
+
+          final path = req.url.path;
+          var pathOffset = 0;
+          core.int index;
+          core.String subPart;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 1),
+            unittest.equals('/'),
+          );
+          pathOffset += 1;
+          unittest.expect(
+            path.substring(pathOffset, pathOffset + 3),
+            unittest.equals('v3/'),
+          );
+          pathOffset += 3;
+          // NOTE: We cannot test reserved expansions due to the inability to reverse the operation;
+
+          final query = req.url.query;
+          var queryOffset = 0;
+          final queryMap = <core.String, core.List<core.String>>{};
+          void addQueryParam(core.String n, core.String v) =>
+              queryMap.putIfAbsent(n, () => []).add(v);
+
+          if (query.isNotEmpty) {
+            for (var part in query.split('&')) {
+              final keyValue = part.split('=');
+              addQueryParam(
+                core.Uri.decodeQueryComponent(keyValue[0]),
+                core.Uri.decodeQueryComponent(keyValue[1]),
+              );
+            }
+          }
+          unittest.expect(
+            queryMap['fields']!.first,
+            unittest.equals(arg_$fields),
+          );
+
+          final h = {'content-type': 'application/json; charset=utf-8'};
+          final resp = convert.json.encode(buildRefineTextResponse());
+          return async.Future.value(stringResponse(200, h, resp));
+        }),
+        true,
+      );
+      final response = await res.refineText(
+        arg_request,
+        arg_parent,
+        $fields: arg_$fields,
+      );
+      checkRefineTextResponse(response as api.RefineTextResponse);
     });
 
     unittest.test('method--romanizeText', () async {
@@ -6048,6 +6240,7 @@ void main() {
       final arg_filter = 'foo';
       final arg_pageSize = 42;
       final arg_pageToken = 'foo';
+      final arg_returnPartialSuccess = true;
       final arg_$fields = 'foo';
       mock.register(
         unittest.expectAsync2((http.BaseRequest req, json) {
@@ -6095,6 +6288,10 @@ void main() {
             unittest.equals(arg_pageToken),
           );
           unittest.expect(
+            queryMap['returnPartialSuccess']!.first,
+            unittest.equals('$arg_returnPartialSuccess'),
+          );
+          unittest.expect(
             queryMap['fields']!.first,
             unittest.equals(arg_$fields),
           );
@@ -6110,6 +6307,7 @@ void main() {
         filter: arg_filter,
         pageSize: arg_pageSize,
         pageToken: arg_pageToken,
+        returnPartialSuccess: arg_returnPartialSuccess,
         $fields: arg_$fields,
       );
       checkListOperationsResponse(response as api.ListOperationsResponse);

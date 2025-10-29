@@ -244,6 +244,55 @@ class DocumentsResource {
   }
 }
 
+/// Adds a document tab.
+///
+/// When a tab is added at a given index, all subsequent tabs' indexes are
+/// incremented.
+class AddDocumentTabRequest {
+  /// The properties of the tab to add.
+  ///
+  /// All properties are optional.
+  TabProperties? tabProperties;
+
+  AddDocumentTabRequest({this.tabProperties});
+
+  AddDocumentTabRequest.fromJson(core.Map json_)
+    : this(
+        tabProperties:
+            json_.containsKey('tabProperties')
+                ? TabProperties.fromJson(
+                  json_['tabProperties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (tabProperties != null) 'tabProperties': tabProperties!,
+  };
+}
+
+/// The result of adding a document tab.
+class AddDocumentTabResponse {
+  /// The properties of the newly added tab.
+  TabProperties? tabProperties;
+
+  AddDocumentTabResponse({this.tabProperties});
+
+  AddDocumentTabResponse.fromJson(core.Map json_)
+    : this(
+        tabProperties:
+            json_.containsKey('tabProperties')
+                ? TabProperties.fromJson(
+                  json_['tabProperties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (tabProperties != null) 'tabProperties': tabProperties!,
+  };
+}
+
 /// A ParagraphElement representing a spot in the text that's dynamically
 /// replaced with content that can change over time, like a page number.
 class AutoText {
@@ -1078,6 +1127,261 @@ class CropPropertiesSuggestionState {
   };
 }
 
+/// A date instance mentioned in a document.
+class DateElement {
+  /// The properties of this DateElement.
+  DateElementProperties? dateElementProperties;
+
+  /// The unique ID of this date.
+  ///
+  /// Output only.
+  core.String? dateId;
+
+  /// The suggested changes to the date element properties, keyed by suggestion
+  /// ID.
+  core.Map<core.String, SuggestedDateElementProperties>?
+  suggestedDateElementPropertiesChanges;
+
+  /// IDs for suggestions that remove this date from the document.
+  ///
+  /// A DateElement might have multiple deletion IDs if, for example, multiple
+  /// users suggest deleting it. If empty, then this date isn't suggested for
+  /// deletion.
+  core.List<core.String>? suggestedDeletionIds;
+
+  /// IDs for suggestions that insert this date into the document.
+  ///
+  /// A DateElement might have multiple insertion IDs if it's a nested suggested
+  /// change (a suggestion within a suggestion made by a different user, for
+  /// example). If empty, then this date isn't a suggested insertion.
+  core.List<core.String>? suggestedInsertionIds;
+
+  /// The suggested text style changes to this DateElement, keyed by suggestion
+  /// ID.
+  core.Map<core.String, SuggestedTextStyle>? suggestedTextStyleChanges;
+
+  /// The text style of this DateElement.
+  TextStyle? textStyle;
+
+  DateElement({
+    this.dateElementProperties,
+    this.dateId,
+    this.suggestedDateElementPropertiesChanges,
+    this.suggestedDeletionIds,
+    this.suggestedInsertionIds,
+    this.suggestedTextStyleChanges,
+    this.textStyle,
+  });
+
+  DateElement.fromJson(core.Map json_)
+    : this(
+        dateElementProperties:
+            json_.containsKey('dateElementProperties')
+                ? DateElementProperties.fromJson(
+                  json_['dateElementProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dateId: json_['dateId'] as core.String?,
+        suggestedDateElementPropertiesChanges:
+            (json_['suggestedDateElementPropertiesChanges']
+                    as core.Map<core.String, core.dynamic>?)
+                ?.map(
+                  (key, value) => core.MapEntry(
+                    key,
+                    SuggestedDateElementProperties.fromJson(
+                      value as core.Map<core.String, core.dynamic>,
+                    ),
+                  ),
+                ),
+        suggestedDeletionIds:
+            (json_['suggestedDeletionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedInsertionIds:
+            (json_['suggestedInsertionIds'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+        suggestedTextStyleChanges: (json_['suggestedTextStyleChanges']
+                as core.Map<core.String, core.dynamic>?)
+            ?.map(
+              (key, value) => core.MapEntry(
+                key,
+                SuggestedTextStyle.fromJson(
+                  value as core.Map<core.String, core.dynamic>,
+                ),
+              ),
+            ),
+        textStyle:
+            json_.containsKey('textStyle')
+                ? TextStyle.fromJson(
+                  json_['textStyle'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dateElementProperties != null)
+      'dateElementProperties': dateElementProperties!,
+    if (dateId != null) 'dateId': dateId!,
+    if (suggestedDateElementPropertiesChanges != null)
+      'suggestedDateElementPropertiesChanges':
+          suggestedDateElementPropertiesChanges!,
+    if (suggestedDeletionIds != null)
+      'suggestedDeletionIds': suggestedDeletionIds!,
+    if (suggestedInsertionIds != null)
+      'suggestedInsertionIds': suggestedInsertionIds!,
+    if (suggestedTextStyleChanges != null)
+      'suggestedTextStyleChanges': suggestedTextStyleChanges!,
+    if (textStyle != null) 'textStyle': textStyle!,
+  };
+}
+
+/// Properties of a DateElement.
+class DateElementProperties {
+  /// Determines how the date part of the DateElement will be displayed in the
+  /// document.
+  ///
+  /// If unset, the default value is DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED,
+  /// indicating the DateElement will be formatted as `MMM d, y` in `en_US`, or
+  /// locale specific equivalent.
+  /// Possible string values are:
+  /// - "DATE_FORMAT_UNSPECIFIED" : The date format is unspecified.
+  /// - "DATE_FORMAT_CUSTOM" : Output only. The date format is imported from an
+  /// external source.
+  /// - "DATE_FORMAT_MONTH_DAY_ABBREVIATED" : The date format is an abbreviated
+  /// month followed by the day. For example, "Jan 1".
+  /// - "DATE_FORMAT_MONTH_DAY_FULL" : The date format is a month followed by
+  /// the day. For example, "January 01".
+  /// - "DATE_FORMAT_MONTH_DAY_YEAR_ABBREVIATED" : The date format is an
+  /// abbreviated month followed by the day and the year. For example, "Jan 1,
+  /// 1970".
+  /// - "DATE_FORMAT_ISO8601" : The date format is in ISO 8601 format. For
+  /// example, "1970-01-01".
+  core.String? dateFormat;
+
+  /// Indicates how the DateElement is displayed in the document.
+  ///
+  /// Output only.
+  core.String? displayText;
+
+  /// The locale of the document, as defined by the Unicode Common Locale Data
+  /// Repository (CLDR) project.
+  ///
+  /// For example, `en_US`. If unset, the default locale is `en_US`.
+  core.String? locale;
+
+  /// Determines how the time part of the DateElement will be displayed in the
+  /// document.
+  ///
+  /// If unset, the default value is TIME_FORMAT_DISABLED, indicating no time
+  /// should be shown.
+  /// Possible string values are:
+  /// - "TIME_FORMAT_UNSPECIFIED" : The time format is unspecified.
+  /// - "TIME_FORMAT_DISABLED" : Indicates that the date does not have a time.
+  /// - "TIME_FORMAT_HOUR_MINUTE" : The time format shows the hour and minute.
+  /// For example, "Jan 1, 1970 12:00 PM".
+  /// - "TIME_FORMAT_HOUR_MINUTE_TIMEZONE" : The time format shows the hour,
+  /// minute, and timezone. For example, "Jan 1, 1970 12:00 PM UTC".
+  core.String? timeFormat;
+
+  /// The time zone of the DateElement, as defined by the Unicode Common Locale
+  /// Data Repository (CLDR) project.
+  ///
+  /// For example, `America/New York`. If unset, the default time zone is
+  /// `etc/UTC`.
+  core.String? timeZoneId;
+
+  /// The point in time to represent, in seconds and nanoseconds since Unix
+  /// epoch: January 1, 1970 at midnight UTC.
+  ///
+  /// Timestamp is expected to be in UTC. If time_zone_id is set, the timestamp
+  /// is adjusted according to the time zone. For example, a timestamp of
+  /// `18000` with a date format of `DATE_FORMAT_ISO8601` and time format of
+  /// `TIME_FORMAT_HOUR_MINUTE` would be displayed as `1970-01-01 5:00 AM`. A
+  /// timestamp of `18000` with date format of `DATE_FORMAT_8SO8601`, time
+  /// format of `TIME_FORMAT_HOUR_MINUTE`, and time zone set to
+  /// `America/New_York` will instead be `1970-01-01 12:00 AM`.
+  core.String? timestamp;
+
+  DateElementProperties({
+    this.dateFormat,
+    this.displayText,
+    this.locale,
+    this.timeFormat,
+    this.timeZoneId,
+    this.timestamp,
+  });
+
+  DateElementProperties.fromJson(core.Map json_)
+    : this(
+        dateFormat: json_['dateFormat'] as core.String?,
+        displayText: json_['displayText'] as core.String?,
+        locale: json_['locale'] as core.String?,
+        timeFormat: json_['timeFormat'] as core.String?,
+        timeZoneId: json_['timeZoneId'] as core.String?,
+        timestamp: json_['timestamp'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dateFormat != null) 'dateFormat': dateFormat!,
+    if (displayText != null) 'displayText': displayText!,
+    if (locale != null) 'locale': locale!,
+    if (timeFormat != null) 'timeFormat': timeFormat!,
+    if (timeZoneId != null) 'timeZoneId': timeZoneId!,
+    if (timestamp != null) 'timestamp': timestamp!,
+  };
+}
+
+/// A mask that indicates which of the fields on the base DateElementProperties
+/// have been changed in this suggestion.
+///
+/// For any field set to true, there's a new suggested value.
+class DateElementPropertiesSuggestionState {
+  /// Indicates if there was a suggested change to date_format.
+  core.bool? dateFormatSuggested;
+
+  /// Indicates if there was a suggested change to locale.
+  core.bool? localeSuggested;
+
+  /// Indicates if there was a suggested change to time_format.
+  core.bool? timeFormatSuggested;
+
+  /// Indicates if there was a suggested change to time_zone_id.
+  core.bool? timeZoneIdSuggested;
+
+  /// Indicates if there was a suggested change to timestamp.
+  core.bool? timestampSuggested;
+
+  DateElementPropertiesSuggestionState({
+    this.dateFormatSuggested,
+    this.localeSuggested,
+    this.timeFormatSuggested,
+    this.timeZoneIdSuggested,
+    this.timestampSuggested,
+  });
+
+  DateElementPropertiesSuggestionState.fromJson(core.Map json_)
+    : this(
+        dateFormatSuggested: json_['dateFormatSuggested'] as core.bool?,
+        localeSuggested: json_['localeSuggested'] as core.bool?,
+        timeFormatSuggested: json_['timeFormatSuggested'] as core.bool?,
+        timeZoneIdSuggested: json_['timeZoneIdSuggested'] as core.bool?,
+        timestampSuggested: json_['timestampSuggested'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dateFormatSuggested != null)
+      'dateFormatSuggested': dateFormatSuggested!,
+    if (localeSuggested != null) 'localeSuggested': localeSuggested!,
+    if (timeFormatSuggested != null)
+      'timeFormatSuggested': timeFormatSuggested!,
+    if (timeZoneIdSuggested != null)
+      'timeZoneIdSuggested': timeZoneIdSuggested!,
+    if (timestampSuggested != null) 'timestampSuggested': timestampSuggested!,
+  };
+}
+
 /// Deletes content from the document.
 class DeleteContentRangeRequest {
   /// The range of content to delete.
@@ -1278,6 +1582,23 @@ class DeletePositionedObjectRequest {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (objectId != null) 'objectId': objectId!,
+    if (tabId != null) 'tabId': tabId!,
+  };
+}
+
+/// Deletes a tab.
+///
+/// If the tab has child tabs, they are deleted as well.
+class DeleteTabRequest {
+  /// The ID of the tab to delete.
+  core.String? tabId;
+
+  DeleteTabRequest({this.tabId});
+
+  DeleteTabRequest.fromJson(core.Map json_)
+    : this(tabId: json_['tabId'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
     if (tabId != null) 'tabId': tabId!,
   };
 }
@@ -1697,6 +2018,25 @@ class Document {
   };
 }
 
+/// Represents document-level format settings.
+class DocumentFormat {
+  /// Whether the document has pages or is pageless.
+  /// Possible string values are:
+  /// - "DOCUMENT_MODE_UNSPECIFIED" : The document mode is unspecified.
+  /// - "PAGES" : The document has pages.
+  /// - "PAGELESS" : The document is pageless.
+  core.String? documentMode;
+
+  DocumentFormat({this.documentMode});
+
+  DocumentFormat.fromJson(core.Map json_)
+    : this(documentMode: json_['documentMode'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (documentMode != null) 'documentMode': documentMode!,
+  };
+}
+
 /// The style of the document.
 class DocumentStyle {
   /// The background of the document.
@@ -1706,26 +2046,34 @@ class DocumentStyle {
 
   /// The ID of the default footer.
   ///
-  /// If not set, there's no default footer. This property is read-only.
+  /// If not set, there's no default footer. If DocumentMode is PAGELESS, this
+  /// property will not be rendered. This property is read-only.
   core.String? defaultFooterId;
 
   /// The ID of the default header.
   ///
-  /// If not set, there's no default header. This property is read-only.
+  /// If not set, there's no default header. If DocumentMode is PAGELESS, this
+  /// property will not be rendered. This property is read-only.
   core.String? defaultHeaderId;
+
+  /// Specifies document-level format settings, such as the document mode (pages
+  /// vs pageless).
+  DocumentFormat? documentFormat;
 
   /// The ID of the footer used only for even pages.
   ///
   /// The value of use_even_page_header_footer determines whether to use the
   /// default_footer_id or this value for the footer on even pages. If not set,
-  /// there's no even page footer. This property is read-only.
+  /// there's no even page footer. If DocumentMode is PAGELESS, this property
+  /// will not be rendered. This property is read-only.
   core.String? evenPageFooterId;
 
   /// The ID of the header used only for even pages.
   ///
   /// The value of use_even_page_header_footer determines whether to use the
   /// default_header_id or this value for the header on even pages. If not set,
-  /// there's no even page header. This property is read-only.
+  /// there's no even page header. If DocumentMode is PAGELESS, this property
+  /// will not be rendered. This property is read-only.
   core.String? evenPageHeaderId;
 
   /// The ID of the footer used only for the first page.
@@ -1733,7 +2081,8 @@ class DocumentStyle {
   /// If not set then a unique footer for the first page does not exist. The
   /// value of use_first_page_header_footer determines whether to use the
   /// default_footer_id or this value for the footer on the first page. If not
-  /// set, there's no first page footer. This property is read-only.
+  /// set, there's no first page footer. If DocumentMode is PAGELESS, this
+  /// property will not be rendered. This property is read-only.
   core.String? firstPageFooterId;
 
   /// The ID of the header used only for the first page.
@@ -1741,11 +2090,14 @@ class DocumentStyle {
   /// If not set then a unique header for the first page does not exist. The
   /// value of use_first_page_header_footer determines whether to use the
   /// default_header_id or this value for the header on the first page. If not
-  /// set, there's no first page header. This property is read-only.
+  /// set, there's no first page header. If DocumentMode is PAGELESS, this
+  /// property will not be rendered. This property is read-only.
   core.String? firstPageHeaderId;
 
   /// Indicates whether to flip the dimensions of the page_size, which allows
   /// changing the page orientation between portrait and landscape.
+  ///
+  /// If DocumentMode is PAGELESS, this property will not be rendered.
   ///
   /// Optional.
   core.bool? flipPageOrientation;
@@ -1753,62 +2105,78 @@ class DocumentStyle {
   /// The bottom page margin.
   ///
   /// Updating the bottom page margin on the document style clears the bottom
-  /// page margin on all section styles.
+  /// page margin on all section styles. If DocumentMode is PAGELESS, this
+  /// property will not be rendered.
   Dimension? marginBottom;
 
   /// The amount of space between the bottom of the page and the contents of the
   /// footer.
+  ///
+  /// If DocumentMode is PAGELESS, this property will not be rendered.
   Dimension? marginFooter;
 
   /// The amount of space between the top of the page and the contents of the
   /// header.
+  ///
+  /// If DocumentMode is PAGELESS, this property will not be rendered.
   Dimension? marginHeader;
 
   /// The left page margin.
   ///
   /// Updating the left page margin on the document style clears the left page
   /// margin on all section styles. It may also cause columns to resize in all
-  /// sections.
+  /// sections. If DocumentMode is PAGELESS, this property will not be rendered.
   Dimension? marginLeft;
 
   /// The right page margin.
   ///
   /// Updating the right page margin on the document style clears the right page
   /// margin on all section styles. It may also cause columns to resize in all
-  /// sections.
+  /// sections. If DocumentMode is PAGELESS, this property will not be rendered.
   Dimension? marginRight;
 
   /// The top page margin.
   ///
   /// Updating the top page margin on the document style clears the top page
-  /// margin on all section styles.
+  /// margin on all section styles. If DocumentMode is PAGELESS, this property
+  /// will not be rendered.
   Dimension? marginTop;
 
   /// The page number from which to start counting the number of pages.
+  ///
+  /// If DocumentMode is PAGELESS, this property will not be rendered.
   core.int? pageNumberStart;
 
   /// The size of a page in the document.
+  ///
+  /// If DocumentMode is PAGELESS, this property will not be rendered.
   Size? pageSize;
 
   /// Indicates whether DocumentStyle margin_header, SectionStyle margin_header
   /// and DocumentStyle margin_footer, SectionStyle margin_footer are respected.
   ///
   /// When false, the default values in the Docs editor for header and footer
-  /// margin is used. This property is read-only.
+  /// margin is used. If DocumentMode is PAGELESS, this property will not be
+  /// rendered. This property is read-only.
   core.bool? useCustomHeaderFooterMargins;
 
   /// Indicates whether to use the even page header / footer IDs for the even
   /// pages.
+  ///
+  /// If DocumentMode is PAGELESS, this property will not be rendered.
   core.bool? useEvenPageHeaderFooter;
 
   /// Indicates whether to use the first page header / footer IDs for the first
   /// page.
+  ///
+  /// If DocumentMode is PAGELESS, this property will not be rendered.
   core.bool? useFirstPageHeaderFooter;
 
   DocumentStyle({
     this.background,
     this.defaultFooterId,
     this.defaultHeaderId,
+    this.documentFormat,
     this.evenPageFooterId,
     this.evenPageHeaderId,
     this.firstPageFooterId,
@@ -1837,6 +2205,13 @@ class DocumentStyle {
                 : null,
         defaultFooterId: json_['defaultFooterId'] as core.String?,
         defaultHeaderId: json_['defaultHeaderId'] as core.String?,
+        documentFormat:
+            json_.containsKey('documentFormat')
+                ? DocumentFormat.fromJson(
+                  json_['documentFormat']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         evenPageFooterId: json_['evenPageFooterId'] as core.String?,
         evenPageHeaderId: json_['evenPageHeaderId'] as core.String?,
         firstPageFooterId: json_['firstPageFooterId'] as core.String?,
@@ -1896,6 +2271,7 @@ class DocumentStyle {
     if (background != null) 'background': background!,
     if (defaultFooterId != null) 'defaultFooterId': defaultFooterId!,
     if (defaultHeaderId != null) 'defaultHeaderId': defaultHeaderId!,
+    if (documentFormat != null) 'documentFormat': documentFormat!,
     if (evenPageFooterId != null) 'evenPageFooterId': evenPageFooterId!,
     if (evenPageHeaderId != null) 'evenPageHeaderId': evenPageHeaderId!,
     if (firstPageFooterId != null) 'firstPageFooterId': firstPageFooterId!,
@@ -3335,6 +3711,60 @@ class InlineObjectPropertiesSuggestionState {
   };
 }
 
+/// Inserts a date at the specified location.
+class InsertDateRequest {
+  /// The properties of the date to insert.
+  DateElementProperties? dateElementProperties;
+
+  /// Inserts the date at the end of the given header, footer or document body.
+  EndOfSegmentLocation? endOfSegmentLocation;
+
+  /// Inserts the date at a specific index in the document.
+  ///
+  /// The date must be inserted inside the bounds of an existing Paragraph. For
+  /// instance, it cannot be inserted at a table's start index (i.e. between an
+  /// existing table and its preceding paragraph).
+  Location? location;
+
+  InsertDateRequest({
+    this.dateElementProperties,
+    this.endOfSegmentLocation,
+    this.location,
+  });
+
+  InsertDateRequest.fromJson(core.Map json_)
+    : this(
+        dateElementProperties:
+            json_.containsKey('dateElementProperties')
+                ? DateElementProperties.fromJson(
+                  json_['dateElementProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dateElementProperties != null)
+      'dateElementProperties': dateElementProperties!,
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+  };
+}
+
 /// Inserts an InlineObject containing an image at the given location.
 class InsertInlineImageRequest {
   /// Inserts the text at the end of a header, footer or the document body.
@@ -3483,6 +3913,61 @@ class InsertPageBreakRequest {
     if (endOfSegmentLocation != null)
       'endOfSegmentLocation': endOfSegmentLocation!,
     if (location != null) 'location': location!,
+  };
+}
+
+/// Inserts a person mention.
+class InsertPersonRequest {
+  /// Inserts the person mention at the end of a header, footer, footnote or the
+  /// document body.
+  EndOfSegmentLocation? endOfSegmentLocation;
+
+  /// Inserts the person mention at a specific index in the document.
+  ///
+  /// The person mention must be inserted inside the bounds of an existing
+  /// Paragraph. For instance, it cannot be inserted at a table's start index
+  /// (i.e. between the table and its preceding paragraph). Person mentions
+  /// cannot be inserted inside an equation.
+  Location? location;
+
+  /// The properties of the person mention to insert.
+  PersonProperties? personProperties;
+
+  InsertPersonRequest({
+    this.endOfSegmentLocation,
+    this.location,
+    this.personProperties,
+  });
+
+  InsertPersonRequest.fromJson(core.Map json_)
+    : this(
+        endOfSegmentLocation:
+            json_.containsKey('endOfSegmentLocation')
+                ? EndOfSegmentLocation.fromJson(
+                  json_['endOfSegmentLocation']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        location:
+            json_.containsKey('location')
+                ? Location.fromJson(
+                  json_['location'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        personProperties:
+            json_.containsKey('personProperties')
+                ? PersonProperties.fromJson(
+                  json_['personProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endOfSegmentLocation != null)
+      'endOfSegmentLocation': endOfSegmentLocation!,
+    if (location != null) 'location': location!,
+    if (personProperties != null) 'personProperties': personProperties!,
   };
 }
 
@@ -4826,6 +5311,9 @@ class ParagraphElement {
   /// A column break paragraph element.
   ColumnBreak? columnBreak;
 
+  /// A paragraph element that represents a date.
+  DateElement? dateElement;
+
   /// The zero-base end index of this paragraph element, exclusive, in UTF-16
   /// code units.
   core.int? endIndex;
@@ -4862,6 +5350,7 @@ class ParagraphElement {
   ParagraphElement({
     this.autoText,
     this.columnBreak,
+    this.dateElement,
     this.endIndex,
     this.equation,
     this.footnoteReference,
@@ -4886,6 +5375,12 @@ class ParagraphElement {
             json_.containsKey('columnBreak')
                 ? ColumnBreak.fromJson(
                   json_['columnBreak'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dateElement:
+            json_.containsKey('dateElement')
+                ? DateElement.fromJson(
+                  json_['dateElement'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         endIndex: json_['endIndex'] as core.int?,
@@ -4946,6 +5441,7 @@ class ParagraphElement {
   core.Map<core.String, core.dynamic> toJson() => {
     if (autoText != null) 'autoText': autoText!,
     if (columnBreak != null) 'columnBreak': columnBreak!,
+    if (dateElement != null) 'dateElement': dateElement!,
     if (endIndex != null) 'endIndex': endIndex!,
     if (equation != null) 'equation': equation!,
     if (footnoteReference != null) 'footnoteReference': footnoteReference!,
@@ -6074,6 +6570,9 @@ class ReplaceNamedRangeContentRequest {
 
 /// A single update to apply to a document.
 class Request {
+  /// Adds a document tab.
+  AddDocumentTabRequest? addDocumentTab;
+
   /// Creates a footer.
   CreateFooterRequest? createFooter;
 
@@ -6107,17 +6606,26 @@ class Request {
   /// Deletes a positioned object from the document.
   DeletePositionedObjectRequest? deletePositionedObject;
 
+  /// Deletes a document tab.
+  DeleteTabRequest? deleteTab;
+
   /// Deletes a column from a table.
   DeleteTableColumnRequest? deleteTableColumn;
 
   /// Deletes a row from a table.
   DeleteTableRowRequest? deleteTableRow;
 
+  /// Inserts a date.
+  InsertDateRequest? insertDate;
+
   /// Inserts an inline image at the specified location.
   InsertInlineImageRequest? insertInlineImage;
 
   /// Inserts a page break at the specified location.
   InsertPageBreakRequest? insertPageBreak;
+
+  /// Inserts a person mention.
+  InsertPersonRequest? insertPerson;
 
   /// Inserts a section break at the specified location.
   InsertSectionBreakRequest? insertSectionBreak;
@@ -6155,6 +6663,9 @@ class Request {
   /// Updates the style of the document.
   UpdateDocumentStyleRequest? updateDocumentStyle;
 
+  /// Updates the properties of a document tab.
+  UpdateDocumentTabPropertiesRequest? updateDocumentTabProperties;
+
   /// Updates the paragraph style at the specified range.
   UpdateParagraphStyleRequest? updateParagraphStyle;
 
@@ -6174,6 +6685,7 @@ class Request {
   UpdateTextStyleRequest? updateTextStyle;
 
   Request({
+    this.addDocumentTab,
     this.createFooter,
     this.createFootnote,
     this.createHeader,
@@ -6185,10 +6697,13 @@ class Request {
     this.deleteNamedRange,
     this.deleteParagraphBullets,
     this.deletePositionedObject,
+    this.deleteTab,
     this.deleteTableColumn,
     this.deleteTableRow,
+    this.insertDate,
     this.insertInlineImage,
     this.insertPageBreak,
+    this.insertPerson,
     this.insertSectionBreak,
     this.insertTable,
     this.insertTableColumn,
@@ -6201,6 +6716,7 @@ class Request {
     this.replaceNamedRangeContent,
     this.unmergeTableCells,
     this.updateDocumentStyle,
+    this.updateDocumentTabProperties,
     this.updateParagraphStyle,
     this.updateSectionStyle,
     this.updateTableCellStyle,
@@ -6211,6 +6727,13 @@ class Request {
 
   Request.fromJson(core.Map json_)
     : this(
+        addDocumentTab:
+            json_.containsKey('addDocumentTab')
+                ? AddDocumentTabRequest.fromJson(
+                  json_['addDocumentTab']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         createFooter:
             json_.containsKey('createFooter')
                 ? CreateFooterRequest.fromJson(
@@ -6284,6 +6807,12 @@ class Request {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        deleteTab:
+            json_.containsKey('deleteTab')
+                ? DeleteTabRequest.fromJson(
+                  json_['deleteTab'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         deleteTableColumn:
             json_.containsKey('deleteTableColumn')
                 ? DeleteTableColumnRequest.fromJson(
@@ -6298,6 +6827,12 @@ class Request {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        insertDate:
+            json_.containsKey('insertDate')
+                ? InsertDateRequest.fromJson(
+                  json_['insertDate'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         insertInlineImage:
             json_.containsKey('insertInlineImage')
                 ? InsertInlineImageRequest.fromJson(
@@ -6310,6 +6845,12 @@ class Request {
                 ? InsertPageBreakRequest.fromJson(
                   json_['insertPageBreak']
                       as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        insertPerson:
+            json_.containsKey('insertPerson')
+                ? InsertPersonRequest.fromJson(
+                  json_['insertPerson'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
         insertSectionBreak:
@@ -6393,6 +6934,13 @@ class Request {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        updateDocumentTabProperties:
+            json_.containsKey('updateDocumentTabProperties')
+                ? UpdateDocumentTabPropertiesRequest.fromJson(
+                  json_['updateDocumentTabProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         updateParagraphStyle:
             json_.containsKey('updateParagraphStyle')
                 ? UpdateParagraphStyleRequest.fromJson(
@@ -6438,6 +6986,7 @@ class Request {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (addDocumentTab != null) 'addDocumentTab': addDocumentTab!,
     if (createFooter != null) 'createFooter': createFooter!,
     if (createFootnote != null) 'createFootnote': createFootnote!,
     if (createHeader != null) 'createHeader': createHeader!,
@@ -6452,10 +7001,13 @@ class Request {
       'deleteParagraphBullets': deleteParagraphBullets!,
     if (deletePositionedObject != null)
       'deletePositionedObject': deletePositionedObject!,
+    if (deleteTab != null) 'deleteTab': deleteTab!,
     if (deleteTableColumn != null) 'deleteTableColumn': deleteTableColumn!,
     if (deleteTableRow != null) 'deleteTableRow': deleteTableRow!,
+    if (insertDate != null) 'insertDate': insertDate!,
     if (insertInlineImage != null) 'insertInlineImage': insertInlineImage!,
     if (insertPageBreak != null) 'insertPageBreak': insertPageBreak!,
+    if (insertPerson != null) 'insertPerson': insertPerson!,
     if (insertSectionBreak != null) 'insertSectionBreak': insertSectionBreak!,
     if (insertTable != null) 'insertTable': insertTable!,
     if (insertTableColumn != null) 'insertTableColumn': insertTableColumn!,
@@ -6470,6 +7022,8 @@ class Request {
     if (unmergeTableCells != null) 'unmergeTableCells': unmergeTableCells!,
     if (updateDocumentStyle != null)
       'updateDocumentStyle': updateDocumentStyle!,
+    if (updateDocumentTabProperties != null)
+      'updateDocumentTabProperties': updateDocumentTabProperties!,
     if (updateParagraphStyle != null)
       'updateParagraphStyle': updateParagraphStyle!,
     if (updateSectionStyle != null) 'updateSectionStyle': updateSectionStyle!,
@@ -6485,6 +7039,9 @@ class Request {
 
 /// A single response from an update.
 class Response {
+  /// The result of adding a document tab.
+  AddDocumentTabResponse? addDocumentTab;
+
   /// The result of creating a footer.
   CreateFooterResponse? createFooter;
 
@@ -6507,6 +7064,7 @@ class Response {
   ReplaceAllTextResponse? replaceAllText;
 
   Response({
+    this.addDocumentTab,
     this.createFooter,
     this.createFootnote,
     this.createHeader,
@@ -6518,6 +7076,13 @@ class Response {
 
   Response.fromJson(core.Map json_)
     : this(
+        addDocumentTab:
+            json_.containsKey('addDocumentTab')
+                ? AddDocumentTabResponse.fromJson(
+                  json_['addDocumentTab']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         createFooter:
             json_.containsKey('createFooter')
                 ? CreateFooterResponse.fromJson(
@@ -6568,6 +7133,7 @@ class Response {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (addDocumentTab != null) 'addDocumentTab': addDocumentTab!,
     if (createFooter != null) 'createFooter': createFooter!,
     if (createFootnote != null) 'createFootnote': createFootnote!,
     if (createHeader != null) 'createHeader': createHeader!,
@@ -6679,23 +7245,17 @@ class RichLink {
 class RichLinkProperties {
   /// The [MIME type](https://developers.google.com/drive/api/v3/mime-types) of
   /// the RichLink, if there's one (for example, when it's a file in Drive).
-  ///
-  /// Output only.
   core.String? mimeType;
 
   /// The title of the RichLink as displayed in the link.
   ///
   /// This title matches the title of the linked resource at the time of the
   /// insertion or last update of the link. This field is always present.
-  ///
-  /// Output only.
   core.String? title;
 
   /// The URI to the RichLink.
   ///
   /// This is always present.
-  ///
-  /// Output only.
   core.String? uri;
 
   RichLinkProperties({this.mimeType, this.title, this.uri});
@@ -6840,14 +7400,16 @@ class SectionStyle {
   ///
   /// If unset, the value inherits from the previous SectionBreak's
   /// SectionStyle. If the value is unset in the first SectionBreak, it inherits
-  /// from DocumentStyle's default_footer_id. This property is read-only.
+  /// from DocumentStyle's default_footer_id. If DocumentMode is PAGELESS, this
+  /// property will not be rendered. This property is read-only.
   core.String? defaultFooterId;
 
   /// The ID of the default header.
   ///
   /// If unset, the value inherits from the previous SectionBreak's
   /// SectionStyle. If the value is unset in the first SectionBreak, it inherits
-  /// from DocumentStyle's default_header_id. This property is read-only.
+  /// from DocumentStyle's default_header_id. If DocumentMode is PAGELESS, this
+  /// property will not be rendered. This property is read-only.
   core.String? defaultHeaderId;
 
   /// The ID of the footer used only for even pages.
@@ -6857,7 +7419,8 @@ class SectionStyle {
   /// false, the footers on even pages use the default_footer_id. If unset, the
   /// value inherits from the previous SectionBreak's SectionStyle. If the value
   /// is unset in the first SectionBreak, it inherits from DocumentStyle's
-  /// even_page_footer_id. This property is read-only.
+  /// even_page_footer_id. If DocumentMode is PAGELESS, this property will not
+  /// be rendered. This property is read-only.
   core.String? evenPageFooterId;
 
   /// The ID of the header used only for even pages.
@@ -6867,7 +7430,8 @@ class SectionStyle {
   /// false, the headers on even pages use the default_header_id. If unset, the
   /// value inherits from the previous SectionBreak's SectionStyle. If the value
   /// is unset in the first SectionBreak, it inherits from DocumentStyle's
-  /// even_page_header_id. This property is read-only.
+  /// even_page_header_id. If DocumentMode is PAGELESS, this property will not
+  /// be rendered. This property is read-only.
   core.String? evenPageHeaderId;
 
   /// The ID of the footer used only for the first page of the section.
@@ -6877,7 +7441,8 @@ class SectionStyle {
   /// page of the section uses the default_footer_id. If unset, the value
   /// inherits from the previous SectionBreak's SectionStyle. If the value is
   /// unset in the first SectionBreak, it inherits from DocumentStyle's
-  /// first_page_footer_id. This property is read-only.
+  /// first_page_footer_id. If DocumentMode is PAGELESS, this property will not
+  /// be rendered. This property is read-only.
   core.String? firstPageFooterId;
 
   /// The ID of the header used only for the first page of the section.
@@ -6887,7 +7452,8 @@ class SectionStyle {
   /// page of the section uses the default_header_id. If unset, the value
   /// inherits from the previous SectionBreak's SectionStyle. If the value is
   /// unset in the first SectionBreak, it inherits from DocumentStyle's
-  /// first_page_header_id. This property is read-only.
+  /// first_page_header_id. If DocumentMode is PAGELESS, this property will not
+  /// be rendered. This property is read-only.
   core.String? firstPageHeaderId;
 
   /// Indicates whether to flip the dimensions of DocumentStyle's page_size for
@@ -6895,15 +7461,17 @@ class SectionStyle {
   /// and landscape.
   ///
   /// If unset, the value inherits from DocumentStyle's flip_page_orientation.
-  /// When updating this property, setting a concrete value is required.
-  /// Unsetting this property results in a 400 bad request error.
+  /// If DocumentMode is PAGELESS, this property will not be rendered. When
+  /// updating this property, setting a concrete value is required. Unsetting
+  /// this property results in a 400 bad request error.
   ///
   /// Optional.
   core.bool? flipPageOrientation;
 
   /// The bottom page margin of the section.
   ///
-  /// If unset, the value defaults to margin_bottom from DocumentStyle. When
+  /// If unset, the value defaults to margin_bottom from DocumentStyle. If
+  /// DocumentMode is PAGELESS, this property will not be rendered. When
   /// updating this property, setting a concrete value is required. Unsetting
   /// this property results in a 400 bad request error.
   Dimension? marginBottom;
@@ -6913,9 +7481,10 @@ class SectionStyle {
   /// If unset, the value defaults to margin_footer from DocumentStyle. If
   /// updated, use_custom_header_footer_margins is set to true on DocumentStyle.
   /// The value of use_custom_header_footer_margins on DocumentStyle indicates
-  /// if a footer margin is being respected for this section When updating this
-  /// property, setting a concrete value is required. Unsetting this property
-  /// results in a 400 bad request error.
+  /// if a footer margin is being respected for this section If DocumentMode is
+  /// PAGELESS, this property will not be rendered. When updating this property,
+  /// setting a concrete value is required. Unsetting this property results in a
+  /// 400 bad request error.
   Dimension? marginFooter;
 
   /// The header margin of the section.
@@ -6923,32 +7492,36 @@ class SectionStyle {
   /// If unset, the value defaults to margin_header from DocumentStyle. If
   /// updated, use_custom_header_footer_margins is set to true on DocumentStyle.
   /// The value of use_custom_header_footer_margins on DocumentStyle indicates
-  /// if a header margin is being respected for this section. When updating this
-  /// property, setting a concrete value is required. Unsetting this property
-  /// results in a 400 bad request error.
+  /// if a header margin is being respected for this section. If DocumentMode is
+  /// PAGELESS, this property will not be rendered. When updating this property,
+  /// setting a concrete value is required. Unsetting this property results in a
+  /// 400 bad request error.
   Dimension? marginHeader;
 
   /// The left page margin of the section.
   ///
   /// If unset, the value defaults to margin_left from DocumentStyle. Updating
   /// the left margin causes columns in this section to resize. Since the margin
-  /// affects column width, it's applied before column properties. When updating
-  /// this property, setting a concrete value is required. Unsetting this
-  /// property results in a 400 bad request error.
+  /// affects column width, it's applied before column properties. If
+  /// DocumentMode is PAGELESS, this property will not be rendered. When
+  /// updating this property, setting a concrete value is required. Unsetting
+  /// this property results in a 400 bad request error.
   Dimension? marginLeft;
 
   /// The right page margin of the section.
   ///
   /// If unset, the value defaults to margin_right from DocumentStyle. Updating
   /// the right margin causes columns in this section to resize. Since the
-  /// margin affects column width, it's applied before column properties. When
+  /// margin affects column width, it's applied before column properties. If
+  /// DocumentMode is PAGELESS, this property will not be rendered. When
   /// updating this property, setting a concrete value is required. Unsetting
   /// this property results in a 400 bad request error.
   Dimension? marginRight;
 
   /// The top page margin of the section.
   ///
-  /// If unset, the value defaults to margin_top from DocumentStyle. When
+  /// If unset, the value defaults to margin_top from DocumentStyle. If
+  /// DocumentMode is PAGELESS, this property will not be rendered. When
   /// updating this property, setting a concrete value is required. Unsetting
   /// this property results in a 400 bad request error.
   Dimension? marginTop;
@@ -6958,8 +7531,9 @@ class SectionStyle {
   ///
   /// If unset, page numbering continues from the previous section. If the value
   /// is unset in the first SectionBreak, refer to DocumentStyle's
-  /// page_number_start. When updating this property, setting a concrete value
-  /// is required. Unsetting this property results in a 400 bad request error.
+  /// page_number_start. If DocumentMode is PAGELESS, this property will not be
+  /// rendered. When updating this property, setting a concrete value is
+  /// required. Unsetting this property results in a 400 bad request error.
   core.int? pageNumberStart;
 
   /// The type of section.
@@ -6977,9 +7551,10 @@ class SectionStyle {
   ///
   /// If unset, it inherits from DocumentStyle's use_first_page_header_footer
   /// for the first section. If the value is unset for subsequent sectors, it
-  /// should be interpreted as false. When updating this property, setting a
-  /// concrete value is required. Unsetting this property results in a 400 bad
-  /// request error.
+  /// should be interpreted as false. If DocumentMode is PAGELESS, this property
+  /// will not be rendered. When updating this property, setting a concrete
+  /// value is required. Unsetting this property results in a 400 bad request
+  /// error.
   core.bool? useFirstPageHeaderFooter;
 
   SectionStyle({
@@ -7389,6 +7964,51 @@ class SuggestedBullet {
     if (bullet != null) 'bullet': bullet!,
     if (bulletSuggestionState != null)
       'bulletSuggestionState': bulletSuggestionState!,
+  };
+}
+
+/// A suggested change to a DateElementProperties.
+class SuggestedDateElementProperties {
+  /// DateElementProperties that only includes the changes made in this
+  /// suggestion.
+  ///
+  /// This can be used along with the date_element_properties_suggestion_state
+  /// to see which fields have changed and their new values.
+  DateElementProperties? dateElementProperties;
+
+  /// A mask that indicates which of the fields on the base
+  /// DateElementProperties have been changed in this suggestion.
+  DateElementPropertiesSuggestionState? dateElementPropertiesSuggestionState;
+
+  SuggestedDateElementProperties({
+    this.dateElementProperties,
+    this.dateElementPropertiesSuggestionState,
+  });
+
+  SuggestedDateElementProperties.fromJson(core.Map json_)
+    : this(
+        dateElementProperties:
+            json_.containsKey('dateElementProperties')
+                ? DateElementProperties.fromJson(
+                  json_['dateElementProperties']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        dateElementPropertiesSuggestionState:
+            json_.containsKey('dateElementPropertiesSuggestionState')
+                ? DateElementPropertiesSuggestionState.fromJson(
+                  json_['dateElementPropertiesSuggestionState']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (dateElementProperties != null)
+      'dateElementProperties': dateElementProperties!,
+    if (dateElementPropertiesSuggestionState != null)
+      'dateElementPropertiesSuggestionState':
+          dateElementPropertiesSuggestionState!,
   };
 }
 
@@ -7814,6 +8434,16 @@ class Tab {
 
 /// Properties of a tab.
 class TabProperties {
+  /// The emoji icon displayed with the tab.
+  ///
+  /// A valid emoji icon is represented by a non-empty Unicode string. Any set
+  /// of characters that don't represent a single emoji is invalid. If an emoji
+  /// is invalid, a 400 bad request error is returned. If this value is unset or
+  /// empty, the tab will display the default tab icon.
+  ///
+  /// Optional.
+  core.String? iconEmoji;
+
   /// The zero-based index of the tab within the parent.
   core.int? index;
 
@@ -7832,17 +8462,14 @@ class TabProperties {
   /// Optional.
   core.String? parentTabId;
 
-  /// The ID of the tab.
-  ///
-  /// This field can't be changed.
-  ///
-  /// Output only.
+  /// The immutable ID of the tab.
   core.String? tabId;
 
   /// The user-visible name of the tab.
   core.String? title;
 
   TabProperties({
+    this.iconEmoji,
     this.index,
     this.nestingLevel,
     this.parentTabId,
@@ -7852,6 +8479,7 @@ class TabProperties {
 
   TabProperties.fromJson(core.Map json_)
     : this(
+        iconEmoji: json_['iconEmoji'] as core.String?,
         index: json_['index'] as core.int?,
         nestingLevel: json_['nestingLevel'] as core.int?,
         parentTabId: json_['parentTabId'] as core.String?,
@@ -7860,6 +8488,7 @@ class TabProperties {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (iconEmoji != null) 'iconEmoji': iconEmoji!,
     if (index != null) 'index': index!,
     if (nestingLevel != null) 'nestingLevel': nestingLevel!,
     if (parentTabId != null) 'parentTabId': parentTabId!,
@@ -9132,6 +9761,37 @@ class UpdateDocumentStyleRequest {
     if (documentStyle != null) 'documentStyle': documentStyle!,
     if (fields != null) 'fields': fields!,
     if (tabId != null) 'tabId': tabId!,
+  };
+}
+
+/// Update the properties of a document tab.
+class UpdateDocumentTabPropertiesRequest {
+  /// The fields that should be updated.
+  ///
+  /// At least one field must be specified. The root `tab_properties` is implied
+  /// and should not be specified. A single `"*"` can be used as short-hand for
+  /// listing every field.
+  core.String? fields;
+
+  /// The tab properties to update.
+  TabProperties? tabProperties;
+
+  UpdateDocumentTabPropertiesRequest({this.fields, this.tabProperties});
+
+  UpdateDocumentTabPropertiesRequest.fromJson(core.Map json_)
+    : this(
+        fields: json_['fields'] as core.String?,
+        tabProperties:
+            json_.containsKey('tabProperties')
+                ? TabProperties.fromJson(
+                  json_['tabProperties'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fields != null) 'fields': fields!,
+    if (tabProperties != null) 'tabProperties': tabProperties!,
   };
 }
 

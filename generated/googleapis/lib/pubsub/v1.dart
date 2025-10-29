@@ -1179,12 +1179,12 @@ class ProjectsSubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the subscription. It must have the format
-  /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
-  /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
-  /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
-  /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
-  /// in length, and it must not start with `"goog"`.
+  /// [name] - Required. Identifier. The name of the subscription. It must have
+  /// the format `"projects/{project}/subscriptions/{subscription}"`.
+  /// `{subscription}` must start with a letter, and contain only letters
+  /// (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods
+  /// (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between
+  /// 3 and 255 characters in length, and it must not start with `"goog"`.
   /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1551,12 +1551,12 @@ class ProjectsSubscriptionsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the subscription. It must have the format
-  /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
-  /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
-  /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
-  /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
-  /// in length, and it must not start with `"goog"`.
+  /// [name] - Required. Identifier. The name of the subscription. It must have
+  /// the format `"projects/{project}/subscriptions/{subscription}"`.
+  /// `{subscription}` must start with a letter, and contain only letters
+  /// (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods
+  /// (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between
+  /// 3 and 255 characters in length, and it must not start with `"goog"`.
   /// Value must have pattern `^projects/\[^/\]+/subscriptions/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -1802,12 +1802,12 @@ class ProjectsTopicsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the topic. It must have the format
-  /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
-  /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-  /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
-  /// signs (`%`). It must be between 3 and 255 characters in length, and it
-  /// must not start with `"goog"`.
+  /// [name] - Required. Identifier. The name of the topic. It must have the
+  /// format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a
+  /// letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes
+  /// (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
+  /// percent signs (`%`). It must be between 3 and 255 characters in length,
+  /// and it must not start with `"goog"`.
   /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2027,12 +2027,12 @@ class ProjectsTopicsResource {
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the topic. It must have the format
-  /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
-  /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
-  /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
-  /// signs (`%`). It must be between 3 and 255 characters in length, and it
-  /// must not start with `"goog"`.
+  /// [name] - Required. Identifier. The name of the topic. It must have the
+  /// format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a
+  /// letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes
+  /// (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
+  /// percent signs (`%`). It must be between 3 and 255 characters in length,
+  /// and it must not start with `"goog"`.
   /// Value must have pattern `^projects/\[^/\]+/topics/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -2325,6 +2325,61 @@ class ProjectsTopicsSubscriptionsResource {
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
+}
+
+/// Configuration for making inference requests against Vertex AI models.
+class AIInference {
+  /// An endpoint to a Vertex AI model of the form
+  /// `projects/{project}/locations/{location}/endpoints/{endpoint}` or
+  /// `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`.
+  ///
+  /// Vertex AI API requests will be sent to this endpoint.
+  ///
+  /// Required.
+  core.String? endpoint;
+
+  /// The service account to use to make prediction requests against endpoints.
+  ///
+  /// The resource creator or updater that specifies this field must have
+  /// `iam.serviceAccounts.actAs` permission on the service account. If not
+  /// specified, the Pub/Sub \[service
+  /// agent\]({$universe.dns_names.final_documentation_domain}/iam/docs/service-agents),
+  /// service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com, is used.
+  ///
+  /// Optional.
+  core.String? serviceAccountEmail;
+
+  /// Requests and responses can be any arbitrary JSON object.
+  ///
+  /// Optional.
+  UnstructuredInference? unstructuredInference;
+
+  AIInference({
+    this.endpoint,
+    this.serviceAccountEmail,
+    this.unstructuredInference,
+  });
+
+  AIInference.fromJson(core.Map json_)
+    : this(
+        endpoint: json_['endpoint'] as core.String?,
+        serviceAccountEmail: json_['serviceAccountEmail'] as core.String?,
+        unstructuredInference:
+            json_.containsKey('unstructuredInference')
+                ? UnstructuredInference.fromJson(
+                  json_['unstructuredInference']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endpoint != null) 'endpoint': endpoint!,
+    if (serviceAccountEmail != null)
+      'serviceAccountEmail': serviceAccountEmail!,
+    if (unstructuredInference != null)
+      'unstructuredInference': unstructuredInference!,
+  };
 }
 
 /// Request for the Acknowledge method.
@@ -2688,6 +2743,9 @@ class BigQueryConfig {
   /// - "IN_TRANSIT_LOCATION_RESTRICTION" : Cannot write to the destination
   /// because enforce_in_transit is set to true and the destination locations
   /// are not in the allowed regions.
+  /// - "VERTEX_AI_LOCATION_RESTRICTION" : Cannot write to the BigQuery table
+  /// because the table is not in the same location as where Vertex AI models
+  /// used in `message_transform`s are deployed.
   core.String? state;
 
   /// The name of the table to which to write data, of the form
@@ -3068,6 +3126,9 @@ class CloudStorageConfig {
   /// are not in the allowed regions.
   /// - "SCHEMA_MISMATCH" : Cannot write to the Cloud Storage bucket due to an
   /// incompatibility between the topic schema and subscription settings.
+  /// - "VERTEX_AI_LOCATION_RESTRICTION" : Cannot write to the Cloud Storage
+  /// bucket because the bucket is not in the same location as where Vertex AI
+  /// models used in `message_transform`s are deployed.
   core.String? state;
 
   /// If set, message data will be written to Cloud Storage in text format.
@@ -3257,7 +3318,15 @@ class CreateSnapshotRequest {
   /// Required.
   core.String? subscription;
 
-  CreateSnapshotRequest({this.labels, this.subscription});
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
+  CreateSnapshotRequest({this.labels, this.subscription, this.tags});
 
   CreateSnapshotRequest.fromJson(core.Map json_)
     : this(
@@ -3265,11 +3334,15 @@ class CreateSnapshotRequest {
           (key, value) => core.MapEntry(key, value as core.String),
         ),
         subscription: json_['subscription'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (labels != null) 'labels': labels!,
     if (subscription != null) 'subscription': subscription!,
+    if (tags != null) 'tags': tags!,
   };
 }
 
@@ -3761,6 +3834,14 @@ class MessageStoragePolicy {
 
 /// All supported message transforms types.
 class MessageTransform {
+  /// AI Inference.
+  ///
+  /// Specifies the Vertex AI endpoint that inference requests built from the
+  /// Pub/Sub message data and provided parameters will be sent to.
+  ///
+  /// Optional.
+  AIInference? aiInference;
+
   /// If true, the transform is disabled and will not be applied to messages.
   ///
   /// Defaults to `false`.
@@ -3784,10 +3865,21 @@ class MessageTransform {
   /// Optional.
   JavaScriptUDF? javascriptUdf;
 
-  MessageTransform({this.disabled, this.enabled, this.javascriptUdf});
+  MessageTransform({
+    this.aiInference,
+    this.disabled,
+    this.enabled,
+    this.javascriptUdf,
+  });
 
   MessageTransform.fromJson(core.Map json_)
     : this(
+        aiInference:
+            json_.containsKey('aiInference')
+                ? AIInference.fromJson(
+                  json_['aiInference'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         disabled: json_['disabled'] as core.bool?,
         enabled: json_['enabled'] as core.bool?,
         javascriptUdf:
@@ -3799,6 +3891,7 @@ class MessageTransform {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (aiInference != null) 'aiInference': aiInference!,
     if (disabled != null) 'disabled': disabled!,
     if (enabled != null) 'enabled': enabled!,
     if (javascriptUdf != null) 'javascriptUdf': javascriptUdf!,
@@ -4599,7 +4692,7 @@ class Subscription {
 
   /// Information about the associated Analytics Hub subscription.
   ///
-  /// Only set if the subscritpion is created by Analytics Hub.
+  /// Only set if the subscription is created by Analytics Hub.
   ///
   /// Output only.
   AnalyticsHubSubscriptionInfo? analyticsHubSubscriptionInfo;
@@ -4707,9 +4800,9 @@ class Subscription {
   /// Optional.
   core.List<MessageTransform>? messageTransforms;
 
-  /// The name of the subscription.
+  /// Identifier.
   ///
-  /// It must have the format
+  /// The name of the subscription. It must have the format
   /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must
   /// start with a letter, and contain only letters (`[A-Za-z]`), numbers
   /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -4760,6 +4853,14 @@ class Subscription {
   /// detailed error state in the corresponding configuration.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   /// The name of the topic from which this subscription is receiving messages.
   ///
   /// Format is `projects/{project}/topics/{topic}`. The value of this field
@@ -4799,6 +4900,7 @@ class Subscription {
     this.retainAckedMessages,
     this.retryPolicy,
     this.state,
+    this.tags,
     this.topic,
     this.topicMessageRetentionDuration,
   });
@@ -4874,6 +4976,9 @@ class Subscription {
                 )
                 : null,
         state: json_['state'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
         topic: json_['topic'] as core.String?,
         topicMessageRetentionDuration:
             json_['topicMessageRetentionDuration'] as core.String?,
@@ -4903,6 +5008,7 @@ class Subscription {
       'retainAckedMessages': retainAckedMessages!,
     if (retryPolicy != null) 'retryPolicy': retryPolicy!,
     if (state != null) 'state': state!,
+    if (tags != null) 'tags': tags!,
     if (topic != null) 'topic': topic!,
     if (topicMessageRetentionDuration != null)
       'topicMessageRetentionDuration': topicMessageRetentionDuration!,
@@ -4992,13 +5098,14 @@ class Topic {
   /// Optional.
   core.List<MessageTransform>? messageTransforms;
 
-  /// The name of the topic.
+  /// Identifier.
   ///
-  /// It must have the format `"projects/{project}/topics/{topic}"`. `{topic}`
-  /// must start with a letter, and contain only letters (`[A-Za-z]`), numbers
-  /// (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
-  /// plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters
-  /// in length, and it must not start with `"goog"`.
+  /// The name of the topic. It must have the format
+  /// `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter,
+  /// and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`),
+  /// underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent
+  /// signs (`%`). It must be between 3 and 255 characters in length, and it
+  /// must not start with `"goog"`.
   ///
   /// Required.
   core.String? name;
@@ -5027,6 +5134,14 @@ class Topic {
   /// corresponding ingestion source configuration.
   core.String? state;
 
+  /// Input only.
+  ///
+  /// Immutable. Tag keys/values directly bound to this resource. For example:
+  /// "123/environment": "production", "123/costCenter": "marketing"
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? tags;
+
   Topic({
     this.ingestionDataSourceSettings,
     this.kmsKeyName,
@@ -5038,6 +5153,7 @@ class Topic {
     this.satisfiesPzs,
     this.schemaSettings,
     this.state,
+    this.tags,
   });
 
   Topic.fromJson(core.Map json_)
@@ -5080,6 +5196,9 @@ class Topic {
                 )
                 : null,
         state: json_['state'] as core.String?,
+        tags: (json_['tags'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -5096,8 +5215,12 @@ class Topic {
     if (satisfiesPzs != null) 'satisfiesPzs': satisfiesPzs!,
     if (schemaSettings != null) 'schemaSettings': schemaSettings!,
     if (state != null) 'state': state!,
+    if (tags != null) 'tags': tags!,
   };
 }
+
+/// Configuration for making inferences using arbitrary JSON payloads.
+typedef UnstructuredInference = $UnstructuredInference;
 
 /// Request for the UpdateSnapshot method.
 class UpdateSnapshotRequest {

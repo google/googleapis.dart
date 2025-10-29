@@ -287,6 +287,52 @@ class UsersProjectsResource {
     );
     return Empty.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
+
+  /// Adds a POSIX account and returns the profile information.
+  ///
+  /// Default POSIX account information is set when no username and UID exist as
+  /// part of the login profile.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The unique ID for the user in format
+  /// `users/{user}/projects/{project}`.
+  /// Value must have pattern `^users/\[^/\]+/projects/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [PosixAccount].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<PosixAccount> provisionPosixAccount(
+    ProvisionPosixAccountRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return PosixAccount.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
 }
 
 class UsersSshPublicKeysResource {
@@ -630,6 +676,32 @@ class PosixAccount {
     if (systemId != null) 'systemId': systemId!,
     if (uid != null) 'uid': uid!,
     if (username != null) 'username': username!,
+  };
+}
+
+/// A request message for creating a POSIX account entry.
+class ProvisionPosixAccountRequest {
+  /// The regions to wait for a POSIX account to be written to before returning
+  /// a response.
+  ///
+  /// If unspecified, defaults to all regions. Regions are listed at
+  /// https://cloud.google.com/about/locations#region.
+  ///
+  /// Optional.
+  core.List<core.String>? regions;
+
+  ProvisionPosixAccountRequest({this.regions});
+
+  ProvisionPosixAccountRequest.fromJson(core.Map json_)
+    : this(
+        regions:
+            (json_['regions'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (regions != null) 'regions': regions!,
   };
 }
 

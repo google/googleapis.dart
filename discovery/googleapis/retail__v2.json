@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250911",
+    "revision": "20260129",
     "rootUrl": "https://retail.googleapis.com/",
     "servicePath": "",
     "title": "Vertex AI Search for commerce API",
@@ -1649,6 +1649,11 @@
                                                     "description": "The standard list page token.",
                                                     "location": "query",
                                                     "type": "string"
+                                                },
+                                                "returnPartialSuccess": {
+                                                    "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                                    "location": "query",
+                                                    "type": "boolean"
                                                 }
                                             },
                                             "path": "v2/{+name}/operations",
@@ -2255,6 +2260,11 @@
                                             "description": "The standard list page token.",
                                             "location": "query",
                                             "type": "string"
+                                        },
+                                        "returnPartialSuccess": {
+                                            "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                            "location": "query",
+                                            "type": "boolean"
                                         }
                                     },
                                     "path": "v2/{+name}/operations",
@@ -2327,6 +2337,11 @@
                                     "description": "The standard list page token.",
                                     "location": "query",
                                     "type": "string"
+                                },
+                                "returnPartialSuccess": {
+                                    "description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+                                    "location": "query",
+                                    "type": "boolean"
                                 }
                             },
                             "path": "v2/{+name}/operations",
@@ -3414,7 +3429,7 @@
                     "type": "string"
                 },
                 "sortBy": {
-                    "description": "Optional. The sort string to specify the sorting of search results. The syntax of the sort string is the same as SearchRequest.sort.",
+                    "description": "Optional. The sort string to specify the sorting of search results. The syntax of the sort string is the same as SearchRequest.order_by.",
                     "type": "string"
                 }
             },
@@ -3426,7 +3441,7 @@
             "properties": {
                 "selectedAnswer": {
                     "$ref": "GoogleCloudRetailV2ConversationalSearchRequestUserAnswerSelectedAnswer",
-                    "description": "Optional. This field specifies the selected answer during the conversational search. This should be a subset of ConversationalSearchResponse.followup_question.suggested_answers."
+                    "description": "Optional. This field specifies the selected answer during the conversational search. This should be a subset of ConversationalSearchResponse.FollowupQuestion.SuggestedAnswer."
                 },
                 "textAnswer": {
                     "description": "This field specifies the incremental input text from the user during the conversational search.",
@@ -3504,7 +3519,7 @@
             "properties": {
                 "additionalFilter": {
                     "$ref": "GoogleCloudRetailV2ConversationalSearchResponseConversationalFilteringResultAdditionalFilter",
-                    "description": "This is the incremental additional filters implied from the current user answer. User should add the suggested addition filters to the previous ConversationalSearchRequest.search_params.filter and SearchRequest.filter, and use the merged filter in the follow up requests."
+                    "description": "This is the incremental additional filters implied from the current user answer. User should add the suggested addition filters to the previous ConversationalSearchRequest.SearchParams.filter and SearchRequest.filter, and use the merged filter in the follow up requests."
                 },
                 "followupQuestion": {
                     "$ref": "GoogleCloudRetailV2ConversationalSearchResponseFollowupQuestion",
@@ -3662,7 +3677,7 @@
                 },
                 "outputConfig": {
                     "$ref": "GoogleCloudRetailV2OutputConfig",
-                    "description": "Required. The output location of the data."
+                    "description": "Required. The output location of the data. Only `bigquery_destination` is supported, and `bigquery_destination.table_type` must be set to `view`."
                 }
             },
             "type": "object"
@@ -5802,7 +5817,7 @@
                     "description": "The specification for personalization. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec."
                 },
                 "placeId": {
-                    "description": "Optional. An id corresponding to a place, such as a store id or region id. When specified, we use the price from the local inventory with the matching product's LocalInventory.place_id for revenue optimization.",
+                    "description": "Optional. An id corresponding to a place, such as a store id or region id. When specified, we use the price from the local inventory with the matching product's LocalInventory.place_id for revenue optimization. Note, the currency of the local inventory's price must match the currency of the product's price.",
                     "type": "string"
                 },
                 "query": {
@@ -5903,7 +5918,7 @@
             "id": "GoogleCloudRetailV2SearchRequestConversationalSearchSpec",
             "properties": {
                 "conversationId": {
-                    "description": "This field specifies the conversation id, which maintains the state of the conversation between client side and server side. Use the value from the previous ConversationalSearchResult.conversation_id. For the initial request, this should be empty.",
+                    "description": "This field specifies the conversation id, which maintains the state of the conversation between client side and server side. Use the value from the previous SearchResponse.ConversationalSearchResult.conversation_id. For the initial request, this should be empty.",
                     "type": "string"
                 },
                 "followupConversationRequested": {
@@ -5923,7 +5938,7 @@
             "properties": {
                 "selectedAnswer": {
                     "$ref": "GoogleCloudRetailV2SearchRequestConversationalSearchSpecUserAnswerSelectedAnswer",
-                    "description": "This field specifies the selected attributes during the conversational search. This should be a subset of ConversationalSearchResult.suggested_answers."
+                    "description": "This field specifies the selected attributes during the conversational search. This should be a subset of SearchResponse.ConversationalSearchResult.suggested_answers."
                 },
                 "textAnswer": {
                     "description": "This field specifies the incremental input text from the user during the conversational search.",
@@ -8316,6 +8331,13 @@
                     "description": "A list of operations that matches the specified filter in the request.",
                     "items": {
                         "$ref": "GoogleLongrunningOperation"
+                    },
+                    "type": "array"
+                },
+                "unreachable": {
+                    "description": "Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations.",
+                    "items": {
+                        "type": "string"
                     },
                     "type": "array"
                 }

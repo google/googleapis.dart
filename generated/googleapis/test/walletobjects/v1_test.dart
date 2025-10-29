@@ -261,8 +261,10 @@ api.Blobstore2Info buildBlobstore2Info() {
   if (buildCounterBlobstore2Info < 3) {
     o.blobGeneration = 'foo';
     o.blobId = 'foo';
+    o.downloadExternalReadToken = 'foo';
     o.downloadReadHandle = 'foo';
     o.readToken = 'foo';
+    o.uploadFragmentListCreationInfo = 'foo';
     o.uploadMetadataContainer = 'foo';
   }
   buildCounterBlobstore2Info--;
@@ -274,8 +276,10 @@ void checkBlobstore2Info(api.Blobstore2Info o) {
   if (buildCounterBlobstore2Info < 3) {
     unittest.expect(o.blobGeneration!, unittest.equals('foo'));
     unittest.expect(o.blobId!, unittest.equals('foo'));
+    unittest.expect(o.downloadExternalReadToken!, unittest.equals('foo'));
     unittest.expect(o.downloadReadHandle!, unittest.equals('foo'));
     unittest.expect(o.readToken!, unittest.equals('foo'));
+    unittest.expect(o.uploadFragmentListCreationInfo!, unittest.equals('foo'));
     unittest.expect(o.uploadMetadataContainer!, unittest.equals('foo'));
   }
   buildCounterBlobstore2Info--;

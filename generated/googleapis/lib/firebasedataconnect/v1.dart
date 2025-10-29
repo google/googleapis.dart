@@ -130,9 +130,9 @@ class ProjectsLocationsResource {
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -327,6 +327,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -342,12 +350,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1535,9 +1546,6 @@ class ProjectsLocationsServicesSchemasResource {
 
   /// Lists Schemas in a given project and location.
   ///
-  /// Note that only `schemas/main` is supported, so this will always return at
-  /// most one Schema.
-  ///
   /// Request parameters:
   ///
   /// [parent] - Required. Value of parent.
@@ -1806,13 +1814,22 @@ class Connector {
 
 /// A data source that backs Firebase Data Connect services.
 class Datasource {
+  /// HTTP GraphQL server webhook configurations.
+  HttpGraphql? httpGraphql;
+
   /// PostgreSQL configurations.
   PostgreSql? postgresql;
 
-  Datasource({this.postgresql});
+  Datasource({this.httpGraphql, this.postgresql});
 
   Datasource.fromJson(core.Map json_)
     : this(
+        httpGraphql:
+            json_.containsKey('httpGraphql')
+                ? HttpGraphql.fromJson(
+                  json_['httpGraphql'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         postgresql:
             json_.containsKey('postgresql')
                 ? PostgreSql.fromJson(
@@ -1822,6 +1839,7 @@ class Datasource {
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
+    if (httpGraphql != null) 'httpGraphql': httpGraphql!,
     if (postgresql != null) 'postgresql': postgresql!,
   };
 }
@@ -1835,7 +1853,7 @@ class Datasource {
 typedef Empty = $Empty;
 
 /// The ExecuteMutation request to Firebase Data Connect.
-typedef ExecuteMutationRequest = $Request11;
+typedef ExecuteMutationRequest = $Request10;
 
 /// The ExecuteMutation response from Firebase Data Connect.
 class ExecuteMutationResponse {
@@ -1873,7 +1891,7 @@ class ExecuteMutationResponse {
 }
 
 /// The ExecuteQuery request to Firebase Data Connect.
-typedef ExecuteQueryRequest = $Request11;
+typedef ExecuteQueryRequest = $Request10;
 
 /// The ExecuteQuery response from Firebase Data Connect.
 class ExecuteQueryResponse {
@@ -1946,10 +1964,12 @@ class File {
 /// surfaces `GraphqlError` in various APIs: - Upon compile error,
 /// `UpdateSchema` and `UpdateConnector` return Code.Invalid_Argument with a
 /// list of `GraphqlError` in error details. - Upon query compile error,
-/// `ExecuteGraphql` and `ExecuteGraphqlRead` return Code.OK with a list of
-/// `GraphqlError` in response body. - Upon query execution error,
-/// `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation` and `ExecuteQuery`
-/// all return Code.OK with a list of `GraphqlError` in response body.
+/// `ExecuteGraphql`, `ExecuteGraphqlRead` and `IntrospectGraphql` return
+/// Code.OK with a list of `GraphqlError` in response body. - Upon query
+/// execution error, `ExecuteGraphql`, `ExecuteGraphqlRead`, `ExecuteMutation`,
+/// `ExecuteQuery`, `IntrospectGraphql`, `ImpersonateQuery` and
+/// `ImpersonateMutation` all return Code.OK with a list of `GraphqlError` in
+/// response body.
 class GraphqlError {
   /// Additional error information.
   GraphqlErrorExtensions? extensions;
@@ -1958,7 +1978,8 @@ class GraphqlError {
   ///
   /// Locations should help developers and toolings identify the source of error
   /// quickly. Included in admin endpoints (`ExecuteGraphql`,
-  /// `ExecuteGraphqlRead`, `UpdateSchema` and `UpdateConnector`) to reference
+  /// `ExecuteGraphqlRead`, `IntrospectGraphql`, `ImpersonateQuery`,
+  /// `ImpersonateMutation`, `UpdateSchema` and `UpdateConnector`) to reference
   /// the provided GraphQL GQL document. Omitted in `ExecuteMutation` and
   /// `ExecuteQuery` since the caller shouldn't have access access the
   /// underlying GQL source.
@@ -2113,17 +2134,27 @@ class GraphqlErrorExtensions {
   /// `File.path` of the provided `Source`.
   core.String? file;
 
-  /// Distinguish which schema or connector the error originates from.
-  ///
-  /// It should be set on errors from control plane APIs (e.g. `UpdateSchema`,
-  /// `UpdateConnector`).
-  core.String? resource;
+  /// Warning level describes the severity and required action to suppress this
+  /// warning when Firebase CLI run into it.
+  /// Possible string values are:
+  /// - "WARNING_LEVEL_UNKNOWN" : Warning level is not specified.
+  /// - "LOG_ONLY" : Display a warning without action needed.
+  /// - "INTERACTIVE_ACK" : Request a confirmation in interactive deployment
+  /// flow.
+  /// - "REQUIRE_ACK" : Require an explicit confirmation in all deployment
+  /// flows.
+  /// - "REQUIRE_FORCE" : Require --force in all deployment flows.
+  core.String? warningLevel;
+
+  /// Workarounds provide suggestions to address the compile errors or warnings.
+  core.List<Workaround>? workarounds;
 
   GraphqlErrorExtensions({
     this.code,
     this.debugDetails,
     this.file,
-    this.resource,
+    this.warningLevel,
+    this.workarounds,
   });
 
   GraphqlErrorExtensions.fromJson(core.Map json_)
@@ -2131,14 +2162,23 @@ class GraphqlErrorExtensions {
         code: json_['code'] as core.String?,
         debugDetails: json_['debugDetails'] as core.String?,
         file: json_['file'] as core.String?,
-        resource: json_['resource'] as core.String?,
+        warningLevel: json_['warningLevel'] as core.String?,
+        workarounds:
+            (json_['workarounds'] as core.List?)
+                ?.map(
+                  (value) => Workaround.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (code != null) 'code': code!,
     if (debugDetails != null) 'debugDetails': debugDetails!,
     if (file != null) 'file': file!,
-    if (resource != null) 'resource': resource!,
+    if (warningLevel != null) 'warningLevel': warningLevel!,
+    if (workarounds != null) 'workarounds': workarounds!,
   };
 }
 
@@ -2278,6 +2318,32 @@ class GraphqlResponse {
   core.Map<core.String, core.dynamic> toJson() => {
     if (data != null) 'data': data!,
     if (errors != null) 'errors': errors!,
+  };
+}
+
+/// Settings for HTTP GraphQL server webhook.
+class HttpGraphql {
+  /// Timeout duration for the HTTP request.
+  ///
+  /// Optional.
+  core.String? timeout;
+
+  /// The endpoint of the HTTP GraphQL server.
+  ///
+  /// Required.
+  core.String? uri;
+
+  HttpGraphql({this.timeout, this.uri});
+
+  HttpGraphql.fromJson(core.Map json_)
+    : this(
+        timeout: json_['timeout'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (timeout != null) 'timeout': timeout!,
+    if (uri != null) 'uri': uri!,
   };
 }
 
@@ -2459,7 +2525,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -2472,11 +2550,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -3024,3 +3107,30 @@ class SourceLocation {
 /// You can find out more about this error model and how to work with it in the
 /// [API Design Guide](https://cloud.google.com/apis/design/errors).
 typedef Status = $Status00;
+
+/// Workaround provides suggestions to address errors and warnings.
+class Workaround {
+  /// Description of this workaround.
+  core.String? description;
+
+  /// Why would this workaround address the error and warning.
+  core.String? reason;
+
+  /// A suggested code snippet to fix the error and warning.
+  core.String? replace;
+
+  Workaround({this.description, this.reason, this.replace});
+
+  Workaround.fromJson(core.Map json_)
+    : this(
+        description: json_['description'] as core.String?,
+        reason: json_['reason'] as core.String?,
+        replace: json_['replace'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (description != null) 'description': description!,
+    if (reason != null) 'reason': reason!,
+    if (replace != null) 'replace': replace!,
+  };
+}

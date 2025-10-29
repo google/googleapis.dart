@@ -25,7 +25,7 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "protocol": "rest",
-    "revision": "20250806",
+    "revision": "20260113",
     "rootUrl": "https://cloudsupport.googleapis.com/",
     "servicePath": "",
     "title": "Google Cloud Support API",
@@ -751,6 +751,11 @@
                     "description": "# gdata.* are outside protos with mising documentation",
                     "type": "string"
                 },
+                "downloadExternalReadToken": {
+                    "description": "# gdata.* are outside protos with mising documentation",
+                    "format": "byte",
+                    "type": "string"
+                },
                 "downloadReadHandle": {
                     "description": "# gdata.* are outside protos with mising documentation",
                     "format": "byte",
@@ -758,6 +763,11 @@
                 },
                 "readToken": {
                     "description": "# gdata.* are outside protos with mising documentation",
+                    "type": "string"
+                },
+                "uploadFragmentListCreationInfo": {
+                    "description": "# gdata.* are outside protos with mising documentation",
+                    "format": "byte",
                     "type": "string"
                 },
                 "uploadMetadataContainer": {

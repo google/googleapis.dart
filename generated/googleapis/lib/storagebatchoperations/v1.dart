@@ -22,6 +22,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsJobsResource]
+///       - [ProjectsLocationsJobsBucketOperationsResource]
 ///     - [ProjectsLocationsOperationsResource]
 library;
 
@@ -113,14 +114,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -173,6 +180,9 @@ class ProjectsLocationsResource {
 
 class ProjectsLocationsJobsResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsBucketOperationsResource get bucketOperations =>
+      ProjectsLocationsJobsBucketOperationsResource(_requester);
 
   ProjectsLocationsJobsResource(commons.ApiRequester client)
     : _requester = client;
@@ -286,6 +296,11 @@ class ProjectsLocationsJobsResource {
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
   ///
+  /// [force] - Optional. If set to true, any child bucket operations of the job
+  /// will also be deleted. Highly recommended to be set to true by all clients.
+  /// Users cannot mutate bucket operations directly, so only the jobs.delete
+  /// permission is required to delete a job (and its child bucket operations).
+  ///
   /// [requestId] - Optional. An optional request ID to identify requests.
   /// Specify a unique request ID in case you need to retry your request.
   /// Requests with same `request_id` will be ignored for at least 60 minutes
@@ -305,10 +320,12 @@ class ProjectsLocationsJobsResource {
   /// this method will complete with the same error.
   async.Future<Empty> delete(
     core.String name, {
+    core.bool? force,
     core.String? requestId,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
+      if (force != null) 'force': ['${force}'],
       if (requestId != null) 'requestId': [requestId],
       if ($fields != null) 'fields': [$fields],
     };
@@ -408,6 +425,109 @@ class ProjectsLocationsJobsResource {
       queryParams: queryParams_,
     );
     return ListJobsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+}
+
+class ProjectsLocationsJobsBucketOperationsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsJobsBucketOperationsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Gets a BucketOperation.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. `name` of the bucket operation to retrieve. Format:
+  /// projects/{project_id}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+/bucketOperations/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [BucketOperation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<BucketOperation> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return BucketOperation.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists BucketOperations in a given project and job.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Format:
+  /// projects/{project_id}/locations/global/jobs/{job_id}.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/jobs/\[^/\]+$`.
+  ///
+  /// [filter] - Optional. Filters results as defined by
+  /// https://google.aip.dev/160.
+  ///
+  /// [orderBy] - Optional. Field to sort by. Supported fields are name,
+  /// create_time.
+  ///
+  /// [pageSize] - Optional. The list page size. Default page size is 100.
+  ///
+  /// [pageToken] - Optional. The list page token.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListBucketOperationsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListBucketOperationsResponse> list(
+    core.String parent, {
+    core.String? filter,
+    core.String? orderBy,
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (filter != null) 'filter': [filter],
+      if (orderBy != null) 'orderBy': [orderBy],
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/bucketOperations';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListBucketOperationsResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
   }
@@ -557,6 +677,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -572,12 +700,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -663,6 +794,172 @@ class BucketList {
   };
 }
 
+/// BucketOperation represents a bucket-level breakdown of a Job.
+class BucketOperation {
+  /// The bucket name of the objects to be transformed in the BucketOperation.
+  core.String? bucketName;
+
+  /// The time that the BucketOperation was completed.
+  ///
+  /// Output only.
+  core.String? completeTime;
+
+  /// Information about the progress of the bucket operation.
+  ///
+  /// Output only.
+  Counters? counters;
+
+  /// The time that the BucketOperation was created.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Delete objects.
+  DeleteObject? deleteObject;
+
+  /// Summarizes errors encountered with sample error log entries.
+  ///
+  /// Output only.
+  core.List<ErrorSummary>? errorSummaries;
+
+  /// Specifies objects in a manifest file.
+  Manifest? manifest;
+
+  /// Identifier.
+  ///
+  /// The resource name of the BucketOperation. This is defined by the service.
+  /// Format:
+  /// projects/{project}/locations/global/jobs/{job_id}/bucketOperations/{bucket_operation}.
+  core.String? name;
+
+  /// Specifies objects matching a prefix set.
+  PrefixList? prefixList;
+
+  /// Updates object metadata.
+  ///
+  /// Allows updating fixed-key and custom metadata and fixed-key metadata i.e.
+  /// Cache-Control, Content-Disposition, Content-Encoding, Content-Language,
+  /// Content-Type, Custom-Time.
+  PutMetadata? putMetadata;
+
+  /// Changes object hold status.
+  PutObjectHold? putObjectHold;
+
+  /// Rewrite the object and updates metadata like KMS key.
+  RewriteObject? rewriteObject;
+
+  /// The time that the BucketOperation was started.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  /// State of the BucketOperation.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "STATE_UNSPECIFIED" : Default value. This value is unused.
+  /// - "QUEUED" : Created but not yet started.
+  /// - "RUNNING" : In progress.
+  /// - "SUCCEEDED" : Completed successfully.
+  /// - "CANCELED" : Cancelled by the user.
+  /// - "FAILED" : Terminated due to an unrecoverable failure.
+  core.String? state;
+
+  BucketOperation({
+    this.bucketName,
+    this.completeTime,
+    this.counters,
+    this.createTime,
+    this.deleteObject,
+    this.errorSummaries,
+    this.manifest,
+    this.name,
+    this.prefixList,
+    this.putMetadata,
+    this.putObjectHold,
+    this.rewriteObject,
+    this.startTime,
+    this.state,
+  });
+
+  BucketOperation.fromJson(core.Map json_)
+    : this(
+        bucketName: json_['bucketName'] as core.String?,
+        completeTime: json_['completeTime'] as core.String?,
+        counters:
+            json_.containsKey('counters')
+                ? Counters.fromJson(
+                  json_['counters'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        deleteObject:
+            json_.containsKey('deleteObject')
+                ? DeleteObject.fromJson(
+                  json_['deleteObject'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        errorSummaries:
+            (json_['errorSummaries'] as core.List?)
+                ?.map(
+                  (value) => ErrorSummary.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        manifest:
+            json_.containsKey('manifest')
+                ? Manifest.fromJson(
+                  json_['manifest'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        name: json_['name'] as core.String?,
+        prefixList:
+            json_.containsKey('prefixList')
+                ? PrefixList.fromJson(
+                  json_['prefixList'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        putMetadata:
+            json_.containsKey('putMetadata')
+                ? PutMetadata.fromJson(
+                  json_['putMetadata'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        putObjectHold:
+            json_.containsKey('putObjectHold')
+                ? PutObjectHold.fromJson(
+                  json_['putObjectHold'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        rewriteObject:
+            json_.containsKey('rewriteObject')
+                ? RewriteObject.fromJson(
+                  json_['rewriteObject'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+        state: json_['state'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (bucketName != null) 'bucketName': bucketName!,
+    if (completeTime != null) 'completeTime': completeTime!,
+    if (counters != null) 'counters': counters!,
+    if (createTime != null) 'createTime': createTime!,
+    if (deleteObject != null) 'deleteObject': deleteObject!,
+    if (errorSummaries != null) 'errorSummaries': errorSummaries!,
+    if (manifest != null) 'manifest': manifest!,
+    if (name != null) 'name': name!,
+    if (prefixList != null) 'prefixList': prefixList!,
+    if (putMetadata != null) 'putMetadata': putMetadata!,
+    if (putObjectHold != null) 'putObjectHold': putObjectHold!,
+    if (rewriteObject != null) 'rewriteObject': rewriteObject!,
+    if (startTime != null) 'startTime': startTime!,
+    if (state != null) 'state': state!,
+  };
+}
+
 /// Message for Job to Cancel
 class CancelJobRequest {
   /// An optional request ID to identify requests.
@@ -704,6 +1001,14 @@ class Counters {
   /// Output only.
   core.String? succeededObjectCount;
 
+  /// Number of bytes found from source.
+  ///
+  /// This field is only populated for jobs with a prefix list object
+  /// configuration.
+  ///
+  /// Output only.
+  core.String? totalBytesFound;
+
   /// Number of objects listed.
   ///
   /// Output only.
@@ -712,6 +1017,7 @@ class Counters {
   Counters({
     this.failedObjectCount,
     this.succeededObjectCount,
+    this.totalBytesFound,
     this.totalObjectCount,
   });
 
@@ -719,6 +1025,7 @@ class Counters {
     : this(
         failedObjectCount: json_['failedObjectCount'] as core.String?,
         succeededObjectCount: json_['succeededObjectCount'] as core.String?,
+        totalBytesFound: json_['totalBytesFound'] as core.String?,
         totalObjectCount: json_['totalObjectCount'] as core.String?,
       );
 
@@ -726,6 +1033,7 @@ class Counters {
     if (failedObjectCount != null) 'failedObjectCount': failedObjectCount!,
     if (succeededObjectCount != null)
       'succeededObjectCount': succeededObjectCount!,
+    if (totalBytesFound != null) 'totalBytesFound': totalBytesFound!,
     if (totalObjectCount != null) 'totalObjectCount': totalObjectCount!,
   };
 }
@@ -951,6 +1259,15 @@ class Job {
   /// Optional.
   core.String? description;
 
+  /// If true, the job will run in dry run mode, returning the total object
+  /// count and, if the object configuration is a prefix list, the bytes found
+  /// from source.
+  ///
+  /// No transformations will be performed.
+  ///
+  /// Optional.
+  core.bool? dryRun;
+
   /// Summarizes errors encountered with sample error log entries.
   ///
   /// Output only.
@@ -1005,6 +1322,7 @@ class Job {
     this.createTime,
     this.deleteObject,
     this.description,
+    this.dryRun,
     this.errorSummaries,
     this.loggingConfig,
     this.name,
@@ -1038,6 +1356,7 @@ class Job {
                 )
                 : null,
         description: json_['description'] as core.String?,
+        dryRun: json_['dryRun'] as core.bool?,
         errorSummaries:
             (json_['errorSummaries'] as core.List?)
                 ?.map(
@@ -1082,6 +1401,7 @@ class Job {
     if (createTime != null) 'createTime': createTime!,
     if (deleteObject != null) 'deleteObject': deleteObject!,
     if (description != null) 'description': description!,
+    if (dryRun != null) 'dryRun': dryRun!,
     if (errorSummaries != null) 'errorSummaries': errorSummaries!,
     if (loggingConfig != null) 'loggingConfig': loggingConfig!,
     if (name != null) 'name': name!,
@@ -1090,6 +1410,47 @@ class Job {
     if (rewriteObject != null) 'rewriteObject': rewriteObject!,
     if (scheduleTime != null) 'scheduleTime': scheduleTime!,
     if (state != null) 'state': state!,
+  };
+}
+
+/// Message for response to listing BucketOperations
+class ListBucketOperationsResponse {
+  /// A list of storage batch bucket operations.
+  core.List<BucketOperation>? bucketOperations;
+
+  /// A token identifying a page of results.
+  core.String? nextPageToken;
+
+  /// Locations that could not be reached.
+  core.List<core.String>? unreachable;
+
+  ListBucketOperationsResponse({
+    this.bucketOperations,
+    this.nextPageToken,
+    this.unreachable,
+  });
+
+  ListBucketOperationsResponse.fromJson(core.Map json_)
+    : this(
+        bucketOperations:
+            (json_['bucketOperations'] as core.List?)
+                ?.map(
+                  (value) => BucketOperation.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (bucketOperations != null) 'bucketOperations': bucketOperations!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -1167,7 +1528,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -1180,11 +1553,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -1248,6 +1626,40 @@ class Manifest {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (manifestLocation != null) 'manifestLocation': manifestLocation!,
+  };
+}
+
+/// Describes options for object retention update.
+class ObjectRetention {
+  /// The time when the object will be retained until.
+  ///
+  /// UNSET will clear the retention. Must be specified in RFC 3339 format e.g.
+  /// YYYY-MM-DD'T'HH:MM:SS.SS'Z' or YYYY-MM-DD'T'HH:MM:SS'Z'.
+  ///
+  /// Required.
+  core.String? retainUntilTime;
+
+  /// The retention mode of the object.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "RETENTION_MODE_UNSPECIFIED" : If set and retain_until_time is empty,
+  /// clears the retention.
+  /// - "LOCKED" : Sets the retention mode to locked.
+  /// - "UNLOCKED" : Sets the retention mode to unlocked.
+  core.String? retentionMode;
+
+  ObjectRetention({this.retainUntilTime, this.retentionMode});
+
+  ObjectRetention.fromJson(core.Map json_)
+    : this(
+        retainUntilTime: json_['retainUntilTime'] as core.String?,
+        retentionMode: json_['retentionMode'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (retainUntilTime != null) 'retainUntilTime': retainUntilTime!,
+    if (retentionMode != null) 'retentionMode': retentionMode!,
   };
 }
 
@@ -1421,6 +1833,17 @@ class PutMetadata {
   /// Optional.
   core.String? customTime;
 
+  /// Updates objects retention lock configuration.
+  ///
+  /// Unset values will be ignored. Set empty values to clear the retention for
+  /// the object with existing `Unlocked` retention mode. Object with existing
+  /// `Locked` retention mode cannot be cleared or reduce retain_until_time.
+  /// Refer to documentation in
+  /// https://cloud.google.com/storage/docs/object-lock
+  ///
+  /// Optional.
+  ObjectRetention? objectRetention;
+
   PutMetadata({
     this.cacheControl,
     this.contentDisposition,
@@ -1429,6 +1852,7 @@ class PutMetadata {
     this.contentType,
     this.customMetadata,
     this.customTime,
+    this.objectRetention,
   });
 
   PutMetadata.fromJson(core.Map json_)
@@ -1442,6 +1866,13 @@ class PutMetadata {
                 as core.Map<core.String, core.dynamic>?)
             ?.map((key, value) => core.MapEntry(key, value as core.String)),
         customTime: json_['customTime'] as core.String?,
+        objectRetention:
+            json_.containsKey('objectRetention')
+                ? ObjectRetention.fromJson(
+                  json_['objectRetention']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
@@ -1452,6 +1883,7 @@ class PutMetadata {
     if (contentType != null) 'contentType': contentType!,
     if (customMetadata != null) 'customMetadata': customMetadata!,
     if (customTime != null) 'customTime': customTime!,
+    if (objectRetention != null) 'objectRetention': objectRetention!,
   };
 }
 

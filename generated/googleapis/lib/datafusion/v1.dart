@@ -920,6 +920,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// \[ListOperationsResponse.unreachable\] field. This can only be `true` when
+  /// reading across collections e.g. when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not by default supported
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -935,12 +943,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -1472,6 +1483,11 @@ class Instance {
   /// Optional.
   MaintenancePolicy? maintenancePolicy;
 
+  /// The monitoring configuration for this instance.
+  ///
+  /// Optional.
+  MonitoringConfig? monitoringConfig;
+
   /// The name of this instance is in the form of
   /// projects/{project}/locations/{location}/instances/{instance}.
   ///
@@ -1633,6 +1649,7 @@ class Instance {
     this.loggingConfig,
     this.maintenanceEvents,
     this.maintenancePolicy,
+    this.monitoringConfig,
     this.name,
     this.networkConfig,
     this.options,
@@ -1728,6 +1745,13 @@ class Instance {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        monitoringConfig:
+            json_.containsKey('monitoringConfig')
+                ? MonitoringConfig.fromJson(
+                  json_['monitoringConfig']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         name: json_['name'] as core.String?,
         networkConfig:
             json_.containsKey('networkConfig')
@@ -1785,6 +1809,7 @@ class Instance {
     if (loggingConfig != null) 'loggingConfig': loggingConfig!,
     if (maintenanceEvents != null) 'maintenanceEvents': maintenanceEvents!,
     if (maintenancePolicy != null) 'maintenancePolicy': maintenancePolicy!,
+    if (monitoringConfig != null) 'monitoringConfig': monitoringConfig!,
     if (name != null) 'name': name!,
     if (networkConfig != null) 'networkConfig': networkConfig!,
     if (options != null) 'options': options!,
@@ -1965,7 +1990,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections e.g. when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -1978,11 +2015,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -2120,6 +2162,28 @@ class MaintenanceWindow {
   core.Map<core.String, core.dynamic> toJson() => {
     if (recurringTimeWindow != null)
       'recurringTimeWindow': recurringTimeWindow!,
+  };
+}
+
+/// Monitoring configuration for a Data Fusion instance.
+class MonitoringConfig {
+  /// Option to enable the instance v2 metrics for this instance.
+  ///
+  /// This field is supported only in CDF versions 6.11.1.1 and above.
+  ///
+  /// Optional.
+  core.bool? enableInstanceV2Metrics;
+
+  MonitoringConfig({this.enableInstanceV2Metrics});
+
+  MonitoringConfig.fromJson(core.Map json_)
+    : this(
+        enableInstanceV2Metrics: json_['enableInstanceV2Metrics'] as core.bool?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (enableInstanceV2Metrics != null)
+      'enableInstanceV2Metrics': enableInstanceV2Metrics!,
   };
 }
 

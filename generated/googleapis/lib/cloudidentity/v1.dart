@@ -1040,10 +1040,10 @@ class DevicesDeviceUsersResource {
   /// properties are provided, only DeviceUsers having all of these properties
   /// are considered as matches - i.e. the query behaves like an AND. Different
   /// platforms require different amounts of information from the caller to
-  /// ensure that the DeviceUser is uniquely identified. - iOS: Specifying the
-  /// 'partner' and 'ios_device_id' fields is required. - Android: Specifying
-  /// the 'android_id' field is required. - Desktop: Specifying the
-  /// 'raw_resource_id' field is required.
+  /// ensure that the DeviceUser is uniquely identified. - iOS: If either the
+  /// `partner` or `ios_device_id` field is provided, then both fields are
+  /// required. - Android: Specifying the `android_id` field is required. -
+  /// Desktop: Specifying the `raw_resource_id` field is required.
   ///
   /// Request parameters:
   ///
@@ -3374,12 +3374,12 @@ class PoliciesResource {
 
   PoliciesResource(commons.ApiRequester client) : _requester = client;
 
-  /// Get a Policy
+  /// Get a policy.
   ///
   /// Request parameters:
   ///
   /// [name] - Required. The name of the policy to retrieve. Format:
-  /// "policies/{policy}".
+  /// `policies/{policy}`.
   /// Value must have pattern `^policies/\[^/\]+$`.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
@@ -3407,7 +3407,7 @@ class PoliciesResource {
     return Policy.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
-  /// List Policies
+  /// List policies.
   ///
   /// Request parameters:
   ///
@@ -3847,8 +3847,13 @@ class GoogleAppsCloudidentityDevicesV1BrowserInfo {
   /// Set to true if provider list from Chrome is non-empty.
   core.bool? isBulkDataEntryAnalysisEnabled;
 
+  /// Deprecated: This field is not used for Chrome version 118 and later.
+  ///
   /// Current state of
   /// [Chrome Cleanup](https://chromeenterprise.google/policies/#ChromeCleanupEnabled).
+  @core.Deprecated(
+    'Not supported. Member documentation may have more information.',
+  )
   core.bool? isChromeCleanupEnabled;
 
   /// Current state of

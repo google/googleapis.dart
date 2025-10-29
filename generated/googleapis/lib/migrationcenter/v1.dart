@@ -24,6 +24,7 @@
 /// - [ProjectsResource]
 ///   - [ProjectsLocationsResource]
 ///     - [ProjectsLocationsAssetsResource]
+///     - [ProjectsLocationsAssetsExportJobsResource]
 ///     - [ProjectsLocationsDiscoveryClientsResource]
 ///     - [ProjectsLocationsGroupsResource]
 ///     - [ProjectsLocationsImportJobsResource]
@@ -88,6 +89,8 @@ class ProjectsLocationsResource {
 
   ProjectsLocationsAssetsResource get assets =>
       ProjectsLocationsAssetsResource(_requester);
+  ProjectsLocationsAssetsExportJobsResource get assetsExportJobs =>
+      ProjectsLocationsAssetsExportJobsResource(_requester);
   ProjectsLocationsDiscoveryClientsResource get discoveryClients =>
       ProjectsLocationsDiscoveryClientsResource(_requester);
   ProjectsLocationsGroupsResource get groups =>
@@ -176,14 +179,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -712,6 +721,235 @@ class ProjectsLocationsAssetsResource {
     return ReportAssetFramesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+}
+
+class ProjectsLocationsAssetsExportJobsResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsAssetsExportJobsResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Creates a new assets export job.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent resource where the assts export job will
+  /// be created.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [assetsExportJobId] - Required. The ID to use for the asset export job.
+  ///
+  /// [requestId] - Optional. An optional request ID to identify requests.
+  /// Specify a unique request ID so that if you must retry your request, the
+  /// server will know to ignore the request if it has already been completed.
+  /// The server will guarantee that for at least 60 minutes after the first
+  /// request. For example, consider a situation where you make an initial
+  /// request and the request times out. If you make the request again with the
+  /// same request ID, the server can check if original operation with the same
+  /// request ID was received, and if so, will ignore the second request. This
+  /// prevents clients from accidentally creating duplicate commitments. The
+  /// request ID must be a valid UUID with the exception that zero UUID is not
+  /// supported (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> create(
+    AssetsExportJob request,
+    core.String parent, {
+    core.String? assetsExportJobId,
+    core.String? requestId,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (assetsExportJobId != null) 'assetsExportJobId': [assetsExportJobId],
+      if (requestId != null) 'requestId': [requestId],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assetsExportJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Deletes an assets export job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. The name of the assets export job to delete.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/assetsExportJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> delete(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'DELETE',
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Gets the details of an assets export job.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/assetsExportJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [AssetsExportJob].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<AssetsExportJob> get(
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return AssetsExportJob.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Lists all the assets export jobs in a given project and location.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. Parent resource.
+  /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. Requested page size. The server may return fewer
+  /// items than requested. If unspecified, the server will pick an appropriate
+  /// default value.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results that the
+  /// server should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListAssetsExportJobsResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListAssetsExportJobsResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/assetsExportJobs';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListAssetsExportJobsResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
+  }
+
+  /// Runs an assets export job, returning an AssetsExportJobExecution.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Required. Name of the resource.
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/assetsExportJobs/\[^/\]+$`.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> run(
+    RunAssetsExportJobRequest request,
+    core.String name, {
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name') + ':run';
+
+    final response_ = await _requester.request(
+      url_,
+      'POST',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 }
 
@@ -2135,6 +2373,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -2150,12 +2396,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3410,7 +3659,7 @@ class AddAssetsToGroupRequest {
   /// List of assets to be added.
   ///
   /// The maximum number of assets that can be added in a single request is
-  /// 1000.
+  /// 2000.
   ///
   /// Required.
   AssetList? assets;
@@ -3465,7 +3714,7 @@ class AggregateAssetsValuesRequest {
   /// Optional.
   core.String? filter;
 
-  /// When this value is set to 'true,' the response will include all assets,
+  /// When this value is set to 'true' the response will include all assets,
   /// including those that are hidden.
   ///
   /// Optional.
@@ -4129,6 +4378,313 @@ class AssetPerformanceData {
   };
 }
 
+/// Assets export job message.
+class AssetsExportJob {
+  /// Conditions for selecting assets to export.
+  ///
+  /// Optional.
+  AssetsExportJobExportCondition? condition;
+
+  /// Resource creation time.
+  ///
+  /// Output only.
+  core.String? createTime;
+
+  /// Export asset inventory details.
+  AssetsExportJobInventory? inventory;
+
+  /// Labels as key value pairs.
+  ///
+  /// Labels must meet the following constraints: * Keys and values can contain
+  /// only lowercase letters, numeric characters, underscores, and dashes. * All
+  /// characters must use UTF-8 encoding, and international characters are
+  /// allowed. * Keys must start with a lowercase letter or international
+  /// character. * Each resource is limited to a maximum of 64 labels. Both keys
+  /// and values are additionally constrained to be \<= 128 bytes.
+  ///
+  /// Optional.
+  core.Map<core.String, core.String>? labels;
+
+  /// Identifier.
+  ///
+  /// Resource name.
+  ///
+  /// Output only.
+  core.String? name;
+
+  /// Export data regarding asset network dependencies.
+  AssetsExportJobNetworkDependencies? networkDependencies;
+
+  /// Export asset with performance data.
+  AssetsExportJobPerformanceData? performanceData;
+
+  /// Recent non expired executions of the job.
+  ///
+  /// Output only.
+  core.List<AssetsExportJobExecution>? recentExecutions;
+
+  /// When this value is set to 'true' the response will include all assets,
+  /// including those that are hidden.
+  ///
+  /// Optional.
+  core.bool? showHidden;
+
+  /// Export to Cloud Storage files downloadable using signed URIs.
+  SignedUriDestination? signedUriDestination;
+
+  /// Resource update time.
+  ///
+  /// Output only.
+  core.String? updateTime;
+
+  AssetsExportJob({
+    this.condition,
+    this.createTime,
+    this.inventory,
+    this.labels,
+    this.name,
+    this.networkDependencies,
+    this.performanceData,
+    this.recentExecutions,
+    this.showHidden,
+    this.signedUriDestination,
+    this.updateTime,
+  });
+
+  AssetsExportJob.fromJson(core.Map json_)
+    : this(
+        condition:
+            json_.containsKey('condition')
+                ? AssetsExportJobExportCondition.fromJson(
+                  json_['condition'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        createTime: json_['createTime'] as core.String?,
+        inventory:
+            json_.containsKey('inventory')
+                ? AssetsExportJobInventory.fromJson(
+                  json_['inventory'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        labels: (json_['labels'] as core.Map<core.String, core.dynamic>?)?.map(
+          (key, value) => core.MapEntry(key, value as core.String),
+        ),
+        name: json_['name'] as core.String?,
+        networkDependencies:
+            json_.containsKey('networkDependencies')
+                ? AssetsExportJobNetworkDependencies.fromJson(
+                  json_['networkDependencies']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        performanceData:
+            json_.containsKey('performanceData')
+                ? AssetsExportJobPerformanceData.fromJson(
+                  json_['performanceData']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        recentExecutions:
+            (json_['recentExecutions'] as core.List?)
+                ?.map(
+                  (value) => AssetsExportJobExecution.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        showHidden: json_['showHidden'] as core.bool?,
+        signedUriDestination:
+            json_.containsKey('signedUriDestination')
+                ? SignedUriDestination.fromJson(
+                  json_['signedUriDestination']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        updateTime: json_['updateTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (condition != null) 'condition': condition!,
+    if (createTime != null) 'createTime': createTime!,
+    if (inventory != null) 'inventory': inventory!,
+    if (labels != null) 'labels': labels!,
+    if (name != null) 'name': name!,
+    if (networkDependencies != null)
+      'networkDependencies': networkDependencies!,
+    if (performanceData != null) 'performanceData': performanceData!,
+    if (recentExecutions != null) 'recentExecutions': recentExecutions!,
+    if (showHidden != null) 'showHidden': showHidden!,
+    if (signedUriDestination != null)
+      'signedUriDestination': signedUriDestination!,
+    if (updateTime != null) 'updateTime': updateTime!,
+  };
+}
+
+/// Execution status of assets export job.
+class AssetsExportJobExecution {
+  /// Completion time of the export.
+  ///
+  /// Output only.
+  core.String? endTime;
+
+  /// Globally unique identifier of the execution.
+  ///
+  /// Output only.
+  core.String? executionId;
+
+  /// Expiration time for the export and artifacts.
+  ///
+  /// Output only.
+  core.String? expireTime;
+
+  /// Number of assets requested for export after resolving the requested
+  /// filters.
+  ///
+  /// Output only.
+  core.int? requestedAssetCount;
+
+  /// Result of the export execution.
+  ///
+  /// Output only.
+  AssetsExportJobExecutionResult? result;
+
+  /// Execution timestamp.
+  ///
+  /// Output only.
+  core.String? startTime;
+
+  AssetsExportJobExecution({
+    this.endTime,
+    this.executionId,
+    this.expireTime,
+    this.requestedAssetCount,
+    this.result,
+    this.startTime,
+  });
+
+  AssetsExportJobExecution.fromJson(core.Map json_)
+    : this(
+        endTime: json_['endTime'] as core.String?,
+        executionId: json_['executionId'] as core.String?,
+        expireTime: json_['expireTime'] as core.String?,
+        requestedAssetCount: json_['requestedAssetCount'] as core.int?,
+        result:
+            json_.containsKey('result')
+                ? AssetsExportJobExecutionResult.fromJson(
+                  json_['result'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        startTime: json_['startTime'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (endTime != null) 'endTime': endTime!,
+    if (executionId != null) 'executionId': executionId!,
+    if (expireTime != null) 'expireTime': expireTime!,
+    if (requestedAssetCount != null)
+      'requestedAssetCount': requestedAssetCount!,
+    if (result != null) 'result': result!,
+    if (startTime != null) 'startTime': startTime!,
+  };
+}
+
+/// Contains the result of the assets export.
+class AssetsExportJobExecutionResult {
+  /// Error encountered during export.
+  ///
+  /// Output only.
+  Status? error;
+
+  /// List of output files.
+  ///
+  /// Output only.
+  OutputFileList? outputFiles;
+
+  /// Signed URLs for downloading export artifacts.
+  ///
+  /// Output only.
+  SignedUris? signedUris;
+
+  AssetsExportJobExecutionResult({
+    this.error,
+    this.outputFiles,
+    this.signedUris,
+  });
+
+  AssetsExportJobExecutionResult.fromJson(core.Map json_)
+    : this(
+        error:
+            json_.containsKey('error')
+                ? Status.fromJson(
+                  json_['error'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        outputFiles:
+            json_.containsKey('outputFiles')
+                ? OutputFileList.fromJson(
+                  json_['outputFiles'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        signedUris:
+            json_.containsKey('signedUris')
+                ? SignedUris.fromJson(
+                  json_['signedUris'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (error != null) 'error': error!,
+    if (outputFiles != null) 'outputFiles': outputFiles!,
+    if (signedUris != null) 'signedUris': signedUris!,
+  };
+}
+
+/// Conditions for selecting assets to export.
+class AssetsExportJobExportCondition {
+  /// Assets filter, supports the same syntax as asset listing.
+  ///
+  /// Optional.
+  core.String? filter;
+
+  AssetsExportJobExportCondition({this.filter});
+
+  AssetsExportJobExportCondition.fromJson(core.Map json_)
+    : this(filter: json_['filter'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (filter != null) 'filter': filter!,
+  };
+}
+
+/// Configuration for asset inventory details exports.
+typedef AssetsExportJobInventory = $Empty;
+
+/// Configuration for network dependencies exports.
+typedef AssetsExportJobNetworkDependencies = $Empty;
+
+/// Configuration for performance data exports.
+class AssetsExportJobPerformanceData {
+  /// When this value is set to a positive integer, performance data will be
+  /// returned for the most recent days for which data is available.
+  ///
+  /// When this value is unset (or set to zero), all available data is returned.
+  /// The maximum value is 420; values above 420 will be coerced to 420. If
+  /// unset (0 value) a default value of 40 will be used.
+  ///
+  /// Optional.
+  core.int? maxDays;
+
+  AssetsExportJobPerformanceData({this.maxDays});
+
+  AssetsExportJobPerformanceData.fromJson(core.Map json_)
+    : this(maxDays: json_['maxDays'] as core.int?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (maxDays != null) 'maxDays': maxDays!,
+  };
+}
+
 /// AWS EC2 specific details.
 class AwsEc2PlatformDetails {
   /// Whether the machine is hyperthreaded.
@@ -4605,6 +5161,44 @@ class CpuUsageSample {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (utilizedPercentage != null) 'utilizedPercentage': utilizedPercentage!,
+  };
+}
+
+/// Contains a single output file of type CSV.
+class CsvOutputFile {
+  /// Number of columns in the file.
+  ///
+  /// Output only.
+  core.int? columnsCount;
+
+  /// Number of rows in the file.
+  ///
+  /// Output only.
+  core.int? rowCount;
+
+  /// Signed URI destination.
+  ///
+  /// Output only.
+  SignedUri? signedUri;
+
+  CsvOutputFile({this.columnsCount, this.rowCount, this.signedUri});
+
+  CsvOutputFile.fromJson(core.Map json_)
+    : this(
+        columnsCount: json_['columnsCount'] as core.int?,
+        rowCount: json_['rowCount'] as core.int?,
+        signedUri:
+            json_.containsKey('signedUri')
+                ? SignedUri.fromJson(
+                  json_['signedUri'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (columnsCount != null) 'columnsCount': columnsCount!,
+    if (rowCount != null) 'rowCount': rowCount!,
+    if (signedUri != null) 'signedUri': signedUri!,
   };
 }
 
@@ -6613,6 +7207,8 @@ class ImportDataFile {
   /// User-friendly display name.
   ///
   /// Maximum length is 63 characters.
+  ///
+  /// Optional.
   core.String? displayName;
 
   /// The payload format.
@@ -7057,6 +7653,39 @@ class InsightList {
   };
 }
 
+/// Response message for listing assets export jobs.
+class ListAssetsExportJobsResponse {
+  /// The list of assets export jobs.
+  ///
+  /// Output only.
+  core.List<AssetsExportJob>? assetsExportJobs;
+
+  /// A token identifying a page of results the server should return.
+  ///
+  /// Output only.
+  core.String? nextPageToken;
+
+  ListAssetsExportJobsResponse({this.assetsExportJobs, this.nextPageToken});
+
+  ListAssetsExportJobsResponse.fromJson(core.Map json_)
+    : this(
+        assetsExportJobs:
+            (json_['assetsExportJobs'] as core.List?)
+                ?.map(
+                  (value) => AssetsExportJob.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+        nextPageToken: json_['nextPageToken'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (assetsExportJobs != null) 'assetsExportJobs': assetsExportJobs!,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken!,
+  };
+}
+
 /// Response message for listing assets.
 class ListAssetsResponse {
   /// A list of assets.
@@ -7336,7 +7965,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -7349,11 +7990,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -7808,6 +8454,11 @@ class MachineNetworkDetails {
   /// List of network adapters.
   NetworkAdapterList? adapters;
 
+  /// Default gateway address.
+  ///
+  /// Optional.
+  core.String? defaultGateway;
+
   /// The primary IP address of the machine.
   core.String? primaryIpAddress;
 
@@ -7821,6 +8472,7 @@ class MachineNetworkDetails {
 
   MachineNetworkDetails({
     this.adapters,
+    this.defaultGateway,
     this.primaryIpAddress,
     this.primaryMacAddress,
     this.publicIpAddress,
@@ -7834,6 +8486,7 @@ class MachineNetworkDetails {
                   json_['adapters'] as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        defaultGateway: json_['defaultGateway'] as core.String?,
         primaryIpAddress: json_['primaryIpAddress'] as core.String?,
         primaryMacAddress: json_['primaryMacAddress'] as core.String?,
         publicIpAddress: json_['publicIpAddress'] as core.String?,
@@ -7841,6 +8494,7 @@ class MachineNetworkDetails {
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (adapters != null) 'adapters': adapters!,
+    if (defaultGateway != null) 'defaultGateway': defaultGateway!,
     if (primaryIpAddress != null) 'primaryIpAddress': primaryIpAddress!,
     if (primaryMacAddress != null) 'primaryMacAddress': primaryMacAddress!,
     if (publicIpAddress != null) 'publicIpAddress': publicIpAddress!,
@@ -8597,6 +9251,76 @@ class Operation {
     if (metadata != null) 'metadata': metadata!,
     if (name != null) 'name': name!,
     if (response != null) 'response': response!,
+  };
+}
+
+/// Contains a single output file.
+class OutputFile {
+  /// CSV output file.
+  ///
+  /// Output only.
+  CsvOutputFile? csvOutputFile;
+
+  /// File size in bytes.
+  ///
+  /// Output only.
+  core.String? fileSizeBytes;
+
+  /// XLSX output file.
+  ///
+  /// Output only.
+  XlsxOutputFile? xlsxOutputFile;
+
+  OutputFile({this.csvOutputFile, this.fileSizeBytes, this.xlsxOutputFile});
+
+  OutputFile.fromJson(core.Map json_)
+    : this(
+        csvOutputFile:
+            json_.containsKey('csvOutputFile')
+                ? CsvOutputFile.fromJson(
+                  json_['csvOutputFile'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        fileSizeBytes: json_['fileSizeBytes'] as core.String?,
+        xlsxOutputFile:
+            json_.containsKey('xlsxOutputFile')
+                ? XlsxOutputFile.fromJson(
+                  json_['xlsxOutputFile']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (csvOutputFile != null) 'csvOutputFile': csvOutputFile!,
+    if (fileSizeBytes != null) 'fileSizeBytes': fileSizeBytes!,
+    if (xlsxOutputFile != null) 'xlsxOutputFile': xlsxOutputFile!,
+  };
+}
+
+/// Contains a list of output files.
+class OutputFileList {
+  /// List of output files.
+  ///
+  /// Output only.
+  core.List<OutputFile>? entries;
+
+  OutputFileList({this.entries});
+
+  OutputFileList.fromJson(core.Map json_)
+    : this(
+        entries:
+            (json_['entries'] as core.List?)
+                ?.map(
+                  (value) => OutputFile.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (entries != null) 'entries': entries!,
   };
 }
 
@@ -9383,6 +10107,13 @@ class ReportSummaryAssetAggregateStats {
   /// Count of assets grouped by Operating System families.
   ReportSummaryChartData? operatingSystem;
 
+  /// Count of assets grouped by software name.
+  ///
+  /// Only present for virtual machines.
+  ///
+  /// Output only.
+  ReportSummaryChartData? softwareInstances;
+
   /// Histogram showing a distribution of storage sizes.
   ReportSummaryHistogramChartData? storageBytesHistogram;
 
@@ -9406,6 +10137,7 @@ class ReportSummaryAssetAggregateStats {
     this.memoryBytesHistogram,
     this.memoryUtilizationChart,
     this.operatingSystem,
+    this.softwareInstances,
     this.storageBytesHistogram,
     this.storageUtilizationChart,
     this.totalAssets,
@@ -9444,6 +10176,13 @@ class ReportSummaryAssetAggregateStats {
                       as core.Map<core.String, core.dynamic>,
                 )
                 : null,
+        softwareInstances:
+            json_.containsKey('softwareInstances')
+                ? ReportSummaryChartData.fromJson(
+                  json_['softwareInstances']
+                      as core.Map<core.String, core.dynamic>,
+                )
+                : null,
         storageBytesHistogram:
             json_.containsKey('storageBytesHistogram')
                 ? ReportSummaryHistogramChartData.fromJson(
@@ -9471,6 +10210,7 @@ class ReportSummaryAssetAggregateStats {
     if (memoryUtilizationChart != null)
       'memoryUtilizationChart': memoryUtilizationChart!,
     if (operatingSystem != null) 'operatingSystem': operatingSystem!,
+    if (softwareInstances != null) 'softwareInstances': softwareInstances!,
     if (storageBytesHistogram != null)
       'storageBytesHistogram': storageBytesHistogram!,
     if (storageUtilizationChart != null)
@@ -10088,6 +10828,9 @@ class ReportSummaryVmwareNodeAllocation {
   };
 }
 
+/// A request to run an assets export job.
+typedef RunAssetsExportJobRequest = $Request00;
+
 /// A request to run an import job.
 typedef RunImportJobRequest = $Request00;
 
@@ -10336,6 +11079,80 @@ class Settings {
       'disableCloudLogging': disableCloudLogging!,
     if (name != null) 'name': name!,
     if (preferenceSet != null) 'preferenceSet': preferenceSet!,
+  };
+}
+
+/// Contains a signed URI.
+class SignedUri {
+  /// Name of the file the Signed URI references.
+  ///
+  /// Output only.
+  core.String? file;
+
+  /// Download URI for the file.
+  ///
+  /// Output only.
+  core.String? uri;
+
+  SignedUri({this.file, this.uri});
+
+  SignedUri.fromJson(core.Map json_)
+    : this(
+        file: json_['file'] as core.String?,
+        uri: json_['uri'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (file != null) 'file': file!,
+    if (uri != null) 'uri': uri!,
+  };
+}
+
+/// Signed URI destination configuration.
+class SignedUriDestination {
+  /// The file format to export.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "FILE_FORMAT_UNSPECIFIED" : Unspecified file format will be treated as
+  /// CSV.
+  /// - "CSV" : CSV file format.
+  /// - "XLSX" : XLSX file format which used in Excel.
+  core.String? fileFormat;
+
+  SignedUriDestination({this.fileFormat});
+
+  SignedUriDestination.fromJson(core.Map json_)
+    : this(fileFormat: json_['fileFormat'] as core.String?);
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (fileFormat != null) 'fileFormat': fileFormat!,
+  };
+}
+
+/// Contains a list of Signed URIs.
+class SignedUris {
+  /// List of signed URIs.
+  ///
+  /// Output only.
+  core.List<SignedUri>? signedUris;
+
+  SignedUris({this.signedUris});
+
+  SignedUris.fromJson(core.Map json_)
+    : this(
+        signedUris:
+            (json_['signedUris'] as core.List?)
+                ?.map(
+                  (value) => SignedUri.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (signedUris != null) 'signedUris': signedUris!,
   };
 }
 
@@ -11157,5 +11974,29 @@ class VmwarePlatformDetails {
     if (vcenterUri != null) 'vcenterUri': vcenterUri!,
     if (vcenterVersion != null) 'vcenterVersion': vcenterVersion!,
     if (vcenterVmId != null) 'vcenterVmId': vcenterVmId!,
+  };
+}
+
+/// Contains a single output file of type XLSX.
+class XlsxOutputFile {
+  /// Signed URI destination.
+  ///
+  /// Output only.
+  SignedUri? signedUri;
+
+  XlsxOutputFile({this.signedUri});
+
+  XlsxOutputFile.fromJson(core.Map json_)
+    : this(
+        signedUri:
+            json_.containsKey('signedUri')
+                ? SignedUri.fromJson(
+                  json_['signedUri'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (signedUri != null) 'signedUri': signedUri!,
   };
 }

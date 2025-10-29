@@ -39,6 +39,7 @@
 ///     - [ProjectsLocationsDbVersionsResource]
 ///     - [ProjectsLocationsEntitlementsResource]
 ///     - [ProjectsLocationsExadbVmClustersResource]
+///       - [ProjectsLocationsExadbVmClustersDbNodesResource]
 ///     - [ProjectsLocationsExascaleDbStorageVaultsResource]
 ///     - [ProjectsLocationsGiVersionsResource]
 ///       - [ProjectsLocationsGiVersionsMinorVersionsResource]
@@ -177,14 +178,20 @@ class ProjectsLocationsResource {
 
   /// Lists information about the supported locations for this service.
   ///
+  /// This method can be called in two ways: * **List all public locations:**
+  /// Use the path `GET /v1/locations`. * **List project-visible locations:**
+  /// Use the path `GET /v1/projects/{project_id}/locations`. This may include
+  /// public locations as well as private or other locations specifically
+  /// visible to the project.
+  ///
   /// Request parameters:
   ///
   /// [name] - The resource that owns the locations collection, if applicable.
   /// Value must have pattern `^projects/\[^/\]+$`.
   ///
-  /// [extraLocationTypes] - Optional. Unless explicitly documented otherwise,
-  /// don't use this unsupported field which is primarily intended for internal
-  /// usage.
+  /// [extraLocationTypes] - Optional. Do not use this field. It is unsupported
+  /// and is ignored unless explicitly documented otherwise. This is primarily
+  /// for internal usage.
   ///
   /// [filter] - A filter to narrow down results to a preferred subset. The
   /// filtering language accepts strings like `"displayName=tokyo"`, and is
@@ -671,6 +678,67 @@ class ProjectsLocationsAutonomousDatabasesResource {
     return ListAutonomousDatabasesResponse.fromJson(
       response_ as core.Map<core.String, core.dynamic>,
     );
+  }
+
+  /// Updates the parameters of a single Autonomous Database.
+  ///
+  /// [request] - The metadata request object.
+  ///
+  /// Request parameters:
+  ///
+  /// [name] - Identifier. The name of the Autonomous Database resource in the
+  /// following format:
+  /// projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database}
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/autonomousDatabases/\[^/\]+$`.
+  ///
+  /// [requestId] - Optional. An optional ID to identify the request. This value
+  /// is used to identify duplicate requests. If you make a request with the
+  /// same request ID and the original request is still in progress or
+  /// completed, the server ignores the second request. This prevents clients
+  /// from accidentally creating duplicate commitments. The request ID must be a
+  /// valid UUID with the exception that zero UUID is not supported
+  /// (00000000-0000-0000-0000-000000000000).
+  ///
+  /// [updateMask] - Optional. Field mask is used to specify the fields to be
+  /// overwritten in the Exadata resource by the update. The fields specified in
+  /// the update_mask are relative to the resource, not the full request. A
+  /// field will be overwritten if it is in the mask. If the user does not
+  /// provide a mask then all fields will be overwritten.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [Operation].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<Operation> patch(
+    AutonomousDatabase request,
+    core.String name, {
+    core.String? requestId,
+    core.String? updateMask,
+    core.String? $fields,
+  }) async {
+    final body_ = convert.json.encode(request);
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (requestId != null) 'requestId': [requestId],
+      if (updateMask != null) 'updateMask': [updateMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$name');
+
+    final response_ = await _requester.request(
+      url_,
+      'PATCH',
+      body: body_,
+      queryParams: queryParams_,
+    );
+    return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
   }
 
   /// Restarts an Autonomous Database.
@@ -1630,8 +1698,8 @@ class ProjectsLocationsDatabasesResource {
   /// `dbSystem="projects/{project}/locations/{location}/dbSystems/{dbSystemId}"`
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, a maximum of 50 System Versions will be returned. The maximum
-  /// value is 1000; values above 1000 will be reset to 1000.
+  /// unspecified, a maximum of 50 Databases will be returned. The maximum value
+  /// is 1000; values above 1000 will be reset to 1000.
   ///
   /// [pageToken] - Optional. A token identifying the requested page of results
   /// to return. All fields except the filter should remain the same as in the
@@ -1691,8 +1759,8 @@ class ProjectsLocationsDbSystemInitialStorageSizesResource {
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, a maximum of 50 System Versions will be returned. The maximum
-  /// value is 1000; values above 1000 will be reset to 1000.
+  /// unspecified, a maximum of 50 DbSystemInitialStorageSizes will be returned.
+  /// The maximum value is 1000; values above 1000 will be reset to 1000.
   ///
   /// [pageToken] - Optional. A token identifying the requested page of results
   /// to return. All fields except the filter should remain the same as in the
@@ -2026,7 +2094,7 @@ class ProjectsLocationsDbVersionsResource {
   /// returned.
   ///
   /// [pageSize] - Optional. The maximum number of items to return. If
-  /// unspecified, a maximum of 50 System Versions will be returned. The maximum
+  /// unspecified, a maximum of 50 DbVersions will be returned. The maximum
   /// value is 1000; values above 1000 will be reset to 1000.
   ///
   /// [pageToken] - Optional. A token identifying the requested page of results
@@ -2128,6 +2196,9 @@ class ProjectsLocationsEntitlementsResource {
 
 class ProjectsLocationsExadbVmClustersResource {
   final commons.ApiRequester _requester;
+
+  ProjectsLocationsExadbVmClustersDbNodesResource get dbNodes =>
+      ProjectsLocationsExadbVmClustersDbNodesResource(_requester);
 
   ProjectsLocationsExadbVmClustersResource(commons.ApiRequester client)
     : _requester = client;
@@ -2442,6 +2513,65 @@ class ProjectsLocationsExadbVmClustersResource {
       queryParams: queryParams_,
     );
     return Operation.fromJson(response_ as core.Map<core.String, core.dynamic>);
+  }
+}
+
+class ProjectsLocationsExadbVmClustersDbNodesResource {
+  final commons.ApiRequester _requester;
+
+  ProjectsLocationsExadbVmClustersDbNodesResource(commons.ApiRequester client)
+    : _requester = client;
+
+  /// Lists the database nodes of a VM Cluster.
+  ///
+  /// Request parameters:
+  ///
+  /// [parent] - Required. The parent value for database node in the following
+  /// format:
+  /// projects/{project}/locations/{location}/cloudVmClusters/{cloudVmCluster}.
+  /// .
+  /// Value must have pattern
+  /// `^projects/\[^/\]+/locations/\[^/\]+/exadbVmClusters/\[^/\]+$`.
+  ///
+  /// [pageSize] - Optional. The maximum number of items to return. If
+  /// unspecified, at most 50 db nodes will be returned. The maximum value is
+  /// 1000; values above 1000 will be coerced to 1000.
+  ///
+  /// [pageToken] - Optional. A token identifying a page of results the node
+  /// should return.
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [ListDbNodesResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<ListDbNodesResponse> list(
+    core.String parent, {
+    core.int? pageSize,
+    core.String? pageToken,
+    core.String? $fields,
+  }) async {
+    final queryParams_ = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (pageToken != null) 'pageToken': [pageToken],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    final url_ = 'v1/' + core.Uri.encodeFull('$parent') + '/dbNodes';
+
+    final response_ = await _requester.request(
+      url_,
+      'GET',
+      queryParams: queryParams_,
+    );
+    return ListDbNodesResponse.fromJson(
+      response_ as core.Map<core.String, core.dynamic>,
+    );
   }
 }
 
@@ -3361,6 +3491,14 @@ class ProjectsLocationsOperationsResource {
   ///
   /// [pageToken] - The standard list page token.
   ///
+  /// [returnPartialSuccess] - When set to `true`, operations that are reachable
+  /// are returned as normal, and those that are unreachable are returned in the
+  /// ListOperationsResponse.unreachable field. This can only be `true` when
+  /// reading across collections. For example, when `parent` is set to
+  /// `"projects/example/locations/-"`. This field is not supported by default
+  /// and will result in an `UNIMPLEMENTED` error if set unless explicitly
+  /// documented otherwise in service or product specific documentation.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -3376,12 +3514,15 @@ class ProjectsLocationsOperationsResource {
     core.String? filter,
     core.int? pageSize,
     core.String? pageToken,
+    core.bool? returnPartialSuccess,
     core.String? $fields,
   }) async {
     final queryParams_ = <core.String, core.List<core.String>>{
       if (filter != null) 'filter': [filter],
       if (pageSize != null) 'pageSize': ['${pageSize}'],
       if (pageToken != null) 'pageToken': [pageToken],
+      if (returnPartialSuccess != null)
+        'returnPartialSuccess': ['${returnPartialSuccess}'],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3546,12 +3687,12 @@ class AllConnectionStrings {
 class AutonomousDatabase {
   /// The password for the default ADMIN user.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? adminPassword;
 
   /// The subnet CIDR range for the Autonomous Database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? cidr;
 
   /// The date and time that the Autonomous Database was created.
@@ -3564,7 +3705,7 @@ class AutonomousDatabase {
   /// The database name must be unique in the project. The name must begin with
   /// a letter and can contain a maximum of 30 alphanumeric characters.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? database;
 
   /// List of supported GCP region to clone the Autonomous Database for disaster
@@ -3579,7 +3720,7 @@ class AutonomousDatabase {
   ///
   /// The name does not have to be unique within your project.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? displayName;
 
   /// The ID of the subscription entitlement associated with the Autonomous
@@ -3602,7 +3743,7 @@ class AutonomousDatabase {
   /// The name of the VPC network used by the Autonomous Database in the
   /// following format: projects/{project}/global/networks/{network}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? network;
 
   /// The name of the OdbNetwork associated with the Autonomous Database.
@@ -3611,7 +3752,7 @@ class AutonomousDatabase {
   /// It is optional but if specified, this should match the parent ODBNetwork
   /// of the OdbSubnet.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbNetwork;
 
   /// The name of the OdbSubnet associated with the Autonomous Database.
@@ -3619,7 +3760,7 @@ class AutonomousDatabase {
   /// Format:
   /// projects/{project}/locations/{location}/odbNetworks/{odb_network}/odbSubnets/{odb_subnet}
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? odbSubnet;
 
   /// The peer Autonomous Database names of the given Autonomous Database.
@@ -3638,7 +3779,7 @@ class AutonomousDatabase {
   /// The source Autonomous Database is configured while creating the Peer
   /// Autonomous Database and can't be updated after creation.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   SourceConfig? sourceConfig;
 
   AutonomousDatabase({
@@ -4242,7 +4383,7 @@ class AutonomousDatabaseProperties {
 
   /// The list of allowlisted IP addresses for the Autonomous Database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.List<core.String>? allowlistedIps;
 
   /// The details for the Oracle APEX Application Development.
@@ -4279,19 +4420,19 @@ class AutonomousDatabaseProperties {
   /// This field is specified in days, can range from 1 day to 60 days, and has
   /// a default value of 60 days.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.int? backupRetentionPeriodDays;
 
   /// The character set for the Autonomous Database.
   ///
   /// The default is AL32UTF8.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? characterSet;
 
   /// The number of compute servers for the Autonomous Database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.double? computeCount;
 
   /// The connection strings used to connect to an Autonomous Database.
@@ -4306,12 +4447,12 @@ class AutonomousDatabaseProperties {
 
   /// The number of CPU cores to be made available to the database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.int? cpuCoreCount;
 
   /// The list of customer contacts.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.List<CustomerContact>? customerContacts;
 
   /// The date and time the Autonomous Data Guard role was changed for the
@@ -4335,12 +4476,12 @@ class AutonomousDatabaseProperties {
 
   /// The size of the data stored in the database, in gigabytes.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.int? dataStorageSizeGb;
 
   /// The size of the data stored in the database, in terabytes.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.int? dataStorageSizeTb;
 
   /// The current state of database management for the Autonomous Database.
@@ -4358,7 +4499,7 @@ class AutonomousDatabaseProperties {
 
   /// The edition of the Autonomous Databases.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "DATABASE_EDITION_UNSPECIFIED" : Default unspecified value.
   /// - "STANDARD_EDITION" : Standard Database Edition
@@ -4367,12 +4508,12 @@ class AutonomousDatabaseProperties {
 
   /// The Oracle Database version for the Autonomous Database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? dbVersion;
 
   /// The workload type of the Autonomous Database.
   ///
-  /// Required.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "DB_WORKLOAD_UNSPECIFIED" : Default unspecified value.
   /// - "OLTP" : Autonomous Transaction Processing database.
@@ -4388,6 +4529,20 @@ class AutonomousDatabaseProperties {
   /// Output only.
   core.String? disasterRecoveryRoleChangedTime;
 
+  /// The encryption key used to encrypt the Autonomous Database.
+  ///
+  /// Updating this field will add a new entry in the
+  /// `encryption_key_history_entries` field with the former version.
+  ///
+  /// Optional.
+  EncryptionKey? encryptionKey;
+
+  /// The history of the encryption keys used to encrypt the Autonomous
+  /// Database.
+  ///
+  /// Output only.
+  core.List<EncryptionKeyHistoryEntry>? encryptionKeyHistoryEntries;
+
   /// This field indicates the number of seconds of data loss during a Data
   /// Guard failover.
   ///
@@ -4397,7 +4552,7 @@ class AutonomousDatabaseProperties {
   /// This field indicates if auto scaling is enabled for the Autonomous
   /// Database CPU core count.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.bool? isAutoScalingEnabled;
 
   /// This field indicates whether the Autonomous Database has local (in-region)
@@ -4409,12 +4564,12 @@ class AutonomousDatabaseProperties {
   /// This field indicates if auto scaling is enabled for the Autonomous
   /// Database storage.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.bool? isStorageAutoScalingEnabled;
 
   /// The license type used for the Autonomous Database.
   ///
-  /// Required.
+  /// Required. Immutable.
   /// Possible string values are:
   /// - "LICENSE_TYPE_UNSPECIFIED" : Unspecified
   /// - "LICENSE_INCLUDED" : License included part of offer
@@ -4459,7 +4614,7 @@ class AutonomousDatabaseProperties {
 
   /// The maintenance schedule of the Autonomous Database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   /// Possible string values are:
   /// - "MAINTENANCE_SCHEDULE_TYPE_UNSPECIFIED" : Default unspecified value.
   /// - "EARLY" : An EARLY maintenance schedule patches the database before the
@@ -4480,14 +4635,14 @@ class AutonomousDatabaseProperties {
 
   /// This field specifies if the Autonomous Database requires mTLS connections.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.bool? mtlsConnectionRequired;
 
   /// The national character set for the Autonomous Database.
   ///
   /// The default is AL16UTF16.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? nCharacterSet;
 
   /// The long term backup schedule of the Autonomous Database.
@@ -4552,12 +4707,12 @@ class AutonomousDatabaseProperties {
 
   /// The private endpoint IP address for the Autonomous Database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? privateEndpointIp;
 
   /// The private endpoint label for the Autonomous Database.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? privateEndpointLabel;
 
   /// The refresh mode of the cloned Autonomous Database.
@@ -4600,8 +4755,14 @@ class AutonomousDatabaseProperties {
 
   /// The ID of the Oracle Cloud Infrastructure vault secret.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? secretId;
+
+  /// An Oracle-managed Google Cloud service account on which customers can
+  /// grant roles to access resources in the customer project.
+  ///
+  /// Output only.
+  core.String? serviceAgentEmail;
 
   /// The SQL Web Developer URL for the Autonomous Database.
   ///
@@ -4674,7 +4835,7 @@ class AutonomousDatabaseProperties {
 
   /// The ID of the Oracle Cloud Infrastructure vault.
   ///
-  /// Optional.
+  /// Optional. Immutable.
   core.String? vaultId;
 
   AutonomousDatabaseProperties({
@@ -4701,6 +4862,8 @@ class AutonomousDatabaseProperties {
     this.dbVersion,
     this.dbWorkload,
     this.disasterRecoveryRoleChangedTime,
+    this.encryptionKey,
+    this.encryptionKeyHistoryEntries,
     this.failedDataRecoveryDuration,
     this.isAutoScalingEnabled,
     this.isLocalDataGuardEnabled,
@@ -4732,6 +4895,7 @@ class AutonomousDatabaseProperties {
     this.role,
     this.scheduledOperationDetails,
     this.secretId,
+    this.serviceAgentEmail,
     this.sqlWebDeveloperUrl,
     this.state,
     this.supportedCloneRegions,
@@ -4803,6 +4967,20 @@ class AutonomousDatabaseProperties {
         dbWorkload: json_['dbWorkload'] as core.String?,
         disasterRecoveryRoleChangedTime:
             json_['disasterRecoveryRoleChangedTime'] as core.String?,
+        encryptionKey:
+            json_.containsKey('encryptionKey')
+                ? EncryptionKey.fromJson(
+                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+        encryptionKeyHistoryEntries:
+            (json_['encryptionKeyHistoryEntries'] as core.List?)
+                ?.map(
+                  (value) => EncryptionKeyHistoryEntry.fromJson(
+                    value as core.Map<core.String, core.dynamic>,
+                  ),
+                )
+                .toList(),
         failedDataRecoveryDuration:
             json_['failedDataRecoveryDuration'] as core.String?,
         isAutoScalingEnabled: json_['isAutoScalingEnabled'] as core.bool?,
@@ -4857,6 +5035,7 @@ class AutonomousDatabaseProperties {
                 )
                 .toList(),
         secretId: json_['secretId'] as core.String?,
+        serviceAgentEmail: json_['serviceAgentEmail'] as core.String?,
         sqlWebDeveloperUrl: json_['sqlWebDeveloperUrl'] as core.String?,
         state: json_['state'] as core.String?,
         supportedCloneRegions:
@@ -4902,6 +5081,9 @@ class AutonomousDatabaseProperties {
     if (dbWorkload != null) 'dbWorkload': dbWorkload!,
     if (disasterRecoveryRoleChangedTime != null)
       'disasterRecoveryRoleChangedTime': disasterRecoveryRoleChangedTime!,
+    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+    if (encryptionKeyHistoryEntries != null)
+      'encryptionKeyHistoryEntries': encryptionKeyHistoryEntries!,
     if (failedDataRecoveryDuration != null)
       'failedDataRecoveryDuration': failedDataRecoveryDuration!,
     if (isAutoScalingEnabled != null)
@@ -4948,6 +5130,7 @@ class AutonomousDatabaseProperties {
     if (scheduledOperationDetails != null)
       'scheduledOperationDetails': scheduledOperationDetails!,
     if (secretId != null) 'secretId': secretId!,
+    if (serviceAgentEmail != null) 'serviceAgentEmail': serviceAgentEmail!,
     if (sqlWebDeveloperUrl != null) 'sqlWebDeveloperUrl': sqlWebDeveloperUrl!,
     if (state != null) 'state': state!,
     if (supportedCloneRegions != null)
@@ -7826,6 +8009,73 @@ class DefinedTagValue {
 /// (google.protobuf.Empty); }
 typedef Empty = $Empty;
 
+/// The encryption key used to encrypt the Autonomous Database.
+class EncryptionKey {
+  /// The KMS key used to encrypt the Autonomous Database.
+  ///
+  /// This field is required if the provider is GOOGLE_MANAGED. The name of the
+  /// KMS key resource in the following format:
+  /// `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  ///
+  /// Optional.
+  core.String? kmsKey;
+
+  /// The provider of the encryption key.
+  ///
+  /// Optional.
+  /// Possible string values are:
+  /// - "PROVIDER_UNSPECIFIED" : Default unspecified value.
+  /// - "GOOGLE_MANAGED" : Google Managed KMS key, if selected, please provide
+  /// the KMS key name.
+  /// - "ORACLE_MANAGED" : Oracle Managed.
+  core.String? provider;
+
+  EncryptionKey({this.kmsKey, this.provider});
+
+  EncryptionKey.fromJson(core.Map json_)
+    : this(
+        kmsKey: json_['kmsKey'] as core.String?,
+        provider: json_['provider'] as core.String?,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (kmsKey != null) 'kmsKey': kmsKey!,
+    if (provider != null) 'provider': provider!,
+  };
+}
+
+/// The history of the encryption keys used to encrypt the Autonomous Database.
+class EncryptionKeyHistoryEntry {
+  /// The date and time when the encryption key was activated on the Autonomous
+  /// Database..
+  ///
+  /// Output only.
+  core.String? activationTime;
+
+  /// The encryption key used to encrypt the Autonomous Database.
+  ///
+  /// Output only.
+  EncryptionKey? encryptionKey;
+
+  EncryptionKeyHistoryEntry({this.activationTime, this.encryptionKey});
+
+  EncryptionKeyHistoryEntry.fromJson(core.Map json_)
+    : this(
+        activationTime: json_['activationTime'] as core.String?,
+        encryptionKey:
+            json_.containsKey('encryptionKey')
+                ? EncryptionKey.fromJson(
+                  json_['encryptionKey'] as core.Map<core.String, core.dynamic>,
+                )
+                : null,
+      );
+
+  core.Map<core.String, core.dynamic> toJson() => {
+    if (activationTime != null) 'activationTime': activationTime!,
+    if (encryptionKey != null) 'encryptionKey': encryptionKey!,
+  };
+}
+
 /// Details of the Entitlement resource.
 class Entitlement {
   /// Details of the OCI Cloud Account.
@@ -8512,7 +8762,10 @@ class ExascaleDbStorageVaultProperties {
 class FailoverAutonomousDatabaseRequest {
   /// The peer database name to fail over to.
   ///
-  /// Required.
+  /// Required for cross-region standby, and must be omitted for in-region Data
+  /// Guard.
+  ///
+  /// Optional.
   core.String? peerAutonomousDatabase;
 
   FailoverAutonomousDatabaseRequest({this.peerAutonomousDatabase});
@@ -9375,7 +9628,19 @@ class ListOperationsResponse {
   /// A list of operations that matches the specified filter in the request.
   core.List<Operation>? operations;
 
-  ListOperationsResponse({this.nextPageToken, this.operations});
+  /// Unordered list.
+  ///
+  /// Unreachable resources. Populated when the request sets
+  /// `ListOperationsRequest.return_partial_success` and reads across
+  /// collections. For example, when attempting to list all resources across all
+  /// supported locations.
+  core.List<core.String>? unreachable;
+
+  ListOperationsResponse({
+    this.nextPageToken,
+    this.operations,
+    this.unreachable,
+  });
 
   ListOperationsResponse.fromJson(core.Map json_)
     : this(
@@ -9388,11 +9653,16 @@ class ListOperationsResponse {
                   ),
                 )
                 .toList(),
+        unreachable:
+            (json_['unreachable'] as core.List?)
+                ?.map((value) => value as core.String)
+                .toList(),
       );
 
   core.Map<core.String, core.dynamic> toJson() => {
     if (nextPageToken != null) 'nextPageToken': nextPageToken!,
     if (operations != null) 'operations': operations!,
+    if (unreachable != null) 'unreachable': unreachable!,
   };
 }
 
@@ -10338,7 +10608,10 @@ class StorageSizeDetails {
 class SwitchoverAutonomousDatabaseRequest {
   /// The peer database name to switch over to.
   ///
-  /// Required.
+  /// Required for cross-region standby, and must be omitted for in-region Data
+  /// Guard.
+  ///
+  /// Optional.
   core.String? peerAutonomousDatabase;
 
   SwitchoverAutonomousDatabaseRequest({this.peerAutonomousDatabase});
