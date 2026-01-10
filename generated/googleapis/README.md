@@ -715,7 +715,7 @@ The Google Cloud Deployment Manager v2 API provides services for configuring, de
 
 Connect third-party source code management to Google
 
-- [Original documentation](http://cloud.google.com/developer-connect/docs/overview)
+- [Original documentation](https://cloud.google.com/developer-connect/docs/overview)
 - [Dart package details](https://pub.dev/documentation/googleapis/15.0.0/developerconnect_v1/developerconnect_v1-library.html)
 
 #### Campaign Manager 360 API - `dfareporting/v3_5`
