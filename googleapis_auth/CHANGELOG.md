@@ -62,6 +62,11 @@
 - Added an optional `listenPort` parameter to `clientViaUserConsent`
   and `obtainAccessCredentialsViaUserConsent`. 
 
+#### `auth_io.dart`
+
+- Handle the `source_credentials` from the credentials file to support
+  usage of impersonating service account with gcloud cli.
+
 ## 1.3.1
 
 - Include `plugin_name` during browser authorization.
