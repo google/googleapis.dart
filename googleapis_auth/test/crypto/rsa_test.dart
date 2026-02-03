@@ -36,7 +36,7 @@ void main() {
       );
     });
 
-    test('encrypt', () {
+    test('rawSign', () {
       final encryptedData = [
         155, 24, 116, 247, 12, 118, 240, 206, 240, 138, 136, 193, 3, 73, //!!
         241, 63, 212, 100, 97, 46, 55, 113, 119, 95, 240, 219, 136, 211, 3, 4,
@@ -57,7 +57,7 @@ void main() {
         26, 217, 230, 133, 217, 76,
       ];
       expect(
-        RSAAlgorithm.encrypt(testPrivateKey, [
+        RSAAlgorithm.rawSign(testPrivateKey, [
           0,
           1,
           2,

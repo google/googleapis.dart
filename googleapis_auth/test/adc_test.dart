@@ -52,8 +52,11 @@ void main() {
           if (url.toString() ==
               'https://storage.googleapis.com/b/bucket/o/obj') {
             expect(request.method, equals('GET'));
-            expect(request.headers['Authorization'], equals('Bearer atoken'));
-            expect(request.headers['X-Goog-User-Project'], isNull);
+            expect(
+              request.headers,
+              containsPair('Authorization', 'Bearer atoken'),
+            );
+            expect(request.headers, isNot(contains('X-Goog-User-Project')));
             return Response('hello world', 200);
           }
           return Response('bad', 404);
@@ -113,8 +116,14 @@ void main() {
           if (url.toString() ==
               'https://storage.googleapis.com/b/bucket/o/obj') {
             expect(request.method, equals('GET'));
-            expect(request.headers['Authorization'], equals('Bearer atoken'));
-            expect(request.headers['X-Goog-User-Project'], equals('project'));
+            expect(
+              request.headers,
+              containsPair('Authorization', 'Bearer atoken'),
+            );
+            expect(
+              request.headers,
+              containsPair('X-Goog-User-Project', 'project'),
+            );
             return Response('hello world', 200);
           }
           return Response('bad', 404);

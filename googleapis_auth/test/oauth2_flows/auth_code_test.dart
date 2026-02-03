@@ -51,8 +51,11 @@ void main() {
     expect(request.method, equals('POST'));
     expect(request.url, authEndpoints.tokenEndpoint);
     expect(
-      request.headers['content-type']!,
-      startsWith('application/x-www-form-urlencoded'),
+      request.headers,
+      containsPair(
+        'content-type',
+        startsWith('application/x-www-form-urlencoded'),
+      ),
     );
 
     final pairs = request.body.split('&');

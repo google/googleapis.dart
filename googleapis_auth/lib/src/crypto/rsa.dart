@@ -49,15 +49,17 @@ class RSAPrivateKey {
 }
 
 // ignore: avoid_classes_with_only_static_members
-/// Provides a [encrypt] method for encrypting messages with a [RSAPrivateKey].
-abstract class RSAAlgorithm {
-  /// Performs the encryption of [bytes] with the private [key].
-  /// Others who have access to the public key will be able to decrypt this
+/// Provides a [rawSign] method for signing messages with a [RSAPrivateKey].
+abstract final class RSAAlgorithm {
+  /// Performs the private key operation (signing) on [bytes] with the private
+  /// [key].
+  ///
+  /// Others who have access to the public key will be able to verify this
   /// the result.
   ///
   /// The [intendedLength] argument specifies the number of bytes in which the
   /// result should be encoded. Zero bytes will be used for padding.
-  static List<int> encrypt(
+  static List<int> rawSign(
     RSAPrivateKey key,
     List<int> bytes,
     int intendedLength,

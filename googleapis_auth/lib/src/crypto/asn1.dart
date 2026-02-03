@@ -4,17 +4,25 @@
 
 import 'dart:typed_data';
 
+import 'package:meta/meta.dart';
+
 import 'rsa.dart';
 
 // ignore: avoid_classes_with_only_static_members
-class ASN1Parser {
+abstract final class ASN1Parser {
   static const integerTag = 0x02;
   static const octetStringTag = 0x04;
   static const nullTag = 0x05;
   static const objectIdTag = 0x06;
   static const sequenceTag = 0x30;
 
-  static ASN1Object parse(Uint8List bytes) {
+  static ASN1Sequence parseSequence(Uint8List bytes) {
+    final obj = parseObject(bytes);
+    return obj as ASN1Sequence;
+  }
+
+  @visibleForTesting
+  static ASN1Object parseObject(Uint8List bytes) {
     Never invalidFormat(String msg) {
       throw ArgumentError('Invalid DER encoding: $msg');
     }
@@ -69,22 +77,26 @@ class ASN1Parser {
       }
     }
 
-    ASN1Object decodeObject() {
+    ASN1Object decodeObject(int recursion) {
+      if (recursion > 128) {
+        throw ArgumentError('Recursion limit for ASN1 messages exceeded.');
+      }
+
       checkNBytesAvailable(1);
       final tag = bytes[offset++];
       switch (tag) {
         case integerTag:
           final size = readEncodedLength();
-          return ASN1Integer(RSAAlgorithm.bytes2BigInt(readBytes(size)));
+          return ASN1Integer._(RSAAlgorithm.bytes2BigInt(readBytes(size)));
         case octetStringTag:
           final size = readEncodedLength();
-          return ASN1OctetString(readBytes(size));
+          return ASN1OctetString._(readBytes(size));
         case nullTag:
           readNullBytes();
-          return ASN1Null();
+          return const ASN1Null._();
         case objectIdTag:
           final size = readEncodedLength();
-          return ASN1ObjectIdentifier(readBytes(size));
+          return ASN1ObjectIdentifier._(readBytes(size));
         case sequenceTag:
           final lengthInBytes = readEncodedLength();
           if ((offset + lengthInBytes) > end) {
@@ -94,9 +106,9 @@ class ASN1Parser {
 
           final objects = <ASN1Object>[];
           while (offset < endOfSequence) {
-            objects.add(decodeObject());
+            objects.add(decodeObject(recursion + 1));
           }
-          return ASN1Sequence(objects);
+          return ASN1Sequence._(objects);
         default:
           invalidFormat(
             'Unexpected tag $tag at offset ${offset - 1} (end: $end).',
@@ -104,7 +116,7 @@ class ASN1Parser {
       }
     }
 
-    final obj = decodeObject();
+    final obj = decodeObject(0);
     if (offset != bytes.length) {
       throw ArgumentError('More bytes than expected in ASN1 encoding.');
     }
@@ -112,30 +124,34 @@ class ASN1Parser {
   }
 }
 
-abstract class ASN1Object {}
+final class ASN1Object {
+  const ASN1Object._();
+}
 
-class ASN1Sequence extends ASN1Object {
+final class ASN1Sequence extends ASN1Object {
   final List<ASN1Object> objects;
 
-  ASN1Sequence(this.objects);
+  ASN1Sequence._(this.objects) : super._();
 }
 
-class ASN1Integer extends ASN1Object {
+final class ASN1Integer extends ASN1Object {
   final BigInt integer;
 
-  ASN1Integer(this.integer);
+  ASN1Integer._(this.integer) : super._();
 }
 
-class ASN1OctetString extends ASN1Object {
+final class ASN1OctetString extends ASN1Object {
   final List<int> bytes;
 
-  ASN1OctetString(this.bytes);
+  ASN1OctetString._(this.bytes) : super._();
 }
 
-class ASN1ObjectIdentifier extends ASN1Object {
+final class ASN1ObjectIdentifier extends ASN1Object {
   final List<int> bytes;
 
-  ASN1ObjectIdentifier(this.bytes);
+  ASN1ObjectIdentifier._(this.bytes) : super._();
 }
 
-class ASN1Null extends ASN1Object {}
+final class ASN1Null extends ASN1Object {
+  const ASN1Null._() : super._();
+}
