@@ -13,7 +13,7 @@ dependencies:
   google_identity_services_web: ^0.3.3
   http: ^1.2.2
   http_parser: ^4.0.0
-  meta: ^1.0.2
+  meta: ^1.15.0
 
 dev_dependencies:
   # build_ dependencies allow debugging web tests using:
