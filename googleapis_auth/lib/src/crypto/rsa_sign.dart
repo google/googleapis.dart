@@ -46,7 +46,7 @@ class RS256Signer {
     block.fillRange(2, 2 + padLength, 0xFF);
     block[2 + padLength] = 0x00;
     block.setRange(2 + padLength + 1, block.length, digest);
-    return RSAAlgorithm.encrypt(_rsaKey, block, modulusLen);
+    return RSAAlgorithm.rawSign(_rsaKey, block, modulusLen);
   }
 
   static Uint8List _digestInfo(List<int> hash) {

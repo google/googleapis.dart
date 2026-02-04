@@ -73,29 +73,50 @@ RSAPrivateKey _extractRSAKeyFromDERBytes(Uint8List bytes) {
     );
 
     final bitLength = key.bitLength;
-    if (bitLength != 1024 && bitLength != 2048 && bitLength != 4096) {
+    if (bitLength < 1024) {
       throw ArgumentError(
         'The RSA modulus has a bit length of $bitLength. '
-        'Only 1024, 2048 and 4096 are supported.',
+        'Only 1024 or more bits are supported.',
       );
     }
     return key;
   }
 
   try {
-    final asn = ASN1Parser.parse(bytes);
-    if (asn is ASN1Sequence) {
-      final objects = asn.objects;
-      if (objects.length == 3 && objects[2] is ASN1OctetString) {
-        final string = objects[2] as ASN1OctetString;
-        // Seems like the embedded form.
-        // TODO: Validate that rsa identifier matches!
-        return privateKeyFromSequence(
-          ASN1Parser.parse(string.bytes as Uint8List) as ASN1Sequence,
-        );
+    final asn = ASN1Parser.parseSequence(bytes);
+    final objects = asn.objects;
+    if (objects.length == 3 && objects[2] is ASN1OctetString) {
+      final string = objects[2] as ASN1OctetString;
+      final algId = objects[1];
+      if (algId is ASN1Sequence && algId.objects.isNotEmpty) {
+        final oid = algId.objects[0];
+        if (oid is ASN1ObjectIdentifier) {
+          final validOid = [
+            0x2a,
+            0x86,
+            0x48,
+            0x86,
+            0xf7,
+            0x0d,
+            0x01,
+            0x01,
+            0x01,
+          ];
+          if (oid.bytes.length != validOid.length) {
+            throw ArgumentError('Unexpected Algorithm Identifier OID.');
+          }
+          for (var i = 0; i < validOid.length; i++) {
+            if (oid.bytes[i] != validOid[i]) {
+              throw ArgumentError('Unexpected Algorithm Identifier OID.');
+            }
+          }
+        }
       }
+      return privateKeyFromSequence(
+        ASN1Parser.parseSequence(string.bytes as Uint8List),
+      );
     }
-    return privateKeyFromSequence(asn as ASN1Sequence);
+    return privateKeyFromSequence(asn);
   } catch (error) {
     throw ArgumentError(
       'Error while extracting private key from DER bytes: $error',

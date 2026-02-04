@@ -233,8 +233,11 @@ void main() {
             expectAsync1((request) async {
               expect(request.method, equals('POST'));
               expect(request.url, equals(url));
-              expect(request.headers.length, equals(1));
-              expect(request.headers['Authorization'], equals('Bearer bar'));
+              expect(request.headers, hasLength(1));
+              expect(
+                request.headers,
+                containsPair('Authorization', 'Bearer bar'),
+              );
 
               return Response('', 204);
             }),
@@ -254,8 +257,11 @@ void main() {
             expectAsync1((request) async {
               expect(request.method, equals('POST'));
               expect(request.url, equals(url));
-              expect(request.headers.length, equals(1));
-              expect(request.headers['Authorization'], equals('Bearer bar'));
+              expect(request.headers, hasLength(1));
+              expect(
+                request.headers,
+                containsPair('Authorization', 'Bearer bar'),
+              );
 
               const headers = {'www-authenticate': 'foobar'};
               return Response('', 401, headers: headers);
@@ -338,7 +344,7 @@ void main() {
           mockClient(
             expectAsync1((request) {
               // This should be a refresh request.
-              expect(request.headers['foo'], isNull);
+              expect(request.headers, isNot(contains('foo')));
               return refreshErrorResponse(request);
             }),
             expectClose: false,
@@ -364,7 +370,7 @@ void main() {
           mockClient(
             expectAsync1((request) async {
               // This should be a refresh request.
-              expect(request.headers['foo'], isNull);
+              expect(request.headers, isNot(contains('foo')));
               final headers = {'content-type': 'image/png'};
 
               return Response('', 200, headers: headers);
@@ -395,11 +401,11 @@ void main() {
             expectAsync1((request) async {
               if (serverInvocation++ == 0) {
                 // This should be a refresh request.
-                expect(request.headers['foo'], isNull);
+                expect(request.headers, isNot(contains('foo')));
                 return successfulRefresh(request);
               } else {
                 // This is the real request.
-                expect(request.headers['foo'], equals('bar'));
+                expect(request.headers, containsPair('foo', 'bar'));
                 return Response('', 200);
               }
             }, count: 2),

@@ -24,7 +24,7 @@ void main() {
   Future<Response> successfulAccessToken(Request request) async {
     expect(request.method, equals('GET'));
     expect(request.url.toString(), equals(tokenUrl));
-    expect(request.headers[apiHeaderKey], equals(apiHeaderValue));
+    expect(request.headers, containsPair(apiHeaderKey, apiHeaderValue));
 
     final body = jsonEncode({
       'access_token': 'atok',
@@ -37,7 +37,7 @@ void main() {
   Future<Response> invalidAccessToken(Request request) async {
     expect(request.method, equals('GET'));
     expect(request.url.toString(), equals(tokenUrl));
-    expect(request.headers[apiHeaderKey], equals(apiHeaderValue));
+    expect(request.headers, containsPair(apiHeaderKey, apiHeaderValue));
 
     final body = jsonEncode({
       // Missing 'expires_in' entry
@@ -50,7 +50,7 @@ void main() {
   Future<Response> successfulScopes(Request request) {
     expect(request.method, equals('GET'));
     expect(request.url.toString(), equals(scopesUrl));
-    expect(request.headers[apiHeaderKey], equals(apiHeaderValue));
+    expect(request.headers, containsPair(apiHeaderKey, apiHeaderValue));
 
     return Future.value(Response('s1\ns2', 200));
   }

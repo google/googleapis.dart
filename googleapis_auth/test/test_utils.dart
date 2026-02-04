@@ -60,7 +60,13 @@ void expectExpiryOneHourFromNow(AccessToken accessToken) {
   final diff =
       accessToken.expiry.difference(now).inSeconds -
       (3600 - maxExpectedTimeDiffInSeconds);
-  expect(-2 <= diff && diff <= 2, isTrue);
+  expect(
+    diff,
+    inInclusiveRange(-2, 2),
+    reason:
+        'The difference between actual and expected expiry should be '
+        'within [-2, 2] seconds. Actual diff: $diff',
+  );
 }
 
 Client mockClient(

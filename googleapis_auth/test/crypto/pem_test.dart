@@ -4,6 +4,8 @@
 
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'dart:convert';
+
 import 'package:googleapis_auth/src/crypto/pem.dart';
 import 'package:test/test.dart';
 
@@ -75,5 +77,151 @@ void main() {
         ),
       );
     });
+
+    test('invalid-oid', () {
+      // Construct a PEM with invalid OID in Encapsulated format.
+      // Encapsulated := seq[int/version=0, seq[obj-id/wrong, null-obj], octet-string/PrivateKey]
+      // Wrong OID: 1.2.840.113549.1.1.2 (MD2 with RSAEncryption) instead of 1.1.1
+      // 1.2.840.113549.1.1.2 -> 2a 86 48 86 f7 0d 01 01 02
+      final wrongOidBytes = [
+        0x30, 0x0D, // Sequence (OID + NULL)
+        0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01, 0x02, // OID
+        0x05, 0x00, // Null
+      ];
+
+      // We need to wrap the private key in OctetString.
+      // Existing key bytes:
+      final keyBytes = base64Decode(
+        testPrivateKeyString
+            .replaceAll('-----BEGIN RSA PRIVATE KEY-----', '')
+            .replaceAll('-----END RSA PRIVATE KEY-----', '')
+            .replaceAll('\n', ''),
+      );
+
+      // Wrap in OctetString
+      // OctetString tag 0x04. Length is long form.
+      final octetHeader = <int>[0x04];
+      if (keyBytes.length < 128) {
+        octetHeader.add(keyBytes.length);
+      } else {
+        final lenBytes = <int>[];
+        var l = keyBytes.length;
+        while (l > 0) {
+          lenBytes.insert(0, l & 0xFF);
+          l >>= 8;
+        }
+        octetHeader.add(0x80 | lenBytes.length);
+        octetHeader.addAll(lenBytes);
+      }
+
+      // Final Sequence: Version 0, WrongAlgo, OctetString(Key)
+      // Version 0: 02 01 00
+      final fullSeqContent = <int>[
+        0x02,
+        0x01,
+        0x00,
+        ...wrongOidBytes,
+        ...octetHeader,
+        ...keyBytes,
+      ];
+
+      final fullSeqHeader = <int>[0x30]; // Sequence
+      // Length
+      final fullLen = fullSeqContent.length;
+      if (fullLen < 128) {
+        fullSeqHeader.add(fullLen);
+      } else {
+        final lenBytes = <int>[];
+        var l = fullLen;
+        while (l > 0) {
+          lenBytes.insert(0, l & 0xFF);
+          l >>= 8;
+        }
+        fullSeqHeader.add(0x80 | lenBytes.length);
+        fullSeqHeader.addAll(lenBytes);
+      }
+
+      final fullBytes = [...fullSeqHeader, ...fullSeqContent];
+      final pem =
+          '-----BEGIN RSA PRIVATE KEY-----\n${base64Encode(fullBytes)}\n-----END RSA PRIVATE KEY-----';
+
+      expect(
+        () => keyFromString(pem),
+        _throwArgumentErrorWithMsg('Unexpected Algorithm Identifier OID'),
+      );
+    });
+
+    test('small-key', () {
+      // 512 bit key (mocked, simple ints that parse but have small n).
+      // Seq(0, n, e, d, p, q, dmp1, dmq1, coeff)
+      // n approx 2^511.
+      final n = BigInt.two.pow(511);
+      final e = BigInt.from(65537);
+      // d, p, q etc can be 0 or 1 for parsing, avoiding complex math.
+      // The bitLength check is on n.
+      final d = BigInt.one;
+      final p = BigInt.one;
+      final q = BigInt.one;
+      final dmp1 = BigInt.one;
+      final dmq1 = BigInt.one;
+      final coeff = BigInt.one;
+
+      List<int> encodeBigInt(BigInt i) {
+        if (i == BigInt.zero) return [0];
+        final bytes = <int>[];
+        var temp = i;
+        while (temp > BigInt.zero) {
+          bytes.insert(0, (temp & BigInt.from(0xFF)).toInt());
+          temp >>= 8;
+        }
+        if ((bytes[0] & 0x80) != 0) {
+          bytes.insert(0, 0);
+        }
+        return bytes;
+      }
+
+      List<int> ans1Int(BigInt i) {
+        final b = encodeBigInt(i);
+        return [
+          0x02,
+          b.length,
+          ...b,
+        ]; // Assuming length < 128 (512 bits is ~64 bytes)
+      }
+
+      final seqContent = <int>[
+        ...ans1Int(BigInt.zero), // ver
+        ...ans1Int(n),
+        ...ans1Int(e),
+        ...ans1Int(d),
+        ...ans1Int(p),
+        ...ans1Int(q),
+        ...ans1Int(dmp1),
+        ...ans1Int(dmq1),
+        ...ans1Int(coeff),
+      ];
+      final seqLen = seqContent.length;
+      final fullBytes = [0x30];
+      if (seqLen < 128) {
+        fullBytes.add(seqLen);
+      } else {
+        fullBytes.add(0x81); // 1 byte length
+        fullBytes.add(seqLen);
+      }
+      fullBytes.addAll(seqContent);
+
+      final pem = '''
+-----BEGIN RSA PRIVATE KEY-----
+${base64Encode(fullBytes)}
+-----END RSA PRIVATE KEY-----''';
+
+      expect(
+        () => keyFromString(pem),
+        _throwArgumentErrorWithMsg('Only 1024 or more bits are supported'),
+      );
+    });
   });
 }
+
+Matcher _throwArgumentErrorWithMsg(String msg) =>
+    throwsA(isArgumentError.having((e) => e.message, 'message', contains(msg)));
